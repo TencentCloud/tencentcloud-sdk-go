@@ -5589,6 +5589,38 @@ type InstanceDetail struct {
 	// 实例状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 消息上下行配置TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpDownTPS *int64 `json:"UpDownTPS,omitnil,omitempty" name:"UpDownTPS"`
+
+	// 当前消息上下行TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpDownCurrentTPS *int64 `json:"UpDownCurrentTPS,omitnil,omitempty" name:"UpDownCurrentTPS"`
+
+	// 消息转发配置TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardTPS *int64 `json:"ForwardTPS,omitnil,omitempty" name:"ForwardTPS"`
+
+	// 消息转发当前TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardCurrentTPS *int64 `json:"ForwardCurrentTPS,omitnil,omitempty" name:"ForwardCurrentTPS"`
+
+	// 实例单元数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CellNum *int64 `json:"CellNum,omitnil,omitempty" name:"CellNum"`
+
+	// 实例Tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
+
+	// 每日消息数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EverydayFreeMessageCount *int64 `json:"EverydayFreeMessageCount,omitnil,omitempty" name:"EverydayFreeMessageCount"`
+
+	// 最大在线设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDeviceOnlineCount *int64 `json:"MaxDeviceOnlineCount,omitnil,omitempty" name:"MaxDeviceOnlineCount"`
 }
 
 // Predefined struct for user

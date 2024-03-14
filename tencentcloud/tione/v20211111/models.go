@@ -3814,6 +3814,60 @@ func (r *DescribeBillingSpecsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBuildInImagesRequestParams struct {
+
+}
+
+type DescribeBuildInImagesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBuildInImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBuildInImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBuildInImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBuildInImagesResponseParams struct {
+	// 内置镜像详情列表
+	BuildInImageInfos []*ImageInfo `json:"BuildInImageInfos,omitnil,omitempty" name:"BuildInImageInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBuildInImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBuildInImagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBuildInImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBuildInImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDatasetDetailStructuredRequestParams struct {
 	// 数据集ID
 	DatasetId *string `json:"DatasetId,omitnil,omitempty" name:"DatasetId"`

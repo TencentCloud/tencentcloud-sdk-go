@@ -8648,6 +8648,67 @@ func (c *Client) DescribePullStreamConfigsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribePullTransformPushInfoRequest() (request *DescribePullTransformPushInfoRequest) {
+    request = &DescribePullTransformPushInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribePullTransformPushInfo")
+    
+    
+    return
+}
+
+func NewDescribePullTransformPushInfoResponse() (response *DescribePullTransformPushInfoResponse) {
+    response = &DescribePullTransformPushInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePullTransformPushInfo
+// 查询拉流转推任务的时长信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribePullTransformPushInfo(request *DescribePullTransformPushInfoRequest) (response *DescribePullTransformPushInfoResponse, err error) {
+    return c.DescribePullTransformPushInfoWithContext(context.Background(), request)
+}
+
+// DescribePullTransformPushInfo
+// 查询拉流转推任务的时长信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribePullTransformPushInfoWithContext(ctx context.Context, request *DescribePullTransformPushInfoRequest) (response *DescribePullTransformPushInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePullTransformPushInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePullTransformPushInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePullTransformPushInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePushBandwidthAndFluxListRequest() (request *DescribePushBandwidthAndFluxListRequest) {
     request = &DescribePushBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},

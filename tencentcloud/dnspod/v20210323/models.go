@@ -1091,6 +1091,9 @@ type CreateRecordRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 开启DNSSEC时，强制添加CNAME/URL记录
+	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 }
 
 type CreateRecordRequest struct {
@@ -1131,6 +1134,9 @@ type CreateRecordRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 开启DNSSEC时，强制添加CNAME/URL记录
+	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 }
 
 func (r *CreateRecordRequest) ToJsonString() string {
@@ -1157,6 +1163,7 @@ func (r *CreateRecordRequest) FromJsonString(s string) error {
 	delete(f, "Weight")
 	delete(f, "Status")
 	delete(f, "Remark")
+	delete(f, "DnssecConflictMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordRequest has unknown keys!", "")
 	}
@@ -3411,6 +3418,70 @@ func (r *DescribeRecordGroupListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordLineCategoryListRequestParams struct {
+	// 要查询线路列表的域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type DescribeRecordLineCategoryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询线路列表的域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeRecordLineCategoryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordLineCategoryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordLineCategoryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordLineCategoryListResponseParams struct {
+	// 按分类返回的线路列表。
+	LineList []*LineItem `json:"LineList,omitnil,omitempty" name:"LineList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordLineCategoryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordLineCategoryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordLineCategoryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordLineCategoryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRecordLineListRequestParams struct {
 	// 域名。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -4799,6 +4870,30 @@ type LineInfo struct {
 	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
 }
 
+type LineItem struct {
+	// 解析线路名称。
+	LineName *string `json:"LineName,omitnil,omitempty" name:"LineName"`
+
+	// 解析线路 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+
+	// 当前线路在当前域名下是否可用。
+	Useful *bool `json:"Useful,omitnil,omitempty" name:"Useful"`
+
+	// 当前线路最低套餐等级要求。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
+
+	// 当前线路分类下的子线路列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubGroup []*LineItem `json:"SubGroup,omitnil,omitempty" name:"SubGroup"`
+
+	// 自定义线路分组内包含的线路。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lines []*string `json:"Lines,omitnil,omitempty" name:"Lines"`
+}
+
 type LockInfo struct {
 	// 域名 ID
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
@@ -5794,6 +5889,9 @@ type ModifyRecordRequestParams struct {
 
 	// 记录的备注信息。传空删除备注。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 }
 
 type ModifyRecordRequest struct {
@@ -5837,6 +5935,9 @@ type ModifyRecordRequest struct {
 
 	// 记录的备注信息。传空删除备注。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 }
 
 func (r *ModifyRecordRequest) ToJsonString() string {
@@ -5864,6 +5965,7 @@ func (r *ModifyRecordRequest) FromJsonString(s string) error {
 	delete(f, "Weight")
 	delete(f, "Status")
 	delete(f, "Remark")
+	delete(f, "DnssecConflictMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordRequest has unknown keys!", "")
 	}

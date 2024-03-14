@@ -2055,6 +2055,15 @@ type DescribeHiveQueriesRequestParams struct {
 
 	// 分页大小，合法范围[1,100]
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 执行状态,ERROR等
+	State []*string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 结束时间大于的时间点
+	EndTimeGte *uint64 `json:"EndTimeGte,omitnil,omitempty" name:"EndTimeGte"`
+
+	// 结束时间小于时间点
+	EndTimeLte *uint64 `json:"EndTimeLte,omitnil,omitempty" name:"EndTimeLte"`
 }
 
 type DescribeHiveQueriesRequest struct {
@@ -2074,6 +2083,15 @@ type DescribeHiveQueriesRequest struct {
 
 	// 分页大小，合法范围[1,100]
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 执行状态,ERROR等
+	State []*string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 结束时间大于的时间点
+	EndTimeGte *uint64 `json:"EndTimeGte,omitnil,omitempty" name:"EndTimeGte"`
+
+	// 结束时间小于时间点
+	EndTimeLte *uint64 `json:"EndTimeLte,omitnil,omitempty" name:"EndTimeLte"`
 }
 
 func (r *DescribeHiveQueriesRequest) ToJsonString() string {
@@ -2093,6 +2111,9 @@ func (r *DescribeHiveQueriesRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "State")
+	delete(f, "EndTimeGte")
+	delete(f, "EndTimeLte")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHiveQueriesRequest has unknown keys!", "")
 	}
@@ -2143,6 +2164,15 @@ type DescribeImpalaQueriesRequestParams struct {
 
 	// 分页大小，合法范围[1,100]
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 执行状态，CREATED、INITIALIZED、COMPILED、RUNNING、FINISHED、EXCEPTION
+	State []*string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 结束时间大于的时间点
+	EndTimeGte *uint64 `json:"EndTimeGte,omitnil,omitempty" name:"EndTimeGte"`
+
+	// 结束时间小于的时间点
+	EndTimeLte *uint64 `json:"EndTimeLte,omitnil,omitempty" name:"EndTimeLte"`
 }
 
 type DescribeImpalaQueriesRequest struct {
@@ -2162,6 +2192,15 @@ type DescribeImpalaQueriesRequest struct {
 
 	// 分页大小，合法范围[1,100]
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 执行状态，CREATED、INITIALIZED、COMPILED、RUNNING、FINISHED、EXCEPTION
+	State []*string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 结束时间大于的时间点
+	EndTimeGte *uint64 `json:"EndTimeGte,omitnil,omitempty" name:"EndTimeGte"`
+
+	// 结束时间小于的时间点
+	EndTimeLte *uint64 `json:"EndTimeLte,omitnil,omitempty" name:"EndTimeLte"`
 }
 
 func (r *DescribeImpalaQueriesRequest) ToJsonString() string {
@@ -2181,6 +2220,9 @@ func (r *DescribeImpalaQueriesRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "State")
+	delete(f, "EndTimeGte")
+	delete(f, "EndTimeLte")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImpalaQueriesRequest has unknown keys!", "")
 	}

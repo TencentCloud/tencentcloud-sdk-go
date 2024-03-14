@@ -2351,6 +2351,67 @@ func (c *Client) DescribeBillingSpecsPriceWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeBuildInImagesRequest() (request *DescribeBuildInImagesRequest) {
+    request = &DescribeBuildInImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBuildInImages")
+    
+    
+    return
+}
+
+func NewDescribeBuildInImagesResponse() (response *DescribeBuildInImagesResponse) {
+    response = &DescribeBuildInImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBuildInImages
+// 获取内置镜像列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBuildInImages(request *DescribeBuildInImagesRequest) (response *DescribeBuildInImagesResponse, err error) {
+    return c.DescribeBuildInImagesWithContext(context.Background(), request)
+}
+
+// DescribeBuildInImages
+// 获取内置镜像列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBuildInImagesWithContext(ctx context.Context, request *DescribeBuildInImagesRequest) (response *DescribeBuildInImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBuildInImagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBuildInImages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBuildInImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatasetDetailStructuredRequest() (request *DescribeDatasetDetailStructuredRequest) {
     request = &DescribeDatasetDetailStructuredRequest{
         BaseRequest: &tchttp.BaseRequest{},

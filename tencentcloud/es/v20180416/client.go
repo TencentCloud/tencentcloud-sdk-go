@@ -45,6 +45,92 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCheckMigrateIndexMetaDataRequest() (request *CheckMigrateIndexMetaDataRequest) {
+    request = &CheckMigrateIndexMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CheckMigrateIndexMetaData")
+    
+    
+    return
+}
+
+func NewCheckMigrateIndexMetaDataResponse() (response *CheckMigrateIndexMetaDataResponse) {
+    response = &CheckMigrateIndexMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckMigrateIndexMetaData
+// 检查cos迁移索引元数据
+func (c *Client) CheckMigrateIndexMetaData(request *CheckMigrateIndexMetaDataRequest) (response *CheckMigrateIndexMetaDataResponse, err error) {
+    return c.CheckMigrateIndexMetaDataWithContext(context.Background(), request)
+}
+
+// CheckMigrateIndexMetaData
+// 检查cos迁移索引元数据
+func (c *Client) CheckMigrateIndexMetaDataWithContext(ctx context.Context, request *CheckMigrateIndexMetaDataRequest) (response *CheckMigrateIndexMetaDataResponse, err error) {
+    if request == nil {
+        request = NewCheckMigrateIndexMetaDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckMigrateIndexMetaData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckMigrateIndexMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCosMigrateToServerlessInstanceRequest() (request *CreateCosMigrateToServerlessInstanceRequest) {
+    request = &CreateCosMigrateToServerlessInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateCosMigrateToServerlessInstance")
+    
+    
+    return
+}
+
+func NewCreateCosMigrateToServerlessInstanceResponse() (response *CreateCosMigrateToServerlessInstanceResponse) {
+    response = &CreateCosMigrateToServerlessInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCosMigrateToServerlessInstance
+// cos迁移流程
+func (c *Client) CreateCosMigrateToServerlessInstance(request *CreateCosMigrateToServerlessInstanceRequest) (response *CreateCosMigrateToServerlessInstanceResponse, err error) {
+    return c.CreateCosMigrateToServerlessInstanceWithContext(context.Background(), request)
+}
+
+// CreateCosMigrateToServerlessInstance
+// cos迁移流程
+func (c *Client) CreateCosMigrateToServerlessInstanceWithContext(ctx context.Context, request *CreateCosMigrateToServerlessInstanceRequest) (response *CreateCosMigrateToServerlessInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateCosMigrateToServerlessInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCosMigrateToServerlessInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCosMigrateToServerlessInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIndexRequest() (request *CreateIndexRequest) {
     request = &CreateIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1891,6 +1977,81 @@ func (c *Client) DescribeServerlessSpacesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeServerlessSpacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserCosSnapshotListRequest() (request *DescribeUserCosSnapshotListRequest) {
+    request = &DescribeUserCosSnapshotListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeUserCosSnapshotList")
+    
+    
+    return
+}
+
+func NewDescribeUserCosSnapshotListResponse() (response *DescribeUserCosSnapshotListResponse) {
+    response = &DescribeUserCosSnapshotListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserCosSnapshotList
+// 查询快照信息接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserCosSnapshotList(request *DescribeUserCosSnapshotListRequest) (response *DescribeUserCosSnapshotListResponse, err error) {
+    return c.DescribeUserCosSnapshotListWithContext(context.Background(), request)
+}
+
+// DescribeUserCosSnapshotList
+// 查询快照信息接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserCosSnapshotListWithContext(ctx context.Context, request *DescribeUserCosSnapshotListRequest) (response *DescribeUserCosSnapshotListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCosSnapshotListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserCosSnapshotList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserCosSnapshotListResponse()
     err = c.Send(request, response)
     return
 }

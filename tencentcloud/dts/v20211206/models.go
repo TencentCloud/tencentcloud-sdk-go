@@ -1553,7 +1553,7 @@ type DBEndpointInfo struct {
 }
 
 type DBInfo struct {
-	// 表示节点角色，针对分布式数据库，如mongodb中的mongos节点
+	// 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。如数据库是tdsql，枚举值为：proxy、set
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
@@ -1632,6 +1632,10 @@ type DBInfo struct {
 	// 临时Token，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
+
+	// tdsql分片id。tdsql set节点必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }
 
 type DBItem struct {
@@ -3852,7 +3856,7 @@ type Endpoint struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// tdsql mysql版的节点类型，枚举值为proxy、set
+	// tdsql mysql版的节点类型，枚举值为proxy、set。tdsqlmysql必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 

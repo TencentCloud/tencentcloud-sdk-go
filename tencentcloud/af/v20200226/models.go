@@ -475,7 +475,7 @@ type QueryAntiFraudRequestParams struct {
 	// 电话号码(五选二)
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// Id(五选二)
+	// Id(五选二) 
 	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
 	// 银行卡号(五选二)
@@ -484,10 +484,10 @@ type QueryAntiFraudRequestParams struct {
 	// 用户请求来源 IP(五选二)
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
-	// 国际移动设备识别码(五选二)
+	// 国际移动设备识别码，和Idfa同时传入时，只看作一个关键入参(五选二)
 	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
-	// ios 系统广告标示符(五选二)
+	// ios 系统广告标示符，和Imei同时传入时，只看作一个关键入参(五选二)
 	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// 业务场景 ID，需要找技术对接
@@ -548,8 +548,6 @@ type QueryAntiFraudRequestParams struct {
 	// 姓名加密类型
 	// 0：不加密（默认值）
 	// 1：md5
-	// 2：sha256
-	// 3：SM3
 	NameCryptoType *string `json:"NameCryptoType,omitnil,omitempty" name:"NameCryptoType"`
 }
 
@@ -559,7 +557,7 @@ type QueryAntiFraudRequest struct {
 	// 电话号码(五选二)
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// Id(五选二)
+	// Id(五选二) 
 	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
 	// 银行卡号(五选二)
@@ -568,10 +566,10 @@ type QueryAntiFraudRequest struct {
 	// 用户请求来源 IP(五选二)
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
-	// 国际移动设备识别码(五选二)
+	// 国际移动设备识别码，和Idfa同时传入时，只看作一个关键入参(五选二)
 	Imei *string `json:"Imei,omitnil,omitempty" name:"Imei"`
 
-	// ios 系统广告标示符(五选二)
+	// ios 系统广告标示符，和Imei同时传入时，只看作一个关键入参(五选二)
 	Idfa *string `json:"Idfa,omitnil,omitempty" name:"Idfa"`
 
 	// 业务场景 ID，需要找技术对接
@@ -632,8 +630,6 @@ type QueryAntiFraudRequest struct {
 	// 姓名加密类型
 	// 0：不加密（默认值）
 	// 1：md5
-	// 2：sha256
-	// 3：SM3
 	NameCryptoType *string `json:"NameCryptoType,omitnil,omitempty" name:"NameCryptoType"`
 }
 
@@ -685,7 +681,7 @@ type QueryAntiFraudResponseParams struct {
 	// 表示该条Id能否查到：1为能查到，-1为查不到
 	IdFound *int64 `json:"IdFound,omitnil,omitempty" name:"IdFound"`
 
-	// 0~100;值越高 欺诈可能性越大
+	// 0~100;值越高 欺诈可能性越大（注：该字段真实类型为有符号整型）
 	RiskScore *uint64 `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
 
 	// 扩展字段，对风险类型的说明

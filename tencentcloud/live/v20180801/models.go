@@ -9848,6 +9848,96 @@ func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePullTransformPushInfoRequestParams struct {
+	// 起始时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+	// 支持最近三年的查询，查询开始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 可选值：
+	// Mainland：查询国内数据，
+	// Oversea：则查询国外数据，
+	// 默认：查询国内+国外的数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
+}
+
+type DescribePullTransformPushInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+	// 支持最近三年的查询，查询开始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 可选值：
+	// Mainland：查询国内数据，
+	// Oversea：则查询国外数据，
+	// 默认：查询国内+国外的数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
+}
+
+func (r *DescribePullTransformPushInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePullTransformPushInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MainlandOrOversea")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePullTransformPushInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePullTransformPushInfoResponseParams struct {
+	// 时长统计数据列表
+	DataInfoList []*TaskDurationInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// 拉流转推得总时长
+	TotalDuration *uint64 `json:"TotalDuration,omitnil,omitempty" name:"TotalDuration"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePullTransformPushInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePullTransformPushInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePullTransformPushInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePullTransformPushInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePushBandwidthAndFluxListRequestParams struct {
 	// 查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
@@ -15472,6 +15562,14 @@ func (r *SwitchBackupStreamResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SwitchBackupStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TaskDurationInfo struct {
+	// 拉流转推任务的时间点
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 拉流转推任务的时长，单位为分钟
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
 type TaskStatusInfo struct {

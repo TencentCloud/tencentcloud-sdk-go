@@ -871,6 +871,7 @@ func NewCreateRecordResponse() (response *CreateRecordResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DNSSECINCOMPLETECLOSED = "FailedOperation.DNSSECIncompleteClosed"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
@@ -932,6 +933,7 @@ func (c *Client) CreateRecord(request *CreateRecordRequest) (response *CreateRec
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DNSSECINCOMPLETECLOSED = "FailedOperation.DNSSECIncompleteClosed"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
@@ -3280,6 +3282,67 @@ func (c *Client) DescribeRecordGroupListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeRecordLineCategoryListRequest() (request *DescribeRecordLineCategoryListRequest) {
+    request = &DescribeRecordLineCategoryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordLineCategoryList")
+    
+    
+    return
+}
+
+func NewDescribeRecordLineCategoryListResponse() (response *DescribeRecordLineCategoryListResponse) {
+    response = &DescribeRecordLineCategoryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecordLineCategoryList
+// 按分类返回线路列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeRecordLineCategoryList(request *DescribeRecordLineCategoryListRequest) (response *DescribeRecordLineCategoryListResponse, err error) {
+    return c.DescribeRecordLineCategoryListWithContext(context.Background(), request)
+}
+
+// DescribeRecordLineCategoryList
+// 按分类返回线路列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeRecordLineCategoryListWithContext(ctx context.Context, request *DescribeRecordLineCategoryListRequest) (response *DescribeRecordLineCategoryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordLineCategoryListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordLineCategoryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordLineCategoryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordLineListRequest() (request *DescribeRecordLineListRequest) {
     request = &DescribeRecordLineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5116,6 +5179,7 @@ func NewModifyRecordResponse() (response *ModifyRecordResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DNSSECINCOMPLETECLOSED = "FailedOperation.DNSSECIncompleteClosed"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_FREQUENCYLIMIT = "FailedOperation.FrequencyLimit"
@@ -5178,6 +5242,7 @@ func (c *Client) ModifyRecord(request *ModifyRecordRequest) (response *ModifyRec
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DNSSECINCOMPLETECLOSED = "FailedOperation.DNSSECIncompleteClosed"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_FREQUENCYLIMIT = "FailedOperation.FrequencyLimit"

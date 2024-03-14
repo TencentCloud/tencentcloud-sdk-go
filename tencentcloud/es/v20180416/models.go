@@ -42,6 +42,111 @@ type BackingIndexMetaField struct {
 	IndexCreateTime *string `json:"IndexCreateTime,omitnil,omitempty" name:"IndexCreateTime"`
 }
 
+// Predefined struct for user
+type CheckMigrateIndexMetaDataRequestParams struct {
+	// 索引 id
+	ServerlessId *string `json:"ServerlessId,omitnil,omitempty" name:"ServerlessId"`
+
+	// 快照名
+	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// Cos桶名
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// BasePath路径
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 云上集群名
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+
+	// 普通索引名列表
+	CommonIndexArr []*string `json:"CommonIndexArr,omitnil,omitempty" name:"CommonIndexArr"`
+
+	// 自治索引名列表
+	DataStreamArr []*string `json:"DataStreamArr,omitnil,omitempty" name:"DataStreamArr"`
+}
+
+type CheckMigrateIndexMetaDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 索引 id
+	ServerlessId *string `json:"ServerlessId,omitnil,omitempty" name:"ServerlessId"`
+
+	// 快照名
+	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// Cos桶名
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// BasePath路径
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 云上集群名
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+
+	// 普通索引名列表
+	CommonIndexArr []*string `json:"CommonIndexArr,omitnil,omitempty" name:"CommonIndexArr"`
+
+	// 自治索引名列表
+	DataStreamArr []*string `json:"DataStreamArr,omitnil,omitempty" name:"DataStreamArr"`
+}
+
+func (r *CheckMigrateIndexMetaDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckMigrateIndexMetaDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServerlessId")
+	delete(f, "Snapshot")
+	delete(f, "CosBucket")
+	delete(f, "BasePath")
+	delete(f, "ClusterInstanceId")
+	delete(f, "CommonIndexArr")
+	delete(f, "DataStreamArr")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckMigrateIndexMetaDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckMigrateIndexMetaDataResponseParams struct {
+	// 不存在于目标索引时间字段相同的字段
+	MappingTimeFieldCheckFailedIndexArr []*string `json:"MappingTimeFieldCheckFailedIndexArr,omitnil,omitempty" name:"MappingTimeFieldCheckFailedIndexArr"`
+
+	// @timestamp不为date类型，与目标索引时间字段冲突
+	MappingTimeTypeCheckFailedIndexArr []*string `json:"MappingTimeTypeCheckFailedIndexArr,omitnil,omitempty" name:"MappingTimeTypeCheckFailedIndexArr"`
+
+	// 索引的创建时间不在 serverless的存储周期内
+	SettingCheckFailedIndexArr []*string `json:"SettingCheckFailedIndexArr,omitnil,omitempty" name:"SettingCheckFailedIndexArr"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckMigrateIndexMetaDataResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckMigrateIndexMetaDataResponseParams `json:"Response"`
+}
+
+func (r *CheckMigrateIndexMetaDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckMigrateIndexMetaDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ClusterView struct {
 	// 集群健康状态
 	Health *float64 `json:"Health,omitnil,omitempty" name:"Health"`
@@ -112,12 +217,151 @@ type ClusterView struct {
 	SearchableSnapshotCosAppId *string `json:"SearchableSnapshotCosAppId,omitnil,omitempty" name:"SearchableSnapshotCosAppId"`
 }
 
+type CommonIndexInfo struct {
+	// 普通索引名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 分片状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsShardComplete *int64 `json:"IsShardComplete,omitnil,omitempty" name:"IsShardComplete"`
+}
+
 type CosBackup struct {
 	// 是否开启cos自动备份
 	IsAutoBackup *bool `json:"IsAutoBackup,omitnil,omitempty" name:"IsAutoBackup"`
 
 	// 自动备份执行时间（精确到小时）, e.g. "22:00"
 	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+}
+
+type CosSnapShotInfo struct {
+	// cos 桶名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// base path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 快照名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 快照版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 普通索引信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommonIndexArr []*CommonIndexInfo `json:"CommonIndexArr,omitnil,omitempty" name:"CommonIndexArr"`
+
+	// 自治索引信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataStreamArr []*DataStreamInfo `json:"DataStreamArr,omitnil,omitempty" name:"DataStreamArr"`
+}
+
+// Predefined struct for user
+type CreateCosMigrateToServerlessInstanceRequestParams struct {
+	// 快照名
+	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// 索引 id
+	ServerlessId *string `json:"ServerlessId,omitnil,omitempty" name:"ServerlessId"`
+
+	// cos 桶名
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// BasePath 路径
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 云上集群 id
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+
+	// 待迁移普通索引名列表
+	CommonIndexArr []*string `json:"CommonIndexArr,omitnil,omitempty" name:"CommonIndexArr"`
+
+	// 待迁移自治索引名列表
+	DataStreamArr []*string `json:"DataStreamArr,omitnil,omitempty" name:"DataStreamArr"`
+}
+
+type CreateCosMigrateToServerlessInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照名
+	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// 索引 id
+	ServerlessId *string `json:"ServerlessId,omitnil,omitempty" name:"ServerlessId"`
+
+	// cos 桶名
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// BasePath 路径
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 云上集群 id
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+
+	// 待迁移普通索引名列表
+	CommonIndexArr []*string `json:"CommonIndexArr,omitnil,omitempty" name:"CommonIndexArr"`
+
+	// 待迁移自治索引名列表
+	DataStreamArr []*string `json:"DataStreamArr,omitnil,omitempty" name:"DataStreamArr"`
+}
+
+func (r *CreateCosMigrateToServerlessInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosMigrateToServerlessInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Snapshot")
+	delete(f, "ServerlessId")
+	delete(f, "CosBucket")
+	delete(f, "BasePath")
+	delete(f, "ClusterInstanceId")
+	delete(f, "CommonIndexArr")
+	delete(f, "DataStreamArr")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosMigrateToServerlessInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCosMigrateToServerlessInstanceResponseParams struct {
+	// 迁移 taskid
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCosMigrateToServerlessInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCosMigrateToServerlessInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateCosMigrateToServerlessInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosMigrateToServerlessInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -921,6 +1165,16 @@ func (r *CreateServerlessSpaceV2Response) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateServerlessSpaceV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DataStreamInfo struct {
+	// 自治索引名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataStreamName *string `json:"DataStreamName,omitnil,omitempty" name:"DataStreamName"`
+
+	// 分片状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsShardComplete *int64 `json:"IsShardComplete,omitnil,omitempty" name:"IsShardComplete"`
 }
 
 // Predefined struct for user
@@ -2624,6 +2878,80 @@ func (r *DescribeServerlessSpacesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeServerlessSpacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserCosSnapshotListRequestParams struct {
+	// cos桶名
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// bucket 桶下的备份路径
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 云上集群迁移集群名
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+}
+
+type DescribeUserCosSnapshotListRequest struct {
+	*tchttp.BaseRequest
+	
+	// cos桶名
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// bucket 桶下的备份路径
+	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
+
+	// 云上集群迁移集群名
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+}
+
+func (r *DescribeUserCosSnapshotListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserCosSnapshotListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CosBucket")
+	delete(f, "BasePath")
+	delete(f, "ClusterInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserCosSnapshotListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserCosSnapshotListResponseParams struct {
+	// cos 快照信息列表
+	CosSnapshotInfoList []*CosSnapShotInfo `json:"CosSnapshotInfoList,omitnil,omitempty" name:"CosSnapshotInfoList"`
+
+	// cos 快照数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserCosSnapshotListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserCosSnapshotListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserCosSnapshotListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserCosSnapshotListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -35591,6 +35591,18 @@ type TableLineageInfo struct {
 	// 表类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
+
+	// datasourceName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// DatabaseName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// DatabaseId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
 }
 
 type TableMeta struct {
@@ -35794,6 +35806,18 @@ type TableMeta struct {
 	// 存储位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 判断是否是分区表1 是 0否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartitionTable *int64 `json:"IsPartitionTable,omitnil,omitempty" name:"IsPartitionTable"`
+
+	// 分区字段 key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionColumns []*string `json:"PartitionColumns,omitnil,omitempty" name:"PartitionColumns"`
+
+	// 生命周期-分区保留天数【分区保留策略时有效】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionExpireDays *int64 `json:"PartitionExpireDays,omitnil,omitempty" name:"PartitionExpireDays"`
 }
 
 type TablePropertyScore struct {

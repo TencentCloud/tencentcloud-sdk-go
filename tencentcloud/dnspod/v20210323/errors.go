@@ -41,6 +41,9 @@ const (
 	// 域名已经使用过该类型的礼券了，不能重复使用。
 	FAILEDOPERATION_COUPONTYPEALREADYUSED = "FailedOperation.CouponTypeAlreadyUsed"
 
+	// DNSSEC 未完全关闭，不允许添加 @ 子域名 CNAME、显性 URL 或者隐性 URL 记录。
+	FAILEDOPERATION_DNSSECINCOMPLETECLOSED = "FailedOperation.DNSSECIncompleteClosed"
+
 	// 该域名已在您的列表中，无需重复添加。
 	FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 
