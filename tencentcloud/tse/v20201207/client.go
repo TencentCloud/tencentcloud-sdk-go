@@ -1022,6 +1022,134 @@ func (c *Client) CreateCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     return
 }
 
+func NewCreateConfigFileRequest() (request *CreateConfigFileRequest) {
+    request = &CreateConfigFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateConfigFile")
+    
+    
+    return
+}
+
+func NewCreateConfigFileResponse() (response *CreateConfigFileResponse) {
+    response = &CreateConfigFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConfigFile
+// 创建配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+func (c *Client) CreateConfigFile(request *CreateConfigFileRequest) (response *CreateConfigFileResponse, err error) {
+    return c.CreateConfigFileWithContext(context.Background(), request)
+}
+
+// CreateConfigFile
+// 创建配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+func (c *Client) CreateConfigFileWithContext(ctx context.Context, request *CreateConfigFileRequest) (response *CreateConfigFileResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateConfigFileGroupRequest() (request *CreateConfigFileGroupRequest) {
+    request = &CreateConfigFileGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateConfigFileGroup")
+    
+    
+    return
+}
+
+func NewCreateConfigFileGroupResponse() (response *CreateConfigFileGroupResponse) {
+    response = &CreateConfigFileGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConfigFileGroup
+// 创建服务治理中心配置文件组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_CREATEERROR = "MissingParameter.CreateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateConfigFileGroup(request *CreateConfigFileGroupRequest) (response *CreateConfigFileGroupResponse, err error) {
+    return c.CreateConfigFileGroupWithContext(context.Background(), request)
+}
+
+// CreateConfigFileGroup
+// 创建服务治理中心配置文件组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_CREATEERROR = "MissingParameter.CreateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateConfigFileGroupWithContext(ctx context.Context, request *CreateConfigFileGroupRequest) (response *CreateConfigFileGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigFileGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigFileGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigFileGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEngineRequest() (request *CreateEngineRequest) {
     request = &CreateEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1099,6 +1227,65 @@ func (c *Client) CreateEngineWithContext(ctx context.Context, request *CreateEng
     return
 }
 
+func NewCreateGovernanceAliasRequest() (request *CreateGovernanceAliasRequest) {
+    request = &CreateGovernanceAliasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateGovernanceAlias")
+    
+    
+    return
+}
+
+func NewCreateGovernanceAliasResponse() (response *CreateGovernanceAliasResponse) {
+    response = &CreateGovernanceAliasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGovernanceAlias
+// 创建治理中心服务别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceAlias(request *CreateGovernanceAliasRequest) (response *CreateGovernanceAliasResponse, err error) {
+    return c.CreateGovernanceAliasWithContext(context.Background(), request)
+}
+
+// CreateGovernanceAlias
+// 创建治理中心服务别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceAliasWithContext(ctx context.Context, request *CreateGovernanceAliasRequest) (response *CreateGovernanceAliasResponse, err error) {
+    if request == nil {
+        request = NewCreateGovernanceAliasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGovernanceAlias require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGovernanceAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGovernanceInstancesRequest() (request *CreateGovernanceInstancesRequest) {
     request = &CreateGovernanceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1119,7 +1306,7 @@ func NewCreateGovernanceInstancesResponse() (response *CreateGovernanceInstances
 }
 
 // CreateGovernanceInstances
-// 创建治理中心服务实例
+// 创建服务实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
@@ -1133,7 +1320,7 @@ func (c *Client) CreateGovernanceInstances(request *CreateGovernanceInstancesReq
 }
 
 // CreateGovernanceInstances
-// 创建治理中心服务实例
+// 创建服务实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
@@ -1154,6 +1341,124 @@ func (c *Client) CreateGovernanceInstancesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewCreateGovernanceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGovernanceNamespacesRequest() (request *CreateGovernanceNamespacesRequest) {
+    request = &CreateGovernanceNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateGovernanceNamespaces")
+    
+    
+    return
+}
+
+func NewCreateGovernanceNamespacesResponse() (response *CreateGovernanceNamespacesResponse) {
+    response = &CreateGovernanceNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGovernanceNamespaces
+// 创建治理中心命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceNamespaces(request *CreateGovernanceNamespacesRequest) (response *CreateGovernanceNamespacesResponse, err error) {
+    return c.CreateGovernanceNamespacesWithContext(context.Background(), request)
+}
+
+// CreateGovernanceNamespaces
+// 创建治理中心命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceNamespacesWithContext(ctx context.Context, request *CreateGovernanceNamespacesRequest) (response *CreateGovernanceNamespacesResponse, err error) {
+    if request == nil {
+        request = NewCreateGovernanceNamespacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGovernanceNamespaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGovernanceNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGovernanceServicesRequest() (request *CreateGovernanceServicesRequest) {
+    request = &CreateGovernanceServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateGovernanceServices")
+    
+    
+    return
+}
+
+func NewCreateGovernanceServicesResponse() (response *CreateGovernanceServicesResponse) {
+    response = &CreateGovernanceServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGovernanceServices
+// 创建治理中心服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceServices(request *CreateGovernanceServicesRequest) (response *CreateGovernanceServicesResponse, err error) {
+    return c.CreateGovernanceServicesWithContext(context.Background(), request)
+}
+
+// CreateGovernanceServices
+// 创建治理中心服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceServicesWithContext(ctx context.Context, request *CreateGovernanceServicesRequest) (response *CreateGovernanceServicesResponse, err error) {
+    if request == nil {
+        request = NewCreateGovernanceServicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGovernanceServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGovernanceServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1211,6 +1516,63 @@ func (c *Client) CreateNativeGatewayServerGroupWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewCreateNativeGatewayServerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOrUpdateConfigFileAndReleaseRequest() (request *CreateOrUpdateConfigFileAndReleaseRequest) {
+    request = &CreateOrUpdateConfigFileAndReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateOrUpdateConfigFileAndRelease")
+    
+    
+    return
+}
+
+func NewCreateOrUpdateConfigFileAndReleaseResponse() (response *CreateOrUpdateConfigFileAndReleaseResponse) {
+    response = &CreateOrUpdateConfigFileAndReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOrUpdateConfigFileAndRelease
+// 创建或更新配置文件并发布配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+func (c *Client) CreateOrUpdateConfigFileAndRelease(request *CreateOrUpdateConfigFileAndReleaseRequest) (response *CreateOrUpdateConfigFileAndReleaseResponse, err error) {
+    return c.CreateOrUpdateConfigFileAndReleaseWithContext(context.Background(), request)
+}
+
+// CreateOrUpdateConfigFileAndRelease
+// 创建或更新配置文件并发布配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+func (c *Client) CreateOrUpdateConfigFileAndReleaseWithContext(ctx context.Context, request *CreateOrUpdateConfigFileAndReleaseRequest) (response *CreateOrUpdateConfigFileAndReleaseResponse, err error) {
+    if request == nil {
+        request = NewCreateOrUpdateConfigFileAndReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrUpdateConfigFileAndRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrUpdateConfigFileAndReleaseResponse()
     err = c.Send(request, response)
     return
 }
@@ -2063,6 +2425,187 @@ func (c *Client) DeleteCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     return
 }
 
+func NewDeleteConfigFileGroupRequest() (request *DeleteConfigFileGroupRequest) {
+    request = &DeleteConfigFileGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteConfigFileGroup")
+    
+    
+    return
+}
+
+func NewDeleteConfigFileGroupResponse() (response *DeleteConfigFileGroupResponse) {
+    response = &DeleteConfigFileGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConfigFileGroup
+// 删除配置文件分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_SERVICESEXISTEDINNAMESPACE = "ResourceInUse.ServicesExistedInNamespace"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConfigFileGroup(request *DeleteConfigFileGroupRequest) (response *DeleteConfigFileGroupResponse, err error) {
+    return c.DeleteConfigFileGroupWithContext(context.Background(), request)
+}
+
+// DeleteConfigFileGroup
+// 删除配置文件分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_SERVICESEXISTEDINNAMESPACE = "ResourceInUse.ServicesExistedInNamespace"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConfigFileGroupWithContext(ctx context.Context, request *DeleteConfigFileGroupRequest) (response *DeleteConfigFileGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigFileGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConfigFileGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConfigFileGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConfigFileReleasesRequest() (request *DeleteConfigFileReleasesRequest) {
+    request = &DeleteConfigFileReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteConfigFileReleases")
+    
+    
+    return
+}
+
+func NewDeleteConfigFileReleasesResponse() (response *DeleteConfigFileReleasesResponse) {
+    response = &DeleteConfigFileReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConfigFileReleases
+// 删除配置发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConfigFileReleases(request *DeleteConfigFileReleasesRequest) (response *DeleteConfigFileReleasesResponse, err error) {
+    return c.DeleteConfigFileReleasesWithContext(context.Background(), request)
+}
+
+// DeleteConfigFileReleases
+// 删除配置发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConfigFileReleasesWithContext(ctx context.Context, request *DeleteConfigFileReleasesRequest) (response *DeleteConfigFileReleasesResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigFileReleasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConfigFileReleases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConfigFileReleasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConfigFilesRequest() (request *DeleteConfigFilesRequest) {
+    request = &DeleteConfigFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteConfigFiles")
+    
+    
+    return
+}
+
+func NewDeleteConfigFilesResponse() (response *DeleteConfigFilesResponse) {
+    response = &DeleteConfigFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConfigFiles
+// 删除配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConfigFiles(request *DeleteConfigFilesRequest) (response *DeleteConfigFilesResponse, err error) {
+    return c.DeleteConfigFilesWithContext(context.Background(), request)
+}
+
+// DeleteConfigFiles
+// 删除配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConfigFilesWithContext(ctx context.Context, request *DeleteConfigFilesRequest) (response *DeleteConfigFilesResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConfigFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConfigFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEngineRequest() (request *DeleteEngineRequest) {
     request = &DeleteEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2124,6 +2667,65 @@ func (c *Client) DeleteEngineWithContext(ctx context.Context, request *DeleteEng
     return
 }
 
+func NewDeleteGovernanceAliasesRequest() (request *DeleteGovernanceAliasesRequest) {
+    request = &DeleteGovernanceAliasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteGovernanceAliases")
+    
+    
+    return
+}
+
+func NewDeleteGovernanceAliasesResponse() (response *DeleteGovernanceAliasesResponse) {
+    response = &DeleteGovernanceAliasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGovernanceAliases
+// 删除治理中心服务别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceAliases(request *DeleteGovernanceAliasesRequest) (response *DeleteGovernanceAliasesResponse, err error) {
+    return c.DeleteGovernanceAliasesWithContext(context.Background(), request)
+}
+
+// DeleteGovernanceAliases
+// 删除治理中心服务别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceAliasesWithContext(ctx context.Context, request *DeleteGovernanceAliasesRequest) (response *DeleteGovernanceAliasesResponse, err error) {
+    if request == nil {
+        request = NewDeleteGovernanceAliasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGovernanceAliases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGovernanceAliasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGovernanceInstancesRequest() (request *DeleteGovernanceInstancesRequest) {
     request = &DeleteGovernanceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2144,7 +2746,7 @@ func NewDeleteGovernanceInstancesResponse() (response *DeleteGovernanceInstances
 }
 
 // DeleteGovernanceInstances
-// 删除治理中心服务实例
+// 删除服务实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
@@ -2157,7 +2759,7 @@ func (c *Client) DeleteGovernanceInstances(request *DeleteGovernanceInstancesReq
 }
 
 // DeleteGovernanceInstances
-// 删除治理中心服务实例
+// 删除服务实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
@@ -2177,6 +2779,183 @@ func (c *Client) DeleteGovernanceInstancesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteGovernanceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGovernanceInstancesByHostRequest() (request *DeleteGovernanceInstancesByHostRequest) {
+    request = &DeleteGovernanceInstancesByHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteGovernanceInstancesByHost")
+    
+    
+    return
+}
+
+func NewDeleteGovernanceInstancesByHostResponse() (response *DeleteGovernanceInstancesByHostResponse) {
+    response = &DeleteGovernanceInstancesByHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGovernanceInstancesByHost
+// 删除治理中心服务实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceInstancesByHost(request *DeleteGovernanceInstancesByHostRequest) (response *DeleteGovernanceInstancesByHostResponse, err error) {
+    return c.DeleteGovernanceInstancesByHostWithContext(context.Background(), request)
+}
+
+// DeleteGovernanceInstancesByHost
+// 删除治理中心服务实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceInstancesByHostWithContext(ctx context.Context, request *DeleteGovernanceInstancesByHostRequest) (response *DeleteGovernanceInstancesByHostResponse, err error) {
+    if request == nil {
+        request = NewDeleteGovernanceInstancesByHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGovernanceInstancesByHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGovernanceInstancesByHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGovernanceNamespacesRequest() (request *DeleteGovernanceNamespacesRequest) {
+    request = &DeleteGovernanceNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteGovernanceNamespaces")
+    
+    
+    return
+}
+
+func NewDeleteGovernanceNamespacesResponse() (response *DeleteGovernanceNamespacesResponse) {
+    response = &DeleteGovernanceNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGovernanceNamespaces
+// 删除治理中心命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_SERVICESEXISTEDINNAMESPACE = "ResourceInUse.ServicesExistedInNamespace"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceNamespaces(request *DeleteGovernanceNamespacesRequest) (response *DeleteGovernanceNamespacesResponse, err error) {
+    return c.DeleteGovernanceNamespacesWithContext(context.Background(), request)
+}
+
+// DeleteGovernanceNamespaces
+// 删除治理中心命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_SERVICESEXISTEDINNAMESPACE = "ResourceInUse.ServicesExistedInNamespace"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceNamespacesWithContext(ctx context.Context, request *DeleteGovernanceNamespacesRequest) (response *DeleteGovernanceNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDeleteGovernanceNamespacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGovernanceNamespaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGovernanceNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGovernanceServicesRequest() (request *DeleteGovernanceServicesRequest) {
+    request = &DeleteGovernanceServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteGovernanceServices")
+    
+    
+    return
+}
+
+func NewDeleteGovernanceServicesResponse() (response *DeleteGovernanceServicesResponse) {
+    response = &DeleteGovernanceServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGovernanceServices
+// 删除治理中心服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_INSTANCESEXISTEDINSERVICE = "ResourceInUse.InstancesExistedInService"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceServices(request *DeleteGovernanceServicesRequest) (response *DeleteGovernanceServicesResponse, err error) {
+    return c.DeleteGovernanceServicesWithContext(context.Background(), request)
+}
+
+// DeleteGovernanceServices
+// 删除治理中心服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_INSTANCESEXISTEDINSERVICE = "ResourceInUse.InstancesExistedInService"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceServicesWithContext(ctx context.Context, request *DeleteGovernanceServicesRequest) (response *DeleteGovernanceServicesResponse, err error) {
+    if request == nil {
+        request = NewDeleteGovernanceServicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGovernanceServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGovernanceServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2207,7 +2986,9 @@ func NewDeleteNativeGatewayServerGroupResponse() (response *DeleteNativeGatewayS
 //  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_INSTANCESEXISTEDINSERVICE = "ResourceInUse.InstancesExistedInService"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNativeGatewayServerGroup(request *DeleteNativeGatewayServerGroupRequest) (response *DeleteNativeGatewayServerGroupResponse, err error) {
     return c.DeleteNativeGatewayServerGroupWithContext(context.Background(), request)
@@ -2220,7 +3001,9 @@ func (c *Client) DeleteNativeGatewayServerGroup(request *DeleteNativeGatewayServ
 //  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCEINUSE_INSTANCESEXISTEDINSERVICE = "ResourceInUse.InstancesExistedInService"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNativeGatewayServerGroupWithContext(ctx context.Context, request *DeleteNativeGatewayServerGroupRequest) (response *DeleteNativeGatewayServerGroupResponse, err error) {
     if request == nil {
@@ -2325,6 +3108,59 @@ func (c *Client) DeleteWafDomainsWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteWafDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllConfigFileTemplatesRequest() (request *DescribeAllConfigFileTemplatesRequest) {
+    request = &DescribeAllConfigFileTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeAllConfigFileTemplates")
+    
+    
+    return
+}
+
+func NewDescribeAllConfigFileTemplatesResponse() (response *DescribeAllConfigFileTemplatesResponse) {
+    response = &DescribeAllConfigFileTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllConfigFileTemplates
+// 获取全量配置文件模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAllConfigFileTemplates(request *DescribeAllConfigFileTemplatesRequest) (response *DescribeAllConfigFileTemplatesResponse, err error) {
+    return c.DescribeAllConfigFileTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeAllConfigFileTemplates
+// 获取全量配置文件模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAllConfigFileTemplatesWithContext(ctx context.Context, request *DescribeAllConfigFileTemplatesRequest) (response *DescribeAllConfigFileTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllConfigFileTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllConfigFileTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllConfigFileTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3602,6 +4438,537 @@ func (c *Client) DescribeCloudNativeAPIGatewaysWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeConfigFileRequest() (request *DescribeConfigFileRequest) {
+    request = &DescribeConfigFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFile")
+    
+    
+    return
+}
+
+func NewDescribeConfigFileResponse() (response *DescribeConfigFileResponse) {
+    response = &DescribeConfigFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFile
+// 根据命名空间、组、名字查找配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFile(request *DescribeConfigFileRequest) (response *DescribeConfigFileResponse, err error) {
+    return c.DescribeConfigFileWithContext(context.Background(), request)
+}
+
+// DescribeConfigFile
+// 根据命名空间、组、名字查找配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileWithContext(ctx context.Context, request *DescribeConfigFileRequest) (response *DescribeConfigFileResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFileGroupsRequest() (request *DescribeConfigFileGroupsRequest) {
+    request = &DescribeConfigFileGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFileGroups")
+    
+    
+    return
+}
+
+func NewDescribeConfigFileGroupsResponse() (response *DescribeConfigFileGroupsResponse) {
+    response = &DescribeConfigFileGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFileGroups
+// 根据条件分页查询配置文件组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileGroups(request *DescribeConfigFileGroupsRequest) (response *DescribeConfigFileGroupsResponse, err error) {
+    return c.DescribeConfigFileGroupsWithContext(context.Background(), request)
+}
+
+// DescribeConfigFileGroups
+// 根据条件分页查询配置文件组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileGroupsWithContext(ctx context.Context, request *DescribeConfigFileGroupsRequest) (response *DescribeConfigFileGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFileGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFileGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFileGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFileReleaseRequest() (request *DescribeConfigFileReleaseRequest) {
+    request = &DescribeConfigFileReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFileRelease")
+    
+    
+    return
+}
+
+func NewDescribeConfigFileReleaseResponse() (response *DescribeConfigFileReleaseResponse) {
+    response = &DescribeConfigFileReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFileRelease
+// 获取配置文件发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileRelease(request *DescribeConfigFileReleaseRequest) (response *DescribeConfigFileReleaseResponse, err error) {
+    return c.DescribeConfigFileReleaseWithContext(context.Background(), request)
+}
+
+// DescribeConfigFileRelease
+// 获取配置文件发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileReleaseWithContext(ctx context.Context, request *DescribeConfigFileReleaseRequest) (response *DescribeConfigFileReleaseResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFileReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFileRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFileReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFileReleaseHistoriesRequest() (request *DescribeConfigFileReleaseHistoriesRequest) {
+    request = &DescribeConfigFileReleaseHistoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFileReleaseHistories")
+    
+    
+    return
+}
+
+func NewDescribeConfigFileReleaseHistoriesResponse() (response *DescribeConfigFileReleaseHistoriesResponse) {
+    response = &DescribeConfigFileReleaseHistoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFileReleaseHistories
+// 获取配置文件发布历史列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileReleaseHistories(request *DescribeConfigFileReleaseHistoriesRequest) (response *DescribeConfigFileReleaseHistoriesResponse, err error) {
+    return c.DescribeConfigFileReleaseHistoriesWithContext(context.Background(), request)
+}
+
+// DescribeConfigFileReleaseHistories
+// 获取配置文件发布历史列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileReleaseHistoriesWithContext(ctx context.Context, request *DescribeConfigFileReleaseHistoriesRequest) (response *DescribeConfigFileReleaseHistoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFileReleaseHistoriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFileReleaseHistories require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFileReleaseHistoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFileReleaseVersionsRequest() (request *DescribeConfigFileReleaseVersionsRequest) {
+    request = &DescribeConfigFileReleaseVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFileReleaseVersions")
+    
+    
+    return
+}
+
+func NewDescribeConfigFileReleaseVersionsResponse() (response *DescribeConfigFileReleaseVersionsResponse) {
+    response = &DescribeConfigFileReleaseVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFileReleaseVersions
+// 查询某个配置所有版本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileReleaseVersions(request *DescribeConfigFileReleaseVersionsRequest) (response *DescribeConfigFileReleaseVersionsResponse, err error) {
+    return c.DescribeConfigFileReleaseVersionsWithContext(context.Background(), request)
+}
+
+// DescribeConfigFileReleaseVersions
+// 查询某个配置所有版本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFileReleaseVersionsWithContext(ctx context.Context, request *DescribeConfigFileReleaseVersionsRequest) (response *DescribeConfigFileReleaseVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFileReleaseVersionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFileReleaseVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFileReleaseVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFileReleasesRequest() (request *DescribeConfigFileReleasesRequest) {
+    request = &DescribeConfigFileReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFileReleases")
+    
+    
+    return
+}
+
+func NewDescribeConfigFileReleasesResponse() (response *DescribeConfigFileReleasesResponse) {
+    response = &DescribeConfigFileReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFileReleases
+// 查询配置版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+func (c *Client) DescribeConfigFileReleases(request *DescribeConfigFileReleasesRequest) (response *DescribeConfigFileReleasesResponse, err error) {
+    return c.DescribeConfigFileReleasesWithContext(context.Background(), request)
+}
+
+// DescribeConfigFileReleases
+// 查询配置版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+func (c *Client) DescribeConfigFileReleasesWithContext(ctx context.Context, request *DescribeConfigFileReleasesRequest) (response *DescribeConfigFileReleasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFileReleasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFileReleases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFileReleasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFilesRequest() (request *DescribeConfigFilesRequest) {
+    request = &DescribeConfigFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFiles")
+    
+    
+    return
+}
+
+func NewDescribeConfigFilesResponse() (response *DescribeConfigFilesResponse) {
+    response = &DescribeConfigFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFiles
+// 根据命名空间、组名、名称、标签查询配置文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFiles(request *DescribeConfigFilesRequest) (response *DescribeConfigFilesResponse, err error) {
+    return c.DescribeConfigFilesWithContext(context.Background(), request)
+}
+
+// DescribeConfigFiles
+// 根据命名空间、组名、名称、标签查询配置文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFilesWithContext(ctx context.Context, request *DescribeConfigFilesRequest) (response *DescribeConfigFilesResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigFilesByGroupRequest() (request *DescribeConfigFilesByGroupRequest) {
+    request = &DescribeConfigFilesByGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfigFilesByGroup")
+    
+    
+    return
+}
+
+func NewDescribeConfigFilesByGroupResponse() (response *DescribeConfigFilesByGroupResponse) {
+    response = &DescribeConfigFilesByGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConfigFilesByGroup
+// 根据group查询配置文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFilesByGroup(request *DescribeConfigFilesByGroupRequest) (response *DescribeConfigFilesByGroupResponse, err error) {
+    return c.DescribeConfigFilesByGroupWithContext(context.Background(), request)
+}
+
+// DescribeConfigFilesByGroup
+// 根据group查询配置文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConfigFilesByGroupWithContext(ctx context.Context, request *DescribeConfigFilesByGroupRequest) (response *DescribeConfigFilesByGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigFilesByGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigFilesByGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigFilesByGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGovernanceAliasesRequest() (request *DescribeGovernanceAliasesRequest) {
+    request = &DescribeGovernanceAliasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeGovernanceAliases")
+    
+    
+    return
+}
+
+func NewDescribeGovernanceAliasesResponse() (response *DescribeGovernanceAliasesResponse) {
+    response = &DescribeGovernanceAliasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGovernanceAliases
+// 查询治理中心服务别名列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceAliases(request *DescribeGovernanceAliasesRequest) (response *DescribeGovernanceAliasesResponse, err error) {
+    return c.DescribeGovernanceAliasesWithContext(context.Background(), request)
+}
+
+// DescribeGovernanceAliases
+// 查询治理中心服务别名列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceAliasesWithContext(ctx context.Context, request *DescribeGovernanceAliasesRequest) (response *DescribeGovernanceAliasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGovernanceAliasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGovernanceAliases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGovernanceAliasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGovernanceInstancesRequest() (request *DescribeGovernanceInstancesRequest) {
     request = &DescribeGovernanceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3622,7 +4989,7 @@ func NewDescribeGovernanceInstancesResponse() (response *DescribeGovernanceInsta
 }
 
 // DescribeGovernanceInstances
-// 查询治理中心服务实例
+// 查询服务实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3636,7 +5003,7 @@ func (c *Client) DescribeGovernanceInstances(request *DescribeGovernanceInstance
 }
 
 // DescribeGovernanceInstances
-// 查询治理中心服务实例
+// 查询服务实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3657,6 +5024,240 @@ func (c *Client) DescribeGovernanceInstancesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeGovernanceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGovernanceNamespacesRequest() (request *DescribeGovernanceNamespacesRequest) {
+    request = &DescribeGovernanceNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeGovernanceNamespaces")
+    
+    
+    return
+}
+
+func NewDescribeGovernanceNamespacesResponse() (response *DescribeGovernanceNamespacesResponse) {
+    response = &DescribeGovernanceNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGovernanceNamespaces
+// 查询服务治理中心命名空间列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceNamespaces(request *DescribeGovernanceNamespacesRequest) (response *DescribeGovernanceNamespacesResponse, err error) {
+    return c.DescribeGovernanceNamespacesWithContext(context.Background(), request)
+}
+
+// DescribeGovernanceNamespaces
+// 查询服务治理中心命名空间列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceNamespacesWithContext(ctx context.Context, request *DescribeGovernanceNamespacesRequest) (response *DescribeGovernanceNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGovernanceNamespacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGovernanceNamespaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGovernanceNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGovernanceServiceContractVersionsRequest() (request *DescribeGovernanceServiceContractVersionsRequest) {
+    request = &DescribeGovernanceServiceContractVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeGovernanceServiceContractVersions")
+    
+    
+    return
+}
+
+func NewDescribeGovernanceServiceContractVersionsResponse() (response *DescribeGovernanceServiceContractVersionsResponse) {
+    response = &DescribeGovernanceServiceContractVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGovernanceServiceContractVersions
+// 查询服务下契约版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceServiceContractVersions(request *DescribeGovernanceServiceContractVersionsRequest) (response *DescribeGovernanceServiceContractVersionsResponse, err error) {
+    return c.DescribeGovernanceServiceContractVersionsWithContext(context.Background(), request)
+}
+
+// DescribeGovernanceServiceContractVersions
+// 查询服务下契约版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceServiceContractVersionsWithContext(ctx context.Context, request *DescribeGovernanceServiceContractVersionsRequest) (response *DescribeGovernanceServiceContractVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGovernanceServiceContractVersionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGovernanceServiceContractVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGovernanceServiceContractVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGovernanceServiceContractsRequest() (request *DescribeGovernanceServiceContractsRequest) {
+    request = &DescribeGovernanceServiceContractsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeGovernanceServiceContracts")
+    
+    
+    return
+}
+
+func NewDescribeGovernanceServiceContractsResponse() (response *DescribeGovernanceServiceContractsResponse) {
+    response = &DescribeGovernanceServiceContractsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGovernanceServiceContracts
+// 查询服务契约定义列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceServiceContracts(request *DescribeGovernanceServiceContractsRequest) (response *DescribeGovernanceServiceContractsResponse, err error) {
+    return c.DescribeGovernanceServiceContractsWithContext(context.Background(), request)
+}
+
+// DescribeGovernanceServiceContracts
+// 查询服务契约定义列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceServiceContractsWithContext(ctx context.Context, request *DescribeGovernanceServiceContractsRequest) (response *DescribeGovernanceServiceContractsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGovernanceServiceContractsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGovernanceServiceContracts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGovernanceServiceContractsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGovernanceServicesRequest() (request *DescribeGovernanceServicesRequest) {
+    request = &DescribeGovernanceServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeGovernanceServices")
+    
+    
+    return
+}
+
+func NewDescribeGovernanceServicesResponse() (response *DescribeGovernanceServicesResponse) {
+    response = &DescribeGovernanceServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGovernanceServices
+// 查询治理中心服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceServices(request *DescribeGovernanceServicesRequest) (response *DescribeGovernanceServicesResponse, err error) {
+    return c.DescribeGovernanceServicesWithContext(context.Background(), request)
+}
+
+// DescribeGovernanceServices
+// 查询治理中心服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceServicesWithContext(ctx context.Context, request *DescribeGovernanceServicesRequest) (response *DescribeGovernanceServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGovernanceServicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGovernanceServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGovernanceServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5175,6 +6776,124 @@ func (c *Client) ModifyCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     return
 }
 
+func NewModifyConfigFileGroupRequest() (request *ModifyConfigFileGroupRequest) {
+    request = &ModifyConfigFileGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyConfigFileGroup")
+    
+    
+    return
+}
+
+func NewModifyConfigFileGroupResponse() (response *ModifyConfigFileGroupResponse) {
+    response = &ModifyConfigFileGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConfigFileGroup
+// 批量修改配置文件组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConfigFileGroup(request *ModifyConfigFileGroupRequest) (response *ModifyConfigFileGroupResponse, err error) {
+    return c.ModifyConfigFileGroupWithContext(context.Background(), request)
+}
+
+// ModifyConfigFileGroup
+// 批量修改配置文件组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConfigFileGroupWithContext(ctx context.Context, request *ModifyConfigFileGroupRequest) (response *ModifyConfigFileGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyConfigFileGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConfigFileGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConfigFileGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConfigFilesRequest() (request *ModifyConfigFilesRequest) {
+    request = &ModifyConfigFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyConfigFiles")
+    
+    
+    return
+}
+
+func NewModifyConfigFilesResponse() (response *ModifyConfigFilesResponse) {
+    response = &ModifyConfigFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConfigFiles
+// 修改配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConfigFiles(request *ModifyConfigFilesRequest) (response *ModifyConfigFilesResponse, err error) {
+    return c.ModifyConfigFilesWithContext(context.Background(), request)
+}
+
+// ModifyConfigFiles
+// 修改配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConfigFilesWithContext(ctx context.Context, request *ModifyConfigFilesRequest) (response *ModifyConfigFilesResponse, err error) {
+    if request == nil {
+        request = NewModifyConfigFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConfigFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConfigFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyConsoleNetworkRequest() (request *ModifyConsoleNetworkRequest) {
     request = &ModifyConsoleNetworkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5246,6 +6965,65 @@ func (c *Client) ModifyConsoleNetworkWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyGovernanceAliasRequest() (request *ModifyGovernanceAliasRequest) {
+    request = &ModifyGovernanceAliasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyGovernanceAlias")
+    
+    
+    return
+}
+
+func NewModifyGovernanceAliasResponse() (response *ModifyGovernanceAliasResponse) {
+    response = &ModifyGovernanceAliasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGovernanceAlias
+// 修改治理中心服务别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceAlias(request *ModifyGovernanceAliasRequest) (response *ModifyGovernanceAliasResponse, err error) {
+    return c.ModifyGovernanceAliasWithContext(context.Background(), request)
+}
+
+// ModifyGovernanceAlias
+// 修改治理中心服务别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceAliasWithContext(ctx context.Context, request *ModifyGovernanceAliasRequest) (response *ModifyGovernanceAliasResponse, err error) {
+    if request == nil {
+        request = NewModifyGovernanceAliasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGovernanceAlias require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGovernanceAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGovernanceInstancesRequest() (request *ModifyGovernanceInstancesRequest) {
     request = &ModifyGovernanceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5299,6 +7077,120 @@ func (c *Client) ModifyGovernanceInstancesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyGovernanceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGovernanceNamespacesRequest() (request *ModifyGovernanceNamespacesRequest) {
+    request = &ModifyGovernanceNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyGovernanceNamespaces")
+    
+    
+    return
+}
+
+func NewModifyGovernanceNamespacesResponse() (response *ModifyGovernanceNamespacesResponse) {
+    response = &ModifyGovernanceNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGovernanceNamespaces
+// 修改治理中心命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceNamespaces(request *ModifyGovernanceNamespacesRequest) (response *ModifyGovernanceNamespacesResponse, err error) {
+    return c.ModifyGovernanceNamespacesWithContext(context.Background(), request)
+}
+
+// ModifyGovernanceNamespaces
+// 修改治理中心命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceNamespacesWithContext(ctx context.Context, request *ModifyGovernanceNamespacesRequest) (response *ModifyGovernanceNamespacesResponse, err error) {
+    if request == nil {
+        request = NewModifyGovernanceNamespacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGovernanceNamespaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGovernanceNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGovernanceServicesRequest() (request *ModifyGovernanceServicesRequest) {
+    request = &ModifyGovernanceServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyGovernanceServices")
+    
+    
+    return
+}
+
+func NewModifyGovernanceServicesResponse() (response *ModifyGovernanceServicesResponse) {
+    response = &ModifyGovernanceServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGovernanceServices
+// 修改治理中心服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceServices(request *ModifyGovernanceServicesRequest) (response *ModifyGovernanceServicesResponse, err error) {
+    return c.ModifyGovernanceServicesWithContext(context.Background(), request)
+}
+
+// ModifyGovernanceServices
+// 修改治理中心服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceServicesWithContext(ctx context.Context, request *ModifyGovernanceServicesRequest) (response *ModifyGovernanceServicesResponse, err error) {
+    if request == nil {
+        request = NewModifyGovernanceServicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGovernanceServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGovernanceServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5680,6 +7572,124 @@ func (c *Client) OpenWafProtectionWithContext(ctx context.Context, request *Open
     request.SetContext(ctx)
     
     response = NewOpenWafProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishConfigFilesRequest() (request *PublishConfigFilesRequest) {
+    request = &PublishConfigFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "PublishConfigFiles")
+    
+    
+    return
+}
+
+func NewPublishConfigFilesResponse() (response *PublishConfigFilesResponse) {
+    response = &PublishConfigFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PublishConfigFiles
+// 发布配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+func (c *Client) PublishConfigFiles(request *PublishConfigFilesRequest) (response *PublishConfigFilesResponse, err error) {
+    return c.PublishConfigFilesWithContext(context.Background(), request)
+}
+
+// PublishConfigFiles
+// 发布配置文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+func (c *Client) PublishConfigFilesWithContext(ctx context.Context, request *PublishConfigFilesRequest) (response *PublishConfigFilesResponse, err error) {
+    if request == nil {
+        request = NewPublishConfigFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishConfigFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPublishConfigFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackConfigFileReleasesRequest() (request *RollbackConfigFileReleasesRequest) {
+    request = &RollbackConfigFileReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "RollbackConfigFileReleases")
+    
+    
+    return
+}
+
+func NewRollbackConfigFileReleasesResponse() (response *RollbackConfigFileReleasesResponse) {
+    response = &RollbackConfigFileReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RollbackConfigFileReleases
+// 回滚配置发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RollbackConfigFileReleases(request *RollbackConfigFileReleasesRequest) (response *RollbackConfigFileReleasesResponse, err error) {
+    return c.RollbackConfigFileReleasesWithContext(context.Background(), request)
+}
+
+// RollbackConfigFileReleases
+// 回滚配置发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RollbackConfigFileReleasesWithContext(ctx context.Context, request *RollbackConfigFileReleasesRequest) (response *RollbackConfigFileReleasesResponse, err error) {
+    if request == nil {
+        request = NewRollbackConfigFileReleasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackConfigFileReleases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackConfigFileReleasesResponse()
     err = c.Send(request, response)
     return
 }

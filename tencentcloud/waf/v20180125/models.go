@@ -1513,34 +1513,6 @@ type ClbDomainsInfo struct {
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 }
 
-type ClbHostResult struct {
-	// WAF绑定的监听器实例
-	LoadBalancer *LoadBalancer `json:"LoadBalancer,omitnil,omitempty" name:"LoadBalancer"`
-
-	// WAF绑定的域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// WAF绑定的实例ID
-	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
-
-	// 是否有绑定WAF，1：绑定了WAF，0：没有绑定WAF
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 绑定了WAF的情况下，WAF流量模式，1：清洗模式，0：镜像模式（默认）
-	FlowMode *uint64 `json:"FlowMode,omitnil,omitempty" name:"FlowMode"`
-}
-
-type ClbHostsParams struct {
-	// 负载均衡实例ID，如果不传次参数则默认认为操作的是整个AppId的监听器，如果此参数不为空则认为操作的是对应负载均衡实例。
-	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
-
-	// 负载均衡监听器ID，，如果不传次参数则默认认为操作的是整个负载均衡实例，如果此参数不为空则认为操作的是对应负载均衡监听器。
-	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
-
-	// WAF实例ID，，如果不传次参数则默认认为操作的是整个负载均衡监听器实例，如果此参数不为空则认为操作的是对应负载均衡监听器的某一个具体的域名。
-	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
-}
-
 type ClbObject struct {
 	// 对象ID
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
@@ -7596,66 +7568,6 @@ func (r *DescribeWafAutoDenyStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeWafAutoDenyStatusResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeWafInfoRequestParams struct {
-	// CLB回调WAF接口（获取、删除）的参数
-	Params []*ClbHostsParams `json:"Params,omitnil,omitempty" name:"Params"`
-}
-
-type DescribeWafInfoRequest struct {
-	*tchttp.BaseRequest
-	
-	// CLB回调WAF接口（获取、删除）的参数
-	Params []*ClbHostsParams `json:"Params,omitnil,omitempty" name:"Params"`
-}
-
-func (r *DescribeWafInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeWafInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Params")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWafInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeWafInfoResponseParams struct {
-	// 返回的WAF信息数组的长度，为0则表示没有查询到对应的信息
-	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
-
-	// 对应的WAF信息的数组。
-	HostList []*ClbHostResult `json:"HostList,omitnil,omitempty" name:"HostList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeWafInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeWafInfoResponseParams `json:"Response"`
-}
-
-func (r *DescribeWafInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeWafInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

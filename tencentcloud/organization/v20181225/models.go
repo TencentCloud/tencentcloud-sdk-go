@@ -54,7 +54,7 @@ func (r *AcceptOrganizationInvitationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AcceptOrganizationInvitationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -118,7 +118,7 @@ type AddOrganizationNodeResponseParams struct {
 	// 组织单元ID
 	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -172,7 +172,7 @@ func (r *CancelOrganizationInvitationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelOrganizationInvitationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -238,7 +238,7 @@ type CreateOrganizationResponseParams struct {
 	// 组织类型
 	OrgType *uint64 `json:"OrgType,omitnil,omitempty" name:"OrgType"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -299,7 +299,7 @@ func (r *DeleteOrganizationMemberFromNodeRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DeleteOrganizationMemberFromNodeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -353,7 +353,7 @@ func (r *DeleteOrganizationMembersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrganizationMembersResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -407,7 +407,7 @@ func (r *DeleteOrganizationNodesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrganizationNodesResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -458,7 +458,7 @@ func (r *DeleteOrganizationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrganizationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -512,7 +512,7 @@ func (r *DenyOrganizationInvitationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DenyOrganizationInvitationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -587,7 +587,7 @@ type GetOrganizationMemberResponseParams struct {
 	// 父组织单元ID
 	ParentNodeId *uint64 `json:"ParentNodeId,omitnil,omitempty" name:"ParentNodeId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -656,7 +656,7 @@ type GetOrganizationResponseParams struct {
 	// 是否为空
 	IsEmpty *uint64 `json:"IsEmpty,omitnil,omitempty" name:"IsEmpty"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -730,7 +730,7 @@ type ListOrganizationInvitationsResponseParams struct {
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -797,7 +797,7 @@ type ListOrganizationMembersResponseParams struct {
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -871,7 +871,7 @@ type ListOrganizationNodeMembersResponseParams struct {
 	// 成员列表
 	Members []*OrgMember `json:"Members,omitnil,omitempty" name:"Members"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -925,7 +925,7 @@ type ListOrganizationNodesResponseParams struct {
 	// 企业组织单元列表
 	Nodes []*OrgNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -986,7 +986,7 @@ func (r *MoveOrganizationMembersToNodeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MoveOrganizationMembersToNodeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1103,7 +1103,7 @@ func (r *QuitOrganizationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QuitOrganizationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1171,7 +1171,7 @@ func (r *SendOrganizationInvitationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SendOrganizationInvitationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1239,7 +1239,7 @@ func (r *UpdateOrganizationMemberRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOrganizationMemberResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1307,7 +1307,7 @@ func (r *UpdateOrganizationNodeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOrganizationNodeResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

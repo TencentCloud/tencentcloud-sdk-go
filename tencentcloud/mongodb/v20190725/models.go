@@ -3213,38 +3213,42 @@ func (r *KillOpsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceNetworkAddressRequestParams struct {
-	// 实例ID
+	// 指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 原IP保留时长，单位为分钟；原IP会在约定时间后释放，在释放前原IP和新IP均可访问；0表示立即回收原IP
+	// 原 IP 地址保留时长。
+	// - 单位为分钟，0表示立即回收原 IP 地址。
+	// - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
 	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitnil,omitempty" name:"OldIpExpiredTime"`
 
-	// 切换后IP地址的归属私有网络统一ID，若为基础网络，该字段为空
+	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。
 	NewUniqVpcId *string `json:"NewUniqVpcId,omitnil,omitempty" name:"NewUniqVpcId"`
 
-	// 切换后IP地址的归属子网统一ID，若为基础网络，该字段为空
+	// 切换私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。
 	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitnil,omitempty" name:"NewUniqSubnetId"`
 
-	// 待修改IP信息
+	// IP 地址信息，包含新 IP 地址与 原 IP 地址。
 	NetworkAddresses []*ModifyNetworkAddress `json:"NetworkAddresses,omitnil,omitempty" name:"NetworkAddresses"`
 }
 
 type ModifyDBInstanceNetworkAddressRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 原IP保留时长，单位为分钟；原IP会在约定时间后释放，在释放前原IP和新IP均可访问；0表示立即回收原IP
+	// 原 IP 地址保留时长。
+	// - 单位为分钟，0表示立即回收原 IP 地址。
+	// - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
 	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitnil,omitempty" name:"OldIpExpiredTime"`
 
-	// 切换后IP地址的归属私有网络统一ID，若为基础网络，该字段为空
+	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。
 	NewUniqVpcId *string `json:"NewUniqVpcId,omitnil,omitempty" name:"NewUniqVpcId"`
 
-	// 切换后IP地址的归属子网统一ID，若为基础网络，该字段为空
+	// 切换私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。
 	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitnil,omitempty" name:"NewUniqSubnetId"`
 
-	// 待修改IP信息
+	// IP 地址信息，包含新 IP 地址与 原 IP 地址。
 	NetworkAddresses []*ModifyNetworkAddress `json:"NetworkAddresses,omitnil,omitempty" name:"NetworkAddresses"`
 }
 
@@ -3273,6 +3277,9 @@ func (r *ModifyDBInstanceNetworkAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceNetworkAddressResponseParams struct {
+	// 修改网络异步流程任务ID。
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

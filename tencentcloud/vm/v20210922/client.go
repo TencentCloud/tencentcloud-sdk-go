@@ -216,7 +216,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 // - 视频流支持格式：rmtp，flv 等主流视频流编码格式。
 //
-// - 视频文件支持的传输协议：HTTP/HTTPS/RTMP；
+// - 视频流支持的传输协议：HTTP/HTTPS/RTMP；
 //
 // - 支持用户配置是否需要开启音频审核，若不开启则将仅对视频流图像内容进行审核。
 //
@@ -326,7 +326,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 // - 视频流支持格式：rmtp，flv 等主流视频流编码格式。
 //
-// - 视频文件支持的传输协议：HTTP/HTTPS/RTMP；
+// - 视频流支持的传输协议：HTTP/HTTPS/RTMP；
 //
 // - 支持用户配置是否需要开启音频审核，若不开启则将仅对视频流图像内容进行审核。
 //

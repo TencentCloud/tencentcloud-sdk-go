@@ -146,7 +146,7 @@ type CreateCodeRepositoryResponseParams struct {
 	// 存储库名称
 	CodeRepositoryName *string `json:"CodeRepositoryName,omitnil,omitempty" name:"CodeRepositoryName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -319,7 +319,7 @@ type CreateNotebookInstanceResponseParams struct {
 	// Notebook实例名字
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitnil,omitempty" name:"NotebookInstanceName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -394,7 +394,7 @@ type CreateNotebookLifecycleScriptResponseParams struct {
 	// 生命周期脚本名称
 	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitnil,omitempty" name:"NotebookLifecycleScriptsName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -460,7 +460,7 @@ type CreatePresignedNotebookInstanceUrlResponseParams struct {
 	// 授权url
 	AuthorizedUrl *string `json:"AuthorizedUrl,omitnil,omitempty" name:"AuthorizedUrl"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -589,7 +589,7 @@ type CreateTrainingJobResponseParams struct {
 	// 训练任务名称
 	TrainingJobName *string `json:"TrainingJobName,omitnil,omitempty" name:"TrainingJobName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -656,7 +656,7 @@ type DeleteCodeRepositoryResponseParams struct {
 	// 存储库名称
 	CodeRepositoryName *string `json:"CodeRepositoryName,omitnil,omitempty" name:"CodeRepositoryName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -710,7 +710,7 @@ func (r *DeleteNotebookInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNotebookInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -771,7 +771,7 @@ func (r *DeleteNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNotebookLifecycleScriptResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -861,7 +861,7 @@ type DescribeCodeRepositoriesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeRepoSet []*CodeRepoSummary `json:"CodeRepoSet,omitnil,omitempty" name:"CodeRepoSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -930,7 +930,7 @@ type DescribeCodeRepositoryResponseParams struct {
 	// 是否有Git凭证
 	NoSecret *bool `json:"NoSecret,omitnil,omitempty" name:"NoSecret"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1077,7 +1077,7 @@ type DescribeNotebookInstanceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClsConfig *ClsConfig `json:"ClsConfig,omitnil,omitempty" name:"ClsConfig"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1185,7 +1185,7 @@ type DescribeNotebookInstancesResponseParams struct {
 	// Notebook实例总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1256,7 +1256,7 @@ type DescribeNotebookLifecycleScriptResponseParams struct {
 	// 最后修改时间
 	LastModifiedTime *string `json:"LastModifiedTime,omitnil,omitempty" name:"LastModifiedTime"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1345,7 +1345,7 @@ type DescribeNotebookLifecycleScriptsResponseParams struct {
 	// Notebook生命周期脚本总数量
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1408,7 +1408,7 @@ type DescribeNotebookSummaryResponseParams struct {
 	// 计算和存储都计费的实例总数
 	ComputingBillingInstanceCnt *int64 `json:"ComputingBillingInstanceCnt,omitnil,omitempty" name:"ComputingBillingInstanceCnt"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1543,7 +1543,7 @@ type DescribeTrainingJobResponseParams struct {
 	// 训练任务实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1649,7 +1649,7 @@ type DescribeTrainingJobsResponseParams struct {
 	// 训练任务总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1914,7 +1914,7 @@ func (r *StartNotebookInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartNotebookInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1968,7 +1968,7 @@ func (r *StopNotebookInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopNotebookInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2022,7 +2022,7 @@ func (r *StopTrainingJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopTrainingJobResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2131,7 +2131,7 @@ type UpdateCodeRepositoryResponseParams struct {
 	// 存储库名称
 	CodeRepositoryName *string `json:"CodeRepositoryName,omitnil,omitempty" name:"CodeRepositoryName"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2299,7 +2299,7 @@ func (r *UpdateNotebookInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateNotebookInstanceResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -2371,7 +2371,7 @@ func (r *UpdateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateNotebookLifecycleScriptResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

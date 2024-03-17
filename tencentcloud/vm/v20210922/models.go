@@ -245,10 +245,10 @@ type CreateVideoModerationTaskRequestParams struct {
 	// 输入的任务信息，最多可以同时创建10个任务
 	Tasks []*TaskInput `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 回调签名key，具体可以查看签名文档。
+	// 验证签名参数，具体可以参考[验签说明](https://cloud.tencent.com/document/product/1265/104001#42dd87d2-580f-46cf-a953-639a787d1eda)。
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
+	// 接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段和画面截帧结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1265/104001)。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
@@ -271,10 +271,10 @@ type CreateVideoModerationTaskRequest struct {
 	// 输入的任务信息，最多可以同时创建10个任务
 	Tasks []*TaskInput `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 回调签名key，具体可以查看签名文档。
+	// 验证签名参数，具体可以参考[验签说明](https://cloud.tencent.com/document/product/1265/104001#42dd87d2-580f-46cf-a953-639a787d1eda)。
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
+	// 接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段和画面截帧结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1265/104001)。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
