@@ -2732,6 +2732,9 @@ type CreateLiveTranscodeRuleRequestParams struct {
 	// 推流路径，与推流和播放地址中的AppName保持一致。如果只绑定域名，则此处填""。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
+	// 流名称。已废弃该字段，请传入空字符串。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
 	// 指定已有的模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
@@ -2744,6 +2747,9 @@ type CreateLiveTranscodeRuleRequest struct {
 
 	// 推流路径，与推流和播放地址中的AppName保持一致。如果只绑定域名，则此处填""。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 流名称。已废弃该字段，请传入空字符串。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
 	// 指定已有的模板Id。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -2763,6 +2769,7 @@ func (r *CreateLiveTranscodeRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	delete(f, "AppName")
+	delete(f, "StreamName")
 	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveTranscodeRuleRequest has unknown keys!", "")
