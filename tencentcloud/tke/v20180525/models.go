@@ -17204,6 +17204,10 @@ type PodLimitsByType struct {
 	// TKE独立网卡模式可支持的Pod数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TKEDirectENI *int64 `json:"TKEDirectENI,omitnil,omitempty" name:"TKEDirectENI"`
+
+	// TKE中继网卡模式可支持的Pod数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TKESubENI *int64 `json:"TKESubENI,omitnil,omitempty" name:"TKESubENI"`
 }
 
 type PodLimitsInstance struct {

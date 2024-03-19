@@ -6714,6 +6714,73 @@ func (c *Client) DescribeBatchOrganizationRegistrationUrlsWithContext(ctx contex
     return
 }
 
+func NewDescribeCancelFlowsTaskRequest() (request *DescribeCancelFlowsTaskRequest) {
+    request = &DescribeCancelFlowsTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeCancelFlowsTask")
+    
+    
+    return
+}
+
+func NewDescribeCancelFlowsTaskResponse() (response *DescribeCancelFlowsTaskResponse) {
+    response = &DescribeCancelFlowsTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCancelFlowsTask
+// 通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeCancelFlowsTask(request *DescribeCancelFlowsTaskRequest) (response *DescribeCancelFlowsTaskResponse, err error) {
+    return c.DescribeCancelFlowsTaskWithContext(context.Background(), request)
+}
+
+// DescribeCancelFlowsTask
+// 通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeCancelFlowsTaskWithContext(ctx context.Context, request *DescribeCancelFlowsTaskRequest) (response *DescribeCancelFlowsTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCancelFlowsTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCancelFlowsTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCancelFlowsTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChannelFlowEvidenceReportRequest() (request *DescribeChannelFlowEvidenceReportRequest) {
     request = &DescribeChannelFlowEvidenceReportRequest{
         BaseRequest: &tchttp.BaseRequest{},

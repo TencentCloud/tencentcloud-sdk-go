@@ -755,6 +755,22 @@ type AddSpartaProtectionRequestParams struct {
 	// 2：加权轮询
 	LoadBalance *string `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
+	// 服务端口列表配置。
+	// NginxServerId：新增域名时填'0'
+	// Port：监听端口号
+	// Protocol：端口协议
+	// UpstreamPort：与Port相同
+	// UpstreamProtocol：与Protocol相同
+	Ports []*PortItem `json:"Ports,omitnil,omitempty" name:"Ports"`
+
+	// 必填项，是否开启长连接。
+	// 0： 短连接
+	// 1： 长连接
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
+
+	// 必填项，域名所属实例id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
@@ -800,27 +816,11 @@ type AddSpartaProtectionRequestParams struct {
 	// 1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 服务端口列表配置。
-	// NginxServerId：新增域名时填'0'
-	// Port：监听端口号
-	// Protocol：端口协议
-	// UpstreamPort：与Port相同
-	// UpstreamProtocol：与Protocol相同
-	Ports []*PortItem `json:"Ports,omitnil,omitempty" name:"Ports"`
-
 	// 待废弃，可不填。WAF实例类型。
 	// sparta-waf：SAAS型WAF
 	// clb-waf：负载均衡型WAF
 	// cdn-waf：CDN上的Web防护能力
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
-
-	// 必填项，是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
-	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
-
-	// 必填项，域名所属实例id
-	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
@@ -872,6 +872,9 @@ type AddSpartaProtectionRequestParams struct {
 
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
+
+	// 是否开启缓存 0-关闭 1-开启
+	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -909,6 +912,22 @@ type AddSpartaProtectionRequest struct {
 	// 2：加权轮询
 	LoadBalance *string `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
+	// 服务端口列表配置。
+	// NginxServerId：新增域名时填'0'
+	// Port：监听端口号
+	// Protocol：端口协议
+	// UpstreamPort：与Port相同
+	// UpstreamProtocol：与Protocol相同
+	Ports []*PortItem `json:"Ports,omitnil,omitempty" name:"Ports"`
+
+	// 必填项，是否开启长连接。
+	// 0： 短连接
+	// 1： 长连接
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
+
+	// 必填项，域名所属实例id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
@@ -954,27 +973,11 @@ type AddSpartaProtectionRequest struct {
 	// 1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 服务端口列表配置。
-	// NginxServerId：新增域名时填'0'
-	// Port：监听端口号
-	// Protocol：端口协议
-	// UpstreamPort：与Port相同
-	// UpstreamProtocol：与Protocol相同
-	Ports []*PortItem `json:"Ports,omitnil,omitempty" name:"Ports"`
-
 	// 待废弃，可不填。WAF实例类型。
 	// sparta-waf：SAAS型WAF
 	// clb-waf：负载均衡型WAF
 	// cdn-waf：CDN上的Web防护能力
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
-
-	// 必填项，是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
-	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
-
-	// 必填项，域名所属实例id
-	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
@@ -1026,6 +1029,9 @@ type AddSpartaProtectionRequest struct {
 
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
+
+	// 是否开启缓存 0-关闭 1-开启
+	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1046,6 +1052,9 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamType")
 	delete(f, "IsWebsocket")
 	delete(f, "LoadBalance")
+	delete(f, "Ports")
+	delete(f, "IsKeepAlive")
+	delete(f, "InstanceID")
 	delete(f, "Cert")
 	delete(f, "PrivateKey")
 	delete(f, "SSLId")
@@ -1059,10 +1068,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamDomain")
 	delete(f, "SrcList")
 	delete(f, "IsHttp2")
-	delete(f, "Ports")
 	delete(f, "Edition")
-	delete(f, "IsKeepAlive")
-	delete(f, "InstanceID")
 	delete(f, "Anycast")
 	delete(f, "Weights")
 	delete(f, "ActiveCheck")
@@ -1076,6 +1082,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "XFFReset")
 	delete(f, "Note")
 	delete(f, "UpstreamHost")
+	delete(f, "ProxyBuffer")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1213,6 +1220,14 @@ type BatchIpAccessControlItem struct {
 
 	// 域名列表
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
+
+	// 55101145
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 type BotPkg struct {
@@ -3681,6 +3696,10 @@ type DescribeAttackOverviewResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeakCount *uint64 `json:"LeakCount,omitnil,omitempty" name:"LeakCount"`
 
+	// API风险事件周环比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiRiskEventCircleCount *int64 `json:"ApiRiskEventCircleCount,omitnil,omitempty" name:"ApiRiskEventCircleCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4136,7 +4155,7 @@ func (r *DescribeCCAutoStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCAutoStatusResponseParams struct {
-	// 配置状态
+	// 配置状态，0表示关闭，1表示开启
 	AutoCCSwitch *int64 `json:"AutoCCSwitch,omitnil,omitempty" name:"AutoCCSwitch"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5858,7 +5877,7 @@ type DescribeIpAccessControlRequestParams struct {
 	// 排序参数
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// ip
+	// IP
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 生效状态
@@ -5869,6 +5888,9 @@ type DescribeIpAccessControlRequestParams struct {
 
 	// 最大有效时间的时间戳
 	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil,omitempty" name:"ValidTimeStampMax"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DescribeIpAccessControlRequest struct {
@@ -5907,7 +5929,7 @@ type DescribeIpAccessControlRequest struct {
 	// 排序参数
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// ip
+	// IP
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 生效状态
@@ -5918,6 +5940,9 @@ type DescribeIpAccessControlRequest struct {
 
 	// 最大有效时间的时间戳
 	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil,omitempty" name:"ValidTimeStampMax"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -5947,6 +5972,7 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "ValidStatus")
 	delete(f, "ValidTimeStampMin")
 	delete(f, "ValidTimeStampMax")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpAccessControlRequest has unknown keys!", "")
 	}
@@ -5958,6 +5984,10 @@ type DescribeIpAccessControlResponseParams struct {
 	// 输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IpAccessControlData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 已经使用的IP黑白名单的IP总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedTotal *uint64 `json:"UsedTotal,omitnil,omitempty" name:"UsedTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7724,7 +7754,7 @@ type DomainInfo struct {
 	// "日本": "jp"
 	// "弗吉尼亚": "use"
 	// "北京": "bj"
-	// "香港": "hk"
+	// "中国香港": "hk"
 	// "杭州": "hzec"
 	// "北京金融": "bjjr"
 	// "上海金融": "shjr"
@@ -7874,6 +7904,10 @@ type DomainInfo struct {
 	// 安全组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SgID *string `json:"SgID,omitnil,omitempty" name:"SgID"`
+
+	// clbwaf接入状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
 }
 
 type DomainPackageNew struct {
@@ -8092,6 +8126,10 @@ type DomainsPartInfo struct {
 	// 防护规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 是否开启缓存 0-关闭 1-开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -9204,6 +9242,14 @@ type IpAccessControlItem struct {
 	// 生效状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 55000001
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 type IpHitItem struct {
@@ -9451,6 +9497,8 @@ type ModifyAccessPeriodRequestParams struct {
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 日志主题，新版本不需要再传
+	//
+	// Deprecated: TopicId is deprecated.
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
@@ -11786,6 +11834,9 @@ type ModifySpartaProtectionRequestParams struct {
 	// 必填项。域名唯一ID
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
+	// 必填项。域名所属实例id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
 	// 必填项。证书类型。
 	// 0：仅配置HTTP监听端口，没有证书
 	// 1：证书来源为自有证书
@@ -11862,9 +11913,6 @@ type ModifySpartaProtectionRequestParams struct {
 	// 1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 必填项。域名所属实例id
-	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
-
 	// 必填项，待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
@@ -11918,6 +11966,9 @@ type ModifySpartaProtectionRequestParams struct {
 
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
+
+	// 是否开启缓存 0-关闭 1-开启
+	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -11929,6 +11980,9 @@ type ModifySpartaProtectionRequest struct {
 	// 必填项。域名唯一ID
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
+	// 必填项。域名所属实例id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
 	// 必填项。证书类型。
 	// 0：仅配置HTTP监听端口，没有证书
 	// 1：证书来源为自有证书
@@ -12005,9 +12059,6 @@ type ModifySpartaProtectionRequest struct {
 	// 1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 必填项。域名所属实例id
-	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
-
 	// 必填项，待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
@@ -12061,6 +12112,9 @@ type ModifySpartaProtectionRequest struct {
 
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
+
+	// 是否开启缓存 0-关闭 1-开启
+	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -12077,6 +12131,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Domain")
 	delete(f, "DomainId")
+	delete(f, "InstanceID")
 	delete(f, "CertType")
 	delete(f, "Cert")
 	delete(f, "PrivateKey")
@@ -12095,7 +12150,6 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "Edition")
 	delete(f, "Ports")
 	delete(f, "IsKeepAlive")
-	delete(f, "InstanceID")
 	delete(f, "Anycast")
 	delete(f, "Weights")
 	delete(f, "ActiveCheck")
@@ -12110,6 +12164,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "XFFReset")
 	delete(f, "Note")
 	delete(f, "UpstreamHost")
+	delete(f, "ProxyBuffer")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}

@@ -4151,7 +4151,8 @@ type DescribeAliasDomainsRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
+	// <li>target-name：目标域名名称进行过滤；</li>
+	// <li>alias-name：按照别称域名名称进行过滤。</li>模糊查询时仅支持过滤字段名为 alias-name。
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4168,7 +4169,8 @@ type DescribeAliasDomainsRequest struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
+	// <li>target-name：目标域名名称进行过滤；</li>
+	// <li>alias-name：按照别称域名名称进行过滤。</li>模糊查询时仅支持过滤字段名为 alias-name。
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5360,7 +5362,7 @@ type DescribeHostsSettingRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
+	// <li>host：按照域名进行过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5377,7 +5379,7 @@ type DescribeHostsSettingRequest struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
+	// <li>host：按照域名进行过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

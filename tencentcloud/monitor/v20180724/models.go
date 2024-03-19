@@ -5361,6 +5361,87 @@ func (r *DescribeAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAlarmSmsQuotaQuota struct {
+	// 配额类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 配额名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 免费配额剩余量
+	FreeLeft *int64 `json:"FreeLeft,omitnil,omitempty" name:"FreeLeft"`
+
+	// 付费配额剩余量
+	PurchaseLeft *int64 `json:"PurchaseLeft,omitnil,omitempty" name:"PurchaseLeft"`
+
+	// 已使用量
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
+}
+
+// Predefined struct for user
+type DescribeAlarmSmsQuotaRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+}
+
+type DescribeAlarmSmsQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+}
+
+func (r *DescribeAlarmSmsQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmSmsQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmSmsQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmSmsQuotaResponseParams struct {
+	// 配额总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 总使用量
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// 短信配额信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaList []*DescribeAlarmSmsQuotaQuota `json:"QuotaList,omitnil,omitempty" name:"QuotaList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmSmsQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmSmsQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmSmsQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmSmsQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeAlertRulesRequestParams struct {
 	// Prometheus 实例 ID
@@ -6918,6 +6999,69 @@ func (r *DescribeInstalledPluginsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMonitorResourceInfoRequestParams struct {
+
+}
+
+type DescribeMonitorResourceInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeMonitorResourceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMonitorResourceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMonitorResourceInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMonitorResourceInfoResponseParams struct {
+	// 电话告警数量
+	PhoneAlarmNumber *int64 `json:"PhoneAlarmNumber,omitnil,omitempty" name:"PhoneAlarmNumber"`
+
+	// 高级指标数量
+	AdvancedMetricNumber *int64 `json:"AdvancedMetricNumber,omitnil,omitempty" name:"AdvancedMetricNumber"`
+
+	// API调用量
+	APIUsageNumber *int64 `json:"APIUsageNumber,omitnil,omitempty" name:"APIUsageNumber"`
+
+	// 告警短信数量
+	AlarmSMSNumber *int64 `json:"AlarmSMSNumber,omitnil,omitempty" name:"AlarmSMSNumber"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMonitorResourceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMonitorResourceInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeMonitorResourceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMonitorResourceInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMonitorTypesRequestParams struct {
 	// 模块名，固定值 monitor
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -6974,6 +7118,70 @@ func (r *DescribeMonitorTypesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMonitorTypesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePhoneAlarmFlowTotalCountRequestParams struct {
+	// 默认monitor
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// unix时间戳，单位：s
+	QueryTime *int64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
+}
+
+type DescribePhoneAlarmFlowTotalCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 默认monitor
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// unix时间戳，单位：s
+	QueryTime *int64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
+}
+
+func (r *DescribePhoneAlarmFlowTotalCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePhoneAlarmFlowTotalCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "QueryTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePhoneAlarmFlowTotalCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePhoneAlarmFlowTotalCountResponseParams struct {
+	// 电话流水总数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePhoneAlarmFlowTotalCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePhoneAlarmFlowTotalCountResponseParams `json:"Response"`
+}
+
+func (r *DescribePhoneAlarmFlowTotalCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePhoneAlarmFlowTotalCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

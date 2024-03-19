@@ -2489,7 +2489,7 @@ func NewDescribeBatchIpAccessControlResponse() (response *DescribeBatchIpAccessC
 }
 
 // DescribeBatchIpAccessControl
-// Waf 多域名ip黑白名单查询
+// Waf 批量防护IP黑白名单查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2499,7 +2499,7 @@ func (c *Client) DescribeBatchIpAccessControl(request *DescribeBatchIpAccessCont
 }
 
 // DescribeBatchIpAccessControl
-// Waf 多域名ip黑白名单查询
+// Waf 批量防护IP黑白名单查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2540,7 +2540,7 @@ func NewDescribeCCAutoStatusResponse() (response *DescribeCCAutoStatusResponse) 
 }
 
 // DescribeCCAutoStatus
-// Waf 斯巴达版本查询cc自动封堵状态
+// 获取SAAS型接入的紧急CC防护状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2550,7 +2550,7 @@ func (c *Client) DescribeCCAutoStatus(request *DescribeCCAutoStatusRequest) (res
 }
 
 // DescribeCCAutoStatus
-// Waf 斯巴达版本查询cc自动封堵状态
+// 获取SAAS型接入的紧急CC防护状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7698,7 +7698,7 @@ func NewModifyProtectionStatusResponse() (response *ModifyProtectionStatusRespon
 }
 
 // ModifyProtectionStatus
-// waf斯巴达-waf开关
+// 获取基础安全防护（WAF开关）状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7710,7 +7710,7 @@ func (c *Client) ModifyProtectionStatus(request *ModifyProtectionStatusRequest) 
 }
 
 // ModifyProtectionStatus
-// waf斯巴达-waf开关
+// 获取基础安全防护（WAF开关）状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8622,7 +8622,7 @@ func NewUpsertCCAutoStatusResponse() (response *UpsertCCAutoStatusResponse) {
 }
 
 // UpsertCCAutoStatus
-// Waf 斯巴达版本更新cc自动封堵状态
+// 编辑SAAS型接入的紧急CC防护状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8633,7 +8633,7 @@ func (c *Client) UpsertCCAutoStatus(request *UpsertCCAutoStatusRequest) (respons
 }
 
 // UpsertCCAutoStatus
-// Waf 斯巴达版本更新cc自动封堵状态
+// 编辑SAAS型接入的紧急CC防护状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

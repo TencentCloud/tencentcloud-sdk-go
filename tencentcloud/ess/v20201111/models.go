@@ -546,6 +546,14 @@ type Caller struct {
 	SubOrganizationId *string `json:"SubOrganizationId,omitnil,omitempty" name:"SubOrganizationId"`
 }
 
+type CancelFailureFlow struct {
+	// 合同流程ID，为32位字符串。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 撤销失败原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
 // Predefined struct for user
 type CancelFlowRequestParams struct {
 	// 执行本接口操作的员工信息。
@@ -3695,16 +3703,18 @@ type CreateIntegrationEmployeesRequestParams struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式可通过以下方式进行设置：
-	// 
-	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
-	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
+	// 员工邀请方式
+	// 可通过以下途径进行设置：
+	// <ul><li>**SMS（默认）**：邀请将通过短信或企业微信消息发送。若场景非企业微信，则采用企业微信消息；其他情境下则使用短信通知。短信内含链接，点击后将进入微信小程序进行认证并加入企业的流程。</li><li>**H5**：将生成H5链接，用户点击链接后可进入H5页面进行认证并加入企业的流程。</li><li>**NONE**：系统会根据Endpoint生成签署链接，业务方需获取链接并通知客户。</li></ul>
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
 	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
 	// 
 	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**H5**： 第三方移动端浏览器进行嵌入，不支持小程序嵌入，过期时间一个月</li></ul>注意：InvitationNotifyType 和 Endpoint 的关系图<table><tbody><tr><td>通知类型（InvitationNotifyType）</td><td>Endpoint</td></tr><tr><td>SMS（默认）</td><td>不需要传递，会将 Endpoint 默认设置为HTTP_SHORT_URL</td></tr><tr><td>H5</td><td>不需要传递，会将 Endpoint 默认设置为 H5</td></tr><tr><td>NONE</td><td>所有 Endpoint 都支持（HTTP_URL/HTTP_SHORT_URL/H5/APP）默认为HTTP_SHORT_URL</td></tr></tbody></table>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type CreateIntegrationEmployeesRequest struct {
@@ -3730,16 +3740,18 @@ type CreateIntegrationEmployeesRequest struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式可通过以下方式进行设置：
-	// 
-	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
-	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
+	// 员工邀请方式
+	// 可通过以下途径进行设置：
+	// <ul><li>**SMS（默认）**：邀请将通过短信或企业微信消息发送。若场景非企业微信，则采用企业微信消息；其他情境下则使用短信通知。短信内含链接，点击后将进入微信小程序进行认证并加入企业的流程。</li><li>**H5**：将生成H5链接，用户点击链接后可进入H5页面进行认证并加入企业的流程。</li><li>**NONE**：系统会根据Endpoint生成签署链接，业务方需获取链接并通知客户。</li></ul>
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
 	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
 	// 
 	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**H5**： 第三方移动端浏览器进行嵌入，不支持小程序嵌入，过期时间一个月</li></ul>注意：InvitationNotifyType 和 Endpoint 的关系图<table><tbody><tr><td>通知类型（InvitationNotifyType）</td><td>Endpoint</td></tr><tr><td>SMS（默认）</td><td>不需要传递，会将 Endpoint 默认设置为HTTP_SHORT_URL</td></tr><tr><td>H5</td><td>不需要传递，会将 Endpoint 默认设置为 H5</td></tr><tr><td>NONE</td><td>所有 Endpoint 都支持（HTTP_URL/HTTP_SHORT_URL/H5/APP）默认为HTTP_SHORT_URL</td></tr></tbody></table>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *CreateIntegrationEmployeesRequest) ToJsonString() string {
@@ -3759,6 +3771,7 @@ func (r *CreateIntegrationEmployeesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "InvitationNotifyType")
 	delete(f, "JumpUrl")
+	delete(f, "Endpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationEmployeesRequest has unknown keys!", "")
 	}
@@ -6541,6 +6554,93 @@ func (r *DescribeBillUsageDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBillUsageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCancelFlowsTaskRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 批量撤销任务编号，为32位字符串，通过接口[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)获得。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理企业和员工的信息。
+	// <br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeCancelFlowsTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 批量撤销任务编号，为32位字符串，通过接口[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)获得。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理企业和员工的信息。
+	// <br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeCancelFlowsTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCancelFlowsTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCancelFlowsTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCancelFlowsTaskResponseParams struct {
+	// 批量撤销任务编号，为32位字符串，通过接口[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)获得。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务状态，需要关注的状态
+	// <ul><li>**PROCESSING**  - 任务执行中</li>
+	// <li>**END** - 任务处理完成</li>
+	// <li>**TIMEOUT** 任务超时未处理完成，用户未在批量撤销链接有效期内操作</li></ul>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 批量撤销成功的签署流程编号
+	SuccessFlowIds []*string `json:"SuccessFlowIds,omitnil,omitempty" name:"SuccessFlowIds"`
+
+	// 批量撤销失败的签署流程信息
+	FailureFlows []*CancelFailureFlow `json:"FailureFlows,omitnil,omitempty" name:"FailureFlows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCancelFlowsTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCancelFlowsTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeCancelFlowsTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCancelFlowsTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11004,16 +11104,14 @@ type UpdateIntegrationEmployeesRequestParams struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式可通过以下方式进行设置：
-	// 
-	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
-	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
+	// 员工邀请方式可通过以下途径进行设置：<ul><li>**SMS（默认）**：邀请将通过短信或企业微信消息发送。若场景非企业微信，则采用企业微信消息；其他情境下则使用短信通知。短信内含链接，点击后将进入微信小程序进行认证并加入企业的流程。</li><li>**H5**：将生成H5链接，用户点击链接后可进入H5页面进行认证并加入企业的流程。</li><li>**NONE**：系统会根据Endpoint生成签署链接，业务方需获取链接并通知客户。</li></ul>
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
-	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
-	// 
-	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
+	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**H5**： 第三方移动端浏览器进行嵌入，不支持小程序嵌入，过期时间一个月</li></ul>注意：InvitationNotifyType 和 Endpoint 的关系图<table><tbody><tr><td>通知类型（InvitationNotifyType）</td><td>Endpoint</td></tr><tr><td>SMS（默认）</td><td>不需要传递，会将 Endpoint 默认设置为HTTP_SHORT_URL</td></tr><tr><td>H5</td><td>不需要传递，会将 Endpoint 默认设置为 H5</td></tr><tr><td>NONE</td><td>所有 Endpoint 都支持（HTTP_URL/HTTP_SHORT_URL/H5/APP）默认为HTTP_SHORT_URL</td></tr></tbody></table>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type UpdateIntegrationEmployeesRequest struct {
@@ -11033,16 +11131,14 @@ type UpdateIntegrationEmployeesRequest struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工邀请方式可通过以下方式进行设置：
-	// 
-	// **H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
-	// **SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
+	// 员工邀请方式可通过以下途径进行设置：<ul><li>**SMS（默认）**：邀请将通过短信或企业微信消息发送。若场景非企业微信，则采用企业微信消息；其他情境下则使用短信通知。短信内含链接，点击后将进入微信小程序进行认证并加入企业的流程。</li><li>**H5**：将生成H5链接，用户点击链接后可进入H5页面进行认证并加入企业的流程。</li><li>**NONE**：系统会根据Endpoint生成签署链接，业务方需获取链接并通知客户。</li></ul>
 	InvitationNotifyType *string `json:"InvitationNotifyType,omitnil,omitempty" name:"InvitationNotifyType"`
 
-	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
-	// 
-	// 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
+	// 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**H5**： 第三方移动端浏览器进行嵌入，不支持小程序嵌入，过期时间一个月</li></ul>注意：InvitationNotifyType 和 Endpoint 的关系图<table><tbody><tr><td>通知类型（InvitationNotifyType）</td><td>Endpoint</td></tr><tr><td>SMS（默认）</td><td>不需要传递，会将 Endpoint 默认设置为HTTP_SHORT_URL</td></tr><tr><td>H5</td><td>不需要传递，会将 Endpoint 默认设置为 H5</td></tr><tr><td>NONE</td><td>所有 Endpoint 都支持（HTTP_URL/HTTP_SHORT_URL/H5/APP）默认为HTTP_SHORT_URL</td></tr></tbody></table>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *UpdateIntegrationEmployeesRequest) ToJsonString() string {
@@ -11062,6 +11158,7 @@ func (r *UpdateIntegrationEmployeesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "InvitationNotifyType")
 	delete(f, "JumpUrl")
+	delete(f, "Endpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIntegrationEmployeesRequest has unknown keys!", "")
 	}

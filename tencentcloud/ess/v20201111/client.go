@@ -6007,6 +6007,69 @@ func (c *Client) DescribeBillUsageDetailWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeCancelFlowsTaskRequest() (request *DescribeCancelFlowsTaskRequest) {
+    request = &DescribeCancelFlowsTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeCancelFlowsTask")
+    
+    
+    return
+}
+
+func NewDescribeCancelFlowsTaskResponse() (response *DescribeCancelFlowsTaskResponse) {
+    response = &DescribeCancelFlowsTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCancelFlowsTask
+// 通过[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeCancelFlowsTask(request *DescribeCancelFlowsTaskRequest) (response *DescribeCancelFlowsTaskResponse, err error) {
+    return c.DescribeCancelFlowsTaskWithContext(context.Background(), request)
+}
+
+// DescribeCancelFlowsTask
+// 通过[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeCancelFlowsTaskWithContext(ctx context.Context, request *DescribeCancelFlowsTaskRequest) (response *DescribeCancelFlowsTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCancelFlowsTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCancelFlowsTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCancelFlowsTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExtendedServiceAuthDetailRequest() (request *DescribeExtendedServiceAuthDetailRequest) {
     request = &DescribeExtendedServiceAuthDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

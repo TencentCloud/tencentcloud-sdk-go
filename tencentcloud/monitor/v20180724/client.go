@@ -3515,6 +3515,131 @@ func (c *Client) DescribeAlarmPolicyWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeAlarmSmsQuotaRequest() (request *DescribeAlarmSmsQuotaRequest) {
+    request = &DescribeAlarmSmsQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmSmsQuota")
+    
+    
+    return
+}
+
+func NewDescribeAlarmSmsQuotaResponse() (response *DescribeAlarmSmsQuotaResponse) {
+    response = &DescribeAlarmSmsQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAlarmSmsQuota
+// 获取告警短信配额
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALERTFILTERRULEDELETEFAILED = "FailedOperation.AlertFilterRuleDeleteFailed"
+//  FAILEDOPERATION_ALERTPOLICYCREATEFAILED = "FailedOperation.AlertPolicyCreateFailed"
+//  FAILEDOPERATION_ALERTPOLICYDELETEFAILED = "FailedOperation.AlertPolicyDeleteFailed"
+//  FAILEDOPERATION_ALERTPOLICYDESCRIBEFAILED = "FailedOperation.AlertPolicyDescribeFailed"
+//  FAILEDOPERATION_ALERTPOLICYMODIFYFAILED = "FailedOperation.AlertPolicyModifyFailed"
+//  FAILEDOPERATION_ALERTTRIGGERRULEDELETEFAILED = "FailedOperation.AlertTriggerRuleDeleteFailed"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
+//  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
+//  FAILEDOPERATION_DIMQUERYREQUESTFAILED = "FailedOperation.DimQueryRequestFailed"
+//  FAILEDOPERATION_DIVISIONBYZERO = "FailedOperation.DivisionByZero"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
+//  FAILEDOPERATION_DRUIDTABLENOTFOUND = "FailedOperation.DruidTableNotFound"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlarmSmsQuota(request *DescribeAlarmSmsQuotaRequest) (response *DescribeAlarmSmsQuotaResponse, err error) {
+    return c.DescribeAlarmSmsQuotaWithContext(context.Background(), request)
+}
+
+// DescribeAlarmSmsQuota
+// 获取告警短信配额
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALERTFILTERRULEDELETEFAILED = "FailedOperation.AlertFilterRuleDeleteFailed"
+//  FAILEDOPERATION_ALERTPOLICYCREATEFAILED = "FailedOperation.AlertPolicyCreateFailed"
+//  FAILEDOPERATION_ALERTPOLICYDELETEFAILED = "FailedOperation.AlertPolicyDeleteFailed"
+//  FAILEDOPERATION_ALERTPOLICYDESCRIBEFAILED = "FailedOperation.AlertPolicyDescribeFailed"
+//  FAILEDOPERATION_ALERTPOLICYMODIFYFAILED = "FailedOperation.AlertPolicyModifyFailed"
+//  FAILEDOPERATION_ALERTTRIGGERRULEDELETEFAILED = "FailedOperation.AlertTriggerRuleDeleteFailed"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
+//  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
+//  FAILEDOPERATION_DIMQUERYREQUESTFAILED = "FailedOperation.DimQueryRequestFailed"
+//  FAILEDOPERATION_DIVISIONBYZERO = "FailedOperation.DivisionByZero"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
+//  FAILEDOPERATION_DRUIDTABLENOTFOUND = "FailedOperation.DruidTableNotFound"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlarmSmsQuotaWithContext(ctx context.Context, request *DescribeAlarmSmsQuotaRequest) (response *DescribeAlarmSmsQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmSmsQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmSmsQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmSmsQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlertRulesRequest() (request *DescribeAlertRulesRequest) {
     request = &DescribeAlertRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4572,6 +4697,55 @@ func (c *Client) DescribeInstalledPluginsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeMonitorResourceInfoRequest() (request *DescribeMonitorResourceInfoRequest) {
+    request = &DescribeMonitorResourceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeMonitorResourceInfo")
+    
+    
+    return
+}
+
+func NewDescribeMonitorResourceInfoResponse() (response *DescribeMonitorResourceInfoResponse) {
+    response = &DescribeMonitorResourceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMonitorResourceInfo
+// 获取资源消耗页概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMonitorResourceInfo(request *DescribeMonitorResourceInfoRequest) (response *DescribeMonitorResourceInfoResponse, err error) {
+    return c.DescribeMonitorResourceInfoWithContext(context.Background(), request)
+}
+
+// DescribeMonitorResourceInfo
+// 获取资源消耗页概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMonitorResourceInfoWithContext(ctx context.Context, request *DescribeMonitorResourceInfoRequest) (response *DescribeMonitorResourceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonitorResourceInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonitorResourceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMonitorResourceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMonitorTypesRequest() (request *DescribeMonitorTypesRequest) {
     request = &DescribeMonitorTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4623,6 +4797,57 @@ func (c *Client) DescribeMonitorTypesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribePhoneAlarmFlowTotalCountRequest() (request *DescribePhoneAlarmFlowTotalCountRequest) {
+    request = &DescribePhoneAlarmFlowTotalCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePhoneAlarmFlowTotalCount")
+    
+    
+    return
+}
+
+func NewDescribePhoneAlarmFlowTotalCountResponse() (response *DescribePhoneAlarmFlowTotalCountResponse) {
+    response = &DescribePhoneAlarmFlowTotalCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePhoneAlarmFlowTotalCount
+// 查询周期内电话流水总数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePhoneAlarmFlowTotalCount(request *DescribePhoneAlarmFlowTotalCountRequest) (response *DescribePhoneAlarmFlowTotalCountResponse, err error) {
+    return c.DescribePhoneAlarmFlowTotalCountWithContext(context.Background(), request)
+}
+
+// DescribePhoneAlarmFlowTotalCount
+// 查询周期内电话流水总数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePhoneAlarmFlowTotalCountWithContext(ctx context.Context, request *DescribePhoneAlarmFlowTotalCountRequest) (response *DescribePhoneAlarmFlowTotalCountResponse, err error) {
+    if request == nil {
+        request = NewDescribePhoneAlarmFlowTotalCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePhoneAlarmFlowTotalCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePhoneAlarmFlowTotalCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePluginOverviewsRequest() (request *DescribePluginOverviewsRequest) {
     request = &DescribePluginOverviewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4646,7 +4871,7 @@ func NewDescribePluginOverviewsResponse() (response *DescribePluginOverviewsResp
 // 列出可安装的所有 Grafana 插件
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePluginOverviews(request *DescribePluginOverviewsRequest) (response *DescribePluginOverviewsResponse, err error) {
     return c.DescribePluginOverviewsWithContext(context.Background(), request)
@@ -4656,7 +4881,7 @@ func (c *Client) DescribePluginOverviews(request *DescribePluginOverviewsRequest
 // 列出可安装的所有 Grafana 插件
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePluginOverviewsWithContext(ctx context.Context, request *DescribePluginOverviewsRequest) (response *DescribePluginOverviewsResponse, err error) {
     if request == nil {

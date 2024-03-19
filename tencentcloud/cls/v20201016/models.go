@@ -7047,7 +7047,7 @@ type KafkaProtocolInfo struct {
 }
 
 type KafkaRechargeInfo struct {
-	// 主键ID
+	// Kafka数据订阅配置的ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
