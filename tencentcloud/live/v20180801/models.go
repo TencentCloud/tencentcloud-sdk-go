@@ -8953,12 +8953,27 @@ func (r *DescribeLiveWatermarkRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLiveWatermarksRequestParams struct {
+	// 水印名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 分页的索引参数，从1开始
+	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 分页的大小参数，默认值500
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type DescribeLiveWatermarksRequest struct {
 	*tchttp.BaseRequest
 	
+	// 水印名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分页的索引参数，从1开始
+	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 分页的大小参数，默认值500
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *DescribeLiveWatermarksRequest) ToJsonString() string {
@@ -8973,7 +8988,9 @@ func (r *DescribeLiveWatermarksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Name")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveWatermarksRequest has unknown keys!", "")
 	}

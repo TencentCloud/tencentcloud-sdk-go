@@ -251,6 +251,8 @@ type Action struct {
 	// <li> HTTP/2 访问（Http2）；</li>
 	// <li> 回源跟随重定向(UpstreamFollowRedirect)；</li>
 	// <li> 修改源站(Origin)。</li>
+	// <li> 七层回源超时(HTTPUpstreamTimeout)。</li>
+	// <li> Http应答（HttpResponse）。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalAction *NormalAction `json:"NormalAction,omitnil,omitempty" name:"NormalAction"`
 
@@ -11413,7 +11415,7 @@ type RuleCondition struct {
 	// <li> notexist: 不存在。</li>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求URL的查询字符串； </li> <li> request_header：HTTP请求头部。 </li>
+	// 匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求URL的查询字符串； </li> <li> request_header：HTTP请求头部。 </li><li> client_ip：客户端 IP。 </li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 对应匹配类型的参数值，仅在匹配类型为查询字符串或HTTP请求头并且运算符取值为存在或不存在时允许传空数组，对应匹配类型有：
@@ -11426,6 +11428,7 @@ type RuleCondition struct {
 	// <li> 客户端国家/地区：符合ISO3166标准的国家/地区标识；</li>
 	// <li> 查询字符串: 当前站点下URL请求中查询字符串的参数值，例如lang=cn&version=1中的cn和1； </li>
 	// <li> HTTP 请求头: HTTP请求头部字段值，例如Accept-Language:zh-CN,zh;q=0.9中的zh-CN,zh;q=0.9。 </li>
+	// <li> 客户端 IP: 当前请求携带的客户端请求IP，支持IPv4 IPv6, 支持IP段。 </li>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 是否忽略参数值的大小写，默认值为 false。

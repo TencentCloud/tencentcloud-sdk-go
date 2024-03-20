@@ -8017,8 +8017,8 @@ type IpFilter struct {
 	FilterType *string `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// IP 黑白名单列表
-	// 支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
-	// 最多可填充 50 个白名单或 50 个黑名单
+	// 支持 X.X.X.X 格式IPV4地址 或X:X:X:X:X:X:X:X 格式IPV6地址， 或网段格式/X（IPV4:1≤X≤32；IPV6:1≤X≤128）
+	// 最多可填充 200 个白名单或 200 个黑名单；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -8039,8 +8039,8 @@ type IpFilterPathRule struct {
 	FilterType *string `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// IP 黑白名单列表
-	// 支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
-	// 最多可填充 50 个白名单或 50 个黑名单
+	// 支持 X.X.X.X 格式IPV4地址 或X:X:X:X:X:X:X:X 格式IPV6地址， 或网段格式/X（IPV4:1≤X≤32；IPV6:1≤X≤128）
+	// 最多可填充 200 个白名单或 500 个黑名单；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 

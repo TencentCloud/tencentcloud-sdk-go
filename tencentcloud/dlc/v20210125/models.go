@@ -4172,6 +4172,10 @@ type DataEngineInfo struct {
 	// 引擎详细类型，支持：SparkSQL/SparkBatch/PrestoSQL/Kyuubi
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// 引擎网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
 }
 
 type DataFormat struct {

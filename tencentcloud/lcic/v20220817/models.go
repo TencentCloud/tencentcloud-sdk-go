@@ -1170,10 +1170,12 @@ type CreateRoomRequestParams struct {
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	//
+	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
@@ -1279,7 +1281,7 @@ type CreateRoomRequest struct {
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
@@ -4685,10 +4687,12 @@ type ModifyRoomRequestParams struct {
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	//
+	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
@@ -4786,7 +4790,7 @@ type ModifyRoomRequest struct {
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
@@ -5132,10 +5136,12 @@ type RoomInfo struct {
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	//
+	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 
@@ -5230,12 +5236,11 @@ type RoomItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效
+	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 }
 

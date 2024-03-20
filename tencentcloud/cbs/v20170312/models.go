@@ -3090,8 +3090,11 @@ type ModifyDisksRenewFlagRequestParams struct {
 	// 一个或多个待操作的云硬盘ID。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 云盘的续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+	// 	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 该参数支持设置云硬盘的自动续费周期，单位为月。
+	AutoRenewPeriod *uint64 `json:"AutoRenewPeriod,omitnil,omitempty" name:"AutoRenewPeriod"`
 }
 
 type ModifyDisksRenewFlagRequest struct {
@@ -3100,8 +3103,11 @@ type ModifyDisksRenewFlagRequest struct {
 	// 一个或多个待操作的云硬盘ID。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 云盘的续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+	// 	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 该参数支持设置云硬盘的自动续费周期，单位为月。
+	AutoRenewPeriod *uint64 `json:"AutoRenewPeriod,omitnil,omitempty" name:"AutoRenewPeriod"`
 }
 
 func (r *ModifyDisksRenewFlagRequest) ToJsonString() string {
@@ -3118,6 +3124,7 @@ func (r *ModifyDisksRenewFlagRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DiskIds")
 	delete(f, "RenewFlag")
+	delete(f, "AutoRenewPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDisksRenewFlagRequest has unknown keys!", "")
 	}
