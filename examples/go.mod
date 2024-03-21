@@ -6,7 +6,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/pierrec/lz4 v2.6.1+incompatible
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v1.0.753
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.802
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.875
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess v1.0.753
@@ -20,7 +20,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tic v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc v1.0.753
-	google.golang.org/protobuf v1.28.1
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
