@@ -56,11 +56,20 @@ const (
 	// 应用ID不存在。
 	FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
 
+	// AppId下没有此SdkAppId的资源
+	FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+
+	// SdkAppId未开通页面录制能力，请检查。
+	FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
+
 	// 任务已存在
 	FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 
 	// 调用接口时任务已结束。
 	FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
+
+	// 任务不存在或已结束
+	FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

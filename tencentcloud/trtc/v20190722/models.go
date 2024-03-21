@@ -2521,6 +2521,64 @@ func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWebRecordRequestParams struct {
+	// 开始页面录制时返回的任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeWebRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始页面录制时返回的任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeWebRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebRecordResponseParams struct {
+	// 1: 正在录制中
+	// 2: 任务不存在
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWebRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWebRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeWebRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DismissRoomByStrRoomIdRequestParams struct {
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4126,6 +4184,100 @@ func (r *StartStreamIngestResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartWebRecordRequestParams struct {
+	// 需要录制的网页URL
+	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
+
+	// 录制最大时长限制， 单位 s, 合法取值范围[0, 36000], 默认 36000s(10 小时)
+	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
+
+	// 云存储相关的参数，目前支持腾讯云对象存储，不支持第三方云存储以及VOD
+	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
+
+	// 页面录制视频参数
+	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
+
+	// TRTC的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
+	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+}
+
+type StartWebRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要录制的网页URL
+	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
+
+	// 录制最大时长限制， 单位 s, 合法取值范围[0, 36000], 默认 36000s(10 小时)
+	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
+
+	// 云存储相关的参数，目前支持腾讯云对象存储，不支持第三方云存储以及VOD
+	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
+
+	// 页面录制视频参数
+	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
+
+	// TRTC的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
+	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+}
+
+func (r *StartWebRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartWebRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RecordUrl")
+	delete(f, "MaxDurationLimit")
+	delete(f, "StorageParams")
+	delete(f, "WebRecordVideoParams")
+	delete(f, "SdkAppId")
+	delete(f, "RecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWebRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartWebRecordResponseParams struct {
+	// 录制任务的唯一Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartWebRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *StartWebRecordResponseParams `json:"Response"`
+}
+
+func (r *StartWebRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartWebRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopMCUMixTranscodeByStrRoomIdRequestParams struct {
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4372,6 +4524,60 @@ func (r *StopStreamIngestResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopWebRecordRequestParams struct {
+	// 需要停止的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type StopWebRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要停止的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *StopWebRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopWebRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopWebRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopWebRecordResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopWebRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *StopWebRecordResponseParams `json:"Response"`
+}
+
+func (r *StopWebRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopWebRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StorageFile struct {
 	// 录制文件对应的UserId，如果是混流的话的这里返回的是空串。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4468,7 +4674,7 @@ type TencentVod struct {
 	// 3: hls+mp4, 4: hls+aac(StreamType=1纯音频录制时有效)。
 	MediaType *uint64 `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 
-	// 仅支持API录制上传vod，该参数表示用户可以自定义录制文件名前缀，【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符】。前缀与自动生成的录制文件名之间用__UserDefine_u_分开。
+	// 仅支持API录制上传vod，该参数表示用户可以自定义录制文件名前缀，【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符】。前缀与自动生成的录制文件名之间用`__UserDefine_u_` 分开。
 	UserDefineRecordId *string `json:"UserDefineRecordId,omitnil,omitempty" name:"UserDefineRecordId"`
 }
 
@@ -4786,4 +4992,15 @@ type WaterMarkTimestamp struct {
 	// 1. Tencent （默认）
 	// 2. SourceHanSans
 	Font *string `json:"Font,omitnil,omitempty" name:"Font"`
+}
+
+type WebRecordVideoParams struct {
+	// 录制画面宽度，默认为1280，取值范围[0, 1920]
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 录制画面高度，默认为720，取值范围[0, 1080]
+	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 指定输出格式，可选hls,mp4
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 }

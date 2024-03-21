@@ -3090,7 +3090,17 @@ type BruteAttackInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 阻断状态：1-阻断成功；非1-阻断失败
+	// 0 -不阻断(客户端版本不支持)
+	// 1 -已阻断
+	// 2 -阻断失败(程序异常)
+	// 3 -不阻断(内网不阻断)
+	// 4 -可用区不支持阻断
+	// 10-阻断中
+	// 81-不阻断(未开启阻断)
+	// 82-不阻断(非专业版)
+	// 83-不阻断(已加白名单)
+	// 86-不阻断(系统白名单)
+	// 87-不阻断(客户端离线)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *uint64 `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
 
@@ -3145,6 +3155,14 @@ type BruteAttackInfo struct {
 	// 事件来源：0--阻断规则，1--威胁情报
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataFrom *int64 `json:"DataFrom,omitnil,omitempty" name:"DataFrom"`
+
+	// 破解状态说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackStatusDesc *string `json:"AttackStatusDesc,omitnil,omitempty" name:"AttackStatusDesc"`
+
+	// 阻断过期时间（仅阻断中事件有效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BanExpiredTime *string `json:"BanExpiredTime,omitnil,omitempty" name:"BanExpiredTime"`
 }
 
 type BruteAttackRule struct {
@@ -13367,6 +13385,9 @@ type DescribeBanStatusResponseParams struct {
 
 	// 是否弹窗提示信息 false: 关闭，true: 开启
 	ShowTips *bool `json:"ShowTips,omitnil,omitempty" name:"ShowTips"`
+
+	// 是否开启智能过白模式
+	OpenSmartMode *bool `json:"OpenSmartMode,omitnil,omitempty" name:"OpenSmartMode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -38805,15 +38826,21 @@ func (r *ModifyBanModeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBanStatusRequestParams struct {
-	// 阻断状态 0:关闭 1:开启
+	// 阻断开关状态: 0 -- 关闭 1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否开启智能过白模式
+	OpenSmartMode *bool `json:"OpenSmartMode,omitnil,omitempty" name:"OpenSmartMode"`
 }
 
 type ModifyBanStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 阻断状态 0:关闭 1:开启
+	// 阻断开关状态: 0 -- 关闭 1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否开启智能过白模式
+	OpenSmartMode *bool `json:"OpenSmartMode,omitnil,omitempty" name:"OpenSmartMode"`
 }
 
 func (r *ModifyBanStatusRequest) ToJsonString() string {
@@ -38829,6 +38856,7 @@ func (r *ModifyBanStatusRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Status")
+	delete(f, "OpenSmartMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBanStatusRequest has unknown keys!", "")
 	}

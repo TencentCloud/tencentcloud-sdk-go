@@ -64,7 +64,7 @@ type AddProjectResponseParams struct {
 	// 项目Id
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 是否为新项目
+	// 是否为新项目，1是新项目，0不是新项目
 	IsNew *int64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2024,7 +2024,7 @@ func (r *GetTagKeysRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagKeysResponseParams struct {
-	// 获取的下一页的Token值
+	// 获取的下一页的Token值，如果当前是最后一页，返回为空
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
 	// 标签键信息。
@@ -2113,7 +2113,7 @@ func (r *GetTagValuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagValuesResponseParams struct {
-	// 获取的下一页的Token值
+	// 获取的下一页的Token值，如果当前是最后一页，返回为空
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
 	// 标签列表。
@@ -2202,7 +2202,7 @@ func (r *GetTagsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagsResponseParams struct {
-	// 获取的下一页的Token值
+	// 获取的下一页的Token值，如果当前是最后一页，返回为空
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
 	// 标签列表。

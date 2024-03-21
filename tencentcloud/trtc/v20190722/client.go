@@ -2259,6 +2259,57 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeWebRecordRequest() (request *DescribeWebRecordRequest) {
+    request = &DescribeWebRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeWebRecord")
+    
+    
+    return
+}
+
+func NewDescribeWebRecordResponse() (response *DescribeWebRecordResponse) {
+    response = &DescribeWebRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWebRecord
+// 查询页面录制任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeWebRecord(request *DescribeWebRecordRequest) (response *DescribeWebRecordResponse, err error) {
+    return c.DescribeWebRecordWithContext(context.Background(), request)
+}
+
+// DescribeWebRecord
+// 查询页面录制任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeWebRecordWithContext(ctx context.Context, request *DescribeWebRecordRequest) (response *DescribeWebRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3603,6 +3654,65 @@ func (c *Client) StartStreamIngestWithContext(ctx context.Context, request *Star
     return
 }
 
+func NewStartWebRecordRequest() (request *StartWebRecordRequest) {
+    request = &StartWebRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "StartWebRecord")
+    
+    
+    return
+}
+
+func NewStartWebRecordResponse() (response *StartWebRecordResponse) {
+    response = &StartWebRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartWebRecord
+// 通过此接口可以发起 WEB 页面录制任务，在接口参数中指定录制 URL，录制分辨率，录制结果存储等参数。
+//
+// 因为参数或API逻辑问题会立即返回结果。而因为页面问题，如页面无法访问，会在回调中返回结果，请关注。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+//  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartWebRecord(request *StartWebRecordRequest) (response *StartWebRecordResponse, err error) {
+    return c.StartWebRecordWithContext(context.Background(), request)
+}
+
+// StartWebRecord
+// 通过此接口可以发起 WEB 页面录制任务，在接口参数中指定录制 URL，录制分辨率，录制结果存储等参数。
+//
+// 因为参数或API逻辑问题会立即返回结果。而因为页面问题，如页面无法访问，会在回调中返回结果，请关注。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+//  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartWebRecordWithContext(ctx context.Context, request *StartWebRecordRequest) (response *StartWebRecordResponse, err error) {
+    if request == nil {
+        request = NewStartWebRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartWebRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartWebRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopMCUMixTranscodeRequest() (request *StopMCUMixTranscodeRequest) {
     request = &StopMCUMixTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3867,6 +3977,57 @@ func (c *Client) StopStreamIngestWithContext(ctx context.Context, request *StopS
     request.SetContext(ctx)
     
     response = NewStopStreamIngestResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopWebRecordRequest() (request *StopWebRecordRequest) {
+    request = &StopWebRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "StopWebRecord")
+    
+    
+    return
+}
+
+func NewStopWebRecordResponse() (response *StopWebRecordResponse) {
+    response = &StopWebRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopWebRecord
+// 停止页面录制任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) StopWebRecord(request *StopWebRecordRequest) (response *StopWebRecordResponse, err error) {
+    return c.StopWebRecordWithContext(context.Background(), request)
+}
+
+// StopWebRecord
+// 停止页面录制任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) StopWebRecordWithContext(ctx context.Context, request *StopWebRecordRequest) (response *StopWebRecordResponse, err error) {
+    if request == nil {
+        request = NewStopWebRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopWebRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopWebRecordResponse()
     err = c.Send(request, response)
     return
 }

@@ -701,6 +701,10 @@ type Instance struct {
 	// 实例包含的登录服务详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginServices []*LoginService `json:"LoginServices,omitnil,omitempty" name:"LoginServices"`
+
+	// 应用服务的操作系统类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OSType *string `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
 type ItemPrice struct {
