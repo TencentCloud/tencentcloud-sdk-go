@@ -250,6 +250,9 @@ type ApproverOption struct {
 	// <li> **true** :不可以转他人处理</li></ul>
 	NoTransfer *bool `json:"NoTransfer,omitnil,omitempty" name:"NoTransfer"`
 
+	// 允许编辑签署人信息（嵌入式使用） 默认true-可以编辑 false-不可以编辑
+	CanEditApprover *bool `json:"CanEditApprover,omitnil,omitempty" name:"CanEditApprover"`
+
 	// 签署人信息补充类型，默认无需补充。
 	// 
 	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li>
@@ -2982,6 +2985,73 @@ type CreateFlowOption struct {
 
 	// 定制化发起合同弹窗的描述信息，描述信息最长500字符
 	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitnil,omitempty" name:"CustomCreateFlowDescription"`
+
+	//   禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
+	ForbidAddApprover *string `json:"ForbidAddApprover,omitnil,omitempty" name:"ForbidAddApprover"`
+
+	//   禁止设置设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
+	ForbidEditFlowProperties *string `json:"ForbidEditFlowProperties,omitnil,omitempty" name:"ForbidEditFlowProperties"`
+
+	// 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用，具体的控件类型如下
+	// <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
+	// <li>SIGN_SEAL : 企业印章</li>
+	// <li>SIGN_PAGING_SEAL : 骑缝章</li>
+	// <li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
+	// <li>SIGN_APPROVE : 签批</li>
+	// <li>SIGN_OPINION : 签署意见</li>
+	// <li>BUSI-FULL-NAME  : 企业全称</li>
+	// <li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
+	// <li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
+	// <li>PERSONAL-NAME : 签署人姓名</li>
+	// <li>PERSONAL-MOBILE : 签署人手机号</li>
+	// <li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
+	// <li>PERSONAL-IDCARD : 签署人证件号</li>
+	// <li>TEXT : 单行文本</li>
+	// <li>MULTI_LINE_TEXT : 多行文本</li>
+	// <li>CHECK_BOX : 勾选框</li>
+	// <li>SELECTOR : 选择器</li>
+	// <li>DIGIT : 数字</li>
+	// <li>DATE : 日期</li>
+	// <li>FILL_IMAGE : 图片</li>
+	// <li>ATTACHMENT : 附件</li>
+	// <li>EMAIL : 邮箱</li>
+	// <li>LOCATION : 地址</li>
+	// <li>EDUCATION : 学历</li>
+	// <li>GENDER : 性别</li>
+	// <li>DISTRICT : 省市区</li></ul>
+	HideComponentTypes []*string `json:"HideComponentTypes,omitnil,omitempty" name:"HideComponentTypes"`
+
+	// 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用，具体的控件类型如下
+	// <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
+	// <li>SIGN_SEAL : 企业印章</li>
+	// <li>SIGN_PAGING_SEAL : 骑缝章</li>
+	// <li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
+	// <li>SIGN_APPROVE : 签批</li>
+	// <li>SIGN_OPINION : 签署意见</li>
+	// <li>BUSI-FULL-NAME  : 企业全称</li>
+	// <li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
+	// <li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
+	// <li>PERSONAL-NAME : 签署人姓名</li>
+	// <li>PERSONAL-MOBILE : 签署人手机号</li>
+	// <li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
+	// <li>PERSONAL-IDCARD : 签署人证件号</li>
+	// <li>TEXT : 单行文本</li>
+	// <li>MULTI_LINE_TEXT : 多行文本</li>
+	// <li>CHECK_BOX : 勾选框</li>
+	// <li>SELECTOR : 选择器</li>
+	// <li>DIGIT : 数字</li>
+	// <li>DATE : 日期</li>
+	// <li>FILL_IMAGE : 图片</li>
+	// <li>ATTACHMENT : 附件</li>
+	// <li>EMAIL : 邮箱</li>
+	// <li>LOCATION : 地址</li>
+	// <li>EDUCATION : 学历</li>
+	// <li>GENDER : 性别</li>
+	// <li>DISTRICT : 省市区</li></ul>
+	ShowComponentTypes []*string `json:"ShowComponentTypes,omitnil,omitempty" name:"ShowComponentTypes"`
+
+	// 发起流程的可嵌入页面结果页配置
+	ResultPageConfig []*CreateResultPageConfig `json:"ResultPageConfig,omitnil,omitempty" name:"ResultPageConfig"`
 }
 
 // Predefined struct for user
@@ -5081,6 +5151,19 @@ func (r *CreateReleaseFlowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateReleaseFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateResultPageConfig struct {
+	// <ul>
+	//   <li>0 : 发起审批成功页面（通过接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlow/" target="_blank">创建发起流程web页面</a>发起时设置了NeedCreateReview参数为true）</li>
+	// </ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结果页标题，不超过50字
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 结果页描述，不超过200字
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user

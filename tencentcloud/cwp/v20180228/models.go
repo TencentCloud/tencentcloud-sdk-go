@@ -811,6 +811,10 @@ type AssetMachineBaseInfo struct {
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// cpu负载读数（仅linux系统有效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuLoadNum *string `json:"CpuLoadNum,omitnil,omitempty" name:"CpuLoadNum"`
 }
 
 type AssetMachineDetail struct {

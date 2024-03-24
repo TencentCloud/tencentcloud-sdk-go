@@ -6898,6 +6898,14 @@ type HTTPSListener struct {
 	// 监听器的通道组ID，如果监听器属于通道，则为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 支持的TLS版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
+
+	// 支持的TLS密码套件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
 }
 
 type HttpHeaderParam struct {
@@ -8960,6 +8968,12 @@ type ProxyGroupDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
+
+	// 是否支持设置TSL设置
+	// 0表示不支持；
+	// 1表示支持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportTLSChoice *uint64 `json:"IsSupportTLSChoice,omitnil,omitempty" name:"IsSupportTLSChoice"`
 }
 
 type ProxyGroupInfo struct {
@@ -9187,6 +9201,12 @@ type ProxyInfo struct {
 	// 是否是开启了auto scale的通道，0表示否，1表示是。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAutoScaleProxy *int64 `json:"IsAutoScaleProxy,omitnil,omitempty" name:"IsAutoScaleProxy"`
+
+	// 是否允许设置TLS配置
+	// 0表示不支持；
+	// 1表示支持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportTLSChoice *int64 `json:"IsSupportTLSChoice,omitnil,omitempty" name:"IsSupportTLSChoice"`
 }
 
 type ProxySimpleInfo struct {
