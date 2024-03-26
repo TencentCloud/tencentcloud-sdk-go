@@ -635,10 +635,10 @@ type structEncoder struct {
 	fieldEncs []encoderFunc
 }
 
-var UseEmptyNil = true
+var UseOmitNil = true
 
 func shouldOmit(f field, fv reflect.Value) bool {
-	if UseEmptyNil {
+	if UseOmitNil {
 		return !fv.IsValid() || (f.omitNil || f.omitEmpty) && isNilValue(fv)
 	} else {
 		return !fv.IsValid() || (f.omitNil || f.omitEmpty) && isEmptyValue(fv)
