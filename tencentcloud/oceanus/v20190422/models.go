@@ -541,7 +541,7 @@ type CreateFolderRequestParams struct {
 	// 新建文件夹名
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 新建文件夹的父目录ID
+	// 新建文件夹的父目录ID（根目录为"root"）
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 文件夹类型，0是任务文件夹，1是依赖文件夹
@@ -557,7 +557,7 @@ type CreateFolderRequest struct {
 	// 新建文件夹名
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 新建文件夹的父目录ID
+	// 新建文件夹的父目录ID（根目录为"root"）
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 文件夹类型，0是任务文件夹，1是依赖文件夹

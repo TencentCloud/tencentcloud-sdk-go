@@ -4913,7 +4913,7 @@ func NewModifyAclRuleResponse() (response *ModifyAclRuleResponse) {
 }
 
 // ModifyAclRule
-// 修改AC策略，目前只支持预设规则的是否应用到新增topic这一项的修改
+// 修改ACL策略，目前只支持预设规则的是否应用到新增topic这一项的修改
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4926,7 +4926,7 @@ func (c *Client) ModifyAclRule(request *ModifyAclRuleRequest) (response *ModifyA
 }
 
 // ModifyAclRule
-// 修改AC策略，目前只支持预设规则的是否应用到新增topic这一项的修改
+// 修改ACL策略，目前只支持预设规则的是否应用到新增topic这一项的修改
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

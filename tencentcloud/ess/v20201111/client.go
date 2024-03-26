@@ -8351,7 +8351,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //
 // 
 //
-// 2.<font color="red">静默（自动）签署不支持合同签署方存在填写</font>功能
+// 2.<font color="red">静默（自动）签署不支持非本企业合同签署方存在填写</font>功能
 //
 // 
 //
@@ -8421,7 +8421,7 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 //
 // 
 //
-// 2.<font color="red">静默（自动）签署不支持合同签署方存在填写</font>功能
+// 2.<font color="red">静默（自动）签署不支持非本企业合同签署方存在填写</font>功能
 //
 // 
 //

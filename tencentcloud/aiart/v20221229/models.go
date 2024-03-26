@@ -207,6 +207,79 @@ type LogoRect struct {
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
+// Predefined struct for user
+type QueryTextToImageProJobRequestParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryTextToImageProJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryTextToImageProJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryTextToImageProJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryTextToImageProJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryTextToImageProJobResponseParams struct {
+	// 当前任务状态码：
+	// 1：排队中、3：处理中、5：处理失败、7：处理完成。
+	JobStatusCode *string `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
+
+	// 当前任务状态：排队中、处理中、处理失败或者处理完成。
+	JobStatusMsg *string `json:"JobStatusMsg,omitnil,omitempty" name:"JobStatusMsg"`
+
+	// 任务处理失败错误码。
+	JobErrorCode *string `json:"JobErrorCode,omitnil,omitempty" name:"JobErrorCode"`
+
+	// 任务处理失败错误信息。
+	JobErrorMsg *string `json:"JobErrorMsg,omitnil,omitempty" name:"JobErrorMsg"`
+
+	// 生成图 URL 列表，有效期1小时，请及时保存。
+	ResultImage []*string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 结果 detail 数组，Success 代表成功。
+	ResultDetails []*string `json:"ResultDetails,omitnil,omitempty" name:"ResultDetails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryTextToImageProJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryTextToImageProJobResponseParams `json:"Response"`
+}
+
+func (r *QueryTextToImageProJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryTextToImageProJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResultConfig struct {
 	// 生成图分辨率
 	// 
@@ -214,6 +287,115 @@ type ResultConfig struct {
 	// 
 	// 智能图生图支持生成以下分辨率的图片：origin（与输入图分辨率一致）、768:768（1:1）、768:1024（3:4）、1024:768（4:3），不传默认使用origin，如果指定生成的长宽比与输入图长宽比差异过大可能导致图片内容被裁剪
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+// Predefined struct for user
+type SubmitTextToImageProJobRequestParams struct {
+	// 文本描述。 
+	// 算法将根据输入的文本智能生成与之相关的图像。 
+	// 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 绘画风格。
+	// 请在 [文生图（高级版）风格列表](https://cloud.tencent.com/document/product/1668/104567) 中选择期望的风格，传入风格编号。
+	// 不传默认不指定风格。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 生成图分辨率。
+	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 文生图引擎，默认使用engine1。 
+	// 取值：  
+	// engine1  
+	// engine2
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+}
+
+type SubmitTextToImageProJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文本描述。 
+	// 算法将根据输入的文本智能生成与之相关的图像。 
+	// 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 绘画风格。
+	// 请在 [文生图（高级版）风格列表](https://cloud.tencent.com/document/product/1668/104567) 中选择期望的风格，传入风格编号。
+	// 不传默认不指定风格。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 生成图分辨率。
+	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 文生图引擎，默认使用engine1。 
+	// 取值：  
+	// engine1  
+	// engine2
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+}
+
+func (r *SubmitTextToImageProJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTextToImageProJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "Style")
+	delete(f, "Resolution")
+	delete(f, "LogoAdd")
+	delete(f, "Engine")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTextToImageProJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTextToImageProJobResponseParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitTextToImageProJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitTextToImageProJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitTextToImageProJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTextToImageProJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

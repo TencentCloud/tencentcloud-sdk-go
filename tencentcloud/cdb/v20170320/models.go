@@ -2450,6 +2450,12 @@ type CreateCloneInstanceRequestParams struct {
 
 	// 项目ID，默认项目ID0
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 付费类型，PRE_PAID：包年包月，USED_PAID：按量计费。默认为按量计费
+	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
+
+	// 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 type CreateCloneInstanceRequest struct {
@@ -2517,6 +2523,12 @@ type CreateCloneInstanceRequest struct {
 
 	// 项目ID，默认项目ID0
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 付费类型，PRE_PAID：包年包月，USED_PAID：按量计费。默认为按量计费
+	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
+
+	// 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -2552,6 +2564,8 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DryRun")
 	delete(f, "CageId")
 	delete(f, "ProjectId")
+	delete(f, "PayType")
+	delete(f, "Period")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -15104,6 +15118,18 @@ type TagsInfoOfInstance struct {
 	Tags []*TagInfoUnit `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type TaskAttachInfo struct {
+	// 升级任务：
+	// ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachKey *string `json:"AttachKey,omitnil,omitempty" name:"AttachKey"`
+
+	// 升级任务：
+	// ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachValue *string `json:"AttachValue,omitnil,omitempty" name:"AttachValue"`
+}
+
 type TaskDetail struct {
 	// 错误码。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
@@ -15156,6 +15182,10 @@ type TaskDetail struct {
 
 	// 异步任务的请求 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 任务的附加信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskAttachInfo []*TaskAttachInfo `json:"TaskAttachInfo,omitnil,omitempty" name:"TaskAttachInfo"`
 }
 
 // Predefined struct for user

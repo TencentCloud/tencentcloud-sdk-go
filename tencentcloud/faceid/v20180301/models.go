@@ -2214,6 +2214,84 @@ func (r *GetFaceIdResultResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetFaceIdRiskInfoRequestParams struct {
+	// SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
+}
+
+type GetFaceIdRiskInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
+}
+
+func (r *GetFaceIdRiskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFaceIdRiskInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FaceIdToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdRiskInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFaceIdRiskInfoResponseParams struct {
+	// 描述当前请求所在设备的风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceInfoTag *string `json:"DeviceInfoTag,omitnil,omitempty" name:"DeviceInfoTag"`
+
+	// 描述当前请求所在设备的风险等级，共4级，详情如下： 1 - 安全 2 - 低风险 3 - 中风险 4 - 高危 ，-1表示未获取到风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceInfoLevel *int64 `json:"DeviceInfoLevel,omitnil,omitempty" name:"DeviceInfoLevel"`
+
+	// 设备id标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 描述当前请求所在设备的相机指纹风险等级，共4级，详情如下： 1 - 安全 2 - 低风险 3 - 中风险 4 - 高危 ，-1表示未获取到风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CameraInfoLevel *int64 `json:"CameraInfoLevel,omitnil,omitempty" name:"CameraInfoLevel"`
+
+	// 描述当前请求所在设备的相机指纹风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备，空表示没有相机指纹风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CameraInfoTag *string `json:"CameraInfoTag,omitnil,omitempty" name:"CameraInfoTag"`
+
+	// 获取token时透传的信息	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFaceIdRiskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFaceIdRiskInfoResponseParams `json:"Response"`
+}
+
+func (r *GetFaceIdRiskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFaceIdRiskInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetFaceIdTokenRequestParams struct {
 	// 本地上传照片(LOCAL)、商业库(BUSINESS)
 	CompareLib *string `json:"CompareLib,omitnil,omitempty" name:"CompareLib"`
@@ -2320,6 +2398,70 @@ func (r *GetFaceIdTokenResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFaceIdTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFaceidRiskInfoTokenRequestParams struct {
+	// SDK中生成的Meta字符串
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
+
+	// 透传参数 1000长度字符串
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+}
+
+type GetFaceidRiskInfoTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// SDK中生成的Meta字符串
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
+
+	// 透传参数 1000长度字符串
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+}
+
+func (r *GetFaceidRiskInfoTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFaceidRiskInfoTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Meta")
+	delete(f, "Extra")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceidRiskInfoTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFaceidRiskInfoTokenResponseParams struct {
+	// 有效期 10分钟。只能完成1次核身。
+	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFaceidRiskInfoTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFaceidRiskInfoTokenResponseParams `json:"Response"`
+}
+
+func (r *GetFaceidRiskInfoTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFaceidRiskInfoTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

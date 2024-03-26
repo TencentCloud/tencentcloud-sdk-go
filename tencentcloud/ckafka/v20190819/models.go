@@ -8389,7 +8389,7 @@ type ModifyAclRuleRequestParams struct {
 	// ACL策略名
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 是否应用到新增的Topic
+	// 修改预设规则时传入,是否应用到新增的Topic
 	IsApplied *int64 `json:"IsApplied,omitnil,omitempty" name:"IsApplied"`
 }
 
@@ -8402,7 +8402,7 @@ type ModifyAclRuleRequest struct {
 	// ACL策略名
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 是否应用到新增的Topic
+	// 修改预设规则时传入,是否应用到新增的Topic
 	IsApplied *int64 `json:"IsApplied,omitnil,omitempty" name:"IsApplied"`
 }
 

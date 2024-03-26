@@ -41,6 +41,9 @@ const (
 	// 服务内部错误，请稍后重试。
 	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 
+	// 任务不存在。
+	FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+
 	// 整个请求体太大（通常主要是图片）。
 	FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 
@@ -61,6 +64,9 @@ const (
 
 	// 图片为空。
 	INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+
+	// 当前引擎不支持自定义水印。
+	INVALIDPARAMETERVALUE_LOGOPARAMERR = "InvalidParameterValue.LogoParamErr"
 
 	// 参数字段或者值有误
 	INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"

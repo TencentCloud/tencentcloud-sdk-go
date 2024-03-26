@@ -1226,6 +1226,65 @@ func (c *Client) GetFaceIdResultWithContext(ctx context.Context, request *GetFac
     return
 }
 
+func NewGetFaceIdRiskInfoRequest() (request *GetFaceIdRiskInfoRequest) {
+    request = &GetFaceIdRiskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("faceid", APIVersion, "GetFaceIdRiskInfo")
+    
+    
+    return
+}
+
+func NewGetFaceIdRiskInfoResponse() (response *GetFaceIdRiskInfoResponse) {
+    response = &GetFaceIdRiskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFaceIdRiskInfo
+// 完成验证后，用FaceIdToken调用本接口获取设备风险相关信息，FaceIdToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
+//  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) GetFaceIdRiskInfo(request *GetFaceIdRiskInfoRequest) (response *GetFaceIdRiskInfoResponse, err error) {
+    return c.GetFaceIdRiskInfoWithContext(context.Background(), request)
+}
+
+// GetFaceIdRiskInfo
+// 完成验证后，用FaceIdToken调用本接口获取设备风险相关信息，FaceIdToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
+//  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) GetFaceIdRiskInfoWithContext(ctx context.Context, request *GetFaceIdRiskInfoRequest) (response *GetFaceIdRiskInfoResponse, err error) {
+    if request == nil {
+        request = NewGetFaceIdRiskInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFaceIdRiskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFaceIdRiskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFaceIdTokenRequest() (request *GetFaceIdTokenRequest) {
     request = &GetFaceIdTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1281,6 +1340,65 @@ func (c *Client) GetFaceIdTokenWithContext(ctx context.Context, request *GetFace
     request.SetContext(ctx)
     
     response = NewGetFaceIdTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetFaceidRiskInfoTokenRequest() (request *GetFaceidRiskInfoTokenRequest) {
+    request = &GetFaceidRiskInfoTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("faceid", APIVersion, "GetFaceidRiskInfoToken")
+    
+    
+    return
+}
+
+func NewGetFaceidRiskInfoTokenResponse() (response *GetFaceidRiskInfoTokenResponse) {
+    response = &GetFaceidRiskInfoTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFaceidRiskInfoToken
+// 每次调用人脸核身SDK服务前，需先调用本接口获取SDKToken，用来串联核身流程，在验证完成后，用于获取风险结果信息，该Token仅能核身一次。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) GetFaceidRiskInfoToken(request *GetFaceidRiskInfoTokenRequest) (response *GetFaceidRiskInfoTokenResponse, err error) {
+    return c.GetFaceidRiskInfoTokenWithContext(context.Background(), request)
+}
+
+// GetFaceidRiskInfoToken
+// 每次调用人脸核身SDK服务前，需先调用本接口获取SDKToken，用来串联核身流程，在验证完成后，用于获取风险结果信息，该Token仅能核身一次。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) GetFaceidRiskInfoTokenWithContext(ctx context.Context, request *GetFaceidRiskInfoTokenRequest) (response *GetFaceidRiskInfoTokenResponse, err error) {
+    if request == nil {
+        request = NewGetFaceidRiskInfoTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFaceidRiskInfoToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFaceidRiskInfoTokenResponse()
     err = c.Send(request, response)
     return
 }

@@ -1633,15 +1633,15 @@ type ChannelCreateFlowApproversRequestParams struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-
 	// 补充企业签署人信息。
 	// 
 	// - 如果发起方指定的补充签署人是企业签署人，则需要提供企业名称或者企业OpenId；
 	// 
 	// - 如果不指定，则使用姓名和手机号进行补充。
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署人信息补充方式
 	// 
@@ -1650,6 +1650,9 @@ type ChannelCreateFlowApproversRequestParams struct {
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同流程组的组ID, 在合同流程组场景下，生成合同流程组的签署链接时需要赋值
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 type ChannelCreateFlowApproversRequest struct {
@@ -1666,15 +1669,15 @@ type ChannelCreateFlowApproversRequest struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-
 	// 补充企业签署人信息。
 	// 
 	// - 如果发起方指定的补充签署人是企业签署人，则需要提供企业名称或者企业OpenId；
 	// 
 	// - 如果不指定，则使用姓名和手机号进行补充。
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署人信息补充方式
 	// 
@@ -1683,6 +1686,9 @@ type ChannelCreateFlowApproversRequest struct {
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同流程组的组ID, 在合同流程组场景下，生成合同流程组的签署链接时需要赋值
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 func (r *ChannelCreateFlowApproversRequest) ToJsonString() string {
@@ -1698,10 +1704,11 @@ func (r *ChannelCreateFlowApproversRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Agent")
-	delete(f, "FlowId")
 	delete(f, "Approvers")
+	delete(f, "FlowId")
 	delete(f, "FillApproverType")
 	delete(f, "Operator")
+	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowApproversRequest has unknown keys!", "")
 	}
@@ -2151,6 +2158,9 @@ type ChannelCreateFlowGroupByFilesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
+	// 合同组签署方信息。
+	Approvers []*FlowGroupApprovers `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2248,6 +2258,9 @@ type ChannelCreateFlowGroupByTemplatesResponseParams struct {
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 	// 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
 	TaskInfos []*TaskInfo `json:"TaskInfos,omitnil,omitempty" name:"TaskInfos"`
+
+	// 合同组签署方信息
+	Approvers []*FlowGroupApprovers `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7444,6 +7457,9 @@ type CreateSignUrlsRequestParams struct {
 	// 
 	// 注：`使用此参数需要与flow_ids数量一致并且一一对应, 表示在对应同序号的流程中的参与角色ID`，
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
+
+	// 合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+	FlowGroupUrlInfo *FlowGroupUrlInfo `json:"FlowGroupUrlInfo,omitnil,omitempty" name:"FlowGroupUrlInfo"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -7548,6 +7564,9 @@ type CreateSignUrlsRequest struct {
 	// 
 	// 注：`使用此参数需要与flow_ids数量一致并且一一对应, 表示在对应同序号的流程中的参与角色ID`，
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
+
+	// 合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+	FlowGroupUrlInfo *FlowGroupUrlInfo `json:"FlowGroupUrlInfo,omitnil,omitempty" name:"FlowGroupUrlInfo"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -7579,6 +7598,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "Hides")
 	delete(f, "RecipientIds")
+	delete(f, "FlowGroupUrlInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}
@@ -8968,6 +8988,9 @@ type FillApproverInfo struct {
 	// 
 	// 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
+
+	// 合同流程ID，补充合同组子合同动态签署人时必传。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type FillError struct {
@@ -9374,6 +9397,24 @@ type FlowFileInfo struct {
 	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 }
 
+type FlowGroupApproverInfo struct {
+	// 合同流程ID。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
+}
+
+type FlowGroupApprovers struct {
+	// 合同流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 签署方信息，包含合同ID和角色ID用于定位RecipientId。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+}
+
 type FlowGroupOptions struct {
 	// 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
 	// <ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
@@ -9384,6 +9425,11 @@ type FlowGroupOptions struct {
 	// <ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
 	// <li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
 	OtherApproverSignEach *bool `json:"OtherApproverSignEach,omitnil,omitempty" name:"OtherApproverSignEach"`
+}
+
+type FlowGroupUrlInfo struct {
+	// 合同组子合同和签署方的信息，用于补充动态签署人。	
+	FlowGroupApproverInfos []*FlowGroupApproverInfo `json:"FlowGroupApproverInfos,omitnil,omitempty" name:"FlowGroupApproverInfos"`
 }
 
 type FlowInfo struct {

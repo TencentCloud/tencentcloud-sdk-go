@@ -29479,6 +29479,8 @@ type ModifyTaskInfoRequestParams struct {
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
 	// 责任人
+	//
+	// Deprecated: InCharge is deprecated.
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
 	// 任务备注
@@ -29498,6 +29500,15 @@ type ModifyTaskInfoRequestParams struct {
 
 	// 依赖配置
 	DependencyConfigDTOs []*DependencyConfig `json:"DependencyConfigDTOs,omitnil,omitempty" name:"DependencyConfigDTOs"`
+
+	// 执行耗时
+	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
+
+	// 脚本是否改变
+	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 责任人id
+	InChargeIds []*string `json:"InChargeIds,omitnil,omitempty" name:"InChargeIds"`
 }
 
 type ModifyTaskInfoRequest struct {
@@ -29589,6 +29600,15 @@ type ModifyTaskInfoRequest struct {
 
 	// 依赖配置
 	DependencyConfigDTOs []*DependencyConfig `json:"DependencyConfigDTOs,omitnil,omitempty" name:"DependencyConfigDTOs"`
+
+	// 执行耗时
+	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
+
+	// 脚本是否改变
+	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 责任人id
+	InChargeIds []*string `json:"InChargeIds,omitnil,omitempty" name:"InChargeIds"`
 }
 
 func (r *ModifyTaskInfoRequest) ToJsonString() string {
@@ -29632,6 +29652,9 @@ func (r *ModifyTaskInfoRequest) FromJsonString(s string) error {
 	delete(f, "TargetServer")
 	delete(f, "DependencyWorkflow")
 	delete(f, "DependencyConfigDTOs")
+	delete(f, "ExecutionTTL")
+	delete(f, "ScriptChange")
+	delete(f, "InChargeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskInfoRequest has unknown keys!", "")
 	}
