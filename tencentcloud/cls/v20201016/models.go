@@ -10156,15 +10156,31 @@ type SearchLogRequestParams struct {
 	// 使用*或空字符串可查询所有日志
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
+	// 检索语法规则，默认值为0，推荐使用1 (CQL语法)。
+	// 0：Lucene语法，1：CQL语法。
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - 要检索分析的日志主题列表，最大支持20个日志主题。
+	// - 检索单个日志主题时请使用TopicId。
+	// - 不能同时使用TopicId和Topics。
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 	// 注意：
@@ -10173,17 +10189,6 @@ type SearchLogRequestParams struct {
 	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
-	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
-
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-	// 两种返回方式在编码格式上有少量区别，建议使用true
-	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
-
 	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
 	// 0：自动采样;
 	// 0～1：按指定采样率采样，例如0.02;
@@ -10191,15 +10196,10 @@ type SearchLogRequestParams struct {
 	// 默认值为1
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 检索语法规则，默认值为0。
-	// 0：Lucene语法，1：CQL语法。
-	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
-
-	// - 要检索分析的日志主题列表，最大支持20个日志主题。
-	// - 检索单个日志主题时请使用TopicId。
-	// - 不能同时使用TopicId和Topics。
-	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
+	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+	// 两种返回方式在编码格式上有少量区别，建议使用true
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
 type SearchLogRequest struct {
@@ -10216,15 +10216,31 @@ type SearchLogRequest struct {
 	// 使用*或空字符串可查询所有日志
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
+	// 检索语法规则，默认值为0，推荐使用1 (CQL语法)。
+	// 0：Lucene语法，1：CQL语法。
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - 要检索分析的日志主题列表，最大支持20个日志主题。
+	// - 检索单个日志主题时请使用TopicId。
+	// - 不能同时使用TopicId和Topics。
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 	// 注意：
@@ -10233,17 +10249,6 @@ type SearchLogRequest struct {
 	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
-	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
-
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-	// 两种返回方式在编码格式上有少量区别，建议使用true
-	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
-
 	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
 	// 0：自动采样;
 	// 0～1：按指定采样率采样，例如0.02;
@@ -10251,15 +10256,10 @@ type SearchLogRequest struct {
 	// 默认值为1
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 检索语法规则，默认值为0。
-	// 0：Lucene语法，1：CQL语法。
-	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
-
-	// - 要检索分析的日志主题列表，最大支持20个日志主题。
-	// - 检索单个日志主题时请使用TopicId。
-	// - 不能同时使用TopicId和Topics。
-	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
+	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+	// 两种返回方式在编码格式上有少量区别，建议使用true
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -10277,14 +10277,14 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "From")
 	delete(f, "To")
 	delete(f, "Query")
-	delete(f, "TopicId")
-	delete(f, "Limit")
-	delete(f, "Context")
-	delete(f, "Sort")
-	delete(f, "UseNewAnalysis")
-	delete(f, "SamplingRate")
 	delete(f, "SyntaxRule")
+	delete(f, "TopicId")
 	delete(f, "Topics")
+	delete(f, "Limit")
+	delete(f, "Sort")
+	delete(f, "Context")
+	delete(f, "SamplingRate")
+	delete(f, "UseNewAnalysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}

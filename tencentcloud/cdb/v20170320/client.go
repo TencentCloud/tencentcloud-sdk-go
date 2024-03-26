@@ -9518,7 +9518,7 @@ func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstanc
 }
 
 // ReleaseIsolatedDBInstances
-// 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
+// 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。仅用于按量计费实例的解隔离，包年包月实例的解隔离请使用 RenewDBInstance 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
@@ -9538,7 +9538,7 @@ func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesR
 }
 
 // ReleaseIsolatedDBInstances
-// 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
+// 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。仅用于按量计费实例的解隔离，包年包月实例的解隔离请使用 RenewDBInstance 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"

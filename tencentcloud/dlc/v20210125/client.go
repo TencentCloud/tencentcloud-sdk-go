@@ -7144,6 +7144,83 @@ func (c *Client) QueryResultWithContext(ctx context.Context, request *QueryResul
     return
 }
 
+func NewQueryTaskCostDetailRequest() (request *QueryTaskCostDetailRequest) {
+    request = &QueryTaskCostDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "QueryTaskCostDetail")
+    
+    
+    return
+}
+
+func NewQueryTaskCostDetailResponse() (response *QueryTaskCostDetailResponse) {
+    response = &QueryTaskCostDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryTaskCostDetail
+// 该接口（QueryTaskCostDetail）用于查询任务消耗明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryTaskCostDetail(request *QueryTaskCostDetailRequest) (response *QueryTaskCostDetailResponse, err error) {
+    return c.QueryTaskCostDetailWithContext(context.Background(), request)
+}
+
+// QueryTaskCostDetail
+// 该接口（QueryTaskCostDetail）用于查询任务消耗明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryTaskCostDetailWithContext(ctx context.Context, request *QueryTaskCostDetailRequest) (response *QueryTaskCostDetailResponse, err error) {
+    if request == nil {
+        request = NewQueryTaskCostDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryTaskCostDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryTaskCostDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewDataEngineRequest() (request *RenewDataEngineRequest) {
     request = &RenewDataEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},

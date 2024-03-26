@@ -2318,6 +2318,10 @@ type GetFaceIdTokenRequestParams struct {
 
 	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+	// 示例值：1
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type GetFaceIdTokenRequest struct {
@@ -2348,6 +2352,10 @@ type GetFaceIdTokenRequest struct {
 
 	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+	// 示例值：1
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *GetFaceIdTokenRequest) ToJsonString() string {
@@ -2370,6 +2378,7 @@ func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "UseCos")
 	delete(f, "Encryption")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdTokenRequest has unknown keys!", "")
 	}

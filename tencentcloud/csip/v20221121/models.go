@@ -4864,7 +4864,7 @@ type ServerRisk struct {
 	// 资产类型
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 风险等级
+	// 风险等级 low:低危 high:高危 middle:中危 info:提示 extreme:严重
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 协议

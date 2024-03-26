@@ -365,6 +365,65 @@ func (c *Client) CreateCronJobWithContext(ctx context.Context, request *CreateCr
     return
 }
 
+func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
+    request = &CreateEnvironmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("pts", APIVersion, "CreateEnvironment")
+    
+    
+    return
+}
+
+func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
+    response = &CreateEnvironmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEnvironment
+// 创建环境
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
+    return c.CreateEnvironmentWithContext(context.Background(), request)
+}
+
+// CreateEnvironment
+// 创建环境
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewCreateEnvironmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnvironment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFileRequest() (request *CreateFileRequest) {
     request = &CreateFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -652,6 +711,65 @@ func (c *Client) DeleteCronJobsWithContext(ctx context.Context, request *DeleteC
     return
 }
 
+func NewDeleteEnvironmentsRequest() (request *DeleteEnvironmentsRequest) {
+    request = &DeleteEnvironmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("pts", APIVersion, "DeleteEnvironments")
+    
+    
+    return
+}
+
+func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
+    response = &DeleteEnvironmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteEnvironments
+// 删除环境
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
+    return c.DeleteEnvironmentsWithContext(context.Background(), request)
+}
+
+// DeleteEnvironments
+// 删除环境
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
+    if request == nil {
+        request = NewDeleteEnvironmentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEnvironments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEnvironmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFilesRequest() (request *DeleteFilesRequest) {
     request = &DeleteFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -676,6 +794,7 @@ func NewDeleteFilesResponse() (response *DeleteFilesResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -689,6 +808,7 @@ func (c *Client) DeleteFiles(request *DeleteFilesRequest) (response *DeleteFiles
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1159,6 +1279,67 @@ func (c *Client) DescribeCronJobsWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeCronJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
+    request = &DescribeEnvironmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("pts", APIVersion, "DescribeEnvironments")
+    
+    
+    return
+}
+
+func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) {
+    response = &DescribeEnvironmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnvironments
+// 查看环境列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
+    return c.DescribeEnvironmentsWithContext(context.Background(), request)
+}
+
+// DescribeEnvironments
+// 查看环境列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvironmentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvironmentsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2349,6 +2530,65 @@ func (c *Client) UpdateCronJobWithContext(ctx context.Context, request *UpdateCr
     request.SetContext(ctx)
     
     response = NewUpdateCronJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateEnvironmentRequest() (request *UpdateEnvironmentRequest) {
+    request = &UpdateEnvironmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("pts", APIVersion, "UpdateEnvironment")
+    
+    
+    return
+}
+
+func NewUpdateEnvironmentResponse() (response *UpdateEnvironmentResponse) {
+    response = &UpdateEnvironmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateEnvironment
+// 更新环境
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (response *UpdateEnvironmentResponse, err error) {
+    return c.UpdateEnvironmentWithContext(context.Background(), request)
+}
+
+// UpdateEnvironment
+// 更新环境
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, request *UpdateEnvironmentRequest) (response *UpdateEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewUpdateEnvironmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEnvironment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateEnvironmentResponse()
     err = c.Send(request, response)
     return
 }

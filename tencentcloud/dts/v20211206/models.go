@@ -3138,6 +3138,10 @@ type DescribeSubscribeDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil,omitempty" name:"KafkaConfig"`
 
+	// 订阅内置kafka的版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
 	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
@@ -3856,7 +3860,7 @@ type Endpoint struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// tdsql mysql版的节点类型，枚举值为proxy、set。tdsqlmysql必填
+	// 节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
@@ -7218,7 +7222,7 @@ type SyncDBEndpointInfos struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
-	// 数据库信息。注意：如果数据类型为tdsqlmysql，此处Endpoint数组的顺序应该与set顺序对应，第一个分片（shardkey范围起始为0的分片）必须要输入在第一个位置
+	// 数据库信息。注意：如果数据库类型为tdsqlmysql，此处Endpoint数组的顺序应满足规则：proxy节点放在set节点之前。如果SrcConnectType选择proxy接入则只需要填写proxy节点即可。如果选择set接入，数组中第一个set节点必须是shardkey范围起始为0的分片
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info []*Endpoint `json:"Info,omitnil,omitempty" name:"Info"`
 }

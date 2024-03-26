@@ -188,6 +188,14 @@ type AlarmEventInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSendSuccess *uint64 `json:"IsSendSuccess,omitnil,omitempty" name:"IsSendSuccess"`
 
+	// 是否在免打扰时间内，0:否, 1:是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InQuitePeriods *uint64 `json:"InQuitePeriods,omitnil,omitempty" name:"InQuitePeriods"`
+
+	// 告警记录id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
 	// 消息ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
@@ -1553,6 +1561,10 @@ type BatchKillIntegrationTaskInstancesResponseParams struct {
 	// 任务总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
+	// 实际传的为taskId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1927,6 +1939,9 @@ type BatchRerunIntegrationTaskInstancesResponseParams struct {
 
 	// 任务总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实际传的为taskId
+	TaskNames []*string `json:"TaskNames,omitnil,omitempty" name:"TaskNames"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4408,6 +4423,9 @@ type CreateDataSourceRequestParams struct {
 
 	// 连接测试结果
 	ConnectResult *string `json:"ConnectResult,omitnil,omitempty" name:"ConnectResult"`
+
+	// 开发环境数据源配置
+	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
 }
 
 type CreateDataSourceRequest struct {
@@ -4466,6 +4484,9 @@ type CreateDataSourceRequest struct {
 
 	// 连接测试结果
 	ConnectResult *string `json:"ConnectResult,omitnil,omitempty" name:"ConnectResult"`
+
+	// 开发环境数据源配置
+	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
 }
 
 func (r *CreateDataSourceRequest) ToJsonString() string {
@@ -4498,6 +4519,7 @@ func (r *CreateDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "COSBucket")
 	delete(f, "COSRegion")
 	delete(f, "ConnectResult")
+	delete(f, "DevelopmentParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataSourceRequest has unknown keys!", "")
 	}
@@ -6629,6 +6651,18 @@ type DataSourceInfo struct {
 	// 数据源页面展示类型，与Type对应
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+
+	// 当前数据源生产源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 当前数据源开发源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevelopmentId *uint64 `json:"DevelopmentId,omitnil,omitempty" name:"DevelopmentId"`
+
+	// 同params 内容为开发数据源的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
 }
 
 type DataSourceInfoPage struct {
@@ -8604,9 +8638,6 @@ type DescribeAlarmReceiverRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 消息ID
-	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
-
 	// 类型
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
@@ -8618,6 +8649,12 @@ type DescribeAlarmReceiverRequestParams struct {
 
 	// 告警时间
 	AlarmTime *string `json:"AlarmTime,omitnil,omitempty" name:"AlarmTime"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 告警记录id
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
 	MonitorType *uint64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
@@ -8638,9 +8675,6 @@ type DescribeAlarmReceiverRequest struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 消息ID
-	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
-
 	// 类型
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
@@ -8652,6 +8686,12 @@ type DescribeAlarmReceiverRequest struct {
 
 	// 告警时间
 	AlarmTime *string `json:"AlarmTime,omitnil,omitempty" name:"AlarmTime"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 告警记录id
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
 	MonitorType *uint64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
@@ -8673,11 +8713,12 @@ func (r *DescribeAlarmReceiverRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "ProjectId")
-	delete(f, "MessageId")
 	delete(f, "TaskType")
 	delete(f, "AlarmRecipient")
 	delete(f, "AlarmRecipientName")
 	delete(f, "AlarmTime")
+	delete(f, "MessageId")
+	delete(f, "RecordId")
 	delete(f, "MonitorType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmReceiverRequest has unknown keys!", "")
@@ -10742,7 +10783,7 @@ func (r *DescribeDataSourceWithoutInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataTypesRequestParams struct {
-	// 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|CDW|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
+	// 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|TCHouse-P|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
 	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
 
 	// 项目ID。
@@ -10752,7 +10793,7 @@ type DescribeDataTypesRequestParams struct {
 type DescribeDataTypesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|CDW|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
+	// 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|TCHouse-P|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
 	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
 
 	// 项目ID。
@@ -27446,7 +27487,7 @@ type MakePlanTaskOpsDto struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskBaseInfo *TaskOpsDto `json:"TaskBaseInfo,omitnil,omitempty" name:"TaskBaseInfo"`
 
-	// 补录计划该任务实例数
+	// 补录该任务当前已生成的实例数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
@@ -27457,6 +27498,10 @@ type MakePlanTaskOpsDto struct {
 	// 补录任务实例成功百分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessPercent *int64 `json:"SuccessPercent,omitnil,omitempty" name:"SuccessPercent"`
+
+	// 预计生成的总实例个数，由于是异步生成，-1代表实例还未完完全生成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitnil,omitempty" name:"InstanceTotalCount"`
 }
 
 type MakePlanTaskOpsDtoCollection struct {
@@ -28133,6 +28178,9 @@ type ModifyDataSourceRequestParams struct {
 
 	// 操作项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 数据源开发环境配置
+	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
 }
 
 type ModifyDataSourceRequest struct {
@@ -28194,6 +28242,9 @@ type ModifyDataSourceRequest struct {
 
 	// 操作项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 数据源开发环境配置
+	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
 }
 
 func (r *ModifyDataSourceRequest) ToJsonString() string {
@@ -28227,6 +28278,7 @@ func (r *ModifyDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "COSBucket")
 	delete(f, "COSRegion")
 	delete(f, "ProjectId")
+	delete(f, "DevelopmentParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataSourceRequest has unknown keys!", "")
 	}
@@ -30964,6 +31016,20 @@ type QualityScoreTrend struct {
 	// 日评分列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DailyScoreList []*DailyScoreInfo `json:"DailyScoreList,omitnil,omitempty" name:"DailyScoreList"`
+}
+
+type QuietPeriod struct {
+	// 代表一周里的哪些天，1代表周一，7代表周日，以此类推
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DaysOfWeek []*uint64 `json:"DaysOfWeek,omitnil,omitempty" name:"DaysOfWeek"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type RealTimeTaskInstanceNodeInfo struct {
@@ -36007,6 +36073,10 @@ type TaskAlarmInfo struct {
 	// 告警接收人类型，0指定人员；1任务责任人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmRecipientType *uint64 `json:"AlarmRecipientType,omitnil,omitempty" name:"AlarmRecipientType"`
+
+	// 免打扰时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuietPeriods []*QuietPeriod `json:"QuietPeriods,omitnil,omitempty" name:"QuietPeriods"`
 
 	// 企业微信群Hook地址，多个hook地址使用,隔开
 	// 注意：此字段可能返回 null，表示取不到有效值。
