@@ -612,7 +612,7 @@ func main() {
 
 在 >= v1.0.739 的版本, SDK使用`omitnil`标签来序列化请求, 此时nil数组会被忽略掉, 但是空数组可以被正常发送。
 
-在 >= v1.0.885 版本中我们对这一特性增加了开关, 当你不希望发送一个空数组时, 可以通过 `json.UseOmitNil = false` 来关闭该特性, 参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
+在 >= v1.0.885 版本中我们对这一特性增加了开关, 当你不希望发送一个空数组时, 可以通过 `json.OmitBehaviour = json.OmitEmpty` 来关闭该特性, 参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
 
 # 支持产品列表
 

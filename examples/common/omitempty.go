@@ -16,8 +16,8 @@ func main() {
 	// SDK 默认会发送 `长度为0的数组` 而忽略 `nil数组`
 	sendJsonRequest()
 
-	// 当你不希望发送一个 `长度为0的数组` 时, 可以通过 json.UseOmitNil 来关闭此特性
-	json.UseOmitNil = false
+	// 当你不希望发送一个 `长度为0的数组` 时, 可以通过 json.OmitBehaviour 来关闭此特性
+	json.OmitBehaviour = json.OmitEmpty
 	sendJsonRequest()
 }
 
