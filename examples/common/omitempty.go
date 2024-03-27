@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	trtc "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc/v20190722"
@@ -11,17 +11,17 @@ import (
 )
 
 func main() {
-	//SDK 使用 `omitempty` 标签来序列化你的 request 对象, 因为这样可以避免上报空数组/对象.
-	//但对有的接口而言, 长度为0的数组 和 nil数组 是有区别的, 如果你希望在请求中携带空数组, 需要使用Common Client 来发送请求.
+	// SDK 使用 `omitnil` 标签来序列化你的 request 对象, 因为这样可以区分 `nil数组` 和 `长度为0的数组`
 
-	// 错误的做法
-	wrongWay()
+	// SDK 默认会发送 `长度为0的数组` 而忽略 `nil数组`
+	sendJsonRequest()
 
-	// 正确的做法
-	rightWay()
+	// 当你不希望发送一个 `长度为0的数组` 时, 可以通过 json.OmitBehaviour 来关闭此特性
+	json.OmitBehaviour = json.OmitEmpty
+	sendJsonRequest()
 }
 
-func wrongWay() {
+func sendJsonRequest() {
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
@@ -42,33 +42,4 @@ func wrongWay() {
 	}
 
 	fmt.Println(response.ToJsonString())
-}
-
-func rightWay() {
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
-	cpf := profile.NewClientProfile()
-	cpf.Debug = true
-
-	client := common.NewCommonClient(credential, regions.Guangzhou, cpf)
-	request := tchttp.NewCommonRequest("trtc", "2019-07-22", "UpdatePublishCdnStream")
-	req := map[string]interface{}{
-		"PublishCdnParams": []*trtc.McuPublishCdnParam{},
-	}
-
-	// 发送的请求body为 `{"PublishCdnParams":[]}`
-	err := request.SetActionParameters(req)
-	if err != nil {
-		panic(err)
-	}
-
-	response := tchttp.NewCommonResponse()
-
-	err = client.Send(request, response)
-	if err != nil {
-		fmt.Printf("fail to invoke api: %v \n", err)
-	}
-
-	fmt.Println(string(response.GetBody()))
 }
