@@ -6519,6 +6519,71 @@ func (c *Client) RecognizeTravelCardOCRWithContext(ctx context.Context, request 
     return
 }
 
+func NewReconstructDocumentRequest() (request *ReconstructDocumentRequest) {
+    request = &ReconstructDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "ReconstructDocument")
+    
+    
+    return
+}
+
+func NewReconstructDocumentResponse() (response *ReconstructDocumentResponse) {
+    response = &ReconstructDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReconstructDocument
+// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ReconstructDocument(request *ReconstructDocumentRequest) (response *ReconstructDocumentResponse, err error) {
+    return c.ReconstructDocumentWithContext(context.Background(), request)
+}
+
+// ReconstructDocument
+// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ReconstructDocumentWithContext(ctx context.Context, request *ReconstructDocumentRequest) (response *ReconstructDocumentResponse, err error) {
+    if request == nil {
+        request = NewReconstructDocumentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReconstructDocument require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReconstructDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
     request = &ResidenceBookletOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

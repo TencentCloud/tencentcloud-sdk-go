@@ -3593,18 +3593,14 @@ func (r *CreateAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateCLSLogsetRequestParams struct {
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 }
 
 type CreateCLSLogsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 }
 
@@ -3654,9 +3650,7 @@ func (r *CreateCLSLogsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCLSTopicRequestParams struct {
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 
 	// 日志主题名。
@@ -3669,9 +3663,7 @@ type CreateCLSTopicRequestParams struct {
 type CreateCLSTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 
 	// 日志主题名。
@@ -6615,9 +6607,7 @@ func (r *DeleteAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DeleteCLSTopicRequestParams struct {
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 
 	// 日志主题 ID。
@@ -6627,9 +6617,7 @@ type DeleteCLSTopicRequestParams struct {
 type DeleteCLSTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 
 	// 日志主题 ID。
@@ -8715,18 +8703,14 @@ func (r *DescribeCDNUsageDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCLSLogsetsRequestParams struct {
-	// CLS 日志集所属的地域，取值有：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 }
 
 type DescribeCLSLogsetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// CLS 日志集所属的地域，取值有：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 }
 
@@ -8843,9 +8827,7 @@ func (r *DescribeCLSPushTargetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCLSTopicsRequestParams struct {
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 
 	// 日志主题所属日志集 ID。
@@ -8864,9 +8846,7 @@ type DescribeCLSTopicsRequestParams struct {
 type DescribeCLSTopicsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集所属地区：
-	// ap-guangzhou：广州；
-	// ap-singapore：新加坡。
+	// 日志集所属的地域，取值有： <li>ap-guangzhou：广州；</li> <li>ap-beijing：北京；</li> <li>ap-chengdu：成都；</li> <li>ap-chongqing：重庆；</li> <li>ap-nanjing：南京；</li> <li>ap-shanghai：上海；</li> <li>ap-singapore：新加坡。</li>
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
 
 	// 日志主题所属日志集 ID。

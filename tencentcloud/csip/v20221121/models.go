@@ -357,7 +357,7 @@ type AssetViewCFGRisk struct {
 	// 影响资产
 	AffectAsset *string `json:"AffectAsset,omitnil,omitempty" name:"AffectAsset"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 首次识别时间
@@ -406,7 +406,7 @@ type AssetViewPortRisk struct {
 	// 影响资产
 	AffectAsset *string `json:"AffectAsset,omitnil,omitempty" name:"AffectAsset"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 资产类型
@@ -464,7 +464,7 @@ type AssetViewVULRisk struct {
 	// 影响资产
 	AffectAsset *string `json:"AffectAsset,omitnil,omitempty" name:"AffectAsset"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 资产类型
@@ -568,7 +568,7 @@ type AssetViewWeakPassRisk struct {
 	// 影响资产
 	AffectAsset *string `json:"AffectAsset,omitnil,omitempty" name:"AffectAsset"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 资产类型
@@ -4552,7 +4552,7 @@ type PortViewPortRisk struct {
 	// 影响资产
 	NoHandleCount *int64 `json:"NoHandleCount,omitnil,omitempty" name:"NoHandleCount"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 协议
@@ -5260,7 +5260,7 @@ type VULRiskAdvanceCFGList struct {
 	// 漏洞名称
 	VULName *string `json:"VULName,omitnil,omitempty" name:"VULName"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 识别来源
@@ -5335,7 +5335,7 @@ type VULViewVULRisk struct {
 	// 影响资产
 	NoHandleCount *int64 `json:"NoHandleCount,omitnil,omitempty" name:"NoHandleCount"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 组件
@@ -5461,7 +5461,7 @@ type WebsiteRisk struct {
 	// 影响资产
 	AffectAsset *string `json:"AffectAsset,omitnil,omitempty" name:"AffectAsset"`
 
-	// 风险等级
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 最近识别时间

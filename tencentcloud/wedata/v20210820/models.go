@@ -36344,6 +36344,62 @@ type TaskCanvasInfo struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 自依赖类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfDepend *int64 `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
+
+	// 资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
+
+	// 优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunPriority *string `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
+
+	// 可充实次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TryLimit *string `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
+
+	// 可充实
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryAble *string `json:"RetryAble,omitnil,omitempty" name:"RetryAble"`
+
+	// 重试等待事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryWait *string `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
+
+	// 最近提交时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastSchedulerCommitTime *string `json:"LastSchedulerCommitTime,omitnil,omitempty" name:"LastSchedulerCommitTime"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUser *string `json:"UpdateUser,omitnil,omitempty" name:"UpdateUser"`
+
+	// 更新人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUserId *string `json:"UpdateUserId,omitnil,omitempty" name:"UpdateUserId"`
+
+	// yarn队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
+
+	// 可执行的timeToLive
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
 }
 
 type TaskDsDTOLiteV2 struct {

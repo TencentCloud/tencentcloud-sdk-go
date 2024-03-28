@@ -98,6 +98,12 @@ const (
 	// 账号不存在。
 	INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 
+	// 审批单号不存在。
+	INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+
+	// 公司信息已经存在。
+	INVALIDPARAMETERVALUE_COMPANYEXIST = "InvalidParameterValue.CompanyExist"
+
 	// 实例不存在。
 	INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 
@@ -112,6 +118,9 @@ const (
 
 	// 技能组已存在。
 	INVALIDPARAMETERVALUE_SKILLGROUPEXIST = "InvalidParameterValue.SkillGroupExist"
+
+	// 待审核单已经超限，暂时不能再提交
+	INVALIDPARAMETERVALUE_WAITINGAPPROVALOVERFLOW = "InvalidParameterValue.WaitingApprovalOverflow"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"

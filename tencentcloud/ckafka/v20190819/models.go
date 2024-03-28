@@ -2494,6 +2494,77 @@ func (r *CreatePostPaidInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrometheusRequestParams struct {
+	// ckafka实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// vpc地址
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网地址
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type CreatePrometheusRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// vpc地址
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网地址
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+func (r *CreatePrometheusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrometheusResponseParams struct {
+	// 打通普罗米修斯
+	Result *PrometheusResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrometheusResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrometheusResponseParams `json:"Response"`
+}
+
+func (r *CreatePrometheusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRouteRequestParams struct {
 	// 实例唯一id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5274,7 +5345,7 @@ type DescribeGroupInfoRequestParams struct {
 	// （过滤条件）按照实例 ID 过滤。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组，Consumer-group，这里是数组形式，格式：GroupList.0=xxx&GroupList.1=yyy。
+	// Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
 	GroupList []*string `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 }
 
@@ -5284,7 +5355,7 @@ type DescribeGroupInfoRequest struct {
 	// （过滤条件）按照实例 ID 过滤。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组，Consumer-group，这里是数组形式，格式：GroupList.0=xxx&GroupList.1=yyy。
+	// Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
 	GroupList []*string `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 }
 
@@ -5777,6 +5848,63 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusRequestParams struct {
+	// ckafka实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribePrometheusRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribePrometheusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusResponseParams struct {
+	// Prometheus监控映射列表
+	Result []*PrometheusDTO `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9772,6 +9900,28 @@ type PrivateLinkParam struct {
 
 	// 客户实例的vpcId
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+}
+
+type PrometheusDTO struct {
+	// export类型（jmx_export\node_export）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// vip
+	SourceIp *string `json:"SourceIp,omitnil,omitempty" name:"SourceIp"`
+
+	// vport
+	SourcePort *int64 `json:"SourcePort,omitnil,omitempty" name:"SourcePort"`
+}
+
+type PrometheusResult struct {
+	// 返回的code，0为正常，非0为错误
+	ReturnCode *string `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// 成功消息
+	ReturnMessage *string `json:"ReturnMessage,omitnil,omitempty" name:"ReturnMessage"`
+
+	// 操作型返回的Data数据,可能有flowId等
+	Data *OperateResponseData `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type RecordMapping struct {

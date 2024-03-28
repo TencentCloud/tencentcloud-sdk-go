@@ -92,6 +92,9 @@ type CreateInstanceByApiRequestParams struct {
 
 	// 标签列表
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 版本
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 }
 
 type CreateInstanceByApiRequest struct {
@@ -120,6 +123,9 @@ type CreateInstanceByApiRequest struct {
 
 	// 标签列表
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 版本
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 }
 
 func (r *CreateInstanceByApiRequest) ToJsonString() string {
@@ -142,6 +148,7 @@ func (r *CreateInstanceByApiRequest) FromJsonString(s string) error {
 	delete(f, "AdminPassword")
 	delete(f, "Resources")
 	delete(f, "Tags")
+	delete(f, "ProductVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceByApiRequest has unknown keys!", "")
 	}

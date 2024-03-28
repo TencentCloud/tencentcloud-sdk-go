@@ -1069,7 +1069,7 @@ type CreateModelServiceRequestParams struct {
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部
+	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 }
 
@@ -1189,7 +1189,7 @@ type CreateModelServiceRequest struct {
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部
+	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 }
 
@@ -6741,6 +6741,10 @@ type ImageInfo struct {
 	// 镜像名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 是否支持数据构建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportDataPipeline *bool `json:"SupportDataPipeline,omitnil,omitempty" name:"SupportDataPipeline"`
 }
 
 type InferCodeInfo struct {
@@ -7411,7 +7415,7 @@ type ModifyModelServiceRequestParams struct {
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部
+	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 }
 
@@ -7507,7 +7511,7 @@ type ModifyModelServiceRequest struct {
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部
+	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 }
 

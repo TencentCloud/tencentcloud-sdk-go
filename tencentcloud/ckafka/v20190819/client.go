@@ -1196,6 +1196,73 @@ func (c *Client) CreatePostPaidInstanceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreatePrometheusRequest() (request *CreatePrometheusRequest) {
+    request = &CreatePrometheusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreatePrometheus")
+    
+    
+    return
+}
+
+func NewCreatePrometheusResponse() (response *CreatePrometheusResponse) {
+    response = &CreatePrometheusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrometheus
+// 添加普罗米修斯监控1
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreatePrometheus(request *CreatePrometheusRequest) (response *CreatePrometheusResponse, err error) {
+    return c.CreatePrometheusWithContext(context.Background(), request)
+}
+
+// CreatePrometheus
+// 添加普罗米修斯监控1
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreatePrometheusWithContext(ctx context.Context, request *CreatePrometheusRequest) (response *CreatePrometheusResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrometheus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrometheusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRouteRequest() (request *CreateRouteRequest) {
     request = &CreateRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3776,6 +3843,73 @@ func (c *Client) DescribeInstancesDetailWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeInstancesDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusRequest() (request *DescribePrometheusRequest) {
+    request = &DescribePrometheusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribePrometheus")
+    
+    
+    return
+}
+
+func NewDescribePrometheusResponse() (response *DescribePrometheusResponse) {
+    response = &DescribePrometheusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrometheus
+// 获取实例Prometheus信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribePrometheus(request *DescribePrometheusRequest) (response *DescribePrometheusResponse, err error) {
+    return c.DescribePrometheusWithContext(context.Background(), request)
+}
+
+// DescribePrometheus
+// 获取实例Prometheus信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribePrometheusWithContext(ctx context.Context, request *DescribePrometheusRequest) (response *DescribePrometheusResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusResponse()
     err = c.Send(request, response)
     return
 }

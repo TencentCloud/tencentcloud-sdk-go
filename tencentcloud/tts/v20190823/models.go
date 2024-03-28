@@ -314,10 +314,14 @@ type TextToVoiceRequestParams struct {
 	SegmentRate *uint64 `json:"SegmentRate,omitnil,omitempty" name:"SegmentRate"`
 
 	// 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、撒娇(sajiao)、厌恶(disgusted)、震惊(amaze)、平静(peaceful)、兴奋(exciting)、傲娇(aojiao)、解说(jieshuo)
+	// 示例值：neutral
 	EmotionCategory *string `json:"EmotionCategory,omitnil,omitempty" name:"EmotionCategory"`
 
 	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
+
+	// 一句话复刻音色id，使用一句话复刻音色时需填写。若使用一句话复刻，VoiceType请填入固定值“200000000”
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 type TextToVoiceRequest struct {
@@ -364,10 +368,14 @@ type TextToVoiceRequest struct {
 	SegmentRate *uint64 `json:"SegmentRate,omitnil,omitempty" name:"SegmentRate"`
 
 	// 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、撒娇(sajiao)、厌恶(disgusted)、震惊(amaze)、平静(peaceful)、兴奋(exciting)、傲娇(aojiao)、解说(jieshuo)
+	// 示例值：neutral
 	EmotionCategory *string `json:"EmotionCategory,omitnil,omitempty" name:"EmotionCategory"`
 
 	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
+
+	// 一句话复刻音色id，使用一句话复刻音色时需填写。若使用一句话复刻，VoiceType请填入固定值“200000000”
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {
@@ -396,6 +404,7 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "SegmentRate")
 	delete(f, "EmotionCategory")
 	delete(f, "EmotionIntensity")
+	delete(f, "FastVoiceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
 	}

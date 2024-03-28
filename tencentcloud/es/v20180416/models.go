@@ -3754,7 +3754,7 @@ type InstanceInfo struct {
 	// 实例所属子网的UID
 	SubnetUid *string `json:"SubnetUid,omitnil,omitempty" name:"SubnetUid"`
 
-	// 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁, 2:创建集群时初始化中
+	// 实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 自动续费标识。取值范围：
@@ -3884,7 +3884,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployMode *uint64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
-	// ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+	// ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccess *string `json:"PublicAccess,omitnil,omitempty" name:"PublicAccess"`
 
@@ -3895,11 +3895,11 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPrivateUrl *string `json:"KibanaPrivateUrl,omitnil,omitempty" name:"KibanaPrivateUrl"`
 
-	// Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+	// Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
 
-	// Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+	// Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
 
@@ -4019,7 +4019,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessPercent *float64 `json:"ProcessPercent,omitnil,omitempty" name:"ProcessPercent"`
 
-	// Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
+	// Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitnil,omitempty" name:"KibanaAlteringPublicAccess"`
 
@@ -4038,6 +4038,14 @@ type InstanceInfo struct {
 	// 自定义kibana内网url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomKibanaPrivateUrl *string `json:"CustomKibanaPrivateUrl,omitnil,omitempty" name:"CustomKibanaPrivateUrl"`
+
+	// 节点出站访问详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutboundPublicAcls []*OutboundPublicAcl `json:"OutboundPublicAcls,omitnil,omitempty" name:"OutboundPublicAcls"`
+
+	// 网络连接方案
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetConnectScheme *string `json:"NetConnectScheme,omitnil,omitempty" name:"NetConnectScheme"`
 }
 
 type InstanceLog struct {
@@ -4550,6 +4558,9 @@ type NodeView struct {
 
 	// 是否充当协调节点的角色
 	IsCoordinationNode *bool `json:"IsCoordinationNode,omitnil,omitempty" name:"IsCoordinationNode"`
+
+	// CVM运行状态
+	CVMStatus *string `json:"CVMStatus,omitnil,omitempty" name:"CVMStatus"`
 }
 
 type Operation struct {
@@ -4655,6 +4666,16 @@ type OptionalWebServiceInfo struct {
 	// 自定义cerebro内网url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomPrivateUrl *string `json:"CustomPrivateUrl,omitnil,omitempty" name:"CustomPrivateUrl"`
+}
+
+type OutboundPublicAcl struct {
+	// 允许节点出站访问的节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 允许节点出站访问的白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhiteHostList []*string `json:"WhiteHostList,omitnil,omitempty" name:"WhiteHostList"`
 }
 
 type ProcessDetail struct {
@@ -4884,6 +4905,9 @@ type RestartNodesRequestParams struct {
 
 	// 节点状态，在蓝绿模式中使用；离线节点蓝绿有风险
 	IsOffline *bool `json:"IsOffline,omitnil,omitempty" name:"IsOffline"`
+
+	// cvm延迟上架时间
+	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
 }
 
 type RestartNodesRequest struct {
@@ -4903,6 +4927,9 @@ type RestartNodesRequest struct {
 
 	// 节点状态，在蓝绿模式中使用；离线节点蓝绿有风险
 	IsOffline *bool `json:"IsOffline,omitnil,omitempty" name:"IsOffline"`
+
+	// cvm延迟上架时间
+	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
 }
 
 func (r *RestartNodesRequest) ToJsonString() string {
@@ -4922,6 +4949,7 @@ func (r *RestartNodesRequest) FromJsonString(s string) error {
 	delete(f, "ForceRestart")
 	delete(f, "RestartMode")
 	delete(f, "IsOffline")
+	delete(f, "CvmDelayOnlineTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartNodesRequest has unknown keys!", "")
 	}
@@ -5693,6 +5721,17 @@ type UpdateInstanceRequestParams struct {
 
 	// 变更为https集群，默认是http
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 节点出站访问详细信息
+	OutboundPublicAcls []*OutboundPublicAcl `json:"OutboundPublicAcls,omitnil,omitempty" name:"OutboundPublicAcls"`
+
+	// 节点出站访问操作
+	// OPEN 开启
+	// CLOSE 关闭
+	OutboundPublicAccess *string `json:"OutboundPublicAccess,omitnil,omitempty" name:"OutboundPublicAccess"`
+
+	// cvm延迟上架参数
+	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
 }
 
 type UpdateInstanceRequest struct {
@@ -5820,6 +5859,17 @@ type UpdateInstanceRequest struct {
 
 	// 变更为https集群，默认是http
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 节点出站访问详细信息
+	OutboundPublicAcls []*OutboundPublicAcl `json:"OutboundPublicAcls,omitnil,omitempty" name:"OutboundPublicAcls"`
+
+	// 节点出站访问操作
+	// OPEN 开启
+	// CLOSE 关闭
+	OutboundPublicAccess *string `json:"OutboundPublicAccess,omitnil,omitempty" name:"OutboundPublicAccess"`
+
+	// cvm延迟上架参数
+	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -5869,6 +5919,9 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "KibanaPrivateDomain")
 	delete(f, "CerebroPrivateDomain")
 	delete(f, "Protocol")
+	delete(f, "OutboundPublicAcls")
+	delete(f, "OutboundPublicAccess")
+	delete(f, "CvmDelayOnlineTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}
@@ -6500,6 +6553,9 @@ type UpgradeInstanceRequestParams struct {
 
 	// 滚动模式时，是否跳过检查，进行强制重启。默认值为false
 	SkipCheckForceRestart *bool `json:"SkipCheckForceRestart,omitnil,omitempty" name:"SkipCheckForceRestart"`
+
+	// cvm延迟上架参数
+	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
 }
 
 type UpgradeInstanceRequest struct {
@@ -6528,6 +6584,9 @@ type UpgradeInstanceRequest struct {
 
 	// 滚动模式时，是否跳过检查，进行强制重启。默认值为false
 	SkipCheckForceRestart *bool `json:"SkipCheckForceRestart,omitnil,omitempty" name:"SkipCheckForceRestart"`
+
+	// cvm延迟上架参数
+	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -6550,6 +6609,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "UpgradeMode")
 	delete(f, "CosBackup")
 	delete(f, "SkipCheckForceRestart")
+	delete(f, "CvmDelayOnlineTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

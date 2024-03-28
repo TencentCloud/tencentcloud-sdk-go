@@ -505,6 +505,63 @@ func (c *Client) CreateCarrierPrivilegeNumberApplicantWithContext(ctx context.Co
     return
 }
 
+func NewCreateCompanyApplyRequest() (request *CreateCompanyApplyRequest) {
+    request = &CreateCompanyApplyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateCompanyApply")
+    
+    
+    return
+}
+
+func NewCreateCompanyApplyResponse() (response *CreateCompanyApplyResponse) {
+    response = &CreateCompanyApplyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCompanyApply
+// 创建公司资质申请（1、首次使用接口，建议先在云联络中心控制台查看各个资料模版:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMPANYEXIST = "InvalidParameterValue.CompanyExist"
+//  INVALIDPARAMETERVALUE_WAITINGAPPROVALOVERFLOW = "InvalidParameterValue.WaitingApprovalOverflow"
+func (c *Client) CreateCompanyApply(request *CreateCompanyApplyRequest) (response *CreateCompanyApplyResponse, err error) {
+    return c.CreateCompanyApplyWithContext(context.Background(), request)
+}
+
+// CreateCompanyApply
+// 创建公司资质申请（1、首次使用接口，建议先在云联络中心控制台查看各个资料模版:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMPANYEXIST = "InvalidParameterValue.CompanyExist"
+//  INVALIDPARAMETERVALUE_WAITINGAPPROVALOVERFLOW = "InvalidParameterValue.WaitingApprovalOverflow"
+func (c *Client) CreateCompanyApplyWithContext(ctx context.Context, request *CreateCompanyApplyRequest) (response *CreateCompanyApplyResponse, err error) {
+    if request == nil {
+        request = NewCreateCompanyApplyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCompanyApply require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCompanyApplyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExtensionRequest() (request *CreateExtensionRequest) {
     request = &CreateExtensionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1336,6 +1393,57 @@ func (c *Client) DescribeChatMessagesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeChatMessagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCompanyListRequest() (request *DescribeCompanyListRequest) {
+    request = &DescribeCompanyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeCompanyList")
+    
+    
+    return
+}
+
+func NewDescribeCompanyListResponse() (response *DescribeCompanyListResponse) {
+    response = &DescribeCompanyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCompanyList
+// 查询公司资质申请列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeCompanyList(request *DescribeCompanyListRequest) (response *DescribeCompanyListResponse, err error) {
+    return c.DescribeCompanyListWithContext(context.Background(), request)
+}
+
+// DescribeCompanyList
+// 查询公司资质申请列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeCompanyListWithContext(ctx context.Context, request *DescribeCompanyListRequest) (response *DescribeCompanyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompanyListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompanyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCompanyListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2330,6 +2438,63 @@ func (c *Client) HangUpCallWithContext(ctx context.Context, request *HangUpCallR
     request.SetContext(ctx)
     
     response = NewHangUpCallResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCompanyApplyRequest() (request *ModifyCompanyApplyRequest) {
+    request = &ModifyCompanyApplyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ModifyCompanyApply")
+    
+    
+    return
+}
+
+func NewModifyCompanyApplyResponse() (response *ModifyCompanyApplyResponse) {
+    response = &ModifyCompanyApplyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCompanyApply
+// 修改公司资质申请，只能修改状态为驳回或待审核的申请单。（1、首次使用接口，建议先在云联络中心控制台查看各个资料模版:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+//  INVALIDPARAMETERVALUE_COMPANYEXIST = "InvalidParameterValue.CompanyExist"
+func (c *Client) ModifyCompanyApply(request *ModifyCompanyApplyRequest) (response *ModifyCompanyApplyResponse, err error) {
+    return c.ModifyCompanyApplyWithContext(context.Background(), request)
+}
+
+// ModifyCompanyApply
+// 修改公司资质申请，只能修改状态为驳回或待审核的申请单。（1、首次使用接口，建议先在云联络中心控制台查看各个资料模版:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+//  INVALIDPARAMETERVALUE_COMPANYEXIST = "InvalidParameterValue.CompanyExist"
+func (c *Client) ModifyCompanyApplyWithContext(ctx context.Context, request *ModifyCompanyApplyRequest) (response *ModifyCompanyApplyResponse, err error) {
+    if request == nil {
+        request = NewModifyCompanyApplyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCompanyApply require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCompanyApplyResponse()
     err = c.Send(request, response)
     return
 }

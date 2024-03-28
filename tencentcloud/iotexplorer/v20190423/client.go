@@ -45,6 +45,59 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
+    request = &BindCloudStorageUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BindCloudStorageUser")
+    
+    
+    return
+}
+
+func NewBindCloudStorageUserResponse() (response *BindCloudStorageUserResponse) {
+    response = &BindCloudStorageUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindCloudStorageUser
+// 绑定云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindCloudStorageUser(request *BindCloudStorageUserRequest) (response *BindCloudStorageUserResponse, err error) {
+    return c.BindCloudStorageUserWithContext(context.Background(), request)
+}
+
+// BindCloudStorageUser
+// 绑定云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindCloudStorageUserWithContext(ctx context.Context, request *BindCloudStorageUserRequest) (response *BindCloudStorageUserResponse, err error) {
+    if request == nil {
+        request = NewBindCloudStorageUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindCloudStorageUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindCloudStorageUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindDevicesRequest() (request *BindDevicesRequest) {
     request = &BindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -653,6 +706,59 @@ func (c *Client) CreateFenceBindWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateIotVideoCloudStorageRequest() (request *CreateIotVideoCloudStorageRequest) {
+    request = &CreateIotVideoCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateIotVideoCloudStorage")
+    
+    
+    return
+}
+
+func NewCreateIotVideoCloudStorageResponse() (response *CreateIotVideoCloudStorageResponse) {
+    response = &CreateIotVideoCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIotVideoCloudStorage
+// 开通云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateIotVideoCloudStorage(request *CreateIotVideoCloudStorageRequest) (response *CreateIotVideoCloudStorageResponse, err error) {
+    return c.CreateIotVideoCloudStorageWithContext(context.Background(), request)
+}
+
+// CreateIotVideoCloudStorage
+// 开通云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateIotVideoCloudStorageWithContext(ctx context.Context, request *CreateIotVideoCloudStorageRequest) (response *CreateIotVideoCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewCreateIotVideoCloudStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIotVideoCloudStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIotVideoCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLoRaFrequencyRequest() (request *CreateLoRaFrequencyRequest) {
     request = &CreateLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1201,6 +1307,59 @@ func (c *Client) CreateTopicRuleWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudStorageEventRequest() (request *DeleteCloudStorageEventRequest) {
+    request = &DeleteCloudStorageEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteCloudStorageEvent")
+    
+    
+    return
+}
+
+func NewDeleteCloudStorageEventResponse() (response *DeleteCloudStorageEventResponse) {
+    response = &DeleteCloudStorageEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudStorageEvent
+// 删除云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCloudStorageEvent(request *DeleteCloudStorageEventRequest) (response *DeleteCloudStorageEventResponse, err error) {
+    return c.DeleteCloudStorageEventWithContext(context.Background(), request)
+}
+
+// DeleteCloudStorageEvent
+// 删除云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCloudStorageEventWithContext(ctx context.Context, request *DeleteCloudStorageEventRequest) (response *DeleteCloudStorageEventResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudStorageEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudStorageEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudStorageEventResponse()
     err = c.Send(request, response)
     return
 }
@@ -2022,6 +2181,646 @@ func (c *Client) DescribeBindedProductsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeCloudStorageRequest() (request *DescribeCloudStorageRequest) {
+    request = &DescribeCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorage")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageResponse() (response *DescribeCloudStorageResponse) {
+    response = &DescribeCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorage
+// 获取设备云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorage(request *DescribeCloudStorageRequest) (response *DescribeCloudStorageResponse, err error) {
+    return c.DescribeCloudStorageWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorage
+// 获取设备云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageWithContext(ctx context.Context, request *DescribeCloudStorageRequest) (response *DescribeCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageDateRequest() (request *DescribeCloudStorageDateRequest) {
+    request = &DescribeCloudStorageDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageDate")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageDateResponse() (response *DescribeCloudStorageDateResponse) {
+    response = &DescribeCloudStorageDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageDate
+// 获取具有云存的日期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageDate(request *DescribeCloudStorageDateRequest) (response *DescribeCloudStorageDateResponse, err error) {
+    return c.DescribeCloudStorageDateWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageDate
+// 获取具有云存的日期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageDateWithContext(ctx context.Context, request *DescribeCloudStorageDateRequest) (response *DescribeCloudStorageDateResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageDateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageDate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageEventsRequest() (request *DescribeCloudStorageEventsRequest) {
+    request = &DescribeCloudStorageEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageEvents")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageEventsResponse() (response *DescribeCloudStorageEventsResponse) {
+    response = &DescribeCloudStorageEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageEvents
+// 拉取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEvents(request *DescribeCloudStorageEventsRequest) (response *DescribeCloudStorageEventsResponse, err error) {
+    return c.DescribeCloudStorageEventsWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageEvents
+// 拉取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, request *DescribeCloudStorageEventsRequest) (response *DescribeCloudStorageEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageMultiThumbnailRequest() (request *DescribeCloudStorageMultiThumbnailRequest) {
+    request = &DescribeCloudStorageMultiThumbnailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageMultiThumbnail")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageMultiThumbnailResponse() (response *DescribeCloudStorageMultiThumbnailResponse) {
+    response = &DescribeCloudStorageMultiThumbnailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageMultiThumbnail
+// 拉取多个云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageMultiThumbnail(request *DescribeCloudStorageMultiThumbnailRequest) (response *DescribeCloudStorageMultiThumbnailResponse, err error) {
+    return c.DescribeCloudStorageMultiThumbnailWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageMultiThumbnail
+// 拉取多个云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageMultiThumbnailWithContext(ctx context.Context, request *DescribeCloudStorageMultiThumbnailRequest) (response *DescribeCloudStorageMultiThumbnailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageMultiThumbnailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageMultiThumbnail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageMultiThumbnailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageOrderRequest() (request *DescribeCloudStorageOrderRequest) {
+    request = &DescribeCloudStorageOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageOrder")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageOrderResponse() (response *DescribeCloudStorageOrderResponse) {
+    response = &DescribeCloudStorageOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageOrder
+// 查询云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageOrder(request *DescribeCloudStorageOrderRequest) (response *DescribeCloudStorageOrderResponse, err error) {
+    return c.DescribeCloudStorageOrderWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageOrder
+// 查询云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageOrderWithContext(ctx context.Context, request *DescribeCloudStorageOrderRequest) (response *DescribeCloudStorageOrderResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStoragePackageConsumeDetailsRequest() (request *DescribeCloudStoragePackageConsumeDetailsRequest) {
+    request = &DescribeCloudStoragePackageConsumeDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStoragePackageConsumeDetails")
+    
+    
+    return
+}
+
+func NewDescribeCloudStoragePackageConsumeDetailsResponse() (response *DescribeCloudStoragePackageConsumeDetailsResponse) {
+    response = &DescribeCloudStoragePackageConsumeDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStoragePackageConsumeDetails
+// 获取云存套餐包消耗详细记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStoragePackageConsumeDetails(request *DescribeCloudStoragePackageConsumeDetailsRequest) (response *DescribeCloudStoragePackageConsumeDetailsResponse, err error) {
+    return c.DescribeCloudStoragePackageConsumeDetailsWithContext(context.Background(), request)
+}
+
+// DescribeCloudStoragePackageConsumeDetails
+// 获取云存套餐包消耗详细记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStoragePackageConsumeDetailsWithContext(ctx context.Context, request *DescribeCloudStoragePackageConsumeDetailsRequest) (response *DescribeCloudStoragePackageConsumeDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStoragePackageConsumeDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStoragePackageConsumeDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStoragePackageConsumeDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStoragePackageConsumeStatsRequest() (request *DescribeCloudStoragePackageConsumeStatsRequest) {
+    request = &DescribeCloudStoragePackageConsumeStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStoragePackageConsumeStats")
+    
+    
+    return
+}
+
+func NewDescribeCloudStoragePackageConsumeStatsResponse() (response *DescribeCloudStoragePackageConsumeStatsResponse) {
+    response = &DescribeCloudStoragePackageConsumeStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStoragePackageConsumeStats
+// 获取云存套餐包消耗统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStoragePackageConsumeStats(request *DescribeCloudStoragePackageConsumeStatsRequest) (response *DescribeCloudStoragePackageConsumeStatsResponse, err error) {
+    return c.DescribeCloudStoragePackageConsumeStatsWithContext(context.Background(), request)
+}
+
+// DescribeCloudStoragePackageConsumeStats
+// 获取云存套餐包消耗统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStoragePackageConsumeStatsWithContext(ctx context.Context, request *DescribeCloudStoragePackageConsumeStatsRequest) (response *DescribeCloudStoragePackageConsumeStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStoragePackageConsumeStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStoragePackageConsumeStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStoragePackageConsumeStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageStreamDataRequest() (request *DescribeCloudStorageStreamDataRequest) {
+    request = &DescribeCloudStorageStreamDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageStreamData")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageStreamDataResponse() (response *DescribeCloudStorageStreamDataResponse) {
+    response = &DescribeCloudStorageStreamDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageStreamData
+// 获取设备图片流数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageStreamData(request *DescribeCloudStorageStreamDataRequest) (response *DescribeCloudStorageStreamDataResponse, err error) {
+    return c.DescribeCloudStorageStreamDataWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageStreamData
+// 获取设备图片流数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageStreamDataWithContext(ctx context.Context, request *DescribeCloudStorageStreamDataRequest) (response *DescribeCloudStorageStreamDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageStreamDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageStreamData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageStreamDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageThumbnailRequest() (request *DescribeCloudStorageThumbnailRequest) {
+    request = &DescribeCloudStorageThumbnailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageThumbnail")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageThumbnailResponse() (response *DescribeCloudStorageThumbnailResponse) {
+    response = &DescribeCloudStorageThumbnailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageThumbnail
+// 拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnail(request *DescribeCloudStorageThumbnailRequest) (response *DescribeCloudStorageThumbnailResponse, err error) {
+    return c.DescribeCloudStorageThumbnailWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageThumbnail
+// 拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnailWithContext(ctx context.Context, request *DescribeCloudStorageThumbnailRequest) (response *DescribeCloudStorageThumbnailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageThumbnailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageThumbnail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageThumbnailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageThumbnailListRequest() (request *DescribeCloudStorageThumbnailListRequest) {
+    request = &DescribeCloudStorageThumbnailListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageThumbnailList")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageThumbnailListResponse() (response *DescribeCloudStorageThumbnailListResponse) {
+    response = &DescribeCloudStorageThumbnailListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageThumbnailList
+// 批量拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnailList(request *DescribeCloudStorageThumbnailListRequest) (response *DescribeCloudStorageThumbnailListResponse, err error) {
+    return c.DescribeCloudStorageThumbnailListWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageThumbnailList
+// 批量拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnailListWithContext(ctx context.Context, request *DescribeCloudStorageThumbnailListRequest) (response *DescribeCloudStorageThumbnailListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageThumbnailListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageThumbnailList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageThumbnailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageTimeRequest() (request *DescribeCloudStorageTimeRequest) {
+    request = &DescribeCloudStorageTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageTime")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageTimeResponse() (response *DescribeCloudStorageTimeResponse) {
+    response = &DescribeCloudStorageTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageTime
+// 获取某一天云存时间轴
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageTime(request *DescribeCloudStorageTimeRequest) (response *DescribeCloudStorageTimeResponse, err error) {
+    return c.DescribeCloudStorageTimeWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageTime
+// 获取某一天云存时间轴
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageTimeWithContext(ctx context.Context, request *DescribeCloudStorageTimeRequest) (response *DescribeCloudStorageTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageTimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageTime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageUsersRequest() (request *DescribeCloudStorageUsersRequest) {
+    request = &DescribeCloudStorageUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageUsers")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageUsersResponse() (response *DescribeCloudStorageUsersResponse) {
+    response = &DescribeCloudStorageUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageUsers
+// 拉取云存用户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageUsers(request *DescribeCloudStorageUsersRequest) (response *DescribeCloudStorageUsersResponse, err error) {
+    return c.DescribeCloudStorageUsersWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageUsers
+// 拉取云存用户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageUsersWithContext(ctx context.Context, request *DescribeCloudStorageUsersRequest) (response *DescribeCloudStorageUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2430,6 +3229,59 @@ func (c *Client) DescribeDeviceLocationSolveWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeDeviceLocationSolveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDevicePackagesRequest() (request *DescribeDevicePackagesRequest) {
+    request = &DescribeDevicePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevicePackages")
+    
+    
+    return
+}
+
+func NewDescribeDevicePackagesResponse() (response *DescribeDevicePackagesResponse) {
+    response = &DescribeDevicePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDevicePackages
+// 根据设备信息拉取有效套餐列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDevicePackages(request *DescribeDevicePackagesRequest) (response *DescribeDevicePackagesResponse, err error) {
+    return c.DescribeDevicePackagesWithContext(context.Background(), request)
+}
+
+// DescribeDevicePackages
+// 根据设备信息拉取有效套餐列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDevicePackagesWithContext(ctx context.Context, request *DescribeDevicePackagesRequest) (response *DescribeDevicePackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDevicePackagesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3076,6 +3928,116 @@ func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePackageConsumeTaskRequest() (request *DescribePackageConsumeTaskRequest) {
+    request = &DescribePackageConsumeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePackageConsumeTask")
+    
+    
+    return
+}
+
+func NewDescribePackageConsumeTaskResponse() (response *DescribePackageConsumeTaskResponse) {
+    response = &DescribePackageConsumeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePackageConsumeTask
+// 查询套餐消耗记录详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackageConsumeTask(request *DescribePackageConsumeTaskRequest) (response *DescribePackageConsumeTaskResponse, err error) {
+    return c.DescribePackageConsumeTaskWithContext(context.Background(), request)
+}
+
+// DescribePackageConsumeTask
+// 查询套餐消耗记录详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackageConsumeTaskWithContext(ctx context.Context, request *DescribePackageConsumeTaskRequest) (response *DescribePackageConsumeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribePackageConsumeTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackageConsumeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePackageConsumeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePackageConsumeTasksRequest() (request *DescribePackageConsumeTasksRequest) {
+    request = &DescribePackageConsumeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePackageConsumeTasks")
+    
+    
+    return
+}
+
+func NewDescribePackageConsumeTasksResponse() (response *DescribePackageConsumeTasksResponse) {
+    response = &DescribePackageConsumeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePackageConsumeTasks
+// 查询套餐消耗记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackageConsumeTasks(request *DescribePackageConsumeTasksRequest) (response *DescribePackageConsumeTasksResponse, err error) {
+    return c.DescribePackageConsumeTasksWithContext(context.Background(), request)
+}
+
+// DescribePackageConsumeTasks
+// 查询套餐消耗记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackageConsumeTasksWithContext(ctx context.Context, request *DescribePackageConsumeTasksRequest) (response *DescribePackageConsumeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribePackageConsumeTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackageConsumeTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePackageConsumeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePositionFenceListRequest() (request *DescribePositionFenceListRequest) {
     request = &DescribePositionFenceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3712,6 +4674,59 @@ func (c *Client) GenSingleDeviceSignatureOfPublicWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewGenSingleDeviceSignatureOfPublicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateSignedVideoURLRequest() (request *GenerateSignedVideoURLRequest) {
+    request = &GenerateSignedVideoURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GenerateSignedVideoURL")
+    
+    
+    return
+}
+
+func NewGenerateSignedVideoURLResponse() (response *GenerateSignedVideoURLResponse) {
+    response = &GenerateSignedVideoURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateSignedVideoURL
+// 获取视频防盗链播放URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateSignedVideoURL(request *GenerateSignedVideoURLRequest) (response *GenerateSignedVideoURLResponse, err error) {
+    return c.GenerateSignedVideoURLWithContext(context.Background(), request)
+}
+
+// GenerateSignedVideoURL
+// 获取视频防盗链播放URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateSignedVideoURLWithContext(ctx context.Context, request *GenerateSignedVideoURLRequest) (response *GenerateSignedVideoURLResponse, err error) {
+    if request == nil {
+        request = NewGenerateSignedVideoURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateSignedVideoURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateSignedVideoURLResponse()
     err = c.Send(request, response)
     return
 }
@@ -4442,6 +5457,59 @@ func (c *Client) GetTopicRuleListWithContext(ctx context.Context, request *GetTo
     request.SetContext(ctx)
     
     response = NewGetTopicRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserRequest) {
+    request = &InheritCloudStorageUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InheritCloudStorageUser")
+    
+    
+    return
+}
+
+func NewInheritCloudStorageUserResponse() (response *InheritCloudStorageUserResponse) {
+    response = &InheritCloudStorageUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InheritCloudStorageUser
+// 继承云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InheritCloudStorageUser(request *InheritCloudStorageUserRequest) (response *InheritCloudStorageUserResponse, err error) {
+    return c.InheritCloudStorageUserWithContext(context.Background(), request)
+}
+
+// InheritCloudStorageUser
+// 继承云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request *InheritCloudStorageUserRequest) (response *InheritCloudStorageUserResponse, err error) {
+    if request == nil {
+        request = NewInheritCloudStorageUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InheritCloudStorageUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInheritCloudStorageUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -5708,6 +6776,112 @@ func (c *Client) ReleaseStudioProductWithContext(ctx context.Context, request *R
     return
 }
 
+func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
+    request = &ResetCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ResetCloudStorage")
+    
+    
+    return
+}
+
+func NewResetCloudStorageResponse() (response *ResetCloudStorageResponse) {
+    response = &ResetCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetCloudStorage
+// 重置云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorage(request *ResetCloudStorageRequest) (response *ResetCloudStorageResponse, err error) {
+    return c.ResetCloudStorageWithContext(context.Background(), request)
+}
+
+// ResetCloudStorage
+// 重置云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageWithContext(ctx context.Context, request *ResetCloudStorageRequest) (response *ResetCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewResetCloudStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetCloudStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetCloudStorageEventRequest() (request *ResetCloudStorageEventRequest) {
+    request = &ResetCloudStorageEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ResetCloudStorageEvent")
+    
+    
+    return
+}
+
+func NewResetCloudStorageEventResponse() (response *ResetCloudStorageEventResponse) {
+    response = &ResetCloudStorageEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetCloudStorageEvent
+// 重置云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageEvent(request *ResetCloudStorageEventRequest) (response *ResetCloudStorageEventResponse, err error) {
+    return c.ResetCloudStorageEventWithContext(context.Background(), request)
+}
+
+// ResetCloudStorageEvent
+// 重置云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageEventWithContext(ctx context.Context, request *ResetCloudStorageEventRequest) (response *ResetCloudStorageEventResponse, err error) {
+    if request == nil {
+        request = NewResetCloudStorageEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetCloudStorageEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetCloudStorageEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchPositionSpaceRequest() (request *SearchPositionSpaceRequest) {
     request = &SearchPositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5875,6 +7049,59 @@ func (c *Client) SearchTopicRuleWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferCloudStorageRequest() (request *TransferCloudStorageRequest) {
+    request = &TransferCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "TransferCloudStorage")
+    
+    
+    return
+}
+
+func NewTransferCloudStorageResponse() (response *TransferCloudStorageResponse) {
+    response = &TransferCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TransferCloudStorage
+// 转移云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (response *TransferCloudStorageResponse, err error) {
+    return c.TransferCloudStorageWithContext(context.Background(), request)
+}
+
+// TransferCloudStorage
+// 转移云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TransferCloudStorageWithContext(ctx context.Context, request *TransferCloudStorageRequest) (response *TransferCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewTransferCloudStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferCloudStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTransferCloudStorageResponse()
     err = c.Send(request, response)
     return
 }

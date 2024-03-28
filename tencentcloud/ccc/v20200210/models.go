@@ -373,6 +373,101 @@ type CarrierPrivilegeNumberApplicant struct {
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type CompanyApplyInfo struct {
+	// 申请人身份，0-公司法定代表人，1-经办人（受法定代表人委托）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicantType *int64 `json:"ApplicantType,omitnil,omitempty" name:"ApplicantType"`
+
+	// 企业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
+
+	// 统一社会信用代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 营业执照扫描件(加盖公章)。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessIdPicUrl *string `json:"BusinessIdPicUrl,omitnil,omitempty" name:"BusinessIdPicUrl"`
+
+	// 法定代表人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorporationName *string `json:"CorporationName,omitnil,omitempty" name:"CorporationName"`
+
+	// 法定代表人身份证号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorporationId *string `json:"CorporationId,omitnil,omitempty" name:"CorporationId"`
+
+	// 法定代表人身份证正反面扫描件。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorporationIdPicUrl *string `json:"CorporationIdPicUrl,omitnil,omitempty" name:"CorporationIdPicUrl"`
+
+	// 业务经营范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessScope *string `json:"BusinessScope,omitnil,omitempty" name:"BusinessScope"`
+
+	// 电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AcceptPicUrl *string `json:"AcceptPicUrl,omitnil,omitempty" name:"AcceptPicUrl"`
+
+	// 电信入网承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkCommitmentPicUrl *string `json:"NetworkCommitmentPicUrl,omitnil,omitempty" name:"NetworkCommitmentPicUrl"`
+
+	// 法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorporationHoldingOnIdPicUrl *string `json:"CorporationHoldingOnIdPicUrl,omitnil,omitempty" name:"CorporationHoldingOnIdPicUrl"`
+
+	// 经办人名称，申请人类型为经办人时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 经办人证件号码，申请人类型为经办人时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
+
+	// 经办人身份证正反面扫描件，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorIdPicUrl *string `json:"OperatorIdPicUrl,omitnil,omitempty" name:"OperatorIdPicUrl"`
+
+	// 经办人手持身份证照，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorHoldingOnIdPicUrl *string `json:"OperatorHoldingOnIdPicUrl,omitnil,omitempty" name:"OperatorHoldingOnIdPicUrl"`
+
+	// 委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommissionPicUrl *string `json:"CommissionPicUrl,omitnil,omitempty" name:"CommissionPicUrl"`
+}
+
+type CompanyStateInfo struct {
+	// 申请单ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 公司名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 审核时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckTime *int64 `json:"CheckTime,omitnil,omitempty" name:"CheckTime"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckMsg *string `json:"CheckMsg,omitnil,omitempty" name:"CheckMsg"`
+
+	// 审核状态，1-待审核，2-审核通过，3-驳回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 公司统一社会信用代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
 // Predefined struct for user
 type CreateAdminURLRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -834,6 +929,63 @@ func (r *CreateCarrierPrivilegeNumberApplicantResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCarrierPrivilegeNumberApplicantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCompanyApplyRequestParams struct {
+	// 企业资质信息
+	CompanyInfo *CompanyApplyInfo `json:"CompanyInfo,omitnil,omitempty" name:"CompanyInfo"`
+}
+
+type CreateCompanyApplyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业资质信息
+	CompanyInfo *CompanyApplyInfo `json:"CompanyInfo,omitnil,omitempty" name:"CompanyInfo"`
+}
+
+func (r *CreateCompanyApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCompanyApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CompanyInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCompanyApplyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCompanyApplyResponseParams struct {
+	// 申请单ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCompanyApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCompanyApplyResponseParams `json:"Response"`
+}
+
+func (r *CreateCompanyApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCompanyApplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2053,6 +2205,95 @@ func (r *DescribeChatMessagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeChatMessagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCompanyListRequestParams struct {
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 公司名称
+	CompanyName []*string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
+
+	// 审核状态，1-待审核，2-审核通过，3-驳回
+	State []*int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 申请ID
+	ApplyID []*int64 `json:"ApplyID,omitnil,omitempty" name:"ApplyID"`
+}
+
+type DescribeCompanyListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 公司名称
+	CompanyName []*string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
+
+	// 审核状态，1-待审核，2-审核通过，3-驳回
+	State []*int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 申请ID
+	ApplyID []*int64 `json:"ApplyID,omitnil,omitempty" name:"ApplyID"`
+}
+
+func (r *DescribeCompanyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCompanyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "CompanyName")
+	delete(f, "State")
+	delete(f, "ApplyID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCompanyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCompanyListResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 企业资质审核信息
+	CompanyInfo []*CompanyStateInfo `json:"CompanyInfo,omitnil,omitempty" name:"CompanyInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCompanyListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCompanyListResponseParams `json:"Response"`
+}
+
+func (r *DescribeCompanyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCompanyListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3793,6 +4034,67 @@ type MessageBody struct {
 
 	// 消息列表
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
+}
+
+// Predefined struct for user
+type ModifyCompanyApplyRequestParams struct {
+	// 申请单ID(只能修改状态为“驳回”或者“待审核”的申请单)
+	ApplyId *int64 `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// 企业资质信息
+	CompanyInfo *CompanyApplyInfo `json:"CompanyInfo,omitnil,omitempty" name:"CompanyInfo"`
+}
+
+type ModifyCompanyApplyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 申请单ID(只能修改状态为“驳回”或者“待审核”的申请单)
+	ApplyId *int64 `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// 企业资质信息
+	CompanyInfo *CompanyApplyInfo `json:"CompanyInfo,omitnil,omitempty" name:"CompanyInfo"`
+}
+
+func (r *ModifyCompanyApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCompanyApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyId")
+	delete(f, "CompanyInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCompanyApplyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCompanyApplyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCompanyApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCompanyApplyResponseParams `json:"Response"`
+}
+
+func (r *ModifyCompanyApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCompanyApplyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
