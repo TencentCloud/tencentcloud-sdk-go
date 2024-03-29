@@ -3815,12 +3815,15 @@ func (r *DescribeBillingSpecsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBuildInImagesRequestParams struct {
-
+	// 镜像过滤器
+	ImageFilters []*ImageFIlter `json:"ImageFilters,omitnil,omitempty" name:"ImageFilters"`
 }
 
 type DescribeBuildInImagesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 镜像过滤器
+	ImageFilters []*ImageFIlter `json:"ImageFilters,omitnil,omitempty" name:"ImageFilters"`
 }
 
 func (r *DescribeBuildInImagesRequest) ToJsonString() string {
@@ -3835,7 +3838,7 @@ func (r *DescribeBuildInImagesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ImageFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBuildInImagesRequest has unknown keys!", "")
 	}
@@ -6719,6 +6722,17 @@ type HyperParameter struct {
 	LoraScale *string `json:"LoraScale,omitnil,omitempty" name:"LoraScale"`
 }
 
+type ImageFIlter struct {
+	// 过滤字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 过滤值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 是否反选
+	Negative *bool `json:"Negative,omitnil,omitempty" name:"Negative"`
+}
+
 type ImageInfo struct {
 	// 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
@@ -6881,6 +6895,14 @@ type Instance struct {
 
 	// 纳管cvmid
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
+
+	// 部署失败错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *string `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 部署失败错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 type IntranetCallInfo struct {

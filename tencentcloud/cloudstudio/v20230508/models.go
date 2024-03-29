@@ -22,16 +22,16 @@ import (
 
 // Predefined struct for user
 type CreateWorkspaceRequestParams struct {
-	// 工作空间名称
+	// 工作空间名称, 长度限制 2~64
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 工作空间描述
+	// 工作空间描述, 长度限制 0~255
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
 	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
-	// 工作空间基础镜像名称, 默认会使用 All In One 镜像
+	// 工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// Git 仓库. 工作空间启动时会自动克隆该仓库
@@ -40,26 +40,38 @@ type CreateWorkspaceRequestParams struct {
 	// 环境变量. 会被注入到工作空间中
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 预装插件. 工作空间启动时, 会自动安装这些插件 
+	// 预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
 	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
 	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
+
+	// 应用名称
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 用户UIN
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// VPCID
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 type CreateWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作空间名称
+	// 工作空间名称, 长度限制 2~64
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 工作空间描述
+	// 工作空间描述, 长度限制 0~255
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
 	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
-	// 工作空间基础镜像名称, 默认会使用 All In One 镜像
+	// 工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// Git 仓库. 工作空间启动时会自动克隆该仓库
@@ -68,11 +80,23 @@ type CreateWorkspaceRequest struct {
 	// 环境变量. 会被注入到工作空间中
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 预装插件. 工作空间启动时, 会自动安装这些插件 
+	// 预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
 	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
 	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
+
+	// 应用名称
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 用户UIN
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// VPCID
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 func (r *CreateWorkspaceRequest) ToJsonString() string {
@@ -95,6 +119,10 @@ func (r *CreateWorkspaceRequest) FromJsonString(s string) error {
 	delete(f, "Envs")
 	delete(f, "Extensions")
 	delete(f, "Lifecycle")
+	delete(f, "AppId")
+	delete(f, "Uin")
+	delete(f, "UniqVpcId")
+	delete(f, "SubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceRequest has unknown keys!", "")
 	}

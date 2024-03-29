@@ -3963,6 +3963,14 @@ type Endpoint struct {
 	// 数据库为跨账号云联网下的实例时、表示云联网所属主账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil,omitempty" name:"CcnOwnerUin"`
+
+	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildInstanceId *string `json:"ChildInstanceId,omitnil,omitempty" name:"ChildInstanceId"`
+
+	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、比如：只读实例传ro、读写实例传rw
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildInstanceType *string `json:"ChildInstanceType,omitnil,omitempty" name:"ChildInstanceType"`
 }
 
 type EndpointItem struct {
@@ -4029,6 +4037,14 @@ type EndpointItem struct {
 	// 为业务添加的额外信息。参数名作key，参数值作value。 tdpg必填参数：PgDatabase-订阅的库名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
+
+	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildInstanceId *string `json:"ChildInstanceId,omitnil,omitempty" name:"ChildInstanceId"`
+
+	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、比如：只读实例传ro、读写实例传rw
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildInstanceType *string `json:"ChildInstanceType,omitnil,omitempty" name:"ChildInstanceType"`
 }
 
 type ErrInfo struct {

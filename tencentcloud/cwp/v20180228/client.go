@@ -1770,6 +1770,10 @@ func NewDeleteAttackLogsResponse() (response *DeleteAttackLogsResponse) {
 }
 
 // DeleteAttackLogs
+// ModifyEventAttackStatus 接口替代
+//
+// 
+//
 // 删除网络攻击日志
 //
 // 可能返回的错误码:
@@ -1787,6 +1791,10 @@ func (c *Client) DeleteAttackLogs(request *DeleteAttackLogsRequest) (response *D
 }
 
 // DeleteAttackLogs
+// ModifyEventAttackStatus 接口替代
+//
+// 
+//
 // 删除网络攻击日志
 //
 // 可能返回的错误码:
@@ -22532,6 +22540,10 @@ func NewExportAttackLogsResponse() (response *ExportAttackLogsResponse) {
 }
 
 // ExportAttackLogs
+// ExportAttackEvents接口替代
+//
+// 
+//
 // 导出网络攻击日志
 //
 // 可能返回的错误码:
@@ -22546,6 +22558,10 @@ func (c *Client) ExportAttackLogs(request *ExportAttackLogsRequest) (response *E
 }
 
 // ExportAttackLogs
+// ExportAttackEvents接口替代
+//
+// 
+//
 // 导出网络攻击日志
 //
 // 可能返回的错误码:

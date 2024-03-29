@@ -1421,6 +1421,20 @@ func (r *CreateSupervisorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomMsgContent struct {
+	// 自定义消息数据。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 自定义消息描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 扩展字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
+}
+
 // Predefined struct for user
 type DeleteAppCustomContentRequestParams struct {
 	// 应用ID。
@@ -4417,6 +4431,10 @@ type MessageItem struct {
 	// 图片消息URL。 message type为1时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageMessage *string `json:"ImageMessage,omitnil,omitempty" name:"ImageMessage"`
+
+	// 自定义消息内容。message type为2时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomMessage *CustomMsgContent `json:"CustomMessage,omitnil,omitempty" name:"CustomMessage"`
 }
 
 type MessageList struct {
@@ -4936,6 +4954,7 @@ type MsgBody struct {
 	// TIMTextElem（文本消息）
 	// TIMFaceElem（表情消息）
 	// TIMImageElem（图像消息）
+	// TIMCustomElem（自定义消息）
 	MsgType *string `json:"MsgType,omitnil,omitempty" name:"MsgType"`
 
 	// 文本消息，当MsgType 为TIMTextElem（文本消息）必选。
@@ -4946,6 +4965,9 @@ type MsgBody struct {
 
 	// 图像消息，当MsgType为TIMImageElem（图像消息）必选。
 	ImageMsgContent *ImageMsgContent `json:"ImageMsgContent,omitnil,omitempty" name:"ImageMsgContent"`
+
+	// 自定义消息，TIMCustomElem（自定义消息）必选。
+	CustomMsgContent *CustomMsgContent `json:"CustomMsgContent,omitnil,omitempty" name:"CustomMsgContent"`
 }
 
 type MutedAccountList struct {

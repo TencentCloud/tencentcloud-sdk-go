@@ -146,11 +146,11 @@ type AllocationDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+	// 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
@@ -164,10 +164,14 @@ type AllocationDetail struct {
 
 	// 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemId is deprecated.
 	SplitItemId *string `json:"SplitItemId,omitnil,omitempty" name:"SplitItemId"`
 
 	// 分拆项名称：涉及分拆产品的分拆后的分拆项
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemName is deprecated.
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
 
 	// 子产品编码
@@ -740,11 +744,11 @@ type AllocationSummaryByItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
 
-	// 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+	// 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
@@ -817,10 +821,14 @@ type AllocationSummaryByItem struct {
 
 	// 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemId is deprecated.
 	SplitItemId *string `json:"SplitItemId,omitnil,omitempty" name:"SplitItemId"`
 
 	// 分拆项名称：涉及分拆产品的分拆后的分拆项
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemName is deprecated.
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
 
 	// 开始使用时间：产品服务开始使用时间
@@ -991,11 +999,11 @@ type AllocationSummaryByResource struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
 
-	// 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+	// 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
@@ -1052,10 +1060,14 @@ type AllocationSummaryByResource struct {
 
 	// 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemId is deprecated.
 	SplitItemId *string `json:"SplitItemId,omitnil,omitempty" name:"SplitItemId"`
 
 	// 分拆项名称：涉及分拆产品的分拆后的分拆项
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemName is deprecated.
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
 
 	// 开始使用时间：产品服务开始使用时间
@@ -2174,6 +2186,10 @@ type ConsumptionBusinessSummaryDataItem struct {
 	// 分成金
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
+
+	// 地域名称（仅在地域汇总总展示）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 }
 
 type ConsumptionProjectSummaryDataItem struct {
@@ -2224,6 +2240,22 @@ type ConsumptionRegionSummaryDataItem struct {
 
 	// 产品消费详情
 	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// 现金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
+
+	// 代金券
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
+
+	// 赠送金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
+
+	// 分成金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 }
 
 type ConsumptionResourceSummaryConditionValue struct {
@@ -2315,6 +2347,74 @@ type ConsumptionResourceSummaryDataItem struct {
 	// 分成金
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
+
+	// 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
+
+	// 使用者UIN：实际使用资源的账号 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// 子产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
+
+	// 地域类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionType *string `json:"RegionType,omitnil,omitempty" name:"RegionType"`
+
+	// 地域类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionTypeName *string `json:"RegionTypeName,omitnil,omitempty" name:"RegionTypeName"`
+
+	// 扩展字段1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extend1 *string `json:"Extend1,omitnil,omitempty" name:"Extend1"`
+
+	// 扩展字段2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extend2 *string `json:"Extend2,omitnil,omitempty" name:"Extend2"`
+
+	// 扩展字段3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extend3 *string `json:"Extend3,omitnil,omitempty" name:"Extend3"`
+
+	// 扩展字段4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extend4 *string `json:"Extend4,omitnil,omitempty" name:"Extend4"`
+
+	// 扩展字段5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extend5 *string `json:"Extend5,omitnil,omitempty" name:"Extend5"`
+
+	// 实例类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
+
+	// 扣费时间：结算扣费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTime *string `json:"PayTime,omitnil,omitempty" name:"PayTime"`
+
+	// 可用区：资源所属可用区，如广州三区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
+
+	// 配置描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentConfig *string `json:"ComponentConfig,omitnil,omitempty" name:"ComponentConfig"`
 }
 
 type ConsumptionSummaryTotal struct {
@@ -3189,7 +3289,7 @@ type DescribeAllocationBillDetailRequestParams struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -3250,7 +3350,7 @@ type DescribeAllocationBillDetailRequestParams struct {
 	// 组件名称编码，用作筛选
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 项目ID，用作筛选
@@ -3263,7 +3363,7 @@ type DescribeAllocationBillDetailRequest struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -3324,7 +3424,7 @@ type DescribeAllocationBillDetailRequest struct {
 	// 组件名称编码，用作筛选
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 项目ID，用作筛选
@@ -3800,7 +3900,7 @@ type DescribeAllocationSummaryByItemRequestParams struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -3869,7 +3969,7 @@ type DescribeAllocationSummaryByItemRequestParams struct {
 	// 组件名称编码，用作筛选
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 项目ID，用作筛选
@@ -3888,7 +3988,7 @@ type DescribeAllocationSummaryByItemRequest struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -3957,7 +4057,7 @@ type DescribeAllocationSummaryByItemRequest struct {
 	// 组件名称编码，用作筛选
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 项目ID，用作筛选
@@ -4052,7 +4152,7 @@ type DescribeAllocationSummaryByResourceRequestParams struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -4115,7 +4215,7 @@ type DescribeAllocationSummaryByResourceRequestParams struct {
 	// 标签，用作筛选
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 项目ID，用作筛选
@@ -4134,7 +4234,7 @@ type DescribeAllocationSummaryByResourceRequest struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -4197,7 +4297,7 @@ type DescribeAllocationSummaryByResourceRequest struct {
 	// 标签，用作筛选
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 项目ID，用作筛选
@@ -7301,7 +7401,7 @@ type DescribeGatherResourceRequestParams struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -7352,7 +7452,7 @@ type DescribeGatherResourceRequestParams struct {
 	// 使用者UIN，用作筛选
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 标签，用作筛选
@@ -7371,7 +7471,7 @@ type DescribeGatherResourceRequest struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 账单月份，格式为2024-02，不传默认当前月
@@ -7422,7 +7522,7 @@ type DescribeGatherResourceRequest struct {
 	// 使用者UIN，用作筛选
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+	// 模糊搜索：支持标签、资源id、资源别名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 标签，用作筛选
@@ -8342,11 +8442,11 @@ type GatherResourceSummary struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
 
-	// 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+	// 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
@@ -8471,10 +8571,14 @@ type GatherResourceSummary struct {
 
 	// 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemId is deprecated.
 	SplitItemId *string `json:"SplitItemId,omitnil,omitempty" name:"SplitItemId"`
 
 	// 分拆项名称：涉及分拆产品的分拆后的分拆项
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SplitItemName is deprecated.
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
 }
 

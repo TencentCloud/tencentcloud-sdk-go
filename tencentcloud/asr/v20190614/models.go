@@ -490,7 +490,7 @@ type CreateRecTaskRequestParams struct {
 
 	// 是否开启说话人分离
 	// 0：不开启；
-	// 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_dialect_large，且ChannelNum=1时可用）；
+	// 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect，且ChannelNum=1时可用）；
 	// 默认值为 0
 	// 
 	// 注意：
@@ -671,7 +671,7 @@ type CreateRecTaskRequest struct {
 
 	// 是否开启说话人分离
 	// 0：不开启；
-	// 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_dialect_large，且ChannelNum=1时可用）；
+	// 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect，且ChannelNum=1时可用）；
 	// 默认值为 0
 	// 
 	// 注意：
@@ -2070,7 +2070,7 @@ type UpdateAsrVocabRequestParams struct {
 	// 热词表名称，长度在1-255之间
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,10]之间整数，数组长度不大于1000
+	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数，数组长度不大于1000
 	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
 
 	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
@@ -2090,7 +2090,7 @@ type UpdateAsrVocabRequest struct {
 	// 热词表名称，长度在1-255之间
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,10]之间整数，数组长度不大于1000
+	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数，数组长度不大于1000
 	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
 
 	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。

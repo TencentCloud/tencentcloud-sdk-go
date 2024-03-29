@@ -443,6 +443,9 @@ type CreateDatasourceRequestParams struct {
 
 	// 腾讯云私有网络标识
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 操作权限限制
+	OperationAuthLimit []*string `json:"OperationAuthLimit,omitnil,omitempty" name:"OperationAuthLimit"`
 }
 
 type CreateDatasourceRequest struct {
@@ -504,6 +507,9 @@ type CreateDatasourceRequest struct {
 
 	// 腾讯云私有网络标识
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 操作权限限制
+	OperationAuthLimit []*string `json:"OperationAuthLimit,omitnil,omitempty" name:"OperationAuthLimit"`
 }
 
 func (r *CreateDatasourceRequest) ToJsonString() string {
@@ -537,6 +543,7 @@ func (r *CreateDatasourceRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "Vport")
 	delete(f, "VpcId")
+	delete(f, "OperationAuthLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasourceRequest has unknown keys!", "")
 	}
@@ -719,6 +726,9 @@ type CreateProjectRequestParams struct {
 
 	// 默认看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
+
+	// 管理平台
+	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
 type CreateProjectRequest struct {
@@ -741,6 +751,9 @@ type CreateProjectRequest struct {
 
 	// 默认看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
+
+	// 管理平台
+	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -761,6 +774,7 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 	delete(f, "Mark")
 	delete(f, "IsApply")
 	delete(f, "DefaultPanelType")
+	delete(f, "ManagePlatform")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProjectRequest has unknown keys!", "")
 	}
@@ -2568,6 +2582,9 @@ type ModifyProjectRequestParams struct {
 
 	// 2
 	PanelScope *string `json:"PanelScope,omitnil,omitempty" name:"PanelScope"`
+
+	// 项目管理平台
+	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
 type ModifyProjectRequest struct {
@@ -2599,6 +2616,9 @@ type ModifyProjectRequest struct {
 
 	// 2
 	PanelScope *string `json:"PanelScope,omitnil,omitempty" name:"PanelScope"`
+
+	// 项目管理平台
+	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
 func (r *ModifyProjectRequest) ToJsonString() string {
@@ -2622,6 +2642,7 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	delete(f, "Seed")
 	delete(f, "DefaultPanelType")
 	delete(f, "PanelScope")
+	delete(f, "ManagePlatform")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProjectRequest has unknown keys!", "")
 	}

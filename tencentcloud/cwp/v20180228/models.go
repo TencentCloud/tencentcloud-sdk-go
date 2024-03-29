@@ -1926,6 +1926,10 @@ type BaselineCategory struct {
 
 	// 父分类ID,如果为0则没有父分类
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil,omitempty" name:"ParentCategoryId"`
+
+	// 子分类下检测项总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemCount *uint64 `json:"ItemCount,omitnil,omitempty" name:"ItemCount"`
 }
 
 type BaselineCustomRuleIdName struct {
@@ -2347,6 +2351,20 @@ type BaselineItemInfo struct {
 	// 被引自定义规则信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedCustomRuleInfo []*BaselineCustomRuleIdName `json:"RelatedCustomRuleInfo,omitnil,omitempty" name:"RelatedCustomRuleInfo"`
+}
+
+type BaselineItemsCategory struct {
+	// 基线检测项父分类id
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil,omitempty" name:"ParentCategoryId"`
+
+	// 基线检测项父分类名称
+	ParentCategoryName *string `json:"ParentCategoryName,omitnil,omitempty" name:"ParentCategoryName"`
+
+	// 基线检测项子分类数目
+	CategoryCount *int64 `json:"CategoryCount,omitnil,omitempty" name:"CategoryCount"`
+
+	// 基线检测项子分类列表
+	CategoryLists []*BaselineCategory `json:"CategoryLists,omitnil,omitempty" name:"CategoryLists"`
 }
 
 type BaselinePolicy struct {
@@ -5263,6 +5281,9 @@ func (r *CreateSearchTemplateRequest) FromJsonString(s string) error {
 type CreateSearchTemplateResponseParams struct {
 	// 0：成功，非0：失败
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 失败原因
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -14755,6 +14776,10 @@ type DescribeBaselineItemInfoResponseParams struct {
 
 	// 总条目数
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 基线分类列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryList []*BaselineItemsCategory `json:"CategoryList,omitnil,omitempty" name:"CategoryList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -37640,6 +37665,10 @@ type Item struct {
 
 	// 名称
 	ItemName *string `json:"ItemName,omitnil,omitempty" name:"ItemName"`
+
+	// 自定义阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomItemValues []*uint64 `json:"CustomItemValues,omitnil,omitempty" name:"CustomItemValues"`
 }
 
 type JavaMemShellDetail struct {
@@ -39189,6 +39218,15 @@ type ModifyBaselineRuleRequestParams struct {
 
 	// <li>ItemName - string - 是否必填：否 - 项名称</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 0:检测项，1:检测项分类
+	IdType *uint64 `json:"IdType,omitnil,omitempty" name:"IdType"`
+
+	// 需要排除的检测项id
+	ExcludeIds []*uint64 `json:"ExcludeIds,omitnil,omitempty" name:"ExcludeIds"`
+
+	// 勾选的检测项分类
+	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 }
 
 type ModifyBaselineRuleRequest struct {
@@ -39202,6 +39240,15 @@ type ModifyBaselineRuleRequest struct {
 
 	// <li>ItemName - string - 是否必填：否 - 项名称</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 0:检测项，1:检测项分类
+	IdType *uint64 `json:"IdType,omitnil,omitempty" name:"IdType"`
+
+	// 需要排除的检测项id
+	ExcludeIds []*uint64 `json:"ExcludeIds,omitnil,omitempty" name:"ExcludeIds"`
+
+	// 勾选的检测项分类
+	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 }
 
 func (r *ModifyBaselineRuleRequest) ToJsonString() string {
@@ -39219,6 +39266,9 @@ func (r *ModifyBaselineRuleRequest) FromJsonString(s string) error {
 	delete(f, "Data")
 	delete(f, "SelectAll")
 	delete(f, "Filters")
+	delete(f, "IdType")
+	delete(f, "ExcludeIds")
+	delete(f, "CategoryIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBaselineRuleRequest has unknown keys!", "")
 	}

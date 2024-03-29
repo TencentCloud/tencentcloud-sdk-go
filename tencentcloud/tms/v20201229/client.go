@@ -65,13 +65,13 @@ func NewModerateTextResponse() (response *ModerateTextResponse) {
 }
 
 // ModerateText
-// 天御文本内容安全审核接口，改接口会按照客户定制标签输出审核结果
+// 天御文本内容安全定制标签文本审核接口为定制接口，会按照客户定制标签输出审核结果，如需使用请联系商务经理或[在线客服](https://cloud.tencent.com/online-service?from=doc_1125)咨询。
 func (c *Client) ModerateText(request *ModerateTextRequest) (response *ModerateTextResponse, err error) {
     return c.ModerateTextWithContext(context.Background(), request)
 }
 
 // ModerateText
-// 天御文本内容安全审核接口，改接口会按照客户定制标签输出审核结果
+// 天御文本内容安全定制标签文本审核接口为定制接口，会按照客户定制标签输出审核结果，如需使用请联系商务经理或[在线客服](https://cloud.tencent.com/online-service?from=doc_1125)咨询。
 func (c *Client) ModerateTextWithContext(ctx context.Context, request *ModerateTextRequest) (response *ModerateTextResponse, err error) {
     if request == nil {
         request = NewModerateTextRequest()

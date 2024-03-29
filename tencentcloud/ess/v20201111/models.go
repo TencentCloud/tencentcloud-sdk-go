@@ -9102,13 +9102,12 @@ type FlowBrief struct {
 }
 
 type FlowCreateApprover struct {
-	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
-	// 0：企业
-	// 1：个人
-	// 3：企业静默签署
-	// 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
-	// 7: 个人自动签署，适用于个人自动签场景。
-	// 注: 个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。
+	// 在指定签署方时，可以选择企业B端或个人C端等不同的参与者类型，可选类型如下：
+	// 
+	// <ul><li> <b>0</b> :企业B端。</li>
+	// <li> <b>1</b> :个人C端。</li>
+	// <li> <b>3</b> :企业B端静默（自动）签署，无需签署人参与，自动签署可以参考<a href="https://qian.tencent.com/developers/company/autosign_guide" target="_blank" rel="noopener noreferrer">自动签署使用说明</a>文档。</li>
+	// <li> <b>7</b> :个人C端自动签署，适用于个人自动签场景。注: <b>个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。</b> </li></ul>
 	ApproverType *int64 `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
 	// 组织机构名称。
@@ -9125,16 +9124,15 @@ type FlowCreateApprover struct {
 	// 在未指定签署人电子签UserId情况下，为必填参数
 	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
-	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-	// 请确认手机号所有方为此合同签署方。
+	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 此手机号用于通知和用户的实名认证等环境，请确认手机号所有方为此合同签署方。
 	// 
-	// 在未指定签署人电子签UserId情况下，为必填参数
+	// 注：`在未指定签署人电子签UserId情况下，为必填参数`
 	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li><b>ID_CARD</b>: 居民身份证 (默认值)</li>
+	// <li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
+	// <li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 证件号码，应符合以下规则
@@ -9144,35 +9142,45 @@ type FlowCreateApprover struct {
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
-	// 模板发起合同时，该参数为必填项。
-	// 文件发起合同时，该参数无需传值。
+	// 
+	// <b>模板发起合同时，该参数为必填项，可以通过[查询模版信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+	// <b>文件发起合同时，该参数无需传值。</b>
+	// 
 	// 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 	// 
-	// 注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
+	// 注: <font color="red">将要废弃</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
 	VerifyChannel []*string `json:"VerifyChannel,omitnil,omitempty" name:"VerifyChannel"`
 
 	// 通知签署方经办人的方式,  有以下途径:
 	// <ul><li>  **sms**  :  (默认)短信</li>
 	// <li>   **none**   : 不通知</li></ul>
 	// 
-	// 注: `发起方也是签署方时不给此签署方发送短信`
+	// 注: `既是发起方又是签署方时，不给此签署方发送短信`
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 合同强制需要阅读全文，无需传此参数
 	IsFullText *bool `json:"IsFullText,omitnil,omitempty" name:"IsFullText"`
 
-	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
+	// 签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
+	// 
+	// 若未指定阅读时间，则会按照合同页数大小计算阅读时间，计算规则如下：
+	// <ul>
+	// <li>合同页数少于等于2页，阅读时间为3秒；</li>
+	// <li>合同页数为3到5页，阅读时间为5秒；</li>
+	// <li>合同页数大于等于6页，阅读时间为10秒。</li>
+	// </ul>
 	PreReadTime *uint64 `json:"PreReadTime,omitnil,omitempty" name:"PreReadTime"`
 
 	// 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
 	// 
-	// 注: `若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息`
+	// 注： 
+	// 如果传进来的<font color="red">UserId已经实名， 则忽略ApproverName，ApproverIdCardType，ApproverIdCardNumber，ApproverMobile这四个入参</font>（会用此UserId实名的身份证和登录的手机号覆盖）
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 字段已经废弃，当前只支持true，默认为true
+	// <font color="red">字段已经废弃</font>，当前只支持true，默认为true
 	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
 
 	// 在企微场景下使用，需设置参数为**WEWORKAPP**，以表明合同来源于企微。
@@ -9195,9 +9203,12 @@ type FlowCreateApprover struct {
 	// Deprecated: JumpUrl is deprecated.
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
-	// 签署ID
-	// - 发起流程时系统自动补充
-	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
+	// 签署人的签署ID
+	// 
+	// <ul>
+	// <li>在CreateFlow、CreatePrepareFlow等发起流程时不需要传入此参数，电子签后台系统会自动生成。</li>
+	// <li>在CreateFlowSignUrl、CreateBatchQuickSignUrl等生成签署链接时，可以通过查询详情接口获取签署人的SignId，然后可以将此值传入，为该签署人创建签署链接。这样可以避免重复传输姓名、手机号、证件号等其他信息。</li>
+	// </ul>
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
@@ -9277,8 +9288,7 @@ type FlowCreateApprover struct {
 	// `不指定该值时，默认为签署方自行选择。`
 	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil,omitempty" name:"SignTypeSelector"`
 
-	// Deadline
-	// 签署人的签署截止时间，格式为Unix标准时间戳（秒）
+	// 签署人的签署截止时间，格式为Unix标准时间戳（秒）, 超过此时间未签署的合同变成已过期状态，不能在继续签署
 	// 
 	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`

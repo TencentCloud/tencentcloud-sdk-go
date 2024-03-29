@@ -10386,7 +10386,7 @@ func (r *DescribeDataBasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataCheckStatRequestParams struct {
-	// Project id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -10399,7 +10399,7 @@ type DescribeDataCheckStatRequestParams struct {
 type DescribeDataCheckStatRequest struct {
 	*tchttp.BaseRequest
 	
-	// Project id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -14550,10 +14550,10 @@ type DescribeInstancesRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页数
+	// 页数:默认1
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// 分页大小,默认最小10
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 过滤条件
@@ -14566,10 +14566,10 @@ type DescribeInstancesRequest struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页数
+	// 页数:默认1
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// 分页大小,默认最小10
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 过滤条件
@@ -17627,7 +17627,7 @@ func (r *DescribeRuleDataSourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRuleDimStatRequestParams struct {
-	// Project Id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -17640,7 +17640,7 @@ type DescribeRuleDimStatRequestParams struct {
 type DescribeRuleDimStatRequest struct {
 	*tchttp.BaseRequest
 	
-	// Project Id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -18102,7 +18102,7 @@ func (r *DescribeRuleExecResultsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRuleExecStatRequestParams struct {
-	// ProjectId 值
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -18115,7 +18115,7 @@ type DescribeRuleExecStatRequestParams struct {
 type DescribeRuleExecStatRequest struct {
 	*tchttp.BaseRequest
 	
-	// ProjectId 值
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -22745,7 +22745,7 @@ func (r *DescribeThirdTaskRunLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopTableStatRequestParams struct {
-	// Project Id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -22758,7 +22758,7 @@ type DescribeTopTableStatRequestParams struct {
 type DescribeTopTableStatRequest struct {
 	*tchttp.BaseRequest
 	
-	// Project Id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -22816,7 +22816,7 @@ func (r *DescribeTopTableStatResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrendStatRequestParams struct {
-	// Project id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -22829,7 +22829,7 @@ type DescribeTrendStatRequestParams struct {
 type DescribeTrendStatRequest struct {
 	*tchttp.BaseRequest
 	
-	// Project id
+	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 开始时间，时间戳到秒
@@ -24318,6 +24318,26 @@ type ExportTaskInfo struct {
 	// 文件相对路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 是否过期(1.已过期 2.未过期) 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 库名+表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbTableName *string `json:"DbTableName,omitnil,omitempty" name:"DbTableName"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则执行id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExecId *uint64 `json:"RuleExecId,omitnil,omitempty" name:"RuleExecId"`
 }
 
 type FailMessage struct {
@@ -32178,6 +32198,10 @@ type Rule struct {
 	// 监控是否开启.0false,1true
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorStatus *int64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+
+	// 触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerCondition *string `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 type RuleConfig struct {
@@ -32610,6 +32634,10 @@ type RuleGroupExecResult struct {
 	// 实际执行引擎
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 规则执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExecResultVOList []*RuleExecResult `json:"RuleExecResultVOList,omitnil,omitempty" name:"RuleExecResultVOList"`
 }
 
 type RuleGroupExecResultPage struct {
