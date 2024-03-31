@@ -5499,6 +5499,9 @@ type CreateOrUpdateResourceRequestParams struct {
 
 	// 必填项，文件大小，与 Files 字段对应
 	FilesSize []*string `json:"FilesSize,omitnil,omitempty" name:"FilesSize"`
+
+	// 必填项，资源的Md5值（COS中的ETag）
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 }
 
 type CreateOrUpdateResourceRequest struct {
@@ -5524,6 +5527,9 @@ type CreateOrUpdateResourceRequest struct {
 
 	// 必填项，文件大小，与 Files 字段对应
 	FilesSize []*string `json:"FilesSize,omitnil,omitempty" name:"FilesSize"`
+
+	// 必填项，资源的Md5值（COS中的ETag）
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 }
 
 func (r *CreateOrUpdateResourceRequest) ToJsonString() string {
@@ -5545,6 +5551,7 @@ func (r *CreateOrUpdateResourceRequest) FromJsonString(s string) error {
 	delete(f, "CosRegion")
 	delete(f, "NewFile")
 	delete(f, "FilesSize")
+	delete(f, "FileMd5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrUpdateResourceRequest has unknown keys!", "")
 	}

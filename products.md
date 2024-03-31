@@ -20,7 +20,7 @@
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2024-03-29 01:08:27 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2023-05-18 01:04:02 |
 | ba | [ICP备案](https://cloud.tencent.com/document/product/243) | 2024-03-20 01:08:17 |
-| batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2024-03-20 01:08:18 |
+| batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2024-04-01 01:08:28 |
 | bda | [人体分析](https://cloud.tencent.com/document/product/1208) | 2024-03-20 01:08:23 |
 | bi | [商业智能分析 BI](https://cloud.tencent.com/document/product/590) | 2024-03-29 01:08:41 |
 | billing | [费用中心](https://cloud.tencent.com/document/product/555) | 2024-03-29 01:08:47 |
@@ -96,10 +96,10 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-03-27 01:16:55 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-03-28 10:47:55 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-03-29 01:17:26 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-03-29 01:17:41 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-04-01 01:16:54 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-04-01 01:17:11 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-03-20 01:17:05 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-03-27 01:17:36 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-04-01 01:17:27 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2024-03-20 01:17:11 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2024-03-20 01:17:13 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2024-03-25 01:16:59 |
@@ -148,7 +148,7 @@
 | monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2024-03-20 01:20:37 |
 | mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2024-03-29 01:22:15 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2024-03-20 01:21:23 |
-| ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2024-03-20 01:21:28 |
+| ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2024-04-01 01:22:02 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2024-03-20 01:21:32 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [NLP 服务](https://cloud.tencent.com/document/product/271) | 2024-03-20 01:21:33 |
@@ -224,7 +224,7 @@
 | trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | 2024-03-20 01:29:00 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2024-03-26 01:27:42 |
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2024-03-20 01:29:13 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-03-22 01:25:05 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-04-01 01:28:29 |
 | tse | [微服务引擎](https://cloud.tencent.com/document/product/1364) | 2024-03-21 01:28:04 |
 | tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-03-20 01:29:39 |
 | tsw | [微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2024-03-20 01:30:06 |
@@ -237,7 +237,7 @@
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2024-03-20 01:31:26 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2024-03-20 01:31:28 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2024-03-20 01:32:09 |
-| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2024-03-29 01:32:12 |
+| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2024-04-01 01:31:06 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | 2024-03-20 01:33:01 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
 | yinsuda | [音速达直播音乐版权引擎](https://cloud.tencent.com/document/product/1592) | 2024-03-20 01:33:11 |

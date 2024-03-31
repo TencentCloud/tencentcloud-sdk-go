@@ -180,9 +180,10 @@ type ApproverInfo struct {
 	// <li>**2**：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；</li>
 	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。</li></ul>
 	// 
+	// 默认为1(人脸认证 ),2(签署密码),3(运营商三要素)
+	// 
 	// 注：
-	// 1. 默认情况下，认证校验方式为人脸认证和签署密码两种形式
-	// 2. 您可以传递多种值，表示可用多种认证校验方式
+	// 1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
 	// 3. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/company/mobile_support)得到具体的支持说明
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 
