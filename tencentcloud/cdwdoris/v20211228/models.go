@@ -148,6 +148,12 @@ type CreateInstanceNewRequestParams struct {
 
 	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
 	CaseSensitive *int64 `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
+
+	// 是否开启多可用区
+	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
+
+	// 开启多可用区后，用户的所有可用区和子网信息
+	UserMultiZoneInfos *NetworkInfo `json:"UserMultiZoneInfos,omitnil,omitempty" name:"UserMultiZoneInfos"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -194,6 +200,12 @@ type CreateInstanceNewRequest struct {
 
 	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
 	CaseSensitive *int64 `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
+
+	// 是否开启多可用区
+	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
+
+	// 开启多可用区后，用户的所有可用区和子网信息
+	UserMultiZoneInfos *NetworkInfo `json:"UserMultiZoneInfos,omitnil,omitempty" name:"UserMultiZoneInfos"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -221,6 +233,8 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "HaType")
 	delete(f, "CaseSensitive")
+	delete(f, "EnableMultiZones")
+	delete(f, "UserMultiZoneInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}
@@ -1554,6 +1568,14 @@ type InstanceInfo struct {
 	// 已绑定的安全组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindSGs []*string `json:"BindSGs,omitnil,omitempty" name:"BindSGs"`
+
+	// 是否为多可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
+
+	// 用户可用区和子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNetworkInfos *string `json:"UserNetworkInfos,omitnil,omitempty" name:"UserNetworkInfos"`
 }
 
 type InstanceNode struct {
@@ -1656,6 +1678,20 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NetworkInfo struct {
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 当前子网可用ip数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIpNum *int64 `json:"SubnetIpNum,omitnil,omitempty" name:"SubnetIpNum"`
+}
+
 type NodeInfo struct {
 	// 用户IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1664,6 +1700,26 @@ type NodeInfo struct {
 	// 节点状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 节点角色名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 组件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
+
+	// 节点角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
+
+	// 节点上次重启的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRestartTime *string `json:"LastRestartTime,omitnil,omitempty" name:"LastRestartTime"`
+
+	// 节点所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type NodesSummary struct {

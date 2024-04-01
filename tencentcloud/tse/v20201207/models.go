@@ -320,6 +320,39 @@ type CloudNativeAPIGatewayCanaryRule struct {
 	// 归属服务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 灰度规则类别
+	// Standard｜Lane
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 全链路灰度策略多个条件之间的匹配方式，与AND，或OR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
+
+	// 泳道组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 泳道组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 泳道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
+
+	// 泳道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneName *string `json:"LaneName,omitnil,omitempty" name:"LaneName"`
+
+	// 泳道匹配规则：严格STRICT｜宽松PERMISSIVE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchMode *string `json:"MatchMode,omitnil,omitempty" name:"MatchMode"`
+
+	// 泳道标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneTag *string `json:"LaneTag,omitnil,omitempty" name:"LaneTag"`
 }
 
 type CloudNativeAPIGatewayCanaryRuleCondition struct {
@@ -480,22 +513,6 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	// qps阈值
 	QpsThresholds []*QpsThreshold `json:"QpsThresholds,omitnil,omitempty" name:"QpsThresholds"`
 
-	// 限流依据
-	// ip service consumer credential path header
-	LimitBy *string `json:"LimitBy,omitnil,omitempty" name:"LimitBy"`
-
-	// 响应策略
-	// url请求转发
-	// text 响应配置
-	// default 直接返回
-	ResponseType *string `json:"ResponseType,omitnil,omitempty" name:"ResponseType"`
-
-	// 是否隐藏限流客户端响应头
-	HideClientHeaders *bool `json:"HideClientHeaders,omitnil,omitempty" name:"HideClientHeaders"`
-
-	// 是否开启请求排队
-	IsDelay *bool `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
-
 	// 需要进行流量控制的请求路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
@@ -503,6 +520,10 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	// 需要进行流量控制的请求头Key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Header *string `json:"Header,omitnil,omitempty" name:"Header"`
+
+	// 限流依据
+	// ip service consumer credential path header
+	LimitBy *string `json:"LimitBy,omitnil,omitempty" name:"LimitBy"`
 
 	// 外部redis配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -525,8 +546,28 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitResponseUrl *string `json:"RateLimitResponseUrl,omitnil,omitempty" name:"RateLimitResponseUrl"`
 
+	// 响应策略
+	// url请求转发
+	// text 响应配置
+	// default 直接返回
+	ResponseType *string `json:"ResponseType,omitnil,omitempty" name:"ResponseType"`
+
+	// 是否隐藏限流客户端响应头
+	HideClientHeaders *bool `json:"HideClientHeaders,omitnil,omitempty" name:"HideClientHeaders"`
+
 	// 排队时间
 	LineUpTime *int64 `json:"LineUpTime,omitnil,omitempty" name:"LineUpTime"`
+
+	// 是否开启请求排队
+	IsDelay *bool `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
+
+	// 基础限流
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicLimitQpsThresholds []*QpsThreshold `json:"BasicLimitQpsThresholds,omitnil,omitempty" name:"BasicLimitQpsThresholds"`
+
+	// 参数限流的规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimitRules []*LimitRule `json:"LimitRules,omitnil,omitempty" name:"LimitRules"`
 }
 
 type CloudNativeAPIGatewayStrategy struct {
@@ -4533,6 +4574,9 @@ type DescribeCloudNativeAPIGatewayCanaryRulesRequestParams struct {
 	// 服务 ID
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
+	// 灰度规则类别 Standard｜Lane
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
 	// 列表数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -4548,6 +4592,9 @@ type DescribeCloudNativeAPIGatewayCanaryRulesRequest struct {
 
 	// 服务 ID
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 灰度规则类别 Standard｜Lane
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 列表数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -4570,6 +4617,7 @@ func (r *DescribeCloudNativeAPIGatewayCanaryRulesRequest) FromJsonString(s strin
 	}
 	delete(f, "GatewayId")
 	delete(f, "ServiceId")
+	delete(f, "RuleType")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
@@ -8626,6 +8674,16 @@ type KVPair struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type KeyValue struct {
+	// 条件的Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 条件的Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type KongActiveHealthCheck struct {
 	// 主动健康检查健康探测间隔，单位：秒，0表示不开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8912,6 +8970,10 @@ type KongTarget struct {
 	// CVM实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmInstanceName *string `json:"CvmInstanceName,omitnil,omitempty" name:"CvmInstanceName"`
+
+	// target标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type KongUpstreamInfo struct {
@@ -9018,6 +9080,20 @@ type KongUpstreamPreview struct {
 	// 后端配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Target []*KongTarget `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+type LimitRule struct {
+	// 请求匹配条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Filters []*RuleFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 参数限流依据组合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimitBy []*KeyValue `json:"LimitBy,omitnil,omitempty" name:"LimitBy"`
+
+	// 限流阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QpsThresholds []*QpsThreshold `json:"QpsThresholds,omitnil,omitempty" name:"QpsThresholds"`
 }
 
 type ListCloudNativeAPIGatewayResult struct {
@@ -11115,6 +11191,16 @@ type RouteWafStatus struct {
 	// 路由对应服务的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+type RuleFilter struct {
+	// 限流条件的Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 限流条件的Values
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type SREInstance struct {

@@ -1911,6 +1911,67 @@ func (c *Client) DescribeInstanceDealDetailWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeInstanceEventsRequest() (request *DescribeInstanceEventsRequest) {
+    request = &DescribeInstanceEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceEvents")
+    
+    
+    return
+}
+
+func NewDescribeInstanceEventsResponse() (response *DescribeInstanceEventsResponse) {
+    response = &DescribeInstanceEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceEvents
+// 本接口（DescribeInstanceEvents）用于查询 Redis 实例事件信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) DescribeInstanceEvents(request *DescribeInstanceEventsRequest) (response *DescribeInstanceEventsResponse, err error) {
+    return c.DescribeInstanceEventsWithContext(context.Background(), request)
+}
+
+// DescribeInstanceEvents
+// 本接口（DescribeInstanceEvents）用于查询 Redis 实例事件信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) DescribeInstanceEventsWithContext(ctx context.Context, request *DescribeInstanceEventsRequest) (response *DescribeInstanceEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceMonitorBigKeyRequest() (request *DescribeInstanceMonitorBigKeyRequest) {
     request = &DescribeInstanceMonitorBigKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4722,6 +4783,63 @@ func (c *Client) ModifyInstanceAvailabilityZonesWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewModifyInstanceAvailabilityZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceEventRequest() (request *ModifyInstanceEventRequest) {
+    request = &ModifyInstanceEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceEvent")
+    
+    
+    return
+}
+
+func NewModifyInstanceEventResponse() (response *ModifyInstanceEventResponse) {
+    response = &ModifyInstanceEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceEvent
+// 本接口（ModifyInstanceEvent）用于修改实例的运维事件的执行计划。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) ModifyInstanceEvent(request *ModifyInstanceEventRequest) (response *ModifyInstanceEventResponse, err error) {
+    return c.ModifyInstanceEventWithContext(context.Background(), request)
+}
+
+// ModifyInstanceEvent
+// 本接口（ModifyInstanceEvent）用于修改实例的运维事件的执行计划。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) ModifyInstanceEventWithContext(ctx context.Context, request *ModifyInstanceEventRequest) (response *ModifyInstanceEventResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceEventResponse()
     err = c.Send(request, response)
     return
 }

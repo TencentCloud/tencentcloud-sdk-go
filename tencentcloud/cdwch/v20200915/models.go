@@ -354,9 +354,12 @@ type CreateInstanceNewRequestParams struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 数据节点
+	// SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 	DataSpec *NodeSpec `json:"DataSpec,omitnil,omitempty" name:"DataSpec"`
 
-	// 标签列表
+	// 标签列表（废弃）
+	//
+	// Deprecated: Tags is deprecated.
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 日志主题ID
@@ -372,7 +375,11 @@ type CreateInstanceNewRequestParams struct {
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
 	// ZK节点
+	// SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
 	CommonSpec *NodeSpec `json:"CommonSpec,omitnil,omitempty" name:"CommonSpec"`
+
+	// 标签列表
+	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -400,9 +407,10 @@ type CreateInstanceNewRequest struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 数据节点
+	// SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 	DataSpec *NodeSpec `json:"DataSpec,omitnil,omitempty" name:"DataSpec"`
 
-	// 标签列表
+	// 标签列表（废弃）
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 日志主题ID
@@ -418,7 +426,11 @@ type CreateInstanceNewRequest struct {
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
 	// ZK节点
+	// SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
 	CommonSpec *NodeSpec `json:"CommonSpec,omitnil,omitempty" name:"CommonSpec"`
+
+	// 标签列表
+	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -447,6 +459,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "MountDiskType")
 	delete(f, "HAZk")
 	delete(f, "CommonSpec")
+	delete(f, "TagItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}

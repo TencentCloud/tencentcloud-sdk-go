@@ -382,6 +382,10 @@ type AiAnalysisResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeLogoTask *AiAnalysisTaskDelLogoResult `json:"DeLogoTask,omitnil,omitempty" name:"DeLogoTask"`
 
+	// 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadTailTask *AiAnalysisTaskHeadTailResult `json:"HeadTailTask,omitnil,omitempty" name:"HeadTailTask"`
+
 	// 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescriptionTask *AiAnalysisTaskDescriptionResult `json:"DescriptionTask,omitnil,omitempty" name:"DescriptionTask"`
@@ -540,6 +544,39 @@ type AiAnalysisTaskFrameTagResult struct {
 	// 智能按帧标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskHeadTailInput struct {
+	// 片头片尾识别模板 ID。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskHeadTailOutput struct {
+	// 片头pts。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadTimeOffset *float64 `json:"HeadTimeOffset,omitnil,omitempty" name:"HeadTimeOffset"`
+
+	// 片尾pts。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TailTimeOffset *float64 `json:"TailTimeOffset,omitnil,omitempty" name:"TailTimeOffset"`
+}
+
+type AiAnalysisTaskHeadTailResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 片头片尾任务输入。
+	Input *AiAnalysisTaskHeadTailInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 片头片尾任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskHeadTailOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskHighlightInput struct {

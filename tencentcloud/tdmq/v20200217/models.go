@@ -2226,6 +2226,21 @@ type CreateRocketMQVipInstanceRequestParams struct {
 
 	// 购买时长，月为单位
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 是否用于迁移上云，默认为false
+	SupportsMigrateToCloud *bool `json:"SupportsMigrateToCloud,omitnil,omitempty" name:"SupportsMigrateToCloud"`
+
+	// 是否开启公网
+	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
+
+	// 公网带宽，在开启公网情况下为必传字段
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 公网白名单
+	IpRules []*PublicAccessRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateRocketMQVipInstanceRequest struct {
@@ -2255,6 +2270,21 @@ type CreateRocketMQVipInstanceRequest struct {
 
 	// 购买时长，月为单位
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 是否用于迁移上云，默认为false
+	SupportsMigrateToCloud *bool `json:"SupportsMigrateToCloud,omitnil,omitempty" name:"SupportsMigrateToCloud"`
+
+	// 是否开启公网
+	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
+
+	// 公网带宽，在开启公网情况下为必传字段
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 公网白名单
+	IpRules []*PublicAccessRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateRocketMQVipInstanceRequest) ToJsonString() string {
@@ -2276,6 +2306,11 @@ func (r *CreateRocketMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ZoneIds")
 	delete(f, "VpcInfo")
 	delete(f, "TimeSpan")
+	delete(f, "SupportsMigrateToCloud")
+	delete(f, "EnablePublic")
+	delete(f, "Bandwidth")
+	delete(f, "IpRules")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQVipInstanceRequest has unknown keys!", "")
 	}

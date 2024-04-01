@@ -25,9 +25,6 @@ type CreateTtsTaskRequestParams struct {
 	// 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 模型类型，1-默认模型。
-	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
-
 	// 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
@@ -36,6 +33,9 @@ type CreateTtsTaskRequestParams struct {
 
 	// 项目id，用户自定义，默认为0。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 模型类型，1-默认模型。
+	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
 	// 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
@@ -71,9 +71,6 @@ type CreateTtsTaskRequest struct {
 	// 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 模型类型，1-默认模型。
-	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
-
 	// 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
@@ -82,6 +79,9 @@ type CreateTtsTaskRequest struct {
 
 	// 项目id，用户自定义，默认为0。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 模型类型，1-默认模型。
+	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
 	// 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
@@ -124,10 +124,10 @@ func (r *CreateTtsTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Text")
-	delete(f, "ModelType")
 	delete(f, "Volume")
 	delete(f, "Speed")
 	delete(f, "ProjectId")
+	delete(f, "ModelType")
 	delete(f, "VoiceType")
 	delete(f, "PrimaryLanguage")
 	delete(f, "SampleRate")

@@ -89,11 +89,6 @@ type CreateVRSTaskRequestParams struct {
 	// 音色名称
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 音频采样率：
-	// 
-	// 16000：16k
-	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
-
 	// 音色性别:
 	// 
 	// 1-male
@@ -106,11 +101,16 @@ type CreateVRSTaskRequestParams struct {
 	// 1-中文
 	VoiceLanguage *int64 `json:"VoiceLanguage,omitnil,omitempty" name:"VoiceLanguage"`
 
-	// 音频格式，音频类型(wav,mp3,aac,m4a)
-	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
-
 	// 音频ID集合
 	AudioIdList []*string `json:"AudioIdList,omitnil,omitempty" name:"AudioIdList"`
+
+	// 音频采样率：
+	// 
+	// 16000：16k
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 音频格式，音频类型(wav,mp3,aac,m4a)
+	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
@@ -119,11 +119,10 @@ type CreateVRSTaskRequestParams struct {
 	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 任务类型 0:轻量版复刻
-	// 默认为0
+	// 复刻类型。 0 - 轻量版声音复刻（默认）。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 校验音频ID
+	// 校验音频ID。
 	VPRAudioId *string `json:"VPRAudioId,omitnil,omitempty" name:"VPRAudioId"`
 }
 
@@ -136,11 +135,6 @@ type CreateVRSTaskRequest struct {
 	// 音色名称
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 音频采样率：
-	// 
-	// 16000：16k
-	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
-
 	// 音色性别:
 	// 
 	// 1-male
@@ -153,11 +147,16 @@ type CreateVRSTaskRequest struct {
 	// 1-中文
 	VoiceLanguage *int64 `json:"VoiceLanguage,omitnil,omitempty" name:"VoiceLanguage"`
 
-	// 音频格式，音频类型(wav,mp3,aac,m4a)
-	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
-
 	// 音频ID集合
 	AudioIdList []*string `json:"AudioIdList,omitnil,omitempty" name:"AudioIdList"`
+
+	// 音频采样率：
+	// 
+	// 16000：16k
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 音频格式，音频类型(wav,mp3,aac,m4a)
+	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
@@ -166,11 +165,10 @@ type CreateVRSTaskRequest struct {
 	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 任务类型 0:轻量版复刻
-	// 默认为0
+	// 复刻类型。 0 - 轻量版声音复刻（默认）。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 校验音频ID
+	// 校验音频ID。
 	VPRAudioId *string `json:"VPRAudioId,omitnil,omitempty" name:"VPRAudioId"`
 }
 
@@ -188,11 +186,11 @@ func (r *CreateVRSTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SessionId")
 	delete(f, "VoiceName")
-	delete(f, "SampleRate")
 	delete(f, "VoiceGender")
 	delete(f, "VoiceLanguage")
-	delete(f, "Codec")
 	delete(f, "AudioIdList")
+	delete(f, "SampleRate")
+	delete(f, "Codec")
 	delete(f, "CallbackUrl")
 	delete(f, "ModelType")
 	delete(f, "TaskType")
@@ -279,7 +277,7 @@ type DescribeVRSTaskStatusRespData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusStr *string `json:"StatusStr,omitnil,omitempty" name:"StatusStr"`
 
-	// 音色id
+	// 音色id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
@@ -321,11 +319,11 @@ type DetectEnvAndSoundQualityRequestParams struct {
 	// 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
 	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
 
-	// 音频格式，音频类型(wav,mp3,aac,m4a)
-	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
-
 	// 1:环境检测 2:音质检测
 	TypeId *int64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
+
+	// 音频格式，音频类型(wav,mp3,aac,m4a)
+	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 音频采样率：
 	// 
@@ -342,11 +340,11 @@ type DetectEnvAndSoundQualityRequest struct {
 	// 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
 	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
 
-	// 音频格式，音频类型(wav,mp3,aac,m4a)
-	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
-
 	// 1:环境检测 2:音质检测
 	TypeId *int64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
+
+	// 音频格式，音频类型(wav,mp3,aac,m4a)
+	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 音频采样率：
 	// 
@@ -368,8 +366,8 @@ func (r *DetectEnvAndSoundQualityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TextId")
 	delete(f, "AudioData")
-	delete(f, "Codec")
 	delete(f, "TypeId")
+	delete(f, "Codec")
 	delete(f, "SampleRate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectEnvAndSoundQualityRequest has unknown keys!", "")
