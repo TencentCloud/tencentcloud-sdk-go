@@ -2043,6 +2043,9 @@ type CreateLiveRecordTemplateRequestParams struct {
 	// Mp3录制参数，开启Mp3录制时设置。
 	Mp3Param *RecordParam `json:"Mp3Param,omitnil,omitempty" name:"Mp3Param"`
 
+	// 是否存储至 cos，值为 1 时表示存储至 cos。
+	CosStore *int64 `json:"CosStore,omitnil,omitempty" name:"CosStore"`
+
 	// 是否去除水印，类型为慢直播时此参数无效。
 	// 如果为false，则录制水印流或转码流；如果为true，则录制原始流。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitnil,omitempty" name:"RemoveWatermark"`
@@ -2083,6 +2086,9 @@ type CreateLiveRecordTemplateRequest struct {
 	// Mp3录制参数，开启Mp3录制时设置。
 	Mp3Param *RecordParam `json:"Mp3Param,omitnil,omitempty" name:"Mp3Param"`
 
+	// 是否存储至 cos，值为 1 时表示存储至 cos。
+	CosStore *int64 `json:"CosStore,omitnil,omitempty" name:"CosStore"`
+
 	// 是否去除水印，类型为慢直播时此参数无效。
 	// 如果为false，则录制水印流或转码流；如果为true，则录制原始流。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitnil,omitempty" name:"RemoveWatermark"`
@@ -2112,6 +2118,7 @@ func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "IsDelayLive")
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
+	delete(f, "CosStore")
 	delete(f, "RemoveWatermark")
 	delete(f, "FlvSpecialParam")
 	if len(f) > 0 {

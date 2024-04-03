@@ -171,6 +171,55 @@ func (c *Client) BatchCreateDeviceWithContext(ctx context.Context, request *Batc
     return
 }
 
+func NewBatchDeleteDeviceRequest() (request *BatchDeleteDeviceRequest) {
+    request = &BatchDeleteDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "BatchDeleteDevice")
+    
+    
+    return
+}
+
+func NewBatchDeleteDeviceResponse() (response *BatchDeleteDeviceResponse) {
+    response = &BatchDeleteDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchDeleteDevice
+// 批量删除设备
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) BatchDeleteDevice(request *BatchDeleteDeviceRequest) (response *BatchDeleteDeviceResponse, err error) {
+    return c.BatchDeleteDeviceWithContext(context.Background(), request)
+}
+
+// BatchDeleteDevice
+// 批量删除设备
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) BatchDeleteDeviceWithContext(ctx context.Context, request *BatchDeleteDeviceRequest) (response *BatchDeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchKillAlarmRequest() (request *BatchKillAlarmRequest) {
     request = &BatchKillAlarmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -525,6 +574,67 @@ func (c *Client) CreateApplicationTokenWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateApplicationTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceGroupRequest() (request *DeleteDeviceGroupRequest) {
+    request = &DeleteDeviceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "DeleteDeviceGroup")
+    
+    
+    return
+}
+
+func NewDeleteDeviceGroupResponse() (response *DeleteDeviceGroupResponse) {
+    response = &DeleteDeviceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeviceGroup
+// 删除设备分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BUSINESSLOGICERROR = "InternalError.BusinessLogicError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_INVALIDREQUESTTIME = "InvalidParameter.InvalidRequestTime"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONID = "InvalidParameterValue.InvalidApplicationId"
+//  INVALIDPARAMETERVALUE_INVALIDNONCE = "InvalidParameterValue.InvalidNonce"
+//  INVALIDPARAMETERVALUE_INVALIDREQUESTTIME = "InvalidParameterValue.InvalidRequestTime"
+//  INVALIDPARAMETERVALUE_INVALIDSIGNATURE = "InvalidParameterValue.InvalidSignature"
+func (c *Client) DeleteDeviceGroup(request *DeleteDeviceGroupRequest) (response *DeleteDeviceGroupResponse, err error) {
+    return c.DeleteDeviceGroupWithContext(context.Background(), request)
+}
+
+// DeleteDeviceGroup
+// 删除设备分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BUSINESSLOGICERROR = "InternalError.BusinessLogicError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_INVALIDREQUESTTIME = "InvalidParameter.InvalidRequestTime"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONID = "InvalidParameterValue.InvalidApplicationId"
+//  INVALIDPARAMETERVALUE_INVALIDNONCE = "InvalidParameterValue.InvalidNonce"
+//  INVALIDPARAMETERVALUE_INVALIDREQUESTTIME = "InvalidParameterValue.InvalidRequestTime"
+//  INVALIDPARAMETERVALUE_INVALIDSIGNATURE = "InvalidParameterValue.InvalidSignature"
+func (c *Client) DeleteDeviceGroupWithContext(ctx context.Context, request *DeleteDeviceGroupRequest) (response *DeleteDeviceGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1187,6 +1297,59 @@ func (c *Client) DescribeCityWorkspaceListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeCityWorkspaceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceGroupListRequest() (request *DescribeDeviceGroupListRequest) {
+    request = &DescribeDeviceGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "DescribeDeviceGroupList")
+    
+    
+    return
+}
+
+func NewDescribeDeviceGroupListResponse() (response *DescribeDeviceGroupListResponse) {
+    response = &DescribeDeviceGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceGroupList
+// 设备分组列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EMPTYADMINISTRATIVECODE = "InvalidParameterValue.EmptyAdministrativeCode"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDeviceGroupList(request *DescribeDeviceGroupListRequest) (response *DescribeDeviceGroupListResponse, err error) {
+    return c.DescribeDeviceGroupListWithContext(context.Background(), request)
+}
+
+// DescribeDeviceGroupList
+// 设备分组列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EMPTYADMINISTRATIVECODE = "InvalidParameterValue.EmptyAdministrativeCode"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDeviceGroupListWithContext(ctx context.Context, request *DescribeDeviceGroupListRequest) (response *DescribeDeviceGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceGroupListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3036,6 +3199,104 @@ func (c *Client) DescribeWorkspaceUserListWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyDeviceFieldRequest() (request *ModifyDeviceFieldRequest) {
+    request = &ModifyDeviceFieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "ModifyDeviceField")
+    
+    
+    return
+}
+
+func NewModifyDeviceFieldResponse() (response *ModifyDeviceFieldResponse) {
+    response = &ModifyDeviceFieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeviceField
+// 批量修改设备自定义字段值
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) ModifyDeviceField(request *ModifyDeviceFieldRequest) (response *ModifyDeviceFieldResponse, err error) {
+    return c.ModifyDeviceFieldWithContext(context.Background(), request)
+}
+
+// ModifyDeviceField
+// 批量修改设备自定义字段值
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) ModifyDeviceFieldWithContext(ctx context.Context, request *ModifyDeviceFieldRequest) (response *ModifyDeviceFieldResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceFieldRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceField require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceFieldResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceGroupRequest() (request *ModifyDeviceGroupRequest) {
+    request = &ModifyDeviceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "ModifyDeviceGroup")
+    
+    
+    return
+}
+
+func NewModifyDeviceGroupResponse() (response *ModifyDeviceGroupResponse) {
+    response = &ModifyDeviceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeviceGroup
+// 批量修改设备组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) ModifyDeviceGroup(request *ModifyDeviceGroupRequest) (response *ModifyDeviceGroupResponse, err error) {
+    return c.ModifyDeviceGroupWithContext(context.Background(), request)
+}
+
+// ModifyDeviceGroup
+// 批量修改设备组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) ModifyDeviceGroupWithContext(ctx context.Context, request *ModifyDeviceGroupRequest) (response *ModifyDeviceGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceNameRequest() (request *ModifyDeviceNameRequest) {
     request = &ModifyDeviceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3093,6 +3354,55 @@ func (c *Client) ModifyDeviceNameWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyDeviceTagRequest() (request *ModifyDeviceTagRequest) {
+    request = &ModifyDeviceTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "ModifyDeviceTag")
+    
+    
+    return
+}
+
+func NewModifyDeviceTagResponse() (response *ModifyDeviceTagResponse) {
+    response = &ModifyDeviceTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeviceTag
+// 批量修改设备标签
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) ModifyDeviceTag(request *ModifyDeviceTagRequest) (response *ModifyDeviceTagResponse, err error) {
+    return c.ModifyDeviceTagWithContext(context.Background(), request)
+}
+
+// ModifyDeviceTag
+// 批量修改设备标签
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+func (c *Client) ModifyDeviceTagWithContext(ctx context.Context, request *ModifyDeviceTagRequest) (response *ModifyDeviceTagResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceTagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReportAppMessageRequest() (request *ReportAppMessageRequest) {
     request = &ReportAppMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3142,6 +3452,59 @@ func (c *Client) ReportAppMessageWithContext(ctx context.Context, request *Repor
     request.SetContext(ctx)
     
     response = NewReportAppMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSaveDeviceGroupRequest() (request *SaveDeviceGroupRequest) {
+    request = &SaveDeviceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("weilingwith", APIVersion, "SaveDeviceGroup")
+    
+    
+    return
+}
+
+func NewSaveDeviceGroupResponse() (response *SaveDeviceGroupResponse) {
+    response = &SaveDeviceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SaveDeviceGroup
+// 设备分组新增/修改
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SaveDeviceGroup(request *SaveDeviceGroupRequest) (response *SaveDeviceGroupResponse, err error) {
+    return c.SaveDeviceGroupWithContext(context.Background(), request)
+}
+
+// SaveDeviceGroup
+// 设备分组新增/修改
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDWORKSPACEID = "InvalidParameterValue.InvalidWorkspaceId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SaveDeviceGroupWithContext(ctx context.Context, request *SaveDeviceGroupRequest) (response *SaveDeviceGroupResponse, err error) {
+    if request == nil {
+        request = NewSaveDeviceGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaveDeviceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSaveDeviceGroupResponse()
     err = c.Send(request, response)
     return
 }

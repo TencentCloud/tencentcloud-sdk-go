@@ -1747,14 +1747,17 @@ type RunApplicationRequestParams struct {
 	// 投递环境ID。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 任务输入JSON。需要进行base64编码。
-	InputBase64 *string `json:"InputBase64,omitnil,omitempty" name:"InputBase64"`
-
 	// 项目ID。（不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 任务批次描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 任务输入COS地址。（InputBase64和InputCosUri必选其一）
+	InputCosUri *string `json:"InputCosUri,omitnil,omitempty" name:"InputCosUri"`
+
+	// 任务输入JSON。需要进行base64编码。（InputBase64和InputCosUri必选其一）
+	InputBase64 *string `json:"InputBase64,omitnil,omitempty" name:"InputBase64"`
 
 	// 批量投递表格ID，不填表示单例投递。
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
@@ -1776,6 +1779,11 @@ type RunApplicationRequestParams struct {
 
 	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
+
+	// 访问模式，不填默认私有。取值范围
+	// - PRIVATE：私有应用
+	// - PUBLIC：公共应用
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 type RunApplicationRequest struct {
@@ -1790,14 +1798,17 @@ type RunApplicationRequest struct {
 	// 投递环境ID。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 任务输入JSON。需要进行base64编码。
-	InputBase64 *string `json:"InputBase64,omitnil,omitempty" name:"InputBase64"`
-
 	// 项目ID。（不填使用指定地域下的默认项目）
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 任务批次描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 任务输入COS地址。（InputBase64和InputCosUri必选其一）
+	InputCosUri *string `json:"InputCosUri,omitnil,omitempty" name:"InputCosUri"`
+
+	// 任务输入JSON。需要进行base64编码。（InputBase64和InputCosUri必选其一）
+	InputBase64 *string `json:"InputBase64,omitnil,omitempty" name:"InputBase64"`
 
 	// 批量投递表格ID，不填表示单例投递。
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
@@ -1819,6 +1830,11 @@ type RunApplicationRequest struct {
 
 	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
+
+	// 访问模式，不填默认私有。取值范围
+	// - PRIVATE：私有应用
+	// - PUBLIC：公共应用
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 func (r *RunApplicationRequest) ToJsonString() string {
@@ -1836,9 +1852,10 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationId")
 	delete(f, "Name")
 	delete(f, "EnvironmentId")
-	delete(f, "InputBase64")
 	delete(f, "ProjectId")
 	delete(f, "Description")
+	delete(f, "InputCosUri")
+	delete(f, "InputBase64")
 	delete(f, "TableId")
 	delete(f, "TableRowUuids")
 	delete(f, "CacheClearDelay")
@@ -1846,6 +1863,7 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 	delete(f, "Option")
 	delete(f, "NFOption")
 	delete(f, "WorkDir")
+	delete(f, "AccessMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunApplicationRequest has unknown keys!", "")
 	}

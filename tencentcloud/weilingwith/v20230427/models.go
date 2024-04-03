@@ -641,6 +641,77 @@ func (r *BatchCreateDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchDeleteDeviceRequestParams struct {
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备wid数组列表
+	WIDSet []*string `json:"WIDSet,omitnil,omitempty" name:"WIDSet"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+type BatchDeleteDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备wid数组列表
+	WIDSet []*string `json:"WIDSet,omitnil,omitempty" name:"WIDSet"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+func (r *BatchDeleteDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "WIDSet")
+	delete(f, "ApplicationToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteDeviceResponseParams struct {
+	// 返回请求结果
+	Result *EmptyRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteDeviceResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchKillAlarmRequestParams struct {
 	// 告警开始时间，必填,时间戳秒
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
@@ -1441,6 +1512,77 @@ type CustomFieldInfo struct {
 	// 字段值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Val *string `json:"Val,omitnil,omitempty" name:"Val"`
+}
+
+// Predefined struct for user
+type DeleteDeviceGroupRequestParams struct {
+	// 设备分组的id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 工作空间的id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+type DeleteDeviceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备分组的id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 工作空间的id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+func (r *DeleteDeviceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "WorkspaceId")
+	delete(f, "ApplicationToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceGroupResponseParams struct {
+	// 无返回信息
+	Result *EmptyRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeviceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeviceGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeviceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2486,6 +2628,83 @@ func (r *DescribeCityWorkspaceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCityWorkspaceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceGroupListRequestParams struct {
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+
+	// 工作空间ID
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 分组id, 不传默认全部
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+type DescribeDeviceGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+
+	// 工作空间ID
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 分组id, 不传默认全部
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeDeviceGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationToken")
+	delete(f, "WorkspaceId")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceGroupListRes struct {
+	// 设备分组list
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DescribeGroupInfo `json:"List,omitnil,omitempty" name:"List"`
+}
+
+// Predefined struct for user
+type DescribeDeviceGroupListResponseParams struct {
+	// 分组信息
+	Result *DescribeDeviceGroupListRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3735,6 +3954,22 @@ func (r *DescribeFileUploadURLResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeFileUploadURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupInfo struct {
+	// 分组
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 设备分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 分组父级ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
 // Predefined struct for user
@@ -6366,6 +6601,167 @@ type ModelSet struct {
 	Set []*ModelInfo `json:"Set,omitnil,omitempty" name:"Set"`
 }
 
+type ModifyDeviceFieldInfo struct {
+	// 设备id
+	WID *string `json:"WID,omitnil,omitempty" name:"WID"`
+
+	// 自定义字段key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 自定义字段值
+	Val *string `json:"Val,omitnil,omitempty" name:"Val"`
+}
+
+// Predefined struct for user
+type ModifyDeviceFieldRequestParams struct {
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备自定义字段修改信息集合
+	Set []*ModifyDeviceFieldInfo `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+type ModifyDeviceFieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备自定义字段修改信息集合
+	Set []*ModifyDeviceFieldInfo `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+func (r *ModifyDeviceFieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceFieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Set")
+	delete(f, "ApplicationToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceFieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceFieldResponseParams struct {
+	// 返回请求结果
+	Result *EmptyRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceFieldResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceFieldResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceFieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceFieldResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceGroupInfo struct {
+	// 设备id
+	WID *string `json:"WID,omitnil,omitempty" name:"WID"`
+
+	// 设备分组id
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+// Predefined struct for user
+type ModifyDeviceGroupRequestParams struct {
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备组修改信息集合	
+	Set []*ModifyDeviceGroupInfo `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+type ModifyDeviceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备组修改信息集合	
+	Set []*ModifyDeviceGroupInfo `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+func (r *ModifyDeviceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Set")
+	delete(f, "ApplicationToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceGroupResponseParams struct {
+	// 返回请求结果
+	Result *EmptyRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ModifyDeviceNameRequestParams struct {
 	// 工作空间id
@@ -6434,6 +6830,85 @@ func (r *ModifyDeviceNameResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDeviceNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceTagInfo struct {
+	// 设备id
+	WID *string `json:"WID,omitnil,omitempty" name:"WID"`
+
+	// 设备标签名称集合
+	NameSet []*string `json:"NameSet,omitnil,omitempty" name:"NameSet"`
+}
+
+// Predefined struct for user
+type ModifyDeviceTagRequestParams struct {
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备标签修改信息集合
+	Set []*ModifyDeviceTagInfo `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 应用token	
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+type ModifyDeviceTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 设备标签修改信息集合
+	Set []*ModifyDeviceTagInfo `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 应用token	
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+}
+
+func (r *ModifyDeviceTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Set")
+	delete(f, "ApplicationToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceTagResponseParams struct {
+	// 返回请求结果
+	Result *EmptyRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceTagResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceTagResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6793,6 +7268,104 @@ type RuleDetailRes struct {
 	// 动作对象集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionInfoSet []*ActionObj `json:"ActionInfoSet,omitnil,omitempty" name:"ActionInfoSet"`
+}
+
+// Predefined struct for user
+type SaveDeviceGroupRequestParams struct {
+	// 分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分组描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+
+	// 分组id, 携带则为修改, 不携带则为新增
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 分组父级id
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+}
+
+type SaveDeviceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分组描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 空间id
+	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 应用token
+	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
+
+	// 分组id, 携带则为修改, 不携带则为新增
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 分组父级id
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+}
+
+func (r *SaveDeviceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaveDeviceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "WorkspaceId")
+	delete(f, "ApplicationToken")
+	delete(f, "Id")
+	delete(f, "ParentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDeviceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SaveDeviceGroupRes struct {
+	// 保存or修改设备分组回包信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+// Predefined struct for user
+type SaveDeviceGroupResponseParams struct {
+	// 新增/修改的设备分组记录的id
+	Result *SaveDeviceGroupRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SaveDeviceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *SaveDeviceGroupResponseParams `json:"Response"`
+}
+
+func (r *SaveDeviceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaveDeviceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SceneInfo struct {

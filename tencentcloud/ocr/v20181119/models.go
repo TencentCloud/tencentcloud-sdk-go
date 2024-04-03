@@ -1468,6 +1468,10 @@ type DocumentElement struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
+	// 入参开启EnableInsetImage后返回，表示在InsetImagePackage中的内嵌图片名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsetImageName *string `json:"InsetImageName,omitnil,omitempty" name:"InsetImageName"`
+
 	// 嵌套的文档元素信息，一般包含的是文档内嵌入图片的文字识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Elements []*DocumentElement `json:"Elements,omitnil,omitempty" name:"Elements"`

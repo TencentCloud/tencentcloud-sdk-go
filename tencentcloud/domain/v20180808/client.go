@@ -1507,6 +1507,67 @@ func (c *Client) DescribeTemplateListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTldListRequest() (request *DescribeTldListRequest) {
+    request = &DescribeTldListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeTldList")
+    
+    
+    return
+}
+
+func NewDescribeTldListResponse() (response *DescribeTldListResponse) {
+    response = &DescribeTldListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTldList
+// 用于获取域名注册当前支持注册的后缀
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTldList(request *DescribeTldListRequest) (response *DescribeTldListResponse, err error) {
+    return c.DescribeTldListWithContext(context.Background(), request)
+}
+
+// DescribeTldList
+// 用于获取域名注册当前支持注册的后缀
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTldListWithContext(ctx context.Context, request *DescribeTldListRequest) (response *DescribeTldListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTldListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTldList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTldListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomDnsHostRequest() (request *ModifyCustomDnsHostRequest) {
     request = &ModifyCustomDnsHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
