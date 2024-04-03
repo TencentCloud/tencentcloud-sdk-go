@@ -4209,6 +4209,9 @@ type ModifyTopicRequestParams struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 消息保留时长
+	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
 type ModifyTopicRequest struct {
@@ -4225,6 +4228,9 @@ type ModifyTopicRequest struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 消息保留时长
+	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -4243,6 +4249,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "Topic")
 	delete(f, "QueueNum")
 	delete(f, "Remark")
+	delete(f, "MsgTTL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}

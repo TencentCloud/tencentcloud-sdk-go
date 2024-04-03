@@ -44,7 +44,7 @@
 | cdc | [本地专用集群](https://cloud.tencent.com/document/product/1346) | 2024-03-20 01:10:04 |
 | cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2024-03-21 01:09:58 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2024-03-20 01:10:22 |
-| cdwch | [云数据仓库 ClickHouse](https://cloud.tencent.com/document/product/1299) | 2024-04-02 01:09:49 |
+| cdwch | [云数据仓库 ClickHouse](https://cloud.tencent.com/document/product/1299) | 2024-04-04 01:10:06 |
 | cdwdoris | [腾讯云数据仓库 TCHouse-D](https://cloud.tencent.com/document/product/1387) | 2024-04-02 01:09:54 |
 | cdwpg | [云数据仓库 PostgreSQL](https://cloud.tencent.com/document/product/878) | 2024-03-28 01:10:53 |
 | cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2024-03-20 01:10:31 |
@@ -102,7 +102,7 @@
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-04-01 01:17:27 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2024-03-20 01:17:11 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2024-03-20 01:17:13 |
-| gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2024-03-25 01:16:59 |
+| gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2024-04-04 01:15:50 |
 | gme | [游戏多媒体引擎](https://cloud.tencent.com/document/product/607) | 2024-03-20 01:17:27 |
 | goosefs | [数据加速器 GooseFS](https://cloud.tencent.com/document/product/1424) | 2024-03-20 01:17:31 |
 | gpm | [游戏玩家匹配](https://cloud.tencent.com/document/product/1294) | 2022-07-11 06:12:36 |
@@ -221,7 +221,7 @@
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2024-04-02 01:25:21 |
 | tourism | [文旅客情大数据](https://cloud.tencent.com/document/product/1684) | 2024-03-20 01:28:59 |
 | trdp | [流量风险决策平台](https://cloud.tencent.com/document/product/1604) | 2023-05-18 02:01:19 |
-| trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | 2024-03-20 01:29:00 |
+| trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | 2024-04-04 01:25:24 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2024-03-26 01:27:42 |
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2024-03-20 01:29:13 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-04-03 11:30:33 |
