@@ -467,6 +467,10 @@ type Address struct {
 	// 当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:
 	// <li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
 type AddressChargePrepaid struct {

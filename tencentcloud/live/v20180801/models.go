@@ -14769,6 +14769,18 @@ type RecordParam struct {
 	// 点播应用分类
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// 存储至 cos 的 bucket 桶名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// 存储至 cos 的 bucket 区域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// 存储至 cos 的 bucket 路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
 }
 
 type RecordTask struct {

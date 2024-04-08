@@ -1658,6 +1658,59 @@ func (c *Client) DescribeIMCdrsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeIvrAudioListRequest() (request *DescribeIvrAudioListRequest) {
+    request = &DescribeIvrAudioListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeIvrAudioList")
+    
+    
+    return
+}
+
+func NewDescribeIvrAudioListResponse() (response *DescribeIvrAudioListResponse) {
+    response = &DescribeIvrAudioListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIvrAudioList
+// 查询IVR音频文件列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeIvrAudioList(request *DescribeIvrAudioListRequest) (response *DescribeIvrAudioListResponse, err error) {
+    return c.DescribeIvrAudioListWithContext(context.Background(), request)
+}
+
+// DescribeIvrAudioList
+// 查询IVR音频文件列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeIvrAudioListWithContext(ctx context.Context, request *DescribeIvrAudioListRequest) (response *DescribeIvrAudioListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIvrAudioListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIvrAudioList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIvrAudioListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNumbersRequest() (request *DescribeNumbersRequest) {
     request = &DescribeNumbersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1683,8 +1736,7 @@ func NewDescribeNumbersResponse() (response *DescribeNumbersResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeNumbers(request *DescribeNumbersRequest) (response *DescribeNumbersResponse, err error) {
     return c.DescribeNumbersWithContext(context.Background(), request)
 }
@@ -1695,8 +1747,7 @@ func (c *Client) DescribeNumbers(request *DescribeNumbersRequest) (response *Des
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeNumbersWithContext(ctx context.Context, request *DescribeNumbersRequest) (response *DescribeNumbersResponse, err error) {
     if request == nil {
         request = NewDescribeNumbersRequest()
@@ -3037,6 +3088,59 @@ func (c *Client) UpdatePredictiveDialingCampaignWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewUpdatePredictiveDialingCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadIvrAudioRequest() (request *UploadIvrAudioRequest) {
+    request = &UploadIvrAudioRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "UploadIvrAudio")
+    
+    
+    return
+}
+
+func NewUploadIvrAudioResponse() (response *UploadIvrAudioResponse) {
+    response = &UploadIvrAudioResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadIvrAudio
+// 上传IVR中使用的音频文件，每日上传文件限制50个。（参数中音频文件Url建议使用腾讯云Cos存储的临时链接）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADFILEOVERFLOW = "FailedOperation.UploadFileOverflow"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UploadIvrAudio(request *UploadIvrAudioRequest) (response *UploadIvrAudioResponse, err error) {
+    return c.UploadIvrAudioWithContext(context.Background(), request)
+}
+
+// UploadIvrAudio
+// 上传IVR中使用的音频文件，每日上传文件限制50个。（参数中音频文件Url建议使用腾讯云Cos存储的临时链接）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADFILEOVERFLOW = "FailedOperation.UploadFileOverflow"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UploadIvrAudioWithContext(ctx context.Context, request *UploadIvrAudioRequest) (response *UploadIvrAudioResponse, err error) {
+    if request == nil {
+        request = NewUploadIvrAudioRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadIvrAudio require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadIvrAudioResponse()
     err = c.Send(request, response)
     return
 }

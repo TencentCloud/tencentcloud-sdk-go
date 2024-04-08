@@ -7422,8 +7422,6 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 //
 // * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
 //
-// * 系统切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
-//
 // * 密码不指定将会通过站内信下发随机密码。
 //
 // * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`、`CLOUD_BSSD`类型的实例使用该接口实现操作系统切换。
@@ -7509,8 +7507,6 @@ func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetIn
 // * 如果指定了`ImageId`参数，则使用指定的镜像重装；否则按照当前实例使用的镜像进行重装。
 //
 // * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
-//
-// * 系统切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
 //
 // * 密码不指定将会通过站内信下发随机密码。
 //

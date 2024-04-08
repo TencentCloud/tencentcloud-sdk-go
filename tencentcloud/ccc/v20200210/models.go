@@ -95,6 +95,24 @@ type ActiveCarrierPrivilegeNumber struct {
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type AudioFileInfo struct {
+	// 文件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileId *uint64 `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 文件别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomFileName *string `json:"CustomFileName,omitnil,omitempty" name:"CustomFileName"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioFileName *string `json:"AudioFileName,omitnil,omitempty" name:"AudioFileName"`
+
+	// 审核状态，0-未审核，1-审核通过，2-审核拒绝
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type AutoCalloutTaskCalleeInfo struct {
 	// 被叫号码
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
@@ -2671,6 +2689,101 @@ func (r *DescribeIMCdrsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIvrAudioListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 50
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 文件别名
+	CustomFileName []*string `json:"CustomFileName,omitnil,omitempty" name:"CustomFileName"`
+
+	// 文件名
+	AudioFileName []*string `json:"AudioFileName,omitnil,omitempty" name:"AudioFileName"`
+
+	// 文件ID
+	FileId []*uint64 `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+type DescribeIvrAudioListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 50
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 文件别名
+	CustomFileName []*string `json:"CustomFileName,omitnil,omitempty" name:"CustomFileName"`
+
+	// 文件名
+	AudioFileName []*string `json:"AudioFileName,omitnil,omitempty" name:"AudioFileName"`
+
+	// 文件ID
+	FileId []*uint64 `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+func (r *DescribeIvrAudioListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIvrAudioListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "CustomFileName")
+	delete(f, "AudioFileName")
+	delete(f, "FileId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIvrAudioListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIvrAudioListResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 文件信息
+	FileInfo []*AudioFileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIvrAudioListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIvrAudioListResponseParams `json:"Response"`
+}
+
+func (r *DescribeIvrAudioListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIvrAudioListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5546,6 +5659,89 @@ func (r *UpdatePredictiveDialingCampaignResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdatePredictiveDialingCampaignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadAudioInfo struct {
+	// 文件别名（可重复）
+	CustomFileName *string `json:"CustomFileName,omitnil,omitempty" name:"CustomFileName"`
+
+	// 音频文件链接。(支持mp3和wav格式，文件不超过5MB)
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+}
+
+type UploadIvrAudioFailedInfo struct {
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMsg *string `json:"FailedMsg,omitnil,omitempty" name:"FailedMsg"`
+}
+
+// Predefined struct for user
+type UploadIvrAudioRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频文件列表
+	AudioList []*UploadAudioInfo `json:"AudioList,omitnil,omitempty" name:"AudioList"`
+}
+
+type UploadIvrAudioRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频文件列表
+	AudioList []*UploadAudioInfo `json:"AudioList,omitnil,omitempty" name:"AudioList"`
+}
+
+func (r *UploadIvrAudioRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadIvrAudioRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "AudioList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadIvrAudioRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadIvrAudioResponseParams struct {
+	// 上传失败的文件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedFileList []*UploadIvrAudioFailedInfo `json:"FailedFileList,omitnil,omitempty" name:"FailedFileList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadIvrAudioResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadIvrAudioResponseParams `json:"Response"`
+}
+
+func (r *UploadIvrAudioResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadIvrAudioResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
