@@ -242,7 +242,7 @@ func (r *QueryTextToImageProJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryTextToImageProJobResponseParams struct {
 	// 当前任务状态码：
-	// 1：排队中、3：处理中、5：处理失败、7：处理完成。
+	// 1：等待中、2：运行中、4：处理失败、5：处理完成。
 	JobStatusCode *string `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
 
 	// 当前任务状态：排队中、处理中、处理失败或者处理完成。

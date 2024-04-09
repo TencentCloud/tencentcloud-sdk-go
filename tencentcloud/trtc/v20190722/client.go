@@ -1514,7 +1514,7 @@ func NewDescribeTRTCRealTimeQualityDataResponse() (response *DescribeTRTCRealTim
 // 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_INVALIDSDKAPPID = "InvalidParameter.InvalidSdkAppId"
 func (c *Client) DescribeTRTCRealTimeQualityData(request *DescribeTRTCRealTimeQualityDataRequest) (response *DescribeTRTCRealTimeQualityDataResponse, err error) {
     return c.DescribeTRTCRealTimeQualityDataWithContext(context.Background(), request)
 }
@@ -1533,7 +1533,7 @@ func (c *Client) DescribeTRTCRealTimeQualityData(request *DescribeTRTCRealTimeQu
 // 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_INVALIDSDKAPPID = "InvalidParameter.InvalidSdkAppId"
 func (c *Client) DescribeTRTCRealTimeQualityDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeQualityDataRequest) (response *DescribeTRTCRealTimeQualityDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCRealTimeQualityDataRequest()

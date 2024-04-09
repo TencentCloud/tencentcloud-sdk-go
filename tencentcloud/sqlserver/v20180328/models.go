@@ -5200,6 +5200,9 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// 备机只读信息
 	DrReadableInfo *DrReadableInfo `json:"DrReadableInfo,omitnil,omitempty" name:"DrReadableInfo"`
 
+	// 等待回收的IP列表
+	OldVipList []*OldVip `json:"OldVipList,omitnil,omitempty" name:"OldVipList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11941,6 +11944,18 @@ func (r *ModifyReadOnlyGroupDetailsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyReadOnlyGroupDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OldVip struct {
+	// 未回收的旧ip
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// ip回收时间
+	RecycleTime *string `json:"RecycleTime,omitnil,omitempty" name:"RecycleTime"`
+
+	// 旧IP保留时间小时数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldIpRetainTime *int64 `json:"OldIpRetainTime,omitnil,omitempty" name:"OldIpRetainTime"`
 }
 
 // Predefined struct for user

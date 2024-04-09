@@ -299,6 +299,67 @@ func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *Sta
     return
 }
 
+func NewStartPublishStreamToCSSRequest() (request *StartPublishStreamToCSSRequest) {
+    request = &StartPublishStreamToCSSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "StartPublishStreamToCSS")
+    
+    
+    return
+}
+
+func NewStartPublishStreamToCSSResponse() (response *StartPublishStreamToCSSResponse) {
+    response = &StartPublishStreamToCSSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartPublishStreamToCSS
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StartPublishStreamToCSS(request *StartPublishStreamToCSSRequest) (response *StartPublishStreamToCSSResponse, err error) {
+    return c.StartPublishStreamToCSSWithContext(context.Background(), request)
+}
+
+// StartPublishStreamToCSS
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StartPublishStreamToCSSWithContext(ctx context.Context, request *StartPublishStreamToCSSRequest) (response *StartPublishStreamToCSSResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamToCSSRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartPublishStreamToCSS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartPublishStreamToCSSResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},

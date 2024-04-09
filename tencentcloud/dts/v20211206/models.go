@@ -531,6 +531,9 @@ type ConfigureSyncJobRequestParams struct {
 	// 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
+	// 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+	SrcConnectType *string `json:"SrcConnectType,omitnil,omitempty" name:"SrcConnectType"`
+
 	// 源端信息，单节点数据库使用，且SrcNodeType传single
 	SrcInfo *Endpoint `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
@@ -583,6 +586,9 @@ type ConfigureSyncJobRequest struct {
 	// 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
+	// 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+	SrcConnectType *string `json:"SrcConnectType,omitnil,omitempty" name:"SrcConnectType"`
+
 	// 源端信息，单节点数据库使用，且SrcNodeType传single
 	SrcInfo *Endpoint `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
@@ -628,6 +634,7 @@ func (r *ConfigureSyncJobRequest) FromJsonString(s string) error {
 	delete(f, "JobMode")
 	delete(f, "RunMode")
 	delete(f, "ExpectRunTime")
+	delete(f, "SrcConnectType")
 	delete(f, "SrcInfo")
 	delete(f, "SrcInfos")
 	delete(f, "SrcNodeType")
@@ -1550,10 +1557,14 @@ type DBEndpointInfo struct {
 	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitnil,omitempty" name:"DatabaseNetEnv"`
+
+	// tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectType *string `json:"ConnectType,omitnil,omitempty" name:"ConnectType"`
 }
 
 type DBInfo struct {
-	// 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。如数据库是tdsql，枚举值为：proxy、set
+	// 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
@@ -1633,7 +1644,7 @@ type DBInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 
-	// tdsql分片id。tdsql set节点必填
+	// tdsql的分片id。如节点类型为set必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }

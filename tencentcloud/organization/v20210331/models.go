@@ -22,32 +22,32 @@ import (
 
 // Predefined struct for user
 type AddOrganizationMemberEmailRequestParams struct {
-	// 成员Uin
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 邮箱地址
+	// 邮箱地址。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 国际区号
+	// 国际区号。
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 }
 
 type AddOrganizationMemberEmailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员Uin
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 邮箱地址
+	// 邮箱地址。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 国际区号
+	// 国际区号。
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 }
 
@@ -101,7 +101,7 @@ func (r *AddOrganizationMemberEmailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddOrganizationNodeRequestParams struct {
-	// 父节点ID。可以调用DescribeOrganizationNodes获取
+	// 父节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	ParentNodeId *uint64 `json:"ParentNodeId,omitnil,omitempty" name:"ParentNodeId"`
 
 	// 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
@@ -114,7 +114,7 @@ type AddOrganizationNodeRequestParams struct {
 type AddOrganizationNodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 父节点ID。可以调用DescribeOrganizationNodes获取
+	// 父节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	ParentNodeId *uint64 `json:"ParentNodeId,omitnil,omitempty" name:"ParentNodeId"`
 
 	// 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
@@ -243,7 +243,7 @@ type AddShareUnitRequestParams struct {
 	// 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	// 共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 共享单元描述。最大128个字符。
@@ -256,7 +256,7 @@ type AddShareUnitRequest struct {
 	// 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	// 共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 共享单元描述。最大128个字符。
@@ -403,7 +403,7 @@ type BindOrganizationMemberAuthAccountRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。可以调用DescribeOrganizationMemberPolicies获取
+	// 策略ID。可以调用[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 组织管理员子账号Uin列表。最大5个
@@ -416,7 +416,7 @@ type BindOrganizationMemberAuthAccountRequest struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。可以调用DescribeOrganizationMemberPolicies获取
+	// 策略ID。可以调用[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 组织管理员子账号Uin列表。最大5个
@@ -471,7 +471,7 @@ type CancelOrganizationMemberAuthAccountRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。
+	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 组织子账号Uin。
@@ -484,7 +484,7 @@ type CancelOrganizationMemberAuthAccountRequest struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。
+	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 组织子账号Uin。
@@ -536,14 +536,14 @@ func (r *CancelOrganizationMemberAuthAccountResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type CheckAccountDeleteRequestParams struct {
-	// 成员uin。
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type CheckAccountDeleteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员uin。
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
@@ -668,20 +668,20 @@ func (r *CreateOrganizationIdentityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationMemberAuthIdentityRequestParams struct {
-	// 成员uin列表。最多10个
+	// 成员Uin列表。最多10个
 	MemberUins []*uint64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
 
-	// 身份Id列表。最多5个
+	// 身份Id列表。最多5个，可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityIds []*uint64 `json:"IdentityIds,omitnil,omitempty" name:"IdentityIds"`
 }
 
 type CreateOrganizationMemberAuthIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员uin列表。最多10个
+	// 成员Uin列表。最多10个
 	MemberUins []*uint64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
 
-	// 身份Id列表。最多5个
+	// 身份Id列表。最多5个，可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityIds []*uint64 `json:"IdentityIds,omitnil,omitempty" name:"IdentityIds"`
 }
 
@@ -735,7 +735,7 @@ type CreateOrganizationMemberPolicyRequestParams struct {
 	// 策略名。最大长度为128个字符，支持英文字母、数字、符号+=,.@_-
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 成员访问身份ID。可以调用DescribeOrganizationMemberAuthIdentities获取
+	// 成员访问身份ID。可以调用[DescribeOrganizationMemberAuthIdentities](https://cloud.tencent.com/document/product/850/82936)获取
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 描述。
@@ -751,7 +751,7 @@ type CreateOrganizationMemberPolicyRequest struct {
 	// 策略名。最大长度为128个字符，支持英文字母、数字、符号+=,.@_-
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 成员访问身份ID。可以调用DescribeOrganizationMemberAuthIdentities获取
+	// 成员访问身份ID。可以调用[DescribeOrganizationMemberAuthIdentities](https://cloud.tencent.com/document/product/850/82936)获取
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 描述。
@@ -817,7 +817,7 @@ type CreateOrganizationMemberRequestParams struct {
 	// 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
 	PermissionIds []*uint64 `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
 
-	// 成员所属部门的节点ID。可以调用DescribeOrganizationNodes获取
+	// 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
@@ -851,7 +851,7 @@ type CreateOrganizationMemberRequest struct {
 	// 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
 	PermissionIds []*uint64 `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
 
-	// 成员所属部门的节点ID。可以调用DescribeOrganizationNodes获取
+	// 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
@@ -935,7 +935,7 @@ type CreateOrganizationMembersPolicyRequestParams struct {
 	// 策略名。长度1～128个字符，支持英文字母、数字、符号+=,.@_-
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 成员访问身份ID。
+	// 成员访问身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 策略描述。最大长度为128个字符
@@ -951,7 +951,7 @@ type CreateOrganizationMembersPolicyRequest struct {
 	// 策略名。长度1～128个字符，支持英文字母、数字、符号+=,.@_-
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 成员访问身份ID。
+	// 成员访问身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 策略描述。最大长度为128个字符
@@ -1065,14 +1065,14 @@ func (r *CreateOrganizationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAccountRequestParams struct {
-	// 成员uin。
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type DeleteAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员uin。
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
@@ -1119,14 +1119,14 @@ func (r *DeleteAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrganizationIdentityRequestParams struct {
-	// 身份ID
+	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 }
 
 type DeleteOrganizationIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份ID
+	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 }
 
@@ -1173,20 +1173,20 @@ func (r *DeleteOrganizationIdentityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrganizationMemberAuthIdentityRequestParams struct {
-	// 成员uin。
+	// 成员Uin。
 	MemberUin *uint64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 身份Id。
+	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 }
 
 type DeleteOrganizationMemberAuthIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员uin。
+	// 成员Uin。
 	MemberUin *uint64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 身份Id。
+	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 }
 
@@ -1234,14 +1234,14 @@ func (r *DeleteOrganizationMemberAuthIdentityResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DeleteOrganizationMembersPolicyRequestParams struct {
-	// 访问策略ID。
+	// 访问策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type DeleteOrganizationMembersPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 访问策略ID。
+	// 访问策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -1288,14 +1288,14 @@ func (r *DeleteOrganizationMembersPolicyResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DeleteOrganizationMembersRequestParams struct {
-	// 被删除成员的UIN列表。
+	// 被删除成员的Uin列表。
 	MemberUin []*int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type DeleteOrganizationMembersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 被删除成员的UIN列表。
+	// 被删除成员的Uin列表。
 	MemberUin []*int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
@@ -1342,14 +1342,14 @@ func (r *DeleteOrganizationMembersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrganizationNodesRequestParams struct {
-	// 节点ID列表。
+	// 节点ID列表。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId []*int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 type DeleteOrganizationNodesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 节点ID列表。
+	// 节点ID列表。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId []*int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
@@ -1553,7 +1553,7 @@ type DeleteShareUnitResourcesRequestParams struct {
 	// 共享单元地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 资源类型。支持共享的资源类型。
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 共享资源列表。最大10个。
@@ -1569,7 +1569,7 @@ type DeleteShareUnitResourcesRequest struct {
 	// 共享单元地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 资源类型。支持共享的资源类型。
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 共享资源列表。最大10个。
@@ -1644,10 +1644,10 @@ func (r *DeleteShareUnitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOrganizationAuthNodeRequestParams struct {
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 互信主体名称。
@@ -1657,10 +1657,10 @@ type DescribeOrganizationAuthNodeRequestParams struct {
 type DescribeOrganizationAuthNodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 互信主体名称。
@@ -2001,32 +2001,32 @@ func (r *DescribeOrganizationFinancialByProductResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeOrganizationMemberAuthAccountsRequestParams struct {
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。
+	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type DescribeOrganizationMemberAuthAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。
+	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -2093,7 +2093,7 @@ type DescribeOrganizationMemberAuthIdentitiesRequestParams struct {
 	// 组织成员Uin。入参MemberUin与IdentityId至少填写一个
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 身份ID。入参MemberUin与IdentityId至少填写一个
+	// 身份ID。入参MemberUin与IdentityId至少填写一个, 可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 }
 
@@ -2109,7 +2109,7 @@ type DescribeOrganizationMemberAuthIdentitiesRequest struct {
 	// 组织成员Uin。入参MemberUin与IdentityId至少填写一个
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 身份ID。入参MemberUin与IdentityId至少填写一个
+	// 身份ID。入参MemberUin与IdentityId至少填写一个, 可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 }
 
@@ -2167,14 +2167,14 @@ func (r *DescribeOrganizationMemberAuthIdentitiesResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type DescribeOrganizationMemberEmailBindRequestParams struct {
-	// 成员Uin
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type DescribeOrganizationMemberEmailBindRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员Uin
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
@@ -2199,39 +2199,39 @@ func (r *DescribeOrganizationMemberEmailBindRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeOrganizationMemberEmailBindResponseParams struct {
-	// 绑定ID
+	// 绑定ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindId *uint64 `json:"BindId,omitnil,omitempty" name:"BindId"`
 
-	// 申请时间
+	// 申请时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
-	// 邮箱地址
+	// 邮箱地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 手机号
+	// 安全手机号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 绑定状态    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+	// 绑定状态。    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindStatus *string `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
-	// 绑定时间
+	// 绑定时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindTime *string `json:"BindTime,omitnil,omitempty" name:"BindTime"`
 
-	// 失败说明
+	// 失败说明。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 安全手机绑定状态  未绑定：0，已绑定：1
+	// 安全手机绑定状态 。 未绑定：0，已绑定：1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneBind *uint64 `json:"PhoneBind,omitnil,omitempty" name:"PhoneBind"`
 
-	// 国际区号
+	// 国际区号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
@@ -2257,10 +2257,10 @@ func (r *DescribeOrganizationMemberEmailBindResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeOrganizationMemberPoliciesRequestParams struct {
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 成员Uin。
@@ -2273,10 +2273,10 @@ type DescribeOrganizationMemberPoliciesRequestParams struct {
 type DescribeOrganizationMemberPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 成员Uin。
@@ -2438,7 +2438,7 @@ type DescribeOrganizationNodesRequestParams struct {
 	// 限制数目。最大50
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -2448,7 +2448,7 @@ type DescribeOrganizationNodesRequest struct {
 	// 限制数目。最大50
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -2792,7 +2792,7 @@ type DescribeShareUnitResourcesRequestParams struct {
 	// 搜索关键字。支持产品资源ID搜索。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 共享资源类型。
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -2814,7 +2814,7 @@ type DescribeShareUnitResourcesRequest struct {
 	// 搜索关键字。支持产品资源ID搜索。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 共享资源类型。
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -2874,7 +2874,7 @@ func (r *DescribeShareUnitResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeShareUnitsRequestParams struct {
-	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	// 共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 偏移量。取值是limit的整数倍。默认值 : 0。
@@ -2890,7 +2890,7 @@ type DescribeShareUnitsRequestParams struct {
 type DescribeShareUnitsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+	// 共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 偏移量。取值是limit的整数倍。默认值 : 0。
@@ -2982,7 +2982,7 @@ type ListOrganizationIdentityRequestParams struct {
 	// 名称搜索关键字。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 身份ID搜索。
+	// 身份ID。可以通过身份ID搜索
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份类型。取值范围 1-预设, 2-自定义
@@ -3001,7 +3001,7 @@ type ListOrganizationIdentityRequest struct {
 	// 名称搜索关键字。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 身份ID搜索。
+	// 身份ID。可以通过身份ID搜索
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份类型。取值范围 1-预设, 2-自定义
@@ -3116,20 +3116,20 @@ type MemberMainInfo struct {
 
 // Predefined struct for user
 type MoveOrganizationNodeMembersRequestParams struct {
-	// 组织节点ID。
+	// 组织节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 成员UIN列表。
+	// 成员Uin列表。
 	MemberUin []*int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type MoveOrganizationNodeMembersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 组织节点ID。
+	// 组织节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 成员UIN列表。
+	// 成员Uin列表。
 	MemberUin []*int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
@@ -3640,26 +3640,26 @@ type ShareUnitResource struct {
 
 // Predefined struct for user
 type UpdateOrganizationIdentityRequestParams struct {
-	// 身份ID
+	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
-	// 身份描述
+	// 身份描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 身份策略
+	// 身份策略。
 	IdentityPolicy []*IdentityPolicy `json:"IdentityPolicy,omitnil,omitempty" name:"IdentityPolicy"`
 }
 
 type UpdateOrganizationIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份ID
+	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
-	// 身份描述
+	// 身份描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 身份策略
+	// 身份策略。
 	IdentityPolicy []*IdentityPolicy `json:"IdentityPolicy,omitnil,omitempty" name:"IdentityPolicy"`
 }
 
@@ -3708,38 +3708,38 @@ func (r *UpdateOrganizationIdentityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOrganizationMemberEmailBindRequestParams struct {
-	// 成员Uin
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 绑定ID
+	// 绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
 	BindId *int64 `json:"BindId,omitnil,omitempty" name:"BindId"`
 
-	// 邮箱
+	// 邮箱地址。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 国际区号
+	// 国际区号。
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 }
 
 type UpdateOrganizationMemberEmailBindRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员Uin
+	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 绑定ID
+	// 绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
 	BindId *int64 `json:"BindId,omitnil,omitempty" name:"BindId"`
 
-	// 邮箱
+	// 邮箱地址。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 国际区号
+	// 国际区号。
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 }
 
@@ -3888,7 +3888,7 @@ func (r *UpdateOrganizationMemberResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOrganizationNodeRequestParams struct {
-	// 节点ID。
+	// 节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
@@ -3901,7 +3901,7 @@ type UpdateOrganizationNodeRequestParams struct {
 type UpdateOrganizationNodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 节点ID。
+	// 节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-

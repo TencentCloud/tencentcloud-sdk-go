@@ -4202,6 +4202,9 @@ type StartWebRecordRequestParams struct {
 	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
 	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
+	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 }
 
 type StartWebRecordRequest struct {
@@ -4225,6 +4228,9 @@ type StartWebRecordRequest struct {
 	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
 	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
+	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 }
 
 func (r *StartWebRecordRequest) ToJsonString() string {
@@ -4245,6 +4251,7 @@ func (r *StartWebRecordRequest) FromJsonString(s string) error {
 	delete(f, "WebRecordVideoParams")
 	delete(f, "SdkAppId")
 	delete(f, "RecordId")
+	delete(f, "PublishCdnParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWebRecordRequest has unknown keys!", "")
 	}

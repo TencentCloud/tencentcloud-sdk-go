@@ -5933,8 +5933,6 @@ type Component struct {
 	// 
 	// - 如传入的关键字<font color="red">"^甲方签署^"</font >，则会在PDF文件中有且仅有"甲方签署"关键字的地方（<font color="red">前后不能有其他字符</font >）进行对应操作。
 	// - 如传入的关键字为<font color="red">"甲方签署</font >"，则PDF文件中每个出现关键字的位置（<font color="red">前后可以有其他字符</font >）都会执行相应操作。
-	// - 如传入的关键字为<font color="red">"^甲方签署</font >"，则PDF文件中每个出现关键字的位置（<font color="red">前面不能有其他字符</font >）都会执行相应操作。
-	// - 如传入的关键字为<font color="red">"甲方签署^</font >"，则PDF文件中每个出现关键字的位置（<font color="red">后面不能有其他字符</font >）都会执行相应操作。
 	// 
 	// 
 	// 注：`控件ID可以在一个PDF中不可重复`
@@ -10074,7 +10072,13 @@ type OccupiedSeal struct {
 	// 印章图片url，5分钟内有效
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 印章类型，OFFICIAL-企业公章，CONTRACT-合同专用章，LEGAL_PERSON_SEAL-法人章
+	// 电子印章类型 , 可选类型如下: 
+	// <ul><li>**OFFICIAL**: (默认)公章</li>
+	// <li>**CONTRACT**: 合同专用章;</li>
+	// <li>**FINANCE**: 财务专用章;</li>
+	// <li>**PERSONNEL**: 人事专用章</li>
+	// <li>**INVOICE**: 发票专用章</li>
+	// </ul>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 用印申请是否为永久授权
