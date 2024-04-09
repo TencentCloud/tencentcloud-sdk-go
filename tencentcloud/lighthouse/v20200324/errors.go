@@ -98,6 +98,9 @@ const (
 	// 变更资源属性失败，请稍后重新操作。
 	FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = "FailedOperation.ModifyResourcesAttributeFailed"
 
+	// 修改资源自动续费失败
+	FAILEDOPERATION_MODIFYRESOURCESRENEWFLAGFAILED = "FailedOperation.ModifyResourcesRenewFlagFailed"
+
 	// 续费资源失败。
 	FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 

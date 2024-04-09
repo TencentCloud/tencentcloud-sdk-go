@@ -2384,6 +2384,115 @@ func (r *DescribeSpecInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FBKeyValue struct {
+	// 用于按key回档过滤的key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 用于按key回档过滤的value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type FlashBackDBInstanceRequestParams struct {
+	// 开启按 Key 回档的实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 源数据想恢复到的时间。
+	TargetFlashbackTime *string `json:"TargetFlashbackTime,omitnil,omitempty" name:"TargetFlashbackTime"`
+
+	// 源数据所在的库表信息。
+	TargetDatabases []*FlashbackDatabase `json:"TargetDatabases,omitnil,omitempty" name:"TargetDatabases"`
+
+	// 数据最终写入的实例 ID。
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+}
+
+type FlashBackDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开启按 Key 回档的实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 源数据想恢复到的时间。
+	TargetFlashbackTime *string `json:"TargetFlashbackTime,omitnil,omitempty" name:"TargetFlashbackTime"`
+
+	// 源数据所在的库表信息。
+	TargetDatabases []*FlashbackDatabase `json:"TargetDatabases,omitnil,omitempty" name:"TargetDatabases"`
+
+	// 数据最终写入的实例 ID。
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+}
+
+func (r *FlashBackDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FlashBackDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TargetFlashbackTime")
+	delete(f, "TargetDatabases")
+	delete(f, "TargetInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FlashBackDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FlashBackDBInstanceResponseParams struct {
+	// 回档数据异步任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FlashBackDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *FlashBackDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *FlashBackDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FlashBackDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FlashbackCollection struct {
+	// 按key回档指定的集合名
+	CollectionName *string `json:"CollectionName,omitnil,omitempty" name:"CollectionName"`
+
+	// 按key回档到的目标集合名
+	TargetResultCollectionName *string `json:"TargetResultCollectionName,omitnil,omitempty" name:"TargetResultCollectionName"`
+
+	// 上传到cos的文件的value所对应的key值
+	FilterKey *string `json:"FilterKey,omitnil,omitempty" name:"FilterKey"`
+
+	// 用于按key回档过滤的键值对
+	KeyValues []*FBKeyValue `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
+}
+
+type FlashbackDatabase struct {
+	// 按key回档源数据所在库
+	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
+
+	// 按key回档的集群数组
+	Collections []*FlashbackCollection `json:"Collections,omitnil,omitempty" name:"Collections"`
+}
+
 // Predefined struct for user
 type FlushInstanceRouterConfigRequestParams struct {
 	// 实例ID

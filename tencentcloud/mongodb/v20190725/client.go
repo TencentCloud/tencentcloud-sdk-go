@@ -1314,6 +1314,71 @@ func (c *Client) DescribeSpecInfoWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewFlashBackDBInstanceRequest() (request *FlashBackDBInstanceRequest) {
+    request = &FlashBackDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "FlashBackDBInstance")
+    
+    
+    return
+}
+
+func NewFlashBackDBInstanceResponse() (response *FlashBackDBInstanceResponse) {
+    response = &FlashBackDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FlashBackDBInstance
+// 该接口用于发起按 Key 闪回任务，依据数据的闪回 Key（默认为 id）对数据进行极速回档，快速恢复业务。
+//
+// **说明：按 Key 闪回于2023年09月11日正式进行公测，在此期间，该接口仅对公测用户开放。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLASHBACKBYKEYNOTOPEN = "FailedOperation.FlashbackByKeyNotOpen"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERSNIL = "InvalidParameter.ParametersNil"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) FlashBackDBInstance(request *FlashBackDBInstanceRequest) (response *FlashBackDBInstanceResponse, err error) {
+    return c.FlashBackDBInstanceWithContext(context.Background(), request)
+}
+
+// FlashBackDBInstance
+// 该接口用于发起按 Key 闪回任务，依据数据的闪回 Key（默认为 id）对数据进行极速回档，快速恢复业务。
+//
+// **说明：按 Key 闪回于2023年09月11日正式进行公测，在此期间，该接口仅对公测用户开放。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLASHBACKBYKEYNOTOPEN = "FailedOperation.FlashbackByKeyNotOpen"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERSNIL = "InvalidParameter.ParametersNil"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) FlashBackDBInstanceWithContext(ctx context.Context, request *FlashBackDBInstanceRequest) (response *FlashBackDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewFlashBackDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FlashBackDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFlashBackDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFlushInstanceRouterConfigRequest() (request *FlushInstanceRouterConfigRequest) {
     request = &FlushInstanceRouterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

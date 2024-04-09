@@ -1415,6 +1415,9 @@ type DeployCertificateInstanceRequestParams struct {
 	// 1： 域名https已开启。
 	// 0： 域名https已关闭。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 }
 
 type DeployCertificateInstanceRequest struct {
@@ -1435,6 +1438,9 @@ type DeployCertificateInstanceRequest struct {
 	// 1： 域名https已开启。
 	// 0： 域名https已关闭。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 }
 
 func (r *DeployCertificateInstanceRequest) ToJsonString() string {
@@ -1453,6 +1459,7 @@ func (r *DeployCertificateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIdList")
 	delete(f, "ResourceType")
 	delete(f, "Status")
+	delete(f, "IsCache")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployCertificateInstanceRequest has unknown keys!", "")
 	}
