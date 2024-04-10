@@ -5745,13 +5745,17 @@ type WebsiteRisk struct {
 
 type WhereFilter struct {
 	// 过滤的项
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 中台定义：
 	// 1等于 2大于 3小于 4大于等于 5小于等于 6不等于 9模糊匹配 13非模糊匹配 14按位与
 	// 精确匹配填 7 模糊匹配填9 
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }

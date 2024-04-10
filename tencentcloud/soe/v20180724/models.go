@@ -498,7 +498,7 @@ type TransmitOralProcessRequestParams struct {
 	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
 	SoeAppId *string `json:"SoeAppId,omitnil,omitempty" name:"SoeAppId"`
 
-	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口调用时此项为1时，此项必填1才可生效。
+	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口和TransmitOralProcess接口的IsLongLifeSession均为1时，才可生效。
 	IsLongLifeSession *int64 `json:"IsLongLifeSession,omitnil,omitempty" name:"IsLongLifeSession"`
 
 	// 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 的评估结果。
@@ -537,7 +537,7 @@ type TransmitOralProcessRequest struct {
 	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。使用指南：[业务应用](https://cloud.tencent.com/document/product/884/78824#.E4.B8.9A.E5.8A.A1.E5.BA.94.E7.94.A8)
 	SoeAppId *string `json:"SoeAppId,omitnil,omitempty" name:"SoeAppId"`
 
-	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口调用时此项为1时，此项必填1才可生效。
+	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口和TransmitOralProcess接口的IsLongLifeSession均为1时，才可生效。
 	IsLongLifeSession *int64 `json:"IsLongLifeSession,omitnil,omitempty" name:"IsLongLifeSession"`
 
 	// 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 的评估结果。

@@ -2524,6 +2524,12 @@ func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
 type DescribeWebRecordRequestParams struct {
 	// 开始页面录制时返回的任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 发起页面录制时传递的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 发起录制时传递的RecordId, 传入此值时需要传递SdkAppId
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 }
 
 type DescribeWebRecordRequest struct {
@@ -2531,6 +2537,12 @@ type DescribeWebRecordRequest struct {
 	
 	// 开始页面录制时返回的任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 发起页面录制时传递的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 发起录制时传递的RecordId, 传入此值时需要传递SdkAppId
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 }
 
 func (r *DescribeWebRecordRequest) ToJsonString() string {
@@ -2546,6 +2558,8 @@ func (r *DescribeWebRecordRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "SdkAppId")
+	delete(f, "RecordId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebRecordRequest has unknown keys!", "")
 	}
@@ -4187,7 +4201,7 @@ type StartWebRecordRequestParams struct {
 	// 需要录制的网页URL
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
-	// 录制最大时长限制， 单位 s, 合法取值范围[0, 36000], 默认 36000s(10 小时)
+	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
 	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
 
 	// 云存储相关的参数，目前支持腾讯云对象存储，不支持第三方云存储以及VOD
@@ -4213,7 +4227,7 @@ type StartWebRecordRequest struct {
 	// 需要录制的网页URL
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
-	// 录制最大时长限制， 单位 s, 合法取值范围[0, 36000], 默认 36000s(10 小时)
+	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
 	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
 
 	// 云存储相关的参数，目前支持腾讯云对象存储，不支持第三方云存储以及VOD
