@@ -549,6 +549,10 @@ type BGPInstance struct {
 	// 是否是商业模式优化-普惠版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanCntFlag *uint64 `json:"PlanCntFlag,omitnil,omitempty" name:"PlanCntFlag"`
+
+	// 是否为超级高防包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperPackFlag *uint64 `json:"SuperPackFlag,omitnil,omitempty" name:"SuperPackFlag"`
 }
 
 type BGPInstanceSpecification struct {

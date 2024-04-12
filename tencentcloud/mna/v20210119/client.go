@@ -1142,6 +1142,11 @@ func NewModifyPackageRenewFlagResponse() (response *ModifyPackageRenewFlagRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+//  OPERATIONDENIED_MODIFIEDORRENEWED = "OperationDenied.ModifiedOrRenewed"
+//  OPERATIONDENIED_TRUNCFLAGON = "OperationDenied.TruncFlagOn"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyPackageRenewFlag(request *ModifyPackageRenewFlagRequest) (response *ModifyPackageRenewFlagResponse, err error) {
     return c.ModifyPackageRenewFlagWithContext(context.Background(), request)
 }
@@ -1153,6 +1158,11 @@ func (c *Client) ModifyPackageRenewFlag(request *ModifyPackageRenewFlagRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+//  OPERATIONDENIED_MODIFIEDORRENEWED = "OperationDenied.ModifiedOrRenewed"
+//  OPERATIONDENIED_TRUNCFLAGON = "OperationDenied.TruncFlagOn"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyPackageRenewFlagWithContext(ctx context.Context, request *ModifyPackageRenewFlagRequest) (response *ModifyPackageRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyPackageRenewFlagRequest()

@@ -2080,55 +2080,6 @@ func (c *Client) CreateHiveTableByDDLWithContext(ctx context.Context, request *C
     return
 }
 
-func NewCreateInLongAgentRequest() (request *CreateInLongAgentRequest) {
-    request = &CreateInLongAgentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CreateInLongAgent")
-    
-    
-    return
-}
-
-func NewCreateInLongAgentResponse() (response *CreateInLongAgentResponse) {
-    response = &CreateInLongAgentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateInLongAgent
-// 注册采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateInLongAgent(request *CreateInLongAgentRequest) (response *CreateInLongAgentResponse, err error) {
-    return c.CreateInLongAgentWithContext(context.Background(), request)
-}
-
-// CreateInLongAgent
-// 注册采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateInLongAgentWithContext(ctx context.Context, request *CreateInLongAgentRequest) (response *CreateInLongAgentResponse, err error) {
-    if request == nil {
-        request = NewCreateInLongAgentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateInLongAgent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateInLongAgentResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateIntegrationNodeRequest() (request *CreateIntegrationNodeRequest) {
     request = &CreateIntegrationNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3213,55 +3164,6 @@ func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFol
     request.SetContext(ctx)
     
     response = NewDeleteFolderResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteInLongAgentRequest() (request *DeleteInLongAgentRequest) {
-    request = &DeleteInLongAgentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DeleteInLongAgent")
-    
-    
-    return
-}
-
-func NewDeleteInLongAgentResponse() (response *DeleteInLongAgentResponse) {
-    response = &DeleteInLongAgentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteInLongAgent
-// 删除采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteInLongAgent(request *DeleteInLongAgentRequest) (response *DeleteInLongAgentResponse, err error) {
-    return c.DeleteInLongAgentWithContext(context.Background(), request)
-}
-
-// DeleteInLongAgent
-// 删除采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteInLongAgentWithContext(ctx context.Context, request *DeleteInLongAgentRequest) (response *DeleteInLongAgentResponse, err error) {
-    if request == nil {
-        request = NewDeleteInLongAgentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteInLongAgent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteInLongAgentResponse()
     err = c.Send(request, response)
     return
 }
@@ -4875,55 +4777,6 @@ func (c *Client) DescribeBelongToWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeBelongToResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeClusterNamespaceListRequest() (request *DescribeClusterNamespaceListRequest) {
-    request = &DescribeClusterNamespaceListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeClusterNamespaceList")
-    
-    
-    return
-}
-
-func NewDescribeClusterNamespaceListResponse() (response *DescribeClusterNamespaceListResponse) {
-    response = &DescribeClusterNamespaceListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeClusterNamespaceList
-// 获取集群命名空间列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeClusterNamespaceList(request *DescribeClusterNamespaceListRequest) (response *DescribeClusterNamespaceListResponse, err error) {
-    return c.DescribeClusterNamespaceListWithContext(context.Background(), request)
-}
-
-// DescribeClusterNamespaceList
-// 获取集群命名空间列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeClusterNamespaceListWithContext(ctx context.Context, request *DescribeClusterNamespaceListRequest) (response *DescribeClusterNamespaceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterNamespaceListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeClusterNamespaceList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeClusterNamespaceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6907,202 +6760,6 @@ func (c *Client) DescribeFunctionTypesWithContext(ctx context.Context, request *
     return
 }
 
-func NewDescribeInLongAgentListRequest() (request *DescribeInLongAgentListRequest) {
-    request = &DescribeInLongAgentListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInLongAgentList")
-    
-    
-    return
-}
-
-func NewDescribeInLongAgentListResponse() (response *DescribeInLongAgentListResponse) {
-    response = &DescribeInLongAgentListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInLongAgentList
-// 获取采集器列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongAgentList(request *DescribeInLongAgentListRequest) (response *DescribeInLongAgentListResponse, err error) {
-    return c.DescribeInLongAgentListWithContext(context.Background(), request)
-}
-
-// DescribeInLongAgentList
-// 获取采集器列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongAgentListWithContext(ctx context.Context, request *DescribeInLongAgentListRequest) (response *DescribeInLongAgentListResponse, err error) {
-    if request == nil {
-        request = NewDescribeInLongAgentListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInLongAgentList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInLongAgentListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeInLongAgentTaskListRequest() (request *DescribeInLongAgentTaskListRequest) {
-    request = &DescribeInLongAgentTaskListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInLongAgentTaskList")
-    
-    
-    return
-}
-
-func NewDescribeInLongAgentTaskListResponse() (response *DescribeInLongAgentTaskListResponse) {
-    response = &DescribeInLongAgentTaskListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInLongAgentTaskList
-// 查询采集器关联的任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongAgentTaskList(request *DescribeInLongAgentTaskListRequest) (response *DescribeInLongAgentTaskListResponse, err error) {
-    return c.DescribeInLongAgentTaskListWithContext(context.Background(), request)
-}
-
-// DescribeInLongAgentTaskList
-// 查询采集器关联的任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongAgentTaskListWithContext(ctx context.Context, request *DescribeInLongAgentTaskListRequest) (response *DescribeInLongAgentTaskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeInLongAgentTaskListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInLongAgentTaskList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInLongAgentTaskListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeInLongAgentVpcListRequest() (request *DescribeInLongAgentVpcListRequest) {
-    request = &DescribeInLongAgentVpcListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInLongAgentVpcList")
-    
-    
-    return
-}
-
-func NewDescribeInLongAgentVpcListResponse() (response *DescribeInLongAgentVpcListResponse) {
-    response = &DescribeInLongAgentVpcListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInLongAgentVpcList
-// 获取采集器所在集群的VPC列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongAgentVpcList(request *DescribeInLongAgentVpcListRequest) (response *DescribeInLongAgentVpcListResponse, err error) {
-    return c.DescribeInLongAgentVpcListWithContext(context.Background(), request)
-}
-
-// DescribeInLongAgentVpcList
-// 获取采集器所在集群的VPC列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongAgentVpcListWithContext(ctx context.Context, request *DescribeInLongAgentVpcListRequest) (response *DescribeInLongAgentVpcListResponse, err error) {
-    if request == nil {
-        request = NewDescribeInLongAgentVpcListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInLongAgentVpcList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInLongAgentVpcListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeInLongTkeClusterListRequest() (request *DescribeInLongTkeClusterListRequest) {
-    request = &DescribeInLongTkeClusterListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInLongTkeClusterList")
-    
-    
-    return
-}
-
-func NewDescribeInLongTkeClusterListResponse() (response *DescribeInLongTkeClusterListResponse) {
-    response = &DescribeInLongTkeClusterListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInLongTkeClusterList
-// 获取TKE集群列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongTkeClusterList(request *DescribeInLongTkeClusterListRequest) (response *DescribeInLongTkeClusterListResponse, err error) {
-    return c.DescribeInLongTkeClusterListWithContext(context.Background(), request)
-}
-
-// DescribeInLongTkeClusterList
-// 获取TKE集群列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInLongTkeClusterListWithContext(ctx context.Context, request *DescribeInLongTkeClusterListRequest) (response *DescribeInLongTkeClusterListResponse, err error) {
-    if request == nil {
-        request = NewDescribeInLongTkeClusterListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInLongTkeClusterList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInLongTkeClusterListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeInstanceByCycleRequest() (request *DescribeInstanceByCycleRequest) {
     request = &DescribeInstanceByCycleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7126,7 +6783,7 @@ func NewDescribeInstanceByCycleResponse() (response *DescribeInstanceByCycleResp
 // 根据周期类型查询所有实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeInstanceByCycle(request *DescribeInstanceByCycleRequest) (response *DescribeInstanceByCycleResponse, err error) {
     return c.DescribeInstanceByCycleWithContext(context.Background(), request)
 }
@@ -7135,7 +6792,7 @@ func (c *Client) DescribeInstanceByCycle(request *DescribeInstanceByCycleRequest
 // 根据周期类型查询所有实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeInstanceByCycleWithContext(ctx context.Context, request *DescribeInstanceByCycleRequest) (response *DescribeInstanceByCycleResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceByCycleRequest()
@@ -7774,57 +7431,6 @@ func (c *Client) DescribeIntegrationStatisticsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeIntegrationStatisticsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeIntegrationStatisticsAgentStatusRequest() (request *DescribeIntegrationStatisticsAgentStatusRequest) {
-    request = &DescribeIntegrationStatisticsAgentStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeIntegrationStatisticsAgentStatus")
-    
-    
-    return
-}
-
-func NewDescribeIntegrationStatisticsAgentStatusResponse() (response *DescribeIntegrationStatisticsAgentStatusResponse) {
-    response = &DescribeIntegrationStatisticsAgentStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeIntegrationStatisticsAgentStatus
-// 数据集成大屏采集器状态分布统计
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeIntegrationStatisticsAgentStatus(request *DescribeIntegrationStatisticsAgentStatusRequest) (response *DescribeIntegrationStatisticsAgentStatusResponse, err error) {
-    return c.DescribeIntegrationStatisticsAgentStatusWithContext(context.Background(), request)
-}
-
-// DescribeIntegrationStatisticsAgentStatus
-// 数据集成大屏采集器状态分布统计
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeIntegrationStatisticsAgentStatusWithContext(ctx context.Context, request *DescribeIntegrationStatisticsAgentStatusRequest) (response *DescribeIntegrationStatisticsAgentStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeIntegrationStatisticsAgentStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeIntegrationStatisticsAgentStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeIntegrationStatisticsAgentStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -10893,55 +10499,6 @@ func (c *Client) DescribeSonInstancesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeSonInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeStandardRuleDetailInfoListRequest() (request *DescribeStandardRuleDetailInfoListRequest) {
-    request = &DescribeStandardRuleDetailInfoListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeStandardRuleDetailInfoList")
-    
-    
-    return
-}
-
-func NewDescribeStandardRuleDetailInfoListResponse() (response *DescribeStandardRuleDetailInfoListResponse) {
-    response = &DescribeStandardRuleDetailInfoListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeStandardRuleDetailInfoList
-// 获取数据标准规则详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeStandardRuleDetailInfoList(request *DescribeStandardRuleDetailInfoListRequest) (response *DescribeStandardRuleDetailInfoListResponse, err error) {
-    return c.DescribeStandardRuleDetailInfoListWithContext(context.Background(), request)
-}
-
-// DescribeStandardRuleDetailInfoList
-// 获取数据标准规则详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeStandardRuleDetailInfoListWithContext(ctx context.Context, request *DescribeStandardRuleDetailInfoListRequest) (response *DescribeStandardRuleDetailInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeStandardRuleDetailInfoListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeStandardRuleDetailInfoList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeStandardRuleDetailInfoListResponse()
     err = c.Send(request, response)
     return
 }
@@ -15707,55 +15264,6 @@ func (c *Client) RerunScheduleInstancesWithContext(ctx context.Context, request 
     return
 }
 
-func NewRestartInLongAgentRequest() (request *RestartInLongAgentRequest) {
-    request = &RestartInLongAgentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "RestartInLongAgent")
-    
-    
-    return
-}
-
-func NewRestartInLongAgentResponse() (response *RestartInLongAgentResponse) {
-    response = &RestartInLongAgentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RestartInLongAgent
-// 重启采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RestartInLongAgent(request *RestartInLongAgentRequest) (response *RestartInLongAgentResponse, err error) {
-    return c.RestartInLongAgentWithContext(context.Background(), request)
-}
-
-// RestartInLongAgent
-// 重启采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RestartInLongAgentWithContext(ctx context.Context, request *RestartInLongAgentRequest) (response *RestartInLongAgentResponse, err error) {
-    if request == nil {
-        request = NewRestartInLongAgentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RestartInLongAgent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRestartInLongAgentResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewResumeIntegrationTaskRequest() (request *ResumeIntegrationTaskRequest) {
     request = &ResumeIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -17146,55 +16654,6 @@ func (c *Client) UnlockIntegrationTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUnlockIntegrationTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpdateInLongAgentRequest() (request *UpdateInLongAgentRequest) {
-    request = &UpdateInLongAgentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "UpdateInLongAgent")
-    
-    
-    return
-}
-
-func NewUpdateInLongAgentResponse() (response *UpdateInLongAgentResponse) {
-    response = &UpdateInLongAgentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// UpdateInLongAgent
-// 更新采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) UpdateInLongAgent(request *UpdateInLongAgentRequest) (response *UpdateInLongAgentResponse, err error) {
-    return c.UpdateInLongAgentWithContext(context.Background(), request)
-}
-
-// UpdateInLongAgent
-// 更新采集器
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) UpdateInLongAgentWithContext(ctx context.Context, request *UpdateInLongAgentRequest) (response *UpdateInLongAgentResponse, err error) {
-    if request == nil {
-        request = NewUpdateInLongAgentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("UpdateInLongAgent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewUpdateInLongAgentResponse()
     err = c.Send(request, response)
     return
 }

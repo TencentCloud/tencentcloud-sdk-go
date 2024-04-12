@@ -68,7 +68,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.897
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.898
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -140,6 +140,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall v0.0.0
@@ -389,6 +390,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic => ../tencentcloud/lcic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse => ../tencentcloud/lighthouse
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live => ../tencentcloud/live
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke => ../tencentcloud/lke
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode => ../tencentcloud/lowcode
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp => ../tencentcloud/lp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall => ../tencentcloud/mall

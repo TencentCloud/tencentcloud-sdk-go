@@ -946,6 +946,9 @@ func (r *CreateLogstashInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateServerlessInstanceRequestParams struct {
+	// 索引名，需以-AppId结尾
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
 	// 可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
@@ -954,9 +957,6 @@ type CreateServerlessInstanceRequestParams struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// 索引名，需以-AppId结尾
-	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
 	// 创建的索引元数据JSON，如mappings、settings
 	IndexMetaJson *string `json:"IndexMetaJson,omitnil,omitempty" name:"IndexMetaJson"`
@@ -986,6 +986,9 @@ type CreateServerlessInstanceRequestParams struct {
 type CreateServerlessInstanceRequest struct {
 	*tchttp.BaseRequest
 	
+	// 索引名，需以-AppId结尾
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
 	// 可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
@@ -994,9 +997,6 @@ type CreateServerlessInstanceRequest struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// 索引名，需以-AppId结尾
-	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
 	// 创建的索引元数据JSON，如mappings、settings
 	IndexMetaJson *string `json:"IndexMetaJson,omitnil,omitempty" name:"IndexMetaJson"`
@@ -1035,10 +1035,10 @@ func (r *CreateServerlessInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "IndexName")
 	delete(f, "Zone")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
-	delete(f, "IndexName")
 	delete(f, "IndexMetaJson")
 	delete(f, "SpaceId")
 	delete(f, "Username")

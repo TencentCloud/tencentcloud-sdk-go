@@ -1990,7 +1990,7 @@ type CreateTrainingTaskRequestParams struct {
 	// COS代码包路径
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
 
-	// 启动命令信息，默认为sh start.sh
+	// 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 
 	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
@@ -2028,6 +2028,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 太极预训练模型ID
 	PreTrainModel *PreTrainModel `json:"PreTrainModel,omitnil,omitempty" name:"PreTrainModel"`
+
+	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -2064,7 +2067,7 @@ type CreateTrainingTaskRequest struct {
 	// COS代码包路径
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
 
-	// 启动命令信息，默认为sh start.sh
+	// 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 
 	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
@@ -2102,6 +2105,9 @@ type CreateTrainingTaskRequest struct {
 
 	// 太极预训练模型ID
 	PreTrainModel *PreTrainModel `json:"PreTrainModel,omitnil,omitempty" name:"PreTrainModel"`
+
+	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -2139,6 +2145,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "DataSource")
 	delete(f, "CallbackUrl")
 	delete(f, "PreTrainModel")
+	delete(f, "EncodedStartCmdInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -6470,6 +6477,11 @@ type DetectionLabelInfo struct {
 	// 类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameType *string `json:"FrameType,omitnil,omitempty" name:"FrameType"`
+}
+
+type EncodedStartCmdInfo struct {
+	// 任务的启动命令，以base64格式输入，注意转换时需要完整输入{"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""}
+	StartCmdInfo *string `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 }
 
 type EngineVersion struct {

@@ -4888,98 +4888,6 @@ func (r *CreateHiveTableResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateInLongAgentRequestParams struct {
-	// 采集器类型，1：TKE Agent，2：BOSS SDK，默认：1
-	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
-
-	// 采集器名称
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// 集成资源组id
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// TKE集群的地域
-	TkeRegion *string `json:"TkeRegion,omitnil,omitempty" name:"TkeRegion"`
-
-	// 当AgentType为1时，必填。当AgentType为2时，不用填
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-}
-
-type CreateInLongAgentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 采集器类型，1：TKE Agent，2：BOSS SDK，默认：1
-	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
-
-	// 采集器名称
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// 集成资源组id
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// TKE集群的地域
-	TkeRegion *string `json:"TkeRegion,omitnil,omitempty" name:"TkeRegion"`
-
-	// 当AgentType为1时，必填。当AgentType为2时，不用填
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-}
-
-func (r *CreateInLongAgentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateInLongAgentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AgentType")
-	delete(f, "AgentName")
-	delete(f, "ExecutorGroupId")
-	delete(f, "ProjectId")
-	delete(f, "TkeRegion")
-	delete(f, "ClusterId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInLongAgentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateInLongAgentResponseParams struct {
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateInLongAgentResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateInLongAgentResponseParams `json:"Response"`
-}
-
-func (r *CreateInLongAgentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateInLongAgentResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateIntegrationNodeRequestParams struct {
 	// 集成节点信息
 	NodeInfo *IntegrationNodeInfo `json:"NodeInfo,omitnil,omitempty" name:"NodeInfo"`
@@ -6318,16 +6226,6 @@ func (r *CreateWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CvmAgentStatus struct {
-	// agent状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 对应状态的agent总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
-}
-
 // Predefined struct for user
 type DagInstancesRequestParams struct {
 	// 实例列表
@@ -7366,67 +7264,6 @@ func (r *DeleteFolderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFolderResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteInLongAgentRequestParams struct {
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-type DeleteInLongAgentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-func (r *DeleteInLongAgentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteInLongAgentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AgentId")
-	delete(f, "ProjectId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInLongAgentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteInLongAgentResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteInLongAgentResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteInLongAgentResponseParams `json:"Response"`
-}
-
-func (r *DeleteInLongAgentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteInLongAgentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10056,70 +9893,6 @@ func (r *DescribeBelongToResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBelongToResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeClusterNamespaceListRequestParams struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-type DescribeClusterNamespaceListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-func (r *DescribeClusterNamespaceListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeClusterNamespaceListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	delete(f, "ProjectId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterNamespaceListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeClusterNamespaceListResponseParams struct {
-	// 命名空间
-	Namespaces []*Namespace `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeClusterNamespaceListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeClusterNamespaceListResponseParams `json:"Response"`
-}
-
-func (r *DescribeClusterNamespaceListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeClusterNamespaceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13242,383 +13015,6 @@ func (r *DescribeFunctionTypesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeInLongAgentListRequestParams struct {
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// Agent Name
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1，3：CVM，4：自建服务器 【传多个用逗号分割】
-	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
-
-	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// Vpc Id
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 分页页码，从1开始，默认：1
-	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
-
-	// 分页每页记录数，默认10
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
-	Like *uint64 `json:"Like,omitnil,omitempty" name:"Like"`
-
-	// agent类型【多个用逗号分隔】
-	AgentTypes *string `json:"AgentTypes,omitnil,omitempty" name:"AgentTypes"`
-}
-
-type DescribeInLongAgentListRequest struct {
-	*tchttp.BaseRequest
-	
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// Agent Name
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1，3：CVM，4：自建服务器 【传多个用逗号分割】
-	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
-
-	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// Vpc Id
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 分页页码，从1开始，默认：1
-	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
-
-	// 分页每页记录数，默认10
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
-	Like *uint64 `json:"Like,omitnil,omitempty" name:"Like"`
-
-	// agent类型【多个用逗号分隔】
-	AgentTypes *string `json:"AgentTypes,omitnil,omitempty" name:"AgentTypes"`
-}
-
-func (r *DescribeInLongAgentListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongAgentListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ProjectId")
-	delete(f, "AgentId")
-	delete(f, "AgentName")
-	delete(f, "AgentType")
-	delete(f, "Status")
-	delete(f, "VpcId")
-	delete(f, "PageIndex")
-	delete(f, "PageSize")
-	delete(f, "Like")
-	delete(f, "AgentTypes")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongAgentListResponseParams struct {
-	// 采集器信息列表
-	Items []*InLongAgentDetail `json:"Items,omitnil,omitempty" name:"Items"`
-
-	// 页码
-	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
-
-	// 每页记录数
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 总记录数
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 总页数
-	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeInLongAgentListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeInLongAgentListResponseParams `json:"Response"`
-}
-
-func (r *DescribeInLongAgentListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongAgentListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongAgentTaskListRequestParams struct {
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-type DescribeInLongAgentTaskListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-func (r *DescribeInLongAgentTaskListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongAgentTaskListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AgentId")
-	delete(f, "ProjectId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentTaskListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongAgentTaskListResponseParams struct {
-	// 采集器关联的集成任务列表
-	Items []*InLongAgentTask `json:"Items,omitnil,omitempty" name:"Items"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeInLongAgentTaskListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeInLongAgentTaskListResponseParams `json:"Response"`
-}
-
-func (r *DescribeInLongAgentTaskListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongAgentTaskListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongAgentVpcListRequestParams struct {
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-type DescribeInLongAgentVpcListRequest struct {
-	*tchttp.BaseRequest
-	
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-func (r *DescribeInLongAgentVpcListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongAgentVpcListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ProjectId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentVpcListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongAgentVpcListResponseParams struct {
-	// VPC列表
-	VpcList []*string `json:"VpcList,omitnil,omitempty" name:"VpcList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeInLongAgentVpcListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeInLongAgentVpcListResponseParams `json:"Response"`
-}
-
-func (r *DescribeInLongAgentVpcListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongAgentVpcListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongTkeClusterListRequestParams struct {
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// TKE集群地域
-	TkeRegion *string `json:"TkeRegion,omitnil,omitempty" name:"TkeRegion"`
-
-	// 集群名称。
-	// 多个名称用逗号连接。
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
-	// TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常 Failed 失败 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
-	// 多个状态用逗号连接。
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 是否安装Agent，true: 是，false: 否
-	HasAgent *bool `json:"HasAgent,omitnil,omitempty" name:"HasAgent"`
-
-	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
-	// 多个集群用逗号连接。
-	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
-
-	// 分页页码，从1开始，默认：1
-	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
-
-	// 分页每页记录数，默认10
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
-type DescribeInLongTkeClusterListRequest struct {
-	*tchttp.BaseRequest
-	
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// TKE集群地域
-	TkeRegion *string `json:"TkeRegion,omitnil,omitempty" name:"TkeRegion"`
-
-	// 集群名称。
-	// 多个名称用逗号连接。
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
-	// TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常 Failed 失败 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
-	// 多个状态用逗号连接。
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 是否安装Agent，true: 是，false: 否
-	HasAgent *bool `json:"HasAgent,omitnil,omitempty" name:"HasAgent"`
-
-	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
-	// 多个集群用逗号连接。
-	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
-
-	// 分页页码，从1开始，默认：1
-	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
-
-	// 分页每页记录数，默认10
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
-func (r *DescribeInLongTkeClusterListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongTkeClusterListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ProjectId")
-	delete(f, "TkeRegion")
-	delete(f, "ClusterName")
-	delete(f, "Status")
-	delete(f, "HasAgent")
-	delete(f, "ClusterType")
-	delete(f, "PageIndex")
-	delete(f, "PageSize")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongTkeClusterListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInLongTkeClusterListResponseParams struct {
-	// TKE集群信息
-	Items []*InLongTkeDetail `json:"Items,omitnil,omitempty" name:"Items"`
-
-	// 页码
-	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
-
-	// 每页记录数
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 总记录数
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 总页数
-	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeInLongTkeClusterListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeInLongTkeClusterListResponseParams `json:"Response"`
-}
-
-func (r *DescribeInLongTkeClusterListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInLongTkeClusterListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeInstanceByCycleReportRequestParams struct {
 	// 周期类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -14704,85 +14100,6 @@ func (r *DescribeIntegrationNodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIntegrationNodeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeIntegrationStatisticsAgentStatusRequestParams struct {
-	// 任务类型（实时：201，离线：202）
-	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 项目id
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 查询日期
-	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
-
-	// 资源组id
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-}
-
-type DescribeIntegrationStatisticsAgentStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务类型（实时：201，离线：202）
-	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 项目id
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 查询日期
-	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
-
-	// 资源组id
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-}
-
-func (r *DescribeIntegrationStatisticsAgentStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIntegrationStatisticsAgentStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskType")
-	delete(f, "ProjectId")
-	delete(f, "QueryDate")
-	delete(f, "ExecutorGroupId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsAgentStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeIntegrationStatisticsAgentStatusResponseParams struct {
-	// 统计结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusData *string `json:"StatusData,omitnil,omitempty" name:"StatusData"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeIntegrationStatisticsAgentStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeIntegrationStatisticsAgentStatusResponseParams `json:"Response"`
-}
-
-func (r *DescribeIntegrationStatisticsAgentStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIntegrationStatisticsAgentStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20055,71 +19372,6 @@ func (r *DescribeSonInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSonInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeStandardRuleDetailInfoListRequestParams struct {
-	// 空间、项目id
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 标准分类11编码映射 12数据过滤 13字符串转换 14数据元定义 15正则表达 16术语词典
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-type DescribeStandardRuleDetailInfoListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 空间、项目id
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 标准分类11编码映射 12数据过滤 13字符串转换 14数据元定义 15正则表达 16术语词典
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-func (r *DescribeStandardRuleDetailInfoListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeStandardRuleDetailInfoListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ProjectId")
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStandardRuleDetailInfoListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeStandardRuleDetailInfoListResponseParams struct {
-	// 返回值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StandardRuleDetailList *string `json:"StandardRuleDetailList,omitnil,omitempty" name:"StandardRuleDetailList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeStandardRuleDetailInfoListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeStandardRuleDetailInfoListResponseParams `json:"Response"`
-}
-
-func (r *DescribeStandardRuleDetailInfoListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeStandardRuleDetailInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -25619,101 +24871,6 @@ func (r *GetOfflineInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type InLongAgentDetail struct {
-	// Agent ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// Agent Name
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// Agent状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
-
-	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
-	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
-
-	// 采集来源
-	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
-
-	// VPC
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 集成资源组Id
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-
-	// 集成资源组名称
-	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
-
-	// 关联任务数
-	TaskCount *uint64 `json:"TaskCount,omitnil,omitempty" name:"TaskCount"`
-
-	// 采集器组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AgentGroupId *string `json:"AgentGroupId,omitnil,omitempty" name:"AgentGroupId"`
-
-	// agent状态统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CvmAgentStatusList []*CvmAgentStatus `json:"CvmAgentStatusList,omitnil,omitempty" name:"CvmAgentStatusList"`
-
-	// agent数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AgentTotal *uint64 `json:"AgentTotal,omitnil,omitempty" name:"AgentTotal"`
-
-	// 生命周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LifeDays *int64 `json:"LifeDays,omitnil,omitempty" name:"LifeDays"`
-
-	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// agent地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AgentRegion *string `json:"AgentRegion,omitnil,omitempty" name:"AgentRegion"`
-}
-
-type InLongAgentTask struct {
-	// 集成任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 集成任务名称
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 集成任务状态
-	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
-}
-
-type InLongTkeDetail struct {
-	// 集群Id
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 集群名称
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
-	// TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常)
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 是否安装Agent，true: 是，false: 否
-	HasAgent *bool `json:"HasAgent,omitnil,omitempty" name:"HasAgent"`
-
-	// 采集器ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// VPC ID
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// TKE集群区域ID
-	TkeRegion *string `json:"TkeRegion,omitnil,omitempty" name:"TkeRegion"`
-
-	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER
-	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
-}
-
 type InstanceApiOpsRequest struct {
 	// 单个查询条件
 	Instance *InstanceOpsDto `json:"Instance,omitnil,omitempty" name:"Instance"`
@@ -25932,7 +25089,7 @@ type InstanceList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 实例状态
+	// 实例状态  EVENT_LISTENING|DEPENDENCE|BEFORE_ASPECT|ALLOCATED|LAUNCHED|KILL|SNAP_STATE_SAVING|ISSUED|RUNNING|AFTER_ASPECT|PENDING|KILLING|FINAL_STATE_SAVING|FAILED|KILL_FAILED| COMPLETED|EXPIRED|KILL_EXPIRED|DELETED
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
@@ -26077,7 +25234,7 @@ type InstanceLogList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tries *string `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 最后更新事件
+	// 最后更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdate *string `json:"LastUpdate,omitnil,omitempty" name:"LastUpdate"`
 
@@ -26574,10 +25731,10 @@ type IntegrationNodeInfo struct {
 	// 集成节点名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 集成节点类型
+	// 集成节点类型,INPUT: 输入节点，OUTPUT:输出节点 
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 节点数据源类型
+	// 节点数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
 	// 节点描述
@@ -26604,21 +25761,21 @@ type IntegrationNodeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeMapping *IntegrationNodeMapping `json:"NodeMapping,omitnil,omitempty" name:"NodeMapping"`
 
-	// 应用id
+	// 归属用户AppId,展示字段 非传入
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 创建人uin
+	// 创建人uin,展示字段 非传入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 操作人uin
+	// 操作人uin，展示字段 非传入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
 
-	// owner uin
+	// owner uin 展示字段 非传入
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 创建时间
@@ -26651,7 +25808,7 @@ type IntegrationNodeMapping struct {
 }
 
 type IntegrationNodeSchema struct {
-	// schema id
+	// schema id 随机唯一
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// schema名称
@@ -26678,10 +25835,10 @@ type IntegrationNodeSchema struct {
 }
 
 type IntegrationNodeSchemaMapping struct {
-	// 源schema id
+	// 任务节点的源schema id
 	SourceSchemaId *string `json:"SourceSchemaId,omitnil,omitempty" name:"SourceSchemaId"`
 
-	// 目标schema id
+	// 任务节点目标schema id
 	SinkSchemaId *string `json:"SinkSchemaId,omitnil,omitempty" name:"SinkSchemaId"`
 }
 
@@ -26721,11 +25878,11 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务调度id(oceanus or us等作业id)
+	// 任务调度id(oceanus or us等作业id)，非填项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTaskId *string `json:"ScheduleTaskId,omitnil,omitempty" name:"ScheduleTaskId"`
 
-	// 任务组id
+	// inlong任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupId *string `json:"TaskGroupId,omitnil,omitempty" name:"TaskGroupId"`
 
@@ -26749,7 +25906,7 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 任务状态1.初始化,2.操作中,3.运行中,4.暂停,5.任务停止中,6.停止,7.执行失败,8.已删除,9.已锁定,10.配置过期,11.提交中,12.提交成功,13.提交失败
+	// 1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -26777,7 +25934,7 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mappings []*IntegrationNodeMapping `json:"Mappings,omitnil,omitempty" name:"Mappings"`
 
-	// 任务模式：1.画布模式，2.flink jar
+	// 任务配置模式，0:画布 1:表单 3:脚本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskMode *string `json:"TaskMode,omitnil,omitempty" name:"TaskMode"`
 
@@ -26793,7 +25950,7 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 
-	// url
+	// inlong manager url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InLongManagerUrl *string `json:"InLongManagerUrl,omitnil,omitempty" name:"InLongManagerUrl"`
 
@@ -26805,7 +25962,7 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InLongManagerVersion *string `json:"InLongManagerVersion,omitnil,omitempty" name:"InLongManagerVersion"`
 
-	// dataproxy url
+	// inlong dataproxy url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataProxyUrl []*string `json:"DataProxyUrl,omitnil,omitempty" name:"DataProxyUrl"`
 
@@ -26813,11 +25970,11 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
 
-	// MYSQL
+	// 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputDatasourceType *string `json:"InputDatasourceType,omitnil,omitempty" name:"InputDatasourceType"`
 
-	// DLC
+	// 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputDatasourceType *string `json:"OutputDatasourceType,omitnil,omitempty" name:"OutputDatasourceType"`
 
@@ -26873,15 +26030,15 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAlarmRegularList []*string `json:"TaskAlarmRegularList,omitnil,omitempty" name:"TaskAlarmRegularList"`
 
-	// 资源分层情况： 0：进行中,1：成功 ,2：失败
+	// 实时任务资源分层情况： 0：进行中,1：成功 ,2：失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchResource *int64 `json:"SwitchResource,omitnil,omitempty" name:"SwitchResource"`
 
-	// 读取阶段：0：全部全量,1：部分全量,2：全部增量
+	// 实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadPhase *int64 `json:"ReadPhase,omitnil,omitempty" name:"ReadPhase"`
 
-	// 版本号
+	// 实时任务版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
@@ -30290,23 +29447,12 @@ func (r *ModifyWorkflowScheduleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Namespace struct {
-	// 名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 当前状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 创建时间
-	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
-}
-
 type OfflineInstance struct {
-	// 创建账号
+	// 创建账号sub uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 操作账号
+	// 操作账号sub uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
 
@@ -30331,7 +29477,7 @@ type OfflineInstance struct {
 	// 下发时间
 	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
 
-	// 资源组id
+	// 下发资源组id，非传入项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InlongTaskId *string `json:"InlongTaskId,omitnil,omitempty" name:"InlongTaskId"`
 
@@ -30339,10 +29485,10 @@ type OfflineInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 实例类型
+	// 任务类型(1 调试运行,2 调度执行)
 	TaskRunType *uint64 `json:"TaskRunType,omitnil,omitempty" name:"TaskRunType"`
 
-	// 实例状态
+	// 实例状态 EVENT_LISTENING|DEPENDENCE|BEFORE_ASPECT|ALLOCATED|LAUNCHED|KILL|SNAP_STATE_SAVING|ISSUED|RUNNING|AFTER_ASPECT|PENDING|KILLING|FINAL_STATE_SAVING|FAILED|KILL_FAILED| COMPLETED|EXPIRED|KILL_EXPIRED|DELETED
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 开始时间
@@ -30369,25 +29515,25 @@ type OfflineTaskAddParam struct {
 	// 名称
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 依赖
+	// 依赖：yes、no
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// 开始时间
+	// 任务开始数据时间。非空。默认当前时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 任务结束数据时间。非空。默认当前时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 周期
+	// 周期类型。一次性任务:6、分钟任务：1、小时任务：2、天任务：3、周任务：4、月任务：5、crontab任务：0
 	CycleType *uint64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 周期间隔
+	// 间隔，可选，默认1。非空。默认 1
 	CycleStep *uint64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// 延迟时间
+	// 延时执行时间，单位分钟
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// crontab
+	// 任务cron表达式，仅cron任务使用，其他时候默认为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
@@ -30411,7 +29557,7 @@ type OfflineTaskAddParam struct {
 	// 3 并行 一次多个 parallel
 	SelfDepend *uint64 `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 周任务：1是周天，2是周1，7是周6 。
+	// 时间指定，如月任务指定1，3号，则填入 1，3。非空。默认 ""
 	// 月任务：如具体1，3号则写 "1,3"，指定月末不可和具体号数一起输入，仅能为 "L"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
@@ -30428,7 +29574,7 @@ type OfflineTaskAddParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAutoSubmit *bool `json:"TaskAutoSubmit,omitnil,omitempty" name:"TaskAutoSubmit"`
 
-	// 实例初始化策略
+	// 实例生成方式，T_PLUS_0 当天任务当天调度 / T_PLUS_1 当天任务后一天调度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
 }
@@ -31082,10 +30228,10 @@ type RealTimeTaskSpeed struct {
 }
 
 type RecordField struct {
-	// 字段名称
+	// 字段名称，拓展字段名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 字段值
+	// 字段值，拓展字段值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -31806,67 +30952,6 @@ type ResourcePathTree struct {
 	// 额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
-}
-
-// Predefined struct for user
-type RestartInLongAgentRequestParams struct {
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-type RestartInLongAgentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-}
-
-func (r *RestartInLongAgentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RestartInLongAgentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AgentId")
-	delete(f, "ProjectId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartInLongAgentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RestartInLongAgentResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RestartInLongAgentResponse struct {
-	*tchttp.BaseResponse
-	Response *RestartInLongAgentResponseParams `json:"Response"`
-}
-
-func (r *RestartInLongAgentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RestartInLongAgentResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -36051,7 +35136,7 @@ type TaskAlarmInfo struct {
 	// 任务类型(201表示实时，202表示离线)
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 主键ID
+	// ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
@@ -38713,81 +37798,6 @@ func (r *UnlockIntegrationTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnlockIntegrationTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateInLongAgentRequestParams struct {
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 采集器名称
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// 集成资源组ID
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-}
-
-type UpdateInLongAgentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 采集器ID
-	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
-
-	// WeData项目ID
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 采集器名称
-	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
-
-	// 集成资源组ID
-	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
-}
-
-func (r *UpdateInLongAgentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateInLongAgentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AgentId")
-	delete(f, "ProjectId")
-	delete(f, "AgentName")
-	delete(f, "ExecutorGroupId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInLongAgentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateInLongAgentResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type UpdateInLongAgentResponse struct {
-	*tchttp.BaseResponse
-	Response *UpdateInLongAgentResponseParams `json:"Response"`
-}
-
-func (r *UpdateInLongAgentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateInLongAgentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -83,14 +83,23 @@ const (
 	// 输入SN对应的硬件不存在。
 	OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
 
+	// 非法请求，可能是重放攻击、伪造攻击。
+	OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+
 	// 余额不足
 	OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
+
+	// 资源包已经变配或续费
+	OPERATIONDENIED_MODIFIEDORRENEWED = "OperationDenied.ModifiedOrRenewed"
 
 	// 无支付权限
 	OPERATIONDENIED_NOTALLOWEDTOPAY = "OperationDenied.NotAllowedToPay"
 
 	// 请求运营商加速超时。
 	OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
+
+	// 截断开关已经被开启
+	OPERATIONDENIED_TRUNCFLAGON = "OperationDenied.TruncFlagOn"
 
 	// 未实名认证
 	OPERATIONDENIED_UNAUTHORIZEDUSER = "OperationDenied.UnauthorizedUser"
@@ -115,6 +124,9 @@ const (
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"

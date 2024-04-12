@@ -397,6 +397,67 @@ func (c *Client) BalanceRoGroupLoadWithContext(ctx context.Context, request *Bal
     return
 }
 
+func NewCheckMigrateClusterRequest() (request *CheckMigrateClusterRequest) {
+    request = &CheckMigrateClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CheckMigrateCluster")
+    
+    
+    return
+}
+
+func NewCheckMigrateClusterResponse() (response *CheckMigrateClusterResponse) {
+    response = &CheckMigrateClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckMigrateCluster
+// 高可用实例一键迁移到集群版校验
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) CheckMigrateCluster(request *CheckMigrateClusterRequest) (response *CheckMigrateClusterResponse, err error) {
+    return c.CheckMigrateClusterWithContext(context.Background(), request)
+}
+
+// CheckMigrateCluster
+// 高可用实例一键迁移到集群版校验
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) CheckMigrateClusterWithContext(ctx context.Context, request *CheckMigrateClusterRequest) (response *CheckMigrateClusterResponse, err error) {
+    if request == nil {
+        request = NewCheckMigrateClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckMigrateCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckMigrateClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseAuditServiceRequest() (request *CloseAuditServiceRequest) {
     request = &CloseAuditServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4098,6 +4159,59 @@ func (c *Client) DescribeCloneListWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeCloneListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterInfoRequest() (request *DescribeClusterInfoRequest) {
+    request = &DescribeClusterInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeClusterInfo")
+    
+    
+    return
+}
+
+func NewDescribeClusterInfoResponse() (response *DescribeClusterInfoResponse) {
+    response = &DescribeClusterInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterInfo
+// 本接口(DescribeClusterInfo)用于查询集群版实例信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterInfo(request *DescribeClusterInfoRequest) (response *DescribeClusterInfoResponse, err error) {
+    return c.DescribeClusterInfoWithContext(context.Background(), request)
+}
+
+// DescribeClusterInfo
+// 本接口(DescribeClusterInfo)用于查询集群版实例信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterInfoWithContext(ctx context.Context, request *DescribeClusterInfoRequest) (response *DescribeClusterInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterInfoResponse()
     err = c.Send(request, response)
     return
 }

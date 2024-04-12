@@ -65,17 +65,9 @@ func NewImageToImageResponse() (response *ImageToImageResponse) {
 }
 
 // ImageToImage
-// 智能图生图接口将根据输入的图片及辅助描述文本，智能生成与之相关的结果图。
+// 智能图生图接口提供基础版图生图能力，将根据输入的图像及文本描述，智能生成风格转化后的图像。建议避免输入人像过小、姿势复杂、人数较多的人像图片。
 //
-// 输入：单边分辨率小于2000、转成 Base64 字符串后小于 5MB 的图片，建议同时输入描述文本。
-//
-// 输出：对应风格及分辨率的 AI 生成图。
-//
-// 可支持的风格详见 [智能图生图风格列表](https://cloud.tencent.com/document/product/1668/86250)，请将列表中的“风格编号”传入 Styles 数组，建议选择一种风格。
-//
-// 
-//
-// 请求频率限制为1次/秒。
+// 智能图生图默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -111,17 +103,9 @@ func (c *Client) ImageToImage(request *ImageToImageRequest) (response *ImageToIm
 }
 
 // ImageToImage
-// 智能图生图接口将根据输入的图片及辅助描述文本，智能生成与之相关的结果图。
+// 智能图生图接口提供基础版图生图能力，将根据输入的图像及文本描述，智能生成风格转化后的图像。建议避免输入人像过小、姿势复杂、人数较多的人像图片。
 //
-// 输入：单边分辨率小于2000、转成 Base64 字符串后小于 5MB 的图片，建议同时输入描述文本。
-//
-// 输出：对应风格及分辨率的 AI 生成图。
-//
-// 可支持的风格详见 [智能图生图风格列表](https://cloud.tencent.com/document/product/1668/86250)，请将列表中的“风格编号”传入 Styles 数组，建议选择一种风格。
-//
-// 
-//
-// 请求频率限制为1次/秒。
+// 智能图生图默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -364,17 +348,11 @@ func NewTextToImageResponse() (response *TextToImageResponse) {
 }
 
 // TextToImage
-// 智能文生图接口将根据输入的描述文本，智能生成与之相关的结果图。
-//
-// 输入：256个字符以内的描述性文本，推荐使用中文。
-//
-// 输出：对应风格及分辨率的 AI 生成图。
-//
-// 可支持的风格详见 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249)，请将列表中的“风格编号”传入 Styles 数组，建议选择一种风格。
+// 智能文生图接口提供基础版文生图能力，将根据输入的文本描述，智能生成与之相关的结果图。
 //
 // 
 //
-// 请求频率限制为1次/秒。
+// 智能文生图默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -407,17 +385,11 @@ func (c *Client) TextToImage(request *TextToImageRequest) (response *TextToImage
 }
 
 // TextToImage
-// 智能文生图接口将根据输入的描述文本，智能生成与之相关的结果图。
-//
-// 输入：256个字符以内的描述性文本，推荐使用中文。
-//
-// 输出：对应风格及分辨率的 AI 生成图。
-//
-// 可支持的风格详见 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249)，请将列表中的“风格编号”传入 Styles 数组，建议选择一种风格。
+// 智能文生图接口提供基础版文生图能力，将根据输入的文本描述，智能生成与之相关的结果图。
 //
 // 
 //
-// 请求频率限制为1次/秒。
+// 智能文生图默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
