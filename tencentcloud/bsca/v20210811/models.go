@@ -323,6 +323,9 @@ func (r *DescribeKBComponentVersionListResponse) FromJsonString(s string) error 
 type DescribeKBComponentVulnerabilityRequestParams struct {
 	// 组件的PURL，其中Name和Version为必填字段
 	PURL *PURL `json:"PURL,omitnil,omitempty" name:"PURL"`
+
+	// 语言，ZH或EN
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type DescribeKBComponentVulnerabilityRequest struct {
@@ -330,6 +333,9 @@ type DescribeKBComponentVulnerabilityRequest struct {
 	
 	// 组件的PURL，其中Name和Version为必填字段
 	PURL *PURL `json:"PURL,omitnil,omitempty" name:"PURL"`
+
+	// 语言，ZH或EN
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 func (r *DescribeKBComponentVulnerabilityRequest) ToJsonString() string {
@@ -345,6 +351,7 @@ func (r *DescribeKBComponentVulnerabilityRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "PURL")
+	delete(f, "Language")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBComponentVulnerabilityRequest has unknown keys!", "")
 	}
@@ -451,6 +458,9 @@ type DescribeKBVulnerabilityRequestParams struct {
 
 	// 根据CNNVD ID查询（不能与其他参数同时存在）
 	CNNVDID []*string `json:"CNNVDID,omitnil,omitempty" name:"CNNVDID"`
+
+	// 语言，ZH或EN
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type DescribeKBVulnerabilityRequest struct {
@@ -467,6 +477,9 @@ type DescribeKBVulnerabilityRequest struct {
 
 	// 根据CNNVD ID查询（不能与其他参数同时存在）
 	CNNVDID []*string `json:"CNNVDID,omitnil,omitempty" name:"CNNVDID"`
+
+	// 语言，ZH或EN
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 func (r *DescribeKBVulnerabilityRequest) ToJsonString() string {
@@ -485,6 +498,7 @@ func (r *DescribeKBVulnerabilityRequest) FromJsonString(s string) error {
 	delete(f, "VulID")
 	delete(f, "CNVDID")
 	delete(f, "CNNVDID")
+	delete(f, "Language")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBVulnerabilityRequest has unknown keys!", "")
 	}

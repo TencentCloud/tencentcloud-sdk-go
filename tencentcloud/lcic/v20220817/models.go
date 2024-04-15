@@ -818,6 +818,9 @@ type CreateDocumentRequestParams struct {
 	// 2. 自动翻页：移除PPT上所有自动翻页设置，并设置为单击鼠标翻页
 	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil,omitempty" name:"AutoHandleUnsupportedElement"`
+
+	// 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+	MinScaleResolution *string `json:"MinScaleResolution,omitnil,omitempty" name:"MinScaleResolution"`
 }
 
 type CreateDocumentRequest struct {
@@ -859,6 +862,9 @@ type CreateDocumentRequest struct {
 	// 2. 自动翻页：移除PPT上所有自动翻页设置，并设置为单击鼠标翻页
 	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil,omitempty" name:"AutoHandleUnsupportedElement"`
+
+	// 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+	MinScaleResolution *string `json:"MinScaleResolution,omitnil,omitempty" name:"MinScaleResolution"`
 }
 
 func (r *CreateDocumentRequest) ToJsonString() string {
@@ -882,6 +888,7 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 	delete(f, "DocumentType")
 	delete(f, "DocumentSize")
 	delete(f, "AutoHandleUnsupportedElement")
+	delete(f, "MinScaleResolution")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocumentRequest has unknown keys!", "")
 	}
@@ -2269,6 +2276,12 @@ type DescribeDocumentResponseParams struct {
 	// 课件预览地址
 	Preview *string `json:"Preview,omitnil,omitempty" name:"Preview"`
 
+	// 文档的分辨率
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 转码后文档的最小分辨率，和创建文档时传入的参数一致。
+	MinScaleResolution *string `json:"MinScaleResolution,omitnil,omitempty" name:"MinScaleResolution"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3529,6 +3542,14 @@ type DocumentInfo struct {
 	// 课件预览地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Preview *string `json:"Preview,omitnil,omitempty" name:"Preview"`
+
+	// 文档的分辨率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 转码后文档的最小分辨率，和创建文档时传入的参数一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinScaleResolution *string `json:"MinScaleResolution,omitnil,omitempty" name:"MinScaleResolution"`
 }
 
 // Predefined struct for user

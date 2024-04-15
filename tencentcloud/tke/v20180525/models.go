@@ -2270,10 +2270,10 @@ type CreateClusterRouteRequestParams struct {
 	// 路由表名称。
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
-	// 目的端CIDR。
+	// 目的节点的 PodCIDR
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
 
-	// 下一跳地址。
+	// 下一跳地址，即目的节点的内网 IP 地址
 	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
 }
 
@@ -2283,10 +2283,10 @@ type CreateClusterRouteRequest struct {
 	// 路由表名称。
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
-	// 目的端CIDR。
+	// 目的节点的 PodCIDR
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
 
-	// 下一跳地址。
+	// 下一跳地址，即目的节点的内网 IP 地址
 	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
 }
 
@@ -2335,7 +2335,7 @@ func (r *CreateClusterRouteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterRouteTableRequestParams struct {
-	// 路由表名称
+	// 路由表名称，一般为集群ID
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
 	// 路由表CIDR
@@ -2344,14 +2344,14 @@ type CreateClusterRouteTableRequestParams struct {
 	// 路由表绑定的VPC
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 是否忽略CIDR冲突
+	// 是否忽略CIDR与 vpc 路由表的冲突， 0 表示不忽略，1表示忽略。默认不忽略
 	IgnoreClusterCidrConflict *int64 `json:"IgnoreClusterCidrConflict,omitnil,omitempty" name:"IgnoreClusterCidrConflict"`
 }
 
 type CreateClusterRouteTableRequest struct {
 	*tchttp.BaseRequest
 	
-	// 路由表名称
+	// 路由表名称，一般为集群ID
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
 	// 路由表CIDR
@@ -2360,7 +2360,7 @@ type CreateClusterRouteTableRequest struct {
 	// 路由表绑定的VPC
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 是否忽略CIDR冲突
+	// 是否忽略CIDR与 vpc 路由表的冲突， 0 表示不忽略，1表示忽略。默认不忽略
 	IgnoreClusterCidrConflict *int64 `json:"IgnoreClusterCidrConflict,omitnil,omitempty" name:"IgnoreClusterCidrConflict"`
 }
 
@@ -12488,6 +12488,64 @@ func (r *DescribeRouteTableConflictsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSupportedRuntimeRequestParams struct {
+	// K8S版本
+	K8sVersion *string `json:"K8sVersion,omitnil,omitempty" name:"K8sVersion"`
+}
+
+type DescribeSupportedRuntimeRequest struct {
+	*tchttp.BaseRequest
+	
+	// K8S版本
+	K8sVersion *string `json:"K8sVersion,omitnil,omitempty" name:"K8sVersion"`
+}
+
+func (r *DescribeSupportedRuntimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupportedRuntimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "K8sVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSupportedRuntimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSupportedRuntimeResponseParams struct {
+	// 可选运行时列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionalRuntimes []*OptionalRuntimes `json:"OptionalRuntimes,omitnil,omitempty" name:"OptionalRuntimes"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSupportedRuntimeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSupportedRuntimeResponseParams `json:"Response"`
+}
+
+func (r *DescribeSupportedRuntimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupportedRuntimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTKEEdgeClusterCredentialRequestParams struct {
 	// 集群Id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -16165,6 +16223,81 @@ func (r *ModifyClusterNodePoolResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyClusterRuntimeConfigRequestParams struct {
+	// 集群ID，必填
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+	DstK8SVersion *string `json:"DstK8SVersion,omitnil,omitempty" name:"DstK8SVersion"`
+
+	// 需要修改集群运行时时填写
+	ClusterRuntimeConfig *RuntimeConfig `json:"ClusterRuntimeConfig,omitnil,omitempty" name:"ClusterRuntimeConfig"`
+
+	// 需要修改节点池运行时时，填需要修改的部分
+	NodePoolRuntimeConfig []*NodePoolRuntime `json:"NodePoolRuntimeConfig,omitnil,omitempty" name:"NodePoolRuntimeConfig"`
+}
+
+type ModifyClusterRuntimeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID，必填
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+	DstK8SVersion *string `json:"DstK8SVersion,omitnil,omitempty" name:"DstK8SVersion"`
+
+	// 需要修改集群运行时时填写
+	ClusterRuntimeConfig *RuntimeConfig `json:"ClusterRuntimeConfig,omitnil,omitempty" name:"ClusterRuntimeConfig"`
+
+	// 需要修改节点池运行时时，填需要修改的部分
+	NodePoolRuntimeConfig []*NodePoolRuntime `json:"NodePoolRuntimeConfig,omitnil,omitempty" name:"NodePoolRuntimeConfig"`
+}
+
+func (r *ModifyClusterRuntimeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterRuntimeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "DstK8SVersion")
+	delete(f, "ClusterRuntimeConfig")
+	delete(f, "NodePoolRuntimeConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterRuntimeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterRuntimeConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterRuntimeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterRuntimeConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterRuntimeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterRuntimeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyClusterVirtualNodePoolRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -17122,6 +17255,24 @@ type NodePoolOption struct {
 	InheritConfigurationFromNodePool *bool `json:"InheritConfigurationFromNodePool,omitnil,omitempty" name:"InheritConfigurationFromNodePool"`
 }
 
+type NodePoolRuntime struct {
+	// 节点池ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 运行时类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeType *string `json:"RuntimeType,omitnil,omitempty" name:"RuntimeType"`
+
+	// 运行时版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
+
+	// 节点池名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePoolName *string `json:"NodePoolName,omitnil,omitempty" name:"NodePoolName"`
+}
+
 type OIDCConfigAuthenticationOptions struct {
 	// 创建身份提供商
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -17134,6 +17285,20 @@ type OIDCConfigAuthenticationOptions struct {
 	// 创建PodIdentityWebhook组件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoInstallPodIdentityWebhookAddon *bool `json:"AutoInstallPodIdentityWebhookAddon,omitnil,omitempty" name:"AutoInstallPodIdentityWebhookAddon"`
+}
+
+type OptionalRuntimes struct {
+	// 运行时类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeType *string `json:"RuntimeType,omitnil,omitempty" name:"RuntimeType"`
+
+	// 运行时版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeVersions []*string `json:"RuntimeVersions,omitnil,omitempty" name:"RuntimeVersions"`
+
+	// 该类型的默认运行时版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultVersion *string `json:"DefaultVersion,omitnil,omitempty" name:"DefaultVersion"`
 }
 
 type PendingRelease struct {
@@ -18698,6 +18863,16 @@ func (r *RunPrometheusInstanceResponse) FromJsonString(s string) error {
 type RunSecurityServiceEnabled struct {
 	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>true：表示开启云安全服务<br><li>false：表示不开启云安全服务<br><br>默认取值：true。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type RuntimeConfig struct {
+	// 运行时类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeType *string `json:"RuntimeType,omitnil,omitempty" name:"RuntimeType"`
+
+	// 运行时版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
 }
 
 // Predefined struct for user

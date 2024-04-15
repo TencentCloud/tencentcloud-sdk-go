@@ -69,7 +69,6 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_BALANCELESS = "InternalError.BalanceLess"
 //  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
@@ -81,6 +80,7 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASSINTELLIGENTTIERING = "InvalidParameterValue.CosStorageClassIntelligentTiering"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
+//  UNSUPPORTEDOPERATION_BALANCELESS = "UnsupportedOperation.BalanceLess"
 func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {
     return c.CreateLibraryWithContext(context.Background(), request)
 }
@@ -90,7 +90,6 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_BALANCELESS = "InternalError.BalanceLess"
 //  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
@@ -102,6 +101,7 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASSINTELLIGENTTIERING = "InvalidParameterValue.CosStorageClassIntelligentTiering"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
+//  UNSUPPORTEDOPERATION_BALANCELESS = "UnsupportedOperation.BalanceLess"
 func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {
     if request == nil {
         request = NewCreateLibraryRequest()

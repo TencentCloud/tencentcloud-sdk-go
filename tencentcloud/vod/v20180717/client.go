@@ -1957,7 +1957,7 @@ func NewCreateSubAppIdResponse() (response *CreateSubAppIdResponse) {
 }
 
 // CreateSubAppId
-// 该接口用于创建点播子应用。
+// 该接口用于创建点播应用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1971,7 +1971,7 @@ func (c *Client) CreateSubAppId(request *CreateSubAppIdRequest) (response *Creat
 }
 
 // CreateSubAppId
-// 该接口用于创建点播子应用。
+// 该接口用于创建点播应用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6848,7 +6848,7 @@ func NewDescribeSubAppIdsResponse() (response *DescribeSubAppIdsResponse) {
 }
 
 // DescribeSubAppIds
-// 该接口用于获取当前账号的子应用列表，包含主应用。
+// 该接口用于获取当前账号的应用列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6861,7 +6861,7 @@ func (c *Client) DescribeSubAppIds(request *DescribeSubAppIdsRequest) (response 
 }
 
 // DescribeSubAppIds
-// 该接口用于获取当前账号的子应用列表，包含主应用。
+// 该接口用于获取当前账号的应用列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

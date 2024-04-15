@@ -8508,20 +8508,20 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// 英文姓名
 	EnFirstName *string `json:"EnFirstName,omitnil,omitempty" name:"EnFirstName"`
 
-	// 地址
-	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
-
-	// 出生日期
-	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
-
-	// 签发日期
-	IssueDate *string `json:"IssueDate,omitnil,omitempty" name:"IssueDate"`
-
-	// 到期日期
-	ExpirationDate *string `json:"ExpirationDate,omitnil,omitempty" name:"ExpirationDate"`
-
 	// 英文姓名
 	EnLastName *string `json:"EnLastName,omitnil,omitempty" name:"EnLastName"`
+
+	// 泰文签发日期
+	IssueDate *string `json:"IssueDate,omitnil,omitempty" name:"IssueDate"`
+
+	// 泰文到期日期
+	ExpirationDate *string `json:"ExpirationDate,omitnil,omitempty" name:"ExpirationDate"`
+
+	// 泰文出生日期
+	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
+
+	// 地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 证件人像照片抠取
 	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`

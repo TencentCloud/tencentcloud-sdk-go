@@ -10125,6 +10125,71 @@ func (c *Client) DescribeRouteTableConflictsWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeSupportedRuntimeRequest() (request *DescribeSupportedRuntimeRequest) {
+    request = &DescribeSupportedRuntimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeSupportedRuntime")
+    
+    
+    return
+}
+
+func NewDescribeSupportedRuntimeResponse() (response *DescribeSupportedRuntimeResponse) {
+    response = &DescribeSupportedRuntimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSupportedRuntime
+// 根据K8S版本获取可选运行时版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYSERVERCOMMONERROR = "FailedOperation.PolicyServerCommonError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSupportedRuntime(request *DescribeSupportedRuntimeRequest) (response *DescribeSupportedRuntimeResponse, err error) {
+    return c.DescribeSupportedRuntimeWithContext(context.Background(), request)
+}
+
+// DescribeSupportedRuntime
+// 根据K8S版本获取可选运行时版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYSERVERCOMMONERROR = "FailedOperation.PolicyServerCommonError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSupportedRuntimeWithContext(ctx context.Context, request *DescribeSupportedRuntimeRequest) (response *DescribeSupportedRuntimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeSupportedRuntimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSupportedRuntime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSupportedRuntimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTKEEdgeClusterCredentialRequest() (request *DescribeTKEEdgeClusterCredentialRequest) {
     request = &DescribeTKEEdgeClusterCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12428,6 +12493,71 @@ func (c *Client) ModifyClusterNodePoolWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyClusterNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterRuntimeConfigRequest() (request *ModifyClusterRuntimeConfigRequest) {
+    request = &ModifyClusterRuntimeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterRuntimeConfig")
+    
+    
+    return
+}
+
+func NewModifyClusterRuntimeConfigResponse() (response *ModifyClusterRuntimeConfigResponse) {
+    response = &ModifyClusterRuntimeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterRuntimeConfig
+// 修改集群及节点池纬度运行时配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyClusterRuntimeConfig(request *ModifyClusterRuntimeConfigRequest) (response *ModifyClusterRuntimeConfigResponse, err error) {
+    return c.ModifyClusterRuntimeConfigWithContext(context.Background(), request)
+}
+
+// ModifyClusterRuntimeConfig
+// 修改集群及节点池纬度运行时配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyClusterRuntimeConfigWithContext(ctx context.Context, request *ModifyClusterRuntimeConfigRequest) (response *ModifyClusterRuntimeConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterRuntimeConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterRuntimeConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterRuntimeConfigResponse()
     err = c.Send(request, response)
     return
 }

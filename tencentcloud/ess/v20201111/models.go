@@ -4363,12 +4363,185 @@ func (r *CreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationAuthUrlRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
+	// 指定授权方式 支持多选:
+	// 1-上传授权书方式
+	// 2- 法人授权方式
+	// 3- 法人身份认证方式
+	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
+
+	// 企业名称
+	// EndPointType=“H5”或者"SHORT_H5"时，该参数必填
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 企业统一社会信用代码
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
+
+	// 法人姓名
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+
+	// 认证完成跳转链接
+	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
+
+	// 营业执照企业地址
+	// 示例：xx省xx市xx县/区xx街道
+	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
+
+	// 认证人姓名
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 认证人手机号
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
+
+	// 认证人身份证号
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
+
+	// 认证人证件类型
+	// 支持以下类型
+	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
+
+	// 营业执照的社会信用代码保持一致
+	// false 关闭-默认
+	// true 开启
+	UniformSocialCreditCodeSame *bool `json:"UniformSocialCreditCodeSame,omitnil,omitempty" name:"UniformSocialCreditCodeSame"`
+
+	// 法人姓名保持一致
+	// false 关闭-默认
+	// true 开启
+	LegalNameSame *bool `json:"LegalNameSame,omitnil,omitempty" name:"LegalNameSame"`
+
+	// 认证人姓名一致
+	// false 关闭-默认
+	// true 开启
+	// 注意：
+	// 开启后在认证过程前会校验拦截
+	AdminNameSame *bool `json:"AdminNameSame,omitnil,omitempty" name:"AdminNameSame"`
+
+	// 认证人居民身份证件号一致
+	// false 关闭-默认
+	// true 开启
+	// 注意：
+	// 开启后在认证过程前会校验拦截
+	AdminIdCardNumberSame *bool `json:"AdminIdCardNumberSame,omitnil,omitempty" name:"AdminIdCardNumberSame"`
+
+	// 认证人手机号一致
+	// false 关闭-默认
+	// true 开启
+	// 注意：
+	// 开启后在认证过程前会校验拦截
+	AdminMobileSame *bool `json:"AdminMobileSame,omitnil,omitempty" name:"AdminMobileSame"`
+
+	// 企业名称保持一致
+	// false 关闭-默认
+	// true 开启
+	OrganizationNameSame *bool `json:"OrganizationNameSame,omitnil,omitempty" name:"OrganizationNameSame"`
+
+	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
+
+	// 跳转链接类型：
+	// "PC"-PC端认证链接 
+	// "APP"-全屏或半屏跳转小程序链接
+	// “H5”-H5页面认证链接 "SHORT_H5"- H5认证短链
+	// "SHORT_URL"- 跳转小程序短链	
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
 	*tchttp.BaseRequest
 	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 指定授权方式 支持多选:
+	// 1-上传授权书方式
+	// 2- 法人授权方式
+	// 3- 法人身份认证方式
+	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
+
+	// 企业名称
+	// EndPointType=“H5”或者"SHORT_H5"时，该参数必填
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 企业统一社会信用代码
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
+
+	// 法人姓名
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+
+	// 认证完成跳转链接
+	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
+
+	// 营业执照企业地址
+	// 示例：xx省xx市xx县/区xx街道
+	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
+
+	// 认证人姓名
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 认证人手机号
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
+
+	// 认证人身份证号
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
+
+	// 认证人证件类型
+	// 支持以下类型
+	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
+
+	// 营业执照的社会信用代码保持一致
+	// false 关闭-默认
+	// true 开启
+	UniformSocialCreditCodeSame *bool `json:"UniformSocialCreditCodeSame,omitnil,omitempty" name:"UniformSocialCreditCodeSame"`
+
+	// 法人姓名保持一致
+	// false 关闭-默认
+	// true 开启
+	LegalNameSame *bool `json:"LegalNameSame,omitnil,omitempty" name:"LegalNameSame"`
+
+	// 认证人姓名一致
+	// false 关闭-默认
+	// true 开启
+	// 注意：
+	// 开启后在认证过程前会校验拦截
+	AdminNameSame *bool `json:"AdminNameSame,omitnil,omitempty" name:"AdminNameSame"`
+
+	// 认证人居民身份证件号一致
+	// false 关闭-默认
+	// true 开启
+	// 注意：
+	// 开启后在认证过程前会校验拦截
+	AdminIdCardNumberSame *bool `json:"AdminIdCardNumberSame,omitnil,omitempty" name:"AdminIdCardNumberSame"`
+
+	// 认证人手机号一致
+	// false 关闭-默认
+	// true 开启
+	// 注意：
+	// 开启后在认证过程前会校验拦截
+	AdminMobileSame *bool `json:"AdminMobileSame,omitnil,omitempty" name:"AdminMobileSame"`
+
+	// 企业名称保持一致
+	// false 关闭-默认
+	// true 开启
+	OrganizationNameSame *bool `json:"OrganizationNameSame,omitnil,omitempty" name:"OrganizationNameSame"`
+
+	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
+
+	// 跳转链接类型：
+	// "PC"-PC端认证链接 
+	// "APP"-全屏或半屏跳转小程序链接
+	// “H5”-H5页面认证链接 "SHORT_H5"- H5认证短链
+	// "SHORT_URL"- 跳转小程序短链	
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -4383,7 +4556,25 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Operator")
+	delete(f, "AuthorizationTypes")
+	delete(f, "OrganizationName")
+	delete(f, "UniformSocialCreditCode")
+	delete(f, "LegalName")
+	delete(f, "AutoJumpUrl")
+	delete(f, "OrganizationAddress")
+	delete(f, "AdminName")
+	delete(f, "AdminMobile")
+	delete(f, "AdminIdCardNumber")
+	delete(f, "AdminIdCardType")
+	delete(f, "UniformSocialCreditCodeSame")
+	delete(f, "LegalNameSame")
+	delete(f, "AdminNameSame")
+	delete(f, "AdminIdCardNumberSame")
+	delete(f, "AdminMobileSame")
+	delete(f, "OrganizationNameSame")
+	delete(f, "BusinessLicense")
+	delete(f, "Endpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}
@@ -4392,6 +4583,16 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationAuthUrlResponseParams struct {
+	// “H5”-H5长连接
+	// "SHORT_H5"- H5短链
+	// "APP"-小程序
+	// "PC"-PC浏览器
+	// 链接有效期统一30天
+	AuthUrl *string `json:"AuthUrl,omitnil,omitempty" name:"AuthUrl"`
+
+	// 链接过期时间戳
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
