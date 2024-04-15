@@ -106,6 +106,67 @@ type BatchStatus struct {
 	BatchAction *string `json:"BatchAction,omitnil,omitempty" name:"BatchAction"`
 }
 
+// Predefined struct for user
+type BidPreDomainsRequestParams struct {
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 价格
+	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
+}
+
+type BidPreDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 价格
+	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
+}
+
+func (r *BidPreDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BidPreDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	delete(f, "Price")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BidPreDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BidPreDomainsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BidPreDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *BidPreDomainsResponseParams `json:"Response"`
+}
+
+func (r *BidPreDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BidPreDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CertificateInfo struct {
 	// 证件号码。
 	CertificateCode *string `json:"CertificateCode,omitnil,omitempty" name:"CertificateCode"`
@@ -1671,11 +1732,78 @@ func (r *DescribePreDomainListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeReservedBidInfoRequestParams struct {
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+type DescribeReservedBidInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+func (r *DescribeReservedBidInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedBidInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedBidInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReservedBidInfoResponseParams struct {
+	// 竞价领先价格
+	UpPrice *int64 `json:"UpPrice,omitnil,omitempty" name:"UpPrice"`
+
+	// 请求用户当前价格
+	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 领先用户
+	UpUser *string `json:"UpUser,omitnil,omitempty" name:"UpUser"`
+
+	// 竞价详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BidList []*ReserveBidInfo `json:"BidList,omitnil,omitempty" name:"BidList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReservedBidInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReservedBidInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeReservedBidInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedBidInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReservedPreDomainInfoRequestParams struct {
 	// 域名,每次最多支持500条域名查询
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 状态，用于筛选，可不填写(1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成)
+	// 状态，用于筛选，可不填写(1. 成功 2. 失败（失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成 5. 预约 6. 竞价)
 	ReservedStatus *int64 `json:"ReservedStatus,omitnil,omitempty" name:"ReservedStatus"`
 
 	// 根据预约时间排序，仅支持："desc","asc"。
@@ -1694,7 +1822,7 @@ type DescribeReservedPreDomainInfoRequest struct {
 	// 域名,每次最多支持500条域名查询
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 状态，用于筛选，可不填写(1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成)
+	// 状态，用于筛选，可不填写(1. 成功 2. 失败（失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成 5. 预约 6. 竞价)
 	ReservedStatus *int64 `json:"ReservedStatus,omitnil,omitempty" name:"ReservedStatus"`
 
 	// 根据预约时间排序，仅支持："desc","asc"。
@@ -2687,6 +2815,24 @@ func (r *RenewDomainBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReserveBidInfo struct {
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 出价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 出价时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BidTime *string `json:"BidTime,omitnil,omitempty" name:"BidTime"`
+
+	// 当前状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BidStatus *string `json:"BidStatus,omitnil,omitempty" name:"BidStatus"`
+}
+
 type ReservedDomainInfo struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -2733,6 +2879,10 @@ type ReservedPreDomainInfo struct {
 	// 资源ID，用于删除资源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 // Predefined struct for user

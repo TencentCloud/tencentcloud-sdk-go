@@ -5219,6 +5219,65 @@ func (c *Client) DescribeRestoreTaskWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeRestoreTimeRangeRequest() (request *DescribeRestoreTimeRangeRequest) {
+    request = &DescribeRestoreTimeRangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeRestoreTimeRange")
+    
+    
+    return
+}
+
+func NewDescribeRestoreTimeRangeResponse() (response *DescribeRestoreTimeRangeResponse) {
+    response = &DescribeRestoreTimeRangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRestoreTimeRange
+// 本接口(DescribeRestoreTimeRange)用于查询按照时间点可回档的时间范围。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeRestoreTimeRange(request *DescribeRestoreTimeRangeRequest) (response *DescribeRestoreTimeRangeResponse, err error) {
+    return c.DescribeRestoreTimeRangeWithContext(context.Background(), request)
+}
+
+// DescribeRestoreTimeRange
+// 本接口(DescribeRestoreTimeRange)用于查询按照时间点可回档的时间范围。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeRestoreTimeRangeWithContext(ctx context.Context, request *DescribeRestoreTimeRangeRequest) (response *DescribeRestoreTimeRangeResponse, err error) {
+    if request == nil {
+        request = NewDescribeRestoreTimeRangeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRestoreTimeRange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRestoreTimeRangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRollbackTimeRequest() (request *DescribeRollbackTimeRequest) {
     request = &DescribeRollbackTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

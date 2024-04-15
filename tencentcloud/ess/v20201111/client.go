@@ -516,6 +516,165 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateBatchOrganizationRegistrationTasksRequest() (request *CreateBatchOrganizationRegistrationTasksRequest) {
+    request = &CreateBatchOrganizationRegistrationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateBatchOrganizationRegistrationTasks")
+    
+    
+    return
+}
+
+func NewCreateBatchOrganizationRegistrationTasksResponse() (response *CreateBatchOrganizationRegistrationTasksResponse) {
+    response = &CreateBatchOrganizationRegistrationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchOrganizationRegistrationTasks
+// 本接口（CreateBatchOrganizationRegistrationTasks）用于批量创建企业认证链接
+//
+// 该接口为异步提交任务接口,需要跟查询企业批量认证链接(DescribeBatchOrganizationRegistrationUrls) 配合使用.
+//
+// 
+//
+// 批量创建链接有以下限制：
+//
+// 
+//
+// 1. 单次最多创建10个企业。
+//
+// 2. 一天同一家企业最多创建8000家企业。
+//
+// 3. 同一批创建的企业不能重复 其中包括 企业名称，企业统一信用代码
+//
+// 4. 跳转到小程序的实现，参考微信官方文档（分为全屏、半屏两种方式），如何配置也可以请参考: 跳转电子签小程序配置
+//
+// 
+//
+// 注：
+//
+// 
+//
+// 1. **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+//
+//   
+//
+// 2. 如果生成的链接是APP链接，跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+//
+//   
+//
+// 
+//
+// **腾讯电子签小程序的AppID 和 原始Id如下:**
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | --- | --- | --- |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+func (c *Client) CreateBatchOrganizationRegistrationTasks(request *CreateBatchOrganizationRegistrationTasksRequest) (response *CreateBatchOrganizationRegistrationTasksResponse, err error) {
+    return c.CreateBatchOrganizationRegistrationTasksWithContext(context.Background(), request)
+}
+
+// CreateBatchOrganizationRegistrationTasks
+// 本接口（CreateBatchOrganizationRegistrationTasks）用于批量创建企业认证链接
+//
+// 该接口为异步提交任务接口,需要跟查询企业批量认证链接(DescribeBatchOrganizationRegistrationUrls) 配合使用.
+//
+// 
+//
+// 批量创建链接有以下限制：
+//
+// 
+//
+// 1. 单次最多创建10个企业。
+//
+// 2. 一天同一家企业最多创建8000家企业。
+//
+// 3. 同一批创建的企业不能重复 其中包括 企业名称，企业统一信用代码
+//
+// 4. 跳转到小程序的实现，参考微信官方文档（分为全屏、半屏两种方式），如何配置也可以请参考: 跳转电子签小程序配置
+//
+// 
+//
+// 注：
+//
+// 
+//
+// 1. **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+//
+//   
+//
+// 2. 如果生成的链接是APP链接，跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+//
+//   
+//
+// 
+//
+// **腾讯电子签小程序的AppID 和 原始Id如下:**
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | --- | --- | --- |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+func (c *Client) CreateBatchOrganizationRegistrationTasksWithContext(ctx context.Context, request *CreateBatchOrganizationRegistrationTasksRequest) (response *CreateBatchOrganizationRegistrationTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchOrganizationRegistrationTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchOrganizationRegistrationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchOrganizationRegistrationTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchQuickSignUrlRequest() (request *CreateBatchQuickSignUrlRequest) {
     request = &CreateBatchQuickSignUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4189,6 +4348,77 @@ func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateOrganizationAuthUrlRequest() (request *CreateOrganizationAuthUrlRequest) {
+    request = &CreateOrganizationAuthUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateOrganizationAuthUrl")
+    
+    
+    return
+}
+
+func NewCreateOrganizationAuthUrlResponse() (response *CreateOrganizationAuthUrlResponse) {
+    response = &CreateOrganizationAuthUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOrganizationAuthUrl
+// 本接口（CreateOrganizationAuthUrl）用于生成创建企业认证链接。
+//
+// 用于业务方系统自己生成认证链接进行跳转.而不用电子签自带的生成链接
+//
+// 
+//
+// 注： **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_JUMPURL = "InvalidParameter.JumpUrl"
+//  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+func (c *Client) CreateOrganizationAuthUrl(request *CreateOrganizationAuthUrlRequest) (response *CreateOrganizationAuthUrlResponse, err error) {
+    return c.CreateOrganizationAuthUrlWithContext(context.Background(), request)
+}
+
+// CreateOrganizationAuthUrl
+// 本接口（CreateOrganizationAuthUrl）用于生成创建企业认证链接。
+//
+// 用于业务方系统自己生成认证链接进行跳转.而不用电子签自带的生成链接
+//
+// 
+//
+// 注： **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_JUMPURL = "InvalidParameter.JumpUrl"
+//  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+func (c *Client) CreateOrganizationAuthUrlWithContext(ctx context.Context, request *CreateOrganizationAuthUrlRequest) (response *CreateOrganizationAuthUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationAuthUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationAuthUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationAuthUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationBatchSignUrlRequest() (request *CreateOrganizationBatchSignUrlRequest) {
     request = &CreateOrganizationBatchSignUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4213,11 +4443,13 @@ func NewCreateOrganizationBatchSignUrlResponse() (response *CreateOrganizationBa
 //
 // 附注：
 //
-// - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
+// - 员工必须需作为批量签署合同的签署方，or或签合同的候选人之一。
 //
-// - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
+// - 对于本方企业：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
 //
-// - 仅支持待签署状态的合同生成签署链接。
+// - 若要生成他发企业签署链接：应传RecipientIds，且制定的合同必须是接口调用方发起的。
+//
+// - 支持待签署、待填写状态的合同生成签署链接。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4236,11 +4468,13 @@ func (c *Client) CreateOrganizationBatchSignUrl(request *CreateOrganizationBatch
 //
 // 附注：
 //
-// - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
+// - 员工必须需作为批量签署合同的签署方，or或签合同的候选人之一。
 //
-// - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
+// - 对于本方企业：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
 //
-// - 仅支持待签署状态的合同生成签署链接。
+// - 若要生成他发企业签署链接：应传RecipientIds，且制定的合同必须是接口调用方发起的。
+//
+// - 支持待签署、待填写状态的合同生成签署链接。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

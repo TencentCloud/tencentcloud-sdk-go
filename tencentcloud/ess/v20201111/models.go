@@ -116,10 +116,9 @@ type ApproverInfo struct {
 	// 通知签署方经办人的方式,  有以下途径:
 	// <ul><li>  **sms**  :  (默认)短信</li>
 	// <li>   **none**   : 不通知</li></ul>
-	// ```
+	// 
 	// 注意：
-	// 如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信
-	// ```
+	// `如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信`
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 收据场景设置签署人角色类型, 可以设置如下****类型****:
@@ -368,7 +367,7 @@ type AutoSignConfig struct {
 	// <li>**贵方原生App -> 腾讯电子签H5 -> 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。`APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。`APP拦截地址跳转可参考：<a href='https://stackoverflow.com/questions/41693263/android-webview-err-unknown-url-scheme'>Android</a>，<a href='https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/webview/upi-intent-ios/'>IOS</a> </li></ul>
 	// 
 	// 成功结果返回：
-	// 若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，比如 qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
+	// 若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，例如： qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
@@ -1170,6 +1169,113 @@ func (r *CreateBatchCancelFlowUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchOrganizationRegistrationTasksRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构注册信息。
+	// 一次最多支持10条认证流
+	RegistrationOrganizations []*RegistrationOrganizationInfo `json:"RegistrationOrganizations,omitnil,omitempty" name:"RegistrationOrganizations"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 要生成链接的类型, 可以选择的值如下: 
+	// 
+	// <ul>
+	// <li>(默认)PC: 生成PC端的链接</li>
+	// <li>SHORT_URL: H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+	// <li>APP：生成小程序跳转链接</li>
+	// <li>H5：生成H5跳转长链接</li>
+	// <li>SHORT_H5：生成H5跳转短链</li>
+	// </ul>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+type CreateBatchOrganizationRegistrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构注册信息。
+	// 一次最多支持10条认证流
+	RegistrationOrganizations []*RegistrationOrganizationInfo `json:"RegistrationOrganizations,omitnil,omitempty" name:"RegistrationOrganizations"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 要生成链接的类型, 可以选择的值如下: 
+	// 
+	// <ul>
+	// <li>(默认)PC: 生成PC端的链接</li>
+	// <li>SHORT_URL: H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+	// <li>APP：生成小程序跳转链接</li>
+	// <li>H5：生成H5跳转长链接</li>
+	// <li>SHORT_H5：生成H5跳转短链</li>
+	// </ul>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+func (r *CreateBatchOrganizationRegistrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchOrganizationRegistrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "RegistrationOrganizations")
+	delete(f, "Agent")
+	delete(f, "Endpoint")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchOrganizationRegistrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchOrganizationRegistrationTasksResponseParams struct {
+	// 生成注册链接的任务Id，
+	// 根据这个id， 调用DescribeBatchOrganizationRegistrationUrls 获取生成的链接，进入认证流程
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 批量生成企业认证链接的详细错误信息，
+	// 顺序与输入参数保持一致。
+	// 若企业认证均成功生成，则不返回错误信息；
+	// 若存在任何错误，则返回具体的错误描述。
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchOrganizationRegistrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchOrganizationRegistrationTasksResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchOrganizationRegistrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchOrganizationRegistrationTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4256,6 +4362,57 @@ func (r *CreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOrganizationAuthUrlRequestParams struct {
+
+}
+
+type CreateOrganizationAuthUrlRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationAuthUrlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOrganizationAuthUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrganizationAuthUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateOrganizationAuthUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationAuthUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
 	// 支持填入集团子公司经办人 userId 代发合同。
@@ -4286,6 +4443,11 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 员工手机号，必须与姓名一起使用。
 	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
+	// 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
+	// 若传了此参数，则可以不传 UserId, Name, Mobile等参数
+	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 }
 
 type CreateOrganizationBatchSignUrlRequest struct {
@@ -4320,6 +4482,11 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	// 员工手机号，必须与姓名一起使用。
 	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
+	// 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
+	// 若传了此参数，则可以不传 UserId, Name, Mobile等参数
+	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 }
 
 func (r *CreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -4340,6 +4507,7 @@ func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "Name")
 	delete(f, "Mobile")
+	delete(f, "RecipientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -9161,7 +9329,7 @@ type FlowCreateApprover struct {
 
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 	// 
-	// <b>模板发起合同时，该参数为必填项，可以通过[查询模版信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+	// <b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
 	// <b>文件发起合同时，该参数无需传值。</b>
 	// 
 	// 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
@@ -10628,6 +10796,59 @@ type RegisterInfo struct {
 
 	// 社会统一信用代码
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
+}
+
+type RegistrationOrganizationInfo struct {
+	// 组织机构名称。
+	// 请确认该名称与企业营业执照中注册的名称一致。
+	// 如果名称中包含英文括号()，请使用中文括号（）代替。
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 组织机构企业统一社会信用代码。
+	// 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
+
+	// 组织机构法人的姓名。
+	// 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+
+	// 组织机构企业注册地址。
+	// 请确认该企业注册地址与企业营业执照中注册的地址一致。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 组织机构超管姓名。
+	// 在注册流程中，必须是超管本人进行操作。
+	// 如果法人做为超管管理组织机构,超管姓名就是法人姓名
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 组织机构超管姓名。
+	// 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
+
+	// 可选的此企业允许的授权方式, 可以设置的方式有:
+	// 1：上传授权书
+	// 2：法人授权超管
+	// 5：授权书+对公打款
+	// 
+	// 
+	// 注:
+	// `1. 当前仅支持一种认证方式`
+	// `2. 如果当前的企业类型是政府/事业单位, 则只支持上传授权书+对公打款`
+	// `3. 如果当前操作人是法人,则是法人认证`
+	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
+
+	// 认证人身份证号
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
+
+	// 认证人证件类型 
+	// 支持以下类型
+	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
+
+	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 }
 
 type ReleasedApprover struct {

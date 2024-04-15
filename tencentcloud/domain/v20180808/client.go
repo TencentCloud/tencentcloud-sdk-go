@@ -116,6 +116,63 @@ func (c *Client) BatchModifyDomainInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewBidPreDomainsRequest() (request *BidPreDomainsRequest) {
+    request = &BidPreDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "BidPreDomains")
+    
+    
+    return
+}
+
+func NewBidPreDomainsResponse() (response *BidPreDomainsResponse) {
+    response = &BidPreDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BidPreDomains
+// 用户合作商预释放出价
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BIDPREDOMAINSPRICEDOWNERR = "FailedOperation.BidPreDomainsPriceDownErr"
+//  FAILEDOPERATION_BIDPREDOMAINSTIMEOUTERR = "FailedOperation.BidPreDomainsTimeOutErr"
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) BidPreDomains(request *BidPreDomainsRequest) (response *BidPreDomainsResponse, err error) {
+    return c.BidPreDomainsWithContext(context.Background(), request)
+}
+
+// BidPreDomains
+// 用户合作商预释放出价
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BIDPREDOMAINSPRICEDOWNERR = "FailedOperation.BidPreDomainsPriceDownErr"
+//  FAILEDOPERATION_BIDPREDOMAINSTIMEOUTERR = "FailedOperation.BidPreDomainsTimeOutErr"
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) BidPreDomainsWithContext(ctx context.Context, request *BidPreDomainsRequest) (response *BidPreDomainsResponse, err error) {
+    if request == nil {
+        request = NewBidPreDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BidPreDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBidPreDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckBatchStatusRequest() (request *CheckBatchStatusRequest) {
     request = &CheckBatchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1303,6 +1360,7 @@ func NewDescribePreDomainListResponse() (response *DescribePreDomainListResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 func (c *Client) DescribePreDomainList(request *DescribePreDomainListRequest) (response *DescribePreDomainListResponse, err error) {
     return c.DescribePreDomainListWithContext(context.Background(), request)
@@ -1313,6 +1371,7 @@ func (c *Client) DescribePreDomainList(request *DescribePreDomainListRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 func (c *Client) DescribePreDomainListWithContext(ctx context.Context, request *DescribePreDomainListRequest) (response *DescribePreDomainListResponse, err error) {
     if request == nil {
@@ -1326,6 +1385,59 @@ func (c *Client) DescribePreDomainListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribePreDomainListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReservedBidInfoRequest() (request *DescribeReservedBidInfoRequest) {
+    request = &DescribeReservedBidInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeReservedBidInfo")
+    
+    
+    return
+}
+
+func NewDescribeReservedBidInfoResponse() (response *DescribeReservedBidInfoResponse) {
+    response = &DescribeReservedBidInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReservedBidInfo
+// 接口用于获取合作商竞价过程中竞价详情数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribeReservedBidInfo(request *DescribeReservedBidInfoRequest) (response *DescribeReservedBidInfoResponse, err error) {
+    return c.DescribeReservedBidInfoWithContext(context.Background(), request)
+}
+
+// DescribeReservedBidInfo
+// 接口用于获取合作商竞价过程中竞价详情数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribeReservedBidInfoWithContext(ctx context.Context, request *DescribeReservedBidInfoRequest) (response *DescribeReservedBidInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeReservedBidInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedBidInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReservedBidInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -1354,6 +1466,7 @@ func NewDescribeReservedPreDomainInfoResponse() (response *DescribeReservedPreDo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 func (c *Client) DescribeReservedPreDomainInfo(request *DescribeReservedPreDomainInfoRequest) (response *DescribeReservedPreDomainInfoResponse, err error) {
     return c.DescribeReservedPreDomainInfoWithContext(context.Background(), request)
@@ -1364,6 +1477,7 @@ func (c *Client) DescribeReservedPreDomainInfo(request *DescribeReservedPreDomai
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 func (c *Client) DescribeReservedPreDomainInfoWithContext(ctx context.Context, request *DescribeReservedPreDomainInfoRequest) (response *DescribeReservedPreDomainInfoResponse, err error) {
     if request == nil {
@@ -1941,6 +2055,7 @@ func NewReservedPreDomainsResponse() (response *ReservedPreDomainsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 func (c *Client) ReservedPreDomains(request *ReservedPreDomainsRequest) (response *ReservedPreDomainsResponse, err error) {
     return c.ReservedPreDomainsWithContext(context.Background(), request)
@@ -1951,6 +2066,7 @@ func (c *Client) ReservedPreDomains(request *ReservedPreDomainsRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 func (c *Client) ReservedPreDomainsWithContext(ctx context.Context, request *ReservedPreDomainsRequest) (response *ReservedPreDomainsResponse, err error) {
     if request == nil {

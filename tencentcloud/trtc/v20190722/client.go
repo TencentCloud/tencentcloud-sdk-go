@@ -409,7 +409,7 @@ func NewDescribeCallDetailInfoResponse() (response *DescribeCallDetailInfoRespon
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，需订阅监控仪表盘商业套餐包获取此接口调用能力，[仪表盘商业化](https://cloud.tencent.com/document/product/647/81331)说明请见。另外也可通过订阅包月套餐尊享版和旗舰版解锁此接口调用能力，[包月套餐](https://cloud.tencent.com/document/product/647/85386)说明。
+// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -447,7 +447,7 @@ func (c *Client) DescribeCallDetailInfo(request *DescribeCallDetailInfoRequest) 
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，需订阅监控仪表盘商业套餐包获取此接口调用能力，[仪表盘商业化](https://cloud.tencent.com/document/product/647/81331)说明请见。另外也可通过订阅包月套餐尊享版和旗舰版解锁此接口调用能力，[包月套餐](https://cloud.tencent.com/document/product/647/85386)说明。
+// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -946,7 +946,7 @@ func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，需订阅监控仪表盘商业套餐包获取此接口调用能力，[仪表盘商业化](https://cloud.tencent.com/document/product/647/81331)说明请见。另外也可通过订阅包月套餐尊享版和旗舰版解锁此接口调用能力，[包月套餐](https://cloud.tencent.com/document/product/647/85386)说明。
+// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -983,7 +983,7 @@ func (c *Client) DescribeRoomInfo(request *DescribeRoomInfoRequest) (response *D
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，需订阅监控仪表盘商业套餐包获取此接口调用能力，[仪表盘商业化](https://cloud.tencent.com/document/product/647/81331)说明请见。另外也可通过订阅包月套餐尊享版和旗舰版解锁此接口调用能力，[包月套餐](https://cloud.tencent.com/document/product/647/85386)说明。
+// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2180,7 +2180,7 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，需订阅监控仪表盘商业套餐包获取此接口调用能力，[仪表盘商业化](https://cloud.tencent.com/document/product/647/81331)说明请见。另外也可通过订阅包月套餐尊享版和旗舰版解锁此接口调用能力，[包月套餐](https://cloud.tencent.com/document/product/647/85386)说明。
+// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2217,7 +2217,7 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，需订阅监控仪表盘商业套餐包获取此接口调用能力，[仪表盘商业化](https://cloud.tencent.com/document/product/647/81331)说明请见。另外也可通过订阅包月套餐尊享版和旗舰版解锁此接口调用能力，[包月套餐](https://cloud.tencent.com/document/product/647/85386)说明。
+// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

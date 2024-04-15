@@ -8222,6 +8222,73 @@ func (r *DescribeRestoreTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRestoreTimeRangeRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 回档的目标实例ID，不填默认回档到原实例
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+}
+
+type DescribeRestoreTimeRangeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 回档的目标实例ID，不填默认回档到原实例
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+}
+
+func (r *DescribeRestoreTimeRangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRestoreTimeRangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TargetInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRestoreTimeRangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRestoreTimeRangeResponseParams struct {
+	// 按照时间点可回档的最小时间
+	MinTime *string `json:"MinTime,omitnil,omitempty" name:"MinTime"`
+
+	// 按照时间点可回档的最大时间
+	MaxTime *string `json:"MaxTime,omitnil,omitempty" name:"MaxTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRestoreTimeRangeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRestoreTimeRangeResponseParams `json:"Response"`
+}
+
+func (r *DescribeRestoreTimeRangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRestoreTimeRangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRollbackTimeRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

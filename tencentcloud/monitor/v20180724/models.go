@@ -1047,6 +1047,10 @@ type Condition struct {
 	// 产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 告警分级阈值配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HierarchicalValue *AlarmHierarchicalValue `json:"HierarchicalValue,omitnil,omitempty" name:"HierarchicalValue"`
 }
 
 type ConditionsTemp struct {
@@ -10793,6 +10797,10 @@ type EventCondition struct {
 
 	// 规则ID
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 }
 
 type Filter struct {

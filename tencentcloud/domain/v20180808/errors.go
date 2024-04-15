@@ -20,6 +20,12 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 出价低于当前价格
+	FAILEDOPERATION_BIDPREDOMAINSPRICEDOWNERR = "FailedOperation.BidPreDomainsPriceDownErr"
+
+	// 当前已经结束，不在出价时间范围内。
+	FAILEDOPERATION_BIDPREDOMAINSTIMEOUTERR = "FailedOperation.BidPreDomainsTimeOutErr"
+
 	// 域名查询失败，请稍后重试该功能。
 	FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
 
@@ -100,6 +106,9 @@ const (
 
 	// 查询域名信息失败。
 	INTERNALERROR_DESCRIBEDOMAININFOERR = "InternalError.DescribeDomainInfoErr"
+
+	// 未到释放时间，请稍后再试。
+	INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
 
 	// 网络报错，请稍后重试。
 	INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"

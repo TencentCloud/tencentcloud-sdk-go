@@ -140,6 +140,9 @@ const (
 	// 不合法的签署人类型，请检查后重试。
 	INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 
+	// 不合法的授权方式，请检查修改后重试。
+	INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
+
 	// 不合法的业务id，请检查是否传递，检查是否超过接口上限数量，并在修改后重试。
 	INVALIDPARAMETER_BUSINESSID = "InvalidParameter.BusinessId"
 
@@ -256,6 +259,9 @@ const (
 
 	// 实名认证渠道不正确。
 	INVALIDPARAMETER_INVALIDVERIFYCHANNEL = "InvalidParameter.InvalidVerifyChannel"
+
+	// 不合法的跳转链接，请联系电子签客服添加链接白名单。
+	INVALIDPARAMETER_JUMPURL = "InvalidParameter.JumpUrl"
 
 	// Limit参数超出最大限制
 	INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
@@ -382,6 +388,9 @@ const (
 
 	// 未找到关键字配置信息，请检查控件传参，检查文件资源配置，并在修改后重试。
 	MISSINGPARAMETER_KEYWORD = "MissingParameter.KeyWord"
+
+	// 缺少机构ID参数。
+	MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
 
 	// 缺少签署二维码id，请检查后重试。
 	MISSINGPARAMETER_QRCODEID = "MissingParameter.QrCodeId"
