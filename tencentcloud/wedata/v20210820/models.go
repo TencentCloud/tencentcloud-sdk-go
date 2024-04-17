@@ -2253,6 +2253,58 @@ type ColumnBasicInfo struct {
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 }
 
+type ColumnData struct {
+	// ColumnName1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// ColumnName1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventProjectName *string `json:"EventProjectName,omitnil,omitempty" name:"EventProjectName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type ColumnItem struct {
+	// ColumnName1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
+
+	// ColumnName1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnRef *string `json:"ColumnRef,omitnil,omitempty" name:"ColumnRef"`
+}
+
 type ColumnLineageInfo struct {
 	// 血缘id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2697,6 +2749,32 @@ type CompareRuleItem struct {
 	// 比较阈值列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueList []*ThresholdValue `json:"ValueList,omitnil,omitempty" name:"ValueList"`
+}
+
+type Content struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Diagnose *string `json:"Diagnose,omitnil,omitempty" name:"Diagnose"`
+
+	// 理由
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 // Predefined struct for user
@@ -4399,6 +4477,84 @@ func (r *CreateTaskVersionDsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateTaskVersionDsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkflowDsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 文件夹ID
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+}
+
+type CreateWorkflowDsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 文件夹ID
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+}
+
+func (r *CreateWorkflowDsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkflowDsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowName")
+	delete(f, "FolderId")
+	delete(f, "WorkflowDesc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkflowDsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkflowDsResponseParams struct {
+	// 工作流ID
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWorkflowDsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkflowDsResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkflowDsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkflowDsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16302,6 +16458,192 @@ func (r *DescribeWorkflowTaskCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DiagnoseProRequestParams struct {
+	// 实例列表
+	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
+
+	// 检查父任务类型, true: 检查父任务; false: 不检查父任务 
+	CheckFather *bool `json:"CheckFather,omitnil,omitempty" name:"CheckFather"`
+
+	// 重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
+	RerunType *string `json:"RerunType,omitnil,omitempty" name:"RerunType"`
+
+	// 实例依赖方式, 1: 自依赖; 2: 任务依赖; 3: 自依赖及父子依赖 
+	DependentWay *string `json:"DependentWay,omitnil,omitempty" name:"DependentWay"`
+
+	// 重跑忽略事件监听与否 
+	SkipEventListening *bool `json:"SkipEventListening,omitnil,omitempty" name:"SkipEventListening"`
+
+	// 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
+	SonInstanceType *string `json:"SonInstanceType,omitnil,omitempty" name:"SonInstanceType"`
+
+	// 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
+	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
+
+	// 访问类型
+	OptType *string `json:"OptType,omitnil,omitempty" name:"OptType"`
+
+	// 操作者名称
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 操作者id
+	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目标志
+	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 索引页码
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 数据总数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 基础请求信息
+	RequestBaseInfo *ProjectBaseInfoOpsRequest `json:"RequestBaseInfo,omitnil,omitempty" name:"RequestBaseInfo"`
+
+	// 是否计算总数
+	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+}
+
+type DiagnoseProRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例列表
+	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
+
+	// 检查父任务类型, true: 检查父任务; false: 不检查父任务 
+	CheckFather *bool `json:"CheckFather,omitnil,omitempty" name:"CheckFather"`
+
+	// 重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
+	RerunType *string `json:"RerunType,omitnil,omitempty" name:"RerunType"`
+
+	// 实例依赖方式, 1: 自依赖; 2: 任务依赖; 3: 自依赖及父子依赖 
+	DependentWay *string `json:"DependentWay,omitnil,omitempty" name:"DependentWay"`
+
+	// 重跑忽略事件监听与否 
+	SkipEventListening *bool `json:"SkipEventListening,omitnil,omitempty" name:"SkipEventListening"`
+
+	// 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
+	SonInstanceType *string `json:"SonInstanceType,omitnil,omitempty" name:"SonInstanceType"`
+
+	// 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
+	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
+
+	// 访问类型
+	OptType *string `json:"OptType,omitnil,omitempty" name:"OptType"`
+
+	// 操作者名称
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 操作者id
+	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目标志
+	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 索引页码
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 数据总数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 基础请求信息
+	RequestBaseInfo *ProjectBaseInfoOpsRequest `json:"RequestBaseInfo,omitnil,omitempty" name:"RequestBaseInfo"`
+
+	// 是否计算总数
+	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+}
+
+func (r *DiagnoseProRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DiagnoseProRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Instances")
+	delete(f, "CheckFather")
+	delete(f, "RerunType")
+	delete(f, "DependentWay")
+	delete(f, "SkipEventListening")
+	delete(f, "SonInstanceType")
+	delete(f, "SearchCondition")
+	delete(f, "OptType")
+	delete(f, "OperatorName")
+	delete(f, "OperatorId")
+	delete(f, "ProjectId")
+	delete(f, "ProjectIdent")
+	delete(f, "ProjectName")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "Count")
+	delete(f, "RequestBaseInfo")
+	delete(f, "IsCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DiagnoseProRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DiagnoseProResponseParams struct {
+	// 结果
+	Data *DiagnoseRep `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DiagnoseProResponse struct {
+	*tchttp.BaseResponse
+	Response *DiagnoseProResponseParams `json:"Response"`
+}
+
+func (r *DiagnoseProResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DiagnoseProResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiagnoseRep struct {
+	// 诊断信息内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *Content `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 诊断结果相关信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Table *Table `json:"Table,omitnil,omitempty" name:"Table"`
+}
+
 type DimensionCount struct {
 	// 维度类型1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -25691,6 +26033,16 @@ func (r *SuspendIntegrationTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SuspendIntegrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Table struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Column []*ColumnItem `json:"Column,omitnil,omitempty" name:"Column"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ColumnData `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type TableBaseInfo struct {

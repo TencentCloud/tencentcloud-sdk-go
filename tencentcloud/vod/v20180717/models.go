@@ -22584,11 +22584,11 @@ type RestoreMediaRequestParams struct {
 	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
-
 	// 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
 	RestoreDay *uint64 `json:"RestoreDay,omitnil,omitempty" name:"RestoreDay"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
 	// 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
 	// <li>极速模式：Expedited，解冻任务在5分钟后完成。</li>
@@ -22606,11 +22606,11 @@ type RestoreMediaRequest struct {
 	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
-
 	// 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
 	RestoreDay *uint64 `json:"RestoreDay,omitnil,omitempty" name:"RestoreDay"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
 	// 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
 	// <li>极速模式：Expedited，解冻任务在5分钟后完成。</li>
@@ -22635,8 +22635,8 @@ func (r *RestoreMediaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileIds")
-	delete(f, "SubAppId")
 	delete(f, "RestoreDay")
+	delete(f, "SubAppId")
 	delete(f, "RestoreTier")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreMediaRequest has unknown keys!", "")

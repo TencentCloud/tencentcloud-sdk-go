@@ -1136,6 +1136,18 @@ type Event struct {
 	// 事件发生的毫秒时间戳，
 	// time.Now().UnixNano()/1e6
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 事件的地域信息，没有则默认是EB所在的地域信息
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 用于描述事件状态，非必须，默认是""
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 事件的唯一id，用户侧主动上传则需要保证风格一致
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type EventBus struct {
@@ -2433,6 +2445,14 @@ type TDMQParams struct {
 	// 集群支撑网接入点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterEndPoint *string `json:"ClusterEndPoint,omitnil,omitempty" name:"ClusterEndPoint"`
+}
+
+type Tag struct {
+	// 标签名称
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Target struct {

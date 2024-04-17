@@ -1992,6 +1992,55 @@ func (c *Client) CreateTaskVersionDsWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateWorkflowDsRequest() (request *CreateWorkflowDsRequest) {
+    request = &CreateWorkflowDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateWorkflowDs")
+    
+    
+    return
+}
+
+func NewCreateWorkflowDsResponse() (response *CreateWorkflowDsResponse) {
+    response = &CreateWorkflowDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateWorkflowDs
+// 创建工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateWorkflowDs(request *CreateWorkflowDsRequest) (response *CreateWorkflowDsResponse, err error) {
+    return c.CreateWorkflowDsWithContext(context.Background(), request)
+}
+
+// CreateWorkflowDs
+// 创建工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateWorkflowDsWithContext(ctx context.Context, request *CreateWorkflowDsRequest) (response *CreateWorkflowDsResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkflowDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWorkflowDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWorkflowDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDagInstancesRequest() (request *DagInstancesRequest) {
     request = &DagInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8956,6 +9005,55 @@ func (c *Client) DescribeWorkflowTaskCountWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeWorkflowTaskCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDiagnoseProRequest() (request *DiagnoseProRequest) {
+    request = &DiagnoseProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DiagnosePro")
+    
+    
+    return
+}
+
+func NewDiagnoseProResponse() (response *DiagnoseProResponse) {
+    response = &DiagnoseProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DiagnosePro
+// 实例诊断
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DiagnosePro(request *DiagnoseProRequest) (response *DiagnoseProResponse, err error) {
+    return c.DiagnoseProWithContext(context.Background(), request)
+}
+
+// DiagnosePro
+// 实例诊断
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DiagnoseProWithContext(ctx context.Context, request *DiagnoseProRequest) (response *DiagnoseProResponse, err error) {
+    if request == nil {
+        request = NewDiagnoseProRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DiagnosePro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDiagnoseProResponse()
     err = c.Send(request, response)
     return
 }

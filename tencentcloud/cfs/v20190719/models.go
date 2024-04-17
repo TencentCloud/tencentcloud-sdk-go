@@ -2483,7 +2483,7 @@ type FileSystemInfo struct {
 	// 文件系统已使用容量。单位：Byte
 	SizeByte *uint64 `json:"SizeByte,omitnil,omitempty" name:"SizeByte"`
 
-	// 文件系统最大空间限制。单位:GiB
+	// 文件系统空间限制。单位:GiB
 	SizeLimit *uint64 `json:"SizeLimit,omitnil,omitempty" name:"SizeLimit"`
 
 	// 区域 ID
@@ -2522,7 +2522,7 @@ type FileSystemInfo struct {
 	// 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
 	BandwidthLimit *float64 `json:"BandwidthLimit,omitnil,omitempty" name:"BandwidthLimit"`
 
-	// 文件系统总容量
+	// 文件系统容量规格上限
 	// 单位:GiB
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 

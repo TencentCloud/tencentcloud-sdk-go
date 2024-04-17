@@ -498,10 +498,26 @@ func (r *ApplyConfigToMachineGroupResponse) FromJsonString(s string) error {
 }
 
 type CallBackInfo struct {
-	// 回调时的Body
+	// 回调时的Body。
+	// 可将各类告警变量放在请求内容中，详见[帮助文档](https://cloud.tencent.com/document/product/614/74718)。
+	// 如下示例：
+	// 
+	// ```
+	// {
+	// "TopicId": "{{ .QueryLog[0][0].topicId }}",
+	// "key": "{{.Alarm}}",
+	// "time": "{{ .QueryLog[0][0].time }}",
+	// "log": "{{ .QueryLog[0][0].content.__CONTENT__ }}",
+	// "namespace": "{{ .QueryLog[0][0].content.__TAG__.namespace }}"
+	// }
+	// ```
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
-	// 回调时的Headers
+	// 回调时的HTTP请求头部字段。
+	// 例如：下面请求头部字段来告知服务器请求主体的内容类型为JSON。
+	// ```
+	// "Content-Type: application/json"
+	// ```
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 }
@@ -2189,7 +2205,7 @@ type CreateDeliverCloudFunctionRequestParams struct {
 	// 投递规则属于的 topic id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 投递的云函数名字
+	// 投递的云函数名字。仅支持[事件函数](https://cloud.tencent.com/document/product/583/9694#scf-.E4.BA.8B.E4.BB.B6.E5.87.BD.E6.95.B0) （[函数类型选型](https://cloud.tencent.com/document/product/583/73483)）
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
 
 	// 命名空间
@@ -2211,7 +2227,7 @@ type CreateDeliverCloudFunctionRequest struct {
 	// 投递规则属于的 topic id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 投递的云函数名字
+	// 投递的云函数名字。仅支持[事件函数](https://cloud.tencent.com/document/product/583/9694#scf-.E4.BA.8B.E4.BB.B6.E5.87.BD.E6.95.B0) （[函数类型选型](https://cloud.tencent.com/document/product/583/73483)）
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
 
 	// 命名空间

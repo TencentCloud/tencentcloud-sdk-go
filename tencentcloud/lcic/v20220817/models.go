@@ -509,7 +509,7 @@ type BatchDescribeDocumentRequestParams struct {
 	// 分页查询当前页数，从1开始递增
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数据量，最大1000
+	// 每页数据量，最大200
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
@@ -534,7 +534,7 @@ type BatchDescribeDocumentRequest struct {
 	// 分页查询当前页数，从1开始递增
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数据量，最大1000
+	// 每页数据量，最大200
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
@@ -1096,7 +1096,7 @@ type CreateRoomRequestParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -1208,7 +1208,7 @@ type CreateRoomRequest struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -2967,7 +2967,7 @@ type DescribeRoomResponseParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 16]
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
@@ -4663,8 +4663,7 @@ type ModifyRoomRequestParams struct {
 	// 直播开始后不允许修改。
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。
-	// 取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
@@ -4767,8 +4766,7 @@ type ModifyRoomRequest struct {
 	// 直播开始后不允许修改。
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。
-	// 取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
@@ -5118,7 +5116,7 @@ type RoomInfo struct {
 	// 分辨率。可以有如下取值： 1 标清 2 高清 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 16]
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频

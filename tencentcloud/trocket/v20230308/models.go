@@ -3042,60 +3042,6 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeTopicStatsOpRequestParams struct {
-	// 主题
-	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
-}
-
-type DescribeTopicStatsOpRequest struct {
-	*tchttp.BaseRequest
-	
-	// 主题
-	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
-}
-
-func (r *DescribeTopicStatsOpRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTopicStatsOpRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Topic")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicStatsOpRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTopicStatsOpResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeTopicStatsOpResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeTopicStatsOpResponseParams `json:"Response"`
-}
-
-func (r *DescribeTopicStatsOpResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTopicStatsOpResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type Endpoint struct {
 	// 接入点类型，枚举值如下
 	// VPC: VPC;

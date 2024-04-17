@@ -1948,55 +1948,6 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     return
 }
 
-func NewDescribeTopicStatsOpRequest() (request *DescribeTopicStatsOpRequest) {
-    request = &DescribeTopicStatsOpRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("trocket", APIVersion, "DescribeTopicStatsOp")
-    
-    
-    return
-}
-
-func NewDescribeTopicStatsOpResponse() (response *DescribeTopicStatsOpResponse) {
-    response = &DescribeTopicStatsOpResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTopicStatsOp
-// 运营端查询topicStata
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-func (c *Client) DescribeTopicStatsOp(request *DescribeTopicStatsOpRequest) (response *DescribeTopicStatsOpResponse, err error) {
-    return c.DescribeTopicStatsOpWithContext(context.Background(), request)
-}
-
-// DescribeTopicStatsOp
-// 运营端查询topicStata
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-func (c *Client) DescribeTopicStatsOpWithContext(ctx context.Context, request *DescribeTopicStatsOpRequest) (response *DescribeTopicStatsOpResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopicStatsOpRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTopicStatsOp require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTopicStatsOpResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewImportSourceClusterConsumerGroupsRequest() (request *ImportSourceClusterConsumerGroupsRequest) {
     request = &ImportSourceClusterConsumerGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
