@@ -669,6 +669,14 @@ type CategoryRuleStatistic struct {
 	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
 }
 
+type CloudResourceItem struct {
+	// 资源所处地域。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 	云上资源列表。
+	Items []*DspaCloudResourceMeta `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type ComplianceGroupDetail struct {
 	// 模板id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -794,6 +802,14 @@ type CosAsset struct {
 	// 敏感文件的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitnil,omitempty" name:"SensitiveFileNums"`
+}
+
+type CosBucketItem struct {
+	// 资源所处地域。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// COS桶列表。
+	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
 }
 
 type CosResourceItem struct {
@@ -1764,27 +1780,37 @@ func (r *CreateDSPAComplianceRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDSPACosMetaResourcesRequestParams struct {
-	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
-
 	// DSPA实例ID。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
+	// 资源所处地域。
+	//
+	// Deprecated: ResourceRegion is deprecated.
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
 	// COS桶列表
+	//
+	// Deprecated: Buckets is deprecated.
 	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
+
+	// 必填，COS资源列表
+	CosBucketItems []*CosBucketItem `json:"CosBucketItems,omitnil,omitempty" name:"CosBucketItems"`
 }
 
 type CreateDSPACosMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
-
 	// DSPA实例ID。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
+	// 资源所处地域。
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
 	// COS桶列表
 	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
+
+	// 必填，COS资源列表
+	CosBucketItems []*CosBucketItem `json:"CosBucketItems,omitnil,omitempty" name:"CosBucketItems"`
 }
 
 func (r *CreateDSPACosMetaResourcesRequest) ToJsonString() string {
@@ -1799,9 +1825,10 @@ func (r *CreateDSPACosMetaResourcesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ResourceRegion")
 	delete(f, "DspaId")
+	delete(f, "ResourceRegion")
 	delete(f, "Buckets")
+	delete(f, "CosBucketItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPACosMetaResourcesRequest has unknown keys!", "")
 	}
@@ -1839,16 +1866,27 @@ type CreateDSPADbMetaResourcesRequestParams struct {
 	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 
 	// 资源所处地域。
+	//
+	// Deprecated: ResourceRegion is deprecated.
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
+	//
+	// Deprecated: UpdateStatus is deprecated.
 	UpdateStatus *string `json:"UpdateStatus,omitnil,omitempty" name:"UpdateStatus"`
 
 	// 本次更新的ID号，用来标记一次完整的更新过程。
+	//
+	// Deprecated: UpdateId is deprecated.
 	UpdateId *string `json:"UpdateId,omitnil,omitempty" name:"UpdateId"`
 
 	// 云上资源列表。
+	//
+	// Deprecated: Items is deprecated.
 	Items []*DspaCloudResourceMeta `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 必填，云数据库资源列表。
+	CloudResourceItems []*CloudResourceItem `json:"CloudResourceItems,omitnil,omitempty" name:"CloudResourceItems"`
 }
 
 type CreateDSPADbMetaResourcesRequest struct {
@@ -1871,6 +1909,9 @@ type CreateDSPADbMetaResourcesRequest struct {
 
 	// 云上资源列表。
 	Items []*DspaCloudResourceMeta `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 必填，云数据库资源列表。
+	CloudResourceItems []*CloudResourceItem `json:"CloudResourceItems,omitnil,omitempty" name:"CloudResourceItems"`
 }
 
 func (r *CreateDSPADbMetaResourcesRequest) ToJsonString() string {
@@ -1891,6 +1932,7 @@ func (r *CreateDSPADbMetaResourcesRequest) FromJsonString(s string) error {
 	delete(f, "UpdateStatus")
 	delete(f, "UpdateId")
 	delete(f, "Items")
+	delete(f, "CloudResourceItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPADbMetaResourcesRequest has unknown keys!", "")
 	}
@@ -1900,6 +1942,8 @@ func (r *CreateDSPADbMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADbMetaResourcesResponseParams struct {
 	// 本次更新的ID号，用来标记一次完整的更新过程。
+	//
+	// Deprecated: UpdateId is deprecated.
 	UpdateId *string `json:"UpdateId,omitnil,omitempty" name:"UpdateId"`
 
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
@@ -1909,6 +1953,8 @@ type CreateDSPADbMetaResourcesResponseParams struct {
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
 	// 资源所处地域。
+	//
+	// Deprecated: ResourceRegion is deprecated.
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

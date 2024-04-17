@@ -1095,6 +1095,9 @@ type CreateDomainRequestParams struct {
 	// 1，表示开启Http3。
 	// 默认不开启Http3。可以通过SetDomainHttp3开启。
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
+
+	// 是否作为默认域名，默认为“否”
+	IsDefaultServer *bool `json:"IsDefaultServer,omitnil,omitempty" name:"IsDefaultServer"`
 }
 
 type CreateDomainRequest struct {
@@ -1122,6 +1125,9 @@ type CreateDomainRequest struct {
 	// 1，表示开启Http3。
 	// 默认不开启Http3。可以通过SetDomainHttp3开启。
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
+
+	// 是否作为默认域名，默认为“否”
+	IsDefaultServer *bool `json:"IsDefaultServer,omitnil,omitempty" name:"IsDefaultServer"`
 }
 
 func (r *CreateDomainRequest) ToJsonString() string {
@@ -1142,6 +1148,7 @@ func (r *CreateDomainRequest) FromJsonString(s string) error {
 	delete(f, "ClientCertificateId")
 	delete(f, "PolyClientCertificateIds")
 	delete(f, "Http3Supported")
+	delete(f, "IsDefaultServer")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainRequest has unknown keys!", "")
 	}
@@ -6710,6 +6717,10 @@ type DomainRuleSet struct {
 	// 1表示启用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
+
+	// 是否为默认域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultServer *bool `json:"IsDefaultServer,omitnil,omitempty" name:"IsDefaultServer"`
 }
 
 // Predefined struct for user
@@ -7281,6 +7292,9 @@ type ModifyDomainRequestParams struct {
 	// 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
 	// 其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitnil,omitempty" name:"PolyClientCertificateIds"`
+
+	// 是否作为默认域名，默认为“否”
+	IsDefaultServer *bool `json:"IsDefaultServer,omitnil,omitempty" name:"IsDefaultServer"`
 }
 
 type ModifyDomainRequest struct {
@@ -7312,6 +7326,9 @@ type ModifyDomainRequest struct {
 	// 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
 	// 其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitnil,omitempty" name:"PolyClientCertificateIds"`
+
+	// 是否作为默认域名，默认为“否”
+	IsDefaultServer *bool `json:"IsDefaultServer,omitnil,omitempty" name:"IsDefaultServer"`
 }
 
 func (r *ModifyDomainRequest) ToJsonString() string {
@@ -7332,6 +7349,7 @@ func (r *ModifyDomainRequest) FromJsonString(s string) error {
 	delete(f, "CertificateId")
 	delete(f, "ClientCertificateId")
 	delete(f, "PolyClientCertificateIds")
+	delete(f, "IsDefaultServer")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainRequest has unknown keys!", "")
 	}

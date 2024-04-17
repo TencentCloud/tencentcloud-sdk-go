@@ -7054,6 +7054,88 @@ func (r *DescribeBillUsageDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBillUsageRequestParams struct {
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// 是否展示集团子企业的明细，默认否
+	DisplaySubEnterprise *bool `json:"DisplaySubEnterprise,omitnil,omitempty" name:"DisplaySubEnterprise"`
+}
+
+type DescribeBillUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// 是否展示集团子企业的明细，默认否
+	DisplaySubEnterprise *bool `json:"DisplaySubEnterprise,omitnil,omitempty" name:"DisplaySubEnterprise"`
+}
+
+func (r *DescribeBillUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QuotaType")
+	delete(f, "DisplaySubEnterprise")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillUsageResponseParams struct {
+	// 企业套餐余额及使用情况
+	Summary []*OrgBillSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 集团子企业套餐使用情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubOrgSummary []*SubOrgBillSummary `json:"SubOrgSummary,omitnil,omitempty" name:"SubOrgSummary"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBillUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCancelFlowsTaskRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
@@ -10759,6 +10841,37 @@ type OccupiedSeal struct {
 	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil,omitempty" name:"AuthorizedUsers"`
 }
 
+type OrgBillSummary struct {
+	// 套餐总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 套餐使用数
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// 套餐剩余数
+	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
+
+	// 套餐类型
+	// 对应关系如下:
+	// <ul>
+	// <li>**CloudEnterprise**: 企业版合同</li>
+	// <li>**SingleSignature**: 单方签章</li>
+	// <li>**CloudProve**: 签署报告</li>
+	// <li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+	// <li>**ChannelWeCard**: 微工卡</li>
+	// <li>**SignFlow**: 合同套餐</li>
+	// <li>**SignFace**: 签署意愿（人脸识别）</li>
+	// <li>**SignPassword**: 签署意愿（密码）</li>
+	// <li>**SignSMS**: 签署意愿（短信）</li>
+	// <li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+	// <li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+	// <li>**OrgEssAuth**: 签署企业实名</li>
+	// <li>**FlowNotify**: 短信通知</li>
+	// <li>**AuthService**: 企业工商信息查询</li>
+	// </ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+}
+
 type OrganizationInfo struct {
 	// 机构在平台的编号，内部字段，暂未开放
 	//
@@ -11414,6 +11527,39 @@ func (r *StartFlowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StartFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubOrgBillSummary struct {
+	// 子企业名称
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	//  
+	Usage []*SubOrgBillUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+}
+
+type SubOrgBillUsage struct {
+	// 套餐使用数
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// 套餐类型
+	// 对应关系如下:
+	// <ul>
+	// <li>**CloudEnterprise**: 企业版合同</li>
+	// <li>**SingleSignature**: 单方签章</li>
+	// <li>**CloudProve**: 签署报告</li>
+	// <li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+	// <li>**ChannelWeCard**: 微工卡</li>
+	// <li>**SignFlow**: 合同套餐</li>
+	// <li>**SignFace**: 签署意愿（人脸识别）</li>
+	// <li>**SignPassword**: 签署意愿（密码）</li>
+	// <li>**SignSMS**: 签署意愿（短信）</li>
+	// <li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+	// <li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+	// <li>**OrgEssAuth**: 签署企业实名</li>
+	// <li>**FlowNotify**: 短信通知</li>
+	// <li>**AuthService**: 企业工商信息查询</li>
+	// </ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 }
 
 type SuccessCreateStaffData struct {

@@ -384,6 +384,81 @@ func (r *AddShareUnitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachPolicyRequestParams struct {
+	// 绑定策略目标ID。成员Uin或部门ID
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 目标类型。取值范围：NODE-部门、MEMBER-成员
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 策略ID。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type AttachPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 绑定策略目标ID。成员Uin或部门ID
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 目标类型。取值范围：NODE-部门、MEMBER-成员
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 策略ID。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *AttachPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetId")
+	delete(f, "TargetType")
+	delete(f, "PolicyId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AttachPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AttachPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *AttachPolicyResponseParams `json:"Response"`
+}
+
+func (r *AttachPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AuthNode struct {
 	// 互信主体关系ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1064,6 +1139,86 @@ func (r *CreateOrganizationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePolicyRequestParams struct {
+	// 策略名。
+	// 长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略内容。参考CAM策略语法
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 策略描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreatePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略名。
+	// 长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略内容。参考CAM策略语法
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 策略描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreatePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Content")
+	delete(f, "Type")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePolicyResponseParams struct {
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePolicyResponseParams `json:"Response"`
+}
+
+func (r *CreatePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAccountRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
@@ -1442,6 +1597,67 @@ func (r *DeleteOrganizationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePolicyRequestParams struct {
+	// 需要删除的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DeletePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要删除的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DeletePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePolicyResponseParams `json:"Response"`
+}
+
+func (r *DeletePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2010,7 +2226,7 @@ type DescribeOrganizationMemberAuthAccountsRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)
+	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -2026,7 +2242,7 @@ type DescribeOrganizationMemberAuthAccountsRequest struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)
+	// 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -2628,6 +2844,160 @@ func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePolicyConfigRequestParams struct {
+	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+	OrganizationId *uint64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 策略类型。默认值0，取值范围：0-服务控制策略、1-标签策略
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribePolicyConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+	OrganizationId *uint64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 策略类型。默认值0，取值范围：0-服务控制策略、1-标签策略
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribePolicyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrganizationId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePolicyConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyConfigResponseParams struct {
+	// 开启状态。0-未开启、1-开启
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 策略类型。SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePolicyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePolicyConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribePolicyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyRequestParams struct {
+	// 策略Id。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+type DescribePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略Id。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+func (r *DescribePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	delete(f, "PolicyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyResponseParams struct {
+	// 策略Id。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// 策略类型。1-自定义 2-预设策略
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 策略描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略文档。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
+
+	// 策略更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 策略创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeShareAreasRequestParams struct {
 	// 国际站：en，国内站：zh
 	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
@@ -2699,7 +3069,7 @@ type DescribeShareUnitMembersRequestParams struct {
 	// 限制数目。取值范围：1~50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键字。支持成员uin搜索。
+	// 搜索关键字。支持成员Uin搜索。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
@@ -2718,7 +3088,7 @@ type DescribeShareUnitMembersRequest struct {
 	// 限制数目。取值范围：1~50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键字。支持成员uin搜索。
+	// 搜索关键字。支持成员Uin搜索。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
@@ -2955,6 +3325,203 @@ func (r *DescribeShareUnitsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachPolicyRequestParams struct {
+	// 解绑策略目标ID。成员Uin或部门ID
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 目标类型。取值范围：NODE-部门、MEMBER-成员
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 策略ID。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DetachPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 解绑策略目标ID。成员Uin或部门ID
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 目标类型。取值范围：NODE-部门、MEMBER-成员
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 策略ID。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DetachPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetId")
+	delete(f, "TargetType")
+	delete(f, "PolicyId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetachPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DetachPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DetachPolicyResponseParams `json:"Response"`
+}
+
+func (r *DetachPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisablePolicyTypeRequestParams struct {
+	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+	OrganizationId *uint64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+type DisablePolicyTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+	OrganizationId *uint64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+func (r *DisablePolicyTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisablePolicyTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrganizationId")
+	delete(f, "PolicyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisablePolicyTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisablePolicyTypeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisablePolicyTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DisablePolicyTypeResponseParams `json:"Response"`
+}
+
+func (r *DisablePolicyTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisablePolicyTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnablePolicyTypeRequestParams struct {
+	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+	OrganizationId *uint64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+type EnablePolicyTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+	OrganizationId *uint64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+func (r *EnablePolicyTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePolicyTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrganizationId")
+	delete(f, "PolicyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnablePolicyTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnablePolicyTypeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnablePolicyTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *EnablePolicyTypeResponseParams `json:"Response"`
+}
+
+func (r *EnablePolicyTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePolicyTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IdentityPolicy struct {
 	// CAM预设策略ID。PolicyType 为预设策略时有效且必选
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
@@ -3058,6 +3625,356 @@ func (r *ListOrganizationIdentityResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListOrganizationIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListPoliciesForTarget struct {
+	// 策略Id
+	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 关联的账号或节点
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 关联类型 1-节点 2-用户
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 策略创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// 策略更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 部门名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略绑定时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachTime *string `json:"AttachTime,omitnil,omitempty" name:"AttachTime"`
+}
+
+// Predefined struct for user
+type ListPoliciesForTargetRequestParams struct {
+	// 账号uin或者节点id。
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
+
+	// 页码。默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 搜索关键字。按照策略名称搜索
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type ListPoliciesForTargetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账号uin或者节点id。
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
+
+	// 页码。默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 搜索关键字。按照策略名称搜索
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *ListPoliciesForTargetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPoliciesForTargetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetId")
+	delete(f, "Rp")
+	delete(f, "Page")
+	delete(f, "PolicyType")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPoliciesForTargetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPoliciesForTargetResponseParams struct {
+	// 总数。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 目标关联的策略列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ListPoliciesForTarget `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListPoliciesForTargetResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPoliciesForTargetResponseParams `json:"Response"`
+}
+
+func (r *ListPoliciesForTargetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPoliciesForTargetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPoliciesRequestParams struct {
+	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
+
+	// 页码。默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 查询范围。取值范围： All-获取所有策略、QCS-只获取预设策略、Local-只获取自定义策略，默认值：All
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 搜索关键字。按照策略名搜索
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+type ListPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
+
+	// 页码。默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 查询范围。取值范围： All-获取所有策略、QCS-只获取预设策略、Local-只获取自定义策略，默认值：All
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 搜索关键字。按照策略名搜索
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+func (r *ListPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rp")
+	delete(f, "Page")
+	delete(f, "Scope")
+	delete(f, "Keyword")
+	delete(f, "PolicyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPoliciesResponseParams struct {
+	// 策略总数
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 策略列表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ListPolicyNode `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPoliciesResponseParams `json:"Response"`
+}
+
+func (r *ListPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListPolicyNode struct {
+	// 策略创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// 策略绑定次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachedTimes *uint64 `json:"AttachedTimes,omitnil,omitempty" name:"AttachedTimes"`
+
+	// 策略描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略名称
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// 策略Id
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 策略类型 1-自定义 2-预设
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type ListTargetsForPolicyNode struct {
+	// scp账号uin或节点Id
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 关联类型 1-节点关联 2-用户关联
+	RelatedType *uint64 `json:"RelatedType,omitnil,omitempty" name:"RelatedType"`
+
+	// 账号或者节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 绑定时间
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+}
+
+// Predefined struct for user
+type ListTargetsForPolicyRequestParams struct {
+	// 策略Id。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
+
+	// 页码。默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 策略类型。取值范围：All-全部、User-用户、Node-节点
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 按照多个策略id搜索，空格隔开。
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type ListTargetsForPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略Id。
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
+
+	// 页码。默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 策略类型。取值范围：All-全部、User-用户、Node-节点
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 按照多个策略id搜索，空格隔开。
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *ListTargetsForPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTargetsForPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	delete(f, "Rp")
+	delete(f, "Page")
+	delete(f, "TargetType")
+	delete(f, "PolicyType")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTargetsForPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTargetsForPolicyResponseParams struct {
+	// 总数。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 指定SCP策略关联目标列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ListTargetsForPolicyNode `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTargetsForPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTargetsForPolicyResponseParams `json:"Response"`
+}
+
+func (r *ListTargetsForPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTargetsForPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3951,6 +4868,88 @@ func (r *UpdateOrganizationNodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateOrganizationNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePolicyRequestParams struct {
+	// 需要编辑的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略内容。参考CAM策略语法
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 策略名。长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type UpdatePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要编辑的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 策略描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略内容。参考CAM策略语法
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 策略名。长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *UpdatePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	delete(f, "Description")
+	delete(f, "Content")
+	delete(f, "Name")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdatePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePolicyResponseParams `json:"Response"`
+}
+
+func (r *UpdatePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

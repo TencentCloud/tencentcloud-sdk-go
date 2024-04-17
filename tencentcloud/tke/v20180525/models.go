@@ -17191,6 +17191,10 @@ type NodePool struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredNodesNum *int64 `json:"DesiredNodesNum,omitnil,omitempty" name:"DesiredNodesNum"`
 
+	// 运行时描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeConfig *RuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
+
 	// 节点池osName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePoolOs *string `json:"NodePoolOs,omitnil,omitempty" name:"NodePoolOs"`

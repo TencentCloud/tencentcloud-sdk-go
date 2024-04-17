@@ -29,6 +29,9 @@ const (
 	// 广播任务正在执行。
 	FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
 
+	// 产品未开通视频AI分析服务
+	FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+
 	// 设备已经被禁用。
 	FAILEDOPERATION_DEVICEALREADYDISABLED = "FailedOperation.DeviceAlreadyDisabled"
 
@@ -160,6 +163,12 @@ const (
 
 	// 拉取产品列表失败。
 	INVALIDPARAMETERVALUE_GETPRODUCTSLISTERROR = "InvalidParameterValue.GetProductsListError"
+
+	// 回调 Token 格式有误
+	INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+
+	// 回调 URL 无效或格式有误
+	INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
 
 	// SQL语句含有非法字符。
 	INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"

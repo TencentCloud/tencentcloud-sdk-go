@@ -13584,6 +13584,41 @@ type SlowQueriesItem struct {
 
 	// sql语句md5
 	SqlMd5 *string `json:"SqlMd5,omitnil,omitempty" name:"SqlMd5"`
+
+	// 远程读取次数
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncReadCountRemote *int64 `json:"SyncReadCountRemote,omitnil,omitempty" name:"SyncReadCountRemote"`
+
+	// 远程读取的字节数
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncReadBytesRemote *int64 `json:"SyncReadBytesRemote,omitnil,omitempty" name:"SyncReadBytesRemote"`
+
+	// 远程读取所花费的时间（微秒）
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncReadTimeRemote *int64 `json:"SyncReadTimeRemote,omitnil,omitempty" name:"SyncReadTimeRemote"`
+
+	// 远程写入次数
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncWriteCountRemote *int64 `json:"SyncWriteCountRemote,omitnil,omitempty" name:"SyncWriteCountRemote"`
+
+	// 远程写入的字节数。
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncWriteBytesRemote *int64 `json:"SyncWriteBytesRemote,omitnil,omitempty" name:"SyncWriteBytesRemote"`
+
+	// 远程写入所花费的时间（微秒）。
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncWriteTimeRemote *int64 `json:"SyncWriteTimeRemote,omitnil,omitempty" name:"SyncWriteTimeRemote"`
+
+	// 事务提交延迟（微秒）
+	// 数据库内核版本大于3.1.12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrxCommitDelay *int64 `json:"TrxCommitDelay,omitnil,omitempty" name:"TrxCommitDelay"`
 }
 
 type SwitchClusterLogBin struct {

@@ -2344,7 +2344,12 @@ type CreateEngineRequestParams struct {
 	PrepaidRenewFlag *int64 `json:"PrepaidRenewFlag,omitnil,omitempty" name:"PrepaidRenewFlag"`
 
 	// 跨地域部署的引擎地域配置详情
+	// zk标准版没有跨地域部署，请不要填写
 	EngineRegionInfos []*EngineRegionInfo `json:"EngineRegionInfos,omitnil,omitempty" name:"EngineRegionInfos"`
+
+	// zk专业版至多有两个盘，且磁盘的容量在50-3200之间
+	// 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
+	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
 }
 
 type CreateEngineRequest struct {
@@ -2452,7 +2457,12 @@ type CreateEngineRequest struct {
 	PrepaidRenewFlag *int64 `json:"PrepaidRenewFlag,omitnil,omitempty" name:"PrepaidRenewFlag"`
 
 	// 跨地域部署的引擎地域配置详情
+	// zk标准版没有跨地域部署，请不要填写
 	EngineRegionInfos []*EngineRegionInfo `json:"EngineRegionInfos,omitnil,omitempty" name:"EngineRegionInfos"`
+
+	// zk专业版至多有两个盘，且磁盘的容量在50-3200之间
+	// 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
+	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
 }
 
 func (r *CreateEngineRequest) ToJsonString() string {
@@ -2483,6 +2493,7 @@ func (r *CreateEngineRequest) FromJsonString(s string) error {
 	delete(f, "PrepaidPeriod")
 	delete(f, "PrepaidRenewFlag")
 	delete(f, "EngineRegionInfos")
+	delete(f, "StorageOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEngineRequest has unknown keys!", "")
 	}

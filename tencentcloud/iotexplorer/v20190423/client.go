@@ -2232,6 +2232,167 @@ func (c *Client) DescribeCloudStorageWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCloudStorageAIServiceRequest() (request *DescribeCloudStorageAIServiceRequest) {
+    request = &DescribeCloudStorageAIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageAIService")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageAIServiceResponse() (response *DescribeCloudStorageAIServiceResponse) {
+    response = &DescribeCloudStorageAIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageAIService
+// 查询指定设备的云存 AI 服务开通状态与参数配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageAIService(request *DescribeCloudStorageAIServiceRequest) (response *DescribeCloudStorageAIServiceResponse, err error) {
+    return c.DescribeCloudStorageAIServiceWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageAIService
+// 查询指定设备的云存 AI 服务开通状态与参数配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageAIServiceWithContext(ctx context.Context, request *DescribeCloudStorageAIServiceRequest) (response *DescribeCloudStorageAIServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageAIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageAIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageAIServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageAIServiceCallbackRequest() (request *DescribeCloudStorageAIServiceCallbackRequest) {
+    request = &DescribeCloudStorageAIServiceCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageAIServiceCallback")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageAIServiceCallbackResponse() (response *DescribeCloudStorageAIServiceCallbackResponse) {
+    response = &DescribeCloudStorageAIServiceCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageAIServiceCallback
+// 查询云存AI分析回调配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageAIServiceCallback(request *DescribeCloudStorageAIServiceCallbackRequest) (response *DescribeCloudStorageAIServiceCallbackResponse, err error) {
+    return c.DescribeCloudStorageAIServiceCallbackWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageAIServiceCallback
+// 查询云存AI分析回调配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageAIServiceCallbackWithContext(ctx context.Context, request *DescribeCloudStorageAIServiceCallbackRequest) (response *DescribeCloudStorageAIServiceCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageAIServiceCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageAIServiceCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageAIServiceCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageAIServiceTasksRequest() (request *DescribeCloudStorageAIServiceTasksRequest) {
+    request = &DescribeCloudStorageAIServiceTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageAIServiceTasks")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageAIServiceTasksResponse() (response *DescribeCloudStorageAIServiceTasksResponse) {
+    response = &DescribeCloudStorageAIServiceTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageAIServiceTasks
+// 查询指定设备的云存 AI 分析任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudStorageAIServiceTasks(request *DescribeCloudStorageAIServiceTasksRequest) (response *DescribeCloudStorageAIServiceTasksResponse, err error) {
+    return c.DescribeCloudStorageAIServiceTasksWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageAIServiceTasks
+// 查询指定设备的云存 AI 分析任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudStorageAIServiceTasksWithContext(ctx context.Context, request *DescribeCloudStorageAIServiceTasksRequest) (response *DescribeCloudStorageAIServiceTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageAIServiceTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageAIServiceTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageAIServiceTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageDateRequest() (request *DescribeCloudStorageDateRequest) {
     request = &DescribeCloudStorageDateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4099,6 +4260,59 @@ func (c *Client) DescribePositionFenceListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeProductCloudStorageAIServiceRequest() (request *DescribeProductCloudStorageAIServiceRequest) {
+    request = &DescribeProductCloudStorageAIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeProductCloudStorageAIService")
+    
+    
+    return
+}
+
+func NewDescribeProductCloudStorageAIServiceResponse() (response *DescribeProductCloudStorageAIServiceResponse) {
+    response = &DescribeProductCloudStorageAIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProductCloudStorageAIService
+// 查询指定产品的云存 AI 服务开通状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProductCloudStorageAIService(request *DescribeProductCloudStorageAIServiceRequest) (response *DescribeProductCloudStorageAIServiceResponse, err error) {
+    return c.DescribeProductCloudStorageAIServiceWithContext(context.Background(), request)
+}
+
+// DescribeProductCloudStorageAIService
+// 查询指定产品的云存 AI 服务开通状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProductCloudStorageAIServiceWithContext(ctx context.Context, request *DescribeProductCloudStorageAIServiceRequest) (response *DescribeProductCloudStorageAIServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductCloudStorageAIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductCloudStorageAIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductCloudStorageAIServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5713,6 +5927,118 @@ func (c *Client) ListTopicPolicyWithContext(ctx context.Context, request *ListTo
     return
 }
 
+func NewModifyCloudStorageAIServiceRequest() (request *ModifyCloudStorageAIServiceRequest) {
+    request = &ModifyCloudStorageAIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyCloudStorageAIService")
+    
+    
+    return
+}
+
+func NewModifyCloudStorageAIServiceResponse() (response *ModifyCloudStorageAIServiceResponse) {
+    response = &ModifyCloudStorageAIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudStorageAIService
+// 修改指定设备的云存 AI 服务开通状态与参数配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudStorageAIService(request *ModifyCloudStorageAIServiceRequest) (response *ModifyCloudStorageAIServiceResponse, err error) {
+    return c.ModifyCloudStorageAIServiceWithContext(context.Background(), request)
+}
+
+// ModifyCloudStorageAIService
+// 修改指定设备的云存 AI 服务开通状态与参数配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudStorageAIServiceWithContext(ctx context.Context, request *ModifyCloudStorageAIServiceRequest) (response *ModifyCloudStorageAIServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudStorageAIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudStorageAIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudStorageAIServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudStorageAIServiceCallbackRequest() (request *ModifyCloudStorageAIServiceCallbackRequest) {
+    request = &ModifyCloudStorageAIServiceCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyCloudStorageAIServiceCallback")
+    
+    
+    return
+}
+
+func NewModifyCloudStorageAIServiceCallbackResponse() (response *ModifyCloudStorageAIServiceCallbackResponse) {
+    response = &ModifyCloudStorageAIServiceCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudStorageAIServiceCallback
+// 修改云存AI分析回调配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudStorageAIServiceCallback(request *ModifyCloudStorageAIServiceCallbackRequest) (response *ModifyCloudStorageAIServiceCallbackResponse, err error) {
+    return c.ModifyCloudStorageAIServiceCallbackWithContext(context.Background(), request)
+}
+
+// ModifyCloudStorageAIServiceCallback
+// 修改云存AI分析回调配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudStorageAIServiceCallbackWithContext(ctx context.Context, request *ModifyCloudStorageAIServiceCallbackRequest) (response *ModifyCloudStorageAIServiceCallbackResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudStorageAIServiceCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudStorageAIServiceCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudStorageAIServiceCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFenceBindRequest() (request *ModifyFenceBindRequest) {
     request = &ModifyFenceBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6157,6 +6483,59 @@ func (c *Client) ModifyPositionSpaceWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyPositionSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProductCloudStorageAIServiceRequest() (request *ModifyProductCloudStorageAIServiceRequest) {
+    request = &ModifyProductCloudStorageAIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyProductCloudStorageAIService")
+    
+    
+    return
+}
+
+func NewModifyProductCloudStorageAIServiceResponse() (response *ModifyProductCloudStorageAIServiceResponse) {
+    response = &ModifyProductCloudStorageAIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProductCloudStorageAIService
+// 修改指定产品的云存 AI 服务开通状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyProductCloudStorageAIService(request *ModifyProductCloudStorageAIServiceRequest) (response *ModifyProductCloudStorageAIServiceResponse, err error) {
+    return c.ModifyProductCloudStorageAIServiceWithContext(context.Background(), request)
+}
+
+// ModifyProductCloudStorageAIService
+// 修改指定产品的云存 AI 服务开通状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyProductCloudStorageAIServiceWithContext(ctx context.Context, request *ModifyProductCloudStorageAIServiceRequest) (response *ModifyProductCloudStorageAIServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyProductCloudStorageAIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProductCloudStorageAIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProductCloudStorageAIServiceResponse()
     err = c.Send(request, response)
     return
 }

@@ -128,6 +128,12 @@ const (
 	// 成员是主体管理账号，不允许退出组织。
 	FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
 
+	// 解绑最后一个策略失败。
+	FAILEDOPERATION_ORGANIZATIONDETACHLASTPOLICYERROR = "FailedOperation.OrganizationDetachLastPolicyError"
+
+	// 解绑策略失败。
+	FAILEDOPERATION_ORGANIZATIONDETACHPOLICYERROR = "FailedOperation.OrganizationDetachPolicyError"
+
 	// 企业组织已经存在。
 	FAILEDOPERATION_ORGANIZATIONEXISTALREADY = "FailedOperation.OrganizationExistAlready"
 
@@ -164,14 +170,29 @@ const (
 	// 组织策略不合法。
 	FAILEDOPERATION_ORGANIZATIONPOLICYILLEGAL = "FailedOperation.OrganizationPolicyIllegal"
 
+	// 集团策略正在被使用。
+	FAILEDOPERATION_ORGANIZATIONPOLICYINUSED = "FailedOperation.OrganizationPolicyInUsed"
+
 	// 集团策略不是禁用状态。
 	FAILEDOPERATION_ORGANIZATIONPOLICYISNOTDISABLED = "FailedOperation.OrganizationPolicyIsNotDisabled"
+
+	// 集团策略不是启用状态。
+	FAILEDOPERATION_ORGANIZATIONPOLICYISNOTENABLED = "FailedOperation.OrganizationPolicyIsNotEnabled"
 
 	// 调用经销系统报错。
 	FAILEDOPERATION_PARTNERMANAGEMENTERR = "FailedOperation.PartnerManagementErr"
 
 	// 代付者不合法。
 	FAILEDOPERATION_PAYUINILLEGAL = "FailedOperation.PayUinIllegal"
+
+	// 存在成员账号已经开启标签策略，不支持开启集团标签策略
+	FAILEDOPERATION_POLICYENABLEINVALID = "FailedOperation.PolicyEnableInvalid"
+
+	// 用户策略数超过上限。
+	FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+
+	// PolicyName字段指定的策略名已存在。
+	FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 
 	// 退出共享单元失败。
 	FAILEDOPERATION_QUITSHAREUINT = "FailedOperation.QuitShareUint"
@@ -218,8 +239,23 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 策略文档的Action字段不合法。
+	INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+
+	// 策略语法中操作不存在。
+	INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
+
+	// 策略语法中操作不存在。
+	INVALIDPARAMETER_ACTIONNOTEXIST = "InvalidParameter.ActionNotExist"
+
+	// 策略语法中操作服务不存在。
+	INVALIDPARAMETER_ACTIONSERVICENOTEXIST = "InvalidParameter.ActionServiceNotExist"
+
 	// 成员代付费模式，不允许主动退出组织。
 	INVALIDPARAMETER_ALLOWQUITILLEGAL = "InvalidParameter.AllowQuitIllegal"
+
+	// 授权对象策略已达上限。
+	INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 
 	// 手机验证码错误。
 	INVALIDPARAMETER_CODEERROR = "InvalidParameter.CodeError"
@@ -227,17 +263,113 @@ const (
 	// 手机验证码已过期。
 	INVALIDPARAMETER_CODEEXPIRED = "InvalidParameter.CodeExpired"
 
+	// 策略语法中条件内容不正确。
+	INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+
+	// 策略文档的condition字段不合法。
+	INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+
+	// 策略语法中条件操作符不正确。
+	INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
+
+	// Description入参长度不能大于300字节。
+	INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+
+	// 策略文档的Effect字段不合法。
+	INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+
+	// 接口不存在。
+	INVALIDPARAMETER_INTERFACENOTEXIST = "InvalidParameter.InterfaceNotExist"
+
 	// 无效的邮箱。
 	INVALIDPARAMETER_INVALIDEMAIL = "InvalidParameter.InvalidEmail"
+
+	// CAM不支持策略文档中所指定的资源类型。
+	INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
 
 	// 组织成员不存在。
 	INVALIDPARAMETER_ORGANIZATIONMEMBERNOTEXIST = "InvalidParameter.OrganizationMemberNotExist"
 
+	// 该成员不是企业管理员。
+	INVALIDPARAMETER_ORGANIZATIONMEMBERNOTMANAGER = "InvalidParameter.OrganizationMemberNotManager"
+
 	// 组织节点不存在。
 	INVALIDPARAMETER_ORGANIZATIONNODENOTEXIST = "InvalidParameter.OrganizationNodeNotExist"
 
+	// 企业组织不存在。
+	INVALIDPARAMETER_ORGANIZATIONNOTEXIST = "InvalidParameter.OrganizationNotExist"
+
+	// 参数错误。
+	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+
 	// 密码不合法。
 	INVALIDPARAMETER_PASSWORDILLEGAL = "InvalidParameter.PasswordIllegal"
+
+	// PolicyDocument字段不合法。
+	INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
+
+	// PolicyDocument字段超过长度限制。
+	INVALIDPARAMETER_POLICYDOCUMENTLENGTHOVERLIMIT = "InvalidParameter.PolicyDocumentLengthOverLimit"
+
+	// 策略ID不存在。
+	INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+
+	// 标签策略内容的策略键有重复。
+	INVALIDPARAMETER_POLICYKEYDUPLICATED = "InvalidParameter.PolicyKeyDuplicated"
+
+	// PolicyName字段不合法。
+	INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+
+	// 策略名称已经存在。
+	INVALIDPARAMETER_POLICYNAMEEXISTED = "InvalidParameter.PolicyNameExisted"
+
+	// 策略文档的principal字段不合法。
+	INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+
+	// PrincipalQcs错误。
+	INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
+
+	// PrincipalQcs不存在。
+	INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+
+	// PrincipalService不存在。
+	INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
+
+	// 系统预留标签键 qcloud、tencent和project 禁止创建。
+	INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+
+	// 策略语法中资源内容不正确。
+	INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
+
+	// 策略文档的Resource字段不合法。
+	INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
+
+	// 策略语法中资源项目不正确。
+	INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
+
+	// 资源QCS错误。
+	INVALIDPARAMETER_RESOURCEQCSERROR = "InvalidParameter.ResourceQcsError"
+
+	// 策略语法中资源地域不正确。
+	INVALIDPARAMETER_RESOURCEREGIONERROR = "InvalidParameter.ResourceRegionError"
+
+	// 策略语法中资源服务不存在。
+	INVALIDPARAMETER_RESOURCESERVICENOTEXIST = "InvalidParameter.ResourceServiceNotExist"
+
+	// 策略语法中资源所属主账号不正确。
+	INVALIDPARAMETER_RESOURCEUINERROR = "InvalidParameter.ResourceUinError"
+
+	// 策略文档的Statement字段不合法。
+	INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+
+	// 当前业务不支持标签操作。
+	INVALIDPARAMETER_UNSUPPORTEDSERVICE = "InvalidParameter.UnsupportedService"
+
+	// 策略文档的Version字段不合法。
+	INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+
+	// 策略内容不合法。
+	INVALIDPARAMETERVALUE_POLICYCONTENTINVALID = "InvalidParameterValue.PolicyContentInvalid"
 
 	// 创建成员超过上限。
 	LIMITEXCEEDED_CREATEMEMBEROVERLIMIT = "LimitExceeded.CreateMemberOverLimit"
@@ -266,8 +398,14 @@ const (
 	// 当次操作的共享资源超过上限。
 	LIMITEXCEEDED_SHAREUNITRESOURCEOVERLIMIT = "LimitExceeded.ShareUnitResourceOverLimit"
 
+	// 标签策略数量超出限制。
+	LIMITEXCEEDED_TAGPOLICY = "LimitExceeded.TagPolicy"
+
 	// 修改成员绑定信息超过限制。
 	LIMITEXCEEDED_UPDATEEMAILBINDOVERLIMIT = "LimitExceeded.UpdateEmailBindOverLimit"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
@@ -275,8 +413,20 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 申请不存在。
+	RESOURCENOTFOUND_APPLYNOTEXIST = "ResourceNotFound.ApplyNotExist"
+
+	// 成员权限变更记录不存在。
+	RESOURCENOTFOUND_CHANGEPERMISSIONNOTEXIST = "ResourceNotFound.ChangePermissionNotExist"
+
 	// 邮箱绑定记录不存在。
 	RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = "ResourceNotFound.EmailBindRecordNotExist"
+
+	// 邀请信息不存在。
+	RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
+
+	// 操作事件不存在。
+	RESOURCENOTFOUND_MEMBEREVENTNOTEXIST = "ResourceNotFound.MemberEventNotExist"
 
 	// 成员可授权身份不存在。
 	RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
@@ -284,8 +434,17 @@ const (
 	// 成员不存在。
 	RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
 
+	// 成员操作审批不存在。
+	RESOURCENOTFOUND_MEMBEROPERATEPROCESSNOTEXIST = "ResourceNotFound.MemberOperateProcessNotExist"
+
 	// 组织成员策略不存在。
 	RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+
+	// 企业组织单元不存在。
+	RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+
+	// 资源不存在。
+	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 
 	// 认证主体不存在。
 	RESOURCENOTFOUND_ORGANIZATIONAUTHRELATIONNOTEXIST = "ResourceNotFound.OrganizationAuthRelationNotExist"
@@ -302,17 +461,35 @@ const (
 	// 企业组织不存在。
 	RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 
+	// 集团服务委派不存在。
+	RESOURCENOTFOUND_ORGANIZATIONSERVICEASSIGNNOTEXIST = "ResourceNotFound.OrganizationServiceAssignNotExist"
+
 	// 集团服务不存在。
 	RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
 
 	// 策略不存在。
+	RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+
+	// 策略不存在。
 	RESOURCENOTFOUND_POLICYNOTEXIST = "ResourceNotFound.PolicyNotExist"
+
+	// 可共享资源类型不存在。
+	RESOURCENOTFOUND_RESOURCETYPENOTEXIST = "ResourceNotFound.ResourceTypeNotExist"
+
+	// 组织服务角色不存在。
+	RESOURCENOTFOUND_SERVICEROLENOTEXIST = "ResourceNotFound.ServiceRoleNotExist"
+
+	// 共享资源成员信息不存在。
+	RESOURCENOTFOUND_SHARERESOURCEMEMBERNOTEXIST = "ResourceNotFound.ShareResourceMemberNotExist"
 
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

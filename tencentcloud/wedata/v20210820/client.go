@@ -94,63 +94,6 @@ func (c *Client) BatchCreateIntegrationTaskAlarmsWithContext(ctx context.Context
     return
 }
 
-func NewBatchCreateTaskVersionDsRequest() (request *BatchCreateTaskVersionDsRequest) {
-    request = &BatchCreateTaskVersionDsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "BatchCreateTaskVersionDs")
-    
-    
-    return
-}
-
-func NewBatchCreateTaskVersionDsResponse() (response *BatchCreateTaskVersionDsResponse) {
-    response = &BatchCreateTaskVersionDsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BatchCreateTaskVersionDs
-// 批量创建任务版本Ds
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) BatchCreateTaskVersionDs(request *BatchCreateTaskVersionDsRequest) (response *BatchCreateTaskVersionDsResponse, err error) {
-    return c.BatchCreateTaskVersionDsWithContext(context.Background(), request)
-}
-
-// BatchCreateTaskVersionDs
-// 批量创建任务版本Ds
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) BatchCreateTaskVersionDsWithContext(ctx context.Context, request *BatchCreateTaskVersionDsRequest) (response *BatchCreateTaskVersionDsResponse, err error) {
-    if request == nil {
-        request = NewBatchCreateTaskVersionDsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BatchCreateTaskVersionDs require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBatchCreateTaskVersionDsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewBatchDeleteIntegrationTasksRequest() (request *BatchDeleteIntegrationTasksRequest) {
     request = &BatchDeleteIntegrationTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -222,7 +165,7 @@ func NewBatchDeleteOpsTasksResponse() (response *BatchDeleteOpsTasksResponse) {
 }
 
 // BatchDeleteOpsTasks
-// 智能运维-批量删除任务
+// 任务运维-批量删除任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -231,7 +174,7 @@ func (c *Client) BatchDeleteOpsTasks(request *BatchDeleteOpsTasksRequest) (respo
 }
 
 // BatchDeleteOpsTasks
-// 智能运维-批量删除任务
+// 任务运维-批量删除任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -247,108 +190,6 @@ func (c *Client) BatchDeleteOpsTasksWithContext(ctx context.Context, request *Ba
     request.SetContext(ctx)
     
     response = NewBatchDeleteOpsTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewBatchDeleteTasksDsRequest() (request *BatchDeleteTasksDsRequest) {
-    request = &BatchDeleteTasksDsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "BatchDeleteTasksDs")
-    
-    
-    return
-}
-
-func NewBatchDeleteTasksDsResponse() (response *BatchDeleteTasksDsResponse) {
-    response = &BatchDeleteTasksDsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BatchDeleteTasksDs
-// Ds批量删除任务，仅对任务状态为”已停止“有效；
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchDeleteTasksDs(request *BatchDeleteTasksDsRequest) (response *BatchDeleteTasksDsResponse, err error) {
-    return c.BatchDeleteTasksDsWithContext(context.Background(), request)
-}
-
-// BatchDeleteTasksDs
-// Ds批量删除任务，仅对任务状态为”已停止“有效；
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchDeleteTasksDsWithContext(ctx context.Context, request *BatchDeleteTasksDsRequest) (response *BatchDeleteTasksDsResponse, err error) {
-    if request == nil {
-        request = NewBatchDeleteTasksDsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BatchDeleteTasksDs require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBatchDeleteTasksDsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewBatchDeleteTasksNewRequest() (request *BatchDeleteTasksNewRequest) {
-    request = &BatchDeleteTasksNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "BatchDeleteTasksNew")
-    
-    
-    return
-}
-
-func NewBatchDeleteTasksNewResponse() (response *BatchDeleteTasksNewResponse) {
-    response = &BatchDeleteTasksNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BatchDeleteTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 批量删除任务，仅对任务状态为”已停止“有效；
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchDeleteTasksNew(request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
-    return c.BatchDeleteTasksNewWithContext(context.Background(), request)
-}
-
-// BatchDeleteTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 批量删除任务，仅对任务状态为”已停止“有效；
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchDeleteTasksNewWithContext(ctx context.Context, request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
-    if request == nil {
-        request = NewBatchDeleteTasksNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BatchDeleteTasksNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBatchDeleteTasksNewResponse()
     err = c.Send(request, response)
     return
 }
@@ -549,59 +390,6 @@ func (c *Client) BatchModifyOpsOwnersWithContext(ctx context.Context, request *B
     return
 }
 
-func NewBatchModifyOwnersNewRequest() (request *BatchModifyOwnersNewRequest) {
-    request = &BatchModifyOwnersNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "BatchModifyOwnersNew")
-    
-    
-    return
-}
-
-func NewBatchModifyOwnersNewResponse() (response *BatchModifyOwnersNewResponse) {
-    response = &BatchModifyOwnersNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BatchModifyOwnersNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 批量修改任务责任人
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchModifyOwnersNew(request *BatchModifyOwnersNewRequest) (response *BatchModifyOwnersNewResponse, err error) {
-    return c.BatchModifyOwnersNewWithContext(context.Background(), request)
-}
-
-// BatchModifyOwnersNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 批量修改任务责任人
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchModifyOwnersNewWithContext(ctx context.Context, request *BatchModifyOwnersNewRequest) (response *BatchModifyOwnersNewResponse, err error) {
-    if request == nil {
-        request = NewBatchModifyOwnersNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BatchModifyOwnersNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBatchModifyOwnersNewResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewBatchRerunIntegrationTaskInstancesRequest() (request *BatchRerunIntegrationTaskInstancesRequest) {
     request = &BatchRerunIntegrationTaskInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -724,7 +512,7 @@ func NewBatchRunOpsTaskResponse() (response *BatchRunOpsTaskResponse) {
 }
 
 // BatchRunOpsTask
-// 任务运维-任务列表 批量运行
+// 任务运维-任务列表 批量启动
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -736,7 +524,7 @@ func (c *Client) BatchRunOpsTask(request *BatchRunOpsTaskRequest) (response *Bat
 }
 
 // BatchRunOpsTask
-// 任务运维-任务列表 批量运行
+// 任务运维-任务列表 批量启动
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -904,59 +692,6 @@ func (c *Client) BatchStopOpsTasksWithContext(ctx context.Context, request *Batc
     request.SetContext(ctx)
     
     response = NewBatchStopOpsTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewBatchStopTasksNewRequest() (request *BatchStopTasksNewRequest) {
-    request = &BatchStopTasksNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "BatchStopTasksNew")
-    
-    
-    return
-}
-
-func NewBatchStopTasksNewResponse() (response *BatchStopTasksNewResponse) {
-    response = &BatchStopTasksNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BatchStopTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchStopTasksNew(request *BatchStopTasksNewRequest) (response *BatchStopTasksNewResponse, err error) {
-    return c.BatchStopTasksNewWithContext(context.Background(), request)
-}
-
-// BatchStopTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) BatchStopTasksNewWithContext(ctx context.Context, request *BatchStopTasksNewRequest) (response *BatchStopTasksNewResponse, err error) {
-    if request == nil {
-        request = NewBatchStopTasksNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BatchStopTasksNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBatchStopTasksNewResponse()
     err = c.Send(request, response)
     return
 }
@@ -1159,104 +894,6 @@ func (c *Client) CheckAlarmRegularNameExistWithContext(ctx context.Context, requ
     return
 }
 
-func NewCheckDuplicateRuleNameRequest() (request *CheckDuplicateRuleNameRequest) {
-    request = &CheckDuplicateRuleNameRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CheckDuplicateRuleName")
-    
-    
-    return
-}
-
-func NewCheckDuplicateRuleNameResponse() (response *CheckDuplicateRuleNameResponse) {
-    response = &CheckDuplicateRuleNameResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CheckDuplicateRuleName
-// 检查规则名称是否重复
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CheckDuplicateRuleName(request *CheckDuplicateRuleNameRequest) (response *CheckDuplicateRuleNameResponse, err error) {
-    return c.CheckDuplicateRuleNameWithContext(context.Background(), request)
-}
-
-// CheckDuplicateRuleName
-// 检查规则名称是否重复
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CheckDuplicateRuleNameWithContext(ctx context.Context, request *CheckDuplicateRuleNameRequest) (response *CheckDuplicateRuleNameResponse, err error) {
-    if request == nil {
-        request = NewCheckDuplicateRuleNameRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CheckDuplicateRuleName require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCheckDuplicateRuleNameResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCheckDuplicateTemplateNameRequest() (request *CheckDuplicateTemplateNameRequest) {
-    request = &CheckDuplicateTemplateNameRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CheckDuplicateTemplateName")
-    
-    
-    return
-}
-
-func NewCheckDuplicateTemplateNameResponse() (response *CheckDuplicateTemplateNameResponse) {
-    response = &CheckDuplicateTemplateNameResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CheckDuplicateTemplateName
-// 检查规则模板名称是否重复
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CheckDuplicateTemplateName(request *CheckDuplicateTemplateNameRequest) (response *CheckDuplicateTemplateNameResponse, err error) {
-    return c.CheckDuplicateTemplateNameWithContext(context.Background(), request)
-}
-
-// CheckDuplicateTemplateName
-// 检查规则模板名称是否重复
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CheckDuplicateTemplateNameWithContext(ctx context.Context, request *CheckDuplicateTemplateNameRequest) (response *CheckDuplicateTemplateNameResponse, err error) {
-    if request == nil {
-        request = NewCheckDuplicateTemplateNameRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CheckDuplicateTemplateName require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCheckDuplicateTemplateNameResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCheckIntegrationNodeNameExistsRequest() (request *CheckIntegrationNodeNameExistsRequest) {
     request = &CheckIntegrationNodeNameExistsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1404,55 +1041,6 @@ func (c *Client) CheckTaskNameExistWithContext(ctx context.Context, request *Che
     return
 }
 
-func NewCommitExportTaskRequest() (request *CommitExportTaskRequest) {
-    request = &CommitExportTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CommitExportTask")
-    
-    
-    return
-}
-
-func NewCommitExportTaskResponse() (response *CommitExportTaskResponse) {
-    response = &CommitExportTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CommitExportTask
-// 提交数据导出任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CommitExportTask(request *CommitExportTaskRequest) (response *CommitExportTaskResponse, err error) {
-    return c.CommitExportTaskWithContext(context.Background(), request)
-}
-
-// CommitExportTask
-// 提交数据导出任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CommitExportTaskWithContext(ctx context.Context, request *CommitExportTaskRequest) (response *CommitExportTaskResponse, err error) {
-    if request == nil {
-        request = NewCommitExportTaskRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CommitExportTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCommitExportTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCommitIntegrationTaskRequest() (request *CommitIntegrationTaskRequest) {
     request = &CommitIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1530,87 +1118,6 @@ func (c *Client) CommitIntegrationTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCommitIntegrationTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCommitRuleGroupExecResultRequest() (request *CommitRuleGroupExecResultRequest) {
-    request = &CommitRuleGroupExecResultRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CommitRuleGroupExecResult")
-    
-    
-    return
-}
-
-func NewCommitRuleGroupExecResultResponse() (response *CommitRuleGroupExecResultResponse) {
-    response = &CommitRuleGroupExecResultResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CommitRuleGroupExecResult
-// Runner 规则检测结果上报
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CommitRuleGroupExecResult(request *CommitRuleGroupExecResultRequest) (response *CommitRuleGroupExecResultResponse, err error) {
-    return c.CommitRuleGroupExecResultWithContext(context.Background(), request)
-}
-
-// CommitRuleGroupExecResult
-// Runner 规则检测结果上报
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CommitRuleGroupExecResultWithContext(ctx context.Context, request *CommitRuleGroupExecResultRequest) (response *CommitRuleGroupExecResultResponse, err error) {
-    if request == nil {
-        request = NewCommitRuleGroupExecResultRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CommitRuleGroupExecResult require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCommitRuleGroupExecResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -1713,67 +1220,6 @@ func (c *Client) CountOpsInstanceStateWithContext(ctx context.Context, request *
     return
 }
 
-func NewCreateBaselineRequest() (request *CreateBaselineRequest) {
-    request = &CreateBaselineRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CreateBaseline")
-    
-    
-    return
-}
-
-func NewCreateBaselineResponse() (response *CreateBaselineResponse) {
-    response = &CreateBaselineResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateBaseline
-// 创建基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) CreateBaseline(request *CreateBaselineRequest) (response *CreateBaselineResponse, err error) {
-    return c.CreateBaselineWithContext(context.Background(), request)
-}
-
-// CreateBaseline
-// 创建基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) CreateBaselineWithContext(ctx context.Context, request *CreateBaselineRequest) (response *CreateBaselineResponse, err error) {
-    if request == nil {
-        request = NewCreateBaselineRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateBaseline require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateBaselineResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateCustomFunctionRequest() (request *CreateCustomFunctionRequest) {
     request = &CreateCustomFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1843,8 +1289,6 @@ func NewCreateDataSourceResponse() (response *CreateDataSourceResponse) {
 }
 
 // CreateDataSource
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 创建数据源
 //
 // 可能返回的错误码:
@@ -1854,8 +1298,6 @@ func (c *Client) CreateDataSource(request *CreateDataSourceRequest) (response *C
 }
 
 // CreateDataSource
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 创建数据源
 //
 // 可能返回的错误码:
@@ -1921,59 +1363,6 @@ func (c *Client) CreateDsFolderWithContext(ctx context.Context, request *CreateD
     request.SetContext(ctx)
     
     response = NewCreateDsFolderResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateFolderRequest() (request *CreateFolderRequest) {
-    request = &CreateFolderRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CreateFolder")
-    
-    
-    return
-}
-
-func NewCreateFolderResponse() (response *CreateFolderResponse) {
-    response = &CreateFolderResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateFolder
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 创建文件夹
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
-    return c.CreateFolderWithContext(context.Background(), request)
-}
-
-// CreateFolder
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 创建文件夹
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
-    if request == nil {
-        request = NewCreateFolderRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateFolder require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -2299,7 +1688,7 @@ func NewCreateOpsMakePlanResponse() (response *CreateOpsMakePlanResponse) {
 }
 
 // CreateOpsMakePlan
-// 补录任务
+// 批量补数据（创建补录任务）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2308,7 +1697,7 @@ func (c *Client) CreateOpsMakePlan(request *CreateOpsMakePlanRequest) (response 
 }
 
 // CreateOpsMakePlan
-// 补录任务
+// 批量补数据（创建补录任务）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2324,104 +1713,6 @@ func (c *Client) CreateOpsMakePlanWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateOpsMakePlanResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateOrUpdateResourceRequest() (request *CreateOrUpdateResourceRequest) {
-    request = &CreateOrUpdateResourceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CreateOrUpdateResource")
-    
-    
-    return
-}
-
-func NewCreateOrUpdateResourceResponse() (response *CreateOrUpdateResourceResponse) {
-    response = &CreateOrUpdateResourceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateOrUpdateResource
-// 资源管理需要先将资源上传到cos中，然后调用该接口，将cos资源绑定到wedata
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateOrUpdateResource(request *CreateOrUpdateResourceRequest) (response *CreateOrUpdateResourceResponse, err error) {
-    return c.CreateOrUpdateResourceWithContext(context.Background(), request)
-}
-
-// CreateOrUpdateResource
-// 资源管理需要先将资源上传到cos中，然后调用该接口，将cos资源绑定到wedata
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateOrUpdateResourceWithContext(ctx context.Context, request *CreateOrUpdateResourceRequest) (response *CreateOrUpdateResourceResponse, err error) {
-    if request == nil {
-        request = NewCreateOrUpdateResourceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateOrUpdateResource require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateOrUpdateResourceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateResourcePathRequest() (request *CreateResourcePathRequest) {
-    request = &CreateResourcePathRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CreateResourcePath")
-    
-    
-    return
-}
-
-func NewCreateResourcePathResponse() (response *CreateResourcePathResponse) {
-    response = &CreateResourcePathResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateResourcePath
-// 文件路径的根目录为 /datastudio/resource，如果要在根目录下创建 aaa 文件夹，FilePath的值应该为 /datastudio/resource，如果根目录下已经创建了 aaa 文件夹，要在 aaa 下创建  bbb 文件夹，FilePath的值应该为 /datastudio/resource/aaa
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateResourcePath(request *CreateResourcePathRequest) (response *CreateResourcePathResponse, err error) {
-    return c.CreateResourcePathWithContext(context.Background(), request)
-}
-
-// CreateResourcePath
-// 文件路径的根目录为 /datastudio/resource，如果要在根目录下创建 aaa 文件夹，FilePath的值应该为 /datastudio/resource，如果根目录下已经创建了 aaa 文件夹，要在 aaa 下创建  bbb 文件夹，FilePath的值应该为 /datastudio/resource/aaa
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateResourcePathWithContext(ctx context.Context, request *CreateResourcePathRequest) (response *CreateResourcePathResponse, err error) {
-    if request == nil {
-        request = NewCreateResourcePathRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateResourcePath require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateResourcePathResponse()
     err = c.Send(request, response)
     return
 }
@@ -2548,8 +1839,6 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 }
 
 // CreateTask
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 创建任务
 //
 // 可能返回的错误码:
@@ -2559,8 +1848,6 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 }
 
 // CreateTask
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 创建任务
 //
 // 可能返回的错误码:
@@ -2666,7 +1953,7 @@ func NewCreateTaskVersionDsResponse() (response *CreateTaskVersionDsResponse) {
 }
 
 // CreateTaskVersionDs
-// 创建任务版本
+// 提交任务版本
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2680,7 +1967,7 @@ func (c *Client) CreateTaskVersionDs(request *CreateTaskVersionDsRequest) (respo
 }
 
 // CreateTaskVersionDs
-// 创建任务版本
+// 提交任务版本
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2701,59 +1988,6 @@ func (c *Client) CreateTaskVersionDsWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateTaskVersionDsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateWorkflowRequest() (request *CreateWorkflowRequest) {
-    request = &CreateWorkflowRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "CreateWorkflow")
-    
-    
-    return
-}
-
-func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
-    response = &CreateWorkflowResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateWorkflow
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 创建工作流
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *CreateWorkflowResponse, err error) {
-    return c.CreateWorkflowWithContext(context.Background(), request)
-}
-
-// CreateWorkflow
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 创建工作流
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateWorkflowWithContext(ctx context.Context, request *CreateWorkflowRequest) (response *CreateWorkflowResponse, err error) {
-    if request == nil {
-        request = NewCreateWorkflowRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateWorkflow require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateWorkflowResponse()
     err = c.Send(request, response)
     return
 }
@@ -2803,55 +2037,6 @@ func (c *Client) DagInstancesWithContext(ctx context.Context, request *DagInstan
     request.SetContext(ctx)
     
     response = NewDagInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteBaselineRequest() (request *DeleteBaselineRequest) {
-    request = &DeleteBaselineRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DeleteBaseline")
-    
-    
-    return
-}
-
-func NewDeleteBaselineResponse() (response *DeleteBaselineResponse) {
-    response = &DeleteBaselineResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteBaseline
-// DeleteBaseline
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteBaseline(request *DeleteBaselineRequest) (response *DeleteBaselineResponse, err error) {
-    return c.DeleteBaselineWithContext(context.Background(), request)
-}
-
-// DeleteBaseline
-// DeleteBaseline
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteBaselineWithContext(ctx context.Context, request *DeleteBaselineRequest) (response *DeleteBaselineResponse, err error) {
-    if request == nil {
-        request = NewDeleteBaselineRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteBaseline require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteBaselineResponse()
     err = c.Send(request, response)
     return
 }
@@ -2925,8 +2110,6 @@ func NewDeleteDataSourcesResponse() (response *DeleteDataSourcesResponse) {
 }
 
 // DeleteDataSources
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 删除数据源
 //
 // 可能返回的错误码:
@@ -2936,8 +2119,6 @@ func (c *Client) DeleteDataSources(request *DeleteDataSourcesRequest) (response 
 }
 
 // DeleteDataSources
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 删除数据源
 //
 // 可能返回的错误码:
@@ -3111,59 +2292,6 @@ func (c *Client) DeleteFilePathWithContext(ctx context.Context, request *DeleteF
     request.SetContext(ctx)
     
     response = NewDeleteFilePathResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteFolderRequest() (request *DeleteFolderRequest) {
-    request = &DeleteFolderRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DeleteFolder")
-    
-    
-    return
-}
-
-func NewDeleteFolderResponse() (response *DeleteFolderResponse) {
-    response = &DeleteFolderResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteFolder
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 删除文件夹
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteFolder(request *DeleteFolderRequest) (response *DeleteFolderResponse, err error) {
-    return c.DeleteFolderWithContext(context.Background(), request)
-}
-
-// DeleteFolder
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 删除文件夹
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFolderRequest) (response *DeleteFolderResponse, err error) {
-    if request == nil {
-        request = NewDeleteFolderRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteFolder require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -3827,7 +2955,7 @@ func NewDeleteTaskDsResponse() (response *DeleteTaskDsResponse) {
 }
 
 // DeleteTaskDs
-// 删除任务Ds
+// 删除编排空间任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3836,7 +2964,7 @@ func (c *Client) DeleteTaskDs(request *DeleteTaskDsRequest) (response *DeleteTas
 }
 
 // DeleteTaskDs
-// 删除任务Ds
+// 删除编排空间任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3901,59 +3029,6 @@ func (c *Client) DeleteWorkflowByIdWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteWorkflowByIdResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteWorkflowNewRequest() (request *DeleteWorkflowNewRequest) {
-    request = &DeleteWorkflowNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DeleteWorkflowNew")
-    
-    
-    return
-}
-
-func NewDeleteWorkflowNewResponse() (response *DeleteWorkflowNewResponse) {
-    response = &DeleteWorkflowNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteWorkflowNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 删除工作流
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteWorkflowNew(request *DeleteWorkflowNewRequest) (response *DeleteWorkflowNewResponse, err error) {
-    return c.DeleteWorkflowNewWithContext(context.Background(), request)
-}
-
-// DeleteWorkflowNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 删除工作流
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteWorkflowNewWithContext(ctx context.Context, request *DeleteWorkflowNewRequest) (response *DeleteWorkflowNewResponse, err error) {
-    if request == nil {
-        request = NewDeleteWorkflowNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteWorkflowNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteWorkflowNewResponse()
     err = c.Send(request, response)
     return
 }
@@ -4127,104 +3202,6 @@ func (c *Client) DescribeAllByFolderNewWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeAllTaskTypeRequest() (request *DescribeAllTaskTypeRequest) {
-    request = &DescribeAllTaskTypeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeAllTaskType")
-    
-    
-    return
-}
-
-func NewDescribeAllTaskTypeResponse() (response *DescribeAllTaskTypeResponse) {
-    response = &DescribeAllTaskTypeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAllTaskType
-// 获取所有任务类型
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeAllTaskType(request *DescribeAllTaskTypeRequest) (response *DescribeAllTaskTypeResponse, err error) {
-    return c.DescribeAllTaskTypeWithContext(context.Background(), request)
-}
-
-// DescribeAllTaskType
-// 获取所有任务类型
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeAllTaskTypeWithContext(ctx context.Context, request *DescribeAllTaskTypeRequest) (response *DescribeAllTaskTypeResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllTaskTypeRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAllTaskType require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAllTaskTypeResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAllUsedVersionSonRequest() (request *DescribeAllUsedVersionSonRequest) {
-    request = &DescribeAllUsedVersionSonRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeAllUsedVersionSon")
-    
-    
-    return
-}
-
-func NewDescribeAllUsedVersionSonResponse() (response *DescribeAllUsedVersionSonResponse) {
-    response = &DescribeAllUsedVersionSonResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAllUsedVersionSon
-// 根据任务Id查找生产态子任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeAllUsedVersionSon(request *DescribeAllUsedVersionSonRequest) (response *DescribeAllUsedVersionSonResponse, err error) {
-    return c.DescribeAllUsedVersionSonWithContext(context.Background(), request)
-}
-
-// DescribeAllUsedVersionSon
-// 根据任务Id查找生产态子任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeAllUsedVersionSonWithContext(ctx context.Context, request *DescribeAllUsedVersionSonRequest) (response *DescribeAllUsedVersionSonResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllUsedVersionSonRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAllUsedVersionSon require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAllUsedVersionSonResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeApproveListRequest() (request *DescribeApproveListRequest) {
     request = &DescribeApproveListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4325,360 +3302,6 @@ func (c *Client) DescribeApproveTypeListWithContext(ctx context.Context, request
     return
 }
 
-func NewDescribeBaselineAllTaskDagRequest() (request *DescribeBaselineAllTaskDagRequest) {
-    request = &DescribeBaselineAllTaskDagRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaselineAllTaskDag")
-    
-    
-    return
-}
-
-func NewDescribeBaselineAllTaskDagResponse() (response *DescribeBaselineAllTaskDagResponse) {
-    response = &DescribeBaselineAllTaskDagResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBaselineAllTaskDag
-// 查询基线DAG
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineAllTaskDag(request *DescribeBaselineAllTaskDagRequest) (response *DescribeBaselineAllTaskDagResponse, err error) {
-    return c.DescribeBaselineAllTaskDagWithContext(context.Background(), request)
-}
-
-// DescribeBaselineAllTaskDag
-// 查询基线DAG
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineAllTaskDagWithContext(ctx context.Context, request *DescribeBaselineAllTaskDagRequest) (response *DescribeBaselineAllTaskDagResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaselineAllTaskDagRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBaselineAllTaskDag require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBaselineAllTaskDagResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeBaselineByIdRequest() (request *DescribeBaselineByIdRequest) {
-    request = &DescribeBaselineByIdRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaselineById")
-    
-    
-    return
-}
-
-func NewDescribeBaselineByIdResponse() (response *DescribeBaselineByIdResponse) {
-    response = &DescribeBaselineByIdResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBaselineById
-// 基线列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineById(request *DescribeBaselineByIdRequest) (response *DescribeBaselineByIdResponse, err error) {
-    return c.DescribeBaselineByIdWithContext(context.Background(), request)
-}
-
-// DescribeBaselineById
-// 基线列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineByIdWithContext(ctx context.Context, request *DescribeBaselineByIdRequest) (response *DescribeBaselineByIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaselineByIdRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBaselineById require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBaselineByIdResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeBaselineInstanceDagRequest() (request *DescribeBaselineInstanceDagRequest) {
-    request = &DescribeBaselineInstanceDagRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaselineInstanceDag")
-    
-    
-    return
-}
-
-func NewDescribeBaselineInstanceDagResponse() (response *DescribeBaselineInstanceDagResponse) {
-    response = &DescribeBaselineInstanceDagResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBaselineInstanceDag
-// 查询基线实例DAG
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineInstanceDag(request *DescribeBaselineInstanceDagRequest) (response *DescribeBaselineInstanceDagResponse, err error) {
-    return c.DescribeBaselineInstanceDagWithContext(context.Background(), request)
-}
-
-// DescribeBaselineInstanceDag
-// 查询基线实例DAG
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineInstanceDagWithContext(ctx context.Context, request *DescribeBaselineInstanceDagRequest) (response *DescribeBaselineInstanceDagResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaselineInstanceDagRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBaselineInstanceDag require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBaselineInstanceDagResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeBaselineInstanceGanttRequest() (request *DescribeBaselineInstanceGanttRequest) {
-    request = &DescribeBaselineInstanceGanttRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaselineInstanceGantt")
-    
-    
-    return
-}
-
-func NewDescribeBaselineInstanceGanttResponse() (response *DescribeBaselineInstanceGanttResponse) {
-    response = &DescribeBaselineInstanceGanttResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBaselineInstanceGantt
-// 查询基线实例关键任务实例甘特图
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineInstanceGantt(request *DescribeBaselineInstanceGanttRequest) (response *DescribeBaselineInstanceGanttResponse, err error) {
-    return c.DescribeBaselineInstanceGanttWithContext(context.Background(), request)
-}
-
-// DescribeBaselineInstanceGantt
-// 查询基线实例关键任务实例甘特图
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselineInstanceGanttWithContext(ctx context.Context, request *DescribeBaselineInstanceGanttRequest) (response *DescribeBaselineInstanceGanttResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaselineInstanceGanttRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBaselineInstanceGantt require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBaselineInstanceGanttResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeBaselineInstancesRequest() (request *DescribeBaselineInstancesRequest) {
-    request = &DescribeBaselineInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaselineInstances")
-    
-    
-    return
-}
-
-func NewDescribeBaselineInstancesResponse() (response *DescribeBaselineInstancesResponse) {
-    response = &DescribeBaselineInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBaselineInstances
-// 查询基线实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeBaselineInstances(request *DescribeBaselineInstancesRequest) (response *DescribeBaselineInstancesResponse, err error) {
-    return c.DescribeBaselineInstancesWithContext(context.Background(), request)
-}
-
-// DescribeBaselineInstances
-// 查询基线实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeBaselineInstancesWithContext(ctx context.Context, request *DescribeBaselineInstancesRequest) (response *DescribeBaselineInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaselineInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBaselineInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBaselineInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeBaselinesRequest() (request *DescribeBaselinesRequest) {
-    request = &DescribeBaselinesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaselines")
-    
-    
-    return
-}
-
-func NewDescribeBaselinesResponse() (response *DescribeBaselinesResponse) {
-    response = &DescribeBaselinesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBaselines
-// 基线列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselines(request *DescribeBaselinesRequest) (response *DescribeBaselinesResponse, err error) {
-    return c.DescribeBaselinesWithContext(context.Background(), request)
-}
-
-// DescribeBaselines
-// 基线列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeBaselinesWithContext(ctx context.Context, request *DescribeBaselinesRequest) (response *DescribeBaselinesResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaselinesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBaselines require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBaselinesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeBatchOperateTaskRequest() (request *DescribeBatchOperateTaskRequest) {
     request = &DescribeBatchOperateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4699,7 +3322,7 @@ func NewDescribeBatchOperateTaskResponse() (response *DescribeBatchOperateTaskRe
 }
 
 // DescribeBatchOperateTask
-// 批量操作任务列表
+// 批量操作页面获取任务列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4709,7 +3332,7 @@ func (c *Client) DescribeBatchOperateTask(request *DescribeBatchOperateTaskReque
 }
 
 // DescribeBatchOperateTask
-// 批量操作任务列表
+// 批量操作页面获取任务列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4726,57 +3349,6 @@ func (c *Client) DescribeBatchOperateTaskWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeBatchOperateTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeBelongToRequest() (request *DescribeBelongToRequest) {
-    request = &DescribeBelongToRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBelongTo")
-    
-    
-    return
-}
-
-func NewDescribeBelongToResponse() (response *DescribeBelongToResponse) {
-    response = &DescribeBelongToResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBelongTo
-// 智能运维-事件列表-所属任务/基线过滤列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeBelongTo(request *DescribeBelongToRequest) (response *DescribeBelongToResponse, err error) {
-    return c.DescribeBelongToWithContext(context.Background(), request)
-}
-
-// DescribeBelongTo
-// 智能运维-事件列表-所属任务/基线过滤列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeBelongToWithContext(ctx context.Context, request *DescribeBelongToRequest) (response *DescribeBelongToResponse, err error) {
-    if request == nil {
-        request = NewDescribeBelongToRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBelongTo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBelongToResponse()
     err = c.Send(request, response)
     return
 }
@@ -4897,57 +3469,6 @@ func (c *Client) DescribeColumnsMetaWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeDataBasesRequest() (request *DescribeDataBasesRequest) {
-    request = &DescribeDataBasesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataBases")
-    
-    
-    return
-}
-
-func NewDescribeDataBasesResponse() (response *DescribeDataBasesResponse) {
-    response = &DescribeDataBasesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDataBases
-// 查询数据来源列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeDataBases(request *DescribeDataBasesRequest) (response *DescribeDataBasesResponse, err error) {
-    return c.DescribeDataBasesWithContext(context.Background(), request)
-}
-
-// DescribeDataBases
-// 查询数据来源列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeDataBasesWithContext(ctx context.Context, request *DescribeDataBasesRequest) (response *DescribeDataBasesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataBasesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDataBases require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDataBasesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDataCheckStatRequest() (request *DescribeDataCheckStatRequest) {
     request = &DescribeDataCheckStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4999,57 +3520,6 @@ func (c *Client) DescribeDataCheckStatWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeDataCheckStatResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDataObjectsRequest() (request *DescribeDataObjectsRequest) {
-    request = &DescribeDataObjectsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataObjects")
-    
-    
-    return
-}
-
-func NewDescribeDataObjectsResponse() (response *DescribeDataObjectsResponse) {
-    response = &DescribeDataObjectsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDataObjects
-// 查询规则组数据对象列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (response *DescribeDataObjectsResponse, err error) {
-    return c.DescribeDataObjectsWithContext(context.Background(), request)
-}
-
-// DescribeDataObjects
-// 查询规则组数据对象列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeDataObjectsWithContext(ctx context.Context, request *DescribeDataObjectsRequest) (response *DescribeDataObjectsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataObjectsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDataObjects require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDataObjectsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5123,8 +3593,6 @@ func NewDescribeDataSourceListResponse() (response *DescribeDataSourceListRespon
 }
 
 // DescribeDataSourceList
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 数据源详情
 //
 // 可能返回的错误码:
@@ -5135,8 +3603,6 @@ func (c *Client) DescribeDataSourceList(request *DescribeDataSourceListRequest) 
 }
 
 // DescribeDataSourceList
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 数据源详情
 //
 // 可能返回的错误码:
@@ -5154,128 +3620,6 @@ func (c *Client) DescribeDataSourceListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeDataSourceListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDataSourceWithoutInfoRequest() (request *DescribeDataSourceWithoutInfoRequest) {
-    request = &DescribeDataSourceWithoutInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataSourceWithoutInfo")
-    
-    
-    return
-}
-
-func NewDescribeDataSourceWithoutInfoResponse() (response *DescribeDataSourceWithoutInfoResponse) {
-    response = &DescribeDataSourceWithoutInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDataSourceWithoutInfo
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 数据源列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
-func (c *Client) DescribeDataSourceWithoutInfo(request *DescribeDataSourceWithoutInfoRequest) (response *DescribeDataSourceWithoutInfoResponse, err error) {
-    return c.DescribeDataSourceWithoutInfoWithContext(context.Background(), request)
-}
-
-// DescribeDataSourceWithoutInfo
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 数据源列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
-func (c *Client) DescribeDataSourceWithoutInfoWithContext(ctx context.Context, request *DescribeDataSourceWithoutInfoRequest) (response *DescribeDataSourceWithoutInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataSourceWithoutInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDataSourceWithoutInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDataSourceWithoutInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDataTypesRequest() (request *DescribeDataTypesRequest) {
-    request = &DescribeDataTypesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataTypes")
-    
-    
-    return
-}
-
-func NewDescribeDataTypesResponse() (response *DescribeDataTypesResponse) {
-    response = &DescribeDataTypesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDataTypes
-// 获取字段类型列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDataTypes(request *DescribeDataTypesRequest) (response *DescribeDataTypesResponse, err error) {
-    return c.DescribeDataTypesWithContext(context.Background(), request)
-}
-
-// DescribeDataTypes
-// 获取字段类型列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDataTypesWithContext(ctx context.Context, request *DescribeDataTypesRequest) (response *DescribeDataTypesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataTypesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDataTypes require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDataTypesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5406,8 +3750,6 @@ func NewDescribeDatasourceResponse() (response *DescribeDatasourceResponse) {
 }
 
 // DescribeDatasource
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 数据源详情
 //
 // 可能返回的错误码:
@@ -5417,8 +3759,6 @@ func (c *Client) DescribeDatasource(request *DescribeDatasourceRequest) (respons
 }
 
 // DescribeDatasource
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 数据源详情
 //
 // 可能返回的错误码:
@@ -5435,57 +3775,6 @@ func (c *Client) DescribeDatasourceWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeDatasourceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDependOpsTaskListRequest() (request *DescribeDependOpsTaskListRequest) {
-    request = &DescribeDependOpsTaskListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDependOpsTaskList")
-    
-    
-    return
-}
-
-func NewDescribeDependOpsTaskListResponse() (response *DescribeDependOpsTaskListResponse) {
-    response = &DescribeDependOpsTaskListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDependOpsTaskList
-// 根据任务id获取下游依赖任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-func (c *Client) DescribeDependOpsTaskList(request *DescribeDependOpsTaskListRequest) (response *DescribeDependOpsTaskListResponse, err error) {
-    return c.DescribeDependOpsTaskListWithContext(context.Background(), request)
-}
-
-// DescribeDependOpsTaskList
-// 根据任务id获取下游依赖任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-func (c *Client) DescribeDependOpsTaskListWithContext(ctx context.Context, request *DescribeDependOpsTaskListRequest) (response *DescribeDependOpsTaskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDependOpsTaskListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDependOpsTaskList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDependOpsTaskListResponse()
     err = c.Send(request, response)
     return
 }
@@ -5584,120 +3873,6 @@ func (c *Client) DescribeDependTaskListsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeDependTaskListsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDependTasksNewRequest() (request *DescribeDependTasksNewRequest) {
-    request = &DescribeDependTasksNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDependTasksNew")
-    
-    
-    return
-}
-
-func NewDescribeDependTasksNewResponse() (response *DescribeDependTasksNewResponse) {
-    response = &DescribeDependTasksNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDependTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 根据层级查找上/下游任务节点
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeDependTasksNew(request *DescribeDependTasksNewRequest) (response *DescribeDependTasksNewResponse, err error) {
-    return c.DescribeDependTasksNewWithContext(context.Background(), request)
-}
-
-// DescribeDependTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 根据层级查找上/下游任务节点
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeDependTasksNewWithContext(ctx context.Context, request *DescribeDependTasksNewRequest) (response *DescribeDependTasksNewResponse, err error) {
-    if request == nil {
-        request = NewDescribeDependTasksNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDependTasksNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDependTasksNewResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDiagnosticInfoByBaselineIdRequest() (request *DescribeDiagnosticInfoByBaselineIdRequest) {
-    request = &DescribeDiagnosticInfoByBaselineIdRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDiagnosticInfoByBaselineId")
-    
-    
-    return
-}
-
-func NewDescribeDiagnosticInfoByBaselineIdResponse() (response *DescribeDiagnosticInfoByBaselineIdResponse) {
-    response = &DescribeDiagnosticInfoByBaselineIdResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDiagnosticInfoByBaselineId
-// 查询基线诊断信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeDiagnosticInfoByBaselineId(request *DescribeDiagnosticInfoByBaselineIdRequest) (response *DescribeDiagnosticInfoByBaselineIdResponse, err error) {
-    return c.DescribeDiagnosticInfoByBaselineIdWithContext(context.Background(), request)
-}
-
-// DescribeDiagnosticInfoByBaselineId
-// 查询基线诊断信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeDiagnosticInfoByBaselineIdWithContext(ctx context.Context, request *DescribeDiagnosticInfoByBaselineIdRequest) (response *DescribeDiagnosticInfoByBaselineIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeDiagnosticInfoByBaselineIdRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDiagnosticInfoByBaselineId require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDiagnosticInfoByBaselineIdResponse()
     err = c.Send(request, response)
     return
 }
@@ -5828,136 +4003,6 @@ func (c *Client) DescribeDrInstancePageWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeDrInstancePageResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDrInstanceScriptContentRequest() (request *DescribeDrInstanceScriptContentRequest) {
-    request = &DescribeDrInstanceScriptContentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDrInstanceScriptContent")
-    
-    
-    return
-}
-
-func NewDescribeDrInstanceScriptContentResponse() (response *DescribeDrInstanceScriptContentResponse) {
-    response = &DescribeDrInstanceScriptContentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDrInstanceScriptContent
-// 查询试运行实例执行内容
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDrInstanceScriptContent(request *DescribeDrInstanceScriptContentRequest) (response *DescribeDrInstanceScriptContentResponse, err error) {
-    return c.DescribeDrInstanceScriptContentWithContext(context.Background(), request)
-}
-
-// DescribeDrInstanceScriptContent
-// 查询试运行实例执行内容
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDrInstanceScriptContentWithContext(ctx context.Context, request *DescribeDrInstanceScriptContentRequest) (response *DescribeDrInstanceScriptContentResponse, err error) {
-    if request == nil {
-        request = NewDescribeDrInstanceScriptContentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDrInstanceScriptContent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDrInstanceScriptContentResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDrSonInstanceRequest() (request *DescribeDrSonInstanceRequest) {
-    request = &DescribeDrSonInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDrSonInstance")
-    
-    
-    return
-}
-
-func NewDescribeDrSonInstanceResponse() (response *DescribeDrSonInstanceResponse) {
-    response = &DescribeDrSonInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDrSonInstance
-// 查询试运行实例子实例列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDrSonInstance(request *DescribeDrSonInstanceRequest) (response *DescribeDrSonInstanceResponse, err error) {
-    return c.DescribeDrSonInstanceWithContext(context.Background(), request)
-}
-
-// DescribeDrSonInstance
-// 查询试运行实例子实例列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDrSonInstanceWithContext(ctx context.Context, request *DescribeDrSonInstanceRequest) (response *DescribeDrSonInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDrSonInstanceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDrSonInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDrSonInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -6207,202 +4252,6 @@ func (c *Client) DescribeEventConsumeTasksWithContext(ctx context.Context, reque
     return
 }
 
-func NewDescribeEventDetailRequest() (request *DescribeEventDetailRequest) {
-    request = &DescribeEventDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeEventDetail")
-    
-    
-    return
-}
-
-func NewDescribeEventDetailResponse() (response *DescribeEventDetailResponse) {
-    response = &DescribeEventDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEventDetail
-// 智能运维事件详情1
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (response *DescribeEventDetailResponse, err error) {
-    return c.DescribeEventDetailWithContext(context.Background(), request)
-}
-
-// DescribeEventDetail
-// 智能运维事件详情1
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventDetailWithContext(ctx context.Context, request *DescribeEventDetailRequest) (response *DescribeEventDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeEventDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEventDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEventDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeEventIsAlarmTypesRequest() (request *DescribeEventIsAlarmTypesRequest) {
-    request = &DescribeEventIsAlarmTypesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeEventIsAlarmTypes")
-    
-    
-    return
-}
-
-func NewDescribeEventIsAlarmTypesResponse() (response *DescribeEventIsAlarmTypesResponse) {
-    response = &DescribeEventIsAlarmTypesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEventIsAlarmTypes
-// 事件是否告警过滤条件
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventIsAlarmTypes(request *DescribeEventIsAlarmTypesRequest) (response *DescribeEventIsAlarmTypesResponse, err error) {
-    return c.DescribeEventIsAlarmTypesWithContext(context.Background(), request)
-}
-
-// DescribeEventIsAlarmTypes
-// 事件是否告警过滤条件
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventIsAlarmTypesWithContext(ctx context.Context, request *DescribeEventIsAlarmTypesRequest) (response *DescribeEventIsAlarmTypesResponse, err error) {
-    if request == nil {
-        request = NewDescribeEventIsAlarmTypesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEventIsAlarmTypes require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEventIsAlarmTypesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeEventTypesRequest() (request *DescribeEventTypesRequest) {
-    request = &DescribeEventTypesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeEventTypes")
-    
-    
-    return
-}
-
-func NewDescribeEventTypesResponse() (response *DescribeEventTypesResponse) {
-    response = &DescribeEventTypesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEventTypes
-// 查询事件类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventTypes(request *DescribeEventTypesRequest) (response *DescribeEventTypesResponse, err error) {
-    return c.DescribeEventTypesWithContext(context.Background(), request)
-}
-
-// DescribeEventTypes
-// 查询事件类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventTypesWithContext(ctx context.Context, request *DescribeEventTypesRequest) (response *DescribeEventTypesResponse, err error) {
-    if request == nil {
-        request = NewDescribeEventTypesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEventTypes require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEventTypesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
-    request = &DescribeEventsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeEvents")
-    
-    
-    return
-}
-
-func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
-    response = &DescribeEventsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEvents
-// 智能运维事件查询列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
-    return c.DescribeEventsWithContext(context.Background(), request)
-}
-
-// DescribeEvents
-// 智能运维事件查询列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEventsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEvents require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEventsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeExecStrategyRequest() (request *DescribeExecStrategyRequest) {
     request = &DescribeExecStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6458,55 +4307,6 @@ func (c *Client) DescribeExecStrategyWithContext(ctx context.Context, request *D
     return
 }
 
-func NewDescribeFathersRequest() (request *DescribeFathersRequest) {
-    request = &DescribeFathersRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeFathers")
-    
-    
-    return
-}
-
-func NewDescribeFathersResponse() (response *DescribeFathersResponse) {
-    response = &DescribeFathersResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeFathers
-// 获取关联父实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeFathers(request *DescribeFathersRequest) (response *DescribeFathersResponse, err error) {
-    return c.DescribeFathersWithContext(context.Background(), request)
-}
-
-// DescribeFathers
-// 获取关联父实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeFathersWithContext(ctx context.Context, request *DescribeFathersRequest) (response *DescribeFathersResponse, err error) {
-    if request == nil {
-        request = NewDescribeFathersRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeFathers require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeFathersResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeFieldBasicInfoRequest() (request *DescribeFieldBasicInfoRequest) {
     request = &DescribeFieldBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6556,59 +4356,6 @@ func (c *Client) DescribeFieldBasicInfoWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeFolderListRequest() (request *DescribeFolderListRequest) {
-    request = &DescribeFolderListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeFolderList")
-    
-    
-    return
-}
-
-func NewDescribeFolderListResponse() (response *DescribeFolderListResponse) {
-    response = &DescribeFolderListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeFolderList
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 拉取文件夹目录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeFolderList(request *DescribeFolderListRequest) (response *DescribeFolderListResponse, err error) {
-    return c.DescribeFolderListWithContext(context.Background(), request)
-}
-
-// DescribeFolderList
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 拉取文件夹目录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeFolderListWithContext(ctx context.Context, request *DescribeFolderListRequest) (response *DescribeFolderListResponse, err error) {
-    if request == nil {
-        request = NewDescribeFolderListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeFolderList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeFolderListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeFolderWorkflowListRequest() (request *DescribeFolderWorkflowListRequest) {
     request = &DescribeFolderWorkflowListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6629,9 +4376,7 @@ func NewDescribeFolderWorkflowListResponse() (response *DescribeFolderWorkflowLi
 }
 
 // DescribeFolderWorkflowList
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 拉取文件夹下的工作流
+// 根据项目id 获取项目下所有工作流列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6640,9 +4385,7 @@ func (c *Client) DescribeFolderWorkflowList(request *DescribeFolderWorkflowListR
 }
 
 // DescribeFolderWorkflowList
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 拉取文件夹下的工作流
+// 根据项目id 获取项目下所有工作流列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7074,7 +4817,7 @@ func NewDescribeInstanceLogFileResponse() (response *DescribeInstanceLogFileResp
 }
 
 // DescribeInstanceLogFile
-// 下载日志文件，返回日志URL
+// 下载日志文件，返回日志下载URL
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7083,7 +4826,7 @@ func (c *Client) DescribeInstanceLogFile(request *DescribeInstanceLogFileRequest
 }
 
 // DescribeInstanceLogFile
-// 下载日志文件，返回日志URL
+// 下载日志文件，返回日志下载URL
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7148,157 +4891,6 @@ func (c *Client) DescribeInstanceLogListWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeInstanceLogListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
-    request = &DescribeInstanceLogsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstanceLogs")
-    
-    
-    return
-}
-
-func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) {
-    response = &DescribeInstanceLogsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInstanceLogs
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 获取实例日志列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
-    return c.DescribeInstanceLogsWithContext(context.Background(), request)
-}
-
-// DescribeInstanceLogs
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 获取实例日志列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceLogsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInstanceLogs require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInstanceLogsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
-    request = &DescribeInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstances")
-    
-    
-    return
-}
-
-func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
-    response = &DescribeInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInstances
-// 数据质量，查询调度任务的实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    return c.DescribeInstancesWithContext(context.Background(), request)
-}
-
-// DescribeInstances
-// 数据质量，查询调度任务的实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeInstancesInfoWithTaskInfoRequest() (request *DescribeInstancesInfoWithTaskInfoRequest) {
-    request = &DescribeInstancesInfoWithTaskInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstancesInfoWithTaskInfo")
-    
-    
-    return
-}
-
-func NewDescribeInstancesInfoWithTaskInfoResponse() (response *DescribeInstancesInfoWithTaskInfoResponse) {
-    response = &DescribeInstancesInfoWithTaskInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInstancesInfoWithTaskInfo
-// 拉取实例列表，join task表一些信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstancesInfoWithTaskInfo(request *DescribeInstancesInfoWithTaskInfoRequest) (response *DescribeInstancesInfoWithTaskInfoResponse, err error) {
-    return c.DescribeInstancesInfoWithTaskInfoWithContext(context.Background(), request)
-}
-
-// DescribeInstancesInfoWithTaskInfo
-// 拉取实例列表，join task表一些信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstancesInfoWithTaskInfoWithContext(ctx context.Context, request *DescribeInstancesInfoWithTaskInfoRequest) (response *DescribeInstancesInfoWithTaskInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesInfoWithTaskInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInstancesInfoWithTaskInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInstancesInfoWithTaskInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -7882,61 +5474,6 @@ func (c *Client) DescribeIntegrationVersionNodesInfoWithContext(ctx context.Cont
     return
 }
 
-func NewDescribeMonitorsByPageRequest() (request *DescribeMonitorsByPageRequest) {
-    request = &DescribeMonitorsByPageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeMonitorsByPage")
-    
-    
-    return
-}
-
-func NewDescribeMonitorsByPageResponse() (response *DescribeMonitorsByPageResponse) {
-    response = &DescribeMonitorsByPageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeMonitorsByPage
-// 分页查询质量监控组
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeMonitorsByPage(request *DescribeMonitorsByPageRequest) (response *DescribeMonitorsByPageResponse, err error) {
-    return c.DescribeMonitorsByPageWithContext(context.Background(), request)
-}
-
-// DescribeMonitorsByPage
-// 分页查询质量监控组
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeMonitorsByPageWithContext(ctx context.Context, request *DescribeMonitorsByPageRequest) (response *DescribeMonitorsByPageResponse, err error) {
-    if request == nil {
-        request = NewDescribeMonitorsByPageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeMonitorsByPage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeMonitorsByPageResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeOfflineTaskTokenRequest() (request *DescribeOfflineTaskTokenRequest) {
     request = &DescribeOfflineTaskTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7960,10 +5497,23 @@ func NewDescribeOfflineTaskTokenResponse() (response *DescribeOfflineTaskTokenRe
 // 获取离线任务长连接Token
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineTaskToken(request *DescribeOfflineTaskTokenRequest) (response *DescribeOfflineTaskTokenResponse, err error) {
     return c.DescribeOfflineTaskTokenWithContext(context.Background(), request)
 }
@@ -7972,10 +5522,23 @@ func (c *Client) DescribeOfflineTaskToken(request *DescribeOfflineTaskTokenReque
 // 获取离线任务长连接Token
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineTaskTokenWithContext(ctx context.Context, request *DescribeOfflineTaskTokenRequest) (response *DescribeOfflineTaskTokenResponse, err error) {
     if request == nil {
         request = NewDescribeOfflineTaskTokenRequest()
@@ -7988,104 +5551,6 @@ func (c *Client) DescribeOfflineTaskTokenWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeOfflineTaskTokenResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeOperateOpsTaskDatasourceRequest() (request *DescribeOperateOpsTaskDatasourceRequest) {
-    request = &DescribeOperateOpsTaskDatasourceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeOperateOpsTaskDatasource")
-    
-    
-    return
-}
-
-func NewDescribeOperateOpsTaskDatasourceResponse() (response *DescribeOperateOpsTaskDatasourceResponse) {
-    response = &DescribeOperateOpsTaskDatasourceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeOperateOpsTaskDatasource
-// 任务运维搜索 查询生产态任务数据源列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeOperateOpsTaskDatasource(request *DescribeOperateOpsTaskDatasourceRequest) (response *DescribeOperateOpsTaskDatasourceResponse, err error) {
-    return c.DescribeOperateOpsTaskDatasourceWithContext(context.Background(), request)
-}
-
-// DescribeOperateOpsTaskDatasource
-// 任务运维搜索 查询生产态任务数据源列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeOperateOpsTaskDatasourceWithContext(ctx context.Context, request *DescribeOperateOpsTaskDatasourceRequest) (response *DescribeOperateOpsTaskDatasourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeOperateOpsTaskDatasourceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeOperateOpsTaskDatasource require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeOperateOpsTaskDatasourceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeOperateOpsTaskDatasourceTypeRequest() (request *DescribeOperateOpsTaskDatasourceTypeRequest) {
-    request = &DescribeOperateOpsTaskDatasourceTypeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeOperateOpsTaskDatasourceType")
-    
-    
-    return
-}
-
-func NewDescribeOperateOpsTaskDatasourceTypeResponse() (response *DescribeOperateOpsTaskDatasourceTypeResponse) {
-    response = &DescribeOperateOpsTaskDatasourceTypeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeOperateOpsTaskDatasourceType
-// 任务运维-查询生产态任务数据源类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeOperateOpsTaskDatasourceType(request *DescribeOperateOpsTaskDatasourceTypeRequest) (response *DescribeOperateOpsTaskDatasourceTypeResponse, err error) {
-    return c.DescribeOperateOpsTaskDatasourceTypeWithContext(context.Background(), request)
-}
-
-// DescribeOperateOpsTaskDatasourceType
-// 任务运维-查询生产态任务数据源类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeOperateOpsTaskDatasourceTypeWithContext(ctx context.Context, request *DescribeOperateOpsTaskDatasourceTypeRequest) (response *DescribeOperateOpsTaskDatasourceTypeResponse, err error) {
-    if request == nil {
-        request = NewDescribeOperateOpsTaskDatasourceTypeRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeOperateOpsTaskDatasourceType require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeOperateOpsTaskDatasourceTypeResponse()
     err = c.Send(request, response)
     return
 }
@@ -8135,55 +5600,6 @@ func (c *Client) DescribeOperateOpsTasksWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeOperateOpsTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeOperateTasksRequest() (request *DescribeOperateTasksRequest) {
-    request = &DescribeOperateTasksRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeOperateTasks")
-    
-    
-    return
-}
-
-func NewDescribeOperateTasksResponse() (response *DescribeOperateTasksResponse) {
-    response = &DescribeOperateTasksResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeOperateTasks
-// 任务运维列表组合条件查询
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeOperateTasks(request *DescribeOperateTasksRequest) (response *DescribeOperateTasksResponse, err error) {
-    return c.DescribeOperateTasksWithContext(context.Background(), request)
-}
-
-// DescribeOperateTasks
-// 任务运维列表组合条件查询
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeOperateTasksWithContext(ctx context.Context, request *DescribeOperateTasksRequest) (response *DescribeOperateTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeOperateTasksRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeOperateTasks require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeOperateTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -8478,57 +5894,6 @@ func (c *Client) DescribeOrganizationalFunctionsWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeOrganizationalFunctionsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeProdTasksRequest() (request *DescribeProdTasksRequest) {
-    request = &DescribeProdTasksRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeProdTasks")
-    
-    
-    return
-}
-
-func NewDescribeProdTasksResponse() (response *DescribeProdTasksResponse) {
-    response = &DescribeProdTasksResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeProdTasks
-// 数据质量获取生产调度任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeProdTasks(request *DescribeProdTasksRequest) (response *DescribeProdTasksResponse, err error) {
-    return c.DescribeProdTasksWithContext(context.Background(), request)
-}
-
-// DescribeProdTasks
-// 数据质量获取生产调度任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeProdTasksWithContext(ctx context.Context, request *DescribeProdTasksRequest) (response *DescribeProdTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeProdTasksRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeProdTasks require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeProdTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -8851,55 +6216,6 @@ func (c *Client) DescribeRealTimeTaskSpeedWithContext(ctx context.Context, reque
     return
 }
 
-func NewDescribeRelatedInstancesRequest() (request *DescribeRelatedInstancesRequest) {
-    request = &DescribeRelatedInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRelatedInstances")
-    
-    
-    return
-}
-
-func NewDescribeRelatedInstancesResponse() (response *DescribeRelatedInstancesResponse) {
-    response = &DescribeRelatedInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRelatedInstances
-// 查询任务实例的关联实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeRelatedInstances(request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
-    return c.DescribeRelatedInstancesWithContext(context.Background(), request)
-}
-
-// DescribeRelatedInstances
-// 查询任务实例的关联实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeRelatedInstancesWithContext(ctx context.Context, request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRelatedInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRelatedInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRelatedInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeResourceManagePathTreesRequest() (request *DescribeResourceManagePathTreesRequest) {
     request = &DescribeResourceManagePathTreesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9004,57 +6320,6 @@ func (c *Client) DescribeRuleWithContext(ctx context.Context, request *DescribeR
     return
 }
 
-func NewDescribeRuleDataSourcesRequest() (request *DescribeRuleDataSourcesRequest) {
-    request = &DescribeRuleDataSourcesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleDataSources")
-    
-    
-    return
-}
-
-func NewDescribeRuleDataSourcesResponse() (response *DescribeRuleDataSourcesResponse) {
-    response = &DescribeRuleDataSourcesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleDataSources
-// 查询质量规则数据源
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeRuleDataSources(request *DescribeRuleDataSourcesRequest) (response *DescribeRuleDataSourcesResponse, err error) {
-    return c.DescribeRuleDataSourcesWithContext(context.Background(), request)
-}
-
-// DescribeRuleDataSources
-// 查询质量规则数据源
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeRuleDataSourcesWithContext(ctx context.Context, request *DescribeRuleDataSourcesRequest) (response *DescribeRuleDataSourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleDataSourcesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleDataSources require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleDataSourcesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeRuleDimStatRequest() (request *DescribeRuleDimStatRequest) {
     request = &DescribeRuleDimStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9151,108 +6416,6 @@ func (c *Client) DescribeRuleExecDetailWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeRuleExecDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleExecExportResultRequest() (request *DescribeRuleExecExportResultRequest) {
-    request = &DescribeRuleExecExportResultRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecExportResult")
-    
-    
-    return
-}
-
-func NewDescribeRuleExecExportResultResponse() (response *DescribeRuleExecExportResultResponse) {
-    response = &DescribeRuleExecExportResultResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleExecExportResult
-// 查询规则执行导出结果
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeRuleExecExportResult(request *DescribeRuleExecExportResultRequest) (response *DescribeRuleExecExportResultResponse, err error) {
-    return c.DescribeRuleExecExportResultWithContext(context.Background(), request)
-}
-
-// DescribeRuleExecExportResult
-// 查询规则执行导出结果
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeRuleExecExportResultWithContext(ctx context.Context, request *DescribeRuleExecExportResultRequest) (response *DescribeRuleExecExportResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleExecExportResultRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleExecExportResult require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleExecExportResultResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleExecHistoryRequest() (request *DescribeRuleExecHistoryRequest) {
-    request = &DescribeRuleExecHistoryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecHistory")
-    
-    
-    return
-}
-
-func NewDescribeRuleExecHistoryResponse() (response *DescribeRuleExecHistoryResponse) {
-    response = &DescribeRuleExecHistoryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleExecHistory
-// 查询规则执行历史， 最近30条
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeRuleExecHistory(request *DescribeRuleExecHistoryRequest) (response *DescribeRuleExecHistoryResponse, err error) {
-    return c.DescribeRuleExecHistoryWithContext(context.Background(), request)
-}
-
-// DescribeRuleExecHistory
-// 查询规则执行历史， 最近30条
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeRuleExecHistoryWithContext(ctx context.Context, request *DescribeRuleExecHistoryRequest) (response *DescribeRuleExecHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleExecHistoryRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleExecHistory require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleExecHistoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -9355,57 +6518,6 @@ func (c *Client) DescribeRuleExecResultsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeRuleExecResultsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleExecResultsByPageRequest() (request *DescribeRuleExecResultsByPageRequest) {
-    request = &DescribeRuleExecResultsByPageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecResultsByPage")
-    
-    
-    return
-}
-
-func NewDescribeRuleExecResultsByPageResponse() (response *DescribeRuleExecResultsByPageResponse) {
-    response = &DescribeRuleExecResultsByPageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleExecResultsByPage
-// 分页查询规则执行结果列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeRuleExecResultsByPage(request *DescribeRuleExecResultsByPageRequest) (response *DescribeRuleExecResultsByPageResponse, err error) {
-    return c.DescribeRuleExecResultsByPageWithContext(context.Background(), request)
-}
-
-// DescribeRuleExecResultsByPage
-// 分页查询规则执行结果列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeRuleExecResultsByPageWithContext(ctx context.Context, request *DescribeRuleExecResultsByPageRequest) (response *DescribeRuleExecResultsByPageResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleExecResultsByPageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleExecResultsByPage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleExecResultsByPageResponse()
     err = c.Send(request, response)
     return
 }
@@ -9561,57 +6673,6 @@ func (c *Client) DescribeRuleGroupExecResultsByPageWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewDescribeRuleGroupExecResultsByPageResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleGroupExecResultsByPageWithoutAuthRequest() (request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) {
-    request = &DescribeRuleGroupExecResultsByPageWithoutAuthRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroupExecResultsByPageWithoutAuth")
-    
-    
-    return
-}
-
-func NewDescribeRuleGroupExecResultsByPageWithoutAuthResponse() (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse) {
-    response = &DescribeRuleGroupExecResultsByPageWithoutAuthResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleGroupExecResultsByPageWithoutAuth
-// 规则组执行结果分页查询接口不带鉴权
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuth(request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse, err error) {
-    return c.DescribeRuleGroupExecResultsByPageWithoutAuthWithContext(context.Background(), request)
-}
-
-// DescribeRuleGroupExecResultsByPageWithoutAuth
-// 规则组执行结果分页查询接口不带鉴权
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuthWithContext(ctx context.Context, request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleGroupExecResultsByPageWithoutAuthRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleGroupExecResultsByPageWithoutAuth require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleGroupExecResultsByPageWithoutAuthResponse()
     err = c.Send(request, response)
     return
 }
@@ -9779,108 +6840,6 @@ func (c *Client) DescribeRuleGroupsByPageWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeRuleGroupsByPageResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleHistoryByPageRequest() (request *DescribeRuleHistoryByPageRequest) {
-    request = &DescribeRuleHistoryByPageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleHistoryByPage")
-    
-    
-    return
-}
-
-func NewDescribeRuleHistoryByPageResponse() (response *DescribeRuleHistoryByPageResponse) {
-    response = &DescribeRuleHistoryByPageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleHistoryByPage
-// 过滤条件【必要字段】{ruleId}
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeRuleHistoryByPage(request *DescribeRuleHistoryByPageRequest) (response *DescribeRuleHistoryByPageResponse, err error) {
-    return c.DescribeRuleHistoryByPageWithContext(context.Background(), request)
-}
-
-// DescribeRuleHistoryByPage
-// 过滤条件【必要字段】{ruleId}
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeRuleHistoryByPageWithContext(ctx context.Context, request *DescribeRuleHistoryByPageRequest) (response *DescribeRuleHistoryByPageResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleHistoryByPageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleHistoryByPage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleHistoryByPageResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleTablesByPageRequest() (request *DescribeRuleTablesByPageRequest) {
-    request = &DescribeRuleTablesByPageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleTablesByPage")
-    
-    
-    return
-}
-
-func NewDescribeRuleTablesByPageResponse() (response *DescribeRuleTablesByPageResponse) {
-    response = &DescribeRuleTablesByPageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleTablesByPage
-// 获取表列表
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeRuleTablesByPage(request *DescribeRuleTablesByPageRequest) (response *DescribeRuleTablesByPageResponse, err error) {
-    return c.DescribeRuleTablesByPageWithContext(context.Background(), request)
-}
-
-// DescribeRuleTablesByPage
-// 获取表列表
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
-func (c *Client) DescribeRuleTablesByPageWithContext(ctx context.Context, request *DescribeRuleTablesByPageRequest) (response *DescribeRuleTablesByPageResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleTablesByPageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleTablesByPage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleTablesByPageResponse()
     err = c.Send(request, response)
     return
 }
@@ -10146,67 +7105,6 @@ func (c *Client) DescribeRulesByPageWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeScheduleInstanceRequest() (request *DescribeScheduleInstanceRequest) {
-    request = &DescribeScheduleInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeScheduleInstance")
-    
-    
-    return
-}
-
-func NewDescribeScheduleInstanceResponse() (response *DescribeScheduleInstanceResponse) {
-    response = &DescribeScheduleInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeScheduleInstance
-// 在基线系统内查询单个调度任务实例
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeScheduleInstance(request *DescribeScheduleInstanceRequest) (response *DescribeScheduleInstanceResponse, err error) {
-    return c.DescribeScheduleInstanceWithContext(context.Background(), request)
-}
-
-// DescribeScheduleInstance
-// 在基线系统内查询单个调度任务实例
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeScheduleInstanceWithContext(ctx context.Context, request *DescribeScheduleInstanceRequest) (response *DescribeScheduleInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeScheduleInstanceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeScheduleInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeScheduleInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeScheduleInstancesRequest() (request *DescribeScheduleInstancesRequest) {
     request = &DescribeScheduleInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10450,55 +7348,6 @@ func (c *Client) DescribeSchedulerTaskTypeCntWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeSchedulerTaskTypeCntResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeSonInstancesRequest() (request *DescribeSonInstancesRequest) {
-    request = &DescribeSonInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeSonInstances")
-    
-    
-    return
-}
-
-func NewDescribeSonInstancesResponse() (response *DescribeSonInstancesResponse) {
-    response = &DescribeSonInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeSonInstances
-// 获取关联子实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeSonInstances(request *DescribeSonInstancesRequest) (response *DescribeSonInstancesResponse, err error) {
-    return c.DescribeSonInstancesWithContext(context.Background(), request)
-}
-
-// DescribeSonInstances
-// 获取关联子实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeSonInstancesWithContext(ctx context.Context, request *DescribeSonInstancesRequest) (response *DescribeSonInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSonInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSonInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSonInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -11462,155 +8311,6 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     return
 }
 
-func NewDescribeTaskInstanceRequest() (request *DescribeTaskInstanceRequest) {
-    request = &DescribeTaskInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskInstance")
-    
-    
-    return
-}
-
-func NewDescribeTaskInstanceResponse() (response *DescribeTaskInstanceResponse) {
-    response = &DescribeTaskInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskInstance
-// 离线任务实例详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
-func (c *Client) DescribeTaskInstance(request *DescribeTaskInstanceRequest) (response *DescribeTaskInstanceResponse, err error) {
-    return c.DescribeTaskInstanceWithContext(context.Background(), request)
-}
-
-// DescribeTaskInstance
-// 离线任务实例详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
-func (c *Client) DescribeTaskInstanceWithContext(ctx context.Context, request *DescribeTaskInstanceRequest) (response *DescribeTaskInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskInstanceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTaskInstanceReportDetailRequest() (request *DescribeTaskInstanceReportDetailRequest) {
-    request = &DescribeTaskInstanceReportDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskInstanceReportDetail")
-    
-    
-    return
-}
-
-func NewDescribeTaskInstanceReportDetailResponse() (response *DescribeTaskInstanceReportDetailResponse) {
-    response = &DescribeTaskInstanceReportDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskInstanceReportDetail
-// 离线任务实例统计明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskInstanceReportDetail(request *DescribeTaskInstanceReportDetailRequest) (response *DescribeTaskInstanceReportDetailResponse, err error) {
-    return c.DescribeTaskInstanceReportDetailWithContext(context.Background(), request)
-}
-
-// DescribeTaskInstanceReportDetail
-// 离线任务实例统计明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskInstanceReportDetailWithContext(ctx context.Context, request *DescribeTaskInstanceReportDetailRequest) (response *DescribeTaskInstanceReportDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskInstanceReportDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskInstanceReportDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskInstanceReportDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTaskInstancesRequest() (request *DescribeTaskInstancesRequest) {
-    request = &DescribeTaskInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskInstances")
-    
-    
-    return
-}
-
-func NewDescribeTaskInstancesResponse() (response *DescribeTaskInstancesResponse) {
-    response = &DescribeTaskInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskInstances
-// 查询任务实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskInstances(request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
-    return c.DescribeTaskInstancesWithContext(context.Background(), request)
-}
-
-// DescribeTaskInstances
-// 查询任务实例列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskInstancesWithContext(ctx context.Context, request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTaskLockStatusRequest() (request *DescribeTaskLockStatusRequest) {
     request = &DescribeTaskLockStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11658,104 +8358,6 @@ func (c *Client) DescribeTaskLockStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeTaskLockStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTaskReportRequest() (request *DescribeTaskReportRequest) {
-    request = &DescribeTaskReportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskReport")
-    
-    
-    return
-}
-
-func NewDescribeTaskReportResponse() (response *DescribeTaskReportResponse) {
-    response = &DescribeTaskReportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskReport
-// 按起止日期统计离线任务的所有实例的运行指标总和
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskReport(request *DescribeTaskReportRequest) (response *DescribeTaskReportResponse, err error) {
-    return c.DescribeTaskReportWithContext(context.Background(), request)
-}
-
-// DescribeTaskReport
-// 按起止日期统计离线任务的所有实例的运行指标总和
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskReportWithContext(ctx context.Context, request *DescribeTaskReportRequest) (response *DescribeTaskReportResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskReportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskReport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskReportResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTaskReportDetailListRequest() (request *DescribeTaskReportDetailListRequest) {
-    request = &DescribeTaskReportDetailListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskReportDetailList")
-    
-    
-    return
-}
-
-func NewDescribeTaskReportDetailListResponse() (response *DescribeTaskReportDetailListResponse) {
-    response = &DescribeTaskReportDetailListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskReportDetailList
-// 离线任务周期统计明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskReportDetailList(request *DescribeTaskReportDetailListRequest) (response *DescribeTaskReportDetailListResponse, err error) {
-    return c.DescribeTaskReportDetailListWithContext(context.Background(), request)
-}
-
-// DescribeTaskReportDetailList
-// 离线任务周期统计明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskReportDetailListWithContext(ctx context.Context, request *DescribeTaskReportDetailListRequest) (response *DescribeTaskReportDetailListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskReportDetailListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskReportDetailList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskReportDetailListResponse()
     err = c.Send(request, response)
     return
 }
@@ -11829,8 +8431,6 @@ func NewDescribeTaskScriptResponse() (response *DescribeTaskScriptResponse) {
 }
 
 // DescribeTaskScript
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 查询任务脚本
 //
 // 可能返回的错误码:
@@ -11840,8 +8440,6 @@ func (c *Client) DescribeTaskScript(request *DescribeTaskScriptRequest) (respons
 }
 
 // DescribeTaskScript
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 查询任务脚本
 //
 // 可能返回的错误码:
@@ -11962,57 +8560,6 @@ func (c *Client) DescribeTemplateDimCountWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeTemplateDimCountResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTemplateHistoryRequest() (request *DescribeTemplateHistoryRequest) {
-    request = &DescribeTemplateHistoryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTemplateHistory")
-    
-    
-    return
-}
-
-func NewDescribeTemplateHistoryResponse() (response *DescribeTemplateHistoryResponse) {
-    response = &DescribeTemplateHistoryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTemplateHistory
-// 查询规则模板操作记录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
-    return c.DescribeTemplateHistoryWithContext(context.Background(), request)
-}
-
-// DescribeTemplateHistory
-// 查询规则模板操作记录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-func (c *Client) DescribeTemplateHistoryWithContext(ctx context.Context, request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeTemplateHistoryRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTemplateHistory require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTemplateHistoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -12364,55 +8911,6 @@ func (c *Client) DescribeWorkflowListByProjectIdWithContext(ctx context.Context,
     return
 }
 
-func NewDescribeWorkflowOpsCanvasInfoRequest() (request *DescribeWorkflowOpsCanvasInfoRequest) {
-    request = &DescribeWorkflowOpsCanvasInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeWorkflowOpsCanvasInfo")
-    
-    
-    return
-}
-
-func NewDescribeWorkflowOpsCanvasInfoResponse() (response *DescribeWorkflowOpsCanvasInfoResponse) {
-    response = &DescribeWorkflowOpsCanvasInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeWorkflowOpsCanvasInfo
-// 查询运维画布信息，只需要获取边和节点
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeWorkflowOpsCanvasInfo(request *DescribeWorkflowOpsCanvasInfoRequest) (response *DescribeWorkflowOpsCanvasInfoResponse, err error) {
-    return c.DescribeWorkflowOpsCanvasInfoWithContext(context.Background(), request)
-}
-
-// DescribeWorkflowOpsCanvasInfo
-// 查询运维画布信息，只需要获取边和节点
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeWorkflowOpsCanvasInfoWithContext(ctx context.Context, request *DescribeWorkflowOpsCanvasInfoRequest) (response *DescribeWorkflowOpsCanvasInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeWorkflowOpsCanvasInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeWorkflowOpsCanvasInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeWorkflowOpsCanvasInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeWorkflowTaskCountRequest() (request *DescribeWorkflowTaskCountRequest) {
     request = &DescribeWorkflowTaskCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12458,55 +8956,6 @@ func (c *Client) DescribeWorkflowTaskCountWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeWorkflowTaskCountResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDiagnosePlusRequest() (request *DiagnosePlusRequest) {
-    request = &DiagnosePlusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DiagnosePlus")
-    
-    
-    return
-}
-
-func NewDiagnosePlusResponse() (response *DiagnosePlusResponse) {
-    response = &DiagnosePlusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DiagnosePlus
-// 实例诊断信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DiagnosePlus(request *DiagnosePlusRequest) (response *DiagnosePlusResponse, err error) {
-    return c.DiagnosePlusWithContext(context.Background(), request)
-}
-
-// DiagnosePlus
-// 实例诊断信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DiagnosePlusWithContext(ctx context.Context, request *DiagnosePlusRequest) (response *DiagnosePlusResponse, err error) {
-    if request == nil {
-        request = NewDiagnosePlusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DiagnosePlus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDiagnosePlusResponse()
     err = c.Send(request, response)
     return
 }
@@ -12592,67 +9041,6 @@ func (c *Client) DryRunDIOfflineTaskWithContext(ctx context.Context, request *Dr
     return
 }
 
-func NewEditBaselineRequest() (request *EditBaselineRequest) {
-    request = &EditBaselineRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "EditBaseline")
-    
-    
-    return
-}
-
-func NewEditBaselineResponse() (response *EditBaselineResponse) {
-    response = &EditBaselineResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// EditBaseline
-// 编辑基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) EditBaseline(request *EditBaselineRequest) (response *EditBaselineResponse, err error) {
-    return c.EditBaselineWithContext(context.Background(), request)
-}
-
-// EditBaseline
-// 编辑基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) EditBaselineWithContext(ctx context.Context, request *EditBaselineRequest) (response *EditBaselineResponse, err error) {
-    if request == nil {
-        request = NewEditBaselineRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("EditBaseline require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewEditBaselineResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewFindAllFolderRequest() (request *FindAllFolderRequest) {
     request = &FindAllFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12673,7 +9061,7 @@ func NewFindAllFolderResponse() (response *FindAllFolderResponse) {
 }
 
 // FindAllFolder
-// 查找全部的文件夹
+// 编排空间批量操作页面查找全部的文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12682,7 +9070,7 @@ func (c *Client) FindAllFolder(request *FindAllFolderRequest) (response *FindAll
 }
 
 // FindAllFolder
-// 查找全部的文件夹
+// 编排空间批量操作页面查找全部的文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12698,108 +9086,6 @@ func (c *Client) FindAllFolderWithContext(ctx context.Context, request *FindAllF
     request.SetContext(ctx)
     
     response = NewFindAllFolderResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewForceSucInstancesRequest() (request *ForceSucInstancesRequest) {
-    request = &ForceSucInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "ForceSucInstances")
-    
-    
-    return
-}
-
-func NewForceSucInstancesResponse() (response *ForceSucInstancesResponse) {
-    response = &ForceSucInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ForceSucInstances
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 实例批量置成功
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ForceSucInstances(request *ForceSucInstancesRequest) (response *ForceSucInstancesResponse, err error) {
-    return c.ForceSucInstancesWithContext(context.Background(), request)
-}
-
-// ForceSucInstances
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 实例批量置成功
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ForceSucInstancesWithContext(ctx context.Context, request *ForceSucInstancesRequest) (response *ForceSucInstancesResponse, err error) {
-    if request == nil {
-        request = NewForceSucInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ForceSucInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewForceSucInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewForceSucScheduleInstancesRequest() (request *ForceSucScheduleInstancesRequest) {
-    request = &ForceSucScheduleInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "ForceSucScheduleInstances")
-    
-    
-    return
-}
-
-func NewForceSucScheduleInstancesResponse() (response *ForceSucScheduleInstancesResponse) {
-    response = &ForceSucScheduleInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ForceSucScheduleInstances
-// 实例强制成功
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ForceSucScheduleInstances(request *ForceSucScheduleInstancesRequest) (response *ForceSucScheduleInstancesResponse, err error) {
-    return c.ForceSucScheduleInstancesWithContext(context.Background(), request)
-}
-
-// ForceSucScheduleInstances
-// 实例强制成功
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ForceSucScheduleInstancesWithContext(ctx context.Context, request *ForceSucScheduleInstancesRequest) (response *ForceSucScheduleInstancesResponse, err error) {
-    if request == nil {
-        request = NewForceSucScheduleInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ForceSucScheduleInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewForceSucScheduleInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -12849,112 +9135,6 @@ func (c *Client) FreezeOpsTasksWithContext(ctx context.Context, request *FreezeO
     request.SetContext(ctx)
     
     response = NewFreezeOpsTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewFreezeTasksRequest() (request *FreezeTasksRequest) {
-    request = &FreezeTasksRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "FreezeTasks")
-    
-    
-    return
-}
-
-func NewFreezeTasksResponse() (response *FreezeTasksResponse) {
-    response = &FreezeTasksResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// FreezeTasks
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 批量冻结任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) FreezeTasks(request *FreezeTasksRequest) (response *FreezeTasksResponse, err error) {
-    return c.FreezeTasksWithContext(context.Background(), request)
-}
-
-// FreezeTasks
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 批量冻结任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) FreezeTasksWithContext(ctx context.Context, request *FreezeTasksRequest) (response *FreezeTasksResponse, err error) {
-    if request == nil {
-        request = NewFreezeTasksRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("FreezeTasks require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewFreezeTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewFreezeTasksByMultiWorkflowRequest() (request *FreezeTasksByMultiWorkflowRequest) {
-    request = &FreezeTasksByMultiWorkflowRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "FreezeTasksByMultiWorkflow")
-    
-    
-    return
-}
-
-func NewFreezeTasksByMultiWorkflowResponse() (response *FreezeTasksByMultiWorkflowResponse) {
-    response = &FreezeTasksByMultiWorkflowResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// FreezeTasksByMultiWorkflow
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 基于多个工作流进行批量冻结任务操作
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) FreezeTasksByMultiWorkflow(request *FreezeTasksByMultiWorkflowRequest) (response *FreezeTasksByMultiWorkflowResponse, err error) {
-    return c.FreezeTasksByMultiWorkflowWithContext(context.Background(), request)
-}
-
-// FreezeTasksByMultiWorkflow
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 基于多个工作流进行批量冻结任务操作
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) FreezeTasksByMultiWorkflowWithContext(ctx context.Context, request *FreezeTasksByMultiWorkflowRequest) (response *FreezeTasksByMultiWorkflowResponse, err error) {
-    if request == nil {
-        request = NewFreezeTasksByMultiWorkflowRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("FreezeTasksByMultiWorkflow require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewFreezeTasksByMultiWorkflowResponse()
     err = c.Send(request, response)
     return
 }
@@ -13319,91 +9499,6 @@ func (c *Client) GetOfflineInstanceListWithContext(ctx context.Context, request 
     return
 }
 
-func NewKillInstancesRequest() (request *KillInstancesRequest) {
-    request = &KillInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "KillInstances")
-    
-    
-    return
-}
-
-func NewKillInstancesResponse() (response *KillInstancesResponse) {
-    response = &KillInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// KillInstances
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 实例批量终止操作
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) KillInstances(request *KillInstancesRequest) (response *KillInstancesResponse, err error) {
-    return c.KillInstancesWithContext(context.Background(), request)
-}
-
-// KillInstances
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 实例批量终止操作
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) KillInstancesWithContext(ctx context.Context, request *KillInstancesRequest) (response *KillInstancesResponse, err error) {
-    if request == nil {
-        request = NewKillInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("KillInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewKillInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewKillOpsMakePlanInstancesRequest() (request *KillOpsMakePlanInstancesRequest) {
     request = &KillOpsMakePlanInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13473,7 +9568,7 @@ func NewKillScheduleInstancesResponse() (response *KillScheduleInstancesResponse
 }
 
 // KillScheduleInstances
-// 批量kill实例
+// 批量终止实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13482,7 +9577,7 @@ func (c *Client) KillScheduleInstances(request *KillScheduleInstancesRequest) (r
 }
 
 // KillScheduleInstances
-// 批量kill实例
+// 批量终止实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13583,218 +9678,6 @@ func (c *Client) LockIntegrationTaskWithContext(ctx context.Context, request *Lo
     return
 }
 
-func NewMakeUpOpsTasksRequest() (request *MakeUpOpsTasksRequest) {
-    request = &MakeUpOpsTasksRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "MakeUpOpsTasks")
-    
-    
-    return
-}
-
-func NewMakeUpOpsTasksResponse() (response *MakeUpOpsTasksResponse) {
-    response = &MakeUpOpsTasksResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// MakeUpOpsTasks
-// 任务批量补录，调度状态任务才可以补录；
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpOpsTasks(request *MakeUpOpsTasksRequest) (response *MakeUpOpsTasksResponse, err error) {
-    return c.MakeUpOpsTasksWithContext(context.Background(), request)
-}
-
-// MakeUpOpsTasks
-// 任务批量补录，调度状态任务才可以补录；
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpOpsTasksWithContext(ctx context.Context, request *MakeUpOpsTasksRequest) (response *MakeUpOpsTasksResponse, err error) {
-    if request == nil {
-        request = NewMakeUpOpsTasksRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MakeUpOpsTasks require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMakeUpOpsTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewMakeUpTasksByWorkflowRequest() (request *MakeUpTasksByWorkflowRequest) {
-    request = &MakeUpTasksByWorkflowRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "MakeUpTasksByWorkflow")
-    
-    
-    return
-}
-
-func NewMakeUpTasksByWorkflowResponse() (response *MakeUpTasksByWorkflowResponse) {
-    response = &MakeUpTasksByWorkflowResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// MakeUpTasksByWorkflow
-// 工作流补数据
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpTasksByWorkflow(request *MakeUpTasksByWorkflowRequest) (response *MakeUpTasksByWorkflowResponse, err error) {
-    return c.MakeUpTasksByWorkflowWithContext(context.Background(), request)
-}
-
-// MakeUpTasksByWorkflow
-// 工作流补数据
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpTasksByWorkflowWithContext(ctx context.Context, request *MakeUpTasksByWorkflowRequest) (response *MakeUpTasksByWorkflowResponse, err error) {
-    if request == nil {
-        request = NewMakeUpTasksByWorkflowRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MakeUpTasksByWorkflow require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMakeUpTasksByWorkflowResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewMakeUpTasksNewRequest() (request *MakeUpTasksNewRequest) {
-    request = &MakeUpTasksNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "MakeUpTasksNew")
-    
-    
-    return
-}
-
-func NewMakeUpTasksNewResponse() (response *MakeUpTasksNewResponse) {
-    response = &MakeUpTasksNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// MakeUpTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 任务批量补录，调度状态任务才可以补录；
-//
-// 
-//
-// 
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpTasksNew(request *MakeUpTasksNewRequest) (response *MakeUpTasksNewResponse, err error) {
-    return c.MakeUpTasksNewWithContext(context.Background(), request)
-}
-
-// MakeUpTasksNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 任务批量补录，调度状态任务才可以补录；
-//
-// 
-//
-// 
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpTasksNewWithContext(ctx context.Context, request *MakeUpTasksNewRequest) (response *MakeUpTasksNewResponse, err error) {
-    if request == nil {
-        request = NewMakeUpTasksNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MakeUpTasksNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMakeUpTasksNewResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewMakeUpWorkflowNewRequest() (request *MakeUpWorkflowNewRequest) {
-    request = &MakeUpWorkflowNewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "MakeUpWorkflowNew")
-    
-    
-    return
-}
-
-func NewMakeUpWorkflowNewResponse() (response *MakeUpWorkflowNewResponse) {
-    response = &MakeUpWorkflowNewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// MakeUpWorkflowNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 工作流下所有任务的补录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpWorkflowNew(request *MakeUpWorkflowNewRequest) (response *MakeUpWorkflowNewResponse, err error) {
-    return c.MakeUpWorkflowNewWithContext(context.Background(), request)
-}
-
-// MakeUpWorkflowNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 工作流下所有任务的补录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MakeUpWorkflowNewWithContext(ctx context.Context, request *MakeUpWorkflowNewRequest) (response *MakeUpWorkflowNewResponse, err error) {
-    if request == nil {
-        request = NewMakeUpWorkflowNewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MakeUpWorkflowNew require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMakeUpWorkflowNewResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyApproveStatusRequest() (request *ModifyApproveStatusRequest) {
     request = &ModifyApproveStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13844,104 +9727,6 @@ func (c *Client) ModifyApproveStatusWithContext(ctx context.Context, request *Mo
     return
 }
 
-func NewModifyBaselineAlarmStatusRequest() (request *ModifyBaselineAlarmStatusRequest) {
-    request = &ModifyBaselineAlarmStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "ModifyBaselineAlarmStatus")
-    
-    
-    return
-}
-
-func NewModifyBaselineAlarmStatusResponse() (response *ModifyBaselineAlarmStatusResponse) {
-    response = &ModifyBaselineAlarmStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyBaselineAlarmStatus
-// 编辑基线告警状态
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyBaselineAlarmStatus(request *ModifyBaselineAlarmStatusRequest) (response *ModifyBaselineAlarmStatusResponse, err error) {
-    return c.ModifyBaselineAlarmStatusWithContext(context.Background(), request)
-}
-
-// ModifyBaselineAlarmStatus
-// 编辑基线告警状态
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyBaselineAlarmStatusWithContext(ctx context.Context, request *ModifyBaselineAlarmStatusRequest) (response *ModifyBaselineAlarmStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyBaselineAlarmStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyBaselineAlarmStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyBaselineAlarmStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyBaselineTaskAlarmStatusRequest() (request *ModifyBaselineTaskAlarmStatusRequest) {
-    request = &ModifyBaselineTaskAlarmStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "ModifyBaselineTaskAlarmStatus")
-    
-    
-    return
-}
-
-func NewModifyBaselineTaskAlarmStatusResponse() (response *ModifyBaselineTaskAlarmStatusResponse) {
-    response = &ModifyBaselineTaskAlarmStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyBaselineTaskAlarmStatus
-// 编辑基线实例中任务告警状态
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyBaselineTaskAlarmStatus(request *ModifyBaselineTaskAlarmStatusRequest) (response *ModifyBaselineTaskAlarmStatusResponse, err error) {
-    return c.ModifyBaselineTaskAlarmStatusWithContext(context.Background(), request)
-}
-
-// ModifyBaselineTaskAlarmStatus
-// 编辑基线实例中任务告警状态
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyBaselineTaskAlarmStatusWithContext(ctx context.Context, request *ModifyBaselineTaskAlarmStatusRequest) (response *ModifyBaselineTaskAlarmStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyBaselineTaskAlarmStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyBaselineTaskAlarmStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyBaselineTaskAlarmStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyDataSourceRequest() (request *ModifyDataSourceRequest) {
     request = &ModifyDataSourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13962,8 +9747,6 @@ func NewModifyDataSourceResponse() (response *ModifyDataSourceResponse) {
 }
 
 // ModifyDataSource
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 修改数据源
 //
 // 可能返回的错误码:
@@ -13973,8 +9756,6 @@ func (c *Client) ModifyDataSource(request *ModifyDataSourceRequest) (response *M
 }
 
 // ModifyDataSource
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 修改数据源
 //
 // 可能返回的错误码:
@@ -14150,63 +9931,6 @@ func (c *Client) ModifyExecStrategyWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyExecStrategyResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyFolderRequest() (request *ModifyFolderRequest) {
-    request = &ModifyFolderRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "ModifyFolder")
-    
-    
-    return
-}
-
-func NewModifyFolderResponse() (response *ModifyFolderResponse) {
-    response = &ModifyFolderResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyFolder
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 文件夹更新
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
-//  UNSUPPORTEDOPERATION_NORULEINRULEGROUP = "UnsupportedOperation.NoRuleInRuleGroup"
-func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
-    return c.ModifyFolderWithContext(context.Background(), request)
-}
-
-// ModifyFolder
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 文件夹更新
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
-//  UNSUPPORTEDOPERATION_NORULEINRULEGROUP = "UnsupportedOperation.NoRuleInRuleGroup"
-func (c *Client) ModifyFolderWithContext(ctx context.Context, request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
-    if request == nil {
-        request = NewModifyFolderRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyFolder require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -14664,7 +10388,7 @@ func NewModifyTaskInfoResponse() (response *ModifyTaskInfoResponse) {
 }
 
 // ModifyTaskInfo
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 更新任务
 //
@@ -14675,7 +10399,7 @@ func (c *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (response *Modif
 }
 
 // ModifyTaskInfo
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 更新任务
 //
@@ -14717,7 +10441,7 @@ func NewModifyTaskLinksResponse() (response *ModifyTaskLinksResponse) {
 }
 
 // ModifyTaskLinks
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 添加父任务依赖
 //
@@ -14728,7 +10452,7 @@ func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *Mod
 }
 
 // ModifyTaskLinks
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 添加父任务依赖
 //
@@ -14819,7 +10543,7 @@ func NewModifyTaskScriptResponse() (response *ModifyTaskScriptResponse) {
 }
 
 // ModifyTaskScript
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 修改任务脚本
 //
@@ -14830,7 +10554,7 @@ func (c *Client) ModifyTaskScript(request *ModifyTaskScriptRequest) (response *M
 }
 
 // ModifyTaskScript
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 修改任务脚本
 //
@@ -14872,9 +10596,7 @@ func NewModifyWorkflowInfoResponse() (response *ModifyWorkflowInfoResponse) {
 }
 
 // ModifyWorkflowInfo
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 更新工作流
+// 更新工作流信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14883,9 +10605,7 @@ func (c *Client) ModifyWorkflowInfo(request *ModifyWorkflowInfoRequest) (respons
 }
 
 // ModifyWorkflowInfo
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 更新工作流
+// 更新工作流信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14925,8 +10645,6 @@ func NewModifyWorkflowScheduleResponse() (response *ModifyWorkflowScheduleRespon
 }
 
 // ModifyWorkflowSchedule
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 更新工作流调度
 //
 // 可能返回的错误码:
@@ -14936,8 +10654,6 @@ func (c *Client) ModifyWorkflowSchedule(request *ModifyWorkflowScheduleRequest) 
 }
 
 // ModifyWorkflowSchedule
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 更新工作流调度
 //
 // 可能返回的错误码:
@@ -14978,7 +10694,7 @@ func NewRegisterEventResponse() (response *RegisterEventResponse) {
 }
 
 // RegisterEvent
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 注册事件
 //
@@ -14989,7 +10705,7 @@ func (c *Client) RegisterEvent(request *RegisterEventRequest) (response *Registe
 }
 
 // RegisterEvent
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 注册事件
 //
@@ -15031,7 +10747,7 @@ func NewRegisterEventListenerResponse() (response *RegisterEventListenerResponse
 }
 
 // RegisterEventListener
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 注册事件监听器
 //
@@ -15042,7 +10758,7 @@ func (c *Client) RegisterEventListener(request *RegisterEventListenerRequest) (r
 }
 
 // RegisterEventListener
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 注册事件监听器
 //
@@ -15109,157 +10825,6 @@ func (c *Client) RemoveWorkflowDsWithContext(ctx context.Context, request *Remov
     request.SetContext(ctx)
     
     response = NewRemoveWorkflowDsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRerunInstancesRequest() (request *RerunInstancesRequest) {
-    request = &RerunInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "RerunInstances")
-    
-    
-    return
-}
-
-func NewRerunInstancesResponse() (response *RerunInstancesResponse) {
-    response = &RerunInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RerunInstances
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 实例批量重跑
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RerunInstances(request *RerunInstancesRequest) (response *RerunInstancesResponse, err error) {
-    return c.RerunInstancesWithContext(context.Background(), request)
-}
-
-// RerunInstances
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 实例批量重跑
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RerunInstancesWithContext(ctx context.Context, request *RerunInstancesRequest) (response *RerunInstancesResponse, err error) {
-    if request == nil {
-        request = NewRerunInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RerunInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRerunInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRerunOpsMakePlanInstancesRequest() (request *RerunOpsMakePlanInstancesRequest) {
-    request = &RerunOpsMakePlanInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "RerunOpsMakePlanInstances")
-    
-    
-    return
-}
-
-func NewRerunOpsMakePlanInstancesResponse() (response *RerunOpsMakePlanInstancesResponse) {
-    response = &RerunOpsMakePlanInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RerunOpsMakePlanInstances
-// 按补录计划批量重跑/选择补录计划→补录任务→补录实例，点击重跑
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RerunOpsMakePlanInstances(request *RerunOpsMakePlanInstancesRequest) (response *RerunOpsMakePlanInstancesResponse, err error) {
-    return c.RerunOpsMakePlanInstancesWithContext(context.Background(), request)
-}
-
-// RerunOpsMakePlanInstances
-// 按补录计划批量重跑/选择补录计划→补录任务→补录实例，点击重跑
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RerunOpsMakePlanInstancesWithContext(ctx context.Context, request *RerunOpsMakePlanInstancesRequest) (response *RerunOpsMakePlanInstancesResponse, err error) {
-    if request == nil {
-        request = NewRerunOpsMakePlanInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RerunOpsMakePlanInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRerunOpsMakePlanInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRerunScheduleInstancesRequest() (request *RerunScheduleInstancesRequest) {
-    request = &RerunScheduleInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "RerunScheduleInstances")
-    
-    
-    return
-}
-
-func NewRerunScheduleInstancesResponse() (response *RerunScheduleInstancesResponse) {
-    response = &RerunScheduleInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RerunScheduleInstances
-// 实例批量重跑
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RerunScheduleInstances(request *RerunScheduleInstancesRequest) (response *RerunScheduleInstancesResponse, err error) {
-    return c.RerunScheduleInstancesWithContext(context.Background(), request)
-}
-
-// RerunScheduleInstances
-// 实例批量重跑
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RerunScheduleInstancesWithContext(ctx context.Context, request *RerunScheduleInstancesRequest) (response *RerunScheduleInstancesResponse, err error) {
-    if request == nil {
-        request = NewRerunScheduleInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RerunScheduleInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRerunScheduleInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -15416,7 +10981,7 @@ func NewRunForceSucScheduleInstancesResponse() (response *RunForceSucScheduleIns
 }
 
 // RunForceSucScheduleInstances
-// 实例强制成功
+// 实例批量置成功
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -15425,7 +10990,7 @@ func (c *Client) RunForceSucScheduleInstances(request *RunForceSucScheduleInstan
 }
 
 // RunForceSucScheduleInstances
-// 实例强制成功
+// 实例批量置成功
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -15490,59 +11055,6 @@ func (c *Client) RunRerunScheduleInstancesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewRunRerunScheduleInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRunTaskRequest() (request *RunTaskRequest) {
-    request = &RunTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "RunTask")
-    
-    
-    return
-}
-
-func NewRunTaskResponse() (response *RunTaskResponse) {
-    response = &RunTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RunTask
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 运行任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, err error) {
-    return c.RunTaskWithContext(context.Background(), request)
-}
-
-// RunTask
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 运行任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RunTaskWithContext(ctx context.Context, request *RunTaskRequest) (response *RunTaskResponse, err error) {
-    if request == nil {
-        request = NewRunTaskRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RunTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRunTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -15665,7 +11177,7 @@ func NewSetTaskAlarmNewResponse() (response *SetTaskAlarmNewResponse) {
 }
 
 // SetTaskAlarmNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 设置任务告警，新建/更新告警信息（最新）
 //
@@ -15676,7 +11188,7 @@ func (c *Client) SetTaskAlarmNew(request *SetTaskAlarmNewRequest) (response *Set
 }
 
 // SetTaskAlarmNew
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 设置任务告警，新建/更新告警信息（最新）
 //
@@ -15779,67 +11291,6 @@ func (c *Client) StartIntegrationTaskWithContext(ctx context.Context, request *S
     return
 }
 
-func NewStopBaselineRequest() (request *StopBaselineRequest) {
-    request = &StopBaselineRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "StopBaseline")
-    
-    
-    return
-}
-
-func NewStopBaselineResponse() (response *StopBaselineResponse) {
-    response = &StopBaselineResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// StopBaseline
-// 提交基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) StopBaseline(request *StopBaselineRequest) (response *StopBaselineResponse, err error) {
-    return c.StopBaselineWithContext(context.Background(), request)
-}
-
-// StopBaseline
-// 提交基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) StopBaselineWithContext(ctx context.Context, request *StopBaselineRequest) (response *StopBaselineResponse, err error) {
-    if request == nil {
-        request = NewStopBaselineRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("StopBaseline require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewStopBaselineResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewStopIntegrationTaskRequest() (request *StopIntegrationTaskRequest) {
     request = &StopIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15921,67 +11372,6 @@ func (c *Client) StopIntegrationTaskWithContext(ctx context.Context, request *St
     return
 }
 
-func NewSubmitBaselineRequest() (request *SubmitBaselineRequest) {
-    request = &SubmitBaselineRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "SubmitBaseline")
-    
-    
-    return
-}
-
-func NewSubmitBaselineResponse() (response *SubmitBaselineResponse) {
-    response = &SubmitBaselineResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// SubmitBaseline
-// 提交基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) SubmitBaseline(request *SubmitBaselineRequest) (response *SubmitBaselineResponse, err error) {
-    return c.SubmitBaselineWithContext(context.Background(), request)
-}
-
-// SubmitBaseline
-// 提交基线
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) SubmitBaselineWithContext(ctx context.Context, request *SubmitBaselineRequest) (response *SubmitBaselineResponse, err error) {
-    if request == nil {
-        request = NewSubmitBaselineRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("SubmitBaseline require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewSubmitBaselineResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewSubmitCustomFunctionRequest() (request *SubmitCustomFunctionRequest) {
     request = &SubmitCustomFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -16010,8 +11400,18 @@ func NewSubmitCustomFunctionResponse() (response *SubmitCustomFunctionResponse) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SubmitCustomFunction(request *SubmitCustomFunctionRequest) (response *SubmitCustomFunctionResponse, err error) {
     return c.SubmitCustomFunctionWithContext(context.Background(), request)
 }
@@ -16025,8 +11425,18 @@ func (c *Client) SubmitCustomFunction(request *SubmitCustomFunctionRequest) (res
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SubmitCustomFunctionWithContext(ctx context.Context, request *SubmitCustomFunctionRequest) (response *SubmitCustomFunctionResponse, err error) {
     if request == nil {
         request = NewSubmitCustomFunctionRequest()
@@ -16158,7 +11568,7 @@ func NewSubmitTaskResponse() (response *SubmitTaskResponse) {
 }
 
 // SubmitTask
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 提交任务
 //
@@ -16192,7 +11602,7 @@ func (c *Client) SubmitTask(request *SubmitTaskRequest) (response *SubmitTaskRes
 }
 
 // SubmitTask
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 提交任务
 //
@@ -16306,8 +11716,6 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 }
 
 // SubmitWorkflow
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 提交工作流
 //
 // 可能返回的错误码:
@@ -16317,8 +11725,6 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 }
 
 // SubmitWorkflow
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
 // 提交工作流
 //
 // 可能返回的错误码:
@@ -16544,7 +11950,7 @@ func NewTriggerEventResponse() (response *TriggerEventResponse) {
 }
 
 // TriggerEvent
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 触发事件
 //
@@ -16555,7 +11961,7 @@ func (c *Client) TriggerEvent(request *TriggerEventRequest) (response *TriggerEv
 }
 
 // TriggerEvent
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+// <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
 // 触发事件
 //

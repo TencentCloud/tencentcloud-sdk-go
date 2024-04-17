@@ -8768,7 +8768,7 @@ type DescribeCLSPushTargetsRequestParams struct {
 	// 点播域名。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *int64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
@@ -8778,7 +8778,7 @@ type DescribeCLSPushTargetsRequest struct {
 	// 点播域名。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *int64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
@@ -9701,14 +9701,14 @@ func (r *DescribeEnhanceMediaTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventConfigRequestParams struct {
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
 type DescribeEventConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 

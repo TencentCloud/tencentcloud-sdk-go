@@ -6192,6 +6192,59 @@ func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeBillUsageRequest() (request *DescribeBillUsageRequest) {
+    request = &DescribeBillUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeBillUsage")
+    
+    
+    return
+}
+
+func NewDescribeBillUsageResponse() (response *DescribeBillUsageResponse) {
+    response = &DescribeBillUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillUsage
+// 通过此接口（DescribeBillUsage）查询该企业的套餐套餐使用情况。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+func (c *Client) DescribeBillUsage(request *DescribeBillUsageRequest) (response *DescribeBillUsageResponse, err error) {
+    return c.DescribeBillUsageWithContext(context.Background(), request)
+}
+
+// DescribeBillUsage
+// 通过此接口（DescribeBillUsage）查询该企业的套餐套餐使用情况。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTATYPE = "InvalidParameterValue.InvalidQuotaType"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+func (c *Client) DescribeBillUsageWithContext(ctx context.Context, request *DescribeBillUsageRequest) (response *DescribeBillUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillUsageDetailRequest() (request *DescribeBillUsageDetailRequest) {
     request = &DescribeBillUsageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
