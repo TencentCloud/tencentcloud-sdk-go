@@ -1823,6 +1823,81 @@ func (c *Client) DescribeLogstashPipelinesWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeServerlessInstancesRequest() (request *DescribeServerlessInstancesRequest) {
+    request = &DescribeServerlessInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeServerlessInstances")
+    
+    
+    return
+}
+
+func NewDescribeServerlessInstancesResponse() (response *DescribeServerlessInstancesResponse) {
+    response = &DescribeServerlessInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServerlessInstances
+// Serverless获取索引列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeServerlessInstances(request *DescribeServerlessInstancesRequest) (response *DescribeServerlessInstancesResponse, err error) {
+    return c.DescribeServerlessInstancesWithContext(context.Background(), request)
+}
+
+// DescribeServerlessInstances
+// Serverless获取索引列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeServerlessInstancesWithContext(ctx context.Context, request *DescribeServerlessInstancesRequest) (response *DescribeServerlessInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerlessInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerlessInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServerlessSpaceUserRequest() (request *DescribeServerlessSpaceUserRequest) {
     request = &DescribeServerlessSpaceUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

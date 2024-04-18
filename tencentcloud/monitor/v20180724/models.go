@@ -9846,10 +9846,14 @@ type DescribePrometheusTargetsTMPRequestParams struct {
 	// 集群类型(可不填)
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 过滤条件，当前支持
-	// Name=state
-	// Value=up, down, unknown
+	// 过滤条件，支持Name=ServiceMonitor/PodMonitor/Probe/RawJob/Job, Value为采集配置名称；Name=Health, Value=up, down, unknown；Name=EndPoint, Value为EndPoint地址
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// targets偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// targets返回数量，默认为20，最大值200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribePrometheusTargetsTMPRequest struct {
@@ -9865,10 +9869,14 @@ type DescribePrometheusTargetsTMPRequest struct {
 	// 集群类型(可不填)
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 过滤条件，当前支持
-	// Name=state
-	// Value=up, down, unknown
+	// 过滤条件，支持Name=ServiceMonitor/PodMonitor/Probe/RawJob/Job, Value为采集配置名称；Name=Health, Value=up, down, unknown；Name=EndPoint, Value为EndPoint地址
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// targets偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// targets返回数量，默认为20，最大值200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribePrometheusTargetsTMPRequest) ToJsonString() string {
@@ -9887,6 +9895,8 @@ func (r *DescribePrometheusTargetsTMPRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "ClusterType")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusTargetsTMPRequest has unknown keys!", "")
 	}

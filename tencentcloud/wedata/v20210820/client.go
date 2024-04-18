@@ -4601,55 +4601,6 @@ func (c *Client) DescribeInstanceByCycleWithContext(ctx context.Context, request
     return
 }
 
-func NewDescribeInstanceByCycleReportRequest() (request *DescribeInstanceByCycleReportRequest) {
-    request = &DescribeInstanceByCycleReportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstanceByCycleReport")
-    
-    
-    return
-}
-
-func NewDescribeInstanceByCycleReportResponse() (response *DescribeInstanceByCycleReportResponse) {
-    response = &DescribeInstanceByCycleReportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeInstanceByCycleReport
-// 实例状态周期增长趋势
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstanceByCycleReport(request *DescribeInstanceByCycleReportRequest) (response *DescribeInstanceByCycleReportResponse, err error) {
-    return c.DescribeInstanceByCycleReportWithContext(context.Background(), request)
-}
-
-// DescribeInstanceByCycleReport
-// 实例状态周期增长趋势
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeInstanceByCycleReportWithContext(ctx context.Context, request *DescribeInstanceByCycleReportRequest) (response *DescribeInstanceByCycleReportResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceByCycleReportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeInstanceByCycleReport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeInstanceByCycleReportResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeInstanceLastLogRequest() (request *DescribeInstanceLastLogRequest) {
     request = &DescribeInstanceLastLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8305,61 +8256,6 @@ func (c *Client) DescribeTaskByStatusReportWithContext(ctx context.Context, requ
     return
 }
 
-func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
-    request = &DescribeTaskDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskDetail")
-    
-    
-    return
-}
-
-func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
-    response = &DescribeTaskDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskDetail
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 查询任务具体详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
-func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    return c.DescribeTaskDetailWithContext(context.Background(), request)
-}
-
-// DescribeTaskDetail
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 查询任务具体详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
-func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTaskLockStatusRequest() (request *DescribeTaskLockStatusRequest) {
     request = &DescribeTaskLockStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8505,59 +8401,6 @@ func (c *Client) DescribeTaskScriptWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeTaskScriptResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTasksByPageRequest() (request *DescribeTasksByPageRequest) {
-    request = &DescribeTasksByPageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTasksByPage")
-    
-    
-    return
-}
-
-func NewDescribeTasksByPageResponse() (response *DescribeTasksByPageResponse) {
-    response = &DescribeTasksByPageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTasksByPage
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 根据工作流分页查询任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTasksByPage(request *DescribeTasksByPageRequest) (response *DescribeTasksByPageResponse, err error) {
-    return c.DescribeTasksByPageWithContext(context.Background(), request)
-}
-
-// DescribeTasksByPage
-// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-//
-// 根据工作流分页查询任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTasksByPageWithContext(ctx context.Context, request *DescribeTasksByPageRequest) (response *DescribeTasksByPageResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksByPageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTasksByPage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTasksByPageResponse()
     err = c.Send(request, response)
     return
 }

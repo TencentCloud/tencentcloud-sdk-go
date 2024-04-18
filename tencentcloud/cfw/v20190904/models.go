@@ -6794,6 +6794,15 @@ type ExpandCfwVerticalRequestParams struct {
 
 	// 防火墙实例id
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
+
+	// 弹性开关 1打开 0 关闭
+	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
+
+	// 弹性带宽上限，单位Mbps
+	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
+
+	// 按量计费标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ExpandCfwVerticalRequest struct {
@@ -6807,6 +6816,15 @@ type ExpandCfwVerticalRequest struct {
 
 	// 防火墙实例id
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
+
+	// 弹性开关 1打开 0 关闭
+	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
+
+	// 弹性带宽上限，单位Mbps
+	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
+
+	// 按量计费标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ExpandCfwVerticalRequest) ToJsonString() string {
@@ -6824,6 +6842,9 @@ func (r *ExpandCfwVerticalRequest) FromJsonString(s string) error {
 	delete(f, "FwType")
 	delete(f, "Width")
 	delete(f, "CfwInstance")
+	delete(f, "ElasticSwitch")
+	delete(f, "ElasticBandwidth")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpandCfwVerticalRequest has unknown keys!", "")
 	}
@@ -9729,6 +9750,34 @@ type NatInstanceInfo struct {
 	// 实例备所在可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
+
+	// 引擎预约升级时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveTime *string `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
+
+	// 引擎预约升级版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveVersion *string `json:"ReserveVersion,omitnil,omitempty" name:"ReserveVersion"`
+
+	// 引擎预约升级版本状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveVersionState *string `json:"ReserveVersionState,omitnil,omitempty" name:"ReserveVersionState"`
+
+	// 弹性开关
+	// 1 打开
+	// 0 关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
+
+	// 弹性带宽，单位Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
+
+	// 是否首次开通按量付费
+	// 1 是
+	// 0 不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
 }
 
 type NatSwitchListData struct {
@@ -10920,6 +10969,14 @@ type TLogInfo struct {
 	BruteForceNum *int64 `json:"BruteForceNum,omitnil,omitempty" name:"BruteForceNum"`
 }
 
+type TagInfo struct {
+	// 目标key
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 目标值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
 type TemplateListInfo struct {
 	// 模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11225,6 +11282,32 @@ type VpcFwInstanceInfo struct {
 	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
+
+	// 引擎预约升级时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveTime *string `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
+
+	// 预约引擎升级版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveVersion *string `json:"ReserveVersion,omitnil,omitempty" name:"ReserveVersion"`
+
+	// 引擎预约升级版本状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveVersionState *string `json:"ReserveVersionState,omitnil,omitempty" name:"ReserveVersionState"`
+
+	// 弹性开关 1打开 0关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
+
+	// 弹性带宽，单位Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
+
+	// 是否首次开通按量付费
+	// 1 是
+	// 0 不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
 }
 
 type VpcFwInstanceShow struct {

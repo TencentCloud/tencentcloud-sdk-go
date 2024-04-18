@@ -1602,7 +1602,7 @@ func (r *DeleteOrganizationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePolicyRequestParams struct {
-	// 需要删除的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	// 需要删除的策略ID。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
@@ -1612,7 +1612,7 @@ type DeletePolicyRequestParams struct {
 type DeletePolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要删除的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	// 需要删除的策略ID。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
@@ -4873,7 +4873,7 @@ func (r *UpdateOrganizationNodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdatePolicyRequestParams struct {
-	// 需要编辑的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	// 需要编辑的策略ID。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略描述。
@@ -4892,7 +4892,7 @@ type UpdatePolicyRequestParams struct {
 type UpdatePolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要编辑的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+	// 需要编辑的策略ID。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略描述。

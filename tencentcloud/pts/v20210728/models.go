@@ -2855,12 +2855,15 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegionsRequestParams struct {
-
+	// 通过该参数指定不同压测网络环境，在不同网络环境下，PTS可用的地域不一样
+	LoadType *uint64 `json:"LoadType,omitnil,omitempty" name:"LoadType"`
 }
 
 type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 通过该参数指定不同压测网络环境，在不同网络环境下，PTS可用的地域不一样
+	LoadType *uint64 `json:"LoadType,omitnil,omitempty" name:"LoadType"`
 }
 
 func (r *DescribeRegionsRequest) ToJsonString() string {
@@ -2875,7 +2878,7 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "LoadType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionsRequest has unknown keys!", "")
 	}
@@ -4229,7 +4232,7 @@ type Load struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcLoadDistribution *VpcLoadDistribution `json:"VpcLoadDistribution,omitnil,omitempty" name:"VpcLoadDistribution"`
 
-	// 压力分布
+	// 多地域压力分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GeoRegionsLoadDistribution []*GeoRegionsLoadItem `json:"GeoRegionsLoadDistribution,omitnil,omitempty" name:"GeoRegionsLoadDistribution"`
 }

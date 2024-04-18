@@ -152,6 +152,9 @@ const (
 	// 用户未实名。
 	INVALIDPARAMETER_ACTIVITY = "InvalidParameter.Activity"
 
+	// 该域名已在您的域名列表中，请删除后再添加到别名列表
+	INVALIDPARAMETER_ALIASISMYDOMAIN = "InvalidParameter.AliasIsMyDomain"
+
 	// 创建批量域名任务失败，原因：内部错误。
 	INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = "InvalidParameter.BatchDomainCreateActionError"
 

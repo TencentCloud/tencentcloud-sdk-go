@@ -2683,6 +2683,131 @@ func (r *DescribeLogstashPipelinesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServerlessInstancesRequestParams struct {
+	// 索引集群ID
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 索引名
+	IndexNames []*string `json:"IndexNames,omitnil,omitempty" name:"IndexNames"`
+
+	// 分页起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 一页展示数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 过滤索引状态
+	IndexStatusList []*string `json:"IndexStatusList,omitnil,omitempty" name:"IndexStatusList"`
+
+	// 排序顺序，支持asc、desc，默认为desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 索引空间ID列表
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 数据链路数据源类型
+	DiSourceTypes []*string `json:"DiSourceTypes,omitnil,omitempty" name:"DiSourceTypes"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type DescribeServerlessInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 索引集群ID
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 索引名
+	IndexNames []*string `json:"IndexNames,omitnil,omitempty" name:"IndexNames"`
+
+	// 分页起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 一页展示数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 过滤索引状态
+	IndexStatusList []*string `json:"IndexStatusList,omitnil,omitempty" name:"IndexStatusList"`
+
+	// 排序顺序，支持asc、desc，默认为desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 索引空间ID列表
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 数据链路数据源类型
+	DiSourceTypes []*string `json:"DiSourceTypes,omitnil,omitempty" name:"DiSourceTypes"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+func (r *DescribeServerlessInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "IndexNames")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "IndexStatusList")
+	delete(f, "Order")
+	delete(f, "SpaceIds")
+	delete(f, "DiSourceTypes")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessInstancesResponseParams struct {
+	// 索引元数据字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexMetaFields []*ServerlessIndexMetaField `json:"IndexMetaFields,omitnil,omitempty" name:"IndexMetaFields"`
+
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServerlessInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerlessInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerlessInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeServerlessSpaceUserRequestParams struct {
 	// 空间的ID
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
@@ -5055,6 +5180,121 @@ type ServerlessDi struct {
 
 	// tke数据源
 	DiSourceTke *DiSourceTke `json:"DiSourceTke,omitnil,omitempty" name:"DiSourceTke"`
+}
+
+type ServerlessIndexMetaField struct {
+	// 索引所属集群APP ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 索引名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 索引文档数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexDocs *int64 `json:"IndexDocs,omitnil,omitempty" name:"IndexDocs"`
+
+	// 索引存储大小，单位Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStorage *int64 `json:"IndexStorage,omitnil,omitempty" name:"IndexStorage"`
+
+	// 索引创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexCreateTime *string `json:"IndexCreateTime,omitnil,omitempty" name:"IndexCreateTime"`
+
+	// 索引实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 索引自治字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexOptionsField *ServerlessIndexOptionsField `json:"IndexOptionsField,omitnil,omitempty" name:"IndexOptionsField"`
+
+	// 索引配置字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexSettingsField *ServerlessIndexSettingsField `json:"IndexSettingsField,omitnil,omitempty" name:"IndexSettingsField"`
+
+	// 索引所属连接相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexNetworkField *ServerlessIndexNetworkField `json:"IndexNetworkField,omitnil,omitempty" name:"IndexNetworkField"`
+
+	// Kibana公网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaUrl *string `json:"KibanaUrl,omitnil,omitempty" name:"KibanaUrl"`
+
+	// Kibana内网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPrivateUrl *string `json:"KibanaPrivateUrl,omitnil,omitempty" name:"KibanaPrivateUrl"`
+
+	// 索引内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexAccessUrl *string `json:"IndexAccessUrl,omitnil,omitempty" name:"IndexAccessUrl"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 索引空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 索引空间名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *int64 `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type ServerlessIndexNetworkField struct {
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// vpc唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcUid *string `json:"VpcUid,omitnil,omitempty" name:"VpcUid"`
+
+	// 子网唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetUid *string `json:"SubnetUid,omitnil,omitempty" name:"SubnetUid"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
+type ServerlessIndexOptionsField struct {
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireMaxAge *string `json:"ExpireMaxAge,omitnil,omitempty" name:"ExpireMaxAge"`
+
+	// 时间分区字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampField *string `json:"TimestampField,omitnil,omitempty" name:"TimestampField"`
+}
+
+type ServerlessIndexSettingsField struct {
+	// 索引主分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumberOfShards *string `json:"NumberOfShards,omitnil,omitempty" name:"NumberOfShards"`
+
+	// 索引刷新频率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefreshInterval *string `json:"RefreshInterval,omitnil,omitempty" name:"RefreshInterval"`
 }
 
 type ServerlessSpace struct {

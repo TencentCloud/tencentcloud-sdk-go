@@ -2426,6 +2426,9 @@ type CreateLiveStreamMonitorRequestParams struct {
 
 	// 是否开启格式诊断。
 	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitnil,omitempty" name:"AiFormatDiagnose"`
+
+	// 是否开启内容质检。
+	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
 }
 
 type CreateLiveStreamMonitorRequest struct {
@@ -2471,6 +2474,9 @@ type CreateLiveStreamMonitorRequest struct {
 
 	// 是否开启格式诊断。
 	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitnil,omitempty" name:"AiFormatDiagnose"`
+
+	// 是否开启内容质检。
+	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
 }
 
 func (r *CreateLiveStreamMonitorRequest) ToJsonString() string {
@@ -2497,6 +2503,7 @@ func (r *CreateLiveStreamMonitorRequest) FromJsonString(s string) error {
 	delete(f, "CheckStreamLowFrameRate")
 	delete(f, "AllowMonitorReport")
 	delete(f, "AiFormatDiagnose")
+	delete(f, "AiQualityControl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveStreamMonitorRequest has unknown keys!", "")
 	}
@@ -12109,6 +12116,10 @@ type LiveStreamMonitorInfo struct {
 	// 是否开启格式诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitnil,omitempty" name:"AiFormatDiagnose"`
+
+	// 是否开启内容质检。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
 }
 
 type LiveStreamMonitorInputInfo struct {
@@ -13477,6 +13488,9 @@ type ModifyLiveStreamMonitorRequestParams struct {
 
 	// 是否开启格式诊断。
 	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitnil,omitempty" name:"AiFormatDiagnose"`
+
+	// 是否开启内容质检。
+	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
 }
 
 type ModifyLiveStreamMonitorRequest struct {
@@ -13522,6 +13536,9 @@ type ModifyLiveStreamMonitorRequest struct {
 
 	// 是否开启格式诊断。
 	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitnil,omitempty" name:"AiFormatDiagnose"`
+
+	// 是否开启内容质检。
+	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
 }
 
 func (r *ModifyLiveStreamMonitorRequest) ToJsonString() string {
@@ -13549,6 +13566,7 @@ func (r *ModifyLiveStreamMonitorRequest) FromJsonString(s string) error {
 	delete(f, "CheckStreamLowFrameRate")
 	delete(f, "AllowMonitorReport")
 	delete(f, "AiFormatDiagnose")
+	delete(f, "AiQualityControl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveStreamMonitorRequest has unknown keys!", "")
 	}

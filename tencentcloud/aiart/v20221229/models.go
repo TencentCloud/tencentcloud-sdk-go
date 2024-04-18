@@ -317,10 +317,9 @@ type SubmitTextToImageProJobRequestParams struct {
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 文生图引擎，默认使用engine1。 
-	// 取值：  
-	// engine1  
-	// engine2
+	// 文生图模型，默认使用engine1。
+	// engine1：文生图（高级版）-混元
+	// engine2：文生图（高级版）
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
 	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
@@ -354,10 +353,9 @@ type SubmitTextToImageProJobRequest struct {
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 文生图引擎，默认使用engine1。 
-	// 取值：  
-	// engine1  
-	// engine2
+	// 文生图模型，默认使用engine1。
+	// engine1：文生图（高级版）-混元
+	// engine2：文生图（高级版）
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
 	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。

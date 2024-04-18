@@ -1092,7 +1092,7 @@ func NewCreatePolicyResponse() (response *CreatePolicyResponse) {
 }
 
 // CreatePolicy
-// 创建一个特殊类型的策略，你可以关联到企业组织Root节点、企业单元或者企业的成员账号。
+// 创建一个特殊类型的策略，您可以关联到企业组织Root节点、企业部门节点或者企业的成员账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ORGANIZATIONPOLICYISNOTENABLED = "FailedOperation.OrganizationPolicyIsNotEnabled"
@@ -1137,7 +1137,7 @@ func (c *Client) CreatePolicy(request *CreatePolicyRequest) (response *CreatePol
 }
 
 // CreatePolicy
-// 创建一个特殊类型的策略，你可以关联到企业组织Root节点、企业单元或者企业的成员账号。
+// 创建一个特殊类型的策略，您可以关联到企业组织Root节点、企业部门节点或者企业的成员账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ORGANIZATIONPOLICYISNOTENABLED = "FailedOperation.OrganizationPolicyIsNotEnabled"
