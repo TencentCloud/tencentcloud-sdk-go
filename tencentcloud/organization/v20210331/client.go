@@ -1908,6 +1908,67 @@ func (c *Client) DeleteShareUnitResourcesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeEffectivePolicyRequest() (request *DescribeEffectivePolicyRequest) {
+    request = &DescribeEffectivePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeEffectivePolicy")
+    
+    
+    return
+}
+
+func NewDescribeEffectivePolicyResponse() (response *DescribeEffectivePolicyResponse) {
+    response = &DescribeEffectivePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEffectivePolicy
+// 查询目标关联的有效策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INTERFACENOTEXIST = "InvalidParameter.InterfaceNotExist"
+//  INVALIDPARAMETER_ORGANIZATIONMEMBERNOTMANAGER = "InvalidParameter.OrganizationMemberNotManager"
+//  INVALIDPARAMETER_ORGANIZATIONNOTEXIST = "InvalidParameter.OrganizationNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_EFFECTIVEPOLICYNOTFOUND = "ResourceNotFound.EffectivePolicyNotFound"
+func (c *Client) DescribeEffectivePolicy(request *DescribeEffectivePolicyRequest) (response *DescribeEffectivePolicyResponse, err error) {
+    return c.DescribeEffectivePolicyWithContext(context.Background(), request)
+}
+
+// DescribeEffectivePolicy
+// 查询目标关联的有效策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INTERFACENOTEXIST = "InvalidParameter.InterfaceNotExist"
+//  INVALIDPARAMETER_ORGANIZATIONMEMBERNOTMANAGER = "InvalidParameter.OrganizationMemberNotManager"
+//  INVALIDPARAMETER_ORGANIZATIONNOTEXIST = "InvalidParameter.OrganizationNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_EFFECTIVEPOLICYNOTFOUND = "ResourceNotFound.EffectivePolicyNotFound"
+func (c *Client) DescribeEffectivePolicyWithContext(ctx context.Context, request *DescribeEffectivePolicyRequest) (response *DescribeEffectivePolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeEffectivePolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEffectivePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEffectivePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationRequest() (request *DescribeOrganizationRequest) {
     request = &DescribeOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3118,6 +3179,59 @@ func (c *Client) EnablePolicyTypeWithContext(ctx context.Context, request *Enabl
     request.SetContext(ctx)
     
     response = NewEnablePolicyTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListNonCompliantResourceRequest() (request *ListNonCompliantResourceRequest) {
+    request = &ListNonCompliantResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListNonCompliantResource")
+    
+    
+    return
+}
+
+func NewListNonCompliantResourceResponse() (response *ListNonCompliantResourceResponse) {
+    response = &ListNonCompliantResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListNonCompliantResource
+// 获取成员标签检测不合规资源列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ORGANIZATIONMEMBERNOTMANAGER = "InvalidParameter.OrganizationMemberNotManager"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListNonCompliantResource(request *ListNonCompliantResourceRequest) (response *ListNonCompliantResourceResponse, err error) {
+    return c.ListNonCompliantResourceWithContext(context.Background(), request)
+}
+
+// ListNonCompliantResource
+// 获取成员标签检测不合规资源列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ORGANIZATIONMEMBERNOTMANAGER = "InvalidParameter.OrganizationMemberNotManager"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListNonCompliantResourceWithContext(ctx context.Context, request *ListNonCompliantResourceRequest) (response *ListNonCompliantResourceResponse, err error) {
+    if request == nil {
+        request = NewListNonCompliantResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListNonCompliantResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListNonCompliantResourceResponse()
     err = c.Send(request, response)
     return
 }

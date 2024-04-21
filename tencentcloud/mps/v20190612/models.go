@@ -274,6 +274,12 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// Drm信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrmInfo *DrmInfo `json:"DrmInfo,omitnil,omitempty" name:"DrmInfo"`
+
+	// 自适应转码模板类型：
+	// Common：音视频类型
+	// PureAudio：纯音频类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefinitionType *string `json:"DefinitionType,omitnil,omitempty" name:"DefinitionType"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -314,14 +320,18 @@ type AdaptiveDynamicStreamingTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否为纯音频，0表示视频，1表示纯音频
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 type AdaptiveStreamTemplate struct {
-	// 视频参数信息。
-	Video *VideoTemplateInfo `json:"Video,omitnil,omitempty" name:"Video"`
-
 	// 音频参数信息。
 	Audio *AudioTemplateInfo `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 视频参数信息。
+	Video *VideoTemplateInfo `json:"Video,omitnil,omitempty" name:"Video"`
 
 	// 是否移除音频流，取值范围：
 	// <li>0：否，</li>
@@ -3050,6 +3060,18 @@ type CreateAdaptiveDynamicStreamingTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 是否为纯音频，0表示视频模版，1表示纯音频模版
+	// 当值为1：
+	// 1. StreamInfos.N.RemoveVideo=1
+	// 2. StreamInfos.N.RemoveAudio=0
+	// 3. StreamInfos.N.Video.Codec=copy
+	// 
+	// 当值为0：
+	// 
+	// 1. StreamInfos.N.Video.Codec不能为copy
+	// 2. StreamInfos.N.Video.Fps不能为null
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 type CreateAdaptiveDynamicStreamingTemplateRequest struct {
@@ -3081,6 +3103,18 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 是否为纯音频，0表示视频模版，1表示纯音频模版
+	// 当值为1：
+	// 1. StreamInfos.N.RemoveVideo=1
+	// 2. StreamInfos.N.RemoveAudio=0
+	// 3. StreamInfos.N.Video.Codec=copy
+	// 
+	// 当值为0：
+	// 
+	// 1. StreamInfos.N.Video.Codec不能为copy
+	// 2. StreamInfos.N.Video.Fps不能为null
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -3101,6 +3135,7 @@ func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "DisableHigherVideoBitrate")
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "Comment")
+	delete(f, "PureAudio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -6072,6 +6107,9 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequestParams struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否为纯音频，0表示视频，1表示纯音频
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
@@ -6090,6 +6128,9 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否为纯音频，0表示视频，1表示纯音频
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) ToJsonString() string {
@@ -6108,6 +6149,7 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) FromJsonString(s stri
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "PureAudio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAdaptiveDynamicStreamingTemplatesRequest has unknown keys!", "")
 	}
@@ -11380,6 +11422,18 @@ type ModifyAdaptiveDynamicStreamingTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 是否为纯音频，0表示视频模版，1表示纯音频模版
+	// 当值为1：
+	// 1. StreamInfos.N.RemoveVideo=1
+	// 2. StreamInfos.N.RemoveAudio=0
+	// 3. StreamInfos.N.Video.Codec=copy
+	// 
+	// 当值为0：
+	// 
+	// 1. StreamInfos.N.Video.Codec不能为copy
+	// 2. StreamInfos.N.Video.Fps不能为null
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
@@ -11412,6 +11466,18 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 是否为纯音频，0表示视频模版，1表示纯音频模版
+	// 当值为1：
+	// 1. StreamInfos.N.RemoveVideo=1
+	// 2. StreamInfos.N.RemoveAudio=0
+	// 3. StreamInfos.N.Video.Codec=copy
+	// 
+	// 当值为0：
+	// 
+	// 1. StreamInfos.N.Video.Codec不能为copy
+	// 2. StreamInfos.N.Video.Fps不能为null
+	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 }
 
 func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -11433,6 +11499,7 @@ func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "StreamInfos")
 	delete(f, "Comment")
+	delete(f, "PureAudio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -15281,7 +15348,7 @@ type TextWatermarkTemplateInput struct {
 	// <li>arial.ttf：仅支持英文。</li>
 	FontType *string `json:"FontType,omitnil,omitempty" name:"FontType"`
 
-	// 字体大小，格式：Npx，N 为数值。
+	// 字体大小，格式：Npx，N 为数值。N的取值范围：[0,1] 和 [8, 4096]
 	FontSize *string `json:"FontSize,omitnil,omitempty" name:"FontSize"`
 
 	// 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
@@ -15292,6 +15359,10 @@ type TextWatermarkTemplateInput struct {
 	// <li>1：完全不透明</li>
 	// 默认值：1。
 	FontAlpha *float64 `json:"FontAlpha,omitnil,omitempty" name:"FontAlpha"`
+
+	// 文字内容，长度不超过100个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 }
 
 type TextWatermarkTemplateInputForUpdate struct {
@@ -15300,7 +15371,7 @@ type TextWatermarkTemplateInputForUpdate struct {
 	// <li>arial.ttf：仅支持英文。</li>
 	FontType *string `json:"FontType,omitnil,omitempty" name:"FontType"`
 
-	// 字体大小，格式：Npx，N 为数值。
+	// 字体大小，格式：Npx，N 为数值。N的取值范围：[0,1] 和 [8, 4096]
 	FontSize *string `json:"FontSize,omitnil,omitempty" name:"FontSize"`
 
 	// 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
@@ -15310,6 +15381,9 @@ type TextWatermarkTemplateInputForUpdate struct {
 	// <li>0：完全透明</li>
 	// <li>1：完全不透明</li>
 	FontAlpha *float64 `json:"FontAlpha,omitnil,omitempty" name:"FontAlpha"`
+
+	// 文字内容，长度不超过100个字符。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 }
 
 type TranscodeTaskInput struct {
@@ -15644,6 +15718,7 @@ type VideoEnhanceConfig struct {
 
 type VideoTemplateInfo struct {
 	// 视频流的编码格式，可选值：
+	// <li>copy：纯音频模版</li>
 	// <li>h264：H.264 编码</li>
 	// <li>h265：H.265 编码</li>
 	// <li>av1：AOMedia Video 1 编码</li>
@@ -15802,12 +15877,14 @@ type WatermarkInput struct {
 	// <li>不填或填0，表示水印从画面开始就出现；</li>
 	// <li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
 	// <li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
+	// 注：只用于视频场景，截图不支持。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
 	// 水印的结束时间偏移，单位：秒。
 	// <li>不填或填0，表示水印持续到画面结束；</li>
 	// <li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
 	// <li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
+	// 注：只用于视频场景，截图不支持。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 

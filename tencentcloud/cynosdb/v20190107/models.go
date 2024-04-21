@@ -139,6 +139,9 @@ type AddClusterSlaveZoneRequestParams struct {
 
 	// 从可用区
 	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
+
+	// binlog同步方式。默认值：async。可选值：sync、semisync、async
+	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
 }
 
 type AddClusterSlaveZoneRequest struct {
@@ -149,6 +152,9 @@ type AddClusterSlaveZoneRequest struct {
 
 	// 从可用区
 	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
+
+	// binlog同步方式。默认值：async。可选值：sync、semisync、async
+	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
 }
 
 func (r *AddClusterSlaveZoneRequest) ToJsonString() string {
@@ -165,6 +171,7 @@ func (r *AddClusterSlaveZoneRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "SlaveZone")
+	delete(f, "BinlogSyncWay")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddClusterSlaveZoneRequest has unknown keys!", "")
 	}
@@ -1295,6 +1302,14 @@ type ClusterSlaveData struct {
 	// 新从可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewSlaveZone []*string `json:"NewSlaveZone,omitnil,omitempty" name:"NewSlaveZone"`
+
+	// 新从可用区属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewSlaveZoneAttr []*SlaveZoneAttrItem `json:"NewSlaveZoneAttr,omitnil,omitempty" name:"NewSlaveZoneAttr"`
+
+	// 旧可用区属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldSlaveZoneAttr []*SlaveZoneAttrItem `json:"OldSlaveZoneAttr,omitnil,omitempty" name:"OldSlaveZoneAttr"`
 }
 
 // Predefined struct for user
@@ -3090,6 +3105,10 @@ type CynosdbClusterDetail struct {
 	// 节点网络类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// 备可用区属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZoneAttr []*SlaveZoneAttrItem `json:"SlaveZoneAttr,omitnil,omitempty" name:"SlaveZoneAttr"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -10060,6 +10079,9 @@ type ModifyClusterSlaveZoneRequestParams struct {
 
 	// 新从可用区
 	NewSlaveZone *string `json:"NewSlaveZone,omitnil,omitempty" name:"NewSlaveZone"`
+
+	// binlog同步方式。默认值：async。可选值：sync、semisync、async
+	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
 }
 
 type ModifyClusterSlaveZoneRequest struct {
@@ -10073,6 +10095,9 @@ type ModifyClusterSlaveZoneRequest struct {
 
 	// 新从可用区
 	NewSlaveZone *string `json:"NewSlaveZone,omitnil,omitempty" name:"NewSlaveZone"`
+
+	// binlog同步方式。默认值：async。可选值：sync、semisync、async
+	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
 }
 
 func (r *ModifyClusterSlaveZoneRequest) ToJsonString() string {
@@ -10090,6 +10115,7 @@ func (r *ModifyClusterSlaveZoneRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "OldSlaveZone")
 	delete(f, "NewSlaveZone")
+	delete(f, "BinlogSyncWay")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterSlaveZoneRequest has unknown keys!", "")
 	}
@@ -13535,6 +13561,16 @@ func (r *SetRenewFlagResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SlaveZoneAttrItem struct {
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// binlog同步方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
 }
 
 type SlaveZoneStockInfo struct {

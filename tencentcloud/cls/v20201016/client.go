@@ -1133,6 +1133,7 @@ func NewCreateKafkaRechargeResponse() (response *CreateKafkaRechargeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
@@ -1151,6 +1152,7 @@ func (c *Client) CreateKafkaRecharge(request *CreateKafkaRechargeRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
@@ -5955,6 +5957,7 @@ func NewPreviewKafkaRechargeResponse() (response *PreviewKafkaRechargeResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5972,6 +5975,7 @@ func (c *Client) PreviewKafkaRecharge(request *PreviewKafkaRechargeRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

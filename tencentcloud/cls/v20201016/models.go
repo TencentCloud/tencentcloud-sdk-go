@@ -598,7 +598,7 @@ func (r *CheckFunctionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckRechargeKafkaServerRequestParams struct {
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID。
@@ -609,17 +609,17 @@ type CheckRechargeKafkaServerRequestParams struct {
 	// KafkaType为1时，ServerAddr必填
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接
+	// ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。IsEncryptionAddr参数为true时必填
+	// 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type CheckRechargeKafkaServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
 	// 腾讯云CKafka实例ID。
@@ -630,10 +630,10 @@ type CheckRechargeKafkaServerRequest struct {
 	// KafkaType为1时，ServerAddr必填
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接
+	// ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。IsEncryptionAddr参数为true时必填
+	// 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
@@ -2509,17 +2509,17 @@ type CreateKafkaRechargeRequestParams struct {
 	// 日志导入规则。
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	// 腾讯云CKafka实例ID，KafkaType为0时必填。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址，KafkaType为1时必填
+	// 服务地址，KafkaType为1时必填。
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，KafkaType为1时必填
+	// ServerAddr是否为加密连接，KafkaType为1时必填。
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
+	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组名称
@@ -2547,17 +2547,17 @@ type CreateKafkaRechargeRequest struct {
 	// 日志导入规则。
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	// 腾讯云CKafka实例ID，KafkaType为0时必填。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址，KafkaType为1时必填
+	// 服务地址，KafkaType为1时必填。
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，KafkaType为1时必填
+	// ServerAddr是否为加密连接，KafkaType为1时必填。
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
+	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组名称
@@ -2948,10 +2948,12 @@ type CreateShipperRequestParams struct {
 	// 创建的投递规则所属的日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 创建的投递规则投递的bucket
+	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 创建的投递规则投递目录的前缀
+	// 投递规则投递的新的目录前缀。
+	// - 仅支持0-9A-Za-z-_/
+	// - 最大支持256个字符
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的名字
@@ -2978,13 +2980,23 @@ type CreateShipperRequestParams struct {
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+	// 投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。
+	// 如果用户不填写，默认为用户新建投递任务的时间。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
+	// 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
+	// 如果用户不填写，默认为持续投递，即无限。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// cos桶存储类型
+	// cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+	// 
+	// 1. STANDARD_IA：低频存储；
+	// 2. ARCHIVE：归档存储；
+	// 3. DEEP_ARCHIVE：深度归档存储；
+	// 4. STANDARD：标准存储；
+	// 5. MAZ_STANDARD：标准存储（多 AZ）；
+	// 6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+	// 7. INTELLIGENT_TIERING：智能分层存储。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
@@ -2994,10 +3006,12 @@ type CreateShipperRequest struct {
 	// 创建的投递规则所属的日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 创建的投递规则投递的bucket
+	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 创建的投递规则投递目录的前缀
+	// 投递规则投递的新的目录前缀。
+	// - 仅支持0-9A-Za-z-_/
+	// - 最大支持256个字符
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 投递规则的名字
@@ -3024,13 +3038,23 @@ type CreateShipperRequest struct {
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+	// 投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。
+	// 如果用户不填写，默认为用户新建投递任务的时间。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
+	// 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
+	// 如果用户不填写，默认为持续投递，即无限。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// cos桶存储类型
+	// cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+	// 
+	// 1. STANDARD_IA：低频存储；
+	// 2. ARCHIVE：归档存储；
+	// 3. DEEP_ARCHIVE：深度归档存储；
+	// 4. STANDARD：标准存储；
+	// 5. MAZ_STANDARD：标准存储（多 AZ）；
+	// 6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+	// 7. INTELLIGENT_TIERING：智能分层存储。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
@@ -8652,19 +8676,19 @@ type ModifyKafkaRechargeRequestParams struct {
 	// Kafka导入配置名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	// 腾讯云CKafka实例ID，KafkaType为0时必填。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址
+	// 服务地址，KafkaType为1时必填。
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接
+	// ServerAddr是否为加密连接，KafkaType为1时必填。
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	// 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
@@ -8676,7 +8700,7 @@ type ModifyKafkaRechargeRequestParams struct {
 	// 日志导入规则
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 导入控制，1：暂停，2：继续
+	// 导入控制，1：暂停；2：继续。
 	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
 }
 
@@ -8692,19 +8716,19 @@ type ModifyKafkaRechargeRequest struct {
 	// Kafka导入配置名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	// 腾讯云CKafka实例ID，KafkaType为0时必填。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址
+	// 服务地址，KafkaType为1时必填。
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接
+	// ServerAddr是否为加密连接，KafkaType为1时必填。
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	// 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
@@ -8716,7 +8740,7 @@ type ModifyKafkaRechargeRequest struct {
 	// 日志导入规则
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 导入控制，1：暂停，2：继续
+	// 导入控制，1：暂停；2：继续。
 	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
 }
 
@@ -9086,13 +9110,15 @@ type ModifyShipperRequestParams struct {
 	// 投递规则ID
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// 投递规则投递的新的bucket
+	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递规则投递的新的目录前缀
+	// 投递规则投递的新的目录前缀。
+	// - 仅支持0-9A-Za-z-_/
+	// - 最大支持256个字符
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的开关状态
+	// 投递规则的开关状态。true：开启投递任务；false：关闭投递任务。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 投递规则的名字
@@ -9116,10 +9142,18 @@ type ModifyShipperRequestParams struct {
 	// 投递日志的内容格式配置
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名。
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// cos桶类型
+	// cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+	// 
+	// 1. STANDARD_IA：低频存储；
+	// 2. ARCHIVE：归档存储；
+	// 3. DEEP_ARCHIVE：深度归档存储；
+	// 4. STANDARD：标准存储；
+	// 5. MAZ_STANDARD：标准存储（多 AZ）；
+	// 6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+	// 7. INTELLIGENT_TIERING：智能分层存储。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
@@ -9129,13 +9163,15 @@ type ModifyShipperRequest struct {
 	// 投递规则ID
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// 投递规则投递的新的bucket
+	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递规则投递的新的目录前缀
+	// 投递规则投递的新的目录前缀。
+	// - 仅支持0-9A-Za-z-_/
+	// - 最大支持256个字符
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的开关状态
+	// 投递规则的开关状态。true：开启投递任务；false：关闭投递任务。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 投递规则的名字
@@ -9159,10 +9195,18 @@ type ModifyShipperRequest struct {
 	// 投递日志的内容格式配置
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名。
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// cos桶类型
+	// cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+	// 
+	// 1. STANDARD_IA：低频存储；
+	// 2. ARCHIVE：归档存储；
+	// 3. DEEP_ARCHIVE：深度归档存储；
+	// 4. STANDARD：标准存储；
+	// 5. MAZ_STANDARD：标准存储（多 AZ）；
+	// 6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+	// 7. INTELLIGENT_TIERING：智能分层存储。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
@@ -9523,24 +9567,24 @@ type PartitionInfo struct {
 
 // Predefined struct for user
 type PreviewKafkaRechargeRequestParams struct {
-	// 预览类型，1:源数据预览，2:导出结果预览
+	// 预览类型，1：源数据预览；2：导出结果预览。
 	PreviewType *uint64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。最多支持100个。
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
+	// 最多支持100个。
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 导入数据位置，-2:最早（默认），-1：最晚
+	// 导入数据位置，-2：最早；-1：最晚。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 腾讯云CKafka实例ID。
-	// KafkaType为0时KafkaInstance必填
+	// 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
-	// KafkaType为1时ServerAddr必填
+	// KafkaType为1时ServerAddr必填。
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接。
@@ -9548,7 +9592,7 @@ type PreviewKafkaRechargeRequestParams struct {
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
+	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组
@@ -9561,24 +9605,24 @@ type PreviewKafkaRechargeRequestParams struct {
 type PreviewKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预览类型，1:源数据预览，2:导出结果预览
+	// 预览类型，1：源数据预览；2：导出结果预览。
 	PreviewType *uint64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。最多支持100个。
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
+	// 最多支持100个。
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 导入数据位置，-2:最早（默认），-1：最晚
+	// 导入数据位置，-2：最早；-1：最晚。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 腾讯云CKafka实例ID。
-	// KafkaType为0时KafkaInstance必填
+	// 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
-	// KafkaType为1时ServerAddr必填
+	// KafkaType为1时ServerAddr必填。
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
 	// ServerAddr是否为加密连接。
@@ -9586,7 +9630,7 @@ type PreviewKafkaRechargeRequest struct {
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
 	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填
+	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 用户Kafka消费组

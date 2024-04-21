@@ -1432,6 +1432,55 @@ func (c *Client) DescribeCompaniesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDeleteCertificatesTaskResultRequest() (request *DescribeDeleteCertificatesTaskResultRequest) {
+    request = &DescribeDeleteCertificatesTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeDeleteCertificatesTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeDeleteCertificatesTaskResultResponse() (response *DescribeDeleteCertificatesTaskResultResponse) {
+    response = &DescribeDeleteCertificatesTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeleteCertificatesTaskResult
+// 查询批量删除任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDeleteCertificatesTaskResult(request *DescribeDeleteCertificatesTaskResultRequest) (response *DescribeDeleteCertificatesTaskResultResponse, err error) {
+    return c.DescribeDeleteCertificatesTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeDeleteCertificatesTaskResult
+// 查询批量删除任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDeleteCertificatesTaskResultWithContext(ctx context.Context, request *DescribeDeleteCertificatesTaskResultRequest) (response *DescribeDeleteCertificatesTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeleteCertificatesTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeleteCertificatesTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeleteCertificatesTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeployedResourcesRequest() (request *DescribeDeployedResourcesRequest) {
     request = &DescribeDeployedResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},

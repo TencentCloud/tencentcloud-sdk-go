@@ -660,7 +660,7 @@ func NewDeleteMQTTInstanceResponse() (response *DeleteMQTTInstanceResponse) {
 }
 
 // DeleteMQTTInstance
-// 删除实例
+// 删除MQTT实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -671,7 +671,7 @@ func (c *Client) DeleteMQTTInstance(request *DeleteMQTTInstanceRequest) (respons
 }
 
 // DeleteMQTTInstance
-// 删除实例
+// 删除MQTT实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -713,7 +713,7 @@ func NewDeleteMQTTTopicResponse() (response *DeleteMQTTTopicResponse) {
 }
 
 // DeleteMQTTTopic
-// 删除主题
+// 删除MQTT主题
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -723,7 +723,7 @@ func (c *Client) DeleteMQTTTopic(request *DeleteMQTTTopicRequest) (response *Del
 }
 
 // DeleteMQTTTopic
-// 删除主题
+// 删除MQTT主题
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1573,7 +1573,7 @@ func NewDescribeMQTTProductSKUListResponse() (response *DescribeMQTTProductSKULi
 }
 
 // DescribeMQTTProductSKUList
-// 非对外接口，获取产品售卖规格
+// 获取产品售卖规格
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1582,7 +1582,7 @@ func (c *Client) DescribeMQTTProductSKUList(request *DescribeMQTTProductSKUListR
 }
 
 // DescribeMQTTProductSKUList
-// 非对外接口，获取产品售卖规格
+// 获取产品售卖规格
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2170,7 +2170,7 @@ func NewModifyMQTTInsPublicEndpointResponse() (response *ModifyMQTTInsPublicEndp
 }
 
 // ModifyMQTTInsPublicEndpoint
-// 为MQTT实例创建公网接入点
+// 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2182,7 +2182,7 @@ func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpoin
 }
 
 // ModifyMQTTInsPublicEndpoint
-// 为MQTT实例创建公网接入点
+// 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

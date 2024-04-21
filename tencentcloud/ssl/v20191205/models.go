@@ -1398,6 +1398,29 @@ func (r *DeleteManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteTaskResult struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 证书ID
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// 异步查询结果： 0表示任务进行中、 1表示任务成功、 2表示任务失败、3表示未授权服务角色导致任务失败、4表示有未解绑的云资源导致任务失败、5表示查询关联云资源超时导致任务失败
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+
+	// 当前结果缓存时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheTime *string `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
+
+	// 包含的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
 // Predefined struct for user
 type DeployCertificateInstanceRequestParams struct {
 	// 待部署的证书ID
@@ -2660,6 +2683,64 @@ func (r *DescribeCompaniesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCompaniesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeleteCertificatesTaskResultRequestParams struct {
+	// DeleteCertificates接口返回的任务ID， 最大支持100个
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+}
+
+type DescribeDeleteCertificatesTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// DeleteCertificates接口返回的任务ID， 最大支持100个
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+}
+
+func (r *DescribeDeleteCertificatesTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeleteCertificatesTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeleteCertificatesTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeleteCertificatesTaskResultResponseParams struct {
+	// 批量删除证书异步任务结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteTaskResult []*DeleteTaskResult `json:"DeleteTaskResult,omitnil,omitempty" name:"DeleteTaskResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeleteCertificatesTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeleteCertificatesTaskResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeleteCertificatesTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeleteCertificatesTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

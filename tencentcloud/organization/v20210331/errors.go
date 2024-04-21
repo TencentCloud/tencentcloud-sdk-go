@@ -419,6 +419,9 @@ const (
 	// 成员权限变更记录不存在。
 	RESOURCENOTFOUND_CHANGEPERMISSIONNOTEXIST = "ResourceNotFound.ChangePermissionNotExist"
 
+	// 有效策略不存在。
+	RESOURCENOTFOUND_EFFECTIVEPOLICYNOTFOUND = "ResourceNotFound.EffectivePolicyNotFound"
+
 	// 邮箱绑定记录不存在。
 	RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = "ResourceNotFound.EmailBindRecordNotExist"
 

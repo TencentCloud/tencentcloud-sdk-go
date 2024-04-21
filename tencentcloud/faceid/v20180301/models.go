@@ -4263,6 +4263,11 @@ type PhoneVerificationRequestParams struct {
 	// 手机号
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
+	// 验证模式（详版/简版）。简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
+	// 
+	// 枚举值：0（简版），1（详版）。默认值为0。
+	VerifyMode *string `json:"VerifyMode,omitnil,omitempty" name:"VerifyMode"`
+
 	// 有加密需求的用户，传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
 
@@ -4284,6 +4289,11 @@ type PhoneVerificationRequest struct {
 
 	// 手机号
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 验证模式（详版/简版）。简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
+	// 
+	// 枚举值：0（简版），1（详版）。默认值为0。
+	VerifyMode *string `json:"VerifyMode,omitnil,omitempty" name:"VerifyMode"`
 
 	// 有加密需求的用户，传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
@@ -4310,6 +4320,7 @@ func (r *PhoneVerificationRequest) FromJsonString(s string) error {
 	delete(f, "IdCard")
 	delete(f, "Name")
 	delete(f, "Phone")
+	delete(f, "VerifyMode")
 	delete(f, "CiphertextBlob")
 	delete(f, "EncryptList")
 	delete(f, "Iv")
@@ -4339,6 +4350,21 @@ type PhoneVerificationResponseParams struct {
 	// 运营商名称。
 	// 取值范围为["","移动","电信","联通"]
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 业务结果详细信息。（当VerifyMode配置"详版"，且Result为"-4: 三要素信息不一致"时返回）
+	// 
+	// 枚举值：
+	// 
+	// 手机号码与姓名一致，与身份证号不一致；
+	// 
+	// 手机号码身份证号一致，与姓名不一致；
+	// 
+	// 手机号码与姓名和身份证号均不一致；
+	// 
+	// 姓名和身份证号不一致；
+	// 
+	// 其他不一致。
+	ResultDetail *string `json:"ResultDetail,omitnil,omitempty" name:"ResultDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

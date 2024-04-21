@@ -348,7 +348,7 @@ func NewTextToImageResponse() (response *TextToImageResponse) {
 }
 
 // TextToImage
-// 智能文生图接口提供基础版文生图能力，将根据输入的文本描述，智能生成与之相关的结果图。
+// 智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
 //
 // 
 //
@@ -385,7 +385,7 @@ func (c *Client) TextToImage(request *TextToImageRequest) (response *TextToImage
 }
 
 // TextToImage
-// 智能文生图接口提供基础版文生图能力，将根据输入的文本描述，智能生成与之相关的结果图。
+// 智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
 //
 // 
 //

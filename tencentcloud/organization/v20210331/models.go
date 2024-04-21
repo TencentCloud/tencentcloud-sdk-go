@@ -1859,6 +1859,64 @@ func (r *DeleteShareUnitResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEffectivePolicyRequestParams struct {
+	// 账号uin或者节点id。
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+}
+
+type DescribeEffectivePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账号uin或者节点id。
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+}
+
+func (r *DescribeEffectivePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEffectivePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEffectivePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEffectivePolicyResponseParams struct {
+	// 有效策略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectivePolicy *EffectivePolicy `json:"EffectivePolicy,omitnil,omitempty" name:"EffectivePolicy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEffectivePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEffectivePolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeEffectivePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEffectivePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationAuthNodeRequestParams struct {
 	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -3461,6 +3519,17 @@ func (r *DisablePolicyTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EffectivePolicy struct {
+	// 目标ID。
+	TargetId *uint64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 有效策略内容。
+	PolicyContent *string `json:"PolicyContent,omitnil,omitempty" name:"PolicyContent"`
+
+	// 有效策略更新时间。
+	LastUpdatedTimestamp *uint64 `json:"LastUpdatedTimestamp,omitnil,omitempty" name:"LastUpdatedTimestamp"`
+}
+
 // Predefined struct for user
 type EnablePolicyTypeRequestParams struct {
 	// 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
@@ -3536,6 +3605,91 @@ type IdentityPolicy struct {
 	// 自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
+}
+
+// Predefined struct for user
+type ListNonCompliantResourceRequestParams struct {
+	// 限制数目。取值范围：1~50。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 成员Uin。
+	MemberUin *uint64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 从上一页的响应中获取的下一页的Token值。
+	// 如果是第一次请求，设置为空。
+	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
+
+	// 标签键。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+}
+
+type ListNonCompliantResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 限制数目。取值范围：1~50。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 成员Uin。
+	MemberUin *uint64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 从上一页的响应中获取的下一页的Token值。
+	// 如果是第一次请求，设置为空。
+	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
+
+	// 标签键。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+}
+
+func (r *ListNonCompliantResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListNonCompliantResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxResults")
+	delete(f, "MemberUin")
+	delete(f, "PaginationToken")
+	delete(f, "TagKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListNonCompliantResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListNonCompliantResourceResponseParams struct {
+	// 资源及标签合规信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ResourceTagMapping `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 获取的下一页的Token值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListNonCompliantResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ListNonCompliantResourceResponseParams `json:"Response"`
+}
+
+func (r *ListNonCompliantResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListNonCompliantResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4492,6 +4646,21 @@ func (r *QuitOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourceTagMapping struct {
+	// 资源六段式。腾讯云使用资源六段式描述一个资源。
+	// 例如：qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 合规详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplianceDetails *TagComplianceDetails `json:"ComplianceDetails,omitnil,omitempty" name:"ComplianceDetails"`
+
+	// 资源标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
 type ShareArea struct {
 	// 地域名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4553,6 +4722,30 @@ type ShareUnitResource struct {
 	// 共享管理员OwnerUin。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareManagerUin *int64 `json:"ShareManagerUin,omitnil,omitempty" name:"ShareManagerUin"`
+}
+
+type TagComplianceDetails struct {
+	// 合规状态。true-合规，false-不合规
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplianceStatus *bool `json:"ComplianceStatus,omitnil,omitempty" name:"ComplianceStatus"`
+
+	// 值不合规的标签键列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeysWithNonCompliantValues []*string `json:"KeysWithNonCompliantValues,omitnil,omitempty" name:"KeysWithNonCompliantValues"`
+
+	// 键不合规的标签键列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonCompliantKeys []*string `json:"NonCompliantKeys,omitnil,omitempty" name:"NonCompliantKeys"`
+}
+
+type Tags struct {
+	// 标签键。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 // Predefined struct for user

@@ -12907,6 +12907,9 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 新的目标地址。传空值，则取消该地址的推流。
 	// 传入新值，则替换原有地址。
 	BackupToUrl *string `json:"BackupToUrl,omitnil,omitempty" name:"BackupToUrl"`
+
+	// 点播垫片文件地址。注意：用于在主源拉不到时自动兜底到垫片文件，切到垫片文件后，每次播完垫片会尝试拉主源，如果主源恢复则自动切回主源。可根据需要的轮询检查时长来传入对应时长的垫片文件。
+	BackupVodUrl *string `json:"BackupVodUrl,omitnil,omitempty" name:"BackupVodUrl"`
 }
 
 type ModifyLivePullStreamTaskRequest struct {
@@ -13023,6 +13026,9 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 新的目标地址。传空值，则取消该地址的推流。
 	// 传入新值，则替换原有地址。
 	BackupToUrl *string `json:"BackupToUrl,omitnil,omitempty" name:"BackupToUrl"`
+
+	// 点播垫片文件地址。注意：用于在主源拉不到时自动兜底到垫片文件，切到垫片文件后，每次播完垫片会尝试拉主源，如果主源恢复则自动切回主源。可根据需要的轮询检查时长来传入对应时长的垫片文件。
+	BackupVodUrl *string `json:"BackupVodUrl,omitnil,omitempty" name:"BackupVodUrl"`
 }
 
 func (r *ModifyLivePullStreamTaskRequest) ToJsonString() string {
@@ -13057,6 +13063,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "WatermarkList")
 	delete(f, "VodLocalMode")
 	delete(f, "BackupToUrl")
+	delete(f, "BackupVodUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePullStreamTaskRequest has unknown keys!", "")
 	}

@@ -1896,6 +1896,15 @@ type DescribeMQTTClientResponseParams struct {
 	// 客户端的订阅列表
 	MQTTClientSubscriptions []*MQTTClientSubscription `json:"MQTTClientSubscriptions,omitnil,omitempty" name:"MQTTClientSubscriptions"`
 
+	// 服务端到客户端的流量统计
+	Inbound *StatisticsReport `json:"Inbound,omitnil,omitempty" name:"Inbound"`
+
+	// 客户端到服务端的流量统计
+	OutBound *StatisticsReport `json:"OutBound,omitnil,omitempty" name:"OutBound"`
+
+	// cleansession标志
+	CleanSession *bool `json:"CleanSession,omitnil,omitempty" name:"CleanSession"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1961,6 +1970,14 @@ type DescribeMQTTInsPublicEndpointsResponseParams struct {
 
 	// 公网访问规则
 	Rules []*PublicAccessRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 公网状态：
+	//     NORMAL-正常
+	//     CLOSING-关闭中
+	//     MODIFYING-修改中
+	//     CREATING-开启中
+	//     CLOSE-关闭
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3335,6 +3352,10 @@ type MQTTEndpointItem struct {
 	// 端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 接入点ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
 type MQTTInstanceItem struct {
@@ -4224,6 +4245,20 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PacketStatistics struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageType *string `json:"MessageType,omitnil,omitempty" name:"MessageType"`
+
+	// 服务质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// 指标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
 type PublicAccessRule struct {
 	// ip网段信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4335,6 +4370,16 @@ type SourceClusterTopicConfig struct {
 	// Failure 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportStatus *string `json:"ImportStatus,omitnil,omitempty" name:"ImportStatus"`
+}
+
+type StatisticsReport struct {
+	// 字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bytes *int64 `json:"Bytes,omitnil,omitempty" name:"Bytes"`
+
+	// 监控指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*PacketStatistics `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type SubscriptionData struct {

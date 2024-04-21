@@ -1777,13 +1777,16 @@ type RunApplicationRequestParams struct {
 	// Nextflow运行选项。
 	NFOption *NFOption `json:"NFOption,omitnil,omitempty" name:"NFOption"`
 
-	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	// 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 
 	// 访问模式，不填默认私有。取值范围
 	// - PRIVATE：私有应用
 	// - PUBLIC：公共应用
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
 }
 
 type RunApplicationRequest struct {
@@ -1828,13 +1831,16 @@ type RunApplicationRequest struct {
 	// Nextflow运行选项。
 	NFOption *NFOption `json:"NFOption,omitnil,omitempty" name:"NFOption"`
 
-	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	// 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 
 	// 访问模式，不填默认私有。取值范围
 	// - PRIVATE：私有应用
 	// - PUBLIC：公共应用
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
 }
 
 func (r *RunApplicationRequest) ToJsonString() string {
@@ -1864,6 +1870,7 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 	delete(f, "NFOption")
 	delete(f, "WorkDir")
 	delete(f, "AccessMode")
+	delete(f, "VolumeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunApplicationRequest has unknown keys!", "")
 	}
@@ -2131,8 +2138,11 @@ type RunWorkflowRequestParams struct {
 	// 任务缓存清理时间（小时）。不填或0表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
 
-	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	// 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
+
+	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
 }
 
 type RunWorkflowRequest struct {
@@ -2174,8 +2184,11 @@ type RunWorkflowRequest struct {
 	// 任务缓存清理时间（小时）。不填或0表示不清理。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
 
-	// 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+	// 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
+
+	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
 }
 
 func (r *RunWorkflowRequest) ToJsonString() string {
@@ -2201,6 +2214,7 @@ func (r *RunWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "InputCosUri")
 	delete(f, "CacheClearDelay")
 	delete(f, "WorkDir")
+	delete(f, "VolumeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunWorkflowRequest has unknown keys!", "")
 	}

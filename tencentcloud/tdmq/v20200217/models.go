@@ -11553,6 +11553,7 @@ type PulsarNetworkAccessPointInfo struct {
 	// 1：本地域访问，由于配置了跨地域容灾，随时可以进行异地切换，该状态用于主集群的接入点
 	// 2：跨地域访问，已经完成了异地切换，该状态用于源集群的接入点，该状态下的接入点不可删除
 	// 3：跨地域访问，随时可以进行异地访问切回，该状态用于目标集群的接入点，该状态下的接入点不可删除
+	// 4:跨地域访问，目标集群已经完成异地切回，等待删除状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationType *uint64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 }
