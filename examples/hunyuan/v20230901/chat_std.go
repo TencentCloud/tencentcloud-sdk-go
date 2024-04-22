@@ -28,6 +28,9 @@ func main() {
 	}
 	request.Messages = append(request.Messages, msg)
 
+	// hunyuan ChatStd/ChatPro 同时支持 stream 和非 stream 的情况
+	request.Stream = common.BoolPtr(true)
+
 	response, err := client.ChatStd(request)
 
 	// 处理异常
@@ -41,7 +44,14 @@ func main() {
 		panic(err)
 	}
 
-	for event := range response.Events {
-		fmt.Println(string(event.Data))
+	if *request.Stream {
+		// stream 示例
+		for event := range response.Events {
+			fmt.Println(string(event.Data))
+		}
+	} else {
+		// 非 stream 示例
+		// 通过 Stream=false 参数来指定非 stream 协议, 一次性拿到结果
+		fmt.Println(response.ToJsonString())
 	}
 }
