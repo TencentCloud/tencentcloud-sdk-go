@@ -4293,6 +4293,74 @@ func (r *ModifyExtensionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyStaffPasswordRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 座席邮箱
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 设置的密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
+type ModifyStaffPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 座席邮箱
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 设置的密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
+func (r *ModifyStaffPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStaffPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Email")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStaffPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStaffPasswordResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStaffPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStaffPasswordResponseParams `json:"Response"`
+}
+
+func (r *ModifyStaffPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStaffPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyStaffRequestParams struct {
 	// 应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`

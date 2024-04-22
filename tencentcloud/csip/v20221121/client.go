@@ -386,6 +386,89 @@ func (c *Client) DeleteRiskScanTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeAlertListRequest() (request *DescribeAlertListRequest) {
+    request = &DescribeAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAlertList")
+    
+    
+    return
+}
+
+func NewDescribeAlertListResponse() (response *DescribeAlertListResponse) {
+    response = &DescribeAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAlertList
+// 告警中心全量告警列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlertList(request *DescribeAlertListRequest) (response *DescribeAlertListResponse, err error) {
+    return c.DescribeAlertListWithContext(context.Background(), request)
+}
+
+// DescribeAlertList
+// 告警中心全量告警列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlertListWithContext(ctx context.Context, request *DescribeAlertListRequest) (response *DescribeAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlertListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetViewVulRiskListRequest() (request *DescribeAssetViewVulRiskListRequest) {
     request = &DescribeAssetViewVulRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},

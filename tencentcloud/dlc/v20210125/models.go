@@ -6571,6 +6571,18 @@ type DescribeNotebookSessionStatementSqlResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
+	// 引擎计算耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseTime *int64 `json:"UseTime,omitnil,omitempty" name:"UseTime"`
+
+	// 结果条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectRows *int64 `json:"AffectRows,omitnil,omitempty" name:"AffectRows"`
+
+	// 数据扫描量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataAmount *int64 `json:"DataAmount,omitnil,omitempty" name:"DataAmount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

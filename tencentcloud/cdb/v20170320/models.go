@@ -2400,6 +2400,9 @@ type CreateCdbProxyRequestParams struct {
 
 	// 连接池阈值
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+
+	// 指定要购买的 proxy 内核版本。不填则默认发货最新版本的 proxy。
+	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
 }
 
 type CreateCdbProxyRequest struct {
@@ -2425,6 +2428,9 @@ type CreateCdbProxyRequest struct {
 
 	// 连接池阈值
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+
+	// 指定要购买的 proxy 内核版本。不填则默认发货最新版本的 proxy。
+	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
 }
 
 func (r *CreateCdbProxyRequest) ToJsonString() string {
@@ -2446,6 +2452,7 @@ func (r *CreateCdbProxyRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroup")
 	delete(f, "Desc")
 	delete(f, "ConnectionPoolLimit")
+	delete(f, "ProxyVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCdbProxyRequest has unknown keys!", "")
 	}

@@ -3141,14 +3141,26 @@ type DescribeHostCosInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型 cos
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型 cos
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 原证书ID	
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否异步	
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
 type DescribeHostCosInstanceListRequest struct {
@@ -3157,14 +3169,26 @@ type DescribeHostCosInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型 cos
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型 cos
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 原证书ID	
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否异步	
+	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
 func (r *DescribeHostCosInstanceListRequest) ToJsonString() string {
@@ -3180,9 +3204,13 @@ func (r *DescribeHostCosInstanceListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
+	delete(f, "OldCertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "AsyncCache")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostCosInstanceListRequest has unknown keys!", "")
 	}

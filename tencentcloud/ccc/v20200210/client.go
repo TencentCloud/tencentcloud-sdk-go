@@ -1128,7 +1128,7 @@ func NewDescribeAutoCalloutTasksResponse() (response *DescribeAutoCalloutTasksRe
 }
 
 // DescribeAutoCalloutTasks
-// 批量查询自动任务外呼
+// 批量查询自动外呼任务
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -1139,7 +1139,7 @@ func (c *Client) DescribeAutoCalloutTasks(request *DescribeAutoCalloutTasksReque
 }
 
 // DescribeAutoCalloutTasks
-// 批量查询自动任务外呼
+// 批量查询自动外呼任务
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -2660,6 +2660,57 @@ func (c *Client) ModifyStaffWithContext(ctx context.Context, request *ModifyStaf
     request.SetContext(ctx)
     
     response = NewModifyStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStaffPasswordRequest() (request *ModifyStaffPasswordRequest) {
+    request = &ModifyStaffPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ModifyStaffPassword")
+    
+    
+    return
+}
+
+func NewModifyStaffPasswordResponse() (response *ModifyStaffPasswordResponse) {
+    response = &ModifyStaffPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStaffPassword
+// 修改座席的密码
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) ModifyStaffPassword(request *ModifyStaffPasswordRequest) (response *ModifyStaffPasswordResponse, err error) {
+    return c.ModifyStaffPasswordWithContext(context.Background(), request)
+}
+
+// ModifyStaffPassword
+// 修改座席的密码
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) ModifyStaffPasswordWithContext(ctx context.Context, request *ModifyStaffPasswordRequest) (response *ModifyStaffPasswordResponse, err error) {
+    if request == nil {
+        request = NewModifyStaffPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStaffPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStaffPasswordResponse()
     err = c.Send(request, response)
     return
 }

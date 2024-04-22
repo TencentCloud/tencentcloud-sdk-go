@@ -2935,6 +2935,9 @@ type GetEmbeddingResponseParams struct {
 	// 特征
 	Data []*EmbeddingObject `json:"Data,omitnil,omitempty" name:"Data"`
 
+	// 消耗量，返回TotalToken
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5939,7 +5942,9 @@ type ParseDocRequestParams struct {
 	// 切分策略
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 默认值: split
+	// 默认值: parse
+	//
+	// Deprecated: Operate is deprecated.
 	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
 }
 
@@ -5958,7 +5963,7 @@ type ParseDocRequest struct {
 	// 切分策略
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 默认值: split
+	// 默认值: parse
 	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
 }
 
@@ -6144,6 +6149,9 @@ type QueryParseDocResultResponseParams struct {
 	// 解析失败原因
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
+	// 消耗量，输出页数
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6214,6 +6222,9 @@ func (r *QueryRewriteRequest) FromJsonString(s string) error {
 type QueryRewriteResponseParams struct {
 	// 改写结果
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 消耗量，返回输入token数，输出token数以及总token数
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7127,6 +7138,20 @@ func (r *UploadAttributeLabelResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadAttributeLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Usage struct {
+	// 文档页数
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
+
+	// 输入token数
+	InputTokens *int64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// 输出token数
+	OutputTokens *int64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
+
+	// 总token数
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
 // Predefined struct for user

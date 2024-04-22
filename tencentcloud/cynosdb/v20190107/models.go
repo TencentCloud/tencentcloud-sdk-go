@@ -10483,6 +10483,74 @@ func (r *ModifyInstanceParamResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceUpgradeLimitDaysRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 升级限制时间
+	UpgradeLimitDays *int64 `json:"UpgradeLimitDays,omitnil,omitempty" name:"UpgradeLimitDays"`
+}
+
+type ModifyInstanceUpgradeLimitDaysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 升级限制时间
+	UpgradeLimitDays *int64 `json:"UpgradeLimitDays,omitnil,omitempty" name:"UpgradeLimitDays"`
+}
+
+func (r *ModifyInstanceUpgradeLimitDaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceUpgradeLimitDaysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "InstanceId")
+	delete(f, "UpgradeLimitDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceUpgradeLimitDaysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceUpgradeLimitDaysResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceUpgradeLimitDaysResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceUpgradeLimitDaysResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceUpgradeLimitDaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceUpgradeLimitDaysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyMaintainPeriodConfigRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

@@ -74,6 +74,406 @@ func (r *AddNewBindRoleUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AlertExtraInfo struct {
+	// 相关攻击事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelateEvent *RelatedEvent `json:"RelateEvent,omitnil,omitempty" name:"RelateEvent"`
+
+	// 泄漏内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeakContent *string `json:"LeakContent,omitnil,omitempty" name:"LeakContent"`
+
+	// 泄漏API
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeakAPI *string `json:"LeakAPI,omitnil,omitempty" name:"LeakAPI"`
+
+	// secretID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretID *string `json:"SecretID,omitnil,omitempty" name:"SecretID"`
+
+	// 命中规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleDesc *string `json:"RuleDesc,omitnil,omitempty" name:"RuleDesc"`
+
+	// 协议端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolPort *string `json:"ProtocolPort,omitnil,omitempty" name:"ProtocolPort"`
+
+	// 攻击内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackContent *string `json:"AttackContent,omitnil,omitempty" name:"AttackContent"`
+
+	// 攻击IP画像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackIPProfile *string `json:"AttackIPProfile,omitnil,omitempty" name:"AttackIPProfile"`
+
+	// 攻击IP标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackIPTags *string `json:"AttackIPTags,omitnil,omitempty" name:"AttackIPTags"`
+
+	// 请求方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestMethod *string `json:"RequestMethod,omitnil,omitempty" name:"RequestMethod"`
+
+	// HTTP日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpLog *string `json:"HttpLog,omitnil,omitempty" name:"HttpLog"`
+
+	// 被攻击域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackDomain *string `json:"AttackDomain,omitnil,omitempty" name:"AttackDomain"`
+
+	// 文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// user_agent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
+
+	// 请求头
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestHeaders *string `json:"RequestHeaders,omitnil,omitempty" name:"RequestHeaders"`
+
+	// 登录用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoginUserName *string `json:"LoginUserName,omitnil,omitempty" name:"LoginUserName"`
+
+	// 漏洞名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulnerabilityName *string `json:"VulnerabilityName,omitnil,omitempty" name:"VulnerabilityName"`
+
+	// 公共漏洞和暴露
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVE *string `json:"CVE,omitnil,omitempty" name:"CVE"`
+
+	// 服务进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceProcess *string `json:"ServiceProcess,omitnil,omitempty" name:"ServiceProcess"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMD5 *string `json:"FileMD5,omitnil,omitempty" name:"FileMD5"`
+
+	// 文件最近访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileLastAccessTime *string `json:"FileLastAccessTime,omitnil,omitempty" name:"FileLastAccessTime"`
+
+	// 文件修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileModifyTime *string `json:"FileModifyTime,omitnil,omitempty" name:"FileModifyTime"`
+
+	// 最近访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecentAccessTime *string `json:"RecentAccessTime,omitnil,omitempty" name:"RecentAccessTime"`
+
+	// 最近修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecentModifyTime *string `json:"RecentModifyTime,omitnil,omitempty" name:"RecentModifyTime"`
+
+	// 病毒名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
+
+	// 病毒文件标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirusFileTags *string `json:"VirusFileTags,omitnil,omitempty" name:"VirusFileTags"`
+
+	// 行为特征
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BehavioralCharacteristics *string `json:"BehavioralCharacteristics,omitnil,omitempty" name:"BehavioralCharacteristics"`
+
+	// 进程名（PID）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessNamePID *string `json:"ProcessNamePID,omitnil,omitempty" name:"ProcessNamePID"`
+
+	// 进程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
+
+	// 进程命令行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessCommandLine *string `json:"ProcessCommandLine,omitnil,omitempty" name:"ProcessCommandLine"`
+
+	// 进程权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessPermissions *string `json:"ProcessPermissions,omitnil,omitempty" name:"ProcessPermissions"`
+
+	// 执行命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutedCommand *string `json:"ExecutedCommand,omitnil,omitempty" name:"ExecutedCommand"`
+
+	// 受影响文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedFileName *string `json:"AffectedFileName,omitnil,omitempty" name:"AffectedFileName"`
+
+	// 诱饵路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DecoyPath *string `json:"DecoyPath,omitnil,omitempty" name:"DecoyPath"`
+
+	// 恶意进程文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaliciousProcessFileSize *string `json:"MaliciousProcessFileSize,omitnil,omitempty" name:"MaliciousProcessFileSize"`
+
+	// 恶意进程文件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaliciousProcessFileMD5 *string `json:"MaliciousProcessFileMD5,omitnil,omitempty" name:"MaliciousProcessFileMD5"`
+
+	// 恶意进程名（PID）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaliciousProcessNamePID *string `json:"MaliciousProcessNamePID,omitnil,omitempty" name:"MaliciousProcessNamePID"`
+
+	// 恶意进程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaliciousProcessPath *string `json:"MaliciousProcessPath,omitnil,omitempty" name:"MaliciousProcessPath"`
+
+	// 恶意进程启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaliciousProcessStartTime *string `json:"MaliciousProcessStartTime,omitnil,omitempty" name:"MaliciousProcessStartTime"`
+
+	// 命令内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommandContent *string `json:"CommandContent,omitnil,omitempty" name:"CommandContent"`
+
+	// 启动用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartupUser *string `json:"StartupUser,omitnil,omitempty" name:"StartupUser"`
+
+	// 用户所属组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
+
+	// 新增权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewPermissions *string `json:"NewPermissions,omitnil,omitempty" name:"NewPermissions"`
+
+	// 父进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentProcess *string `json:"ParentProcess,omitnil,omitempty" name:"ParentProcess"`
+
+	// 类名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassName *string `json:"ClassName,omitnil,omitempty" name:"ClassName"`
+
+	// 所属类加载器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassLoader *string `json:"ClassLoader,omitnil,omitempty" name:"ClassLoader"`
+
+	// 类文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassFileSize *string `json:"ClassFileSize,omitnil,omitempty" name:"ClassFileSize"`
+
+	// 类文件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassFileMD5 *string `json:"ClassFileMD5,omitnil,omitempty" name:"ClassFileMD5"`
+
+	// 父类名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentClassName *string `json:"ParentClassName,omitnil,omitempty" name:"ParentClassName"`
+
+	// 继承接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InheritedInterface *string `json:"InheritedInterface,omitnil,omitempty" name:"InheritedInterface"`
+
+	// 注释
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 载荷内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayloadContent *string `json:"PayloadContent,omitnil,omitempty" name:"PayloadContent"`
+
+	// 回连地址画像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackAddressPortrait *string `json:"CallbackAddressPortrait,omitnil,omitempty" name:"CallbackAddressPortrait"`
+
+	// 回连地址标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackAddressTag *string `json:"CallbackAddressTag,omitnil,omitempty" name:"CallbackAddressTag"`
+
+	// 进程MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessMD5 *string `json:"ProcessMD5,omitnil,omitempty" name:"ProcessMD5"`
+
+	// 文件权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePermission *string `json:"FilePermission,omitnil,omitempty" name:"FilePermission"`
+
+	// 来源于日志分析的信息字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromLogAnalysisData []*KeyValue `json:"FromLogAnalysisData,omitnil,omitempty" name:"FromLogAnalysisData"`
+
+	// 命中探针
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitProbe *string `json:"HitProbe,omitnil,omitempty" name:"HitProbe"`
+
+	// 命中蜜罐
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitHoneyPot *string `json:"HitHoneyPot,omitnil,omitempty" name:"HitHoneyPot"`
+
+	// 命令列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommandList *string `json:"CommandList,omitnil,omitempty" name:"CommandList"`
+
+	// 攻击事件描述
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackEventDesc *string `json:"AttackEventDesc,omitnil,omitempty" name:"AttackEventDesc"`
+
+	// 进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessInfo *string `json:"ProcessInfo,omitnil,omitempty" name:"ProcessInfo"`
+
+	// 使用用户名&密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNameAndPwd *string `json:"UserNameAndPwd,omitnil,omitempty" name:"UserNameAndPwd"`
+
+	// 主机防护策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyID *string `json:"StrategyID,omitnil,omitempty" name:"StrategyID"`
+
+	// 主机防护策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 主机防护命中策略，是策略ID和策略名称的组合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitStrategy *string `json:"HitStrategy,omitnil,omitempty" name:"HitStrategy"`
+}
+
+type AlertInfo struct {
+	// 告警ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 告警名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 告警来源
+	// CFW:云防火墙
+	// WAF:Web应用防火墙
+	// CWP:主机安全
+	// CSIP:云安全中心
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 告警等级
+	// 1:提示
+	// 2:低危
+	// 3:中危
+	// 4:高危
+	// 5:严重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 攻击者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attacker *RoleInfo `json:"Attacker,omitnil,omitempty" name:"Attacker"`
+
+	// 受害者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Victim *RoleInfo `json:"Victim,omitnil,omitempty" name:"Victim"`
+
+	// 证据数据(比如攻击内容等)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvidenceData *string `json:"EvidenceData,omitnil,omitempty" name:"EvidenceData"`
+
+	// 证据位置(比如协议端口)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvidenceLocation *string `json:"EvidenceLocation,omitnil,omitempty" name:"EvidenceLocation"`
+
+	// 证据路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvidencePath *string `json:"EvidencePath,omitnil,omitempty" name:"EvidencePath"`
+
+	// 首次告警时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最近告警时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 告警次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 紧急缓解建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrgentSuggestion *string `json:"UrgentSuggestion,omitnil,omitempty" name:"UrgentSuggestion"`
+
+	// 根治建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemediationSuggestion *string `json:"RemediationSuggestion,omitnil,omitempty" name:"RemediationSuggestion"`
+
+	// 处理状态
+	// 0：未处置，1：已忽略，2：已处置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 告警处理类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessType *string `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 告警大类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 告警小类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
+
+	// 下拉字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *AlertExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 聚合字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 告警日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 账户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 行为
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *uint64 `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 风险排查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskInvestigation *string `json:"RiskInvestigation,omitnil,omitempty" name:"RiskInvestigation"`
+
+	// 风险处置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskTreatment *string `json:"RiskTreatment,omitnil,omitempty" name:"RiskTreatment"`
+}
+
 type AssetBaseInfoResponse struct {
 	// vpc-id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1658,6 +2058,90 @@ func (r *DeleteRiskScanTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRiskScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlertListRequestParams struct {
+	// 标签搜索筛选
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 被调用的集团账号的成员id
+	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+
+	// 0:默认全部 1:资产ID 2:域名
+	AssetType *int64 `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+}
+
+type DescribeAlertListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签搜索筛选
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 被调用的集团账号的成员id
+	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+
+	// 0:默认全部 1:资产ID 2:域名
+	AssetType *int64 `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+}
+
+func (r *DescribeAlertListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlertListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "MemberId")
+	delete(f, "OperatedMemberId")
+	delete(f, "AssetType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlertListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlertListResponseParams struct {
+	// 全量告警列表
+	AlertList []*AlertInfo `json:"AlertList,omitnil,omitempty" name:"AlertList"`
+
+	// 告警大类数量
+	AlertTypeCount []*TagCount `json:"AlertTypeCount,omitnil,omitempty" name:"AlertTypeCount"`
+
+	// 告警总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAlertListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlertListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlertListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlertListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4336,6 +4820,16 @@ type IpAssetListVO struct {
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil,omitempty" name:"VerifyStatus"`
 }
 
+type KeyValue struct {
+	// 字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 // Predefined struct for user
 type ModifyOrganizationAccountStatusRequestParams struct {
 	// 修改集团账号状态，1 开启， 2关闭
@@ -4830,6 +5324,20 @@ type PublicIpDomainListKey struct {
 	Asset *string `json:"Asset,omitnil,omitempty" name:"Asset"`
 }
 
+type RelatedEvent struct {
+	// 事件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventID *string `json:"EventID,omitnil,omitempty" name:"EventID"`
+
+	// 事件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 与事件关联的告警数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedCount *int64 `json:"RelatedCount,omitnil,omitempty" name:"RelatedCount"`
+}
+
 type ReportItemKey struct {
 	// 日志Id列表
 	TaskLogList []*string `json:"TaskLogList,omitnil,omitempty" name:"TaskLogList"`
@@ -4855,6 +5363,92 @@ type RiskCenterStatusKey struct {
 
 	// APP ID
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type RoleInfo struct {
+	// IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// HostIP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
+
+	// 原始IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginIP *string `json:"OriginIP,omitnil,omitempty" name:"OriginIP"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 资产ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// 国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 纬度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Latitude *string `json:"Latitude,omitnil,omitempty" name:"Latitude"`
+
+	// 经度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Longitude *string `json:"Longitude,omitnil,omitempty" name:"Longitude"`
+
+	// 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 企业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 家族团伙
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Family *string `json:"Family,omitnil,omitempty" name:"Family"`
+
+	// 病毒名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
+
+	// MD5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
+
+	// 恶意进程文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 1:主机资产 2:域名资产 3:网络资产
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *int64 `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// 来源日志分析的信息字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromLogAnalysisData []*KeyValue `json:"FromLogAnalysisData,omitnil,omitempty" name:"FromLogAnalysisData"`
 }
 
 type ScanTaskInfo struct {

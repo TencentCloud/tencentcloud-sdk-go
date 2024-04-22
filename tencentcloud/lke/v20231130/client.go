@@ -1654,6 +1654,8 @@ func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
 // GetEmbedding
 // 获取特征向量
 //
+// 本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
@@ -1662,6 +1664,8 @@ func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbedd
 
 // GetEmbedding
 // 获取特征向量
+//
+// 本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3238,6 +3242,8 @@ func NewQueryRewriteResponse() (response *QueryRewriteResponse) {
 // QueryRewrite
 // 多轮改写
 //
+// 本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -3250,6 +3256,8 @@ func (c *Client) QueryRewrite(request *QueryRewriteRequest) (response *QueryRewr
 
 // QueryRewrite
 // 多轮改写
+//
+// 本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -6540,6 +6540,59 @@ func (c *Client) ModifyInstanceParamWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyInstanceUpgradeLimitDaysRequest() (request *ModifyInstanceUpgradeLimitDaysRequest) {
+    request = &ModifyInstanceUpgradeLimitDaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyInstanceUpgradeLimitDays")
+    
+    
+    return
+}
+
+func NewModifyInstanceUpgradeLimitDaysResponse() (response *ModifyInstanceUpgradeLimitDaysResponse) {
+    response = &ModifyInstanceUpgradeLimitDaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceUpgradeLimitDays
+// 修改实例小版本升级限制时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyInstanceUpgradeLimitDays(request *ModifyInstanceUpgradeLimitDaysRequest) (response *ModifyInstanceUpgradeLimitDaysResponse, err error) {
+    return c.ModifyInstanceUpgradeLimitDaysWithContext(context.Background(), request)
+}
+
+// ModifyInstanceUpgradeLimitDays
+// 修改实例小版本升级限制时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyInstanceUpgradeLimitDaysWithContext(ctx context.Context, request *ModifyInstanceUpgradeLimitDaysRequest) (response *ModifyInstanceUpgradeLimitDaysResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceUpgradeLimitDaysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceUpgradeLimitDays require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceUpgradeLimitDaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMaintainPeriodConfigRequest() (request *ModifyMaintainPeriodConfigRequest) {
     request = &ModifyMaintainPeriodConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

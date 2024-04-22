@@ -44,6 +44,9 @@ const (
 	// 查询任务失败
 	FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
 
+	// 请求过期。
+	FAILEDOPERATION_REQUESTOUTDATED = "FailedOperation.RequestOutdated"
+
 	// 云API混流模板和SDK混流冲突。
 	FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 

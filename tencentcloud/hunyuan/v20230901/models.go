@@ -354,10 +354,10 @@ type EmbeddingData struct {
 }
 
 type EmbeddingUsage struct {
-	// 输入Token数。
+	// 输入 Token 数。
 	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
 
-	// 总Token数。
+	// 总 Token 数。
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
@@ -503,12 +503,12 @@ type Message struct {
 }
 
 type Usage struct {
-	// 输入 token 数量。
+	// 输入 Token 数量。
 	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
 
-	// 输出 token 数量。
+	// 输出 Token 数量。
 	CompletionTokens *int64 `json:"CompletionTokens,omitnil,omitempty" name:"CompletionTokens"`
 
-	// 总 token 数量。
+	// 总 Token 数量。
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }

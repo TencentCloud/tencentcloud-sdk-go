@@ -75,7 +75,7 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 //
 // * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
 //
-// * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储，目前支持云点播VOD和对象存储COS
+// * 指定录制存储参数（StorageParams）来指定上传到您希望的云存储，目前支持腾讯云（云点播VOD、对象存储COS）和第三方AWS
 //
 // * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
 //
@@ -131,7 +131,7 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 //
 // * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
 //
-// * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储，目前支持云点播VOD和对象存储COS
+// * 指定录制存储参数（StorageParams）来指定上传到您希望的云存储，目前支持腾讯云（云点播VOD、对象存储COS）和第三方AWS
 //
 // * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
 //
@@ -4062,6 +4062,8 @@ func NewUpdatePublishCdnStreamResponse() (response *UpdatePublishCdnStreamRespon
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTOUTDATED = "FailedOperation.RequestOutdated"
+//  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -4082,6 +4084,8 @@ func (c *Client) UpdatePublishCdnStream(request *UpdatePublishCdnStreamRequest) 
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTOUTDATED = "FailedOperation.RequestOutdated"
+//  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"

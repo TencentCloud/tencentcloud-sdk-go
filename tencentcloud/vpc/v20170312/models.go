@@ -11397,6 +11397,9 @@ type DescribeGatewayFlowMonitorDetailRequestParams struct {
 
 	// 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// VPC内部IPv4地址，精确匹配
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
 }
 
 type DescribeGatewayFlowMonitorDetailRequest struct {
@@ -11428,6 +11431,9 @@ type DescribeGatewayFlowMonitorDetailRequest struct {
 
 	// 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// VPC内部IPv4地址，精确匹配
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
 }
 
 func (r *DescribeGatewayFlowMonitorDetailRequest) ToJsonString() string {
@@ -11451,6 +11457,7 @@ func (r *DescribeGatewayFlowMonitorDetailRequest) FromJsonString(s string) error
 	delete(f, "Limit")
 	delete(f, "OrderField")
 	delete(f, "OrderDirection")
+	delete(f, "PrivateIpAddress")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayFlowMonitorDetailRequest has unknown keys!", "")
 	}
@@ -17497,7 +17504,7 @@ type DownloadCustomerGatewayConfigurationRequestParams struct {
 	// VPN通道实例ID。形如：vpnx-f49l6u0z。
 	VpnConnectionId *string `json:"VpnConnectionId,omitnil,omitempty" name:"VpnConnectionId"`
 
-	// 对端网关厂商信息对象，可通过[DescribeCustomerGatewayVendors](https://cloud.tencent.com/document/api/215/17513)获取。
+	// 对端网关厂商信息对象，可通过[DescribeCustomerGatewayVendors](https://cloud.tencent.com/document/api/215/17517)获取。
 	CustomerGatewayVendor *CustomerGatewayVendor `json:"CustomerGatewayVendor,omitnil,omitempty" name:"CustomerGatewayVendor"`
 
 	// 通道接入设备物理接口名称。
@@ -17513,7 +17520,7 @@ type DownloadCustomerGatewayConfigurationRequest struct {
 	// VPN通道实例ID。形如：vpnx-f49l6u0z。
 	VpnConnectionId *string `json:"VpnConnectionId,omitnil,omitempty" name:"VpnConnectionId"`
 
-	// 对端网关厂商信息对象，可通过[DescribeCustomerGatewayVendors](https://cloud.tencent.com/document/api/215/17513)获取。
+	// 对端网关厂商信息对象，可通过[DescribeCustomerGatewayVendors](https://cloud.tencent.com/document/api/215/17517)获取。
 	CustomerGatewayVendor *CustomerGatewayVendor `json:"CustomerGatewayVendor,omitnil,omitempty" name:"CustomerGatewayVendor"`
 
 	// 通道接入设备物理接口名称。
@@ -23050,8 +23057,8 @@ type NatGateway struct {
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// NAT网关的状态。
-	//  'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中，'UPDATING'：升级中，
-	// ‘FAILED’：失败。
+	//  'PENDING'：生产中，'DELETING'：删除中/子实例关闭中，'AVAILABLE'：运行中，'UPDATING'：升级中，
+	// ‘PENDFAILURE’：创建失败，‘DELETEFAILURE：删除失败，‘DENIED’：子实例关闭中
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 网关最大外网出带宽(单位:Mbps)。

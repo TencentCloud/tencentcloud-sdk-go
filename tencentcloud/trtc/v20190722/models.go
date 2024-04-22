@@ -102,26 +102,35 @@ type AudioParams struct {
 }
 
 type CloudStorage struct {
-	// 第三方云储存的供应商:
-	// 0：腾讯云存储 COS。
-	// 【*注意】：目前第三方仅支持腾讯云存储COS，暂不支持AWS等其他第三方云存储。
+	// 腾讯云对象存储COS以及第三方云存储账号信息
+	// 0：腾讯云对象存储 COS
+	// 1：AWS
+	// 【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+	// 示例值：0
 	Vendor *uint64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 
-	// 第三方云存储的地域信息。
+	// 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+	// 示例值：cn-shanghai-1
+	// 
+	// AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+	// 示例值：ap-southeast-3	
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 第三方存储桶信息。
+	// 云存储桶名称。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 第三方存储的access_key账号信息。
-	// 若存储至腾讯云COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+	// 云存储的access_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+	// 示例值：test-accesskey
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 第三方存储的secret_key账号信息。
-	// 若存储至腾讯云COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+	// 云存储的secret_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+	// 示例值：test-secretkey
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
-	// 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+	// 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+	// 示例值：["prefix1", "prefix2"]
 	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
 }
 
@@ -2571,6 +2580,14 @@ type DescribeWebRecordResponseParams struct {
 	// 1: 正在录制中
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 在使用RecordId查询时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 在使用TaskId查询时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4632,10 +4649,10 @@ type StorageFile struct {
 }
 
 type StorageParams struct {
-	// 第三方云存储的账号信息（特别说明：若您选择存储至对象存储COS将会收取录制文件投递至COS的费用，详见云端录制收费说明，存储至VOD将不收取此项费用。）。
+	// 腾讯云对象存储COS以及第三方云存储的账号信息
 	CloudStorage *CloudStorage `json:"CloudStorage,omitnil,omitempty" name:"CloudStorage"`
 
-	// 腾讯云云点播的账号信息。
+	// 腾讯云云点播Vod的存储信息
 	CloudVod *CloudVod `json:"CloudVod,omitnil,omitempty" name:"CloudVod"`
 }
 
