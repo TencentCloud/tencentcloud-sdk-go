@@ -126,9 +126,48 @@ func (r *ChatProRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-    type ChatProResponse struct {
-    	tchttp.BaseSSEResponse
-    }
+// Predefined struct for user
+type ChatProResponseParams struct {
+	// Unix 时间戳，单位为秒。
+	Created *int64 `json:"Created,omitnil,omitempty" name:"Created"`
+
+	// Token 统计信息。
+	// 按照总 Token 数量计费。
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 免责声明。
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 本轮对话的 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 回复内容。
+	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
+
+	// 错误信息。
+	// 如果流式返回中服务处理异常，返回该错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *ErrorMsg `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChatProResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *ChatProResponseParams `json:"Response"`
+}
+
+func (r *ChatProResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatProResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
 
 // Predefined struct for user
 type ChatStdRequestParams struct {
@@ -236,9 +275,48 @@ func (r *ChatStdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-    type ChatStdResponse struct {
-    	tchttp.BaseSSEResponse
-    }
+// Predefined struct for user
+type ChatStdResponseParams struct {
+	// Unix 时间戳，单位为秒。
+	Created *int64 `json:"Created,omitnil,omitempty" name:"Created"`
+
+	// Token 统计信息。
+	// 按照总 Token 数量计费。
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 免责声明。
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 本轮对话的 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 回复内容。
+	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
+
+	// 错误信息。
+	// 如果流式返回中服务处理异常，返回该错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *ErrorMsg `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChatStdResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *ChatStdResponseParams `json:"Response"`
+}
+
+func (r *ChatStdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatStdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
 
 type Choice struct {
 	// 结束标志位，为 stop 则表示尾包。
