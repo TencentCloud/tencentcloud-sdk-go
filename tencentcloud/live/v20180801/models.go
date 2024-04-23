@@ -3303,10 +3303,10 @@ type CreateRecordTaskRequestParams struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。StartTime不能超过当前时间+6天。
+	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 推流类型，默认0。取值：
@@ -3333,10 +3333,10 @@ type CreateRecordTaskRequest struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。StartTime不能超过当前时间+6天。
+	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 推流类型，默认0。取值：
@@ -3413,13 +3413,13 @@ type CreateScreenshotTaskRequestParams struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+	// 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 截图模板ID，CreateLiveSnapshotTemplate 返回值。如果传入错误ID，则不拉起截图。
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。StartTime不能超过当前时间+6天。
+	// 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。EndTime - StartTime不能超过24小时。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 推流类型，默认0。取值：
@@ -3443,13 +3443,13 @@ type CreateScreenshotTaskRequest struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+	// 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 截图模板ID，CreateLiveSnapshotTemplate 返回值。如果传入错误ID，则不拉起截图。
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。StartTime不能超过当前时间+6天。
+	// 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。EndTime - StartTime不能超过24小时。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 推流类型，默认0。取值：

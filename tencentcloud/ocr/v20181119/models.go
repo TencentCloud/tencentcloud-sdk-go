@@ -9644,6 +9644,7 @@ type SmartStructuralOCRV2RequestParams struct {
 	// PropertyOwnershipCertificate -- 房产证识别
 	// RealEstateCertificate --不动产权证识别
 	// HouseEncumbranceCertificate -- 他权证识别
+	// CarInsurance -- 车险保单
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否打开印章识别
@@ -9695,6 +9696,7 @@ type SmartStructuralOCRV2Request struct {
 	// PropertyOwnershipCertificate -- 房产证识别
 	// RealEstateCertificate --不动产权证识别
 	// HouseEncumbranceCertificate -- 他权证识别
+	// CarInsurance -- 车险保单
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否打开印章识别

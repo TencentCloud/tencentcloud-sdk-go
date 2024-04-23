@@ -2132,6 +2132,8 @@ type DescribeChatMessagesRequestParams struct {
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 服务记录ID（废弃）
+	//
+	// Deprecated: CdrId is deprecated.
 	CdrId *string `json:"CdrId,omitnil,omitempty" name:"CdrId"`
 
 	// 返回记录条数，最大为100 默认20
@@ -2143,7 +2145,7 @@ type DescribeChatMessagesRequestParams struct {
 	// 1为从早到晚，2为从晚到早，默认为2
 	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 服务记录 SessionID（必填）
+	// 服务记录 SessionID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
@@ -2168,7 +2170,7 @@ type DescribeChatMessagesRequest struct {
 	// 1为从早到晚，2为从晚到早，默认为2
 	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 服务记录 SessionID（必填）
+	// 服务记录 SessionID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 

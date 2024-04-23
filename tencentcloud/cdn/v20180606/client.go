@@ -5809,7 +5809,7 @@ func NewModifyDomainConfigResponse() (response *ModifyDomainConfigResponse) {
 //
 // Value 字段，使用 json 进行序列化，其中固定 update 作为 key，配置路径值参考 https://cloud.tencent.com/document/product/228/41116 接口各配置项复杂类型，为配置路径对应复杂类型下的节点。
 //
-// 云审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到云审计。
+// 操作审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到操作审计。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
@@ -5876,7 +5876,7 @@ func (c *Client) ModifyDomainConfig(request *ModifyDomainConfigRequest) (respons
 //
 // Value 字段，使用 json 进行序列化，其中固定 update 作为 key，配置路径值参考 https://cloud.tencent.com/document/product/228/41116 接口各配置项复杂类型，为配置路径对应复杂类型下的节点。
 //
-// 云审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到云审计。
+// 操作审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到操作审计。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"

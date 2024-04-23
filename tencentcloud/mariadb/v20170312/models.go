@@ -2409,6 +2409,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// 是否支持DCN切换
 	IsDcnSwitchSupported *int64 `json:"IsDcnSwitchSupported,omitnil,omitempty" name:"IsDcnSwitchSupported"`
 
+	// proxy版本号
+	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2533,6 +2536,9 @@ type DescribeDBInstancesRequestParams struct {
 	// 按标签key查询
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitnil,omitempty" name:"FilterInstanceType"`
 
@@ -2594,6 +2600,9 @@ type DescribeDBInstancesRequest struct {
 	// 按标签key查询
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitnil,omitempty" name:"FilterInstanceType"`
 
@@ -2632,6 +2641,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ExclusterType")
 	delete(f, "ExclusterIds")
 	delete(f, "TagKeys")
+	delete(f, "Tags")
 	delete(f, "FilterInstanceType")
 	delete(f, "Status")
 	delete(f, "ExcludeStatus")
@@ -6482,6 +6492,14 @@ type TablePrivilege struct {
 
 	// 权限信息
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+type Tag struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 // Predefined struct for user

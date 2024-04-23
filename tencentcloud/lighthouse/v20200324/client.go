@@ -5803,6 +5803,10 @@ func NewModifyFirewallRuleDescriptionResponse() (response *ModifyFirewallRuleDes
 //
 // 
 //
+// 用FirewallRule参数来指定要修改的防火墙规则，使用其中的Protocol， Port， CidrBlock，Action字段来匹配要修改的防火墙规则。
+//
+// 
+//
 // 在 FirewallRule 参数中：
 //
 // * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
@@ -5835,6 +5839,10 @@ func (c *Client) ModifyFirewallRuleDescription(request *ModifyFirewallRuleDescri
 // 
 //
 // * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接修改防火墙规则备注。
+//
+// 
+//
+// 用FirewallRule参数来指定要修改的防火墙规则，使用其中的Protocol， Port， CidrBlock，Action字段来匹配要修改的防火墙规则。
 //
 // 
 //

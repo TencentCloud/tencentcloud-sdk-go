@@ -1797,6 +1797,9 @@ type CreateRabbitMQVirtualHostRequestParams struct {
 
 	// 消息轨迹开关,true打开,false关闭,默认关闭
 	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
+
+	// 是否创建镜像队列策略，默认值 true
+	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 }
 
 type CreateRabbitMQVirtualHostRequest struct {
@@ -1813,6 +1816,9 @@ type CreateRabbitMQVirtualHostRequest struct {
 
 	// 消息轨迹开关,true打开,false关闭,默认关闭
 	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
+
+	// 是否创建镜像队列策略，默认值 true
+	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 }
 
 func (r *CreateRabbitMQVirtualHostRequest) ToJsonString() string {
@@ -1831,6 +1837,7 @@ func (r *CreateRabbitMQVirtualHostRequest) FromJsonString(s string) error {
 	delete(f, "VirtualHost")
 	delete(f, "Description")
 	delete(f, "TraceFlag")
+	delete(f, "MirrorQueuePolicyFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVirtualHostRequest has unknown keys!", "")
 	}
@@ -6148,6 +6155,18 @@ type DescribeRabbitMQQueueDetailResponseParams struct {
 	// 节点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Node *string `json:"Node,omitnil,omitempty" name:"Node"`
+
+	// 仲裁队列死信一致性策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterStrategy *string `json:"DeadLetterStrategy,omitnil,omitempty" name:"DeadLetterStrategy"`
+
+	// 仲裁队列的领导者选举策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueLeaderLocator *string `json:"QueueLeaderLocator,omitnil,omitempty" name:"QueueLeaderLocator"`
+
+	// 仲裁队列的初始副本组大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuorumInitialGroupSize *int64 `json:"QuorumInitialGroupSize,omitnil,omitempty" name:"QuorumInitialGroupSize"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

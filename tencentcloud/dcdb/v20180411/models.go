@@ -3076,6 +3076,9 @@ type DescribeDCDBInstancesRequestParams struct {
 	// 按标签key查询
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitnil,omitempty" name:"FilterInstanceType"`
 
@@ -3134,6 +3137,9 @@ type DescribeDCDBInstancesRequest struct {
 	// 按标签key查询
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitnil,omitempty" name:"FilterInstanceType"`
 
@@ -3171,6 +3177,7 @@ func (r *DescribeDCDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "IsFilterExcluster")
 	delete(f, "ExclusterIds")
 	delete(f, "TagKeys")
+	delete(f, "Tags")
 	delete(f, "FilterInstanceType")
 	delete(f, "Status")
 	delete(f, "ExcludeStatus")
@@ -6754,6 +6761,9 @@ type SwitchDBInstanceHARequestParams struct {
 
 	// 切换的目标区域，会自动选择该可用区中延迟最低的节点。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 指定分片实例id进行切换
+	ShardInstanceIds []*string `json:"ShardInstanceIds,omitnil,omitempty" name:"ShardInstanceIds"`
 }
 
 type SwitchDBInstanceHARequest struct {
@@ -6764,6 +6774,9 @@ type SwitchDBInstanceHARequest struct {
 
 	// 切换的目标区域，会自动选择该可用区中延迟最低的节点。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 指定分片实例id进行切换
+	ShardInstanceIds []*string `json:"ShardInstanceIds,omitnil,omitempty" name:"ShardInstanceIds"`
 }
 
 func (r *SwitchDBInstanceHARequest) ToJsonString() string {
@@ -6780,6 +6793,7 @@ func (r *SwitchDBInstanceHARequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Zone")
+	delete(f, "ShardInstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstanceHARequest has unknown keys!", "")
 	}
@@ -6828,6 +6842,14 @@ type TablePrivilege struct {
 
 	// 权限信息
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+type Tag struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 // Predefined struct for user
