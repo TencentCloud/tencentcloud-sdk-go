@@ -3331,6 +3331,69 @@ func (c *Client) DescribeDeviceFirmWareWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDeviceFirmwaresRequest() (request *DescribeDeviceFirmwaresRequest) {
+    request = &DescribeDeviceFirmwaresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceFirmwares")
+    
+    
+    return
+}
+
+func NewDescribeDeviceFirmwaresResponse() (response *DescribeDeviceFirmwaresResponse) {
+    response = &DescribeDeviceFirmwaresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceFirmwares
+// 获取设备当前固件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICENOTEXIST = "InvalidParameterValue.DeviceNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeDeviceFirmwares(request *DescribeDeviceFirmwaresRequest) (response *DescribeDeviceFirmwaresResponse, err error) {
+    return c.DescribeDeviceFirmwaresWithContext(context.Background(), request)
+}
+
+// DescribeDeviceFirmwares
+// 获取设备当前固件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICENOTEXIST = "InvalidParameterValue.DeviceNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeDeviceFirmwaresWithContext(ctx context.Context, request *DescribeDeviceFirmwaresRequest) (response *DescribeDeviceFirmwaresResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceFirmwaresRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceFirmwares require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceFirmwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceLocationSolveRequest() (request *DescribeDeviceLocationSolveRequest) {
     request = &DescribeDeviceLocationSolveRequest{
         BaseRequest: &tchttp.BaseRequest{},

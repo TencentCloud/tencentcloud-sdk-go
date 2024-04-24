@@ -4187,6 +4187,71 @@ func (r *DescribeDeviceFirmWareResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceFirmwaresRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type DescribeDeviceFirmwaresRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeDeviceFirmwaresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceFirmwaresRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceFirmwaresRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceFirmwaresResponseParams struct {
+	// 固件信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Firmwares []*DeviceFirmwareInfo `json:"Firmwares,omitnil,omitempty" name:"Firmwares"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceFirmwaresResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceFirmwaresResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceFirmwaresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceFirmwaresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceLocationSolveRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -5884,6 +5949,17 @@ type DeviceDataHistoryItem struct {
 
 	// 字段取值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type DeviceFirmwareInfo struct {
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 固件版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 最后更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type DeviceInfo struct {

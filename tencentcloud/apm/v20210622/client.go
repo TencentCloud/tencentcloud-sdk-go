@@ -218,6 +218,61 @@ func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeGeneralApmApplicationConfigRequest() (request *DescribeGeneralApmApplicationConfigRequest) {
+    request = &DescribeGeneralApmApplicationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeGeneralApmApplicationConfig")
+    
+    
+    return
+}
+
+func NewDescribeGeneralApmApplicationConfigResponse() (response *DescribeGeneralApmApplicationConfigResponse) {
+    response = &DescribeGeneralApmApplicationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGeneralApmApplicationConfig
+// 查询应用配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDSERVICENAME = "FailedOperation.InvalidServiceName"
+func (c *Client) DescribeGeneralApmApplicationConfig(request *DescribeGeneralApmApplicationConfigRequest) (response *DescribeGeneralApmApplicationConfigResponse, err error) {
+    return c.DescribeGeneralApmApplicationConfigWithContext(context.Background(), request)
+}
+
+// DescribeGeneralApmApplicationConfig
+// 查询应用配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDSERVICENAME = "FailedOperation.InvalidServiceName"
+func (c *Client) DescribeGeneralApmApplicationConfigWithContext(ctx context.Context, request *DescribeGeneralApmApplicationConfigRequest) (response *DescribeGeneralApmApplicationConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeGeneralApmApplicationConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGeneralApmApplicationConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGeneralApmApplicationConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGeneralMetricDataRequest() (request *DescribeGeneralMetricDataRequest) {
     request = &DescribeGeneralMetricDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -490,6 +545,61 @@ func (c *Client) DescribeServiceOverviewWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeTagValuesRequest() (request *DescribeTagValuesRequest) {
+    request = &DescribeTagValuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeTagValues")
+    
+    
+    return
+}
+
+func NewDescribeTagValuesResponse() (response *DescribeTagValuesResponse) {
+    response = &DescribeTagValuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTagValues
+// 根据维度名和过滤条件，查询维度数据.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeTagValues(request *DescribeTagValuesRequest) (response *DescribeTagValuesResponse, err error) {
+    return c.DescribeTagValuesWithContext(context.Background(), request)
+}
+
+// DescribeTagValues
+// 根据维度名和过滤条件，查询维度数据.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeTagValuesWithContext(ctx context.Context, request *DescribeTagValuesRequest) (response *DescribeTagValuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagValuesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagValues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTagValuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApmInstanceRequest() (request *ModifyApmInstanceRequest) {
     request = &ModifyApmInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -555,6 +665,71 @@ func (c *Client) ModifyApmInstanceWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyApmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGeneralApmApplicationConfigRequest() (request *ModifyGeneralApmApplicationConfigRequest) {
+    request = &ModifyGeneralApmApplicationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "ModifyGeneralApmApplicationConfig")
+    
+    
+    return
+}
+
+func NewModifyGeneralApmApplicationConfigResponse() (response *ModifyGeneralApmApplicationConfigResponse) {
+    response = &ModifyGeneralApmApplicationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGeneralApmApplicationConfig
+// 对外开放的openApi，客户可以灵活的指定需要修改的字段，再加入需要修改的服务列表.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APMCREDENTIALNOTEXIST = "FailedOperation.ApmCredentialNotExist"
+//  FAILEDOPERATION_DUPLICATESERVICE = "FailedOperation.DuplicateService"
+//  FAILEDOPERATION_DUPLICATETAGFIELD = "FailedOperation.DuplicateTagField"
+//  FAILEDOPERATION_INVALIDREGEX = "FailedOperation.InvalidRegex"
+//  FAILEDOPERATION_INVALIDTAGFIELD = "FailedOperation.InvalidTagField"
+//  FAILEDOPERATION_INVALIDTOKEN = "FailedOperation.InvalidToken"
+//  FAILEDOPERATION_SERVICELISTEXCEEDINGLIMITNUMBER = "FailedOperation.ServiceListExceedingLimitNumber"
+//  FAILEDOPERATION_SERVICELISTNULL = "FailedOperation.ServiceListNull"
+func (c *Client) ModifyGeneralApmApplicationConfig(request *ModifyGeneralApmApplicationConfigRequest) (response *ModifyGeneralApmApplicationConfigResponse, err error) {
+    return c.ModifyGeneralApmApplicationConfigWithContext(context.Background(), request)
+}
+
+// ModifyGeneralApmApplicationConfig
+// 对外开放的openApi，客户可以灵活的指定需要修改的字段，再加入需要修改的服务列表.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APMCREDENTIALNOTEXIST = "FailedOperation.ApmCredentialNotExist"
+//  FAILEDOPERATION_DUPLICATESERVICE = "FailedOperation.DuplicateService"
+//  FAILEDOPERATION_DUPLICATETAGFIELD = "FailedOperation.DuplicateTagField"
+//  FAILEDOPERATION_INVALIDREGEX = "FailedOperation.InvalidRegex"
+//  FAILEDOPERATION_INVALIDTAGFIELD = "FailedOperation.InvalidTagField"
+//  FAILEDOPERATION_INVALIDTOKEN = "FailedOperation.InvalidToken"
+//  FAILEDOPERATION_SERVICELISTEXCEEDINGLIMITNUMBER = "FailedOperation.ServiceListExceedingLimitNumber"
+//  FAILEDOPERATION_SERVICELISTNULL = "FailedOperation.ServiceListNull"
+func (c *Client) ModifyGeneralApmApplicationConfigWithContext(ctx context.Context, request *ModifyGeneralApmApplicationConfigRequest) (response *ModifyGeneralApmApplicationConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyGeneralApmApplicationConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGeneralApmApplicationConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGeneralApmApplicationConfigResponse()
     err = c.Send(request, response)
     return
 }

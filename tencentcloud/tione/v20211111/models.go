@@ -2283,6 +2283,10 @@ type DataConfig struct {
 	// 配置TurboFS的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CFSTurboSource *CFSTurbo `json:"CFSTurboSource,omitnil,omitempty" name:"CFSTurboSource"`
+
+	// 来自本地磁盘的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalDiskSource *LocalDisk `json:"LocalDiskSource,omitnil,omitempty" name:"LocalDiskSource"`
 }
 
 type DataPoint struct {
@@ -6949,6 +6953,12 @@ type IntranetCallInfo struct {
 	// 默认内网调用信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultInnerCallInfos []*DefaultInnerCallInfo `json:"DefaultInnerCallInfos,omitnil,omitempty" name:"DefaultInnerCallInfos"`
+}
+
+type LocalDisk struct {
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type LogConfig struct {

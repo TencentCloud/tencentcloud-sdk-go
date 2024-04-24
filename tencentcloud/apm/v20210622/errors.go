@@ -32,11 +32,20 @@ const (
 	// 访问标签失败。
 	FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 
+	// token信息不存在。
+	FAILEDOPERATION_APMCREDENTIALNOTEXIST = "FailedOperation.ApmCredentialNotExist"
+
 	// appid和实例信息不匹配。
 	FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 
 	// 未命中白名单且实例id为官方demo实例id时，不允许修改接口。
 	FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
+
+	// 请勿填写重复的应用名
+	FAILEDOPERATION_DUPLICATESERVICE = "FailedOperation.DuplicateService"
+
+	// 请勿填写重复的标签名
+	FAILEDOPERATION_DUPLICATETAGFIELD = "FailedOperation.DuplicateTagField"
 
 	// 实例ID为空。
 	FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
@@ -47,8 +56,20 @@ const (
 	// 非法实例id。
 	FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
 
+	// 非法的正则表达式。
+	FAILEDOPERATION_INVALIDREGEX = "FailedOperation.InvalidRegex"
+
 	// 不合法请求
 	FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+
+	// 实例和服务名不匹配。
+	FAILEDOPERATION_INVALIDSERVICENAME = "FailedOperation.InvalidServiceName"
+
+	// Tag中指定了无效的Key
+	FAILEDOPERATION_INVALIDTAGFIELD = "FailedOperation.InvalidTagField"
+
+	// 不合法token
+	FAILEDOPERATION_INVALIDTOKEN = "FailedOperation.InvalidToken"
 
 	// 查询指标类数据查询条件缺少过滤参数。
 	FAILEDOPERATION_METRICFILTERSLACKPARAMS = "FailedOperation.MetricFiltersLackParams"
@@ -64,6 +85,12 @@ const (
 
 	// 发送查询请求失败。
 	FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
+
+	// 应用数超过10个
+	FAILEDOPERATION_SERVICELISTEXCEEDINGLIMITNUMBER = "FailedOperation.ServiceListExceedingLimitNumber"
+
+	// 应用列表为空
+	FAILEDOPERATION_SERVICELISTNULL = "FailedOperation.ServiceListNull"
 
 	// 视图名不存在或非法。
 	FAILEDOPERATION_VIEWNAMENOTEXISTORILLEGAL = "FailedOperation.ViewNameNotExistOrIllegal"

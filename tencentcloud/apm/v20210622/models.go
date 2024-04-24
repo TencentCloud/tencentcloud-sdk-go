@@ -66,6 +66,68 @@ type ApmAgentInfo struct {
 	PrivateLinkCollectorURL *string `json:"PrivateLinkCollectorURL,omitnil,omitempty" name:"PrivateLinkCollectorURL"`
 }
 
+type ApmApplicationConfigView struct {
+	// 实例ID	
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 服务名	
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 接口过滤
+	OperationNameFilter *string `json:"OperationNameFilter,omitnil,omitempty" name:"OperationNameFilter"`
+
+	// 异常过滤
+	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
+
+	// 错误码过滤	
+	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
+
+	// 应用诊断开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
+
+	// URL收敛开关 0 关 1 开
+	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
+
+	// URL收敛阈值	
+	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
+
+	// URL收敛规则正则	
+	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
+
+	// URL排除规则正则
+	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
+
+	// 是否开启日志 0 关 1 开
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
+
+	// 日志来源	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
+
+	// CLS日志集 
+	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
+
+	// 日志主题ID
+	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
+
+	// 线程剖析开关
+	SnapshotEnable *bool `json:"SnapshotEnable,omitnil,omitempty" name:"SnapshotEnable"`
+
+	// 线程剖析超时阈值	
+	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
+
+	// 探针开启开关
+	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
+
+	// 组件列表开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
+
+	// 链路压缩开关
+	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
+}
+
 type ApmField struct {
 	// 昨日同比指标值，已弃用，不建议使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -487,6 +549,70 @@ func (r *DescribeApmInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApmInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGeneralApmApplicationConfigRequestParams struct {
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeGeneralApmApplicationConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeGeneralApmApplicationConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralApmApplicationConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceName")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGeneralApmApplicationConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGeneralApmApplicationConfigResponseParams struct {
+	// 应用配置项
+	ApmApplicationConfigView *ApmApplicationConfigView `json:"ApmApplicationConfigView,omitnil,omitempty" name:"ApmApplicationConfigView"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGeneralApmApplicationConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGeneralApmApplicationConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeGeneralApmApplicationConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralApmApplicationConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1016,6 +1142,105 @@ func (r *DescribeServiceOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagValuesRequestParams struct {
+	// 维度名
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Or过滤条件
+	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
+
+	// 使用类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeTagValuesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 维度名
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Or过滤条件
+	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
+
+	// 使用类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeTagValuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTagValuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagKey")
+	delete(f, "InstanceId")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "OrFilters")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagValuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTagValuesResponseParams struct {
+	// 维度值列表
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTagValuesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTagValuesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTagValuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTagValuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 过滤方式（=, !=, in）
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -1033,6 +1258,16 @@ type GeneralFilter struct {
 
 	// 过滤值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Instrument struct {
+	// 组件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 组件开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type Line struct {
@@ -1228,6 +1463,77 @@ func (r *ModifyApmInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGeneralApmApplicationConfigRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要修改的字段key value分别指定字段名、字段值
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 需要修改配置的服务列表名称	
+	ServiceNames []*string `json:"ServiceNames,omitnil,omitempty" name:"ServiceNames"`
+}
+
+type ModifyGeneralApmApplicationConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要修改的字段key value分别指定字段名、字段值
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 需要修改配置的服务列表名称	
+	ServiceNames []*string `json:"ServiceNames,omitnil,omitempty" name:"ServiceNames"`
+}
+
+func (r *ModifyGeneralApmApplicationConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGeneralApmApplicationConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Tags")
+	delete(f, "ServiceNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGeneralApmApplicationConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGeneralApmApplicationConfigResponseParams struct {
+	// 返回值描述
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGeneralApmApplicationConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGeneralApmApplicationConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyGeneralApmApplicationConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGeneralApmApplicationConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

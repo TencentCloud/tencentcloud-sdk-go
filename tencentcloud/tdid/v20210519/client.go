@@ -1246,7 +1246,7 @@ func NewQueryCPTResponse() (response *QueryCPTResponse) {
 }
 
 // QueryCPT
-// 查询凭证模版内容
+// 查询凭证模板内容
 //
 // 可能返回的错误码:
 //  CAM_INVALIDAUTH = "Cam.InvalidAuth"
@@ -1270,7 +1270,7 @@ func (c *Client) QueryCPT(request *QueryCPTRequest) (response *QueryCPTResponse,
 }
 
 // QueryCPT
-// 查询凭证模版内容
+// 查询凭证模板内容
 //
 // 可能返回的错误码:
 //  CAM_INVALIDAUTH = "Cam.InvalidAuth"

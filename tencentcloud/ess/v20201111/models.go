@@ -1513,6 +1513,9 @@ type CreateBatchSignUrlRequestParams struct {
 	// <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
 	// </ul>
 	JumpToDetail *bool `json:"JumpToDetail,omitnil,omitempty" name:"JumpToDetail"`
+
+	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
 }
 
 type CreateBatchSignUrlRequest struct {
@@ -1581,6 +1584,9 @@ type CreateBatchSignUrlRequest struct {
 	// <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
 	// </ul>
 	JumpToDetail *bool `json:"JumpToDetail,omitnil,omitempty" name:"JumpToDetail"`
+
+	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
 }
 
 func (r *CreateBatchSignUrlRequest) ToJsonString() string {
@@ -1605,6 +1611,7 @@ func (r *CreateBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowIds")
 	delete(f, "OrganizationName")
 	delete(f, "JumpToDetail")
+	delete(f, "FlowBatchUrlInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -9521,6 +9528,19 @@ type FlowApproverUrlInfo struct {
 	// 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 	// 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
 	LongUrl *string `json:"LongUrl,omitnil,omitempty" name:"LongUrl"`
+}
+
+type FlowBatchApproverInfo struct {
+	// 合同流程ID。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
+}
+
+type FlowBatchUrlInfo struct {
+	// 批量签署合同和签署方的信息，用于补充动态签署人。
+	FlowBatchApproverInfos []*FlowBatchApproverInfo `json:"FlowBatchApproverInfos,omitnil,omitempty" name:"FlowBatchApproverInfos"`
 }
 
 type FlowBrief struct {

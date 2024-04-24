@@ -165,7 +165,7 @@ type CreateWorkspaceTokenRequestParams struct {
 	// token过期时间，单位是秒，默认 3600
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil,omitempty" name:"TokenExpiredLimitSec"`
 
-	// token 授权策略，可选值为 workspace-run-only, all。默认为 all
+	// token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
 	Policies []*string `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
@@ -178,7 +178,7 @@ type CreateWorkspaceTokenRequest struct {
 	// token过期时间，单位是秒，默认 3600
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil,omitempty" name:"TokenExpiredLimitSec"`
 
-	// token 授权策略，可选值为 workspace-run-only, all。默认为 all
+	// token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
 	Policies []*string `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 

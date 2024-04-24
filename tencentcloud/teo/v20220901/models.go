@@ -60,6 +60,10 @@ type AccelerationDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginProtocol *string `json:"OriginProtocol,omitnil,omitempty" name:"OriginProtocol"`
 
+	// 域名证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Certificate *AccelerationDomainCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
+
 	// HTTP回源端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil,omitempty" name:"HttpOriginPort"`
@@ -91,10 +95,6 @@ type AccelerationDomain struct {
 	// 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
-
-	// 域名证书信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Certificate *AccelerationDomainCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 }
 
 type AccelerationDomainCertificate struct {
@@ -10746,7 +10746,7 @@ type OriginDetail struct {
 	// <li>COS：腾讯云 COS 对象存储源站；</li>
 	// <li>AWS_S3：AWS S3 对象存储源站；</li>
 	// <li>ORIGIN_GROUP：源站组类型源站；</li>
-	//  <li>VODEO：云点播（混合云版）；</li>
+	// <li>VODEO：云点播（混合云版）；</li>
 	// <li>SPACE：源站卸载，当前仅白名单开放；</li>
 	// <li>LB：负载均衡，当前仅白名单开放。</li>
 	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
@@ -10768,10 +10768,10 @@ type OriginDetail struct {
 	// 备用源站组名称，该参数仅当 OriginType = ORIGIN_GROUP 且配置了备用源站组时会生效。
 	BackOriginGroupName *string `json:"BackOriginGroupName,omitnil,omitempty" name:"BackOriginGroupName"`
 
-	// 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWS_S3 时会生效，取值有：
+	// 指定是否允许访问私有对象存储源站，该参数仅当源站类型OriginType = COS 或 AWS_S3 时会生效，取值有：
 	// <li>on：使用私有鉴权；</li>
 	// <li>off：不使用私有鉴权。</li>
-	// 不填写，默认值为off。
+	// 不填写，默认值为 off。
 	PrivateAccess *string `json:"PrivateAccess,omitnil,omitempty" name:"PrivateAccess"`
 
 	// 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
@@ -10781,7 +10781,7 @@ type OriginDetail struct {
 	// MO 子应用 ID
 	VodeoSubAppId *int64 `json:"VodeoSubAppId,omitnil,omitempty" name:"VodeoSubAppId"`
 
-	// MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>	
+	// MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>
 	VodeoDistributionRange *string `json:"VodeoDistributionRange,omitnil,omitempty" name:"VodeoDistributionRange"`
 
 	// MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填

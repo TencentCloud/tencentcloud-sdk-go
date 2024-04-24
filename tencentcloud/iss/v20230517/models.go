@@ -1586,6 +1586,9 @@ type ControlDeviceStreamRequestParams struct {
 	// 6:1080P/I；
 	// 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 是否内网
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 type ControlDeviceStreamRequest struct {
@@ -1606,6 +1609,9 @@ type ControlDeviceStreamRequest struct {
 	// 6:1080P/I；
 	// 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 是否内网
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 func (r *ControlDeviceStreamRequest) ToJsonString() string {
@@ -1623,6 +1629,7 @@ func (r *ControlDeviceStreamRequest) FromJsonString(s string) error {
 	delete(f, "ChannelId")
 	delete(f, "StreamType")
 	delete(f, "Resolution")
+	delete(f, "IsInternal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlDeviceStreamRequest has unknown keys!", "")
 	}
@@ -3840,6 +3847,9 @@ type DescribeRecordPlaybackUrlRequestParams struct {
 
 	// 回放结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否获取内网地址
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 type DescribeRecordPlaybackUrlRequest struct {
@@ -3853,6 +3863,9 @@ type DescribeRecordPlaybackUrlRequest struct {
 
 	// 回放结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否获取内网地址
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 func (r *DescribeRecordPlaybackUrlRequest) ToJsonString() string {
@@ -3870,6 +3883,7 @@ func (r *DescribeRecordPlaybackUrlRequest) FromJsonString(s string) error {
 	delete(f, "ChannelId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "IsInternal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordPlaybackUrlRequest has unknown keys!", "")
 	}
@@ -4423,6 +4437,9 @@ type DescribeVideoDownloadUrlRequestParams struct {
 
 	// 响应data中是否携带实际下载录像的开始时间与结束时间
 	IsRespActualTime *bool `json:"IsRespActualTime,omitnil,omitempty" name:"IsRespActualTime"`
+
+	// 是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 type DescribeVideoDownloadUrlRequest struct {
@@ -4444,6 +4461,9 @@ type DescribeVideoDownloadUrlRequest struct {
 
 	// 响应data中是否携带实际下载录像的开始时间与结束时间
 	IsRespActualTime *bool `json:"IsRespActualTime,omitnil,omitempty" name:"IsRespActualTime"`
+
+	// 是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 func (r *DescribeVideoDownloadUrlRequest) ToJsonString() string {
@@ -4463,6 +4483,7 @@ func (r *DescribeVideoDownloadUrlRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "FileType")
 	delete(f, "IsRespActualTime")
+	delete(f, "IsInternal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoDownloadUrlRequest has unknown keys!", "")
 	}
@@ -6116,6 +6137,9 @@ type PlayRecordRequestParams struct {
 
 	// 分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 是否内网
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 type PlayRecordRequest struct {
@@ -6135,6 +6159,9 @@ type PlayRecordRequest struct {
 
 	// 分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 是否内网
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 func (r *PlayRecordRequest) ToJsonString() string {
@@ -6154,6 +6181,7 @@ func (r *PlayRecordRequest) FromJsonString(s string) error {
 	delete(f, "End")
 	delete(f, "StreamType")
 	delete(f, "Resolution")
+	delete(f, "IsInternal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PlayRecordRequest has unknown keys!", "")
 	}
