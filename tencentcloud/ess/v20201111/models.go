@@ -5813,7 +5813,7 @@ type CreateSealPolicyRequestParams struct {
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 授权有效期。时间戳秒级
+	// 授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
 	Expired *int64 `json:"Expired,omitnil,omitempty" name:"Expired"`
 
 	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
@@ -5842,7 +5842,7 @@ type CreateSealPolicyRequest struct {
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 授权有效期。时间戳秒级
+	// 授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
 	Expired *int64 `json:"Expired,omitnil,omitempty" name:"Expired"`
 
 	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用

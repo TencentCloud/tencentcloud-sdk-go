@@ -461,41 +461,45 @@ type SubmitDrawPortraitJobRequestParams struct {
 	// 写真模型 ID。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 风格模板，支持以下风格：
-	// zhengjian_female：证件照（适用女性）
-	// zhengjian_male：证件照（适用男性）
-	// hanfu_female：汉服（适用女性）
-	// hanfu2_female：汉服2（适用女性）
-	// qipao_female：旗袍（适用女性）
-	// green_female：绿色系穿搭（适用女性）
-	// white_sweater_female：白色系毛衣（适用女性）
-	// sports_female：蓝色系运动（适用女性）
-	// wedding_female：婚纱裙（适用女性）
-	// forest_female：户外森林（适用女性）
-	// flower_female：户外花丛（适用女性）
-	// lolita_female：洛丽塔（适用女性
-	// black_dress1_female：小黑裙1（适用女性）
-	// black_dress2_female：小黑裙2（适用女性）
-	// black_dress3_female：小黑裙3（适用女性）
-	// wedding2_female：婚纱裙2（适用女性）
-	// fire_female：火焰背景（适用女性）
-	// wreath_female：头戴花环（适用女性）
-	// bow_female：蝴蝶结发饰（适用女性）
-	// feather_female：羽毛（适用女性）
-	// blue_shirt_female：缤纷衬衣系列-蓝色（适用女性）
-	// green_shirt_female：缤纷衬衣系列-绿色（适用女性）
-	// purple_shirt_female：缤纷衬衣系列-紫色（适用女性）
-	// grey_suit_male: 灰色西装（适用男性）
-	// beige_suit_male: 米色西装（适用男性）
-	// white_sweater_male: 白色系毛衣（适用男性）
-	// christmas1_female: 圣诞1（适用女性）
-	// christmas2_female: 圣诞2（适用女性）
+	// 写真风格模板，支持以下风格：
+	// zhengjian_female：证件照-长发（女）
+	// zhengjian_shouthair_female：证件照-短发（女）
+	// zhengjian_male：证件照（男）
+	// grey_suit_male：灰色西装（男）
+	// beige_suit_male：米色西装（男）
+	// white_sweater_male：白色毛衣（男）
+	// hanfu_female：汉服（女）
+	// hanfu2_female：汉服2（女）
+	// green_female：绿色毛衣（女）
+	// white_sweater_female：白色毛衣（女）
+	// sports_female：蓝色运动装（女）
+	// bow_female：蝴蝶结发饰（女）
+	// wreath_female：头戴花环（女）
+	// black_dress1_female：小黑裙1（女）
+	// black_dress2_female：小黑裙2（女）
+	// black_dress3_female：小黑裙3（女）
+	// wedding_female：婚纱裙（女）
+	// wedding2_female：婚纱裙2（女）
+	// forest_female：树林（女）
+	// flower_female：花丛（女）
+	// qipao_female：旗袍（女）
+	// feather_female：羽毛（女）
+	// lolita_female：洛丽塔（女）
+	// blue_shirt_female：蓝衬衣（女）
+	// green_shirt_female：绿衬衣（女）
+	// purple_shirt_female：紫衬衣（女）
+	// fire_female：火焰（女）
+	// christmas1_female: 圣诞1（女）
+	// christmas2_female: 圣诞2（女）
 	// christmas3_female: 圣诞3（适用女性）
-	// newyear1_female：新春1（适用女性）
-	// newyear2_female：新春2（适用女性）
-	// newyear3_female：新春3（适用女性）
-	// newyear5_female：新春5（适用女性）
-	// simple：简洁风格（通用），一般用于写真模型封面示意图，每个ModelId的生成结果固定，多次生成将返回相同图片
+	// newyear1_female：新春1（女）
+	// newyear2_female：新春2（女）
+	// newyear3_female：新春3（女）
+	// newyear5_female：新春5（女）
+	// elderly_female：中老年（女）
+	// elderly_male：中老年（男）
+	// labour_female：田野劳作（女）
+	// simple：简洁风格（通用），一般用于写真模型的封面示意图，每个 ModelId 的生成结果固定，多次生成将返回相同图片
 	StyleId *string `json:"StyleId,omitnil,omitempty" name:"StyleId"`
 
 	// 本次生成的图片数量，取值范围[1,4]
@@ -527,41 +531,45 @@ type SubmitDrawPortraitJobRequest struct {
 	// 写真模型 ID。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 风格模板，支持以下风格：
-	// zhengjian_female：证件照（适用女性）
-	// zhengjian_male：证件照（适用男性）
-	// hanfu_female：汉服（适用女性）
-	// hanfu2_female：汉服2（适用女性）
-	// qipao_female：旗袍（适用女性）
-	// green_female：绿色系穿搭（适用女性）
-	// white_sweater_female：白色系毛衣（适用女性）
-	// sports_female：蓝色系运动（适用女性）
-	// wedding_female：婚纱裙（适用女性）
-	// forest_female：户外森林（适用女性）
-	// flower_female：户外花丛（适用女性）
-	// lolita_female：洛丽塔（适用女性
-	// black_dress1_female：小黑裙1（适用女性）
-	// black_dress2_female：小黑裙2（适用女性）
-	// black_dress3_female：小黑裙3（适用女性）
-	// wedding2_female：婚纱裙2（适用女性）
-	// fire_female：火焰背景（适用女性）
-	// wreath_female：头戴花环（适用女性）
-	// bow_female：蝴蝶结发饰（适用女性）
-	// feather_female：羽毛（适用女性）
-	// blue_shirt_female：缤纷衬衣系列-蓝色（适用女性）
-	// green_shirt_female：缤纷衬衣系列-绿色（适用女性）
-	// purple_shirt_female：缤纷衬衣系列-紫色（适用女性）
-	// grey_suit_male: 灰色西装（适用男性）
-	// beige_suit_male: 米色西装（适用男性）
-	// white_sweater_male: 白色系毛衣（适用男性）
-	// christmas1_female: 圣诞1（适用女性）
-	// christmas2_female: 圣诞2（适用女性）
+	// 写真风格模板，支持以下风格：
+	// zhengjian_female：证件照-长发（女）
+	// zhengjian_shouthair_female：证件照-短发（女）
+	// zhengjian_male：证件照（男）
+	// grey_suit_male：灰色西装（男）
+	// beige_suit_male：米色西装（男）
+	// white_sweater_male：白色毛衣（男）
+	// hanfu_female：汉服（女）
+	// hanfu2_female：汉服2（女）
+	// green_female：绿色毛衣（女）
+	// white_sweater_female：白色毛衣（女）
+	// sports_female：蓝色运动装（女）
+	// bow_female：蝴蝶结发饰（女）
+	// wreath_female：头戴花环（女）
+	// black_dress1_female：小黑裙1（女）
+	// black_dress2_female：小黑裙2（女）
+	// black_dress3_female：小黑裙3（女）
+	// wedding_female：婚纱裙（女）
+	// wedding2_female：婚纱裙2（女）
+	// forest_female：树林（女）
+	// flower_female：花丛（女）
+	// qipao_female：旗袍（女）
+	// feather_female：羽毛（女）
+	// lolita_female：洛丽塔（女）
+	// blue_shirt_female：蓝衬衣（女）
+	// green_shirt_female：绿衬衣（女）
+	// purple_shirt_female：紫衬衣（女）
+	// fire_female：火焰（女）
+	// christmas1_female: 圣诞1（女）
+	// christmas2_female: 圣诞2（女）
 	// christmas3_female: 圣诞3（适用女性）
-	// newyear1_female：新春1（适用女性）
-	// newyear2_female：新春2（适用女性）
-	// newyear3_female：新春3（适用女性）
-	// newyear5_female：新春5（适用女性）
-	// simple：简洁风格（通用），一般用于写真模型封面示意图，每个ModelId的生成结果固定，多次生成将返回相同图片
+	// newyear1_female：新春1（女）
+	// newyear2_female：新春2（女）
+	// newyear3_female：新春3（女）
+	// newyear5_female：新春5（女）
+	// elderly_female：中老年（女）
+	// elderly_male：中老年（男）
+	// labour_female：田野劳作（女）
+	// simple：简洁风格（通用），一般用于写真模型的封面示意图，每个 ModelId 的生成结果固定，多次生成将返回相同图片
 	StyleId *string `json:"StyleId,omitnil,omitempty" name:"StyleId"`
 
 	// 本次生成的图片数量，取值范围[1,4]

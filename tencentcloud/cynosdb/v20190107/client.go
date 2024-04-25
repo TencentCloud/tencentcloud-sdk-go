@@ -2669,6 +2669,75 @@ func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeChangedParamsAfterUpgradeRequest() (request *DescribeChangedParamsAfterUpgradeRequest) {
+    request = &DescribeChangedParamsAfterUpgradeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeChangedParamsAfterUpgrade")
+    
+    
+    return
+}
+
+func NewDescribeChangedParamsAfterUpgradeResponse() (response *DescribeChangedParamsAfterUpgradeResponse) {
+    response = &DescribeChangedParamsAfterUpgradeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChangedParamsAfterUpgrade
+// 本接口（DescribeChangedParamsAfterUpgrade）用于查询升降配运行参数对比
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeChangedParamsAfterUpgrade(request *DescribeChangedParamsAfterUpgradeRequest) (response *DescribeChangedParamsAfterUpgradeResponse, err error) {
+    return c.DescribeChangedParamsAfterUpgradeWithContext(context.Background(), request)
+}
+
+// DescribeChangedParamsAfterUpgrade
+// 本接口（DescribeChangedParamsAfterUpgrade）用于查询升降配运行参数对比
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeChangedParamsAfterUpgradeWithContext(ctx context.Context, request *DescribeChangedParamsAfterUpgradeRequest) (response *DescribeChangedParamsAfterUpgradeResponse, err error) {
+    if request == nil {
+        request = NewDescribeChangedParamsAfterUpgradeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChangedParamsAfterUpgrade require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChangedParamsAfterUpgradeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterDatabasesRequest() (request *DescribeClusterDatabasesRequest) {
     request = &DescribeClusterDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},

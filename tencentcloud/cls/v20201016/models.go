@@ -1145,6 +1145,14 @@ type CosRechargeInfo struct {
 	// 见： ExtractRuleInfo 结构描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 元数据。支持 bucket，object。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 // Predefined struct for user
@@ -3364,7 +3372,7 @@ type DataTransformTaskInfo struct {
 	// 加工任务目的topic_id以及别名
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
-	// 加工逻辑函数
+	// 加工逻辑函数。
 	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 }
 
@@ -5233,7 +5241,7 @@ type DescribeDataTransformInfoRequestParams struct {
 	// 
 	// 必选：否
 	// 
-	// <br><li> srctopicId
+	// <br><li> topicId
 	// 
 	// 按照【源topicId】进行过滤。
 	// 类型：String
@@ -5273,7 +5281,7 @@ type DescribeDataTransformInfoRequest struct {
 	// 
 	// 必选：否
 	// 
-	// <br><li> srctopicId
+	// <br><li> topicId
 	// 
 	// 按照【源topicId】进行过滤。
 	// 类型：String
@@ -6738,46 +6746,66 @@ type ExtractRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil,omitempty" name:"UnMatchLogKey"`
 
-	// 增量采集模式下的回溯数据量，默认-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。
+	// 增量采集模式下的回溯数据量，默认：-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。
+	// 注意：
+	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Backtracking *int64 `json:"Backtracking,omitnil,omitempty" name:"Backtracking"`
 
-	// 是否为Gbk编码.   0: 否, 1: 是
+	// 是否为Gbk编码。 0：否；1：是。
+	// 注意：
+	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsGBK *int64 `json:"IsGBK,omitnil,omitempty" name:"IsGBK"`
 
-	// 是否为标准json.   0: 否, 1: 是
+	// 是否为标准json。  0：否； 1：是。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonStandard *int64 `json:"JsonStandard,omitnil,omitempty" name:"JsonStandard"`
 
 	// syslog传输协议，取值为tcp或者udp。
-	// 该字段适用于：创建采集规则配置、修改采集规则配置
+	// 注意：
+	// - 该字段适用于：创建采集规则配置、修改采集规则配置。
+	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]。举例：127.0.0.1:9000
-	// 该字段适用于：创建采集规则配置、修改采集规则配置
+	// 注意：
+	// - 该字段适用于：创建采集规则配置、修改采集规则配置。
+	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// rfc3164：指定系统日志采集使用RFC3164协议解析日志。
 	// rfc5424：指定系统日志采集使用RFC5424协议解析日志。
-	// auto：自动匹配rfc3164或者rfc5424其中一种协议
-	// 该字段适用于：创建采集规则配置、修改采集规则配置
+	// auto：自动匹配rfc3164或者rfc5424其中一种协议。
+	// 注意：
+	// - 该字段适用于：创建采集规则配置、修改采集规则配置
+	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParseProtocol *string `json:"ParseProtocol,omitnil,omitempty" name:"ParseProtocol"`
 
-	// 元数据类型，0: 不使用元数据信息，1:使用机器组元数据，2:使用用户自定义元数据，3:使用采集配置路径，
+	// 元数据类型。0: 不使用元数据信息；1:使用机器组元数据；2:使用用户自定义元数据；3:使用采集配置路径。
+	// 注意：
+	// - COS导入不支持此字段。
 	MetadataType *int64 `json:"MetadataType,omitnil,omitempty" name:"MetadataType"`
 
-	// 采集配置路径正则表达式，MetadataType为3时必填
+	// 采集配置路径正则表达式。
+	// 注意：
+	// - MetadataType为3时必填。
+	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathRegex *string `json:"PathRegex,omitnil,omitempty" name:"PathRegex"`
 
-	// 用户自定义元数据信息，MetadataType为2时必填
+	// 用户自定义元数据信息。
+	// 注意：
+	// - MetadataType为2时必填。
+	// - COS导入不支持此字段。
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
-	// Windows事件日志采集
+	// Windows事件日志采集。
+	// 注意：
+	// - COS导入不支持此字段。
 	EventLogRules []*EventLog `json:"EventLogRules,omitnil,omitempty" name:"EventLogRules"`
 }
 
@@ -7425,7 +7453,11 @@ type MergePartitionRequestParams struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 合并的PartitionId
+	// 合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Staus:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56469)
+	// 
+	// 1. 入参PartitionId只能是读写分区（Status的值有readonly，readwrite），且能找到入参PartitionId的下一个可读写分区（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等）；
+	// 2. 入参PartitionId不能是最后一个分区（PartitionId的ExclusiveEndKey不能是ffffffffffffffffffffffffffffffff）；
+	// 3. topic的分区数量是有限制的（默认50个），合并之后不能超过最大分区，否则不能合并。
 	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 }
 
@@ -7435,7 +7467,11 @@ type MergePartitionRequest struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 合并的PartitionId
+	// 合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Staus:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56469)
+	// 
+	// 1. 入参PartitionId只能是读写分区（Status的值有readonly，readwrite），且能找到入参PartitionId的下一个可读写分区（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等）；
+	// 2. 入参PartitionId不能是最后一个分区（PartitionId的ExclusiveEndKey不能是ffffffffffffffffffffffffffffffff）；
+	// 3. topic的分区数量是有限制的（默认50个），合并之后不能超过最大分区，否则不能合并。
 	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 }
 
@@ -9387,9 +9423,10 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 }
 
 type MonitorTime struct {
-	// 可选值：
-	// <br><li> Period - 周期执行
-	// <br><li> Fixed - 定期执行
+	// 执行周期， 可选值：Period；Fixed。
+	// 
+	// - Period：固定频率
+	// - Fixed：固定时间
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
@@ -9461,7 +9498,7 @@ type OpenKafkaConsumerRequestParams struct {
 	// 日志主题ID
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
-	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
@@ -9474,7 +9511,7 @@ type OpenKafkaConsumerRequest struct {
 	// 日志主题ID
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
-	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// kafka协议消费数据格式
@@ -10083,7 +10120,7 @@ type SearchCosRechargeInfoRequestParams struct {
 	// cos文件所在文件夹的前缀
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
+	// 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
 	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 }
 
@@ -10108,7 +10145,7 @@ type SearchCosRechargeInfoRequest struct {
 	// cos文件所在文件夹的前缀
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
+	// 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
 	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
 }
 
@@ -10223,11 +10260,12 @@ type SearchLogRequestParams struct {
 
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// - 要检索分析的日志主题列表，最大支持20个日志主题。
 	// - 检索单个日志主题时请使用TopicId。
-	// - 不能同时使用TopicId和Topics。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
@@ -10283,11 +10321,12 @@ type SearchLogRequest struct {
 
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// - 要检索分析的日志主题列表，最大支持20个日志主题。
 	// - 检索单个日志主题时请使用TopicId。
-	// - 不能同时使用TopicId和Topics。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数

@@ -10346,6 +10346,18 @@ type LiveStreamProcessTask struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
+type LiveStreamRecordResultInfo struct {
+	// 录制是否结束。
+	// 0：录制未结束，返回单个文件结果
+	// 1：录制结束，返回所有录制文件结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordOver *uint64 `json:"RecordOver,omitnil,omitempty" name:"RecordOver"`
+
+	// 文件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileResults []*LiveRecordFile `json:"FileResults,omitnil,omitempty" name:"FileResults"`
+}
+
 type LiveStreamTagRecognitionResult struct {
 	// 打点事件。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -13311,6 +13323,7 @@ type ParseLiveStreamProcessNotificationResponseParams struct {
 	// 直播流处理结果类型，包含：
 	// <li>AiReviewResult：内容审核结果；</li>
 	// <li>AiRecognitionResult：内容识别结果；</li>
+	// <li>LiveRecordResult：直播录制结果；</li>
 	// <li>ProcessEof：直播流处理结束。</li>
 	NotificationType *string `json:"NotificationType,omitnil,omitempty" name:"NotificationType"`
 
@@ -13336,6 +13349,10 @@ type ParseLiveStreamProcessNotificationResponseParams struct {
 	// 媒体质检结果，当 NotificationType 为 AiQualityControlResult 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiQualityControlResultInfo *LiveStreamAiQualityControlResultInfo `json:"AiQualityControlResultInfo,omitnil,omitempty" name:"AiQualityControlResultInfo"`
+
+	// 直播录制结果，当 NotificationType 为 LiveRecordResult 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveRecordResultInfo *LiveStreamRecordResultInfo `json:"LiveRecordResultInfo,omitnil,omitempty" name:"LiveRecordResultInfo"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`

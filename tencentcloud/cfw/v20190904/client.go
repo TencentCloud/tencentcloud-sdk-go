@@ -3153,7 +3153,7 @@ func NewDescribeIPStatusListResponse() (response *DescribeIPStatusListResponse) 
 }
 
 // DescribeIPStatusList
-// ip防护状态查询
+// IP防护状态查询
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3163,7 +3163,7 @@ func (c *Client) DescribeIPStatusList(request *DescribeIPStatusListRequest) (res
 }
 
 // DescribeIPStatusList
-// ip防护状态查询
+// IP防护状态查询
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -11492,7 +11492,7 @@ type ModifyModuleStatusRequestParams struct {
 	// 需要设置的domain
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// WEB 安全模块开关，0或1
+	// Web 安全模块开关，0或1
 	WebSecurity *uint64 `json:"WebSecurity,omitnil,omitempty" name:"WebSecurity"`
 
 	// 访问控制模块开关，0或者1
@@ -11520,7 +11520,7 @@ type ModifyModuleStatusRequest struct {
 	// 需要设置的domain
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// WEB 安全模块开关，0或1
+	// Web 安全模块开关，0或1
 	WebSecurity *uint64 `json:"WebSecurity,omitnil,omitempty" name:"WebSecurity"`
 
 	// 访问控制模块开关，0或者1

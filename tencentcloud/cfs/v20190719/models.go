@@ -48,7 +48,7 @@ type AutoSnapshotPolicyInfo struct {
 	// 快照策略状态，1代表快照策略状态正常。这里只有一种状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 帐号ID
+	// 账号ID
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 保留时间
@@ -570,7 +570,11 @@ type CreateCfsRuleRequestParams struct {
 	// 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。
+	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+	// no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
 	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
 }
 
@@ -589,7 +593,11 @@ type CreateCfsRuleRequest struct {
 	// 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。
+	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+	// no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
 	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
 }
 
@@ -2800,7 +2808,10 @@ type PGroupRuleInfo struct {
 	// 读写权限, ro为只读，rw为读写
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
+	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+	// no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
 	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
 
 	// 规则优先级，1-100。 其中 1 为最高，100为最低
@@ -3038,7 +3049,7 @@ type SnapshotInfo struct {
 	// 快照进度百分比，1表示1%
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 帐号ID
+	// 账号ID
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 快照删除时间
@@ -3628,7 +3639,11 @@ type UpdateCfsRuleRequestParams struct {
 	// 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+	// 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。
+	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+	// no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
 	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
 
 	// 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
@@ -3650,7 +3665,11 @@ type UpdateCfsRuleRequest struct {
 	// 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+	// 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。
+	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+	// no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
 	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
 
 	// 规则优先级，参数范围1-100。 其中 1 为最高，100为最低

@@ -2516,7 +2516,7 @@ type CreateProxyRequestParams struct {
 	// 私有网络子网ID，默认与集群子网ID保持一致
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitnil,omitempty" name:"UniqueSubnetId"`
 
-	// 数据库代理组节点个数
+	// 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
 	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
 
 	// 连接池类型：SessionConnectionPool(会话级别连接池 )
@@ -2534,7 +2534,7 @@ type CreateProxyRequestParams struct {
 	// 描述说明
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 数据库节点信息
+	// 数据库节点信息（该参数与ProxyCount需要任选一个输入）
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
 }
 
@@ -2556,7 +2556,7 @@ type CreateProxyRequest struct {
 	// 私有网络子网ID，默认与集群子网ID保持一致
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitnil,omitempty" name:"UniqueSubnetId"`
 
-	// 数据库代理组节点个数
+	// 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
 	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
 
 	// 连接池类型：SessionConnectionPool(会话级别连接池 )
@@ -2574,7 +2574,7 @@ type CreateProxyRequest struct {
 	// 描述说明
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 数据库节点信息
+	// 数据库节点信息（该参数与ProxyCount需要任选一个输入）
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
 }
 
@@ -5209,6 +5209,81 @@ func (r *DescribeBinlogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBinlogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChangedParamsAfterUpgradeRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 变配后的CPU
+	DstCpu *int64 `json:"DstCpu,omitnil,omitempty" name:"DstCpu"`
+
+	// 变配后的MEM，单位G
+	DstMem *int64 `json:"DstMem,omitnil,omitempty" name:"DstMem"`
+}
+
+type DescribeChangedParamsAfterUpgradeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 变配后的CPU
+	DstCpu *int64 `json:"DstCpu,omitnil,omitempty" name:"DstCpu"`
+
+	// 变配后的MEM，单位G
+	DstMem *int64 `json:"DstMem,omitnil,omitempty" name:"DstMem"`
+}
+
+func (r *DescribeChangedParamsAfterUpgradeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChangedParamsAfterUpgradeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DstCpu")
+	delete(f, "DstMem")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChangedParamsAfterUpgradeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChangedParamsAfterUpgradeResponseParams struct {
+	// 参数个数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ParamItemInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeChangedParamsAfterUpgradeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChangedParamsAfterUpgradeResponseParams `json:"Response"`
+}
+
+func (r *DescribeChangedParamsAfterUpgradeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChangedParamsAfterUpgradeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12082,6 +12157,27 @@ type ParamItemDetail struct {
 	// 参数配置公式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Func *string `json:"Func,omitnil,omitempty" name:"Func"`
+}
+
+type ParamItemInfo struct {
+	// 参数名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 参数新值
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewValue *string `json:"NewValue,omitnil,omitempty" name:"NewValue"`
+
+	// 参数旧值
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldValue *string `json:"OldValue,omitnil,omitempty" name:"OldValue"`
+
+	// 参数公式
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueFunction *string `json:"ValueFunction,omitnil,omitempty" name:"ValueFunction"`
 }
 
 type ParamTemplateListInfo struct {

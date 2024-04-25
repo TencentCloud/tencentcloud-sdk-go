@@ -6583,7 +6583,7 @@ func NewDescribePrometheusTargetsTMPResponse() (response *DescribePrometheusTarg
 }
 
 // DescribePrometheusTargetsTMP
-// 获取targets信息
+// 获取targets信息，在过滤条件中指定job名称时返回targets详情，否则仅返回数量
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -6603,7 +6603,7 @@ func (c *Client) DescribePrometheusTargetsTMP(request *DescribePrometheusTargets
 }
 
 // DescribePrometheusTargetsTMP
-// 获取targets信息
+// 获取targets信息，在过滤条件中指定job名称时返回targets详情，否则仅返回数量
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"

@@ -1503,7 +1503,7 @@ type DescribeDataEventUrlRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -1573,7 +1573,7 @@ type DescribeDataEventUrlRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统

@@ -389,6 +389,15 @@ const (
 	// 无效的Ipv6开关配置。
 	INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
 
+	// 日志输出格式的字段分隔符不正确
+	INVALIDPARAMETER_INVALIDLOGFORMATFIELDDELIMITER = "InvalidParameter.InvalidLogFormatFieldDelimiter"
+
+	// 日志输出格式类型不正确
+	INVALIDPARAMETER_INVALIDLOGFORMATFORMATTYPE = "InvalidParameter.InvalidLogFormatFormatType"
+
+	// 日志输出格式的日志记录分隔符不正确
+	INVALIDPARAMETER_INVALIDLOGFORMATRECORDDELIMITER = "InvalidParameter.InvalidLogFormatRecordDelimiter"
+
 	// 无效的浏览器缓存。
 	INVALIDPARAMETER_INVALIDMAXAGEFOLLOWORIGIN = "InvalidParameter.InvalidMaxAgeFollowOrigin"
 

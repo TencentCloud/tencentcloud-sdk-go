@@ -47,16 +47,19 @@ type CreateWorkspaceRequestParams struct {
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 
 	// 应用名称
-	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+	TenantAppId *int64 `json:"TenantAppId,omitnil,omitempty" name:"TenantAppId"`
 
 	// 用户UIN
-	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+	TenantUin *string `json:"TenantUin,omitnil,omitempty" name:"TenantUin"`
 
 	// VPCID
-	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+	TenantUniqVpcId *string `json:"TenantUniqVpcId,omitnil,omitempty" name:"TenantUniqVpcId"`
 
 	// 子网ID
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+	TenantSubnetId *string `json:"TenantSubnetId,omitnil,omitempty" name:"TenantSubnetId"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type CreateWorkspaceRequest struct {
@@ -87,16 +90,19 @@ type CreateWorkspaceRequest struct {
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 
 	// 应用名称
-	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+	TenantAppId *int64 `json:"TenantAppId,omitnil,omitempty" name:"TenantAppId"`
 
 	// 用户UIN
-	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+	TenantUin *string `json:"TenantUin,omitnil,omitempty" name:"TenantUin"`
 
 	// VPCID
-	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+	TenantUniqVpcId *string `json:"TenantUniqVpcId,omitnil,omitempty" name:"TenantUniqVpcId"`
 
 	// 子网ID
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+	TenantSubnetId *string `json:"TenantSubnetId,omitnil,omitempty" name:"TenantSubnetId"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 func (r *CreateWorkspaceRequest) ToJsonString() string {
@@ -119,10 +125,11 @@ func (r *CreateWorkspaceRequest) FromJsonString(s string) error {
 	delete(f, "Envs")
 	delete(f, "Extensions")
 	delete(f, "Lifecycle")
-	delete(f, "AppId")
-	delete(f, "Uin")
-	delete(f, "UniqVpcId")
-	delete(f, "SubnetId")
+	delete(f, "TenantAppId")
+	delete(f, "TenantUin")
+	delete(f, "TenantUniqVpcId")
+	delete(f, "TenantSubnetId")
+	delete(f, "Region")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceRequest has unknown keys!", "")
 	}

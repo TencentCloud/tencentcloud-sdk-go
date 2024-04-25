@@ -2500,6 +2500,11 @@ type CreateRealtimeLogDeliveryTaskRequestParams struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
+	// 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
+	// <li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
+	// <li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
+
 	// CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
 	CLS *CLSTopic `json:"CLS,omitnil,omitempty" name:"CLS"`
 
@@ -2556,6 +2561,11 @@ type CreateRealtimeLogDeliveryTaskRequest struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
+	// 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
+	// <li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
+	// <li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
+
 	// CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
 	CLS *CLSTopic `json:"CLS,omitnil,omitempty" name:"CLS"`
 
@@ -2588,6 +2598,7 @@ func (r *CreateRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "CustomFields")
 	delete(f, "DeliveryConditions")
 	delete(f, "Sample")
+	delete(f, "LogFormat")
 	delete(f, "CLS")
 	delete(f, "CustomEndpoint")
 	delete(f, "S3")
@@ -3091,8 +3102,8 @@ type DDoSBlockData struct {
 type DDosProtectionConfig struct {
 	// 中国大陆地区独立 DDoS 防护的规格。详情请参考 [独立 DDoS 防护相关费用](https://cloud.tencent.com/document/product/1552/94162)
 	// <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
-	// <li>BASE30_MAX300：开启独立 DDoS 防护，提供 30 Gbps 保底防护带宽，可配置最高 300 Gpbs 弹性防护带宽；</li>
-	// <li>BASE60_MAX600：开启独立 DDoS 防护，提供 60 Gbps 保底防护带宽，可配置最高 600 Gpbs 弹性防护带宽。</li>不填写参数时，取默认值 PLATFORM。
+	// <li>BASE30_MAX300：开启独立 DDoS 防护，提供 30 Gbps 保底防护带宽以及 300 Gbps 弹性防护带宽；</li>
+	// <li>BASE60_MAX600：开启独立 DDoS 防护，提供 60 Gbps 保底防护带宽以及 600 Gbps 弹性防护带宽。</li>不填写参数时，取默认值 PLATFORM。
 	LevelMainland *string `json:"LevelMainland,omitnil,omitempty" name:"LevelMainland"`
 
 	// 中国大陆地区独立 DDoS 防护的弹性防护带宽配置。
@@ -3104,7 +3115,7 @@ type DDosProtectionConfig struct {
 
 	// 全球（除中国大陆以外）地区独立 DDoS 防护的规格。
 	// <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
-	// <li>ANYCAST300：开启独立 DDoS 防护，提供合计最大 300 Gbps 防护带宽；</li>
+	// <li>ANYCAST300：开启独立 DDoS 防护，提供 300 Gbps 防护带宽；</li>
 	// <li>ANYCAST_ALLIN：开启独立 DDoS 防护，使用全部可用防护资源进行防护。</li>不填写参数时，取默认值 PLATFORM。
 	LevelOverseas *string `json:"LevelOverseas,omitnil,omitempty" name:"LevelOverseas"`
 }
@@ -8626,6 +8637,37 @@ type L7OfflineLog struct {
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 }
 
+type LogFormat struct {
+	// 日志投递的预设输出格式类型，取值有：
+	// <li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li>
+	// <li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li>
+	FormatType *string `json:"FormatType,omitnil,omitempty" name:"FormatType"`
+
+	// 在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。
+	BatchPrefix *string `json:"BatchPrefix,omitnil,omitempty" name:"BatchPrefix"`
+
+	// 在每个日志投递批次后附加的字符串。
+	BatchSuffix *string `json:"BatchSuffix,omitnil,omitempty" name:"BatchSuffix"`
+
+	// 在每条日志记录之前添加的字符串。
+	RecordPrefix *string `json:"RecordPrefix,omitnil,omitempty" name:"RecordPrefix"`
+
+	// 在每条日志记录后附加的字符串。
+	RecordSuffix *string `json:"RecordSuffix,omitnil,omitempty" name:"RecordSuffix"`
+
+	// 插入日志记录之间作为分隔符的字符串，取值有：
+	// <li>\n：换行符；</li>
+	// <li>\t：制表符；</li>
+	// <li>，：半角逗号。</li>
+	RecordDelimiter *string `json:"RecordDelimiter,omitnil,omitempty" name:"RecordDelimiter"`
+
+	// 单条日志记录内，插入字段之间作为分隔符的字符串，取值有：
+	// <li>\t：制表符；</li>
+	// <li>，：半角逗号；</li>
+	// <li>;：半角分号。</li>
+	FieldDelimiter *string `json:"FieldDelimiter,omitnil,omitempty" name:"FieldDelimiter"`
+}
+
 type MaxAge struct {
 	// 是否遵循源站，取值有：
 	// <li>on：遵循源站，忽略MaxAge 时间设置；</li>
@@ -9938,6 +9980,9 @@ type ModifyRealtimeLogDeliveryTaskRequestParams struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
+	// 日志投递的输出格式。不填保持原有配置。
+	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
+
 	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
 	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
 
@@ -9979,6 +10024,9 @@ type ModifyRealtimeLogDeliveryTaskRequest struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
+	// 日志投递的输出格式。不填保持原有配置。
+	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
+
 	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
 	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
 
@@ -10007,6 +10055,7 @@ func (r *ModifyRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "CustomFields")
 	delete(f, "DeliveryConditions")
 	delete(f, "Sample")
+	delete(f, "LogFormat")
 	delete(f, "CustomEndpoint")
 	delete(f, "S3")
 	if len(f) > 0 {
@@ -11281,6 +11330,12 @@ type RealtimeLogDeliveryTask struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：605 表示采样比例为 60.5%。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
+	// 日志投递的输出格式。出参为 null 时表示为默认格式，默认格式逻辑如下：
+	// <li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
+	// <li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
+
 	// CLS 的配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLS *CLSTopic `json:"CLS,omitnil,omitempty" name:"CLS"`
@@ -11896,14 +11951,18 @@ type Task struct {
 	// 任务 ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 状态。
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
 	// 资源。
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 任务类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 状态。取值有：
+	// <li>processing：处理中；</li>
+	// <li>success：成功；</li>
+	// <li> failed：失败；</li>
+	// <li>timeout：超时。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`

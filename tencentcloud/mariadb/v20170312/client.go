@@ -227,7 +227,7 @@ func NewCancelDcnJobResponse() (response *CancelDcnJobResponse) {
 }
 
 // CancelDcnJob
-// 取消DCN同步
+// 本接口（CancelDcnJob）用于取消DCN同步
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
@@ -242,7 +242,7 @@ func (c *Client) CancelDcnJob(request *CancelDcnJobRequest) (response *CancelDcn
 }
 
 // CancelDcnJob
-// 取消DCN同步
+// 本接口（CancelDcnJob）用于取消DCN同步
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"

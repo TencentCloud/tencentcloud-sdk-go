@@ -53,9 +53,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 模型不存在。
+	INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
-
-	// 非白名单帐号，请前往控制台申请试用。
-	UNSUPPORTEDOPERATION_NONWHITELISTACCOUNT = "UnsupportedOperation.NonWhitelistAccount"
 )
