@@ -1962,6 +1962,113 @@ func (c *Client) ModifyIntlCustomDnsHostWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyTemplateRequest() (request *ModifyTemplateRequest) {
+    request = &ModifyTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "ModifyTemplate")
+    
+    
+    return
+}
+
+func NewModifyTemplateResponse() (response *ModifyTemplateResponse) {
+    response = &ModifyTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTemplate
+// 修改模板信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETEMPLATEFAILED = "FailedOperation.CreateTemplateFailed"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  FAILEDOPERATION_PROHIBITPHONEEMAIL = "FailedOperation.ProhibitPhoneEmail"
+//  FAILEDOPERATION_TEMPLATECANNOTMODIFY = "FailedOperation.TemplateCanNotModify"
+//  FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATECODEISINVALID = "InvalidParameter.CertificateCodeIsInvalid"
+//  INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_EMAILISUNVERIFIED = "InvalidParameter.EmailIsUnverified"
+//  INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
+//  INVALIDPARAMETER_NAMEISKEYWORD = "InvalidParameter.NameIsKeyword"
+//  INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
+//  INVALIDPARAMETER_ORGISKEYWORD = "InvalidParameter.OrgIsKeyword"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+//  INVALIDPARAMETER_STREETISINVALID = "InvalidParameter.StreetIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISUNVERIFIED = "InvalidParameter.TelephoneIsUnverified"
+//  INVALIDPARAMETER_USERTYPEISINVALID = "InvalidParameter.UserTypeIsInvalid"
+//  INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+func (c *Client) ModifyTemplate(request *ModifyTemplateRequest) (response *ModifyTemplateResponse, err error) {
+    return c.ModifyTemplateWithContext(context.Background(), request)
+}
+
+// ModifyTemplate
+// 修改模板信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETEMPLATEFAILED = "FailedOperation.CreateTemplateFailed"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  FAILEDOPERATION_PROHIBITPHONEEMAIL = "FailedOperation.ProhibitPhoneEmail"
+//  FAILEDOPERATION_TEMPLATECANNOTMODIFY = "FailedOperation.TemplateCanNotModify"
+//  FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATECODEISINVALID = "InvalidParameter.CertificateCodeIsInvalid"
+//  INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_EMAILISUNVERIFIED = "InvalidParameter.EmailIsUnverified"
+//  INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
+//  INVALIDPARAMETER_NAMEISKEYWORD = "InvalidParameter.NameIsKeyword"
+//  INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
+//  INVALIDPARAMETER_ORGISKEYWORD = "InvalidParameter.OrgIsKeyword"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+//  INVALIDPARAMETER_STREETISINVALID = "InvalidParameter.StreetIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISUNVERIFIED = "InvalidParameter.TelephoneIsUnverified"
+//  INVALIDPARAMETER_USERTYPEISINVALID = "InvalidParameter.UserTypeIsInvalid"
+//  INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+func (c *Client) ModifyTemplateWithContext(ctx context.Context, request *ModifyTemplateRequest) (response *ModifyTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewDomainBatchRequest() (request *RenewDomainBatchRequest) {
     request = &RenewDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},

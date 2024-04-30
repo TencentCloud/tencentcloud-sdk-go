@@ -80,6 +80,9 @@ const (
 	// 修改 DNS 失败，请输入正确的 DNS 服务器地址。
 	FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
 
+	// 实名审核中, 已实名认证的模板无法修改。
+	FAILEDOPERATION_TEMPLATECANNOTMODIFY = "FailedOperation.TemplateCanNotModify"
+
 	// 信息模板超过可用数量上限，建议删除已有模板后重试。
 	FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
 

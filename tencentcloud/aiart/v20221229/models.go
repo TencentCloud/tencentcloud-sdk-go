@@ -463,7 +463,7 @@ type SubmitDrawPortraitJobRequestParams struct {
 
 	// 写真风格模板，支持以下风格：
 	// zhengjian_female：证件照-长发（女）
-	// zhengjian_shouthair_female：证件照-短发（女）
+	// zhengjian_shorthair_female：证件照-短发（女）
 	// zhengjian_male：证件照（男）
 	// grey_suit_male：灰色西装（男）
 	// beige_suit_male：米色西装（男）
@@ -533,7 +533,7 @@ type SubmitDrawPortraitJobRequest struct {
 
 	// 写真风格模板，支持以下风格：
 	// zhengjian_female：证件照-长发（女）
-	// zhengjian_shouthair_female：证件照-短发（女）
+	// zhengjian_shorthair_female：证件照-短发（女）
 	// zhengjian_male：证件照（男）
 	// grey_suit_male：灰色西装（男）
 	// beige_suit_male：米色西装（男）
@@ -668,8 +668,9 @@ type SubmitTextToImageProJobRequestParams struct {
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
 	// 文生图模型，默认使用engine1。
-	// engine1：文生图（高级版）-混元
-	// engine2：文生图（高级版）
+	// 取值：
+	// engine1
+	// engine2
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
 	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
@@ -704,8 +705,9 @@ type SubmitTextToImageProJobRequest struct {
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
 	// 文生图模型，默认使用engine1。
-	// engine1：文生图（高级版）-混元
-	// engine2：文生图（高级版）
+	// 取值：
+	// engine1
+	// engine2
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
 	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。

@@ -377,6 +377,9 @@ const (
 	// SparkAppParam无效。
 	INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 
+	// 指定的Spark作业配置格式异常，请参考：spark.network.timeout=120s
+	INVALIDPARAMETER_INVALIDSPARKCONFIGFORMAT = "InvalidParameter.InvalidSparkConfigFormat"
+
 	// 当前Statement仅支持sql类型
 	INVALIDPARAMETER_INVALIDSTATEMENTKINDTYPE = "InvalidParameter.InvalidStatementKindType"
 

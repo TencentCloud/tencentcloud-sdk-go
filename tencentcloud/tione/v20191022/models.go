@@ -1713,7 +1713,7 @@ type GitConfig struct {
 }
 
 type GitSecret struct {
-	// 无秘钥，默认选项
+	// 无密钥，默认选项
 	NoSecret *bool `json:"NoSecret,omitnil,omitempty" name:"NoSecret"`
 
 	// Git用户名密码base64编码后的字符串

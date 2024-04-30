@@ -372,6 +372,10 @@ type ClassifyConfig struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*ClassifyLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 欢迎语，200字符以内
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Greeting *string `json:"Greeting,omitnil,omitempty" name:"Greeting"`
 }
 
 type ClassifyLabel struct {
@@ -1466,6 +1470,12 @@ type DescribeAppResponseParams struct {
 	// 应用appKey
 	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
 
+	// 应用状态，1：未上线，2：运行中，3：停用
+	AppStatus *uint64 `json:"AppStatus,omitnil,omitempty" name:"AppStatus"`
+
+	// 状态说明
+	AppStatusDesc *string `json:"AppStatusDesc,omitnil,omitempty" name:"AppStatusDesc"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2198,6 +2208,12 @@ func (r *DescribeRobotBizIDByAppKeyResponse) FromJsonString(s string) error {
 type DescribeStorageCredentialRequestParams struct {
 	// 机器人ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 文件类型
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 权限场景，是否公有权限
+	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 }
 
 type DescribeStorageCredentialRequest struct {
@@ -2205,6 +2221,12 @@ type DescribeStorageCredentialRequest struct {
 	
 	// 机器人ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 文件类型
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 权限场景，是否公有权限
+	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 }
 
 func (r *DescribeStorageCredentialRequest) ToJsonString() string {
@@ -2220,6 +2242,8 @@ func (r *DescribeStorageCredentialRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BotBizId")
+	delete(f, "FileType")
+	delete(f, "IsPublic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStorageCredentialRequest has unknown keys!", "")
 	}
@@ -2254,6 +2278,9 @@ type DescribeStorageCredentialResponseParams struct {
 
 	// 图片存储目录
 	ImagePath *string `json:"ImagePath,omitnil,omitempty" name:"ImagePath"`
+
+	// 上传存储目录
+	UploadPath *string `json:"UploadPath,omitnil,omitempty" name:"UploadPath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2974,6 +3001,9 @@ type GetMsgRecordRequestParams struct {
 
 	// 机器人AppKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
+
+	// 场景, 体验: 1; 正式: 2
+	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
 type GetMsgRecordRequest struct {
@@ -2993,6 +3023,9 @@ type GetMsgRecordRequest struct {
 
 	// 机器人AppKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
+
+	// 场景, 体验: 1; 正式: 2
+	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
 func (r *GetMsgRecordRequest) ToJsonString() string {
@@ -3012,6 +3045,7 @@ func (r *GetMsgRecordRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "LastRecordId")
 	delete(f, "BotAppKey")
+	delete(f, "Scene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMsgRecordRequest has unknown keys!", "")
 	}
@@ -3022,6 +3056,10 @@ func (r *GetMsgRecordRequest) FromJsonString(s string) error {
 type GetMsgRecordResponseParams struct {
 	// 会话记录
 	Records []*MsgRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// session 清除关联上下文时间, 单位 ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionDisassociatedTimestamp *string `json:"SessionDisassociatedTimestamp,omitnil,omitempty" name:"SessionDisassociatedTimestamp"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3473,6 +3511,18 @@ type KnowledgeQaOutput struct {
 	// 未知回复语，300字符以内
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BareAnswer *string `json:"BareAnswer,omitnil,omitempty" name:"BareAnswer"`
+
+	// 是否展示问题澄清开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShowQuestionClarify *bool `json:"ShowQuestionClarify,omitnil,omitempty" name:"ShowQuestionClarify"`
+
+	// 是否打开问题澄清
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseQuestionClarify *bool `json:"UseQuestionClarify,omitnil,omitempty" name:"UseQuestionClarify"`
+
+	// 问题澄清关键词列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuestionClarifyKeywords []*string `json:"QuestionClarifyKeywords,omitnil,omitempty" name:"QuestionClarifyKeywords"`
 }
 
 type KnowledgeQaSearch struct {
@@ -5891,6 +5941,13 @@ type MsgRecord struct {
 
 	// 是否大模型
 	IsLlmGenerated *bool `json:"IsLlmGenerated,omitnil,omitempty" name:"IsLlmGenerated"`
+
+	// 图片链接，可公有读
+	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
+
+	// 当次 token 统计信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenStat *TokenStat `json:"TokenStat,omitnil,omitempty" name:"TokenStat"`
 }
 
 type MsgRecordReference struct {
@@ -5926,6 +5983,111 @@ type Option struct {
 	// 文件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+}
+
+// Predefined struct for user
+type ParseDocRequestParams struct {
+	// 文件名称(需要包括文件后缀, 最大长度1024字节)
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件下载链接 (支持的文件类型: docx, txt, markdown, pdf)
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 任务ID, 用于幂等去重, 业务自行定义(最大长度64字节)
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 切分策略
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 默认值: parse
+	//
+	// Deprecated: Operate is deprecated.
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+}
+
+type ParseDocRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件名称(需要包括文件后缀, 最大长度1024字节)
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件下载链接 (支持的文件类型: docx, txt, markdown, pdf)
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 任务ID, 用于幂等去重, 业务自行定义(最大长度64字节)
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 切分策略
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 默认值: parse
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+}
+
+func (r *ParseDocRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseDocRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Url")
+	delete(f, "TaskId")
+	delete(f, "Policy")
+	delete(f, "Operate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ParseDocRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ParseDocResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ParseDocResponse struct {
+	*tchttp.BaseResponse
+	Response *ParseDocResponseParams `json:"Response"`
+}
+
+func (r *ParseDocResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseDocResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Procedure struct {
+	// 执行过程英语名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 中文名, 用于展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 状态常量: 使用中: processing, 成功: success, 失败: failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 消耗 token 数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type QACate struct {
@@ -6014,6 +6176,75 @@ type QAQuery struct {
 
 	// 查询答案
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
+}
+
+// Predefined struct for user
+type QueryParseDocResultRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type QueryParseDocResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *QueryParseDocResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryParseDocResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryParseDocResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryParseDocResultResponseParams struct {
+	// 等待 / 执行中 / 成功 / 失败
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 解析后的文件内容
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件下载地址
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 解析失败原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 消耗量，输出页数
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryParseDocResultResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryParseDocResultResponseParams `json:"Response"`
+}
+
+func (r *QueryParseDocResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryParseDocResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -6360,6 +6591,9 @@ type ReleaseRejectedQuestion struct {
 type ResetSessionRequestParams struct {
 	// 会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 是否仅清空会话关联
+	IsOnlyEmptyTheDialog *bool `json:"IsOnlyEmptyTheDialog,omitnil,omitempty" name:"IsOnlyEmptyTheDialog"`
 }
 
 type ResetSessionRequest struct {
@@ -6367,6 +6601,9 @@ type ResetSessionRequest struct {
 	
 	// 会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 是否仅清空会话关联
+	IsOnlyEmptyTheDialog *bool `json:"IsOnlyEmptyTheDialog,omitnil,omitempty" name:"IsOnlyEmptyTheDialog"`
 }
 
 func (r *ResetSessionRequest) ToJsonString() string {
@@ -6382,6 +6619,7 @@ func (r *ResetSessionRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SessionId")
+	delete(f, "IsOnlyEmptyTheDialog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetSessionRequest has unknown keys!", "")
 	}
@@ -6835,6 +7073,10 @@ type SummaryConfig struct {
 	// 知识摘要输出配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *SummaryOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 欢迎语，200字符以内
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Greeting *string `json:"Greeting,omitnil,omitempty" name:"Greeting"`
 }
 
 type SummaryOutput struct {
@@ -6855,6 +7097,52 @@ type TaskParams struct {
 	// 下载地址,需要通过cos桶临时密钥去下载
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
+}
+
+type TokenStat struct {
+	// 会话 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 请求 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// 对应哪条会话, 会话 ID, 用于回答的消息存储使用, 可提前生成, 保存消息时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// token 已使用数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedCount *uint64 `json:"UsedCount,omitnil,omitempty" name:"UsedCount"`
+
+	// 免费 token 数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeCount *uint64 `json:"FreeCount,omitnil,omitempty" name:"FreeCount"`
+
+	// 订单总 token 数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCount *uint64 `json:"OrderCount,omitnil,omitempty" name:"OrderCount"`
+
+	// 当前执行状态汇总, 常量: 使用中: processing, 成功: success, 失败: failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusSummary *string `json:"StatusSummary,omitnil,omitempty" name:"StatusSummary"`
+
+	// 当前执行状态汇总后中文展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusSummaryTitle *string `json:"StatusSummaryTitle,omitnil,omitempty" name:"StatusSummaryTitle"`
+
+	// 当前请求执行时间, 单位 ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Elapsed *uint64 `json:"Elapsed,omitnil,omitempty" name:"Elapsed"`
+
+	// 当前请求消耗 token 数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenCount *uint64 `json:"TokenCount,omitnil,omitempty" name:"TokenCount"`
+
+	// 执行过程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Procedures []*Procedure `json:"Procedures,omitnil,omitempty" name:"Procedures"`
 }
 
 type UnsatisfiedReply struct {

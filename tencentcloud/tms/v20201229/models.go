@@ -20,6 +20,63 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type AnswerQuestionRequestParams struct {
+	// 用户问题
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+}
+
+type AnswerQuestionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户问题
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+}
+
+func (r *AnswerQuestionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AnswerQuestionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Question")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AnswerQuestionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AnswerQuestionResponseParams struct {
+	// 匹配到的答案
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AnswerQuestionResponse struct {
+	*tchttp.BaseResponse
+	Response *AnswerQuestionResponseParams `json:"Response"`
+}
+
+func (r *AnswerQuestionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AnswerQuestionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailResults struct {
 	// 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`

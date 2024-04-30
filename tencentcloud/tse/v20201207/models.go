@@ -20,6 +20,14 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccurateQpsThreshold struct {
+	// qps阈值控制维度,包含:second、minute、hour、day、month、year
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 全局配置ID
+	GlobalConfigId *string `json:"GlobalConfigId,omitnil,omitempty" name:"GlobalConfigId"`
+}
+
 type ApolloEnvParam struct {
 	// 环境名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2350,6 +2358,9 @@ type CreateEngineRequestParams struct {
 	// zk专业版至多有两个盘，且磁盘的容量在50-3200之间
 	// 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
 	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
+
+	// ZK引擎实例，可用区分布约束，STRICT:强约束，PERMISSIVE: 弱约束
+	AffinityConstraint *string `json:"AffinityConstraint,omitnil,omitempty" name:"AffinityConstraint"`
 }
 
 type CreateEngineRequest struct {
@@ -2463,6 +2474,9 @@ type CreateEngineRequest struct {
 	// zk专业版至多有两个盘，且磁盘的容量在50-3200之间
 	// 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
 	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
+
+	// ZK引擎实例，可用区分布约束，STRICT:强约束，PERMISSIVE: 弱约束
+	AffinityConstraint *string `json:"AffinityConstraint,omitnil,omitempty" name:"AffinityConstraint"`
 }
 
 func (r *CreateEngineRequest) ToJsonString() string {
@@ -2494,6 +2508,7 @@ func (r *CreateEngineRequest) FromJsonString(s string) error {
 	delete(f, "PrepaidRenewFlag")
 	delete(f, "EngineRegionInfos")
 	delete(f, "StorageOption")
+	delete(f, "AffinityConstraint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEngineRequest has unknown keys!", "")
 	}
@@ -8037,7 +8052,8 @@ type EngineRegionInfo struct {
 	// 集群网络信息
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitnil,omitempty" name:"VpcInfos"`
 
-	// 是否为主地域
+	// Polaris: 是否为主地域
+	// Zookeeper: 是否为Leader固定地域
 	MainRegion *bool `json:"MainRegion,omitnil,omitempty" name:"MainRegion"`
 
 	// 引擎规格ID
@@ -9105,6 +9121,10 @@ type LimitRule struct {
 	// 限流阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QpsThresholds []*QpsThreshold `json:"QpsThresholds,omitnil,omitempty" name:"QpsThresholds"`
+
+	// 精确限流阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccurateQpsThresholds []*AccurateQpsThreshold `json:"AccurateQpsThresholds,omitnil,omitempty" name:"AccurateQpsThresholds"`
 }
 
 type ListCloudNativeAPIGatewayResult struct {

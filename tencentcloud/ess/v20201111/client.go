@@ -6192,6 +6192,83 @@ func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeBatchOrganizationRegistrationUrlsRequest() (request *DescribeBatchOrganizationRegistrationUrlsRequest) {
+    request = &DescribeBatchOrganizationRegistrationUrlsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeBatchOrganizationRegistrationUrls")
+    
+    
+    return
+}
+
+func NewDescribeBatchOrganizationRegistrationUrlsResponse() (response *DescribeBatchOrganizationRegistrationUrlsResponse) {
+    response = &DescribeBatchOrganizationRegistrationUrlsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBatchOrganizationRegistrationUrls
+// 此接口用于获取企业批量认证异步任务的状态及结果。
+//
+// 
+//
+// 前提条件：已调用 CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任务接口，并得到了任务Id。
+//
+// 
+//
+// 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBatchOrganizationRegistrationUrls(request *DescribeBatchOrganizationRegistrationUrlsRequest) (response *DescribeBatchOrganizationRegistrationUrlsResponse, err error) {
+    return c.DescribeBatchOrganizationRegistrationUrlsWithContext(context.Background(), request)
+}
+
+// DescribeBatchOrganizationRegistrationUrls
+// 此接口用于获取企业批量认证异步任务的状态及结果。
+//
+// 
+//
+// 前提条件：已调用 CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任务接口，并得到了任务Id。
+//
+// 
+//
+// 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBatchOrganizationRegistrationUrlsWithContext(ctx context.Context, request *DescribeBatchOrganizationRegistrationUrlsRequest) (response *DescribeBatchOrganizationRegistrationUrlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOrganizationRegistrationUrlsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchOrganizationRegistrationUrls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchOrganizationRegistrationUrlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillUsageRequest() (request *DescribeBillUsageRequest) {
     request = &DescribeBillUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},

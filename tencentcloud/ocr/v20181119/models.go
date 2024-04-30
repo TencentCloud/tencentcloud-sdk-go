@@ -3562,6 +3562,19 @@ type GeneralMachineItem struct {
 	Tax *string `json:"Tax,omitnil,omitempty" name:"Tax"`
 }
 
+type GeneralWarnInfo struct {
+	// 是否存在该告警
+	IsWarn *bool `json:"IsWarn,omitnil,omitempty" name:"IsWarn"`
+
+	// 告警位置四点坐标
+	Polygon []*Polygon `json:"Polygon,omitnil,omitempty" name:"Polygon"`
+
+	// 特殊判定，支持包括
+	// 
+	// Finger：由手指导致的不完整，仅在不完整告警中返回
+	SpecificMatter *string `json:"SpecificMatter,omitnil,omitempty" name:"SpecificMatter"`
+}
+
 // Predefined struct for user
 type GetTaskStateRequestParams struct {
 	// 智慧表单任务唯一身份ID
@@ -7266,6 +7279,125 @@ func (r *RecognizeGeneralInvoiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeGeneralInvoiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeGeneralTextImageWarnRequestParams struct {
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。 示例值：false
+	EnablePdf *bool `json:"EnablePdf,omitnil,omitempty" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。 示例值：1
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 支持的模板类型
+	// - General 通用告警
+	// - LicensePlate 车牌告警
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type RecognizeGeneralTextImageWarnRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。 示例值：false
+	EnablePdf *bool `json:"EnablePdf,omitnil,omitempty" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。 示例值：1
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 支持的模板类型
+	// - General 通用告警
+	// - LicensePlate 车牌告警
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *RecognizeGeneralTextImageWarnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeGeneralTextImageWarnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "EnablePdf")
+	delete(f, "PdfPageNumber")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeGeneralTextImageWarnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeGeneralTextImageWarnResponseParams struct {
+	// 复印告警信息
+	Copy *GeneralWarnInfo `json:"Copy,omitnil,omitempty" name:"Copy"`
+
+	// 翻拍告警信息
+	Reprint *GeneralWarnInfo `json:"Reprint,omitnil,omitempty" name:"Reprint"`
+
+	// 模糊告警信息
+	Blur *GeneralWarnInfo `json:"Blur,omitnil,omitempty" name:"Blur"`
+
+	// 反光告警信息
+	Reflection *GeneralWarnInfo `json:"Reflection,omitnil,omitempty" name:"Reflection"`
+
+	// 边框不完整告警信息
+	BorderIncomplete *GeneralWarnInfo `json:"BorderIncomplete,omitnil,omitempty" name:"BorderIncomplete"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeGeneralTextImageWarnResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeGeneralTextImageWarnResponseParams `json:"Response"`
+}
+
+func (r *RecognizeGeneralTextImageWarnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeGeneralTextImageWarnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

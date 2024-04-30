@@ -846,6 +846,10 @@ type CloudStorageEvent struct {
 
 	// 事件ID
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadStatus *string `json:"UploadStatus,omitnil,omitempty" name:"UploadStatus"`
 }
 
 type CloudStorageTimeData struct {

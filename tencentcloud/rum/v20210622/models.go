@@ -277,7 +277,7 @@ type CreateTawInstanceRequestParams struct {
 	// 实例描述，(最大长度不超过1024字节)
 	InstanceDesc *string `json:"InstanceDesc,omitnil,omitempty" name:"InstanceDesc"`
 
-	// 每天数据上报量
+	// 每天数据上报量，（不作量级限制）
 	CountNum *string `json:"CountNum,omitnil,omitempty" name:"CountNum"`
 
 	// 数据存储时长计费
@@ -317,7 +317,7 @@ type CreateTawInstanceRequest struct {
 	// 实例描述，(最大长度不超过1024字节)
 	InstanceDesc *string `json:"InstanceDesc,omitnil,omitempty" name:"InstanceDesc"`
 
-	// 每天数据上报量
+	// 每天数据上报量，（不作量级限制）
 	CountNum *string `json:"CountNum,omitnil,omitempty" name:"CountNum"`
 
 	// 数据存储时长计费
@@ -400,7 +400,7 @@ type CreateWhitelistRequestParams struct {
 	// 实例ID：taw-123
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 备注
+	// 备注（暂未作字节数限制）
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// uin：业务方标识
@@ -416,7 +416,7 @@ type CreateWhitelistRequest struct {
 	// 实例ID：taw-123
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 备注
+	// 备注（暂未作字节数限制）
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// uin：业务方标识
@@ -1286,13 +1286,13 @@ type DescribeDataCustomUrlRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -1359,13 +1359,13 @@ type DescribeDataCustomUrlRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -1707,7 +1707,7 @@ type DescribeDataFetchProjectRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -1786,7 +1786,7 @@ type DescribeDataFetchProjectRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -1932,7 +1932,7 @@ type DescribeDataFetchUrlInfoRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2005,7 +2005,7 @@ type DescribeDataFetchUrlInfoRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2143,7 +2143,7 @@ type DescribeDataFetchUrlRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2225,7 +2225,7 @@ type DescribeDataFetchUrlRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2446,7 +2446,7 @@ type DescribeDataLogUrlStatisticsRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2513,7 +2513,7 @@ type DescribeDataLogUrlStatisticsRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2634,7 +2634,7 @@ type DescribeDataPerformancePageRequestParams struct {
 	// 自定义3
 	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 浏览器
@@ -2707,7 +2707,7 @@ type DescribeDataPerformancePageRequest struct {
 	// 自定义3
 	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 浏览器
@@ -2854,7 +2854,7 @@ type DescribeDataPvUrlInfoRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -2921,7 +2921,7 @@ type DescribeDataPvUrlInfoRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3051,7 +3051,7 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 显示是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3126,7 +3126,7 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 显示是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3415,7 +3415,7 @@ type DescribeDataSetUrlStatisticsRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3488,7 +3488,7 @@ type DescribeDataSetUrlStatisticsRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3626,7 +3626,7 @@ type DescribeDataStaticProjectRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3699,7 +3699,7 @@ type DescribeDataStaticProjectRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3837,7 +3837,7 @@ type DescribeDataStaticResourceRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -3910,7 +3910,7 @@ type DescribeDataStaticResourceRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -4048,7 +4048,7 @@ type DescribeDataStaticUrlRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -4121,7 +4121,7 @@ type DescribeDataStaticUrlRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -4259,7 +4259,7 @@ type DescribeDataWebVitalsPageRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统
@@ -4329,7 +4329,7 @@ type DescribeDataWebVitalsPageRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
 	// 操作系统

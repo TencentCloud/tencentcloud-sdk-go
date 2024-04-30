@@ -1052,6 +1052,69 @@ func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreatePlanRequest() (request *CreatePlanRequest) {
+    request = &CreatePlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreatePlan")
+    
+    
+    return
+}
+
+func NewCreatePlanResponse() (response *CreatePlanResponse) {
+    response = &CreatePlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePlan
+// 若您需要使用 Edgeone 产品，您需要通过此接口创建计费套餐。
+//
+// > 创建套餐后，您需要通过 [CreateZone](https://cloud.tencent.com/document/product/1552/80719) 完成创建站点，绑定套餐的流程，Edgeone 才能正常提供服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+//  INVALIDPARAMETER_INVALIDPERIOD = "InvalidParameter.InvalidPeriod"
+//  INVALIDPARAMETER_INVALIDPLANTYPE = "InvalidParameter.InvalidPlanType"
+//  INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
+//  OPERATIONDENIED_PLEASECONTACTBUSINESSPERSONNEL = "OperationDenied.PleaseContactBusinessPersonnel"
+func (c *Client) CreatePlan(request *CreatePlanRequest) (response *CreatePlanResponse, err error) {
+    return c.CreatePlanWithContext(context.Background(), request)
+}
+
+// CreatePlan
+// 若您需要使用 Edgeone 产品，您需要通过此接口创建计费套餐。
+//
+// > 创建套餐后，您需要通过 [CreateZone](https://cloud.tencent.com/document/product/1552/80719) 完成创建站点，绑定套餐的流程，Edgeone 才能正常提供服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+//  INVALIDPARAMETER_INVALIDPERIOD = "InvalidParameter.InvalidPeriod"
+//  INVALIDPARAMETER_INVALIDPLANTYPE = "InvalidParameter.InvalidPlanType"
+//  INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
+//  OPERATIONDENIED_PLEASECONTACTBUSINESSPERSONNEL = "OperationDenied.PleaseContactBusinessPersonnel"
+func (c *Client) CreatePlanWithContext(ctx context.Context, request *CreatePlanRequest) (response *CreatePlanResponse, err error) {
+    if request == nil {
+        request = NewCreatePlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePlanForZoneRequest() (request *CreatePlanForZoneRequest) {
     request = &CreatePlanForZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4617,6 +4680,85 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDestroyPlanRequest() (request *DestroyPlanRequest) {
+    request = &DestroyPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DestroyPlan")
+    
+    
+    return
+}
+
+func NewDestroyPlanResponse() (response *DestroyPlanResponse) {
+    response = &DestroyPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyPlan
+// 当您需要停止 Edgeone 套餐的计费，可以通过该接口销毁计费套餐。
+//
+// > 销毁计费套餐需要满足以下条件：
+//
+//     1.套餐已过期（企业版套餐除外）；
+//
+//     2.套餐下所有站点均已关闭或删除。
+//
+// 
+//
+// > 站点状态可以通过 [查询站点列表](https://cloud.tencent.com/document/product/1552/80713) 接口进行查询
+//
+// 停用站点可以通过 [切换站点状态](https://cloud.tencent.com/document/product/1552/80707) 接口将站点切换至关闭状态
+//
+// 删除站点可以通过 [删除站点](https://cloud.tencent.com/document/product/1552/80717) 接口将站点删除
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
+func (c *Client) DestroyPlan(request *DestroyPlanRequest) (response *DestroyPlanResponse, err error) {
+    return c.DestroyPlanWithContext(context.Background(), request)
+}
+
+// DestroyPlan
+// 当您需要停止 Edgeone 套餐的计费，可以通过该接口销毁计费套餐。
+//
+// > 销毁计费套餐需要满足以下条件：
+//
+//     1.套餐已过期（企业版套餐除外）；
+//
+//     2.套餐下所有站点均已关闭或删除。
+//
+// 
+//
+// > 站点状态可以通过 [查询站点列表](https://cloud.tencent.com/document/product/1552/80713) 接口进行查询
+//
+// 停用站点可以通过 [切换站点状态](https://cloud.tencent.com/document/product/1552/80707) 接口将站点切换至关闭状态
+//
+// 删除站点可以通过 [删除站点](https://cloud.tencent.com/document/product/1552/80717) 接口将站点删除
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
+func (c *Client) DestroyPlanWithContext(ctx context.Context, request *DestroyPlanRequest) (response *DestroyPlanResponse, err error) {
+    if request == nil {
+        request = NewDestroyPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadL4LogsRequest() (request *DownloadL4LogsRequest) {
     request = &DownloadL4LogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4768,6 +4910,69 @@ func (c *Client) IdentifyZoneWithContext(ctx context.Context, request *IdentifyZ
     request.SetContext(ctx)
     
     response = NewIdentifyZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewIncreasePlanQuotaRequest() (request *IncreasePlanQuotaRequest) {
+    request = &IncreasePlanQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "IncreasePlanQuota")
+    
+    
+    return
+}
+
+func NewIncreasePlanQuotaResponse() (response *IncreasePlanQuotaResponse) {
+    response = &IncreasePlanQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// IncreasePlanQuota
+// 当您的套餐绑定的站点数，或配置的 Web 防护 - 自定义规则 - 精准匹配策略的规则数，或 Web 防护 - 速率限制 - 精准速率限制模块的规则数达到套餐允许的配额上限，可以通过该接口增购对应配额。
+//
+// > 该接口该仅支持企业版套餐。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDQUOTANUMBER = "InvalidParameter.InvalidQuotaNumber"
+//  INVALIDPARAMETER_INVALIDQUOTATYPE = "InvalidParameter.InvalidQuotaType"
+//  OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+//  OPERATIONDENIED_PLANINCREASEPLANQUOTAUNSUPPORTED = "OperationDenied.PlanIncreasePlanQuotaUnsupported"
+//  OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
+func (c *Client) IncreasePlanQuota(request *IncreasePlanQuotaRequest) (response *IncreasePlanQuotaResponse, err error) {
+    return c.IncreasePlanQuotaWithContext(context.Background(), request)
+}
+
+// IncreasePlanQuota
+// 当您的套餐绑定的站点数，或配置的 Web 防护 - 自定义规则 - 精准匹配策略的规则数，或 Web 防护 - 速率限制 - 精准速率限制模块的规则数达到套餐允许的配额上限，可以通过该接口增购对应配额。
+//
+// > 该接口该仅支持企业版套餐。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDQUOTANUMBER = "InvalidParameter.InvalidQuotaNumber"
+//  INVALIDPARAMETER_INVALIDQUOTATYPE = "InvalidParameter.InvalidQuotaType"
+//  OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+//  OPERATIONDENIED_PLANINCREASEPLANQUOTAUNSUPPORTED = "OperationDenied.PlanIncreasePlanQuotaUnsupported"
+//  OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
+func (c *Client) IncreasePlanQuotaWithContext(ctx context.Context, request *IncreasePlanQuotaRequest) (response *IncreasePlanQuotaResponse, err error) {
+    if request == nil {
+        request = NewIncreasePlanQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IncreasePlanQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIncreasePlanQuotaResponse()
     err = c.Send(request, response)
     return
 }
@@ -5738,6 +5943,59 @@ func (c *Client) ModifyOriginGroupWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyPlanRequest() (request *ModifyPlanRequest) {
+    request = &ModifyPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyPlan")
+    
+    
+    return
+}
+
+func NewModifyPlanResponse() (response *ModifyPlanResponse) {
+    response = &ModifyPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPlan
+// 修改套餐配置。目前仅支持修改预付费套餐的自动续费开关。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_ENTERPRISEPLANAUTORENEWUNSUPPORTED = "OperationDenied.EnterprisePlanAutoRenewUnsupported"
+//  OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+func (c *Client) ModifyPlan(request *ModifyPlanRequest) (response *ModifyPlanResponse, err error) {
+    return c.ModifyPlanWithContext(context.Background(), request)
+}
+
+// ModifyPlan
+// 修改套餐配置。目前仅支持修改预付费套餐的自动续费开关。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_ENTERPRISEPLANAUTORENEWUNSUPPORTED = "OperationDenied.EnterprisePlanAutoRenewUnsupported"
+//  OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+func (c *Client) ModifyPlanWithContext(ctx context.Context, request *ModifyPlanRequest) (response *ModifyPlanResponse, err error) {
+    if request == nil {
+        request = NewModifyPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRealtimeLogDeliveryTaskRequest() (request *ModifyRealtimeLogDeliveryTaskRequest) {
     request = &ModifyRealtimeLogDeliveryTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6483,6 +6741,146 @@ func (c *Client) ModifyZoneStatusWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyZoneStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewPlanRequest() (request *RenewPlanRequest) {
+    request = &RenewPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "RenewPlan")
+    
+    
+    return
+}
+
+func NewRenewPlanResponse() (response *RenewPlanResponse) {
+    response = &RenewPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewPlan
+// 当您的套餐需要延长有效期，可以通过该接口进行续费。套餐续费仅支持个人版，基础版，标准版套餐。
+//
+// > 费用详情可参考 [套餐费用](https://cloud.tencent.com/document/product/1552/94158)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+//  INVALIDPARAMETER_INVALIDPERIOD = "InvalidParameter.InvalidPeriod"
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_ENTERPRISEPLANRENEWUNSUPPORTED = "OperationDenied.EnterprisePlanRenewUnsupported"
+//  OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
+func (c *Client) RenewPlan(request *RenewPlanRequest) (response *RenewPlanResponse, err error) {
+    return c.RenewPlanWithContext(context.Background(), request)
+}
+
+// RenewPlan
+// 当您的套餐需要延长有效期，可以通过该接口进行续费。套餐续费仅支持个人版，基础版，标准版套餐。
+//
+// > 费用详情可参考 [套餐费用](https://cloud.tencent.com/document/product/1552/94158)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+//  INVALIDPARAMETER_INVALIDPERIOD = "InvalidParameter.InvalidPeriod"
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_ENTERPRISEPLANRENEWUNSUPPORTED = "OperationDenied.EnterprisePlanRenewUnsupported"
+//  OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
+func (c *Client) RenewPlanWithContext(ctx context.Context, request *RenewPlanRequest) (response *RenewPlanResponse, err error) {
+    if request == nil {
+        request = NewRenewPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradePlanRequest() (request *UpgradePlanRequest) {
+    request = &UpgradePlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "UpgradePlan")
+    
+    
+    return
+}
+
+func NewUpgradePlanResponse() (response *UpgradePlanResponse) {
+    response = &UpgradePlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradePlan
+// 当您需要使用高等级套餐才拥有的功能，可以通过本接口升级套餐，仅支持个人版，基础版套餐进行升级。
+//
+// > 不同类型 Edgeone 计费套餐区别参考 [Edgeone计费套餐选型对比](https://cloud.tencent.com/document/product/1552/94165)
+//
+// 计费套餐升级规则以及资费详情参考 [Edgeone计费套餐升配说明](https://cloud.tencent.com/document/product/1552/95291)
+//
+// 如果需要将套餐升级至企业版，请 [联系我们](https://cloud.tencent.com/online-service)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+//  INVALIDPARAMETER_INVALIDPLANTYPE = "InvalidParameter.InvalidPlanType"
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_ENTERPRISEPLANUPGRADEUNSUPPORTED = "OperationDenied.EnterprisePlanUpgradeUnsupported"
+//  OPERATIONDENIED_PLANDOWNGRADENOTALLOWED = "OperationDenied.PlanDowngradeNotAllowed"
+//  OPERATIONDENIED_PLANHASBEENEXPIRED = "OperationDenied.PlanHasBeenExpired"
+//  OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+//  OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
+func (c *Client) UpgradePlan(request *UpgradePlanRequest) (response *UpgradePlanResponse, err error) {
+    return c.UpgradePlanWithContext(context.Background(), request)
+}
+
+// UpgradePlan
+// 当您需要使用高等级套餐才拥有的功能，可以通过本接口升级套餐，仅支持个人版，基础版套餐进行升级。
+//
+// > 不同类型 Edgeone 计费套餐区别参考 [Edgeone计费套餐选型对比](https://cloud.tencent.com/document/product/1552/94165)
+//
+// 计费套餐升级规则以及资费详情参考 [Edgeone计费套餐升配说明](https://cloud.tencent.com/document/product/1552/95291)
+//
+// 如果需要将套餐升级至企业版，请 [联系我们](https://cloud.tencent.com/online-service)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
+//  INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+//  INVALIDPARAMETER_INVALIDPLANTYPE = "InvalidParameter.InvalidPlanType"
+//  INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
+//  OPERATIONDENIED_ENTERPRISEPLANUPGRADEUNSUPPORTED = "OperationDenied.EnterprisePlanUpgradeUnsupported"
+//  OPERATIONDENIED_PLANDOWNGRADENOTALLOWED = "OperationDenied.PlanDowngradeNotAllowed"
+//  OPERATIONDENIED_PLANHASBEENEXPIRED = "OperationDenied.PlanHasBeenExpired"
+//  OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+//  OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
+func (c *Client) UpgradePlanWithContext(ctx context.Context, request *UpgradePlanRequest) (response *UpgradePlanResponse, err error) {
+    if request == nil {
+        request = NewUpgradePlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradePlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradePlanResponse()
     err = c.Send(request, response)
     return
 }

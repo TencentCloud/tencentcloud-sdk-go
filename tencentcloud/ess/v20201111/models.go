@@ -6930,6 +6930,79 @@ type Department struct {
 }
 
 // Predefined struct for user
+type DescribeBatchOrganizationRegistrationUrlsRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeBatchOrganizationRegistrationUrlsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeBatchOrganizationRegistrationUrlsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchOrganizationRegistrationUrlsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchOrganizationRegistrationUrlsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchOrganizationRegistrationUrlsResponseParams struct {
+	// 企业批量注册链接信息
+	OrganizationAuthUrls []*OrganizationAuthUrl `json:"OrganizationAuthUrls,omitnil,omitempty" name:"OrganizationAuthUrls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchOrganizationRegistrationUrlsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchOrganizationRegistrationUrlsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchOrganizationRegistrationUrlsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchOrganizationRegistrationUrlsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBillUsageDetailRequestParams struct {
 	// 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -10890,6 +10963,21 @@ type OrgBillSummary struct {
 	// <li>**AuthService**: 企业工商信息查询</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+}
+
+type OrganizationAuthUrl struct {
+	// 企业批量注册链接，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天
+	// 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+	// <table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody>
+	//  <tr> <td>PC</td> <td>https://qian.tencent.com/console/batch-register?token=yDSx0UUgtjuaf4UEfd2MjCnfI1iuXFE6&orgName=批量认证线上测试企业9</td> <td>7天</td> </tr> 
+	// <tr> <td>PC_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> 
+	// <tr> <td>APP</td> <td>/pages/guide/index?to=REGISTER_ENTERPRISE_FOR_BATCH&urlAuthToken=yDSx0UUgtjuaf4UEfd2MjCnfI1iuXFE6&orgName=批量认证线上测试企业9</td> <td>7天</td> </tr> </tbody> </table>
+	// 注： 
+	// `1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+	AuthUrl *string `json:"AuthUrl,omitnil,omitempty" name:"AuthUrl"`
+
+	// 企业批量注册的错误信息，例如：企业三要素不通过	
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type OrganizationInfo struct {

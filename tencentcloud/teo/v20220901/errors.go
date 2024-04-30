@@ -293,6 +293,9 @@ const (
 	// 无效的token鉴权时间参数。
 	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEPARAM = "InvalidParameter.InvalidAuthenticationTypeTimeParam"
 
+	// 自动使用代金券格式不正确，请输入正确的自动使用代金券格式。
+	INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = "InvalidParameter.InvalidAutoUseVoucher"
+
 	// 无效的第三方对象存储。
 	INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = "InvalidParameter.InvalidAwsPrivateAccess"
 
@@ -425,6 +428,12 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
+	// 套餐周期格式不正确，请输入正确的套餐周期格式。
+	INVALIDPARAMETER_INVALIDPERIOD = "InvalidParameter.InvalidPeriod"
+
+	// 套餐类型格式不正确，请输入正确的套餐类型格式。
+	INVALIDPARAMETER_INVALIDPLANTYPE = "InvalidParameter.InvalidPlanType"
+
 	// 套餐包不支持最大上传大小。
 	INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = "InvalidParameter.InvalidPostMaxSizeBilling"
 
@@ -440,8 +449,17 @@ const (
 	// 套餐包不支持Quic配置。
 	INVALIDPARAMETER_INVALIDQUICBILLING = "InvalidParameter.InvalidQuicBilling"
 
+	// 配额数量格式不正确，请输入正确的配额数量格式。
+	INVALIDPARAMETER_INVALIDQUOTANUMBER = "InvalidParameter.InvalidQuotaNumber"
+
+	// 配额类型格式不正确，请输入正确的配额类型格式。
+	INVALIDPARAMETER_INVALIDQUOTATYPE = "InvalidParameter.InvalidQuotaType"
+
 	// 无效的分片回源。
 	INVALIDPARAMETER_INVALIDRANGEORIGINPULL = "InvalidParameter.InvalidRangeOriginPull"
+
+	// 自动续费标志格式不正确，请输入正确的自动续费标签格式。
+	INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
 
 	// 无效的请求头header。
 	INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
@@ -797,6 +815,15 @@ const (
 	// 站点内有域名处于非稳态，稳态包括：“在线” 和 “离线” 两个状态。
 	OPERATIONDENIED_DOMAINSTATUSUNSTABLE = "OperationDenied.DomainStatusUnstable"
 
+	// 企业版套餐不支持自动续费。
+	OPERATIONDENIED_ENTERPRISEPLANAUTORENEWUNSUPPORTED = "OperationDenied.EnterprisePlanAutoRenewUnsupported"
+
+	// 企业版套餐不支持续费。
+	OPERATIONDENIED_ENTERPRISEPLANRENEWUNSUPPORTED = "OperationDenied.EnterprisePlanRenewUnsupported"
+
+	// 企业版套餐不支持升级。
+	OPERATIONDENIED_ENTERPRISEPLANUPGRADEUNSUPPORTED = "OperationDenied.EnterprisePlanUpgradeUnsupported"
+
 	// 站点环境未准备好。
 	OPERATIONDENIED_ENVNOTREADY = "OperationDenied.EnvNotReady"
 
@@ -872,14 +899,32 @@ const (
 	// 归属权校验未通过，请先完成站点归属权校验。
 	OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = "OperationDenied.OwnershipVerificationNotPassed"
 
+	// 套餐不支持降级。
+	OPERATIONDENIED_PLANDOWNGRADENOTALLOWED = "OperationDenied.PlanDowngradeNotAllowed"
+
+	// 套餐已过期。
+	OPERATIONDENIED_PLANHASBEENEXPIRED = "OperationDenied.PlanHasBeenExpired"
+
+	// 套餐已被隔离。
+	OPERATIONDENIED_PLANHASBEENISOLATED = "OperationDenied.PlanHasBeenIsolated"
+
+	// 该套餐不支持增购套餐配额。
+	OPERATIONDENIED_PLANINCREASEPLANQUOTAUNSUPPORTED = "OperationDenied.PlanIncreasePlanQuotaUnsupported"
+
 	// 套餐不支持变更站点的服务区域。
 	OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"
 
 	// Anycast IP调度模式不支持开启中国大陆加速。
 	OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = "OperationDenied.PlatTypeIPAccelerateMainlandNotSupport"
 
+	// 如需创建企业版套餐，请联系商务人员。
+	OPERATIONDENIED_PLEASECONTACTBUSINESSPERSONNEL = "OperationDenied.PleaseContactBusinessPersonnel"
+
 	// DNS 记录不允许添加。
 	OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"
+
+	// 计费资源操作中，请稍后重试。
+	OPERATIONDENIED_RESOURCEHASBEENLOCKED = "OperationDenied.ResourceHasBeenLocked"
 
 	// 当前有互相排斥的请求操作并行发起，请稍后重试。
 	OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"

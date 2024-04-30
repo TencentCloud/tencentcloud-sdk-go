@@ -410,7 +410,12 @@ type OutputFrontRiskValue struct {
 }
 
 type OutputManageMarketingRisk struct {
-	// 返回码。0表示成功，非0标识失败错误码。
+	// 错误码，0 表示成功，非0表示失败错误码。
+	// 0：成功
+	// 1：错误
+	// 1002：参数错误
+	// 4300：未开通服务
+	// 4301：后端未创建对应产品
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 

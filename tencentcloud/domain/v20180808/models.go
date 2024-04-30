@@ -2684,6 +2684,77 @@ func (r *ModifyIntlCustomDnsHostResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTemplateRequestParams struct {
+	// 证件信息
+	CertificateInfo *CertificateInfo `json:"CertificateInfo,omitnil,omitempty" name:"CertificateInfo"`
+
+	// 联系人信息
+	ContactInfo *ContactInfo `json:"ContactInfo,omitnil,omitempty" name:"ContactInfo"`
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type ModifyTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证件信息
+	CertificateInfo *CertificateInfo `json:"CertificateInfo,omitnil,omitempty" name:"CertificateInfo"`
+
+	// 联系人信息
+	ContactInfo *ContactInfo `json:"ContactInfo,omitnil,omitempty" name:"ContactInfo"`
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *ModifyTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateInfo")
+	delete(f, "ContactInfo")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTemplateResponseParams struct {
+	// 模板信息
+	Template *TemplateInfo `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PhoneEmailData struct {
 	// 手机号或者邮箱
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`

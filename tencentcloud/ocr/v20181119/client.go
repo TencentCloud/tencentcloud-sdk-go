@@ -5564,6 +5564,81 @@ func (c *Client) RecognizeGeneralInvoiceWithContext(ctx context.Context, request
     return
 }
 
+func NewRecognizeGeneralTextImageWarnRequest() (request *RecognizeGeneralTextImageWarnRequest) {
+    request = &RecognizeGeneralTextImageWarnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeGeneralTextImageWarn")
+    
+    
+    return
+}
+
+func NewRecognizeGeneralTextImageWarnResponse() (response *RecognizeGeneralTextImageWarnResponse) {
+    response = &RecognizeGeneralTextImageWarnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeGeneralTextImageWarn
+// 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeGeneralTextImageWarn(request *RecognizeGeneralTextImageWarnRequest) (response *RecognizeGeneralTextImageWarnResponse, err error) {
+    return c.RecognizeGeneralTextImageWarnWithContext(context.Background(), request)
+}
+
+// RecognizeGeneralTextImageWarn
+// 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeGeneralTextImageWarnWithContext(ctx context.Context, request *RecognizeGeneralTextImageWarnRequest) (response *RecognizeGeneralTextImageWarnResponse, err error) {
+    if request == nil {
+        request = NewRecognizeGeneralTextImageWarnRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeGeneralTextImageWarn require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeGeneralTextImageWarnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest) {
     request = &RecognizeHealthCodeOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

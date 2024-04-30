@@ -45,6 +45,59 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAnswerQuestionRequest() (request *AnswerQuestionRequest) {
+    request = &AnswerQuestionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tms", APIVersion, "AnswerQuestion")
+    
+    
+    return
+}
+
+func NewAnswerQuestionResponse() (response *AnswerQuestionResponse) {
+    response = &AnswerQuestionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AnswerQuestion
+// "AIGC代答"产品帮助客户在其AIGC场景下，对于敏感类的问题，不是由客户的大模型机器人来回答，而是我们来进行代答，尽最大可能帮助客户规避风险。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDQUESTION = "InvalidParameter.InvalidQuestion"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) AnswerQuestion(request *AnswerQuestionRequest) (response *AnswerQuestionResponse, err error) {
+    return c.AnswerQuestionWithContext(context.Background(), request)
+}
+
+// AnswerQuestion
+// "AIGC代答"产品帮助客户在其AIGC场景下，对于敏感类的问题，不是由客户的大模型机器人来回答，而是我们来进行代答，尽最大可能帮助客户规避风险。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDQUESTION = "InvalidParameter.InvalidQuestion"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) AnswerQuestionWithContext(ctx context.Context, request *AnswerQuestionRequest) (response *AnswerQuestionResponse, err error) {
+    if request == nil {
+        request = NewAnswerQuestionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AnswerQuestion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAnswerQuestionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModerateTextRequest() (request *ModerateTextRequest) {
     request = &ModerateTextRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -66,12 +119,22 @@ func NewModerateTextResponse() (response *ModerateTextResponse) {
 
 // ModerateText
 // 天御文本内容安全定制标签文本审核接口为定制接口，会按照客户定制标签输出审核结果，如需使用请联系商务经理或[在线客服](https://cloud.tencent.com/online-service?from=doc_1125)咨询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDQUESTION = "InvalidParameter.InvalidQuestion"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) ModerateText(request *ModerateTextRequest) (response *ModerateTextResponse, err error) {
     return c.ModerateTextWithContext(context.Background(), request)
 }
 
 // ModerateText
 // 天御文本内容安全定制标签文本审核接口为定制接口，会按照客户定制标签输出审核结果，如需使用请联系商务经理或[在线客服](https://cloud.tencent.com/online-service?from=doc_1125)咨询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDQUESTION = "InvalidParameter.InvalidQuestion"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) ModerateTextWithContext(ctx context.Context, request *ModerateTextRequest) (response *ModerateTextResponse, err error) {
     if request == nil {
         request = NewModerateTextRequest()

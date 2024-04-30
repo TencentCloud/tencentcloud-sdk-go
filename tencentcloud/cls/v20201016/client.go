@@ -792,6 +792,7 @@ func NewCreateCosRechargeResponse() (response *CreateCosRechargeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
@@ -811,6 +812,7 @@ func (c *Client) CreateCosRecharge(request *CreateCosRechargeRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
@@ -833,6 +835,79 @@ func (c *Client) CreateCosRechargeWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateCosRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDashboardSubscribeRequest() (request *CreateDashboardSubscribeRequest) {
+    request = &CreateDashboardSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateDashboardSubscribe")
+    
+    
+    return
+}
+
+func NewCreateDashboardSubscribeResponse() (response *CreateDashboardSubscribeResponse) {
+    response = &CreateDashboardSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDashboardSubscribe
+// 此接口用于创建仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DASHBOARDNAMECONFLICT = "InvalidParameter.DashboardNameConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = "ResourceNotFound.DashboardRecordNotExist"
+func (c *Client) CreateDashboardSubscribe(request *CreateDashboardSubscribeRequest) (response *CreateDashboardSubscribeResponse, err error) {
+    return c.CreateDashboardSubscribeWithContext(context.Background(), request)
+}
+
+// CreateDashboardSubscribe
+// 此接口用于创建仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DASHBOARDNAMECONFLICT = "InvalidParameter.DashboardNameConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = "ResourceNotFound.DashboardRecordNotExist"
+func (c *Client) CreateDashboardSubscribeWithContext(ctx context.Context, request *CreateDashboardSubscribeRequest) (response *CreateDashboardSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreateDashboardSubscribeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDashboardSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDashboardSubscribeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1276,6 +1351,7 @@ func NewCreateMachineGroupResponse() (response *CreateMachineGroupResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
@@ -1299,6 +1375,7 @@ func (c *Client) CreateMachineGroup(request *CreateMachineGroupRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
@@ -2014,6 +2091,71 @@ func (c *Client) DeleteConsumerWithContext(ctx context.Context, request *DeleteC
     request.SetContext(ctx)
     
     response = NewDeleteConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDashboardSubscribeRequest() (request *DeleteDashboardSubscribeRequest) {
+    request = &DeleteDashboardSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteDashboardSubscribe")
+    
+    
+    return
+}
+
+func NewDeleteDashboardSubscribeResponse() (response *DeleteDashboardSubscribeResponse) {
+    response = &DeleteDashboardSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDashboardSubscribe
+// 此接口用于删除仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_DASHBOARDSUBSCRIBERECORDNOTEXIST = "ResourceNotFound.DashboardSubscribeRecordNotExist"
+func (c *Client) DeleteDashboardSubscribe(request *DeleteDashboardSubscribeRequest) (response *DeleteDashboardSubscribeResponse, err error) {
+    return c.DeleteDashboardSubscribeWithContext(context.Background(), request)
+}
+
+// DeleteDashboardSubscribe
+// 此接口用于删除仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_DASHBOARDSUBSCRIBERECORDNOTEXIST = "ResourceNotFound.DashboardSubscribeRecordNotExist"
+func (c *Client) DeleteDashboardSubscribeWithContext(ctx context.Context, request *DeleteDashboardSubscribeRequest) (response *DeleteDashboardSubscribeResponse, err error) {
+    if request == nil {
+        request = NewDeleteDashboardSubscribeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDashboardSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDashboardSubscribeResponse()
     err = c.Send(request, response)
     return
 }
@@ -3313,6 +3455,77 @@ func (c *Client) DescribeCosRechargesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeCosRechargesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDashboardSubscribesRequest() (request *DescribeDashboardSubscribesRequest) {
+    request = &DescribeDashboardSubscribesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeDashboardSubscribes")
+    
+    
+    return
+}
+
+func NewDescribeDashboardSubscribesResponse() (response *DescribeDashboardSubscribesResponse) {
+    response = &DescribeDashboardSubscribesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDashboardSubscribes
+//  本接口用于获取仪表盘订阅列表，支持分页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDashboardSubscribes(request *DescribeDashboardSubscribesRequest) (response *DescribeDashboardSubscribesResponse, err error) {
+    return c.DescribeDashboardSubscribesWithContext(context.Background(), request)
+}
+
+// DescribeDashboardSubscribes
+//  本接口用于获取仪表盘订阅列表，支持分页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDashboardSubscribesWithContext(ctx context.Context, request *DescribeDashboardSubscribesRequest) (response *DescribeDashboardSubscribesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDashboardSubscribesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDashboardSubscribes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDashboardSubscribesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5154,6 +5367,7 @@ func NewModifyCosRechargeResponse() (response *ModifyCosRechargeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
@@ -5173,6 +5387,7 @@ func (c *Client) ModifyCosRecharge(request *ModifyCosRechargeRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
@@ -5195,6 +5410,79 @@ func (c *Client) ModifyCosRechargeWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyCosRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDashboardSubscribeRequest() (request *ModifyDashboardSubscribeRequest) {
+    request = &ModifyDashboardSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyDashboardSubscribe")
+    
+    
+    return
+}
+
+func NewModifyDashboardSubscribeResponse() (response *ModifyDashboardSubscribeResponse) {
+    response = &ModifyDashboardSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDashboardSubscribe
+// 此接口用于修改仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = "ResourceNotFound.DashboardRecordNotExist"
+//  RESOURCENOTFOUND_DASHBOARDSUBSCRIBERECORDNOTEXIST = "ResourceNotFound.DashboardSubscribeRecordNotExist"
+func (c *Client) ModifyDashboardSubscribe(request *ModifyDashboardSubscribeRequest) (response *ModifyDashboardSubscribeResponse, err error) {
+    return c.ModifyDashboardSubscribeWithContext(context.Background(), request)
+}
+
+// ModifyDashboardSubscribe
+// 此接口用于修改仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = "ResourceNotFound.DashboardRecordNotExist"
+//  RESOURCENOTFOUND_DASHBOARDSUBSCRIBERECORDNOTEXIST = "ResourceNotFound.DashboardSubscribeRecordNotExist"
+func (c *Client) ModifyDashboardSubscribeWithContext(ctx context.Context, request *ModifyDashboardSubscribeRequest) (response *ModifyDashboardSubscribeResponse, err error) {
+    if request == nil {
+        request = NewModifyDashboardSubscribeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDashboardSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDashboardSubscribeResponse()
     err = c.Send(request, response)
     return
 }
@@ -5585,6 +5873,7 @@ func NewModifyMachineGroupResponse() (response *ModifyMachineGroupResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
@@ -5607,6 +5896,7 @@ func (c *Client) ModifyMachineGroup(request *ModifyMachineGroupRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
@@ -6276,6 +6566,77 @@ func (c *Client) SearchCosRechargeInfoWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewSearchCosRechargeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchDashboardSubscribeRequest() (request *SearchDashboardSubscribeRequest) {
+    request = &SearchDashboardSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "SearchDashboardSubscribe")
+    
+    
+    return
+}
+
+func NewSearchDashboardSubscribeResponse() (response *SearchDashboardSubscribeResponse) {
+    response = &SearchDashboardSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchDashboardSubscribe
+// 此接口用于预览仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = "ResourceNotFound.DashboardRecordNotExist"
+func (c *Client) SearchDashboardSubscribe(request *SearchDashboardSubscribeRequest) (response *SearchDashboardSubscribeResponse, err error) {
+    return c.SearchDashboardSubscribeWithContext(context.Background(), request)
+}
+
+// SearchDashboardSubscribe
+// 此接口用于预览仪表盘订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = "ResourceNotFound.DashboardRecordNotExist"
+func (c *Client) SearchDashboardSubscribeWithContext(ctx context.Context, request *SearchDashboardSubscribeRequest) (response *SearchDashboardSubscribeResponse, err error) {
+    if request == nil {
+        request = NewSearchDashboardSubscribeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchDashboardSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchDashboardSubscribeResponse()
     err = c.Send(request, response)
     return
 }

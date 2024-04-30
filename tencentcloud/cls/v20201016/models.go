@@ -2013,6 +2013,12 @@ type CreateCosRechargeRequestParams struct {
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
 	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// COS导入任务类型。1：一次性导入任务；2：持续性导入任务。默认为1：一次性导入任务
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 元数据。
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type CreateCosRechargeRequest struct {
@@ -2045,6 +2051,12 @@ type CreateCosRechargeRequest struct {
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
 	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// COS导入任务类型。1：一次性导入任务；2：持续性导入任务。默认为1：一次性导入任务
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 元数据。
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *CreateCosRechargeRequest) ToJsonString() string {
@@ -2068,6 +2080,8 @@ func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
 	delete(f, "LogType")
 	delete(f, "Compress")
 	delete(f, "ExtractRuleInfo")
+	delete(f, "TaskType")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosRechargeRequest has unknown keys!", "")
 	}
@@ -2076,7 +2090,7 @@ func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCosRechargeResponseParams struct {
-	// cos_recharge记录id
+	// COS导入任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
@@ -2101,6 +2115,57 @@ func (r *CreateCosRechargeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDashboardSubscribeRequestParams struct {
+
+}
+
+type CreateDashboardSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateDashboardSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDashboardSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDashboardSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDashboardSubscribeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDashboardSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDashboardSubscribeResponseParams `json:"Response"`
+}
+
+func (r *CreateDashboardSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDashboardSubscribeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDataTransformRequestParams struct {
 	// 任务类型. 1: 指定主题；2:动态创建。详情请参考[创建加工任务文档](https://cloud.tencent.com/document/product/614/63940)。
 	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
@@ -2111,7 +2176,7 @@ type CreateDataTransformRequestParams struct {
 	// 加工任务名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 加工语句
+	// 加工语句。[创建加工任务](https://cloud.tencent.com/document/product/614/63940)  [函数总览](https://cloud.tencent.com/document/product/614/70395)
 	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 加工类型。
@@ -2140,7 +2205,7 @@ type CreateDataTransformRequest struct {
 	// 加工任务名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 加工语句
+	// 加工语句。[创建加工任务](https://cloud.tencent.com/document/product/614/63940)  [函数总览](https://cloud.tencent.com/document/product/614/70395)
 	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
 	// 加工类型。
@@ -2695,13 +2760,13 @@ type CreateMachineGroupRequestParams struct {
 	// 机器组名字，不能重复
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组
+	// 创建机器组类型。Type：ip，Values中为ip字符串列表创建机器组；Type：label，Values中为标签字符串列表创建机器组。
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启机器组自动更新
+	// 是否开启机器组自动更新。默认false
 	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
@@ -2710,10 +2775,10 @@ type CreateMachineGroupRequestParams struct {
 	// 升级结束时间，建议业务低峰期升级LogListener
 	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
-	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
-	// 机器组中机器离线清理时间
+	// 机器组中机器离线清理时间。单位：天
 	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
@@ -2729,13 +2794,13 @@ type CreateMachineGroupRequest struct {
 	// 机器组名字，不能重复
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组
+	// 创建机器组类型。Type：ip，Values中为ip字符串列表创建机器组；Type：label，Values中为标签字符串列表创建机器组。
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启机器组自动更新
+	// 是否开启机器组自动更新。默认false
 	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
@@ -2744,10 +2809,10 @@ type CreateMachineGroupRequest struct {
 	// 升级结束时间，建议业务低峰期升级LogListener
 	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
-	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
-	// 机器组中机器离线清理时间
+	// 机器组中机器离线清理时间。单位：天
 	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
@@ -3765,6 +3830,57 @@ func (r *DeleteConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDashboardSubscribeRequestParams struct {
+
+}
+
+type DeleteDashboardSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteDashboardSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDashboardSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDashboardSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDashboardSubscribeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDashboardSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDashboardSubscribeResponseParams `json:"Response"`
+}
+
+func (r *DeleteDashboardSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDashboardSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5133,6 +5249,57 @@ func (r *DescribeCosRechargesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDashboardSubscribesRequestParams struct {
+
+}
+
+type DescribeDashboardSubscribesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDashboardSubscribesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDashboardSubscribesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDashboardSubscribesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDashboardSubscribesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDashboardSubscribesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDashboardSubscribesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDashboardSubscribesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDashboardSubscribesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDashboardsRequestParams struct {
 	// 分页的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -6384,10 +6551,12 @@ type DescribeShipperTasksRequestParams struct {
 	// 投递规则ID
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// 查询的开始时间戳，支持最近3天的查询， 毫秒
+	// 查询的开始时间戳，支持最近3天的查询， 毫秒。
+	// StartTime必须小于EndTime
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询的结束时间戳， 毫秒
+	// 查询的结束时间戳， 毫秒。
+	// StartTime必须小于EndTime
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -6397,10 +6566,12 @@ type DescribeShipperTasksRequest struct {
 	// 投递规则ID
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// 查询的开始时间戳，支持最近3天的查询， 毫秒
+	// 查询的开始时间戳，支持最近3天的查询， 毫秒。
+	// StartTime必须小于EndTime
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询的结束时间戳， 毫秒
+	// 查询的结束时间戳， 毫秒。
+	// StartTime必须小于EndTime
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -7409,10 +7580,12 @@ type MachineGroupInfo struct {
 }
 
 type MachineGroupTypeInfo struct {
-	// 机器组类型，ip表示该机器组Values中存的是采集机器的IP地址，label表示该机器组Values中存储的是机器的标签
+	// 机器组类型。支持 ip 和 label。
+	// - ip：表示该机器组Values中存的是采集机器的ip地址
+	// - label：表示该机器组Values中存储的是机器的标签
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 机器描述列表
+	// 机器描述列表。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -8379,7 +8552,7 @@ func (r *ModifyConsumerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCosRechargeRequestParams struct {
-	// COS导入配置ID
+	// COS导入配置Id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题Id
@@ -8388,14 +8561,38 @@ type ModifyCosRechargeRequestParams struct {
 	// COS导入任务名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 是否启用:   0： 未启用  ， 1：启用
+	// 任务状态   0： 停用 ， 1：启用
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// COS文件所在文件夹的前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
+
+	// 提取规则，如果设置了ExtractRule，则必须设置LogType
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 元数据。支持 bucket，object。
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type ModifyCosRechargeRequest struct {
 	*tchttp.BaseRequest
 	
-	// COS导入配置ID
+	// COS导入配置Id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题Id
@@ -8404,8 +8601,32 @@ type ModifyCosRechargeRequest struct {
 	// COS导入任务名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 是否启用:   0： 未启用  ， 1：启用
+	// 任务状态   0： 停用 ， 1：启用
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// COS文件所在文件夹的前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
+
+	// 提取规则，如果设置了ExtractRule，则必须设置LogType
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 元数据。支持 bucket，object。
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *ModifyCosRechargeRequest) ToJsonString() string {
@@ -8424,6 +8645,14 @@ func (r *ModifyCosRechargeRequest) FromJsonString(s string) error {
 	delete(f, "TopicId")
 	delete(f, "Name")
 	delete(f, "Enable")
+	delete(f, "Bucket")
+	delete(f, "BucketRegion")
+	delete(f, "Prefix")
+	delete(f, "LogType")
+	delete(f, "Compress")
+	delete(f, "ExtractRuleInfo")
+	delete(f, "TaskType")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCosRechargeRequest has unknown keys!", "")
 	}
@@ -8449,6 +8678,57 @@ func (r *ModifyCosRechargeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCosRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDashboardSubscribeRequestParams struct {
+
+}
+
+type ModifyDashboardSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyDashboardSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDashboardSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDashboardSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDashboardSubscribeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDashboardSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDashboardSubscribeResponseParams `json:"Response"`
+}
+
+func (r *ModifyDashboardSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDashboardSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8908,7 +9188,7 @@ type ModifyMachineGroupRequestParams struct {
 	// 机器组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 机器组类型
+	// 机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
@@ -8926,7 +9206,7 @@ type ModifyMachineGroupRequestParams struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
-	// 机器组中机器定期离线清理时间
+	// 机器组中机器定期离线清理时间。单位：天
 	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
@@ -8942,7 +9222,7 @@ type ModifyMachineGroupRequest struct {
 	// 机器组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 机器组类型
+	// 机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
@@ -8960,7 +9240,7 @@ type ModifyMachineGroupRequest struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
-	// 机器组中机器定期离线清理时间
+	// 机器组中机器定期离线清理时间。单位：天
 	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
@@ -10211,6 +10491,57 @@ func (r *SearchCosRechargeInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SearchCosRechargeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchDashboardSubscribeRequestParams struct {
+
+}
+
+type SearchDashboardSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SearchDashboardSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchDashboardSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchDashboardSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchDashboardSubscribeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchDashboardSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchDashboardSubscribeResponseParams `json:"Response"`
+}
+
+func (r *SearchDashboardSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchDashboardSubscribeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -5619,7 +5619,7 @@ type Options struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitType *string `json:"InitType,omitnil,omitempty" name:"InitType"`
 
-	// 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、InitializeAfterDelete(删除并重新初始化)、ExecuteAfterIgnore(忽略并继续执行)
+	// 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealOfExistSameTable *string `json:"DealOfExistSameTable,omitnil,omitempty" name:"DealOfExistSameTable"`
 

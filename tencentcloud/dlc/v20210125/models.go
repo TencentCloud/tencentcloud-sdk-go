@@ -2714,7 +2714,7 @@ type CreateSparkAppRequestParams struct {
 	// spark作业程序包文件路径
 	AppFile *string `json:"AppFile,omitnil,omitempty" name:"AppFile"`
 
-	// 数据访问策略，CAM Role arn
+	// 数据访问策略，CAM Role arn，控制台通过数据作业—>作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；
 	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
 	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
@@ -2805,7 +2805,7 @@ type CreateSparkAppRequest struct {
 	// spark作业程序包文件路径
 	AppFile *string `json:"AppFile,omitnil,omitempty" name:"AppFile"`
 
-	// 数据访问策略，CAM Role arn
+	// 数据访问策略，CAM Role arn，控制台通过数据作业—>作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；
 	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
 	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
@@ -11602,7 +11602,7 @@ type SparkJobInfo struct {
 	// spark作业最近任务ID
 	CurrentTaskId *string `json:"CurrentTaskId,omitnil,omitempty" name:"CurrentTaskId"`
 
-	// spark作业最近运行状态
+	// spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
 	JobStatus *int64 `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
 	// spark流作业统计
@@ -11672,6 +11672,10 @@ type SparkJobInfo struct {
 	// 是否使用session脚本的sql运行任务：false：否，true：是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// 引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
 }
 
 type SparkMonitorMetrics struct {
@@ -12814,7 +12818,7 @@ type UpdateUserDataEngineConfigRequestParams struct {
 	// 用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
 	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil,omitempty" name:"DataEngineConfigPairs"`
 
-	// 作业引擎资源配置模版
+	// 作业引擎资源配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil,omitempty" name:"SessionResourceTemplate"`
 }
 
@@ -12827,7 +12831,7 @@ type UpdateUserDataEngineConfigRequest struct {
 	// 用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
 	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil,omitempty" name:"DataEngineConfigPairs"`
 
-	// 作业引擎资源配置模版
+	// 作业引擎资源配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil,omitempty" name:"SessionResourceTemplate"`
 }
 
