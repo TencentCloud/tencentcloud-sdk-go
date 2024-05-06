@@ -3384,6 +3384,68 @@ type DashboardInfo struct {
 	DashboardTopicInfos []*DashboardTopicInfo `json:"DashboardTopicInfos,omitnil,omitempty" name:"DashboardTopicInfos"`
 }
 
+type DashboardNoticeMode struct {
+	// 仪表盘通知方式。<br>
+	// <li/>Uin：腾讯云用户<br>
+	// <li/>Group：腾讯云用户组<br>
+	// <li/>Email：自定义Email<br>
+	// <li/>WeCom: 企业微信回调
+	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
+
+	// 知方式对应的值。
+	// <br> <li/> 当ReceiverType不是 Wecom 时，Values必填。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 仪表盘通知渠道。
+	// <br><li/> 支持：["Email","Sms","WeChat","Phone"]。
+	// <br><li/> 当ReceiverType是 Email 或 Wecom 时，ReceiverChannels不能赋值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
+
+	// 回调Url。
+	// <br><li/> 当ReceiverType是 Wecom 时，Url必填。
+	// <br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type DashboardSubscribeData struct {
+	// 仪表盘订阅通知方式。
+	NoticeModes []*DashboardNoticeMode `json:"NoticeModes,omitnil,omitempty" name:"NoticeModes"`
+
+	// 仪表盘订阅时间，为空标识取仪表盘默认的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DashboardTime []*string `json:"DashboardTime,omitnil,omitempty" name:"DashboardTime"`
+
+	// 仪表盘订阅模板变量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateVariables []*DashboardTemplateVariable `json:"TemplateVariables,omitnil,omitempty" name:"TemplateVariables"`
+
+	// 时区。参考：https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#SHANGHAI
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timezone *string `json:"Timezone,omitnil,omitempty" name:"Timezone"`
+
+	// 语言。 zh 中文、en`英文。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeLanguage *string `json:"SubscribeLanguage,omitnil,omitempty" name:"SubscribeLanguage"`
+
+	// 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
+
+	// 自定义跳转链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+}
+
+type DashboardTemplateVariable struct {
+	// key的值
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// key对应的values取值values
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type DashboardTopicInfo struct {
 	// 主题id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -10496,12 +10558,33 @@ func (r *SearchCosRechargeInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchDashboardSubscribeRequestParams struct {
+	// 仪表盘id。
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
 
+	// 仪表盘订阅数据。
+	SubscribeData *DashboardSubscribeData `json:"SubscribeData,omitnil,omitempty" name:"SubscribeData"`
+
+	// 仪表盘订阅Id。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 仪表盘订阅名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type SearchDashboardSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
+	// 仪表盘id。
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+
+	// 仪表盘订阅数据。
+	SubscribeData *DashboardSubscribeData `json:"SubscribeData,omitnil,omitempty" name:"SubscribeData"`
+
+	// 仪表盘订阅Id。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 仪表盘订阅名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *SearchDashboardSubscribeRequest) ToJsonString() string {
@@ -10516,7 +10599,10 @@ func (r *SearchDashboardSubscribeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DashboardId")
+	delete(f, "SubscribeData")
+	delete(f, "Id")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchDashboardSubscribeRequest has unknown keys!", "")
 	}

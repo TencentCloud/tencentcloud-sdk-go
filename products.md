@@ -6,7 +6,7 @@
 | advisor | [云顾问](https://cloud.tencent.com/document/product/1264) | 2024-03-20 01:07:31 |
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | 2024-03-20 01:07:31 |
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2024-04-22 01:07:18 |
-| aiart | [大模型图像创作引擎](https://cloud.tencent.com/document/product/1668) | 2024-04-29 01:07:46 |
+| aiart | [大模型图像创作引擎](https://cloud.tencent.com/document/product/1668) | 2024-05-01 01:08:11 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2023-08-17 01:06:14 |
 | ams | [音频内容安全](https://cloud.tencent.com/document/product/1219) | 2024-04-22 01:07:21 |
 | anicloud | [动效素材服务](https://cloud.tencent.com/document/product/1641) | 2023-05-18 01:01:53 |
@@ -60,7 +60,7 @@
 | cloudaudit | [操作审计](https://cloud.tencent.com/document/product/629) | 2024-01-15 01:09:37 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2024-03-20 01:11:31 |
 | cloudstudio | [Cloud Studio（云端 IDE）](https://cloud.tencent.com/document/product/1039) | 2024-04-26 01:11:33 |
-| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2024-04-30 01:11:49 |
+| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2024-05-01 01:13:17 |
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2024-03-20 01:12:05 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2024-03-20 01:12:14 |
 | cms | [内容安全](https://cloud.tencent.com/document/product/669) | 2024-04-22 01:12:28 |

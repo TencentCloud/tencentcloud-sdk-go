@@ -46,13 +46,13 @@ type ImageToImageRequestParams struct {
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于8MB。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于8MB。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
 	// 文本描述。
@@ -87,7 +87,7 @@ type ImageToImageRequestParams struct {
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
 	// 生成自由度。
-	// Strength 值越小，生成图和原图越接近，取值范围0 - 1，不传使用模型内置的默认值。
+	// Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传使用模型内置的默认值。
 	// 推荐的取值范围为0.6 - 0.8。
 	Strength *float64 `json:"Strength,omitnil,omitempty" name:"Strength"`
 
@@ -101,13 +101,13 @@ type ImageToImageRequest struct {
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于8MB。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于8MB。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
 	// 文本描述。
@@ -142,7 +142,7 @@ type ImageToImageRequest struct {
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
 	// 生成自由度。
-	// Strength 值越小，生成图和原图越接近，取值范围0 - 1，不传使用模型内置的默认值。
+	// Strength 值越小，生成图和原图越接近，取值范围(0, 1]，不传使用模型内置的默认值。
 	// 推荐的取值范围为0.6 - 0.8。
 	Strength *float64 `json:"Strength,omitnil,omitempty" name:"Strength"`
 
@@ -461,45 +461,8 @@ type SubmitDrawPortraitJobRequestParams struct {
 	// 写真模型 ID。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 写真风格模板，支持以下风格：
-	// zhengjian_female：证件照-长发（女）
-	// zhengjian_shorthair_female：证件照-短发（女）
-	// zhengjian_male：证件照（男）
-	// grey_suit_male：灰色西装（男）
-	// beige_suit_male：米色西装（男）
-	// white_sweater_male：白色毛衣（男）
-	// hanfu_female：汉服（女）
-	// hanfu2_female：汉服2（女）
-	// green_female：绿色毛衣（女）
-	// white_sweater_female：白色毛衣（女）
-	// sports_female：蓝色运动装（女）
-	// bow_female：蝴蝶结发饰（女）
-	// wreath_female：头戴花环（女）
-	// black_dress1_female：小黑裙1（女）
-	// black_dress2_female：小黑裙2（女）
-	// black_dress3_female：小黑裙3（女）
-	// wedding_female：婚纱裙（女）
-	// wedding2_female：婚纱裙2（女）
-	// forest_female：树林（女）
-	// flower_female：花丛（女）
-	// qipao_female：旗袍（女）
-	// feather_female：羽毛（女）
-	// lolita_female：洛丽塔（女）
-	// blue_shirt_female：蓝衬衣（女）
-	// green_shirt_female：绿衬衣（女）
-	// purple_shirt_female：紫衬衣（女）
-	// fire_female：火焰（女）
-	// christmas1_female: 圣诞1（女）
-	// christmas2_female: 圣诞2（女）
-	// christmas3_female: 圣诞3（适用女性）
-	// newyear1_female：新春1（女）
-	// newyear2_female：新春2（女）
-	// newyear3_female：新春3（女）
-	// newyear5_female：新春5（女）
-	// elderly_female：中老年（女）
-	// elderly_male：中老年（男）
-	// labour_female：田野劳作（女）
-	// simple：简洁风格（通用），一般用于写真模型的封面示意图，每个 ModelId 的生成结果固定，多次生成将返回相同图片
+	// 写真风格模板。
+	// 请在[ AI 写真风格列表](https://cloud.tencent.com/document/product/1668/105740) 中选择期望的风格，传入风格编号。
 	StyleId *string `json:"StyleId,omitnil,omitempty" name:"StyleId"`
 
 	// 本次生成的图片数量，取值范围[1,4]
@@ -531,45 +494,8 @@ type SubmitDrawPortraitJobRequest struct {
 	// 写真模型 ID。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 写真风格模板，支持以下风格：
-	// zhengjian_female：证件照-长发（女）
-	// zhengjian_shorthair_female：证件照-短发（女）
-	// zhengjian_male：证件照（男）
-	// grey_suit_male：灰色西装（男）
-	// beige_suit_male：米色西装（男）
-	// white_sweater_male：白色毛衣（男）
-	// hanfu_female：汉服（女）
-	// hanfu2_female：汉服2（女）
-	// green_female：绿色毛衣（女）
-	// white_sweater_female：白色毛衣（女）
-	// sports_female：蓝色运动装（女）
-	// bow_female：蝴蝶结发饰（女）
-	// wreath_female：头戴花环（女）
-	// black_dress1_female：小黑裙1（女）
-	// black_dress2_female：小黑裙2（女）
-	// black_dress3_female：小黑裙3（女）
-	// wedding_female：婚纱裙（女）
-	// wedding2_female：婚纱裙2（女）
-	// forest_female：树林（女）
-	// flower_female：花丛（女）
-	// qipao_female：旗袍（女）
-	// feather_female：羽毛（女）
-	// lolita_female：洛丽塔（女）
-	// blue_shirt_female：蓝衬衣（女）
-	// green_shirt_female：绿衬衣（女）
-	// purple_shirt_female：紫衬衣（女）
-	// fire_female：火焰（女）
-	// christmas1_female: 圣诞1（女）
-	// christmas2_female: 圣诞2（女）
-	// christmas3_female: 圣诞3（适用女性）
-	// newyear1_female：新春1（女）
-	// newyear2_female：新春2（女）
-	// newyear3_female：新春3（女）
-	// newyear5_female：新春5（女）
-	// elderly_female：中老年（女）
-	// elderly_male：中老年（男）
-	// labour_female：田野劳作（女）
-	// simple：简洁风格（通用），一般用于写真模型的封面示意图，每个 ModelId 的生成结果固定，多次生成将返回相同图片
+	// 写真风格模板。
+	// 请在[ AI 写真风格列表](https://cloud.tencent.com/document/product/1668/105740) 中选择期望的风格，传入风格编号。
 	StyleId *string `json:"StyleId,omitnil,omitempty" name:"StyleId"`
 
 	// 本次生成的图片数量，取值范围[1,4]

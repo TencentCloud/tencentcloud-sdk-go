@@ -723,7 +723,7 @@ type CheckInstancesUpgradeAbleRequestParams struct {
 	// 节点列表，空为全部节点
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 升级类型
+	// 升级类型，枚举值：reset(重装升级，支持大版本和小版本)，hot(原地滚动小版本升级)，major(原地滚动大版本升级)
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
 	// 分页Offset
@@ -745,7 +745,7 @@ type CheckInstancesUpgradeAbleRequest struct {
 	// 节点列表，空为全部节点
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 升级类型
+	// 升级类型，枚举值：reset(重装升级，支持大版本和小版本)，hot(原地滚动小版本升级)，major(原地滚动大版本升级)
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
 	// 分页Offset
@@ -6300,20 +6300,20 @@ func (r *DescribeAddonValuesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAvailableClusterVersionRequestParams struct {
-	// 集群 Id
+	// 集群 Id。若只查询某个集群可升级的版本，需填写此项。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群 Id 列表
+	// 集群 Id 列表。若查询多个集群可升级的版本，需填写此项。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 }
 
 type DescribeAvailableClusterVersionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 Id
+	// 集群 Id。若只查询某个集群可升级的版本，需填写此项。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群 Id 列表
+	// 集群 Id 列表。若查询多个集群可升级的版本，需填写此项。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 }
 
@@ -7551,22 +7551,17 @@ type DescribeClusterNodePoolsRequestParams struct {
 	// ClusterId（集群id）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// ·  NodePoolsName
+	// · "Name":"NodePoolsName","Values": ["test"]
 	//     按照【节点池名】进行过滤。
 	//     类型：String
 	//     必选：否
 	// 
-	// ·  NodePoolsId
+	// ·  "Name":"NodePoolsId","Values": ["np-d2mb2zb"]
 	//     按照【节点池id】进行过滤。
 	//     类型：String
 	//     必选：否
 	// 
-	// ·  tags
-	//     按照【标签键值对】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag:tag-key
+	// ·  "Name":"Tags","Values": ["abc:1"]
 	//     按照【标签键值对】进行过滤。
 	//     类型：String
 	//     必选：否
@@ -7579,22 +7574,17 @@ type DescribeClusterNodePoolsRequest struct {
 	// ClusterId（集群id）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// ·  NodePoolsName
+	// · "Name":"NodePoolsName","Values": ["test"]
 	//     按照【节点池名】进行过滤。
 	//     类型：String
 	//     必选：否
 	// 
-	// ·  NodePoolsId
+	// ·  "Name":"NodePoolsId","Values": ["np-d2mb2zb"]
 	//     按照【节点池id】进行过滤。
 	//     类型：String
 	//     必选：否
 	// 
-	// ·  tags
-	//     按照【标签键值对】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag:tag-key
+	// ·  "Name":"Tags","Values": ["abc:1"]
 	//     按照【标签键值对】进行过滤。
 	//     类型：String
 	//     必选：否
@@ -8433,45 +8423,7 @@ type DescribeClustersRequestParams struct {
 	// 最大输出条数，默认20，最大为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// ·  ClusterName
-	//     按照【集群名】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  ClusterType
-	//     按照【集群类型】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  ClusterStatus
-	//     按照【集群状态】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  Tags
-	//     按照【标签键值对】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  vpc-id
-	//     按照【VPC】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag-key
-	//     按照【标签键】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag-value
-	//     按照【标签值】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag:tag-key
-	//     按照【标签键值对】进行过滤。
-	//     类型：String
-	//     必选：否
+	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-123qajzs"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["abc:1"] 按照【标签键值对】进行过滤。 类型：String 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 集群类型，例如：MANAGED_CLUSTER
@@ -8491,45 +8443,7 @@ type DescribeClustersRequest struct {
 	// 最大输出条数，默认20，最大为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// ·  ClusterName
-	//     按照【集群名】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  ClusterType
-	//     按照【集群类型】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  ClusterStatus
-	//     按照【集群状态】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  Tags
-	//     按照【标签键值对】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  vpc-id
-	//     按照【VPC】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag-key
-	//     按照【标签键】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag-value
-	//     按照【标签值】进行过滤。
-	//     类型：String
-	//     必选：否
-	// 
-	// ·  tag:tag-key
-	//     按照【标签键值对】进行过滤。
-	//     类型：String
-	//     必选：否
+	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-123qajzs"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["abc:1"] 按照【标签键值对】进行过滤。 类型：String 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 集群类型，例如：MANAGED_CLUSTER
@@ -14258,7 +14172,7 @@ type ExistedInstancesPara struct {
 	// 集群ID
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 实例额外需要设置参数信息
+	// 实例额外需要设置参数信息（目前后端暂不支持此字段，我们将在未来的版本中实现）
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
@@ -16469,7 +16383,7 @@ type ModifyNodePoolInstanceTypesRequestParams struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 机型列表
+	// 机型列表，主实例机型不支持修改
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 }
 
@@ -16482,7 +16396,7 @@ type ModifyNodePoolInstanceTypesRequest struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 机型列表
+	// 机型列表，主实例机型不支持修改
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 }
 
@@ -18947,7 +18861,7 @@ type ScaleInMaster struct {
 	// 缩容的实例角色：MASTER,ETCD,MASTER_ETCD
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
 
-	// 实例的保留模式
+	// 实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
 	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitnil,omitempty" name:"InstanceDeleteMode"`
 }
 
