@@ -73,6 +73,8 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
+//  FAILEDOPERATION_SUBMISSIONLIMITREACHED = "FailedOperation.SubmissionLimitReached"
+//  FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     return c.FileTranslateWithContext(context.Background(), request)
@@ -87,6 +89,8 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
+//  FAILEDOPERATION_SUBMISSIONLIMITREACHED = "FailedOperation.SubmissionLimitReached"
+//  FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     if request == nil {

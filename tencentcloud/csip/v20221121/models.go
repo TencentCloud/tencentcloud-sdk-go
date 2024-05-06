@@ -1630,6 +1630,9 @@ type CreateRiskCenterScanTaskRequestParams struct {
 	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
 	ScanPlanType *int64 `json:"ScanPlanType,omitnil,omitempty" name:"ScanPlanType"`
 
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 扫描资产信息列表
 	Assets []*TaskAssetObject `json:"Assets,omitnil,omitempty" name:"Assets"`
 
@@ -1666,6 +1669,9 @@ type CreateRiskCenterScanTaskRequest struct {
 
 	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
 	ScanPlanType *int64 `json:"ScanPlanType,omitnil,omitempty" name:"ScanPlanType"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 扫描资产信息列表
 	Assets []*TaskAssetObject `json:"Assets,omitnil,omitempty" name:"Assets"`
@@ -1705,6 +1711,7 @@ func (r *CreateRiskCenterScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanAssetType")
 	delete(f, "ScanItem")
 	delete(f, "ScanPlanType")
+	delete(f, "MemberId")
 	delete(f, "Assets")
 	delete(f, "ScanPlanContent")
 	delete(f, "SelfDefiningAssets")
@@ -2011,6 +2018,9 @@ func (r *DeleteDomainAndIpResponse) FromJsonString(s string) error {
 type DeleteRiskScanTaskRequestParams struct {
 	// 任务id 列表
 	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type DeleteRiskScanTaskRequest struct {
@@ -2018,6 +2028,9 @@ type DeleteRiskScanTaskRequest struct {
 	
 	// 任务id 列表
 	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 func (r *DeleteRiskScanTaskRequest) ToJsonString() string {
@@ -2033,6 +2046,7 @@ func (r *DeleteRiskScanTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskIdList")
+	delete(f, "MemberId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRiskScanTaskRequest has unknown keys!", "")
 	}
@@ -3110,6 +3124,9 @@ func (r *DescribePublicIpAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRiskCenterAssetViewCFGRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3120,6 +3137,9 @@ type DescribeRiskCenterAssetViewCFGRiskListRequestParams struct {
 type DescribeRiskCenterAssetViewCFGRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3139,6 +3159,7 @@ func (r *DescribeRiskCenterAssetViewCFGRiskListRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3195,6 +3216,9 @@ func (r *DescribeRiskCenterAssetViewCFGRiskListResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeRiskCenterAssetViewPortRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3205,6 +3229,9 @@ type DescribeRiskCenterAssetViewPortRiskListRequestParams struct {
 type DescribeRiskCenterAssetViewPortRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3224,6 +3251,7 @@ func (r *DescribeRiskCenterAssetViewPortRiskListRequest) FromJsonString(s string
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3277,6 +3305,9 @@ func (r *DescribeRiskCenterAssetViewPortRiskListResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeRiskCenterAssetViewVULRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3287,6 +3318,9 @@ type DescribeRiskCenterAssetViewVULRiskListRequestParams struct {
 type DescribeRiskCenterAssetViewVULRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3306,6 +3340,7 @@ func (r *DescribeRiskCenterAssetViewVULRiskListRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3359,6 +3394,9 @@ func (r *DescribeRiskCenterAssetViewVULRiskListResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeRiskCenterAssetViewWeakPasswordRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3369,6 +3407,9 @@ type DescribeRiskCenterAssetViewWeakPasswordRiskListRequestParams struct {
 type DescribeRiskCenterAssetViewWeakPasswordRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3388,6 +3429,7 @@ func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListRequest) FromJsonString(
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3441,6 +3483,9 @@ func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListResponse) FromJsonString
 
 // Predefined struct for user
 type DescribeRiskCenterPortViewPortRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3451,6 +3496,9 @@ type DescribeRiskCenterPortViewPortRiskListRequestParams struct {
 type DescribeRiskCenterPortViewPortRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3470,6 +3518,7 @@ func (r *DescribeRiskCenterPortViewPortRiskListRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3517,6 +3566,9 @@ func (r *DescribeRiskCenterPortViewPortRiskListResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeRiskCenterServerRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3527,6 +3579,9 @@ type DescribeRiskCenterServerRiskListRequestParams struct {
 type DescribeRiskCenterServerRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3546,6 +3601,7 @@ func (r *DescribeRiskCenterServerRiskListRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3587,6 +3643,9 @@ func (r *DescribeRiskCenterServerRiskListResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeRiskCenterVULViewVULRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3597,6 +3656,9 @@ type DescribeRiskCenterVULViewVULRiskListRequestParams struct {
 type DescribeRiskCenterVULViewVULRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3616,6 +3678,7 @@ func (r *DescribeRiskCenterVULViewVULRiskListRequest) FromJsonString(s string) e
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3663,6 +3726,9 @@ func (r *DescribeRiskCenterVULViewVULRiskListResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeRiskCenterWebsiteRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3673,6 +3739,9 @@ type DescribeRiskCenterWebsiteRiskListRequestParams struct {
 type DescribeRiskCenterWebsiteRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3692,6 +3761,7 @@ func (r *DescribeRiskCenterWebsiteRiskListRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -3742,6 +3812,9 @@ func (r *DescribeRiskCenterWebsiteRiskListResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeScanReportListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 列表过滤条件
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -3749,6 +3822,9 @@ type DescribeScanReportListRequestParams struct {
 type DescribeScanReportListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 列表过滤条件
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -3765,6 +3841,7 @@ func (r *DescribeScanReportListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanReportListRequest has unknown keys!", "")
@@ -3807,6 +3884,9 @@ func (r *DescribeScanReportListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3817,6 +3897,9 @@ type DescribeScanTaskListRequestParams struct {
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3836,6 +3919,7 @@ func (r *DescribeScanTaskListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -4027,6 +4111,9 @@ func (r *DescribeSubnetAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskLogListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4034,6 +4121,9 @@ type DescribeTaskLogListRequestParams struct {
 type DescribeTaskLogListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4050,6 +4140,7 @@ func (r *DescribeTaskLogListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLogListRequest has unknown keys!", "")
@@ -4100,6 +4191,9 @@ type DescribeTaskLogURLRequestParams struct {
 	// 0: 预览， 1: 下载
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 任务报告Id 列表
 	ReportItemKeyList []*ReportItemKey `json:"ReportItemKeyList,omitnil,omitempty" name:"ReportItemKeyList"`
 
@@ -4112,6 +4206,9 @@ type DescribeTaskLogURLRequest struct {
 	
 	// 0: 预览， 1: 下载
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 任务报告Id 列表
 	ReportItemKeyList []*ReportItemKey `json:"ReportItemKeyList,omitnil,omitempty" name:"ReportItemKeyList"`
@@ -4133,6 +4230,7 @@ func (r *DescribeTaskLogURLRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Type")
+	delete(f, "MemberId")
 	delete(f, "ReportItemKeyList")
 	delete(f, "ReportTaskIdList")
 	if len(f) > 0 {
@@ -4897,6 +4995,9 @@ type ModifyRiskCenterRiskStatusRequestParams struct {
 
 	// 风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type ModifyRiskCenterRiskStatusRequest struct {
@@ -4910,6 +5011,9 @@ type ModifyRiskCenterRiskStatusRequest struct {
 
 	// 风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 func (r *ModifyRiskCenterRiskStatusRequest) ToJsonString() string {
@@ -4927,6 +5031,7 @@ func (r *ModifyRiskCenterRiskStatusRequest) FromJsonString(s string) error {
 	delete(f, "RiskStatusKeys")
 	delete(f, "Status")
 	delete(f, "Type")
+	delete(f, "MemberId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRiskCenterRiskStatusRequest has unknown keys!", "")
 	}
@@ -4972,6 +5077,9 @@ type ModifyRiskCenterScanTaskRequestParams struct {
 	// 要修改的任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 扫描资产信息列表
 	Assets []*TaskAssetObject `json:"Assets,omitnil,omitempty" name:"Assets"`
 
@@ -5006,6 +5114,9 @@ type ModifyRiskCenterScanTaskRequest struct {
 	// 要修改的任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 扫描资产信息列表
 	Assets []*TaskAssetObject `json:"Assets,omitnil,omitempty" name:"Assets"`
 
@@ -5039,6 +5150,7 @@ func (r *ModifyRiskCenterScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanItem")
 	delete(f, "ScanPlanType")
 	delete(f, "TaskId")
+	delete(f, "MemberId")
 	delete(f, "Assets")
 	delete(f, "ScanPlanContent")
 	delete(f, "SelfDefiningAssets")
@@ -5783,6 +5895,9 @@ type ServiceSupport struct {
 type StopRiskCenterTaskRequestParams struct {
 	// 任务id 列表
 	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type StopRiskCenterTaskRequest struct {
@@ -5790,6 +5905,9 @@ type StopRiskCenterTaskRequest struct {
 	
 	// 任务id 列表
 	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 func (r *StopRiskCenterTaskRequest) ToJsonString() string {
@@ -5805,6 +5923,7 @@ func (r *StopRiskCenterTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskIdList")
+	delete(f, "MemberId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopRiskCenterTaskRequest has unknown keys!", "")
 	}

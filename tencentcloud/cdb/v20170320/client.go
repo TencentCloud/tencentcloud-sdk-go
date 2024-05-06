@@ -625,6 +625,59 @@ func (c *Client) CloseCdbProxyAddressWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCloseSSLRequest() (request *CloseSSLRequest) {
+    request = &CloseSSLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CloseSSL")
+    
+    
+    return
+}
+
+func NewCloseSSLResponse() (response *CloseSSLResponse) {
+    response = &CloseSSLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloseSSL
+// 关闭SSL连接功能。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
+func (c *Client) CloseSSL(request *CloseSSLRequest) (response *CloseSSLResponse, err error) {
+    return c.CloseSSLWithContext(context.Background(), request)
+}
+
+// CloseSSL
+// 关闭SSL连接功能。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
+func (c *Client) CloseSSLWithContext(ctx context.Context, request *CloseSSLRequest) (response *CloseSSLResponse, err error) {
+    if request == nil {
+        request = NewCloseSSLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseSSL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseSSLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseWanServiceRequest() (request *CloseWanServiceRequest) {
     request = &CloseWanServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6305,6 +6358,67 @@ func (c *Client) DescribeRollbackTaskDetailWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeSSLStatusRequest() (request *DescribeSSLStatusRequest) {
+    request = &DescribeSSLStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeSSLStatus")
+    
+    
+    return
+}
+
+func NewDescribeSSLStatusResponse() (response *DescribeSSLStatusResponse) {
+    response = &DescribeSSLStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSSLStatus
+// 查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeSSLStatus(request *DescribeSSLStatusRequest) (response *DescribeSSLStatusResponse, err error) {
+    return c.DescribeSSLStatusWithContext(context.Background(), request)
+}
+
+// DescribeSSLStatus
+// 查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeSSLStatusWithContext(ctx context.Context, request *DescribeSSLStatusRequest) (response *DescribeSSLStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeSSLStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSSLStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSSLStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogDataRequest() (request *DescribeSlowLogDataRequest) {
     request = &DescribeSlowLogDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9537,6 +9651,63 @@ func (c *Client) OpenDBInstanceGTIDWithContext(ctx context.Context, request *Ope
     request.SetContext(ctx)
     
     response = NewOpenDBInstanceGTIDResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenSSLRequest() (request *OpenSSLRequest) {
+    request = &OpenSSLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "OpenSSL")
+    
+    
+    return
+}
+
+func NewOpenSSLResponse() (response *OpenSSLResponse) {
+    response = &OpenSSLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenSSL
+// 开启SSL连接功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
+//  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
+func (c *Client) OpenSSL(request *OpenSSLRequest) (response *OpenSSLResponse, err error) {
+    return c.OpenSSLWithContext(context.Background(), request)
+}
+
+// OpenSSL
+// 开启SSL连接功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
+//  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
+func (c *Client) OpenSSLWithContext(ctx context.Context, request *OpenSSLRequest) (response *OpenSSLResponse, err error) {
+    if request == nil {
+        request = NewOpenSSLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenSSL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenSSLResponse()
     err = c.Send(request, response)
     return
 }

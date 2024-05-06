@@ -377,6 +377,124 @@ type AttributeItemDTO struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type BaseClusterInfo struct {
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型，EMR/CDW等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 地域中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCn *string `json:"RegionCn,omitnil,omitempty" name:"RegionCn"`
+
+	// 地域英文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionEn *string `json:"RegionEn,omitnil,omitempty" name:"RegionEn"`
+
+	// 地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionArea *string `json:"RegionArea,omitnil,omitempty" name:"RegionArea"`
+
+	// 集群是否使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Used *bool `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// 集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集群状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusInfo *string `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
+
+	// 集群存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 集群计算类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeType *string `json:"ComputeType,omitnil,omitempty" name:"ComputeType"`
+
+	// 集群资源量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterResource *string `json:"ClusterResource,omitnil,omitempty" name:"ClusterResource"`
+
+	// 集群付费方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 集群创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 额外配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraConf *string `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
+
+	// ranger账号名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RangerUserName *string `json:"RangerUserName,omitnil,omitempty" name:"RangerUserName"`
+
+	// cdw账号（用于展示）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdwUserName *string `json:"CdwUserName,omitnil,omitempty" name:"CdwUserName"`
+}
+
+type BaseTenant struct {
+	// 租户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 租户标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantName *string `json:"TenantName,omitnil,omitempty" name:"TenantName"`
+
+	// 租户显示名称，一般是中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 租户主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUserId *string `json:"OwnerUserId,omitnil,omitempty" name:"OwnerUserId"`
+
+	// 租户的额外配置参数, json格式字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
+type BaseUser struct {
+	// 有云的UIN，全局唯一
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户全局唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 用户显示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 电话号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
+
+	// 邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+}
+
 // Predefined struct for user
 type BatchCreateIntegrationTaskAlarmsRequestParams struct {
 	// 任务id
@@ -11626,6 +11744,9 @@ func (r *DescribeProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectResponseParams struct {
+	// 项目信息
+	Data *Project `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -22276,6 +22397,63 @@ type ProdSchedulerTask struct {
 	// 生产调度任务任务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+}
+
+type Project struct {
+	// 项目的所在租户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目标识，英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 项目显示名称，可以为中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 创建者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *BaseUser `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 租户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tenant *BaseTenant `json:"Tenant,omitnil,omitempty" name:"Tenant"`
+
+	// 项目的管理员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminUsers []*BaseUser `json:"AdminUsers,omitnil,omitempty" name:"AdminUsers"`
+
+	// 项目关联的集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clusters []*BaseClusterInfo `json:"Clusters,omitnil,omitempty" name:"Clusters"`
+
+	// 项目的额外配置参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type ProjectBaseInfoOpsRequest struct {

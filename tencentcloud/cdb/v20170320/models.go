@@ -1553,6 +1553,70 @@ func (r *CloseCdbProxyAddressResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CloseSSLRequestParams struct {
+	// 实例 ID 。只读组 ID为空时必填。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 只读组 ID。实例 ID为空时必填。
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+}
+
+type CloseSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。只读组 ID为空时必填。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 只读组 ID。实例 ID为空时必填。
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+}
+
+func (r *CloseSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RoGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseSSLResponseParams struct {
+	// 异步请求 ID。
+	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloseSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseSSLResponseParams `json:"Response"`
+}
+
+func (r *CloseSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CloseWanServiceRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9056,6 +9120,73 @@ func (r *DescribeRollbackTaskDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSSLStatusRequestParams struct {
+	// 实例 ID 。只读组 ID为空时必填。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 只读组 ID。实例 ID为空时必填。
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+}
+
+type DescribeSSLStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。只读组 ID为空时必填。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 只读组 ID。实例 ID为空时必填。
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+}
+
+func (r *DescribeSSLStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSSLStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RoGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSSLStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSSLStatusResponseParams struct {
+	// 是否开通 SSL 。ON 代表开通 ，OFF 代表未开通。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书下载链接。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSSLStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSSLStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeSSLStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSSLStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSlowLogDataRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13389,6 +13520,70 @@ func (r *OpenDBInstanceGTIDResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OpenDBInstanceGTIDResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenSSLRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 只读组 ID。
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+}
+
+type OpenSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 只读组 ID。
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+}
+
+func (r *OpenSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RoGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenSSLResponseParams struct {
+	// 异步请求 ID。
+	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenSSLResponseParams `json:"Response"`
+}
+
+func (r *OpenSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenSSLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

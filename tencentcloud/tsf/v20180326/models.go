@@ -1493,6 +1493,10 @@ type ClusterV2 struct {
 	// native secret
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KuberneteNativeSecret *string `json:"KuberneteNativeSecret,omitnil,omitempty" name:"KuberneteNativeSecret"`
+
+	// 是否开启cls日志功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
 }
 
 type Config struct {
@@ -2824,6 +2828,9 @@ type CreateClusterRequestParams struct {
 
 	// 无
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
+
+	// 是否开启cls日志功能
+	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
 }
 
 type CreateClusterRequest struct {
@@ -2876,6 +2883,9 @@ type CreateClusterRequest struct {
 
 	// 无
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
+
+	// 是否开启cls日志功能
+	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -2906,6 +2916,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "KuberneteNativeType")
 	delete(f, "KuberneteNativeSecret")
 	delete(f, "ProgramIdList")
+	delete(f, "EnableLogCollection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -17411,6 +17422,12 @@ type ModifyClusterRequestParams struct {
 
 	// 备注名
 	ClusterRemarkName *string `json:"ClusterRemarkName,omitnil,omitempty" name:"ClusterRemarkName"`
+
+	// 是否开启cls日志功能
+	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
+
+	// 是否修复cls日志功能
+	RepairLog *bool `json:"RepairLog,omitnil,omitempty" name:"RepairLog"`
 }
 
 type ModifyClusterRequest struct {
@@ -17427,6 +17444,12 @@ type ModifyClusterRequest struct {
 
 	// 备注名
 	ClusterRemarkName *string `json:"ClusterRemarkName,omitnil,omitempty" name:"ClusterRemarkName"`
+
+	// 是否开启cls日志功能
+	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
+
+	// 是否修复cls日志功能
+	RepairLog *bool `json:"RepairLog,omitnil,omitempty" name:"RepairLog"`
 }
 
 func (r *ModifyClusterRequest) ToJsonString() string {
@@ -17445,6 +17468,8 @@ func (r *ModifyClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterName")
 	delete(f, "ClusterDesc")
 	delete(f, "ClusterRemarkName")
+	delete(f, "EnableLogCollection")
+	delete(f, "RepairLog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterRequest has unknown keys!", "")
 	}

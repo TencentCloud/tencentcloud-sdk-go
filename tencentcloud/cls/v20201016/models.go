@@ -1161,22 +1161,32 @@ type CreateAlarmNoticeRequestParams struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知类型。可选值：
-	// <li> Trigger - 告警触发 </li>
-	// <li> Recovery - 告警恢复</li>
-	// <li> All - 告警触发和告警恢复</li>
+	// - Trigger - 告警触发
+	// - Recovery - 告警恢复
+	// - All - 告警触发和告警恢复
+	// 
+	// 
+	//  注意:  
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 通知接收对象。
+	//  注意:  
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 接口回调信息（包括企业微信）。
+	//  注意:  
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
-	// 
 	//  注意:  
-	// 
-	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	// 
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
@@ -1188,22 +1198,32 @@ type CreateAlarmNoticeRequest struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知类型。可选值：
-	// <li> Trigger - 告警触发 </li>
-	// <li> Recovery - 告警恢复</li>
-	// <li> All - 告警触发和告警恢复</li>
+	// - Trigger - 告警触发
+	// - Recovery - 告警恢复
+	// - All - 告警触发和告警恢复
+	// 
+	// 
+	//  注意:  
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 通知接收对象。
+	//  注意:  
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 接口回调信息（包括企业微信）。
+	//  注意:  
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
-	// 
 	//  注意:  
-	// 
-	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空，NoticeRules是另一组配置，其中rule不许为空，2组配置互斥。
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，必须填写一组配置。
 	// 
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 }
@@ -1768,7 +1788,7 @@ type CreateConfigRequestParams struct {
 	// 采集配置所属日志主题ID即TopicId
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 日志采集路径,包含文件名
+	// 日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，默认为minimalist_log。支持以下类型：
@@ -1812,7 +1832,7 @@ type CreateConfigRequest struct {
 	// 采集配置所属日志主题ID即TopicId
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 日志采集路径,包含文件名
+	// 日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型，默认为minimalist_log。支持以下类型：
@@ -3674,14 +3694,14 @@ func (r *DeleteAlarmShieldResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteConfigExtraRequestParams struct {
-	// 采集规则扩展配置ID
+	// 特殊采集规则扩展配置ID
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 }
 
 type DeleteConfigExtraRequest struct {
 	*tchttp.BaseRequest
 	
-	// 采集规则扩展配置ID
+	// 特殊采集规则扩展配置ID
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 }
 
@@ -4931,7 +4951,27 @@ func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigExtrasRequestParams struct {
-	// 支持的key： topicId,name, configExtraId, machineGroupId
+	// name
+	// - 按照【特殊采集配置名称】进行模糊匹配过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// configExtraId
+	// - 按照【特殊采集配置ID】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// topicId
+	// - 按照【日志主题】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// machineGroupId
+	// - 按照【机器组ID】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
@@ -4944,7 +4984,27 @@ type DescribeConfigExtrasRequestParams struct {
 type DescribeConfigExtrasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 支持的key： topicId,name, configExtraId, machineGroupId
+	// name
+	// - 按照【特殊采集配置名称】进行模糊匹配过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// configExtraId
+	// - 按照【特殊采集配置ID】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// topicId
+	// - 按照【日志主题】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// machineGroupId
+	// - 按照【机器组ID】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
@@ -6975,7 +7035,7 @@ type ExtractRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnMatchUpLoadSwitch *bool `json:"UnMatchUpLoadSwitch,omitnil,omitempty" name:"UnMatchUpLoadSwitch"`
 
-	// 失败日志的key
+	// 失败日志的key，当UnMatchUpLoadSwitch为true时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil,omitempty" name:"UnMatchLogKey"`
 
@@ -6986,23 +7046,26 @@ type ExtractRuleInfo struct {
 	Backtracking *int64 `json:"Backtracking,omitnil,omitempty" name:"Backtracking"`
 
 	// 是否为Gbk编码。 0：否；1：是。
-	// 注意：
+	// 注意
+	// - 目前取0值时，表示UTF-8编码
 	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsGBK *int64 `json:"IsGBK,omitnil,omitempty" name:"IsGBK"`
 
 	// 是否为标准json。  0：否； 1：是。
+	// 注
+	// - 标准json指采集器使用业界标准开源解析器进行json解析，非标json指采集器使用CLS自研json解析器进行解析，两种解析器没有本质区别，建议客户使用标准json进行解析。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonStandard *int64 `json:"JsonStandard,omitnil,omitempty" name:"JsonStandard"`
 
-	// syslog传输协议，取值为tcp或者udp。
+	// syslog传输协议，取值为tcp或者udp，只有在LogType为service_syslog时生效，其余类型无需填写。
 	// 注意：
 	// - 该字段适用于：创建采集规则配置、修改采集规则配置。
 	// - COS导入不支持此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]。举例：127.0.0.1:9000
+	// syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]，只有在LogType为service_syslog时生效，其余类型无需填写。
 	// 注意：
 	// - 该字段适用于：创建采集规则配置、修改采集规则配置。
 	// - COS导入不支持此字段。
@@ -7012,6 +7075,7 @@ type ExtractRuleInfo struct {
 	// rfc3164：指定系统日志采集使用RFC3164协议解析日志。
 	// rfc5424：指定系统日志采集使用RFC5424协议解析日志。
 	// auto：自动匹配rfc3164或者rfc5424其中一种协议。
+	// 只有在LogType为service_syslog时生效，其余类型无需填写。
 	// 注意：
 	// - 该字段适用于：创建采集规则配置、修改采集规则配置
 	// - COS导入不支持此字段。
@@ -7036,9 +7100,7 @@ type ExtractRuleInfo struct {
 	// - COS导入不支持此字段。
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
-	// Windows事件日志采集。
-	// 注意：
-	// - COS导入不支持此字段。
+	// Windows事件日志采集规则，只有在LogType为windows_event_log时生效，其余类型无需填写。
 	EventLogRules []*EventLog `json:"EventLogRules,omitnil,omitempty" name:"EventLogRules"`
 }
 
@@ -9796,19 +9858,21 @@ type MultiTopicSearchInformation struct {
 
 type NoticeReceiver struct {
 	// 接受者类型。可选值：
-	// <br><li> Uin - 用户ID
-	// <br><li> Group - 用户组ID
+	// -  Uin - 用户ID
+	// - Group - 用户组ID
 	// 暂不支持其余接收者类型。
 	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
 
 	// 接收者。
+	// 当ReceiverType为Uin时，ReceiverIds的值为用户id。[子用户信息查询](https://cloud.tencent.com/document/product/598/36258)
+	// 当ReceiverType为Group时，ReceiverIds的值为用户组id。[CAM用户组](https://cloud.tencent.com/document/product/598/14985)
 	ReceiverIds []*int64 `json:"ReceiverIds,omitnil,omitempty" name:"ReceiverIds"`
 
 	// 通知接收渠道。
-	// <br><li> Email - 邮件
-	// <br><li> Sms - 短信
-	// <br><li> WeChat - 微信
-	// <br><li> Phone - 电话
+	// - Email - 邮件
+	// - Sms - 短信
+	// - WeChat - 微信
+	// - Phone - 电话
 	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
 
 	// 允许接收信息的开始时间。
@@ -9817,7 +9881,10 @@ type NoticeReceiver struct {
 	// 允许接收信息的结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 位序
+	// 位序。
+	// 
+	// - 入参无效。
+	// - 出参时有效。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
@@ -9830,7 +9897,12 @@ type NoticeRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
-	// 匹配规则。
+	// 匹配规则 JSON串。
+	// `{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"NotifyType\",\"Children\":[{\"Value\":\"In\",\"Type\":\"Compare\"},{\"Value\":\"[1,2]\",\"Type\":\"Value\"}]}]}
+	// `
+	// 以上示例表示：
+	// 规则：
+	// 通知类型属于告警通知,恢复通知
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 }
@@ -11269,17 +11341,19 @@ type ValueInfo struct {
 }
 
 type WebCallback struct {
-	// 回调地址。
+	// 回调地址。最大支持1024个字节数。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 回调的类型。可选值：
-	// <li> WeCom
-	// <li> Http
+	// - WeCom
+	// - Http
+	// - DingTalk
+	// - Lark
 	CallbackType *string `json:"CallbackType,omitnil,omitempty" name:"CallbackType"`
 
 	// 回调方法。可选值：
-	// <li> POST
-	// <li> PUT
+	// - POST
+	// - PUT
 	// 默认值为POST。CallbackType为Http时为必选。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
@@ -11294,6 +11368,8 @@ type WebCallback struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
-	// 序号
+	// 序号。
+	// - 入参无效。
+	// - 出参有效。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }

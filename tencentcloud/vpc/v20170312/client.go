@@ -8554,7 +8554,7 @@ func NewDeleteVpnGatewayResponse() (response *DeleteVpnGatewayResponse) {
 }
 
 // DeleteVpnGateway
-// 本接口（DeleteVpnGateway）用于删除VPN网关。目前只支持删除运行中的按量计费的IPSEC网关实例。
+// 本接口（DeleteVpnGateway）用于删除VPN网关。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -8567,7 +8567,7 @@ func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *D
 }
 
 // DeleteVpnGateway
-// 本接口（DeleteVpnGateway）用于删除VPN网关。目前只支持删除运行中的按量计费的IPSEC网关实例。
+// 本接口（DeleteVpnGateway）用于删除VPN网关。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -15831,7 +15831,7 @@ func NewInquiryPriceResetVpnGatewayInternetMaxBandwidthResponse() (response *Inq
 }
 
 // InquiryPriceResetVpnGatewayInternetMaxBandwidth
-// 本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限询价。
+// 本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）用于调整VPN网关带宽上限询价。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -15842,7 +15842,7 @@ func (c *Client) InquiryPriceResetVpnGatewayInternetMaxBandwidth(request *Inquir
 }
 
 // InquiryPriceResetVpnGatewayInternetMaxBandwidth
-// 本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限询价。
+// 本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）用于调整VPN网关带宽上限询价。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

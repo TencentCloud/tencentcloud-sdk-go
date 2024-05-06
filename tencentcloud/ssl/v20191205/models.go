@@ -61,7 +61,7 @@ type ApplyCertificateRequestParams struct {
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
+	// 证书类型，目前仅支持类型83。83 = TrustAsia C1 DV Free。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 邮箱。
@@ -70,7 +70,7 @@ type ApplyCertificateRequestParams struct {
 	// 手机。
 	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
-	// 有效期，默认12个月，目前仅支持12个月。
+	// 有效期，默认3个月，目前仅支持3个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 加密算法，支持 RSA及ECC。
@@ -110,7 +110,7 @@ type ApplyCertificateRequest struct {
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
+	// 证书类型，目前仅支持类型83。83 = TrustAsia C1 DV Free。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 邮箱。
@@ -119,7 +119,7 @@ type ApplyCertificateRequest struct {
 	// 手机。
 	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
-	// 有效期，默认12个月，目前仅支持12个月。
+	// 有效期，默认3个月，目前仅支持3个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 加密算法，支持 RSA及ECC。

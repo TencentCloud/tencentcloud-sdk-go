@@ -6557,10 +6557,10 @@ type CreateVpnGatewaySslServerRequestParams struct {
 	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
-	// 是否支持压缩。当前仅支持不支持压缩，默认False。
+	// 是否支持压缩。当前不支持压缩，默认False。
 	Compress *bool `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 是否开启SSO认证。默认为False
+	// 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
 	SsoEnabled *bool `json:"SsoEnabled,omitnil,omitempty" name:"SsoEnabled"`
 
 	// 是否开启策略访问控制。默认为False
@@ -6597,10 +6597,10 @@ type CreateVpnGatewaySslServerRequest struct {
 	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
-	// 是否支持压缩。当前仅支持不支持压缩，默认False。
+	// 是否支持压缩。当前不支持压缩，默认False。
 	Compress *bool `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 是否开启SSO认证。默认为False
+	// 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
 	SsoEnabled *bool `json:"SsoEnabled,omitnil,omitempty" name:"SsoEnabled"`
 
 	// 是否开启策略访问控制。默认为False
@@ -16096,7 +16096,7 @@ type DescribeVpnGatewaySslServersRequestParams struct {
 	// 请求对象个数。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
+	// SSL-VPN-SERVER实例ID。形如：vpns-0p4rj60。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
 	SslVpnServerIds []*string `json:"SslVpnServerIds,omitnil,omitempty" name:"SslVpnServerIds"`
 
 	// 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
@@ -16120,7 +16120,7 @@ type DescribeVpnGatewaySslServersRequest struct {
 	// 请求对象个数。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
+	// SSL-VPN-SERVER实例ID。形如：vpns-0p4rj60。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
 	SslVpnServerIds []*string `json:"SslVpnServerIds,omitnil,omitempty" name:"SslVpnServerIds"`
 
 	// 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
@@ -18734,7 +18734,7 @@ func (r *InquirePriceCreateDirectConnectGatewayResponse) FromJsonString(s string
 
 // Predefined struct for user
 type InquiryPriceCreateVpnGatewayRequestParams struct {
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
@@ -18743,17 +18743,17 @@ type InquiryPriceCreateVpnGatewayRequestParams struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100；单位：个。
+	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 
-	// 查询的VPN类型，支持IPSEC和SSL两种类型，为SSL类型时，MaxConnection参数必传。
+	// 查询的VPN类型，支持IPSEC、SSL两种类型，为SSL类型时，MaxConnection参数必传。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type InquiryPriceCreateVpnGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
@@ -18762,10 +18762,10 @@ type InquiryPriceCreateVpnGatewayRequest struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100；单位：个。
+	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 
-	// 查询的VPN类型，支持IPSEC和SSL两种类型，为SSL类型时，MaxConnection参数必传。
+	// 查询的VPN类型，支持IPSEC、SSL两种类型，为SSL类型时，MaxConnection参数必传。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -18886,7 +18886,7 @@ type InquiryPriceResetVpnGatewayInternetMaxBandwidthRequestParams struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitnil,omitempty" name:"VpnGatewayId"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
@@ -18896,7 +18896,7 @@ type InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitnil,omitempty" name:"VpnGatewayId"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
@@ -18922,7 +18922,7 @@ func (r *InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest) FromJsonString(
 
 // Predefined struct for user
 type InquiryPriceResetVpnGatewayInternetMaxBandwidthResponseParams struct {
-	// 商品价格。
+	// 商品价格。仅支持未过期的预付费网关。
 	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22780,7 +22780,7 @@ type ModifyVpnGatewayCcnRoutesRequestParams struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitnil,omitempty" name:"VpnGatewayId"`
 
-	// 云联网路由（IDC网段）列表。
+	// 云联网路由（IDC网段）列表。其中RouteId可通过[DescribeVpnGatewayCcnRoutes](https://cloud.tencent.com/document/product/215/43514)接口获取。 
 	Routes []*VpngwCcnRoutes `json:"Routes,omitnil,omitempty" name:"Routes"`
 }
 
@@ -22790,7 +22790,7 @@ type ModifyVpnGatewayCcnRoutesRequest struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitnil,omitempty" name:"VpnGatewayId"`
 
-	// 云联网路由（IDC网段）列表。
+	// 云联网路由（IDC网段）列表。其中RouteId可通过[DescribeVpnGatewayCcnRoutes](https://cloud.tencent.com/document/product/215/43514)接口获取。 
 	Routes []*VpngwCcnRoutes `json:"Routes,omitnil,omitempty" name:"Routes"`
 }
 
@@ -22927,10 +22927,10 @@ type ModifyVpnGatewaySslServerRequestParams struct {
 	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 
-	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	// 是否支持压缩。当前不支持压缩。默认False。
 	Compress *bool `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 是否开启SSO认证，默认False
+	// 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
 	SsoEnabled *bool `json:"SsoEnabled,omitnil,omitempty" name:"SsoEnabled"`
 
 	// SAML-DATA
@@ -22964,10 +22964,10 @@ type ModifyVpnGatewaySslServerRequest struct {
 	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 
-	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	// 是否支持压缩。当前不支持压缩。默认False。
 	Compress *bool `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 是否开启SSO认证，默认False
+	// 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
 	SsoEnabled *bool `json:"SsoEnabled,omitnil,omitempty" name:"SsoEnabled"`
 
 	// SAML-DATA
@@ -25512,7 +25512,7 @@ func (r *SetCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetVpnGatewaysRenewFlagRequestParams struct {
-	// VPNGW字符型ID列表。可通过[DescribeVpnGateways](https://cloud.tencent.com/document/api/215/17514)接口返回值VpnGatewaySet中的VpnGatewayId获取。
+	// VPNGW字符型ID列表。可通过[DescribeVpnGateways](https://cloud.tencent.com/document/api/215/17514)接口返回值VpnGatewaySet中的VpnGatewayId获取，只能选择包年包月的VPN实例。
 	VpnGatewayIds []*string `json:"VpnGatewayIds,omitnil,omitempty" name:"VpnGatewayIds"`
 
 	// 自动续费标记 [0, 1, 2]
@@ -25526,7 +25526,7 @@ type SetVpnGatewaysRenewFlagRequestParams struct {
 type SetVpnGatewaysRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPNGW字符型ID列表。可通过[DescribeVpnGateways](https://cloud.tencent.com/document/api/215/17514)接口返回值VpnGatewaySet中的VpnGatewayId获取。
+	// VPNGW字符型ID列表。可通过[DescribeVpnGateways](https://cloud.tencent.com/document/api/215/17514)接口返回值VpnGatewaySet中的VpnGatewayId获取，只能选择包年包月的VPN实例。
 	VpnGatewayIds []*string `json:"VpnGatewayIds,omitnil,omitempty" name:"VpnGatewayIds"`
 
 	// 自动续费标记 [0, 1, 2]
@@ -25804,6 +25804,10 @@ type SslVpnSever struct {
 
 	// 策略信息
 	AccessPolicy []*AccessPolicy `json:"AccessPolicy,omitnil,omitempty" name:"AccessPolicy"`
+
+	// CAM服务提供商Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpName *string `json:"SpName,omitnil,omitempty" name:"SpName"`
 }
 
 type Subnet struct {
