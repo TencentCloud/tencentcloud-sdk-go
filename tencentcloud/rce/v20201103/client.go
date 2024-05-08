@@ -180,107 +180,6 @@ func (c *Client) DescribeRiskAssessmentWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeRiskTrendsRequest() (request *DescribeRiskTrendsRequest) {
-    request = &DescribeRiskTrendsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("rce", APIVersion, "DescribeRiskTrends")
-    
-    
-    return
-}
-
-func NewDescribeRiskTrendsResponse() (response *DescribeRiskTrendsResponse) {
-    response = &DescribeRiskTrendsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRiskTrends
-// 以图表形式展示三种请求状态的趋势变化
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
-//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
-//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
-//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
-//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
-//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
-//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
-//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
-//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
-//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
-//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
-//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
-//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
-//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
-//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
-//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
-//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
-//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
-//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
-//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
-//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
-//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
-//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
-func (c *Client) DescribeRiskTrends(request *DescribeRiskTrendsRequest) (response *DescribeRiskTrendsResponse, err error) {
-    return c.DescribeRiskTrendsWithContext(context.Background(), request)
-}
-
-// DescribeRiskTrends
-// 以图表形式展示三种请求状态的趋势变化
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
-//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
-//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
-//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
-//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
-//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
-//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
-//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
-//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
-//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
-//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
-//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
-//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
-//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
-//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
-//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
-//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
-//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
-//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
-//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
-//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
-//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
-//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
-func (c *Client) DescribeRiskTrendsWithContext(ctx context.Context, request *DescribeRiskTrendsRequest) (response *DescribeRiskTrendsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskTrendsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRiskTrends require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRiskTrendsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
     request = &ManageMarketingRiskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -304,16 +203,21 @@ func NewManageMarketingRiskResponse() (response *ManageMarketingRiskResponse) {
 // 全栈式风控引擎（RiskControlEngine，RCE）是基于人工智能技术和腾讯20年风控实战沉淀，依托腾讯海量业务构建的风控引擎，以轻量级的 SaaS 服务方式接入，帮助您快速解决注册、登录、营销活动等关键场景遇到的欺诈问题，实时防御黑灰产作恶。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
 //  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
 //  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
 //  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
 //  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
 //  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
 //  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
@@ -323,14 +227,26 @@ func NewManageMarketingRiskResponse() (response *ManageMarketingRiskResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
 //  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
 //  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
 //  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
 //  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
 //  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (response *ManageMarketingRiskResponse, err error) {
     return c.ManageMarketingRiskWithContext(context.Background(), request)
 }
@@ -339,16 +255,21 @@ func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (respo
 // 全栈式风控引擎（RiskControlEngine，RCE）是基于人工智能技术和腾讯20年风控实战沉淀，依托腾讯海量业务构建的风控引擎，以轻量级的 SaaS 服务方式接入，帮助您快速解决注册、登录、营销活动等关键场景遇到的欺诈问题，实时防御黑灰产作恶。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
 //  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
 //  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
 //  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
 //  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
 //  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
 //  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
@@ -358,14 +279,26 @@ func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (respo
 //  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
 //  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
 //  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
 //  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
 //  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
 //  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageMarketingRiskWithContext(ctx context.Context, request *ManageMarketingRiskRequest) (response *ManageMarketingRiskResponse, err error) {
     if request == nil {
         request = NewManageMarketingRiskRequest()

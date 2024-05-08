@@ -45,6 +45,49 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDrugInstructionObjectRequest() (request *DrugInstructionObjectRequest) {
+    request = &DrugInstructionObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "DrugInstructionObject")
+    
+    
+    return
+}
+
+func NewDrugInstructionObjectResponse() (response *DrugInstructionObjectResponse) {
+    response = &DrugInstructionObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DrugInstructionObject
+// 药品说明书PDF文件结构化
+func (c *Client) DrugInstructionObject(request *DrugInstructionObjectRequest) (response *DrugInstructionObjectResponse, err error) {
+    return c.DrugInstructionObjectWithContext(context.Background(), request)
+}
+
+// DrugInstructionObject
+// 药品说明书PDF文件结构化
+func (c *Client) DrugInstructionObjectWithContext(ctx context.Context, request *DrugInstructionObjectRequest) (response *DrugInstructionObjectResponse, err error) {
+    if request == nil {
+        request = NewDrugInstructionObjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DrugInstructionObject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDrugInstructionObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageMaskRequest() (request *ImageMaskRequest) {
     request = &ImageMaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

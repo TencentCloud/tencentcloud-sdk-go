@@ -1185,6 +1185,59 @@ func (c *Client) CreateStudioProductWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateTRTCSignaturesWithRoomIdRequest() (request *CreateTRTCSignaturesWithRoomIdRequest) {
+    request = &CreateTRTCSignaturesWithRoomIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTRTCSignaturesWithRoomId")
+    
+    
+    return
+}
+
+func NewCreateTRTCSignaturesWithRoomIdResponse() (response *CreateTRTCSignaturesWithRoomIdResponse) {
+    response = &CreateTRTCSignaturesWithRoomIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTRTCSignaturesWithRoomId
+// 创建TRTC通话参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ROOMIDEXIST = "InvalidParameter.RoomIdExist"
+//  INVALIDPARAMETER_USERIDOVERLIMIT = "InvalidParameter.UserIdOverLimit"
+//  UNSUPPORTEDOPERATION_TRTCSERVICENOTOPEN = "UnsupportedOperation.TRTCServiceNotOpen"
+func (c *Client) CreateTRTCSignaturesWithRoomId(request *CreateTRTCSignaturesWithRoomIdRequest) (response *CreateTRTCSignaturesWithRoomIdResponse, err error) {
+    return c.CreateTRTCSignaturesWithRoomIdWithContext(context.Background(), request)
+}
+
+// CreateTRTCSignaturesWithRoomId
+// 创建TRTC通话参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ROOMIDEXIST = "InvalidParameter.RoomIdExist"
+//  INVALIDPARAMETER_USERIDOVERLIMIT = "InvalidParameter.UserIdOverLimit"
+//  UNSUPPORTEDOPERATION_TRTCSERVICENOTOPEN = "UnsupportedOperation.TRTCServiceNotOpen"
+func (c *Client) CreateTRTCSignaturesWithRoomIdWithContext(ctx context.Context, request *CreateTRTCSignaturesWithRoomIdRequest) (response *CreateTRTCSignaturesWithRoomIdResponse, err error) {
+    if request == nil {
+        request = NewCreateTRTCSignaturesWithRoomIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTRTCSignaturesWithRoomId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTRTCSignaturesWithRoomIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
     request = &CreateTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2336,6 +2389,61 @@ func (c *Client) DescribeCloudStorageAIServiceCallbackWithContext(ctx context.Co
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageAIServiceCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageAIServiceTaskRequest() (request *DescribeCloudStorageAIServiceTaskRequest) {
+    request = &DescribeCloudStorageAIServiceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageAIServiceTask")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageAIServiceTaskResponse() (response *DescribeCloudStorageAIServiceTaskResponse) {
+    response = &DescribeCloudStorageAIServiceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageAIServiceTask
+// 查询指定的云存 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+func (c *Client) DescribeCloudStorageAIServiceTask(request *DescribeCloudStorageAIServiceTaskRequest) (response *DescribeCloudStorageAIServiceTaskResponse, err error) {
+    return c.DescribeCloudStorageAIServiceTaskWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageAIServiceTask
+// 查询指定的云存 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+func (c *Client) DescribeCloudStorageAIServiceTaskWithContext(ctx context.Context, request *DescribeCloudStorageAIServiceTaskRequest) (response *DescribeCloudStorageAIServiceTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageAIServiceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageAIServiceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageAIServiceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -4809,6 +4917,63 @@ func (c *Client) DisableTopicRuleWithContext(ctx context.Context, request *Disab
     return
 }
 
+func NewDismissRoomByStrRoomIdFromTRTCRequest() (request *DismissRoomByStrRoomIdFromTRTCRequest) {
+    request = &DismissRoomByStrRoomIdFromTRTCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DismissRoomByStrRoomIdFromTRTC")
+    
+    
+    return
+}
+
+func NewDismissRoomByStrRoomIdFromTRTCResponse() (response *DismissRoomByStrRoomIdFromTRTCResponse) {
+    response = &DismissRoomByStrRoomIdFromTRTCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DismissRoomByStrRoomIdFromTRTC
+// 解散TRTC房间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTRTCFAIL = "FailedOperation.RequestTRTCFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = "UnauthorizedOperation.NoPermissionToTRTCRoom"
+//  UNSUPPORTEDOPERATION_TRTCSERVICENOTOPEN = "UnsupportedOperation.TRTCServiceNotOpen"
+func (c *Client) DismissRoomByStrRoomIdFromTRTC(request *DismissRoomByStrRoomIdFromTRTCRequest) (response *DismissRoomByStrRoomIdFromTRTCResponse, err error) {
+    return c.DismissRoomByStrRoomIdFromTRTCWithContext(context.Background(), request)
+}
+
+// DismissRoomByStrRoomIdFromTRTC
+// 解散TRTC房间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTRTCFAIL = "FailedOperation.RequestTRTCFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = "UnauthorizedOperation.NoPermissionToTRTCRoom"
+//  UNSUPPORTEDOPERATION_TRTCSERVICENOTOPEN = "UnsupportedOperation.TRTCServiceNotOpen"
+func (c *Client) DismissRoomByStrRoomIdFromTRTCWithContext(ctx context.Context, request *DismissRoomByStrRoomIdFromTRTCRequest) (response *DismissRoomByStrRoomIdFromTRTCResponse, err error) {
+    if request == nil {
+        request = NewDismissRoomByStrRoomIdFromTRTCRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DismissRoomByStrRoomIdFromTRTC require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDismissRoomByStrRoomIdFromTRTCResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
     request = &EnableTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4951,6 +5116,63 @@ func (c *Client) GenSingleDeviceSignatureOfPublicWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewGenSingleDeviceSignatureOfPublicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateCloudStorageAIServiceTaskFileURLRequest() (request *GenerateCloudStorageAIServiceTaskFileURLRequest) {
+    request = &GenerateCloudStorageAIServiceTaskFileURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GenerateCloudStorageAIServiceTaskFileURL")
+    
+    
+    return
+}
+
+func NewGenerateCloudStorageAIServiceTaskFileURLResponse() (response *GenerateCloudStorageAIServiceTaskFileURLResponse) {
+    response = &GenerateCloudStorageAIServiceTaskFileURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateCloudStorageAIServiceTaskFileURL
+// 获取云存 AI 分析任务输出文件的下载地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASKFILE = "ResourceNotFound.CloudStorageAIServiceTaskFile"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateCloudStorageAIServiceTaskFileURL(request *GenerateCloudStorageAIServiceTaskFileURLRequest) (response *GenerateCloudStorageAIServiceTaskFileURLResponse, err error) {
+    return c.GenerateCloudStorageAIServiceTaskFileURLWithContext(context.Background(), request)
+}
+
+// GenerateCloudStorageAIServiceTaskFileURL
+// 获取云存 AI 分析任务输出文件的下载地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASKFILE = "ResourceNotFound.CloudStorageAIServiceTaskFile"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateCloudStorageAIServiceTaskFileURLWithContext(ctx context.Context, request *GenerateCloudStorageAIServiceTaskFileURLRequest) (response *GenerateCloudStorageAIServiceTaskFileURLResponse, err error) {
+    if request == nil {
+        request = NewGenerateCloudStorageAIServiceTaskFileURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateCloudStorageAIServiceTaskFileURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateCloudStorageAIServiceTaskFileURLResponse()
     err = c.Send(request, response)
     return
 }
@@ -6013,6 +6235,7 @@ func NewModifyCloudStorageAIServiceResponse() (response *ModifyCloudStorageAISer
 // 修改指定设备的云存 AI 服务开通状态与参数配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -6024,6 +6247,7 @@ func (c *Client) ModifyCloudStorageAIService(request *ModifyCloudStorageAIServic
 // 修改指定设备的云存 AI 服务开通状态与参数配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -7214,6 +7438,61 @@ func (c *Client) ReleaseStudioProductWithContext(ctx context.Context, request *R
     request.SetContext(ctx)
     
     response = NewReleaseStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveUserByRoomIdFromTRTCRequest() (request *RemoveUserByRoomIdFromTRTCRequest) {
+    request = &RemoveUserByRoomIdFromTRTCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "RemoveUserByRoomIdFromTRTC")
+    
+    
+    return
+}
+
+func NewRemoveUserByRoomIdFromTRTCResponse() (response *RemoveUserByRoomIdFromTRTCResponse) {
+    response = &RemoveUserByRoomIdFromTRTCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveUserByRoomIdFromTRTC
+// TRTC操作，将用户从房间移出
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTRTCFAIL = "FailedOperation.RequestTRTCFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = "UnauthorizedOperation.NoPermissionToTRTCRoom"
+func (c *Client) RemoveUserByRoomIdFromTRTC(request *RemoveUserByRoomIdFromTRTCRequest) (response *RemoveUserByRoomIdFromTRTCResponse, err error) {
+    return c.RemoveUserByRoomIdFromTRTCWithContext(context.Background(), request)
+}
+
+// RemoveUserByRoomIdFromTRTC
+// TRTC操作，将用户从房间移出
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTRTCFAIL = "FailedOperation.RequestTRTCFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = "UnauthorizedOperation.NoPermissionToTRTCRoom"
+func (c *Client) RemoveUserByRoomIdFromTRTCWithContext(ctx context.Context, request *RemoveUserByRoomIdFromTRTCRequest) (response *RemoveUserByRoomIdFromTRTCResponse, err error) {
+    if request == nil {
+        request = NewRemoveUserByRoomIdFromTRTCRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveUserByRoomIdFromTRTC require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveUserByRoomIdFromTRTCResponse()
     err = c.Send(request, response)
     return
 }

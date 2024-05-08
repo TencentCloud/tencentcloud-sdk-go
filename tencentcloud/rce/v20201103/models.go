@@ -89,63 +89,6 @@ func (r *DescribeRiskAssessmentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeRiskTrendsRequestParams struct {
-	// 业务入参
-	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
-}
-
-type DescribeRiskTrendsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 业务入参
-	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
-}
-
-func (r *DescribeRiskTrendsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRiskTrendsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BusinessSecurityData")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskTrendsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRiskTrendsResponseParams struct {
-	// 业务出参
-	Data *OutputFrontRiskData `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRiskTrendsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRiskTrendsResponseParams `json:"Response"`
-}
-
-func (r *DescribeRiskTrendsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRiskTrendsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type InputCryptoManageMarketingRisk struct {
 	// 是否授权：1已授权，否则未授权。
 	//  调用全栈式风控引擎接口服务时，客户需先明确授权
@@ -165,26 +108,6 @@ type InputDetails struct {
 
 	// 字段值
 	FieldValue *string `json:"FieldValue,omitnil,omitempty" name:"FieldValue"`
-}
-
-type InputFrontRisk struct {
-	// 事件ID
-	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
-
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 趋势类型
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 当前开始时间
-	CurrentStartTime *string `json:"CurrentStartTime,omitnil,omitempty" name:"CurrentStartTime"`
-
-	// 当前结束时间
-	CurrentEndTime *string `json:"CurrentEndTime,omitnil,omitempty" name:"CurrentEndTime"`
 }
 
 type InputManageMarketingRisk struct {
@@ -373,40 +296,6 @@ type OtherAccountInfo struct {
 	// 用户设备号，支持IMEI、IMEIMD5、IDFA、IDFAMD5。
 	// 注释：IMEIMD5、IDFAMD5加密方式，对IMEI、IDFA明文进行MD5加密，加密后取32位小写值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
-}
-
-type OutputFrontRisk struct {
-	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputFrontRiskValue `json:"Value,omitnil,omitempty" name:"Value"`
-}
-
-type OutputFrontRiskData struct {
-	// 返回码[0：成功；非0：标识失败错误码]。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
-
-	// 出错消息[UTF-8编码]。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
-
-	// 返回结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputFrontRisk `json:"Value,omitnil,omitempty" name:"Value"`
-}
-
-type OutputFrontRiskValue struct {
-	// 请求次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Requests *int64 `json:"Requests,omitnil,omitempty" name:"Requests"`
-
-	// 日期标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 type OutputManageMarketingRisk struct {

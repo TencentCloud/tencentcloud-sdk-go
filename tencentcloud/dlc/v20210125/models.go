@@ -3287,6 +3287,9 @@ type CreateTaskRequestParams struct {
 
 	// 数据引擎名称，不填提交到默认集群
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 标准spark执行任务resourceGroupName
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type CreateTaskRequest struct {
@@ -3303,6 +3306,9 @@ type CreateTaskRequest struct {
 
 	// 数据引擎名称，不填提交到默认集群
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 标准spark执行任务resourceGroupName
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {
@@ -3321,6 +3327,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "DatabaseName")
 	delete(f, "DatasourceConnectionName")
 	delete(f, "DataEngineName")
+	delete(f, "ResourceGroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
@@ -3440,6 +3447,9 @@ type CreateTasksRequestParams struct {
 
 	// 计算引擎名称，不填任务提交到默认集群
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// spark集群资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type CreateTasksRequest struct {
@@ -3456,6 +3466,9 @@ type CreateTasksRequest struct {
 
 	// 计算引擎名称，不填任务提交到默认集群
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// spark集群资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 func (r *CreateTasksRequest) ToJsonString() string {
@@ -3474,6 +3487,7 @@ func (r *CreateTasksRequest) FromJsonString(s string) error {
 	delete(f, "Tasks")
 	delete(f, "DatasourceConnectionName")
 	delete(f, "DataEngineName")
+	delete(f, "ResourceGroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksRequest has unknown keys!", "")
 	}
@@ -4176,6 +4190,14 @@ type DataEngineInfo struct {
 	// 引擎网络ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 标准引擎关联的资源组个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineResourceGroupCount *int64 `json:"EngineResourceGroupCount,omitnil,omitempty" name:"EngineResourceGroupCount"`
+
+	// 引擎当前使用量（Cu）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineResourceUsedCU *int64 `json:"EngineResourceUsedCU,omitnil,omitempty" name:"EngineResourceUsedCU"`
 }
 
 type DataFormat struct {
@@ -5483,14 +5505,14 @@ func (r *DescribeDataEngineEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataEngineImageVersionsRequestParams struct {
-	// 引擎类型：SQL、SparkBatch
+	// 引擎类型：SQL、SparkBatch、StandardSpark、StandardPresto
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
 type DescribeDataEngineImageVersionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 引擎类型：SQL、SparkBatch
+	// 引擎类型：SQL、SparkBatch、StandardSpark、StandardPresto
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
@@ -7860,6 +7882,9 @@ type DescribeTasksRequestParams struct {
 
 	// 数据引擎名称，用于筛选
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// spark引擎资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type DescribeTasksRequest struct {
@@ -7893,6 +7918,9 @@ type DescribeTasksRequest struct {
 
 	// 数据引擎名称，用于筛选
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// spark引擎资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 func (r *DescribeTasksRequest) ToJsonString() string {
@@ -7915,6 +7943,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "DataEngineName")
+	delete(f, "ResourceGroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
@@ -12312,6 +12341,14 @@ type TaskResponseInfo struct {
 	// 结果文件格式：默认为csv
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
+
+	// 引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// spark引擎资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type TaskResultInfo struct {

@@ -1951,6 +1951,115 @@ func (r *CreateHostResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateIpAccessControlRequestParams struct {
+	// 具体域名如：test.qcloudwaf.com
+	// 全局域名为：global
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// ip参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+type CreateIpAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 具体域名如：test.qcloudwaf.com
+	// 全局域名为：global
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// ip参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+func (r *CreateIpAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIpAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "IpList")
+	delete(f, "ActionType")
+	delete(f, "ValidTS")
+	delete(f, "InstanceId")
+	delete(f, "Edition")
+	delete(f, "SourceType")
+	delete(f, "Note")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIpAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIpAccessControlResponseParams struct {
+	// 新增的规则对应的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIpAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIpAccessControlResponseParams `json:"Response"`
+}
+
+func (r *CreateIpAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIpAccessControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DealData struct {
 	// 订单号列表，元素个数与请求包的goods数组的元素个数一致，商品详情与订单按顺序对应
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
@@ -2745,6 +2854,91 @@ func (r *DeleteIpAccessControlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteIpAccessControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIpAccessControlV2RequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则ID列表，支持批量删除
+	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
+	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
+
+	// batch表示为批量防护的IP黑白名单
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// IP黑白名单类型，40为IP白名单，42为IP黑名单
+	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+}
+
+type DeleteIpAccessControlV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则ID列表，支持批量删除
+	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
+	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
+
+	// batch表示为批量防护的IP黑白名单
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// IP黑白名单类型，40为IP白名单，42为IP黑名单
+	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+}
+
+func (r *DeleteIpAccessControlV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIpAccessControlV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RuleIds")
+	delete(f, "DeleteAll")
+	delete(f, "SourceType")
+	delete(f, "ActionType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIpAccessControlV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIpAccessControlV2ResponseParams struct {
+	// 在批量删除的时候表示删除失败的条数
+	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteIpAccessControlV2Response struct {
+	*tchttp.BaseResponse
+	Response *DeleteIpAccessControlV2ResponseParams `json:"Response"`
+}
+
+func (r *DeleteIpAccessControlV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIpAccessControlV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9062,6 +9256,83 @@ type HybridPkg struct {
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
+// Predefined struct for user
+type ImportIpAccessControlRequestParams struct {
+	// 导入的IP黑白名单列表
+	Data []*IpAccessControlParam `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 具体域名如：test.qcloudwaf.com
+	// 全局域名为：global
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type ImportIpAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导入的IP黑白名单列表
+	Data []*IpAccessControlParam `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 具体域名如：test.qcloudwaf.com
+	// 全局域名为：global
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *ImportIpAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportIpAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Data")
+	delete(f, "Domain")
+	delete(f, "SourceType")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportIpAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportIpAccessControlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportIpAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportIpAccessControlResponseParams `json:"Response"`
+}
+
+func (r *ImportIpAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportIpAccessControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceInfo struct {
 	// 实例唯一ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9250,6 +9521,20 @@ type IpAccessControlItem struct {
 	// IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+}
+
+type IpAccessControlParam struct {
+	// IP列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	ValidTs *uint64 `json:"ValidTs,omitnil,omitempty" name:"ValidTs"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 }
 
 type IpHitItem struct {
@@ -11484,6 +11769,118 @@ func (r *ModifyInstanceRenewFlagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyInstanceRenewFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIpAccessControlRequestParams struct {
+	// 具体域名如：test.qcloudwaf.com
+	// 全局域名为：global
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// ip参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+type ModifyIpAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 具体域名如：test.qcloudwaf.com
+	// 全局域名为：global
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// ip参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+func (r *ModifyIpAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIpAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "IpList")
+	delete(f, "ActionType")
+	delete(f, "ValidTS")
+	delete(f, "RuleId")
+	delete(f, "InstanceId")
+	delete(f, "Edition")
+	delete(f, "SourceType")
+	delete(f, "Note")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIpAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIpAccessControlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyIpAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIpAccessControlResponseParams `json:"Response"`
+}
+
+func (r *ModifyIpAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

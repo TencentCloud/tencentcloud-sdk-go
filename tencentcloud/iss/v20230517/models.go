@@ -2957,6 +2957,10 @@ type DescribeDomainData struct {
 	// 用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type DescribeDomainRegionData struct {

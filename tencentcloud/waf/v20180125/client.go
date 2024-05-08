@@ -767,6 +767,65 @@ func (c *Client) CreateHostWithContext(ctx context.Context, request *CreateHostR
     return
 }
 
+func NewCreateIpAccessControlRequest() (request *CreateIpAccessControlRequest) {
+    request = &CreateIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateIpAccessControl")
+    
+    
+    return
+}
+
+func NewCreateIpAccessControlResponse() (response *CreateIpAccessControlResponse) {
+    response = &CreateIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIpAccessControl
+// Waf IP黑白名单新增接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateIpAccessControl(request *CreateIpAccessControlRequest) (response *CreateIpAccessControlResponse, err error) {
+    return c.CreateIpAccessControlWithContext(context.Background(), request)
+}
+
+// CreateIpAccessControl
+// Waf IP黑白名单新增接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateIpAccessControlWithContext(ctx context.Context, request *CreateIpAccessControlRequest) (response *CreateIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewCreateIpAccessControlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
     request = &DeleteAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1497,6 +1556,63 @@ func (c *Client) DeleteIpAccessControlWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIpAccessControlV2Request() (request *DeleteIpAccessControlV2Request) {
+    request = &DeleteIpAccessControlV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteIpAccessControlV2")
+    
+    
+    return
+}
+
+func NewDeleteIpAccessControlV2Response() (response *DeleteIpAccessControlV2Response) {
+    response = &DeleteIpAccessControlV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteIpAccessControlV2
+// Waf IP黑白名单最新版本删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteIpAccessControlV2(request *DeleteIpAccessControlV2Request) (response *DeleteIpAccessControlV2Response, err error) {
+    return c.DeleteIpAccessControlV2WithContext(context.Background(), request)
+}
+
+// DeleteIpAccessControlV2
+// Waf IP黑白名单最新版本删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteIpAccessControlV2WithContext(ctx context.Context, request *DeleteIpAccessControlV2Request) (response *DeleteIpAccessControlV2Response, err error) {
+    if request == nil {
+        request = NewDeleteIpAccessControlV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIpAccessControlV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIpAccessControlV2Response()
     err = c.Send(request, response)
     return
 }
@@ -5806,6 +5922,71 @@ func (c *Client) GetInstanceQpsLimitWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewImportIpAccessControlRequest() (request *ImportIpAccessControlRequest) {
+    request = &ImportIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ImportIpAccessControl")
+    
+    
+    return
+}
+
+func NewImportIpAccessControlResponse() (response *ImportIpAccessControlResponse) {
+    response = &ImportIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportIpAccessControl
+// 导入IP黑白名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) ImportIpAccessControl(request *ImportIpAccessControlRequest) (response *ImportIpAccessControlResponse, err error) {
+    return c.ImportIpAccessControlWithContext(context.Background(), request)
+}
+
+// ImportIpAccessControl
+// 导入IP黑白名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) ImportIpAccessControlWithContext(ctx context.Context, request *ImportIpAccessControlRequest) (response *ImportIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewImportIpAccessControlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
     request = &ModifyAccessPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7568,6 +7749,65 @@ func (c *Client) ModifyInstanceRenewFlagWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyInstanceRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIpAccessControlRequest() (request *ModifyIpAccessControlRequest) {
+    request = &ModifyIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyIpAccessControl")
+    
+    
+    return
+}
+
+func NewModifyIpAccessControlResponse() (response *ModifyIpAccessControlResponse) {
+    response = &ModifyIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyIpAccessControl
+// Waf IP黑白名单编辑接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIpAccessControl(request *ModifyIpAccessControlRequest) (response *ModifyIpAccessControlResponse, err error) {
+    return c.ModifyIpAccessControlWithContext(context.Background(), request)
+}
+
+// ModifyIpAccessControl
+// Waf IP黑白名单编辑接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIpAccessControlWithContext(ctx context.Context, request *ModifyIpAccessControlRequest) (response *ModifyIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewModifyIpAccessControlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIpAccessControlResponse()
     err = c.Send(request, response)
     return
 }

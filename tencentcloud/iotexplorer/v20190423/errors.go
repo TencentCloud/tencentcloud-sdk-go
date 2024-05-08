@@ -56,6 +56,9 @@ const (
 	// RRPC接口未收到设备端响应。
 	FAILEDOPERATION_RRPCTIMEOUT = "FailedOperation.RRPCTimeout"
 
+	// 请求TRTC失败
+	FAILEDOPERATION_REQUESTTRTCFAIL = "FailedOperation.RequestTRTCFail"
+
 	// 转发已经停止。
 	FAILEDOPERATION_RULEALREADYDISABLED = "FailedOperation.RuleAlreadyDisabled"
 
@@ -103,6 +106,12 @@ const (
 
 	// 产品不是网关类型，无法绑定子产品。
 	INVALIDPARAMETER_PRODUCTISNOTGATEWAY = "InvalidParameter.ProductIsNotGateway"
+
+	// RoomId已存在
+	INVALIDPARAMETER_ROOMIDEXIST = "InvalidParameter.RoomIdExist"
+
+	// UserId数量超出限制
+	INVALIDPARAMETER_USERIDOVERLIMIT = "InvalidParameter.UserIdOverLimit"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -344,6 +353,12 @@ const (
 	// 上传URL无法获取。
 	RESOURCENOTFOUND_CANNOTGETFROMURL = "ResourceNotFound.CannotGetFromUrl"
 
+	// 云存AI分析任务不存在
+	RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+
+	// 云存AI分析任务输出文件不存在
+	RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASKFILE = "ResourceNotFound.CloudStorageAIServiceTaskFile"
+
 	// 存在重复设备。
 	RESOURCENOTFOUND_DEVICEDUPKEYEXIST = "ResourceNotFound.DeviceDupKeyExist"
 
@@ -449,6 +464,9 @@ const (
 	// 产品ACL错误。
 	UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 
+	// 无权操作该房间
+	UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = "UnauthorizedOperation.NoPermissionToTRTCRoom"
+
 	// 您的帐号未实名认证，请登录腾讯云进行实名认证
 	UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
 
@@ -544,6 +562,9 @@ const (
 
 	// LoRa频点还被节点或网关使用。
 	UNSUPPORTEDOPERATION_STUDIOLORAFREQINUSED = "UnsupportedOperation.StudioLoRaFreqInUsed"
+
+	// TRTC增值服务未开通
+	UNSUPPORTEDOPERATION_TRTCSERVICENOTOPEN = "UnsupportedOperation.TRTCServiceNotOpen"
 
 	// 账户有未支付订单。
 	UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"

@@ -496,28 +496,31 @@ type CloudStorageAIServiceTask struct {
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
+	// 云存 AI 服务类型。可能取值：
+	// 
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
 	// 对应云存视频的起始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 对应云存视频的结束时间
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+	// 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；4：执行中）
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务结果
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 云存 AI 服务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+	// 任务输出文件列表
+	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最后更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -1628,6 +1631,71 @@ func (r *CreateStudioProductResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTRTCSignaturesWithRoomIdRequestParams struct {
+	// TRTC进房间的用户名称数组，数组元素不可重复，最长不超过 10 个。
+	TRTCUserIds []*string `json:"TRTCUserIds,omitnil,omitempty" name:"TRTCUserIds"`
+
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type CreateTRTCSignaturesWithRoomIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC进房间的用户名称数组，数组元素不可重复，最长不超过 10 个。
+	TRTCUserIds []*string `json:"TRTCUserIds,omitnil,omitempty" name:"TRTCUserIds"`
+
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *CreateTRTCSignaturesWithRoomIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTRTCSignaturesWithRoomIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TRTCUserIds")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTRTCSignaturesWithRoomIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTRTCSignaturesWithRoomIdResponseParams struct {
+	// 返回参数数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TRTCParamList []*TRTCParams `json:"TRTCParamList,omitnil,omitempty" name:"TRTCParamList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTRTCSignaturesWithRoomIdResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTRTCSignaturesWithRoomIdResponseParams `json:"Response"`
+}
+
+func (r *CreateTRTCSignaturesWithRoomIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTRTCSignaturesWithRoomIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -2730,7 +2798,10 @@ type DescribeCloudStorageAIServiceRequestParams struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 云存 AI 服务类型。可选值：PackageDetect
+	// 云存 AI 服务类型。可选值：
+	// 
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -2743,7 +2814,10 @@ type DescribeCloudStorageAIServiceRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 云存 AI 服务类型。可选值：PackageDetect
+	// 云存 AI 服务类型。可选值：
+	// 
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -2800,6 +2874,63 @@ func (r *DescribeCloudStorageAIServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudStorageAIServiceTaskRequestParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeCloudStorageAIServiceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCloudStorageAIServiceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageAIServiceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageAIServiceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageAIServiceTaskResponseParams struct {
+	// 任务信息
+	TaskInfo *CloudStorageAIServiceTask `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudStorageAIServiceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudStorageAIServiceTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudStorageAIServiceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageAIServiceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudStorageAIServiceTasksRequestParams struct {
 	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -2807,7 +2938,9 @@ type DescribeCloudStorageAIServiceTasksRequestParams struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 云存 AI 服务类型。可选值：PackageDetect
+	// 云存 AI 服务类型。可选值：
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 分页拉取数量
@@ -2816,8 +2949,19 @@ type DescribeCloudStorageAIServiceTasksRequestParams struct {
 	// 分页拉取偏移
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；不传则查询全部状态的任务）
+	// 任务状态。可选值：
+	// - （不传）：查询全部状态的任务
+	// - `1`：失败
+	// - `2`：成功但结果为空
+	// - `3`：成功且结果非空
+	// - `4`：执行中
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
 type DescribeCloudStorageAIServiceTasksRequest struct {
@@ -2829,7 +2973,9 @@ type DescribeCloudStorageAIServiceTasksRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 云存 AI 服务类型。可选值：PackageDetect
+	// 云存 AI 服务类型。可选值：
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 分页拉取数量
@@ -2838,8 +2984,19 @@ type DescribeCloudStorageAIServiceTasksRequest struct {
 	// 分页拉取偏移
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；不传则查询全部状态的任务）
+	// 任务状态。可选值：
+	// - （不传）：查询全部状态的任务
+	// - `1`：失败
+	// - `2`：成功但结果为空
+	// - `3`：成功且结果非空
+	// - `4`：执行中
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeCloudStorageAIServiceTasksRequest) ToJsonString() string {
@@ -2860,6 +3017,8 @@ func (r *DescribeCloudStorageAIServiceTasksRequest) FromJsonString(s string) err
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Status")
+	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageAIServiceTasksRequest has unknown keys!", "")
 	}
@@ -6239,6 +6398,60 @@ func (r *DisableTopicRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DismissRoomByStrRoomIdFromTRTCRequestParams struct {
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DismissRoomByStrRoomIdFromTRTCRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DismissRoomByStrRoomIdFromTRTCRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DismissRoomByStrRoomIdFromTRTCRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DismissRoomByStrRoomIdFromTRTCRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DismissRoomByStrRoomIdFromTRTCResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DismissRoomByStrRoomIdFromTRTCResponse struct {
+	*tchttp.BaseResponse
+	Response *DismissRoomByStrRoomIdFromTRTCResponseParams `json:"Response"`
+}
+
+func (r *DismissRoomByStrRoomIdFromTRTCResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DismissRoomByStrRoomIdFromTRTCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EnableTopicRuleRequestParams struct {
 	// 规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
@@ -6511,6 +6724,80 @@ func (r *GenSingleDeviceSignatureOfPublicResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GenSingleDeviceSignatureOfPublicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateCloudStorageAIServiceTaskFileURLRequestParams struct {
+	// 产品 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后）
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type GenerateCloudStorageAIServiceTaskFileURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后）
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+func (r *GenerateCloudStorageAIServiceTaskFileURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateCloudStorageAIServiceTaskFileURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "FileName")
+	delete(f, "ExpireTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateCloudStorageAIServiceTaskFileURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateCloudStorageAIServiceTaskFileURLResponseParams struct {
+	// 文件下载 URL
+	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
+
+	// 过期时间 UNIX 时间戳
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateCloudStorageAIServiceTaskFileURLResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateCloudStorageAIServiceTaskFileURLResponseParams `json:"Response"`
+}
+
+func (r *GenerateCloudStorageAIServiceTaskFileURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateCloudStorageAIServiceTaskFileURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8050,7 +8337,8 @@ type ModifyCloudStorageAIServiceCallbackRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 推送类型。http：HTTP 回调
+	// 推送类型。可选值：
+	// - `http`：HTTP 回调
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// HTTP 回调 URL
@@ -8066,7 +8354,8 @@ type ModifyCloudStorageAIServiceCallbackRequest struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 推送类型。http：HTTP 回调
+	// 推送类型。可选值：
+	// - `http`：HTTP 回调
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// HTTP 回调 URL
@@ -8128,7 +8417,9 @@ type ModifyCloudStorageAIServiceRequestParams struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 云存 AI 服务类型。可选值：PackageDetect
+	// 云存 AI 服务类型。可选值：
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 启用状态
@@ -8136,6 +8427,9 @@ type ModifyCloudStorageAIServiceRequestParams struct {
 
 	// 视频分析区域
 	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+
+	// 云存 AI 服务的配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type ModifyCloudStorageAIServiceRequest struct {
@@ -8147,7 +8441,9 @@ type ModifyCloudStorageAIServiceRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 云存 AI 服务类型。可选值：PackageDetect
+	// 云存 AI 服务类型。可选值：
+	// - `PackageDetect`：包裹检测
+	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 启用状态
@@ -8155,6 +8451,9 @@ type ModifyCloudStorageAIServiceRequest struct {
 
 	// 视频分析区域
 	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+
+	// 云存 AI 服务的配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 func (r *ModifyCloudStorageAIServiceRequest) ToJsonString() string {
@@ -8174,6 +8473,7 @@ func (r *ModifyCloudStorageAIServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceType")
 	delete(f, "Enabled")
 	delete(f, "ROI")
+	delete(f, "Config")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudStorageAIServiceRequest has unknown keys!", "")
 	}
@@ -9719,6 +10019,67 @@ func (r *ReleaseStudioProductResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RemoveUserByRoomIdFromTRTCRequestParams struct {
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 用户名称数组，数组元素不可重复，最长不超过 10 个。
+	TRTCUserIds []*string `json:"TRTCUserIds,omitnil,omitempty" name:"TRTCUserIds"`
+}
+
+type RemoveUserByRoomIdFromTRTCRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 用户名称数组，数组元素不可重复，最长不超过 10 个。
+	TRTCUserIds []*string `json:"TRTCUserIds,omitnil,omitempty" name:"TRTCUserIds"`
+}
+
+func (r *RemoveUserByRoomIdFromTRTCRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveUserByRoomIdFromTRTCRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "TRTCUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveUserByRoomIdFromTRTCRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveUserByRoomIdFromTRTCResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveUserByRoomIdFromTRTCResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveUserByRoomIdFromTRTCResponseParams `json:"Response"`
+}
+
+func (r *RemoveUserByRoomIdFromTRTCResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveUserByRoomIdFromTRTCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResetCloudStorageEventRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -10112,6 +10473,23 @@ func (r *SearchTopicRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TRTCParams struct {
+	// TRTC入参: TRTC的实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC入参: 用户加入房间的ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// TRTC入参: 用户的签名用来鉴权
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// TRTC入参: 加入的TRTC房间名称
+	StrRoomId *string `json:"StrRoomId,omitnil,omitempty" name:"StrRoomId"`
+
+	// TRTC入参: 校验TRTC的KEY
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 }
 
 type ThumbnailURLInfoList struct {

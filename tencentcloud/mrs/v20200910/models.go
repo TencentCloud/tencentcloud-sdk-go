@@ -165,6 +165,174 @@ type BaseItem3 struct {
 	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
+type BiologicalProductInfo struct {
+	// 药品名称，包括通用名和商品名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *BiologicalProductInfoName `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 成份和性状
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IngredientAndAppearance *BiologicalProductInfoIngredientAndAppearance `json:"IngredientAndAppearance,omitnil,omitempty" name:"IngredientAndAppearance"`
+
+	// 接种对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VaccinationTarget *BiologicalProductInfoVaccinationTarget `json:"VaccinationTarget,omitnil,omitempty" name:"VaccinationTarget"`
+
+	// 作用与用途
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Indications *BiologicalProductInfoIndications `json:"Indications,omitnil,omitempty" name:"Indications"`
+
+	// 规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Brochure *BiologicalProductInfoBrochure `json:"Brochure,omitnil,omitempty" name:"Brochure"`
+
+	// 免疫程序和剂量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dosage *BiologicalProductInfoDosage `json:"Dosage,omitnil,omitempty" name:"Dosage"`
+
+	// 不良反应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdverseReaction *BiologicalProductInfoAdverseReaction `json:"AdverseReaction,omitnil,omitempty" name:"AdverseReaction"`
+
+	// 禁忌情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contraindications *BiologicalProductInfoContraindications `json:"Contraindications,omitnil,omitempty" name:"Contraindications"`
+
+	// 注意事项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Precautions *BiologicalProductInfoPrecautions `json:"Precautions,omitnil,omitempty" name:"Precautions"`
+
+	// 储存条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *BiologicalProductInfoStorage `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 包装信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Packaging *BiologicalProductInfoPackaging `json:"Packaging,omitnil,omitempty" name:"Packaging"`
+
+	// 有效期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidityPeriod *BiologicalProductInfoValidityPeriod `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// 执行标准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutiveStandards *BiologicalProductInfoExecutiveStandards `json:"ExecutiveStandards,omitnil,omitempty" name:"ExecutiveStandards"`
+
+	// 批准文号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approval *BiologicalProductInfoApproval `json:"Approval,omitnil,omitempty" name:"Approval"`
+
+	// 生产企业名称和地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manufacturer *BiologicalProductInfoManufacturer `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
+}
+
+type BiologicalProductInfoAdverseReaction struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoApproval struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoBrochure struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoContraindications struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoDosage struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoExecutiveStandards struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoIndications struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoIngredientAndAppearance struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoManufacturer struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoName struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 通用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GenericName *string `json:"GenericName,omitnil,omitempty" name:"GenericName"`
+
+	// 品牌名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BarndName *string `json:"BarndName,omitnil,omitempty" name:"BarndName"`
+
+	// 英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnName *string `json:"EnName,omitnil,omitempty" name:"EnName"`
+
+	// 拼音
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pinyin *string `json:"Pinyin,omitnil,omitempty" name:"Pinyin"`
+}
+
+type BiologicalProductInfoPackaging struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoPrecautions struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoStorage struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoVaccinationTarget struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type BiologicalProductInfoValidityPeriod struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
 type BiopsyPart struct {
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -487,6 +655,294 @@ type Check struct {
 	// 检查报告块标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockTitle []*BlockTitle `json:"BlockTitle,omitnil,omitempty" name:"BlockTitle"`
+}
+
+type ChemicalProductInfo struct {
+	// 药品名称，包括通用名和商品名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *ChemicalProductInfoName `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveIngredient *ChemicalProductInfoActiveIngredient `json:"ActiveIngredient,omitnil,omitempty" name:"ActiveIngredient"`
+
+	// 性状
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Appearance *ChemicalProductInfoAppearance `json:"Appearance,omitnil,omitempty" name:"Appearance"`
+
+	// 适应症描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Indications *ChemicalProductInfoIndications `json:"Indications,omitnil,omitempty" name:"Indications"`
+
+	// 规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Brochure *ChemicalProductInfoBrochure `json:"Brochure,omitnil,omitempty" name:"Brochure"`
+
+	// 用法用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dosage *ChemicalProductInfoDosage `json:"Dosage,omitnil,omitempty" name:"Dosage"`
+
+	// 不良反应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdverseReaction *ChemicalProductInfoAdverseReaction `json:"AdverseReaction,omitnil,omitempty" name:"AdverseReaction"`
+
+	// 禁忌情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contraindications *ChemicalProductInfoContraindications `json:"Contraindications,omitnil,omitempty" name:"Contraindications"`
+
+	// 注意事项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Precautions *ChemicalProductInfoPrecautions `json:"Precautions,omitnil,omitempty" name:"Precautions"`
+
+	// 孕妇及哺乳期妇女用药
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PregnancyLactationUse *ChemicalProductInfoPregnancyLactationUse `json:"PregnancyLactationUse,omitnil,omitempty" name:"PregnancyLactationUse"`
+
+	// 儿童用药
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PediatricUse *ChemicalProductInfoPediatricUse `json:"PediatricUse,omitnil,omitempty" name:"PediatricUse"`
+
+	// 老年用药
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeriatricUse *ChemicalProductInfoGeriatricUse `json:"GeriatricUse,omitnil,omitempty" name:"GeriatricUse"`
+
+	// 药品的药物相互作用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interactions *ChemicalProductInfoInteractions `json:"Interactions,omitnil,omitempty" name:"Interactions"`
+
+	// 药物过量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Overdose *ChemicalProductInfoOverdose `json:"Overdose,omitnil,omitempty" name:"Overdose"`
+
+	// 临床试验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClinicalTrial *ChemicalProductInfoClinicalTrial `json:"ClinicalTrial,omitnil,omitempty" name:"ClinicalTrial"`
+
+	// 药理毒理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PharmacologyToxicology *ChemicalProductInfoPharmacologyToxicology `json:"PharmacologyToxicology,omitnil,omitempty" name:"PharmacologyToxicology"`
+
+	// 药代动力学
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pharmacokinetics *ChemicalProductInfoPharmacokinetics `json:"Pharmacokinetics,omitnil,omitempty" name:"Pharmacokinetics"`
+
+	// 储存条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *ChemicalProductInfoStorage `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 包装信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Packaging *ChemicalProductInfoPackaging `json:"Packaging,omitnil,omitempty" name:"Packaging"`
+
+	// 有效期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidityPeriod *ChemicalProductInfoValidityPeriod `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// 执行标准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutiveStandards *ChemicalProductInfoExecutiveStandards `json:"ExecutiveStandards,omitnil,omitempty" name:"ExecutiveStandards"`
+
+	// 批准文号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approval *ChemicalProductInfoApproval `json:"Approval,omitnil,omitempty" name:"Approval"`
+
+	// 生产企业名称和地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manufacturer *ChemicalProductInfoManufacturer `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
+}
+
+type ChemicalProductInfoActiveIngredient struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 活性成份的化学名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChemicalName *string `json:"ChemicalName,omitnil,omitempty" name:"ChemicalName"`
+
+	// 活性成份的化学结构式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChemicalFormula *string `json:"ChemicalFormula,omitnil,omitempty" name:"ChemicalFormula"`
+
+	// 活性成份的分子式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MolecularFormula *string `json:"MolecularFormula,omitnil,omitempty" name:"MolecularFormula"`
+
+	// 活性成份的分子量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MolecularWeight *string `json:"MolecularWeight,omitnil,omitempty" name:"MolecularWeight"`
+}
+
+type ChemicalProductInfoAdverseReaction struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoAppearance struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoApproval struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoBrochure struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoClinicalTrial struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoContraindications struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoDosage struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoExecutiveStandards struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoGeriatricUse struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoIndications struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoInteractions struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoManufacturer struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 企业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 生产地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 邮政编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
+
+	// 电话，包含区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 传真，包含区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fax *string `json:"Fax,omitnil,omitempty" name:"Fax"`
+
+	// 网址，如无则不填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Website *string `json:"Website,omitnil,omitempty" name:"Website"`
+}
+
+type ChemicalProductInfoName struct {
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 通用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GenericName *string `json:"GenericName,omitnil,omitempty" name:"GenericName"`
+
+	// 品牌名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BarndName *string `json:"BarndName,omitnil,omitempty" name:"BarndName"`
+
+	// 英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnName *string `json:"EnName,omitnil,omitempty" name:"EnName"`
+
+	// 拼音
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pinyin *string `json:"Pinyin,omitnil,omitempty" name:"Pinyin"`
+}
+
+type ChemicalProductInfoOverdose struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoPackaging struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoPediatricUse struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoPharmacokinetics struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoPharmacologyToxicology struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoPrecautions struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoPregnancyLactationUse struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoStorage struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type ChemicalProductInfoValidityPeriod struct {
+	// 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 }
 
 type ChestCircumferenceItem struct {
@@ -933,6 +1389,68 @@ type DrugHistoryBlock struct {
 	// 归一化值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type DrugInstructionObjectRequestParams struct {
+	// 药品说明书PDF文件信息(目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
+}
+
+type DrugInstructionObjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 药品说明书PDF文件信息(目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
+}
+
+func (r *DrugInstructionObjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DrugInstructionObjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PdfInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DrugInstructionObjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DrugInstructionObjectResponseParams struct {
+	// 药品说明书消息定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChemicalProductInfo *ChemicalProductInfo `json:"ChemicalProductInfo,omitnil,omitempty" name:"ChemicalProductInfo"`
+
+	// 预防用生物制品说明书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiologicalProductInfo *BiologicalProductInfo `json:"BiologicalProductInfo,omitnil,omitempty" name:"BiologicalProductInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DrugInstructionObjectResponse struct {
+	*tchttp.BaseResponse
+	Response *DrugInstructionObjectResponseParams `json:"Response"`
+}
+
+func (r *DrugInstructionObjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DrugInstructionObjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DrugListBlock struct {

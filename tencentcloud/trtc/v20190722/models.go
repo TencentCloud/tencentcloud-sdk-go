@@ -157,7 +157,7 @@ type CreateCloudRecordingRequestParams struct {
 	// 云端录制控制参数。
 	RecordParams *RecordParams `json:"RecordParams,omitnil,omitempty" name:"RecordParams"`
 
-	// 云端录制文件上传到云存储的参数(目前支持云点播VOD和对象存储COS)。点播和对象存储的参数必填其中之一，不支持同时设置点播和对象存储。
+	// 云端录制文件上传到云存储的参数（不支持同时设置云点播VOD和对象存储COS）
 	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
 
 	// TRTC房间号的类型。
@@ -198,7 +198,7 @@ type CreateCloudRecordingRequest struct {
 	// 云端录制控制参数。
 	RecordParams *RecordParams `json:"RecordParams,omitnil,omitempty" name:"RecordParams"`
 
-	// 云端录制文件上传到云存储的参数(目前支持云点播VOD和对象存储COS)。点播和对象存储的参数必填其中之一，不支持同时设置点播和对象存储。
+	// 云端录制文件上传到云存储的参数（不支持同时设置云点播VOD和对象存储COS）
 	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
 
 	// TRTC房间号的类型。

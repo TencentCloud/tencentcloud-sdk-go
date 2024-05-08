@@ -6168,6 +6168,18 @@ type DescribeRabbitMQQueueDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuorumInitialGroupSize *int64 `json:"QuorumInitialGroupSize,omitnil,omitempty" name:"QuorumInitialGroupSize"`
 
+	// 是否为独占队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exclusive *bool `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
+
+	// 生效的策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 扩展参数 key-value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
