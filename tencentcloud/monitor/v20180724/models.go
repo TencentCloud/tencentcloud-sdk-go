@@ -14416,6 +14416,9 @@ type URLNotice struct {
 	// 通知周期 1-7表示周一到周日
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weekday []*int64 `json:"Weekday,omitnil,omitempty" name:"Weekday"`
+
+	// 提醒对象
+	GroupMembers *string `json:"GroupMembers,omitnil,omitempty" name:"GroupMembers"`
 }
 
 // Predefined struct for user
