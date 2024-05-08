@@ -10701,6 +10701,10 @@ type ReleasedApprover struct {
 	// <li> **ENTERPRISESERVER**：企业静默签</li></ul>
 	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
+	// 签署人在原合同中的RecipientId，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人信息，可参考返回结构体<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverdetail" target="_blank">FlowApproverDetail</a>中的RecipientId。
+	// **注意**：当指定了此参数后，ApproverNumber即失效，会以本参数作为原合同参与人的选取。与ApproverNumber二选一。
+	ReleasedApproverRecipientId *string `json:"ReleasedApproverRecipientId,omitnil,omitempty" name:"ReleasedApproverRecipientId"`
+
 	// 签署人姓名，最大长度50个字。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -10742,6 +10746,9 @@ type ReleasedApprover struct {
 	// 参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。
 	// 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
 	ApproverSignRole *string `json:"ApproverSignRole,omitnil,omitempty" name:"ApproverSignRole"`
+
+	// 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
+	ApproverSignSealId *string `json:"ApproverSignSealId,omitnil,omitempty" name:"ApproverSignSealId"`
 }
 
 type RelieveInfo struct {

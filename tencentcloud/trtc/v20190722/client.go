@@ -67,7 +67,7 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 // CreateCloudRecording
 // 接口说明：
 //
-// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面混流一路。
+// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面合流混成一路。
 //
 // 
 //
@@ -77,9 +77,9 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 //
 // * 指定录制存储参数（StorageParams）来指定上传到您希望的云存储，目前支持腾讯云（云点播VOD、对象存储COS）和第三方AWS
 //
-// * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
+// * 指定合流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
 //
-// * 指定混流模式各路画面的位置和布局或者也可以指定自动模板的方式来配置。
+// * 指定合流模式各路画面的位置和布局或者也可以指定自动模板的方式来配置。
 //
 // 
 //
@@ -123,7 +123,7 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 // CreateCloudRecording
 // 接口说明：
 //
-// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面混流一路。
+// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面合流混成一路。
 //
 // 
 //
@@ -133,9 +133,9 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 //
 // * 指定录制存储参数（StorageParams）来指定上传到您希望的云存储，目前支持腾讯云（云点播VOD、对象存储COS）和第三方AWS
 //
-// * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
+// * 指定合流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
 //
-// * 指定混流模式各路画面的位置和布局或者也可以指定自动模板的方式来配置。
+// * 指定合流模式各路画面的位置和布局或者也可以指定自动模板的方式来配置。
 //
 // 
 //

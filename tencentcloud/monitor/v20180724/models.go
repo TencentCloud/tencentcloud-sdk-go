@@ -12569,11 +12569,11 @@ func (r *ModifyPrometheusGlobalNotificationResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ModifyPrometheusInstanceAttributesRequestParams struct {
-	// 实例名称
-	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
-
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 存储时长（取值为 15、30、45。此参数不适用于包年包月实例）
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
@@ -12582,11 +12582,11 @@ type ModifyPrometheusInstanceAttributesRequestParams struct {
 type ModifyPrometheusInstanceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称
-	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
-
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 存储时长（取值为 15、30、45。此参数不适用于包年包月实例）
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
@@ -12604,8 +12604,8 @@ func (r *ModifyPrometheusInstanceAttributesRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "InstanceName")
 	delete(f, "InstanceId")
+	delete(f, "InstanceName")
 	delete(f, "DataRetentionTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusInstanceAttributesRequest has unknown keys!", "")
@@ -13202,7 +13202,7 @@ type PrometheusClusterAgentBasic struct {
 	// 集群ID
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 集群类型
+	// 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集群ID
@@ -13383,7 +13383,7 @@ type PrometheusInstancesItem struct {
 	// <li>0：不自动续费</li>
 	// <li>1：开启自动续费</li>
 	// <li>2：禁止自动续费</li>
-	// <li>-1：无效</ii>
+	// <li>-1：无效</li>
 	// </ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`

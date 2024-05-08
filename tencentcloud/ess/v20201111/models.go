@@ -11297,6 +11297,9 @@ type ReleasedApprover struct {
 	// 
 	// 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
 	ApproverSignRole *string `json:"ApproverSignRole,omitnil,omitempty" name:"ApproverSignRole"`
+
+	// 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
+	ApproverSignSealId *string `json:"ApproverSignSealId,omitnil,omitempty" name:"ApproverSignSealId"`
 }
 
 type RelieveInfo struct {

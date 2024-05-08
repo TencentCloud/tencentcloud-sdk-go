@@ -4145,6 +4145,59 @@ func (c *Client) DescribeRulesSettingWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeSecurityIPGroupRequest() (request *DescribeSecurityIPGroupRequest) {
+    request = &DescribeSecurityIPGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityIPGroup")
+    
+    
+    return
+}
+
+func NewDescribeSecurityIPGroupResponse() (response *DescribeSecurityIPGroupResponse) {
+    response = &DescribeSecurityIPGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecurityIPGroup
+// 查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeSecurityIPGroup(request *DescribeSecurityIPGroupRequest) (response *DescribeSecurityIPGroupResponse, err error) {
+    return c.DescribeSecurityIPGroupWithContext(context.Background(), request)
+}
+
+// DescribeSecurityIPGroup
+// 查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeSecurityIPGroupWithContext(ctx context.Context, request *DescribeSecurityIPGroupRequest) (response *DescribeSecurityIPGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityIPGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityIPGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityIPGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityIPGroupInfoRequest() (request *DescribeSecurityIPGroupInfoRequest) {
     request = &DescribeSecurityIPGroupInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4165,6 +4218,12 @@ func NewDescribeSecurityIPGroupInfoResponse() (response *DescribeSecurityIPGroup
 }
 
 // DescribeSecurityIPGroupInfo
+// 接口已废弃，将于 2024 年 6 月 30 日停止服务。请使用 [查询安全 IP 组
+//
+// ](https://cloud.tencent.com/document/product/1552/105866) 接口。
+//
+// 
+//
 // 查询 IP 组的配置信息，包括 IP 组名称、 IP 组内容、 IP 组归属站点。
 //
 // 可能返回的错误码:
@@ -4176,6 +4235,12 @@ func (c *Client) DescribeSecurityIPGroupInfo(request *DescribeSecurityIPGroupInf
 }
 
 // DescribeSecurityIPGroupInfo
+// 接口已废弃，将于 2024 年 6 月 30 日停止服务。请使用 [查询安全 IP 组
+//
+// ](https://cloud.tencent.com/document/product/1552/105866) 接口。
+//
+// 
+//
 // 查询 IP 组的配置信息，包括 IP 组名称、 IP 组内容、 IP 组归属站点。
 //
 // 可能返回的错误码:

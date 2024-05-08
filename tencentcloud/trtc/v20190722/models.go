@@ -166,10 +166,10 @@ type CreateCloudRecordingRequestParams struct {
 	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 混流的转码参数，录制模式为混流的时候可以设置。
+	// 合流的转码参数，录制模式为合流的时候可以设置。
 	MixTranscodeParams *MixTranscodeParams `json:"MixTranscodeParams,omitnil,omitempty" name:"MixTranscodeParams"`
 
-	// 混流的布局参数，录制模式为混流的时候可以设置。
+	// 合流的布局参数，录制模式为合流的时候可以设置。
 	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitnil,omitempty" name:"MixLayoutParams"`
 
 	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
@@ -207,10 +207,10 @@ type CreateCloudRecordingRequest struct {
 	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 混流的转码参数，录制模式为混流的时候可以设置。
+	// 合流的转码参数，录制模式为合流的时候可以设置。
 	MixTranscodeParams *MixTranscodeParams `json:"MixTranscodeParams,omitnil,omitempty" name:"MixTranscodeParams"`
 
-	// 混流的布局参数，录制模式为混流的时候可以设置。
+	// 合流的布局参数，录制模式为合流的时候可以设置。
 	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitnil,omitempty" name:"MixLayoutParams"`
 
 	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
@@ -3496,7 +3496,7 @@ type QualityData struct {
 type RecordParams struct {
 	// 录制模式：
 	// 1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件上传至云存储；
-	// 2：混流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件上传至云存储；
+	// 2：合流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件上传至云存储；
 	RecordMode *uint64 `json:"RecordMode,omitnil,omitempty" name:"RecordMode"`
 
 	// 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
@@ -3516,7 +3516,7 @@ type RecordParams struct {
 	// 存储到云点播VOD时此参数无效，存储到VOD时请通过TencentVod（https://cloud.tencent.com/document/api/647/44055#TencentVod）内的MediaType设置。
 	OutputFormat *uint64 `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
 
-	// 单流录制模式下，用户的音视频是否合并，0：单流音视频不合并（默认）。1：单流音视频合并成一个ts。混流录制此参数无需设置，默认音视频合并。
+	// 单流录制模式下，用户的音视频是否合并，0：单流音视频不合并（默认）。1：单流音视频合并成一个ts。合流录制此参数无需设置，默认音视频合并。
 	AvMerge *uint64 `json:"AvMerge,omitnil,omitempty" name:"AvMerge"`
 
 	// 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】
@@ -3525,6 +3525,9 @@ type RecordParams struct {
 
 	// 指定录制主辅流，0：主流+辅流（默认）；1:主流；2:辅流。
 	MediaId *uint64 `json:"MediaId,omitnil,omitempty" name:"MediaId"`
+
+	// 上行视频停止时，录制的补帧类型，0：补最后一帧 1：补黑帧
+	FillType *uint64 `json:"FillType,omitnil,omitempty" name:"FillType"`
 }
 
 type RecordUsage struct {
@@ -5054,4 +5057,9 @@ type WebRecordVideoParams struct {
 
 	// 指定输出格式，可选hls,mp4
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】
+	// Hls 格式录制此参数不生效。
+	// 示例值：1440
+	MaxMediaFileDuration *int64 `json:"MaxMediaFileDuration,omitnil,omitempty" name:"MaxMediaFileDuration"`
 }

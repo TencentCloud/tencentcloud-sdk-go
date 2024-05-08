@@ -6657,6 +6657,74 @@ func (r *DescribeSecurityIPGroupInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSecurityIPGroupRequestParams struct {
+	// 站点 ID ，用于指定查询的站点范围。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 指定安全 IP 组 ID。
+	// <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li>
+	// <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
+	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+type DescribeSecurityIPGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID ，用于指定查询的站点范围。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 指定安全 IP 组 ID。
+	// <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li>
+	// <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
+	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+func (r *DescribeSecurityIPGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityIPGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityIPGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSecurityIPGroupResponseParams struct {
+	// 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称和 IP / 网段列表信息。
+	IPGroups []*IPGroup `json:"IPGroups,omitnil,omitempty" name:"IPGroups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSecurityIPGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSecurityIPGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeSecurityIPGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityIPGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSecurityTemplateBindingsRequestParams struct {
 	// 要查询的站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`

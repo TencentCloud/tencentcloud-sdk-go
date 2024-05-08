@@ -11808,7 +11808,7 @@ type RabbitMQClusterInfo struct {
 	// Exchang数量
 	ExchangeNumber *int64 `json:"ExchangeNumber,omitnil,omitempty" name:"ExchangeNumber"`
 
-	// 集群异常。
+	// 集群异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionInformation *string `json:"ExceptionInformation,omitnil,omitempty" name:"ExceptionInformation"`
 
@@ -11822,6 +11822,14 @@ type RabbitMQClusterInfo struct {
 	// 是否开启镜像队列策略。1表示开启，0表示没开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MirrorQueuePolicyFlag *int64 `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
+
+	// 每秒消费消息数 单位：条/秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageConsumeRate *float64 `json:"MessageConsumeRate,omitnil,omitempty" name:"MessageConsumeRate"`
+
+	// 集群版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -11943,6 +11951,38 @@ type RabbitMQQueueListInfo struct {
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 队列是否持久化，true 为持久化，false 为非持久化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Durable *bool `json:"Durable,omitnil,omitempty" name:"Durable"`
+
+	// 队列是否为自动删除队列，true 为自动删除，false 为非自动删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoDelete *bool `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
+
+	// 队列所属实例 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 队列所属虚拟主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 队列所在主节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Node *string `json:"Node,omitnil,omitempty" name:"Node"`
+
+	// 生效的策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 扩展参数 key-value 对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+
+	// 是否独占队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exclusive *bool `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
 }
 
 type RabbitMQUser struct {
@@ -12077,6 +12117,10 @@ type RabbitMQVirtualHostInfo struct {
 	// 输出消息速率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateOut *float64 `json:"MessageRateOut,omitnil,omitempty" name:"MessageRateOut"`
+
+	// 是否存在镜像队列策略，true 为存在，false 为不存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 }
 
 type RabbitMQVirtualHostStatistics struct {
