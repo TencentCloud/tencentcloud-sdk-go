@@ -6408,6 +6408,157 @@ func (r *CreateUserAutoSignSealUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUserVerifyUrlRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 要实名的姓名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 要实名的身份证号码，
+	// 身份证号码如果有x的话，统一传大写X
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 证件类型，目前只支持身份证类型：ID_CARD
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
+
+	// 要实名的手机号，兼容带+86的格式
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 要跳转的链接类型
+	// 
+	// - HTTP：
+	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型 ，此时返回长链 (默认类型)
+	// 
+	// - HTTP_SHORT_URL：
+	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型，此时返回短链
+	// 
+	// - APP：
+	// 第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 签署完成后是否自动回跳
+	// <ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
+	// 
+	// 注: 
+	// 1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的实名链接有效
+	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
+	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
+}
+
+type CreateUserVerifyUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 要实名的姓名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 要实名的身份证号码，
+	// 身份证号码如果有x的话，统一传大写X
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 证件类型，目前只支持身份证类型：ID_CARD
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
+
+	// 要实名的手机号，兼容带+86的格式
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 要跳转的链接类型
+	// 
+	// - HTTP：
+	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型 ，此时返回长链 (默认类型)
+	// 
+	// - HTTP_SHORT_URL：
+	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型，此时返回短链
+	// 
+	// - APP：
+	// 第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 签署完成后是否自动回跳
+	// <ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
+	// 
+	// 注: 
+	// 1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的实名链接有效
+	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
+	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
+}
+
+func (r *CreateUserVerifyUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserVerifyUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Name")
+	delete(f, "IdCardNumber")
+	delete(f, "IdCardType")
+	delete(f, "Mobile")
+	delete(f, "Endpoint")
+	delete(f, "AutoJumpBack")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserVerifyUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserVerifyUrlResponseParams struct {
+	// 腾讯电子签小程序的实名认证链接。
+	// 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+	// 
+	// - 如果EndPoint是APP，
+	// 得到的链接类似于pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0, 用法可以参加接口描述中的"跳转到小程序的实现"
+	// 
+	// - 如果EndPoint是HTTP，
+	// 得到的链接类似于https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d，点击后会跳转到腾讯电子签小程序进行签署
+	// 
+	// - 如果EndPoint是HTTP_SHORT_URL，
+	// 得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
+	// 
+	// 
+	// 注： 生成的链路后面不能再增加参数
+	// 示例值：https://essurl.cn/2n**42Nd
+	UserVerifyUrl *string `json:"UserVerifyUrl,omitnil,omitempty" name:"UserVerifyUrl"`
+
+	// 链接过期时间
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 小程序appid，用于半屏拉起电子签小程序
+	MiniAppId *string `json:"MiniAppId,omitnil,omitempty" name:"MiniAppId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserVerifyUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserVerifyUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateUserVerifyUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserVerifyUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateWebThemeConfigRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`

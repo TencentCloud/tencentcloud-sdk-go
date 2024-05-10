@@ -23713,14 +23713,14 @@ func (r *DescribeProtectNetListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicProxyInstallCommandRequestParams struct {
-	// nginx主机ip列表，逗号分隔
+	// nginx主机IP列表，逗号分隔
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
 type DescribePublicProxyInstallCommandRequest struct {
 	*tchttp.BaseRequest
 	
-	// nginx主机ip列表，逗号分隔
+	// nginx主机IP列表，逗号分隔
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
@@ -33835,7 +33835,7 @@ type ExportBaselineItemListRequestParams struct {
 	// <li>ItemName - String - 是否必填：否 - 项名称</li>
 	// <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
-	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>StartTime - string - 是否必填：否 - 开始时间</li>
 	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -33855,7 +33855,7 @@ type ExportBaselineItemListRequest struct {
 	// <li>ItemName - String - 是否必填：否 - 项名称</li>
 	// <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
-	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>StartTime - string - 是否必填：否 - 开始时间</li>
 	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -34434,7 +34434,7 @@ func (r *ExportFileTamperEventsResponse) FromJsonString(s string) error {
 type ExportFileTamperRulesRequestParams struct {
 	// 过滤条件。
 	// <li>RuleCategory- string- 规则类别  0=系统规则，1=用户规则</li>
-	// <li>Name- String - 规则名称/li>
+	// <li>Name- String - 规则名称</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -34443,7 +34443,7 @@ type ExportFileTamperRulesRequest struct {
 	
 	// 过滤条件。
 	// <li>RuleCategory- string- 规则类别  0=系统规则，1=用户规则</li>
-	// <li>Name- String - 规则名称/li>
+	// <li>Name- String - 规则名称</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -37567,6 +37567,10 @@ type Item struct {
 	// 自定义阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomItemValues []*uint64 `json:"CustomItemValues,omitnil,omitempty" name:"CustomItemValues"`
+
+	// 检测项所属分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 }
 
 type JavaMemShellDetail struct {

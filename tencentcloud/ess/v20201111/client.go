@@ -5760,6 +5760,85 @@ func (c *Client) CreateUserAutoSignSealUrlWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateUserVerifyUrlRequest() (request *CreateUserVerifyUrlRequest) {
+    request = &CreateUserVerifyUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateUserVerifyUrl")
+    
+    
+    return
+}
+
+func NewCreateUserVerifyUrlResponse() (response *CreateUserVerifyUrlResponse) {
+    response = &CreateUserVerifyUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserVerifyUrl
+// 客户可以主动调用生成实名链接去做C端用户实名，会对实名的用户进行打标记为调用链接客户的用户
+//
+// 使用场景：
+//
+// 用户集成场景
+//
+// 使用限制：
+//
+// 此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserVerifyUrl(request *CreateUserVerifyUrlRequest) (response *CreateUserVerifyUrlResponse, err error) {
+    return c.CreateUserVerifyUrlWithContext(context.Background(), request)
+}
+
+// CreateUserVerifyUrl
+// 客户可以主动调用生成实名链接去做C端用户实名，会对实名的用户进行打标记为调用链接客户的用户
+//
+// 使用场景：
+//
+// 用户集成场景
+//
+// 使用限制：
+//
+// 此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserVerifyUrlWithContext(ctx context.Context, request *CreateUserVerifyUrlRequest) (response *CreateUserVerifyUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateUserVerifyUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserVerifyUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserVerifyUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWebThemeConfigRequest() (request *CreateWebThemeConfigRequest) {
     request = &CreateWebThemeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

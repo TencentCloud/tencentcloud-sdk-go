@@ -12755,6 +12755,10 @@ type ResourcePackage struct {
 	// DISK：存储资源包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 当前资源包绑定在当前实例下的抵扣优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductionPriority *int64 `json:"DeductionPriority,omitnil,omitempty" name:"DeductionPriority"`
 }
 
 // Predefined struct for user

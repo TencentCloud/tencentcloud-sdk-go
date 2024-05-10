@@ -1068,6 +1068,11 @@ type CachePrefresh struct {
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 }
 
+type CacheTag struct {
+	// 待清除缓存的域名列表。
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
 type CertificateInfo struct {
 	// 服务器证书 ID。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
@@ -2458,6 +2463,9 @@ type CreatePurgeTaskRequestParams struct {
 	//
 	// Deprecated: EncodeUrl is deprecated.
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
+
+	// 节点缓存清除类型取值为 purge_cache_tag 时附带的信息。
+	CacheTag *CacheTag `json:"CacheTag,omitnil,omitempty" name:"CacheTag"`
 }
 
 type CreatePurgeTaskRequest struct {
@@ -2483,6 +2491,9 @@ type CreatePurgeTaskRequest struct {
 	// 若有编码转换，仅清除编码转换后匹配的资源。
 	// 若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
+
+	// 节点缓存清除类型取值为 purge_cache_tag 时附带的信息。
+	CacheTag *CacheTag `json:"CacheTag,omitnil,omitempty" name:"CacheTag"`
 }
 
 func (r *CreatePurgeTaskRequest) ToJsonString() string {
@@ -2502,6 +2513,7 @@ func (r *CreatePurgeTaskRequest) FromJsonString(s string) error {
 	delete(f, "Method")
 	delete(f, "Targets")
 	delete(f, "EncodeUrl")
+	delete(f, "CacheTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePurgeTaskRequest has unknown keys!", "")
 	}
@@ -12384,6 +12396,12 @@ type Task struct {
 
 	// 任务类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 节点缓存清除方法，取值有：
+	// <li>invalidate：标记过期，用户请求时触发回源校验，即发送带有 If-None-Match 和 If-Modified-Since 头部的 HTTP 条件请求。若源站响应 200，则节点会回源拉取新的资源并更新缓存；若源站响应 304，则节点不会更新缓存；</li>
+	// <li>delete：直接删除节点缓存，用户请求时触发回源拉取资源。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 状态。取值有：
 	// <li>processing：处理中；</li>

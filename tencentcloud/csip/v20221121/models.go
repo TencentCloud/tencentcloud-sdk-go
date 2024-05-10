@@ -388,11 +388,11 @@ type AlertInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Victim *RoleInfo `json:"Victim,omitnil,omitempty" name:"Victim"`
 
-	// 证据数据(比如攻击内容等)
+	// 证据数据(例如攻击内容等)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EvidenceData *string `json:"EvidenceData,omitnil,omitempty" name:"EvidenceData"`
 
-	// 证据位置(比如协议端口)
+	// 证据位置(例如协议端口)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EvidenceLocation *string `json:"EvidenceLocation,omitnil,omitempty" name:"EvidenceLocation"`
 
@@ -2400,6 +2400,10 @@ type DescribeCVMAssetsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetMapInstanceTypeList []*AssetInstanceTypeMap `json:"AssetMapInstanceTypeList,omitnil,omitempty" name:"AssetMapInstanceTypeList"`
 
+	// 公网内网枚举
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicPrivateAttr []*FilterDataObject `json:"PublicPrivateAttr,omitnil,omitempty" name:"PublicPrivateAttr"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2552,6 +2556,9 @@ func (r *DescribeDbAssetInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDbAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -2562,6 +2569,9 @@ type DescribeDbAssetsRequestParams struct {
 type DescribeDbAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -2581,6 +2591,7 @@ func (r *DescribeDbAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "AssetTypes")
 	if len(f) > 0 {
@@ -2614,6 +2625,10 @@ type DescribeDbAssetsResponseParams struct {
 	// Appid枚举
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppIdList []*FilterDataObject `json:"AppIdList,omitnil,omitempty" name:"AppIdList"`
+
+	// 公网内网枚举
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicPrivateAttr []*FilterDataObject `json:"PublicPrivateAttr,omitnil,omitempty" name:"PublicPrivateAttr"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2956,6 +2971,9 @@ func (r *DescribeNICAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOrganizationUserInfoRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -2966,6 +2984,9 @@ type DescribeOrganizationUserInfoRequestParams struct {
 type DescribeOrganizationUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -2985,6 +3006,7 @@ func (r *DescribeOrganizationUserInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "NotSupportCloud")
 	if len(f) > 0 {
@@ -3002,6 +3024,14 @@ type DescribeOrganizationUserInfoResponseParams struct {
 	// 集团用户列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*OrganizationUserInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 加入方式枚举
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinTypeLst []*FilterDataObject `json:"JoinTypeLst,omitnil,omitempty" name:"JoinTypeLst"`
+
+	// 云厂商枚举
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudTypeLst []*FilterDataObject `json:"CloudTypeLst,omitnil,omitempty" name:"CloudTypeLst"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5363,6 +5393,14 @@ type OrganizationUserInfo struct {
 	// 2 非腾讯云
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TcMemberType *int64 `json:"TcMemberType,omitnil,omitempty" name:"TcMemberType"`
+
+	// 子账号数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUserCount *int64 `json:"SubUserCount,omitnil,omitempty" name:"SubUserCount"`
+
+	// 加入方式详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinTypeInfo *string `json:"JoinTypeInfo,omitnil,omitempty" name:"JoinTypeInfo"`
 }
 
 type PortRiskAdvanceCFGParamItem struct {

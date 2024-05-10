@@ -1809,7 +1809,7 @@ func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
 // DeleteSnapshots
 // 本接口（DeleteSnapshots）用于删除快照。
 //
-// 快照必须处于 NORMAL 状态，快照状态可以通过 DescribeSnapshots 接口查询，见输出参数中 SnapshotState 字段解释。
+// 快照必须处于 NORMAL 状态，快照状态可以通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 接口查询，见输出参数中 SnapshotState 字段解释。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -1830,7 +1830,7 @@ func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *Del
 // DeleteSnapshots
 // 本接口（DeleteSnapshots）用于删除快照。
 //
-// 快照必须处于 NORMAL 状态，快照状态可以通过 DescribeSnapshots 接口查询，见输出参数中 SnapshotState 字段解释。
+// 快照必须处于 NORMAL 状态，快照状态可以通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 接口查询，见输出参数中 SnapshotState 字段解释。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"

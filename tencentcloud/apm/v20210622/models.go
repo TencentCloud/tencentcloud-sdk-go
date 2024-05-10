@@ -557,7 +557,7 @@ type DescribeGeneralApmApplicationConfigRequestParams struct {
 	// 应用名
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 实例Id
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -567,7 +567,7 @@ type DescribeGeneralApmApplicationConfigRequest struct {
 	// 应用名
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 实例Id
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
