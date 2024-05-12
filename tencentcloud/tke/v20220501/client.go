@@ -45,6 +45,122 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateNodePoolRequest() (request *CreateNodePoolRequest) {
+    request = &CreateNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateNodePool")
+    
+    
+    return
+}
+
+func NewCreateNodePoolResponse() (response *CreateNodePoolResponse) {
+    response = &CreateNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNodePool
+// 创建 TKE 节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNodePool(request *CreateNodePoolRequest) (response *CreateNodePoolResponse, err error) {
+    return c.CreateNodePoolWithContext(context.Background(), request)
+}
+
+// CreateNodePool
+// 创建 TKE 节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNodePoolWithContext(ctx context.Context, request *CreateNodePoolRequest) (response *CreateNodePoolResponse, err error) {
+    if request == nil {
+        request = NewCreateNodePoolRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNodePoolRequest() (request *DeleteNodePoolRequest) {
+    request = &DeleteNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteNodePool")
+    
+    
+    return
+}
+
+func NewDeleteNodePoolResponse() (response *DeleteNodePoolResponse) {
+    response = &DeleteNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNodePool
+// 删除 TKE 节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteNodePool(request *DeleteNodePoolRequest) (response *DeleteNodePoolResponse, err error) {
+    return c.DeleteNodePoolWithContext(context.Background(), request)
+}
+
+// DeleteNodePool
+// 删除 TKE 节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteNodePoolWithContext(ctx context.Context, request *DeleteNodePoolRequest) (response *DeleteNodePoolResponse, err error) {
+    if request == nil {
+        request = NewDeleteNodePoolRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequest) {
     request = &DescribeClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -175,6 +291,61 @@ func (c *Client) DescribeNodePoolsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeNodePoolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNodePoolRequest() (request *ModifyNodePoolRequest) {
+    request = &ModifyNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyNodePool")
+    
+    
+    return
+}
+
+func NewModifyNodePoolResponse() (response *ModifyNodePoolResponse) {
+    response = &ModifyNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNodePool
+// 更新 TKE 节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyNodePool(request *ModifyNodePoolRequest) (response *ModifyNodePoolResponse, err error) {
+    return c.ModifyNodePoolWithContext(context.Background(), request)
+}
+
+// ModifyNodePool
+// 更新 TKE 节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyNodePoolWithContext(ctx context.Context, request *ModifyNodePoolRequest) (response *ModifyNodePoolResponse, err error) {
+    if request == nil {
+        request = NewModifyNodePoolRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNodePoolResponse()
     err = c.Send(request, response)
     return
 }

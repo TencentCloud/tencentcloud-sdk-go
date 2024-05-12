@@ -6218,6 +6218,10 @@ type Instance struct {
 	// 注意：此字段可能返回 空值，表示取不到有效值。
 	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitnil,omitempty" name:"LatestOperationRequestId"`
 
+	// 实例最新操作的开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperationStartedTime *string `json:"LatestOperationStartedTime,omitnil,omitempty" name:"LatestOperationStartedTime"`
+
 	// 隔离时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。

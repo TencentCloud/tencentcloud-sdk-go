@@ -989,6 +989,59 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
     return
 }
 
+func NewCreateCLSDeliveryRequest() (request *CreateCLSDeliveryRequest) {
+    request = &CreateCLSDeliveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateCLSDelivery")
+    
+    
+    return
+}
+
+func NewCreateCLSDeliveryResponse() (response *CreateCLSDeliveryResponse) {
+    response = &CreateCLSDeliveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCLSDelivery
+// 创建日志投递
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateCLSDelivery(request *CreateCLSDeliveryRequest) (response *CreateCLSDeliveryResponse, err error) {
+    return c.CreateCLSDeliveryWithContext(context.Background(), request)
+}
+
+// CreateCLSDelivery
+// 创建日志投递
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateCLSDeliveryWithContext(ctx context.Context, request *CreateCLSDeliveryRequest) (response *CreateCLSDeliveryResponse, err error) {
+    if request == nil {
+        request = NewCreateCLSDeliveryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCLSDelivery require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCLSDeliveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterDatabaseRequest() (request *CreateClusterDatabaseRequest) {
     request = &CreateClusterDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1645,6 +1698,55 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBac
     request.SetContext(ctx)
     
     response = NewDeleteBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCLSDeliveryRequest() (request *DeleteCLSDeliveryRequest) {
+    request = &DeleteCLSDeliveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DeleteCLSDelivery")
+    
+    
+    return
+}
+
+func NewDeleteCLSDeliveryResponse() (response *DeleteCLSDeliveryResponse) {
+    response = &DeleteCLSDeliveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCLSDelivery
+// 删除日志投递
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteCLSDelivery(request *DeleteCLSDeliveryRequest) (response *DeleteCLSDeliveryResponse, err error) {
+    return c.DeleteCLSDeliveryWithContext(context.Background(), request)
+}
+
+// DeleteCLSDelivery
+// 删除日志投递
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteCLSDeliveryWithContext(ctx context.Context, request *DeleteCLSDeliveryRequest) (response *DeleteCLSDeliveryResponse, err error) {
+    if request == nil {
+        request = NewDeleteCLSDeliveryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCLSDelivery require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCLSDeliveryResponse()
     err = c.Send(request, response)
     return
 }
@@ -3487,6 +3589,63 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeF
     request.SetContext(ctx)
     
     response = NewDescribeFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceCLSLogDeliveryRequest() (request *DescribeInstanceCLSLogDeliveryRequest) {
+    request = &DescribeInstanceCLSLogDeliveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceCLSLogDelivery")
+    
+    
+    return
+}
+
+func NewDescribeInstanceCLSLogDeliveryResponse() (response *DescribeInstanceCLSLogDeliveryResponse) {
+    response = &DescribeInstanceCLSLogDeliveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceCLSLogDelivery
+// 查询实例日志投递信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceCLSLogDelivery(request *DescribeInstanceCLSLogDeliveryRequest) (response *DescribeInstanceCLSLogDeliveryResponse, err error) {
+    return c.DescribeInstanceCLSLogDeliveryWithContext(context.Background(), request)
+}
+
+// DescribeInstanceCLSLogDelivery
+// 查询实例日志投递信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceCLSLogDeliveryWithContext(ctx context.Context, request *DescribeInstanceCLSLogDeliveryRequest) (response *DescribeInstanceCLSLogDeliveryResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceCLSLogDeliveryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceCLSLogDelivery require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceCLSLogDeliveryResponse()
     err = c.Send(request, response)
     return
 }
@@ -8495,6 +8654,106 @@ func (c *Client) SetRenewFlagWithContext(ctx context.Context, request *SetRenewF
     request.SetContext(ctx)
     
     response = NewSetRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartCLSDeliveryRequest() (request *StartCLSDeliveryRequest) {
+    request = &StartCLSDeliveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "StartCLSDelivery")
+    
+    
+    return
+}
+
+func NewStartCLSDeliveryResponse() (response *StartCLSDeliveryResponse) {
+    response = &StartCLSDeliveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartCLSDelivery
+// 开启日志投递
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) StartCLSDelivery(request *StartCLSDeliveryRequest) (response *StartCLSDeliveryResponse, err error) {
+    return c.StartCLSDeliveryWithContext(context.Background(), request)
+}
+
+// StartCLSDelivery
+// 开启日志投递
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) StartCLSDeliveryWithContext(ctx context.Context, request *StartCLSDeliveryRequest) (response *StartCLSDeliveryResponse, err error) {
+    if request == nil {
+        request = NewStartCLSDeliveryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartCLSDelivery require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartCLSDeliveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopCLSDeliveryRequest() (request *StopCLSDeliveryRequest) {
+    request = &StopCLSDeliveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "StopCLSDelivery")
+    
+    
+    return
+}
+
+func NewStopCLSDeliveryResponse() (response *StopCLSDeliveryResponse) {
+    response = &StopCLSDeliveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopCLSDelivery
+// 停止日志投递
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) StopCLSDelivery(request *StopCLSDeliveryRequest) (response *StopCLSDeliveryResponse, err error) {
+    return c.StopCLSDeliveryWithContext(context.Background(), request)
+}
+
+// StopCLSDelivery
+// 停止日志投递
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) StopCLSDeliveryWithContext(ctx context.Context, request *StopCLSDeliveryRequest) (response *StopCLSDeliveryResponse, err error) {
+    if request == nil {
+        request = NewStopCLSDeliveryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopCLSDelivery require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopCLSDeliveryResponse()
     err = c.Send(request, response)
     return
 }

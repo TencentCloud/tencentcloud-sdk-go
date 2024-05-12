@@ -351,7 +351,7 @@ type AllocationDetail struct {
 	// 费用归集类型：费用来源类型，分摊、归集、未分配
 	// 0 - 分摊
 	// 1 - 归集
-	// -1 - 未分配
+	// 2 - 未分配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllocationType *uint64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
@@ -4979,7 +4979,7 @@ type DescribeBillDownloadUrlResponseParams struct {
 	// 账单文件是否准备就绪，0文件生成中，1文件已生成
 	Ready *int64 `json:"Ready,omitnil,omitempty" name:"Ready"`
 
-	// 账单文件下载链接，有效时长为一小时
+	// 账单文件下载链接，有效时长为一天
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 

@@ -1548,6 +1548,63 @@ func (c *Client) DescribeDeployedResourcesWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDownloadCertificateUrlRequest() (request *DescribeDownloadCertificateUrlRequest) {
+    request = &DescribeDownloadCertificateUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeDownloadCertificateUrl")
+    
+    
+    return
+}
+
+func NewDescribeDownloadCertificateUrlResponse() (response *DescribeDownloadCertificateUrlResponse) {
+    response = &DescribeDownloadCertificateUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDownloadCertificateUrl
+// 获取下载证书链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATEDOWNLOADSERVICETYPENOTSUPPORT = "FailedOperation.CertificateDownloadServiceTypeNotSupport"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = "FailedOperation.CertificateStatusNotAllowDownload"
+//  FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = "FailedOperation.CertificateTypeInfoNotFound"
+func (c *Client) DescribeDownloadCertificateUrl(request *DescribeDownloadCertificateUrlRequest) (response *DescribeDownloadCertificateUrlResponse, err error) {
+    return c.DescribeDownloadCertificateUrlWithContext(context.Background(), request)
+}
+
+// DescribeDownloadCertificateUrl
+// 获取下载证书链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATEDOWNLOADSERVICETYPENOTSUPPORT = "FailedOperation.CertificateDownloadServiceTypeNotSupport"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = "FailedOperation.CertificateStatusNotAllowDownload"
+//  FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = "FailedOperation.CertificateTypeInfoNotFound"
+func (c *Client) DescribeDownloadCertificateUrlWithContext(ctx context.Context, request *DescribeDownloadCertificateUrlRequest) (response *DescribeDownloadCertificateUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeDownloadCertificateUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDownloadCertificateUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDownloadCertificateUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHostApiGatewayInstanceListRequest() (request *DescribeHostApiGatewayInstanceListRequest) {
     request = &DescribeHostApiGatewayInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

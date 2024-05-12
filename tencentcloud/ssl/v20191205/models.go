@@ -2809,6 +2809,73 @@ func (r *DescribeDeployedResourcesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDownloadCertificateUrlRequestParams struct {
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+
+	// 下载的服务类型: nginx tomcat apache iis jks other root
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+}
+
+type DescribeDownloadCertificateUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+
+	// 下载的服务类型: nginx tomcat apache iis jks other root
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+}
+
+func (r *DescribeDownloadCertificateUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDownloadCertificateUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ServiceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDownloadCertificateUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDownloadCertificateUrlResponseParams struct {
+	// 下载链接
+	DownloadCertificateUrl *string `json:"DownloadCertificateUrl,omitnil,omitempty" name:"DownloadCertificateUrl"`
+
+	// 下载文件的名称
+	DownloadFilename *string `json:"DownloadFilename,omitnil,omitempty" name:"DownloadFilename"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDownloadCertificateUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDownloadCertificateUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeDownloadCertificateUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDownloadCertificateUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHostApiGatewayInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`

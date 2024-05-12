@@ -419,3 +419,125 @@ func (c *Client) GetTokenCountWithContext(ctx context.Context, request *GetToken
     err = c.Send(request, response)
     return
 }
+
+func NewQueryHunyuanImageJobRequest() (request *QueryHunyuanImageJobRequest) {
+    request = &QueryHunyuanImageJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "QueryHunyuanImageJob")
+    
+    
+    return
+}
+
+func NewQueryHunyuanImageJobResponse() (response *QueryHunyuanImageJobResponse) {
+    response = &QueryHunyuanImageJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryHunyuanImageJob
+// 混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) QueryHunyuanImageJob(request *QueryHunyuanImageJobRequest) (response *QueryHunyuanImageJobResponse, err error) {
+    return c.QueryHunyuanImageJobWithContext(context.Background(), request)
+}
+
+// QueryHunyuanImageJob
+// 混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) QueryHunyuanImageJobWithContext(ctx context.Context, request *QueryHunyuanImageJobRequest) (response *QueryHunyuanImageJobResponse, err error) {
+    if request == nil {
+        request = NewQueryHunyuanImageJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryHunyuanImageJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryHunyuanImageJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitHunyuanImageJobRequest() (request *SubmitHunyuanImageJobRequest) {
+    request = &SubmitHunyuanImageJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "SubmitHunyuanImageJob")
+    
+    
+    return
+}
+
+func NewSubmitHunyuanImageJobResponse() (response *SubmitHunyuanImageJobResponse) {
+    response = &SubmitHunyuanImageJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitHunyuanImageJob
+// 混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SubmitHunyuanImageJob(request *SubmitHunyuanImageJobRequest) (response *SubmitHunyuanImageJobResponse, err error) {
+    return c.SubmitHunyuanImageJobWithContext(context.Background(), request)
+}
+
+// SubmitHunyuanImageJob
+// 混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SubmitHunyuanImageJobWithContext(ctx context.Context, request *SubmitHunyuanImageJobRequest) (response *SubmitHunyuanImageJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitHunyuanImageJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHunyuanImageJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitHunyuanImageJobResponse()
+    err = c.Send(request, response)
+    return
+}

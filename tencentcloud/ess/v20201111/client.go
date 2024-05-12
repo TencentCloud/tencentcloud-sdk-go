@@ -3842,7 +3842,7 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //
 // <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>发送短信通知员工（短信中带有认证加入企业的链接）   ![image]() </td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）  </td>
 //
 // </tr>
 //
@@ -3939,7 +3939,7 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //
 // <td>将Employees中的DisplayName设置员工的名字，Mobile设置成员工的手机号</td>
 //
-// <td>发送短信通知员工（短信中带有认证加入企业的链接）   ![image]() </td>
+// <td>发送短信通知员工（短信中带有认证加入企业的链接）  </td>
 //
 // </tr>
 //
@@ -5078,7 +5078,7 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 //
 // <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
 //
-// <li>在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均变为已解除状态。</li>
+// <li>在解除协议签署完毕后，原合同及解除协议均变为已解除状态。</li>
 //
 // <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
 //
@@ -5176,7 +5176,7 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 //
 // <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
 //
-// <li>在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均变为已解除状态。</li>
+// <li>在解除协议签署完毕后，原合同及解除协议均变为已解除状态。</li>
 //
 // <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
 //
@@ -8014,6 +8014,89 @@ func (c *Client) DescribeUserAutoSignStatusWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeUserAutoSignStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserVerifyStatusRequest() (request *DescribeUserVerifyStatusRequest) {
+    request = &DescribeUserVerifyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeUserVerifyStatus")
+    
+    
+    return
+}
+
+func NewDescribeUserVerifyStatusResponse() (response *DescribeUserVerifyStatusResponse) {
+    response = &DescribeUserVerifyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserVerifyStatus
+// 用于客户企业在调用生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口之前判断C端用户是否实名，如果已经实名，就不需要再次调用生成C端链接接口去实名
+//
+// 注意：此接口仅会返回当前员工是否通过[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)所实名的员工是否实名，并不会返回个人用户自己在电子签进行实名的状况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeUserVerifyStatus(request *DescribeUserVerifyStatusRequest) (response *DescribeUserVerifyStatusResponse, err error) {
+    return c.DescribeUserVerifyStatusWithContext(context.Background(), request)
+}
+
+// DescribeUserVerifyStatus
+// 用于客户企业在调用生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口之前判断C端用户是否实名，如果已经实名，就不需要再次调用生成C端链接接口去实名
+//
+// 注意：此接口仅会返回当前员工是否通过[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)所实名的员工是否实名，并不会返回个人用户自己在电子签进行实名的状况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeUserVerifyStatusWithContext(ctx context.Context, request *DescribeUserVerifyStatusRequest) (response *DescribeUserVerifyStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserVerifyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserVerifyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserVerifyStatusResponse()
     err = c.Send(request, response)
     return
 }

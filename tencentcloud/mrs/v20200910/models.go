@@ -1393,14 +1393,14 @@ type DrugHistoryBlock struct {
 
 // Predefined struct for user
 type DrugInstructionObjectRequestParams struct {
-	// 药品说明书PDF文件信息(目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+	// 药品说明书PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64).
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
 }
 
 type DrugInstructionObjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 药品说明书PDF文件信息(目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+	// 药品说明书PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64).
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil,omitempty" name:"PdfInfo"`
 }
 

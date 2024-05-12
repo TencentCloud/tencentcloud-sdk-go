@@ -38,7 +38,7 @@ const (
 	// Param。
 	INTERNALERROR_PARAM = "InternalError.Param"
 
-	// 集群不支持当前操作。
+	// 公共集群不支持扩展节点。
 	INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
 
 	// 内部错误。
@@ -47,11 +47,20 @@ const (
 	// 未知的内部错误。
 	INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
 	// 集群ID不存在。
 	INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
 
 	// 参数错误。
 	INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+
+	// 操作被拒绝。
+	OPERATIONDENIED = "OperationDenied"
+
+	// 资源被占用。
+	RESOURCEINUSE = "ResourceInUse"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"

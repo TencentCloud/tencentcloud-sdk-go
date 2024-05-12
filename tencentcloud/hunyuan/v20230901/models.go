@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type ChatCompletionsRequestParams struct {
-	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-pro。
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 	// 
 	// 注意：
@@ -77,7 +77,7 @@ type ChatCompletionsRequestParams struct {
 type ChatCompletionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-pro。
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 	// 
 	// 注意：
@@ -693,6 +693,187 @@ type Message struct {
 
 	// 文本内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+// Predefined struct for user
+type QueryHunyuanImageJobRequestParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryHunyuanImageJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryHunyuanImageJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuanImageJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryHunyuanImageJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryHunyuanImageJobResponseParams struct {
+	// 当前任务状态码：
+	// 1：等待中、2：运行中、4：处理失败、5：处理完成。
+	JobStatusCode *string `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
+
+	// 当前任务状态：排队中、处理中、处理失败或者处理完成。
+	JobStatusMsg *string `json:"JobStatusMsg,omitnil,omitempty" name:"JobStatusMsg"`
+
+	// 任务处理失败错误码。
+	JobErrorCode *string `json:"JobErrorCode,omitnil,omitempty" name:"JobErrorCode"`
+
+	// 任务处理失败错误信息。
+	JobErrorMsg *string `json:"JobErrorMsg,omitnil,omitempty" name:"JobErrorMsg"`
+
+	// 生成图 URL 列表，有效期1小时，请及时保存。
+	ResultImage []*string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 结果 detail 数组，Success 代表成功。
+	ResultDetails []*string `json:"ResultDetails,omitnil,omitempty" name:"ResultDetails"`
+
+	// 对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+	RevisedPrompt []*string `json:"RevisedPrompt,omitnil,omitempty" name:"RevisedPrompt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryHunyuanImageJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryHunyuanImageJobResponseParams `json:"Response"`
+}
+
+func (r *QueryHunyuanImageJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuanImageJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanImageJobRequestParams struct {
+	// 文本描述。 算法将根据输入的文本智能生成与之相关的图像。 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 绘画风格。
+	// 请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
+	// 不传默认不指定风格。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 生成图分辨率。
+	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+}
+
+type SubmitHunyuanImageJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文本描述。 算法将根据输入的文本智能生成与之相关的图像。 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 绘画风格。
+	// 请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
+	// 不传默认不指定风格。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 生成图分辨率。
+	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+}
+
+func (r *SubmitHunyuanImageJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanImageJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "Style")
+	delete(f, "Resolution")
+	delete(f, "LogoAdd")
+	delete(f, "Revise")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanImageJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanImageJobResponseParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuanImageJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuanImageJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuanImageJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanImageJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Usage struct {

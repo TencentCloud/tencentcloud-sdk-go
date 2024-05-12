@@ -66,7 +66,7 @@ type ImageToImageRequestParams struct {
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。
-	// 请在  [智能图生图风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
+	// 请在  [图像风格化风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
 	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
 	Styles []*string `json:"Styles,omitnil,omitempty" name:"Styles"`
 
@@ -121,7 +121,7 @@ type ImageToImageRequest struct {
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。
-	// 请在  [智能图生图风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
+	// 请在  [图像风格化风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
 	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
 	Styles []*string `json:"Styles,omitnil,omitempty" name:"Styles"`
 

@@ -5903,6 +5903,10 @@ type MsgRecord struct {
 	// 内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
+	// 当前记录所对应的 Session ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
 	// 记录ID
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
@@ -5930,6 +5934,10 @@ type MsgRecord struct {
 	// 是否评分
 	CanRating *bool `json:"CanRating,omitnil,omitempty" name:"CanRating"`
 
+	// 是否展示反馈按钮
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanFeedback *bool `json:"CanFeedback,omitnil,omitempty" name:"CanFeedback"`
+
 	// 记录类型
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -5948,6 +5956,18 @@ type MsgRecord struct {
 	// 当次 token 统计信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TokenStat *TokenStat `json:"TokenStat,omitnil,omitempty" name:"TokenStat"`
+
+	// 回复方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplyMethod *uint64 `json:"ReplyMethod,omitnil,omitempty" name:"ReplyMethod"`
+
+	// 选项卡, 用于多轮对话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
+
+	// 任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFlow *TaskFlowInfo `json:"TaskFlow,omitnil,omitempty" name:"TaskFlow"`
 }
 
 type MsgRecordReference struct {
@@ -7091,6 +7111,32 @@ type SummaryOutput struct {
 	// 自定义要求指令
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequireCommand *string `json:"RequireCommand,omitnil,omitempty" name:"RequireCommand"`
+}
+
+type TaskFlowInfo struct {
+	// 任务流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFlowId *string `json:"TaskFlowId,omitnil,omitempty" name:"TaskFlowId"`
+
+	// 任务流程名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFlowName *string `json:"TaskFlowName,omitnil,omitempty" name:"TaskFlowName"`
+
+	// Query 重写结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryRewrite *string `json:"QueryRewrite,omitnil,omitempty" name:"QueryRewrite"`
+
+	// 命中意图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitIntent *string `json:"HitIntent,omitnil,omitempty" name:"HitIntent"`
+
+	// 任务流程回复类型
+	// 0: 任务流回复
+	// 1: 任务流静默
+	// 2: 任务流拉回话术
+	// 3: 任务流自定义回复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type TaskParams struct {

@@ -68,6 +68,9 @@ const (
 	// 必须有部署成功的记录才可以回滚。
 	FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
 
+	// 证书下载服务类型不支持。
+	FAILEDOPERATION_CERTIFICATEDOWNLOADSERVICETYPENOTSUPPORT = "FailedOperation.CertificateDownloadServiceTypeNotSupport"
+
 	// 证书内容疑似国密证书，与所选证书标准不符，请您核对选择的证书标准和证书内容是否有误
 	FAILEDOPERATION_CERTIFICATEENCRYPTINVALID = "FailedOperation.CertificateEncryptInvalid"
 
@@ -110,8 +113,14 @@ const (
 	// 解析失败，请检查证书是否符合标准，请留意是否有多余的空格
 	FAILEDOPERATION_CERTIFICATEPARSEERROR = "FailedOperation.CertificateParseError"
 
+	// 当前证书状态不允许下载。
+	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = "FailedOperation.CertificateStatusNotAllowDownload"
+
 	// 证书状态不允许重新申请。
 	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = "FailedOperation.CertificateStatusNotAllowResubmit"
+
+	// 无法查到当前证书类型详情。
+	FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = "FailedOperation.CertificateTypeInfoNotFound"
 
 	// 证书确认函文件过大（需小于1.4M）。
 	FAILEDOPERATION_CONFIRMLETTERTOOLARGE = "FailedOperation.ConfirmLetterTooLarge"
