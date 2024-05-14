@@ -1124,6 +1124,18 @@ type DescribeSlowQueryRecordsDownloadRequestParams struct {
 
 	// 排序参数
 	DurationMs *string `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+	// 查询sql
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 排序参数
+	ReadRows *string `json:"ReadRows,omitnil,omitempty" name:"ReadRows"`
+
+	// 排序参数
+	ResultBytes *string `json:"ResultBytes,omitnil,omitempty" name:"ResultBytes"`
+
+	// 排序参数
+	MemoryUsage *string `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
 }
 
 type DescribeSlowQueryRecordsDownloadRequest struct {
@@ -1143,6 +1155,18 @@ type DescribeSlowQueryRecordsDownloadRequest struct {
 
 	// 排序参数
 	DurationMs *string `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+	// 查询sql
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 排序参数
+	ReadRows *string `json:"ReadRows,omitnil,omitempty" name:"ReadRows"`
+
+	// 排序参数
+	ResultBytes *string `json:"ResultBytes,omitnil,omitempty" name:"ResultBytes"`
+
+	// 排序参数
+	MemoryUsage *string `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
 }
 
 func (r *DescribeSlowQueryRecordsDownloadRequest) ToJsonString() string {
@@ -1162,6 +1186,10 @@ func (r *DescribeSlowQueryRecordsDownloadRequest) FromJsonString(s string) error
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "DurationMs")
+	delete(f, "Sql")
+	delete(f, "ReadRows")
+	delete(f, "ResultBytes")
+	delete(f, "MemoryUsage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsDownloadRequest has unknown keys!", "")
 	}
@@ -1224,6 +1252,18 @@ type DescribeSlowQueryRecordsRequestParams struct {
 
 	// catalog名称
 	CatalogName []*string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// sql名
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// ReadRows排序字段
+	ReadRows *string `json:"ReadRows,omitnil,omitempty" name:"ReadRows"`
+
+	// ResultBytes排序字段
+	ResultBytes *string `json:"ResultBytes,omitnil,omitempty" name:"ResultBytes"`
+
+	// MemoryUsage排序字段
+	MemoryUsage *string `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
 }
 
 type DescribeSlowQueryRecordsRequest struct {
@@ -1258,6 +1298,18 @@ type DescribeSlowQueryRecordsRequest struct {
 
 	// catalog名称
 	CatalogName []*string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// sql名
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// ReadRows排序字段
+	ReadRows *string `json:"ReadRows,omitnil,omitempty" name:"ReadRows"`
+
+	// ResultBytes排序字段
+	ResultBytes *string `json:"ResultBytes,omitnil,omitempty" name:"ResultBytes"`
+
+	// MemoryUsage排序字段
+	MemoryUsage *string `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
 }
 
 func (r *DescribeSlowQueryRecordsRequest) ToJsonString() string {
@@ -1282,6 +1334,10 @@ func (r *DescribeSlowQueryRecordsRequest) FromJsonString(s string) error {
 	delete(f, "DbName")
 	delete(f, "IsQuery")
 	delete(f, "CatalogName")
+	delete(f, "Sql")
+	delete(f, "ReadRows")
+	delete(f, "ResultBytes")
+	delete(f, "MemoryUsage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsRequest has unknown keys!", "")
 	}

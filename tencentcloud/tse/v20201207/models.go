@@ -2367,6 +2367,13 @@ type CreateEngineRequestParams struct {
 	// - leader地域的副本数必须是3/2 + 1，5/2+1，7/2+1，也就是 2，3，4
 	EngineRegionInfos []*EngineRegionInfo `json:"EngineRegionInfos,omitnil,omitempty" name:"EngineRegionInfos"`
 
+	// zk标准版请填CLOUD_PREMIUM，zk标准版无法选择磁盘类型和磁盘容量，默认为CLOUD_PREMIUM
+	// zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// zk标准版请填50，zk标准版无法选择磁盘类型和磁盘容量，磁盘容量默认为50
+	StorageCapacity *int64 `json:"StorageCapacity,omitnil,omitempty" name:"StorageCapacity"`
+
 	// zk专业版至多有两个盘，且磁盘的容量在50-3200之间
 	// 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
 	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
@@ -2487,6 +2494,13 @@ type CreateEngineRequest struct {
 	// - leader地域的副本数必须是3/2 + 1，5/2+1，7/2+1，也就是 2，3，4
 	EngineRegionInfos []*EngineRegionInfo `json:"EngineRegionInfos,omitnil,omitempty" name:"EngineRegionInfos"`
 
+	// zk标准版请填CLOUD_PREMIUM，zk标准版无法选择磁盘类型和磁盘容量，默认为CLOUD_PREMIUM
+	// zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// zk标准版请填50，zk标准版无法选择磁盘类型和磁盘容量，磁盘容量默认为50
+	StorageCapacity *int64 `json:"StorageCapacity,omitnil,omitempty" name:"StorageCapacity"`
+
 	// zk专业版至多有两个盘，且磁盘的容量在50-3200之间
 	// 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
 	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
@@ -2523,6 +2537,8 @@ func (r *CreateEngineRequest) FromJsonString(s string) error {
 	delete(f, "PrepaidPeriod")
 	delete(f, "PrepaidRenewFlag")
 	delete(f, "EngineRegionInfos")
+	delete(f, "StorageType")
+	delete(f, "StorageCapacity")
 	delete(f, "StorageOption")
 	delete(f, "AffinityConstraint")
 	if len(f) > 0 {

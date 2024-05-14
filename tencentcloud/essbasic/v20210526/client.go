@@ -1188,87 +1188,9 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //
 // **可以作为发起方和签署方的角色列表**
 //
-// <table>
-//
-// <thead>
-//
-// <tr>
-//
-// <th>场景编号</th>
-//
-// <th>可作为发起方类型</th>
-//
-// <th>可作为签署方的类型</th>
-//
-// </tr>
-//
-// </thead>
+// <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 //
 // 
-//
-// <tbody>
-//
-// <tr>
-//
-// <td>场景一</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景二</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B(不指定经办人)</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景三</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景四</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>个人/自然人</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景五</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>SaaS平台企业员工</td>
-//
-// </tr>
-//
-// </tbody>
-//
-// </table>
 //
 // 
 //
@@ -1383,87 +1305,9 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //
 // **可以作为发起方和签署方的角色列表**
 //
-// <table>
-//
-// <thead>
-//
-// <tr>
-//
-// <th>场景编号</th>
-//
-// <th>可作为发起方类型</th>
-//
-// <th>可作为签署方的类型</th>
-//
-// </tr>
-//
-// </thead>
+// <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 //
 // 
-//
-// <tbody>
-//
-// <tr>
-//
-// <td>场景一</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景二</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B(不指定经办人)</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景三</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景四</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>个人/自然人</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景五</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>SaaS平台企业员工</td>
-//
-// </tr>
-//
-// </tbody>
-//
-// </table>
 //
 // 
 //
@@ -5871,87 +5715,15 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // ###  二. 可以作为发起方和签署方的角色列表
 //
-// <table>
+// 
 //
-// <thead>
-//
-// <tr>
-//
-// <th>场景编号</th>
-//
-// <th>可作为发起方类型</th>
-//
-// <th>可作为签署方的类型</th>
-//
-// </tr>
-//
-// </thead>
+// <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 //
 // 
 //
-// <tbody>
-//
-// <tr>
-//
-// <td>场景一</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// </tr>
-//
 // 
 //
-// <tr>
-//
-// <td>场景二</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B(不指定经办人)</td>
-//
-// </tr>
-//
 // 
-//
-// <tr>
-//
-// <td>场景三</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景四</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>个人/自然人</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景五</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>SaaS平台企业员工</td>
-//
-// </tr>
-//
-// </tbody>
-//
-// </table>
 //
 // 
 //
@@ -6093,87 +5865,15 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // ###  二. 可以作为发起方和签署方的角色列表
 //
-// <table>
+// 
 //
-// <thead>
-//
-// <tr>
-//
-// <th>场景编号</th>
-//
-// <th>可作为发起方类型</th>
-//
-// <th>可作为签署方的类型</th>
-//
-// </tr>
-//
-// </thead>
+// <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 //
 // 
 //
-// <tbody>
-//
-// <tr>
-//
-// <td>场景一</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// </tr>
-//
 // 
 //
-// <tr>
-//
-// <td>场景二</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B(不指定经办人)</td>
-//
-// </tr>
-//
 // 
-//
-// <tr>
-//
-// <td>场景三</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景四</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>个人/自然人</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景五</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>SaaS平台企业员工</td>
-//
-// </tr>
-//
-// </tbody>
-//
-// </table>
 //
 // 
 //
