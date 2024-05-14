@@ -10212,7 +10212,7 @@ type DspaDiscoveryTaskDataSource struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 无
+	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }

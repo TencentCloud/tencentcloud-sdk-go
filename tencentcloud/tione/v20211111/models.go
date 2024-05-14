@@ -321,6 +321,12 @@ type BatchTaskSetItem struct {
 	BillingInfo *string `json:"BillingInfo,omitnil,omitempty" name:"BillingInfo"`
 }
 
+type CBSConfig struct {
+	// 存储大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSizeInGB *int64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
+}
+
 type CFSConfig struct {
 	// cfs的实例的ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2287,6 +2293,10 @@ type DataConfig struct {
 	// 来自本地磁盘的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskSource *LocalDisk `json:"LocalDiskSource,omitnil,omitempty" name:"LocalDiskSource"`
+
+	// CBS配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CBSSource *CBSConfig `json:"CBSSource,omitnil,omitempty" name:"CBSSource"`
 }
 
 type DataPoint struct {

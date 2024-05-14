@@ -3507,6 +3507,18 @@ type ImpalaQuery struct {
 	// 单节点内存峰值和(Bytes)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PerNodePeakMemoryBytesSum *int64 `json:"PerNodePeakMemoryBytesSum,omitnil,omitempty" name:"PerNodePeakMemoryBytesSum"`
+
+	// 后端个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackendsCount *int64 `json:"BackendsCount,omitnil,omitempty" name:"BackendsCount"`
+
+	// fragment数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentInstancesCount *int64 `json:"FragmentInstancesCount,omitnil,omitempty" name:"FragmentInstancesCount"`
+
+	// 剩余未完成Fragment数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainingFragmentCount *int64 `json:"RemainingFragmentCount,omitnil,omitempty" name:"RemainingFragmentCount"`
 }
 
 // Predefined struct for user

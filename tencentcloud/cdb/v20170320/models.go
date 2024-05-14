@@ -330,6 +330,13 @@ type AdjustCdbProxyRequestParams struct {
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
 	// 节点规格配置
+	// 备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。
+	// 示例中参数说明：
+	// NodeCount：节点个数
+	// Region：节点地域
+	// Zone：节点可用区
+	// Cpu：单个代理节点核数（单位：核）
+	// Mem：单个代理节点内存数（单位：MB）
 	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
 
 	// 重新负载均衡：auto(自动),manual(手动)
@@ -349,6 +356,13 @@ type AdjustCdbProxyRequest struct {
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
 	// 节点规格配置
+	// 备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。
+	// 示例中参数说明：
+	// NodeCount：节点个数
+	// Region：节点地域
+	// Zone：节点可用区
+	// Cpu：单个代理节点核数（单位：核）
+	// Mem：单个代理节点内存数（单位：MB）
 	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
 
 	// 重新负载均衡：auto(自动),manual(手动)
@@ -2454,6 +2468,13 @@ type CreateCdbProxyRequestParams struct {
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 节点规格配置
+	// 备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。
+	// 示例中参数说明：
+	// NodeCount：节点个数。
+	// Region：节点地域。
+	// Zone：节点可用区。
+	// Cpu：单个代理节点核数（单位：核）。
+	// Mem：单个代理节点内存数（单位：MB）。
 	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
 
 	// 安全组
@@ -2463,6 +2484,7 @@ type CreateCdbProxyRequestParams struct {
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 连接池阈值
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
 
 	// 指定要购买的 proxy 内核版本。不填则默认发货最新版本的 proxy。
@@ -2482,6 +2504,13 @@ type CreateCdbProxyRequest struct {
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 节点规格配置
+	// 备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。
+	// 示例中参数说明：
+	// NodeCount：节点个数。
+	// Region：节点地域。
+	// Zone：节点可用区。
+	// Cpu：单个代理节点核数（单位：核）。
+	// Mem：单个代理节点内存数（单位：MB）。
 	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
 
 	// 安全组
@@ -2491,6 +2520,7 @@ type CreateCdbProxyRequest struct {
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 连接池阈值
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
 
 	// 指定要购买的 proxy 内核版本。不填则默认发货最新版本的 proxy。
@@ -2932,7 +2962,8 @@ type CreateDBInstanceHourRequestParams struct {
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 参数模板id。
+	// 参数模板 id。
+	// 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
 	// 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
@@ -2951,6 +2982,7 @@ type CreateDBInstanceHourRequestParams struct {
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板，默认值是："HIGH_STABILITY"。
+	// 备注：如您需使用云数据库 MySQL 默认参数模板，请设置 ParamTemplateType。
 	ParamTemplateType *string `json:"ParamTemplateType,omitnil,omitempty" name:"ParamTemplateType"`
 
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
@@ -3047,7 +3079,8 @@ type CreateDBInstanceHourRequest struct {
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 参数模板id。
+	// 参数模板 id。
+	// 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
 	// 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
@@ -3066,6 +3099,7 @@ type CreateDBInstanceHourRequest struct {
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板，默认值是："HIGH_STABILITY"。
+	// 备注：如您需使用云数据库 MySQL 默认参数模板，请设置 ParamTemplateType。
 	ParamTemplateType *string `json:"ParamTemplateType,omitnil,omitempty" name:"ParamTemplateType"`
 
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
@@ -3247,7 +3281,8 @@ type CreateDBInstanceRequestParams struct {
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 参数模板id。
+	// 参数模板 id。
+	// 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
 	// 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
@@ -3266,6 +3301,7 @@ type CreateDBInstanceRequestParams struct {
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	// 备注：如您需使用云数据库 MySQL 默认参数模板，请设置 ParamTemplateType。
 	ParamTemplateType *string `json:"ParamTemplateType,omitnil,omitempty" name:"ParamTemplateType"`
 
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
@@ -3365,7 +3401,8 @@ type CreateDBInstanceRequest struct {
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 参数模板id。
+	// 参数模板 id。
+	// 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
 	// 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
@@ -3384,6 +3421,7 @@ type CreateDBInstanceRequest struct {
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	// 备注：如您需使用云数据库 MySQL 默认参数模板，请设置 ParamTemplateType。
 	ParamTemplateType *string `json:"ParamTemplateType,omitnil,omitempty" name:"ParamTemplateType"`
 
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
@@ -12100,6 +12138,7 @@ type ModifyCdbProxyParamRequestParams struct {
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
 	// 连接池阈值
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
 }
 
@@ -12113,6 +12152,7 @@ type ModifyCdbProxyParamRequest struct {
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
 	// 连接池阈值
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
 }
 
@@ -15753,6 +15793,7 @@ type UpgradeDBInstanceRequestParams struct {
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
 	// 备库 2 的可用区信息，默认为空，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。
+	// 备注：如您要将三节点降级至双节点，将该参数设置为空值即可实现。
 	BackupZone *string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
@@ -15810,6 +15851,7 @@ type UpgradeDBInstanceRequest struct {
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
 	// 备库 2 的可用区信息，默认为空，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。
+	// 备注：如您要将三节点降级至双节点，将该参数设置为空值即可实现。
 	BackupZone *string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。

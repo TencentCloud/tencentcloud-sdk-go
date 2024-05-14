@@ -864,7 +864,7 @@ type CreateCompareTaskRequestParams struct {
 	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
 	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
 
-	// 一致性对比对象配置
+	// 数据对比对象，当ObjectMode为custom时，此项需要填写。
 	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
 
 	// 一致性校验选项
@@ -883,7 +883,7 @@ type CreateCompareTaskRequest struct {
 	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
 	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
 
-	// 一致性对比对象配置
+	// 数据对比对象，当ObjectMode为custom时，此项需要填写。
 	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
 
 	// 一致性校验选项

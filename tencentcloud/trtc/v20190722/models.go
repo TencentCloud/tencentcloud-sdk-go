@@ -3111,6 +3111,9 @@ type McuWaterMarkText struct {
 
 	// 水印在输出时的层级，不填默认为0。
 	ZOrder *uint64 `json:"ZOrder,omitnil,omitempty" name:"ZOrder"`
+
+	// 水印字体，不填默认为Tencent。支持设置以下值： Tencent （默认） SourceHanSans
+	Font *string `json:"Font,omitnil,omitempty" name:"Font"`
 }
 
 type MixLayout struct {

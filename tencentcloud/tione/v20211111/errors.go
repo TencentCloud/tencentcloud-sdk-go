@@ -347,6 +347,9 @@ const (
 	// 不支持的过滤参数。
 	INVALIDPARAMETERVALUE_DCFILTERVALUES = "InvalidParameterValue.DCFilterValues"
 
+	// 数据配置数量超过最大限制
+	INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
+
 	// 数据集不存在
 	INVALIDPARAMETERVALUE_DATASETNOTEXIST = "InvalidParameterValue.DatasetNotExist"
 
@@ -427,6 +430,9 @@ const (
 
 	// 不支持使用GooseFS实例
 	INVALIDPARAMETERVALUE_UNSUPPORTEDGOOSEFSCONFIG = "InvalidParameterValue.UnsupportedGooseFSConfig"
+
+	// 不支持同一实例挂载多个CBS存储
+	INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
 
 	// Notebook卷大小只能增加，如需减小容量请重新创建实例。
 	INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"

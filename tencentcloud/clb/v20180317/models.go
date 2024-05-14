@@ -8778,6 +8778,9 @@ type TargetGroupAssociation struct {
 
 	// 转发规则ID
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
+
+	// 目标组权重，范围[0, 100]。仅绑定v2目标组时生效，如果不存在，则默认为10。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type TargetGroupBackend struct {

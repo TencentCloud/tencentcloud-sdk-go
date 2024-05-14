@@ -550,35 +550,35 @@ type CreateRecTaskRequestParams struct {
 	// 默认值为0
 	EmotionalEnergy *int64 `json:"EmotionalEnergy,omitnil,omitempty" name:"EmotionalEnergy"`
 
-	// 阿拉伯数字智能转换（目前仅支持8k_zh/16k_zh引擎）
+	// 阿拉伯数字智能转换（目前支持中文普通话引擎）
 	// 0：不转换，直接输出中文数字；
 	// 1：根据场景智能转换为阿拉伯数字；
 	// 3：打开数学相关数字转换（如：阿尔法转写为α）；
 	// 默认值为 1
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitnil,omitempty" name:"ConvertNumMode"`
 
-	// 脏词过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 脏词过滤（目前支持中文普通话引擎）
 	// 0：不过滤脏词；
 	// 1：过滤脏词；
 	// 2：将脏词替换为 * ；
 	// 默认值为 0
 	FilterDirty *int64 `json:"FilterDirty,omitnil,omitempty" name:"FilterDirty"`
 
-	// 标点符号过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 标点符号过滤（目前支持中文普通话引擎）
 	// 0：不过滤标点；
 	// 1：过滤句末标点；
 	// 2：过滤所有标点；
 	// 默认值为 0
 	FilterPunc *int64 `json:"FilterPunc,omitnil,omitempty" name:"FilterPunc"`
 
-	// 语气词过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 语气词过滤（目前支持中文普通话引擎）
 	// 0：不过滤语气词；
 	// 1：过滤部分语气词；
 	// 2：严格过滤语气词；
 	// 默认值为 0
 	FilterModal *int64 `json:"FilterModal,omitnil,omitempty" name:"FilterModal"`
 
-	// 单标点最多字数（目前仅支持8k_zh/16k_zh引擎）
+	// 单标点最多字数（目前支持中文普通话引擎）
 	// **可控制单行字幕最大字数，适用于字幕生成场景**，取值范围：[6，40]
 	// 0：不开启该功能；
 	// 默认值为0
@@ -732,35 +732,35 @@ type CreateRecTaskRequest struct {
 	// 默认值为0
 	EmotionalEnergy *int64 `json:"EmotionalEnergy,omitnil,omitempty" name:"EmotionalEnergy"`
 
-	// 阿拉伯数字智能转换（目前仅支持8k_zh/16k_zh引擎）
+	// 阿拉伯数字智能转换（目前支持中文普通话引擎）
 	// 0：不转换，直接输出中文数字；
 	// 1：根据场景智能转换为阿拉伯数字；
 	// 3：打开数学相关数字转换（如：阿尔法转写为α）；
 	// 默认值为 1
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitnil,omitempty" name:"ConvertNumMode"`
 
-	// 脏词过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 脏词过滤（目前支持中文普通话引擎）
 	// 0：不过滤脏词；
 	// 1：过滤脏词；
 	// 2：将脏词替换为 * ；
 	// 默认值为 0
 	FilterDirty *int64 `json:"FilterDirty,omitnil,omitempty" name:"FilterDirty"`
 
-	// 标点符号过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 标点符号过滤（目前支持中文普通话引擎）
 	// 0：不过滤标点；
 	// 1：过滤句末标点；
 	// 2：过滤所有标点；
 	// 默认值为 0
 	FilterPunc *int64 `json:"FilterPunc,omitnil,omitempty" name:"FilterPunc"`
 
-	// 语气词过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 语气词过滤（目前支持中文普通话引擎）
 	// 0：不过滤语气词；
 	// 1：过滤部分语气词；
 	// 2：严格过滤语气词；
 	// 默认值为 0
 	FilterModal *int64 `json:"FilterModal,omitnil,omitempty" name:"FilterModal"`
 
-	// 单标点最多字数（目前仅支持8k_zh/16k_zh引擎）
+	// 单标点最多字数（目前支持中文普通话引擎）
 	// **可控制单行字幕最大字数，适用于字幕生成场景**，取值范围：[6，40]
 	// 0：不开启该功能；
 	// 默认值为0

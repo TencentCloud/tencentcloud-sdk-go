@@ -957,6 +957,35 @@ type BizTaskModifyParamsData struct {
 	ModifyInstanceParams []*BizTaskModifyInstanceParam `json:"ModifyInstanceParams,omitnil,omitempty" name:"ModifyInstanceParams"`
 }
 
+type CLSInfo struct {
+	// 日志主题操作：可选create,reuse。
+	// create:新增日志主题，使用TopicName创建日志主题。
+	// reuse:使用已有日志主题，使用TopicId指定日志主题。
+	// 不允许使用已有日志主题且新建日志集的组合。
+	TopicOperation *string `json:"TopicOperation,omitnil,omitempty" name:"TopicOperation"`
+
+	// 日志集操作：可选create,reuse。
+	// create:新增日志集，使用GroupName创建日志集。
+	// reuse:使用已有日志集，使用GroupId指定日志集。
+	// 不允许使用已有日志主题且新建日志集的组合。
+	GroupOperation *string `json:"GroupOperation,omitnil,omitempty" name:"GroupOperation"`
+
+	// 日志投递地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志主题name
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志集id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 日志集name
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+}
+
 // Predefined struct for user
 type CloseAuditServiceRequestParams struct {
 	// 实例ID。
@@ -1715,12 +1744,21 @@ func (r *CreateBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCLSDeliveryRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 日志投递配置
+	CLSInfoList []*CLSInfo `json:"CLSInfoList,omitnil,omitempty" name:"CLSInfoList"`
 }
 
 type CreateCLSDeliveryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志投递配置
+	CLSInfoList []*CLSInfo `json:"CLSInfoList,omitnil,omitempty" name:"CLSInfoList"`
 }
 
 func (r *CreateCLSDeliveryRequest) ToJsonString() string {
@@ -1735,7 +1773,8 @@ func (r *CreateCLSDeliveryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "CLSInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -1744,6 +1783,9 @@ func (r *CreateCLSDeliveryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCLSDeliveryResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3915,12 +3957,21 @@ func (r *DeleteBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCLSDeliveryRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 日志主题id
+	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
 }
 
 type DeleteCLSDeliveryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志主题id
+	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
 }
 
 func (r *DeleteCLSDeliveryRequest) ToJsonString() string {
@@ -3935,7 +3986,8 @@ func (r *DeleteCLSDeliveryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "CLSTopicIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -3944,6 +3996,9 @@ func (r *DeleteCLSDeliveryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCLSDeliveryResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6210,12 +6265,15 @@ func (r *DescribeFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceCLSLogDeliveryRequestParams struct {
-
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceCLSLogDeliveryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribeInstanceCLSLogDeliveryRequest) ToJsonString() string {
@@ -6230,7 +6288,7 @@ func (r *DescribeInstanceCLSLogDeliveryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceCLSLogDeliveryRequest has unknown keys!", "")
 	}
@@ -6239,6 +6297,12 @@ func (r *DescribeInstanceCLSLogDeliveryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceCLSLogDeliveryResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例投递信息
+	InstanceCLSDeliveryInfos []*InstanceCLSDeliveryInfo `json:"InstanceCLSDeliveryInfos,omitnil,omitempty" name:"InstanceCLSDeliveryInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8933,6 +8997,46 @@ type InstanceAuditStatus struct {
 	// 实例所应用的规则模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
+}
+
+type InstanceCLSDeliveryInfo struct {
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例name
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 日志主题id
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志主题name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志集id
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 日志集name
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 日志投递地域
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 投递状态creating,running,offlining,offlined
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type InstanceInitInfo struct {
@@ -13980,12 +14084,21 @@ type SlowQueriesItem struct {
 
 // Predefined struct for user
 type StartCLSDeliveryRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 开通的日志主题id
+	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
 }
 
 type StartCLSDeliveryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开通的日志主题id
+	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
 }
 
 func (r *StartCLSDeliveryRequest) ToJsonString() string {
@@ -14000,7 +14113,8 @@ func (r *StartCLSDeliveryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "CLSTopicIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -14009,6 +14123,9 @@ func (r *StartCLSDeliveryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartCLSDeliveryResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -14031,12 +14148,21 @@ func (r *StartCLSDeliveryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopCLSDeliveryRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 日志主题id
+	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
 }
 
 type StopCLSDeliveryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志主题id
+	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
 }
 
 func (r *StopCLSDeliveryRequest) ToJsonString() string {
@@ -14051,7 +14177,8 @@ func (r *StopCLSDeliveryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "CLSTopicIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -14060,6 +14187,9 @@ func (r *StopCLSDeliveryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopCLSDeliveryResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

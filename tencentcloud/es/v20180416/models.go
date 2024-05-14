@@ -5360,6 +5360,10 @@ type ServerlessSpace struct {
 	// 空间所属appid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// //默认en， 可选zh-CN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaLanguage *string `json:"KibanaLanguage,omitnil,omitempty" name:"KibanaLanguage"`
 }
 
 type ServerlessSpaceUser struct {

@@ -502,6 +502,14 @@ type CloudNativeAPIGatewayNode struct {
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 节点权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 是否默认权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultWeight *bool `json:"IsDefaultWeight,omitnil,omitempty" name:"IsDefaultWeight"`
 }
 
 type CloudNativeAPIGatewayNodeConfig struct {
@@ -10917,6 +10925,10 @@ type NativeGatewayServerGroup struct {
 	// 子网id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds *string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
+
+	// 分组默认权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultWeight *int64 `json:"DefaultWeight,omitnil,omitempty" name:"DefaultWeight"`
 }
 
 type NativeGatewayServerGroups struct {

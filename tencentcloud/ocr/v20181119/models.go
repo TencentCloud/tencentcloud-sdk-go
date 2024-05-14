@@ -2211,7 +2211,7 @@ type ElectronicTrainTicketFull struct {
 }
 
 type Encryption struct {
-	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅数据加密 文档。
+	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
 
@@ -3644,11 +3644,13 @@ type GroupInfo struct {
 
 // Predefined struct for user
 type HKIDCardOCRRequestParams struct {
-	// 是否鉴伪。
-	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
-
 	// 是否返回人像照片。
 	ReturnHeadImage *bool `json:"ReturnHeadImage,omitnil,omitempty" name:"ReturnHeadImage"`
+
+	// 是否鉴伪。
+	//
+	// Deprecated: DetectFake is deprecated.
+	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
@@ -3666,11 +3668,11 @@ type HKIDCardOCRRequestParams struct {
 type HKIDCardOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否鉴伪。
-	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
-
 	// 是否返回人像照片。
 	ReturnHeadImage *bool `json:"ReturnHeadImage,omitnil,omitempty" name:"ReturnHeadImage"`
+
+	// 是否鉴伪。
+	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
@@ -3697,8 +3699,8 @@ func (r *HKIDCardOCRRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DetectFake")
 	delete(f, "ReturnHeadImage")
+	delete(f, "DetectFake")
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
@@ -3747,6 +3749,8 @@ type HKIDCardOCRResponseParams struct {
 	// 1：假；
 	// 2：真。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: FakeDetectResult is deprecated.
 	FakeDetectResult *int64 `json:"FakeDetectResult,omitnil,omitempty" name:"FakeDetectResult"`
 
 	// 人像照片Base64后的结果
@@ -3756,7 +3760,18 @@ type HKIDCardOCRResponseParams struct {
 	// 多重告警码，当身份证是翻拍、复印件时返回对应告警码。
 	// -9102：证照复印件告警
 	// -9103：证照翻拍告警
+	//
+	// Deprecated: WarningCode is deprecated.
 	WarningCode []*int64 `json:"WarningCode,omitnil,omitempty" name:"WarningCode"`
+
+	// 告警码
+	// -9101 证件边框不完整告警
+	// -9102 证件复印件告警
+	// -9103 证件翻拍告警
+	// -9107 证件反光告警
+	// -9108 证件模糊告警
+	// -9109 告警能力未开通
+	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4805,6 +4820,8 @@ type MLIDCardOCRResponseParams struct {
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
 	// -9107       模糊图片告警
+	//
+	// Deprecated: Warn is deprecated.
 	Warn []*int64 `json:"Warn,omitnil,omitempty" name:"Warn"`
 
 	// 证件图片
@@ -4831,6 +4848,15 @@ type MLIDCardOCRResponseParams struct {
 
 	// 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
+
+	// 告警码
+	// -9101 证件边框不完整告警
+	// -9102 证件复印件告警
+	// -9103 证件翻拍告警
+	// -9107 证件反光告警
+	// -9108 证件模糊告警
+	// -9109 告警能力未开通
+	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7644,6 +7670,15 @@ type RecognizeIndonesiaIDCardOCRResponseParams struct {
 	// 城市，Scene为V2时支持识别
 	Kota *string `json:"Kota,omitnil,omitempty" name:"Kota"`
 
+	// 告警码
+	// -9101 证件边框不完整告警
+	// -9102 证件复印件告警
+	// -9103 证件翻拍告警
+	// -9107 证件反光告警
+	// -9108 证件模糊告警
+	// -9109 告警能力未开通
+	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8657,6 +8692,15 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 
 	// 证件人像照片抠取
 	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
+
+	// 告警码
+	// -9101 证件边框不完整告警
+	// -9102 证件复印件告警
+	// -9103 证件翻拍告警
+	// -9107 证件反光告警
+	// -9108 证件模糊告警
+	// -9109 告警能力未开通
+	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
