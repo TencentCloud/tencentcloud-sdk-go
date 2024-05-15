@@ -15951,6 +15951,102 @@ func (r *DescribeEscapeWhiteListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEventEscapeImageListRequestParams struct {
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤参数:
+	// EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
+	// Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
+	// ImageID: 镜像id
+	// ImageName:镜像名称
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 升序降序,asc desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeEventEscapeImageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤参数:
+	// EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
+	// Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
+	// ImageID: 镜像id
+	// ImageName:镜像名称
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 升序降序,asc desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeEventEscapeImageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventEscapeImageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventEscapeImageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventEscapeImageListResponseParams struct {
+	// 风险容器镜像列表
+	List []*EventEscapeImageInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 事件总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEventEscapeImageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventEscapeImageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventEscapeImageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventEscapeImageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExportJobDownloadURLRequestParams struct {
 	// 任务ID
 	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
@@ -25919,6 +26015,51 @@ type EscapeWhiteListInfo struct {
 
 	// 镜像大小
 	ImageSize *int64 `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+}
+
+type EventEscapeImageInfo struct {
+	// 镜像id，用于跳转
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 唯一值
+	UniqueKey *string `json:"UniqueKey,omitnil,omitempty" name:"UniqueKey"`
+
+	// 事件类型
+	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
+	//    ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+	//    ESCAPE_DOCKER_API：访问Docker API接口逃逸
+	//    ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
+	//    PRIVILEGE_CONTAINER_START：特权容器
+	//    PRIVILEGE：程序提权逃逸
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 原始事件类型
+	OriginEventType *string `json:"OriginEventType,omitnil,omitempty" name:"OriginEventType"`
+
+	// 镜像名
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 容器数量
+	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
+
+	// 生成时间
+	FoundTime *string `json:"FoundTime,omitnil,omitempty" name:"FoundTime"`
+
+	// 最近生成时间
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
+
+	// 事件数量
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 状态，EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 风险描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 }
 
 type ExportJobInfo struct {

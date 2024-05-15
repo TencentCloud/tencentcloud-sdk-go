@@ -9828,6 +9828,59 @@ func (c *Client) DescribeEscapeWhiteListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeEventEscapeImageListRequest() (request *DescribeEventEscapeImageListRequest) {
+    request = &DescribeEventEscapeImageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeEventEscapeImageList")
+    
+    
+    return
+}
+
+func NewDescribeEventEscapeImageListResponse() (response *DescribeEventEscapeImageListResponse) {
+    response = &DescribeEventEscapeImageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEventEscapeImageList
+// DescribeRiskContainerImageList查询风险容器镜像列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEventEscapeImageList(request *DescribeEventEscapeImageListRequest) (response *DescribeEventEscapeImageListResponse, err error) {
+    return c.DescribeEventEscapeImageListWithContext(context.Background(), request)
+}
+
+// DescribeEventEscapeImageList
+// DescribeRiskContainerImageList查询风险容器镜像列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEventEscapeImageListWithContext(ctx context.Context, request *DescribeEventEscapeImageListRequest) (response *DescribeEventEscapeImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventEscapeImageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventEscapeImageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventEscapeImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExportJobDownloadURLRequest() (request *DescribeExportJobDownloadURLRequest) {
     request = &DescribeExportJobDownloadURLRequest{
         BaseRequest: &tchttp.BaseRequest{},

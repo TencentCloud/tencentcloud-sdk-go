@@ -832,33 +832,42 @@ type ClickHouseParam struct {
 
 type ClickHouseSchema struct {
 	// 表的列名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
 
 	// 该列对应的jsonKey名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonKey *string `json:"JsonKey,omitnil,omitempty" name:"JsonKey"`
 
 	// 表列项的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 列项是否允许为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowNull *bool `json:"AllowNull,omitnil,omitempty" name:"AllowNull"`
 }
 
 type ClsParam struct {
 	// 生产的信息是否为json格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DecodeJson *bool `json:"DecodeJson,omitnil,omitempty" name:"DecodeJson"`
 
 	// cls日志主题id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// cls日志集id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
 	// 当DecodeJson为false时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentKey *string `json:"ContentKey,omitnil,omitempty" name:"ContentKey"`
 
 	// 指定消息中的某字段内容作为cls日志的时间。
 	// 字段内容格式需要是秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeField *string `json:"TimeField,omitnil,omitempty" name:"TimeField"`
 }
 
@@ -1032,27 +1041,35 @@ type ConsumerRecord struct {
 
 type CosParam struct {
 	// cos 存储桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 地域代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 对象名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectKey *string `json:"ObjectKey,omitnil,omitempty" name:"ObjectKey"`
 
 	// 汇聚消息量的大小（单位：MB)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AggregateBatchSize *uint64 `json:"AggregateBatchSize,omitnil,omitempty" name:"AggregateBatchSize"`
 
 	// 汇聚的时间间隔（单位：小时）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AggregateInterval *uint64 `json:"AggregateInterval,omitnil,omitempty" name:"AggregateInterval"`
 
 	// 消息汇聚后的文件格式（支持csv, json）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormatOutputType *string `json:"FormatOutputType,omitnil,omitempty" name:"FormatOutputType"`
 
 	// 转储的对象目录前缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectKeyPrefix *string `json:"ObjectKeyPrefix,omitnil,omitempty" name:"ObjectKeyPrefix"`
 
 	// 根据strptime 时间格式化的分区格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectoryTimeFormat *string `json:"DirectoryTimeFormat,omitnil,omitempty" name:"DirectoryTimeFormat"`
 }
 
@@ -3112,9 +3129,11 @@ type CtsdbModifyConnectParam struct {
 
 type CtsdbParam struct {
 	// 连接管理实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// Ctsdb的metric
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CtsdbMetric *string `json:"CtsdbMetric,omitnil,omitempty" name:"CtsdbMetric"`
 }
 
@@ -3185,6 +3204,10 @@ type DatahubResource struct {
 	// Scf配置，Type为SCF时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfParam *ScfParam `json:"ScfParam,omitnil,omitempty" name:"ScfParam"`
+
+	// MQTT配置，Type为 MQTT 时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MqttParam *MqttParam `json:"MqttParam,omitnil,omitempty" name:"MqttParam"`
 }
 
 type DatahubTaskIdRes struct {
@@ -4531,6 +4554,10 @@ type DescribeConnectResource struct {
 	// Kafka配置，Type 为 KAFKA 时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitnil,omitempty" name:"KafkaConnectParam"`
+
+	// MQTT配置，Type 为 MQTT 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 }
 
 // Predefined struct for user
@@ -4645,6 +4672,10 @@ type DescribeConnectResourceResp struct {
 	// Kafka配置，Type 为 KAFKA 时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitnil,omitempty" name:"KafkaConnectParam"`
+
+	// MQTT配置，Type 为 MQTT 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 }
 
 // Predefined struct for user
@@ -6886,27 +6917,35 @@ type DtsModifyConnectParam struct {
 
 type DtsParam struct {
 	// Dts实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// Dts的连接ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// Dts的连接port
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// Dts订阅的topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// Dts消费分组的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// Dts消费分组的账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupUser *string `json:"GroupUser,omitnil,omitempty" name:"GroupUser"`
 
 	// Dts消费分组的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupPassword *string `json:"GroupPassword,omitnil,omitempty" name:"GroupPassword"`
 
 	// false同步原始数据，true同步解析后的json格式数据,默认true
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranSql *bool `json:"TranSql,omitnil,omitempty" name:"TranSql"`
 }
 
@@ -7016,71 +7055,93 @@ type EsModifyConnectParam struct {
 
 type EsParam struct {
 	// 实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// Es的连接port
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// Es用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// Es密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
 	// 实例vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
 	// 实例的vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// Es是否抛弃解析失败的消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropInvalidMessage *bool `json:"DropInvalidMessage,omitnil,omitempty" name:"DropInvalidMessage"`
 
 	// Es自定义index名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// Es自定义日期后缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DateFormat *string `json:"DateFormat,omitnil,omitempty" name:"DateFormat"`
 
 	// 非json格式数据的自定义key
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentKey *string `json:"ContentKey,omitnil,omitempty" name:"ContentKey"`
 
 	// Es是否抛弃非json格式的消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropInvalidJsonMessage *bool `json:"DropInvalidJsonMessage,omitnil,omitempty" name:"DropInvalidJsonMessage"`
 
 	// 转储到Es中的文档ID取值字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentIdField *string `json:"DocumentIdField,omitnil,omitempty" name:"DocumentIdField"`
 
 	// Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
 
 	// 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropCls *DropCls `json:"DropCls,omitnil,omitempty" name:"DropCls"`
 
 	// 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabasePrimaryKey *string `json:"DatabasePrimaryKey,omitnil,omitempty" name:"DatabasePrimaryKey"`
 
 	// 死信队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropDlq *FailureParam `json:"DropDlq,omitnil,omitempty" name:"DropDlq"`
 
 	// 使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordMappingList []*EsRecordMapping `json:"RecordMappingList,omitnil,omitempty" name:"RecordMappingList"`
 
 	// 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DateField *string `json:"DateField,omitnil,omitempty" name:"DateField"`
 
 	// 用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordMappingMode *string `json:"RecordMappingMode,omitnil,omitempty" name:"RecordMappingMode"`
 }
 
 type EsRecordMapping struct {
 	// es 索引成员名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
 
 	// 消息字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonKey *string `json:"JsonKey,omitnil,omitempty" name:"JsonKey"`
 }
 
@@ -8310,7 +8371,7 @@ type KVParam struct {
 }
 
 type KafkaConnectParam struct {
-	// Kafka连接源的实例资源, 非自建时必填
+	// Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
@@ -8322,7 +8383,7 @@ type KafkaConnectParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
 
-	// Kafka连接的broker地址, 自建时必填
+	// Kafka连接的broker地址, NetworkType=PUBLIC公网时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerAddress *string `json:"BrokerAddress,omitnil,omitempty" name:"BrokerAddress"`
 
@@ -8479,33 +8540,43 @@ type MariaDBModifyConnectParam struct {
 
 type MariaDBParam struct {
 	// MariaDB的数据库名称，"*"为全数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// MariaDB的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 该MariaDB在连接管理内的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 复制存量信息(schema_only不复制, initial全量)，默认位initial
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotMode *string `json:"SnapshotMode,omitnil,omitempty" name:"SnapshotMode"`
 
 	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyColumns *string `json:"KeyColumns,omitnil,omitempty" name:"KeyColumns"`
 
 	// 当Table输入的是前缀时，该项值为true，否则为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsTablePrefix *bool `json:"IsTablePrefix,omitnil,omitempty" name:"IsTablePrefix"`
 
 	// 输出格式，DEFAULT、CANAL_1、CANAL_2
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
 
 	// 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeContentChanges *string `json:"IncludeContentChanges,omitnil,omitempty" name:"IncludeContentChanges"`
 
 	// 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeQuery *bool `json:"IncludeQuery,omitnil,omitempty" name:"IncludeQuery"`
 
 	// 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordWithSchema *bool `json:"RecordWithSchema,omitnil,omitempty" name:"RecordWithSchema"`
 }
 
@@ -9510,39 +9581,131 @@ type MongoDBModifyConnectParam struct {
 
 type MongoDBParam struct {
 	// MongoDB的数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// MongoDB的集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Collection *string `json:"Collection,omitnil,omitempty" name:"Collection"`
 
 	// 是否复制存量数据，默认传参true
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CopyExisting *bool `json:"CopyExisting,omitnil,omitempty" name:"CopyExisting"`
 
 	// 实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// MongoDB的连接ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// MongoDB的连接port
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// MongoDB数据库用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// MongoDB数据库密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 监听事件类型，为空时表示全选。取值包括insert,update,replace,delete,invalidate,drop,dropdatabase,rename，多个类型间使用,逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListeningEvent *string `json:"ListeningEvent,omitnil,omitempty" name:"ListeningEvent"`
 
 	// 主从优先级，默认主节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadPreference *string `json:"ReadPreference,omitnil,omitempty" name:"ReadPreference"`
 
 	// 聚合管道
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pipeline *string `json:"Pipeline,omitnil,omitempty" name:"Pipeline"`
 
 	// 是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
+}
+
+type MqttConnectParam struct {
+	// MQTT连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// MQTT连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// MQTT连接源的实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// MQTT Instance vpc-id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
+
+	// 是否更新到关联的Dip任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
+
+	// MQTT连接源的实例资源地域, 跨地域时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type MqttParam struct {
+	// 需要同步的MQTT Topic列表, CSV格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topics *string `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// MQTT clean-session
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CleanSession *bool `json:"CleanSession,omitnil,omitempty" name:"CleanSession"`
+
+	// MQTT instance-id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// MQTT实例VIP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// MQTT VIP 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// MQTT实例用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// MQTT实例内账户密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// QoS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxTasks *int64 `json:"MaxTasks,omitnil,omitempty" name:"MaxTasks"`
+
+	// MQTT 实例的Service VIP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
+
+	// MQTT实例的VPC ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 是否为自建集群, MQTT只支持非自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 }
 
@@ -9847,42 +10010,55 @@ type PostgreSQLModifyConnectParam struct {
 
 type PostgreSQLParam struct {
 	// PostgreSQL的数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// PostgreSQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"Schema名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"Schema名\\.数据表名"
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 该PostgreSQL在连接管理内的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 插件名(decoderbufs/pgoutput)，默认为decoderbufs
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
 
 	// 复制存量信息(never增量, initial全量)，默认为initial
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotMode *string `json:"SnapshotMode,omitnil,omitempty" name:"SnapshotMode"`
 
 	// 上游数据格式(JSON/Debezium), 当数据库同步模式为默认字段匹配时,必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
 
 	// "INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTargetInsertMode *string `json:"DataTargetInsertMode,omitnil,omitempty" name:"DataTargetInsertMode"`
 
 	// 当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTargetPrimaryKeyField *string `json:"DataTargetPrimaryKeyField,omitnil,omitempty" name:"DataTargetPrimaryKeyField"`
 
 	// 表与消息间的映射关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTargetRecordMapping []*RecordMapping `json:"DataTargetRecordMapping,omitnil,omitempty" name:"DataTargetRecordMapping"`
 
 	// 是否抛弃解析失败的消息，默认为true
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropInvalidMessage *bool `json:"DropInvalidMessage,omitnil,omitempty" name:"DropInvalidMessage"`
 
 	// 输入的table是否为正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsTableRegular *bool `json:"IsTableRegular,omitnil,omitempty" name:"IsTableRegular"`
 
 	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyColumns *string `json:"KeyColumns,omitnil,omitempty" name:"KeyColumns"`
 
 	// 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordWithSchema *bool `json:"RecordWithSchema,omitnil,omitempty" name:"RecordWithSchema"`
 }
 
@@ -10239,15 +10415,19 @@ type SQLServerModifyConnectParam struct {
 
 type SQLServerParam struct {
 	// SQLServer的数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// SQLServer的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 该SQLServer在连接管理内的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 复制存量信息(schema_only增量, initial全量)，默认为initial
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotMode *string `json:"SnapshotMode,omitnil,omitempty" name:"SnapshotMode"`
 }
 
@@ -10277,18 +10457,23 @@ type ScalingDownResp struct {
 
 type ScfParam struct {
 	// SCF云函数函数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
 
 	// SCF云函数命名空间, 默认为default
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// SCF云函数版本及别名, 默认为$DEFAULT
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
 
 	// 每批最大发送消息数, 默认为1000
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchSize *int64 `json:"BatchSize,omitnil,omitempty" name:"BatchSize"`
 
 	// SCF调用失败后重试次数, 默认为5
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetries *int64 `json:"MaxRetries,omitnil,omitempty" name:"MaxRetries"`
 }
 
@@ -10427,18 +10612,23 @@ type TaskStatusResponse struct {
 
 type TdwParam struct {
 	// Tdw的bid
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bid *string `json:"Bid,omitnil,omitempty" name:"Bid"`
 
 	// Tdw的tid
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
 
 	// 默认true
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDomestic *bool `json:"IsDomestic,omitnil,omitempty" name:"IsDomestic"`
 
 	// TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TdwHost *string `json:"TdwHost,omitnil,omitempty" name:"TdwHost"`
 
 	// TDW端口，默认8099
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TdwPort *int64 `json:"TdwPort,omitnil,omitempty" name:"TdwPort"`
 }
 

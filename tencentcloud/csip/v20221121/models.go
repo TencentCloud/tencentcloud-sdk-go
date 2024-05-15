@@ -5303,6 +5303,32 @@ type NICAsset struct {
 	IsNewAsset *uint64 `json:"IsNewAsset,omitnil,omitempty" name:"IsNewAsset"`
 }
 
+type NewAlertKey struct {
+	// 需要更改的用户appid
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 告警类别
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 告警子类别
+	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
+
+	// 告警来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 告警名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 告警key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 时间
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type OrganizationUserInfo struct {
 	// 成员账号Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6227,6 +6253,91 @@ type TaskLogURL struct {
 	// APP ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+// Predefined struct for user
+type UpdateAlertStatusListRequestParams struct {
+	// 告警ID列表
+	ID []*NewAlertKey `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 操作类型 
+	// 1:撤销处置 
+	// 2:标记为已处置 
+	// 3:标记忽略 
+	// 4:取消标记处置
+	// 5:取消标记忽略
+	OperateType *int64 `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 被调用的集团账号的成员id
+	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+}
+
+type UpdateAlertStatusListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警ID列表
+	ID []*NewAlertKey `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 操作类型 
+	// 1:撤销处置 
+	// 2:标记为已处置 
+	// 3:标记忽略 
+	// 4:取消标记处置
+	// 5:取消标记忽略
+	OperateType *int64 `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 被调用的集团账号的成员id
+	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+}
+
+func (r *UpdateAlertStatusListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlertStatusListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	delete(f, "OperateType")
+	delete(f, "OperatedMemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAlertStatusListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAlertStatusListResponseParams struct {
+	// 结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 结果代码
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAlertStatusListResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAlertStatusListResponseParams `json:"Response"`
+}
+
+func (r *UpdateAlertStatusListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlertStatusListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VULRiskAdvanceCFGList struct {

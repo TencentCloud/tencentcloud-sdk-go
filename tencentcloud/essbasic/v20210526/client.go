@@ -7067,7 +7067,7 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //
 // 注: 
 //
-// 1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能功能，那么渠道方开通了此功能也无法下载子客的合同文件`
+// 1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能开关，那么渠道方开通了此功能也无法下载子客的合同文件`
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
@@ -7125,7 +7125,7 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 //
 // 注: 
 //
-// 1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能功能，那么渠道方开通了此功能也无法下载子客的合同文件`
+// 1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能开关，那么渠道方开通了此功能也无法下载子客的合同文件`
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
