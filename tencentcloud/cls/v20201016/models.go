@@ -2053,12 +2053,12 @@ type CreateCosRechargeRequestParams struct {
 	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// COS文件所在文件夹的前缀
-	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
-
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 	// 默认为minimalist_log
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// supported: "", "gzip", "lzop", "snappy"; 默认空
 	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
@@ -2091,12 +2091,12 @@ type CreateCosRechargeRequest struct {
 	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// COS文件所在文件夹的前缀
-	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
-
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 	// 默认为minimalist_log
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// supported: "", "gzip", "lzop", "snappy"; 默认空
 	Compress *string `json:"Compress,omitnil,omitempty" name:"Compress"`
@@ -2128,8 +2128,8 @@ func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Bucket")
 	delete(f, "BucketRegion")
-	delete(f, "Prefix")
 	delete(f, "LogType")
+	delete(f, "Prefix")
 	delete(f, "Compress")
 	delete(f, "ExtractRuleInfo")
 	delete(f, "TaskType")
@@ -8761,7 +8761,7 @@ type ModifyCosRechargeRequestParams struct {
 	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// COS文件所在文件夹的前缀
+	// COS文件所在文件夹的前缀。为空串时投递存储桶下所有的文件。
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
@@ -8801,7 +8801,7 @@ type ModifyCosRechargeRequest struct {
 	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// COS文件所在文件夹的前缀
+	// COS文件所在文件夹的前缀。为空串时投递存储桶下所有的文件。
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
@@ -10669,7 +10669,7 @@ type SearchCosRechargeInfoRequestParams struct {
 	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// cos文件所在文件夹的前缀
+	// COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
@@ -10694,7 +10694,7 @@ type SearchCosRechargeInfoRequest struct {
 	// COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// cos文件所在文件夹的前缀
+	// COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
 	// 压缩模式:   "", "gzip", "lzop", "snappy";   默认""

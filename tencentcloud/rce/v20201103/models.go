@@ -38,57 +38,6 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitnil,omitempty" name:"OtherAccount"`
 }
 
-// Predefined struct for user
-type DescribeRiskAssessmentRequestParams struct {
-
-}
-
-type DescribeRiskAssessmentRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeRiskAssessmentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRiskAssessmentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskAssessmentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRiskAssessmentResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRiskAssessmentResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRiskAssessmentResponseParams `json:"Response"`
-}
-
-func (r *DescribeRiskAssessmentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRiskAssessmentResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type InputCryptoManageMarketingRisk struct {
 	// 是否授权：1已授权，否则未授权。
 	//  调用全栈式风控引擎接口服务时，客户需先明确授权

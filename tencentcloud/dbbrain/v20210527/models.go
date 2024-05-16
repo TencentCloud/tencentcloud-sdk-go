@@ -2430,7 +2430,7 @@ type DescribeDBSpaceStatusRequestParams struct {
 	// 时间段天数，截止日期为当日，默认为7天。
 	RangeDays *int64 `json:"RangeDays,omitnil,omitempty" name:"RangeDays"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2443,7 +2443,7 @@ type DescribeDBSpaceStatusRequest struct {
 	// 时间段天数，截止日期为当日，默认为7天。
 	RangeDays *int64 `json:"RangeDays,omitnil,omitempty" name:"RangeDays"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 

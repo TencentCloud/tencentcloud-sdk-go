@@ -12017,7 +12017,7 @@ type DescribeAssetImageRegistryVulListExportRequestParams struct {
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像标识Id
+	// 必填参数，镜像唯一ID，可通过DescribeAssetImageRegistryList接口获取
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -12041,7 +12041,7 @@ type DescribeAssetImageRegistryVulListExportRequest struct {
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像标识Id
+	// 必填参数，镜像唯一ID，可通过DescribeAssetImageRegistryList接口获取
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -12111,7 +12111,7 @@ type DescribeAssetImageRegistryVulListRequestParams struct {
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像标识Id
+	// 必填参数，镜像唯一ID，可通过DescribeAssetImageRegistryList接口获取
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -12132,7 +12132,7 @@ type DescribeAssetImageRegistryVulListRequest struct {
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像标识Id
+	// 必填参数，镜像唯一ID，可通过DescribeAssetImageRegistryList接口获取
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 

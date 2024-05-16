@@ -1124,8 +1124,7 @@ type DescribeRoomInfoRequestParams struct {
 	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
@@ -1150,8 +1149,7 @@ type DescribeRoomInfoRequest struct {
 	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
@@ -2421,8 +2419,7 @@ type DescribeUserInfoRequestParams struct {
 	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitnil,omitempty" name:"CommId"`
 
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
@@ -2451,8 +2448,7 @@ type DescribeUserInfoRequest struct {
 	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitnil,omitempty" name:"CommId"`
 
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
@@ -4127,8 +4123,8 @@ type StartStreamIngestRequestParams struct {
 	// 输入在线媒体流机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
 
-	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
-	SourceUrl []*string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
+	// 源流URL。历史原因本字段【必填】。如果是视频流，分辨率请保持不变。
+	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
 
 	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
 	PrivateMapKey *string `json:"PrivateMapKey,omitnil,omitempty" name:"PrivateMapKey"`
@@ -4139,8 +4135,11 @@ type StartStreamIngestRequestParams struct {
 	// 音频编码参数。可选，如果不填，保持原始流的参数。
 	AudioEncodeParams *AudioEncodeParams `json:"AudioEncodeParams,omitnil,omitempty" name:"AudioEncodeParams"`
 
-	// 源流URL。历史原因本字段【必填】。
-	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
+	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
+	SourceUrl []*string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
+
+	// 指定视频从某个秒时间戳播放
+	SeekSecond *int64 `json:"SeekSecond,omitnil,omitempty" name:"SeekSecond"`
 }
 
 type StartStreamIngestRequest struct {
@@ -4164,8 +4163,8 @@ type StartStreamIngestRequest struct {
 	// 输入在线媒体流机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
 
-	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
-	SourceUrl []*string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
+	// 源流URL。历史原因本字段【必填】。如果是视频流，分辨率请保持不变。
+	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
 
 	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
 	PrivateMapKey *string `json:"PrivateMapKey,omitnil,omitempty" name:"PrivateMapKey"`
@@ -4176,8 +4175,11 @@ type StartStreamIngestRequest struct {
 	// 音频编码参数。可选，如果不填，保持原始流的参数。
 	AudioEncodeParams *AudioEncodeParams `json:"AudioEncodeParams,omitnil,omitempty" name:"AudioEncodeParams"`
 
-	// 源流URL。历史原因本字段【必填】。
-	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
+	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
+	SourceUrl []*string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
+
+	// 指定视频从某个秒时间戳播放
+	SeekSecond *int64 `json:"SeekSecond,omitnil,omitempty" name:"SeekSecond"`
 }
 
 func (r *StartStreamIngestRequest) ToJsonString() string {
@@ -4197,11 +4199,12 @@ func (r *StartStreamIngestRequest) FromJsonString(s string) error {
 	delete(f, "RoomIdType")
 	delete(f, "UserId")
 	delete(f, "UserSig")
-	delete(f, "SourceUrl")
+	delete(f, "StreamUrl")
 	delete(f, "PrivateMapKey")
 	delete(f, "VideoEncodeParams")
 	delete(f, "AudioEncodeParams")
-	delete(f, "StreamUrl")
+	delete(f, "SourceUrl")
+	delete(f, "SeekSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStreamIngestRequest has unknown keys!", "")
 	}

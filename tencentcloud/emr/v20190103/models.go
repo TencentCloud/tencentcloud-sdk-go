@@ -2050,6 +2050,203 @@ func (r *DescribeEmrApplicationStaticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEmrOverviewMetricsRequestParams struct {
+	// 结束时间
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 指标名
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 粒度 30s-max 1m-max 1h-max等
+	Downsample *string `json:"Downsample,omitnil,omitempty" name:"Downsample"`
+
+	// 起始时间，画饼状图时不传
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 聚合方法，扩展用，这里目前不用传
+	Aggregator *string `json:"Aggregator,omitnil,omitempty" name:"Aggregator"`
+
+	// 指标要查询的具体type 如："{"type":"CapacityTotal|CapacityRemaining"}"
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type DescribeEmrOverviewMetricsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 结束时间
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 指标名
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 粒度 30s-max 1m-max 1h-max等
+	Downsample *string `json:"Downsample,omitnil,omitempty" name:"Downsample"`
+
+	// 起始时间，画饼状图时不传
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 聚合方法，扩展用，这里目前不用传
+	Aggregator *string `json:"Aggregator,omitnil,omitempty" name:"Aggregator"`
+
+	// 指标要查询的具体type 如："{"type":"CapacityTotal|CapacityRemaining"}"
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *DescribeEmrOverviewMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEmrOverviewMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "End")
+	delete(f, "Metric")
+	delete(f, "InstanceId")
+	delete(f, "Downsample")
+	delete(f, "Start")
+	delete(f, "Aggregator")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEmrOverviewMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEmrOverviewMetricsResponseParams struct {
+	// 指标数据明细
+	Result []*OverviewMetricData `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEmrOverviewMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEmrOverviewMetricsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEmrOverviewMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEmrOverviewMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHBaseTableOverviewRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分页查询编号偏移量，从0开始	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 表名称，模糊匹配
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 排序的字段，有默认值
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 默认为降序，asc代表升序，desc代表降序
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+}
+
+type DescribeHBaseTableOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分页查询编号偏移量，从0开始	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 表名称，模糊匹配
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 排序的字段，有默认值
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 默认为降序，asc代表升序，desc代表降序
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+}
+
+func (r *DescribeHBaseTableOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHBaseTableOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Table")
+	delete(f, "OrderField")
+	delete(f, "OrderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHBaseTableOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHBaseTableOverviewResponseParams struct {
+	// 概览数据数组
+	TableMonitorList []*OverviewRow `json:"TableMonitorList,omitnil,omitempty" name:"TableMonitorList"`
+
+	// 概览数据数组长度
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 表schema信息
+	SchemaList []*TableSchemaItem `json:"SchemaList,omitnil,omitempty" name:"SchemaList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHBaseTableOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHBaseTableOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeHBaseTableOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHBaseTableOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHiveQueriesRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4022,6 +4219,12 @@ type InquiryPriceScaleOutInstanceRequestParams struct {
 
 	// 扩容的Master节点数量。
 	MasterCount *uint64 `json:"MasterCount,omitnil,omitempty" name:"MasterCount"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 type InquiryPriceScaleOutInstanceRequest struct {
@@ -4063,6 +4266,12 @@ type InquiryPriceScaleOutInstanceRequest struct {
 
 	// 扩容的Master节点数量。
 	MasterCount *uint64 `json:"MasterCount,omitnil,omitempty" name:"MasterCount"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 func (r *InquiryPriceScaleOutInstanceRequest) ToJsonString() string {
@@ -4087,6 +4296,8 @@ func (r *InquiryPriceScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Currency")
 	delete(f, "RouterCount")
 	delete(f, "MasterCount")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceScaleOutInstanceRequest has unknown keys!", "")
 	}
@@ -4450,6 +4661,16 @@ type MetaDbInfo struct {
 
 	// 自建元数据库信息。
 	MetaDBInfo *CustomMetaInfo `json:"MetaDBInfo,omitnil,omitempty" name:"MetaDBInfo"`
+}
+
+type MetricTags struct {
+	// 指标单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 指标Type
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
@@ -5285,6 +5506,52 @@ type OutterResource struct {
 	// 规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+}
+
+type OverviewMetricData struct {
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 第一个数据时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	First *int64 `json:"First,omitnil,omitempty" name:"First"`
+
+	// 最后一个数据时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Last *int64 `json:"Last,omitnil,omitempty" name:"Last"`
+
+	// 采样点时间间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 采样点数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataPoints []*string `json:"DataPoints,omitnil,omitempty" name:"DataPoints"`
+
+	// 指标tags
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags *MetricTags `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type OverviewRow struct {
+	// 表名字
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 读请求次数
+	ReadRequestCount *float64 `json:"ReadRequestCount,omitnil,omitempty" name:"ReadRequestCount"`
+
+	// 写请求次数
+	WriteRequestCount *float64 `json:"WriteRequestCount,omitnil,omitempty" name:"WriteRequestCount"`
+
+	// 当前memstore的size
+	MemstoreSize *float64 `json:"MemstoreSize,omitnil,omitempty" name:"MemstoreSize"`
+
+	// 当前region中StroreFile的size
+	StoreFileSize *float64 `json:"StoreFileSize,omitnil,omitempty" name:"StoreFileSize"`
+
+	// regions，点击可跳转
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 }
 
 type PartDetailPriceItem struct {
@@ -6458,6 +6725,12 @@ type ScaleOutInstanceRequestParams struct {
 
 	// 0表示关闭自动续费，1表示开启自动续费
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR,类型为EMR时,InstanceId生效,类型为ComputeResource时,使用ComputeResourceId标识
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -6551,6 +6824,12 @@ type ScaleOutInstanceRequest struct {
 
 	// 0表示关闭自动续费，1表示开启自动续费
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR,类型为EMR时,InstanceId生效,类型为ComputeResource时,使用ComputeResourceId标识
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -6591,6 +6870,8 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "ScaleOutServiceConfAssign")
 	delete(f, "AutoRenew")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}
@@ -6933,6 +7214,29 @@ func (r *SyncPodStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type TableSchemaItem struct {
+	// 列标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否可按该列排序
+	Sortable *bool `json:"Sortable,omitnil,omitempty" name:"Sortable"`
+
+	// 是否可筛选
+	WithFilter *bool `json:"WithFilter,omitnil,omitempty" name:"WithFilter"`
+
+	// 筛选的候选集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Candidates []*string `json:"Candidates,omitnil,omitempty" name:"Candidates"`
+
+	// 是否可点击
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clickable *bool `json:"Clickable,omitnil,omitempty" name:"Clickable"`
+
+	// 展示的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+}
+
 type Tag struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -7045,6 +7349,12 @@ type TerminateInstanceRequestParams struct {
 
 	// 销毁节点ID。该参数为预留参数，用户无需配置。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR,类型为EMR时,InstanceId生效,类型为ComputeResource时,使用ComputeResourceId标识
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源ID
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 type TerminateInstanceRequest struct {
@@ -7055,6 +7365,12 @@ type TerminateInstanceRequest struct {
 
 	// 销毁节点ID。该参数为预留参数，用户无需配置。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR,类型为EMR时,InstanceId生效,类型为ComputeResource时,使用ComputeResourceId标识
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源ID
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 func (r *TerminateInstanceRequest) ToJsonString() string {
@@ -7071,6 +7387,8 @@ func (r *TerminateInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ResourceIds")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateInstanceRequest has unknown keys!", "")
 	}

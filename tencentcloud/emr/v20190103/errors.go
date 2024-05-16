@@ -89,11 +89,17 @@ const (
 	// DB查询异常。
 	INTERNALERROR_DBQUERYEXCEPTION = "InternalError.DBQueryException"
 
+	// 请求OpenTSDB异常。
+	INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+
 	// 调用EKS报错。
 	INTERNALERROR_EKSERROR = "InternalError.EKSError"
 
 	// 内部服务调用异常。
 	INTERNALERROR_KMSERROR = "InternalError.KmsError"
+
+	// 请求OpenTSDB失败。
+	INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
 
 	// 内部服务调用异常。
 	INTERNALERROR_PROJECTCGWERROR = "InternalError.ProjectCgwError"
@@ -430,6 +436,9 @@ const (
 
 	// 不支持或售罄的节点规格。
 	RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 资源不存在。
 	RESOURCENOTFOUND_CDBINFONOTFOUND = "ResourceNotFound.CDBInfoNotFound"

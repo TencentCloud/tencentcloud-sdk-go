@@ -280,6 +280,7 @@ import (
 	tswv20210412 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw/v20210412"
 	ttsv20190823 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts/v20190823"
 	umpv20200918 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump/v20200918"
+	vcgv20240404 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcg/v20240404"
 	vmv20200709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20200709"
 	vmv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20201229"
 	vmv20210922 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20210922"
@@ -287,6 +288,7 @@ import (
 	vodv20180717 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod/v20180717"
 	vpcv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
 	vrsv20200824 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vrs/v20200824"
+	vtcv20240223 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vtc/v20240223"
 	wafv20180125 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf/v20180125"
 	wavv20210129 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav/v20210129"
 	wedatav20210820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata/v20210820"
@@ -3679,6 +3681,19 @@ func TestUmpv20200918Import(t *testing.T) {
     }
 }
 
+func TestVcgv20240404Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := vcgv20240404.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init vcg_v20240404 client: %v", err)
+    }
+}
+
 func TestVmv20200709Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -3767,6 +3782,19 @@ func TestVrsv20200824Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init vrs_v20200824 client: %v", err)
+    }
+}
+
+func TestVtcv20240223Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := vtcv20240223.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init vtc_v20240223 client: %v", err)
     }
 }
 

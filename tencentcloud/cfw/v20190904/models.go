@@ -4776,7 +4776,7 @@ func (r *DescribeIPStatusListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIPStatusListResponseParams struct {
-	// ip状态信息
+	// IP状态信息
 	StatusList []*IPDefendStatus `json:"StatusList,omitnil,omitempty" name:"StatusList"`
 
 	// 状态码

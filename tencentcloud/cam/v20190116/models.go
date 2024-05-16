@@ -332,15 +332,15 @@ type AttachPolicyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 策略关联操作者主帐号
+	// 策略关联操作者主账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateOwnerUin *string `json:"OperateOwnerUin,omitnil,omitempty" name:"OperateOwnerUin"`
 
-	// 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
+	// 策略关联操作者ID，如果UinType为0表示子账号Uin，如果UinType为1表示角色ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
-	// UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
+	// UinType为0表示OperateUin字段是子账号Uin，如果UinType为1表示OperateUin字段是角色ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateUinType *uint64 `json:"OperateUinType,omitnil,omitempty" name:"OperateUinType"`
 
@@ -822,14 +822,14 @@ type CreateOIDCConfigRequestParams struct {
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥，需要base64
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 签名公钥，需要base64
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -841,14 +841,14 @@ type CreateOIDCConfigRequest struct {
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥，需要base64
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 签名公钥，需要base64
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -867,9 +867,9 @@ func (r *CreateOIDCConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IdentityUrl")
-	delete(f, "IdentityKey")
 	delete(f, "ClientId")
 	delete(f, "Name")
+	delete(f, "IdentityKey")
 	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOIDCConfigRequest has unknown keys!", "")
@@ -1292,9 +1292,6 @@ type CreateUserOIDCConfigRequestParams struct {
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
@@ -1309,6 +1306,9 @@ type CreateUserOIDCConfigRequestParams struct {
 
 	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
 	MappingFiled *string `json:"MappingFiled,omitnil,omitempty" name:"MappingFiled"`
+
+	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
@@ -1324,9 +1324,6 @@ type CreateUserOIDCConfigRequest struct {
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
@@ -1341,6 +1338,9 @@ type CreateUserOIDCConfigRequest struct {
 
 	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
 	MappingFiled *string `json:"MappingFiled,omitnil,omitempty" name:"MappingFiled"`
+
+	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
@@ -1362,12 +1362,12 @@ func (r *CreateUserOIDCConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IdentityUrl")
-	delete(f, "IdentityKey")
 	delete(f, "ClientId")
 	delete(f, "AuthorizationEndpoint")
 	delete(f, "ResponseType")
 	delete(f, "ResponseMode")
 	delete(f, "MappingFiled")
+	delete(f, "IdentityKey")
 	delete(f, "Scope")
 	delete(f, "Description")
 	if len(f) > 0 {
@@ -2988,7 +2988,7 @@ func (r *GetCustomMFATokenInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetCustomMFATokenInfoResponseParams struct {
-	// 自定义多因子验证Token对应的帐号Id
+	// 自定义多因子验证Token对应的账号Id
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5127,13 +5127,13 @@ type LoginActionFlagIntl struct {
 }
 
 type LoginActionMfaFlag struct {
-	// 是否设置手机号为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
+	// 是否设置手机号为登录和敏感操作安全校验方式， 1: 设置，0: 不设置
 	Phone *uint64 `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 是否设置软token为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
+	// 是否设置软token为登录和敏感操作安全校验方式， 1: 设置，0: 不设置
 	Stoken *uint64 `json:"Stoken,omitnil,omitempty" name:"Stoken"`
 
-	// 是否设置微信为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
+	// 是否设置微信为登录和敏感操作安全校验方式， 1: 设置，0: 不设置
 	Wechat *uint64 `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 }
 
@@ -6036,14 +6036,14 @@ type UpdateOIDCConfigRequestParams struct {
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥，需要base64
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 签名公钥，需要base64
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -6055,14 +6055,14 @@ type UpdateOIDCConfigRequest struct {
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥，需要base64
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 签名公钥，需要base64
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -6081,9 +6081,9 @@ func (r *UpdateOIDCConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IdentityUrl")
-	delete(f, "IdentityKey")
 	delete(f, "ClientId")
 	delete(f, "Name")
+	delete(f, "IdentityKey")
 	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOIDCConfigRequest has unknown keys!", "")
@@ -6409,9 +6409,6 @@ type UpdateUserOIDCConfigRequestParams struct {
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值，该URL必须以https开头，符合标准URL格式，不允许带有query参数（以?标识）、fragment片段（以#标识）和登录信息（以@标识）。
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID，允许英文字母、数字、特殊字符.-_:/，不能以特殊字符.-_:/开头，单个客户端ID最大64个字符。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
@@ -6424,8 +6421,11 @@ type UpdateUserOIDCConfigRequestParams struct {
 	// 授权请求Response mode。授权请求返回模式，有form_post和fragment两种可选模式，推荐选择form_post模式。
 	ResponseMode *string `json:"ResponseMode,omitnil,omitempty" name:"ResponseMode"`
 
-	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段,仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-255个中文或英文字符
+	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段,仅支持英文字母、数字、汉字、符号@、＆_[]-的组合，1-255个中文或英文字符
 	MappingFiled *string `json:"MappingFiled,omitnil,omitempty" name:"MappingFiled"`
+
+	// RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 授权请求Scope。有openid; email;profile三种。代表授权请求信息范围openid表示请求访问用户的身份信息，email表示请求访问用户的电子邮件地址，profile表示请求访问用户的基本信息。默认必选openid。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
@@ -6441,9 +6441,6 @@ type UpdateUserOIDCConfigRequest struct {
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值，该URL必须以https开头，符合标准URL格式，不允许带有query参数（以?标识）、fragment片段（以#标识）和登录信息（以@标识）。
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
-	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
-
 	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID，允许英文字母、数字、特殊字符.-_:/，不能以特殊字符.-_:/开头，单个客户端ID最大64个字符。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
@@ -6456,8 +6453,11 @@ type UpdateUserOIDCConfigRequest struct {
 	// 授权请求Response mode。授权请求返回模式，有form_post和fragment两种可选模式，推荐选择form_post模式。
 	ResponseMode *string `json:"ResponseMode,omitnil,omitempty" name:"ResponseMode"`
 
-	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段,仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-255个中文或英文字符
+	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段,仅支持英文字母、数字、汉字、符号@、＆_[]-的组合，1-255个中文或英文字符
 	MappingFiled *string `json:"MappingFiled,omitnil,omitempty" name:"MappingFiled"`
+
+	// RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
 	// 授权请求Scope。有openid; email;profile三种。代表授权请求信息范围openid表示请求访问用户的身份信息，email表示请求访问用户的电子邮件地址，profile表示请求访问用户的基本信息。默认必选openid。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
@@ -6479,12 +6479,12 @@ func (r *UpdateUserOIDCConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IdentityUrl")
-	delete(f, "IdentityKey")
 	delete(f, "ClientId")
 	delete(f, "AuthorizationEndpoint")
 	delete(f, "ResponseType")
 	delete(f, "ResponseMode")
 	delete(f, "MappingFiled")
+	delete(f, "IdentityKey")
 	delete(f, "Scope")
 	delete(f, "Description")
 	if len(f) > 0 {

@@ -2846,6 +2846,10 @@ func NewDescribeCmqDeadLetterSourceQueuesResponse() (response *DescribeCmqDeadLe
 }
 
 // DescribeCmqDeadLetterSourceQueues
+// 接口很久之前已删除，需下线
+//
+// 
+//
 // 枚举cmq死信队列源队列
 //
 // 可能返回的错误码:
@@ -2855,6 +2859,10 @@ func (c *Client) DescribeCmqDeadLetterSourceQueues(request *DescribeCmqDeadLette
 }
 
 // DescribeCmqDeadLetterSourceQueues
+// 接口很久之前已删除，需下线
+//
+// 
+//
 // 枚举cmq死信队列源队列
 //
 // 可能返回的错误码:

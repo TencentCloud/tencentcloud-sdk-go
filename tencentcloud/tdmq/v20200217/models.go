@@ -894,7 +894,7 @@ type CreateCmqQueueRequestParams struct {
 	// 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
 	VisibilityTimeout *uint64 `json:"VisibilityTimeout,omitnil,omitempty" name:"VisibilityTimeout"`
 
-	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+	// 消息最大长度。取值范围 1024-1048576 Byte（即1-1024K），默认值 1048576。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitnil,omitempty" name:"MaxMsgSize"`
 
 	// 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
@@ -949,7 +949,7 @@ type CreateCmqQueueRequest struct {
 	// 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
 	VisibilityTimeout *uint64 `json:"VisibilityTimeout,omitnil,omitempty" name:"VisibilityTimeout"`
 
-	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+	// 消息最大长度。取值范围 1024-1048576 Byte（即1-1024K），默认值 1048576。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitnil,omitempty" name:"MaxMsgSize"`
 
 	// 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
@@ -10041,7 +10041,7 @@ type ModifyCmqSubscriptionAttributeRequestParams struct {
 	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil,omitempty" name:"SubscriptionName"`
 
 	// 向 Endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值如下：
@@ -10065,7 +10065,7 @@ type ModifyCmqSubscriptionAttributeRequest struct {
 	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitnil,omitempty" name:"SubscriptionName"`
 
 	// 向 Endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值如下：
@@ -13351,7 +13351,7 @@ type SendCmqMsgRequestParams struct {
 	// 消息内容
 	MsgContent *string `json:"MsgContent,omitnil,omitempty" name:"MsgContent"`
 
-	// 延迟时间
+	// 延迟时间。单位为秒，默认值为0秒，最大不能超过队列配置的消息最长未确认时间。
 	DelaySeconds *int64 `json:"DelaySeconds,omitnil,omitempty" name:"DelaySeconds"`
 }
 
@@ -13364,7 +13364,7 @@ type SendCmqMsgRequest struct {
 	// 消息内容
 	MsgContent *string `json:"MsgContent,omitnil,omitempty" name:"MsgContent"`
 
-	// 延迟时间
+	// 延迟时间。单位为秒，默认值为0秒，最大不能超过队列配置的消息最长未确认时间。
 	DelaySeconds *int64 `json:"DelaySeconds,omitnil,omitempty" name:"DelaySeconds"`
 }
 

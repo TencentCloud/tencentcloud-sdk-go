@@ -403,13 +403,17 @@ func NewDescribeCallDetailInfoResponse() (response *DescribeCallDetailInfoRespon
 }
 
 // DescribeCallDetailInfo
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
+// 查询指定时间内的用户列表及用户通话质量数据，最大可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
 //
 // **注意**：
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
+// 2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任选其一解锁：
+//
+// 方式一：通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」（可查近7天）和「旗舰版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc?trtcversion=top)。
+//
+// 方式二：通过订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包「基础版」（可查近7天）和「进阶版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc_monitor)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -441,13 +445,17 @@ func (c *Client) DescribeCallDetailInfo(request *DescribeCallDetailInfoRequest) 
 }
 
 // DescribeCallDetailInfo
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
+// 查询指定时间内的用户列表及用户通话质量数据，最大可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
 //
 // **注意**：
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
+// 2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任选其一解锁：
+//
+// 方式一：通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」（可查近7天）和「旗舰版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc?trtcversion=top)。
+//
+// 方式二：通过订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包「基础版」（可查近7天）和「进阶版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc_monitor)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -940,13 +948,17 @@ func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
 }
 
 // DescribeRoomInfo
-// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。（同老接口DescribeRoomInformation）
+// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。最大可查询14天内的数据。（同老接口DescribeRoomInformation）
 //
 // **注意**：
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
+// 2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任意其一解锁：
+//
+// 方式一：通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」（可查近7天）和「旗舰版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc?trtcversion=top)。
+//
+// 方式二：通过订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包「基础版」（可查近7天）和「进阶版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc_monitor)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -977,13 +989,17 @@ func (c *Client) DescribeRoomInfo(request *DescribeRoomInfoRequest) (response *D
 }
 
 // DescribeRoomInfo
-// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。（同老接口DescribeRoomInformation）
+// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。最大可查询14天内的数据。（同老接口DescribeRoomInformation）
 //
 // **注意**：
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
+// 2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任意其一解锁：
+//
+// 方式一：通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」（可查近7天）和「旗舰版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc?trtcversion=top)。
+//
+// 方式二：通过订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包「基础版」（可查近7天）和「进阶版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc_monitor)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2174,13 +2190,17 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 }
 
 // DescribeUserInfo
-// 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
+// 查询指定时间内的用户列表，最大可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
 //
 // **注意**：
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
+// 2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任选其一解锁：
+//
+// 方式一：通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」（可查近7天）和「旗舰版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc?trtcversion=top)。
+//
+// 方式二：通过订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包「基础版」（可查近7天）和「进阶版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc_monitor)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2211,13 +2231,17 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 }
 
 // DescribeUserInfo
-// 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
+// 查询指定时间内的用户列表，最大可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
 //
 // **注意**：
 //
 // 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
-// 2.该接口自2024年4月1日起正式商业化，可通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」和「旗舰版」或订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包解锁接口调用能力，[前往购买](https://buy.cloud.tencent.com/trtc)。
+// 2.该接口自2024年4月1日起正式商业化，需订阅套餐解锁调用能力，提供以下两种解锁方式，可任选其一解锁：
+//
+// 方式一：通过订阅[包月套餐](https://cloud.tencent.com/document/product/647/85386)「尊享版」（可查近7天）和「旗舰版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc?trtcversion=top)。
+//
+// 方式二：通过订阅[监控仪表盘](https://cloud.tencent.com/document/product/647/81331)商业套餐包「基础版」（可查近7天）和「进阶版」（可查近14天），[前往订阅](https://buy.cloud.tencent.com/trtc_monitor)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

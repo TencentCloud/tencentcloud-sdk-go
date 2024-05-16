@@ -1431,6 +1431,9 @@ type CreateConnectResourceRequestParams struct {
 
 	// Kafka配置，Type为 KAFKA 时必填
 	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitnil,omitempty" name:"KafkaConnectParam"`
+
+	// MQTT配置，Type为 MQTT 时必填
+	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 }
 
 type CreateConnectResourceRequest struct {
@@ -1474,6 +1477,9 @@ type CreateConnectResourceRequest struct {
 
 	// Kafka配置，Type为 KAFKA 时必填
 	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitnil,omitempty" name:"KafkaConnectParam"`
+
+	// MQTT配置，Type为 MQTT 时必填
+	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 }
 
 func (r *CreateConnectResourceRequest) ToJsonString() string {
@@ -1501,6 +1507,7 @@ func (r *CreateConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "SQLServerConnectParam")
 	delete(f, "DorisConnectParam")
 	delete(f, "KafkaConnectParam")
+	delete(f, "MqttConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConnectResourceRequest has unknown keys!", "")
 	}
@@ -8697,6 +8704,9 @@ type ModifyConnectResourceRequestParams struct {
 
 	// Kafka配置，Type为 KAFKA 时必填
 	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitnil,omitempty" name:"KafkaConnectParam"`
+
+	// MQTT配置，Type为 MQTT 时必填
+	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 }
 
 type ModifyConnectResourceRequest struct {
@@ -8746,6 +8756,9 @@ type ModifyConnectResourceRequest struct {
 
 	// Kafka配置，Type为 KAFKA 时必填
 	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitnil,omitempty" name:"KafkaConnectParam"`
+
+	// MQTT配置，Type为 MQTT 时必填
+	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 }
 
 func (r *ModifyConnectResourceRequest) ToJsonString() string {
@@ -8775,6 +8788,7 @@ func (r *ModifyConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "CtsdbConnectParam")
 	delete(f, "DorisConnectParam")
 	delete(f, "KafkaConnectParam")
+	delete(f, "MqttConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectResourceRequest has unknown keys!", "")
 	}

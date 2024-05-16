@@ -23952,6 +23952,9 @@ type SimpleHlsClipRequestParams struct {
 
 	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 保留字段，特殊用途时使用。 示例值：""
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type SimpleHlsClipRequest struct {
@@ -23988,6 +23991,9 @@ type SimpleHlsClipRequest struct {
 
 	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 保留字段，特殊用途时使用。 示例值：""
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 func (r *SimpleHlsClipRequest) ToJsonString() string {
@@ -24012,6 +24018,7 @@ func (r *SimpleHlsClipRequest) FromJsonString(s string) error {
 	delete(f, "ClassId")
 	delete(f, "SourceContext")
 	delete(f, "SessionContext")
+	delete(f, "ExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimpleHlsClipRequest has unknown keys!", "")
 	}

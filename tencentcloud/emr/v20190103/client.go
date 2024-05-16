@@ -971,6 +971,114 @@ func (c *Client) DescribeEmrApplicationStaticsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeEmrOverviewMetricsRequest() (request *DescribeEmrOverviewMetricsRequest) {
+    request = &DescribeEmrOverviewMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeEmrOverviewMetrics")
+    
+    
+    return
+}
+
+func NewDescribeEmrOverviewMetricsResponse() (response *DescribeEmrOverviewMetricsResponse) {
+    response = &DescribeEmrOverviewMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEmrOverviewMetrics
+// 查询监控概览页指标数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeEmrOverviewMetrics(request *DescribeEmrOverviewMetricsRequest) (response *DescribeEmrOverviewMetricsResponse, err error) {
+    return c.DescribeEmrOverviewMetricsWithContext(context.Background(), request)
+}
+
+// DescribeEmrOverviewMetrics
+// 查询监控概览页指标数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeEmrOverviewMetricsWithContext(ctx context.Context, request *DescribeEmrOverviewMetricsRequest) (response *DescribeEmrOverviewMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEmrOverviewMetricsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEmrOverviewMetrics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEmrOverviewMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHBaseTableOverviewRequest() (request *DescribeHBaseTableOverviewRequest) {
+    request = &DescribeHBaseTableOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeHBaseTableOverview")
+    
+    
+    return
+}
+
+func NewDescribeHBaseTableOverviewResponse() (response *DescribeHBaseTableOverviewResponse) {
+    response = &DescribeHBaseTableOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHBaseTableOverview
+// 获取Hbase表级监控数据概览接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHBaseTableOverview(request *DescribeHBaseTableOverviewRequest) (response *DescribeHBaseTableOverviewResponse, err error) {
+    return c.DescribeHBaseTableOverviewWithContext(context.Background(), request)
+}
+
+// DescribeHBaseTableOverview
+// 获取Hbase表级监控数据概览接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHBaseTableOverviewWithContext(ctx context.Context, request *DescribeHBaseTableOverviewRequest) (response *DescribeHBaseTableOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeHBaseTableOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHBaseTableOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHBaseTableOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHiveQueriesRequest() (request *DescribeHiveQueriesRequest) {
     request = &DescribeHiveQueriesRequest{
         BaseRequest: &tchttp.BaseRequest{},

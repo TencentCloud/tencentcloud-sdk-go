@@ -113,6 +113,9 @@ const (
 	// 当前账户不支持带宽包ID参数。
 	INVALIDPARAMETERVALUE_ACCOUNTNOTSUPPORTBANDWIDTHPACKAGEID = "InvalidParameterValue.AccountNotSupportBandwidthPackageId"
 
+	// 声明的原有期望实例数和实际原有期望实例数不一致。
+	INVALIDPARAMETERVALUE_ASSERTDESIREDCAPACITYFAILED = "InvalidParameterValue.AssertDesiredCapacityFailed"
+
 	// 指定的基础容量过大，需小于等于最大实例数。
 	INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
 

@@ -68,7 +68,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.922
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.923
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -236,11 +236,13 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcg v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vrs v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vtc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata v0.0.0
@@ -486,11 +488,13 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw => ../tencentcloud/tsw
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts => ../tencentcloud/tts
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump => ../tencentcloud/ump
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcg => ../tencentcloud/vcg
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm => ../tencentcloud/vm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms => ../tencentcloud/vms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod => ../tencentcloud/vod
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc => ../tencentcloud/vpc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vrs => ../tencentcloud/vrs
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vtc => ../tencentcloud/vtc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf => ../tencentcloud/waf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav => ../tencentcloud/wav
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata => ../tencentcloud/wedata
