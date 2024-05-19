@@ -420,17 +420,33 @@ type CompanyApplyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationIdPicUrl *string `json:"CorporationIdPicUrl,omitnil,omitempty" name:"CorporationIdPicUrl"`
 
-	// 业务经营范围
+	// 安全合规使用承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessScope *string `json:"BusinessScope,omitnil,omitempty" name:"BusinessScope"`
+	NetworkCommitmentPicUrl *string `json:"NetworkCommitmentPicUrl,omitnil,omitempty" name:"NetworkCommitmentPicUrl"`
+
+	// 是否与腾讯云账号的资质一致,0-不一致,1-一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEqualTencentCloud *int64 `json:"IsEqualTencentCloud,omitnil,omitempty" name:"IsEqualTencentCloud"`
+
+	// 法定代表人手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorporationMobile *string `json:"CorporationMobile,omitnil,omitempty" name:"CorporationMobile"`
+
+	// 法定代表人手机号码实名认证。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorporationMobilePicUrl *string `json:"CorporationMobilePicUrl,omitnil,omitempty" name:"CorporationMobilePicUrl"`
+
+	// 通话话术。(支持doc、docx格式的文档不超过50MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseDescribeFileUrl *string `json:"UseDescribeFileUrl,omitnil,omitempty" name:"UseDescribeFileUrl"`
+
+	// 公司授权函。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyAuthLetterPicUrl *string `json:"CompanyAuthLetterPicUrl,omitnil,omitempty" name:"CompanyAuthLetterPicUrl"`
 
 	// 电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AcceptPicUrl *string `json:"AcceptPicUrl,omitnil,omitempty" name:"AcceptPicUrl"`
-
-	// 电信入网承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetworkCommitmentPicUrl *string `json:"NetworkCommitmentPicUrl,omitnil,omitempty" name:"NetworkCommitmentPicUrl"`
 
 	// 法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -455,6 +471,18 @@ type CompanyApplyInfo struct {
 	// 委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommissionPicUrl *string `json:"CommissionPicUrl,omitnil,omitempty" name:"CommissionPicUrl"`
+
+	// 经办人手机号，申请人类型为经办人时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorMobile *string `json:"OperatorMobile,omitnil,omitempty" name:"OperatorMobile"`
+
+	// 经办人邮箱，申请人类型为经办人时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorEmail *string `json:"OperatorEmail,omitnil,omitempty" name:"OperatorEmail"`
+
+	// 经办人手机号码实名认证，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorMobilePicUrl *string `json:"OperatorMobilePicUrl,omitnil,omitempty" name:"OperatorMobilePicUrl"`
 }
 
 type CompanyStateInfo struct {
@@ -484,6 +512,10 @@ type CompanyStateInfo struct {
 	// 公司统一社会信用代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *int64 `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 // Predefined struct for user
