@@ -8684,8 +8684,23 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// 泰文到期日期
 	ExpirationDate *string `json:"ExpirationDate,omitnil,omitempty" name:"ExpirationDate"`
 
+	// 英文签发日期
+	EnIssueDate *string `json:"EnIssueDate,omitnil,omitempty" name:"EnIssueDate"`
+
+	// 英文到期日期
+	EnExpirationDate *string `json:"EnExpirationDate,omitnil,omitempty" name:"EnExpirationDate"`
+
 	// 泰文出生日期
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
+
+	// 英文出生日期
+	EnBirthday *string `json:"EnBirthday,omitnil,omitempty" name:"EnBirthday"`
+
+	// 宗教信仰
+	Religion *string `json:"Religion,omitnil,omitempty" name:"Religion"`
+
+	// 序列号
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
 	// 地址
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`

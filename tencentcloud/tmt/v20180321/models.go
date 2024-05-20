@@ -513,9 +513,13 @@ type SpeechTranslateRequestParams struct {
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 识别模式，该参数已废弃
+	//
+	// Deprecated: Mode is deprecated.
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 该参数已废弃
+	//
+	// Deprecated: TransType is deprecated.
 	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
 }
 

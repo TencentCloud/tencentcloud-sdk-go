@@ -1206,6 +1206,19 @@ type AvifAdapter struct {
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 当原图是 avif 且客户端 Accept 头包含 image/avif 时，直接返回原图。
+	// 当原图是 avif 且客户端 Accept 头不包含 image/avif 时但包含 image/webp，将 avif 转 webp 格式返回。如果 Accept 头不包含 image/webp, 则转 jpeg 返回。
+	// 
+	// 可用的枚举值： 
+	// - []
+	// - ["webp"]
+	// - ["jpeg"]
+	// - ["webp", "jpeg"]
+	// 
+	// "webp"：是否开启  avif 转 webp，"jpeg": 是否开启 avif 转 jpeg。如果 webp 和 jpeg 都开启的情况下，webp 必须在 jpeg 前面。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FallbackFormats []*string `json:"FallbackFormats,omitnil,omitempty" name:"FallbackFormats"`
 }
 
 type AwsPrivateAccess struct {

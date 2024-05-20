@@ -364,7 +364,7 @@ type AiAnalysisResult struct {
 	// <li>Tag：智能标签</li>
 	// <li>FrameTag：智能按帧标签</li>
 	// <li>Highlight：智能精彩集锦</li>
-	// <li>DeLogo：智能去水印</li>
+	// <li>DeLogo：智能擦除</li>
 	// <li>Description：大模型摘要</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -388,7 +388,7 @@ type AiAnalysisResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighlightTask *AiAnalysisTaskHighlightResult `json:"HighlightTask,omitnil,omitempty" name:"HighlightTask"`
 
-	// 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
+	// 视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeLogoTask *AiAnalysisTaskDelLogoResult `json:"DeLogoTask,omitnil,omitempty" name:"DeLogoTask"`
 
@@ -467,15 +467,15 @@ type AiAnalysisTaskCoverResult struct {
 }
 
 type AiAnalysisTaskDelLogoInput struct {
-	// 视频智能去水印模板 ID。
+	// 视频智能擦除模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
 type AiAnalysisTaskDelLogoOutput struct {
-	// 去水印后文件的路径。
+	// 擦除后文件的路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 去水印后文件的存储位置。
+	// 擦除后文件的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 }
 
@@ -489,10 +489,10 @@ type AiAnalysisTaskDelLogoResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 智能去水印任务输入。
+	// 智能擦除任务输入。
 	Input *AiAnalysisTaskDelLogoInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 智能去水印任务输出。
+	// 智能擦除任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskDelLogoOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }

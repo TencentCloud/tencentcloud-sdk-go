@@ -1129,7 +1129,7 @@ type CreateDSPAAssessmentRiskTemplateRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 风险等级id
@@ -1138,7 +1138,7 @@ type CreateDSPAAssessmentRiskTemplateRequestParams struct {
 	// 风险id列表
 	RiskIdList []*int64 `json:"RiskIdList,omitnil,omitempty" name:"RiskIdList"`
 
-	// 模版描述
+	// 模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 }
 
@@ -1148,7 +1148,7 @@ type CreateDSPAAssessmentRiskTemplateRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 风险等级id
@@ -1157,7 +1157,7 @@ type CreateDSPAAssessmentRiskTemplateRequest struct {
 	// 风险id列表
 	RiskIdList []*int64 `json:"RiskIdList,omitnil,omitempty" name:"RiskIdList"`
 
-	// 模版描述
+	// 模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 }
 
@@ -5921,12 +5921,7 @@ type DescribeDSPAAssessmentTemplatesRequestParams struct {
 	// 结果集个数限制。默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤项。
-	// 支持模糊搜索：（TemplateId，TemplateName）
-	// 支持过滤：
-	// Source：模版来源，system / user
-	// UseType：模版类型，auto，semi-auto，law等
-	// Status：模版启用状态，draft / launched
+	// 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched
 	Filters []*DspaAssessmentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5942,12 +5937,7 @@ type DescribeDSPAAssessmentTemplatesRequest struct {
 	// 结果集个数限制。默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤项。
-	// 支持模糊搜索：（TemplateId，TemplateName）
-	// 支持过滤：
-	// Source：模版来源，system / user
-	// UseType：模版类型，auto，semi-auto，law等
-	// Status：模版启用状态，draft / launched
+	// 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched
 	Filters []*DspaAssessmentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

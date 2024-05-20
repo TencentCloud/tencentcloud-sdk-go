@@ -383,6 +383,67 @@ func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePi
     return
 }
 
+func NewDescribeAITranscriptionRequest() (request *DescribeAITranscriptionRequest) {
+    request = &DescribeAITranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeAITranscription")
+    
+    
+    return
+}
+
+func NewDescribeAITranscriptionResponse() (response *DescribeAITranscriptionResponse) {
+    response = &DescribeAITranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAITranscription
+// 查询AI转录状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAITranscription(request *DescribeAITranscriptionRequest) (response *DescribeAITranscriptionResponse, err error) {
+    return c.DescribeAITranscriptionWithContext(context.Background(), request)
+}
+
+// DescribeAITranscription
+// 查询AI转录状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAITranscriptionWithContext(ctx context.Context, request *DescribeAITranscriptionRequest) (response *DescribeAITranscriptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeAITranscriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAITranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAITranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallDetailInfoRequest() (request *DescribeCallDetailInfoRequest) {
     request = &DescribeCallDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2740,6 +2801,61 @@ func (c *Client) RemoveUserByStrRoomIdWithContext(ctx context.Context, request *
     return
 }
 
+func NewStartAITranscriptionRequest() (request *StartAITranscriptionRequest) {
+    request = &StartAITranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "StartAITranscription")
+    
+    
+    return
+}
+
+func NewStartAITranscriptionResponse() (response *StartAITranscriptionResponse) {
+    response = &StartAITranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartAITranscription
+// 这个接口调用后，后台会启动机器人，实时进行语音识别并下发字幕和会议记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTAITRANSCRIPTIONABILITY = "FailedOperation.SdkAppIdNotAITranscriptionAbility"
+//  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartAITranscription(request *StartAITranscriptionRequest) (response *StartAITranscriptionResponse, err error) {
+    return c.StartAITranscriptionWithContext(context.Background(), request)
+}
+
+// StartAITranscription
+// 这个接口调用后，后台会启动机器人，实时进行语音识别并下发字幕和会议记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTAITRANSCRIPTIONABILITY = "FailedOperation.SdkAppIdNotAITranscriptionAbility"
+//  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartAITranscriptionWithContext(ctx context.Context, request *StartAITranscriptionRequest) (response *StartAITranscriptionResponse, err error) {
+    if request == nil {
+        request = NewStartAITranscriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartAITranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartAITranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartMCUMixTranscodeRequest() (request *StartMCUMixTranscodeRequest) {
     request = &StartMCUMixTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3737,6 +3853,61 @@ func (c *Client) StartWebRecordWithContext(ctx context.Context, request *StartWe
     return
 }
 
+func NewStopAITranscriptionRequest() (request *StopAITranscriptionRequest) {
+    request = &StopAITranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "StopAITranscription")
+    
+    
+    return
+}
+
+func NewStopAITranscriptionResponse() (response *StopAITranscriptionResponse) {
+    response = &StopAITranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopAITranscription
+// 停止AI转录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+//  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StopAITranscription(request *StopAITranscriptionRequest) (response *StopAITranscriptionResponse, err error) {
+    return c.StopAITranscriptionWithContext(context.Background(), request)
+}
+
+// StopAITranscription
+// 停止AI转录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
+//  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StopAITranscriptionWithContext(ctx context.Context, request *StopAITranscriptionRequest) (response *StopAITranscriptionResponse, err error) {
+    if request == nil {
+        request = NewStopAITranscriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopAITranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopAITranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopMCUMixTranscodeRequest() (request *StopMCUMixTranscodeRequest) {
     request = &StopMCUMixTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4052,6 +4223,57 @@ func (c *Client) StopWebRecordWithContext(ctx context.Context, request *StopWebR
     request.SetContext(ctx)
     
     response = NewStopWebRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSummarizeTranscriptionRequest() (request *SummarizeTranscriptionRequest) {
+    request = &SummarizeTranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "SummarizeTranscription")
+    
+    
+    return
+}
+
+func NewSummarizeTranscriptionResponse() (response *SummarizeTranscriptionResponse) {
+    response = &SummarizeTranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SummarizeTranscription
+// 对转录的文本进行总结
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) SummarizeTranscription(request *SummarizeTranscriptionRequest) (response *SummarizeTranscriptionResponse, err error) {
+    return c.SummarizeTranscriptionWithContext(context.Background(), request)
+}
+
+// SummarizeTranscription
+// 对转录的文本进行总结
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) SummarizeTranscriptionWithContext(ctx context.Context, request *SummarizeTranscriptionRequest) (response *SummarizeTranscriptionResponse, err error) {
+    if request == nil {
+        request = NewSummarizeTranscriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SummarizeTranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSummarizeTranscriptionResponse()
     err = c.Send(request, response)
     return
 }
