@@ -14999,6 +14999,64 @@ func (r *DescribeUsableUnitNamespacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DisableLaneRuleRequestParams struct {
+	// 泳道规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type DisableLaneRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 泳道规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *DisableLaneRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableLaneRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableLaneRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableLaneRuleResponseParams struct {
+	// 操作状态。成功：true，失败：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableLaneRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableLaneRuleResponseParams `json:"Response"`
+}
+
+func (r *DisableLaneRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableLaneRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisableTaskFlowRequestParams struct {
 	// 工作流 ID
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
@@ -15412,6 +15470,64 @@ func (r *DraftApiGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DraftApiGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableLaneRuleRequestParams struct {
+	// 泳道规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type EnableLaneRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 泳道规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *EnableLaneRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableLaneRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableLaneRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableLaneRuleResponseParams struct {
+	// 操作状态。成功：true，失败：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableLaneRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableLaneRuleResponseParams `json:"Response"`
+}
+
+func (r *EnableLaneRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableLaneRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17897,7 +18013,7 @@ func (r *ModifyLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneRuleResponseParams struct {
-	// 操作状态
+	// 操作状态。成功：true，失败：false
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 

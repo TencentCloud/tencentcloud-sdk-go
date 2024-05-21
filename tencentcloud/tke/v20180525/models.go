@@ -171,9 +171,7 @@ type AddExistedInstancesRequestParams struct {
 	// 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
 	SkipValidateOptions []*string `json:"SkipValidateOptions,omitnil,omitempty" name:"SkipValidateOptions"`
 
-	// 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。
-	// 
-	// 参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
+	// 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instance将使用默认配置。
 	InstanceAdvancedSettingsOverrides []*InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverrides,omitnil,omitempty" name:"InstanceAdvancedSettingsOverrides"`
 
 	// 节点镜像
@@ -210,9 +208,7 @@ type AddExistedInstancesRequest struct {
 	// 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
 	SkipValidateOptions []*string `json:"SkipValidateOptions,omitnil,omitempty" name:"SkipValidateOptions"`
 
-	// 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。
-	// 
-	// 参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
+	// 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instance将使用默认配置。
 	InstanceAdvancedSettingsOverrides []*InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverrides,omitnil,omitempty" name:"InstanceAdvancedSettingsOverrides"`
 
 	// 节点镜像
@@ -2052,7 +2048,7 @@ type CreateClusterReleaseRequestParams struct {
 	// 制品命名空间
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
-	// 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -2092,7 +2088,7 @@ type CreateClusterReleaseRequest struct {
 	// 制品命名空间
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
-	// 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -20465,7 +20461,7 @@ type UpgradeClusterReleaseRequestParams struct {
 	// 制品来源，范围：tke-market 或 other
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
-	// 制品版本( 从第三安装时，不传这个参数）
+	// 制品版本( 从第三方安装时，不传这个参数）
 	ChartVersion *string `json:"ChartVersion,omitnil,omitempty" name:"ChartVersion"`
 
 	// 制品仓库URL地址
@@ -20480,7 +20476,7 @@ type UpgradeClusterReleaseRequestParams struct {
 	// 制品命名空间
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
-	// 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -20505,7 +20501,7 @@ type UpgradeClusterReleaseRequest struct {
 	// 制品来源，范围：tke-market 或 other
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
-	// 制品版本( 从第三安装时，不传这个参数）
+	// 制品版本( 从第三方安装时，不传这个参数）
 	ChartVersion *string `json:"ChartVersion,omitnil,omitempty" name:"ChartVersion"`
 
 	// 制品仓库URL地址
@@ -20520,7 +20516,7 @@ type UpgradeClusterReleaseRequest struct {
 	// 制品命名空间
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
-	// 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 

@@ -20,7 +20,7 @@
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2024-05-21 01:09:55 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2023-05-18 01:04:02 |
 | ba | [ICP备案](https://cloud.tencent.com/document/product/243) | 2024-04-22 01:08:02 |
-| batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2024-05-13 01:09:06 |
+| batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2024-05-22 01:10:06 |
 | bda | [人体分析](https://cloud.tencent.com/document/product/1208) | 2024-03-20 01:08:23 |
 | bi | [商业智能分析 BI](https://cloud.tencent.com/document/product/590) | 2024-05-17 01:07:50 |
 | billing | [费用中心](https://cloud.tencent.com/document/product/555) | 2024-05-13 01:09:20 |
@@ -72,7 +72,7 @@
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2024-05-17 01:23:32 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2024-05-16 01:28:30 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
-| cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-05-14 01:39:01 |
+| cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-05-22 01:28:40 |
 | dasb | [T-Sec-堡垒机（BH）](https://cloud.tencent.com/document/product/1025) | 2024-04-22 01:14:04 |
 | dataintegration | [数据接入平台](https://cloud.tencent.com/document/product/1591) | 2022-07-26 15:32:15 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2023-05-18 01:20:11 |
@@ -80,7 +80,7 @@
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2024-03-20 01:14:24 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2024-03-20 01:14:27 |
 | dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | 2024-04-26 01:13:59 |
-| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2024-05-09 01:13:34 |
+| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2024-05-22 01:32:04 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2024-05-16 01:37:56 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2024-04-29 01:14:52 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2024-04-22 01:15:04 |
@@ -123,7 +123,7 @@
 | ioa | [iOA 零信任安全管理系统](https://cloud.tencent.com/document/product/1092) | 2024-04-03 11:20:41 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2023-07-17 01:22:28 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2024-03-20 01:18:04 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2024-05-14 01:59:37 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2024-05-22 01:45:12 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2023-05-18 01:33:02 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2024-05-14 02:02:07 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2024-03-20 01:18:54 |
@@ -147,7 +147,7 @@
 | mna | [多网聚合加速](https://cloud.tencent.com/document/product/1385) | 2024-04-12 01:19:07 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2024-04-18 01:24:29 |
 | monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2024-05-08 01:22:13 |
-| mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2024-05-21 01:56:34 |
+| mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2024-05-22 01:56:25 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2024-05-13 01:23:45 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2024-05-20 01:58:10 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2024-04-17 14:48:31 |
@@ -206,7 +206,7 @@
 | tdmq | [消息队列 TDMQ](https://cloud.tencent.com/document/product/1179) | 2024-05-17 02:19:56 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2024-04-22 01:26:50 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2024-03-20 01:26:14 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2024-05-14 21:02:38 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2024-05-21 17:37:30 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2024-03-20 01:27:05 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [资源编排 TIC](https://cloud.tencent.com/document/product/1213) | 2023-08-17 05:26:08 |
@@ -214,7 +214,7 @@
 | tics | [威胁情报云查服务](https://cloud.tencent.com/document/product/1013) | 2024-03-20 01:27:08 |
 | tiems | [腾讯云 TI 平台 TI-EMS ](https://cloud.tencent.com/document/product/1120) | 2022-07-19 06:19:39 |
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2024-03-20 01:27:09 |
-| tione | [TI-ONE 训练平台](https://cloud.tencent.com/document/product/851) | 2024-05-14 02:40:26 |
+| tione | [TI-ONE 训练平台](https://cloud.tencent.com/document/product/851) | 2024-05-22 02:16:53 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2024-03-20 01:27:28 |
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2024-05-15 01:34:42 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
@@ -227,7 +227,7 @@
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2024-03-20 01:29:13 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-05-21 02:21:25 |
 | tse | [微服务引擎](https://cloud.tencent.com/document/product/1364) | 2024-05-15 01:35:13 |
-| tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-05-07 01:28:28 |
+| tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-05-22 02:22:39 |
 | tsw | [微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2024-03-20 01:30:06 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2024-04-24 01:23:54 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2024-03-20 01:30:08 |

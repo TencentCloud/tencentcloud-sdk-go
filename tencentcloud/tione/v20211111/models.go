@@ -1087,8 +1087,11 @@ type CreateModelServiceRequestParams struct {
 	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入
+	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
+
+	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1210,8 +1213,11 @@ type CreateModelServiceRequest struct {
 	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入
+	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
+
+	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1258,6 +1264,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "Command")
 	delete(f, "ServiceEIP")
 	delete(f, "CommandBase64")
+	delete(f, "ServicePort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -6776,7 +6783,7 @@ type ImageFIlter struct {
 }
 
 type ImageInfo struct {
-	// 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像
+	// 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
 	// 镜像地址
@@ -6801,6 +6808,24 @@ type ImageInfo struct {
 	// 是否支持数据构建
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataPipeline *bool `json:"SupportDataPipeline,omitnil,omitempty" name:"SupportDataPipeline"`
+
+	// 镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageSecret *ImageSecret `json:"ImageSecret,omitnil,omitempty" name:"ImageSecret"`
+}
+
+type ImageSecret struct {
+	// 用于加密密码的KMS公钥ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 密码,base64编码； 当keyId不为空时，密码是加密后的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type InferCodeInfo struct {
@@ -7488,8 +7513,11 @@ type ModifyModelServiceRequestParams struct {
 	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入
+	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
+
+	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -7587,8 +7615,11 @@ type ModifyModelServiceRequest struct {
 	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入
+	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
+
+	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -7627,6 +7658,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "Command")
 	delete(f, "ServiceEIP")
 	delete(f, "CommandBase64")
+	delete(f, "ServicePort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -9476,6 +9508,10 @@ type ServiceInfo struct {
 	// 开启TIONE内网访问外部设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
+
+	// 服务端口，默认为8501
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 }
 
 type ServiceLimit struct {

@@ -1549,6 +1549,12 @@ type CreateStudioProductRequestParams struct {
 
 	// 产品的项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 平均传输速率
+	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
+
+	// 期限
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 type CreateStudioProductRequest struct {
@@ -1577,6 +1583,12 @@ type CreateStudioProductRequest struct {
 
 	// 产品的项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 平均传输速率
+	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
+
+	// 期限
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 func (r *CreateStudioProductRequest) ToJsonString() string {
@@ -1599,6 +1611,8 @@ func (r *CreateStudioProductRequest) FromJsonString(s string) error {
 	delete(f, "DataProtocol")
 	delete(f, "ProductDesc")
 	delete(f, "ProjectId")
+	delete(f, "Rate")
+	delete(f, "Period")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStudioProductRequest has unknown keys!", "")
 	}
@@ -9631,6 +9645,14 @@ type ProductEntry struct {
 	// 设备数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCount *int64 `json:"DeviceCount,omitnil,omitempty" name:"DeviceCount"`
+
+	// 平均传输速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
+
+	// 有效期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 type ProductModelDefinition struct {

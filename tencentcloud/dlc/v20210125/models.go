@@ -7774,6 +7774,125 @@ func (r *DescribeTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskLogRequestParams struct {
+	// 列表返回的Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 开始运行时间，unix时间戳（毫秒）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束运行时间，unix时间戳（毫秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页大小，最大1000，配合Context一起使用
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 下一次分页参数，第一次传空。透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 预览日志的通用过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// SparkSQL任务唯一ID
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+}
+
+type DescribeTaskLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 列表返回的Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 开始运行时间，unix时间戳（毫秒）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束运行时间，unix时间戳（毫秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页大小，最大1000，配合Context一起使用
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 下一次分页参数，第一次传空。透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 预览日志的通用过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// SparkSQL任务唯一ID
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+}
+
+func (r *DescribeTaskLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Context")
+	delete(f, "Asc")
+	delete(f, "Filters")
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskLogResponseParams struct {
+	// 下一次分页参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 是否获取完结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
+
+	// 日志详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*JobLogResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 日志url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogUrl *string `json:"LogUrl,omitnil,omitempty" name:"LogUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskResultRequestParams struct {
 	// 任务唯一ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`

@@ -8445,9 +8445,9 @@ type Https struct {
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 
 	// 密码套件，取值有：
-	// <li>loose-v2023：提供最高的兼容性，安全性一般，支持 TLS 1.0-1.3 密码套件；</li>
-	// <li>general-v2023：提供较高的兼容性，安全性中等，支持 TLS 1.2-1.3 密码套件；</li>
-	// <li>strict-v2023：提供最高的安全性能，禁用所有含不安全隐患的加密套件，支持 TLS 1.2-1.3 密码套件。
+	// <li>loose-v2023：提供高兼容性，安全性一般，支持 TLS 1.0-1.3 密码套件；</li>
+	// <li>general-v2023：提供较高兼容性，安全性中等，支持 TLS 1.2-1.3 密码套件；</li>
+	// <li>strict-v2023：提供高安全性能，禁用所有含不安全隐患的加密套件，支持 TLS 1.2-1.3 密码套件。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherSuite *string `json:"CipherSuite,omitnil,omitempty" name:"CipherSuite"`
 }
@@ -11144,7 +11144,7 @@ type OriginDetail struct {
 	// <li>COS：腾讯云 COS 对象存储源站；</li>
 	// <li>AWS_S3：AWS S3 对象存储源站；</li>
 	// <li>ORIGIN_GROUP：源站组类型源站；</li>
-	// <li>VODEO：云点播（混合云版）；</li>
+	// <li>VODEO：云点播-混合云版；</li>
 	// <li>SPACE：源站卸载，当前仅白名单开放；</li>
 	// <li>LB：负载均衡，当前仅白名单开放。</li>
 	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
@@ -11236,7 +11236,7 @@ type OriginInfo struct {
 	// <li>COS：腾讯云 COS 对象存储源站；</li>
 	// <li>AWS_S3：AWS S3 对象存储源站；</li>
 	// <li>ORIGIN_GROUP：源站组类型源站；</li>
-	//  <li>VODEO：云点播（混合云版）；</li>
+	//  <li>VODEO：云点播-混合云版；</li>
 	// <li>SPACE：源站卸载，当前仅白名单开放；</li>
 	// <li>LB：负载均衡，当前仅白名单开放。</li>
 	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
