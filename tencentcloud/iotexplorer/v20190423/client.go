@@ -7949,6 +7949,61 @@ func (c *Client) UnbindProductsWithContext(ctx context.Context, request *UnbindP
     return
 }
 
+func NewUpdateDeviceTWeCallAuthorizeStatusRequest() (request *UpdateDeviceTWeCallAuthorizeStatusRequest) {
+    request = &UpdateDeviceTWeCallAuthorizeStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateDeviceTWeCallAuthorizeStatus")
+    
+    
+    return
+}
+
+func NewUpdateDeviceTWeCallAuthorizeStatusResponse() (response *UpdateDeviceTWeCallAuthorizeStatusResponse) {
+    response = &UpdateDeviceTWeCallAuthorizeStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDeviceTWeCallAuthorizeStatus
+// 更新用户对设备的TweCall授权状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDeviceTWeCallAuthorizeStatus(request *UpdateDeviceTWeCallAuthorizeStatusRequest) (response *UpdateDeviceTWeCallAuthorizeStatusResponse, err error) {
+    return c.UpdateDeviceTWeCallAuthorizeStatusWithContext(context.Background(), request)
+}
+
+// UpdateDeviceTWeCallAuthorizeStatus
+// 更新用户对设备的TweCall授权状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDeviceTWeCallAuthorizeStatusWithContext(ctx context.Context, request *UpdateDeviceTWeCallAuthorizeStatusRequest) (response *UpdateDeviceTWeCallAuthorizeStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateDeviceTWeCallAuthorizeStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDeviceTWeCallAuthorizeStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDeviceTWeCallAuthorizeStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequest) {
     request = &UpdateDevicesEnableStateRequest{
         BaseRequest: &tchttp.BaseRequest{},

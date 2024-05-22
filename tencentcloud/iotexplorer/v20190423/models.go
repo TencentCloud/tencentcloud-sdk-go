@@ -10843,6 +10843,81 @@ func (r *UnbindProductsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateDeviceTWeCallAuthorizeStatusRequestParams struct {
+	// TweCall授权状态：0未授权，1已授权
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 微信用户的openId
+	WechatOpenId *string `json:"WechatOpenId,omitnil,omitempty" name:"WechatOpenId"`
+}
+
+type UpdateDeviceTWeCallAuthorizeStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// TweCall授权状态：0未授权，1已授权
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 微信用户的openId
+	WechatOpenId *string `json:"WechatOpenId,omitnil,omitempty" name:"WechatOpenId"`
+}
+
+func (r *UpdateDeviceTWeCallAuthorizeStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDeviceTWeCallAuthorizeStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "WechatOpenId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeviceTWeCallAuthorizeStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDeviceTWeCallAuthorizeStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateDeviceTWeCallAuthorizeStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDeviceTWeCallAuthorizeStatusResponseParams `json:"Response"`
+}
+
+func (r *UpdateDeviceTWeCallAuthorizeStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDeviceTWeCallAuthorizeStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateDevicesEnableStateRequestParams struct {
 	// 多个设备标识
 	DevicesItems []*DevicesItem `json:"DevicesItems,omitnil,omitempty" name:"DevicesItems"`

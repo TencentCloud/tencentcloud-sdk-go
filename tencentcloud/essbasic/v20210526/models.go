@@ -6736,7 +6736,7 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConsoleLoginUrlResponseParams struct {
 	// 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
-	// <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr> </tbody> </table>
+	// <table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr> </tbody> </table>
 	// 
 	// 注： 
 	// 1. <font color="red">链接仅单次有效</font>，每次登录需要需要重新创建新的链接
@@ -10690,7 +10690,11 @@ type RegistrationOrganizationInfo struct {
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
 	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 
-	// 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M
+	// 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+	// p.s. 如果上传授权书 ，需遵循以下条件
+	// 1. 超管的信息（超管姓名，超管身份证，超管手机号）必须为必填参数。
+	// 2. 超管的个人身份必须在电子签已经实名。
+	// 2. 认证方式AuthorizationTypes必须只能是上传授权书方式 
 	PowerOfAttorneys []*string `json:"PowerOfAttorneys,omitnil,omitempty" name:"PowerOfAttorneys"`
 }
 

@@ -10101,6 +10101,10 @@ type PrometheusDTO struct {
 
 	// vport
 	SourcePort *int64 `json:"SourcePort,omitnil,omitempty" name:"SourcePort"`
+
+	// broker地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 }
 
 type PrometheusResult struct {

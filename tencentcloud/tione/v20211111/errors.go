@@ -29,9 +29,6 @@ const (
 	// 未授权操作。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
-	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
-	DRYRUNOPERATION = "DryRunOperation"
-
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
@@ -58,12 +55,6 @@ const (
 
 	// 集群访问失败。
 	FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
-
-	// 导出Notebook镜像失败
-	FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
-
-	// 启动实例失败。
-	FAILEDOPERATION_CREATEJOBINSTANCEFAILED = "FailedOperation.CreateJobInstanceFailed"
 
 	// cos client 内部错误。
 	FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
@@ -107,9 +98,6 @@ const (
 	// 名称重复。
 	FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 
-	// 训练任务名称已存在，请更换名称
-	FAILEDOPERATION_DUPLICATENAMETASKISCREATING = "FailedOperation.DuplicateNameTaskIsCreating"
-
 	// 数据库执行错误。
 	FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
 
@@ -131,9 +119,6 @@ const (
 	// 变更计费配置失败。
 	FAILEDOPERATION_MODIFYBILLINGINSTANCEBATCHFAILED = "FailedOperation.ModifyBillingInstanceBatchFailed"
 
-	// 修改计费统计的资源关联标签失败
-	FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
-
 	// 移动模型目录失败。
 	FAILEDOPERATION_MOVEMODELDIRFAILED = "FailedOperation.MoveModelDirFailed"
 
@@ -145,9 +130,6 @@ const (
 
 	// 操作不允许。
 	FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
-
-	// 该Notebook实例不支持保存镜像，如果您使用的是自定义镜像请重启Notebook实例后再执行保存操作
-	FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
 
 	// 未找到Notebook实例相关容器，无法生成访问地址。
 	FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"
@@ -161,9 +143,6 @@ const (
 	// 数据库查询错误。
 	FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
 
-	// 根据标签查询资源失败。
-	FAILEDOPERATION_QUERYMODELSBYTAGSFAILED = "FailedOperation.QueryModelsByTagsFailed"
-
 	// 查询计费价格失败。
 	FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 
@@ -172,9 +151,6 @@ const (
 
 	// 查询计费项详情失败。
 	FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
-
-	// 查询计费项失败。
-	FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
 
 	// 查询标签服务失败。
 	FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
@@ -212,41 +188,11 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// 绑定标签失败
-	INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
-
-	// 文件系统不存在
-	INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
-
-	// 创建JOB失败
-	INTERNALERROR_CREATEJOBINSTANCEFAILED = "InternalError.CreateJobInstanceFailed"
-
-	// 创建TCR镜像仓库长期访问凭证失败
-	INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
-
-	// 冻结失败。
-	INTERNALERROR_FREEZEBILLFAILED = "InternalError.FreezeBillFailed"
-
-	// 查询文件系统信息失败
-	INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
-
-	// 查询文件系统挂载信息失败。
-	INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
-
-	// 余额不足。
-	INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
-
 	// 没有权限。
 	INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
 
-	// 操作不允许。
-	INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
-
 	// 查询标签失败。
 	INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
-
-	// 获取HDFS存储信息失败。
-	INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
 
 	// 询价失败
 	INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
@@ -266,15 +212,6 @@ const (
 	// 查询用户临时密钥失败
 	INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 
-	// 查询vpc信息失败
-	INTERNALERROR_QUERYVPCINFOFAILED = "InternalError.QueryVPCInfoFailed"
-
-	// 停止任务失败。
-	INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
-
-	// 未提交状态禁止停止
-	INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
-
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -290,26 +227,11 @@ const (
 	// 无效的接口。
 	INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
 
-	// 无效的请求包体。
-	INVALIDPARAMETER_TGWINVALIDREQUESTBODY = "InvalidParameter.TgwInvalidRequestBody"
-
 	// 请求参数校验失败。
 	INVALIDPARAMETER_VALIDATEERROR = "InvalidParameter.ValidateError"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
-
-	// 当前任务选择了平台CFS的内置代码，且未正确配置/opt/ml/output/data输出路径，任务无法提交
-	INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
-
-	// AI市场公共算法版本Id不存在
-	INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
-
-	// 无效的自动重启次数
-	INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
-
-	// 该任务不支持自动重启
-	INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
 
 	// 名称不合法。
 	INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
@@ -322,9 +244,6 @@ const (
 
 	// 存储库不存在。
 	INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
-
-	// COS路径不存在
-	INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
 
 	// 不支持的标注类型。
 	INVALIDPARAMETERVALUE_DCANNOTATIONTYPE = "InvalidParameterValue.DCAnnotationType"
@@ -350,17 +269,8 @@ const (
 	// 数据配置数量超过最大限制
 	INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
 
-	// 数据集不存在
-	INVALIDPARAMETERVALUE_DATASETNOTEXIST = "InvalidParameterValue.DatasetNotExist"
-
-	// 数据集数量超过限制。
-	INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
-
 	// 实例名称冲突，请更换名称后重试。
 	INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
-
-	// 文件系统路径访问权限受限
-	INVALIDPARAMETERVALUE_FSPATHINACCESSIBLE = "InvalidParameterValue.FSPathInaccessible"
 
 	// 训练框架对应的版本不支持，请阅读文档查看TIONE目前支持的框架和版本。
 	INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
@@ -377,9 +287,6 @@ const (
 	// 所选的GooseFS实例不存在
 	INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
 
-	// 训练任务镜像不存在。
-	INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
-
 	// 无效的过滤器。
 	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 
@@ -388,9 +295,6 @@ const (
 
 	// 参数值数量超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-
-	// 操作不允许。
-	INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
 
 	// 裸金属资源组不支持创建免费存储的Notebook
 	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
@@ -404,38 +308,20 @@ const (
 	// 分页查询limit超出限制
 	INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
 
-	// 参数长度超过限制
-	INVALIDPARAMETERVALUE_PARAMLENGTHEXCEEDLIMIT = "InvalidParameterValue.ParamLengthExceedLimit"
-
-	// 查询vpc信息失败
-	INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
-
-	// RDMA配置不合法
-	INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
-
 	// 资源配置不合法
 	INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
 
 	// 子网不存在。
 	INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
 
-	// 创建精调任务失败，请按照模版推荐资源进行配置。
-	INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
-
 	// 未找到当前日志主题。
 	INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
-
-	// 裸金属类型资源组不支持配置输入数据
-	INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
 
 	// 不支持使用GooseFS实例
 	INVALIDPARAMETERVALUE_UNSUPPORTEDGOOSEFSCONFIG = "InvalidParameterValue.UnsupportedGooseFSConfig"
 
 	// 不支持同一实例挂载多个CBS存储
 	INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
-
-	// Notebook卷大小只能增加，如需减小容量请重新创建实例。
-	INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
@@ -449,14 +335,8 @@ const (
 	// 余额不足，创建/更新失败。
 	OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 
-	// 计费平台出错
-	OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
-
 	// 按量计费资源售罄。
 	OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
-
-	// vpc 和 子网 禁止修改
-	OPERATIONDENIED_FORBIDMODIFYVPCANDSUBNET = "OperationDenied.ForbidModifyVpcAndSubnet"
 
 	// IP不合法。
 	OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
@@ -470,17 +350,8 @@ const (
 	// 操作不允许
 	OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 
-	// 存量Notebook不支持保存
-	OPERATIONDENIED_NOTSUPPORTSAVEIMAGE = "OperationDenied.NotSupportSaveImage"
-
 	// 预付费资源组余量不足。
 	OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
-
-	// 子网不合法。
-	OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
-
-	// 太极应用组存量资源不足，不满足训练要求
-	OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
 
 	// 白名单免费配额不足。
 	OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
@@ -494,14 +365,8 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
-	// 文件系统不存在
-	RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
-
 	// 没有该模型。
 	RESOURCENOTFOUND_NOMODEL = "ResourceNotFound.NoModel"
-
-	// vpc不存在
-	RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
