@@ -8738,6 +8738,15 @@ type DescribePrometheusClusterAgentsRequestParams struct {
 
 	// 用于分页
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 用于通过集群id过滤被绑定集群
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 用于通过集群类型过滤被绑定集群
+	ClusterTypes []*string `json:"ClusterTypes,omitnil,omitempty" name:"ClusterTypes"`
+
+	// 用于通过名称搜索被绑定集群
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type DescribePrometheusClusterAgentsRequest struct {
@@ -8751,6 +8760,15 @@ type DescribePrometheusClusterAgentsRequest struct {
 
 	// 用于分页
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 用于通过集群id过滤被绑定集群
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 用于通过集群类型过滤被绑定集群
+	ClusterTypes []*string `json:"ClusterTypes,omitnil,omitempty" name:"ClusterTypes"`
+
+	// 用于通过名称搜索被绑定集群
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 func (r *DescribePrometheusClusterAgentsRequest) ToJsonString() string {
@@ -8768,6 +8786,9 @@ func (r *DescribePrometheusClusterAgentsRequest) FromJsonString(s string) error 
 	delete(f, "InstanceId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ClusterIds")
+	delete(f, "ClusterTypes")
+	delete(f, "ClusterName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusClusterAgentsRequest has unknown keys!", "")
 	}

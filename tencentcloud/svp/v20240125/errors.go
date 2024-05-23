@@ -16,4 +16,7 @@ package v20240125
 
 const (
 	// 此产品的特有错误码
+
+	// 账号没有cam授权。
+	UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 )

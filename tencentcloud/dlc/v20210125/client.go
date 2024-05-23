@@ -100,6 +100,61 @@ func (c *Client) AddDMSPartitionsWithContext(ctx context.Context, request *AddDM
     return
 }
 
+func NewAddOptimizerEnginesRequest() (request *AddOptimizerEnginesRequest) {
+    request = &AddOptimizerEnginesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "AddOptimizerEngines")
+    
+    
+    return
+}
+
+func NewAddOptimizerEnginesResponse() (response *AddOptimizerEnginesResponse) {
+    response = &AddOptimizerEnginesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddOptimizerEngines
+// 添加数据优化资源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddOptimizerEngines(request *AddOptimizerEnginesRequest) (response *AddOptimizerEnginesResponse, err error) {
+    return c.AddOptimizerEnginesWithContext(context.Background(), request)
+}
+
+// AddOptimizerEngines
+// 添加数据优化资源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddOptimizerEnginesWithContext(ctx context.Context, request *AddOptimizerEnginesRequest) (response *AddOptimizerEnginesResponse, err error) {
+    if request == nil {
+        request = NewAddOptimizerEnginesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddOptimizerEngines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddOptimizerEnginesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddUsersToWorkGroupRequest() (request *AddUsersToWorkGroupRequest) {
     request = &AddUsersToWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5568,6 +5623,83 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTasksCostInfoRequest() (request *DescribeTasksCostInfoRequest) {
+    request = &DescribeTasksCostInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTasksCostInfo")
+    
+    
+    return
+}
+
+func NewDescribeTasksCostInfoResponse() (response *DescribeTasksCostInfoResponse) {
+    response = &DescribeTasksCostInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTasksCostInfo
+// 该接口（DescribeTasksCostInfo）用于查询任务消耗
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTasksCostInfo(request *DescribeTasksCostInfoRequest) (response *DescribeTasksCostInfoResponse, err error) {
+    return c.DescribeTasksCostInfoWithContext(context.Background(), request)
+}
+
+// DescribeTasksCostInfo
+// 该接口（DescribeTasksCostInfo）用于查询任务消耗
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTasksCostInfoWithContext(ctx context.Context, request *DescribeTasksCostInfoRequest) (response *DescribeTasksCostInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksCostInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasksCostInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTasksCostInfoResponse()
     err = c.Send(request, response)
     return
 }

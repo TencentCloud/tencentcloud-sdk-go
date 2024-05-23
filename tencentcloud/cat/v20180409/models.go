@@ -708,8 +708,7 @@ func (r *DescribeProbeMetricDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeMetricDataResponseParams struct {
-	// 返回指标 JSON 序列化后的字符串,具体如下所示：
-	// "[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
+	//  返回指标 JSON 序列化后的字符串，具体如下所示："[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
 	MetricSet *string `json:"MetricSet,omitnil,omitempty" name:"MetricSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

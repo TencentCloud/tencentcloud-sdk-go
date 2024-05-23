@@ -4116,6 +4116,89 @@ func (c *Client) CreateIntegrationRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateIntegrationSubOrganizationActiveRecordRequest() (request *CreateIntegrationSubOrganizationActiveRecordRequest) {
+    request = &CreateIntegrationSubOrganizationActiveRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateIntegrationSubOrganizationActiveRecord")
+    
+    
+    return
+}
+
+func NewCreateIntegrationSubOrganizationActiveRecordResponse() (response *CreateIntegrationSubOrganizationActiveRecordResponse) {
+    response = &CreateIntegrationSubOrganizationActiveRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIntegrationSubOrganizationActiveRecord
+// 通过此接口，创建子企业激活记录，集团企业管理员可针对未激活的成员企业进行激活。
+//
+// 激活子企业时请保证子企业 lisence 充足。
+//
+// 这个操作与页面端激活成员企业操作类似
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c4e76fbac92e4ce451a03601c964793b.png)
+//
+// 
+//
+// p.s.
+//
+// 此接口只能用于激活，不能用于续期。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateIntegrationSubOrganizationActiveRecord(request *CreateIntegrationSubOrganizationActiveRecordRequest) (response *CreateIntegrationSubOrganizationActiveRecordResponse, err error) {
+    return c.CreateIntegrationSubOrganizationActiveRecordWithContext(context.Background(), request)
+}
+
+// CreateIntegrationSubOrganizationActiveRecord
+// 通过此接口，创建子企业激活记录，集团企业管理员可针对未激活的成员企业进行激活。
+//
+// 激活子企业时请保证子企业 lisence 充足。
+//
+// 这个操作与页面端激活成员企业操作类似
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c4e76fbac92e4ce451a03601c964793b.png)
+//
+// 
+//
+// p.s.
+//
+// 此接口只能用于激活，不能用于续期。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateIntegrationSubOrganizationActiveRecordWithContext(ctx context.Context, request *CreateIntegrationSubOrganizationActiveRecordRequest) (response *CreateIntegrationSubOrganizationActiveRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateIntegrationSubOrganizationActiveRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIntegrationSubOrganizationActiveRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIntegrationSubOrganizationActiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIntegrationUserRolesRequest() (request *CreateIntegrationUserRolesRequest) {
     request = &CreateIntegrationUserRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4492,6 +4575,61 @@ func (c *Client) CreateOrganizationBatchSignUrlWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewCreateOrganizationBatchSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOrganizationGroupInvitationLinkRequest() (request *CreateOrganizationGroupInvitationLinkRequest) {
+    request = &CreateOrganizationGroupInvitationLinkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateOrganizationGroupInvitationLink")
+    
+    
+    return
+}
+
+func NewCreateOrganizationGroupInvitationLinkResponse() (response *CreateOrganizationGroupInvitationLinkResponse) {
+    response = &CreateOrganizationGroupInvitationLinkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOrganizationGroupInvitationLink
+// 生成集团加入链接，分享至子企业超管或者法人，子企业管理员可通过链接加入集团。
+//
+// 注意:调用当前接口的企业 必须为集团企业。如何成为集团企业可以参考下面的文档[集团操作文档](https://qian.tencent.com/document/86707)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateOrganizationGroupInvitationLink(request *CreateOrganizationGroupInvitationLinkRequest) (response *CreateOrganizationGroupInvitationLinkResponse, err error) {
+    return c.CreateOrganizationGroupInvitationLinkWithContext(context.Background(), request)
+}
+
+// CreateOrganizationGroupInvitationLink
+// 生成集团加入链接，分享至子企业超管或者法人，子企业管理员可通过链接加入集团。
+//
+// 注意:调用当前接口的企业 必须为集团企业。如何成为集团企业可以参考下面的文档[集团操作文档](https://qian.tencent.com/document/86707)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateOrganizationGroupInvitationLinkWithContext(ctx context.Context, request *CreateOrganizationGroupInvitationLinkRequest) (response *CreateOrganizationGroupInvitationLinkResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationGroupInvitationLinkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationGroupInvitationLink require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationGroupInvitationLinkResponse()
     err = c.Send(request, response)
     return
 }

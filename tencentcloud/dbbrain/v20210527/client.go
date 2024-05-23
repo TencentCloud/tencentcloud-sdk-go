@@ -2657,6 +2657,79 @@ func (c *Client) DescribeProxySessionKillTasksWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeRedisBigKeyAnalysisTasksRequest() (request *DescribeRedisBigKeyAnalysisTasksRequest) {
+    request = &DescribeRedisBigKeyAnalysisTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisBigKeyAnalysisTasks")
+    
+    
+    return
+}
+
+func NewDescribeRedisBigKeyAnalysisTasksResponse() (response *DescribeRedisBigKeyAnalysisTasksResponse) {
+    response = &DescribeRedisBigKeyAnalysisTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisBigKeyAnalysisTasks
+// 查询redis大key分析任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisBigKeyAnalysisTasks(request *DescribeRedisBigKeyAnalysisTasksRequest) (response *DescribeRedisBigKeyAnalysisTasksResponse, err error) {
+    return c.DescribeRedisBigKeyAnalysisTasksWithContext(context.Background(), request)
+}
+
+// DescribeRedisBigKeyAnalysisTasks
+// 查询redis大key分析任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisBigKeyAnalysisTasksWithContext(ctx context.Context, request *DescribeRedisBigKeyAnalysisTasksRequest) (response *DescribeRedisBigKeyAnalysisTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisBigKeyAnalysisTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisBigKeyAnalysisTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisBigKeyAnalysisTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRedisProcessListRequest() (request *DescribeRedisProcessListRequest) {
     request = &DescribeRedisProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4064,7 +4137,7 @@ func NewModifyDiagDBInstanceConfResponse() (response *ModifyDiagDBInstanceConfRe
 }
 
 // ModifyDiagDBInstanceConf
-// 修改实例巡检开关。
+// 修改实例的配置信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4085,7 +4158,7 @@ func (c *Client) ModifyDiagDBInstanceConf(request *ModifyDiagDBInstanceConfReque
 }
 
 // ModifyDiagDBInstanceConf
-// 修改实例巡检开关。
+// 修改实例的配置信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

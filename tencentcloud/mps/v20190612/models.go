@@ -10043,6 +10043,7 @@ type LiveStreamAiRecognitionResultItem struct {
 	// <li>AsrFullTextRecognition：语音全文识别，</li>
 	// <li>OcrFullTextRecognition：文本全文识别。</li>
 	// <li>TransTextRecognition：语音翻译。</li>
+	// <li>ObjectRecognition：目标检测。</li>
 	// <li>TagRecognition：精彩打点。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -10068,6 +10069,9 @@ type LiveStreamAiRecognitionResultItem struct {
 
 	// 翻译结果，当Type 为 TransTextRecognition 时有效。
 	TransTextRecognitionResultSet []*LiveStreamTransTextRecognitionResult `json:"TransTextRecognitionResultSet,omitnil,omitempty" name:"TransTextRecognitionResultSet"`
+
+	// 目标检测结果，当Type为 ObjectRecognition 时有效。
+	ObjectRecognitionResultSet []*LiveStreamObjectRecognitionResult `json:"ObjectRecognitionResultSet,omitnil,omitempty" name:"ObjectRecognitionResultSet"`
 
 	// 打点结果，当Type 为 TagRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10278,6 +10282,23 @@ type LiveStreamFaceRecognitionResult struct {
 
 	// 识别片段终止的 PTS 时间，单位：秒。
 	EndPtsTime *float64 `json:"EndPtsTime,omitnil,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
+}
+
+type LiveStreamObjectRecognitionResult struct {
+	// 识别的物体名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsOffset *float64 `json:"StartPtsOffset,omitnil,omitempty" name:"StartPtsOffset"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsOffset *float64 `json:"EndPtsOffset,omitnil,omitempty" name:"EndPtsOffset"`
 
 	// 识别片段置信度。取值：0~100。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`

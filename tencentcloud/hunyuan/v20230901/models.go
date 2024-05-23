@@ -705,7 +705,7 @@ func (r *GetTokenCountResponse) FromJsonString(s string) error {
 }
 
 type Message struct {
-	// 角色
+	// 角色，可选值包括 system、user、assistant。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 文本内容

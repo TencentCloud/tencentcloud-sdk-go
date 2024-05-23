@@ -81,6 +81,57 @@ func (r *AddDMSPartitionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddOptimizerEnginesRequestParams struct {
+
+}
+
+type AddOptimizerEnginesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *AddOptimizerEnginesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOptimizerEnginesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOptimizerEnginesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddOptimizerEnginesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddOptimizerEnginesResponse struct {
+	*tchttp.BaseResponse
+	Response *AddOptimizerEnginesResponseParams `json:"Response"`
+}
+
+func (r *AddOptimizerEnginesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOptimizerEnginesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddUsersToWorkGroupRequestParams struct {
 	// 要操作的工作组和用户信息
 	AddInfo *UserIdSetOfWorkGroupId `json:"AddInfo,omitnil,omitempty" name:"AddInfo"`
@@ -7968,6 +8019,111 @@ func (r *DescribeTaskResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksCostInfoRequestParams struct {
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+	// task-operator- string （子uin过滤）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 数据引擎名称，用于筛选
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 下一页的标识
+	SearchAfter *string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// 每页的大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeTasksCostInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+	// task-operator- string （子uin过滤）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 数据引擎名称，用于筛选
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 下一页的标识
+	SearchAfter *string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// 每页的大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeTasksCostInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksCostInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DataEngineName")
+	delete(f, "SearchAfter")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksCostInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksCostInfoResponseParams struct {
+	// 下一页的标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchAfter *string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// 返回的数据，字符串类型的二维数组，首行为列中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTasksCostInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTasksCostInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTasksCostInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksCostInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -412,6 +412,8 @@ func NewDescribeProbeMetricDataResponse() (response *DescribeProbeMetricDataResp
 // DescribeProbeMetricData
 // 查询云拨测指标数据，指标支持使用sum,avg,max,min聚合函数进行指标数据查询
 //
+// 拨测频率与groupby聚合时间设置关联，如拨测频率为 30 分钟，则 grouby 聚合时间建议设置为大于30分钟，避免出现查询数据为空的情况
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
@@ -421,6 +423,8 @@ func (c *Client) DescribeProbeMetricData(request *DescribeProbeMetricDataRequest
 
 // DescribeProbeMetricData
 // 查询云拨测指标数据，指标支持使用sum,avg,max,min聚合函数进行指标数据查询
+//
+// 拨测频率与groupby聚合时间设置关联，如拨测频率为 30 分钟，则 grouby 聚合时间建议设置为大于30分钟，避免出现查询数据为空的情况
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

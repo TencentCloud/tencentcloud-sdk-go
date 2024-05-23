@@ -2507,7 +2507,7 @@ type DescribeDiagDBInstancesRequestParams struct {
 	// 是否是DBbrain支持的实例，固定传 true。
 	IsSupported *bool `json:"IsSupported,omitnil,omitempty" name:"IsSupported"`
 
-	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 分页参数，偏移量。
@@ -2532,7 +2532,7 @@ type DescribeDiagDBInstancesRequest struct {
 	// 是否是DBbrain支持的实例，固定传 true。
 	IsSupported *bool `json:"IsSupported,omitnil,omitempty" name:"IsSupported"`
 
-	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 分页参数，偏移量。
@@ -3327,6 +3327,88 @@ func (r *DescribeProxySessionKillTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProxySessionKillTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisBigKeyAnalysisTasksRequestParams struct {
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeRedisBigKeyAnalysisTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRedisBigKeyAnalysisTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisBigKeyAnalysisTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisBigKeyAnalysisTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisBigKeyAnalysisTasksResponseParams struct {
+	// 任务总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 任务列表。
+	Tasks []*RedisBigKeyTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisBigKeyAnalysisTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisBigKeyAnalysisTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisBigKeyAnalysisTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisBigKeyAnalysisTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5020,6 +5102,10 @@ type InstanceConfs struct {
 	// 分片节点数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardNum *string `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
+
+	// 是否开启大key周期性分析，仅redis产品有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisTopKey *string `json:"AnalysisTopKey,omitnil,omitempty" name:"AnalysisTopKey"`
 }
 
 type InstanceID struct {
@@ -5492,7 +5578,7 @@ type ModifyDiagDBInstanceConfRequestParams struct {
 	// 生效实例地域，取值为"All"，代表全地域。
 	Regions *string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 指定更改巡检状态的实例ID。
@@ -5508,7 +5594,7 @@ type ModifyDiagDBInstanceConfRequest struct {
 	// 生效实例地域，取值为"All"，代表全地域。
 	Regions *string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 指定更改巡检状态的实例ID。
@@ -5896,6 +5982,29 @@ type ReceiveUin struct {
 	// 用户id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+}
+
+type RedisBigKeyTask struct {
+	// 异步任务请求 ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 任务创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 任务状态。
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 任务执行进度。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 任务包含的分片节点序号列表。
+	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
 }
 
 type RedisKeySpaceData struct {
