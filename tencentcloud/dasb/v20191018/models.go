@@ -490,6 +490,105 @@ func (r *BindDeviceResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChangePwdTaskDetail struct {
+	// 资产信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 资产账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 上次改密结果。0-未改密  1-改密成功 2-改密失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastChangeStatus *uint64 `json:"LastChangeStatus,omitnil,omitempty" name:"LastChangeStatus"`
+}
+
+type ChangePwdTaskInfo struct {
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 任务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 所属部门信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// 改密方式。1：使用执行账号。2：修改自身密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeMethod *uint64 `json:"ChangeMethod,omitnil,omitempty" name:"ChangeMethod"`
+
+	// 执行账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunAccount *string `json:"RunAccount,omitnil,omitempty" name:"RunAccount"`
+
+	// 密码生成策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthGenerationStrategy *uint64 `json:"AuthGenerationStrategy,omitnil,omitempty" name:"AuthGenerationStrategy"`
+
+	// 密码长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PasswordLength *uint64 `json:"PasswordLength,omitnil,omitempty" name:"PasswordLength"`
+
+	// 包含小写字母
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmallLetter *uint64 `json:"SmallLetter,omitnil,omitempty" name:"SmallLetter"`
+
+	// 包含大写字母
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigLetter *uint64 `json:"BigLetter,omitnil,omitempty" name:"BigLetter"`
+
+	// 包含数字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Digit *uint64 `json:"Digit,omitnil,omitempty" name:"Digit"`
+
+	// 包含的特殊字符，base64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
+
+	// 改密完成通知。0-通知，1-不通知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompleteNotify *uint64 `json:"CompleteNotify,omitnil,omitempty" name:"CompleteNotify"`
+
+	// 通知人邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyEmails []*string `json:"NotifyEmails,omitnil,omitempty" name:"NotifyEmails"`
+
+	// 加密附件密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePassword *string `json:"FilePassword,omitnil,omitempty" name:"FilePassword"`
+
+	// 需要改密的账户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
+
+	// 需要改密的主机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceSet []*Device `json:"DeviceSet,omitnil,omitempty" name:"DeviceSet"`
+
+	// 任务类型：4手动，5自动
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 首次执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+
+	// 下次执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextTime *string `json:"NextTime,omitnil,omitempty" name:"NextTime"`
+}
+
 type CmdTemplate struct {
 	// 高危命令模板ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -863,6 +962,191 @@ func (r *CreateAssetSyncJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAssetSyncJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChangePwdTaskRequestParams struct {
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 资产id数组
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 修改的账户数组
+	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
+
+	// 改密方式。1：使用执行账号修改密码；2：修改自身密码
+	ChangeMethod *int64 `json:"ChangeMethod,omitnil,omitempty" name:"ChangeMethod"`
+
+	// 认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+	AuthGenerationStrategy *int64 `json:"AuthGenerationStrategy,omitnil,omitempty" name:"AuthGenerationStrategy"`
+
+	// 执行账号
+	RunAccount *string `json:"RunAccount,omitnil,omitempty" name:"RunAccount"`
+
+	// 手动指定密码时必传
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 密码限制长度，长度大于 12 位
+	PasswordLength *int64 `json:"PasswordLength,omitnil,omitempty" name:"PasswordLength"`
+
+	// 密码包含小写字母。0：否，1：是
+	SmallLetter *int64 `json:"SmallLetter,omitnil,omitempty" name:"SmallLetter"`
+
+	// 密码包含大写字母。0：否，1：是
+	BigLetter *int64 `json:"BigLetter,omitnil,omitempty" name:"BigLetter"`
+
+	// 密码包含数字。0：否，1：是
+	Digit *int64 `json:"Digit,omitnil,omitempty" name:"Digit"`
+
+	// 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
+
+	// 改密完成通知。0：不通知 
+	//   1：通知
+	CompleteNotify *int64 `json:"CompleteNotify,omitnil,omitempty" name:"CompleteNotify"`
+
+	// 通知邮箱
+	NotifyEmails []*string `json:"NotifyEmails,omitnil,omitempty" name:"NotifyEmails"`
+
+	// 加密压缩文件密码
+	FilePassword *string `json:"FilePassword,omitnil,omitempty" name:"FilePassword"`
+
+	// 所属部门id。“1.2.3”
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 任务类型  4-手工执行  5-周期自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 执行周期，单位天（大于等于 1，小于等于 365）
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 周期任务首次执行时间
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+}
+
+type CreateChangePwdTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 资产id数组
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 修改的账户数组
+	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
+
+	// 改密方式。1：使用执行账号修改密码；2：修改自身密码
+	ChangeMethod *int64 `json:"ChangeMethod,omitnil,omitempty" name:"ChangeMethod"`
+
+	// 认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+	AuthGenerationStrategy *int64 `json:"AuthGenerationStrategy,omitnil,omitempty" name:"AuthGenerationStrategy"`
+
+	// 执行账号
+	RunAccount *string `json:"RunAccount,omitnil,omitempty" name:"RunAccount"`
+
+	// 手动指定密码时必传
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 密码限制长度，长度大于 12 位
+	PasswordLength *int64 `json:"PasswordLength,omitnil,omitempty" name:"PasswordLength"`
+
+	// 密码包含小写字母。0：否，1：是
+	SmallLetter *int64 `json:"SmallLetter,omitnil,omitempty" name:"SmallLetter"`
+
+	// 密码包含大写字母。0：否，1：是
+	BigLetter *int64 `json:"BigLetter,omitnil,omitempty" name:"BigLetter"`
+
+	// 密码包含数字。0：否，1：是
+	Digit *int64 `json:"Digit,omitnil,omitempty" name:"Digit"`
+
+	// 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
+
+	// 改密完成通知。0：不通知 
+	//   1：通知
+	CompleteNotify *int64 `json:"CompleteNotify,omitnil,omitempty" name:"CompleteNotify"`
+
+	// 通知邮箱
+	NotifyEmails []*string `json:"NotifyEmails,omitnil,omitempty" name:"NotifyEmails"`
+
+	// 加密压缩文件密码
+	FilePassword *string `json:"FilePassword,omitnil,omitempty" name:"FilePassword"`
+
+	// 所属部门id。“1.2.3”
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 任务类型  4-手工执行  5-周期自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 执行周期，单位天（大于等于 1，小于等于 365）
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 周期任务首次执行时间
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+}
+
+func (r *CreateChangePwdTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChangePwdTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "DeviceIdSet")
+	delete(f, "AccountSet")
+	delete(f, "ChangeMethod")
+	delete(f, "AuthGenerationStrategy")
+	delete(f, "RunAccount")
+	delete(f, "Password")
+	delete(f, "PasswordLength")
+	delete(f, "SmallLetter")
+	delete(f, "BigLetter")
+	delete(f, "Digit")
+	delete(f, "Symbol")
+	delete(f, "CompleteNotify")
+	delete(f, "NotifyEmails")
+	delete(f, "FilePassword")
+	delete(f, "DepartmentId")
+	delete(f, "Type")
+	delete(f, "Period")
+	delete(f, "FirstTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChangePwdTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChangePwdTaskResponseParams struct {
+	// 任务id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateChangePwdTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChangePwdTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateChangePwdTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChangePwdTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1429,6 +1713,60 @@ func (r *DeleteAclsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAclsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteChangePwdTaskRequestParams struct {
+	// 改密任务id列表
+	IdSet []*int64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+type DeleteChangePwdTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 改密任务id列表
+	IdSet []*int64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteChangePwdTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteChangePwdTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteChangePwdTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteChangePwdTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteChangePwdTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteChangePwdTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteChangePwdTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteChangePwdTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2191,6 +2529,178 @@ func (r *DescribeAssetSyncStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAssetSyncStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChangePwdTaskDetailRequestParams struct {
+	// 改密任务Id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 所属部门ID，如：“1.2.3”
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 过滤数组，支持：InstanceId 资产ID，DeviceName 资产名称，Ip 内外IP，Account 资产账号，LastChangeStatus 上次改密状态。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目。默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeChangePwdTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 改密任务Id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 所属部门ID，如：“1.2.3”
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 过滤数组，支持：InstanceId 资产ID，DeviceName 资产名称，Ip 内外IP，Account 资产账号，LastChangeStatus 上次改密状态。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目。默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeChangePwdTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChangePwdTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperationId")
+	delete(f, "DepartmentId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChangePwdTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChangePwdTaskDetailResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*ChangePwdTaskDetail `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeChangePwdTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChangePwdTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeChangePwdTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChangePwdTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChangePwdTaskRequestParams struct {
+	// 过滤数组。过滤数组。Name支持以下值: OperationId 任务ID TaskName 任务名
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 分页偏移量，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeChangePwdTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤数组。过滤数组。Name支持以下值: OperationId 任务ID TaskName 任务名
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 分页偏移量，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeChangePwdTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChangePwdTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "DepartmentId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChangePwdTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChangePwdTaskResponseParams struct {
+	// 任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*ChangePwdTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeChangePwdTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChangePwdTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeChangePwdTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChangePwdTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3830,6 +4340,200 @@ func (r *ModifyAclResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyChangePwdTaskRequestParams struct {
+	// 改密任务id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 改密资产id列表
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 改密资产的账号列表
+	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
+
+	// 修改类型：1：修改任务信息  2：关联任务资产账号
+	ModifyType *uint64 `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// 改密方式。1：使用执行账号修改密码；2：修改自身密码
+	ChangeMethod *int64 `json:"ChangeMethod,omitnil,omitempty" name:"ChangeMethod"`
+
+	// 密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+	AuthGenerationStrategy *int64 `json:"AuthGenerationStrategy,omitnil,omitempty" name:"AuthGenerationStrategy"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 所属部门ID，"1,2,3"
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 任务的执行账号	
+	RunAccount *string `json:"RunAccount,omitnil,omitempty" name:"RunAccount"`
+
+	// 密码，手动指定密码时必传。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 密码限制长度，自动生成密码必传。	
+	PasswordLength *int64 `json:"PasswordLength,omitnil,omitempty" name:"PasswordLength"`
+
+	// 密码包含小写字母，0：否，1：是。
+	SmallLetter *int64 `json:"SmallLetter,omitnil,omitempty" name:"SmallLetter"`
+
+	// 密码包含大写字母，0：否，1：是。
+	BigLetter *int64 `json:"BigLetter,omitnil,omitempty" name:"BigLetter"`
+
+	// 密码包含数字，0：否，1：是。
+	Digit *int64 `json:"Digit,omitnil,omitempty" name:"Digit"`
+
+	// 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
+
+	// 改密完成通知。0：不通知 1：通知
+	CompleteNotify *int64 `json:"CompleteNotify,omitnil,omitempty" name:"CompleteNotify"`
+
+	// 通知邮箱
+	NotifyEmails []*string `json:"NotifyEmails,omitnil,omitempty" name:"NotifyEmails"`
+
+	// 加密压缩文件密码
+	FilePassword *string `json:"FilePassword,omitnil,omitempty" name:"FilePassword"`
+
+	// 任务类型， 4：手工执行  5：周期自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 周期任务周期，单位天（大于等于 1，小于等于 365）
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 周期任务首次执行时间
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+}
+
+type ModifyChangePwdTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 改密任务id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 改密资产id列表
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 改密资产的账号列表
+	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
+
+	// 修改类型：1：修改任务信息  2：关联任务资产账号
+	ModifyType *uint64 `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// 改密方式。1：使用执行账号修改密码；2：修改自身密码
+	ChangeMethod *int64 `json:"ChangeMethod,omitnil,omitempty" name:"ChangeMethod"`
+
+	// 密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+	AuthGenerationStrategy *int64 `json:"AuthGenerationStrategy,omitnil,omitempty" name:"AuthGenerationStrategy"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 所属部门ID，"1,2,3"
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 任务的执行账号	
+	RunAccount *string `json:"RunAccount,omitnil,omitempty" name:"RunAccount"`
+
+	// 密码，手动指定密码时必传。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 密码限制长度，自动生成密码必传。	
+	PasswordLength *int64 `json:"PasswordLength,omitnil,omitempty" name:"PasswordLength"`
+
+	// 密码包含小写字母，0：否，1：是。
+	SmallLetter *int64 `json:"SmallLetter,omitnil,omitempty" name:"SmallLetter"`
+
+	// 密码包含大写字母，0：否，1：是。
+	BigLetter *int64 `json:"BigLetter,omitnil,omitempty" name:"BigLetter"`
+
+	// 密码包含数字，0：否，1：是。
+	Digit *int64 `json:"Digit,omitnil,omitempty" name:"Digit"`
+
+	// 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
+
+	// 改密完成通知。0：不通知 1：通知
+	CompleteNotify *int64 `json:"CompleteNotify,omitnil,omitempty" name:"CompleteNotify"`
+
+	// 通知邮箱
+	NotifyEmails []*string `json:"NotifyEmails,omitnil,omitempty" name:"NotifyEmails"`
+
+	// 加密压缩文件密码
+	FilePassword *string `json:"FilePassword,omitnil,omitempty" name:"FilePassword"`
+
+	// 任务类型， 4：手工执行  5：周期自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 周期任务周期，单位天（大于等于 1，小于等于 365）
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 周期任务首次执行时间
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+}
+
+func (r *ModifyChangePwdTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChangePwdTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperationId")
+	delete(f, "DeviceIdSet")
+	delete(f, "AccountSet")
+	delete(f, "ModifyType")
+	delete(f, "ChangeMethod")
+	delete(f, "AuthGenerationStrategy")
+	delete(f, "TaskName")
+	delete(f, "DepartmentId")
+	delete(f, "RunAccount")
+	delete(f, "Password")
+	delete(f, "PasswordLength")
+	delete(f, "SmallLetter")
+	delete(f, "BigLetter")
+	delete(f, "Digit")
+	delete(f, "Symbol")
+	delete(f, "CompleteNotify")
+	delete(f, "NotifyEmails")
+	delete(f, "FilePassword")
+	delete(f, "Type")
+	delete(f, "Period")
+	delete(f, "FirstTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyChangePwdTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyChangePwdTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyChangePwdTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyChangePwdTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyChangePwdTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChangePwdTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCmdTemplateRequestParams struct {
 	// 模板名，最长32字符，不能包含空白字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4724,6 +5428,82 @@ type Resource struct {
 	// 日志投递规格信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogDeliveryArgs *string `json:"LogDeliveryArgs,omitnil,omitempty" name:"LogDeliveryArgs"`
+}
+
+type RunChangePwdTaskDetail struct {
+	// 资产id
+	DeviceId *uint64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 资产账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+}
+
+// Predefined struct for user
+type RunChangePwdTaskRequestParams struct {
+	// 任务Id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 部门id
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 改密任务详情
+	Details []*RunChangePwdTaskDetail `json:"Details,omitnil,omitempty" name:"Details"`
+}
+
+type RunChangePwdTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 部门id
+	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 改密任务详情
+	Details []*RunChangePwdTaskDetail `json:"Details,omitnil,omitempty" name:"Details"`
+}
+
+func (r *RunChangePwdTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunChangePwdTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperationId")
+	delete(f, "DepartmentId")
+	delete(f, "Details")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunChangePwdTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunChangePwdTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunChangePwdTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RunChangePwdTaskResponseParams `json:"Response"`
+}
+
+func (r *RunChangePwdTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunChangePwdTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

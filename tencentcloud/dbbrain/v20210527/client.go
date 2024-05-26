@@ -1110,6 +1110,79 @@ func (c *Client) DeleteDBDiagReportTasksWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteRedisBigKeyAnalysisTasksRequest() (request *DeleteRedisBigKeyAnalysisTasksRequest) {
+    request = &DeleteRedisBigKeyAnalysisTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DeleteRedisBigKeyAnalysisTasks")
+    
+    
+    return
+}
+
+func NewDeleteRedisBigKeyAnalysisTasksResponse() (response *DeleteRedisBigKeyAnalysisTasksResponse) {
+    response = &DeleteRedisBigKeyAnalysisTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRedisBigKeyAnalysisTasks
+// 删除Redis实例的大key分析任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRedisBigKeyAnalysisTasks(request *DeleteRedisBigKeyAnalysisTasksRequest) (response *DeleteRedisBigKeyAnalysisTasksResponse, err error) {
+    return c.DeleteRedisBigKeyAnalysisTasksWithContext(context.Background(), request)
+}
+
+// DeleteRedisBigKeyAnalysisTasks
+// 删除Redis实例的大key分析任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRedisBigKeyAnalysisTasksWithContext(ctx context.Context, request *DeleteRedisBigKeyAnalysisTasksRequest) (response *DeleteRedisBigKeyAnalysisTasksResponse, err error) {
+    if request == nil {
+        request = NewDeleteRedisBigKeyAnalysisTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRedisBigKeyAnalysisTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRedisBigKeyAnalysisTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSecurityAuditLogExportTasksRequest() (request *DeleteSecurityAuditLogExportTasksRequest) {
     request = &DeleteSecurityAuditLogExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

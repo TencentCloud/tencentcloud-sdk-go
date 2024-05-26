@@ -3568,6 +3568,10 @@ type GooseFS struct {
 	// GooseFSx实例需要挂载的路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// GooseFS命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
 }
 
 type GpuDetail struct {

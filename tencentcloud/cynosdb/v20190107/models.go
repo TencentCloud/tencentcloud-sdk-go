@@ -217,6 +217,9 @@ type AddInstancesRequestParams struct {
 	// 新增只读实例数，取值范围为(0,15]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil,omitempty" name:"ReadOnlyCount"`
 
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
 	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
 	//
 	// Deprecated: InstanceGrpId is deprecated.
@@ -275,6 +278,9 @@ type AddInstancesRequest struct {
 	// 新增只读实例数，取值范围为(0,15]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil,omitempty" name:"ReadOnlyCount"`
 
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
 	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil,omitempty" name:"InstanceGrpId"`
 
@@ -332,6 +338,7 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "Memory")
 	delete(f, "ReadOnlyCount")
+	delete(f, "DeviceType")
 	delete(f, "InstanceGrpId")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
@@ -1287,6 +1294,14 @@ type ClusterInstanceDetail struct {
 	// serverless实例子状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
+
+	// 实例任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTasks []*ObjectTask `json:"InstanceTasks,omitnil,omitempty" name:"InstanceTasks"`
+
+	// 实例机器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceDeviceType *string `json:"InstanceDeviceType,omitnil,omitempty" name:"InstanceDeviceType"`
 }
 
 type ClusterParamModifyLog struct {
@@ -3393,6 +3408,10 @@ type CynosdbInstance struct {
 	// 当前实例支持的能力
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceAbility *InstanceAbility `json:"InstanceAbility,omitnil,omitempty" name:"InstanceAbility"`
+
+	// 实例机器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -6707,6 +6726,9 @@ type DescribeInstanceSpecsRequestParams struct {
 
 	// 是否需要返回可用区信息
 	IncludeZoneStocks *bool `json:"IncludeZoneStocks,omitnil,omitempty" name:"IncludeZoneStocks"`
+
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
 type DescribeInstanceSpecsRequest struct {
@@ -6718,6 +6740,9 @@ type DescribeInstanceSpecsRequest struct {
 
 	// 是否需要返回可用区信息
 	IncludeZoneStocks *bool `json:"IncludeZoneStocks,omitnil,omitempty" name:"IncludeZoneStocks"`
+
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
 func (r *DescribeInstanceSpecsRequest) ToJsonString() string {
@@ -6734,6 +6759,7 @@ func (r *DescribeInstanceSpecsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DbType")
 	delete(f, "IncludeZoneStocks")
+	delete(f, "DeviceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSpecsRequest has unknown keys!", "")
 	}
@@ -8698,6 +8724,9 @@ type InquirePriceCreateRequestParams struct {
 	// 存储购买类型，可选值为：PREPAID, POSTPAID
 	StoragePayMode *string `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
+	// 实例设备类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
 	// CPU核数，PREPAID与POSTPAID实例类型必传
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
@@ -8731,6 +8760,9 @@ type InquirePriceCreateRequest struct {
 
 	// 存储购买类型，可选值为：PREPAID, POSTPAID
 	StoragePayMode *string `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
+
+	// 实例设备类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// CPU核数，PREPAID与POSTPAID实例类型必传
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
@@ -8767,6 +8799,7 @@ func (r *InquirePriceCreateRequest) FromJsonString(s string) error {
 	delete(f, "GoodsNum")
 	delete(f, "InstancePayMode")
 	delete(f, "StoragePayMode")
+	delete(f, "DeviceType")
 	delete(f, "Cpu")
 	delete(f, "Memory")
 	delete(f, "Ccu")
@@ -9063,6 +9096,9 @@ type InstanceInitInfo struct {
 
 	// Serverless实例最大规格
 	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
+
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
 type InstanceNetInfo struct {
@@ -10663,6 +10699,14 @@ type ModifyInstanceData struct {
 
 	// 变配前存储上限
 	OldStorageLimit *int64 `json:"OldStorageLimit,omitnil,omitempty" name:"OldStorageLimit"`
+
+	// 变配前实例机器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldDeviceType *string `json:"OldDeviceType,omitnil,omitempty" name:"OldDeviceType"`
+
+	// 变配后实例机器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 升级方式。升级完成后切换或维护时间内切换
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
@@ -13406,17 +13450,26 @@ type RollbackToNewClusterRequestParams struct {
 	// 回档时，传入源集群ID，用于查找源poolId
 	OriginalClusterId *string `json:"OriginalClusterId,omitnil,omitempty" name:"OriginalClusterId"`
 
-	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
 	// 所属VPC网络ID
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 所属子网ID
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
+	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
+
+	// 时间点回档，指定时间；快照回档，快照时间
+	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
+
 	// 是否自动选择代金券 1是 0否 默认为0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 集群创建需要绑定的tag数组信息
+	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// Db类型
 	// 当DbType为MYSQL时可选(默认NORMAL)：
@@ -13451,23 +13504,17 @@ type RollbackToNewClusterRequestParams struct {
 	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
 	ClusterParams []*ParamItem `json:"ClusterParams,omitnil,omitempty" name:"ClusterParams"`
 
-	// 0-下单并支付 1-下单
-	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
-
 	// 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
-
-	// 集群创建需要绑定的tag数组信息
-	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
 
-	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
-	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
+	// 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 时间点回档，指定时间；快照回档，快照时间
-	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
+	// 计算节点付费模式：0-按量计费，1-预付费
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 }
 
 type RollbackToNewClusterRequest struct {
@@ -13479,17 +13526,26 @@ type RollbackToNewClusterRequest struct {
 	// 回档时，传入源集群ID，用于查找源poolId
 	OriginalClusterId *string `json:"OriginalClusterId,omitnil,omitempty" name:"OriginalClusterId"`
 
-	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
 	// 所属VPC网络ID
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 所属子网ID
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
+	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
+
+	// 时间点回档，指定时间；快照回档，快照时间
+	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
+
 	// 是否自动选择代金券 1是 0否 默认为0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 集群创建需要绑定的tag数组信息
+	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// Db类型
 	// 当DbType为MYSQL时可选(默认NORMAL)：
@@ -13524,23 +13580,17 @@ type RollbackToNewClusterRequest struct {
 	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
 	ClusterParams []*ParamItem `json:"ClusterParams,omitnil,omitempty" name:"ClusterParams"`
 
-	// 0-下单并支付 1-下单
-	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
-
 	// 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
-
-	// 集群创建需要绑定的tag数组信息
-	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
 
-	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
-	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
+	// 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 时间点回档，指定时间；快照回档，快照时间
-	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
+	// 计算节点付费模式：0-按量计费，1-预付费
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 }
 
 func (r *RollbackToNewClusterRequest) ToJsonString() string {
@@ -13557,10 +13607,13 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Zone")
 	delete(f, "OriginalClusterId")
-	delete(f, "ClusterName")
 	delete(f, "UniqVpcId")
 	delete(f, "UniqSubnetId")
+	delete(f, "ClusterName")
+	delete(f, "RollbackId")
+	delete(f, "ExpectTime")
 	delete(f, "AutoVoucher")
+	delete(f, "ResourceTags")
 	delete(f, "DbMode")
 	delete(f, "MinCpu")
 	delete(f, "MaxCpu")
@@ -13569,12 +13622,10 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroupIds")
 	delete(f, "AlarmPolicyIds")
 	delete(f, "ClusterParams")
-	delete(f, "DealMode")
 	delete(f, "ParamTemplateId")
-	delete(f, "ResourceTags")
 	delete(f, "InstanceInitInfos")
-	delete(f, "RollbackId")
-	delete(f, "ExpectTime")
+	delete(f, "DealMode")
+	delete(f, "PayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackToNewClusterRequest has unknown keys!", "")
 	}
@@ -14695,6 +14746,9 @@ type UpgradeInstanceRequestParams struct {
 	// 升级类型：upgradeImmediate，upgradeInMaintain
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
 	// 该参数已废弃
 	StorageLimit *uint64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
@@ -14728,6 +14782,9 @@ type UpgradeInstanceRequest struct {
 
 	// 升级类型：upgradeImmediate，upgradeInMaintain
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
+
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 该参数已废弃
 	StorageLimit *uint64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
@@ -14764,6 +14821,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "Memory")
 	delete(f, "UpgradeType")
+	delete(f, "DeviceType")
 	delete(f, "StorageLimit")
 	delete(f, "AutoVoucher")
 	delete(f, "DbType")

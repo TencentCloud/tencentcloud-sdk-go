@@ -45,6 +45,112 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActivateTWeCallLicenseRequest() (request *ActivateTWeCallLicenseRequest) {
+    request = &ActivateTWeCallLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ActivateTWeCallLicense")
+    
+    
+    return
+}
+
+func NewActivateTWeCallLicenseResponse() (response *ActivateTWeCallLicenseResponse) {
+    response = &ActivateTWeCallLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActivateTWeCallLicense
+// 激活
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ActivateTWeCallLicense(request *ActivateTWeCallLicenseRequest) (response *ActivateTWeCallLicenseResponse, err error) {
+    return c.ActivateTWeCallLicenseWithContext(context.Background(), request)
+}
+
+// ActivateTWeCallLicense
+// 激活
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ActivateTWeCallLicenseWithContext(ctx context.Context, request *ActivateTWeCallLicenseRequest) (response *ActivateTWeCallLicenseResponse, err error) {
+    if request == nil {
+        request = NewActivateTWeCallLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateTWeCallLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActivateTWeCallLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssignTWeCallLicenseRequest() (request *AssignTWeCallLicenseRequest) {
+    request = &AssignTWeCallLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "AssignTWeCallLicense")
+    
+    
+    return
+}
+
+func NewAssignTWeCallLicenseResponse() (response *AssignTWeCallLicenseResponse) {
+    response = &AssignTWeCallLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssignTWeCallLicense
+// 分配License
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssignTWeCallLicense(request *AssignTWeCallLicenseRequest) (response *AssignTWeCallLicenseResponse, err error) {
+    return c.AssignTWeCallLicenseWithContext(context.Background(), request)
+}
+
+// AssignTWeCallLicense
+// 分配License
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssignTWeCallLicenseWithContext(ctx context.Context, request *AssignTWeCallLicenseRequest) (response *AssignTWeCallLicenseResponse, err error) {
+    if request == nil {
+        request = NewAssignTWeCallLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignTWeCallLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssignTWeCallLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
     request = &BindCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -382,6 +488,59 @@ func (c *Client) CallDeviceActionSyncWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCallDeviceActionSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelAssignTWeCallLicenseRequest() (request *CancelAssignTWeCallLicenseRequest) {
+    request = &CancelAssignTWeCallLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CancelAssignTWeCallLicense")
+    
+    
+    return
+}
+
+func NewCancelAssignTWeCallLicenseResponse() (response *CancelAssignTWeCallLicenseResponse) {
+    response = &CancelAssignTWeCallLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelAssignTWeCallLicense
+// 取消分配
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelAssignTWeCallLicense(request *CancelAssignTWeCallLicenseRequest) (response *CancelAssignTWeCallLicenseResponse, err error) {
+    return c.CancelAssignTWeCallLicenseWithContext(context.Background(), request)
+}
+
+// CancelAssignTWeCallLicense
+// 取消分配
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelAssignTWeCallLicenseWithContext(ctx context.Context, request *CancelAssignTWeCallLicenseRequest) (response *CancelAssignTWeCallLicenseResponse, err error) {
+    if request == nil {
+        request = NewCancelAssignTWeCallLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelAssignTWeCallLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelAssignTWeCallLicenseResponse()
     err = c.Send(request, response)
     return
 }
@@ -5230,6 +5389,59 @@ func (c *Client) GenerateSignedVideoURLWithContext(ctx context.Context, request 
     return
 }
 
+func NewGetAuthMiniProgramAppListRequest() (request *GetAuthMiniProgramAppListRequest) {
+    request = &GetAuthMiniProgramAppListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetAuthMiniProgramAppList")
+    
+    
+    return
+}
+
+func NewGetAuthMiniProgramAppListResponse() (response *GetAuthMiniProgramAppListResponse) {
+    response = &GetAuthMiniProgramAppListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetAuthMiniProgramAppList
+// 查询小程序列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetAuthMiniProgramAppList(request *GetAuthMiniProgramAppListRequest) (response *GetAuthMiniProgramAppListResponse, err error) {
+    return c.GetAuthMiniProgramAppListWithContext(context.Background(), request)
+}
+
+// GetAuthMiniProgramAppList
+// 查询小程序列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetAuthMiniProgramAppListWithContext(ctx context.Context, request *GetAuthMiniProgramAppListRequest) (response *GetAuthMiniProgramAppListResponse, err error) {
+    if request == nil {
+        request = NewGetAuthMiniProgramAppListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAuthMiniProgramAppList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAuthMiniProgramAppListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetBatchProductionsListRequest() (request *GetBatchProductionsListRequest) {
     request = &GetBatchProductionsListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5899,6 +6111,112 @@ func (c *Client) GetStudioProductListWithContext(ctx context.Context, request *G
     request.SetContext(ctx)
     
     response = NewGetStudioProductListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTWeCallActiveStatusRequest() (request *GetTWeCallActiveStatusRequest) {
+    request = &GetTWeCallActiveStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeCallActiveStatus")
+    
+    
+    return
+}
+
+func NewGetTWeCallActiveStatusResponse() (response *GetTWeCallActiveStatusResponse) {
+    response = &GetTWeCallActiveStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTWeCallActiveStatus
+// 查询激活状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTWeCallActiveStatus(request *GetTWeCallActiveStatusRequest) (response *GetTWeCallActiveStatusResponse, err error) {
+    return c.GetTWeCallActiveStatusWithContext(context.Background(), request)
+}
+
+// GetTWeCallActiveStatus
+// 查询激活状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTWeCallActiveStatusWithContext(ctx context.Context, request *GetTWeCallActiveStatusRequest) (response *GetTWeCallActiveStatusResponse, err error) {
+    if request == nil {
+        request = NewGetTWeCallActiveStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTWeCallActiveStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTWeCallActiveStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTWeCallPkgListRequest() (request *GetTWeCallPkgListRequest) {
+    request = &GetTWeCallPkgListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeCallPkgList")
+    
+    
+    return
+}
+
+func NewGetTWeCallPkgListResponse() (response *GetTWeCallPkgListResponse) {
+    response = &GetTWeCallPkgListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTWeCallPkgList
+// 查询TWeCall包列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTWeCallPkgList(request *GetTWeCallPkgListRequest) (response *GetTWeCallPkgListResponse, err error) {
+    return c.GetTWeCallPkgListWithContext(context.Background(), request)
+}
+
+// GetTWeCallPkgList
+// 查询TWeCall包列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTWeCallPkgListWithContext(ctx context.Context, request *GetTWeCallPkgListRequest) (response *GetTWeCallPkgListResponse, err error) {
+    if request == nil {
+        request = NewGetTWeCallPkgListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTWeCallPkgList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTWeCallPkgListResponse()
     err = c.Send(request, response)
     return
 }

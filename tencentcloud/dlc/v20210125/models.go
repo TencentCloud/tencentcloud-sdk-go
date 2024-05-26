@@ -9980,6 +9980,70 @@ func (r *ListTaskJobLogDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListTaskJobLogNameRequestParams struct {
+	// 查询的taskId
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// SparkSQL批任务唯一ID
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+}
+
+type ListTaskJobLogNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的taskId
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// SparkSQL批任务唯一ID
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+}
+
+func (r *ListTaskJobLogNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTaskJobLogNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTaskJobLogNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTaskJobLogNameResponseParams struct {
+	// 日志名称列表
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTaskJobLogNameResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTaskJobLogNameResponseParams `json:"Response"`
+}
+
+func (r *ListTaskJobLogNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTaskJobLogNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LockComponentInfo struct {
 	// 数据库名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`

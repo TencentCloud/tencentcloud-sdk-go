@@ -6755,6 +6755,67 @@ func (c *Client) ListTaskJobLogDetailWithContext(ctx context.Context, request *L
     return
 }
 
+func NewListTaskJobLogNameRequest() (request *ListTaskJobLogNameRequest) {
+    request = &ListTaskJobLogNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListTaskJobLogName")
+    
+    
+    return
+}
+
+func NewListTaskJobLogNameResponse() (response *ListTaskJobLogNameResponse) {
+    response = &ListTaskJobLogNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTaskJobLogName
+// 本接口（ListTaskJobLogName）用于获取spark-jar日志名称列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+func (c *Client) ListTaskJobLogName(request *ListTaskJobLogNameRequest) (response *ListTaskJobLogNameResponse, err error) {
+    return c.ListTaskJobLogNameWithContext(context.Background(), request)
+}
+
+// ListTaskJobLogName
+// 本接口（ListTaskJobLogName）用于获取spark-jar日志名称列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+func (c *Client) ListTaskJobLogNameWithContext(ctx context.Context, request *ListTaskJobLogNameRequest) (response *ListTaskJobLogNameResponse, err error) {
+    if request == nil {
+        request = NewListTaskJobLogNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTaskJobLogName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTaskJobLogNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLockMetaDataRequest() (request *LockMetaDataRequest) {
     request = &LockMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

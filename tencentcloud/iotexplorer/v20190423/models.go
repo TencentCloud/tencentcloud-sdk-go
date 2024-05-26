@@ -20,6 +20,74 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type ActivateTWeCallLicenseRequestParams struct {
+	// voip类型
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type ActivateTWeCallLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// voip类型
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *ActivateTWeCallLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateTWeCallLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PkgType")
+	delete(f, "MiniProgramAppId")
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateTWeCallLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateTWeCallLicenseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateTWeCallLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateTWeCallLicenseResponseParams `json:"Response"`
+}
+
+func (r *ActivateTWeCallLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateTWeCallLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AppDeviceInfo struct {
 	// 产品ID/设备名
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -50,6 +118,100 @@ type AppDeviceInfo struct {
 
 	// 更新时间
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+// Predefined struct for user
+type AssignTWeCallLicenseRequestParams struct {
+	// voip类型
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// License数
+	DeductNum *int64 `json:"DeductNum,omitnil,omitempty" name:"DeductNum"`
+}
+
+type AssignTWeCallLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// voip类型
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// License数
+	DeductNum *int64 `json:"DeductNum,omitnil,omitempty" name:"DeductNum"`
+}
+
+func (r *AssignTWeCallLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignTWeCallLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PkgType")
+	delete(f, "MiniProgramAppId")
+	delete(f, "DeductNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignTWeCallLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignTWeCallLicenseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssignTWeCallLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *AssignTWeCallLicenseResponseParams `json:"Response"`
+}
+
+func (r *AssignTWeCallLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignTWeCallLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AuthMiniProgramAppInfo struct {
+	// 小程序APPID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 小程序名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniProgramName *string `json:"MiniProgramName,omitnil,omitempty" name:"MiniProgramName"`
+
+	// 激活码数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseNum *int64 `json:"LicenseNum,omitnil,omitempty" name:"LicenseNum"`
+
+	// 应用ID 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IotAppId *string `json:"IotAppId,omitnil,omitempty" name:"IotAppId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IotAppName *string `json:"IotAppName,omitnil,omitempty" name:"IotAppName"`
 }
 
 type BatchProductionInfo struct {
@@ -480,6 +642,60 @@ func (r *CallDeviceActionSyncResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelAssignTWeCallLicenseRequestParams struct {
+	// 订单号
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+}
+
+type CancelAssignTWeCallLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订单号
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+}
+
+func (r *CancelAssignTWeCallLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAssignTWeCallLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PkgId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelAssignTWeCallLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelAssignTWeCallLicenseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelAssignTWeCallLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelAssignTWeCallLicenseResponseParams `json:"Response"`
+}
+
+func (r *CancelAssignTWeCallLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAssignTWeCallLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6887,6 +7103,80 @@ func (r *GenerateSignedVideoURLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetAuthMiniProgramAppListRequestParams struct {
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type GetAuthMiniProgramAppListRequest struct {
+	*tchttp.BaseRequest
+	
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *GetAuthMiniProgramAppListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAuthMiniProgramAppListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MiniProgramAppId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAuthMiniProgramAppListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAuthMiniProgramAppListResponseParams struct {
+	// 小程序列表
+	MiniProgramList []*AuthMiniProgramAppInfo `json:"MiniProgramList,omitnil,omitempty" name:"MiniProgramList"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetAuthMiniProgramAppListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAuthMiniProgramAppListResponseParams `json:"Response"`
+}
+
+func (r *GetAuthMiniProgramAppListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAuthMiniProgramAppListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetBatchProductionsListRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -7780,6 +8070,158 @@ func (r *GetStudioProductListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetStudioProductListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeCallActiveStatusRequestParams struct {
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type GetTWeCallActiveStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *GetTWeCallActiveStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeCallActiveStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MiniProgramAppId")
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeCallActiveStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeCallActiveStatusResponseParams struct {
+	// 激活状态
+	TWeCallActiveInfos []*TWeCallActiveInfo `json:"TWeCallActiveInfos,omitnil,omitempty" name:"TWeCallActiveInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTWeCallActiveStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTWeCallActiveStatusResponseParams `json:"Response"`
+}
+
+func (r *GetTWeCallActiveStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeCallActiveStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeCallPkgListRequestParams struct {
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 类型
+	PkgType []*int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// 状态
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数据大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type GetTWeCallPkgListRequest struct {
+	*tchttp.BaseRequest
+	
+	// appId
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
+
+	// 类型
+	PkgType []*int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// 状态
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数据大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *GetTWeCallPkgListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeCallPkgListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MiniProgramAppId")
+	delete(f, "PkgType")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeCallPkgListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeCallPkgListResponseParams struct {
+	// 激活状态
+	TWeCallPkgList []*TWeCallPkgInfo `json:"TWeCallPkgList,omitnil,omitempty" name:"TWeCallPkgList"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTWeCallPkgListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTWeCallPkgListResponseParams `json:"Response"`
+}
+
+func (r *GetTWeCallPkgListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeCallPkgListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10512,6 +10954,64 @@ type TRTCParams struct {
 
 	// TRTC入参: 校验TRTC的KEY
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+}
+
+type TWeCallActiveInfo struct {
+	// 小程序ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// Sn信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type TWeCallInfo struct {
+	// 小程序ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// Sn信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
+
+	// 激活数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveNum *int64 `json:"ActiveNum,omitnil,omitempty" name:"ActiveNum"`
+}
+
+type TWeCallPkgInfo struct {
+	// 包ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 包类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// 生效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 已使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseUsedNum *int64 `json:"LicenseUsedNum,omitnil,omitempty" name:"LicenseUsedNum"`
+
+	// 总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseTotalNum *int64 `json:"LicenseTotalNum,omitnil,omitempty" name:"LicenseTotalNum"`
 }
 
 type ThumbnailURLInfoList struct {

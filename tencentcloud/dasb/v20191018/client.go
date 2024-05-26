@@ -520,6 +520,93 @@ func (c *Client) CreateAssetSyncJobWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateChangePwdTaskRequest() (request *CreateChangePwdTaskRequest) {
+    request = &CreateChangePwdTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "CreateChangePwdTask")
+    
+    
+    return
+}
+
+func NewCreateChangePwdTaskResponse() (response *CreateChangePwdTaskResponse) {
+    response = &CreateChangePwdTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateChangePwdTask
+// 创建修改密码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateChangePwdTask(request *CreateChangePwdTaskRequest) (response *CreateChangePwdTaskResponse, err error) {
+    return c.CreateChangePwdTaskWithContext(context.Background(), request)
+}
+
+// CreateChangePwdTask
+// 创建修改密码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateChangePwdTaskWithContext(ctx context.Context, request *CreateChangePwdTaskRequest) (response *CreateChangePwdTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateChangePwdTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChangePwdTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateChangePwdTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCmdTemplateRequest() (request *CreateCmdTemplateRequest) {
     request = &CreateCmdTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1017,6 +1104,55 @@ func (c *Client) DeleteAclsWithContext(ctx context.Context, request *DeleteAclsR
     request.SetContext(ctx)
     
     response = NewDeleteAclsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteChangePwdTaskRequest() (request *DeleteChangePwdTaskRequest) {
+    request = &DeleteChangePwdTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DeleteChangePwdTask")
+    
+    
+    return
+}
+
+func NewDeleteChangePwdTaskResponse() (response *DeleteChangePwdTaskResponse) {
+    response = &DeleteChangePwdTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteChangePwdTask
+// 删除改密任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+func (c *Client) DeleteChangePwdTask(request *DeleteChangePwdTaskRequest) (response *DeleteChangePwdTaskResponse, err error) {
+    return c.DeleteChangePwdTaskWithContext(context.Background(), request)
+}
+
+// DeleteChangePwdTask
+// 删除改密任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+func (c *Client) DeleteChangePwdTaskWithContext(ctx context.Context, request *DeleteChangePwdTaskRequest) (response *DeleteChangePwdTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteChangePwdTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteChangePwdTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteChangePwdTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1642,6 +1778,106 @@ func (c *Client) DescribeAssetSyncStatusWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeAssetSyncStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeChangePwdTaskRequest() (request *DescribeChangePwdTaskRequest) {
+    request = &DescribeChangePwdTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeChangePwdTask")
+    
+    
+    return
+}
+
+func NewDescribeChangePwdTaskResponse() (response *DescribeChangePwdTaskResponse) {
+    response = &DescribeChangePwdTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChangePwdTask
+// 查询改密任务列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChangePwdTask(request *DescribeChangePwdTaskRequest) (response *DescribeChangePwdTaskResponse, err error) {
+    return c.DescribeChangePwdTaskWithContext(context.Background(), request)
+}
+
+// DescribeChangePwdTask
+// 查询改密任务列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChangePwdTaskWithContext(ctx context.Context, request *DescribeChangePwdTaskRequest) (response *DescribeChangePwdTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeChangePwdTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChangePwdTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChangePwdTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeChangePwdTaskDetailRequest() (request *DescribeChangePwdTaskDetailRequest) {
+    request = &DescribeChangePwdTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeChangePwdTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeChangePwdTaskDetailResponse() (response *DescribeChangePwdTaskDetailResponse) {
+    response = &DescribeChangePwdTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChangePwdTaskDetail
+// 查询改密任务详情
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChangePwdTaskDetail(request *DescribeChangePwdTaskDetailRequest) (response *DescribeChangePwdTaskDetailResponse, err error) {
+    return c.DescribeChangePwdTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeChangePwdTaskDetail
+// 查询改密任务详情
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChangePwdTaskDetailWithContext(ctx context.Context, request *DescribeChangePwdTaskDetailRequest) (response *DescribeChangePwdTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeChangePwdTaskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChangePwdTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChangePwdTaskDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -2484,6 +2720,83 @@ func (c *Client) ModifyAclWithContext(ctx context.Context, request *ModifyAclReq
     return
 }
 
+func NewModifyChangePwdTaskRequest() (request *ModifyChangePwdTaskRequest) {
+    request = &ModifyChangePwdTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ModifyChangePwdTask")
+    
+    
+    return
+}
+
+func NewModifyChangePwdTaskResponse() (response *ModifyChangePwdTaskResponse) {
+    response = &ModifyChangePwdTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyChangePwdTask
+// 更新修改密码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyChangePwdTask(request *ModifyChangePwdTaskRequest) (response *ModifyChangePwdTaskResponse, err error) {
+    return c.ModifyChangePwdTaskWithContext(context.Background(), request)
+}
+
+// ModifyChangePwdTask
+// 更新修改密码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyChangePwdTaskWithContext(ctx context.Context, request *ModifyChangePwdTaskRequest) (response *ModifyChangePwdTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyChangePwdTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyChangePwdTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyChangePwdTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCmdTemplateRequest() (request *ModifyCmdTemplateRequest) {
     request = &ModifyCmdTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3218,6 +3531,57 @@ func (c *Client) ResetUserWithContext(ctx context.Context, request *ResetUserReq
     request.SetContext(ctx)
     
     response = NewResetUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunChangePwdTaskRequest() (request *RunChangePwdTaskRequest) {
+    request = &RunChangePwdTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "RunChangePwdTask")
+    
+    
+    return
+}
+
+func NewRunChangePwdTaskResponse() (response *RunChangePwdTaskResponse) {
+    response = &RunChangePwdTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RunChangePwdTask
+// 执行改密任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) RunChangePwdTask(request *RunChangePwdTaskRequest) (response *RunChangePwdTaskResponse, err error) {
+    return c.RunChangePwdTaskWithContext(context.Background(), request)
+}
+
+// RunChangePwdTask
+// 执行改密任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) RunChangePwdTaskWithContext(ctx context.Context, request *RunChangePwdTaskRequest) (response *RunChangePwdTaskResponse, err error) {
+    if request == nil {
+        request = NewRunChangePwdTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunChangePwdTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunChangePwdTaskResponse()
     err = c.Send(request, response)
     return
 }

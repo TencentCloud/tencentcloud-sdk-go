@@ -10393,6 +10393,10 @@ type DspaInstance struct {
 	// 1: 开启自动续费
 	// 2: 明确不自动续费
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 实例渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
 type DspaRDBDataAssetCount struct {
