@@ -1183,6 +1183,69 @@ func (r *GetDevicesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetFlowAlarmInfoRequestParams struct {
+
+}
+
+type GetFlowAlarmInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetFlowAlarmInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowAlarmInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowAlarmInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowAlarmInfoResponseParams struct {
+	// 流量包的告警阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmValue *int64 `json:"AlarmValue,omitnil,omitempty" name:"AlarmValue"`
+
+	// 告警通知回调url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
+
+	// 告警通知回调key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFlowAlarmInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFlowAlarmInfoResponseParams `json:"Response"`
+}
+
+func (r *GetFlowAlarmInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowAlarmInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetFlowPackagesRequestParams struct {
 	// 页码，从1开始
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
@@ -1267,6 +1330,114 @@ func (r *GetFlowPackagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFlowPackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowStatisticByGroupRequestParams struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 开始查找时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+type GetFlowStatisticByGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 开始查找时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+func (r *GetFlowStatisticByGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowStatisticByGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "TimeGranularity")
+	delete(f, "AccessRegion")
+	delete(f, "GatewayType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowStatisticByGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowStatisticByGroupResponseParams struct {
+	// 流量详细信息
+	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
+
+	// 查找时间段流量使用最大值（单位：byte）
+	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
+
+	// 查找时间段流量使用平均值（单位：byte）
+	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
+
+	// 查找时间段流量使用总量（单位：byte）
+	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFlowStatisticByGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFlowStatisticByGroupResponseParams `json:"Response"`
+}
+
+func (r *GetFlowStatisticByGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowStatisticByGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

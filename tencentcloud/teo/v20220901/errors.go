@@ -746,6 +746,9 @@ const (
 	// 本次提交的资源数超过上限。
 	LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
 
+	// 实时日志自定义字段正则类型字段数量超过限制
+	LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = "LimitExceeded.CustomLogFieldRegexLimitExceeded"
+
 	// 当天提交的资源数超过上限。
 	LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
 
@@ -836,6 +839,12 @@ const (
 	// 开启高防必须保证站点加速区域是国内。
 	OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = "OperationDenied.InvalidAdvancedDefenseZoneArea"
 
+	// 独立DDoS防护与IPv6冲突，不能同时配置。
+	OPERATIONDENIED_IPV6ADVANCEDCONFLICT = "OperationDenied.Ipv6AdvancedConflict"
+
+	// ipv6功能和固定ip无法同时开启。
+	OPERATIONDENIED_IPV6STATICIPCONFLICT = "OperationDenied.Ipv6StaticIpConflict"
+
 	// 四层实例资源售卖火爆，已售罄，正在加紧补货中，当前无法新增四层代理，请您耐心等待。
 	OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
 
@@ -868,6 +877,9 @@ const (
 
 	// 站点状态不支持操作负载均衡。
 	OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = "OperationDenied.LoadBalancingZoneIsNotActive"
+
+	// 非海外独立防护，不能开启ipv6。
+	OPERATIONDENIED_MSGIPV6ADVANCEDCONFLICT = "OperationDenied.MsgIpv6AdvancedConflict"
 
 	// 已存在多个Cname接入站点，不允许切换至NS。
 	OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
@@ -934,6 +946,9 @@ const (
 
 	// 绑定在共享 CNAME 中的域名不允许变更 IPv6 访问，如果您需要单独变更，请先将域名从共享 CNAME 中解绑。
 	OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = "OperationDenied.SharedCNAMEUnsupportedIPv6"
+
+	// 该实例地域无法开启固定IP。
+	OPERATIONDENIED_STATICIPAREACONFLICT = "OperationDenied.StaticIpAreaConflict"
 
 	// 存在使用中的测试版本，请将测试版本发布现网或者回滚测试版本再重试。
 	OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"

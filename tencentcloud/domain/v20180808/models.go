@@ -20,6 +20,24 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AuctionInfo struct {
+	// 竞拍人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bidder *string `json:"Bidder,omitnil,omitempty" name:"Bidder"`
+
+	// 竞拍时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuctionTime *string `json:"AuctionTime,omitnil,omitempty" name:"AuctionTime"`
+
+	// 竞拍价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuctionPrice *float64 `json:"AuctionPrice,omitnil,omitempty" name:"AuctionPrice"`
+
+	// 状态 up: 领先 down: 落后
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type BatchModifyDomainInfoRequestParams struct {
 	// 批量修改的域名。
@@ -107,6 +125,84 @@ type BatchStatus struct {
 }
 
 // Predefined struct for user
+type BidDetailPageRequestParams struct {
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+type BidDetailPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+func (r *BidDetailPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BidDetailPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BidDetailPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BidDetailPageResponseParams struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 当前域名价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentPrice *float64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
+
+	// 用户上次出价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BidPrice *float64 `json:"BidPrice,omitnil,omitempty" name:"BidPrice"`
+
+	// 当前加价幅度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentPriceScope *float64 `json:"CurrentPriceScope,omitnil,omitempty" name:"CurrentPriceScope"`
+
+	// 加价幅度区间配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceScope []*PriceScopeConf `json:"PriceScope,omitnil,omitempty" name:"PriceScope"`
+
+	// 用户当前已经支付了的保证金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DepositPrice *float64 `json:"DepositPrice,omitnil,omitempty" name:"DepositPrice"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BidDetailPageResponse struct {
+	*tchttp.BaseResponse
+	Response *BidDetailPageResponseParams `json:"Response"`
+}
+
+func (r *BidDetailPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BidDetailPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BidPreDomainsRequestParams struct {
 	// 业务ID
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
@@ -164,6 +260,73 @@ func (r *BidPreDomainsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BidPreDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BiddingPreReleaseRequestParams struct {
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 价格
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+}
+
+type BiddingPreReleaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 价格
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+}
+
+func (r *BiddingPreReleaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BiddingPreReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	delete(f, "Price")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BiddingPreReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BiddingPreReleaseResponseParams struct {
+	// 是否需要额外支付
+	IsNeedPay *bool `json:"IsNeedPay,omitnil,omitempty" name:"IsNeedPay"`
+
+	// 计费请求参数，以Json字符串的形式进行返回。
+	BillingParam *string `json:"BillingParam,omitnil,omitempty" name:"BillingParam"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BiddingPreReleaseResponse struct {
+	*tchttp.BaseResponse
+	Response *BiddingPreReleaseResponseParams `json:"Response"`
+}
+
+func (r *BiddingPreReleaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BiddingPreReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -859,6 +1022,57 @@ type CustomDnsHost struct {
 }
 
 // Predefined struct for user
+type DeleteBiddingRequestParams struct {
+
+}
+
+type DeleteBiddingRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteBiddingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBiddingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBiddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBiddingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBiddingResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBiddingResponseParams `json:"Response"`
+}
+
+func (r *DeleteBiddingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBiddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCustomDnsHostRequestParams struct {
 	// 域名实例ID
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
@@ -1092,6 +1306,82 @@ func (r *DeleteTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAuctionListRequestParams struct {
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 条数，默认10条
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	OffSet *int64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
+}
+
+type DescribeAuctionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 条数，默认10条
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	OffSet *int64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
+}
+
+func (r *DescribeAuctionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuctionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	delete(f, "Limit")
+	delete(f, "OffSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuctionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuctionListResponseParams struct {
+	// 竞拍详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuctionList []*AuctionInfo `json:"AuctionList,omitnil,omitempty" name:"AuctionList"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuctionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuctionListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuctionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuctionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBatchOperationLogDetailsRequestParams struct {
 	// 日志ID。
 	LogId *int64 `json:"LogId,omitnil,omitempty" name:"LogId"`
@@ -1231,6 +1521,399 @@ func (r *DescribeBatchOperationLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingAppointDetailRequestParams struct {
+
+}
+
+type DescribeBiddingAppointDetailRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBiddingAppointDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingAppointDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingAppointDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingAppointDetailResponseParams struct {
+	//  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 预约保证金是否已经退回
+	// yes：退回 no: 未退回
+	BiddingBondRefund *string `json:"BiddingBondRefund,omitnil,omitempty" name:"BiddingBondRefund"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBiddingAppointDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBiddingAppointDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBiddingAppointDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingAppointDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingAppointListRequestParams struct {
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 状态： 1 已预约 9 预约持有者索回
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序字段：AppointEndTime 预约结束时间
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序规则：asc升序，desc降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeBiddingAppointListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 状态： 1 已预约 9 预约持有者索回
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序字段：AppointEndTime 预约结束时间
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序规则：asc升序，desc降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeBiddingAppointListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingAppointListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "Status")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingAppointListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingAppointListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBiddingAppointListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBiddingAppointListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBiddingAppointListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingAppointListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingDetailRequestParams struct {
+
+}
+
+type DescribeBiddingDetailRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBiddingDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingDetailResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBiddingDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBiddingDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBiddingDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingListRequestParams struct {
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序字段：BiddingEndTime 竞价结束时间	
+	// BiddingPrice 我的价格
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序规则：asc升序，desc降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeBiddingListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序字段：BiddingEndTime 竞价结束时间	
+	// BiddingPrice 我的价格
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序规则：asc升序，desc降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeBiddingListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "Status")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBiddingListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBiddingListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBiddingListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingSuccessfulDetailRequestParams struct {
+
+}
+
+type DescribeBiddingSuccessfulDetailRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBiddingSuccessfulDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingSuccessfulDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingSuccessfulDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingSuccessfulDetailResponseParams struct {
+	// 保证金，是否退款，yes表示退款，no表示不退款
+	BiddingBondRefund *string `json:"BiddingBondRefund,omitnil,omitempty" name:"BiddingBondRefund"`
+
+	// 状态：1 竞价中，2 待出价，3 竞价失败， 4 等待支付 5 等待转移， 6 转移中，7 交易成功，8 持有者索回，9 已违约
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBiddingSuccessfulDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBiddingSuccessfulDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBiddingSuccessfulDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingSuccessfulDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingSuccessfulListRequestParams struct {
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序字段：SuccessfulTime 预约结束时间
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序规则：asc升序，desc降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeBiddingSuccessfulListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序字段：SuccessfulTime 预约结束时间
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序规则：asc升序，desc降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeBiddingSuccessfulListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingSuccessfulListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "Status")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingSuccessfulListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBiddingSuccessfulListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBiddingSuccessfulListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBiddingSuccessfulListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBiddingSuccessfulListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBiddingSuccessfulListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1570,6 +2253,78 @@ func (r *DescribeDomainSimpleInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePayWaitDetailRequestParams struct {
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+type DescribePayWaitDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+func (r *DescribePayWaitDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePayWaitDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePayWaitDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePayWaitDetailResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名类型
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 支付结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 域名注册时间
+	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
+
+	// 域名成交价格
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 待退还保证金
+	RetDeposit *float64 `json:"RetDeposit,omitnil,omitempty" name:"RetDeposit"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePayWaitDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePayWaitDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribePayWaitDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePayWaitDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePhoneEmailListRequestParams struct {
 	// 0：所有类型  1：手机  2：邮箱，默认0
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
@@ -1651,6 +2406,75 @@ func (r *DescribePhoneEmailListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePreAuctionListRequestParams struct {
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribePreAuctionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribePreAuctionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreAuctionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreAuctionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreAuctionListResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 预释放竞价列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreAuctionList []*PreAuctionInfo `json:"PreAuctionList,omitnil,omitempty" name:"PreAuctionList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePreAuctionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePreAuctionListResponseParams `json:"Response"`
+}
+
+func (r *DescribePreAuctionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreAuctionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePreDomainListRequestParams struct {
 	// 页码
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
@@ -1728,6 +2552,215 @@ func (r *DescribePreDomainListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePreDomainListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreReleaseListRequestParams struct {
+	// 关键词
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 搜索关键字，开头
+	DomainStart *bool `json:"DomainStart,omitnil,omitempty" name:"DomainStart"`
+
+	// 搜索关键字结尾
+	DomainEnd *bool `json:"DomainEnd,omitnil,omitempty" name:"DomainEnd"`
+
+	// 排序
+	Sort *int64 `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 起始价格
+	PriceStart *float64 `json:"PriceStart,omitnil,omitempty" name:"PriceStart"`
+
+	// 结束价格
+	PriceEnd *float64 `json:"PriceEnd,omitnil,omitempty" name:"PriceEnd"`
+
+	// 起始域名长度
+	LengthStart *int64 `json:"LengthStart,omitnil,omitempty" name:"LengthStart"`
+
+	// 结束域名长度
+	LengthEnd *int64 `json:"LengthEnd,omitnil,omitempty" name:"LengthEnd"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 没页显示数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 后缀
+	Suffix []*int64 `json:"Suffix,omitnil,omitempty" name:"Suffix"`
+
+	// 一级分类
+	ClassOne *int64 `json:"ClassOne,omitnil,omitempty" name:"ClassOne"`
+
+	// 二级分类
+	ClassTwo []*int64 `json:"ClassTwo,omitnil,omitempty" name:"ClassTwo"`
+
+	// 三级分类
+	ClassThree []*int64 `json:"ClassThree,omitnil,omitempty" name:"ClassThree"`
+
+	// 四级分类
+	ClassFour []*int64 `json:"ClassFour,omitnil,omitempty" name:"ClassFour"`
+
+	// 排除关键字，开头
+	FilterStart *bool `json:"FilterStart,omitnil,omitempty" name:"FilterStart"`
+
+	// 排除关键字，结尾
+	FilterEnd *bool `json:"FilterEnd,omitnil,omitempty" name:"FilterEnd"`
+
+	// 排除关键字
+	FilterWords *string `json:"FilterWords,omitnil,omitempty" name:"FilterWords"`
+
+	// 交易类型
+	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
+
+	// 搜索白金域名
+	IsTop *bool `json:"IsTop,omitnil,omitempty" name:"IsTop"`
+
+	// 结束时间排序啊 desc:倒序 asc:正序
+	EndTimeSort *string `json:"EndTimeSort,omitnil,omitempty" name:"EndTimeSort"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribePreReleaseListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关键词
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 搜索关键字，开头
+	DomainStart *bool `json:"DomainStart,omitnil,omitempty" name:"DomainStart"`
+
+	// 搜索关键字结尾
+	DomainEnd *bool `json:"DomainEnd,omitnil,omitempty" name:"DomainEnd"`
+
+	// 排序
+	Sort *int64 `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 起始价格
+	PriceStart *float64 `json:"PriceStart,omitnil,omitempty" name:"PriceStart"`
+
+	// 结束价格
+	PriceEnd *float64 `json:"PriceEnd,omitnil,omitempty" name:"PriceEnd"`
+
+	// 起始域名长度
+	LengthStart *int64 `json:"LengthStart,omitnil,omitempty" name:"LengthStart"`
+
+	// 结束域名长度
+	LengthEnd *int64 `json:"LengthEnd,omitnil,omitempty" name:"LengthEnd"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 没页显示数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 后缀
+	Suffix []*int64 `json:"Suffix,omitnil,omitempty" name:"Suffix"`
+
+	// 一级分类
+	ClassOne *int64 `json:"ClassOne,omitnil,omitempty" name:"ClassOne"`
+
+	// 二级分类
+	ClassTwo []*int64 `json:"ClassTwo,omitnil,omitempty" name:"ClassTwo"`
+
+	// 三级分类
+	ClassThree []*int64 `json:"ClassThree,omitnil,omitempty" name:"ClassThree"`
+
+	// 四级分类
+	ClassFour []*int64 `json:"ClassFour,omitnil,omitempty" name:"ClassFour"`
+
+	// 排除关键字，开头
+	FilterStart *bool `json:"FilterStart,omitnil,omitempty" name:"FilterStart"`
+
+	// 排除关键字，结尾
+	FilterEnd *bool `json:"FilterEnd,omitnil,omitempty" name:"FilterEnd"`
+
+	// 排除关键字
+	FilterWords *string `json:"FilterWords,omitnil,omitempty" name:"FilterWords"`
+
+	// 交易类型
+	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
+
+	// 搜索白金域名
+	IsTop *bool `json:"IsTop,omitnil,omitempty" name:"IsTop"`
+
+	// 结束时间排序啊 desc:倒序 asc:正序
+	EndTimeSort *string `json:"EndTimeSort,omitnil,omitempty" name:"EndTimeSort"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribePreReleaseListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreReleaseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Keywords")
+	delete(f, "DomainStart")
+	delete(f, "DomainEnd")
+	delete(f, "Sort")
+	delete(f, "PriceStart")
+	delete(f, "PriceEnd")
+	delete(f, "LengthStart")
+	delete(f, "LengthEnd")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Suffix")
+	delete(f, "ClassOne")
+	delete(f, "ClassTwo")
+	delete(f, "ClassThree")
+	delete(f, "ClassFour")
+	delete(f, "FilterStart")
+	delete(f, "FilterEnd")
+	delete(f, "FilterWords")
+	delete(f, "TransType")
+	delete(f, "IsTop")
+	delete(f, "EndTimeSort")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreReleaseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreReleaseListResponseParams struct {
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 预释放列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreReleaseList []*PreReleaseInfo `json:"PreReleaseList,omitnil,omitempty" name:"PreReleaseList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePreReleaseListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePreReleaseListResponseParams `json:"Response"`
+}
+
+func (r *DescribePreReleaseListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreReleaseListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2094,6 +3127,93 @@ func (r *DescribeTldListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTldListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUnPreDomainDetailRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DescribeUnPreDomainDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DescribeUnPreDomainDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnPreDomainDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUnPreDomainDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUnPreDomainDetailResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 预约人数
+	PreCount *int64 `json:"PreCount,omitnil,omitempty" name:"PreCount"`
+
+	// 域名注册时间
+	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
+
+	// 域名删除时间
+	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// 到期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 域名状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 域名价格
+	CurrentPrice *float64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
+
+	// 域名保证金
+	AppointBondPrice *float64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
+
+	// 是否已经预约
+	IsAppoint *bool `json:"IsAppoint,omitnil,omitempty" name:"IsAppoint"`
+
+	// 业务ID
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 是否为原持有者域名
+	IsDomainUser *bool `json:"IsDomainUser,omitnil,omitempty" name:"IsDomainUser"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUnPreDomainDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUnPreDomainDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeUnPreDomainDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnPreDomainDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2769,6 +3889,74 @@ type PhoneEmailData struct {
 	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 }
 
+type PreAuctionInfo struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 竞价倒计时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiddingTime *string `json:"BiddingTime,omitnil,omitempty" name:"BiddingTime"`
+
+	// 出价次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BidCount *int64 `json:"BidCount,omitnil,omitempty" name:"BidCount"`
+
+	// 当前价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 用户操作 bid：出价 "noAction"：无法操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
+type PreReleaseInfo struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 预订倒计时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReservationTime *string `json:"ReservationTime,omitnil,omitempty" name:"ReservationTime"`
+
+	// 域名注册时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
+
+	// 域名删除时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelTime *string `json:"DelTime,omitnil,omitempty" name:"DelTime"`
+
+	// 当前人数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentPeople *int64 `json:"CurrentPeople,omitnil,omitempty" name:"CurrentPeople"`
+
+	// 当前价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 是否收藏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFollow *bool `json:"IsFollow,omitnil,omitempty" name:"IsFollow"`
+
+	// 是否已经预约
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAppoint *bool `json:"IsAppoint,omitnil,omitempty" name:"IsAppoint"`
+
+	// 业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 是否为原持有者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDomainUser *bool `json:"IsDomainUser,omitnil,omitempty" name:"IsDomainUser"`
+}
+
 type PriceInfo struct {
 	// 域名后缀，例如.com
 	Tld *string `json:"Tld,omitnil,omitempty" name:"Tld"`
@@ -2784,6 +3972,24 @@ type PriceInfo struct {
 
 	// 商品的购买类型，新购，续费，赎回，转入，续费并转入
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+type PriceScopeConf struct {
+	// 最高价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPrice *float64 `json:"MaxPrice,omitnil,omitempty" name:"MaxPrice"`
+
+	// 最低价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinPrice *float64 `json:"MinPrice,omitnil,omitempty" name:"MinPrice"`
+
+	// 价格幅度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 保证金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DepositPrice *float64 `json:"DepositPrice,omitnil,omitempty" name:"DepositPrice"`
 }
 
 // Predefined struct for user

@@ -1422,7 +1422,7 @@ type UpdateProbeTaskAttributesRequestParams struct {
 	// 任务 ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名
+	// 任务名，该参数为空时不作任何修改。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -1432,7 +1432,7 @@ type UpdateProbeTaskAttributesRequest struct {
 	// 任务 ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名
+	// 任务名，该参数为空时不作任何修改。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 

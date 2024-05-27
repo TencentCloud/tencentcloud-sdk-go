@@ -1395,13 +1395,13 @@ type CreateSyncJobRequestParams struct {
 	// 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+	// 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,tdstore等
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
 	// 源端数据库所在地域,如ap-guangzhou
 	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
 
-	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
+	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka,tdstore等
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
 	// 目标端数据库所在地域,如ap-guangzhou
@@ -1435,13 +1435,13 @@ type CreateSyncJobRequest struct {
 	// 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+	// 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,tdstore等
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
 	// 源端数据库所在地域,如ap-guangzhou
 	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
 
-	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
+	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka,tdstore等
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
 	// 目标端数据库所在地域,如ap-guangzhou

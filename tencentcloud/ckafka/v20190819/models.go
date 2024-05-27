@@ -10105,6 +10105,14 @@ type PrometheusDTO struct {
 	// broker地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// VPC ID信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 type PrometheusResult struct {

@@ -734,6 +734,24 @@ type BizLicenseOCRResponseParams struct {
 	// 
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
+	// 是否有国徽。0为没有，1为有。
+	NationalEmblem *bool `json:"NationalEmblem,omitnil,omitempty" name:"NationalEmblem"`
+
+	// 是否有二维码。0为没有，1为有。
+	QRCode *bool `json:"QRCode,omitnil,omitempty" name:"QRCode"`
+
+	// 是否有印章。0为没有，1为有。
+	Seal *bool `json:"Seal,omitnil,omitempty" name:"Seal"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 编号
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
+
+	// 登记机关
+	RegistrationAuthority *string `json:"RegistrationAuthority,omitnil,omitempty" name:"RegistrationAuthority"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

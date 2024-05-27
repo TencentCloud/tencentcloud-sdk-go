@@ -20,11 +20,20 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 用户当前竞价金额小于当前价格。
+	FAILEDOPERATION_BIDCURRENTPRICE = "FailedOperation.BidCurrentPrice"
+
 	// 出价低于当前价格
 	FAILEDOPERATION_BIDPREDOMAINSPRICEDOWNERR = "FailedOperation.BidPreDomainsPriceDownErr"
 
 	// 当前已经结束，不在出价时间范围内。
 	FAILEDOPERATION_BIDPREDOMAINSTIMEOUTERR = "FailedOperation.BidPreDomainsTimeOutErr"
+
+	// 用户出价不在合理范围内。
+	FAILEDOPERATION_BIDPRICEILLEGAL = "FailedOperation.BidPriceIllegal"
+
+	// 当前域名存在用户正在出价,请稍后重试。
+	FAILEDOPERATION_BIDDINGGETPRICEDOING = "FailedOperation.BiddingGetPriceDoing"
 
 	// 域名查询失败，请稍后重试该功能。
 	FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
@@ -112,6 +121,9 @@ const (
 
 	// 未到释放时间，请稍后再试。
 	INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
+
+	// 获取收藏店铺列表失败。
+	INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
 
 	// 网络报错，请稍后重试。
 	INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
@@ -268,6 +280,9 @@ const (
 
 	// 模板未实名。
 	RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+
+	// 竞价金额配置查询失败。
+	RESOURCENOTFOUND_BIDPRICECONFIG = "ResourceNotFound.BidPriceConfig"
 
 	// 域名地址有误，请输入正确的域名地址。
 	RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"

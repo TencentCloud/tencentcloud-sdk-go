@@ -10330,6 +10330,7 @@ type ModifyRealtimeLogDeliveryTaskRequestParams struct {
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
 	// 日志投递的输出格式。不填保持原有配置。
+	// 特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
 	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
@@ -10374,6 +10375,7 @@ type ModifyRealtimeLogDeliveryTaskRequest struct {
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
 	// 日志投递的输出格式。不填保持原有配置。
+	// 特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
 	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 

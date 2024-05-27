@@ -878,8 +878,13 @@ func NewCreateL4ProxyResponse() (response *CreateL4ProxyResponse) {
 //  INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+//  OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
 //  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_IPV6ADVANCEDCONFLICT = "OperationDenied.Ipv6AdvancedConflict"
+//  OPERATIONDENIED_IPV6STATICIPCONFLICT = "OperationDenied.Ipv6StaticIpConflict"
 //  OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
+//  OPERATIONDENIED_MSGIPV6ADVANCEDCONFLICT = "OperationDenied.MsgIpv6AdvancedConflict"
+//  OPERATIONDENIED_STATICIPAREACONFLICT = "OperationDenied.StaticIpAreaConflict"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateL4Proxy(request *CreateL4ProxyRequest) (response *CreateL4ProxyResponse, err error) {
     return c.CreateL4ProxyWithContext(context.Background(), request)
@@ -893,8 +898,13 @@ func (c *Client) CreateL4Proxy(request *CreateL4ProxyRequest) (response *CreateL
 //  INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+//  OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
 //  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_IPV6ADVANCEDCONFLICT = "OperationDenied.Ipv6AdvancedConflict"
+//  OPERATIONDENIED_IPV6STATICIPCONFLICT = "OperationDenied.Ipv6StaticIpConflict"
 //  OPERATIONDENIED_L4LACKOFRESOURCES = "OperationDenied.L4LackOfResources"
+//  OPERATIONDENIED_MSGIPV6ADVANCEDCONFLICT = "OperationDenied.MsgIpv6AdvancedConflict"
+//  OPERATIONDENIED_STATICIPAREACONFLICT = "OperationDenied.StaticIpAreaConflict"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateL4ProxyWithContext(ctx context.Context, request *CreateL4ProxyRequest) (response *CreateL4ProxyResponse, err error) {
     if request == nil {
@@ -6089,6 +6099,7 @@ func NewModifyRealtimeLogDeliveryTaskResponse() (response *ModifyRealtimeLogDeli
 //  INVALIDPARAMETER_INVALIDLOGFORMATFIELDDELIMITER = "InvalidParameter.InvalidLogFormatFieldDelimiter"
 //  INVALIDPARAMETER_INVALIDLOGFORMATFORMATTYPE = "InvalidParameter.InvalidLogFormatFormatType"
 //  INVALIDPARAMETER_INVALIDLOGFORMATRECORDDELIMITER = "InvalidParameter.InvalidLogFormatRecordDelimiter"
+//  LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = "LimitExceeded.CustomLogFieldRegexLimitExceeded"
 func (c *Client) ModifyRealtimeLogDeliveryTask(request *ModifyRealtimeLogDeliveryTaskRequest) (response *ModifyRealtimeLogDeliveryTaskResponse, err error) {
     return c.ModifyRealtimeLogDeliveryTaskWithContext(context.Background(), request)
 }
@@ -6102,6 +6113,7 @@ func (c *Client) ModifyRealtimeLogDeliveryTask(request *ModifyRealtimeLogDeliver
 //  INVALIDPARAMETER_INVALIDLOGFORMATFIELDDELIMITER = "InvalidParameter.InvalidLogFormatFieldDelimiter"
 //  INVALIDPARAMETER_INVALIDLOGFORMATFORMATTYPE = "InvalidParameter.InvalidLogFormatFormatType"
 //  INVALIDPARAMETER_INVALIDLOGFORMATRECORDDELIMITER = "InvalidParameter.InvalidLogFormatRecordDelimiter"
+//  LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = "LimitExceeded.CustomLogFieldRegexLimitExceeded"
 func (c *Client) ModifyRealtimeLogDeliveryTaskWithContext(ctx context.Context, request *ModifyRealtimeLogDeliveryTaskRequest) (response *ModifyRealtimeLogDeliveryTaskResponse, err error) {
     if request == nil {
         request = NewModifyRealtimeLogDeliveryTaskRequest()

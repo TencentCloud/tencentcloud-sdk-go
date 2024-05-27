@@ -334,10 +334,10 @@ type AttachDetail struct {
 
 // Predefined struct for user
 type AttachDisksRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 自动续费标识。取值范围：
@@ -351,10 +351,10 @@ type AttachDisksRequestParams struct {
 type AttachDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 自动续费标识。取值范围：
@@ -2674,14 +2674,14 @@ func (r *DescribeDiskDiscountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDisksDeniedActionsRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
 type DescribeDisksDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
@@ -2731,7 +2731,7 @@ func (r *DescribeDisksDeniedActionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDisksRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 过滤器列表。
@@ -2780,7 +2780,7 @@ type DescribeDisksRequestParams struct {
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 过滤器列表。
@@ -2880,7 +2880,7 @@ func (r *DescribeDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDisksReturnableRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 10。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -2893,7 +2893,7 @@ type DescribeDisksReturnableRequestParams struct {
 type DescribeDisksReturnableRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 10。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -5074,14 +5074,14 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachCcnRequestParams struct {
-	// 云联网实例ID。
+	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type DetachCcnRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网实例ID。
+	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -5128,14 +5128,14 @@ func (r *DetachCcnResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachDisksRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
 type DetachDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
@@ -6001,7 +6001,7 @@ func (r *InquirePriceCreateInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceRenewDisksRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 1。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 续费云硬盘包年包月相关参数设置。
@@ -6011,7 +6011,7 @@ type InquirePriceRenewDisksRequestParams struct {
 type InquirePriceRenewDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 1。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 续费云硬盘包年包月相关参数设置。
@@ -6664,7 +6664,7 @@ func (r *ModifyDiskBackupsAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDisksAttributeRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 云硬盘名称。
@@ -6674,7 +6674,7 @@ type ModifyDisksAttributeRequestParams struct {
 type ModifyDisksAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 云硬盘名称。
@@ -6786,20 +6786,32 @@ func (r *ModifyDisksBackupQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDisksRenewFlagRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 自动续费标识。取值范围：
+	// 
+	// - NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+	// - NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+	// - DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+	// 
+	// 若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 type ModifyDisksRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 自动续费标识。取值范围：
+	// 
+	// - NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+	// - NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+	// - DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+	// 
+	// 若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -8021,14 +8033,14 @@ func (r *RerunDockerContainerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResetAttachCcnRequestParams struct {
-	// 云联网实例ID。
+	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type ResetAttachCcnRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网实例ID。
+	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 

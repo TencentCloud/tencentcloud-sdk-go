@@ -116,6 +116,77 @@ func (c *Client) BatchModifyDomainInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewBidDetailPageRequest() (request *BidDetailPageRequest) {
+    request = &BidDetailPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "BidDetailPage")
+    
+    
+    return
+}
+
+func NewBidDetailPageResponse() (response *BidDetailPageResponse) {
+    response = &BidDetailPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BidDetailPage
+// 该接口用于用户详情页出价请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) BidDetailPage(request *BidDetailPageRequest) (response *BidDetailPageResponse, err error) {
+    return c.BidDetailPageWithContext(context.Background(), request)
+}
+
+// BidDetailPage
+// 该接口用于用户详情页出价请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) BidDetailPageWithContext(ctx context.Context, request *BidDetailPageRequest) (response *BidDetailPageResponse, err error) {
+    if request == nil {
+        request = NewBidDetailPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BidDetailPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBidDetailPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBidPreDomainsRequest() (request *BidPreDomainsRequest) {
     request = &BidPreDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -169,6 +240,61 @@ func (c *Client) BidPreDomainsWithContext(ctx context.Context, request *BidPreDo
     request.SetContext(ctx)
     
     response = NewBidPreDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBiddingPreReleaseRequest() (request *BiddingPreReleaseRequest) {
+    request = &BiddingPreReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "BiddingPreRelease")
+    
+    
+    return
+}
+
+func NewBiddingPreReleaseResponse() (response *BiddingPreReleaseResponse) {
+    response = &BiddingPreReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BiddingPreRelease
+// 用于出价界面出价请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BIDCURRENTPRICE = "FailedOperation.BidCurrentPrice"
+//  FAILEDOPERATION_BIDPRICEILLEGAL = "FailedOperation.BidPriceIllegal"
+//  FAILEDOPERATION_BIDDINGGETPRICEDOING = "FailedOperation.BiddingGetPriceDoing"
+//  RESOURCENOTFOUND_BIDPRICECONFIG = "ResourceNotFound.BidPriceConfig"
+func (c *Client) BiddingPreRelease(request *BiddingPreReleaseRequest) (response *BiddingPreReleaseResponse, err error) {
+    return c.BiddingPreReleaseWithContext(context.Background(), request)
+}
+
+// BiddingPreRelease
+// 用于出价界面出价请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BIDCURRENTPRICE = "FailedOperation.BidCurrentPrice"
+//  FAILEDOPERATION_BIDPRICEILLEGAL = "FailedOperation.BidPriceIllegal"
+//  FAILEDOPERATION_BIDDINGGETPRICEDOING = "FailedOperation.BiddingGetPriceDoing"
+//  RESOURCENOTFOUND_BIDPRICECONFIG = "ResourceNotFound.BidPriceConfig"
+func (c *Client) BiddingPreReleaseWithContext(ctx context.Context, request *BiddingPreReleaseRequest) (response *BiddingPreReleaseResponse, err error) {
+    if request == nil {
+        request = NewBiddingPreReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BiddingPreRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBiddingPreReleaseResponse()
     err = c.Send(request, response)
     return
 }
@@ -656,6 +782,63 @@ func (c *Client) CreateTemplateWithContext(ctx context.Context, request *CreateT
     return
 }
 
+func NewDeleteBiddingRequest() (request *DeleteBiddingRequest) {
+    request = &DeleteBiddingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DeleteBidding")
+    
+    
+    return
+}
+
+func NewDeleteBiddingResponse() (response *DeleteBiddingResponse) {
+    response = &DeleteBiddingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBidding
+// 删除记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DeleteBidding(request *DeleteBiddingRequest) (response *DeleteBiddingResponse, err error) {
+    return c.DeleteBiddingWithContext(context.Background(), request)
+}
+
+// DeleteBidding
+// 删除记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DeleteBiddingWithContext(ctx context.Context, request *DeleteBiddingRequest) (response *DeleteBiddingResponse, err error) {
+    if request == nil {
+        request = NewDeleteBiddingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBidding require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBiddingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomDnsHostRequest() (request *DeleteCustomDnsHostRequest) {
     request = &DeleteCustomDnsHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -900,6 +1083,67 @@ func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteT
     return
 }
 
+func NewDescribeAuctionListRequest() (request *DescribeAuctionListRequest) {
+    request = &DescribeAuctionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeAuctionList")
+    
+    
+    return
+}
+
+func NewDescribeAuctionListResponse() (response *DescribeAuctionListResponse) {
+    response = &DescribeAuctionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuctionList
+// 用户控制台获取竞价列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETETEMPLATEFAILED = "FailedOperation.DeleteTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+func (c *Client) DescribeAuctionList(request *DescribeAuctionListRequest) (response *DescribeAuctionListResponse, err error) {
+    return c.DescribeAuctionListWithContext(context.Background(), request)
+}
+
+// DescribeAuctionList
+// 用户控制台获取竞价列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETETEMPLATEFAILED = "FailedOperation.DeleteTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+func (c *Client) DescribeAuctionListWithContext(ctx context.Context, request *DescribeAuctionListRequest) (response *DescribeAuctionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuctionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuctionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuctionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchOperationLogDetailsRequest() (request *DescribeBatchOperationLogDetailsRequest) {
     request = &DescribeBatchOperationLogDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1002,6 +1246,348 @@ func (c *Client) DescribeBatchOperationLogsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeBatchOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBiddingAppointDetailRequest() (request *DescribeBiddingAppointDetailRequest) {
+    request = &DescribeBiddingAppointDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBiddingAppointDetail")
+    
+    
+    return
+}
+
+func NewDescribeBiddingAppointDetailResponse() (response *DescribeBiddingAppointDetailResponse) {
+    response = &DescribeBiddingAppointDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBiddingAppointDetail
+// 我预约的域名-预约详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingAppointDetail(request *DescribeBiddingAppointDetailRequest) (response *DescribeBiddingAppointDetailResponse, err error) {
+    return c.DescribeBiddingAppointDetailWithContext(context.Background(), request)
+}
+
+// DescribeBiddingAppointDetail
+// 我预约的域名-预约详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingAppointDetailWithContext(ctx context.Context, request *DescribeBiddingAppointDetailRequest) (response *DescribeBiddingAppointDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBiddingAppointDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBiddingAppointDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBiddingAppointDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBiddingAppointListRequest() (request *DescribeBiddingAppointListRequest) {
+    request = &DescribeBiddingAppointListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBiddingAppointList")
+    
+    
+    return
+}
+
+func NewDescribeBiddingAppointListResponse() (response *DescribeBiddingAppointListResponse) {
+    response = &DescribeBiddingAppointListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBiddingAppointList
+// 我预定的域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingAppointList(request *DescribeBiddingAppointListRequest) (response *DescribeBiddingAppointListResponse, err error) {
+    return c.DescribeBiddingAppointListWithContext(context.Background(), request)
+}
+
+// DescribeBiddingAppointList
+// 我预定的域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingAppointListWithContext(ctx context.Context, request *DescribeBiddingAppointListRequest) (response *DescribeBiddingAppointListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBiddingAppointListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBiddingAppointList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBiddingAppointListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBiddingDetailRequest() (request *DescribeBiddingDetailRequest) {
+    request = &DescribeBiddingDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBiddingDetail")
+    
+    
+    return
+}
+
+func NewDescribeBiddingDetailResponse() (response *DescribeBiddingDetailResponse) {
+    response = &DescribeBiddingDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBiddingDetail
+// 我竞价的域名-竞价详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingDetail(request *DescribeBiddingDetailRequest) (response *DescribeBiddingDetailResponse, err error) {
+    return c.DescribeBiddingDetailWithContext(context.Background(), request)
+}
+
+// DescribeBiddingDetail
+// 我竞价的域名-竞价详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingDetailWithContext(ctx context.Context, request *DescribeBiddingDetailRequest) (response *DescribeBiddingDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBiddingDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBiddingDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBiddingDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBiddingListRequest() (request *DescribeBiddingListRequest) {
+    request = &DescribeBiddingListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBiddingList")
+    
+    
+    return
+}
+
+func NewDescribeBiddingListResponse() (response *DescribeBiddingListResponse) {
+    response = &DescribeBiddingListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBiddingList
+// 我竞价的域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingList(request *DescribeBiddingListRequest) (response *DescribeBiddingListResponse, err error) {
+    return c.DescribeBiddingListWithContext(context.Background(), request)
+}
+
+// DescribeBiddingList
+// 我竞价的域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingListWithContext(ctx context.Context, request *DescribeBiddingListRequest) (response *DescribeBiddingListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBiddingListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBiddingList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBiddingListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBiddingSuccessfulDetailRequest() (request *DescribeBiddingSuccessfulDetailRequest) {
+    request = &DescribeBiddingSuccessfulDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBiddingSuccessfulDetail")
+    
+    
+    return
+}
+
+func NewDescribeBiddingSuccessfulDetailResponse() (response *DescribeBiddingSuccessfulDetailResponse) {
+    response = &DescribeBiddingSuccessfulDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBiddingSuccessfulDetail
+// 我得标的域名-得标详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingSuccessfulDetail(request *DescribeBiddingSuccessfulDetailRequest) (response *DescribeBiddingSuccessfulDetailResponse, err error) {
+    return c.DescribeBiddingSuccessfulDetailWithContext(context.Background(), request)
+}
+
+// DescribeBiddingSuccessfulDetail
+// 我得标的域名-得标详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingSuccessfulDetailWithContext(ctx context.Context, request *DescribeBiddingSuccessfulDetailRequest) (response *DescribeBiddingSuccessfulDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBiddingSuccessfulDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBiddingSuccessfulDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBiddingSuccessfulDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBiddingSuccessfulListRequest() (request *DescribeBiddingSuccessfulListRequest) {
+    request = &DescribeBiddingSuccessfulListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBiddingSuccessfulList")
+    
+    
+    return
+}
+
+func NewDescribeBiddingSuccessfulListResponse() (response *DescribeBiddingSuccessfulListResponse) {
+    response = &DescribeBiddingSuccessfulListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBiddingSuccessfulList
+// 我得标的域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingSuccessfulList(request *DescribeBiddingSuccessfulListRequest) (response *DescribeBiddingSuccessfulListResponse, err error) {
+    return c.DescribeBiddingSuccessfulListWithContext(context.Background(), request)
+}
+
+// DescribeBiddingSuccessfulList
+// 我得标的域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESHOPCOLLECTLISTERR = "InternalError.DescribeShopCollectListErr"
+//  INTERNALERROR_METHODNOTMATCH = "InternalError.MethodNotMatch"
+//  INTERNALERROR_READBODYERROR = "InternalError.ReadBodyError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  MISSINGPARAMETER_ACTIONNOTFOUND = "MissingParameter.ActionNotFound"
+func (c *Client) DescribeBiddingSuccessfulListWithContext(ctx context.Context, request *DescribeBiddingSuccessfulListRequest) (response *DescribeBiddingSuccessfulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBiddingSuccessfulListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBiddingSuccessfulList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBiddingSuccessfulListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1285,6 +1871,63 @@ func (c *Client) DescribeDomainSimpleInfoWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribePayWaitDetailRequest() (request *DescribePayWaitDetailRequest) {
+    request = &DescribePayWaitDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribePayWaitDetail")
+    
+    
+    return
+}
+
+func NewDescribePayWaitDetailResponse() (response *DescribePayWaitDetailResponse) {
+    response = &DescribePayWaitDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePayWaitDetail
+// 等待支付详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribePayWaitDetail(request *DescribePayWaitDetailRequest) (response *DescribePayWaitDetailResponse, err error) {
+    return c.DescribePayWaitDetailWithContext(context.Background(), request)
+}
+
+// DescribePayWaitDetail
+// 等待支付详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribePayWaitDetailWithContext(ctx context.Context, request *DescribePayWaitDetailRequest) (response *DescribePayWaitDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribePayWaitDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePayWaitDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePayWaitDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest) {
     request = &DescribePhoneEmailListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1332,6 +1975,57 @@ func (c *Client) DescribePhoneEmailListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribePhoneEmailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePreAuctionListRequest() (request *DescribePreAuctionListRequest) {
+    request = &DescribePreAuctionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribePreAuctionList")
+    
+    
+    return
+}
+
+func NewDescribePreAuctionListResponse() (response *DescribePreAuctionListResponse) {
+    response = &DescribePreAuctionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePreAuctionList
+// 用于预释放竞价列表数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePreAuctionList(request *DescribePreAuctionListRequest) (response *DescribePreAuctionListResponse, err error) {
+    return c.DescribePreAuctionListWithContext(context.Background(), request)
+}
+
+// DescribePreAuctionList
+// 用于预释放竞价列表数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePreAuctionListWithContext(ctx context.Context, request *DescribePreAuctionListRequest) (response *DescribePreAuctionListResponse, err error) {
+    if request == nil {
+        request = NewDescribePreAuctionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePreAuctionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePreAuctionListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1385,6 +2079,59 @@ func (c *Client) DescribePreDomainListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribePreDomainListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePreReleaseListRequest() (request *DescribePreReleaseListRequest) {
+    request = &DescribePreReleaseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribePreReleaseList")
+    
+    
+    return
+}
+
+func NewDescribePreReleaseListResponse() (response *DescribePreReleaseListResponse) {
+    response = &DescribePreReleaseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePreReleaseList
+// 接口用于预释放页面查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribePreReleaseList(request *DescribePreReleaseListRequest) (response *DescribePreReleaseListResponse, err error) {
+    return c.DescribePreReleaseListWithContext(context.Background(), request)
+}
+
+// DescribePreReleaseList
+// 接口用于预释放页面查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
+//  INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+func (c *Client) DescribePreReleaseListWithContext(ctx context.Context, request *DescribePreReleaseListRequest) (response *DescribePreReleaseListResponse, err error) {
+    if request == nil {
+        request = NewDescribePreReleaseListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePreReleaseList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePreReleaseListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1678,6 +2425,67 @@ func (c *Client) DescribeTldListWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeTldListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUnPreDomainDetailRequest() (request *DescribeUnPreDomainDetailRequest) {
+    request = &DescribeUnPreDomainDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeUnPreDomainDetail")
+    
+    
+    return
+}
+
+func NewDescribeUnPreDomainDetailResponse() (response *DescribeUnPreDomainDetailResponse) {
+    response = &DescribeUnPreDomainDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUnPreDomainDetail
+// 查询预释放未预约域名详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUnPreDomainDetail(request *DescribeUnPreDomainDetailRequest) (response *DescribeUnPreDomainDetailResponse, err error) {
+    return c.DescribeUnPreDomainDetailWithContext(context.Background(), request)
+}
+
+// DescribeUnPreDomainDetail
+// 查询预释放未预约域名详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUnPreDomainDetailWithContext(ctx context.Context, request *DescribeUnPreDomainDetailRequest) (response *DescribeUnPreDomainDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnPreDomainDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnPreDomainDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUnPreDomainDetailResponse()
     err = c.Send(request, response)
     return
 }

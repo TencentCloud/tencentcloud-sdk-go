@@ -4629,7 +4629,7 @@ type DescribePvListRequestParams struct {
 	// 开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 获取day：d，   获取min则不填
+	// 对PV指标的查询维度。获取day：d，   获取min则不填。
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
@@ -4645,7 +4645,7 @@ type DescribePvListRequest struct {
 	// 开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 获取day：d，   获取min则不填
+	// 对PV指标的查询维度。获取day：d，   获取min则不填。
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
@@ -5376,13 +5376,13 @@ type DescribeTawAreasRequestParams struct {
 	// 片区Key
 	AreaKeys []*string `json:"AreaKeys,omitnil,omitempty" name:"AreaKeys"`
 
-	// 分页Limit
+	// 分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 片区状态(1=有效，2=无效)
 	AreaStatuses []*int64 `json:"AreaStatuses,omitnil,omitempty" name:"AreaStatuses"`
 
-	// 分页Offset
+	// 分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5395,13 +5395,13 @@ type DescribeTawAreasRequest struct {
 	// 片区Key
 	AreaKeys []*string `json:"AreaKeys,omitnil,omitempty" name:"AreaKeys"`
 
-	// 分页Limit
+	// 分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 片区状态(1=有效，2=无效)
 	AreaStatuses []*int64 `json:"AreaStatuses,omitnil,omitempty" name:"AreaStatuses"`
 
-	// 分页Offset
+	// 分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 

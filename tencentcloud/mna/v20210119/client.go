@@ -680,6 +680,59 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     return
 }
 
+func NewGetFlowAlarmInfoRequest() (request *GetFlowAlarmInfoRequest) {
+    request = &GetFlowAlarmInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetFlowAlarmInfo")
+    
+    
+    return
+}
+
+func NewGetFlowAlarmInfoResponse() (response *GetFlowAlarmInfoResponse) {
+    response = &GetFlowAlarmInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFlowAlarmInfo
+// 根据AppId查询用户设置的流量告警信息，包括阈值，回调url和key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) GetFlowAlarmInfo(request *GetFlowAlarmInfoRequest) (response *GetFlowAlarmInfoResponse, err error) {
+    return c.GetFlowAlarmInfoWithContext(context.Background(), request)
+}
+
+// GetFlowAlarmInfo
+// 根据AppId查询用户设置的流量告警信息，包括阈值，回调url和key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) GetFlowAlarmInfoWithContext(ctx context.Context, request *GetFlowAlarmInfoRequest) (response *GetFlowAlarmInfoResponse, err error) {
+    if request == nil {
+        request = NewGetFlowAlarmInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFlowAlarmInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFlowAlarmInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFlowPackagesRequest() (request *GetFlowPackagesRequest) {
     request = &GetFlowPackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -786,6 +839,63 @@ func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFl
     request.SetContext(ctx)
     
     response = NewGetFlowStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetFlowStatisticByGroupRequest() (request *GetFlowStatisticByGroupRequest) {
+    request = &GetFlowStatisticByGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetFlowStatisticByGroup")
+    
+    
+    return
+}
+
+func NewGetFlowStatisticByGroupResponse() (response *GetFlowStatisticByGroupResponse) {
+    response = &GetFlowStatisticByGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFlowStatisticByGroup
+// 获取指定分组，指定时间数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticByGroup(request *GetFlowStatisticByGroupRequest) (response *GetFlowStatisticByGroupResponse, err error) {
+    return c.GetFlowStatisticByGroupWithContext(context.Background(), request)
+}
+
+// GetFlowStatisticByGroup
+// 获取指定分组，指定时间数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticByGroupWithContext(ctx context.Context, request *GetFlowStatisticByGroupRequest) (response *GetFlowStatisticByGroupResponse, err error) {
+    if request == nil {
+        request = NewGetFlowStatisticByGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFlowStatisticByGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFlowStatisticByGroupResponse()
     err = c.Send(request, response)
     return
 }

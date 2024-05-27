@@ -206,7 +206,6 @@ type GetFileTranslateData struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 翻译进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
