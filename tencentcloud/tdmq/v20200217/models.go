@@ -11579,6 +11579,10 @@ type PulsarNetworkAccessPointInfo struct {
 	// 4:跨地域访问，目标集群已经完成异地切回，等待删除状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationType *uint64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 接入点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPointsType *string `json:"AccessPointsType,omitnil,omitempty" name:"AccessPointsType"`
 }
 
 type PulsarProClusterInfo struct {

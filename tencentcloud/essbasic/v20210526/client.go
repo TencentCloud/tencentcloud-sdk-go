@@ -637,6 +637,8 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //
 // - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。暂时仅支持给`自建应用集成企业` 生成员工批签链接，不支持子客企业。
 //
+// - 生成批量签署链接时，合同目标参与方状态需为`待签署`状态。
+//
 // - 个人批量签署，签名区`仅支持手写签名`。
 //
 // 可能返回的错误码:
@@ -665,6 +667,8 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 // - 参与人点击链接后需短信验证码才能查看合同内容。
 //
 // - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。暂时仅支持给`自建应用集成企业` 生成员工批签链接，不支持子客企业。
+//
+// - 生成批量签署链接时，合同目标参与方状态需为`待签署`状态。
 //
 // - 个人批量签署，签名区`仅支持手写签名`。
 //

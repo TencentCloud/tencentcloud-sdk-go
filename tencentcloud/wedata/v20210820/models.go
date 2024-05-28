@@ -1562,6 +1562,9 @@ type BatchStopOpsTasksRequestParams struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 type BatchStopOpsTasksRequest struct {
@@ -1572,6 +1575,9 @@ type BatchStopOpsTasksRequest struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 func (r *BatchStopOpsTasksRequest) ToJsonString() string {
@@ -1588,6 +1594,7 @@ func (r *BatchStopOpsTasksRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskIdList")
 	delete(f, "ProjectId")
+	delete(f, "KillInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStopOpsTasksRequest has unknown keys!", "")
 	}
@@ -1626,6 +1633,9 @@ type BatchStopWorkflowsByIdsRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 type BatchStopWorkflowsByIdsRequest struct {
@@ -1636,6 +1646,9 @@ type BatchStopWorkflowsByIdsRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 func (r *BatchStopWorkflowsByIdsRequest) ToJsonString() string {
@@ -1652,6 +1665,7 @@ func (r *BatchStopWorkflowsByIdsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WorkflowIds")
 	delete(f, "ProjectId")
+	delete(f, "KillInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStopWorkflowsByIdsRequest has unknown keys!", "")
 	}
@@ -3334,6 +3348,9 @@ type CreateHiveTableByDDLRequestParams struct {
 
 	// 责任人
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 }
 
 type CreateHiveTableByDDLRequest struct {
@@ -3359,6 +3376,9 @@ type CreateHiveTableByDDLRequest struct {
 
 	// 责任人
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 }
 
 func (r *CreateHiveTableByDDLRequest) ToJsonString() string {
@@ -3380,6 +3400,7 @@ func (r *CreateHiveTableByDDLRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "Type")
 	delete(f, "Incharge")
+	delete(f, "SchemaName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableByDDLRequest has unknown keys!", "")
 	}
@@ -5196,6 +5217,10 @@ type DatasourceBaseInfo struct {
 	// 数据源附带参数信息Params json字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamsString *string `json:"ParamsString,omitnil,omitempty" name:"ParamsString"`
+
+	// 区分数据源类型自定义源还是系统源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 // Predefined struct for user
@@ -10940,6 +10965,12 @@ type DescribeOperateOpsTasksRequestParams struct {
 
 	// 查询关键字
 	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
+
+	// 实例生成方式
+	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
+
+	// 额外请求的资源类型
+	RequestResourceTypes []*string `json:"RequestResourceTypes,omitnil,omitempty" name:"RequestResourceTypes"`
 }
 
 type DescribeOperateOpsTasksRequest struct {
@@ -11013,6 +11044,12 @@ type DescribeOperateOpsTasksRequest struct {
 
 	// 查询关键字
 	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
+
+	// 实例生成方式
+	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
+
+	// 额外请求的资源类型
+	RequestResourceTypes []*string `json:"RequestResourceTypes,omitnil,omitempty" name:"RequestResourceTypes"`
 }
 
 func (r *DescribeOperateOpsTasksRequest) ToJsonString() string {
@@ -11050,6 +11087,8 @@ func (r *DescribeOperateOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "ExecutorGroupIdList")
 	delete(f, "TaskTags")
 	delete(f, "KeyWord")
+	delete(f, "InitStrategy")
+	delete(f, "RequestResourceTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateOpsTasksRequest has unknown keys!", "")
 	}
@@ -17338,6 +17377,9 @@ type FreezeOpsTasksRequestParams struct {
 
 	// 任务操作是否消息通知下游任务责任人
 	OperateIsInform *bool `json:"OperateIsInform,omitnil,omitempty" name:"OperateIsInform"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 type FreezeOpsTasksRequest struct {
@@ -17348,6 +17390,9 @@ type FreezeOpsTasksRequest struct {
 
 	// 任务操作是否消息通知下游任务责任人
 	OperateIsInform *bool `json:"OperateIsInform,omitnil,omitempty" name:"OperateIsInform"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 func (r *FreezeOpsTasksRequest) ToJsonString() string {
@@ -17364,6 +17409,7 @@ func (r *FreezeOpsTasksRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Tasks")
 	delete(f, "OperateIsInform")
+	delete(f, "KillInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreezeOpsTasksRequest has unknown keys!", "")
 	}
@@ -17402,6 +17448,9 @@ type FreezeTasksByWorkflowIdsRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 type FreezeTasksByWorkflowIdsRequest struct {
@@ -17412,6 +17461,9 @@ type FreezeTasksByWorkflowIdsRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否终止已生成的实例
+	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
 }
 
 func (r *FreezeTasksByWorkflowIdsRequest) ToJsonString() string {
@@ -17428,6 +17480,7 @@ func (r *FreezeTasksByWorkflowIdsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WorkflowIds")
 	delete(f, "ProjectId")
+	delete(f, "KillInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreezeTasksByWorkflowIdsRequest has unknown keys!", "")
 	}
@@ -18653,6 +18706,14 @@ type InstanceOpsDto struct {
 	// 自动重试次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryAttempts *uint64 `json:"RetryAttempts,omitnil,omitempty" name:"RetryAttempts"`
+
+	// 紧急去除的依赖父实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletedFatherList []*string `json:"DeletedFatherList,omitnil,omitempty" name:"DeletedFatherList"`
+
+	// 循环依赖关联的实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CirculateInstanceList []*InstanceOpsDto `json:"CirculateInstanceList,omitnil,omitempty" name:"CirculateInstanceList"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -22160,6 +22221,10 @@ type OpsTaskCanvasInfoList struct {
 
 	// 画布任务链接信息
 	LinksList []*OpsTaskLinkInfoDto `json:"LinksList,omitnil,omitempty" name:"LinksList"`
+
+	// 画布循环依赖任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CirculateTaskList *OpsTaskCanvasDto `json:"CirculateTaskList,omitnil,omitempty" name:"CirculateTaskList"`
 }
 
 type OpsTaskInfoPage struct {
@@ -22194,6 +22259,10 @@ type OpsTaskLinkInfoDto struct {
 
 	// 依赖边id
 	LinkId *string `json:"LinkId,omitnil,omitempty" name:"LinkId"`
+
+	// 为了区分新增的循环依赖新增的类型。默认是normal，循环依赖则是circulate
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LinkStyle *string `json:"LinkStyle,omitnil,omitempty" name:"LinkStyle"`
 }
 
 type OrderField struct {

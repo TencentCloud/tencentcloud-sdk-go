@@ -208,7 +208,7 @@ func (r *ApplyInstanceSnapshotResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateInstancesKeyPairsRequestParams struct {
-	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
@@ -218,7 +218,7 @@ type AssociateInstancesKeyPairsRequestParams struct {
 type AssociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
@@ -269,14 +269,14 @@ func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachCcnRequestParams struct {
-	// 云联网实例ID。
+	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type AttachCcnRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网实例ID。
+	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -1756,14 +1756,14 @@ func (r *DeleteFirewallTemplateRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteKeyPairsRequestParams struct {
-	// 密钥对 ID 列表，每次请求批量密钥对的上限为 10。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 10。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 }
 
 type DeleteKeyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 密钥对 ID 列表，每次请求批量密钥对的上限为 10。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 10。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 }
 
@@ -4092,7 +4092,7 @@ func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 过滤器列表。
@@ -4133,7 +4133,7 @@ type DescribeInstancesRequestParams struct {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 过滤器列表。
@@ -4371,7 +4371,7 @@ func (r *DescribeInstancesTrafficPackagesResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeKeyPairsRequestParams struct {
-	// 密钥对 ID 列表。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 偏移量，默认为 0。
@@ -4394,7 +4394,7 @@ type DescribeKeyPairsRequestParams struct {
 type DescribeKeyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 密钥对 ID 列表。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 偏移量，默认为 0。
@@ -5201,7 +5201,7 @@ type DetailPrice struct {
 
 // Predefined struct for user
 type DisassociateInstancesKeyPairsRequestParams struct {
-	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
@@ -5211,7 +5211,7 @@ type DisassociateInstancesKeyPairsRequestParams struct {
 type DisassociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
@@ -7894,10 +7894,10 @@ func (r *RenewInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReplaceFirewallTemplateRuleRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过 [DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874) 的返回值 TemplateSet 获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 防火墙模板规则ID。
+	// 防火墙模板规则ID。可通过 [DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875) 的返回值 TemplateRuleSet 获取。
 	TemplateRuleId *string `json:"TemplateRuleId,omitnil,omitempty" name:"TemplateRuleId"`
 
 	// 替换后的防火墙模板规则。
@@ -7907,10 +7907,10 @@ type ReplaceFirewallTemplateRuleRequestParams struct {
 type ReplaceFirewallTemplateRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过 [DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874) 的返回值 TemplateSet 获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 防火墙模板规则ID。
+	// 防火墙模板规则ID。可通过 [DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875) 的返回值 TemplateRuleSet 获取。
 	TemplateRuleId *string `json:"TemplateRuleId,omitnil,omitempty" name:"TemplateRuleId"`
 
 	// 替换后的防火墙模板规则。

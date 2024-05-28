@@ -2827,6 +2827,8 @@ func NewStartAITranscriptionResponse() (response *StartAITranscriptionResponse) 
 //  FAILEDOPERATION_SDKAPPIDNOTAITRANSCRIPTIONABILITY = "FailedOperation.SdkAppIdNotAITranscriptionAbility"
 //  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  INVALIDPARAMETER_USERSIGNOTADMIN = "InvalidParameter.UserSigNotAdmin"
 //  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 func (c *Client) StartAITranscription(request *StartAITranscriptionRequest) (response *StartAITranscriptionResponse, err error) {
     return c.StartAITranscriptionWithContext(context.Background(), request)
@@ -2839,6 +2841,8 @@ func (c *Client) StartAITranscription(request *StartAITranscriptionRequest) (res
 //  FAILEDOPERATION_SDKAPPIDNOTAITRANSCRIPTIONABILITY = "FailedOperation.SdkAppIdNotAITranscriptionAbility"
 //  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  INVALIDPARAMETER_USERSIGNOTADMIN = "InvalidParameter.UserSigNotAdmin"
 //  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 func (c *Client) StartAITranscriptionWithContext(ctx context.Context, request *StartAITranscriptionRequest) (response *StartAITranscriptionResponse, err error) {
     if request == nil {

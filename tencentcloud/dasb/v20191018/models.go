@@ -589,6 +589,12 @@ type ChangePwdTaskInfo struct {
 	NextTime *string `json:"NextTime,omitnil,omitempty" name:"NextTime"`
 }
 
+type Clb struct {
+	// 负载均衡IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClbIp *string `json:"ClbIp,omitnil,omitempty" name:"ClbIp"`
+}
+
 type CmdTemplate struct {
 	// 高危命令模板ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -3522,6 +3528,12 @@ type DescribeResourcesRequestParams struct {
 
 	// 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 每页条目数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeResourcesRequest struct {
@@ -3535,6 +3547,12 @@ type DescribeResourcesRequest struct {
 
 	// 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 每页条目数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeResourcesRequest) ToJsonString() string {
@@ -3552,6 +3570,8 @@ func (r *DescribeResourcesRequest) FromJsonString(s string) error {
 	delete(f, "ApCode")
 	delete(f, "VpcId")
 	delete(f, "ResourceIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesRequest has unknown keys!", "")
 	}
@@ -3562,6 +3582,10 @@ func (r *DescribeResourcesRequest) FromJsonString(s string) error {
 type DescribeResourcesResponseParams struct {
 	// 堡垒机资源列表
 	ResourceSet []*Resource `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
+
+	// 堡垒机资源数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5428,6 +5452,10 @@ type Resource struct {
 	// 日志投递规格信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogDeliveryArgs *string `json:"LogDeliveryArgs,omitnil,omitempty" name:"LogDeliveryArgs"`
+
+	// 堡垒机资源LB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClbSet []*Clb `json:"ClbSet,omitnil,omitempty" name:"ClbSet"`
 }
 
 type RunChangePwdTaskDetail struct {

@@ -9051,7 +9051,7 @@ func NewFreezeOpsTasksResponse() (response *FreezeOpsTasksResponse) {
 }
 
 // FreezeOpsTasks
-// 任务运维-批量冻结任务
+// 任务运维-批量暂停任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9060,7 +9060,7 @@ func (c *Client) FreezeOpsTasks(request *FreezeOpsTasksRequest) (response *Freez
 }
 
 // FreezeOpsTasks
-// 任务运维-批量冻结任务
+// 任务运维-批量暂停任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

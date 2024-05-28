@@ -1038,13 +1038,13 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：`请确保和合同中填入的一致`，`除动态签署人场景外，此参数必填`
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
-	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`
+	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人场景外，此参数必填`
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 执行本接口操作的员工信息。
@@ -1052,7 +1052,7 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>**ID_CARD** : 居民身份证 (默认值)</li>
+	// <ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li>
 	// <li>**HONGKONG_AND_MACAO** : 港澳居民来往内地通行证</li>
 	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	// 
@@ -1117,13 +1117,13 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：`请确保和合同中填入的一致`，`除动态签署人场景外，此参数必填`
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
-	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`
+	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人场景外，此参数必填`
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 执行本接口操作的员工信息。
@@ -1131,7 +1131,7 @@ type ChannelCreateBatchSignUrlRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>**ID_CARD** : 居民身份证 (默认值)</li>
+	// <ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li>
 	// <li>**HONGKONG_AND_MACAO** : 港澳居民来往内地通行证</li>
 	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	// 
@@ -3166,7 +3166,7 @@ type ChannelCreatePreparedPersonalEsignRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
 	// <li>OTHER_CARD_TYPE : 其他</li></ul>
@@ -3218,7 +3218,7 @@ type ChannelCreatePreparedPersonalEsignRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
 	// <li>OTHER_CARD_TYPE : 其他</li></ul>
@@ -6010,6 +6010,7 @@ type Component struct {
 	ComponentHeight *float64 `json:"ComponentHeight,omitnil,omitempty" name:"ComponentHeight"`
 
 	// **在绝对定位方式方式下**，指定控件所在PDF文件上的页码
+	// **在使用文件发起的情况下**，绝对定位方式的填写控件和签署控件支持使用负数来指定控件在PDF文件上的页码，使用负数时，页码从最后一页开始。例如：ComponentPage设置为-1，即代表在PDF文件的最后一页，以此类推。
 	// 
 	// 注：
 	// 1. 页码编号是从<font color="red">1</font>开始编号的。
@@ -6078,12 +6079,12 @@ type Component struct {
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
 	// <ul><li> <b>TEXT</b> : 文本内容</li>
-	// <li> <b>MULTI_LINE_TEXT</b> : 文本内容</li>
+	// <li> <b>MULTI_LINE_TEXT</b> : 文本内容， 可以用  \n 来控制换行位置</li>
 	// <li> <b>CHECK_BOX</b> : true/false</li>
 	// <li> <b>FILL_IMAGE、ATTACHMENT</b> : 附件的FileId，需要通过UploadFiles接口上传获取</li>
 	// <li> <b>SELECTOR</b> : 选项值</li>
 	// <li> <b>DYNAMIC_TABLE</b>  - 传入json格式的表格内容，详见说明：[数据表格](https://qian.tencent.com/developers/company/dynamic_table)</li>
-	// <li> <b>DATE</b> : 默认是格式化为xxxx年xx月xx日</li>
+	// <li> <b>DATE</b> : 格式化：xxxx年xx月xx日（例如：2024年05月28日）</li>
 	// <li> <b>SIGN_SEAL</b> : 印章ID，于控制台查询获取，[点击查看在控制上的位置](https://qcloudimg.tencent-cloud.cn/raw/cd403a5b949fce197fd9e88bb6db1517.png)</li>
 	// <li> <b>SIGN_PAGING_SEAL</b> : 可以指定印章ID，于控制台查询获取，[点击查看在控制上的位置](https://qcloudimg.tencent-cloud.cn/raw/cd403a5b949fce197fd9e88bb6db1517.png)</li></ul>
 	// 
@@ -9025,7 +9026,7 @@ type FillApproverInfo struct {
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil,omitempty" name:"NotChannelOrganization"`
 
 	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD 居民身份证</li>
+	// <ul><li>ID_CARD 中国大陆居民身份证</li>
 	// <li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li>
 	// <li>OTHER_CARD_TYPE 其他证件</li></ul>
@@ -9150,7 +9151,7 @@ type FlowApproverInfo struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
 	// <li>OTHER_CARD_TYPE : 其他证件</li></ul>
@@ -9605,16 +9606,19 @@ type FlowResourceUrlInfo struct {
 
 type FormField struct {
 	// 控件填充值，ComponentType和传入值格式对应关系如下：
-	// <ul>
-	// <li>TEXT - 普通文本控件，需输入文本字符串；</li>
-	// <li>MULTI_LINE_TEXT - 多行文本控件，需输入文本字符串；</li>
-	// <li>CHECK_BOX - 勾选框控件，若选中需填写ComponentValue，填写 true或者 false 字符串；</li>
-	// <li>FILL_IMAGE - 图片控件，需填写ComponentValue为图片的资源 ID；</li>
-	// <li>DYNAMIC_TABLE - 动态表格控件；</li>
-	// <li>ATTACHMENT - 附件控件，需填写ComponentValue为附件图片的资源 ID列表，以逗号分割；</li>
-	// <li>DATE - 日期控件；格式为 <b>xxxx年xx月xx日</b> 字符串；</li>
-	// <li>DISTRICT - 省市区行政区控件，需填写ComponentValue为省市区行政区字符串内容；</li>
+	// <ul><li> <b>TEXT</b> : 文本内容</li>
+	// <li> <b>MULTI_LINE_TEXT</b> : 文本内容， 可以用  \n 来控制换行位置</li>
+	// <li> <b>CHECK_BOX</b> : true/false</li>
+	// <li> <b>FILL_IMAGE、ATTACHMENT</b> : 附件的FileId，需要通过UploadFiles接口上传获取</li>
+	// <li> <b>SELECTOR</b> : 选项值</li>
+	// <li> <b>DYNAMIC_TABLE</b>  - 传入json格式的表格内容，详见说明：[数据表格](https://qian.tencent.com/developers/partner/dynamic_table)</li>
+	// <li> <b>DATE</b> : 格式化：xxxx年xx月xx日（例如：2024年05月28日）</li>
+	// <li> <b>DISTRICT </b> : 省市区行政区控件，需填写ComponentValue为省市区行政区字符串内容</li>
 	// </ul>
+	// 
+	// 
+	// <b>控件值约束说明</b>：
+	// <table> <thead> <tr> <th>特殊控件</th> <th>填写约束</th> </tr> </thead> <tbody> <tr> <td>企业全称控件</td> <td>企业名称中文字符中文括号</td> </tr> <tr> <td>统一社会信用代码控件</td> <td>企业注册的统一社会信用代码</td> </tr> <tr> <td>法人名称控件</td> <td>最大50个字符，2到25个汉字或者1到50个字母</td> </tr> <tr> <td>签署意见控件</td> <td>签署意见最大长度为50字符</td> </tr> <tr> <td>签署人手机号控件</td> <td>国内手机号 13,14,15,16,17,18,19号段长度11位</td> </tr> <tr> <td>签署人身份证控件</td> <td>合法的身份证号码检查</td> </tr> <tr> <td>控件名称</td> <td>控件名称最大长度为20字符，不支持表情</td> </tr> <tr> <td>单行文本控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>多行文本控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>勾选框控件</td> <td>选择填字符串true，不选填字符串false</td> </tr> <tr> <td>选择器控件</td> <td>同单行文本控件约束，填写选择值中的字符串</td> </tr> <tr> <td>数字控件</td> <td>请输入有效的数字(可带小数点)</td> </tr> <tr> <td>日期控件</td> <td>格式：yyyy年mm月dd日</td> </tr> <tr> <td>附件控件</td> <td>JPG或PNG图片，上传数量限制，1到6个，最大6个附件，填写上传的资源ID</td> </tr> <tr> <td>图片控件</td> <td>JPG或PNG图片，填写上传的图片资源ID</td> </tr> <tr> <td>邮箱控件</td> <td>有效的邮箱地址, w3c标准</td> </tr> <tr> <td>地址控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>省市区控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>性别控件</td> <td>选择值中的字符串</td> </tr> <tr> <td>学历控件</td> <td>选择值中的字符串</td> </tr> </tbody> </table>
 	ComponentValue *string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 
 	// 表单域或控件的ID，跟ComponentName二选一，不能全为空；
@@ -10056,7 +10060,7 @@ type NeedReviewApproverInfo struct {
 	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
 	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD 居民身份证  (默认值)</li>
+	// <ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li>
 	// <li>OTHER_CARD_TYPE 其他证件</li></ul>
@@ -10546,7 +10550,7 @@ type ProxyOrganizationOperator struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
@@ -11088,7 +11092,7 @@ type SyncProxyOrganizationRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 第三方平台子客企业法定代表人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
 	// 注: `现在仅支持ID_CARD居民身份证类型`
 	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil,omitempty" name:"ProxyLegalIdCardType"`
 
@@ -11131,7 +11135,7 @@ type SyncProxyOrganizationRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 第三方平台子客企业法定代表人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
 	// 注: `现在仅支持ID_CARD居民身份证类型`
 	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil,omitempty" name:"ProxyLegalIdCardType"`
 
@@ -11454,7 +11458,7 @@ type UserThreeFactor struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`

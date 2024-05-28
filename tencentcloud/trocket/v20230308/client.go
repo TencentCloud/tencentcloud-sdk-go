@@ -120,7 +120,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 }
 
 // CreateInstance
-// 购买新实例
+// 创建 RocketMQ 5.x 集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -129,7 +129,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 }
 
 // CreateInstance
-// 购买新实例
+// 创建 RocketMQ 5.x 集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
