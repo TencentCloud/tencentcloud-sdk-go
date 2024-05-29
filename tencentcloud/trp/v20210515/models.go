@@ -305,6 +305,26 @@ type CodePack struct {
 	// 码关系是否预关联
 	// 0:否, 1:是
 	RelateType *int64 `json:"RelateType,omitnil,omitempty" name:"RelateType"`
+
+	// 场景码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 码规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeRule *string `json:"CodeRule,omitnil,omitempty" name:"CodeRule"`
+
+	// 已使用码数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedAmount *int64 `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
+
+	// 开始流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialStart *uint64 `json:"SerialStart,omitnil,omitempty" name:"SerialStart"`
+
+	// 结束流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialEnd *uint64 `json:"SerialEnd,omitnil,omitempty" name:"SerialEnd"`
 }
 
 type CodePart struct {
@@ -506,6 +526,9 @@ type CreateCodePackRequestParams struct {
 
 	// 层级码时是否提前生成关联关系，默认为 1
 	RelateType *int64 `json:"RelateType,omitnil,omitempty" name:"RelateType"`
+
+	// 场景值
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 type CreateCodePackRequest struct {
@@ -546,6 +569,9 @@ type CreateCodePackRequest struct {
 
 	// 层级码时是否提前生成关联关系，默认为 1
 	RelateType *int64 `json:"RelateType,omitnil,omitempty" name:"RelateType"`
+
+	// 场景值
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 func (r *CreateCodePackRequest) ToJsonString() string {
@@ -572,6 +598,7 @@ func (r *CreateCodePackRequest) FromJsonString(s string) error {
 	delete(f, "SerialType")
 	delete(f, "ProductId")
 	delete(f, "RelateType")
+	delete(f, "SceneCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodePackRequest has unknown keys!", "")
 	}
@@ -756,6 +783,9 @@ type CreateCustomPackRequestParams struct {
 	// 0: 否, 1:是
 	// 默认为1，仅对层级码有效
 	RelateType *int64 `json:"RelateType,omitnil,omitempty" name:"RelateType"`
+
+	// 场景值
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 type CreateCustomPackRequest struct {
@@ -798,6 +828,9 @@ type CreateCustomPackRequest struct {
 	// 0: 否, 1:是
 	// 默认为1，仅对层级码有效
 	RelateType *int64 `json:"RelateType,omitnil,omitempty" name:"RelateType"`
+
+	// 场景值
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 func (r *CreateCustomPackRequest) ToJsonString() string {
@@ -824,6 +857,7 @@ func (r *CreateCustomPackRequest) FromJsonString(s string) error {
 	delete(f, "SerialType")
 	delete(f, "ProductId")
 	delete(f, "RelateType")
+	delete(f, "SceneCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomPackRequest has unknown keys!", "")
 	}
@@ -2306,6 +2340,12 @@ type DescribeCodePacksRequestParams struct {
 
 	// 资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
 	ResId *string `json:"ResId,omitnil,omitempty" name:"ResId"`
+
+	// 应用场景
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 码包状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeCodePacksRequest struct {
@@ -2331,6 +2371,12 @@ type DescribeCodePacksRequest struct {
 
 	// 资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
 	ResId *string `json:"ResId,omitnil,omitempty" name:"ResId"`
+
+	// 应用场景
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 码包状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *DescribeCodePacksRequest) ToJsonString() string {
@@ -2352,6 +2398,8 @@ func (r *DescribeCodePacksRequest) FromJsonString(s string) error {
 	delete(f, "SerialType")
 	delete(f, "ResType")
 	delete(f, "ResId")
+	delete(f, "SceneCode")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodePacksRequest has unknown keys!", "")
 	}
@@ -4013,6 +4061,10 @@ type Job struct {
 
 	// 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type Merchant struct {
@@ -4941,6 +4993,14 @@ type PackSpec struct {
 	// 码段配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeParts []*CodePart `json:"CodeParts,omitnil,omitempty" name:"CodeParts"`
+
+	// 包装单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 场景值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 type PhaseData struct {
@@ -5294,6 +5354,18 @@ type ScanLog struct {
 	// 产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 产品Logo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductLogo *string `json:"ProductLogo,omitnil,omitempty" name:"ProductLogo"`
+
+	// 风险状态
+	// 0: 未知, 1:通过, 2:失败/风险, 3:存疑
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否开启验证
+	// 0:否, 1:是
+	Verify *int64 `json:"Verify,omitnil,omitempty" name:"Verify"`
 }
 
 type ScanStat struct {
@@ -5370,6 +5442,18 @@ type TraceCode struct {
 
 	// 码层级 0: 最小级, 1: 一级, 2: 二级
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 码层级详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackSpec []*PackSpec `json:"PackSpec,omitnil,omitempty" name:"PackSpec"`
+
+	// 场景码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneCode *uint64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 流水码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialCode *uint64 `json:"SerialCode,omitnil,omitempty" name:"SerialCode"`
 }
 
 type TraceData struct {

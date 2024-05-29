@@ -7175,6 +7175,9 @@ type DescribeWxGatewaysRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
 	// 服务名称，精确匹配
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
@@ -7190,6 +7193,9 @@ type DescribeWxGatewaysRequest struct {
 	
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 服务名称，精确匹配
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
@@ -7214,6 +7220,7 @@ func (r *DescribeWxGatewaysRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EnvId")
+	delete(f, "GatewayId")
 	delete(f, "GatewayName")
 	delete(f, "Limit")
 	delete(f, "Offset")
@@ -8045,6 +8052,10 @@ type GatewayItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
+	// WxAppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WxAppId *string `json:"WxAppId,omitnil,omitempty" name:"WxAppId"`
+
 	// 环境id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -8093,6 +8104,14 @@ type GatewayItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
+	// 是否可以续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanRenew *bool `json:"CanRenew,omitnil,omitempty" name:"CanRenew"`
+
+	// 自动续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
 	// 隔离时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
@@ -8109,6 +8128,10 @@ type GatewayItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
+	// 是否可以降配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanDowngrade *bool `json:"CanDowngrade,omitnil,omitempty" name:"CanDowngrade"`
+
 	// 允许未登录访问
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowUncertified *int64 `json:"AllowUncertified,omitnil,omitempty" name:"AllowUncertified"`
@@ -8116,6 +8139,14 @@ type GatewayItem struct {
 	// 网关版本限额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionNumLimit *int64 `json:"VersionNumLimit,omitnil,omitempty" name:"VersionNumLimit"`
+
+	// Donut接入ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LongAccessId *string `json:"LongAccessId,omitnil,omitempty" name:"LongAccessId"`
+
+	// Donut接入域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
 }
 
 type GatewayVersionItem struct {

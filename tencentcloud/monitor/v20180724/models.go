@@ -543,6 +543,10 @@ type AlarmPolicyRule struct {
 	// 告警分级阈值配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HierarchicalValue *AlarmHierarchicalValue `json:"HierarchicalValue,omitnil,omitempty" name:"HierarchicalValue"`
+
+	// 是否延迟指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLatenessMetric *int64 `json:"IsLatenessMetric,omitnil,omitempty" name:"IsLatenessMetric"`
 }
 
 type AlarmPolicyTriggerTask struct {
@@ -11409,6 +11413,10 @@ type Metric struct {
 	// 指标触发
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Periods []*int64 `json:"Periods,omitnil,omitempty" name:"Periods"`
+
+	// 是否延迟指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLatenessMetric *int64 `json:"IsLatenessMetric,omitnil,omitempty" name:"IsLatenessMetric"`
 }
 
 type MetricConfig struct {

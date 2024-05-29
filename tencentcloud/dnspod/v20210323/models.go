@@ -5263,6 +5263,74 @@ func (r *ModifyDomainStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDomainToGroupRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type ModifyDomainToGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	DomainId *int64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *ModifyDomainToGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainToGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "GroupId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainToGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDomainToGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDomainToGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDomainToGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyDomainToGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainToGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDomainUnlockRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`

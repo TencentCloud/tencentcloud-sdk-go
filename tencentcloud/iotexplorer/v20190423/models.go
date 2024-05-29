@@ -6965,7 +6965,7 @@ type GenerateCloudStorageAIServiceTaskFileURLRequestParams struct {
 	// 文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后）
+	// 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后，最大不超过文件所属任务的过期时间）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
@@ -6978,7 +6978,7 @@ type GenerateCloudStorageAIServiceTaskFileURLRequest struct {
 	// 文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后）
+	// 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后，最大不超过文件所属任务的过期时间）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
@@ -7008,7 +7008,7 @@ type GenerateCloudStorageAIServiceTaskFileURLResponseParams struct {
 	// 文件下载 URL
 	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
 
-	// 过期时间 UNIX 时间戳
+	// 过期时间 UNIX 时间戳（最大不超过文件所属任务的过期时间）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

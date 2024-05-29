@@ -692,6 +692,15 @@ const (
 	// 入参中的域名与站点参数不匹配，请更正后重试。
 	INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = "InvalidParameterValue.DomainNotMatchZone"
 
+	// 格式不匹配。
+	INVALIDPARAMETERVALUE_FORMATMISMATCH = "InvalidParameterValue.FormatMismatch"
+
+	// 配置参数格式不匹配。
+	INVALIDPARAMETERVALUE_GENERALMISMATCH = "InvalidParameterValue.GeneralMismatch"
+
+	// 包含无效的值。
+	INVALIDPARAMETERVALUE_INCLUDEINVALIDVALUE = "InvalidParameterValue.IncludeInvalidValue"
+
 	// 别称域名名称不合法，别称域名应该由数字、英文字母、连词符组成，且连词符不能位于开头和结尾处。
 	INVALIDPARAMETERVALUE_INVALIDALIASDOMAINNAME = "InvalidParameterValue.InvalidAliasDomainName"
 
@@ -716,17 +725,32 @@ const (
 	// 标签值存在不合法字符。
 	INVALIDPARAMETERVALUE_INVALIDTAGVALUE = "InvalidParameterValue.InvalidTagValue"
 
+	// 缺少必要配置参数。
+	INVALIDPARAMETERVALUE_MISSINGNECESSARYPARAM = "InvalidParameterValue.MissingNecessaryParam"
+
 	// 不支持接入泛域名 CNAME
 	INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = "InvalidParameterValue.NotAllowedWildcardSharedCNAME"
 
+	// 值不在要求的集合内。
+	INVALIDPARAMETERVALUE_NOTINENUMERATION = "InvalidParameterValue.NotInEnumeration"
+
+	// 值不在指定范围。
+	INVALIDPARAMETERVALUE_NOTWITHINRANGE = "InvalidParameterValue.NotWithinRange"
+
 	// 指定的源站组不存在。
 	INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = "InvalidParameterValue.OriginGroupNotExists"
+
+	// 不符合指定的正则表达式。
+	INVALIDPARAMETERVALUE_REGEXMISMATCH = "InvalidParameterValue.RegExMismatch"
 
 	// 请输入合法的共享 CNAME 前缀，最大支持50个字符。
 	INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = "InvalidParameterValue.SharedCNAMEPrefixNotMatch"
 
 	// 暂不支持当前域名后缀接入，如您需要使用请联系我们。
 	INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = "InvalidParameterValue.TopLevelDomainNotSupport"
+
+	// 配置项错误。
+	INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = "InvalidParameterValue.UnrecognizableValue"
 
 	// 站点名称格式不正确，请输入正确的域名格式。
 	INVALIDPARAMETERVALUE_ZONENAMEINVALID = "InvalidParameterValue.ZoneNameInvalid"

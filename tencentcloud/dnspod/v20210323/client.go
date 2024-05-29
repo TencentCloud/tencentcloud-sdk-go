@@ -4704,6 +4704,79 @@ func (c *Client) ModifyDomainStatusWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyDomainToGroupRequest() (request *ModifyDomainToGroupRequest) {
+    request = &ModifyDomainToGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainToGroup")
+    
+    
+    return
+}
+
+func NewModifyDomainToGroupResponse() (response *ModifyDomainToGroupResponse) {
+    response = &ModifyDomainToGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDomainToGroup
+// 修改域名所属分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_GROUPIDINVALID = "InvalidParameter.GroupIdInvalid"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDomainToGroup(request *ModifyDomainToGroupRequest) (response *ModifyDomainToGroupResponse, err error) {
+    return c.ModifyDomainToGroupWithContext(context.Background(), request)
+}
+
+// ModifyDomainToGroup
+// 修改域名所属分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_GROUPIDINVALID = "InvalidParameter.GroupIdInvalid"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDomainToGroupWithContext(ctx context.Context, request *ModifyDomainToGroupRequest) (response *ModifyDomainToGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainToGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainToGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainToGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainUnlockRequest() (request *ModifyDomainUnlockRequest) {
     request = &ModifyDomainUnlockRequest{
         BaseRequest: &tchttp.BaseRequest{},

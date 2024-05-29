@@ -5987,14 +5987,13 @@ type DescribeLogContextRequestParams struct {
 	// 要查询的日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志时间,  需按照 UTC+8 时区将日志中的Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+	// 日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
 	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
-	// 日志包序号。SearchLog接口返回信息中Results结构体中的PkgId。
+	// 日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 日志包内一条日志的序号。
-	// SearchLog接口返回信息中Results结构中的PkgLogId。
+	// 日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
 	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 前${PrevLogs}条日志，默认值10。
@@ -6002,6 +6001,24 @@ type DescribeLogContextRequestParams struct {
 
 	// 后${NextLogs}条日志，默认值10。
 	NextLogs *int64 `json:"NextLogs,omitnil,omitempty" name:"NextLogs"`
+
+	// 检索语句，对日志上下文进行过滤，最大长度为12KB
+	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 上下文检索的开始时间，单位：毫秒级时间戳
+	// 注意：
+	// - From为空时，表示上下文检索的开始时间不做限制
+	// - From和To非空时，From < To
+	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// 上下文检索的结束时间，单位：毫秒级时间戳。
+	// 注意：
+	// - To为空时，表示上下文检索的结束时间不做限制
+	// - From和To非空时，From < To
+	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 }
 
 type DescribeLogContextRequest struct {
@@ -6010,14 +6027,13 @@ type DescribeLogContextRequest struct {
 	// 要查询的日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志时间,  需按照 UTC+8 时区将日志中的Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+	// 日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
 	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
-	// 日志包序号。SearchLog接口返回信息中Results结构体中的PkgId。
+	// 日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 日志包内一条日志的序号。
-	// SearchLog接口返回信息中Results结构中的PkgLogId。
+	// 日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
 	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 前${PrevLogs}条日志，默认值10。
@@ -6025,6 +6041,24 @@ type DescribeLogContextRequest struct {
 
 	// 后${NextLogs}条日志，默认值10。
 	NextLogs *int64 `json:"NextLogs,omitnil,omitempty" name:"NextLogs"`
+
+	// 检索语句，对日志上下文进行过滤，最大长度为12KB
+	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 上下文检索的开始时间，单位：毫秒级时间戳
+	// 注意：
+	// - From为空时，表示上下文检索的开始时间不做限制
+	// - From和To非空时，From < To
+	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// 上下文检索的结束时间，单位：毫秒级时间戳。
+	// 注意：
+	// - To为空时，表示上下文检索的结束时间不做限制
+	// - From和To非空时，From < To
+	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 }
 
 func (r *DescribeLogContextRequest) ToJsonString() string {
@@ -6045,6 +6079,9 @@ func (r *DescribeLogContextRequest) FromJsonString(s string) error {
 	delete(f, "PkgLogId")
 	delete(f, "PrevLogs")
 	delete(f, "NextLogs")
+	delete(f, "Query")
+	delete(f, "From")
+	delete(f, "To")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogContextRequest has unknown keys!", "")
 	}

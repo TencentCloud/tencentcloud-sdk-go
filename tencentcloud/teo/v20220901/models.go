@@ -11863,14 +11863,14 @@ type RewriteAction struct {
 }
 
 type Rule struct {
-	// 执行的功能。
-	Actions []*Action `json:"Actions,omitnil,omitempty" name:"Actions"`
-
 	// 执行功能判断条件。
 	// 注意：满足该数组内任意一项条件，功能即可执行。
 	Conditions []*RuleAndConditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 
-	// 嵌套规则。
+	// 执行的功能。注意：Actions 和 SubRules 不可都为空
+	Actions []*Action `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 嵌套规则。注意：SubRules 和 Actions 不可都为空
 	SubRules []*SubRuleItem `json:"SubRules,omitnil,omitempty" name:"SubRules"`
 }
 
