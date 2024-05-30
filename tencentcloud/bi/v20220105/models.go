@@ -3244,6 +3244,14 @@ type UserInfo struct {
 	// 手机号区号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCode *string `json:"AreaCode,omitnil,omitempty" name:"AreaCode"`
+
+	// 企微账号id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserId *string `json:"AppUserId,omitnil,omitempty" name:"AppUserId"`
+
+	// 企微账号名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppUserName *string `json:"AppUserName,omitnil,omitempty" name:"AppUserName"`
 }
 
 type UserRoleListData struct {
@@ -3366,4 +3374,8 @@ type UserRoleListDataUserRoleInfo struct {
 	// 是否在可见范围内
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InValidateAppRange *bool `json:"InValidateAppRange,omitnil,omitempty" name:"InValidateAppRange"`
+
+	// 用户openid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppOpenUserId *string `json:"AppOpenUserId,omitnil,omitempty" name:"AppOpenUserId"`
 }

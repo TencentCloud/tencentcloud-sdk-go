@@ -180,10 +180,10 @@ type BaseConfig struct {
 	// 应用名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 机器人头像
+	// 应用头像
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
-	// 机器人描述
+	// 应用描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
@@ -6853,7 +6853,7 @@ func (r *RetryReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SaveDocRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件名
@@ -6862,7 +6862,7 @@ type SaveDocRequestParams struct {
 	// 文件类型(md|txt|docx|pdf|xlsx)
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// cos路径
+	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
 	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化
@@ -6906,7 +6906,7 @@ type SaveDocRequestParams struct {
 type SaveDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件名
@@ -6915,7 +6915,7 @@ type SaveDocRequest struct {
 	// 文件类型(md|txt|docx|pdf|xlsx)
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// cos路径
+	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
 	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化

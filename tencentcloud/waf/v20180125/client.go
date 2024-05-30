@@ -1523,7 +1523,7 @@ func NewDeleteIpAccessControlResponse() (response *DeleteIpAccessControlResponse
 }
 
 // DeleteIpAccessControl
-// Waf IP黑白名单Delete接口
+// Waf IP黑白名单Delete接口（建议使用DeleteIpAccessControlV2来替换当前接口）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
@@ -1536,7 +1536,7 @@ func (c *Client) DeleteIpAccessControl(request *DeleteIpAccessControlRequest) (r
 }
 
 // DeleteIpAccessControl
-// Waf IP黑白名单Delete接口
+// Waf IP黑白名单Delete接口（建议使用DeleteIpAccessControlV2来替换当前接口）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
@@ -8968,7 +8968,7 @@ func NewUpsertIpAccessControlResponse() (response *UpsertIpAccessControlResponse
 }
 
 // UpsertIpAccessControl
-// Waf IP黑白名单Upsert接口
+// Waf IP黑白名单Upsert接口（建议使用CreateIpAccessControl、ModifyIpAccessControl来替换当前接口）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
@@ -8982,7 +8982,7 @@ func (c *Client) UpsertIpAccessControl(request *UpsertIpAccessControlRequest) (r
 }
 
 // UpsertIpAccessControl
-// Waf IP黑白名单Upsert接口
+// Waf IP黑白名单Upsert接口（建议使用CreateIpAccessControl、ModifyIpAccessControl来替换当前接口）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"

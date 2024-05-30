@@ -6521,7 +6521,8 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
+	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
+	// 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`
@@ -6621,7 +6622,8 @@ type CreateConsoleLoginUrlRequest struct {
 	// `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
+	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
+	// 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`

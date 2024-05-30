@@ -424,9 +424,6 @@ type AddCustomRuleRequestParams struct {
 	// 优先级
 	SortId *string `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
-	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
 	// 策略详情
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
@@ -439,6 +436,9 @@ type AddCustomRuleRequestParams struct {
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
+	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
@@ -447,6 +447,24 @@ type AddCustomRuleRequestParams struct {
 
 	// 添加规则的来源，默认为空
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 规则执行的时间
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 规则来源，判断是不是小程序的
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 规则标签，小程序规则用，标识是内置规则还是自定义规则
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 开关状态，小程序风控规则的时候传该值
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 拦截页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
 type AddCustomRuleRequest struct {
@@ -458,9 +476,6 @@ type AddCustomRuleRequest struct {
 	// 优先级
 	SortId *string `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
-	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
 	// 策略详情
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
@@ -473,6 +488,9 @@ type AddCustomRuleRequest struct {
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
+	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
@@ -481,6 +499,24 @@ type AddCustomRuleRequest struct {
 
 	// 添加规则的来源，默认为空
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 规则执行的时间
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 规则来源，判断是不是小程序的
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 规则标签，小程序规则用，标识是内置规则还是自定义规则
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 开关状态，小程序风控规则的时候传该值
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 拦截页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
 func (r *AddCustomRuleRequest) ToJsonString() string {
@@ -497,14 +533,20 @@ func (r *AddCustomRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "SortId")
-	delete(f, "ExpireTime")
 	delete(f, "Strategies")
 	delete(f, "Domain")
 	delete(f, "ActionType")
 	delete(f, "Redirect")
+	delete(f, "ExpireTime")
 	delete(f, "Edition")
 	delete(f, "Bypass")
 	delete(f, "EventId")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "Source")
+	delete(f, "Label")
+	delete(f, "Status")
+	delete(f, "PageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomRuleRequest has unknown keys!", "")
 	}
@@ -559,6 +601,12 @@ type AddCustomWhiteRuleRequestParams struct {
 
 	// 放行的详情
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 type AddCustomWhiteRuleRequest struct {
@@ -581,6 +629,12 @@ type AddCustomWhiteRuleRequest struct {
 
 	// 放行的详情
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 func (r *AddCustomWhiteRuleRequest) ToJsonString() string {
@@ -601,6 +655,8 @@ func (r *AddCustomWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "Strategies")
 	delete(f, "Domain")
 	delete(f, "Bypass")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomWhiteRuleRequest has unknown keys!", "")
 	}
@@ -875,6 +931,9 @@ type AddSpartaProtectionRequestParams struct {
 
 	// 是否开启缓存 0-关闭 1-开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
+
+	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -1032,6 +1091,9 @@ type AddSpartaProtectionRequest struct {
 
 	// 是否开启缓存 0-关闭 1-开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
+
+	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1083,6 +1145,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "Note")
 	delete(f, "UpstreamHost")
 	delete(f, "ProxyBuffer")
+	delete(f, "ProbeStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1228,6 +1291,10 @@ type BatchIpAccessControlItem struct {
 	// IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type BotPkg struct {
@@ -1409,6 +1476,10 @@ type CCRuleItems struct {
 	// 关联的Session规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type CCRuleLists struct {
@@ -1458,6 +1529,14 @@ type CacheUrlItems struct {
 
 	// 状态
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type CdcCluster struct {
@@ -1972,7 +2051,7 @@ type CreateIpAccessControlRequestParams struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	// 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 备注
@@ -2001,7 +2080,7 @@ type CreateIpAccessControlRequest struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	// 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 备注
@@ -2058,6 +2137,24 @@ func (r *CreateIpAccessControlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CronJob struct {
+	// 每个月的几号执行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Days []*uint64 `json:"Days,omitnil,omitempty" name:"Days"`
+
+	// 每个星期的星期几执行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WDays []*uint64 `json:"WDays,omitnil,omitempty" name:"WDays"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DealData struct {
@@ -2462,6 +2559,9 @@ type DeleteCustomRuleRequestParams struct {
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 批量删除的规则列表
+	DomainRuleIdList []*DomainRuleId `json:"DomainRuleIdList,omitnil,omitempty" name:"DomainRuleIdList"`
 }
 
 type DeleteCustomRuleRequest struct {
@@ -2475,6 +2575,9 @@ type DeleteCustomRuleRequest struct {
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 批量删除的规则列表
+	DomainRuleIdList []*DomainRuleId `json:"DomainRuleIdList,omitnil,omitempty" name:"DomainRuleIdList"`
 }
 
 func (r *DeleteCustomRuleRequest) ToJsonString() string {
@@ -2492,6 +2595,7 @@ func (r *DeleteCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "RuleId")
 	delete(f, "Edition")
+	delete(f, "DomainRuleIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomRuleRequest has unknown keys!", "")
 	}
@@ -2500,6 +2604,9 @@ func (r *DeleteCustomRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCustomRuleResponseParams struct {
+	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+	Success *ResponseCode `json:"Success,omitnil,omitempty" name:"Success"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3785,6 +3892,10 @@ type DescribeAntiLeakageItem struct {
 	// 匹配的URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 // Predefined struct for user
@@ -4733,6 +4844,9 @@ type DescribeCustomRuleListRequestParams struct {
 
 	// exp_ts或者mod_ts
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 查询的域名列表,访问控制页面不用传
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 }
 
 type DescribeCustomRuleListRequest struct {
@@ -4755,6 +4869,9 @@ type DescribeCustomRuleListRequest struct {
 
 	// exp_ts或者mod_ts
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 查询的域名列表,访问控制页面不用传
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 }
 
 func (r *DescribeCustomRuleListRequest) ToJsonString() string {
@@ -4775,6 +4892,7 @@ func (r *DescribeCustomRuleListRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "DomainList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomRuleListRequest has unknown keys!", "")
 	}
@@ -4855,6 +4973,30 @@ type DescribeCustomRulesRspRuleListItem struct {
 	// 来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 定时任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 周期任务粒度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 自定义标签，风控规则用，用来表示是内置规则还是用户自定义的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 拦截页面id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 // Predefined struct for user
@@ -8126,6 +8268,16 @@ type DomainPackageNew struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
+type DomainRuleId struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
 type DomainURI struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -9475,6 +9627,14 @@ type InstanceInfo struct {
 	// 最近一次超量时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastQpsExceedTime *string `json:"LastQpsExceedTime,omitnil,omitempty" name:"LastQpsExceedTime"`
+
+	// 小程序安全接入ID数量扩张包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniExtendPkg *MiniExtendPkg `json:"MiniExtendPkg,omitnil,omitempty" name:"MiniExtendPkg"`
+
+	// 计费项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 type IpAccessControlData struct {
@@ -9521,6 +9681,10 @@ type IpAccessControlItem struct {
 	// IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 规则创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type IpAccessControlParam struct {
@@ -9563,6 +9727,20 @@ type IpHitItemsData struct {
 
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type JobDateTime struct {
+	// 定时执行的时间参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timed []*TimedJob `json:"Timed,omitnil,omitempty" name:"Timed"`
+
+	// 周期执行的时间参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cron []*CronJob `json:"Cron,omitnil,omitempty" name:"Cron"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeTZone *string `json:"TimeTZone,omitnil,omitempty" name:"TimeTZone"`
 }
 
 type KVInt struct {
@@ -9740,6 +9918,40 @@ type MajorEventsPkg struct {
 	// 护网包状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HWState *int64 `json:"HWState,omitnil,omitempty" name:"HWState"`
+}
+
+type MiniExtendPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 购买数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计费项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 type MiniPkg struct {
@@ -10520,6 +10732,21 @@ type ModifyCustomRuleRequestParams struct {
 	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
 	// 默认是0
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 规则来源，判断是不是小程序的
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 开关状态，小程序风控规则的时候传该值
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 拦截页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
 type ModifyCustomRuleRequest struct {
@@ -10557,6 +10784,21 @@ type ModifyCustomRuleRequest struct {
 	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
 	// 默认是0
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 规则来源，判断是不是小程序的
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 开关状态，小程序风控规则的时候传该值
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 拦截页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
 func (r *ModifyCustomRuleRequest) ToJsonString() string {
@@ -10581,6 +10823,11 @@ func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Bypass")
 	delete(f, "SortId")
 	delete(f, "ExpireTime")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "Source")
+	delete(f, "Status")
+	delete(f, "PageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleRequest has unknown keys!", "")
 	}
@@ -10589,6 +10836,9 @@ func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCustomRuleResponseParams struct {
+	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+	Success *ResponseCode `json:"Success,omitnil,omitempty" name:"Success"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10622,6 +10872,9 @@ type ModifyCustomRuleStatusRequestParams struct {
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 规则id
+	DomainRuleIdList []*DomainRuleId `json:"DomainRuleIdList,omitnil,omitempty" name:"DomainRuleIdList"`
 }
 
 type ModifyCustomRuleStatusRequest struct {
@@ -10638,6 +10891,9 @@ type ModifyCustomRuleStatusRequest struct {
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 规则id
+	DomainRuleIdList []*DomainRuleId `json:"DomainRuleIdList,omitnil,omitempty" name:"DomainRuleIdList"`
 }
 
 func (r *ModifyCustomRuleStatusRequest) ToJsonString() string {
@@ -10656,6 +10912,7 @@ func (r *ModifyCustomRuleStatusRequest) FromJsonString(s string) error {
 	delete(f, "RuleId")
 	delete(f, "Status")
 	delete(f, "Edition")
+	delete(f, "DomainRuleIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleStatusRequest has unknown keys!", "")
 	}
@@ -10709,6 +10966,12 @@ type ModifyCustomWhiteRuleRequestParams struct {
 
 	// 匹配条件数组
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 type ModifyCustomWhiteRuleRequest struct {
@@ -10734,6 +10997,12 @@ type ModifyCustomWhiteRuleRequest struct {
 
 	// 匹配条件数组
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 func (r *ModifyCustomWhiteRuleRequest) ToJsonString() string {
@@ -10755,6 +11024,8 @@ func (r *ModifyCustomWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "SortId")
 	delete(f, "ExpireTime")
 	delete(f, "Strategies")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomWhiteRuleRequest has unknown keys!", "")
 	}
@@ -12366,6 +12637,9 @@ type ModifySpartaProtectionRequestParams struct {
 
 	// 是否开启缓存 0-关闭 1-开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
+
+	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -12512,6 +12786,9 @@ type ModifySpartaProtectionRequest struct {
 
 	// 是否开启缓存 0-关闭 1-开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
+
+	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -12562,6 +12839,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "Note")
 	delete(f, "UpstreamHost")
 	delete(f, "ProxyBuffer")
+	delete(f, "ProbeStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}
@@ -13344,6 +13622,10 @@ type RuleList struct {
 
 	// 开关状态
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user
@@ -13910,6 +14192,16 @@ type TargetEntity struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
+type TimedJob struct {
+	// 开始时间戳，单位为秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartDateTime *uint64 `json:"StartDateTime,omitnil,omitempty" name:"StartDateTime"`
+
+	// 结束时间戳，单位为秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndDateTime *uint64 `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+}
+
 // Predefined struct for user
 type UpsertCCAutoStatusRequestParams struct {
 	// 域名
@@ -14034,6 +14326,9 @@ type UpsertCCRuleRequestParams struct {
 
 	// 规则ID，新增时填0
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则创建时间
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -14089,6 +14384,9 @@ type UpsertCCRuleRequest struct {
 
 	// 规则ID，新增时填0
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则创建时间
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -14120,6 +14418,7 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "EventId")
 	delete(f, "SessionApplied")
 	delete(f, "RuleId")
+	delete(f, "CreateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}
@@ -14161,7 +14460,7 @@ type UpsertIpAccessControlRequestParams struct {
 	// 全局域名为：global
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	// IP 参数列表，json数组由IP，source，note，action，valid_ts组成。IP对应配置的IP地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 实例Id
@@ -14170,7 +14469,7 @@ type UpsertIpAccessControlRequestParams struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
+	// 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
@@ -14181,7 +14480,7 @@ type UpsertIpAccessControlRequest struct {
 	// 全局域名为：global
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	// IP 参数列表，json数组由IP，source，note，action，valid_ts组成。IP对应配置的IP地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 实例Id
@@ -14190,7 +14489,7 @@ type UpsertIpAccessControlRequest struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
+	// 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
@@ -14410,6 +14709,18 @@ type UserDomainInfo struct {
 	// 标记是否是混合云接入。hybrid表示混合云接入域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+
+	// 标记clbwaf类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
+
+	// BOT开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
+
+	// API开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 }
 
 type UserSignatureRule struct {

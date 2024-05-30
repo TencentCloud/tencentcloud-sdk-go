@@ -6297,6 +6297,10 @@ func (r *DescribeLakeFsInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLakeFsInfoResponseParams struct {
+	// 托管存储信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LakeFsInfos []*LakeFsInfo `json:"LakeFsInfos,omitnil,omitempty" name:"LakeFsInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9859,6 +9863,20 @@ type LakeFileSystemToken struct {
 
 	// 颁布时间
 	IssueTime *int64 `json:"IssueTime,omitnil,omitempty" name:"IssueTime"`
+}
+
+type LakeFsInfo struct {
+	// 托管存储名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 托管存储类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 容量
+	SpaceUsedSize *float64 `json:"SpaceUsedSize,omitnil,omitempty" name:"SpaceUsedSize"`
+
+	// 创建时候的时间戳
+	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitnil,omitempty" name:"CreateTimeStamp"`
 }
 
 // Predefined struct for user

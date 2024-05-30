@@ -3788,6 +3788,9 @@ type CreateAssetImageScanSettingRequestParams struct {
 	// 扫描结束时间
 	// 02:00 时分
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
+
+	// 排除扫描的镜像
+	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
 }
 
 type CreateAssetImageScanSettingRequest struct {
@@ -3827,6 +3830,9 @@ type CreateAssetImageScanSettingRequest struct {
 	// 扫描结束时间
 	// 02:00 时分
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
+
+	// 排除扫描的镜像
+	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
 }
 
 func (r *CreateAssetImageScanSettingRequest) ToJsonString() string {
@@ -3852,6 +3858,7 @@ func (r *CreateAssetImageScanSettingRequest) FromJsonString(s string) error {
 	delete(f, "ContainerRunning")
 	delete(f, "ScanScope")
 	delete(f, "ScanEndTime")
+	delete(f, "ExcludeImages")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanSettingRequest has unknown keys!", "")
 	}
@@ -12433,6 +12440,10 @@ type DescribeAssetImageScanSettingResponseParams struct {
 	// 扫描结束时间 02:00 时分
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
 
+	// 排除的扫描镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -16867,6 +16878,10 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 
 	// 命名空间
 	Namespace []*string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 排除的镜像资产id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeImageAssetIds []*uint64 `json:"ExcludeImageAssetIds,omitnil,omitempty" name:"ExcludeImageAssetIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -32546,6 +32561,9 @@ type UpdateImageRegistryTimingScanTaskRequestParams struct {
 
 	// 命名空间
 	Namespace []*string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 排除的镜像资产id
+	ExcludeImageAssetIds []*uint64 `json:"ExcludeImageAssetIds,omitnil,omitempty" name:"ExcludeImageAssetIds"`
 }
 
 type UpdateImageRegistryTimingScanTaskRequest struct {
@@ -32589,6 +32607,9 @@ type UpdateImageRegistryTimingScanTaskRequest struct {
 
 	// 命名空间
 	Namespace []*string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 排除的镜像资产id
+	ExcludeImageAssetIds []*uint64 `json:"ExcludeImageAssetIds,omitnil,omitempty" name:"ExcludeImageAssetIds"`
 }
 
 func (r *UpdateImageRegistryTimingScanTaskRequest) ToJsonString() string {
@@ -32616,6 +32637,7 @@ func (r *UpdateImageRegistryTimingScanTaskRequest) FromJsonString(s string) erro
 	delete(f, "ScanScope")
 	delete(f, "RegistryType")
 	delete(f, "Namespace")
+	delete(f, "ExcludeImageAssetIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageRegistryTimingScanTaskRequest has unknown keys!", "")
 	}

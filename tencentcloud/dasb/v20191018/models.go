@@ -436,6 +436,9 @@ type BindDeviceResourceRequestParams struct {
 
 	// 堡垒机服务ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 网络域ID
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type BindDeviceResourceRequest struct {
@@ -446,6 +449,9 @@ type BindDeviceResourceRequest struct {
 
 	// 堡垒机服务ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 网络域ID
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 func (r *BindDeviceResourceRequest) ToJsonString() string {
@@ -462,6 +468,7 @@ func (r *BindDeviceResourceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DeviceIdSet")
 	delete(f, "ResourceId")
+	delete(f, "DomainId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDeviceResourceRequest has unknown keys!", "")
 	}
@@ -3973,6 +3980,14 @@ type Device struct {
 	// 数据库资产的多节点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpPortSet []*string `json:"IpPortSet,omitnil,omitempty" name:"IpPortSet"`
+
+	// 网络域Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 网络域名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 }
 
 type DeviceAccount struct {
@@ -4715,6 +4730,9 @@ type ModifyDeviceRequestParams struct {
 
 	// 资产所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 网络域Id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type ModifyDeviceRequest struct {
@@ -4731,6 +4749,9 @@ type ModifyDeviceRequest struct {
 
 	// 资产所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 网络域Id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 func (r *ModifyDeviceRequest) ToJsonString() string {
@@ -4749,6 +4770,7 @@ func (r *ModifyDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Port")
 	delete(f, "GroupIdSet")
 	delete(f, "DepartmentId")
+	delete(f, "DomainId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceRequest has unknown keys!", "")
 	}
@@ -5456,6 +5478,14 @@ type Resource struct {
 	// 堡垒机资源LB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClbSet []*Clb `json:"ClbSet,omitnil,omitempty" name:"ClbSet"`
+
+	// 网络域个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainCount *int64 `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
+
+	// 已使用网络域个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedDomainCount *uint64 `json:"UsedDomainCount,omitnil,omitempty" name:"UsedDomainCount"`
 }
 
 type RunChangePwdTaskDetail struct {

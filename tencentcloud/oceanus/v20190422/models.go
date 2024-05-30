@@ -276,6 +276,18 @@ type Cluster struct {
 	// 0 公网访问 // 1 内网访问	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebUIType *int64 `json:"WebUIType,omitnil,omitempty" name:"WebUIType"`
+
+	// 2 独享集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 子eks集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubEks *SubEks `json:"SubEks,omitnil,omitempty" name:"SubEks"`
+
+	// 上级集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentSerialId *string `json:"AgentSerialId,omitnil,omitempty" name:"AgentSerialId"`
 }
 
 type ClusterGroupSetItem struct {
@@ -335,6 +347,10 @@ type ClusterGroupSetItem struct {
 
 	// 付费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 弹性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubEks *SubEks `json:"SubEks,omitnil,omitempty" name:"SubEks"`
 }
 
 type ClusterSession struct {
@@ -4625,6 +4641,28 @@ func (r *StopJobsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubEks struct {
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
+
+	// cu数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CuNum *int64 `json:"CuNum,omitnil,omitempty" name:"CuNum"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
+	// 运行cu
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningCu *float64 `json:"RunningCu,omitnil,omitempty" name:"RunningCu"`
 }
 
 type SubFolderInfo struct {

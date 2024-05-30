@@ -542,6 +542,9 @@ const (
 	// 不支持这个长度的editList的操作。
 	UNSUPPORTEDOPERATION_EDITLISTLENGTH = "UnsupportedOperation.EditListLength"
 
+	// 集群有索引设置index.routing.allocation.require._name,or _ip, or _id
+	UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+
 	// 不支持该操作，服务类型有误。
 	UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
 
