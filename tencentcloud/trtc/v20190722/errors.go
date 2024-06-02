@@ -38,6 +38,9 @@ const (
 	// 房间中没有设置混流模板。
 	FAILEDOPERATION_MIXSESSIONNOTEXIST = "FailedOperation.MixSessionNotExist"
 
+	// 需要解锁所需能力位
+	FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+
 	// 未开通RTMP
 	FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
 
@@ -55,9 +58,6 @@ const (
 
 	// 房间不存在。
 	FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
-
-	// 该sdkappid没有开通AITranscription能力
-	FAILEDOPERATION_SDKAPPIDNOTAITRANSCRIPTIONABILITY = "FailedOperation.SdkAppIdNotAITranscriptionAbility"
 
 	// 应用ID不存在。
 	FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"

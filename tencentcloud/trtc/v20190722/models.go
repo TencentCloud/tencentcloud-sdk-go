@@ -500,15 +500,33 @@ func (r *DeletePictureResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAITranscriptionRequestParams struct {
-	// 唯一标识AI转录任务。
+	// 查询任务状态，不使用时传入空字符串。
+	// 有两种查询方式：
+	// 1、只填写TaskId，这种方式使用TaskId来查询任务
+	// 2、TaskId为空字符串，填写SdkAppId和SessionId，这种方式不需要使用TaskId查询任务
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// TRTC的SdkAppId，和SessionId配合使用。
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 开启转录任务时传入的SessionId，和SdkAppId配合使用。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type DescribeAITranscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 唯一标识AI转录任务。
+	// 查询任务状态，不使用时传入空字符串。
+	// 有两种查询方式：
+	// 1、只填写TaskId，这种方式使用TaskId来查询任务
+	// 2、TaskId为空字符串，填写SdkAppId和SessionId，这种方式不需要使用TaskId查询任务
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// TRTC的SdkAppId，和SessionId配合使用。
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 开启转录任务时传入的SessionId，和SdkAppId配合使用。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 func (r *DescribeAITranscriptionRequest) ToJsonString() string {
@@ -524,6 +542,8 @@ func (r *DescribeAITranscriptionRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAITranscriptionRequest has unknown keys!", "")
 	}
@@ -532,11 +552,22 @@ func (r *DescribeAITranscriptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAITranscriptionResponseParams struct {
-	// 起始时间。
+	// 任务开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 转录任务状态。
+	// 有4个值：
+	// 1、Idle表示任务未开始
+	// 2、Preparing表示任务准备中
+	// 3、InProgress表示任务正在运行
+	// 4、Stopped表示任务已停止，正在清理资源中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一标识一次任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 开启转录任务时填写的SessionId，如果没写则不返回。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3553,24 +3584,80 @@ type QualityData struct {
 }
 
 type RecognizeConfig struct {
-	// 支持的语言，目前支持语言如下：
-	//     Chinese = "zh"
-	//     Chinese_TW = "zh-TW"
-	//     English = "en"
-	//     Vietnamese = "vi"
-	//     Japanese = "ja"
-	//     Korean = "ko"
-	//     Indonesia = "id"
-	//     Thai = "th"
-	//     Portuguese = "pt"
-	//     Turkish = "tr"
-	//     Arabic = "ar"
-	//     Spanish = "es"
-	//     Hindi = "hi"
-	//     French = "fr"
+	// 语音识别支持的语言，默认是"zh"。目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循[ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)：
+	// Chinese = "zh"
+	// Chinese_TW = "zh-TW" 
+	// English = "en"
+	// Vietnamese = "vi"
+	// Japanese = "ja"
+	// Korean = "ko"
+	// Indonesia = "id"
+	// Thai = "th"
+	// Portuguese = "pt"
+	// Turkish = "tr"
+	// Arabic = "ar"
+	// Spanish = "es"
+	// Hindi = "hi"
+	// French = "fr"
+	// Malay = "ms"
+	// Filipino = "fil"
+	// German = "de"
+	// Italian = "it"
+	// Russian = "ru"
+	// 
+	// 注意：
+	// 如果缺少满足您需求的语言，请联系我们技术人员。
+	// tencent asr不支持"it"和"ru"，google asr全都支持。
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 选填，如果填写，则会启用翻译，不填则忽略。支持语言同Language字段。
+	// 使用的模型，目前支持tencent和google，默认是tencent。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 翻译功能支持的语言，如果填写，则会启用翻译，不填则只会使用语音识别。
+	// 目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循[ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)：
+	// Chinese = "zh"
+	// Chinese_TW = "zh-TW" 
+	// English = "en"
+	// Vietnamese = "vi"
+	// Japanese = "ja"
+	// Korean = "ko"
+	// Indonesia = "id"
+	// Thai = "th"
+	// Portuguese = "pt"
+	// Turkish = "tr"
+	// Arabic = "ar"
+	// Spanish = "es"
+	// Hindi = "hi"
+	// French = "fr"
+	// Malay = "ms"
+	// Filipino = "fil"
+	// German = "de"
+	// Italian = "it"
+	// Russian = "ru"
+	// 
+	// 注意：
+	// 如果缺少满足您需求的语言，请联系我们技术人员。
+	// google支持上述语言两两之间翻译，tencent只支持部分语言之间翻译。
+	// 
+	// tencnet目标语言，各源语言的目标语言支持列表如下，冒号左侧是目标语言，右侧是源语言：
+	// - zh（简体中文）：zh-TW（繁体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）
+	// - zh-TW（繁体中文）：zh（简体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）
+	// - en（英语）：zh（中文）、zh-TW（繁体中文）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）、hi（印地语）
+	// - ja（日语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ko（韩语）
+	// - ko（韩语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ja（日语）
+	// - fr（法语）：zh（中文）、zh-TW（繁体中文）、en（英语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）
+	// - es（西班牙语）：zh（中文）、zh-TW（繁体中文）、en（英语）、fr（法语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）
+	// - it（意大利语）：zh（中文）、zh-TW（繁体中文）、en（英语）、fr（法语）、es（西班牙语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）
+	// - de（德语）：zh（中文）、zh-TW（繁体中文）、en（英语）、fr（法语）、es（西班牙语）、it（意大利语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）
+	// - tr（土耳其语）：zh（中文）、zh-TW（繁体中文）、en（英语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、ru（俄语）、pt（葡萄牙语）
+	// - ru（俄语）：zh（中文）、zh-TW（繁体中文）、en（英语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、pt（葡萄牙语）
+	// - pt（葡萄牙语）：zh（中文）、zh-TW（繁体中文）、en（英语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）
+	// - vi（越南语）：zh（中文）、zh-TW（繁体中文）、en（英语）
+	// - id（印尼语）：zh（中文）、zh-TW（繁体中文）、en（英语）
+	// - th（泰语）：zh（中文）、zh-TW（繁体中文）、en（英语）
+	// - ms（马来语）：zh（中文）、zh-TW（繁体中文）、en（英语）
+	// - ar（阿拉伯语）：en（英语）
+	// - hi（印地语）：en（英语）
 	TranslationLanguage *string `json:"TranslationLanguage,omitnil,omitempty" name:"TranslationLanguage"`
 }
 
@@ -3882,38 +3969,54 @@ type SmallVideoLayoutParams struct {
 
 // Predefined struct for user
 type StartAITranscriptionRequestParams struct {
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，使用该sdkappid开启任务。
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，使用该roomid开启任务。
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，表示开启转录任务的房间号。
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 启动转录机器人和鉴权的参数。
+	// 转录机器人的参数。
 	TranscriptionParams *TranscriptionParams `json:"TranscriptionParams,omitnil,omitempty" name:"TranscriptionParams"`
+
+	// 调用方传入的唯一Id，服务端用来去重。
+	// 注意：
+	// 如果传入该参数，服务端优先使用该参数来去重。
+	// 如果不传该参数，服务端的去重策略如下：
+	// - 如果TranscriptionMode字段是0，则一个房间只能开启一个任务
+	// - 如果TranscriptionMode字段是1，则一个TargetUserId只能开启一个任务
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 语音识别配置
+	// 语音识别配置。
 	RecognizeConfig *RecognizeConfig `json:"RecognizeConfig,omitnil,omitempty" name:"RecognizeConfig"`
 }
 
 type StartAITranscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，使用该sdkappid开启任务。
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，使用该roomid开启任务。
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，表示开启转录任务的房间号。
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 启动转录机器人和鉴权的参数。
+	// 转录机器人的参数。
 	TranscriptionParams *TranscriptionParams `json:"TranscriptionParams,omitnil,omitempty" name:"TranscriptionParams"`
+
+	// 调用方传入的唯一Id，服务端用来去重。
+	// 注意：
+	// 如果传入该参数，服务端优先使用该参数来去重。
+	// 如果不传该参数，服务端的去重策略如下：
+	// - 如果TranscriptionMode字段是0，则一个房间只能开启一个任务
+	// - 如果TranscriptionMode字段是1，则一个TargetUserId只能开启一个任务
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 语音识别配置
+	// 语音识别配置。
 	RecognizeConfig *RecognizeConfig `json:"RecognizeConfig,omitnil,omitempty" name:"RecognizeConfig"`
 }
 
@@ -3932,6 +4035,7 @@ func (r *StartAITranscriptionRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "RoomId")
 	delete(f, "TranscriptionParams")
+	delete(f, "SessionId")
 	delete(f, "RoomIdType")
 	delete(f, "RecognizeConfig")
 	if len(f) > 0 {

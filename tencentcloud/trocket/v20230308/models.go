@@ -1550,6 +1550,88 @@ func (r *DescribeConsumerGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFusionInstanceListRequestParams struct {
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+}
+
+type DescribeFusionInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+}
+
+func (r *DescribeFusionInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFusionInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFusionInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFusionInstanceListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例列表
+	Data []*FusionInstanceItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFusionInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFusionInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFusionInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFusionInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceListRequestParams struct {
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -3063,6 +3145,97 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type FusionInstanceItem struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 实例类型，
+	// EXPERIMENT，体验版
+	// BASIC，基础版
+	// PRO，专业版
+	// PLATINUM，铂金版
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例状态，
+	// RUNNING, 运行中
+	// MAINTAINING，维护中
+	// ABNORMAL，异常
+	// OVERDUE，欠费
+	// DESTROYED，已删除
+	// CREATING，创建中
+	// MODIFYING，变配中
+	// CREATE_FAILURE，创建失败
+	// MODIFY_FAILURE，变配失败
+	// DELETING，删除中
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 实例主题数上限
+	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
+
+	// 实例消费组数量上限
+	GroupNumLimit *int64 `json:"GroupNumLimit,omitnil,omitempty" name:"GroupNumLimit"`
+
+	// 计费模式，
+	// POSTPAID，按量计费
+	// PREPAID，包年包月
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 到期时间，秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiryTime *int64 `json:"ExpiryTime,omitnil,omitempty" name:"ExpiryTime"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 主题数量
+	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
+
+	// 消费组数量
+	GroupNum *int64 `json:"GroupNum,omitnil,omitempty" name:"GroupNum"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 商品规格
+	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
+
+	// TPS限流值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
+
+	// 弹性TPS限流值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaledTpsLimit *int64 `json:"ScaledTpsLimit,omitnil,omitempty" name:"ScaledTpsLimit"`
+
+	// 消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
+
+	// 延迟消息最大时长，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxMessageDelay *int64 `json:"MaxMessageDelay,omitnil,omitempty" name:"MaxMessageDelay"`
+
+	// 是否自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 4.x独有数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceItemExtraInfo *InstanceItemExtraInfo `json:"InstanceItemExtraInfo,omitnil,omitempty" name:"InstanceItemExtraInfo"`
+
+	// 预销毁时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestroyTime *int64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+}
+
 // Predefined struct for user
 type ImportSourceClusterConsumerGroupsRequestParams struct {
 	// 任务ID
@@ -3262,6 +3435,44 @@ type InstanceItem struct {
 	// 延迟消息最大时长，小时为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMessageDelay *int64 `json:"MaxMessageDelay,omitnil,omitempty" name:"MaxMessageDelay"`
+}
+
+type InstanceItemExtraInfo struct {
+	// 是否vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
+
+	// 4.x专享集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipInstanceStatus *int64 `json:"VipInstanceStatus,omitnil,omitempty" name:"VipInstanceStatus"`
+
+	// 专享集群峰值带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxBandWidth *int64 `json:"MaxBandWidth,omitnil,omitempty" name:"MaxBandWidth"`
+
+	// 专享集群规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 专享集群节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// 专享集群最大存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxStorage *int64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
+
+	// 专享集群最大保留时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetention *int64 `json:"MaxRetention,omitnil,omitempty" name:"MaxRetention"`
+
+	// 专项集群最大保留时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinRetention *int64 `json:"MinRetention,omitnil,omitempty" name:"MinRetention"`
+
+	// 4.0共享集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 }
 
 type IpRule struct {
