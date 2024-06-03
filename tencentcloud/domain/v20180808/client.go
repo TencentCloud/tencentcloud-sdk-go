@@ -270,6 +270,8 @@ func NewBiddingPreReleaseResponse() (response *BiddingPreReleaseResponse) {
 //  FAILEDOPERATION_BIDCURRENTPRICE = "FailedOperation.BidCurrentPrice"
 //  FAILEDOPERATION_BIDPRICEILLEGAL = "FailedOperation.BidPriceIllegal"
 //  FAILEDOPERATION_BIDDINGGETPRICEDOING = "FailedOperation.BiddingGetPriceDoing"
+//  FAILEDOPERATION_BIDDINGPRERELEASEAUTOPAYERR = "FailedOperation.BiddingPreReleaseAutoPayErr"
+//  FAILEDOPERATION_BIDDINGPRERELEASEAUTOPRICEPAYERR = "FailedOperation.BiddingPreReleaseAutoPricePayErr"
 //  RESOURCENOTFOUND_BIDPRICECONFIG = "ResourceNotFound.BidPriceConfig"
 func (c *Client) BiddingPreRelease(request *BiddingPreReleaseRequest) (response *BiddingPreReleaseResponse, err error) {
     return c.BiddingPreReleaseWithContext(context.Background(), request)
@@ -282,6 +284,8 @@ func (c *Client) BiddingPreRelease(request *BiddingPreReleaseRequest) (response 
 //  FAILEDOPERATION_BIDCURRENTPRICE = "FailedOperation.BidCurrentPrice"
 //  FAILEDOPERATION_BIDPRICEILLEGAL = "FailedOperation.BidPriceIllegal"
 //  FAILEDOPERATION_BIDDINGGETPRICEDOING = "FailedOperation.BiddingGetPriceDoing"
+//  FAILEDOPERATION_BIDDINGPRERELEASEAUTOPAYERR = "FailedOperation.BiddingPreReleaseAutoPayErr"
+//  FAILEDOPERATION_BIDDINGPRERELEASEAUTOPRICEPAYERR = "FailedOperation.BiddingPreReleaseAutoPricePayErr"
 //  RESOURCENOTFOUND_BIDPRICECONFIG = "ResourceNotFound.BidPriceConfig"
 func (c *Client) BiddingPreReleaseWithContext(ctx context.Context, request *BiddingPreReleaseRequest) (response *BiddingPreReleaseResponse, err error) {
     if request == nil {

@@ -27795,6 +27795,9 @@ type UploadContentRequestParams struct {
 
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type UploadContentRequest struct {
@@ -27805,6 +27808,9 @@ type UploadContentRequest struct {
 
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *UploadContentRequest) ToJsonString() string {
@@ -27821,6 +27827,7 @@ func (r *UploadContentRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ScriptRequestInfo")
 	delete(f, "RequestFromSource")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadContentRequest has unknown keys!", "")
 	}

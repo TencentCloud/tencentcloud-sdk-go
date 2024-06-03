@@ -218,10 +218,17 @@ type AdjustCdbProxyAddressRequestParams struct {
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
 	// 是否开启连接池
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
 
 	// 读写权重分配。如果 WeightMode 传的是 system ，则传入的权重不生效，由系统分配默认权重。
 	ProxyAllocation []*ProxyAllocation `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
+
+	// 是否开启自适应负载均衡
+	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
+
+	// 访问模式：就近访问，均衡分配
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 type AdjustCdbProxyAddressRequest struct {
@@ -259,10 +266,17 @@ type AdjustCdbProxyAddressRequest struct {
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
 	// 是否开启连接池
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
 
 	// 读写权重分配。如果 WeightMode 传的是 system ，则传入的权重不生效，由系统分配默认权重。
 	ProxyAllocation []*ProxyAllocation `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
+
+	// 是否开启自适应负载均衡
+	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
+
+	// 访问模式：就近访问，均衡分配
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 func (r *AdjustCdbProxyAddressRequest) ToJsonString() string {
@@ -289,6 +303,8 @@ func (r *AdjustCdbProxyAddressRequest) FromJsonString(s string) error {
 	delete(f, "TransSplit")
 	delete(f, "ConnectionPool")
 	delete(f, "ProxyAllocation")
+	delete(f, "AutoLoadBalance")
+	delete(f, "AccessMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AdjustCdbProxyAddressRequest has unknown keys!", "")
 	}
@@ -2317,6 +2333,7 @@ type CreateCdbProxyAddressRequestParams struct {
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 是否开启连接池
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
 
 	// 描述
@@ -2333,6 +2350,12 @@ type CreateCdbProxyAddressRequestParams struct {
 
 	// 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool为true时生效。
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
+
+	// 是否自适应负载均衡
+	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
+
+	// 接入模式
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 type CreateCdbProxyAddressRequest struct {
@@ -2376,6 +2399,7 @@ type CreateCdbProxyAddressRequest struct {
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 是否开启连接池
+	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
 
 	// 描述
@@ -2392,6 +2416,12 @@ type CreateCdbProxyAddressRequest struct {
 
 	// 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool为true时生效。
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
+
+	// 是否自适应负载均衡
+	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
+
+	// 接入模式
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 func (r *CreateCdbProxyAddressRequest) ToJsonString() string {
@@ -2424,6 +2454,8 @@ func (r *CreateCdbProxyAddressRequest) FromJsonString(s string) error {
 	delete(f, "VPort")
 	delete(f, "SecurityGroup")
 	delete(f, "ConnectionPoolType")
+	delete(f, "AutoLoadBalance")
+	delete(f, "AccessMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCdbProxyAddressRequest has unknown keys!", "")
 	}
@@ -8788,6 +8820,14 @@ type DescribeProxySupportParamResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportReadOnly *bool `json:"SupportReadOnly,omitnil,omitempty" name:"SupportReadOnly"`
 
+	// 是否自动均衡负载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportAutoLoadBalance *bool `json:"SupportAutoLoadBalance,omitnil,omitempty" name:"SupportAutoLoadBalance"`
+
+	// 是否支持接入模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportAccessMode *bool `json:"SupportAccessMode,omitnil,omitempty" name:"SupportAccessMode"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13868,6 +13908,14 @@ type ProxyAddress struct {
 	// 实例读权重分配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyAllocation []*ProxyAllocation `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
+
+	// 接入模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// 是否开启自动负载均衡
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
 }
 
 type ProxyAllocation struct {
@@ -13950,6 +13998,14 @@ type ProxyInst struct {
 	// 实例所属可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstNodeId *string `json:"InstNodeId,omitnil,omitempty" name:"InstNodeId"`
+
+	// 节点角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstNodeRole *string `json:"InstNodeRole,omitnil,omitempty" name:"InstNodeRole"`
 }
 
 type ProxyNode struct {

@@ -83,20 +83,20 @@ func (r *ApplyDiskBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApplyFirewallTemplateRequestParams struct {
-	// 模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 应用防火墙模板的实例列表。
+	// 应用防火墙模板的实例列表。列表长度最大值是100。
 	ApplyInstances []*InstanceIdentifier `json:"ApplyInstances,omitnil,omitempty" name:"ApplyInstances"`
 }
 
 type ApplyFirewallTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 应用防火墙模板的实例列表。
+	// 应用防火墙模板的实例列表。列表长度最大值是100。
 	ApplyInstances []*InstanceIdentifier `json:"ApplyInstances,omitnil,omitempty" name:"ApplyInstances"`
 }
 
@@ -780,20 +780,20 @@ func (r *CreateBlueprintResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDiskBackupRequestParams struct {
-	// 云硬盘 ID。当前只支持数据盘创建备份点。
+	// 云硬盘ID，可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口返回值中的 DiskId 获取。 
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 云硬盘备份点名称，最大长度90。
+	// 云硬盘备份点名称，最大长度为 90 。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
 }
 
 type CreateDiskBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘 ID。当前只支持数据盘创建备份点。
+	// 云硬盘ID，可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口返回值中的 DiskId 获取。 
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 云硬盘备份点名称，最大长度90。
+	// 云硬盘备份点名称，最大长度为 90 。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
 }
 
@@ -959,7 +959,7 @@ func (r *CreateDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFirewallRulesRequestParams struct {
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
@@ -972,7 +972,7 @@ type CreateFirewallRulesRequestParams struct {
 type CreateFirewallRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
@@ -1091,7 +1091,7 @@ func (r *CreateFirewallTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFirewallTemplateRulesRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 防火墙模板规则列表。
@@ -1101,7 +1101,7 @@ type CreateFirewallTemplateRulesRequestParams struct {
 type CreateFirewallTemplateRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 防火墙模板规则列表。
@@ -1573,7 +1573,7 @@ func (r *DeleteDiskBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFirewallRulesRequestParams struct {
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
@@ -1586,7 +1586,7 @@ type DeleteFirewallRulesRequestParams struct {
 type DeleteFirewallRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
@@ -1641,14 +1641,14 @@ func (r *DeleteFirewallRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFirewallTemplateRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DeleteFirewallTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -1695,20 +1695,20 @@ func (r *DeleteFirewallTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFirewallTemplateRulesRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 防火墙模板规则ID列表。
+	// 防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。
 	TemplateRuleIds []*string `json:"TemplateRuleIds,omitnil,omitempty" name:"TemplateRuleIds"`
 }
 
 type DeleteFirewallTemplateRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 防火墙模板规则ID列表。
+	// 防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。
 	TemplateRuleIds []*string `json:"TemplateRuleIds,omitnil,omitempty" name:"TemplateRuleIds"`
 }
 
@@ -1875,7 +1875,7 @@ type DeniedAction struct {
 
 // Predefined struct for user
 type DescribeAllScenesRequestParams struct {
-	// 使用场景ID列表。
+	// 使用场景ID列表。可通过[DescribeAllScenes](https://cloud.tencent.com/document/product/1207/83513)接口返回值中的SceneId获取。
 	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
 
 	// 偏移量，默认为 0。
@@ -1888,7 +1888,7 @@ type DescribeAllScenesRequestParams struct {
 type DescribeAllScenesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 使用场景ID列表。
+	// 使用场景ID列表。可通过[DescribeAllScenes](https://cloud.tencent.com/document/product/1207/83513)接口返回值中的SceneId获取。
 	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
 
 	// 偏移量，默认为 0。
@@ -2426,7 +2426,7 @@ func (r *DescribeDiskBackupsDeniedActionsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeDiskBackupsRequestParams struct {
-	// 要查询云硬盘备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
+	// 查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
 	// 过滤器列表。
@@ -2439,7 +2439,8 @@ type DescribeDiskBackupsRequestParams struct {
 	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：参考数据结构[DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup)下的DiskBackupState取值。
+	// 取值：参考数据结构 
+	// <a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
 	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -2447,17 +2448,17 @@ type DescribeDiskBackupsRequestParams struct {
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeDiskBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询云硬盘备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
+	// 查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
 	// 过滤器列表。
@@ -2470,7 +2471,8 @@ type DescribeDiskBackupsRequest struct {
 	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：参考数据结构[DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup)下的DiskBackupState取值。
+	// 取值：参考数据结构 
+	// <a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
 	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -2478,10 +2480,10 @@ type DescribeDiskBackupsRequest struct {
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -3279,26 +3281,26 @@ func (r *DescribeDockerContainersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFirewallRulesRequestParams struct {
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeFirewallRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -3413,20 +3415,20 @@ func (r *DescribeFirewallRulesTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFirewallTemplateApplyRecordsRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 应用任务ID列表。
+	// 应用防火墙模版任务ID列表。可通过[ApplyFirewallTemplate](https://cloud.tencent.com/document/product/1207/96883)接口返回值TaskId字段获取。
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
 type DescribeFirewallTemplateApplyRecordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 应用任务ID列表。
+	// 应用防火墙模版任务ID列表。可通过[ApplyFirewallTemplate](https://cloud.tencent.com/document/product/1207/96883)接口返回值TaskId字段获取。
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
@@ -3534,14 +3536,14 @@ func (r *DescribeFirewallTemplateQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFirewallTemplateRuleQuotaRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DescribeFirewallTemplateRuleQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -3675,7 +3677,7 @@ func (r *DescribeFirewallTemplateRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFirewallTemplatesRequestParams struct {
-	// 防火墙模板ID列表。
+	// 防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
 	TemplateIds []*string `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 
 	// 过滤器列表。
@@ -3701,7 +3703,7 @@ type DescribeFirewallTemplatesRequestParams struct {
 type DescribeFirewallTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID列表。
+	// 防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
 	TemplateIds []*string `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 
 	// 过滤器列表。
@@ -4759,7 +4761,7 @@ func (r *DescribeResetInstanceBlueprintsResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeScenesRequestParams struct {
-	// 使用场景ID列表。
+	// 使用场景ID列表。可通过[DescribeScenes](https://cloud.tencent.com/document/product/1207/83512)接口返回值中的SceneId获取。
 	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
 
 	// 偏移量，默认为 0。
@@ -4772,7 +4774,7 @@ type DescribeScenesRequestParams struct {
 type DescribeScenesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 使用场景ID列表。
+	// 使用场景ID列表。可通过[DescribeScenes](https://cloud.tencent.com/document/product/1207/83512)接口返回值中的SceneId获取。
 	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
 
 	// 偏移量，默认为 0。
@@ -5943,7 +5945,7 @@ func (r *InquirePriceCreateDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceCreateInstancesRequestParams struct {
-	// 实例的套餐 ID。
+	// 实例的套餐 ID。可以通过调用[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口获取。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
@@ -5959,7 +5961,7 @@ type InquirePriceCreateInstancesRequestParams struct {
 type InquirePriceCreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例的套餐 ID。
+	// 实例的套餐 ID。可以通过调用[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口获取。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
@@ -6623,20 +6625,20 @@ type ModifyBundle struct {
 
 // Predefined struct for user
 type ModifyDiskBackupsAttributeRequestParams struct {
-	// 云硬盘备份点ID列表。
+	// 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
-	// 云硬盘备份点名称，最大长度90。
+	// 云硬盘备份点名称，最大长度 90 。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
 }
 
 type ModifyDiskBackupsAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘备份点ID列表。
+	// 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
-	// 云硬盘备份点名称，最大长度90。
+	// 云硬盘备份点名称，最大长度 90 。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
 }
 
@@ -6990,7 +6992,7 @@ func (r *ModifyDockerContainerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFirewallRuleDescriptionRequestParams struct {
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 防火墙规则。
@@ -7003,7 +7005,7 @@ type ModifyFirewallRuleDescriptionRequestParams struct {
 type ModifyFirewallRuleDescriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 防火墙规则。
@@ -7058,10 +7060,10 @@ func (r *ModifyFirewallRuleDescriptionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFirewallRulesRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。实例的ID可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 防火墙规则列表。
+	// 防火墙规则列表。列表长度最大值是100。
 	FirewallRules []*FirewallRule `json:"FirewallRules,omitnil,omitempty" name:"FirewallRules"`
 
 	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
@@ -7071,10 +7073,10 @@ type ModifyFirewallRulesRequestParams struct {
 type ModifyFirewallRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。实例的ID可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 防火墙规则列表。
+	// 防火墙规则列表。列表长度最大值是100。
 	FirewallRules []*FirewallRule `json:"FirewallRules,omitnil,omitempty" name:"FirewallRules"`
 
 	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
@@ -7126,20 +7128,20 @@ func (r *ModifyFirewallRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFirewallTemplateRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称。
+	// 防火墙模板名称。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
 type ModifyFirewallTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称。
+	// 防火墙模板名称。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
@@ -7610,20 +7612,20 @@ type RegionInfo struct {
 
 // Predefined struct for user
 type RemoveDockerContainersRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
 type RemoveDockerContainersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
@@ -7674,10 +7676,10 @@ func (r *RemoveDockerContainersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenameDockerContainerRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID。
+	// 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
 	// 容器新的名称。
@@ -7687,10 +7689,10 @@ type RenameDockerContainerRequestParams struct {
 type RenameDockerContainerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID。
+	// 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
 	// 容器新的名称。
@@ -8386,20 +8388,20 @@ func (r *ResizeDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestartDockerContainersRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
 type RestartDockerContainersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
@@ -8680,20 +8682,20 @@ type SoftwareDetail struct {
 
 // Predefined struct for user
 type StartDockerContainersRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
 type StartDockerContainersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
@@ -8798,20 +8800,20 @@ func (r *StartInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopDockerContainersRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
 type StopDockerContainersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 }
 
@@ -8938,14 +8940,14 @@ type Tag struct {
 
 // Predefined struct for user
 type TerminateDisksRequestParams struct {
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
 type TerminateDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。
+	// 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 

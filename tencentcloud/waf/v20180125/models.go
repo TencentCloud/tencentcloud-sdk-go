@@ -1216,6 +1216,17 @@ type ApiPkg struct {
 	IsAPISecurityTrial *int64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
 }
 
+type ApiSecKey struct {
+	// api名称
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 请求方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+}
+
 type AttackLogInfo struct {
 	// 攻击日志的详情内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
@@ -10431,6 +10442,102 @@ func (r *ModifyApiAnalyzeStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApiAnalyzeStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApiSecEventChangeRequestParams struct {
+	// 变更状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 处理人
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 备注，有长度显示1k
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 批量操作的事件列表
+	EventIdList []*string `json:"EventIdList,omitnil,omitempty" name:"EventIdList"`
+
+	// 批量操作的api列表
+	ApiNameList []*ApiSecKey `json:"ApiNameList,omitnil,omitempty" name:"ApiNameList"`
+
+	// 判断是否删除，包括删除事件和删除资产
+	IsDelete *bool `json:"IsDelete,omitnil,omitempty" name:"IsDelete"`
+
+	// 判断是否是更新api的备注，更新api备注的时候，为true
+	UpdateApiRemark *bool `json:"UpdateApiRemark,omitnil,omitempty" name:"UpdateApiRemark"`
+}
+
+type ModifyApiSecEventChangeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 变更状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 处理人
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 备注，有长度显示1k
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 批量操作的事件列表
+	EventIdList []*string `json:"EventIdList,omitnil,omitempty" name:"EventIdList"`
+
+	// 批量操作的api列表
+	ApiNameList []*ApiSecKey `json:"ApiNameList,omitnil,omitempty" name:"ApiNameList"`
+
+	// 判断是否删除，包括删除事件和删除资产
+	IsDelete *bool `json:"IsDelete,omitnil,omitempty" name:"IsDelete"`
+
+	// 判断是否是更新api的备注，更新api备注的时候，为true
+	UpdateApiRemark *bool `json:"UpdateApiRemark,omitnil,omitempty" name:"UpdateApiRemark"`
+}
+
+func (r *ModifyApiSecEventChangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApiSecEventChangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "UserName")
+	delete(f, "Remark")
+	delete(f, "EventIdList")
+	delete(f, "ApiNameList")
+	delete(f, "IsDelete")
+	delete(f, "UpdateApiRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiSecEventChangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApiSecEventChangeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApiSecEventChangeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApiSecEventChangeResponseParams `json:"Response"`
+}
+
+func (r *ModifyApiSecEventChangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApiSecEventChangeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

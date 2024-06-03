@@ -2791,6 +2791,8 @@ func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_IMAGEVALIDATEISUSED = "FailedOperation.ImageValidateIsUsed"
+//  FAILEDOPERATION_IMAGEREPOREJECTDELERROR = "FailedOperation.ImagerepoRejectDelError"
 //  INTERNALERROR_APPLICATIONREPODELETEPKG = "InternalError.ApplicationRepoDeletePkg"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
@@ -2806,6 +2808,8 @@ func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_IMAGEVALIDATEISUSED = "FailedOperation.ImageValidateIsUsed"
+//  FAILEDOPERATION_IMAGEREPOREJECTDELERROR = "FailedOperation.ImagerepoRejectDelError"
 //  INTERNALERROR_APPLICATIONREPODELETEPKG = "InternalError.ApplicationRepoDeletePkg"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
@@ -9591,6 +9595,8 @@ func NewDescribeStatisticsResponse() (response *DescribeStatisticsResponse) {
 // 服务统计页面：接口和服务维度
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLTSFDCFGFAILED = "FailedOperation.CallTsfDcfgFailed"
+//  FAILEDOPERATION_FINDMETRICSEXCLUSIVEERROR = "FailedOperation.FindMetricsExclusiveError"
 //  FAILEDOPERATION_TSFAPMCALLTSFMSFAILED = "FailedOperation.TsfApmCallTsfMsFailed"
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 //  FAILEDOPERATION_TSFAPMESCLIENTREQUESTERROR = "FailedOperation.TsfApmEsClientRequestError"
@@ -9612,6 +9618,8 @@ func (c *Client) DescribeStatistics(request *DescribeStatisticsRequest) (respons
 // 服务统计页面：接口和服务维度
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLTSFDCFGFAILED = "FailedOperation.CallTsfDcfgFailed"
+//  FAILEDOPERATION_FINDMETRICSEXCLUSIVEERROR = "FailedOperation.FindMetricsExclusiveError"
 //  FAILEDOPERATION_TSFAPMCALLTSFMSFAILED = "FailedOperation.TsfApmCallTsfMsFailed"
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 //  FAILEDOPERATION_TSFAPMESCLIENTREQUESTERROR = "FailedOperation.TsfApmEsClientRequestError"

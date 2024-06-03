@@ -9119,6 +9119,14 @@ type KongUpstreamInfo struct {
 	// 云函数是否开启CAM鉴权，不填时默认为开启(true)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfCamAuthEnable *bool `json:"ScfCamAuthEnable,omitnil,omitempty" name:"ScfCamAuthEnable"`
+
+	// 云函数是否开启Base64编码，默认为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScfIsBase64Encoded *bool `json:"ScfIsBase64Encoded,omitnil,omitempty" name:"ScfIsBase64Encoded"`
+
+	// 云函数是否开启响应集成，默认为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScfIsIntegratedResponse *bool `json:"ScfIsIntegratedResponse,omitnil,omitempty" name:"ScfIsIntegratedResponse"`
 }
 
 type KongUpstreamList struct {

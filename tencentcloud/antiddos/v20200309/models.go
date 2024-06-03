@@ -557,6 +557,10 @@ type BGPInstance struct {
 	// 是否为超级高防包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperPackFlag *uint64 `json:"SuperPackFlag,omitnil,omitempty" name:"SuperPackFlag"`
+
+	// 所属ZoneId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
 type BGPInstanceSpecification struct {
@@ -5542,6 +5546,9 @@ type DescribeListBGPInstancesRequestParams struct {
 
 	// 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
 	FilterTransRegionFlag *uint64 `json:"FilterTransRegionFlag,omitnil,omitempty" name:"FilterTransRegionFlag"`
+
+	// zoenid列表
+	FilterZoneIdList []*int64 `json:"FilterZoneIdList,omitnil,omitempty" name:"FilterZoneIdList"`
 }
 
 type DescribeListBGPInstancesRequest struct {
@@ -5609,6 +5616,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
 	FilterTransRegionFlag *uint64 `json:"FilterTransRegionFlag,omitnil,omitempty" name:"FilterTransRegionFlag"`
+
+	// zoenid列表
+	FilterZoneIdList []*int64 `json:"FilterZoneIdList,omitnil,omitempty" name:"FilterZoneIdList"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -5644,6 +5654,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterBasicPlusFlag")
 	delete(f, "FilterPlanCntFlag")
 	delete(f, "FilterTransRegionFlag")
+	delete(f, "FilterZoneIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}

@@ -35,6 +35,12 @@ const (
 	// 当前域名存在用户正在出价,请稍后重试。
 	FAILEDOPERATION_BIDDINGGETPRICEDOING = "FailedOperation.BiddingGetPriceDoing"
 
+	// 出价保证金自动扣款失败
+	FAILEDOPERATION_BIDDINGPRERELEASEAUTOPAYERR = "FailedOperation.BiddingPreReleaseAutoPayErr"
+
+	// 出价保证金扣款失败，账号金额不足
+	FAILEDOPERATION_BIDDINGPRERELEASEAUTOPRICEPAYERR = "FailedOperation.BiddingPreReleaseAutoPricePayErr"
+
 	// 域名查询失败，请稍后重试该功能。
 	FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
 

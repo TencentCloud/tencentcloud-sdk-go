@@ -1605,6 +1605,12 @@ type ConfigRelease struct {
 	// 配置中心发布情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigCenters []*TsfConfigCenter `json:"ConfigCenters,omitnil,omitempty" name:"ConfigCenters"`
+
+	// DUAL_STATUS_WRITE_REGISTRATION_ON 双写&&双注册开启
+	// 
+	// DUAL_STATUS_WRITE_REGISTRATION_OFF 双写&&双注册关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DaulStatus *string `json:"DaulStatus,omitnil,omitempty" name:"DaulStatus"`
 }
 
 type ConfigReleaseLog struct {
@@ -5418,6 +5424,9 @@ func (r *DeleteApiRateLimitRuleResponse) FromJsonString(s string) error {
 type DeleteApplicationRequestParams struct {
 	// 应用ID
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 是否删除镜像仓库
+	SyncDeleteImageRepository *bool `json:"SyncDeleteImageRepository,omitnil,omitempty" name:"SyncDeleteImageRepository"`
 }
 
 type DeleteApplicationRequest struct {
@@ -5425,6 +5434,9 @@ type DeleteApplicationRequest struct {
 	
 	// 应用ID
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 是否删除镜像仓库
+	SyncDeleteImageRepository *bool `json:"SyncDeleteImageRepository,omitnil,omitempty" name:"SyncDeleteImageRepository"`
 }
 
 func (r *DeleteApplicationRequest) ToJsonString() string {
@@ -5440,6 +5452,7 @@ func (r *DeleteApplicationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationId")
+	delete(f, "SyncDeleteImageRepository")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationRequest has unknown keys!", "")
 	}
@@ -12173,6 +12186,9 @@ type DescribeMicroservicesRequestParams struct {
 
 	// 搜索的服务名列表
 	MicroserviceNameList []*string `json:"MicroserviceNameList,omitnil,omitempty" name:"MicroserviceNameList"`
+
+	// 注册中心实例id
+	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
 }
 
 type DescribeMicroservicesRequest struct {
@@ -12204,6 +12220,9 @@ type DescribeMicroservicesRequest struct {
 
 	// 搜索的服务名列表
 	MicroserviceNameList []*string `json:"MicroserviceNameList,omitnil,omitempty" name:"MicroserviceNameList"`
+
+	// 注册中心实例id
+	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
 }
 
 func (r *DescribeMicroservicesRequest) ToJsonString() string {
@@ -12227,6 +12246,7 @@ func (r *DescribeMicroservicesRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "MicroserviceIdList")
 	delete(f, "MicroserviceNameList")
+	delete(f, "ConfigCenterInstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMicroservicesRequest has unknown keys!", "")
 	}
@@ -14035,7 +14055,7 @@ type DescribeStatisticsRequestParams struct {
 	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 命名空间Id
+	// 命名空间Id,此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 排序字段:AvgTimeConsuming[默认]、RequestCount、ErrorRate。实例监控还支持 CpuPercent
@@ -14044,10 +14064,10 @@ type DescribeStatisticsRequestParams struct {
 	// 排序方式：ASC:0、DESC:1
 	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 开始时间：年月日 时分秒2020-05-12 14:43:12
+	// 开始时间：年月日 时分秒2020-05-12 14:43:12， 不能为空
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 开始时间：年月日 时分秒2020-05-12 14:43:12
+	// 开始时间：年月日 时分秒2020-05-12 14:43:12， 不能为空
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 服务名称
@@ -14067,6 +14087,9 @@ type DescribeStatisticsRequestParams struct {
 
 	// 命名空间id数组
 	NamespaceIdList []*string `json:"NamespaceIdList,omitnil,omitempty" name:"NamespaceIdList"`
+
+	// 独占配置中心的ID
+	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
 }
 
 type DescribeStatisticsRequest struct {
@@ -14084,7 +14107,7 @@ type DescribeStatisticsRequest struct {
 	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 命名空间Id
+	// 命名空间Id,此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 排序字段:AvgTimeConsuming[默认]、RequestCount、ErrorRate。实例监控还支持 CpuPercent
@@ -14093,10 +14116,10 @@ type DescribeStatisticsRequest struct {
 	// 排序方式：ASC:0、DESC:1
 	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 开始时间：年月日 时分秒2020-05-12 14:43:12
+	// 开始时间：年月日 时分秒2020-05-12 14:43:12， 不能为空
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 开始时间：年月日 时分秒2020-05-12 14:43:12
+	// 开始时间：年月日 时分秒2020-05-12 14:43:12， 不能为空
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 服务名称
@@ -14116,6 +14139,9 @@ type DescribeStatisticsRequest struct {
 
 	// 命名空间id数组
 	NamespaceIdList []*string `json:"NamespaceIdList,omitnil,omitempty" name:"NamespaceIdList"`
+
+	// 独占配置中心的ID
+	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
 }
 
 func (r *DescribeStatisticsRequest) ToJsonString() string {
@@ -14145,6 +14171,7 @@ func (r *DescribeStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "BucketKey")
 	delete(f, "DbName")
 	delete(f, "NamespaceIdList")
+	delete(f, "ConfigCenterInstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticsRequest has unknown keys!", "")
 	}
@@ -21631,6 +21658,14 @@ type TsfConfigCenter struct {
 	// 命名空间id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 当前版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentVersion *string `json:"CurrentVersion,omitnil,omitempty" name:"CurrentVersion"`
+
+	// 需要升级的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetVersion *string `json:"TargetVersion,omitnil,omitempty" name:"TargetVersion"`
 }
 
 type TsfPageApiDetailInfo struct {

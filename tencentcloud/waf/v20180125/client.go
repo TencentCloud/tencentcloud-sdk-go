@@ -6323,6 +6323,55 @@ func (c *Client) ModifyApiAnalyzeStatusWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyApiSecEventChangeRequest() (request *ModifyApiSecEventChangeRequest) {
+    request = &ModifyApiSecEventChangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyApiSecEventChange")
+    
+    
+    return
+}
+
+func NewModifyApiSecEventChangeResponse() (response *ModifyApiSecEventChangeResponse) {
+    response = &ModifyApiSecEventChangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApiSecEventChange
+// api安全状态变更接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyApiSecEventChange(request *ModifyApiSecEventChangeRequest) (response *ModifyApiSecEventChangeResponse, err error) {
+    return c.ModifyApiSecEventChangeWithContext(context.Background(), request)
+}
+
+// ModifyApiSecEventChange
+// api安全状态变更接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyApiSecEventChangeWithContext(ctx context.Context, request *ModifyApiSecEventChangeRequest) (response *ModifyApiSecEventChangeResponse, err error) {
+    if request == nil {
+        request = NewModifyApiSecEventChangeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiSecEventChange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApiSecEventChangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAreaBanStatusRequest() (request *ModifyAreaBanStatusRequest) {
     request = &ModifyAreaBanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

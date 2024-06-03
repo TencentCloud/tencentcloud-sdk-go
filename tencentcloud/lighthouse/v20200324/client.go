@@ -6576,7 +6576,7 @@ func NewRemoveDockerContainersResponse() (response *RemoveDockerContainersRespon
 }
 
 // RemoveDockerContainers
-// 删除实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询删除情况。
+// 删除实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询删除情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6598,7 +6598,7 @@ func (c *Client) RemoveDockerContainers(request *RemoveDockerContainersRequest) 
 }
 
 // RemoveDockerContainers
-// 删除实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询删除情况。
+// 删除实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询删除情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6651,7 +6651,7 @@ func NewRenameDockerContainerResponse() (response *RenameDockerContainerResponse
 }
 
 // RenameDockerContainer
-// 重命名实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重命名情况。
+// 重命名实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重命名情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6670,7 +6670,7 @@ func (c *Client) RenameDockerContainer(request *RenameDockerContainerRequest) (r
 }
 
 // RenameDockerContainer
-// 重命名实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重命名情况。
+// 重命名实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重命名情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7455,7 +7455,7 @@ func NewRestartDockerContainersResponse() (response *RestartDockerContainersResp
 }
 
 // RestartDockerContainers
-// 重启实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重启情况。
+// 重启实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重启情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7476,7 +7476,7 @@ func (c *Client) RestartDockerContainers(request *RestartDockerContainersRequest
 }
 
 // RestartDockerContainers
-// 重启实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重启情况。
+// 重启实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重启情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7692,7 +7692,7 @@ func NewStartDockerContainersResponse() (response *StartDockerContainersResponse
 }
 
 // StartDockerContainers
-// 启动实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询启动情况。
+// 启动实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询启动情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7713,7 +7713,7 @@ func (c *Client) StartDockerContainers(request *StartDockerContainersRequest) (r
 }
 
 // StartDockerContainers
-// 启动实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询启动情况。
+// 启动实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询启动情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7860,7 +7860,7 @@ func NewStopDockerContainersResponse() (response *StopDockerContainersResponse) 
 }
 
 // StopDockerContainers
-// 停止实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询停止情况。
+// 停止实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询停止情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7881,7 +7881,7 @@ func (c *Client) StopDockerContainers(request *StopDockerContainersRequest) (res
 }
 
 // StopDockerContainers
-// 停止实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询停止情况。
+// 停止实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询停止情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

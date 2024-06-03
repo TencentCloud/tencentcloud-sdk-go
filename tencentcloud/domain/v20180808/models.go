@@ -4181,6 +4181,12 @@ type ReservedPreDomainsRequestParams struct {
 
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 结束后是否自动支付尾款，默认开启 传入1关闭
+	IsAutoPay *int64 `json:"IsAutoPay,omitnil,omitempty" name:"IsAutoPay"`
+
+	// 结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+	IsBidAutoPay *int64 `json:"IsBidAutoPay,omitnil,omitempty" name:"IsBidAutoPay"`
 }
 
 type ReservedPreDomainsRequest struct {
@@ -4191,6 +4197,12 @@ type ReservedPreDomainsRequest struct {
 
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 结束后是否自动支付尾款，默认开启 传入1关闭
+	IsAutoPay *int64 `json:"IsAutoPay,omitnil,omitempty" name:"IsAutoPay"`
+
+	// 结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+	IsBidAutoPay *int64 `json:"IsBidAutoPay,omitnil,omitempty" name:"IsBidAutoPay"`
 }
 
 func (r *ReservedPreDomainsRequest) ToJsonString() string {
@@ -4207,6 +4219,8 @@ func (r *ReservedPreDomainsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainList")
 	delete(f, "TemplateId")
+	delete(f, "IsAutoPay")
+	delete(f, "IsBidAutoPay")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReservedPreDomainsRequest has unknown keys!", "")
 	}

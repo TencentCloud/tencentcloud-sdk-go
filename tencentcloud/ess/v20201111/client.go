@@ -5914,6 +5914,67 @@ func (c *Client) CreateUserAutoSignSealUrlWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateUserMobileChangeUrlRequest() (request *CreateUserMobileChangeUrlRequest) {
+    request = &CreateUserMobileChangeUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateUserMobileChangeUrl")
+    
+    
+    return
+}
+
+func NewCreateUserMobileChangeUrlResponse() (response *CreateUserMobileChangeUrlResponse) {
+    response = &CreateUserMobileChangeUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserMobileChangeUrl
+// 该接口会生成一个手机号变更的链接，用户可以通过该链接进入电子签系统进行手机号的变更。
+//
+// 该接口支持员工和个人端手机号的变更。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateUserMobileChangeUrl(request *CreateUserMobileChangeUrlRequest) (response *CreateUserMobileChangeUrlResponse, err error) {
+    return c.CreateUserMobileChangeUrlWithContext(context.Background(), request)
+}
+
+// CreateUserMobileChangeUrl
+// 该接口会生成一个手机号变更的链接，用户可以通过该链接进入电子签系统进行手机号的变更。
+//
+// 该接口支持员工和个人端手机号的变更。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateUserMobileChangeUrlWithContext(ctx context.Context, request *CreateUserMobileChangeUrlRequest) (response *CreateUserMobileChangeUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateUserMobileChangeUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserMobileChangeUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserMobileChangeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserVerifyUrlRequest() (request *CreateUserVerifyUrlRequest) {
     request = &CreateUserVerifyUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5946,13 +6007,10 @@ func NewCreateUserVerifyUrlResponse() (response *CreateUserVerifyUrlResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateUserVerifyUrl(request *CreateUserVerifyUrlRequest) (response *CreateUserVerifyUrlResponse, err error) {
     return c.CreateUserVerifyUrlWithContext(context.Background(), request)
 }
@@ -5970,13 +6028,10 @@ func (c *Client) CreateUserVerifyUrl(request *CreateUserVerifyUrlRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateUserVerifyUrlWithContext(ctx context.Context, request *CreateUserVerifyUrlRequest) (response *CreateUserVerifyUrlResponse, err error) {
     if request == nil {
         request = NewCreateUserVerifyUrlRequest()
