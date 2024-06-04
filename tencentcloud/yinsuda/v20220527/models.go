@@ -510,6 +510,9 @@ type DescribeKTVMusicAccompanySegmentUrlVipRequestParams struct {
 
 	// 歌曲 Id 
 	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
+
+	// 房间Id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type DescribeKTVMusicAccompanySegmentUrlVipRequest struct {
@@ -523,6 +526,9 @@ type DescribeKTVMusicAccompanySegmentUrlVipRequest struct {
 
 	// 歌曲 Id 
 	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
+
+	// 房间Id
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 func (r *DescribeKTVMusicAccompanySegmentUrlVipRequest) ToJsonString() string {
@@ -540,6 +546,7 @@ func (r *DescribeKTVMusicAccompanySegmentUrlVipRequest) FromJsonString(s string)
 	delete(f, "AppName")
 	delete(f, "UserId")
 	delete(f, "MusicId")
+	delete(f, "RoomId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicAccompanySegmentUrlVipRequest has unknown keys!", "")
 	}
@@ -2055,6 +2062,7 @@ type SetAudioParamCommandInput struct {
 	// 音频类型，取值有：
 	// <li>Original：原唱</li>
 	// <li>Accompaniment：伴奏</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -2075,6 +2083,7 @@ type SetPlayModeCommandInput struct {
 	// <li>Order：顺序播放</li>
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayMode *string `json:"PlayMode,omitnil,omitempty" name:"PlayMode"`
 }
 

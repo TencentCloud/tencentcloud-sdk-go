@@ -2699,7 +2699,7 @@ func NewDescribeDisksReturnableResponse() (response *DescribeDisksReturnableResp
 // 本接口（DescribeDisksReturnable）用于查询云硬盘是否可退还。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DESCRIBEDISKSRETURNABLEERROR = "InternalError.DescribeDisksReturnableError"
+//  FAILEDOPERATION_DESCRIBEDISKSRETURNABLEERROR = "FailedOperation.DescribeDisksReturnableError"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -2711,7 +2711,7 @@ func (c *Client) DescribeDisksReturnable(request *DescribeDisksReturnableRequest
 // 本接口（DescribeDisksReturnable）用于查询云硬盘是否可退还。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DESCRIBEDISKSRETURNABLEERROR = "InternalError.DescribeDisksReturnableError"
+//  FAILEDOPERATION_DESCRIBEDISKSRETURNABLEERROR = "FailedOperation.DescribeDisksReturnableError"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"

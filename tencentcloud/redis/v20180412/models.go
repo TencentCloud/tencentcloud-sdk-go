@@ -1088,7 +1088,7 @@ func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateInstancesRequestParams struct {
 	// 实例类型。
-	// <ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li></ul>
+	// <ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
 	// 内存容量，单位为MB， 数值需为1024的整数倍。具体规格，请通过 [DescribeProductInfo](https://cloud.tencent.com/document/api/239/30600) 接口查询全地域的售卖规格。
@@ -1203,7 +1203,7 @@ type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例类型。
-	// <ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li></ul>
+	// <ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
 	// 内存容量，单位为MB， 数值需为1024的整数倍。具体规格，请通过 [DescribeProductInfo](https://cloud.tencent.com/document/api/239/30600) 接口查询全地域的售卖规格。
@@ -1394,7 +1394,16 @@ type CreateParamTemplateRequestParams struct {
 	// 参数模板描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。创建模板时必填，从源模板复制则不需要传入该参数。
+	// 产品类型。
+	// - 2：Redis 2.8 内存版（标准架构）。
+	// - 6：Redis 4.0 内存版（标准架构）。
+	// - 7：Redis 4.0 内存版（集群架构）。
+	// - 8：Redis 5.0 内存版（标准架构）。
+	// - 9：Redis 5.0 内存版（集群架构）。
+	// - 15：Redis 6.2 内存版（标准架构）。
+	// - 16：Redis 6.2 内存版（集群架构）。
+	// - 17：Redis 7.0 内存版（标准架构）。
+	// - 18：Redis 7.0 内存版（集群架构）。
 	ProductType *uint64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
 	// 源参数模板 ID。
@@ -1413,7 +1422,16 @@ type CreateParamTemplateRequest struct {
 	// 参数模板描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。创建模板时必填，从源模板复制则不需要传入该参数。
+	// 产品类型。
+	// - 2：Redis 2.8 内存版（标准架构）。
+	// - 6：Redis 4.0 内存版（标准架构）。
+	// - 7：Redis 4.0 内存版（集群架构）。
+	// - 8：Redis 5.0 内存版（标准架构）。
+	// - 9：Redis 5.0 内存版（集群架构）。
+	// - 15：Redis 6.2 内存版（标准架构）。
+	// - 16：Redis 6.2 内存版（集群架构）。
+	// - 17：Redis 7.0 内存版（标准架构）。
+	// - 18：Redis 7.0 内存版（集群架构）。
 	ProductType *uint64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
 	// 源参数模板 ID。
@@ -6292,16 +6310,18 @@ type InstanceSet struct {
 	SizeUsed *float64 `json:"SizeUsed,omitnil,omitempty" name:"SizeUsed"`
 
 	// 实例类型。
-	// - 2：Redis 2.8内存版（标准架构）。
-	// - 3：CKV 3.2内存版（标准架构）。
-	// - 4：CKV 3.2内存版（集群架构）。
-	// - 5：Redis 2.8内存版（单机）。
-	// - 6：Redis 4.0内存版（标准架构）。
-	// - 7：Redis 4.0内存版（集群架构）。
-	// - 8：Redis 5.0内存版（标准架构）。
-	// - 9：Redis 5.0内存版（集群架构）。
-	// - 15：Redis 6.2内存版（标准架构）。
-	// - 16：Redis 6.2内存版（集群架构）。
+	// - 2：Redis 2.8 内存版（标准架构）。
+	// - 3：CKV 3.2 内存版（标准架构）。
+	// - 4：CKV 3.2 内存版（集群架构）。
+	// - 5：Redis 2.8 内存版（单机）。
+	// - 6：Redis 4.0 内存版（标准架构）。
+	// - 7：Redis 4.0 内存版（集群架构）。
+	// - 8：Redis 5.0 内存版（标准架构）。
+	// - 9：Redis 5.0 内存版（集群架构）。
+	// - 15：Redis 6.2 内存版（标准架构）。
+	// - 16：Redis 6.2 内存版（集群架构）。
+	// - 17：Redis 7.0 内存版（标准架构）。
+	// - 18：Redis 7.0 内存版（集群架构）。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>

@@ -288,6 +288,10 @@ type Cluster struct {
 	// 上级集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentSerialId *string `json:"AgentSerialId,omitnil,omitempty" name:"AgentSerialId"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type ClusterGroupSetItem struct {

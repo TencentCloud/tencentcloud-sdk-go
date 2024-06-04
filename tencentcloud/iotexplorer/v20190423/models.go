@@ -6884,6 +6884,10 @@ type FirmwareInfo struct {
 	// 创建者昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
+
+	// 固件用户自定义配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
 }
 
 // Predefined struct for user

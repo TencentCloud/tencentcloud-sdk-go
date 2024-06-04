@@ -2956,10 +2956,10 @@ func (r *DescribeDisksReturnableResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDockerActivitiesRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Docker活动ID列表。
+	// Docker活动ID列表。可通过[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口返回值中的ActivityId获取。
 	ActivityIds []*string `json:"ActivityIds,omitnil,omitempty" name:"ActivityIds"`
 
 	// 偏移量，默认为 0。
@@ -2978,10 +2978,10 @@ type DescribeDockerActivitiesRequestParams struct {
 type DescribeDockerActivitiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Docker活动ID列表。
+	// Docker活动ID列表。可通过[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口返回值中的ActivityId获取。
 	ActivityIds []*string `json:"ActivityIds,omitnil,omitempty" name:"ActivityIds"`
 
 	// 偏移量，默认为 0。
@@ -3115,20 +3115,20 @@ func (r *DescribeDockerContainerConfigurationResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeDockerContainerDetailRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID。
+	// 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 }
 
 type DescribeDockerContainerDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID。
+	// 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 }
 
@@ -3179,10 +3179,10 @@ func (r *DescribeDockerContainerDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDockerContainersRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 
 	// 返回数量，默认为 20，最大值为 100。
@@ -3205,10 +3205,10 @@ type DescribeDockerContainersRequestParams struct {
 type DescribeDockerContainersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 
 	// 返回数量，默认为 20，最大值为 100。

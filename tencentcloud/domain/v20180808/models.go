@@ -2584,7 +2584,7 @@ type DescribePreReleaseListRequestParams struct {
 	// 页码
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 没页显示数
+	// 每页显示数
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 后缀
@@ -2654,7 +2654,7 @@ type DescribePreReleaseListRequest struct {
 	// 页码
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 没页显示数
+	// 每页显示数
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 后缀
