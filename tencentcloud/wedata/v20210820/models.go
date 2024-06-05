@@ -16622,6 +16622,10 @@ type DimensionScoreInfo struct {
 
 	// 评分
 	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 设置人idStr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIdStr *string `json:"UserIdStr,omitnil,omitempty" name:"UserIdStr"`
 }
 
 type DlcDataGovernPolicy struct {
@@ -24065,6 +24069,10 @@ type RuleTemplate struct {
 	// 支持的数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceTypes []*int64 `json:"DatasourceTypes,omitnil,omitempty" name:"DatasourceTypes"`
+
+	// 创建人IdStr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIdStr *string `json:"UserIdStr,omitnil,omitempty" name:"UserIdStr"`
 }
 
 type RuleTemplatePage struct {
@@ -25925,6 +25933,10 @@ type SubscribeReceiver struct {
 	// 接收人名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverName *string `json:"ReceiverName,omitnil,omitempty" name:"ReceiverName"`
+
+	// 接收人Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverUserIdStr *string `json:"ReceiverUserIdStr,omitnil,omitempty" name:"ReceiverUserIdStr"`
 }
 
 type SubscribeWebHook struct {

@@ -12355,6 +12355,10 @@ type ParamDetail struct {
 	// 参数是否可修改
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiableInfo *ModifiableInfo `json:"ModifiableInfo,omitnil,omitempty" name:"ModifiableInfo"`
+
+	// 支持公式的参数的默认公式样式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FuncPattern *string `json:"FuncPattern,omitnil,omitempty" name:"FuncPattern"`
 }
 
 type ParamInfo struct {
@@ -12458,6 +12462,10 @@ type ParamItemDetail struct {
 	// 参数配置公式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Func *string `json:"Func,omitnil,omitempty" name:"Func"`
+
+	// 支持公式的参数的默认公式样式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FuncPattern *string `json:"FuncPattern,omitnil,omitempty" name:"FuncPattern"`
 }
 
 type ParamItemInfo struct {

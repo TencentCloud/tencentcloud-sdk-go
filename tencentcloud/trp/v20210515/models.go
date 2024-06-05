@@ -107,6 +107,16 @@ func (r *AuthorizedTransferResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Chain struct {
+	// 码url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 上链数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ChainValue `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
 type ChainData struct {
 	// 区块hash
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -119,6 +129,20 @@ type ChainData struct {
 	// 区块时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockTime *string `json:"BlockTime,omitnil,omitempty" name:"BlockTime"`
+}
+
+type ChainValue struct {
+	// 标题名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 类型，文字："text"，图片："image"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 值，文字类型："abc"，图片类型：""/images/img.png"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type CodeBatch struct {
@@ -360,6 +384,67 @@ type CorpQuota struct {
 
 	// 额度使用量
 	UsageQuota *UsageQuota `json:"UsageQuota,omitnil,omitempty" name:"UsageQuota"`
+}
+
+// Predefined struct for user
+type CreateChainBatchRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 溯源ID
+	ChainList []*Chain `json:"ChainList,omitnil,omitempty" name:"ChainList"`
+}
+
+type CreateChainBatchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 溯源ID
+	ChainList []*Chain `json:"ChainList,omitnil,omitempty" name:"ChainList"`
+}
+
+func (r *CreateChainBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChainBatchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "ChainList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChainBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChainBatchResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateChainBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChainBatchResponseParams `json:"Response"`
+}
+
+func (r *CreateChainBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChainBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

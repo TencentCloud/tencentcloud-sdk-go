@@ -8297,6 +8297,85 @@ func (r *GetTopicRuleListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetWechatDeviceTicketRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 产品名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 是否第三方小程序
+	IsThirdApp *int64 `json:"IsThirdApp,omitnil,omitempty" name:"IsThirdApp"`
+
+	// 模板ID
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+}
+
+type GetWechatDeviceTicketRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 产品名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 是否第三方小程序
+	IsThirdApp *int64 `json:"IsThirdApp,omitnil,omitempty" name:"IsThirdApp"`
+
+	// 模板ID
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+}
+
+func (r *GetWechatDeviceTicketRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWechatDeviceTicketRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "IsThirdApp")
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetWechatDeviceTicketRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetWechatDeviceTicketResponseParams struct {
+	// 微信设备信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WXDeviceInfo *WXDeviceInfo `json:"WXDeviceInfo,omitnil,omitempty" name:"WXDeviceInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetWechatDeviceTicketResponse struct {
+	*tchttp.BaseResponse
+	Response *GetWechatDeviceTicketResponseParams `json:"Response"`
+}
+
+func (r *GetWechatDeviceTicketResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWechatDeviceTicketResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InheritCloudStorageUserRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -11673,6 +11752,30 @@ func (r *UploadFirmwareResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadFirmwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WXDeviceInfo struct {
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 设备信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WXIoTDeviceInfo *WXIoTDeviceInfo `json:"WXIoTDeviceInfo,omitnil,omitempty" name:"WXIoTDeviceInfo"`
+}
+
+type WXIoTDeviceInfo struct {
+	// sn信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
+
+	// 票据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SNTicket *string `json:"SNTicket,omitnil,omitempty" name:"SNTicket"`
+
+	// 模版ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }
 
 type WifiInfo struct {

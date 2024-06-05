@@ -3210,6 +3210,9 @@ type DescribeSubscribeJobsRequestParams struct {
 	// 订阅的云上数据库实例的 ID，精确匹配
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 订阅的topicName
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
 	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
@@ -3246,6 +3249,9 @@ type DescribeSubscribeJobsRequest struct {
 
 	// 订阅的云上数据库实例的 ID，精确匹配
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 订阅的topicName
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
@@ -3287,6 +3293,7 @@ func (r *DescribeSubscribeJobsRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeId")
 	delete(f, "SubscribeName")
 	delete(f, "InstanceId")
+	delete(f, "Topic")
 	delete(f, "PayType")
 	delete(f, "Product")
 	delete(f, "Status")

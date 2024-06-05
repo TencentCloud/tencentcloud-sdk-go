@@ -65,6 +65,9 @@ const (
 	// 素材尺寸超过1080*1080像素。
 	FAILEDOPERATION_IMAGEPIXELEXCEED = "FailedOperation.ImagePixelExceed"
 
+	// 素材尺寸超过8000*8000像素。
+	FAILEDOPERATION_IMAGEPIXELEXCEED8000 = "FailedOperation.ImagePixelExceed8000"
+
 	// 图片分辨率过大。建议您resize压缩到3k*3k以内。
 	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 
@@ -73,6 +76,9 @@ const (
 
 	// 输入图片base64数据大小超过5M。
 	FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+
+	// 输入图片base64数据大小超过10M。
+	FAILEDOPERATION_IMAGESIZEEXCEED10M = "FailedOperation.ImageSizeExceed10M"
 
 	// 图片尺寸过大或者过小；不满足算法要求。
 	FAILEDOPERATION_IMAGESIZEINVALID = "FailedOperation.ImageSizeInvalid"
@@ -104,6 +110,9 @@ const (
 	// 素材人脸ID不存在。
 	FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
 
+	// 内部错误。
+	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+
 	// 未知错误。
 	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 
@@ -115,6 +124,9 @@ const (
 
 	// 人脸检测-图片为空。
 	INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+
+	// 图片包含违法违规信息，审核不通过。
+	INVALIDPARAMETERVALUE_IMAGEILLEGALDETECTED = "InvalidParameterValue.ImageIllegalDetected"
 
 	// 未查找到素材Id。
 	INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"

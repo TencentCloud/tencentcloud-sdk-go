@@ -613,6 +613,63 @@ func (c *Client) CreateExtensionWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateIVRSessionRequest() (request *CreateIVRSessionRequest) {
+    request = &CreateIVRSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateIVRSession")
+    
+    
+    return
+}
+
+func NewCreateIVRSessionResponse() (response *CreateIVRSessionResponse) {
+    response = &CreateIVRSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIVRSession
+// 创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateIVRSession(request *CreateIVRSessionRequest) (response *CreateIVRSessionResponse, err error) {
+    return c.CreateIVRSessionWithContext(context.Background(), request)
+}
+
+// CreateIVRSession
+// 创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateIVRSessionWithContext(ctx context.Context, request *CreateIVRSessionRequest) (response *CreateIVRSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateIVRSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIVRSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIVRSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePredictiveDialingCampaignRequest() (request *CreatePredictiveDialingCampaignRequest) {
     request = &CreatePredictiveDialingCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},

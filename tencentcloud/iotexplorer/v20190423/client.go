@@ -6278,6 +6278,59 @@ func (c *Client) GetTopicRuleListWithContext(ctx context.Context, request *GetTo
     return
 }
 
+func NewGetWechatDeviceTicketRequest() (request *GetWechatDeviceTicketRequest) {
+    request = &GetWechatDeviceTicketRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetWechatDeviceTicket")
+    
+    
+    return
+}
+
+func NewGetWechatDeviceTicketResponse() (response *GetWechatDeviceTicketResponse) {
+    response = &GetWechatDeviceTicketResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetWechatDeviceTicket
+// 查询微信设备授权票据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetWechatDeviceTicket(request *GetWechatDeviceTicketRequest) (response *GetWechatDeviceTicketResponse, err error) {
+    return c.GetWechatDeviceTicketWithContext(context.Background(), request)
+}
+
+// GetWechatDeviceTicket
+// 查询微信设备授权票据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetWechatDeviceTicketWithContext(ctx context.Context, request *GetWechatDeviceTicketRequest) (response *GetWechatDeviceTicketResponse, err error) {
+    if request == nil {
+        request = NewGetWechatDeviceTicketRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetWechatDeviceTicket require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetWechatDeviceTicketResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserRequest) {
     request = &InheritCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

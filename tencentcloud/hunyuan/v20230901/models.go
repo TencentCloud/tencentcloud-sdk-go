@@ -550,15 +550,15 @@ type Delta struct {
 }
 
 type EmbeddingData struct {
-	// embedding 信息。
+	// Embedding 信息，目前为 1024 维浮点数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Embedding []*float64 `json:"Embedding,omitnil,omitempty" name:"Embedding"`
 
-	// 下标。
+	// 下标，目前不支持批量，因此固定为 0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// embedding
+	// 目前固定为 "embedding"。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
 }

@@ -270,3 +270,146 @@ func (c *Client) FuseFaceWithContext(ctx context.Context, request *FuseFaceReque
     err = c.Send(request, response)
     return
 }
+
+func NewFuseFaceUltraRequest() (request *FuseFaceUltraRequest) {
+    request = &FuseFaceUltraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("facefusion", APIVersion, "FuseFaceUltra")
+    
+    
+    return
+}
+
+func NewFuseFaceUltraResponse() (response *FuseFaceUltraResponse) {
+    response = &FuseFaceUltraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FuseFaceUltra
+// 图片人脸融合（专业版）为同步接口，支持自定义美颜、人脸增强、牙齿增强、拉脸等参数，最高支持8K分辨率，有多个模型类型供选择。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">融合接入指引</a>。
+//
+// 请求频率限制为2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
+//  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
+//  FAILEDOPERATION_FACERECTINVALID = "FailedOperation.FaceRectInvalid"
+//  FAILEDOPERATION_FACESHAPEFAILED = "FailedOperation.FaceShapeFailed"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
+//  FAILEDOPERATION_FUSEIMAGEERROR = "FailedOperation.FuseImageError"
+//  FAILEDOPERATION_FUSEINNERERROR = "FailedOperation.FuseInnerError"
+//  FAILEDOPERATION_FUSEMATERIALNOTAUTH = "FailedOperation.FuseMaterialNotAuth"
+//  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_FUSESAVEPHOTOFAIL = "FailedOperation.FuseSavePhotoFail"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGEPIXELEXCEED8000 = "FailedOperation.ImagePixelExceed8000"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_IMAGESIZEEXCEED10M = "FailedOperation.ImageSizeExceed10M"
+//  FAILEDOPERATION_IMAGESIZEINVALID = "FailedOperation.ImageSizeInvalid"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_PROJECTNOTAUTH = "FailedOperation.ProjectNotAuth"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
+//  INVALIDPARAMETERVALUE_FACERECTPARAMETERVALUEERROR = "InvalidParameterValue.FaceRectParameterValueError"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGALDETECTED = "InvalidParameterValue.ImageIllegalDetected"
+//  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) FuseFaceUltra(request *FuseFaceUltraRequest) (response *FuseFaceUltraResponse, err error) {
+    return c.FuseFaceUltraWithContext(context.Background(), request)
+}
+
+// FuseFaceUltra
+// 图片人脸融合（专业版）为同步接口，支持自定义美颜、人脸增强、牙齿增强、拉脸等参数，最高支持8K分辨率，有多个模型类型供选择。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">融合接入指引</a>。
+//
+// 请求频率限制为2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
+//  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
+//  FAILEDOPERATION_FACERECTINVALID = "FailedOperation.FaceRectInvalid"
+//  FAILEDOPERATION_FACESHAPEFAILED = "FailedOperation.FaceShapeFailed"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
+//  FAILEDOPERATION_FUSEIMAGEERROR = "FailedOperation.FuseImageError"
+//  FAILEDOPERATION_FUSEINNERERROR = "FailedOperation.FuseInnerError"
+//  FAILEDOPERATION_FUSEMATERIALNOTAUTH = "FailedOperation.FuseMaterialNotAuth"
+//  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_FUSESAVEPHOTOFAIL = "FailedOperation.FuseSavePhotoFail"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGEPIXELEXCEED8000 = "FailedOperation.ImagePixelExceed8000"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_IMAGESIZEEXCEED10M = "FailedOperation.ImageSizeExceed10M"
+//  FAILEDOPERATION_IMAGESIZEINVALID = "FailedOperation.ImageSizeInvalid"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_PROJECTNOTAUTH = "FailedOperation.ProjectNotAuth"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
+//  INVALIDPARAMETERVALUE_FACERECTPARAMETERVALUEERROR = "InvalidParameterValue.FaceRectParameterValueError"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGALDETECTED = "InvalidParameterValue.ImageIllegalDetected"
+//  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) FuseFaceUltraWithContext(ctx context.Context, request *FuseFaceUltraRequest) (response *FuseFaceUltraResponse, err error) {
+    if request == nil {
+        request = NewFuseFaceUltraRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FuseFaceUltra require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFuseFaceUltraResponse()
+    err = c.Send(request, response)
+    return
+}

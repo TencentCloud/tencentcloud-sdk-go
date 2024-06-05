@@ -33,7 +33,7 @@ type AccountCreateInfo struct {
 	// 账号备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否为管理员账户，当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false，等价于AccountType=L3
+	// 是否为管理员账户，当值为true 等价于单节点AccountType=L0，双节点AccountType=L1，当值为false，等价于AccountType=L3
 	IsAdmin *bool `json:"IsAdmin,omitnil,omitempty" name:"IsAdmin"`
 
 	// win-windows鉴权,sql-sqlserver鉴权，不填默认值为sql-sqlserver鉴权
@@ -41,6 +41,9 @@ type AccountCreateInfo struct {
 
 	// 账号类型，IsAdmin的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// 是否开启CAM验证
+	IsCam *bool `json:"IsCam,omitnil,omitempty" name:"IsCam"`
 }
 
 type AccountDetail struct {
@@ -70,6 +73,9 @@ type AccountDetail struct {
 
 	// 是否为管理员账户
 	IsAdmin *bool `json:"IsAdmin,omitnil,omitempty" name:"IsAdmin"`
+
+	// 是否为cam托管账户
+	IsCam *bool `json:"IsCam,omitnil,omitempty" name:"IsCam"`
 
 	// win-windows鉴权,sql-sqlserver鉴权
 	Authentication *string `json:"Authentication,omitnil,omitempty" name:"Authentication"`

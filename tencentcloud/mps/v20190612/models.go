@@ -8231,11 +8231,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// 任务类型，目前取值有：
-	// <li>WorkflowTask：视频工作流处理任务。</li>
-	// <li>EditMediaTask：视频编辑任务。</li>
-	// <li>LiveStreamProcessTask：直播流处理任务。</li>
-	// <li>ScheduleTask：编排处理任务。</li>
+	// 任务类型，目前取值有：<li>WorkflowTask：视频工作流处理任务。</li><li>EditMediaTask：视频编辑任务。</li><li>LiveStreamProcessTask：直播流处理任务。</li><li>ScheduleTask：编排处理任务。</li><li>EvaluationTask：评测任务。</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -15767,8 +15763,8 @@ type VideoTemplateInfo struct {
 	// 注意：av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。
-	// 当取值为 0，表示帧率和原始视频保持一致。
+	// 视频帧率，取值范围：[0, 120]，单位：Hz。 
+	// 当取值为 0，表示帧率和原始视频保持一致。 
 	// 注意：自适应码率时取值范围是 [0, 60]
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 

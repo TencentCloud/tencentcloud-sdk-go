@@ -3594,6 +3594,9 @@ func (r *DescribeAntiFakeRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAntiFakeRulesResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
 	// 返回值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CacheUrlItems `json:"Data,omitnil,omitempty" name:"Data"`

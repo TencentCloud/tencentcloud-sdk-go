@@ -88,6 +88,59 @@ func (c *Client) AuthorizedTransferWithContext(ctx context.Context, request *Aut
     return
 }
 
+func NewCreateChainBatchRequest() (request *CreateChainBatchRequest) {
+    request = &CreateChainBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "CreateChainBatch")
+    
+    
+    return
+}
+
+func NewCreateChainBatchResponse() (response *CreateChainBatchResponse) {
+    response = &CreateChainBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateChainBatch
+// 批量上链接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateChainBatch(request *CreateChainBatchRequest) (response *CreateChainBatchResponse, err error) {
+    return c.CreateChainBatchWithContext(context.Background(), request)
+}
+
+// CreateChainBatch
+// 批量上链接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateChainBatchWithContext(ctx context.Context, request *CreateChainBatchRequest) (response *CreateChainBatchResponse, err error) {
+    if request == nil {
+        request = NewCreateChainBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChainBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateChainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCodeBatchRequest() (request *CreateCodeBatchRequest) {
     request = &CreateCodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},

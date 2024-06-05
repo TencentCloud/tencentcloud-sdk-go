@@ -5788,7 +5788,7 @@ type ModifyProjectLimitRequestParams struct {
 	// 项目ID
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 项目接口
+	// 取值为[log speed performance webvitals pv event custom miniProgramData]其中之一
 	ProjectInterface *string `json:"ProjectInterface,omitnil,omitempty" name:"ProjectInterface"`
 
 	// 上报比例   10代表10%
@@ -5807,7 +5807,7 @@ type ModifyProjectLimitRequest struct {
 	// 项目ID
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 项目接口
+	// 取值为[log speed performance webvitals pv event custom miniProgramData]其中之一
 	ProjectInterface *string `json:"ProjectInterface,omitnil,omitempty" name:"ProjectInterface"`
 
 	// 上报比例   10代表10%

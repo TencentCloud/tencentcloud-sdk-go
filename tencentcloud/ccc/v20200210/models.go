@@ -1122,6 +1122,98 @@ func (r *CreateExtensionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIVRSessionRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 被叫
+	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
+
+	// 指定的 IVR Id，目前支持呼入和自动外呼两种类型
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 自定义变量
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 用户数据
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+}
+
+type CreateIVRSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 被叫
+	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
+
+	// 指定的 IVR Id，目前支持呼入和自动外呼两种类型
+	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 自定义变量
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 用户数据
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+}
+
+func (r *CreateIVRSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIVRSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Callee")
+	delete(f, "IVRId")
+	delete(f, "Callers")
+	delete(f, "Variables")
+	delete(f, "UUI")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIVRSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIVRSessionResponseParams struct {
+	// 新创建的会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIVRSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIVRSessionResponseParams `json:"Response"`
+}
+
+func (r *CreateIVRSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIVRSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePredictiveDialingCampaignRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
