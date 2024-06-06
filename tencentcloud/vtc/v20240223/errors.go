@@ -38,6 +38,9 @@ const (
 	// 系统内部错误。
 	FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 
+	// 文本未通过审核，请修改后重新尝试。
+	FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
+
 	// 音频翻译结果已确认
 	FAILEDOPERATION_TRANSLATIONCONFIRMHASFINISHED = "FailedOperation.TranslationConfirmHasFinished"
 

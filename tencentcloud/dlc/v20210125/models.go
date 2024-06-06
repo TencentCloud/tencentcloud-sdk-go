@@ -828,6 +828,29 @@ func (r *BindWorkGroupsToUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CHDFSProductVpcInfo struct {
+	// vpc id
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// vpc子网信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcCidrBlock []*VpcCidrBlock `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// 规则Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 权限组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
+}
+
 type CSV struct {
 	// 压缩格式，["Snappy", "Gzip", "None"选一]。
 	CodeCompress *string `json:"CodeCompress,omitnil,omitempty" name:"CodeCompress"`
@@ -1464,6 +1487,92 @@ type CosPermission struct {
 	// 权限【"read","write"】
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Permissions []*string `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
+// Predefined struct for user
+type CreateCHDFSBindingProductRequestParams struct {
+	// 需要绑定的元数据加速桶名
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
+
+	// 桶的类型，分为cos和lakefs
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
+
+	// vpc信息，产品名称为other时必传此参数
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+}
+
+type CreateCHDFSBindingProductRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要绑定的元数据加速桶名
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
+
+	// 桶的类型，分为cos和lakefs
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
+
+	// vpc信息，产品名称为other时必传此参数
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+}
+
+func (r *CreateCHDFSBindingProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCHDFSBindingProductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MountPoint")
+	delete(f, "BucketType")
+	delete(f, "ProductName")
+	delete(f, "EngineName")
+	delete(f, "VpcInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCHDFSBindingProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCHDFSBindingProductResponseParams struct {
+	// 绑定信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPointAssociates []*MountPointAssociates `json:"MountPointAssociates,omitnil,omitempty" name:"MountPointAssociates"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCHDFSBindingProductResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCHDFSBindingProductResponseParams `json:"Response"`
+}
+
+func (r *CreateCHDFSBindingProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCHDFSBindingProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3754,6 +3863,24 @@ type CrontabResumeSuspendStrategy struct {
 	SuspendStrategy *int64 `json:"SuspendStrategy,omitnil,omitempty" name:"SuspendStrategy"`
 }
 
+type DLCCatalogAccess struct {
+	// VPCID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 产品类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type DMSColumn struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4487,6 +4614,88 @@ type DatasourceConnectionLocation struct {
 }
 
 // Predefined struct for user
+type DeleteCHDFSBindingProductRequestParams struct {
+	// 需要解绑的元数据加速桶名
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
+
+	// 桶的类型，分为cos和lakefs
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
+
+	// vpc信息，ProductName选择other时，必传此参数
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+}
+
+type DeleteCHDFSBindingProductRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要解绑的元数据加速桶名
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
+
+	// 桶的类型，分为cos和lakefs
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
+
+	// vpc信息，ProductName选择other时，必传此参数
+	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+}
+
+func (r *DeleteCHDFSBindingProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCHDFSBindingProductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MountPoint")
+	delete(f, "BucketType")
+	delete(f, "ProductName")
+	delete(f, "EngineName")
+	delete(f, "VpcInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCHDFSBindingProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCHDFSBindingProductResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCHDFSBindingProductResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCHDFSBindingProductResponseParams `json:"Response"`
+}
+
+func (r *DeleteCHDFSBindingProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCHDFSBindingProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDataEngineRequestParams struct {
 	// 删除虚拟集群的名称数组
 	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
@@ -4702,6 +4911,57 @@ func (r *DeleteSparkAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSparkAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteThirdPartyAccessUserRequestParams struct {
+
+}
+
+type DeleteThirdPartyAccessUserRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteThirdPartyAccessUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteThirdPartyAccessUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteThirdPartyAccessUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteThirdPartyAccessUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteThirdPartyAccessUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteThirdPartyAccessUserResponseParams `json:"Response"`
+}
+
+func (r *DeleteThirdPartyAccessUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteThirdPartyAccessUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4928,6 +5188,80 @@ func (r *DescribeAdvancedStoreLocationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAdvancedStoreLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDLCCatalogAccessRequestParams struct {
+	// 显示条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 记录数量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeDLCCatalogAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 显示条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 记录数量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeDLCCatalogAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLCCatalogAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDLCCatalogAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDLCCatalogAccessResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// DLCCatalog授权列表
+	Rows []*DLCCatalogAccess `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDLCCatalogAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDLCCatalogAccessResponseParams `json:"Response"`
+}
+
+func (r *DescribeDLCCatalogAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLCCatalogAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6849,6 +7183,66 @@ func (r *DescribeNotebookSessionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOtherCHDFSBindingListRequestParams struct {
+	// 桶名
+	BucketId *string `json:"BucketId,omitnil,omitempty" name:"BucketId"`
+}
+
+type DescribeOtherCHDFSBindingListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 桶名
+	BucketId *string `json:"BucketId,omitnil,omitempty" name:"BucketId"`
+}
+
+func (r *DescribeOtherCHDFSBindingListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOtherCHDFSBindingListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BucketId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOtherCHDFSBindingListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOtherCHDFSBindingListResponseParams struct {
+	// 非DLC 产品绑定列表
+	OtherCHDFSBindingList []*OtherCHDFSBinding `json:"OtherCHDFSBindingList,omitnil,omitempty" name:"OtherCHDFSBindingList"`
+
+	// 总记录数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOtherCHDFSBindingListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOtherCHDFSBindingListResponseParams `json:"Response"`
+}
+
+func (r *DescribeOtherCHDFSBindingListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOtherCHDFSBindingListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResultDownloadRequestParams struct {
 	// 查询任务Id
 	DownloadId *string `json:"DownloadId,omitnil,omitempty" name:"DownloadId"`
@@ -7486,6 +7880,60 @@ func (r *DescribeStoreLocationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStoreLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubUserAccessPolicyRequestParams struct {
+
+}
+
+type DescribeSubUserAccessPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSubUserAccessPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubUserAccessPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubUserAccessPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubUserAccessPolicyResponseParams struct {
+	// 子用户访问策略
+	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSubUserAccessPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubUserAccessPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubUserAccessPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubUserAccessPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8258,6 +8706,60 @@ func (r *DescribeTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeThirdPartyAccessUserRequestParams struct {
+
+}
+
+type DescribeThirdPartyAccessUserRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeThirdPartyAccessUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeThirdPartyAccessUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeThirdPartyAccessUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeThirdPartyAccessUserResponseParams struct {
+	// 用户信息
+	UserInfo *OpendThirdAccessUserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeThirdPartyAccessUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeThirdPartyAccessUserResponseParams `json:"Response"`
+}
+
+func (r *DescribeThirdPartyAccessUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeThirdPartyAccessUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9726,6 +10228,88 @@ func (r *GetOptimizerPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GrantDLCCatalogAccessRequestParams struct {
+	// 授权VpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 产品(EMR|DLC|Doris|Inlong|Wedata)
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// VPC所属账号UIN
+	VpcUin *string `json:"VpcUin,omitnil,omitempty" name:"VpcUin"`
+
+	// VPC所属账号AppId
+	VpcAppId *uint64 `json:"VpcAppId,omitnil,omitempty" name:"VpcAppId"`
+}
+
+type GrantDLCCatalogAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 授权VpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 产品(EMR|DLC|Doris|Inlong|Wedata)
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// VPC所属账号UIN
+	VpcUin *string `json:"VpcUin,omitnil,omitempty" name:"VpcUin"`
+
+	// VPC所属账号AppId
+	VpcAppId *uint64 `json:"VpcAppId,omitnil,omitempty" name:"VpcAppId"`
+}
+
+func (r *GrantDLCCatalogAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantDLCCatalogAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "Product")
+	delete(f, "Description")
+	delete(f, "VpcUin")
+	delete(f, "VpcAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GrantDLCCatalogAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantDLCCatalogAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GrantDLCCatalogAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *GrantDLCCatalogAccessResponseParams `json:"Response"`
+}
+
+func (r *GrantDLCCatalogAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantDLCCatalogAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type HiveInfo struct {
 	// hive metastore的地址
 	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
@@ -10885,6 +11469,28 @@ func (r *ModifyWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MountPointAssociates struct {
+	// 桶Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketId *string `json:"BucketId,omitnil,omitempty" name:"BucketId"`
+
+	// vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// 权限组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
+
+	// 权限规则Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessRuleId *int64 `json:"AccessRuleId,omitnil,omitempty" name:"AccessRuleId"`
+}
+
 type MysqlInfo struct {
 	// 连接mysql的jdbc url
 	JdbcUrl *string `json:"JdbcUrl,omitnil,omitempty" name:"JdbcUrl"`
@@ -11153,9 +11759,45 @@ type NotebookSessions struct {
 	SparkUiUrl *string `json:"SparkUiUrl,omitnil,omitempty" name:"SparkUiUrl"`
 }
 
+type OpendThirdAccessUserInfo struct {
+	// id信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用户主UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 用户AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 开通时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type Other struct {
 	// 枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type OtherCHDFSBinding struct {
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 用户名称（该字段已废弃）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperUser []*string `json:"SuperUser,omitnil,omitempty" name:"SuperUser"`
+
+	// vpc配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcInfo []*CHDFSProductVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 是否与该桶绑定（该字段已废弃）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBind *bool `json:"IsBind,omitnil,omitempty" name:"IsBind"`
 }
 
 type OtherDatasourceConnection struct {
@@ -11480,6 +12122,57 @@ func (r *QueryTaskCostDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RegisterThirdPartyAccessUserRequestParams struct {
+
+}
+
+type RegisterThirdPartyAccessUserRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RegisterThirdPartyAccessUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterThirdPartyAccessUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterThirdPartyAccessUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterThirdPartyAccessUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegisterThirdPartyAccessUserResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterThirdPartyAccessUserResponseParams `json:"Response"`
+}
+
+func (r *RegisterThirdPartyAccessUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterThirdPartyAccessUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RenewDataEngineRequestParams struct {
 	// CU队列名称
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
@@ -11713,6 +12406,60 @@ func (r *RestartDataEngineResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RestartDataEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokeDLCCatalogAccessRequestParams struct {
+	// VpcID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+type RevokeDLCCatalogAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// VpcID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+func (r *RevokeDLCCatalogAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeDLCCatalogAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeDLCCatalogAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokeDLCCatalogAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RevokeDLCCatalogAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *RevokeDLCCatalogAccessResponseParams `json:"Response"`
+}
+
+func (r *RevokeDLCCatalogAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeDLCCatalogAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13502,6 +14249,34 @@ type ViewResponseInfo struct {
 
 	// 视图更新时间。
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+}
+
+type VpcCidrBlock struct {
+	// 子网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CidrId *string `json:"CidrId,omitnil,omitempty" name:"CidrId"`
+
+	// 子网网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CidrAddr *string `json:"CidrAddr,omitnil,omitempty" name:"CidrAddr"`
+}
+
+type VpcInfo struct {
+	// vpc Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// 规则Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 权限组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
 }
 
 type WorkGroupDetailInfo struct {

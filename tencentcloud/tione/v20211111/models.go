@@ -2660,6 +2660,10 @@ type DescribeModelServiceCallInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetCallInfo *IntranetCallInfo `json:"IntranetCallInfo,omitnil,omitempty" name:"IntranetCallInfo"`
 
+	// 基于新网关的服务调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCallInfoV2 *ServiceCallInfoV2 `json:"ServiceCallInfoV2,omitnil,omitempty" name:"ServiceCallInfoV2"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3872,13 +3876,17 @@ type IntranetCallInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceEIPInfo []*ServiceEIPInfo `json:"ServiceEIPInfo,omitnil,omitempty" name:"ServiceEIPInfo"`
 
+	// 默认内网调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultInnerCallInfos []*DefaultInnerCallInfo `json:"DefaultInnerCallInfos,omitnil,omitempty" name:"DefaultInnerCallInfos"`
+
 	// 私有连接信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateLinkInfos []*PrivateLinkInfo `json:"PrivateLinkInfos,omitnil,omitempty" name:"PrivateLinkInfos"`
 
-	// 默认内网调用信息
+	// 基于新网关的私有连接信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultInnerCallInfos []*DefaultInnerCallInfo `json:"DefaultInnerCallInfos,omitnil,omitempty" name:"DefaultInnerCallInfos"`
+	PrivateLinkInfosV2 []*PrivateLinkInfo `json:"PrivateLinkInfosV2,omitnil,omitempty" name:"PrivateLinkInfosV2"`
 }
 
 type LocalDisk struct {
@@ -5377,6 +5385,24 @@ type ServiceCallInfo struct {
 	// 鉴权是否开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
+}
+
+type ServiceCallInfoV2 struct {
+	// 服务组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 服务的公网调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetEndpoint *string `json:"InternetEndpoint,omitnil,omitempty" name:"InternetEndpoint"`
+
+	// 鉴权是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
+
+	// 鉴权token，仅当AuthorizationEnable为true时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthToken *string `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
 }
 
 type ServiceEIP struct {

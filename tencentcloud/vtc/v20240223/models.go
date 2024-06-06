@@ -92,6 +92,12 @@ type ConfirmVideoTranslateJobResponseParams struct {
 	// 音频翻译结果确认 session
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
+	// 视频转译任务状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 视频转译任务信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

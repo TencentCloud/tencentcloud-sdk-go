@@ -6128,8 +6128,8 @@ type Component struct {
 	// <ul><li> <b>Middle</b> :居中</li>
 	// <li> <b>Below</b> :正下方</li>
 	// <li> <b>Right</b> :正右方</li>
-	// <li> <b>LowerRight</b> :右上角</li>
-	// <li> <b>UpperRight</b> :右下角。</li></ul>
+	// <li> <b>LowerRight</b> :右下角</li>
+	// <li> <b>UpperRight</b> :右上角。</li></ul>
 	// 示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
 	RelativeLocation *string `json:"RelativeLocation,omitnil,omitempty" name:"RelativeLocation"`
 

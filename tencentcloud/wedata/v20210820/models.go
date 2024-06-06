@@ -22385,6 +22385,14 @@ type OrganizationalFunction struct {
 	// 函数tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 操作人 ID 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUserIdsStr []*string `json:"OperatorUserIdsStr,omitnil,omitempty" name:"OperatorUserIdsStr"`
+
+	// 公有云 Owner ID 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUserIdsStr []*string `json:"OwnerUserIdsStr,omitnil,omitempty" name:"OwnerUserIdsStr"`
 }
 
 type Pair struct {

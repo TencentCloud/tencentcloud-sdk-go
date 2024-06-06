@@ -1659,11 +1659,11 @@ func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
 //
 // 
 //
-// 产品优势：与通用印刷体识别相比，提供更高精度的文字识别服务，在文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
+// 产品优势：与通用印刷体识别接口相比，本接口提供更高精度的通用文字识别服务，在手写体、文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
 //
 // 
 //
-// 通用印刷体识别不同版本的差异如下：
+// 通用文字识别不同版本的差异如下：
 //
 // <table style="width:715px">
 //
@@ -1807,11 +1807,11 @@ func (c *Client) GeneralAccurateOCR(request *GeneralAccurateOCRRequest) (respons
 //
 // 
 //
-// 产品优势：与通用印刷体识别相比，提供更高精度的文字识别服务，在文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
+// 产品优势：与通用印刷体识别接口相比，本接口提供更高精度的通用文字识别服务，在手写体、文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
 //
 // 
 //
-// 通用印刷体识别不同版本的差异如下：
+// 通用文字识别不同版本的差异如下：
 //
 // <table style="width:715px">
 //
@@ -8188,6 +8188,8 @@ func NewVinOCRResponse() (response *VinOCRResponse) {
 // VinOCR
 // 本接口支持图片内车辆识别代号（VIN）的检测和识别。
 //
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -8206,6 +8208,8 @@ func (c *Client) VinOCR(request *VinOCRRequest) (response *VinOCRResponse, err e
 
 // VinOCR
 // 本接口支持图片内车辆识别代号（VIN）的检测和识别。
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

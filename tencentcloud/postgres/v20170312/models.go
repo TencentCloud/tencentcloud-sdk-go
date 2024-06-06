@@ -269,13 +269,16 @@ type CloneDBInstanceRequestParams struct {
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// 
+	// - 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
+	// - 后付费：只支持1
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 续费标记：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// 
+	// - 0：手动续费
+	// - 1：自动续费
+	// 
 	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
@@ -289,8 +292,10 @@ type CloneDBInstanceRequestParams struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 实例计费类型，目前支持：
-	// <li>PREPAID：预付费，即包年包月
-	// <li>POSTPAID_BY_HOUR：后付费，即按量计费
+	// 
+	// - PREPAID：预付费，即包年包月
+	// - POSTPAID_BY_HOUR：后付费，即按量计费
+	// 
 	// 默认值：PREPAID
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
@@ -308,8 +313,10 @@ type CloneDBInstanceRequestParams struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// 
+	// - 0：否
+	// - 1：是
+	// 
 	// 默认值：0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
@@ -326,8 +333,8 @@ type CloneDBInstanceRequestParams struct {
 	RecoveryTargetTime *string `json:"RecoveryTargetTime,omitnil,omitempty" name:"RecoveryTargetTime"`
 
 	// 主从同步方式，支持： 
-	// <li>Semi-sync：半同步
-	// <li>Async：异步
+	// <li>Semi-sync：半同步</li>
+	// <li>Async：异步</li>
 	// 主实例默认值：Semi-sync
 	// 只读实例默认值：Async
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
@@ -346,13 +353,16 @@ type CloneDBInstanceRequest struct {
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// 
+	// - 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
+	// - 后付费：只支持1
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 续费标记：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// 
+	// - 0：手动续费
+	// - 1：自动续费
+	// 
 	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
@@ -366,8 +376,10 @@ type CloneDBInstanceRequest struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 实例计费类型，目前支持：
-	// <li>PREPAID：预付费，即包年包月
-	// <li>POSTPAID_BY_HOUR：后付费，即按量计费
+	// 
+	// - PREPAID：预付费，即包年包月
+	// - POSTPAID_BY_HOUR：后付费，即按量计费
+	// 
 	// 默认值：PREPAID
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
@@ -385,8 +397,10 @@ type CloneDBInstanceRequest struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// 
+	// - 0：否
+	// - 1：是
+	// 
 	// 默认值：0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
@@ -403,8 +417,8 @@ type CloneDBInstanceRequest struct {
 	RecoveryTargetTime *string `json:"RecoveryTargetTime,omitnil,omitempty" name:"RecoveryTargetTime"`
 
 	// 主从同步方式，支持： 
-	// <li>Semi-sync：半同步
-	// <li>Async：异步
+	// <li>Semi-sync：半同步</li>
+	// <li>Async：异步</li>
 	// 主实例默认值：Semi-sync
 	// 只读实例默认值：Async
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
@@ -967,28 +981,28 @@ type CreateInstancesRequestParams struct {
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 实例字符集，目前只支持：
-	// <li> UTF8
-	// <li> LATIN1
+	// <li> UTF8</li>
+	// <li> LATIN1</li>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
 	// 实例根账号用户名，具体规范如下：
-	// <li>用户名需要1-16个字符，只能由字母、数字或下划线组成
-	// <li>不能为postgres
-	// <li>不能由数字和pg_开头
-	// <li>所有规则均不区分大小写
+	// <li>用户名需要1-16个字符，只能由字母、数字或下划线组成</li>
+	// <li>不能为postgres</li>
+	// <li>不能由数字和pg_开头</li>
+	// <li>所有规则均不区分大小写</li>
 	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
 
 	// 实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以" / "开头;
 	// 必须包含以下四项，字符种类:
-	// <li>小写字母： [a ~ z]
-	// <li>大写字母：[A ～ Z]
-	// <li>数字：0 - 9
-	// <li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;'<>,.?/
+	// <li>小写字母： [a ~ z]</li>
+	// <li>大写字母：[A ～ Z]</li>
+	// <li>数字：0 - 9</li>
+	// <li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
 
 	// PostgreSQL大版本号（该参数当前必传），版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。目前支持10，11，12，13，14，15这几个大版本，详情见[内核版本概述](https://cloud.tencent.com/document/product/409/67018)。
@@ -1004,8 +1018,8 @@ type CreateInstancesRequestParams struct {
 	DBKernelVersion *string `json:"DBKernelVersion,omitnil,omitempty" name:"DBKernelVersion"`
 
 	// 实例计费类型，目前支持：
-	// <li>PREPAID：预付费，即包年包月
-	// <li>POSTPAID_BY_HOUR：后付费，即按量计费
+	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>POSTPAID_BY_HOUR：后付费，即按量计费</li>
 	// 默认值：PREPAID
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
@@ -1020,14 +1034,14 @@ type CreateInstancesRequestParams struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 续费标记：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// <li>0：手动续费</li>
+	// <li>1：自动续费</li>
 	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
@@ -1050,8 +1064,8 @@ type CreateInstancesRequestParams struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 是否需要支持数据透明加密：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	// 参考[数据透明加密概述](https://cloud.tencent.com/document/product/409/71748)
 	NeedSupportTDE *uint64 `json:"NeedSupportTDE,omitnil,omitempty" name:"NeedSupportTDE"`
@@ -1065,8 +1079,8 @@ type CreateInstancesRequestParams struct {
 	KMSRegion *string `json:"KMSRegion,omitnil,omitempty" name:"KMSRegion"`
 
 	// 数据库引擎，支持：
-	// <li>postgresql：云数据库PostgreSQL
-	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL
+	// <li>postgresql：云数据库PostgreSQL</li>
+	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>
 	// 默认值：postgresql
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 
@@ -1074,22 +1088,22 @@ type CreateInstancesRequestParams struct {
 	// {"$key1":"$value1", "$key2":"$value2"}
 	// 各引擎支持如下：
 	// mssql_compatible引擎：
-	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。
+	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。</li>
 	// <li>defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
-	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。
-	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
+	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。</li>
+	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。</li>
 	DBEngineConfig *string `json:"DBEngineConfig,omitnil,omitempty" name:"DBEngineConfig"`
 
 	// 主从同步方式，支持： 
-	// <li>Semi-sync：半同步
-	// <li>Async：异步
+	// <li>Semi-sync：半同步</li>
+	// <li>Async：异步</li>
 	// 主实例默认值：Semi-sync
 	// 只读实例默认值：Async
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 
 	// 是否需要支持Ipv6：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitnil,omitempty" name:"NeedSupportIpv6"`
 }
@@ -1111,28 +1125,28 @@ type CreateInstancesRequest struct {
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 实例字符集，目前只支持：
-	// <li> UTF8
-	// <li> LATIN1
+	// <li> UTF8</li>
+	// <li> LATIN1</li>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
 	// 实例根账号用户名，具体规范如下：
-	// <li>用户名需要1-16个字符，只能由字母、数字或下划线组成
-	// <li>不能为postgres
-	// <li>不能由数字和pg_开头
-	// <li>所有规则均不区分大小写
+	// <li>用户名需要1-16个字符，只能由字母、数字或下划线组成</li>
+	// <li>不能为postgres</li>
+	// <li>不能由数字和pg_开头</li>
+	// <li>所有规则均不区分大小写</li>
 	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
 
 	// 实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以" / "开头;
 	// 必须包含以下四项，字符种类:
-	// <li>小写字母： [a ~ z]
-	// <li>大写字母：[A ～ Z]
-	// <li>数字：0 - 9
-	// <li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;'<>,.?/
+	// <li>小写字母： [a ~ z]</li>
+	// <li>大写字母：[A ～ Z]</li>
+	// <li>数字：0 - 9</li>
+	// <li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
 
 	// PostgreSQL大版本号（该参数当前必传），版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。目前支持10，11，12，13，14，15这几个大版本，详情见[内核版本概述](https://cloud.tencent.com/document/product/409/67018)。
@@ -1148,8 +1162,8 @@ type CreateInstancesRequest struct {
 	DBKernelVersion *string `json:"DBKernelVersion,omitnil,omitempty" name:"DBKernelVersion"`
 
 	// 实例计费类型，目前支持：
-	// <li>PREPAID：预付费，即包年包月
-	// <li>POSTPAID_BY_HOUR：后付费，即按量计费
+	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>POSTPAID_BY_HOUR：后付费，即按量计费</li>
 	// 默认值：PREPAID
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
@@ -1164,14 +1178,14 @@ type CreateInstancesRequest struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 续费标记：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// <li>0：手动续费</li>
+	// <li>1：自动续费</li>
 	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
@@ -1194,8 +1208,8 @@ type CreateInstancesRequest struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 是否需要支持数据透明加密：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	// 参考[数据透明加密概述](https://cloud.tencent.com/document/product/409/71748)
 	NeedSupportTDE *uint64 `json:"NeedSupportTDE,omitnil,omitempty" name:"NeedSupportTDE"`
@@ -1209,8 +1223,8 @@ type CreateInstancesRequest struct {
 	KMSRegion *string `json:"KMSRegion,omitnil,omitempty" name:"KMSRegion"`
 
 	// 数据库引擎，支持：
-	// <li>postgresql：云数据库PostgreSQL
-	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL
+	// <li>postgresql：云数据库PostgreSQL</li>
+	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>
 	// 默认值：postgresql
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 
@@ -1218,22 +1232,22 @@ type CreateInstancesRequest struct {
 	// {"$key1":"$value1", "$key2":"$value2"}
 	// 各引擎支持如下：
 	// mssql_compatible引擎：
-	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。
+	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。</li>
 	// <li>defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
-	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。
-	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
+	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。</li>
+	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。</li>
 	DBEngineConfig *string `json:"DBEngineConfig,omitnil,omitempty" name:"DBEngineConfig"`
 
 	// 主从同步方式，支持： 
-	// <li>Semi-sync：半同步
-	// <li>Async：异步
+	// <li>Semi-sync：半同步</li>
+	// <li>Async：异步</li>
 	// 主实例默认值：Semi-sync
 	// 只读实例默认值：Async
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 
 	// 是否需要支持Ipv6：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitnil,omitempty" name:"NeedSupportIpv6"`
 }
@@ -2002,7 +2016,7 @@ type DBInstance struct {
 	// 实例名称。
 	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
 
-	// 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）、audit-switching（审计状态变更中）、primary-switching（主备切换中）
+	// 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、disisolating（解隔离中）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）、audit-switching（审计状态变更中）、primary-switching（主备切换中）
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitnil,omitempty" name:"DBInstanceStatus"`
 
 	// 实例分配的内存大小，单位：GB
@@ -2029,18 +2043,18 @@ type DBInstance struct {
 	DBKernelVersion *string `json:"DBKernelVersion,omitnil,omitempty" name:"DBKernelVersion"`
 
 	// 实例类型，类型有：
-	// <li>primary：主实例
-	// <li>readonly：只读实例
-	// <li>guard：灾备实例
-	// <li>temp：临时实例
+	// <li>primary：主实例</li>
+	// <li>readonly：只读实例</li>
+	// <li>guard：灾备实例</li>
+	// <li>temp：临时实例</li>
 	DBInstanceType *string `json:"DBInstanceType,omitnil,omitempty" name:"DBInstanceType"`
 
 	// 实例版本，目前只支持standard（双机高可用版, 一主一从）。
 	DBInstanceVersion *string `json:"DBInstanceVersion,omitnil,omitempty" name:"DBInstanceVersion"`
 
 	// 实例字符集，目前只支持：
-	// <li> UTF8
-	// <li> LATIN1
+	// <li> UTF8</li>
+	// <li> LATIN1</li>
 	DBCharset *string `json:"DBCharset,omitnil,omitempty" name:"DBCharset"`
 
 	// 实例创建时间。
@@ -2056,13 +2070,13 @@ type DBInstance struct {
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
 	// 计费模式：
-	// <li>prepaid：包年包月,预付费
-	// <li>postpaid：按量计费，后付费
+	// <li>prepaid：包年包月,预付费</li>
+	// <li>postpaid：按量计费，后付费</li>
 	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
 
 	// 是否自动续费：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// <li>0：手动续费</li>
+	// <li>1：自动续费</li>
 	// 默认值：0
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
@@ -2106,16 +2120,16 @@ type DBInstance struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 实例是否支持TDE数据加密：
-	// <li>0：不支持
-	// <li>1：支持
+	// <li>0：不支持</li>
+	// <li>1：支持</li>
 	// 默认值：0
 	// TDE数据加密可参考[数据透明加密概述](https://cloud.tencent.com/document/product/409/71748)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportTDE *int64 `json:"IsSupportTDE,omitnil,omitempty" name:"IsSupportTDE"`
 
 	// 数据库引擎，支持：
-	// <li>postgresql：云数据库PostgreSQL
-	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL
+	// <li>postgresql：云数据库PostgreSQL</li>
+	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>
 	// 默认值：postgresql
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
@@ -2124,10 +2138,10 @@ type DBInstance struct {
 	// {"$key1":"$value1", "$key2":"$value2"}
 	// 各引擎支持如下：
 	// mssql_compatible引擎：
-	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。
+	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。</li>
 	// <li>defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
-	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。
-	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
+	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。</li>
+	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBEngineConfig *string `json:"DBEngineConfig,omitnil,omitempty" name:"DBEngineConfig"`
 
@@ -2136,8 +2150,8 @@ type DBInstance struct {
 	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitnil,omitempty" name:"NetworkAccessList"`
 
 	// 实例是否支持Ipv6：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	SupportIpv6 *uint64 `json:"SupportIpv6,omitnil,omitempty" name:"SupportIpv6"`
 }
@@ -3899,8 +3913,10 @@ type DescribeDBInstancesRequestParams struct {
 	// db-instance-id：按照实例ID过滤，类型为string
 	// db-instance-name：按照实例名过滤，类型为string
 	// db-project-id：按照项目ID过滤，类型为integer
-	// db-pay-mode：按照付费模式过滤，类型为string
+	// db-pay-mode：按照实例付费模式过滤，类型为string
 	// db-tag-key：按照标签键过滤，类型为string
+	// db-private-ip： 按照实例私有网络IP过滤，类型为string
+	// db-public-address： 按照实例外网地址过滤，类型为string
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -3923,8 +3939,10 @@ type DescribeDBInstancesRequest struct {
 	// db-instance-id：按照实例ID过滤，类型为string
 	// db-instance-name：按照实例名过滤，类型为string
 	// db-project-id：按照项目ID过滤，类型为integer
-	// db-pay-mode：按照付费模式过滤，类型为string
+	// db-pay-mode：按照实例付费模式过滤，类型为string
 	// db-tag-key：按照标签键过滤，类型为string
+	// db-private-ip： 按照实例私有网络IP过滤，类型为string
+	// db-public-address： 按照实例外网地址过滤，类型为string
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -4246,6 +4264,15 @@ func (r *DescribeDBXlogsResponse) FromJsonString(s string) error {
 type DescribeDatabasesRequestParams struct {
 	// 实例ID
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：database-name：按照数据库名称过滤，类型为string。此处使用模糊匹配搜索符合条件的数据库。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 单次显示数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeDatabasesRequest struct {
@@ -4253,6 +4280,15 @@ type DescribeDatabasesRequest struct {
 	
 	// 实例ID
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：database-name：按照数据库名称过滤，类型为string。此处使用模糊匹配搜索符合条件的数据库。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 单次显示数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeDatabasesRequest) ToJsonString() string {
@@ -4268,6 +4304,9 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DBInstanceId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
 	}
@@ -4278,6 +4317,9 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 type DescribeDatabasesResponseParams struct {
 	// 数据库信息
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 数据库总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5041,7 +5083,13 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServerlessDBInstancesRequestParams struct {
-	// 查询条件
+	// 查询条件。按照一个或者多个过滤条件进行查询，目前支持的过滤条件类型（name字段指定）有： 
+	// 
+	// - db-instance-id：按照实例ID过滤，类型为string
+	// - db-instance-name：按照实例名过滤，类型为string
+	// - db-tag-key：按照实例的tag过滤，类型为string
+	// 
+	// value字段指定该类型过滤条件下具体要过滤的实例ID/实例名/实例tag-key。
 	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 查询个数
@@ -5060,7 +5108,13 @@ type DescribeServerlessDBInstancesRequestParams struct {
 type DescribeServerlessDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件
+	// 查询条件。按照一个或者多个过滤条件进行查询，目前支持的过滤条件类型（name字段指定）有： 
+	// 
+	// - db-instance-id：按照实例ID过滤，类型为string
+	// - db-instance-name：按照实例名过滤，类型为string
+	// - db-tag-key：按照实例的tag过滤，类型为string
+	// 
+	// value字段指定该类型过滤条件下具体要过滤的实例ID/实例名/实例tag-key。
 	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 查询个数
@@ -5133,25 +5187,25 @@ type DescribeSlowQueryAnalysisRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	// 查询结束时间，形如2018-01-01 00:00:00。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 根据数据库名进行筛选，可以为空。
+	// 数据库名字。	
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 排序维度。 可选参数，取值范围[CallNum,CostTime,AvgCostTime]。默认CallNum。
+	// 排序字段，取值范围[CallNum,CostTime,AvgCostTime]。默认值为CallNum。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型。升序asc、降序desc。默认desc。
+	// 排序方式，包括升序：asc 降序：desc。默认值为desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 分页大小。取值范围[1,100]。默认50。
+	// 每页显示数量，取值范围为1-100。默认值为50。	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移。取值范围[0,INF)。默认0。
+	// 数据偏移量，从0开始。默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5161,25 +5215,25 @@ type DescribeSlowQueryAnalysisRequest struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	// 查询结束时间，形如2018-01-01 00:00:00。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 根据数据库名进行筛选，可以为空。
+	// 数据库名字。	
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 排序维度。 可选参数，取值范围[CallNum,CostTime,AvgCostTime]。默认CallNum。
+	// 排序字段，取值范围[CallNum,CostTime,AvgCostTime]。默认值为CallNum。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型。升序asc、降序desc。默认desc。
+	// 排序方式，包括升序：asc 降序：desc。默认值为desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 分页大小。取值范围[1,100]。默认50。
+	// 每页显示数量，取值范围为1-100。默认值为50。	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移。取值范围[0,INF)。默认0。
+	// 数据偏移量，从0开始。默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5211,10 +5265,10 @@ func (r *DescribeSlowQueryAnalysisRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowQueryAnalysisResponseParams struct {
-	// 查询总条数。
+	// 查询到的总条数，最大值为10000条。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 慢SQL统计分析接口返回详情。
+	// 查询到的慢SQL统计分析详细信息集合。
 	Detail *Detail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5242,25 +5296,25 @@ type DescribeSlowQueryListRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	// 查询结束时间，形如2018-01-01 00:00:00。	
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 根据数据库名进行筛选，可以为空。
+	// 数据库名字。	
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 排序类型。升序asc、降序desc。默认为desc。
+	// 排序方式，包括升序：asc 降序：desc。默认值为desc。	
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 排序维度。 可选参数，取值范围[SessionStartTime,Duration]，默认为SessionStartTime。
+	// 排序字段，取值范围[SessionStartTime,Duration]。默认值为SessionStartTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 分页大小。取值范围[1,100],默认为20。
+	// 每页显示数量，取值范围为1-100。默认值为50。	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移。取值范围[0,INF)，默认为0。
+	// 数据偏移量，从0开始。默认值为0。	
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5270,25 +5324,25 @@ type DescribeSlowQueryListRequest struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	// 查询结束时间，形如2018-01-01 00:00:00。	
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 根据数据库名进行筛选，可以为空。
+	// 数据库名字。	
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 排序类型。升序asc、降序desc。默认为desc。
+	// 排序方式，包括升序：asc 降序：desc。默认值为desc。	
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 排序维度。 可选参数，取值范围[SessionStartTime,Duration]，默认为SessionStartTime。
+	// 排序字段，取值范围[SessionStartTime,Duration]。默认值为SessionStartTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 分页大小。取值范围[1,100],默认为20。
+	// 每页显示数量，取值范围为1-100。默认值为50。	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移。取值范围[0,INF)，默认为0。
+	// 数据偏移量，从0开始。默认值为0。	
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5320,14 +5374,14 @@ func (r *DescribeSlowQueryListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowQueryListResponseParams struct {
-	// 选定时间范围内慢SQL总条数。
+	// 查询到的慢日志数量，最大值为10000条。	
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 指定时间范围内，慢SQL耗时分段分析。
+	// 查询到的慢日志耗时分段分析结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationAnalysis []*DurationAnalysis `json:"DurationAnalysis,omitnil,omitempty" name:"DurationAnalysis"`
 
-	// 指定时间范围内 慢SQL流水。
+	// 查询到的慢日志详细信息集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawSlowQueryList []*RawSlowQuery `json:"RawSlowQueryList,omitnil,omitempty" name:"RawSlowQueryList"`
 
@@ -6539,9 +6593,9 @@ type ModifyDBInstanceDeploymentRequestParams struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 指定实例配置完成变更后的切换时间。
-	// <li>0：立即切换 
-	// <li>1：指定时间切换
-	// <li>2：维护时间窗口内切换
+	// <li>0：立即切换 </li>
+	// <li>1：指定时间切换</li>
+	// <li>2：维护时间窗口内切换</li>
 	// 默认值：0 
 	SwitchTag *int64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
 
@@ -6563,9 +6617,9 @@ type ModifyDBInstanceDeploymentRequest struct {
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
 	// 指定实例配置完成变更后的切换时间。
-	// <li>0：立即切换 
-	// <li>1：指定时间切换
-	// <li>2：维护时间窗口内切换
+	// <li>0：立即切换 </li>
+	// <li>1：指定时间切换</li>
+	// <li>2：维护时间窗口内切换</li>
 	// 默认值：0 
 	SwitchTag *int64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
 
@@ -6797,20 +6851,20 @@ func (r *ModifyDBInstanceNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceParametersRequestParams struct {
-	// 实例ID
+	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 待修改参数及期望值
+	// 待修改参数及期望值。
 	ParamList []*ParamEntry `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 }
 
 type ModifyDBInstanceParametersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 待修改参数及期望值
+	// 待修改参数及期望值。
 	ParamList []*ParamEntry `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 }
 
@@ -8279,6 +8333,81 @@ func (r *RestartDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RestoreDBInstanceObjectsRequestParams struct {
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 需要恢复的对象列表。假设需要恢复的对象名为test，则恢复后的名称为test_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
+	RestoreObjects []*string `json:"RestoreObjects,omitnil,omitempty" name:"RestoreObjects"`
+
+	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
+	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
+
+	// 恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。
+	RestoreTargetTime *string `json:"RestoreTargetTime,omitnil,omitempty" name:"RestoreTargetTime"`
+}
+
+type RestoreDBInstanceObjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 需要恢复的对象列表。假设需要恢复的对象名为test，则恢复后的名称为test_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
+	RestoreObjects []*string `json:"RestoreObjects,omitnil,omitempty" name:"RestoreObjects"`
+
+	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
+	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
+
+	// 恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。
+	RestoreTargetTime *string `json:"RestoreTargetTime,omitnil,omitempty" name:"RestoreTargetTime"`
+}
+
+func (r *RestoreDBInstanceObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreDBInstanceObjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "RestoreObjects")
+	delete(f, "BackupSetId")
+	delete(f, "RestoreTargetTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreDBInstanceObjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreDBInstanceObjectsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestoreDBInstanceObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *RestoreDBInstanceObjectsResponseParams `json:"Response"`
+}
+
+func (r *RestoreDBInstanceObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreDBInstanceObjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SecurityGroup struct {
 	// 项目Id
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -9023,7 +9152,7 @@ type Version struct {
 	// DEPRECATED：已弃用。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该数据库版本（DBKernelVersion）可以升级到的版本号列表。
+	// 该数据库版本（DBKernelVersion）可以升级到的版本号列表。其中包含可升级的小版本号和可升级的大版本号（完整内核版本格式示例：v15.1_v1.6）。
 	AvailableUpgradeTarget []*string `json:"AvailableUpgradeTarget,omitnil,omitempty" name:"AvailableUpgradeTarget"`
 }
 

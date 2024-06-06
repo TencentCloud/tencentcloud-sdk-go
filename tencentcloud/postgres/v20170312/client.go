@@ -798,9 +798,9 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 // CreateInstances
 // 本接口 (CreateInstances) 用于创建一个或者多个PostgreSQL实例，通过此接口创建的实例无需进行初始化，可直接使用。
 //
-// <li>实例创建成功后将自动开机启动，实例状态变为“运行中”。
+// <li>实例创建成功后将自动开机启动，实例状态变为“运行中”。</li>
 //
-// <li>预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。
+// <li>预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。</li>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -886,9 +886,9 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 // CreateInstances
 // 本接口 (CreateInstances) 用于创建一个或者多个PostgreSQL实例，通过此接口创建的实例无需进行初始化，可直接使用。
 //
-// <li>实例创建成功后将自动开机启动，实例状态变为“运行中”。
+// <li>实例创建成功后将自动开机启动，实例状态变为“运行中”。</li>
 //
-// <li>预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。
+// <li>预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。</li>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -6992,6 +6992,69 @@ func (c *Client) RestartDBInstanceWithContext(ctx context.Context, request *Rest
     request.SetContext(ctx)
     
     response = NewRestartDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestoreDBInstanceObjectsRequest() (request *RestoreDBInstanceObjectsRequest) {
+    request = &RestoreDBInstanceObjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "RestoreDBInstanceObjects")
+    
+    
+    return
+}
+
+func NewRestoreDBInstanceObjectsResponse() (response *RestoreDBInstanceObjectsResponse) {
+    response = &RestoreDBInstanceObjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestoreDBInstanceObjects
+// 根据备份集或恢复目标时间，在原实例上恢复数据库相关对象，例如数据库、表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) RestoreDBInstanceObjects(request *RestoreDBInstanceObjectsRequest) (response *RestoreDBInstanceObjectsResponse, err error) {
+    return c.RestoreDBInstanceObjectsWithContext(context.Background(), request)
+}
+
+// RestoreDBInstanceObjects
+// 根据备份集或恢复目标时间，在原实例上恢复数据库相关对象，例如数据库、表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) RestoreDBInstanceObjectsWithContext(ctx context.Context, request *RestoreDBInstanceObjectsRequest) (response *RestoreDBInstanceObjectsResponse, err error) {
+    if request == nil {
+        request = NewRestoreDBInstanceObjectsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreDBInstanceObjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreDBInstanceObjectsResponse()
     err = c.Send(request, response)
     return
 }

@@ -2105,6 +2105,10 @@ type SubscribeInfo struct {
 	// 最近一次修改的消费时间起点，如果从未修改则为零值
 	ConsumeStartTime *string `json:"ConsumeStartTime,omitnil,omitempty" name:"ConsumeStartTime"`
 
+	// 自动续费标识。0-不自动续费，1-自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
 	// 数据订阅实例所属地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
@@ -2132,10 +2136,6 @@ type SubscribeInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
-
-	// 自动续费标识。0-不自动续费，1-自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
 	// 注意：此字段可能返回 null，表示取不到有效值。

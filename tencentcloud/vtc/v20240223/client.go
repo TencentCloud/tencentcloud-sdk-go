@@ -70,6 +70,7 @@ func NewConfirmVideoTranslateJobResponse() (response *ConfirmVideoTranslateJobRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
 //  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
 //  FAILEDOPERATION_TRANSLATIONCONFIRMHASFINISHED = "FailedOperation.TranslationConfirmHasFinished"
 //  FAILEDOPERATION_TRANSLATIONNOTNEEDCONFIRM = "FailedOperation.TranslationNotNeedConfirm"
 //  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
@@ -83,6 +84,7 @@ func (c *Client) ConfirmVideoTranslateJob(request *ConfirmVideoTranslateJobReque
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
 //  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
 //  FAILEDOPERATION_TRANSLATIONCONFIRMHASFINISHED = "FailedOperation.TranslationConfirmHasFinished"
 //  FAILEDOPERATION_TRANSLATIONNOTNEEDCONFIRM = "FailedOperation.TranslationNotNeedConfirm"
 //  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"

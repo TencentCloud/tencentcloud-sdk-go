@@ -1189,6 +1189,61 @@ func (c *Client) CheckLockMetaDataWithContext(ctx context.Context, request *Chec
     return
 }
 
+func NewCreateCHDFSBindingProductRequest() (request *CreateCHDFSBindingProductRequest) {
+    request = &CreateCHDFSBindingProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateCHDFSBindingProduct")
+    
+    
+    return
+}
+
+func NewCreateCHDFSBindingProductResponse() (response *CreateCHDFSBindingProductResponse) {
+    response = &CreateCHDFSBindingProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCHDFSBindingProduct
+// 此接口（CreateCHDFSBindingProduct）用于创建元数据加速桶和产品绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCHDFSBindingProduct(request *CreateCHDFSBindingProductRequest) (response *CreateCHDFSBindingProductResponse, err error) {
+    return c.CreateCHDFSBindingProductWithContext(context.Background(), request)
+}
+
+// CreateCHDFSBindingProduct
+// 此接口（CreateCHDFSBindingProduct）用于创建元数据加速桶和产品绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCHDFSBindingProductWithContext(ctx context.Context, request *CreateCHDFSBindingProductRequest) (response *CreateCHDFSBindingProductResponse, err error) {
+    if request == nil {
+        request = NewCreateCHDFSBindingProductRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCHDFSBindingProduct require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCHDFSBindingProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDMSDatabaseRequest() (request *CreateDMSDatabaseRequest) {
     request = &CreateDMSDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2907,6 +2962,57 @@ func (c *Client) CreateWorkGroupWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteCHDFSBindingProductRequest() (request *DeleteCHDFSBindingProductRequest) {
+    request = &DeleteCHDFSBindingProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteCHDFSBindingProduct")
+    
+    
+    return
+}
+
+func NewDeleteCHDFSBindingProductResponse() (response *DeleteCHDFSBindingProductResponse) {
+    response = &DeleteCHDFSBindingProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCHDFSBindingProduct
+// 此接口（DeleteCHDFSBindingProduct）用于删除元数据加速桶和产品绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteCHDFSBindingProduct(request *DeleteCHDFSBindingProductRequest) (response *DeleteCHDFSBindingProductResponse, err error) {
+    return c.DeleteCHDFSBindingProductWithContext(context.Background(), request)
+}
+
+// DeleteCHDFSBindingProduct
+// 此接口（DeleteCHDFSBindingProduct）用于删除元数据加速桶和产品绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteCHDFSBindingProductWithContext(ctx context.Context, request *DeleteCHDFSBindingProductRequest) (response *DeleteCHDFSBindingProductResponse, err error) {
+    if request == nil {
+        request = NewDeleteCHDFSBindingProductRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCHDFSBindingProduct require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCHDFSBindingProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDataEngineRequest() (request *DeleteDataEngineRequest) {
     request = &DeleteDataEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3173,6 +3279,59 @@ func (c *Client) DeleteSparkAppWithContext(ctx context.Context, request *DeleteS
     return
 }
 
+func NewDeleteThirdPartyAccessUserRequest() (request *DeleteThirdPartyAccessUserRequest) {
+    request = &DeleteThirdPartyAccessUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteThirdPartyAccessUser")
+    
+    
+    return
+}
+
+func NewDeleteThirdPartyAccessUserResponse() (response *DeleteThirdPartyAccessUserResponse) {
+    response = &DeleteThirdPartyAccessUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteThirdPartyAccessUser
+// 本接口（RegisterThirdPartyAccessUser）用于移除第三方平台访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteThirdPartyAccessUser(request *DeleteThirdPartyAccessUserRequest) (response *DeleteThirdPartyAccessUserResponse, err error) {
+    return c.DeleteThirdPartyAccessUserWithContext(context.Background(), request)
+}
+
+// DeleteThirdPartyAccessUser
+// 本接口（RegisterThirdPartyAccessUser）用于移除第三方平台访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteThirdPartyAccessUserWithContext(ctx context.Context, request *DeleteThirdPartyAccessUserRequest) (response *DeleteThirdPartyAccessUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteThirdPartyAccessUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteThirdPartyAccessUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteThirdPartyAccessUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserRequest() (request *DeleteUserRequest) {
     request = &DeleteUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3405,6 +3564,63 @@ func (c *Client) DescribeAdvancedStoreLocationWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeAdvancedStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDLCCatalogAccessRequest() (request *DescribeDLCCatalogAccessRequest) {
+    request = &DescribeDLCCatalogAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDLCCatalogAccess")
+    
+    
+    return
+}
+
+func NewDescribeDLCCatalogAccessResponse() (response *DescribeDLCCatalogAccessResponse) {
+    response = &DescribeDLCCatalogAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDLCCatalogAccess
+// 查询DLC Catalog授权列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeDLCCatalogAccess(request *DescribeDLCCatalogAccessRequest) (response *DescribeDLCCatalogAccessResponse, err error) {
+    return c.DescribeDLCCatalogAccessWithContext(context.Background(), request)
+}
+
+// DescribeDLCCatalogAccess
+// 查询DLC Catalog授权列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeDLCCatalogAccessWithContext(ctx context.Context, request *DescribeDLCCatalogAccessRequest) (response *DescribeDLCCatalogAccessResponse, err error) {
+    if request == nil {
+        request = NewDescribeDLCCatalogAccessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDLCCatalogAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDLCCatalogAccessResponse()
     err = c.Send(request, response)
     return
 }
@@ -4737,6 +4953,57 @@ func (c *Client) DescribeNotebookSessionsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeOtherCHDFSBindingListRequest() (request *DescribeOtherCHDFSBindingListRequest) {
+    request = &DescribeOtherCHDFSBindingListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeOtherCHDFSBindingList")
+    
+    
+    return
+}
+
+func NewDescribeOtherCHDFSBindingListResponse() (response *DescribeOtherCHDFSBindingListResponse) {
+    response = &DescribeOtherCHDFSBindingListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOtherCHDFSBindingList
+// 此接口（DescribeOtherCHDFSBindingList）用于查询其他产品元数据加速桶绑定列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeOtherCHDFSBindingList(request *DescribeOtherCHDFSBindingListRequest) (response *DescribeOtherCHDFSBindingListResponse, err error) {
+    return c.DescribeOtherCHDFSBindingListWithContext(context.Background(), request)
+}
+
+// DescribeOtherCHDFSBindingList
+// 此接口（DescribeOtherCHDFSBindingList）用于查询其他产品元数据加速桶绑定列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeOtherCHDFSBindingListWithContext(ctx context.Context, request *DescribeOtherCHDFSBindingListRequest) (response *DescribeOtherCHDFSBindingListResponse, err error) {
+    if request == nil {
+        request = NewDescribeOtherCHDFSBindingListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOtherCHDFSBindingList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOtherCHDFSBindingListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResultDownloadRequest() (request *DescribeResultDownloadRequest) {
     request = &DescribeResultDownloadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5207,6 +5474,59 @@ func (c *Client) DescribeStoreLocationWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubUserAccessPolicyRequest() (request *DescribeSubUserAccessPolicyRequest) {
+    request = &DescribeSubUserAccessPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSubUserAccessPolicy")
+    
+    
+    return
+}
+
+func NewDescribeSubUserAccessPolicyResponse() (response *DescribeSubUserAccessPolicyResponse) {
+    response = &DescribeSubUserAccessPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSubUserAccessPolicy
+// 本接口（DescribeSubUserAccessPolicy）用于开通了第三方平台访问的用户，查询其子用户的访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSubUserAccessPolicy(request *DescribeSubUserAccessPolicyRequest) (response *DescribeSubUserAccessPolicyResponse, err error) {
+    return c.DescribeSubUserAccessPolicyWithContext(context.Background(), request)
+}
+
+// DescribeSubUserAccessPolicy
+// 本接口（DescribeSubUserAccessPolicy）用于开通了第三方平台访问的用户，查询其子用户的访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSubUserAccessPolicyWithContext(ctx context.Context, request *DescribeSubUserAccessPolicyRequest) (response *DescribeSubUserAccessPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubUserAccessPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubUserAccessPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubUserAccessPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -5700,6 +6020,61 @@ func (c *Client) DescribeTasksCostInfoWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeTasksCostInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeThirdPartyAccessUserRequest() (request *DescribeThirdPartyAccessUserRequest) {
+    request = &DescribeThirdPartyAccessUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeThirdPartyAccessUser")
+    
+    
+    return
+}
+
+func NewDescribeThirdPartyAccessUserResponse() (response *DescribeThirdPartyAccessUserResponse) {
+    response = &DescribeThirdPartyAccessUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeThirdPartyAccessUser
+// 本接口（RegisterThirdPartyAccessUser）查询开通第三方平台访问的用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeThirdPartyAccessUser(request *DescribeThirdPartyAccessUserRequest) (response *DescribeThirdPartyAccessUserResponse, err error) {
+    return c.DescribeThirdPartyAccessUserWithContext(context.Background(), request)
+}
+
+// DescribeThirdPartyAccessUser
+// 本接口（RegisterThirdPartyAccessUser）查询开通第三方平台访问的用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeThirdPartyAccessUserWithContext(ctx context.Context, request *DescribeThirdPartyAccessUserRequest) (response *DescribeThirdPartyAccessUserResponse, err error) {
+    if request == nil {
+        request = NewDescribeThirdPartyAccessUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeThirdPartyAccessUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeThirdPartyAccessUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -6678,6 +7053,55 @@ func (c *Client) GetOptimizerPolicyWithContext(ctx context.Context, request *Get
     return
 }
 
+func NewGrantDLCCatalogAccessRequest() (request *GrantDLCCatalogAccessRequest) {
+    request = &GrantDLCCatalogAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GrantDLCCatalogAccess")
+    
+    
+    return
+}
+
+func NewGrantDLCCatalogAccessResponse() (response *GrantDLCCatalogAccessResponse) {
+    response = &GrantDLCCatalogAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GrantDLCCatalogAccess
+// 授权访问DLC Catalog
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GrantDLCCatalogAccess(request *GrantDLCCatalogAccessRequest) (response *GrantDLCCatalogAccessResponse, err error) {
+    return c.GrantDLCCatalogAccessWithContext(context.Background(), request)
+}
+
+// GrantDLCCatalogAccess
+// 授权访问DLC Catalog
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GrantDLCCatalogAccessWithContext(ctx context.Context, request *GrantDLCCatalogAccessRequest) (response *GrantDLCCatalogAccessResponse, err error) {
+    if request == nil {
+        request = NewGrantDLCCatalogAccessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantDLCCatalogAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGrantDLCCatalogAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTaskJobLogDetailRequest() (request *ListTaskJobLogDetailRequest) {
     request = &ListTaskJobLogDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7493,6 +7917,59 @@ func (c *Client) QueryTaskCostDetailWithContext(ctx context.Context, request *Qu
     return
 }
 
+func NewRegisterThirdPartyAccessUserRequest() (request *RegisterThirdPartyAccessUserRequest) {
+    request = &RegisterThirdPartyAccessUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "RegisterThirdPartyAccessUser")
+    
+    
+    return
+}
+
+func NewRegisterThirdPartyAccessUserResponse() (response *RegisterThirdPartyAccessUserResponse) {
+    response = &RegisterThirdPartyAccessUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RegisterThirdPartyAccessUser
+// 本接口（RegisterThirdPartyAccessUser）用于开通第三方平台访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RegisterThirdPartyAccessUser(request *RegisterThirdPartyAccessUserRequest) (response *RegisterThirdPartyAccessUserResponse, err error) {
+    return c.RegisterThirdPartyAccessUserWithContext(context.Background(), request)
+}
+
+// RegisterThirdPartyAccessUser
+// 本接口（RegisterThirdPartyAccessUser）用于开通第三方平台访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RegisterThirdPartyAccessUserWithContext(ctx context.Context, request *RegisterThirdPartyAccessUserRequest) (response *RegisterThirdPartyAccessUserResponse, err error) {
+    if request == nil {
+        request = NewRegisterThirdPartyAccessUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterThirdPartyAccessUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRegisterThirdPartyAccessUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewDataEngineRequest() (request *RenewDataEngineRequest) {
     request = &RenewDataEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7652,6 +8129,67 @@ func (c *Client) RestartDataEngineWithContext(ctx context.Context, request *Rest
     request.SetContext(ctx)
     
     response = NewRestartDataEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevokeDLCCatalogAccessRequest() (request *RevokeDLCCatalogAccessRequest) {
+    request = &RevokeDLCCatalogAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "RevokeDLCCatalogAccess")
+    
+    
+    return
+}
+
+func NewRevokeDLCCatalogAccessResponse() (response *RevokeDLCCatalogAccessResponse) {
+    response = &RevokeDLCCatalogAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RevokeDLCCatalogAccess
+// 撤销DLC Catalog访问权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+func (c *Client) RevokeDLCCatalogAccess(request *RevokeDLCCatalogAccessRequest) (response *RevokeDLCCatalogAccessResponse, err error) {
+    return c.RevokeDLCCatalogAccessWithContext(context.Background(), request)
+}
+
+// RevokeDLCCatalogAccess
+// 撤销DLC Catalog访问权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+func (c *Client) RevokeDLCCatalogAccessWithContext(ctx context.Context, request *RevokeDLCCatalogAccessRequest) (response *RevokeDLCCatalogAccessResponse, err error) {
+    if request == nil {
+        request = NewRevokeDLCCatalogAccessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeDLCCatalogAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRevokeDLCCatalogAccessResponse()
     err = c.Send(request, response)
     return
 }

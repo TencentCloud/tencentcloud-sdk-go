@@ -6100,7 +6100,7 @@ func NewDescribePrometheusInstanceUsageResponse() (response *DescribePrometheusI
 }
 
 // DescribePrometheusInstanceUsage
-//  查询Prometheus按量实例用量
+// 查询Prometheus按量实例用量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6119,7 +6119,7 @@ func (c *Client) DescribePrometheusInstanceUsage(request *DescribePrometheusInst
 }
 
 // DescribePrometheusInstanceUsage
-//  查询Prometheus按量实例用量
+// 查询Prometheus按量实例用量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

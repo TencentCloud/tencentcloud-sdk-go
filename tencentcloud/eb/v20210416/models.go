@@ -1097,21 +1097,27 @@ func (r *DescribeLogTagValueResponse) FromJsonString(s string) error {
 
 type ESTargetParams struct {
 	// 网络连接类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetMode *string `json:"NetMode,omitnil,omitempty" name:"NetMode"`
 
 	// 索引前缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexPrefix *string `json:"IndexPrefix,omitnil,omitempty" name:"IndexPrefix"`
 
 	// es日志轮换粒度
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RotationInterval *string `json:"RotationInterval,omitnil,omitempty" name:"RotationInterval"`
 
 	// DTS事件配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
 
 	// DTS索引配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexSuffixMode *string `json:"IndexSuffixMode,omitnil,omitempty" name:"IndexSuffixMode"`
 
 	// es模版类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexTemplateType *string `json:"IndexTemplateType,omitnil,omitempty" name:"IndexTemplateType"`
 }
 
@@ -1864,7 +1870,7 @@ type ListRulesRequestParams struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -1883,7 +1889,7 @@ type ListRulesRequest struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -2275,12 +2281,15 @@ type Rule struct {
 
 type SCFParams struct {
 	// 批量投递最长等待时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
 
 	// 批量投递最大事件条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
 
 	// 开启批量投递使能
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 }
 
