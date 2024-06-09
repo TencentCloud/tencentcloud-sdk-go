@@ -851,6 +851,57 @@ func (c *Client) CreateConfigGroupVersionWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateCustomizeErrorPageRequest() (request *CreateCustomizeErrorPageRequest) {
+    request = &CreateCustomizeErrorPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateCustomizeErrorPage")
+    
+    
+    return
+}
+
+func NewCreateCustomizeErrorPageResponse() (response *CreateCustomizeErrorPageResponse) {
+    response = &CreateCustomizeErrorPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCustomizeErrorPage
+// 创建自定义错误页面。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
+//  INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = "InvalidParameterValue.PageNameAlreadyExist"
+func (c *Client) CreateCustomizeErrorPage(request *CreateCustomizeErrorPageRequest) (response *CreateCustomizeErrorPageResponse, err error) {
+    return c.CreateCustomizeErrorPageWithContext(context.Background(), request)
+}
+
+// CreateCustomizeErrorPage
+// 创建自定义错误页面。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
+//  INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = "InvalidParameterValue.PageNameAlreadyExist"
+func (c *Client) CreateCustomizeErrorPageWithContext(ctx context.Context, request *CreateCustomizeErrorPageRequest) (response *CreateCustomizeErrorPageResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomizeErrorPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomizeErrorPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomizeErrorPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateL4ProxyRequest() (request *CreateL4ProxyRequest) {
     request = &CreateL4ProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2131,6 +2182,57 @@ func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteCustomErrorPageRequest() (request *DeleteCustomErrorPageRequest) {
+    request = &DeleteCustomErrorPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteCustomErrorPage")
+    
+    
+    return
+}
+
+func NewDeleteCustomErrorPageResponse() (response *DeleteCustomErrorPageResponse) {
+    response = &DeleteCustomErrorPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomErrorPage
+// 删除自定义错误页面。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCustomErrorPage(request *DeleteCustomErrorPageRequest) (response *DeleteCustomErrorPageResponse, err error) {
+    return c.DeleteCustomErrorPageWithContext(context.Background(), request)
+}
+
+// DeleteCustomErrorPage
+// 删除自定义错误页面。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCustomErrorPageWithContext(ctx context.Context, request *DeleteCustomErrorPageRequest) (response *DeleteCustomErrorPageResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomErrorPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomErrorPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomErrorPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteL4ProxyRequest() (request *DeleteL4ProxyRequest) {
     request = &DeleteL4ProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3112,6 +3214,55 @@ func (c *Client) DescribeContentQuotaWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeContentQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomErrorPagesRequest() (request *DescribeCustomErrorPagesRequest) {
+    request = &DescribeCustomErrorPagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeCustomErrorPages")
+    
+    
+    return
+}
+
+func NewDescribeCustomErrorPagesResponse() (response *DescribeCustomErrorPagesResponse) {
+    response = &DescribeCustomErrorPagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCustomErrorPages
+// 查询自定义错误页列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+func (c *Client) DescribeCustomErrorPages(request *DescribeCustomErrorPagesRequest) (response *DescribeCustomErrorPagesResponse, err error) {
+    return c.DescribeCustomErrorPagesWithContext(context.Background(), request)
+}
+
+// DescribeCustomErrorPages
+// 查询自定义错误页列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+func (c *Client) DescribeCustomErrorPagesWithContext(ctx context.Context, request *DescribeCustomErrorPagesRequest) (response *DescribeCustomErrorPagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomErrorPagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomErrorPages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomErrorPagesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5602,6 +5753,55 @@ func (c *Client) ModifyApplicationProxyStatusWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyApplicationProxyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomErrorPageRequest() (request *ModifyCustomErrorPageRequest) {
+    request = &ModifyCustomErrorPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyCustomErrorPage")
+    
+    
+    return
+}
+
+func NewModifyCustomErrorPageResponse() (response *ModifyCustomErrorPageResponse) {
+    response = &ModifyCustomErrorPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCustomErrorPage
+// 修改自定义错误页面。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCustomErrorPage(request *ModifyCustomErrorPageRequest) (response *ModifyCustomErrorPageResponse, err error) {
+    return c.ModifyCustomErrorPageWithContext(context.Background(), request)
+}
+
+// ModifyCustomErrorPage
+// 修改自定义错误页面。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCustomErrorPageWithContext(ctx context.Context, request *ModifyCustomErrorPageRequest) (response *ModifyCustomErrorPageResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomErrorPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomErrorPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomErrorPageResponse()
     err = c.Send(request, response)
     return
 }

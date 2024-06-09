@@ -6615,6 +6615,10 @@ type ScaleOutClusterResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
+	// 查询流程状态，流程额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6898,6 +6902,10 @@ type ScaleOutInstanceResponseParams struct {
 	// 大订单号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
+
+	// 扩容TraceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

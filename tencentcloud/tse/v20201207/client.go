@@ -5518,6 +5518,59 @@ func (c *Client) DescribeOneCloudNativeAPIGatewayServiceWithContext(ctx context.
     return
 }
 
+func NewDescribePublicAddressConfigRequest() (request *DescribePublicAddressConfigRequest) {
+    request = &DescribePublicAddressConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribePublicAddressConfig")
+    
+    
+    return
+}
+
+func NewDescribePublicAddressConfigResponse() (response *DescribePublicAddressConfigResponse) {
+    response = &DescribePublicAddressConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePublicAddressConfig
+// 查询公网地址信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribePublicAddressConfig(request *DescribePublicAddressConfigRequest) (response *DescribePublicAddressConfigResponse, err error) {
+    return c.DescribePublicAddressConfigWithContext(context.Background(), request)
+}
+
+// DescribePublicAddressConfig
+// 查询公网地址信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribePublicAddressConfigWithContext(ctx context.Context, request *DescribePublicAddressConfigRequest) (response *DescribePublicAddressConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicAddressConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicAddressConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePublicAddressConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePublicNetworkRequest() (request *DescribePublicNetworkRequest) {
     request = &DescribePublicNetworkRequest{
         BaseRequest: &tchttp.BaseRequest{},

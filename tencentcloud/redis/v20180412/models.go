@@ -1836,6 +1836,115 @@ func (r *DescribeAutoBackupConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupDetailRequestParams struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份 ID，可通过接口 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 返回的参数 **RedisBackupSet** 获取。
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+}
+
+type DescribeBackupDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份 ID，可通过接口 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 返回的参数 **RedisBackupSet** 获取。
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+}
+
+func (r *DescribeBackupDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDetailResponseParams struct {
+	// 备份 ID。
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 备份开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 备份结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 备份方式。 
+	// 
+	// - 1：手动备份。
+	// -  0：自动备份。
+	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
+
+	// 备份状态。 
+	// 
+	// - 1：备份被其它流程锁定。
+	// - 2：备份正常，没有被任何流程锁定。
+	// - -1：备份已过期。
+	// - 3：备份正在被导出。
+	// - 4：备份导出成功。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备份的备注信息。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 备份是否被锁定。
+	// 
+	// - 0：未被锁定。
+	// - 1：已被锁定。
+	Locked *int64 `json:"Locked,omitnil,omitempty" name:"Locked"`
+
+	// 备份文件大小。单位：Byte。
+	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
+
+	// 实例类型。
+	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 单分片内存规格大小，单位：MB。
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// 分片数量。
+	ShardNum *int64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
+
+	// 副本数量。
+	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupDownloadRestrictionRequestParams struct {
 
 }

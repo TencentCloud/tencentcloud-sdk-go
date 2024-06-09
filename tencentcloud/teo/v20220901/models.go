@@ -1900,6 +1900,91 @@ func (r *CreateConfigGroupVersionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCustomizeErrorPageRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义错误页名称，名称为 2-30 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 自定义错误页面描述，描述不超过 60 个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 自定义错误页面内容，内容不超过 2KB。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type CreateCustomizeErrorPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义错误页名称，名称为 2-30 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 自定义错误页面描述，描述不超过 60 个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 自定义错误页面内容，内容不超过 2KB。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+func (r *CreateCustomizeErrorPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomizeErrorPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Name")
+	delete(f, "ContentType")
+	delete(f, "Description")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomizeErrorPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomizeErrorPageResponseParams struct {
+	// 页面 ID。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCustomizeErrorPageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCustomizeErrorPageResponseParams `json:"Response"`
+}
+
+func (r *CreateCustomizeErrorPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomizeErrorPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateL4ProxyRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -3117,6 +3202,29 @@ type CustomEndpoint struct {
 	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
 }
 
+type CustomErrorPage struct {
+	// 自定义错误页面 ID。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义错误页面名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义错误页面类型。
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 自定义错误页面描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 自定义错误页面内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 自定义错误页面引用。
+	References []*ErrorPageReference `json:"References,omitnil,omitempty" name:"References"`
+}
+
 type CustomField struct {
 	// 从 HTTP 请求和响应中的指定位置提取数据，取值有：
 	// <li>ReqHeader：从 HTTP 请求头中提取指定字段值；</li>
@@ -3521,6 +3629,67 @@ func (r *DeleteApplicationProxyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteApplicationProxyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomErrorPageRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义页面 ID。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+}
+
+type DeleteCustomErrorPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义页面 ID。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+}
+
+func (r *DeleteCustomErrorPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomErrorPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "PageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomErrorPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomErrorPageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomErrorPageResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomErrorPageResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomErrorPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomErrorPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4829,6 +4998,95 @@ func (r *DescribeContentQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContentQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomErrorPagesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
+	// <li>page-id： 按照页面 ID 进行过滤；</li>
+	// <li>name： 按照页面名称进行过滤；</li>
+	// <li>description：按照页面描述过滤；</li>
+	// <li>content-type：按照页面类型过滤。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。 
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCustomErrorPagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
+	// <li>page-id： 按照页面 ID 进行过滤；</li>
+	// <li>name： 按照页面名称进行过滤；</li>
+	// <li>description：按照页面描述过滤；</li>
+	// <li>content-type：按照页面类型过滤。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。 
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCustomErrorPagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomErrorPagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomErrorPagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomErrorPagesResponseParams struct {
+	// 自定义错误页面总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 自定义错误页面数据列表。
+	ErrorPages []*CustomErrorPage `json:"ErrorPages,omitnil,omitempty" name:"ErrorPages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCustomErrorPagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCustomErrorPagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCustomErrorPagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomErrorPagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8188,6 +8446,11 @@ type EnvInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type ErrorPageReference struct {
+	// 引用的业务 ID，如自定义拦截规则 ID。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+}
+
 type ExceptConfig struct {
 	// 配置开关，取值有：
 	// <li>on：开启；</li>
@@ -9739,6 +10002,95 @@ func (r *ModifyApplicationProxyStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApplicationProxyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomErrorPageRequestParams struct {
+	// 自定义错误页面 ID。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义错误页名称，名称为2 - 60个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义错误页描述，描述内容不超过60个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 自定义错误页面内容。内容不超过 2KB。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type ModifyCustomErrorPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自定义错误页面 ID。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 自定义错误页名称，名称为2 - 60个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义错误页描述，描述内容不超过60个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 自定义错误页面内容。内容不超过 2KB。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+func (r *ModifyCustomErrorPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomErrorPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageId")
+	delete(f, "ZoneId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "ContentType")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomErrorPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomErrorPageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCustomErrorPageResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCustomErrorPageResponseParams `json:"Response"`
+}
+
+func (r *ModifyCustomErrorPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomErrorPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

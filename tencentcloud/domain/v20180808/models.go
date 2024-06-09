@@ -263,6 +263,36 @@ func (r *BidPreDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BiddingAppointResult struct {
+	// business_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 预定价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppointPrice *uint64 `json:"AppointPrice,omitnil,omitempty" name:"AppointPrice"`
+
+	// 预约保证金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppointBondPrice *uint64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
+
+	// 预约结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppointEndTime *string `json:"AppointEndTime,omitnil,omitempty" name:"AppointEndTime"`
+
+	// 预约人数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppointNum *uint64 `json:"AppointNum,omitnil,omitempty" name:"AppointNum"`
+
+	//  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type BiddingPreReleaseRequestParams struct {
 	// 业务ID
@@ -328,6 +358,54 @@ func (r *BiddingPreReleaseResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BiddingPreReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type BiddingResult struct {
+	// business_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 当前价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentPrice *uint64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
+
+	// 当前用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentNickname *string `json:"CurrentNickname,omitnil,omitempty" name:"CurrentNickname"`
+
+	// 我的出价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiddingPrice *uint64 `json:"BiddingPrice,omitnil,omitempty" name:"BiddingPrice"`
+
+	// 竞价保证金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiddingBondPrice *uint64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
+
+	// 竞价结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiddingEndTime *string `json:"BiddingEndTime,omitnil,omitempty" name:"BiddingEndTime"`
+
+	// 竞价标识，1 领先，2 落后
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiddingFlag *uint64 `json:"BiddingFlag,omitnil,omitempty" name:"BiddingFlag"`
+
+	// 出价次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiddingNum *uint64 `json:"BiddingNum,omitnil,omitempty" name:"BiddingNum"`
+
+	// 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type BiddingSuccessfulResult struct {
+	// 支付结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
 }
 
 type CertificateInfo struct {
@@ -1023,12 +1101,15 @@ type CustomDnsHost struct {
 
 // Predefined struct for user
 type DeleteBiddingRequestParams struct {
-
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DeleteBiddingRequest struct {
 	*tchttp.BaseRequest
 	
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 func (r *DeleteBiddingRequest) ToJsonString() string {
@@ -1043,7 +1124,7 @@ func (r *DeleteBiddingRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "BusinessID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBiddingRequest has unknown keys!", "")
 	}
@@ -1526,12 +1607,15 @@ func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingAppointDetailRequestParams struct {
-
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingAppointDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 func (r *DescribeBiddingAppointDetailRequest) ToJsonString() string {
@@ -1546,7 +1630,7 @@ func (r *DescribeBiddingAppointDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "BusinessID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingAppointDetailRequest has unknown keys!", "")
 	}
@@ -1555,6 +1639,33 @@ func (r *DescribeBiddingAppointDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingAppointDetailResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 预约人数
+	AppointNum *uint64 `json:"AppointNum,omitnil,omitempty" name:"AppointNum"`
+
+	// 预约开始时间
+	AppointStartTime *string `json:"AppointStartTime,omitnil,omitempty" name:"AppointStartTime"`
+
+	// 预约结束时间
+	AppointEndTime *string `json:"AppointEndTime,omitnil,omitempty" name:"AppointEndTime"`
+
+	//  注册时间
+	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
+
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 删除时间
+	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// 当前价格
+	AppointPrice *uint64 `json:"AppointPrice,omitnil,omitempty" name:"AppointPrice"`
+
+	// 预约保证金
+	AppointBondPrice *uint64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
+
 	//  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -1584,8 +1695,14 @@ func (r *DescribeBiddingAppointDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingAppointListRequestParams struct {
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态： 1 已预约 9 预约持有者索回
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1600,8 +1717,14 @@ type DescribeBiddingAppointListRequestParams struct {
 type DescribeBiddingAppointListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态： 1 已预约 9 预约持有者索回
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1625,7 +1748,9 @@ func (r *DescribeBiddingAppointListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "Domain")
 	delete(f, "Status")
 	delete(f, "SortField")
 	delete(f, "SortOrder")
@@ -1637,6 +1762,12 @@ func (r *DescribeBiddingAppointListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingAppointListResponseParams struct {
+	// 搜索结果条数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 预约列表
+	AppointList []*BiddingAppointResult `json:"AppointList,omitnil,omitempty" name:"AppointList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1659,12 +1790,15 @@ func (r *DescribeBiddingAppointListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingDetailRequestParams struct {
-
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 func (r *DescribeBiddingDetailRequest) ToJsonString() string {
@@ -1679,7 +1813,7 @@ func (r *DescribeBiddingDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "BusinessID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingDetailRequest has unknown keys!", "")
 	}
@@ -1688,6 +1822,48 @@ func (r *DescribeBiddingDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingDetailResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 出价次数
+	BiddingNum *uint64 `json:"BiddingNum,omitnil,omitempty" name:"BiddingNum"`
+
+	// 竞价开始时间
+	BiddingStartTime *string `json:"BiddingStartTime,omitnil,omitempty" name:"BiddingStartTime"`
+
+	// 竞价结束时间
+	BiddingEndTime *string `json:"BiddingEndTime,omitnil,omitempty" name:"BiddingEndTime"`
+
+	//  注册时间
+	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
+
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 删除时间
+	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// 当前价格
+	CurrentPrice *uint64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
+
+	// 当前用户昵称
+	CurrentNickname *string `json:"CurrentNickname,omitnil,omitempty" name:"CurrentNickname"`
+
+	// 竞价保证金
+	BiddingBondPrice *uint64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
+
+	// 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 竞价标识，1 领先，2 落后
+	BiddingFlag *uint64 `json:"BiddingFlag,omitnil,omitempty" name:"BiddingFlag"`
+
+	// 是否退款，yes表示退款，no表示不退款
+	BiddingBondRefund *string `json:"BiddingBondRefund,omitnil,omitempty" name:"BiddingBondRefund"`
+
+	// 我的出价
+	BiddingPrice *uint64 `json:"BiddingPrice,omitnil,omitempty" name:"BiddingPrice"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1710,8 +1886,14 @@ func (r *DescribeBiddingDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingListRequestParams struct {
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1727,8 +1909,14 @@ type DescribeBiddingListRequestParams struct {
 type DescribeBiddingListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1753,7 +1941,9 @@ func (r *DescribeBiddingListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "Domain")
 	delete(f, "Status")
 	delete(f, "SortField")
 	delete(f, "SortOrder")
@@ -1765,6 +1955,12 @@ func (r *DescribeBiddingListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingListResponseParams struct {
+	// 搜索结果条数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 竞价列表
+	BiddingList []*BiddingResult `json:"BiddingList,omitnil,omitempty" name:"BiddingList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1787,12 +1983,15 @@ func (r *DescribeBiddingListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingSuccessfulDetailRequestParams struct {
-
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingSuccessfulDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// business_id
+	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 func (r *DescribeBiddingSuccessfulDetailRequest) ToJsonString() string {
@@ -1807,7 +2006,7 @@ func (r *DescribeBiddingSuccessfulDetailRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "BusinessID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBiddingSuccessfulDetailRequest has unknown keys!", "")
 	}
@@ -1816,8 +2015,32 @@ func (r *DescribeBiddingSuccessfulDetailRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeBiddingSuccessfulDetailResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 得标时间
+	SuccessfulTime *string `json:"SuccessfulTime,omitnil,omitempty" name:"SuccessfulTime"`
+
+	// 得标价格
+	SuccessfulPrice *float64 `json:"SuccessfulPrice,omitnil,omitempty" name:"SuccessfulPrice"`
+
+	//  注册时间
+	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
+
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 删除时间
+	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// 付款结束时间
+	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
+
 	// 保证金，是否退款，yes表示退款，no表示不退款
 	BiddingBondRefund *string `json:"BiddingBondRefund,omitnil,omitempty" name:"BiddingBondRefund"`
+
+	// 保证金
+	BiddingBondPrice *float64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
 	// 状态：1 竞价中，2 待出价，3 竞价失败， 4 等待支付 5 等待转移， 6 转移中，7 交易成功，8 持有者索回，9 已违约
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1844,8 +2067,14 @@ func (r *DescribeBiddingSuccessfulDetailResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeBiddingSuccessfulListRequestParams struct {
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1860,8 +2089,14 @@ type DescribeBiddingSuccessfulListRequestParams struct {
 type DescribeBiddingSuccessfulListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -1885,7 +2120,9 @@ func (r *DescribeBiddingSuccessfulListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "Domain")
 	delete(f, "Status")
 	delete(f, "SortField")
 	delete(f, "SortOrder")
@@ -1897,6 +2134,12 @@ func (r *DescribeBiddingSuccessfulListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingSuccessfulListResponseParams struct {
+	// 搜索结果条数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 得标列表
+	SuccessfulList []*BiddingSuccessfulResult `json:"SuccessfulList,omitnil,omitempty" name:"SuccessfulList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

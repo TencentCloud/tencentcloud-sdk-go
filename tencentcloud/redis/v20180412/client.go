@@ -1356,6 +1356,67 @@ func (c *Client) DescribeAutoBackupConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeBackupDetailRequest() (request *DescribeBackupDetailRequest) {
+    request = &DescribeBackupDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeBackupDetail")
+    
+    
+    return
+}
+
+func NewDescribeBackupDetailResponse() (response *DescribeBackupDetailResponse) {
+    response = &DescribeBackupDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupDetail
+// 本接口（DescribeBackupDetail）用于查询实例的备份信息详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_BACKUPNOTEXISTS = "InvalidParameterValue.BackupNotExists"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeBackupDetail(request *DescribeBackupDetailRequest) (response *DescribeBackupDetailResponse, err error) {
+    return c.DescribeBackupDetailWithContext(context.Background(), request)
+}
+
+// DescribeBackupDetail
+// 本接口（DescribeBackupDetail）用于查询实例的备份信息详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_BACKUPNOTEXISTS = "InvalidParameterValue.BackupNotExists"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeBackupDetailWithContext(ctx context.Context, request *DescribeBackupDetailRequest) (response *DescribeBackupDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownloadRestrictionRequest) {
     request = &DescribeBackupDownloadRestrictionRequest{
         BaseRequest: &tchttp.BaseRequest{},
