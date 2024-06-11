@@ -368,6 +368,63 @@ func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *Attac
     return
 }
 
+func NewBuildDataFlowAuthTokenRequest() (request *BuildDataFlowAuthTokenRequest) {
+    request = &BuildDataFlowAuthTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "BuildDataFlowAuthToken")
+    
+    
+    return
+}
+
+func NewBuildDataFlowAuthTokenResponse() (response *BuildDataFlowAuthTokenResponse) {
+    response = &BuildDataFlowAuthTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BuildDataFlowAuthToken
+// 获取数据流认证Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BUILDAUTHTOKEN = "FailedOperation.BuildAuthToken"
+//  FAILEDOPERATION_FLOWAUTHILLEGAL = "FailedOperation.FlowAuthIllegal"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_DATAFLOWAUTHCLOSE = "ResourceNotFound.DataFlowAuthClose"
+//  RESOURCEUNAVAILABLE_FLOWAUTHSECET = "ResourceUnavailable.FlowAuthSecet"
+func (c *Client) BuildDataFlowAuthToken(request *BuildDataFlowAuthTokenRequest) (response *BuildDataFlowAuthTokenResponse, err error) {
+    return c.BuildDataFlowAuthTokenWithContext(context.Background(), request)
+}
+
+// BuildDataFlowAuthToken
+// 获取数据流认证Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BUILDAUTHTOKEN = "FailedOperation.BuildAuthToken"
+//  FAILEDOPERATION_FLOWAUTHILLEGAL = "FailedOperation.FlowAuthIllegal"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_DATAFLOWAUTHCLOSE = "ResourceNotFound.DataFlowAuthClose"
+//  RESOURCEUNAVAILABLE_FLOWAUTHSECET = "ResourceUnavailable.FlowAuthSecet"
+func (c *Client) BuildDataFlowAuthTokenWithContext(ctx context.Context, request *BuildDataFlowAuthTokenRequest) (response *BuildDataFlowAuthTokenResponse, err error) {
+    if request == nil {
+        request = NewBuildDataFlowAuthTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BuildDataFlowAuthToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBuildDataFlowAuthTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewConsumeCustomMFATokenRequest() (request *ConsumeCustomMFATokenRequest) {
     request = &ConsumeCustomMFATokenRequest{
         BaseRequest: &tchttp.BaseRequest{},

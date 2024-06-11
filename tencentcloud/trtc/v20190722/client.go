@@ -3985,6 +3985,7 @@ func NewStartWebRecordResponse() (response *StartWebRecordResponse) {
 // 因为参数或API逻辑问题会立即返回结果。而因为页面问题，如页面无法访问，会在回调中返回结果，请关注。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
 //  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
 //  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
@@ -3999,6 +4000,7 @@ func (c *Client) StartWebRecord(request *StartWebRecordRequest) (response *Start
 // 因为参数或API逻辑问题会立即返回结果。而因为页面问题，如页面无法访问，会在回调中返回结果，请关注。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
 //  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
 //  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"

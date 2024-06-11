@@ -5351,8 +5351,6 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <th>点击链接进入的流程</th>
 //
-// <th>视频样例</th>
-//
 // </tr>
 //
 // </thead>
@@ -5367,8 +5365,6 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <td>进入企业激活流程，首次完成企业激活流程的员工会成为超管</td>
 //
-// <td><a href="https://dyn.ess.tencent.cn/guide/apivideo/CreateConsoleLoginUrl_noverify.mp4" target="_blank">打开</a></td>
-//
 // </tr>
 //
 // <tr>
@@ -5379,8 +5375,6 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <td>进入员认证并加入企业流程</td>
 //
-// <td>-</td>
-//
 // </tr>
 //
 // <tr>
@@ -5390,8 +5384,6 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 // <td>员工已认证</td>
 //
 // <td>进入子客企业Web控制台</td>
-//
-// <td>-</td>
 //
 // </tr>
 //
@@ -5412,6 +5404,14 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 // 系统的渠道企业, 应用, 子客企业, 子客员工的组织形式
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/bee4b7375fe7a097f3573b18a1c1e30b.png)
+//
+// 
+//
+// 
+//
+// <font color="red">相关视频指引</font> <br>
+//
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-createconsoleloginin.mp4" target="_blank">【生成子客登录链接】代码编写 &  子企业认证示例</a><br>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5471,8 +5471,6 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <th>点击链接进入的流程</th>
 //
-// <th>视频样例</th>
-//
 // </tr>
 //
 // </thead>
@@ -5487,8 +5485,6 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <td>进入企业激活流程，首次完成企业激活流程的员工会成为超管</td>
 //
-// <td><a href="https://dyn.ess.tencent.cn/guide/apivideo/CreateConsoleLoginUrl_noverify.mp4" target="_blank">打开</a></td>
-//
 // </tr>
 //
 // <tr>
@@ -5499,8 +5495,6 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <td>进入员认证并加入企业流程</td>
 //
-// <td>-</td>
-//
 // </tr>
 //
 // <tr>
@@ -5510,8 +5504,6 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 // <td>员工已认证</td>
 //
 // <td>进入子客企业Web控制台</td>
-//
-// <td>-</td>
 //
 // </tr>
 //
@@ -5532,6 +5524,14 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 // 系统的渠道企业, 应用, 子客企业, 子客员工的组织形式
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/bee4b7375fe7a097f3573b18a1c1e30b.png)
+//
+// 
+//
+// 
+//
+// <font color="red">相关视频指引</font> <br>
+//
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-createconsoleloginin.mp4" target="_blank">【生成子客登录链接】代码编写 &  子企业认证示例</a><br>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

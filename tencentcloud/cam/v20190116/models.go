@@ -559,6 +559,105 @@ type AttachedUserPolicyGroupInfo struct {
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
+type AuthToken struct {
+	// 认证Token
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 服务器时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentTime *int64 `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
+
+	// 毫秒时间戳，根据轮转周期准确计算得到
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextRotationTime *int64 `json:"NextRotationTime,omitnil,omitempty" name:"NextRotationTime"`
+
+	// 毫秒，如果轮转失败则为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRotationTimeCost *int64 `json:"LastRotationTimeCost,omitnil,omitempty" name:"LastRotationTimeCost"`
+
+	// 成功：success
+	// 失败：failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationStatus *string `json:"RotationStatus,omitnil,omitempty" name:"RotationStatus"`
+
+	// 成功：success
+	// 失败：失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationMessage *string `json:"RotationMessage,omitnil,omitempty" name:"RotationMessage"`
+}
+
+// Predefined struct for user
+type BuildDataFlowAuthTokenRequestParams struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 资源用户名
+	ResourceAccount *string `json:"ResourceAccount,omitnil,omitempty" name:"ResourceAccount"`
+}
+
+type BuildDataFlowAuthTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 资源用户名
+	ResourceAccount *string `json:"ResourceAccount,omitnil,omitempty" name:"ResourceAccount"`
+}
+
+func (r *BuildDataFlowAuthTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BuildDataFlowAuthTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ResourceRegion")
+	delete(f, "ResourceAccount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BuildDataFlowAuthTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BuildDataFlowAuthTokenResponseParams struct {
+	// 认证凭据AuthToken信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Credentials *AuthToken `json:"Credentials,omitnil,omitempty" name:"Credentials"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BuildDataFlowAuthTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *BuildDataFlowAuthTokenResponseParams `json:"Response"`
+}
+
+func (r *BuildDataFlowAuthTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BuildDataFlowAuthTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ConsumeCustomMFATokenRequestParams struct {
 	// 自定义多因子验证Token

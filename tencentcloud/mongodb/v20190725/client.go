@@ -685,6 +685,57 @@ func (c *Client) DescribeBackupDownloadTaskWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeBackupRulesRequest() (request *DescribeBackupRulesRequest) {
+    request = &DescribeBackupRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeBackupRules")
+    
+    
+    return
+}
+
+func NewDescribeBackupRulesResponse() (response *DescribeBackupRulesResponse) {
+    response = &DescribeBackupRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupRules
+// 本接口（DescribeBackupRules）用于获取实例自动备份配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+func (c *Client) DescribeBackupRules(request *DescribeBackupRulesRequest) (response *DescribeBackupRulesResponse, err error) {
+    return c.DescribeBackupRulesWithContext(context.Background(), request)
+}
+
+// DescribeBackupRules
+// 本接口（DescribeBackupRules）用于获取实例自动备份配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+func (c *Client) DescribeBackupRulesWithContext(ctx context.Context, request *DescribeBackupRulesRequest) (response *DescribeBackupRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClientConnectionsRequest() (request *DescribeClientConnectionsRequest) {
     request = &DescribeClientConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1310,6 +1361,112 @@ func (c *Client) DescribeSpecInfoWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeSpecInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTransparentDataEncryptionStatusRequest() (request *DescribeTransparentDataEncryptionStatusRequest) {
+    request = &DescribeTransparentDataEncryptionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeTransparentDataEncryptionStatus")
+    
+    
+    return
+}
+
+func NewDescribeTransparentDataEncryptionStatusResponse() (response *DescribeTransparentDataEncryptionStatusResponse) {
+    response = &DescribeTransparentDataEncryptionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTransparentDataEncryptionStatus
+// 获取实例透明加密的开启状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeTransparentDataEncryptionStatus(request *DescribeTransparentDataEncryptionStatusRequest) (response *DescribeTransparentDataEncryptionStatusResponse, err error) {
+    return c.DescribeTransparentDataEncryptionStatusWithContext(context.Background(), request)
+}
+
+// DescribeTransparentDataEncryptionStatus
+// 获取实例透明加密的开启状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeTransparentDataEncryptionStatusWithContext(ctx context.Context, request *DescribeTransparentDataEncryptionStatusRequest) (response *DescribeTransparentDataEncryptionStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTransparentDataEncryptionStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTransparentDataEncryptionStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTransparentDataEncryptionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableTransparentDataEncryptionRequest() (request *EnableTransparentDataEncryptionRequest) {
+    request = &EnableTransparentDataEncryptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "EnableTransparentDataEncryption")
+    
+    
+    return
+}
+
+func NewEnableTransparentDataEncryptionResponse() (response *EnableTransparentDataEncryptionResponse) {
+    response = &EnableTransparentDataEncryptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableTransparentDataEncryption
+// 本接口(EnableTransparentDataEncryption)用于开启云数据库 MongoDB 的透明加密能力。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) EnableTransparentDataEncryption(request *EnableTransparentDataEncryptionRequest) (response *EnableTransparentDataEncryptionResponse, err error) {
+    return c.EnableTransparentDataEncryptionWithContext(context.Background(), request)
+}
+
+// EnableTransparentDataEncryption
+// 本接口(EnableTransparentDataEncryption)用于开启云数据库 MongoDB 的透明加密能力。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) EnableTransparentDataEncryptionWithContext(ctx context.Context, request *EnableTransparentDataEncryptionRequest) (response *EnableTransparentDataEncryptionResponse, err error) {
+    if request == nil {
+        request = NewEnableTransparentDataEncryptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableTransparentDataEncryption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableTransparentDataEncryptionResponse()
     err = c.Send(request, response)
     return
 }
@@ -2195,6 +2352,59 @@ func (c *Client) SetAccountUserPrivilegeWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewSetAccountUserPrivilegeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetBackupRulesRequest() (request *SetBackupRulesRequest) {
+    request = &SetBackupRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "SetBackupRules")
+    
+    
+    return
+}
+
+func NewSetBackupRulesResponse() (response *SetBackupRulesResponse) {
+    response = &SetBackupRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetBackupRules
+// 本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+func (c *Client) SetBackupRules(request *SetBackupRulesRequest) (response *SetBackupRulesResponse, err error) {
+    return c.SetBackupRulesWithContext(context.Background(), request)
+}
+
+// SetBackupRules
+// 本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+func (c *Client) SetBackupRulesWithContext(ctx context.Context, request *SetBackupRulesRequest) (response *SetBackupRulesResponse, err error) {
+    if request == nil {
+        request = NewSetBackupRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetBackupRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetBackupRulesResponse()
     err = c.Send(request, response)
     return
 }

@@ -1230,6 +1230,10 @@ type ProbeTask struct {
 	// 任务当前绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfoList []*KeyValuePair `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
+
+	// 是否为同步账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
 }
 
 type ProbeTaskBasicConfiguration struct {

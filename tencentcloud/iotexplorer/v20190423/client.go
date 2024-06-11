@@ -5718,7 +5718,7 @@ func NewGetDeviceSumStatisticsResponse() (response *GetDeviceSumStatisticsRespon
 }
 
 // GetDeviceSumStatistics
-// 拉取设备统计汇总数据 
+// 拉取设备统计汇总数据
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5730,7 +5730,7 @@ func (c *Client) GetDeviceSumStatistics(request *GetDeviceSumStatisticsRequest) 
 }
 
 // GetDeviceSumStatistics
-// 拉取设备统计汇总数据 
+// 拉取设备统计汇总数据
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

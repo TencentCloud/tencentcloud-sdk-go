@@ -2450,6 +2450,9 @@ type CreateExportRequestParams struct {
 	// 语法规则,  默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// 导出字段
+	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
 }
 
 type CreateExportRequest struct {
@@ -2479,6 +2482,9 @@ type CreateExportRequest struct {
 	// 语法规则,  默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// 导出字段
+	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
 }
 
 func (r *CreateExportRequest) ToJsonString() string {
@@ -2501,6 +2507,7 @@ func (r *CreateExportRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "Format")
 	delete(f, "SyntaxRule")
+	delete(f, "DerivedFields")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExportRequest has unknown keys!", "")
 	}
@@ -7079,6 +7086,10 @@ type ExportInfo struct {
 	// 语法规则。 默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// 导出字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
 }
 
 type ExtractRuleInfo struct {

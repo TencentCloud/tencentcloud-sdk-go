@@ -1378,6 +1378,71 @@ func (r *DescribeBackupDownloadTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupRulesRequestParams struct {
+	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeBackupRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBackupRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupRulesResponseParams struct {
+	// 备份数据保留期限。单位为：天。
+	BackupSaveTime *uint64 `json:"BackupSaveTime,omitnil,omitempty" name:"BackupSaveTime"`
+
+	// 自动备份开始时间。
+	BackupTime *uint64 `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClientConnectionsRequestParams struct {
 	// 指定待查询的实例ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2384,6 +2449,140 @@ func (r *DescribeSpecInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTransparentDataEncryptionStatusRequestParams struct {
+	// 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeTransparentDataEncryptionStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeTransparentDataEncryptionStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTransparentDataEncryptionStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTransparentDataEncryptionStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTransparentDataEncryptionStatusResponseParams struct {
+	// 表示是否开启了透明加密。 
+	// - close：未开启。
+	// - open：已开启。
+	TransparentDataEncryptionStatus *string `json:"TransparentDataEncryptionStatus,omitnil,omitempty" name:"TransparentDataEncryptionStatus"`
+
+	// 已绑定的密钥列表，如未绑定，返回null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyInfoList []*KMSInfoDetail `json:"KeyInfoList,omitnil,omitempty" name:"KeyInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTransparentDataEncryptionStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTransparentDataEncryptionStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeTransparentDataEncryptionStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTransparentDataEncryptionStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableTransparentDataEncryptionRequestParams struct {
+	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。目前支持通用版本包含：4.4、5.0，云盘版暂不支持。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	//  [密钥管理系统（Key Management Service，KMS）](https://cloud.tencent.com/document/product/573/18809)服务所在地域，例如 ap-shanghai。
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
+	// 密钥 ID。若不设置该参数，不指定具体的密钥 ID，由腾讯云自动生成密钥。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+}
+
+type EnableTransparentDataEncryptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。目前支持通用版本包含：4.4、5.0，云盘版暂不支持。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	//  [密钥管理系统（Key Management Service，KMS）](https://cloud.tencent.com/document/product/573/18809)服务所在地域，例如 ap-shanghai。
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
+	// 密钥 ID。若不设置该参数，不指定具体的密钥 ID，由腾讯云自动生成密钥。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+}
+
+func (r *EnableTransparentDataEncryptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableTransparentDataEncryptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "KmsRegion")
+	delete(f, "KeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableTransparentDataEncryptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableTransparentDataEncryptionResponseParams struct {
+	// 开启透明加密的异步流程id，用于查询流程状态。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableTransparentDataEncryptionResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableTransparentDataEncryptionResponseParams `json:"Response"`
+}
+
+func (r *EnableTransparentDataEncryptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableTransparentDataEncryptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FBKeyValue struct {
 	// 用于按key回档过滤的key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -3259,6 +3458,32 @@ func (r *IsolateDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type KMSInfoDetail struct {
+	// 主密钥 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 主密钥名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// 实例与密钥绑定时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 密钥状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 密钥用途。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyUsage *string `json:"KeyUsage,omitnil,omitempty" name:"KeyUsage"`
+
+	// 密钥来源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyOrigin *string `json:"KeyOrigin,omitnil,omitempty" name:"KeyOrigin"`
+}
+
 // Predefined struct for user
 type KillOpsRequestParams struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
@@ -4071,6 +4296,92 @@ func (r *SetAccountUserPrivilegeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetAccountUserPrivilegeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetBackupRulesRequestParams struct {
+	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+	BackupTime *uint64 `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+
+	// 设置自动备份发生错误时，是否发送失败告警。
+	// - true：发送。
+	// - false：不发送。
+	Notify *bool `json:"Notify,omitnil,omitempty" name:"Notify"`
+
+	// 指定备份数据保存天数。默认为 7 天，支持设置为7、30、90、180、365。
+	BackupRetentionPeriod *uint64 `json:"BackupRetentionPeriod,omitnil,omitempty" name:"BackupRetentionPeriod"`
+}
+
+type SetBackupRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+	BackupTime *uint64 `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+
+	// 设置自动备份发生错误时，是否发送失败告警。
+	// - true：发送。
+	// - false：不发送。
+	Notify *bool `json:"Notify,omitnil,omitempty" name:"Notify"`
+
+	// 指定备份数据保存天数。默认为 7 天，支持设置为7、30、90、180、365。
+	BackupRetentionPeriod *uint64 `json:"BackupRetentionPeriod,omitnil,omitempty" name:"BackupRetentionPeriod"`
+}
+
+func (r *SetBackupRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetBackupRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupMethod")
+	delete(f, "BackupTime")
+	delete(f, "Notify")
+	delete(f, "BackupRetentionPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetBackupRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetBackupRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetBackupRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *SetBackupRulesResponseParams `json:"Response"`
+}
+
+func (r *SetBackupRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetBackupRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
