@@ -2815,7 +2815,12 @@ type ChannelCreateOrganizationBatchSignUrlRequestParams struct {
 	// 请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。 - 1. 若OpenId为空，Name和Mobile 必须提供。 - 2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	
+	// 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。
+	// 
+	// <ul>
+	// <li>1. 若OpenId为空，Name和Mobile 必须提供。</li>
+	// <li>2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	</li>
+	// </ul>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署方经办人的姓名。
@@ -2837,7 +2842,12 @@ type ChannelCreateOrganizationBatchSignUrlRequest struct {
 	// 请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。 - 1. 若OpenId为空，Name和Mobile 必须提供。 - 2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	
+	// 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。
+	// 
+	// <ul>
+	// <li>1. 若OpenId为空，Name和Mobile 必须提供。</li>
+	// <li>2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	</li>
+	// </ul>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署方经办人的姓名。
@@ -6050,7 +6060,13 @@ type Component struct {
 	// <li> <b>IMG_ESIGN</b> : 图片印章(该类型支持用户在签署将上传的PNG格式的图片作为签名)</li></ul>
 	// <b>参考样例</b>：`{"ComponentTypeLimit": ["SYSTEM_ESIGN"]}`
 	// 印章的对应关系参考下图
-	// ![image](https://qcloudimg.tencent-cloud.cn/raw/ee0498856c060c065628a0c5ba780d6b.jpg)
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/ee0498856c060c065628a0c5ba780d6b.jpg)<br><br>
+	// <font color="red">ComponentType为SIGN_SEAL 或者 SIGN_PAGING_SEAL类型时</font>，可以通过**ComponentTypeLimit**参数控制签署方签署时要使用的印章类型，支持指定以下印章类型
+	// <ul><li> <b>OFFICIAL</b> :  企业公章</li>
+	// <li> <b>CONTRACT</b> : 合同专用章</li>
+	// <li> <b>FINANCE</b> : 财务专用章</li>
+	// <li> <b>PERSONNEL</b> : 人事专用章</li></ul>
+	// <b>参考样例</b>：`{\"ComponentTypeLimit\":[\"PERSONNEL\",\"FINANCE\"]}` 表示改印章签署区,客户需使用人事专用章或财务专用章盖章签署。<br><br>
 	// 
 	// <font color="red">ComponentType为SIGN_DATE时</font>，支持以下参数：
 	// <ul><li> <b>Font</b> :字符串类型目前只支持"黑体"、"宋体"，如果不填默认为"黑体"</li>
@@ -6166,7 +6182,14 @@ type ComponentLimit struct {
 
 	// 签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
 	// 
-	// 1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）
+	// 1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）或者以下印章类型
+	// 
+	// <ul><li> <b>OFFICIAL</b> :  企业公章</li>
+	// <li> <b>CONTRACT</b> : 合同专用章</li>
+	// <li> <b>FINANCE</b> : 财务专用章</li>
+	// <li> <b>PERSONNEL</b> : 人事专用章</li></ul>
+	// 
+	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个),他方企业签署人只能限制类型.若同时指定了印章类型和印章Id,以印章Id为主,印章类型会被忽略`
 	// 
 	// 2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）
 	// 
@@ -9297,7 +9320,7 @@ type FlowApproverInfo struct {
 	// 注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// [通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID）或签名方式。
+	// [通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID,或者印章类型）或签名方式。
 	// 
 	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil,omitempty" name:"AddSignComponentsLimits"`

@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 用户区域与请求服务区域不一致。
+	FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
+
 	// 数据插入错误。
 	FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
 

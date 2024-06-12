@@ -608,7 +608,7 @@ type CreateAutoCalloutTaskRequestParams struct {
 	// 任务停止时间戳，Unix 秒级时间戳
 	NotAfter *int64 `json:"NotAfter,omitnil,omitempty" name:"NotAfter"`
 
-	// 最大尝试次数
+	// 最大尝试次数，1-3 次
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
 	// 自定义变量（仅高级版支持）
@@ -648,7 +648,7 @@ type CreateAutoCalloutTaskRequest struct {
 	// 任务停止时间戳，Unix 秒级时间戳
 	NotAfter *int64 `json:"NotAfter,omitnil,omitempty" name:"NotAfter"`
 
-	// 最大尝试次数
+	// 最大尝试次数，1-3 次
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
 	// 自定义变量（仅高级版支持）

@@ -69,6 +69,7 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
@@ -76,6 +77,7 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 //  FAILEDOPERATION_SUBMISSIONLIMITREACHED = "FailedOperation.SubmissionLimitReached"
 //  FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+//  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     return c.FileTranslateWithContext(context.Background(), request)
 }
@@ -85,6 +87,7 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
@@ -92,6 +95,7 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 //  FAILEDOPERATION_SUBMISSIONLIMITREACHED = "FailedOperation.SubmissionLimitReached"
 //  FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+//  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     if request == nil {
         request = NewFileTranslateRequest()
@@ -136,7 +140,9 @@ func NewGetFileTranslateResponse() (response *GetFileTranslateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
     return c.GetFileTranslateWithContext(context.Background(), request)
 }
@@ -150,7 +156,9 @@ func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *G
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 func (c *Client) GetFileTranslateWithContext(ctx context.Context, request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
     if request == nil {
         request = NewGetFileTranslateRequest()
@@ -192,6 +200,7 @@ func NewImageTranslateResponse() (response *ImageTranslateResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
@@ -220,6 +229,7 @@ func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *Image
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
@@ -279,6 +289,7 @@ func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
@@ -312,6 +323,7 @@ func (c *Client) LanguageDetect(request *LanguageDetectRequest) (response *Langu
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
@@ -380,6 +392,7 @@ func NewSpeechTranslateResponse() (response *SpeechTranslateResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
@@ -416,6 +429,7 @@ func (c *Client) SpeechTranslate(request *SpeechTranslateRequest) (response *Spe
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
@@ -479,6 +493,7 @@ func NewTextTranslateResponse() (response *TextTranslateResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
@@ -513,6 +528,7 @@ func (c *Client) TextTranslate(request *TextTranslateRequest) (response *TextTra
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
@@ -576,6 +592,7 @@ func NewTextTranslateBatchResponse() (response *TextTranslateBatchResponse) {
 // 文本翻译的批量接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
@@ -608,6 +625,7 @@ func (c *Client) TextTranslateBatch(request *TextTranslateBatchRequest) (respons
 // 文本翻译的批量接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"

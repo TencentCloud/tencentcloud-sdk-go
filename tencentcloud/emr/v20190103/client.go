@@ -762,6 +762,69 @@ func (c *Client) DescribeAutoScaleStrategiesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeClusterFlowStatusDetailRequest() (request *DescribeClusterFlowStatusDetailRequest) {
+    request = &DescribeClusterFlowStatusDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeClusterFlowStatusDetail")
+    
+    
+    return
+}
+
+func NewDescribeClusterFlowStatusDetailResponse() (response *DescribeClusterFlowStatusDetailResponse) {
+    response = &DescribeClusterFlowStatusDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterFlowStatusDetail
+// 查询EMR任务运行详情状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeClusterFlowStatusDetail(request *DescribeClusterFlowStatusDetailRequest) (response *DescribeClusterFlowStatusDetailResponse, err error) {
+    return c.DescribeClusterFlowStatusDetailWithContext(context.Background(), request)
+}
+
+// DescribeClusterFlowStatusDetail
+// 查询EMR任务运行详情状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeClusterFlowStatusDetailWithContext(ctx context.Context, request *DescribeClusterFlowStatusDetailRequest) (response *DescribeClusterFlowStatusDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterFlowStatusDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterFlowStatusDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterFlowStatusDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
     request = &DescribeClusterNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

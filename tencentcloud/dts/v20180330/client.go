@@ -766,6 +766,10 @@ func NewDescribeRegionConfResponse() (response *DescribeRegionConfResponse) {
 }
 
 // DescribeRegionConf
+// 接口不再使用
+//
+// 
+//
 // 本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
 //
 // 可能返回的错误码:
@@ -777,6 +781,10 @@ func (c *Client) DescribeRegionConf(request *DescribeRegionConfRequest) (respons
 }
 
 // DescribeRegionConf
+// 接口不再使用
+//
+// 
+//
 // 本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
 //
 // 可能返回的错误码:

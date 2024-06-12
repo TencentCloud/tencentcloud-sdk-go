@@ -2301,6 +2301,55 @@ func (c *Client) DescribeAntiInfoLeakageRulesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeAreaBanSupportAreasRequest() (request *DescribeAreaBanSupportAreasRequest) {
+    request = &DescribeAreaBanSupportAreasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeAreaBanSupportAreas")
+    
+    
+    return
+}
+
+func NewDescribeAreaBanSupportAreasResponse() (response *DescribeAreaBanSupportAreasResponse) {
+    response = &DescribeAreaBanSupportAreasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAreaBanSupportAreas
+// 获取WAF地域封禁支持的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAreaBanSupportAreas(request *DescribeAreaBanSupportAreasRequest) (response *DescribeAreaBanSupportAreasResponse, err error) {
+    return c.DescribeAreaBanSupportAreasWithContext(context.Background(), request)
+}
+
+// DescribeAreaBanSupportAreas
+// 获取WAF地域封禁支持的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAreaBanSupportAreasWithContext(ctx context.Context, request *DescribeAreaBanSupportAreasRequest) (response *DescribeAreaBanSupportAreasResponse, err error) {
+    if request == nil {
+        request = NewDescribeAreaBanSupportAreasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAreaBanSupportAreas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAreaBanSupportAreasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAttackOverviewRequest() (request *DescribeAttackOverviewRequest) {
     request = &DescribeAttackOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6368,6 +6417,81 @@ func (c *Client) ModifyApiSecEventChangeWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyApiSecEventChangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAreaBanAreasRequest() (request *ModifyAreaBanAreasRequest) {
+    request = &ModifyAreaBanAreasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyAreaBanAreas")
+    
+    
+    return
+}
+
+func NewModifyAreaBanAreasResponse() (response *ModifyAreaBanAreasResponse) {
+    response = &ModifyAreaBanAreasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAreaBanAreas
+// 修改地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyAreaBanAreas(request *ModifyAreaBanAreasRequest) (response *ModifyAreaBanAreasResponse, err error) {
+    return c.ModifyAreaBanAreasWithContext(context.Background(), request)
+}
+
+// ModifyAreaBanAreas
+// 修改地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyAreaBanAreasWithContext(ctx context.Context, request *ModifyAreaBanAreasRequest) (response *ModifyAreaBanAreasResponse, err error) {
+    if request == nil {
+        request = NewModifyAreaBanAreasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAreaBanAreas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAreaBanAreasResponse()
     err = c.Send(request, response)
     return
 }

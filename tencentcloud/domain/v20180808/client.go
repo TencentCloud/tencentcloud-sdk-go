@@ -527,6 +527,7 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATETOBESUPPLEMENTED = "ResourceNotFound.TemplateToBeSupplemented"
 //  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
     return c.CreateDomainBatchWithContext(context.Background(), request)
@@ -552,6 +553,7 @@ func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response 
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATETOBESUPPLEMENTED = "ResourceNotFound.TemplateToBeSupplemented"
 //  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
     if request == nil {

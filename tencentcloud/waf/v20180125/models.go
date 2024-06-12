@@ -3913,6 +3913,60 @@ type DescribeAntiLeakageItem struct {
 }
 
 // Predefined struct for user
+type DescribeAreaBanSupportAreasRequestParams struct {
+
+}
+
+type DescribeAreaBanSupportAreasRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAreaBanSupportAreasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAreaBanSupportAreasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAreaBanSupportAreasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAreaBanSupportAreasResponseParams struct {
+	// 地域封禁的地域列表，要解析成json后使用
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAreaBanSupportAreasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAreaBanSupportAreasResponseParams `json:"Response"`
+}
+
+func (r *DescribeAreaBanSupportAreasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAreaBanSupportAreasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAttackOverviewRequestParams struct {
 	// 查询开始时间
 	FromTime *string `json:"FromTime,omitnil,omitempty" name:"FromTime"`
@@ -10541,6 +10595,81 @@ func (r *ModifyApiSecEventChangeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApiSecEventChangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAreaBanAreasRequestParams struct {
+	// 需要修改的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要调整的地域信息，一个字符串数组
+	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+}
+
+type ModifyAreaBanAreasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要调整的地域信息，一个字符串数组
+	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+}
+
+func (r *ModifyAreaBanAreasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAreaBanAreasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Areas")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAreaBanAreasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAreaBanAreasResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAreaBanAreasResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAreaBanAreasResponseParams `json:"Response"`
+}
+
+func (r *ModifyAreaBanAreasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAreaBanAreasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -4868,7 +4868,7 @@ func NewDescribePluginOverviewsResponse() (response *DescribePluginOverviewsResp
 }
 
 // DescribePluginOverviews
-// 列出可安装的所有 Grafana 插件
+// 列出可安装的所有 Grafana 插件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4878,7 +4878,7 @@ func (c *Client) DescribePluginOverviews(request *DescribePluginOverviewsRequest
 }
 
 // DescribePluginOverviews
-// 列出可安装的所有 Grafana 插件
+// 列出可安装的所有 Grafana 插件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6315,6 +6315,10 @@ func NewDescribePrometheusRecordRuleYamlResponse() (response *DescribePrometheus
 }
 
 // DescribePrometheusRecordRuleYaml
+// DescribePrometheusRecordRules 接口可完全代替该接口。近30天仅有3次调用，且都是报错请求
+//
+// 
+//
 // 拉取Prometheus聚合规则yaml列表
 //
 // 可能返回的错误码:
@@ -6335,6 +6339,10 @@ func (c *Client) DescribePrometheusRecordRuleYaml(request *DescribePrometheusRec
 }
 
 // DescribePrometheusRecordRuleYaml
+// DescribePrometheusRecordRules 接口可完全代替该接口。近30天仅有3次调用，且都是报错请求
+//
+// 
+//
 // 拉取Prometheus聚合规则yaml列表
 //
 // 可能返回的错误码:
@@ -6774,7 +6782,7 @@ func NewDescribePrometheusZonesResponse() (response *DescribePrometheusZonesResp
 }
 
 // DescribePrometheusZones
-// 列出 Prometheus 服务可用区
+// 列出 Prometheus 服务可用区。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6787,7 +6795,7 @@ func (c *Client) DescribePrometheusZones(request *DescribePrometheusZonesRequest
 }
 
 // DescribePrometheusZones
-// 列出 Prometheus 服务可用区
+// 列出 Prometheus 服务可用区。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

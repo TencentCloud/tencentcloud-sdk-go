@@ -8309,6 +8309,9 @@ type GetWechatDeviceTicketRequestParams struct {
 
 	// 模板ID
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 小程序APPID
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 }
 
 type GetWechatDeviceTicketRequest struct {
@@ -8325,6 +8328,9 @@ type GetWechatDeviceTicketRequest struct {
 
 	// 模板ID
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 小程序APPID
+	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 }
 
 func (r *GetWechatDeviceTicketRequest) ToJsonString() string {
@@ -8343,6 +8349,7 @@ func (r *GetWechatDeviceTicketRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "IsThirdApp")
 	delete(f, "ModelId")
+	delete(f, "MiniProgramAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetWechatDeviceTicketRequest has unknown keys!", "")
 	}

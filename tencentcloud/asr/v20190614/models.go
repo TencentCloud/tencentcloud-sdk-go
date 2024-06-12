@@ -494,7 +494,9 @@ type CreateRecTaskRequestParams struct {
 	// 回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
 	// 
 	// 注意：
-	// 如果用户使用轮询方式获取识别结果，则无需提交该参数
+	// 
+	// - 如果用户使用轮询方式获取识别结果，则无需提交该参数
+	// - 建议在回调URL中带上您的业务ID等信息，以便处理业务逻辑
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 是否开启说话人分离
@@ -680,7 +682,9 @@ type CreateRecTaskRequest struct {
 	// 回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
 	// 
 	// 注意：
-	// 如果用户使用轮询方式获取识别结果，则无需提交该参数
+	// 
+	// - 如果用户使用轮询方式获取识别结果，则无需提交该参数
+	// - 建议在回调URL中带上您的业务ID等信息，以便处理业务逻辑
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 是否开启说话人分离
@@ -817,7 +821,8 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecTaskResponseParams struct {
-	// 录音文件识别的请求返回结果，包含结果查询需要的TaskId
+	// 录音文件识别的请求返回结果，包含结果查询需要的TaskId。
+	// **注意：TaskId有效期为24小时，不同日期可能出现重复TaskId，请不要依赖TaskId作为您业务系统里的唯一ID。**
 	Data *Task `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1006,6 +1011,7 @@ func (r *DescribeAsyncRecognitionTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskStatusRequestParams struct {
 	// 从CreateRecTask接口获取的TaskId，用于获取任务状态与结果。
+	// **注意：TaskId有效期为24小时，超过24小时的TaskId请不要再查询。**
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -1013,6 +1019,7 @@ type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 从CreateRecTask接口获取的TaskId，用于获取任务状态与结果。
+	// **注意：TaskId有效期为24小时，超过24小时的TaskId请不要再查询。**
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -2053,7 +2060,8 @@ func (r *SetVocabStateResponse) FromJsonString(s string) error {
 }
 
 type Task struct {
-	// 任务ID，可通过此ID在轮询接口获取识别状态与结果。注意：TaskId数据类型为uint64
+	// 任务ID，可通过此ID在轮询接口获取识别状态与结果。TaskId数据类型为**uint64**。
+	// **注意：TaskId有效期为24小时，不同日期可能出现重复TaskId，请不要依赖TaskId作为您业务系统里的唯一ID。**
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 

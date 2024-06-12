@@ -43,7 +43,7 @@ type BatchModifyDomainInfoRequestParams struct {
 	// 批量修改的域名。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 模板ID。
+	// 模板ID(可从模板列表接口获取)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// true： 开启60天内禁止转移注册商锁定
@@ -58,7 +58,7 @@ type BatchModifyDomainInfoRequest struct {
 	// 批量修改的域名。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 模板ID。
+	// 模板ID(可从模板列表接口获取)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// true： 开启60天内禁止转移注册商锁定
@@ -967,7 +967,7 @@ type CreatePhoneEmailRequestParams struct {
 	// 1：手机   2：邮箱
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 验证码
+	// 验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
 	VerifyCode *string `json:"VerifyCode,omitnil,omitempty" name:"VerifyCode"`
 }
 
@@ -980,7 +980,7 @@ type CreatePhoneEmailRequest struct {
 	// 1：手机   2：邮箱
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 验证码
+	// 验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
 	VerifyCode *string `json:"VerifyCode,omitnil,omitempty" name:"VerifyCode"`
 }
 
@@ -1334,14 +1334,14 @@ func (r *DeleteReservedPreDomainInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTemplateRequestParams struct {
-	// 模板ID
+	// 模板ID(可通过模板信息列表获取)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DeleteTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板ID
+	// 模板ID(可通过模板信息列表获取)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -2162,7 +2162,7 @@ func (r *DescribeBiddingSuccessfulListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomDnsHostSetRequestParams struct {
-	// 域名实例ID
+	// 域名实例ID(域名基本信息或我的域名列表接口可获取)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2175,7 +2175,7 @@ type DescribeCustomDnsHostSetRequestParams struct {
 type DescribeCustomDnsHostSetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名实例ID
+	// 域名实例ID(域名基本信息或我的域名列表接口可获取)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2719,10 +2719,10 @@ func (r *DescribePreAuctionListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePreDomainListRequestParams struct {
-	// 页码
+	// 页码，默认为1
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 条数
+	// 条数，默认为20
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 用于结束时间筛选
@@ -2735,10 +2735,10 @@ type DescribePreDomainListRequestParams struct {
 type DescribePreDomainListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页码
+	// 页码，默认为1
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 条数
+	// 条数，默认为20
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 用于结束时间筛选

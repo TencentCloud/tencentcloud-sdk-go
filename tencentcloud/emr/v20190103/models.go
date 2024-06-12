@@ -1691,6 +1691,108 @@ func (r *DescribeAutoScaleStrategiesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterFlowStatusDetailRequestParams struct {
+	// EMR实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 流程相关参数
+	FlowParam *FlowParam `json:"FlowParam,omitnil,omitempty" name:"FlowParam"`
+
+	// 是否返回任务额外信息
+	// 默认: false
+	NeedExtraDetail *bool `json:"NeedExtraDetail,omitnil,omitempty" name:"NeedExtraDetail"`
+}
+
+type DescribeClusterFlowStatusDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 流程相关参数
+	FlowParam *FlowParam `json:"FlowParam,omitnil,omitempty" name:"FlowParam"`
+
+	// 是否返回任务额外信息
+	// 默认: false
+	NeedExtraDetail *bool `json:"NeedExtraDetail,omitnil,omitempty" name:"NeedExtraDetail"`
+}
+
+func (r *DescribeClusterFlowStatusDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterFlowStatusDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FlowParam")
+	delete(f, "NeedExtraDetail")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterFlowStatusDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterFlowStatusDetailResponseParams struct {
+	// 任务步骤详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StageDetails []*StageInfoDetail `json:"StageDetails,omitnil,omitempty" name:"StageDetails"`
+
+	// 任务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowDesc []*FlowParamsDesc `json:"FlowDesc,omitnil,omitempty" name:"FlowDesc"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// 总任务流程进度：
+	// 例如：0.8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowTotalProgress *float64 `json:"FlowTotalProgress,omitnil,omitempty" name:"FlowTotalProgress"`
+
+	// 定义流程总状态：
+	// 0:初始化，
+	// 1:运行中，
+	// 2:完成，
+	// 3:完成（存在跳过步骤），
+	// -1:失败，
+	// -3:阻塞，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowTotalStatus *int64 `json:"FlowTotalStatus,omitnil,omitempty" name:"FlowTotalStatus"`
+
+	// 流程额外信息
+	// NeedExtraDetail为true时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowExtraDetail []*FlowExtraDetail `json:"FlowExtraDetail,omitnil,omitempty" name:"FlowExtraDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterFlowStatusDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterFlowStatusDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterFlowStatusDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterFlowStatusDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterNodesRequestParams struct {
 	// 集群实例ID,实例ID形如: emr-xxxxxxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3544,6 +3646,35 @@ type Filters struct {
 
 	// 过滤字段值
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type FlowExtraDetail struct {
+	// 额外信息Title
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail []*FlowParamsDesc `json:"Detail,omitnil,omitempty" name:"Detail"`
+}
+
+type FlowParam struct {
+	// 流程参数key
+	// TraceId：通过TraceId查询
+	// FlowId： 通过FlowId查询
+	FKey *string `json:"FKey,omitnil,omitempty" name:"FKey"`
+
+	// 参数value
+	FValue *string `json:"FValue,omitnil,omitempty" name:"FValue"`
+}
+
+type FlowParamsDesc struct {
+	// 参数key
+	PKey *string `json:"PKey,omitnil,omitempty" name:"PKey"`
+
+	// 参数value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PValue *string `json:"PValue,omitnil,omitempty" name:"PValue"`
 }
 
 type GroupGlobalConfs struct {
@@ -5434,6 +5565,10 @@ type NodeHardwareInfo struct {
 	// 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServicesStatus *string `json:"ServicesStatus,omitnil,omitempty" name:"ServicesStatus"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type NodeResourceSpec struct {
@@ -7016,6 +7151,64 @@ type SoftDependInfo struct {
 
 	// 是否必选
 	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+}
+
+type StageInfoDetail struct {
+	// 步骤id
+	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
+
+	// 步骤名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否展示
+	IsShow *bool `json:"IsShow,omitnil,omitempty" name:"IsShow"`
+
+	// 是否子流程
+	IsSubFlow *bool `json:"IsSubFlow,omitnil,omitempty" name:"IsSubFlow"`
+
+	// 子流程标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubFlowFlag *string `json:"SubFlowFlag,omitnil,omitempty" name:"SubFlowFlag"`
+
+	// 步骤运行状态：0:未开始 1:进行中 2:已完成 3:部分完成  -1:失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 步骤运行状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 运行进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Starttime *string `json:"Starttime,omitnil,omitempty" name:"Starttime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endtime *string `json:"Endtime,omitnil,omitempty" name:"Endtime"`
+
+	// 是否有详情信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HadWoodDetail *bool `json:"HadWoodDetail,omitnil,omitempty" name:"HadWoodDetail"`
+
+	// Wood子流程Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WoodJobId *uint64 `json:"WoodJobId,omitnil,omitempty" name:"WoodJobId"`
+
+	// 多语言版本Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LanguageKey *string `json:"LanguageKey,omitnil,omitempty" name:"LanguageKey"`
+
+	// 如果stage失败，失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
+
+	// 步骤耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeConsuming *string `json:"TimeConsuming,omitnil,omitempty" name:"TimeConsuming"`
 }
 
 // Predefined struct for user

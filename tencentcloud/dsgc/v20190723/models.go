@@ -10998,6 +10998,9 @@ type ExportAssetDetailDataRequestParams struct {
 	// DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 	// 注意：每个name默认支持最多5个values。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// casbId
+	CasbId *string `json:"CasbId,omitnil,omitempty" name:"CasbId"`
 }
 
 type ExportAssetDetailDataRequest struct {
@@ -11022,6 +11025,9 @@ type ExportAssetDetailDataRequest struct {
 	// DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 	// 注意：每个name默认支持最多5个values。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// casbId
+	CasbId *string `json:"CasbId,omitnil,omitempty" name:"CasbId"`
 }
 
 func (r *ExportAssetDetailDataRequest) ToJsonString() string {
@@ -11040,6 +11046,7 @@ func (r *ExportAssetDetailDataRequest) FromJsonString(s string) error {
 	delete(f, "ComplianceId")
 	delete(f, "MetaDataType")
 	delete(f, "Filters")
+	delete(f, "CasbId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportAssetDetailDataRequest has unknown keys!", "")
 	}
