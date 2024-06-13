@@ -5364,6 +5364,10 @@ type ServerlessSpace struct {
 	// //默认en， 可选zh-CN
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaLanguage *string `json:"KibanaLanguage,omitnil,omitempty" name:"KibanaLanguage"`
+
+	// 0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type ServerlessSpaceUser struct {

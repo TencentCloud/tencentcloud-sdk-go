@@ -248,6 +248,9 @@ type AddShareUnitRequestParams struct {
 
 	// 共享单元描述。最大128个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 }
 
 type AddShareUnitRequest struct {
@@ -261,6 +264,9 @@ type AddShareUnitRequest struct {
 
 	// 共享单元描述。最大128个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 }
 
 func (r *AddShareUnitRequest) ToJsonString() string {
@@ -278,6 +284,7 @@ func (r *AddShareUnitRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Area")
 	delete(f, "Description")
+	delete(f, "ShareScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShareUnitRequest has unknown keys!", "")
 	}
@@ -4163,6 +4170,10 @@ type ManagerShareUnit struct {
 	// 共享单元成员数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareMemberNum *int64 `json:"ShareMemberNum,omitnil,omitempty" name:"ShareMemberNum"`
+
+	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 }
 
 type MemberIdentity struct {
@@ -5156,6 +5167,9 @@ type UpdateShareUnitRequestParams struct {
 
 	// 共享单元描述。最大128个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 }
 
 type UpdateShareUnitRequest struct {
@@ -5169,6 +5183,9 @@ type UpdateShareUnitRequest struct {
 
 	// 共享单元描述。最大128个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 }
 
 func (r *UpdateShareUnitRequest) ToJsonString() string {
@@ -5186,6 +5203,7 @@ func (r *UpdateShareUnitRequest) FromJsonString(s string) error {
 	delete(f, "UnitId")
 	delete(f, "Name")
 	delete(f, "Description")
+	delete(f, "ShareScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateShareUnitRequest has unknown keys!", "")
 	}

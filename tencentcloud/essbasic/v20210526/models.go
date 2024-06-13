@@ -1532,6 +1532,9 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// </li>
 	// </ul>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 个性化参数，用于控制页面展示内容
+	Option *EmbedUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 type ChannelCreateEmbedWebUrlRequest struct {
@@ -1590,6 +1593,9 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// </li>
 	// </ul>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 个性化参数，用于控制页面展示内容
+	Option *EmbedUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 func (r *ChannelCreateEmbedWebUrlRequest) ToJsonString() string {
@@ -1610,6 +1616,7 @@ func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
 	delete(f, "HiddenComponents")
 	delete(f, "Operator")
 	delete(f, "UserData")
+	delete(f, "Option")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateEmbedWebUrlRequest has unknown keys!", "")
 	}
@@ -4764,6 +4771,9 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 
 	// 注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// 查询的印章状态列表。 <ul> <li>空，只查询启用状态的印章；</li> <li>ALL，查询所有状态的印章；</li> <li>CHECKING，查询待审核的印章；</li> <li>SUCCESS，查询启用状态的印章；</li> <li>FAIL，查询印章审核拒绝的印章；</li> <li>DISABLE，查询已停用的印章；</li> <li>STOPPED，查询已终止的印章；</li> <li>VOID，查询已作废的印章；</li> <li>INVALID，查询已失效的印章；</li> </ul>
+	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
 type ChannelDescribeOrganizationSealsRequest struct {
@@ -4808,6 +4818,9 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 
 	// 注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// 查询的印章状态列表。 <ul> <li>空，只查询启用状态的印章；</li> <li>ALL，查询所有状态的印章；</li> <li>CHECKING，查询待审核的印章；</li> <li>SUCCESS，查询启用状态的印章；</li> <li>FAIL，查询印章审核拒绝的印章；</li> <li>DISABLE，查询已停用的印章；</li> <li>STOPPED，查询已终止的印章；</li> <li>VOID，查询已作废的印章；</li> <li>INVALID，查询已失效的印章；</li> </ul>
+	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
 func (r *ChannelDescribeOrganizationSealsRequest) ToJsonString() string {
@@ -4828,6 +4841,7 @@ func (r *ChannelDescribeOrganizationSealsRequest) FromJsonString(s string) error
 	delete(f, "InfoType")
 	delete(f, "SealId")
 	delete(f, "SealTypes")
+	delete(f, "SealStatuses")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeOrganizationSealsRequest has unknown keys!", "")
 	}
@@ -8986,6 +9000,20 @@ type DownloadFlowInfo struct {
 
 	// 签署流程的标识数组
 	FlowIdList []*string `json:"FlowIdList,omitnil,omitempty" name:"FlowIdList"`
+}
+
+type EmbedUrlOption struct {
+	// 合同详情页面是否展示合同控件信息
+	// <br/>true:允许在合同详情页展示控件
+	// <br/>false:不允许在合同详情页展示控件
+	// <br/>默认false,在合同详情页不展示控件
+	ShowFlowDetailComponent *bool `json:"ShowFlowDetailComponent,omitnil,omitempty" name:"ShowFlowDetailComponent"`
+
+	// 模版预览页面是否展示空间信息
+	// <br/>true:允许在模版预览页展示控件
+	// <br/>false:不允许在模版预览页展示控件
+	// <br/>默认false,在模版预览页不展示控件
+	ShowTemplateComponent *bool `json:"ShowTemplateComponent,omitnil,omitempty" name:"ShowTemplateComponent"`
 }
 
 type ExtentServiceAuthInfo struct {

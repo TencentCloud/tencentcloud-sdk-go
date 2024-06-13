@@ -6993,10 +6993,10 @@ func (r *DescribeDealsByCondResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDosageCosDetailByDateRequestParams struct {
-	// 查询用量开始时间，例如：2020-09-01
+	// 查询用量开始时间，格式为yyyy-mm-dd，例如：2020-09-01
 	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
-	// 查询用量结束时间，例如：2020-09-30（与开始时间同月，不支持跨月查询）
+	// 查询用量结束时间，格式为yyyy-mm-dd，例如：2020-09-30（与开始时间同月，不支持跨月查询）
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
 	// COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://cloud.tencent.com/document/product/436/8291
@@ -7006,10 +7006,10 @@ type DescribeDosageCosDetailByDateRequestParams struct {
 type DescribeDosageCosDetailByDateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询用量开始时间，例如：2020-09-01
+	// 查询用量开始时间，格式为yyyy-mm-dd，例如：2020-09-01
 	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
-	// 查询用量结束时间，例如：2020-09-30（与开始时间同月，不支持跨月查询）
+	// 查询用量结束时间，格式为yyyy-mm-dd，例如：2020-09-30（与开始时间同月，不支持跨月查询）
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
 	// COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://cloud.tencent.com/document/product/436/8291

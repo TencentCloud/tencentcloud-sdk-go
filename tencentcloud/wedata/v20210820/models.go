@@ -14764,6 +14764,12 @@ func (r *DescribeTableLineageResponse) FromJsonString(s string) error {
 type DescribeTableMetaRequestParams struct {
 	// 表唯一id
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 按名称查询的条件
+	TableNameFilter *TableNameFilter `json:"TableNameFilter,omitnil,omitempty" name:"TableNameFilter"`
+
+	// 查询条件类型0按id，1按名称，默认为0
+	TableFilterType *uint64 `json:"TableFilterType,omitnil,omitempty" name:"TableFilterType"`
 }
 
 type DescribeTableMetaRequest struct {
@@ -14771,6 +14777,12 @@ type DescribeTableMetaRequest struct {
 	
 	// 表唯一id
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 按名称查询的条件
+	TableNameFilter *TableNameFilter `json:"TableNameFilter,omitnil,omitempty" name:"TableNameFilter"`
+
+	// 查询条件类型0按id，1按名称，默认为0
+	TableFilterType *uint64 `json:"TableFilterType,omitnil,omitempty" name:"TableFilterType"`
 }
 
 func (r *DescribeTableMetaRequest) ToJsonString() string {
@@ -14786,6 +14798,8 @@ func (r *DescribeTableMetaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TableId")
+	delete(f, "TableNameFilter")
+	delete(f, "TableFilterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableMetaRequest has unknown keys!", "")
 	}
@@ -26657,6 +26671,37 @@ type TableMeta struct {
 	// 生命周期-分区保留天数【分区保留策略时有效】
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionExpireDays *int64 `json:"PartitionExpireDays,omitnil,omitempty" name:"PartitionExpireDays"`
+
+	// 表附属信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableProperties []*TableMetaProperty `json:"TableProperties,omitnil,omitempty" name:"TableProperties"`
+}
+
+type TableMetaProperty struct {
+	// 属性的key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 属性的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TableNameFilter struct {
+	// 数据源类型
+	MsType *string `json:"MsType,omitnil,omitempty" name:"MsType"`
+
+	// 数据源id
+	DatasourceId *int64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// schema
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 表名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type TablePropertyScore struct {

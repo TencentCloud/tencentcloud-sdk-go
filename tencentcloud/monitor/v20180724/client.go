@@ -220,6 +220,10 @@ func NewCheckIsPrometheusNewUserResponse() (response *CheckIsPrometheusNewUserRe
 }
 
 // CheckIsPrometheusNewUser
+// 接口功能是检查是否为prometheus新用户，已有其他功能更加全面的接口替代
+//
+// 
+//
 // 判断用户是否为云原生监控新用户，即在任何地域下均未创建过监控实例的用户
 //
 // 可能返回的错误码:
@@ -234,6 +238,10 @@ func (c *Client) CheckIsPrometheusNewUser(request *CheckIsPrometheusNewUserReque
 }
 
 // CheckIsPrometheusNewUser
+// 接口功能是检查是否为prometheus新用户，已有其他功能更加全面的接口替代
+//
+// 
+//
 // 判断用户是否为云原生监控新用户，即在任何地域下均未创建过监控实例的用户
 //
 // 可能返回的错误码:

@@ -14330,7 +14330,7 @@ func NewUpdateEKSClusterResponse() (response *UpdateEKSClusterResponse) {
 }
 
 // UpdateEKSCluster
-// 修改弹性集群名称等属性 
+// 修改弹性集群名称等属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14351,7 +14351,7 @@ func (c *Client) UpdateEKSCluster(request *UpdateEKSClusterRequest) (response *U
 }
 
 // UpdateEKSCluster
-// 修改弹性集群名称等属性 
+// 修改弹性集群名称等属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -395,6 +395,10 @@ type AiAnalysisResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeLogoTask *AiAnalysisTaskDelLogoResult `json:"DeLogoTask,omitnil,omitempty" name:"DeLogoTask"`
 
+	// 视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentTask *AiAnalysisTaskSegmentResult `json:"SegmentTask,omitnil,omitempty" name:"SegmentTask"`
+
 	// 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTailTask *AiAnalysisTaskHeadTailResult `json:"HeadTailTask,omitnil,omitempty" name:"HeadTailTask"`
@@ -632,6 +636,34 @@ type AiAnalysisTaskInput struct {
 	// 注意：此参数为定制需求参数，需要线下对接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+}
+
+type AiAnalysisTaskSegmentInput struct {
+	// 拆条任务模板 ID。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskSegmentOutput struct {
+	// 智能拆条子片段列表。
+	SegmentSet []*SegmentRecognitionItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
+}
+
+type AiAnalysisTaskSegmentResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 拆条任务输入。
+	Input *AiAnalysisTaskSegmentInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 拆条任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskSegmentOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskTagInput struct {
@@ -14838,6 +14870,14 @@ type SegmentRecognitionItem struct {
 	// 拆条片段URL。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentUrl *string `json:"SegmentUrl,omitnil,omitempty" name:"SegmentUrl"`
+
+	// 分段标题。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 分段概要。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
 type SharpEnhanceConfig struct {

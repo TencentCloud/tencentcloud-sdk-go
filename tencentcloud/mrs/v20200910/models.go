@@ -363,6 +363,10 @@ type BirthCert struct {
 	// 签发信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IssueInfo *IssueInfo `json:"IssueInfo,omitnil,omitempty" name:"IssueInfo"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type BirthPlaceBlock struct {
@@ -601,6 +605,10 @@ type BloodPressureItem struct {
 	// 左右手臂
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *PhysicalBaseItem `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type BodyExaminationBlock struct {
@@ -655,6 +663,10 @@ type Check struct {
 	// 检查报告块标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockTitle []*BlockTitle `json:"BlockTitle,omitnil,omitempty" name:"BlockTitle"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type ChemicalProductInfo struct {
@@ -1071,6 +1083,10 @@ type CovidItemsInfo struct {
 	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type DeathDateBlock struct {
@@ -1197,6 +1213,10 @@ type DiagCert struct {
 	// 诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Diagnosis []*DiagCertItem `json:"Diagnosis,omitnil,omitempty" name:"Diagnosis"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type DiagCertItem struct {
@@ -1291,6 +1311,10 @@ type DischargeInfoBlock struct {
 	// 文本段落
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParagraphBlock *ParagraphBlock `json:"ParagraphBlock,omitnil,omitempty" name:"ParagraphBlock"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type DiseaseHistoryBlock struct {
@@ -1611,6 +1635,10 @@ type Electrocardiogram struct {
 	// 心电图诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EcgDiagnosis *EcgDiagnosis `json:"EcgDiagnosis,omitnil,omitempty" name:"EcgDiagnosis"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Endoscopy struct {
@@ -1625,6 +1653,10 @@ type Endoscopy struct {
 	// 结论
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Summary *Summary `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type EndoscopyDesc struct {
@@ -1717,6 +1749,10 @@ type EyeItemsInfo struct {
 	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type FamilyHistoryBlock struct {
@@ -1925,6 +1961,10 @@ type FirstPage struct {
 	// 病案首页第二页
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fp2NdItems []*Fp2NdItem `json:"Fp2NdItems,omitnil,omitempty" name:"Fp2NdItems"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Fp2NdItem struct {
@@ -2349,6 +2389,10 @@ type Hospitalization struct {
 	// 入院诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdmissionDiagnosis *string `json:"AdmissionDiagnosis,omitnil,omitempty" name:"AdmissionDiagnosis"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type IHCBlock struct {
@@ -2828,6 +2872,10 @@ type Indicator struct {
 	// 检验报告块标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockTitle []*BlockTitle `json:"BlockTitle,omitnil,omitempty" name:"BlockTitle"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type IndicatorItem struct {
@@ -2944,6 +2992,10 @@ type IndicatorV3 struct {
 	// 检验报告V3结论
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIndicators []*TableIndicators `json:"TableIndicators,omitnil,omitempty" name:"TableIndicators"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type InternalMedicineAbdomen struct {
@@ -3258,6 +3310,10 @@ type KeyValueItem struct {
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *PhysicalBaseItem `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type LastMenstrualPeriodBlock struct {
@@ -3410,6 +3466,10 @@ type Maternity struct {
 	// 报告原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrText *string `json:"OcrText,omitnil,omitempty" name:"OcrText"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type MaternityDesc struct {
@@ -3479,6 +3539,10 @@ type MedDoc struct {
 
 	// 诊疗记录
 	TreatmentRecord *TreatmentRecord `json:"TreatmentRecord,omitnil,omitempty" name:"TreatmentRecord"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type MedicalRecordInfo struct {
@@ -3513,6 +3577,10 @@ type MedicalRecordInfo struct {
 	// 治疗意见
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreatmentOpinion *string `json:"TreatmentOpinion,omitnil,omitempty" name:"TreatmentOpinion"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Medicine struct {
@@ -4582,6 +4650,10 @@ type PathologyV2 struct {
 	// 分子病理
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Molecular []*Molecular `json:"Molecular,omitnil,omitempty" name:"Molecular"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type PatientInfo struct {
@@ -4826,6 +4898,10 @@ type Prescription struct {
 	// 药品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MedicineList []*Medicine `json:"MedicineList,omitnil,omitempty" name:"MedicineList"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Rectangle struct {
@@ -5078,6 +5154,10 @@ type ResultInfo struct {
 	// 结论详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*BaseInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Size struct {
@@ -5214,6 +5294,10 @@ type Surgery struct {
 	// 其他信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherInfo *OtherInfo `json:"OtherInfo,omitnil,omitempty" name:"OtherInfo"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type SurgeryAnorectal struct {
@@ -5776,6 +5860,10 @@ type TextTypeListBlock struct {
 	// 文本类型列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTypeList []*TextType `json:"TextTypeList,omitnil,omitempty" name:"TextTypeList"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Time struct {
@@ -5826,6 +5914,10 @@ type TimelineInformation struct {
 	// 时间轴
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeline []*TimelineEvent `json:"Timeline,omitnil,omitempty" name:"Timeline"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type TransfusionHistoryBlock struct {
@@ -6624,6 +6716,10 @@ type VaccineCertificate struct {
 	// 免疫接种列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VaccineList []*Vaccination `json:"VaccineList,omitnil,omitempty" name:"VaccineList"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
 type Value struct {
@@ -6670,4 +6766,8 @@ type ValueUnitItem struct {
 	// 单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *PhysicalBaseItem `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 数据在原PDF文件中的第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 }

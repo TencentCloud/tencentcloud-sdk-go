@@ -212,9 +212,11 @@ type BGPStatus struct {
 
 type BgpPeer struct {
 	// 用户侧BGP ASN
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Asn *int64 `json:"Asn,omitnil,omitempty" name:"Asn"`
 
 	// 用户侧BGP密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthKey *string `json:"AuthKey,omitnil,omitempty" name:"AuthKey"`
 }
 
@@ -860,18 +862,18 @@ func (r *DescribeDirectConnectTunnelExtraResponse) FromJsonString(s string) erro
 type DescribeDirectConnectTunnelsRequestParams struct {
 	// 过滤条件:
 	// 参数不支持同时指定DirectConnectTunnelIds和Filters。
-	// <li> direct-connect-tunnel-name, 专用通道名称。</li>
-	// <li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
-	// <li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
+	// direct-connect-tunnel-name, 专用通道名称。
+	// direct-connect-tunnel-id, 专用通道实例ID，如：dcx-abcdefgh。
+	// direct-connect-id, 物理专线实例ID，如：dc-abcdefgh。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 专用通道 ID数组
+	// 专用通道ID数组。
 	DirectConnectTunnelIds []*string `json:"DirectConnectTunnelIds,omitnil,omitempty" name:"DirectConnectTunnelIds"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -880,18 +882,18 @@ type DescribeDirectConnectTunnelsRequest struct {
 	
 	// 过滤条件:
 	// 参数不支持同时指定DirectConnectTunnelIds和Filters。
-	// <li> direct-connect-tunnel-name, 专用通道名称。</li>
-	// <li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
-	// <li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
+	// direct-connect-tunnel-name, 专用通道名称。
+	// direct-connect-tunnel-id, 专用通道实例ID，如：dcx-abcdefgh。
+	// direct-connect-id, 物理专线实例ID，如：dc-abcdefgh。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 专用通道 ID数组
+	// 专用通道ID数组。
 	DirectConnectTunnelIds []*string `json:"DirectConnectTunnelIds,omitnil,omitempty" name:"DirectConnectTunnelIds"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -919,10 +921,10 @@ func (r *DescribeDirectConnectTunnelsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDirectConnectTunnelsResponseParams struct {
-	// 专用通道列表
+	// 专用通道列表。
 	DirectConnectTunnelSet []*DirectConnectTunnel `json:"DirectConnectTunnelSet,omitnil,omitempty" name:"DirectConnectTunnelSet"`
 
-	// 符合专用通道数量。
+	// 专用通道总数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1566,6 +1568,10 @@ type DirectConnectTunnel struct {
 	// 高速上云服务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudAttachId *string `json:"CloudAttachId,omitnil,omitempty" name:"CloudAttachId"`
+
+	// 是否共享通道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareOrNot *uint64 `json:"ShareOrNot,omitnil,omitempty" name:"ShareOrNot"`
 }
 
 type DirectConnectTunnelExtra struct {
@@ -2449,6 +2455,7 @@ func (r *ReleaseInternetAddressResponse) FromJsonString(s string) error {
 
 type RouteFilterPrefix struct {
 	// 用户侧网段地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 }
 

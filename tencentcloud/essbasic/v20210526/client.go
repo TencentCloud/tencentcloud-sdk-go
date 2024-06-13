@@ -8451,6 +8451,12 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //
 // ```
 //
+// 
+//
+// <font color="red">相关视频指引</font> <br>
+//
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a><br>
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -8490,6 +8496,12 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 // httpProfile.setEndpoint("file.test.ess.tencent.cn");
 //
 // ```
+//
+// 
+//
+// <font color="red">相关视频指引</font> <br>
+//
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a><br>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

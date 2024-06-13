@@ -968,10 +968,10 @@ func (r *CloseSSLResponse) FromJsonString(s string) error {
 }
 
 type CommandTake struct {
-	// 命令
+	// 命令名。
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 
-	// 耗时
+	// 耗时时长。
 	Took *int64 `json:"Took,omitnil,omitempty" name:"Took"`
 }
 
@@ -3114,20 +3114,28 @@ func (r *DescribeInstanceMonitorBigKeyTypeDistResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeInstanceMonitorHotKeyRequestParams struct {
-	// 实例Id
+	// 指定实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 查询时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
 type DescribeInstanceMonitorHotKeyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 指定实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 查询时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
@@ -3153,7 +3161,7 @@ func (r *DescribeInstanceMonitorHotKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceMonitorHotKeyResponseParams struct {
-	// 热Key详细信息
+	// 热 Key 详细信息。
 	Data []*HotKeyInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3235,26 +3243,34 @@ func (r *DescribeInstanceMonitorSIPResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceMonitorTookDistRequestParams struct {
-	// 实例Id
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间；例如："20190219"
+	// 查询时间日期。
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
 type DescribeInstanceMonitorTookDistRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间；例如："20190219"
+	// 查询时间日期。
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
@@ -3281,7 +3297,7 @@ func (r *DescribeInstanceMonitorTookDistRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeInstanceMonitorTookDistResponseParams struct {
-	// 时延分布信息
+	// 时延分布信息。
 	Data []*DelayDistribution `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3370,20 +3386,28 @@ func (r *DescribeInstanceMonitorTopNCmdResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeInstanceMonitorTopNCmdTookRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 查询时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
 type DescribeInstanceMonitorTopNCmdTookRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 查询时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
@@ -8938,10 +8962,10 @@ type SecurityGroupsInboundAndOutbound struct {
 }
 
 type SourceCommand struct {
-	// 命令
+	// 命令名称。
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 
-	// 执行次数
+	// 执行次数。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 

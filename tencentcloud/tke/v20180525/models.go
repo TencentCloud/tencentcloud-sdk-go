@@ -1170,9 +1170,11 @@ type ClusterExtraArgs struct {
 
 type ClusterInternalLB struct {
 	// 是否开启内网访问LB
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 内网访问LB关联的子网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
@@ -1298,18 +1300,23 @@ type ClusterProperty struct {
 
 type ClusterPublicLB struct {
 	// 是否开启公网访问LB
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 允许访问的来源CIDR列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowFromCidrs []*string `json:"AllowFromCidrs,omitnil,omitempty" name:"AllowFromCidrs"`
 
 	// 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityPolicies []*string `json:"SecurityPolicies,omitnil,omitempty" name:"SecurityPolicies"`
 
 	// 外网访问相关的扩展参数，格式为json
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
 	// 新内外网功能，需要传递安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 }
 
@@ -19081,10 +19088,10 @@ type SubnetInfos struct {
 	// 安全组id
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 
-	// 系统
+	// 系统，默认linux
 	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
 
-	// 硬件架构
+	// 硬件架构，默认amd64
 	Arch *string `json:"Arch,omitnil,omitempty" name:"Arch"`
 }
 

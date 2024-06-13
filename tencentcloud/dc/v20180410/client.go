@@ -567,7 +567,7 @@ func NewDescribeDirectConnectTunnelsResponse() (response *DescribeDirectConnectT
 }
 
 // DescribeDirectConnectTunnels
-// 用于查询专用通道列表。
+// 查询专用通道列表。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -580,7 +580,7 @@ func (c *Client) DescribeDirectConnectTunnels(request *DescribeDirectConnectTunn
 }
 
 // DescribeDirectConnectTunnels
-// 用于查询专用通道列表。
+// 查询专用通道列表。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

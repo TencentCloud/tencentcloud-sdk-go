@@ -24,7 +24,8 @@ type AccountInfo struct {
 	// 用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
 	// 1：QQ开放账号
 	// 2：微信开放账号
-	// 10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值。
+	// 10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
+	// 10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
 	AccountType *uint64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// QQ账号信息，AccountType是"1"时，该字段必填。
@@ -33,7 +34,7 @@ type AccountInfo struct {
 	// 微信账号信息，AccountType是"2"时，该字段必填。
 	WeChatAccount *WeChatAccountInfo `json:"WeChatAccount,omitnil,omitempty" name:"WeChatAccount"`
 
-	// 其它账号信息，AccountType是10004时，该字段必填。
+	// 其它账号信息，AccountType是10004或10005时，该字段必填。
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitnil,omitempty" name:"OtherAccount"`
 }
 
@@ -62,7 +63,8 @@ type InputManageMarketingRisk struct {
 	// 用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
 	// 1：QQ开放账号
 	// 2：微信开放账号
-	// 10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值。
+	// 10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
+	// 10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
 	Account *AccountInfo `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理
@@ -226,15 +228,18 @@ type OnlineScamInfo struct {
 type OtherAccountInfo struct {
 	// 其他账号信息；
 	// AccountType是10004时，填入中国大陆标准11位手机号的MD5值
+	// AccountType是10005时，填入中国大陆标准11位手机号的SHA256值
 	// 注释：
 	// MD5手机号加密方式，使用中国大陆11位手机号进行MD5加密，加密后取32位小写值。
+	// SHA256手机号加密方式，使用中国大陆11位手机号进行SHA256加密，加密后取64位小写值。
 	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
 
-	// 账号绑定的MD5手机号。
-	// 注释：只支持标准中国大陆11位手机号MD5加密后位的32位小写字符串。
+	// 账号绑定的MD5或SHA256加密的手机号（该字段已不推荐使用）。
+	// 注释：支持标准中国大陆11位手机号MD5加密后位的32位小写字符串；
+	//      支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
 	MobilePhone *string `json:"MobilePhone,omitnil,omitempty" name:"MobilePhone"`
 
-	// 用户设备号（已不推荐使用）。
+	// 用户设备号（该字段已不推荐使用）。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 }
 
@@ -263,9 +268,10 @@ type OutputManageMarketingRisk struct {
 
 type OutputManageMarketingRiskValue struct {
 	// 账号ID：对应输入参数。
-	// 当AccountType为1时，对应QQ的OpenId。
-	// 当AccountType为2时，对应微信的OpenId/UnionId。
-	// 当AccountType为10004时，对应手机号的MD5值。
+	// 当AccountType为1时，对应QQ的OpenId；
+	// 当AccountType为2时，对应微信的OpenId/UnionId；
+	// 当AccountType为10004时，对应手机号的MD5值；
+	// 当AccountType为10005时，对应手机号的SHA256值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
@@ -329,8 +335,9 @@ type QQAccountInfo struct {
 	// 用于标识QQ用户登录后所关联业务自身的账号ID。
 	AssociateAccount *string `json:"AssociateAccount,omitnil,omitempty" name:"AssociateAccount"`
 
-	// 账号绑定的MD5手机号，
-	// 注释：只支中国大陆11位手机号MD5加密后位的32位小写字符串。
+	// 账号绑定的MD5或SHA256加密的手机号。
+	// 注释：支持标准中国大陆11位手机号MD5加密后位的32位小写字符串；
+	//      支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
 	MobilePhone *string `json:"MobilePhone,omitnil,omitempty" name:"MobilePhone"`
 
 	// 用户设备号（已不推荐使用）。
@@ -373,8 +380,9 @@ type WeChatAccountInfo struct {
 	// 用于标识微信用户登录后所关联业务自身的账号ID。
 	AssociateAccount *string `json:"AssociateAccount,omitnil,omitempty" name:"AssociateAccount"`
 
-	// 账号绑定的MD5手机号，
-	// 注释：只支持标准中国大陆11位手机号MD5加密后位的32位小写字符串。
+	// 账号绑定的MD5或SHA256加密的手机号。
+	// 注释：支持标准中国大陆11位手机号MD5加密后位的32位小写字符串；
+	//      支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
 	MobilePhone *string `json:"MobilePhone,omitnil,omitempty" name:"MobilePhone"`
 
 	// 用户设备号（已不推荐使用）。
