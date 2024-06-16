@@ -5634,6 +5634,7 @@ func NewDownloadHelmChartResponse() (response *DownloadHelmChartResponse) {
 // 用于在TCR中下载helm chart
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -5646,6 +5647,7 @@ func (c *Client) DownloadHelmChart(request *DownloadHelmChartRequest) (response 
 // 用于在TCR中下载helm chart
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"

@@ -11467,6 +11467,14 @@ type SREInstance struct {
 	// 存储额外配置选项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
+
+	// Zookeeper的额外环境数据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZookeeperRegionInfo *ZookeeperRegionInfo `json:"ZookeeperRegionInfo,omitnil,omitempty" name:"ZookeeperRegionInfo"`
+
+	// 部署架构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 }
 
 type ServiceGovernanceInfo struct {
@@ -12026,6 +12034,42 @@ type VpcInfo struct {
 	// 内网访问地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetAddress *string `json:"IntranetAddress,omitnil,omitempty" name:"IntranetAddress"`
+
+	// 负载均衡均衡接入点子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LbSubnetId *string `json:"LbSubnetId,omitnil,omitempty" name:"LbSubnetId"`
+}
+
+type ZookeeperRegionInfo struct {
+	// 部署架构信息
+	// 
+	// - SingleRegion: 普通单地域
+	// - MultiRegion: 普通多地域场景
+	// - MasterSlave: 两地域，主备地域场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
+
+	// 主地域的额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainRegion *ZookeeperRegionMyIdInfo `json:"MainRegion,omitnil,omitempty" name:"MainRegion"`
+
+	// 其他地域的额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherRegions []*ZookeeperRegionMyIdInfo `json:"OtherRegions,omitnil,omitempty" name:"OtherRegions"`
+}
+
+type ZookeeperRegionMyIdInfo struct {
+	// 地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// myid 的起始号段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MyIdStart *int64 `json:"MyIdStart,omitnil,omitempty" name:"MyIdStart"`
+
+	// myid 的结束号段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MyIdEnd *int64 `json:"MyIdEnd,omitnil,omitempty" name:"MyIdEnd"`
 }
 
 type ZookeeperReplica struct {

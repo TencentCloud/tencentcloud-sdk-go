@@ -3439,6 +3439,7 @@ func NewDeleteClusterNodePoolResponse() (response *DeleteClusterNodePoolResponse
 // 删除节点池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CVMDELETIONPROTECTION = "FailedOperation.CvmDeletionProtection"
 //  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -3453,6 +3454,7 @@ func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (r
 // 删除节点池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CVMDELETIONPROTECTION = "FailedOperation.CvmDeletionProtection"
 //  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -8058,6 +8060,10 @@ func NewDescribeExternalClusterSpecResponse() (response *DescribeExternalCluster
 }
 
 // DescribeExternalClusterSpec
+// tdcc接口已迁移至tdcc产品下，tke下的接口下线
+//
+// 
+//
 // 获取导入第三方集群YAML定义
 //
 // 可能返回的错误码:
@@ -8081,6 +8087,10 @@ func (c *Client) DescribeExternalClusterSpec(request *DescribeExternalClusterSpe
 }
 
 // DescribeExternalClusterSpec
+// tdcc接口已迁移至tdcc产品下，tke下的接口下线
+//
+// 
+//
 // 获取导入第三方集群YAML定义
 //
 // 可能返回的错误码:

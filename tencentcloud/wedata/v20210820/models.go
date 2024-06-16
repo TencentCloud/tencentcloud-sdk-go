@@ -4427,6 +4427,85 @@ func (r *CreateTaskAlarmRegularResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTaskFolderRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹名称
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 工作量ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 父文件夹ID
+	ParentFolderId *string `json:"ParentFolderId,omitnil,omitempty" name:"ParentFolderId"`
+}
+
+type CreateTaskFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹名称
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 工作量ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 父文件夹ID
+	ParentFolderId *string `json:"ParentFolderId,omitnil,omitempty" name:"ParentFolderId"`
+}
+
+func (r *CreateTaskFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FolderName")
+	delete(f, "WorkflowId")
+	delete(f, "ParentFolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskFolderResponseParams struct {
+	// 任务文件夹Id，null则创建失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTaskFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTaskFolderResponseParams `json:"Response"`
+}
+
+func (r *CreateTaskFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTaskRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`

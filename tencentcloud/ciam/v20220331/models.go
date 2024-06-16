@@ -913,6 +913,9 @@ type ImportUser struct {
 	// 支付宝alipayUserId
 	AlipayUserId *string `json:"AlipayUserId,omitnil,omitempty" name:"AlipayUserId"`
 
+	// 企业微信weComUserId
+	WeComUserId *string `json:"WeComUserId,omitnil,omitempty" name:"WeComUserId"`
+
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
@@ -2289,6 +2292,10 @@ type User struct {
 	// 支付宝的AlipayUserId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlipayUserId *string `json:"AlipayUserId,omitnil,omitempty" name:"AlipayUserId"`
+
+	// 企业微信的WeComUserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeComUserId *string `json:"WeComUserId,omitnil,omitempty" name:"WeComUserId"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。

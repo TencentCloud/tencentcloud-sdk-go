@@ -2301,6 +2301,57 @@ func (c *Client) DescribeAntiInfoLeakageRulesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeAreaBanAreasRequest() (request *DescribeAreaBanAreasRequest) {
+    request = &DescribeAreaBanAreasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeAreaBanAreas")
+    
+    
+    return
+}
+
+func NewDescribeAreaBanAreasResponse() (response *DescribeAreaBanAreasResponse) {
+    response = &DescribeAreaBanAreasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAreaBanAreas
+// 获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAreaBanAreas(request *DescribeAreaBanAreasRequest) (response *DescribeAreaBanAreasResponse, err error) {
+    return c.DescribeAreaBanAreasWithContext(context.Background(), request)
+}
+
+// DescribeAreaBanAreas
+// 获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAreaBanAreasWithContext(ctx context.Context, request *DescribeAreaBanAreasRequest) (response *DescribeAreaBanAreasResponse, err error) {
+    if request == nil {
+        request = NewDescribeAreaBanAreasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAreaBanAreas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAreaBanAreasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAreaBanSupportAreasRequest() (request *DescribeAreaBanSupportAreasRequest) {
     request = &DescribeAreaBanSupportAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -31,6 +31,10 @@ type APM struct {
 	// APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否要删除APM实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedDelete *bool `json:"NeedDelete,omitnil,omitempty" name:"NeedDelete"`
 }
 
 type AccessLogConfig struct {
@@ -278,21 +282,27 @@ type CrossRegionConfig struct {
 
 type CustomPromConfig struct {
 	// Prometheus 访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 认证方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
 	// 是否公网地址，缺省为 false
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPublicAddr *bool `json:"IsPublicAddr,omitnil,omitempty" name:"IsPublicAddr"`
 
 	// 虚拟网络id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// Prometheus 用户名（用于 basic 认证方式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// Prometheus 密码（用于 basic 认证方式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
@@ -938,6 +948,14 @@ type LoadBalancer struct {
 	// 负载均衡跨地域配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossRegionConfig *CrossRegionConfig `json:"CrossRegionConfig,omitnil,omitempty" name:"CrossRegionConfig"`
+
+	// 设置跨可用区容灾时的主可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZoneID *string `json:"MasterZoneID,omitnil,omitempty" name:"MasterZoneID"`
+
+	// 设置跨可用区容灾时的备可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZoneID *string `json:"SlaveZoneID,omitnil,omitempty" name:"SlaveZoneID"`
 }
 
 type LoadBalancerStatus struct {

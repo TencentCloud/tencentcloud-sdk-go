@@ -5440,14 +5440,14 @@ func (r *DeleteEdgeClusterInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteImageCachesRequestParams struct {
-	// 镜像缓存Id数组
+	// 镜像缓存ID数组
 	ImageCacheIds []*string `json:"ImageCacheIds,omitnil,omitempty" name:"ImageCacheIds"`
 }
 
 type DeleteImageCachesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像缓存Id数组
+	// 镜像缓存ID数组
 	ImageCacheIds []*string `json:"ImageCacheIds,omitnil,omitempty" name:"ImageCacheIds"`
 }
 

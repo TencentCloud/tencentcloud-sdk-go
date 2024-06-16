@@ -1933,6 +1933,55 @@ func (c *Client) CreateTaskAlarmRegularWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateTaskFolderRequest() (request *CreateTaskFolderRequest) {
+    request = &CreateTaskFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateTaskFolder")
+    
+    
+    return
+}
+
+func NewCreateTaskFolderResponse() (response *CreateTaskFolderResponse) {
+    response = &CreateTaskFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTaskFolder
+// 编排空间-工作流-创建任务文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateTaskFolder(request *CreateTaskFolderRequest) (response *CreateTaskFolderResponse, err error) {
+    return c.CreateTaskFolderWithContext(context.Background(), request)
+}
+
+// CreateTaskFolder
+// 编排空间-工作流-创建任务文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateTaskFolderWithContext(ctx context.Context, request *CreateTaskFolderRequest) (response *CreateTaskFolderResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskVersionDsRequest() (request *CreateTaskVersionDsRequest) {
     request = &CreateTaskVersionDsRequest{
         BaseRequest: &tchttp.BaseRequest{},

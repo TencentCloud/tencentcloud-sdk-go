@@ -4424,7 +4424,7 @@ func NewDescribePartitionsResponse() (response *DescribePartitionsResponse) {
 }
 
 // DescribePartitions
-// 本接口用于获取主题分区列表。
+// 该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4443,7 +4443,7 @@ func (c *Client) DescribePartitions(request *DescribePartitionsRequest) (respons
 }
 
 // DescribePartitions
-// 本接口用于获取主题分区列表。
+// 该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4870,7 +4870,7 @@ func NewMergePartitionResponse() (response *MergePartitionResponse) {
 }
 
 // MergePartition
-// 本接口用于合并一个读写态的主题分区，合并时指定一个主题分区 ID，日志服务会自动合并范围右相邻的分区。
+// 该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4891,7 +4891,7 @@ func (c *Client) MergePartition(request *MergePartitionRequest) (response *Merge
 }
 
 // MergePartition
-// 本接口用于合并一个读写态的主题分区，合并时指定一个主题分区 ID，日志服务会自动合并范围右相邻的分区。
+// 该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6766,7 +6766,7 @@ func NewSplitPartitionResponse() (response *SplitPartitionResponse) {
 }
 
 // SplitPartition
-// 本接口用于分裂主题分区
+// 该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6790,7 +6790,7 @@ func (c *Client) SplitPartition(request *SplitPartitionRequest) (response *Split
 }
 
 // SplitPartition
-// 本接口用于分裂主题分区
+// 该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

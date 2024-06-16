@@ -3913,6 +3913,88 @@ type DescribeAntiLeakageItem struct {
 }
 
 // Predefined struct for user
+type DescribeAreaBanAreasRequestParams struct {
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DescribeAreaBanAreasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DescribeAreaBanAreasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAreaBanAreasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAreaBanAreasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAreaBanAreasResponseParams struct {
+	// 回包内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeAreaBanAreasRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAreaBanAreasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAreaBanAreasResponseParams `json:"Response"`
+}
+
+func (r *DescribeAreaBanAreasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAreaBanAreasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAreaBanAreasRsp struct {
+	// 状态 "0"：未开启地域封禁 "1"：开启地域封禁
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据来源 custom-自定义(默认)、batch-批量防护
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 字符串数据，配置的地域列表
+	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 定时任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务详细配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 周期任务配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+}
+
+// Predefined struct for user
 type DescribeAreaBanSupportAreasRequestParams struct {
 
 }

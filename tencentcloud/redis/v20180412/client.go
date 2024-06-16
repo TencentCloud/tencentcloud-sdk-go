@@ -1750,6 +1750,61 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeGlobalReplicationAreaRequest() (request *DescribeGlobalReplicationAreaRequest) {
+    request = &DescribeGlobalReplicationAreaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeGlobalReplicationArea")
+    
+    
+    return
+}
+
+func NewDescribeGlobalReplicationAreaResponse() (response *DescribeGlobalReplicationAreaResponse) {
+    response = &DescribeGlobalReplicationAreaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalReplicationArea
+// 查询全球复制支持地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeGlobalReplicationArea(request *DescribeGlobalReplicationAreaRequest) (response *DescribeGlobalReplicationAreaResponse, err error) {
+    return c.DescribeGlobalReplicationAreaWithContext(context.Background(), request)
+}
+
+// DescribeGlobalReplicationArea
+// 查询全球复制支持地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeGlobalReplicationAreaWithContext(ctx context.Context, request *DescribeGlobalReplicationAreaRequest) (response *DescribeGlobalReplicationAreaResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalReplicationAreaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalReplicationArea require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalReplicationAreaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceAccountRequest() (request *DescribeInstanceAccountRequest) {
     request = &DescribeInstanceAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2738,6 +2793,61 @@ func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceSpecBandwidthRequest() (request *DescribeInstanceSpecBandwidthRequest) {
+    request = &DescribeInstanceSpecBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceSpecBandwidth")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSpecBandwidthResponse() (response *DescribeInstanceSpecBandwidthResponse) {
+    response = &DescribeInstanceSpecBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceSpecBandwidth
+// 本接口（DescribeInstanceSpecBandwidth）用于查询或计算带宽规格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeInstanceSpecBandwidth(request *DescribeInstanceSpecBandwidthRequest) (response *DescribeInstanceSpecBandwidthResponse, err error) {
+    return c.DescribeInstanceSpecBandwidthWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSpecBandwidth
+// 本接口（DescribeInstanceSpecBandwidth）用于查询或计算带宽规格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeInstanceSpecBandwidthWithContext(ctx context.Context, request *DescribeInstanceSpecBandwidthRequest) (response *DescribeInstanceSpecBandwidthResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSpecBandwidthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSpecBandwidth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSpecBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceSupportFeatureRequest() (request *DescribeInstanceSupportFeatureRequest) {
     request = &DescribeInstanceSupportFeatureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3399,6 +3509,65 @@ func (c *Client) DescribeReplicationGroupWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeReplicationGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplicationGroupInstanceRequest() (request *DescribeReplicationGroupInstanceRequest) {
+    request = &DescribeReplicationGroupInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeReplicationGroupInstance")
+    
+    
+    return
+}
+
+func NewDescribeReplicationGroupInstanceResponse() (response *DescribeReplicationGroupInstanceResponse) {
+    response = &DescribeReplicationGroupInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplicationGroupInstance
+// 查询复制组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeReplicationGroupInstance(request *DescribeReplicationGroupInstanceRequest) (response *DescribeReplicationGroupInstanceResponse, err error) {
+    return c.DescribeReplicationGroupInstanceWithContext(context.Background(), request)
+}
+
+// DescribeReplicationGroupInstance
+// 查询复制组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeReplicationGroupInstanceWithContext(ctx context.Context, request *DescribeReplicationGroupInstanceRequest) (response *DescribeReplicationGroupInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationGroupInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationGroupInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplicationGroupInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -5238,6 +5407,65 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReplicationGroupRequest() (request *ModifyReplicationGroupRequest) {
+    request = &ModifyReplicationGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyReplicationGroup")
+    
+    
+    return
+}
+
+func NewModifyReplicationGroupResponse() (response *ModifyReplicationGroupResponse) {
+    response = &ModifyReplicationGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReplicationGroup
+// 修改复制组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) ModifyReplicationGroup(request *ModifyReplicationGroupRequest) (response *ModifyReplicationGroupResponse, err error) {
+    return c.ModifyReplicationGroupWithContext(context.Background(), request)
+}
+
+// ModifyReplicationGroup
+// 修改复制组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) ModifyReplicationGroupWithContext(ctx context.Context, request *ModifyReplicationGroupRequest) (response *ModifyReplicationGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyReplicationGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReplicationGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReplicationGroupResponse()
     err = c.Send(request, response)
     return
 }

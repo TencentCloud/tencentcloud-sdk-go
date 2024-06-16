@@ -4330,6 +4330,8 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 //
 // 签署码的样式如下图:
 //
+// 
+//
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //
 // 可能返回的错误码:
@@ -4395,6 +4397,8 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 // 
 //
 // 签署码的样式如下图:
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 //

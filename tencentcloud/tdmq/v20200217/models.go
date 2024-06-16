@@ -11838,6 +11838,10 @@ type RabbitMQClusterInfo struct {
 	// 集群版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 计费模式，0-后付费，1-预付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 }
 
 type RabbitMQClusterSpecInfo struct {
