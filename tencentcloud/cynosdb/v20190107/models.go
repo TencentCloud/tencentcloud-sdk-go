@@ -13523,6 +13523,21 @@ type RollbackToNewClusterRequestParams struct {
 
 	// 计算节点付费模式：0-按量计费，1-预付费
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 时间
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 单位
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 回档库信息
+	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitnil,omitempty" name:"RollbackDatabases"`
+
+	// 回档表信息
+	RollbackTables []*RollbackTable `json:"RollbackTables,omitnil,omitempty" name:"RollbackTables"`
+
+	// 原ro实例信息
+	OriginalROInstanceList []*string `json:"OriginalROInstanceList,omitnil,omitempty" name:"OriginalROInstanceList"`
 }
 
 type RollbackToNewClusterRequest struct {
@@ -13599,6 +13614,21 @@ type RollbackToNewClusterRequest struct {
 
 	// 计算节点付费模式：0-按量计费，1-预付费
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 时间
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 单位
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 回档库信息
+	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitnil,omitempty" name:"RollbackDatabases"`
+
+	// 回档表信息
+	RollbackTables []*RollbackTable `json:"RollbackTables,omitnil,omitempty" name:"RollbackTables"`
+
+	// 原ro实例信息
+	OriginalROInstanceList []*string `json:"OriginalROInstanceList,omitnil,omitempty" name:"OriginalROInstanceList"`
 }
 
 func (r *RollbackToNewClusterRequest) ToJsonString() string {
@@ -13634,6 +13664,11 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	delete(f, "InstanceInitInfos")
 	delete(f, "DealMode")
 	delete(f, "PayMode")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	delete(f, "RollbackDatabases")
+	delete(f, "RollbackTables")
+	delete(f, "OriginalROInstanceList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackToNewClusterRequest has unknown keys!", "")
 	}

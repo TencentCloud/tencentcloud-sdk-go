@@ -98,63 +98,6 @@ type DbauditTypesInfo struct {
 }
 
 // Predefined struct for user
-type DescribeDasbImageIdsRequestParams struct {
-
-}
-
-type DescribeDasbImageIdsRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeDasbImageIdsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDasbImageIdsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDasbImageIdsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDasbImageIdsResponseParams struct {
-	// 基础镜像ID
-	BaseImageId *string `json:"BaseImageId,omitnil,omitempty" name:"BaseImageId"`
-
-	// AI镜像ID
-	AiImageId *string `json:"AiImageId,omitnil,omitempty" name:"AiImageId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeDasbImageIdsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDasbImageIdsResponseParams `json:"Response"`
-}
-
-func (r *DescribeDasbImageIdsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDasbImageIdsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeDbauditInstanceTypeRequestParams struct {
 
 }

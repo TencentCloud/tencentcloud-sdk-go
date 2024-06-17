@@ -16099,6 +16099,10 @@ type FileConfigRelease struct {
 	// 集群名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 配置中心发布详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigCenters []*TsfConfigCenter `json:"ConfigCenters,omitnil,omitempty" name:"ConfigCenters"`
 }
 
 type Filter struct {

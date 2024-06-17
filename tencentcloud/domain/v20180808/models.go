@@ -288,7 +288,7 @@ type BiddingAppointResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppointNum *uint64 `json:"AppointNum,omitnil,omitempty" name:"AppointNum"`
 
-	//  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
@@ -397,7 +397,7 @@ type BiddingResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingNum *uint64 `json:"BiddingNum,omitnil,omitempty" name:"BiddingNum"`
 
-	// 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+	// 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
@@ -1666,7 +1666,7 @@ type DescribeBiddingAppointDetailResponseParams struct {
 	// 预约保证金
 	AppointBondPrice *uint64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
 
-	//  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 预约保证金是否已经退回
@@ -1852,7 +1852,7 @@ type DescribeBiddingDetailResponseParams struct {
 	// 竞价保证金
 	BiddingBondPrice *uint64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
-	// 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+	// 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 竞价标识，1 领先，2 落后
@@ -1895,7 +1895,7 @@ type DescribeBiddingListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
+	// 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 排序字段：BiddingEndTime 竞价结束时间	
@@ -1918,7 +1918,7 @@ type DescribeBiddingListRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
+	// 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 排序字段：BiddingEndTime 竞价结束时间	
@@ -2042,7 +2042,7 @@ type DescribeBiddingSuccessfulDetailResponseParams struct {
 	// 保证金
 	BiddingBondPrice *float64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
-	// 状态：1 竞价中，2 待出价，3 竞价失败， 4 等待支付 5 等待转移， 6 转移中，7 交易成功，8 持有者索回，9 已违约
+	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

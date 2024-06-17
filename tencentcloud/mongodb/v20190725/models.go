@@ -178,6 +178,16 @@ type BackupInfo struct {
 
 	// 备份方法，0-逻辑备份，1-物理备份
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 备份记录id
+	BackId *int64 `json:"BackId,omitnil,omitempty" name:"BackId"`
+
+	// 备份删除时间
+	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// 异地备份地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupRegion *string `json:"BackupRegion,omitnil,omitempty" name:"BackupRegion"`
 }
 
 type ClientConnection struct {

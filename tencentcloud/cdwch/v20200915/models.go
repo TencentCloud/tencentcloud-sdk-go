@@ -1960,6 +1960,18 @@ type InstanceInfo struct {
 	// true
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasEsIndex *bool `json:"HasEsIndex,omitnil,omitempty" name:"HasEsIndex"`
+
+	// true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSecondaryZone *bool `json:"IsSecondaryZone,omitnil,omitempty" name:"IsSecondaryZone"`
+
+	// desc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondaryZoneInfo *string `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
+
+	// 是否clickhouse-keeper
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClickHouseKeeper *bool `json:"ClickHouseKeeper,omitnil,omitempty" name:"ClickHouseKeeper"`
 }
 
 type InstanceNode struct {

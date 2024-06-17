@@ -424,27 +424,35 @@ func (r *CompareIdlFilesResponse) FromJsonString(s string) error {
 
 type CompareTablesInfo struct {
 	// 源表格的集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableClusterId *string `json:"SrcTableClusterId,omitnil,omitempty" name:"SrcTableClusterId"`
 
 	// 源表格的表格组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableGroupId *string `json:"SrcTableGroupId,omitnil,omitempty" name:"SrcTableGroupId"`
 
 	// 源表格的表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableName *string `json:"SrcTableName,omitnil,omitempty" name:"SrcTableName"`
 
 	// 目标表格的集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableClusterId *string `json:"DstTableClusterId,omitnil,omitempty" name:"DstTableClusterId"`
 
 	// 目标表格的表格组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableGroupId *string `json:"DstTableGroupId,omitnil,omitempty" name:"DstTableGroupId"`
 
 	// 目标表格的表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableName *string `json:"DstTableName,omitnil,omitempty" name:"DstTableName"`
 
 	// 源表格的实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableInstanceId *string `json:"SrcTableInstanceId,omitnil,omitempty" name:"SrcTableInstanceId"`
 
 	// 目标表格的实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableInstanceId *string `json:"DstTableInstanceId,omitnil,omitempty" name:"DstTableInstanceId"`
 }
 
@@ -2891,21 +2899,27 @@ func (r *ImportSnapshotsResponse) FromJsonString(s string) error {
 
 type KafkaInfo struct {
 	// Kafka address
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// Kafka topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// kafka username
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// kafka password
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// ckafka实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
 
 	// 是否走VPC
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVpc *int64 `json:"IsVpc,omitnil,omitempty" name:"IsVpc"`
 }
 
@@ -4551,6 +4565,10 @@ type SnapshotResult struct {
 	// 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotStatus *uint64 `json:"SnapshotStatus,omitnil,omitempty" name:"SnapshotStatus"`
+
+	// 申请单ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 type SyncTableField struct {
@@ -4923,6 +4941,18 @@ type TaskInfoNew struct {
 
 	// 任务详情
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 表格组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
+
+	// 表格组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGroupName *string `json:"TableGroupName,omitnil,omitempty" name:"TableGroupName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
 // Predefined struct for user

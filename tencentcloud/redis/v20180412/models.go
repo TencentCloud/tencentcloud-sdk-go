@@ -3754,14 +3754,14 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSecurityGroupRequestParams struct {
-	// 实例 ID 列表。例如;["crs-f2ho5rsz\n"]
+	// 实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstanceSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 列表。例如;["crs-f2ho5rsz\n"]
+	// 实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -5224,7 +5224,7 @@ type DescribeSlowLogResponseParams struct {
 	// 慢查询总数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 该参数存在命名不规范问题，建议用参数InstanceSlowLogDetail取代。慢查询详情。
+	// 已废弃，该参数存在命名不规范问题，后续用参数InstanceSlowLogDetail取代。慢查询详情。
 	InstanceSlowlogDetail []*InstanceSlowlogDetail `json:"InstanceSlowlogDetail,omitnil,omitempty" name:"InstanceSlowlogDetail"`
 
 	// 慢查询详情。
@@ -9597,6 +9597,9 @@ type TendisNodes struct {
 
 	// 节点角色
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
+
+	// 可用区 ID。	
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
 type TendisSlowLogDetail struct {

@@ -7438,6 +7438,9 @@ func (r *DescribePublicAddressConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicAddressConfigResponseParams struct {
+	// 公网地址信息
+	Result *DescribePublicAddressConfigResult `json:"Result,omitnil,omitempty" name:"Result"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7456,6 +7459,20 @@ func (r *DescribePublicAddressConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribePublicAddressConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicAddressConfigResult struct {
+	// 网关实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 公网地址信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigList []*PublicAddressConfig `json:"ConfigList,omitnil,omitempty" name:"ConfigList"`
+
+	// 总个数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 // Predefined struct for user
@@ -11133,6 +11150,28 @@ type PolarisLimiterAddress struct {
 	// VPC接入IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetAddress *string `json:"IntranetAddress,omitnil,omitempty" name:"IntranetAddress"`
+}
+
+type PublicAddressConfig struct {
+	// 公网 ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 公网最大带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 公网所属分组 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 公网所属分组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 公网负载均衡 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkId *string `json:"NetworkId,omitnil,omitempty" name:"NetworkId"`
 }
 
 // Predefined struct for user

@@ -2821,11 +2821,7 @@ func NewStartAITranscriptionResponse() (response *StartAITranscriptionResponse) 
 //
 // 
 //
-// 服务端实时下发字幕和会议记录有两种方式，通过IMAdminUserId和IMAdminUserSig字段控制：
-//
-// - 如果填写IMAdminUserId和IMAdminUserSig，服务端会调用IM的[发送群组消息](https://cloud.tencent.com/document/product/269/1629)API来向端上实时下发消息。客户端只需监听群组消息的回调即可，比如[web端回调](https://cloud.tencent.com/document/product/269/75319)。
-//
-// - 如果不填写IMAdminUserId和IMAdminUserSig，服务端使用TRTC自定义消息通道下发消息，CmdId固定是1。客户端只需监听自定义消息的回调即可，比如[c++回调](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565)。
+// 服务端通过TRTC的自定义消息实时下发字幕和会议记录，CmdId固定是1。客户端只需监听自定义消息的回调即可，比如[c++回调](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565)。其他客户端比如安卓、Web等同样可在该链接处找到。
 //
 // 
 //
@@ -2921,11 +2917,7 @@ func (c *Client) StartAITranscription(request *StartAITranscriptionRequest) (res
 //
 // 
 //
-// 服务端实时下发字幕和会议记录有两种方式，通过IMAdminUserId和IMAdminUserSig字段控制：
-//
-// - 如果填写IMAdminUserId和IMAdminUserSig，服务端会调用IM的[发送群组消息](https://cloud.tencent.com/document/product/269/1629)API来向端上实时下发消息。客户端只需监听群组消息的回调即可，比如[web端回调](https://cloud.tencent.com/document/product/269/75319)。
-//
-// - 如果不填写IMAdminUserId和IMAdminUserSig，服务端使用TRTC自定义消息通道下发消息，CmdId固定是1。客户端只需监听自定义消息的回调即可，比如[c++回调](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565)。
+// 服务端通过TRTC的自定义消息实时下发字幕和会议记录，CmdId固定是1。客户端只需监听自定义消息的回调即可，比如[c++回调](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565)。其他客户端比如安卓、Web等同样可在该链接处找到。
 //
 // 
 //

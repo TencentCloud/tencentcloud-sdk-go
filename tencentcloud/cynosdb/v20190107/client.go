@@ -4738,6 +4738,10 @@ func NewDescribeRollbackTimeValidityResponse() (response *DescribeRollbackTimeVa
 }
 
 // DescribeRollbackTimeValidity
+// 历史废弃接口，从云API下线
+//
+// 
+//
 // 指定时间和集群查询是否可回滚
 //
 // 可能返回的错误码:
@@ -4751,6 +4755,10 @@ func (c *Client) DescribeRollbackTimeValidity(request *DescribeRollbackTimeValid
 }
 
 // DescribeRollbackTimeValidity
+// 历史废弃接口，从云API下线
+//
+// 
+//
 // 指定时间和集群查询是否可回滚
 //
 // 可能返回的错误码:

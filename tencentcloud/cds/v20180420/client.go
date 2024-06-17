@@ -45,57 +45,6 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
-    request = &DescribeDasbImageIdsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cds", APIVersion, "DescribeDasbImageIds")
-    
-    
-    return
-}
-
-func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) {
-    response = &DescribeDasbImageIdsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDasbImageIds
-// 这些接口是传统版堡垒机接口.数审未用到，堡垒机的已全部迁移到dasb下，cds这边预下线
-//
-// 
-//
-// 获取镜像列表
-func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
-    return c.DescribeDasbImageIdsWithContext(context.Background(), request)
-}
-
-// DescribeDasbImageIds
-// 这些接口是传统版堡垒机接口.数审未用到，堡垒机的已全部迁移到dasb下，cds这边预下线
-//
-// 
-//
-// 获取镜像列表
-func (c *Client) DescribeDasbImageIdsWithContext(ctx context.Context, request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDasbImageIdsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDasbImageIds require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDasbImageIdsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTypeRequest) {
     request = &DescribeDbauditInstanceTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
