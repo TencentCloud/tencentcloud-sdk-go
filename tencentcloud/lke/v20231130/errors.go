@@ -20,15 +20,48 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 文件下载失败。
+	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+
+	// 文件解码失败
+	FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+
+	// 图片解码失败。
+	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+
+	// OCR识别失败。
+	FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+
+	// 未知错误。
+	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+
+	// 服务未开通。
+	FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 参数值错误。
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 文件内容太大。
+	LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+
+	// 帐号已欠费。
+	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+
+	// 账号资源包耗尽。
+	RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+
+	// 计费状态异常。
+	RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 )

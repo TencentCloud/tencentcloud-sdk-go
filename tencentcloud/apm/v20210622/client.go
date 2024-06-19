@@ -188,6 +188,8 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 // APM实例列表拉取
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
@@ -199,6 +201,8 @@ func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (res
 // APM实例列表拉取
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"

@@ -362,6 +362,7 @@ func NewAddVpcCniSubnetsResponse() (response *AddVpcCniSubnetsResponse) {
 // 针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ADDVPCCNISUBNETSFAILED = "FailedOperation.AddVpcCniSubnetsFailed"
 //  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -381,6 +382,7 @@ func (c *Client) AddVpcCniSubnets(request *AddVpcCniSubnetsRequest) (response *A
 // 针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ADDVPCCNISUBNETSFAILED = "FailedOperation.AddVpcCniSubnetsFailed"
 //  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -8438,6 +8440,57 @@ func (c *Client) DescribeLogSwitchesWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeLogSwitchesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePodChargeInfoRequest() (request *DescribePodChargeInfoRequest) {
+    request = &DescribePodChargeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePodChargeInfo")
+    
+    
+    return
+}
+
+func NewDescribePodChargeInfoResponse() (response *DescribePodChargeInfoResponse) {
+    response = &DescribePodChargeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePodChargeInfo
+// 查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribePodChargeInfo(request *DescribePodChargeInfoRequest) (response *DescribePodChargeInfoResponse, err error) {
+    return c.DescribePodChargeInfoWithContext(context.Background(), request)
+}
+
+// DescribePodChargeInfo
+// 查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribePodChargeInfoWithContext(ctx context.Context, request *DescribePodChargeInfoRequest) (response *DescribePodChargeInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePodChargeInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePodChargeInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePodChargeInfoResponse()
     err = c.Send(request, response)
     return
 }

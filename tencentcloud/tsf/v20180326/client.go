@@ -4956,6 +4956,10 @@ func NewDescribeApplicationBusinessLogConfigResponse() (response *DescribeApplic
 }
 
 // DescribeApplicationBusinessLogConfig
+// 接口未使用，废弃录用
+//
+// 
+//
 // 查询应用关联日志配置项信息
 //
 // 可能返回的错误码:
@@ -4965,6 +4969,10 @@ func (c *Client) DescribeApplicationBusinessLogConfig(request *DescribeApplicati
 }
 
 // DescribeApplicationBusinessLogConfig
+// 接口未使用，废弃录用
+//
+// 
+//
 // 查询应用关联日志配置项信息
 //
 // 可能返回的错误码:

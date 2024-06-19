@@ -1093,6 +1093,14 @@ type AssetViewVULRiskData struct {
 	// 新的漏洞风险id(同全网漏洞表的riskid)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulRiskId *string `json:"VulRiskId,omitnil,omitempty" name:"VulRiskId"`
+
+	// 新版漏洞id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TvdID *string `json:"TvdID,omitnil,omitempty" name:"TvdID"`
+
+	// 是否可以一键体检，1-可以，0-不可以
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOneClick *uint64 `json:"IsOneClick,omitnil,omitempty" name:"IsOneClick"`
 }
 
 type AssetViewWeakPassRisk struct {
@@ -1496,6 +1504,14 @@ type CVMAssetVO struct {
 	// CPU使用率百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentCpuPer *float64 `json:"AgentCpuPer,omitnil,omitempty" name:"AgentCpuPer"`
+
+	// cvm真正所属的appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealAppid *int64 `json:"RealAppid,omitnil,omitempty" name:"RealAppid"`
+
+	// 云资产类型：0：腾讯云，1：aws，2：azure
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
 type ClbListenerListInfo struct {
@@ -1557,6 +1573,9 @@ type CreateDomainAndIpRequestParams struct {
 	// 公网IP/域名
 	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
 
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 资产标签
 	Tags []*AssetTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
@@ -1566,6 +1585,9 @@ type CreateDomainAndIpRequest struct {
 	
 	// 公网IP/域名
 	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 资产标签
 	Tags []*AssetTag `json:"Tags,omitnil,omitempty" name:"Tags"`
@@ -1584,6 +1606,7 @@ func (r *CreateDomainAndIpRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Content")
+	delete(f, "MemberId")
 	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainAndIpRequest has unknown keys!", "")
@@ -1653,6 +1676,9 @@ type CreateRiskCenterScanTaskRequestParams struct {
 
 	// 资产标签
 	Tags *AssetTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 任务完成回调webhook地址
+	FinishWebHook *string `json:"FinishWebHook,omitnil,omitempty" name:"FinishWebHook"`
 }
 
 type CreateRiskCenterScanTaskRequest struct {
@@ -1693,6 +1719,9 @@ type CreateRiskCenterScanTaskRequest struct {
 
 	// 资产标签
 	Tags *AssetTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 任务完成回调webhook地址
+	FinishWebHook *string `json:"FinishWebHook,omitnil,omitempty" name:"FinishWebHook"`
 }
 
 func (r *CreateRiskCenterScanTaskRequest) ToJsonString() string {
@@ -1719,6 +1748,7 @@ func (r *CreateRiskCenterScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskAdvanceCFG")
 	delete(f, "TaskMode")
 	delete(f, "Tags")
+	delete(f, "FinishWebHook")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRiskCenterScanTaskRequest has unknown keys!", "")
 	}
@@ -1931,6 +1961,9 @@ type DbAssetInfo struct {
 
 // Predefined struct for user
 type DeleteDomainAndIpRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// -
 	Content []*PublicIpDomainListKey `json:"Content,omitnil,omitempty" name:"Content"`
 
@@ -1950,6 +1983,9 @@ type DeleteDomainAndIpRequestParams struct {
 type DeleteDomainAndIpRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// -
 	Content []*PublicIpDomainListKey `json:"Content,omitnil,omitempty" name:"Content"`
 
@@ -1978,6 +2014,7 @@ func (r *DeleteDomainAndIpRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Content")
 	delete(f, "RetainPath")
 	delete(f, "IgnoreAsset")
@@ -5295,6 +5332,9 @@ type ModifyRiskCenterScanTaskRequestParams struct {
 
 	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
 	TaskMode *int64 `json:"TaskMode,omitnil,omitempty" name:"TaskMode"`
+
+	// 任务完成回调webhook地址
+	FinishWebHook *string `json:"FinishWebHook,omitnil,omitempty" name:"FinishWebHook"`
 }
 
 type ModifyRiskCenterScanTaskRequest struct {
@@ -5332,6 +5372,9 @@ type ModifyRiskCenterScanTaskRequest struct {
 
 	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
 	TaskMode *int64 `json:"TaskMode,omitnil,omitempty" name:"TaskMode"`
+
+	// 任务完成回调webhook地址
+	FinishWebHook *string `json:"FinishWebHook,omitnil,omitempty" name:"FinishWebHook"`
 }
 
 func (r *ModifyRiskCenterScanTaskRequest) ToJsonString() string {
@@ -5357,6 +5400,7 @@ func (r *ModifyRiskCenterScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "SelfDefiningAssets")
 	delete(f, "TaskAdvanceCFG")
 	delete(f, "TaskMode")
+	delete(f, "FinishWebHook")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRiskCenterScanTaskRequest has unknown keys!", "")
 	}
@@ -6769,7 +6813,7 @@ type VULViewVULRiskData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackHeat *uint64 `json:"AttackHeat,omitnil,omitempty" name:"AttackHeat"`
 
-	// 是否必修漏洞1是，0不是
+	// 是否必修漏洞，1-是，0-不是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSuggest *int64 `json:"IsSuggest,omitnil,omitempty" name:"IsSuggest"`
 
@@ -6784,6 +6828,14 @@ type VULViewVULRiskData struct {
 	// 新的漏洞风险id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulRiskId *string `json:"VulRiskId,omitnil,omitempty" name:"VulRiskId"`
+
+	// 新版漏洞id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TvdID *string `json:"TvdID,omitnil,omitempty" name:"TvdID"`
+
+	// 是否可以一键体检，1-可以，0-不可以
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOneClick *uint64 `json:"IsOneClick,omitnil,omitempty" name:"IsOneClick"`
 }
 
 type Vpc struct {

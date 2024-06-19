@@ -3113,6 +3113,9 @@ type DeleteAlarmPolicyRequestParams struct {
 
 	// 告警策略 ID 列表
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// prom的实例id
+	PromInsIds []*string `json:"PromInsIds,omitnil,omitempty" name:"PromInsIds"`
 }
 
 type DeleteAlarmPolicyRequest struct {
@@ -3123,6 +3126,9 @@ type DeleteAlarmPolicyRequest struct {
 
 	// 告警策略 ID 列表
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// prom的实例id
+	PromInsIds []*string `json:"PromInsIds,omitnil,omitempty" name:"PromInsIds"`
 }
 
 func (r *DeleteAlarmPolicyRequest) ToJsonString() string {
@@ -3139,6 +3145,7 @@ func (r *DeleteAlarmPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Module")
 	delete(f, "PolicyIds")
+	delete(f, "PromInsIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAlarmPolicyRequest has unknown keys!", "")
 	}

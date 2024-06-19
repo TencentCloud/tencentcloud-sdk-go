@@ -3330,16 +3330,16 @@ type CreateImageCacheRequestParams struct {
 	// 用于制作镜像缓存的容器镜像列表
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 实例所属子网Id
+	// 实例所属子网 ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例所属VPC Id
+	// 实例所属 VPC ID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 镜像缓存名称
 	ImageCacheName *string `json:"ImageCacheName,omitnil,omitempty" name:"ImageCacheName"`
 
-	// 安全组Id
+	// 安全组 ID
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 镜像仓库凭证数组
@@ -3378,16 +3378,16 @@ type CreateImageCacheRequest struct {
 	// 用于制作镜像缓存的容器镜像列表
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 实例所属子网Id
+	// 实例所属子网 ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例所属VPC Id
+	// 实例所属 VPC ID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 镜像缓存名称
 	ImageCacheName *string `json:"ImageCacheName,omitnil,omitempty" name:"ImageCacheName"`
 
-	// 安全组Id
+	// 安全组 ID
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 镜像仓库凭证数组
@@ -9954,6 +9954,10 @@ type DescribeIPAMDResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClaimExpiredDuration *string `json:"ClaimExpiredDuration,omitnil,omitempty" name:"ClaimExpiredDuration"`
 
+	// 是否开启了中继网卡模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableTrunkingENI *bool `json:"EnableTrunkingENI,omitnil,omitempty" name:"EnableTrunkingENI"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10189,6 +10193,84 @@ func (r *DescribeLogSwitchesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogSwitchesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePodChargeInfoRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// Pod名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Pod的Uid
+	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
+}
+
+type DescribePodChargeInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// Pod名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Pod的Uid
+	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
+}
+
+func (r *DescribePodChargeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePodChargeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Namespace")
+	delete(f, "Name")
+	delete(f, "Uids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePodChargeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePodChargeInfoResponseParams struct {
+	// Pod计费信息
+	ChargeInfoSet []*PodChargeInfo `json:"ChargeInfoSet,omitnil,omitempty" name:"ChargeInfoSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePodChargeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePodChargeInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePodChargeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePodChargeInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17252,6 +17334,41 @@ type PendingRelease struct {
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
+type PodChargeInfo struct {
+	// Pod计费开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Pod的Uid
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// Pod的CPU
+	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// Pod的内存
+	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// Pod类型：intel、amd、v100、t4、a10\*gnv4、a10\*gnv4v等。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// Pod是GPU时，表示GPU卡数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gpu *string `json:"Gpu,omitnil,omitempty" name:"Gpu"`
+
+	// 计费类型
+	// PREPAID：Pod调度到包月超级节点
+	// POSTPAID_BY_HOUR：按量计费
+	// RESERVED_INSTANCE：上个周期被预留券抵扣
+	// SPOT：竞价实例
+	// TPOD：特惠实例
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// Pod名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type PodDeductionRate struct {
 	// Pod的 CPU
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -20083,7 +20200,7 @@ func (r *UpdateEdgeClusterVersionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateImageCacheRequestParams struct {
-	// 镜像缓存Id
+	// 镜像缓存ID
 	ImageCacheId *string `json:"ImageCacheId,omitnil,omitempty" name:"ImageCacheId"`
 
 	// 镜像缓存名称
@@ -20108,7 +20225,7 @@ type UpdateImageCacheRequestParams struct {
 type UpdateImageCacheRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像缓存Id
+	// 镜像缓存ID
 	ImageCacheId *string `json:"ImageCacheId,omitnil,omitempty" name:"ImageCacheId"`
 
 	// 镜像缓存名称

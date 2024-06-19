@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccessFieldValueRatioInfo struct {
+	// 日志条数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 对应的Value值的百分比
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// 字段对应的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type AccessFullTextInfo struct {
 	// 是否大小写敏感
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3277,9 +3288,6 @@ func (r *DescribeAccessExportsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessFastAnalysisRequestParams struct {
-	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
@@ -3291,6 +3299,11 @@ type DescribeAccessFastAnalysisRequestParams struct {
 
 	// 需要分析统计的字段名
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	//
+	// Deprecated: TopicId is deprecated.
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 排序字段,升序asc,降序desc，默认降序desc 
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
@@ -3302,9 +3315,6 @@ type DescribeAccessFastAnalysisRequestParams struct {
 type DescribeAccessFastAnalysisRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
@@ -3316,6 +3326,9 @@ type DescribeAccessFastAnalysisRequest struct {
 
 	// 需要分析统计的字段名
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 排序字段,升序asc,降序desc，默认降序desc 
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
@@ -3336,11 +3349,11 @@ func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TopicId")
 	delete(f, "From")
 	delete(f, "To")
 	delete(f, "Query")
 	delete(f, "FieldName")
+	delete(f, "TopicId")
 	delete(f, "Sort")
 	delete(f, "Count")
 	if len(f) > 0 {
@@ -3351,6 +3364,13 @@ func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessFastAnalysisResponseParams struct {
+	// 注意：此字段可能返回 null，表示取不到有效值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldValueRatioInfos []*AccessFieldValueRatioInfo `json:"FieldValueRatioInfos,omitnil,omitempty" name:"FieldValueRatioInfos"`
+
+	// 日志条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

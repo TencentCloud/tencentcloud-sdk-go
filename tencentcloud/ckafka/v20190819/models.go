@@ -9372,11 +9372,11 @@ type ModifyTopicAttributesRequestParams struct {
 	// 消息保留时间，单位：ms，当前最小值为60000ms。
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// Segment 分片滚动的时长，单位：ms，当前最小为86400000ms。
-	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
-
 	// 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
+
+	// Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
 	// 消息删除策略，可以选择delete 或者compact
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
@@ -9430,11 +9430,11 @@ type ModifyTopicAttributesRequest struct {
 	// 消息保留时间，单位：ms，当前最小值为60000ms。
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// Segment 分片滚动的时长，单位：ms，当前最小为86400000ms。
-	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
-
 	// 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
+
+	// Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
 	// 消息删除策略，可以选择delete 或者compact
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
@@ -9483,8 +9483,8 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "MinInsyncReplicas")
 	delete(f, "UncleanLeaderElectionEnable")
 	delete(f, "RetentionMs")
-	delete(f, "SegmentMs")
 	delete(f, "MaxMessageBytes")
+	delete(f, "SegmentMs")
 	delete(f, "CleanUpPolicy")
 	delete(f, "IpWhiteList")
 	delete(f, "EnableAclRule")
@@ -11203,4 +11203,24 @@ type ZoneResponse struct {
 	// 公网带宽配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetworkLimit *string `json:"PublicNetworkLimit,omitnil,omitempty" name:"PublicNetworkLimit"`
+
+	// 请求ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 分页offset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否必须录入tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForceCheckTag *bool `json:"ForceCheckTag,omitnil,omitempty" name:"ForceCheckTag"`
 }

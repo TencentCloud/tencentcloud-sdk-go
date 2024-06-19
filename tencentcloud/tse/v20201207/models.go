@@ -12058,9 +12058,15 @@ type UpstreamHealthCheckConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnhealthyHttpStatuses []*uint64 `json:"UnhealthyHttpStatuses,omitnil,omitempty" name:"UnhealthyHttpStatuses"`
 
-	// 健康检查屏蔽权重为0的节点
+	// 健康检查监控上报的数据屏蔽权重为0的节点
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: IgnoreZeroWeightNodes is deprecated.
 	IgnoreZeroWeightNodes *bool `json:"IgnoreZeroWeightNodes,omitnil,omitempty" name:"IgnoreZeroWeightNodes"`
+
+	// 健康检查支持权重为0节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZeroWeightHeathCheck *bool `json:"ZeroWeightHeathCheck,omitnil,omitempty" name:"ZeroWeightHeathCheck"`
 }
 
 type VpcInfo struct {

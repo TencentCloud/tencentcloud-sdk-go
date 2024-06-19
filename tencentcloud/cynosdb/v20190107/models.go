@@ -834,6 +834,10 @@ type BizTaskInfo struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
 	// 任务创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -940,6 +944,11 @@ type BizTaskInfo struct {
 	// 维护时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskMaintainInfo *TaskMaintainInfo `json:"TaskMaintainInfo,omitnil,omitempty" name:"TaskMaintainInfo"`
+
+	// 实例日志投递信息
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCLSDeliveryInfos []*InstanceCLSDeliveryInfo `json:"InstanceCLSDeliveryInfos,omitnil,omitempty" name:"InstanceCLSDeliveryInfos"`
 }
 
 type BizTaskModifyInstanceParam struct {
@@ -8379,6 +8388,26 @@ type ErrorLogItemExport struct {
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
+type ExchangeInstanceInfo struct {
+	// 源实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcInstanceInfo *RollbackInstanceInfo `json:"SrcInstanceInfo,omitnil,omitempty" name:"SrcInstanceInfo"`
+
+	// 目标实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstInstanceInfo *RollbackInstanceInfo `json:"DstInstanceInfo,omitnil,omitempty" name:"DstInstanceInfo"`
+}
+
+type ExchangeRoGroupInfo struct {
+	// 源RO组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcRoGroupInfo *RollbackRoGroupInfo `json:"SrcRoGroupInfo,omitnil,omitempty" name:"SrcRoGroupInfo"`
+
+	// 目标RO组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstRoGroupInfo *RollbackRoGroupInfo `json:"DstRoGroupInfo,omitnil,omitempty" name:"DstRoGroupInfo"`
+}
+
 // Predefined struct for user
 type ExportInstanceErrorLogsRequestParams struct {
 	// 实例ID
@@ -13414,6 +13443,10 @@ type RollbackData struct {
 	// 备份文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupFileName *string `json:"BackupFileName,omitnil,omitempty" name:"BackupFileName"`
+
+	// 回档进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollbackProcess *RollbackProcessInfo `json:"RollbackProcess,omitnil,omitempty" name:"RollbackProcess"`
 }
 
 type RollbackDatabase struct {
@@ -13422,6 +13455,108 @@ type RollbackDatabase struct {
 
 	// 新数据库名称
 	NewDatabase *string `json:"NewDatabase,omitnil,omitempty" name:"NewDatabase"`
+}
+
+type RollbackInstanceInfo struct {
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// vpc信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+
+	// vip信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// vport信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// cpu大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 存储大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
+}
+
+type RollbackProcessInfo struct {
+	// 是否可以交换vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsVipSwitchable *bool `json:"IsVipSwitchable,omitnil,omitempty" name:"IsVipSwitchable"`
+
+	// vip可交换时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipSwitchableTime *string `json:"VipSwitchableTime,omitnil,omitempty" name:"VipSwitchableTime"`
+
+	// 交换实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExchangeInstanceInfoList []*ExchangeInstanceInfo `json:"ExchangeInstanceInfoList,omitnil,omitempty" name:"ExchangeInstanceInfoList"`
+
+	// 交换RO组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExchangeRoGroupInfoList []*ExchangeRoGroupInfo `json:"ExchangeRoGroupInfoList,omitnil,omitempty" name:"ExchangeRoGroupInfoList"`
+
+	// 当前步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentStep *string `json:"CurrentStep,omitnil,omitempty" name:"CurrentStep"`
+
+	// 当前步骤进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentStepProgress *int64 `json:"CurrentStepProgress,omitnil,omitempty" name:"CurrentStepProgress"`
+
+	// 当前步骤剩余时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentStepRemainingTime *string `json:"CurrentStepRemainingTime,omitnil,omitempty" name:"CurrentStepRemainingTime"`
+}
+
+type RollbackRoGroupInfo struct {
+	// 实例组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
+
+	// vpc信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+
+	// vip信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// vport信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 }
 
 type RollbackTable struct {

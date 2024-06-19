@@ -8921,7 +8921,7 @@ func NewDiagnoseProResponse() (response *DiagnoseProResponse) {
 }
 
 // DiagnosePro
-// 实例诊断
+// 实例诊断，用于诊断 INITIAL、DEPENDENCE、ALLOCATED、LAUNCHED、EVENT_LISTENING、BEFORE_ASPECT、EXPIRED、FAILED状态的实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8930,7 +8930,7 @@ func (c *Client) DiagnosePro(request *DiagnoseProRequest) (response *DiagnosePro
 }
 
 // DiagnosePro
-// 实例诊断
+// 实例诊断，用于诊断 INITIAL、DEPENDENCE、ALLOCATED、LAUNCHED、EVENT_LISTENING、BEFORE_ASPECT、EXPIRED、FAILED状态的实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

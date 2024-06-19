@@ -414,6 +414,14 @@ type Context struct {
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
+type Coord struct {
+	// 横坐标
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 纵坐标
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+}
+
 // Predefined struct for user
 type CreateAppRequestParams struct {
 	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
@@ -843,6 +851,99 @@ func (r *CreateQAResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateQAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReconstructDocumentFlowConfig struct {
+	// Markdown文件中表格返回的形式
+	// 0，表格以MD形式返回
+	// 1，表格以HTML形式返回
+	// 默认为1
+	TableResultType *string `json:"TableResultType,omitnil,omitempty" name:"TableResultType"`
+}
+
+// Predefined struct for user
+type CreateReconstructDocumentFlowRequestParams struct {
+	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// 创建智能文档识别任务配置信息
+	Config *CreateReconstructDocumentFlowConfig `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type CreateReconstructDocumentFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// 创建智能文档识别任务配置信息
+	Config *CreateReconstructDocumentFlowConfig `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+func (r *CreateReconstructDocumentFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReconstructDocumentFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileBase64")
+	delete(f, "FileUrl")
+	delete(f, "FileStartPageNumber")
+	delete(f, "FileEndPageNumber")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReconstructDocumentFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReconstructDocumentFlowResponseParams struct {
+	// 任务唯一id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateReconstructDocumentFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateReconstructDocumentFlowResponseParams `json:"Response"`
+}
+
+func (r *CreateReconstructDocumentFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReconstructDocumentFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2381,6 +2482,75 @@ func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DocumentElement struct {
+	// 文档元素索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 元素类型，包括paragraph、table、formula、figure、title、header、footer、figure_text
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 元素内容，当type为figure或formula(公式识别关闭)时该字段内容为图片的位置
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 元素坐标，左上角(x1, y1)，右上角(x2, y2)，右下角(x3, y3)，左下角(x4, y4)
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Polygon *Polygon `json:"Polygon,omitnil,omitempty" name:"Polygon"`
+
+	// 元素层级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 入参开启EnableInsetImage后返回，表示在InsetImagePackage中的内嵌图片名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsetImageName *string `json:"InsetImageName,omitnil,omitempty" name:"InsetImageName"`
+
+	// 嵌套的文档元素信息，一般包含的是文档内嵌入图片的文字识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Elements []*DocumentElement `json:"Elements,omitnil,omitempty" name:"Elements"`
+}
+
+type DocumentRecognizeInfo struct {
+	// 输入PDF文件的页码，从1开始。输入图片的话值始终为1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 旋转角度
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Angle *int64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// AI算法识别处理后的图片高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// AI算法识别处理后的图片宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 图片的原始高度，输入PDF文件则表示单页PDF转图片之后的图片高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginHeight *int64 `json:"OriginHeight,omitnil,omitempty" name:"OriginHeight"`
+
+	// 图片的原始宽度，输入PDF文件则表示单页PDF转图片之后的图片宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginWidth *int64 `json:"OriginWidth,omitnil,omitempty" name:"OriginWidth"`
+
+	// 文档元素信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Elements []*DocumentElement `json:"Elements,omitnil,omitempty" name:"Elements"`
+
+	// 旋转角度
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotatedAngle *float64 `json:"RotatedAngle,omitnil,omitempty" name:"RotatedAngle"`
+}
+
 type EmbeddingObject struct {
 	// 向量
 	Embedding []*float64 `json:"Embedding,omitnil,omitempty" name:"Embedding"`
@@ -3078,6 +3248,69 @@ func (r *GetMsgRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetMsgRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetReconstructDocumentResultRequestParams struct {
+	// 任务唯一id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type GetReconstructDocumentResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务唯一id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *GetReconstructDocumentResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetReconstructDocumentResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetReconstructDocumentResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetReconstructDocumentResultResponseParams struct {
+	// 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行；
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
+	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
+
+	// 还原失败的页
+	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetReconstructDocumentResultResponse struct {
+	*tchttp.BaseResponse
+	Response *GetReconstructDocumentResultResponseParams `json:"Response"`
+}
+
+func (r *GetReconstructDocumentResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetReconstructDocumentResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6092,6 +6325,20 @@ func (r *ParseDocResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Polygon struct {
+	// 左上顶点坐标
+	LeftTop *Coord `json:"LeftTop,omitnil,omitempty" name:"LeftTop"`
+
+	// 右上顶点坐标
+	RightTop *Coord `json:"RightTop,omitnil,omitempty" name:"RightTop"`
+
+	// 右下顶点坐标
+	RightBottom *Coord `json:"RightBottom,omitnil,omitempty" name:"RightBottom"`
+
+	// 左下顶点坐标
+	LeftBottom *Coord `json:"LeftBottom,omitnil,omitempty" name:"LeftBottom"`
+}
+
 type Procedure struct {
 	// 执行过程英语名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6413,6 +6660,113 @@ func (r *RateMsgRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RateMsgRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReconstructDocumentConfig struct {
+	// 生成的Markdown中是否嵌入图片
+	EnableInsetImage *bool `json:"EnableInsetImage,omitnil,omitempty" name:"EnableInsetImage"`
+}
+
+type ReconstructDocumentFailedPage struct {
+	// 失败页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+// Predefined struct for user
+type ReconstructDocumentRequestParams struct {
+	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 单次调用，最多支持10页pdf的智能识别。
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
+	Config *ReconstructDocumentConfig `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type ReconstructDocumentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 单次调用，最多支持10页pdf的智能识别。
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
+	Config *ReconstructDocumentConfig `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+func (r *ReconstructDocumentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReconstructDocumentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileBase64")
+	delete(f, "FileUrl")
+	delete(f, "FileStartPageNumber")
+	delete(f, "FileEndPageNumber")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReconstructDocumentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReconstructDocumentResponseParams struct {
+	// 识别生成的Markdown文件base64编码的字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkdownBase64 *string `json:"MarkdownBase64,omitnil,omitempty" name:"MarkdownBase64"`
+
+	// 输入文件中嵌入的图片放在一个文件夹中打包为.zip压缩文件，识别生成的Markdown文件通过路径关联插入本文件夹中的图片。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsetImagePackage *string `json:"InsetImagePackage,omitnil,omitempty" name:"InsetImagePackage"`
+
+	// 输入文件中嵌入的图片中文字内容的识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentRecognizeInfo []*DocumentRecognizeInfo `json:"DocumentRecognizeInfo,omitnil,omitempty" name:"DocumentRecognizeInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReconstructDocumentResponse struct {
+	*tchttp.BaseResponse
+	Response *ReconstructDocumentResponseParams `json:"Response"`
+}
+
+func (r *ReconstructDocumentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReconstructDocumentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

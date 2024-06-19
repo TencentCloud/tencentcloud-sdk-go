@@ -16483,6 +16483,12 @@ func (r *DescribeWorkflowTaskCountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DiagnoseProRequestParams struct {
+	// 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
+	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
 	// 实例列表
 	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
 
@@ -16501,9 +16507,6 @@ type DiagnoseProRequestParams struct {
 	// 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
 	SonInstanceType *string `json:"SonInstanceType,omitnil,omitempty" name:"SonInstanceType"`
 
-	// 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
-	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
-
 	// 访问类型
 	OptType *string `json:"OptType,omitnil,omitempty" name:"OptType"`
 
@@ -16512,9 +16515,6 @@ type DiagnoseProRequestParams struct {
 
 	// 操作者id
 	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
-
-	// 项目id
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 项目标志
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
@@ -16541,6 +16541,12 @@ type DiagnoseProRequestParams struct {
 type DiagnoseProRequest struct {
 	*tchttp.BaseRequest
 	
+	// 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
+	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
 	// 实例列表
 	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
 
@@ -16559,9 +16565,6 @@ type DiagnoseProRequest struct {
 	// 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
 	SonInstanceType *string `json:"SonInstanceType,omitnil,omitempty" name:"SonInstanceType"`
 
-	// 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
-	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
-
 	// 访问类型
 	OptType *string `json:"OptType,omitnil,omitempty" name:"OptType"`
 
@@ -16570,9 +16573,6 @@ type DiagnoseProRequest struct {
 
 	// 操作者id
 	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
-
-	// 项目id
-	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 项目标志
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
@@ -16608,17 +16608,17 @@ func (r *DiagnoseProRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SearchCondition")
+	delete(f, "ProjectId")
 	delete(f, "Instances")
 	delete(f, "CheckFather")
 	delete(f, "RerunType")
 	delete(f, "DependentWay")
 	delete(f, "SkipEventListening")
 	delete(f, "SonInstanceType")
-	delete(f, "SearchCondition")
 	delete(f, "OptType")
 	delete(f, "OperatorName")
 	delete(f, "OperatorId")
-	delete(f, "ProjectId")
 	delete(f, "ProjectIdent")
 	delete(f, "ProjectName")
 	delete(f, "PageIndex")
@@ -27081,6 +27081,10 @@ type TaskAlarmInfo struct {
 	// 飞书群Hook地址，多个hook地址使用,隔开
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LarkWebHooks *string `json:"LarkWebHooks,omitnil,omitempty" name:"LarkWebHooks"`
+
+	// 钉钉群Hook地址，多个hook地址使用,隔开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DingDingWebHooks *string `json:"DingDingWebHooks,omitnil,omitempty" name:"DingDingWebHooks"`
 }
 
 type TaskByCycle struct {

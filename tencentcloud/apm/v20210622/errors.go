@@ -20,8 +20,14 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// CAM鉴权失败
+	AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+
 	// AuthFailure.UnauthorizedOperation
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
+	// CAM鉴权解析失败
+	AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 
 	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 	DRYRUNOPERATION = "DryRunOperation"

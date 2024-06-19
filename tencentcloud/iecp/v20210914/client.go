@@ -65,6 +65,10 @@ func NewApplyMarketComponentResponse() (response *ApplyMarketComponentResponse) 
 }
 
 // ApplyMarketComponent
+// 产品停售，预下线
+//
+// 
+//
 // 从组件市场选中组件并添加到应用模板列表
 //
 // 可能返回的错误码:
@@ -86,6 +90,10 @@ func (c *Client) ApplyMarketComponent(request *ApplyMarketComponentRequest) (res
 }
 
 // ApplyMarketComponent
+// 产品停售，预下线
+//
+// 
+//
 // 从组件市场选中组件并添加到应用模板列表
 //
 // 可能返回的错误码:
@@ -211,6 +219,10 @@ func NewCreateApplicationVisualizationResponse() (response *CreateApplicationVis
 }
 
 // CreateApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 创建可视化创建应用模板
 //
 // 可能返回的错误码:
@@ -232,6 +244,10 @@ func (c *Client) CreateApplicationVisualization(request *CreateApplicationVisual
 }
 
 // CreateApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 创建可视化创建应用模板
 //
 // 可能返回的错误码:
@@ -665,6 +681,10 @@ func NewCreateEdgeUnitApplicationVisualizationResponse() (response *CreateEdgeUn
 }
 
 // CreateEdgeUnitApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 可视化创建应用
 //
 // 可能返回的错误码:
@@ -686,6 +706,10 @@ func (c *Client) CreateEdgeUnitApplicationVisualization(request *CreateEdgeUnitA
 }
 
 // CreateEdgeUnitApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 可视化创建应用
 //
 // 可能返回的错误码:
@@ -738,6 +762,10 @@ func NewCreateEdgeUnitApplicationYamlResponse() (response *CreateEdgeUnitApplica
 }
 
 // CreateEdgeUnitApplicationYaml
+// 产品停售，预下线
+//
+// 
+//
 // yaml方式创建应用
 //
 // 可能返回的错误码:
@@ -759,6 +787,10 @@ func (c *Client) CreateEdgeUnitApplicationYaml(request *CreateEdgeUnitApplicatio
 }
 
 // CreateEdgeUnitApplicationYaml
+// 产品停售，预下线
+//
+// 
+//
 // yaml方式创建应用
 //
 // 可能返回的错误码:
@@ -1409,6 +1441,10 @@ func NewDeleteApplicationsResponse() (response *DeleteApplicationsResponse) {
 }
 
 // DeleteApplications
+// 产品停售，预下线
+//
+// 
+//
 // 删除应用模板
 //
 // 可能返回的错误码:
@@ -1437,6 +1473,10 @@ func (c *Client) DeleteApplications(request *DeleteApplicationsRequest) (respons
 }
 
 // DeleteApplications
+// 产品停售，预下线
+//
+// 
+//
 // 删除应用模板
 //
 // 可能返回的错误码:
@@ -1788,6 +1828,10 @@ func NewDeleteEdgeUnitApplicationsResponse() (response *DeleteEdgeUnitApplicatio
 }
 
 // DeleteEdgeUnitApplications
+// 产品停售，预下线
+//
+// 
+//
 // 删除应用列表
 //
 // 可能返回的错误码:
@@ -1809,6 +1853,10 @@ func (c *Client) DeleteEdgeUnitApplications(request *DeleteEdgeUnitApplicationsR
 }
 
 // DeleteEdgeUnitApplications
+// 产品停售，预下线
+//
+// 
+//
 // 删除应用列表
 //
 // 可能返回的错误码:
@@ -2605,6 +2653,10 @@ func NewDescribeApplicationVisualizationResponse() (response *DescribeApplicatio
 }
 
 // DescribeApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用模板可视化配置信息
 //
 // 可能返回的错误码:
@@ -2626,6 +2678,10 @@ func (c *Client) DescribeApplicationVisualization(request *DescribeApplicationVi
 }
 
 // DescribeApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用模板可视化配置信息
 //
 // 可能返回的错误码:
@@ -2678,6 +2734,10 @@ func NewDescribeApplicationYamlResponse() (response *DescribeApplicationYamlResp
 }
 
 // DescribeApplicationYaml
+// 产品停售，预下线
+//
+// 
+//
 // 查询应用模板Yaml
 //
 // 可能返回的错误码:
@@ -2705,6 +2765,10 @@ func (c *Client) DescribeApplicationYaml(request *DescribeApplicationYamlRequest
 }
 
 // DescribeApplicationYaml
+// 产品停售，预下线
+//
+// 
+//
 // 查询应用模板Yaml
 //
 // 可能返回的错误码:
@@ -2763,6 +2827,10 @@ func NewDescribeApplicationYamlErrorResponse() (response *DescribeApplicationYam
 }
 
 // DescribeApplicationYamlError
+// 产品停售，预下线
+//
+// 
+//
 // 检查应用模板的Yaml配置
 //
 // 可能返回的错误码:
@@ -2784,6 +2852,10 @@ func (c *Client) DescribeApplicationYamlError(request *DescribeApplicationYamlEr
 }
 
 // DescribeApplicationYamlError
+// 产品停售，预下线
+//
+// 
+//
 // 检查应用模板的Yaml配置
 //
 // 可能返回的错误码:
@@ -2836,6 +2908,10 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 }
 
 // DescribeApplications
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用模板列表
 //
 // 可能返回的错误码:
@@ -2864,6 +2940,10 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
 }
 
 // DescribeApplications
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用模板列表
 //
 // 可能返回的错误码:
@@ -3975,6 +4055,10 @@ func NewDescribeEdgeUnitApplicationEventsResponse() (response *DescribeEdgeUnitA
 }
 
 // DescribeEdgeUnitApplicationEvents
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用事件列表
 //
 // 可能返回的错误码:
@@ -3996,6 +4080,10 @@ func (c *Client) DescribeEdgeUnitApplicationEvents(request *DescribeEdgeUnitAppl
 }
 
 // DescribeEdgeUnitApplicationEvents
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用事件列表
 //
 // 可能返回的错误码:
@@ -4048,6 +4136,10 @@ func NewDescribeEdgeUnitApplicationLogsResponse() (response *DescribeEdgeUnitApp
 }
 
 // DescribeEdgeUnitApplicationLogs
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用日志
 //
 // 可能返回的错误码:
@@ -4069,6 +4161,10 @@ func (c *Client) DescribeEdgeUnitApplicationLogs(request *DescribeEdgeUnitApplic
 }
 
 // DescribeEdgeUnitApplicationLogs
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用日志
 //
 // 可能返回的错误码:
@@ -4121,6 +4217,10 @@ func NewDescribeEdgeUnitApplicationPodContainersResponse() (response *DescribeEd
 }
 
 // DescribeEdgeUnitApplicationPodContainers
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用容器状态
 //
 // 可能返回的错误码:
@@ -4142,6 +4242,10 @@ func (c *Client) DescribeEdgeUnitApplicationPodContainers(request *DescribeEdgeU
 }
 
 // DescribeEdgeUnitApplicationPodContainers
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用容器状态
 //
 // 可能返回的错误码:
@@ -4194,6 +4298,10 @@ func NewDescribeEdgeUnitApplicationPodsResponse() (response *DescribeEdgeUnitApp
 }
 
 // DescribeEdgeUnitApplicationPods
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用下Pod状态
 //
 // 可能返回的错误码:
@@ -4215,6 +4323,10 @@ func (c *Client) DescribeEdgeUnitApplicationPods(request *DescribeEdgeUnitApplic
 }
 
 // DescribeEdgeUnitApplicationPods
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用下Pod状态
 //
 // 可能返回的错误码:
@@ -4267,6 +4379,10 @@ func NewDescribeEdgeUnitApplicationVisualizationResponse() (response *DescribeEd
 }
 
 // DescribeEdgeUnitApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 获取单元可视化配置信息
 //
 // 可能返回的错误码:
@@ -4288,6 +4404,10 @@ func (c *Client) DescribeEdgeUnitApplicationVisualization(request *DescribeEdgeU
 }
 
 // DescribeEdgeUnitApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 获取单元可视化配置信息
 //
 // 可能返回的错误码:
@@ -4340,6 +4460,10 @@ func NewDescribeEdgeUnitApplicationYamlResponse() (response *DescribeEdgeUnitApp
 }
 
 // DescribeEdgeUnitApplicationYaml
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用的Yaml配置
 //
 // 可能返回的错误码:
@@ -4361,6 +4485,10 @@ func (c *Client) DescribeEdgeUnitApplicationYaml(request *DescribeEdgeUnitApplic
 }
 
 // DescribeEdgeUnitApplicationYaml
+// 产品停售，预下线
+//
+// 
+//
 // 获取应用的Yaml配置
 //
 // 可能返回的错误码:
@@ -4413,6 +4541,10 @@ func NewDescribeEdgeUnitApplicationYamlErrorResponse() (response *DescribeEdgeUn
 }
 
 // DescribeEdgeUnitApplicationYamlError
+// 产品停售，预下线
+//
+// 
+//
 // 检查单元应用的Yaml配置
 //
 // 可能返回的错误码:
@@ -4434,6 +4566,10 @@ func (c *Client) DescribeEdgeUnitApplicationYamlError(request *DescribeEdgeUnitA
 }
 
 // DescribeEdgeUnitApplicationYamlError
+// 产品停售，预下线
+//
+// 
+//
 // 检查单元应用的Yaml配置
 //
 // 可能返回的错误码:
@@ -4559,6 +4695,10 @@ func NewDescribeEdgeUnitCloudResponse() (response *DescribeEdgeUnitCloudResponse
 }
 
 // DescribeEdgeUnitCloud
+// 产品停售，预下线
+//
+// 
+//
 // 查询边缘集群详情
 //
 // 可能返回的错误码:
@@ -4587,6 +4727,10 @@ func (c *Client) DescribeEdgeUnitCloud(request *DescribeEdgeUnitCloudRequest) (r
 }
 
 // DescribeEdgeUnitCloud
+// 产品停售，预下线
+//
+// 
+//
 // 查询边缘集群详情
 //
 // 可能返回的错误码:
@@ -6497,6 +6641,10 @@ func NewModifyApplicationBasicInfoResponse() (response *ModifyApplicationBasicIn
 }
 
 // ModifyApplicationBasicInfo
+// 产品停售，预下线
+//
+// 
+//
 // 修改应用模板基本信息
 //
 // 可能返回的错误码:
@@ -6525,6 +6673,10 @@ func (c *Client) ModifyApplicationBasicInfo(request *ModifyApplicationBasicInfoR
 }
 
 // ModifyApplicationBasicInfo
+// 产品停售，预下线
+//
+// 
+//
 // 修改应用模板基本信息
 //
 // 可能返回的错误码:
@@ -6584,6 +6736,10 @@ func NewModifyApplicationVisualizationResponse() (response *ModifyApplicationVis
 }
 
 // ModifyApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 修改应用模板配置
 //
 // 可能返回的错误码:
@@ -6605,6 +6761,10 @@ func (c *Client) ModifyApplicationVisualization(request *ModifyApplicationVisual
 }
 
 // ModifyApplicationVisualization
+// 产品停售，预下线
+//
+// 
+//
 // 修改应用模板配置
 //
 // 可能返回的错误码:

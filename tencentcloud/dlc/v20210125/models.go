@@ -8580,6 +8580,60 @@ func (r *DescribeTasksCostInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTasksOverviewRequestParams struct {
+
+}
+
+type DescribeTasksOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeTasksOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksOverviewResponseParams struct {
+	// 各类任务个数大于0
+	TasksOverview *TasksOverview `json:"TasksOverview,omitnil,omitempty" name:"TasksOverview"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTasksOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTasksOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeTasksOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTasksRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`

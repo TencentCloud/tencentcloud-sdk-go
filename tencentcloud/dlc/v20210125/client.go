@@ -6024,6 +6024,61 @@ func (c *Client) DescribeTasksCostInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTasksOverviewRequest() (request *DescribeTasksOverviewRequest) {
+    request = &DescribeTasksOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTasksOverview")
+    
+    
+    return
+}
+
+func NewDescribeTasksOverviewResponse() (response *DescribeTasksOverviewResponse) {
+    response = &DescribeTasksOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTasksOverview
+// 查看任务概览页
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTasksOverview(request *DescribeTasksOverviewRequest) (response *DescribeTasksOverviewResponse, err error) {
+    return c.DescribeTasksOverviewWithContext(context.Background(), request)
+}
+
+// DescribeTasksOverview
+// 查看任务概览页
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTasksOverviewWithContext(ctx context.Context, request *DescribeTasksOverviewRequest) (response *DescribeTasksOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasksOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTasksOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeThirdPartyAccessUserRequest() (request *DescribeThirdPartyAccessUserRequest) {
     request = &DescribeThirdPartyAccessUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
