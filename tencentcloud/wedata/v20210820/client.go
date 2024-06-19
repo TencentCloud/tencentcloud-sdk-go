@@ -10664,6 +10664,55 @@ func (c *Client) ModifyWorkflowScheduleWithContext(ctx context.Context, request 
     return
 }
 
+func NewMoveTasksToFolderRequest() (request *MoveTasksToFolderRequest) {
+    request = &MoveTasksToFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "MoveTasksToFolder")
+    
+    
+    return
+}
+
+func NewMoveTasksToFolderResponse() (response *MoveTasksToFolderResponse) {
+    response = &MoveTasksToFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// MoveTasksToFolder
+// 编排空间-工作流-移动任务到工作流文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) MoveTasksToFolder(request *MoveTasksToFolderRequest) (response *MoveTasksToFolderResponse, err error) {
+    return c.MoveTasksToFolderWithContext(context.Background(), request)
+}
+
+// MoveTasksToFolder
+// 编排空间-工作流-移动任务到工作流文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) MoveTasksToFolderWithContext(ctx context.Context, request *MoveTasksToFolderRequest) (response *MoveTasksToFolderResponse, err error) {
+    if request == nil {
+        request = NewMoveTasksToFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MoveTasksToFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewMoveTasksToFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterEventRequest() (request *RegisterEventRequest) {
     request = &RegisterEventRequest{
         BaseRequest: &tchttp.BaseRequest{},

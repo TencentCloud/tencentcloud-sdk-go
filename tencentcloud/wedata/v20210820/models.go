@@ -21986,6 +21986,92 @@ func (r *ModifyWorkflowScheduleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveTasksToFolderRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务文件夹ID
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 任务ID
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 虚拟任务ID
+	VirtualTaskIds []*string `json:"VirtualTaskIds,omitnil,omitempty" name:"VirtualTaskIds"`
+}
+
+type MoveTasksToFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务文件夹ID
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 任务ID
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 虚拟任务ID
+	VirtualTaskIds []*string `json:"VirtualTaskIds,omitnil,omitempty" name:"VirtualTaskIds"`
+}
+
+func (r *MoveTasksToFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MoveTasksToFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "TaskFolderId")
+	delete(f, "TaskIds")
+	delete(f, "VirtualTaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MoveTasksToFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MoveTasksToFolderResponseParams struct {
+	// true代表成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type MoveTasksToFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *MoveTasksToFolderResponseParams `json:"Response"`
+}
+
+func (r *MoveTasksToFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MoveTasksToFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OfflineInstance struct {
 	// 创建账号sub uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -22321,7 +22407,7 @@ type OpsTaskCanvasInfoList struct {
 
 	// 画布循环依赖任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CirculateTaskList *OpsTaskCanvasDto `json:"CirculateTaskList,omitnil,omitempty" name:"CirculateTaskList"`
+	CirculateTaskList []*OpsTaskCanvasDto `json:"CirculateTaskList,omitnil,omitempty" name:"CirculateTaskList"`
 }
 
 type OpsTaskInfoPage struct {

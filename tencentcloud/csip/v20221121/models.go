@@ -4443,6 +4443,89 @@ func (r *DescribeVULRiskAdvanceCFGListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVULRiskDetailRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 风险id
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// pcMgrId
+	PCMGRId *string `json:"PCMGRId,omitnil,omitempty" name:"PCMGRId"`
+}
+
+type DescribeVULRiskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 风险id
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// pcMgrId
+	PCMGRId *string `json:"PCMGRId,omitnil,omitempty" name:"PCMGRId"`
+}
+
+func (r *DescribeVULRiskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVULRiskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "RiskId")
+	delete(f, "PCMGRId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVULRiskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVULRiskDetailResponseParams struct {
+	// 安全产品支持情况
+	ServiceSupport []*ServiceSupport `json:"ServiceSupport,omitnil,omitempty" name:"ServiceSupport"`
+
+	// 漏洞趋势
+	VulTrend []*VulTrend `json:"VulTrend,omitnil,omitempty" name:"VulTrend"`
+
+	// 漏洞补充信息
+	VulData *VULRiskInfo `json:"VulData,omitnil,omitempty" name:"VulData"`
+
+	// 小助手问答id
+	QuestionId *string `json:"QuestionId,omitnil,omitempty" name:"QuestionId"`
+
+	// 会话id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVULRiskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVULRiskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVULRiskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVULRiskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVpcAssetsRequestParams struct {
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
@@ -4508,6 +4591,94 @@ func (r *DescribeVpcAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVpcAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulViewVulRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type DescribeVulViewVulRiskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 资产标签
+	Tags []*AssetTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *DescribeVulViewVulRiskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulViewVulRiskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulViewVulRiskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulViewVulRiskListResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 漏洞产视角的漏洞风险列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*VULViewVULRiskData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 危险等级列表
+	LevelLists []*FilterDataObject `json:"LevelLists,omitnil,omitempty" name:"LevelLists"`
+
+	// 来源列表
+	FromLists []*FilterDataObject `json:"FromLists,omitnil,omitempty" name:"FromLists"`
+
+	// 漏洞类型列表
+	VULTypeLists []*FilterDataObject `json:"VULTypeLists,omitnil,omitempty" name:"VULTypeLists"`
+
+	// tag枚举
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*FilterDataObject `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulViewVulRiskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulViewVulRiskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulViewVulRiskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulViewVulRiskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6415,6 +6586,24 @@ type VULRiskAdvanceCFGList struct {
 	RecentScanTime *string `json:"RecentScanTime,omitnil,omitempty" name:"RecentScanTime"`
 }
 
+type VULRiskInfo struct {
+	// 修复建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fix *string `json:"Fix,omitnil,omitempty" name:"Fix"`
+
+	// 技术参考/参考链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References *string `json:"References,omitnil,omitempty" name:"References"`
+
+	// 漏洞描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// 受影响组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImpactComponent []*VulImpactComponentInfo `json:"ImpactComponent,omitnil,omitempty" name:"ImpactComponent"`
+}
+
 type VULViewVULRisk struct {
 	// 端口
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
@@ -6493,6 +6682,110 @@ type VULViewVULRisk struct {
 	EMGCVulType *int64 `json:"EMGCVulType,omitnil,omitempty" name:"EMGCVulType"`
 }
 
+type VULViewVULRiskData struct {
+	// 端口
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 影响资产
+	NoHandleCount *int64 `json:"NoHandleCount,omitnil,omitempty" name:"NoHandleCount"`
+
+	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 组件
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// 最近识别时间
+	RecentTime *string `json:"RecentTime,omitnil,omitempty" name:"RecentTime"`
+
+	// 首次识别时间
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+
+	// 影响资产数量
+	AffectAssetCount *uint64 `json:"AffectAssetCount,omitnil,omitempty" name:"AffectAssetCount"`
+
+	// 风险ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 扫描来源，具体看接口返回枚举类型
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 前端索引
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 漏洞类型
+	VULType *string `json:"VULType,omitnil,omitempty" name:"VULType"`
+
+	// 漏洞名
+	VULName *string `json:"VULName,omitnil,omitempty" name:"VULName"`
+
+	// cve
+	CVE *string `json:"CVE,omitnil,omitempty" name:"CVE"`
+
+	// 漏洞payload
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// 漏洞影响组件
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 漏洞影响版本
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
+
+	// 风险点
+	VULURL *string `json:"VULURL,omitnil,omitempty" name:"VULURL"`
+
+	// 用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
+
+	// 用户appid
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EMGCVulType *int64 `json:"EMGCVulType,omitnil,omitempty" name:"EMGCVulType"`
+
+	// CVSS评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVSS *float64 `json:"CVSS,omitnil,omitempty" name:"CVSS"`
+
+	// PCMGRId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PCMGRId *string `json:"PCMGRId,omitnil,omitempty" name:"PCMGRId"`
+
+	// 漏洞标签。搜索时应急 必修传参VulTag=SuggestRepair/EMGCVul
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulTag []*string `json:"VulTag,omitnil,omitempty" name:"VulTag"`
+
+	// 漏洞披露时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisclosureTime *string `json:"DisclosureTime,omitnil,omitempty" name:"DisclosureTime"`
+
+	// 攻击热度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackHeat *uint64 `json:"AttackHeat,omitnil,omitempty" name:"AttackHeat"`
+
+	// 是否必修漏洞1是，0不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSuggest *int64 `json:"IsSuggest,omitnil,omitempty" name:"IsSuggest"`
+
+	// 处置任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HandleTaskId *string `json:"HandleTaskId,omitnil,omitempty" name:"HandleTaskId"`
+
+	// 引擎来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineSource *string `json:"EngineSource,omitnil,omitempty" name:"EngineSource"`
+
+	// 新的漏洞风险id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulRiskId *string `json:"VulRiskId,omitnil,omitempty" name:"VulRiskId"`
+}
+
 type Vpc struct {
 	// 子网(只支持32位)
 	Subnet *uint64 `json:"Subnet,omitnil,omitempty" name:"Subnet"`
@@ -6542,6 +6835,34 @@ type Vpc struct {
 	// 是否核心资产1是 2不是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCore *uint64 `json:"IsCore,omitnil,omitempty" name:"IsCore"`
+}
+
+type VulImpactComponentInfo struct {
+	// 组件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// 版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+}
+
+type VulTrend struct {
+	// 影响的资产数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectAssetCount *int64 `json:"AffectAssetCount,omitnil,omitempty" name:"AffectAssetCount"`
+
+	// 影响的用户数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectUserCount *int64 `json:"AffectUserCount,omitnil,omitempty" name:"AffectUserCount"`
+
+	// 攻击数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackCount *int64 `json:"AttackCount,omitnil,omitempty" name:"AttackCount"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 }
 
 type WebsiteRisk struct {

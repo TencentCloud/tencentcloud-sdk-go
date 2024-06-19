@@ -6721,6 +6721,14 @@ type DomainRuleSet struct {
 	// 是否为默认域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultServer *bool `json:"IsDefaultServer,omitnil,omitempty" name:"IsDefaultServer"`
+
+	// TLS套件包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
+
+	// TLS版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
 }
 
 // Predefined struct for user

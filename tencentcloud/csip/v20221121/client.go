@@ -2793,6 +2793,89 @@ func (c *Client) DescribeVULRiskAdvanceCFGListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeVULRiskDetailRequest() (request *DescribeVULRiskDetailRequest) {
+    request = &DescribeVULRiskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVULRiskDetail")
+    
+    
+    return
+}
+
+func NewDescribeVULRiskDetailResponse() (response *DescribeVULRiskDetailResponse) {
+    response = &DescribeVULRiskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVULRiskDetail
+// 获取漏洞展开详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVULRiskDetail(request *DescribeVULRiskDetailRequest) (response *DescribeVULRiskDetailResponse, err error) {
+    return c.DescribeVULRiskDetailWithContext(context.Background(), request)
+}
+
+// DescribeVULRiskDetail
+// 获取漏洞展开详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVULRiskDetailWithContext(ctx context.Context, request *DescribeVULRiskDetailRequest) (response *DescribeVULRiskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVULRiskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVULRiskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVULRiskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcAssetsRequest() (request *DescribeVpcAssetsRequest) {
     request = &DescribeVpcAssetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2872,6 +2955,89 @@ func (c *Client) DescribeVpcAssetsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeVpcAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulViewVulRiskListRequest() (request *DescribeVulViewVulRiskListRequest) {
+    request = &DescribeVulViewVulRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulViewVulRiskList")
+    
+    
+    return
+}
+
+func NewDescribeVulViewVulRiskListResponse() (response *DescribeVulViewVulRiskListResponse) {
+    response = &DescribeVulViewVulRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulViewVulRiskList
+// 获取漏洞视角的漏洞风险列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulViewVulRiskList(request *DescribeVulViewVulRiskListRequest) (response *DescribeVulViewVulRiskListResponse, err error) {
+    return c.DescribeVulViewVulRiskListWithContext(context.Background(), request)
+}
+
+// DescribeVulViewVulRiskList
+// 获取漏洞视角的漏洞风险列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulViewVulRiskListWithContext(ctx context.Context, request *DescribeVulViewVulRiskListRequest) (response *DescribeVulViewVulRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulViewVulRiskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulViewVulRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulViewVulRiskListResponse()
     err = c.Send(request, response)
     return
 }

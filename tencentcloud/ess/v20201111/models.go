@@ -3696,7 +3696,7 @@ type CreateFlowSignUrlRequestParams struct {
 	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
 	// 
 	// 注:
-	// `1. 签署人只能有手写签名、时间类型和印章类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+	// `1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
@@ -3705,7 +3705,7 @@ type CreateFlowSignUrlRequestParams struct {
 	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
-	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
+	// 签署完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 链接类型，支持指定以下类型
@@ -3736,14 +3736,14 @@ type CreateFlowSignUrlRequest struct {
 	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
 	// 
 	// 注:
-	// `1. 签署人只能有手写签名、时间类型和印章类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+	// `1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
-	// 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
+	// 签署完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
 	// 链接类型，支持指定以下类型
