@@ -5596,6 +5596,111 @@ func (c *Client) CreateConsoleLoginUrlWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateFlowBlockchainEvidenceUrlRequest() (request *CreateFlowBlockchainEvidenceUrlRequest) {
+    request = &CreateFlowBlockchainEvidenceUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateFlowBlockchainEvidenceUrl")
+    
+    
+    return
+}
+
+func NewCreateFlowBlockchainEvidenceUrlResponse() (response *CreateFlowBlockchainEvidenceUrlResponse) {
+    response = &CreateFlowBlockchainEvidenceUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFlowBlockchainEvidenceUrl
+// 获取区块链存证报告查看链接/二维码接口
+//
+// 
+//
+// 适用场景：企业员工可以通过此接口生成合同区块链存证报告的查看链接/二维码，以供他人扫码打开腾讯电子签小程序查看。
+//
+// 
+//
+// [点击查看区块链存证报告样式](https://qcloudimg.tencent-cloud.cn/raw/47d5e9c2ffa90ad4e27b3cd14095aa08.jpg)
+//
+// 
+//
+// 注：
+//
+// <ul><li>1. 二维码下载链接过期时间为5分钟，请尽快下载保存。二维码/短链的过期时间为<font color="red">7天</font>，超过有效期则不可用。</li>
+//
+// <li>2. 合同状态需为<font color="red">签署完成</font> 、<font color="red">已解除</font>才能生成报告查看二维码/短链。</li>
+//
+// <li>3. 调用接口时，需确保接口调用身份拥有此合同的访问数据权限或为合同参与方。</li>
+//
+// <li>4. 通过扫码或者点击链接，用户无需登录或者鉴权即可查看对应合同的区块链存证报告，请妥善保管好二维码或链接。</li></ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateFlowBlockchainEvidenceUrl(request *CreateFlowBlockchainEvidenceUrlRequest) (response *CreateFlowBlockchainEvidenceUrlResponse, err error) {
+    return c.CreateFlowBlockchainEvidenceUrlWithContext(context.Background(), request)
+}
+
+// CreateFlowBlockchainEvidenceUrl
+// 获取区块链存证报告查看链接/二维码接口
+//
+// 
+//
+// 适用场景：企业员工可以通过此接口生成合同区块链存证报告的查看链接/二维码，以供他人扫码打开腾讯电子签小程序查看。
+//
+// 
+//
+// [点击查看区块链存证报告样式](https://qcloudimg.tencent-cloud.cn/raw/47d5e9c2ffa90ad4e27b3cd14095aa08.jpg)
+//
+// 
+//
+// 注：
+//
+// <ul><li>1. 二维码下载链接过期时间为5分钟，请尽快下载保存。二维码/短链的过期时间为<font color="red">7天</font>，超过有效期则不可用。</li>
+//
+// <li>2. 合同状态需为<font color="red">签署完成</font> 、<font color="red">已解除</font>才能生成报告查看二维码/短链。</li>
+//
+// <li>3. 调用接口时，需确保接口调用身份拥有此合同的访问数据权限或为合同参与方。</li>
+//
+// <li>4. 通过扫码或者点击链接，用户无需登录或者鉴权即可查看对应合同的区块链存证报告，请妥善保管好二维码或链接。</li></ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateFlowBlockchainEvidenceUrlWithContext(ctx context.Context, request *CreateFlowBlockchainEvidenceUrlRequest) (response *CreateFlowBlockchainEvidenceUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowBlockchainEvidenceUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowBlockchainEvidenceUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowBlockchainEvidenceUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowGroupSignReviewRequest() (request *CreateFlowGroupSignReviewRequest) {
     request = &CreateFlowGroupSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6036,6 +6141,121 @@ func (c *Client) CreateFlowsByTemplatesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateFlowsByTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLegalSealQrCodeRequest() (request *CreateLegalSealQrCodeRequest) {
+    request = &CreateLegalSealQrCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateLegalSealQrCode")
+    
+    
+    return
+}
+
+func NewCreateLegalSealQrCodeResponse() (response *CreateLegalSealQrCodeResponse) {
+    response = &CreateLegalSealQrCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLegalSealQrCode
+// 此接口用于获取创建法人章二维码图片base64
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRNOTSYNCPROXYORGANIZATION = "FailedOperation.ErrNotSyncProxyOrganization"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
+//  MISSINGPARAMETER_ORGOPENID = "MissingParameter.OrgOpenId"
+//  MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
+//  OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLegalSealQrCode(request *CreateLegalSealQrCodeRequest) (response *CreateLegalSealQrCodeResponse, err error) {
+    return c.CreateLegalSealQrCodeWithContext(context.Background(), request)
+}
+
+// CreateLegalSealQrCode
+// 此接口用于获取创建法人章二维码图片base64
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRNOTSYNCPROXYORGANIZATION = "FailedOperation.ErrNotSyncProxyOrganization"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
+//  MISSINGPARAMETER_ORGOPENID = "MissingParameter.OrgOpenId"
+//  MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
+//  OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLegalSealQrCodeWithContext(ctx context.Context, request *CreateLegalSealQrCodeRequest) (response *CreateLegalSealQrCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateLegalSealQrCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLegalSealQrCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLegalSealQrCodeResponse()
     err = c.Send(request, response)
     return
 }

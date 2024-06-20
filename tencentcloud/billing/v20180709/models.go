@@ -2427,6 +2427,10 @@ type ConsumptionResourceSummaryDataItem struct {
 	// 配置描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentConfig *string `json:"ComponentConfig,omitnil,omitempty" name:"ComponentConfig"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ConsumptionSummaryTotal struct {

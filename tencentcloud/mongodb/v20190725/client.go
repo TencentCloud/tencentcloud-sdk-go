@@ -2067,6 +2067,69 @@ func (c *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyInstanceParamsRequest() (request *ModifyInstanceParamsRequest) {
+    request = &ModifyInstanceParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifyInstanceParams")
+    
+    
+    return
+}
+
+func NewModifyInstanceParamsResponse() (response *ModifyInstanceParamsResponse) {
+    response = &ModifyInstanceParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceParams
+// 本接口（ModifyInstanceParams）用于修改mongoDB实例的参数配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPERATIONNOTALLOWEDININSTANCELOCKING = "FailedOperation.OperationNotAllowedInInstanceLocking"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MODIFYMONGODBPARAMS = "InvalidParameter.ModifyMongodbParams"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_MODIFYMONGODBPARAMS = "InvalidParameterValue.ModifyMongodbParams"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (response *ModifyInstanceParamsResponse, err error) {
+    return c.ModifyInstanceParamsWithContext(context.Background(), request)
+}
+
+// ModifyInstanceParams
+// 本接口（ModifyInstanceParams）用于修改mongoDB实例的参数配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPERATIONNOTALLOWEDININSTANCELOCKING = "FailedOperation.OperationNotAllowedInInstanceLocking"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MODIFYMONGODBPARAMS = "InvalidParameter.ModifyMongodbParams"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_MODIFYMONGODBPARAMS = "InvalidParameterValue.ModifyMongodbParams"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyInstanceParamsWithContext(ctx context.Context, request *ModifyInstanceParamsRequest) (response *ModifyInstanceParamsResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceParamsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceParams require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOfflineIsolatedDBInstanceRequest() (request *OfflineIsolatedDBInstanceRequest) {
     request = &OfflineIsolatedDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

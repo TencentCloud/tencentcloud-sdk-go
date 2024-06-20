@@ -644,7 +644,7 @@ func NewDescribeQueueDetailResponse() (response *DescribeQueueDetailResponse) {
 }
 
 // DescribeQueueDetail
-// 枚举队列
+// 枚举队列列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -661,7 +661,7 @@ func (c *Client) DescribeQueueDetail(request *DescribeQueueDetailRequest) (respo
 }
 
 // DescribeQueueDetail
-// 枚举队列
+// 枚举队列列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -776,7 +776,7 @@ func NewDescribeTopicDetailResponse() (response *DescribeTopicDetailResponse) {
 }
 
 // DescribeTopicDetail
-// 查询主题详情 
+// 查询主题详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -794,7 +794,7 @@ func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (respo
 }
 
 // DescribeTopicDetail
-// 查询主题详情 
+// 查询主题详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

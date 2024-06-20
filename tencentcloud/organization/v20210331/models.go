@@ -21,6 +21,60 @@ import (
 )
 
 // Predefined struct for user
+type AcceptJoinShareUnitInvitationRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+}
+
+type AcceptJoinShareUnitInvitationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+}
+
+func (r *AcceptJoinShareUnitInvitationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcceptJoinShareUnitInvitationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AcceptJoinShareUnitInvitationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AcceptJoinShareUnitInvitationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AcceptJoinShareUnitInvitationResponse struct {
+	*tchttp.BaseResponse
+	Response *AcceptJoinShareUnitInvitationResponseParams `json:"Response"`
+}
+
+func (r *AcceptJoinShareUnitInvitationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcceptJoinShareUnitInvitationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddOrganizationMemberEmailRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
@@ -4654,6 +4708,60 @@ func (r *QuitOrganizationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QuitOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RejectJoinShareUnitInvitationRequestParams struct {
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+}
+
+type RejectJoinShareUnitInvitationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+}
+
+func (r *RejectJoinShareUnitInvitationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RejectJoinShareUnitInvitationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnitId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RejectJoinShareUnitInvitationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RejectJoinShareUnitInvitationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RejectJoinShareUnitInvitationResponse struct {
+	*tchttp.BaseResponse
+	Response *RejectJoinShareUnitInvitationResponseParams `json:"Response"`
+}
+
+func (r *RejectJoinShareUnitInvitationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RejectJoinShareUnitInvitationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

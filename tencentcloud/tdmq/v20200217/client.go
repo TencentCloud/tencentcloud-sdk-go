@@ -935,6 +935,75 @@ func (c *Client) CreateRocketMQClusterWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateRocketMQEnvironmentRoleRequest() (request *CreateRocketMQEnvironmentRoleRequest) {
+    request = &CreateRocketMQEnvironmentRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQEnvironmentRole")
+    
+    
+    return
+}
+
+func NewCreateRocketMQEnvironmentRoleResponse() (response *CreateRocketMQEnvironmentRoleResponse) {
+    response = &CreateRocketMQEnvironmentRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQEnvironmentRole
+// 创建环境角色授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) CreateRocketMQEnvironmentRole(request *CreateRocketMQEnvironmentRoleRequest) (response *CreateRocketMQEnvironmentRoleResponse, err error) {
+    return c.CreateRocketMQEnvironmentRoleWithContext(context.Background(), request)
+}
+
+// CreateRocketMQEnvironmentRole
+// 创建环境角色授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) CreateRocketMQEnvironmentRoleWithContext(ctx context.Context, request *CreateRocketMQEnvironmentRoleRequest) (response *CreateRocketMQEnvironmentRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQEnvironmentRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQEnvironmentRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQEnvironmentRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRocketMQGroupRequest() (request *CreateRocketMQGroupRequest) {
     request = &CreateRocketMQGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1063,6 +1132,77 @@ func (c *Client) CreateRocketMQNamespaceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreateRocketMQNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRocketMQRoleRequest() (request *CreateRocketMQRoleRequest) {
+    request = &CreateRocketMQRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQRole")
+    
+    
+    return
+}
+
+func NewCreateRocketMQRoleResponse() (response *CreateRocketMQRoleResponse) {
+    response = &CreateRocketMQRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQRole
+// 创建角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+//  FAILEDOPERATION_CREATESECRETKEY = "FailedOperation.CreateSecretKey"
+//  FAILEDOPERATION_SAVESECRETKEY = "FailedOperation.SaveSecretKey"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ROLE = "ResourceInUse.Role"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+func (c *Client) CreateRocketMQRole(request *CreateRocketMQRoleRequest) (response *CreateRocketMQRoleResponse, err error) {
+    return c.CreateRocketMQRoleWithContext(context.Background(), request)
+}
+
+// CreateRocketMQRole
+// 创建角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+//  FAILEDOPERATION_CREATESECRETKEY = "FailedOperation.CreateSecretKey"
+//  FAILEDOPERATION_SAVESECRETKEY = "FailedOperation.SaveSecretKey"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ROLE = "ResourceInUse.Role"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+func (c *Client) CreateRocketMQRoleWithContext(ctx context.Context, request *CreateRocketMQRoleRequest) (response *CreateRocketMQRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQRoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2063,6 +2203,67 @@ func (c *Client) DeleteRocketMQClusterWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteRocketMQEnvironmentRolesRequest() (request *DeleteRocketMQEnvironmentRolesRequest) {
+    request = &DeleteRocketMQEnvironmentRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQEnvironmentRoles")
+    
+    
+    return
+}
+
+func NewDeleteRocketMQEnvironmentRolesResponse() (response *DeleteRocketMQEnvironmentRolesResponse) {
+    response = &DeleteRocketMQEnvironmentRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRocketMQEnvironmentRoles
+// 删除环境角色授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEENVIRONMENTROLES = "FailedOperation.DeleteEnvironmentRoles"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
+func (c *Client) DeleteRocketMQEnvironmentRoles(request *DeleteRocketMQEnvironmentRolesRequest) (response *DeleteRocketMQEnvironmentRolesResponse, err error) {
+    return c.DeleteRocketMQEnvironmentRolesWithContext(context.Background(), request)
+}
+
+// DeleteRocketMQEnvironmentRoles
+// 删除环境角色授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEENVIRONMENTROLES = "FailedOperation.DeleteEnvironmentRoles"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
+func (c *Client) DeleteRocketMQEnvironmentRolesWithContext(ctx context.Context, request *DeleteRocketMQEnvironmentRolesRequest) (response *DeleteRocketMQEnvironmentRolesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQEnvironmentRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQEnvironmentRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRocketMQEnvironmentRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRocketMQGroupRequest() (request *DeleteRocketMQGroupRequest) {
     request = &DeleteRocketMQGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2177,6 +2378,69 @@ func (c *Client) DeleteRocketMQNamespaceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteRocketMQNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRocketMQRolesRequest() (request *DeleteRocketMQRolesRequest) {
+    request = &DeleteRocketMQRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQRoles")
+    
+    
+    return
+}
+
+func NewDeleteRocketMQRolesResponse() (response *DeleteRocketMQRolesResponse) {
+    response = &DeleteRocketMQRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRocketMQRoles
+// 删除角色，支持批量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEROLES = "FailedOperation.DeleteRoles"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteRocketMQRoles(request *DeleteRocketMQRolesRequest) (response *DeleteRocketMQRolesResponse, err error) {
+    return c.DeleteRocketMQRolesWithContext(context.Background(), request)
+}
+
+// DeleteRocketMQRoles
+// 删除角色，支持批量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEROLES = "FailedOperation.DeleteRoles"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteRocketMQRolesWithContext(ctx context.Context, request *DeleteRocketMQRolesRequest) (response *DeleteRocketMQRolesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRocketMQRolesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4515,6 +4779,67 @@ func (c *Client) DescribeRocketMQConsumerConnectionsWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeRocketMQEnvironmentRolesRequest() (request *DescribeRocketMQEnvironmentRolesRequest) {
+    request = &DescribeRocketMQEnvironmentRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQEnvironmentRoles")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQEnvironmentRolesResponse() (response *DescribeRocketMQEnvironmentRolesResponse) {
+    response = &DescribeRocketMQEnvironmentRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQEnvironmentRoles
+// 获取命名空间角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DescribeRocketMQEnvironmentRoles(request *DescribeRocketMQEnvironmentRolesRequest) (response *DescribeRocketMQEnvironmentRolesResponse, err error) {
+    return c.DescribeRocketMQEnvironmentRolesWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQEnvironmentRoles
+// 获取命名空间角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DescribeRocketMQEnvironmentRolesWithContext(ctx context.Context, request *DescribeRocketMQEnvironmentRolesRequest) (response *DescribeRocketMQEnvironmentRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQEnvironmentRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQEnvironmentRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQEnvironmentRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQGroupsRequest() (request *DescribeRocketMQGroupsRequest) {
     request = &DescribeRocketMQGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4918,6 +5243,65 @@ func (c *Client) DescribeRocketMQPublicAccessPointWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQPublicAccessPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQRolesRequest() (request *DescribeRocketMQRolesRequest) {
+    request = &DescribeRocketMQRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQRoles")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQRolesResponse() (response *DescribeRocketMQRolesResponse) {
+    response = &DescribeRocketMQRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQRoles
+// 获取角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQRoles(request *DescribeRocketMQRolesRequest) (response *DescribeRocketMQRolesResponse, err error) {
+    return c.DescribeRocketMQRolesWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQRoles
+// 获取角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQRolesWithContext(ctx context.Context, request *DescribeRocketMQRolesRequest) (response *DescribeRocketMQRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQRolesResponse()
     err = c.Send(request, response)
     return
 }
@@ -6512,6 +6896,67 @@ func (c *Client) ModifyRocketMQClusterWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyRocketMQEnvironmentRoleRequest() (request *ModifyRocketMQEnvironmentRoleRequest) {
+    request = &ModifyRocketMQEnvironmentRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQEnvironmentRole")
+    
+    
+    return
+}
+
+func NewModifyRocketMQEnvironmentRoleResponse() (response *ModifyRocketMQEnvironmentRoleResponse) {
+    response = &ModifyRocketMQEnvironmentRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRocketMQEnvironmentRole
+// 修改环境角色授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
+func (c *Client) ModifyRocketMQEnvironmentRole(request *ModifyRocketMQEnvironmentRoleRequest) (response *ModifyRocketMQEnvironmentRoleResponse, err error) {
+    return c.ModifyRocketMQEnvironmentRoleWithContext(context.Background(), request)
+}
+
+// ModifyRocketMQEnvironmentRole
+// 修改环境角色授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
+func (c *Client) ModifyRocketMQEnvironmentRoleWithContext(ctx context.Context, request *ModifyRocketMQEnvironmentRoleRequest) (response *ModifyRocketMQEnvironmentRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQEnvironmentRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQEnvironmentRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRocketMQEnvironmentRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRocketMQGroupRequest() (request *ModifyRocketMQGroupRequest) {
     request = &ModifyRocketMQGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6689,6 +7134,69 @@ func (c *Client) ModifyRocketMQNamespaceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyRocketMQNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRocketMQRoleRequest() (request *ModifyRocketMQRoleRequest) {
+    request = &ModifyRocketMQRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQRole")
+    
+    
+    return
+}
+
+func NewModifyRocketMQRoleResponse() (response *ModifyRocketMQRoleResponse) {
+    response = &ModifyRocketMQRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRocketMQRole
+// 角色修改
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UPDATEROLE = "FailedOperation.UpdateRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+func (c *Client) ModifyRocketMQRole(request *ModifyRocketMQRoleRequest) (response *ModifyRocketMQRoleResponse, err error) {
+    return c.ModifyRocketMQRoleWithContext(context.Background(), request)
+}
+
+// ModifyRocketMQRole
+// 角色修改
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UPDATEROLE = "FailedOperation.UpdateRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+func (c *Client) ModifyRocketMQRoleWithContext(ctx context.Context, request *ModifyRocketMQRoleRequest) (response *ModifyRocketMQRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRocketMQRoleResponse()
     err = c.Send(request, response)
     return
 }

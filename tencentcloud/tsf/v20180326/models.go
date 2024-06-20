@@ -18706,6 +18706,10 @@ type MsInstance struct {
 	// 屏蔽状态，hidden 为屏蔽，unhidden 为未屏蔽
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HiddenStatus *string `json:"HiddenStatus,omitnil,omitempty" name:"HiddenStatus"`
+
+	// json格式的 meta 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaJson *string `json:"MetaJson,omitnil,omitempty" name:"MetaJson"`
 }
 
 type MultiValue struct {

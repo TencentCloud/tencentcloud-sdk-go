@@ -327,6 +327,19 @@ type AdaptiveDynamicStreamingTemplate struct {
 	// 是否为纯音频，0表示视频，1表示纯音频
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// hls 分片类型，可选值：
+	// <li>ts-segment：HLS+TS 切片</li>
+	// <li>ts-byterange：HLS+TS byte range</li>
+	// <li>mp4-segment：HLS+MP4 切片</li>
+	// <li>mp4-byterange：HLS+MP4 byte range</li>
+	// <li>ts-packed-audio：TS+Packed Audio</li>
+	// <li>mp4-packed-audio：MP4+Packed Audio</li>
+	// 默认值：ts-segment
+	// 
+	// 注：自适应码流的hls分片格式已此字段为准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 type AdaptiveStreamTemplate struct {
@@ -2002,6 +2015,7 @@ type AudioTemplateInfo struct {
 	// <li>aac；</li>
 	// <li>mp3；</li>
 	// <li>ac3。</li>
+	// <li>eac3。</li>
 	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 	// <li>aac：更适合 mp4；</li>
 	// <li>mp3：更适合 flv；</li>
@@ -2043,6 +2057,7 @@ type AudioTemplateInfoForUpdate struct {
 	// <li>aac；</li>
 	// <li>mp3；</li>
 	// <li>ac3。</li>
+	// <li>eac3。</li>
 	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 	// <li>aac：更适合 mp4；</li>
 	// <li>mp3：更适合 flv；</li>
@@ -3107,6 +3122,10 @@ type CreateAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// 1. StreamInfos.N.Video.Codec不能为copy
 	// 2. StreamInfos.N.Video.Fps不能为null
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+	// 注：自适应码流的hls分片格式已此字段为准
+	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 type CreateAdaptiveDynamicStreamingTemplateRequest struct {
@@ -3150,6 +3169,10 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	// 1. StreamInfos.N.Video.Codec不能为copy
 	// 2. StreamInfos.N.Video.Fps不能为null
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+	// 注：自适应码流的hls分片格式已此字段为准
+	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -3171,6 +3194,7 @@ func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "Comment")
 	delete(f, "PureAudio")
+	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -4566,7 +4590,7 @@ func (r *CreateStreamLinkOutputInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTranscodeTemplateRequestParams struct {
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -4603,7 +4627,7 @@ type CreateTranscodeTemplateRequestParams struct {
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -11498,6 +11522,10 @@ type ModifyAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// 1. StreamInfos.N.Video.Codec不能为copy
 	// 2. StreamInfos.N.Video.Fps不能为null
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+	// 注：自适应码流的hls分片格式已此字段为准
+	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
@@ -11542,6 +11570,10 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 	// 1. StreamInfos.N.Video.Codec不能为copy
 	// 2. StreamInfos.N.Video.Fps不能为null
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+	// 注：自适应码流的hls分片格式已此字段为准
+	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -11564,6 +11596,7 @@ func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "StreamInfos")
 	delete(f, "Comment")
 	delete(f, "PureAudio")
+	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -15795,16 +15828,23 @@ type VideoEnhanceConfig struct {
 
 type VideoTemplateInfo struct {
 	// 视频流的编码格式，可选值：
-	// <li>copy：纯音频模版</li>
 	// <li>h264：H.264 编码</li>
 	// <li>h265：H.265 编码</li>
+	// <li>h266：H.266 编码</li>
 	// <li>av1：AOMedia Video 1 编码</li>
+	// <li>vp8：VP8 编码</li>
+	// <li>vp9：VP9 编码</li>
+	// <li>mpeg2：MPEG2 编码</li>
+	// <li>dnxhd：DNxHD 编码</li>
 	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
-	// 注意：av1 编码容器目前只支持 mp4 。
+	// 
+	// 注意：av1 编码容器目前只支持 mp4 ，webm，mkv，mov。
+	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
+	// 注意：VP8、VP9编码容器目前只支持webm，mkv。
+	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。 
-	// 当取值为 0，表示帧率和原始视频保持一致。 
+	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 	// 注意：自适应码率时取值范围是 [0, 60]
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
@@ -15852,20 +15892,37 @@ type VideoTemplateInfo struct {
 	// 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
 	// 如果没有特殊需求，不建议指定该参数。
 	Vcrf *uint64 `json:"Vcrf,omitnil,omitempty" name:"Vcrf"`
+
+	// hls 分片类型，可选值 ：
+	// <li>6：HLS+TS 切片</li>
+	// <li>2：HLS+TS byte range</li>
+	// <li>7：HLS+MP4 切片</li>
+	// <li>5：HLS+MP4 byte range</li>
+	// 默认值：6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentType *int64 `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 type VideoTemplateInfoForUpdate struct {
 	// 视频流的编码格式，可选值：
 	// <li>h264：H.264 编码</li>
 	// <li>h265：H.265 编码</li>
+	// <li>h266：H.266 编码</li>
 	// <li>av1：AOMedia Video 1 编码</li>
+	// <li>vp8：VP8 编码</li>
+	// <li>vp9：VP9 编码</li>
+	// <li>mpeg2：MPEG2 编码</li>
+	// <li>dnxhd：DNxHD 编码</li>
 	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
-	// 注意：av1 编码容器目前只支持 mp4 。
+	// 
+	// 注意：av1 编码容器目前只支持 mp4 ，webm，mkv，mov。
+	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
+	// 注意：VP8、VP9编码容器目前只支持webm，mkv。
+	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。
-	// 当取值为 0，表示帧率和原始视频保持一致。
+	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
@@ -15916,6 +15973,15 @@ type VideoTemplateInfoForUpdate struct {
 	// 默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentAdaptStream *uint64 `json:"ContentAdaptStream,omitnil,omitempty" name:"ContentAdaptStream"`
+
+	// hls 分片类型，可选值：
+	// <li>6：HLS+TS 切片</li>
+	// <li>2：HLS+TS byte range</li>
+	// <li>7：HLS+MP4 切片</li>
+	// <li>5：HLS+MP4 byte range</li>
+	// 默认值：6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentType *int64 `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
 type VolumeBalanceConfig struct {

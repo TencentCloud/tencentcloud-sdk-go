@@ -859,14 +859,14 @@ func (r *DescribePolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectInfoRequestParams struct {
-	// 目标项目ID
+	// 目标项目ID，必填参数
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type DescribeProjectInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标项目ID
+	// 目标项目ID，必填参数
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 

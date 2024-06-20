@@ -5362,6 +5362,67 @@ func (c *Client) DescribeSparkSessionBatchSQLWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeSparkSessionBatchSQLCostRequest() (request *DescribeSparkSessionBatchSQLCostRequest) {
+    request = &DescribeSparkSessionBatchSQLCostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkSessionBatchSQLCost")
+    
+    
+    return
+}
+
+func NewDescribeSparkSessionBatchSQLCostResponse() (response *DescribeSparkSessionBatchSQLCostResponse) {
+    response = &DescribeSparkSessionBatchSQLCostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSparkSessionBatchSQLCost
+// 本接口（DescribeSparkSessionBatchSQLCost）用于查询Spark SQL批任务消耗
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
+func (c *Client) DescribeSparkSessionBatchSQLCost(request *DescribeSparkSessionBatchSQLCostRequest) (response *DescribeSparkSessionBatchSQLCostResponse, err error) {
+    return c.DescribeSparkSessionBatchSQLCostWithContext(context.Background(), request)
+}
+
+// DescribeSparkSessionBatchSQLCost
+// 本接口（DescribeSparkSessionBatchSQLCost）用于查询Spark SQL批任务消耗
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATESHUTTINGDOWN = "ResourceNotFound.SessionStateShuttingDown"
+func (c *Client) DescribeSparkSessionBatchSQLCostWithContext(ctx context.Context, request *DescribeSparkSessionBatchSQLCostRequest) (response *DescribeSparkSessionBatchSQLCostResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkSessionBatchSQLCostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkSessionBatchSQLCost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkSessionBatchSQLCostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSparkSessionBatchSqlLogRequest() (request *DescribeSparkSessionBatchSqlLogRequest) {
     request = &DescribeSparkSessionBatchSqlLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

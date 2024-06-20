@@ -3834,6 +3834,94 @@ func (r *ModifyDBInstanceSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyInstanceParamsRequestParams struct {
+	// 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 [DescribeInstanceParams ](https://cloud.tencent.com/document/product/240/65903)获取。
+	InstanceParams []*ModifyMongoDBParamType `json:"InstanceParams,omitnil,omitempty" name:"InstanceParams"`
+
+	// 操作类型，包括：
+	// - IMMEDIATELY：立即调整。
+	// - DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+}
+
+type ModifyInstanceParamsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 [DescribeInstanceParams ](https://cloud.tencent.com/document/product/240/65903)获取。
+	InstanceParams []*ModifyMongoDBParamType `json:"InstanceParams,omitnil,omitempty" name:"InstanceParams"`
+
+	// 操作类型，包括：
+	// - IMMEDIATELY：立即调整。
+	// - DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+}
+
+func (r *ModifyInstanceParamsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceParamsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceParams")
+	delete(f, "ModifyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceParamsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceParamsResponseParams struct {
+	// 修改参数配置是否生效。
+	// - true：参数修改后的值已生效。
+	// - false：执行失败。
+	Changed *bool `json:"Changed,omitnil,omitempty" name:"Changed"`
+
+	// 该参数暂时无意义(兼容前端保留)。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceParamsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceParamsResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceParamsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceParamsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMongoDBParamType struct {
+	// 需要修改的参数名称，请严格参考通过 DescribeInstanceParams 获取的当前实例支持的参数名。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 需要修改的参数名称对应的值，请严格参考通过 DescribeInstanceParams 获取的参数对应的值的范围。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type ModifyNetworkAddress struct {
 	// 新IP地址。
 	NewIPAddress *string `json:"NewIPAddress,omitnil,omitempty" name:"NewIPAddress"`

@@ -2736,6 +2736,148 @@ func (r *FinanBillSliceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FinancialBill struct {
+	// 票据代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 票据号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 缴款人纳税识别号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuyerTaxID *string `json:"BuyerTaxID,omitnil,omitempty" name:"BuyerTaxID"`
+
+	// 校验码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckCode *string `json:"CheckCode,omitnil,omitempty" name:"CheckCode"`
+
+	// 缴款人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Buyer *string `json:"Buyer,omitnil,omitempty" name:"Buyer"`
+
+	// 开票日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// 收款单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SellerCompany *string `json:"SellerCompany,omitnil,omitempty" name:"SellerCompany"`
+
+	// 复核人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reviewer *string `json:"Reviewer,omitnil,omitempty" name:"Reviewer"`
+
+	// 收款人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seller *string `json:"Seller,omitnil,omitempty" name:"Seller"`
+
+	// 票据名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 金额合计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 金额合计中文大写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCn *string `json:"TotalCn,omitnil,omitempty" name:"TotalCn"`
+
+	// 冲红
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RushRedStateCode *string `json:"RushRedStateCode,omitnil,omitempty" name:"RushRedStateCode"`
+
+	// 冲红日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RushRedDate *string `json:"RushRedDate,omitnil,omitempty" name:"RushRedDate"`
+
+	// 冲红时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RushRedTime *string `json:"RushRedTime,omitnil,omitempty" name:"RushRedTime"`
+
+	// 冲红原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RushRedReason *string `json:"RushRedReason,omitnil,omitempty" name:"RushRedReason"`
+
+	// 项目明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinancialBillItems []*FinancialBillItem `json:"FinancialBillItems,omitnil,omitempty" name:"FinancialBillItems"`
+
+	// 项目清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinancialBillItemDetails []*FinancialBillItemDetails `json:"FinancialBillItemDetails,omitnil,omitempty" name:"FinancialBillItemDetails"`
+}
+
+type FinancialBillItem struct {
+	// 项目编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemID *string `json:"ItemID,omitnil,omitempty" name:"ItemID"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quantity *string `json:"Quantity,omitnil,omitempty" name:"Quantity"`
+
+	// 规格标准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Standard *string `json:"Standard,omitnil,omitempty" name:"Standard"`
+
+	// 金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 项目序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type FinancialBillItemDetails struct {
+	// 项目编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemID *string `json:"ItemID,omitnil,omitempty" name:"ItemID"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quantity *string `json:"Quantity,omitnil,omitempty" name:"Quantity"`
+
+	// 规格标准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Standard *string `json:"Standard,omitnil,omitempty" name:"Standard"`
+
+	// 金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 项目序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
 type FlightInvoiceInfo struct {
 	// 识别出的字段名称(关键字)，支持以下字段：
 	// 票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
@@ -11994,14 +12136,14 @@ type VatInvoiceVerifyNewRequestParams struct {
 	// 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
 	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
 
-	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
+	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
 	InvoiceKind *string `json:"InvoiceKind,omitnil,omitempty" name:"InvoiceKind"`
 
-	// 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）时必填;
+	// 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）、财政票据时必填;
 	// 区块链为 5 位
 	CheckCode *string `json:"CheckCode,omitnil,omitempty" name:"CheckCode"`
 
-	// 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票时必填; 全电发票为价税合计(含税金额)
+	// 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票、财政发票时必填; 全电发票为价税合计(含税金额)
 	Amount *string `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 地区编码，通用机打电子发票时必填。
@@ -12032,14 +12174,14 @@ type VatInvoiceVerifyNewRequest struct {
 	// 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
 	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
 
-	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
+	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
 	InvoiceKind *string `json:"InvoiceKind,omitnil,omitempty" name:"InvoiceKind"`
 
-	// 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）时必填;
+	// 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）、财政票据时必填;
 	// 区块链为 5 位
 	CheckCode *string `json:"CheckCode,omitnil,omitempty" name:"CheckCode"`
 
-	// 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票时必填; 全电发票为价税合计(含税金额)
+	// 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票、财政发票时必填; 全电发票为价税合计(含税金额)
 	Amount *string `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 地区编码，通用机打电子发票时必填。
@@ -12105,6 +12247,9 @@ type VatInvoiceVerifyNewResponseParams struct {
 
 	// 全电发票（航空运输电子客票行程单）详细字段信息。
 	ElectronicAirTransport *ElectronicAirTransport `json:"ElectronicAirTransport,omitnil,omitempty" name:"ElectronicAirTransport"`
+
+	// 财政发票详细字段信息
+	FinancialBill *FinancialBill `json:"FinancialBill,omitnil,omitempty" name:"FinancialBill"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

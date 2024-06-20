@@ -765,39 +765,39 @@ func (r *DescribeDeadLetterSourceQueuesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeQueueDetailRequestParams struct {
-	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+	// 标签搜索
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// 精确匹配QueueName
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
 	// 筛选参数，目前支持QueueName筛选，且仅支持一个关键字
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签搜索
-	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
-
-	// 精确匹配QueueName
-	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeQueueDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+	// 标签搜索
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// 精确匹配QueueName
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
 	// 筛选参数，目前支持QueueName筛选，且仅支持一个关键字
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签搜索
-	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
-
-	// 精确匹配QueueName
-	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeQueueDetailRequest) ToJsonString() string {
@@ -812,11 +812,11 @@ func (r *DescribeQueueDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Filters")
 	delete(f, "TagKey")
+	delete(f, "Limit")
 	delete(f, "QueueName")
+	delete(f, "Filters")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQueueDetailRequest has unknown keys!", "")
 	}
@@ -935,39 +935,39 @@ func (r *DescribeSubscriptionDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicDetailRequestParams struct {
-	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+	// 标签匹配。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// 精确匹配TopicName。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
 	// 目前只支持过滤TopicName ， 且只能填一个过滤值。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签匹配。
-	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
-
-	// 精确匹配TopicName。
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeTopicDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+	// 标签匹配。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// 精确匹配TopicName。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
 	// 目前只支持过滤TopicName ， 且只能填一个过滤值。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签匹配。
-	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
-
-	// 精确匹配TopicName。
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeTopicDetailRequest) ToJsonString() string {
@@ -982,11 +982,11 @@ func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Filters")
 	delete(f, "TagKey")
+	delete(f, "Limit")
 	delete(f, "TopicName")
+	delete(f, "Filters")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicDetailRequest has unknown keys!", "")
 	}

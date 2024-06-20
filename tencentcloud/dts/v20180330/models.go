@@ -766,63 +766,6 @@ func (r *DescribeMigrateJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeRegionConfRequestParams struct {
-
-}
-
-type DescribeRegionConfRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeRegionConfRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRegionConfRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionConfRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRegionConfResponseParams struct {
-	// 可售卖地域的数量
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 可售卖地域详情
-	Items []*SubscribeRegionConf `json:"Items,omitnil,omitempty" name:"Items"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRegionConfResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRegionConfResponseParams `json:"Response"`
-}
-
-func (r *DescribeRegionConfResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRegionConfResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeSubscribeConfRequestParams struct {
 	// 订阅实例ID
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
@@ -2154,28 +2097,6 @@ type SubscribeObject struct {
 	// 订阅数据库中表名称数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableNames []*string `json:"TableNames,omitnil,omitempty" name:"TableNames"`
-}
-
-type SubscribeRegionConf struct {
-	// 地域名称，如广州
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
-
-	// 地区标识，如ap-guangzhou
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
-
-	// 地域名称，如华南地区
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
-
-	// 是否为默认地域，0 - 不是，1 - 是的
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDefaultRegion *int64 `json:"IsDefaultRegion,omitnil,omitempty" name:"IsDefaultRegion"`
-
-	// 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type TagFilter struct {

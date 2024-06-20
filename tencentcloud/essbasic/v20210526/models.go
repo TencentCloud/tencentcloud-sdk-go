@@ -6821,6 +6821,76 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowBlockchainEvidenceUrlRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。  此接口下面信息必填。 <ul> <li>渠道应用标识:  Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同流程ID，为32位字符串。建议开发者妥善保存此流程ID，以便于顺利进行后续操作。可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+type CreateFlowBlockchainEvidenceUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。  此接口下面信息必填。 <ul> <li>渠道应用标识:  Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同流程ID，为32位字符串。建议开发者妥善保存此流程ID，以便于顺利进行后续操作。可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+func (r *CreateFlowBlockchainEvidenceUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowBlockchainEvidenceUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowBlockchainEvidenceUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowBlockchainEvidenceUrlResponseParams struct {
+	// 二维码图片下载链接，下载链接有效时间5分钟，请尽快下载保存。
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
+
+	// 查看短链，可直接点击短链查看报告。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 二维码和短链的过期时间戳，过期时间默认为生成链接后7天。
+	ExpiredOn *uint64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFlowBlockchainEvidenceUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowBlockchainEvidenceUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowBlockchainEvidenceUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowBlockchainEvidenceUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowGroupSignReviewRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -7124,6 +7194,95 @@ func (r *CreateFlowsByTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateFlowsByTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLegalSealQrCodeRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+	// </ul>注:
+	// `1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
+	// `2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。 `
+	// `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 企业信息
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
+}
+
+type CreateLegalSealQrCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+	// </ul>注:
+	// `1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
+	// `2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。 `
+	// `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 企业信息
+	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
+}
+
+func (r *CreateLegalSealQrCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLegalSealQrCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "Organization")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLegalSealQrCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLegalSealQrCodeResponseParams struct {
+	// 二维码图片base64值
+	QrcodeBase64 *string `json:"QrcodeBase64,omitnil,omitempty" name:"QrcodeBase64"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLegalSealQrCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLegalSealQrCodeResponseParams `json:"Response"`
+}
+
+func (r *CreateLegalSealQrCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLegalSealQrCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9028,16 +9187,16 @@ type DownloadFlowInfo struct {
 }
 
 type EmbedUrlOption struct {
-	// 合同详情页面是否展示合同控件信息
-	// <br/>true:允许在合同详情页展示控件
-	// <br/>false:不允许在合同详情页展示控件
-	// <br/>默认false,在合同详情页不展示控件
+	// 合同详情预览，允许展示控件信息
+	// <ul>
+	// <li><b>true</b>：允许在合同详情页展示控件</li>
+	// <li><b>false</b>：（默认）不允许在合同详情页展示控件</li>
+	// </ul>
 	ShowFlowDetailComponent *bool `json:"ShowFlowDetailComponent,omitnil,omitempty" name:"ShowFlowDetailComponent"`
 
-	// 模版预览页面是否展示空间信息
-	// <br/>true:允许在模版预览页展示控件
-	// <br/>false:不允许在模版预览页展示控件
-	// <br/>默认false,在模版预览页不展示控件
+	// 模板预览，允许展示模板控件信息
+	// <ul><li> <b>true</b> :允许在模板预览页展示控件</li>
+	// <li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
 	ShowTemplateComponent *bool `json:"ShowTemplateComponent,omitnil,omitempty" name:"ShowTemplateComponent"`
 }
 

@@ -760,6 +760,32 @@ func (r *AttachWorkGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchSQLCostInfo struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 引擎id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 本次消耗，单位cu
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cost *float64 `json:"Cost,omitnil,omitempty" name:"Cost"`
+
+	// 时间开销，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeCost *int64 `json:"TimeCost,omitnil,omitempty" name:"TimeCost"`
+
+	// 操作者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
 type BatchSqlTask struct {
 	// SQL子任务唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7690,6 +7716,64 @@ func (r *DescribeSparkAppTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSparkSessionBatchSQLCostRequestParams struct {
+	// SparkSQL唯一标识
+	BatchIds []*string `json:"BatchIds,omitnil,omitempty" name:"BatchIds"`
+}
+
+type DescribeSparkSessionBatchSQLCostRequest struct {
+	*tchttp.BaseRequest
+	
+	// SparkSQL唯一标识
+	BatchIds []*string `json:"BatchIds,omitnil,omitempty" name:"BatchIds"`
+}
+
+func (r *DescribeSparkSessionBatchSQLCostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkSessionBatchSQLCostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkSessionBatchSQLCostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkSessionBatchSQLCostResponseParams struct {
+	// 任务消耗
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostInfo []*BatchSQLCostInfo `json:"CostInfo,omitnil,omitempty" name:"CostInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSparkSessionBatchSQLCostResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSparkSessionBatchSQLCostResponseParams `json:"Response"`
+}
+
+func (r *DescribeSparkSessionBatchSQLCostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkSessionBatchSQLCostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSparkSessionBatchSQLRequestParams struct {
 	// SparkSQL唯一标识
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
@@ -8581,12 +8665,33 @@ func (r *DescribeTasksCostInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksOverviewRequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 筛选条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 引擎名
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 }
 
 type DescribeTasksOverviewRequest struct {
 	*tchttp.BaseRequest
 	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 筛选条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 引擎名
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 }
 
 func (r *DescribeTasksOverviewRequest) ToJsonString() string {
@@ -8601,7 +8706,10 @@ func (r *DescribeTasksOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "DataEngineName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksOverviewRequest has unknown keys!", "")
 	}

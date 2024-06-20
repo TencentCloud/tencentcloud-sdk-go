@@ -13010,6 +13010,101 @@ func (r *RemoveClusterSlaveZoneResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RenewClustersRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 续费时长
+	TimeSpan *float64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 时间单位 y,m,d,h,i,s
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
+}
+
+type RenewClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 续费时长
+	TimeSpan *float64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 时间单位 y,m,d,h,i,s
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
+}
+
+func (r *RenewClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	delete(f, "DealMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewClustersResponseParams struct {
+	// 预付费总订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
+
+	// 退款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// 冻结流水，一次开通一个冻结流水
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 每个订单号对应的发货资源id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 集群id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewClustersResponseParams `json:"Response"`
+}
+
+func (r *RenewClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResetAccountPasswordRequestParams struct {
 	// 数据库账号名
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`

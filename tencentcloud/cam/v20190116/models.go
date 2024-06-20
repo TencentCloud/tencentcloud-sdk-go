@@ -29,6 +29,10 @@ type AccessKey struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 密钥描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type AccessKeyDetail struct {
@@ -43,6 +47,10 @@ type AccessKeyDetail struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -716,6 +724,9 @@ func (r *ConsumeCustomMFATokenResponse) FromJsonString(s string) error {
 type CreateAccessKeyRequestParams struct {
 	// 指定用户Uin，不填默认为当前用户创建访问密钥
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 密钥描述，长度在1到1024之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:/-]*。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateAccessKeyRequest struct {
@@ -723,6 +734,9 @@ type CreateAccessKeyRequest struct {
 	
 	// 指定用户Uin，不填默认为当前用户创建访问密钥
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 密钥描述，长度在1到1024之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:/-]*。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateAccessKeyRequest) ToJsonString() string {
@@ -738,6 +752,7 @@ func (r *CreateAccessKeyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TargetUin")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessKeyRequest has unknown keys!", "")
 	}

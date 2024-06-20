@@ -45,6 +45,71 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAcceptJoinShareUnitInvitationRequest() (request *AcceptJoinShareUnitInvitationRequest) {
+    request = &AcceptJoinShareUnitInvitationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "AcceptJoinShareUnitInvitation")
+    
+    
+    return
+}
+
+func NewAcceptJoinShareUnitInvitationResponse() (response *AcceptJoinShareUnitInvitationResponse) {
+    response = &AcceptJoinShareUnitInvitationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AcceptJoinShareUnitInvitation
+// 接受加入共享单元邀请。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHINFOEMPTY = "FailedOperation.AuthInfoEmpty"
+//  FAILEDOPERATION_AUTHINFONOTSAME = "FailedOperation.AuthInfoNotSame"
+//  FAILEDOPERATION_AUTHNOTENTERPRISE = "FailedOperation.AuthNotEnterprise"
+//  FAILEDOPERATION_SHAREMEMBERNOTEXIST = "FailedOperation.ShareMemberNotExist"
+//  FAILEDOPERATION_SHAREUNITNOTEXIST = "FailedOperation.ShareUnitNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AcceptJoinShareUnitInvitation(request *AcceptJoinShareUnitInvitationRequest) (response *AcceptJoinShareUnitInvitationResponse, err error) {
+    return c.AcceptJoinShareUnitInvitationWithContext(context.Background(), request)
+}
+
+// AcceptJoinShareUnitInvitation
+// 接受加入共享单元邀请。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHINFOEMPTY = "FailedOperation.AuthInfoEmpty"
+//  FAILEDOPERATION_AUTHINFONOTSAME = "FailedOperation.AuthInfoNotSame"
+//  FAILEDOPERATION_AUTHNOTENTERPRISE = "FailedOperation.AuthNotEnterprise"
+//  FAILEDOPERATION_SHAREMEMBERNOTEXIST = "FailedOperation.ShareMemberNotExist"
+//  FAILEDOPERATION_SHAREUNITNOTEXIST = "FailedOperation.ShareUnitNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AcceptJoinShareUnitInvitationWithContext(ctx context.Context, request *AcceptJoinShareUnitInvitationRequest) (response *AcceptJoinShareUnitInvitationResponse, err error) {
+    if request == nil {
+        request = NewAcceptJoinShareUnitInvitationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcceptJoinShareUnitInvitation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAcceptJoinShareUnitInvitationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddOrganizationMemberEmailRequest() (request *AddOrganizationMemberEmailRequest) {
     request = &AddOrganizationMemberEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3760,6 +3825,65 @@ func (c *Client) QuitOrganizationWithContext(ctx context.Context, request *QuitO
     request.SetContext(ctx)
     
     response = NewQuitOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRejectJoinShareUnitInvitationRequest() (request *RejectJoinShareUnitInvitationRequest) {
+    request = &RejectJoinShareUnitInvitationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "RejectJoinShareUnitInvitation")
+    
+    
+    return
+}
+
+func NewRejectJoinShareUnitInvitationResponse() (response *RejectJoinShareUnitInvitationResponse) {
+    response = &RejectJoinShareUnitInvitationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RejectJoinShareUnitInvitation
+// 拒绝加入共享单元邀请。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SHAREMEMBERNOTEXIST = "FailedOperation.ShareMemberNotExist"
+//  FAILEDOPERATION_SHAREUNITNOTEXIST = "FailedOperation.ShareUnitNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RejectJoinShareUnitInvitation(request *RejectJoinShareUnitInvitationRequest) (response *RejectJoinShareUnitInvitationResponse, err error) {
+    return c.RejectJoinShareUnitInvitationWithContext(context.Background(), request)
+}
+
+// RejectJoinShareUnitInvitation
+// 拒绝加入共享单元邀请。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SHAREMEMBERNOTEXIST = "FailedOperation.ShareMemberNotExist"
+//  FAILEDOPERATION_SHAREUNITNOTEXIST = "FailedOperation.ShareUnitNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RejectJoinShareUnitInvitationWithContext(ctx context.Context, request *RejectJoinShareUnitInvitationRequest) (response *RejectJoinShareUnitInvitationResponse, err error) {
+    if request == nil {
+        request = NewRejectJoinShareUnitInvitationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RejectJoinShareUnitInvitation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRejectJoinShareUnitInvitationResponse()
     err = c.Send(request, response)
     return
 }

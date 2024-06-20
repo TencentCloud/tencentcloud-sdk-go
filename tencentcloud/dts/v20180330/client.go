@@ -746,67 +746,6 @@ func (c *Client) DescribeMigrateJobsWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
-    request = &DescribeRegionConfRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConf")
-    
-    
-    return
-}
-
-func NewDescribeRegionConfResponse() (response *DescribeRegionConfResponse) {
-    response = &DescribeRegionConfResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRegionConf
-// 接口不再使用
-//
-// 
-//
-// 本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeRegionConf(request *DescribeRegionConfRequest) (response *DescribeRegionConfResponse, err error) {
-    return c.DescribeRegionConfWithContext(context.Background(), request)
-}
-
-// DescribeRegionConf
-// 接口不再使用
-//
-// 
-//
-// 本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeRegionConfWithContext(ctx context.Context, request *DescribeRegionConfRequest) (response *DescribeRegionConfResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionConfRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRegionConf require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRegionConfResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSubscribeConfRequest() (request *DescribeSubscribeConfRequest) {
     request = &DescribeSubscribeConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
