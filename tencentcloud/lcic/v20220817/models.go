@@ -1166,13 +1166,13 @@ type CreateRoomRequestParams struct {
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播类型：0 常规（默认）1 伪直播
+	// 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
 	// 伪直播链接
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
-	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
@@ -1278,13 +1278,13 @@ type CreateRoomRequest struct {
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播类型：0 常规（默认）1 伪直播
+	// 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
 	// 伪直播链接
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
-	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
@@ -5171,13 +5171,13 @@ type RoomInfo struct {
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播类型：0 常规（默认）1 伪直播
+	// 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
 	// 伪直播回放链接
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
-	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道

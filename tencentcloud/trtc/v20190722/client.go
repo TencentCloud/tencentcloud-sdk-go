@@ -3894,7 +3894,7 @@ func NewStartStreamIngestResponse() (response *StartStreamIngestResponse) {
 // )
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
 //  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 //  INTERNALERROR_HTTPPARSEFAILED = "InternalError.HttpParseFailed"
@@ -3921,7 +3921,7 @@ func (c *Client) StartStreamIngest(request *StartStreamIngestRequest) (response 
 // )
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
 //  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 //  INTERNALERROR_HTTPPARSEFAILED = "InternalError.HttpParseFailed"

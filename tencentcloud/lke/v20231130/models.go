@@ -100,6 +100,10 @@ type AppModel struct {
 	// 模型别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// token余量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenBalance *float64 `json:"TokenBalance,omitnil,omitempty" name:"TokenBalance"`
 }
 
 type AttrLabel struct {
@@ -189,7 +193,7 @@ type BaseConfig struct {
 
 // Predefined struct for user
 type CheckAttributeLabelExistRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性名称
@@ -211,7 +215,7 @@ type CheckAttributeLabelExistRequestParams struct {
 type CheckAttributeLabelExistRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性名称
@@ -281,7 +285,7 @@ func (r *CheckAttributeLabelExistResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckAttributeLabelReferRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -300,7 +304,7 @@ type CheckAttributeLabelReferRequestParams struct {
 type CheckAttributeLabelReferRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -412,6 +416,10 @@ type Context struct {
 	// 消息内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 文档信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileInfos []*MsgFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 }
 
 type Coord struct {
@@ -489,7 +497,7 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性标识
@@ -511,7 +519,7 @@ type CreateAttributeLabelRequestParams struct {
 type CreateAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性标识
@@ -656,7 +664,7 @@ func (r *CreateCorpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateQACateRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 父级业务ID
@@ -669,7 +677,7 @@ type CreateQACateRequestParams struct {
 type CreateQACateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 父级业务ID
@@ -736,7 +744,7 @@ func (r *CreateQACateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateQARequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问题
@@ -770,7 +778,7 @@ type CreateQARequestParams struct {
 type CreateQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问题
@@ -864,38 +872,38 @@ type CreateReconstructDocumentFlowConfig struct {
 
 // Predefined struct for user
 type CreateReconstructDocumentFlowRequestParams struct {
-	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 100M。文件下载时间不超过 15 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
-	// 创建智能文档识别任务配置信息
+	// 创建文档解析任务配置信息
 	Config *CreateReconstructDocumentFlowConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type CreateReconstructDocumentFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 100M。文件下载时间不超过 15 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
-	// 创建智能文档识别任务配置信息
+	// 创建文档解析任务配置信息
 	Config *CreateReconstructDocumentFlowConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -949,7 +957,7 @@ func (r *CreateReconstructDocumentFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRejectedQuestionRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
@@ -968,7 +976,7 @@ type CreateRejectedQuestionRequestParams struct {
 type CreateRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
@@ -1169,7 +1177,7 @@ func (r *DeleteAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性ID
@@ -1185,7 +1193,7 @@ type DeleteAttributeLabelRequestParams struct {
 type DeleteAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性ID
@@ -1247,7 +1255,7 @@ type DeleteDocRequestParams struct {
 	// 文档业务ID列表
 	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -1257,7 +1265,7 @@ type DeleteDocRequest struct {
 	// 文档业务ID列表
 	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -1305,7 +1313,7 @@ func (r *DeleteDocResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteQACateRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 分类业务ID
@@ -1315,7 +1323,7 @@ type DeleteQACateRequestParams struct {
 type DeleteQACateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 分类业务ID
@@ -1366,7 +1374,7 @@ func (r *DeleteQACateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteQARequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -1376,7 +1384,7 @@ type DeleteQARequestParams struct {
 type DeleteQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -1427,7 +1435,7 @@ func (r *DeleteQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRejectedQuestionRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题来源的数据源唯一id
@@ -1439,7 +1447,7 @@ type DeleteRejectedQuestionRequestParams struct {
 type DeleteRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题来源的数据源唯一id
@@ -1599,7 +1607,7 @@ func (r *DescribeAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性ID
@@ -1624,7 +1632,7 @@ type DescribeAttributeLabelRequestParams struct {
 type DescribeAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性ID
@@ -1770,7 +1778,7 @@ func (r *DescribeCorpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDocRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -1780,7 +1788,7 @@ type DescribeDocRequestParams struct {
 type DescribeDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -1903,7 +1911,7 @@ type DescribeQARequestParams struct {
 	// QA业务ID
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -1913,7 +1921,7 @@ type DescribeQARequest struct {
 	// QA业务ID
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -2033,7 +2041,7 @@ func (r *DescribeQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReferRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 引用ID
@@ -2049,7 +2057,7 @@ type DescribeReferRequestParams struct {
 type DescribeReferRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 引用ID
@@ -2250,14 +2258,14 @@ func (r *DescribeReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRobotBizIDByAppKeyRequestParams struct {
-	// 机器人appkey
+	// 应用appkey
 	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
 }
 
 type DescribeRobotBizIDByAppKeyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人appkey
+	// 应用appkey
 	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
 }
 
@@ -2282,7 +2290,7 @@ func (r *DescribeRobotBizIDByAppKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRobotBizIDByAppKeyResponseParams struct {
-	// 机器人业务ID
+	// 应用业务ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2307,27 +2315,33 @@ func (r *DescribeRobotBizIDByAppKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStorageCredentialRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件类型
+	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 权限场景，是否公有权限
+	// IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
+
+	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 }
 
 type DescribeStorageCredentialRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件类型
+	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 权限场景，是否公有权限
+	// IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
+
+	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 }
 
 func (r *DescribeStorageCredentialRequest) ToJsonString() string {
@@ -2345,6 +2359,7 @@ func (r *DescribeStorageCredentialRequest) FromJsonString(s string) error {
 	delete(f, "BotBizId")
 	delete(f, "FileType")
 	delete(f, "IsPublic")
+	delete(f, "TypeKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStorageCredentialRequest has unknown keys!", "")
 	}
@@ -2380,7 +2395,7 @@ type DescribeStorageCredentialResponseParams struct {
 	// 图片存储目录
 	ImagePath *string `json:"ImagePath,omitnil,omitempty" name:"ImagePath"`
 
-	// 上传存储目录
+	// 上传存储路径，到具体文件
 	UploadPath *string `json:"UploadPath,omitnil,omitempty" name:"UploadPath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2405,7 +2420,7 @@ func (r *DescribeStorageCredentialResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUnsatisfiedReplyContextRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 回复ID
@@ -2421,7 +2436,7 @@ type DescribeUnsatisfiedReplyContextRequestParams struct {
 type DescribeUnsatisfiedReplyContextRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 回复ID
@@ -2558,7 +2573,7 @@ type EmbeddingObject struct {
 
 // Predefined struct for user
 type ExportAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -2577,7 +2592,7 @@ type ExportAttributeLabelRequestParams struct {
 type ExportAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -2643,7 +2658,7 @@ func (r *ExportAttributeLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportQAListRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QA业务ID
@@ -2656,7 +2671,7 @@ type ExportQAListRequestParams struct {
 type ExportQAListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QA业务ID
@@ -2711,7 +2726,7 @@ func (r *ExportQAListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportUnsatisfiedReplyRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 勾选导出ID列表
@@ -2730,7 +2745,7 @@ type ExportUnsatisfiedReplyRequestParams struct {
 type ExportUnsatisfiedReplyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 勾选导出ID列表
@@ -2791,6 +2806,28 @@ func (r *ExportUnsatisfiedReplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FileInfo struct {
+	// 文件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文件的URL地址，COS地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 解析后返回的DocID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+}
+
 type Filters struct {
 	// 检索，用户问题或答案
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
@@ -2801,7 +2838,7 @@ type Filters struct {
 
 // Predefined struct for user
 type GenerateQARequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -2811,7 +2848,7 @@ type GenerateQARequestParams struct {
 type GenerateQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -3010,8 +3047,11 @@ type GetDocPreviewRequestParams struct {
 	// 文档业务ID
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 }
 
 type GetDocPreviewRequest struct {
@@ -3020,8 +3060,11 @@ type GetDocPreviewRequest struct {
 	// 文档业务ID
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 }
 
 func (r *GetDocPreviewRequest) ToJsonString() string {
@@ -3038,6 +3081,7 @@ func (r *GetDocPreviewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DocBizId")
 	delete(f, "BotBizId")
+	delete(f, "TypeKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDocPreviewRequest has unknown keys!", "")
 	}
@@ -3169,7 +3213,7 @@ type GetMsgRecordRequestParams struct {
 	// 最后一条记录ID
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
-	// 机器人AppKey
+	// 应用AppKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 场景, 体验: 1; 正式: 2
@@ -3191,7 +3235,7 @@ type GetMsgRecordRequest struct {
 	// 最后一条记录ID
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
-	// 机器人AppKey
+	// 应用AppKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 场景, 体验: 1; 正式: 2
@@ -3291,7 +3335,7 @@ type GetReconstructDocumentResultResponseParams struct {
 	// 输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
 	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
 
-	// 还原失败的页
+	// 文档解析失败的页码
 	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3322,7 +3366,7 @@ type GetTaskStatusRequestParams struct {
 	// 任务类型
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -3335,7 +3379,7 @@ type GetTaskStatusRequest struct {
 	// 任务类型
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -3413,7 +3457,7 @@ type GetWsTokenRequestParams struct {
 	// 接入类型
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 机器人AppKey
+	// 应用AppKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 坐席ID
@@ -3429,7 +3473,7 @@ type GetWsTokenRequest struct {
 	// 接入类型
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 机器人AppKey
+	// 应用AppKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 坐席ID
@@ -3466,6 +3510,13 @@ type GetWsTokenResponseParams struct {
 	// token值
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
+	// 余额; 余额大于 0 时表示有效.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Balance *float64 `json:"Balance,omitnil,omitempty" name:"Balance"`
+
+	// 对话窗输入字符限制
+	InputLenLimit *int64 `json:"InputLenLimit,omitnil,omitempty" name:"InputLenLimit"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3488,7 +3539,7 @@ func (r *GetWsTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GroupQARequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QA业务ID列表
@@ -3501,7 +3552,7 @@ type GroupQARequestParams struct {
 type GroupQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QA业务ID列表
@@ -3555,7 +3606,7 @@ func (r *GroupQAResponse) FromJsonString(s string) error {
 }
 
 type Highlight struct {
-	// 高亮启始位置
+	// 高亮起始位置
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartPos *string `json:"StartPos,omitnil,omitempty" name:"StartPos"`
@@ -3573,7 +3624,7 @@ type Highlight struct {
 
 // Predefined struct for user
 type IgnoreUnsatisfiedReplyRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 不满意回复ID
@@ -3589,7 +3640,7 @@ type IgnoreUnsatisfiedReplyRequestParams struct {
 type IgnoreUnsatisfiedReplyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 不满意回复ID
@@ -3651,7 +3702,7 @@ type IsTransferIntentRequestParams struct {
 	// 内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 机器人appKey
+	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 }
 
@@ -3661,7 +3712,7 @@ type IsTransferIntentRequest struct {
 	// 内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 机器人appKey
+	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 }
 
@@ -3786,6 +3837,10 @@ type KnowledgeQaSearch struct {
 	// 文档最大召回数量, 默认3，限制5
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocTopN *uint64 `json:"DocTopN,omitnil,omitempty" name:"DocTopN"`
+
+	// 检索置信度，针对文档和问答有效，最小0.01，最大0.99
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 }
 
 type Label struct {
@@ -3957,7 +4012,7 @@ func (r *ListAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -3979,7 +4034,7 @@ type ListAttributeLabelRequestParams struct {
 type ListAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4322,14 +4377,14 @@ func (r *ListModelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListQACateRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
 type ListQACateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -4564,7 +4619,7 @@ type ListQaItem struct {
 
 // Predefined struct for user
 type ListRejectedQuestionPreviewRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4592,7 +4647,7 @@ type ListRejectedQuestionPreviewRequestParams struct {
 type ListRejectedQuestionPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4673,7 +4728,7 @@ func (r *ListRejectedQuestionPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRejectedQuestionRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4689,7 +4744,7 @@ type ListRejectedQuestionRequestParams struct {
 type ListRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4870,7 +4925,7 @@ func (r *ListReleaseConfigPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListReleaseDocPreviewRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4898,7 +4953,7 @@ type ListReleaseDocPreviewRequestParams struct {
 type ListReleaseDocPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -5008,7 +5063,7 @@ type ListReleaseItem struct {
 
 // Predefined struct for user
 type ListReleaseQAPreviewRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -5039,7 +5094,7 @@ type ListReleaseQAPreviewRequestParams struct {
 type ListReleaseQAPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -5198,7 +5253,7 @@ func (r *ListReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListSelectDocRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档名称
@@ -5211,7 +5266,7 @@ type ListSelectDocRequestParams struct {
 type ListSelectDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档名称
@@ -5269,7 +5324,7 @@ func (r *ListSelectDocResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListUnsatisfiedReplyRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -5294,7 +5349,7 @@ type ListUnsatisfiedReplyRequestParams struct {
 type ListUnsatisfiedReplyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -5486,7 +5541,7 @@ func (r *ModifyAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性ID
@@ -5514,7 +5569,7 @@ type ModifyAttributeLabelRequestParams struct {
 type ModifyAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 属性ID
@@ -5592,7 +5647,7 @@ func (r *ModifyAttributeLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDocAttrRangeRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -5608,7 +5663,7 @@ type ModifyDocAttrRangeRequestParams struct {
 type ModifyDocAttrRangeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -5667,7 +5722,7 @@ func (r *ModifyDocAttrRangeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDocRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -5705,7 +5760,7 @@ type ModifyDocRequestParams struct {
 type ModifyDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -5793,7 +5848,7 @@ func (r *ModifyDocResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyQAAttrRangeRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -5809,7 +5864,7 @@ type ModifyQAAttrRangeRequestParams struct {
 type ModifyQAAttrRangeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -5868,7 +5923,7 @@ func (r *ModifyQAAttrRangeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyQACateRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 分类名称
@@ -5881,7 +5936,7 @@ type ModifyQACateRequestParams struct {
 type ModifyQACateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 分类名称
@@ -5936,7 +5991,7 @@ func (r *ModifyQACateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyQARequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -5973,7 +6028,7 @@ type ModifyQARequestParams struct {
 type ModifyQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -6060,7 +6115,7 @@ func (r *ModifyQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRejectedQuestionRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
@@ -6076,7 +6131,7 @@ type ModifyRejectedQuestionRequestParams struct {
 type ModifyRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
@@ -6130,6 +6185,28 @@ func (r *ModifyRejectedQuestionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyRejectedQuestionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MsgFileInfo struct {
+	// 文档名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文档大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文档URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 文档类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 文档ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
 }
 
 type MsgRecord struct {
@@ -6191,6 +6268,20 @@ type MsgRecord struct {
 	TokenStat *TokenStat `json:"TokenStat,omitnil,omitempty" name:"TokenStat"`
 
 	// 回复方式
+	// 1:大模型直接回复;
+	// 2:保守回复, 未知问题回复;
+	// 3:拒答问题回复;
+	// 4:敏感回复;
+	// 5:问答对直接回复, 已采纳问答对优先回复;
+	// 6:欢迎语回复;
+	// 7:并发超限回复;
+	// 8:全局干预知识;
+	// 9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;
+	// 10:任务流程答案回复;
+	// 11:搜索引擎回复;
+	// 12:知识润色后回复;
+	// 13:图片理解回复;
+	// 14:实时文档回复;
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplyMethod *uint64 `json:"ReplyMethod,omitnil,omitempty" name:"ReplyMethod"`
 
@@ -6201,6 +6292,10 @@ type MsgRecord struct {
 	// 任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskFlow *TaskFlowInfo `json:"TaskFlow,omitnil,omitempty" name:"TaskFlow"`
+
+	// 用户传入的文件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileInfos []*FileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 }
 
 type MsgRecordReference struct {
@@ -6417,7 +6512,7 @@ type QAQuery struct {
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 查询内容
@@ -6590,7 +6685,7 @@ func (r *QueryRewriteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RateMsgRecordRequestParams struct {
-	// 机器人appKey
+	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 消息ID
@@ -6606,7 +6701,7 @@ type RateMsgRecordRequestParams struct {
 type RateMsgRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人appKey
+	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 消息ID
@@ -6676,17 +6771,16 @@ type ReconstructDocumentFailedPage struct {
 
 // Predefined struct for user
 type ReconstructDocumentRequestParams struct {
-	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
-	// 单次调用，最多支持10页pdf的智能识别。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。单次调用，最多支持10页pdf的文档解析。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
 	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
@@ -6696,17 +6790,16 @@ type ReconstructDocumentRequestParams struct {
 type ReconstructDocumentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
-	// 单次调用，最多支持10页pdf的智能识别。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。单次调用，最多支持10页pdf的文档解析。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
 	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
@@ -7024,7 +7117,7 @@ func (r *ResetSessionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RetryDocAuditRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -7034,7 +7127,7 @@ type RetryDocAuditRequestParams struct {
 type RetryDocAuditRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -7085,7 +7178,7 @@ func (r *RetryDocAuditResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RetryDocParseRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -7095,7 +7188,7 @@ type RetryDocParseRequestParams struct {
 type RetryDocParseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -7380,7 +7473,7 @@ func (r *SaveDocResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopDocParseRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -7390,7 +7483,7 @@ type StopDocParseRequestParams struct {
 type StopDocParseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -7558,7 +7651,7 @@ type UnsatisfiedReply struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 机器人回复
+	// 应用回复
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
 
@@ -7569,7 +7662,7 @@ type UnsatisfiedReply struct {
 
 // Predefined struct for user
 type UploadAttributeLabelRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件名
@@ -7594,7 +7687,7 @@ type UploadAttributeLabelRequestParams struct {
 type UploadAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件名
@@ -7691,7 +7784,7 @@ type VerifyQARequestParams struct {
 	// 问答列表
 	List []*QAList `json:"List,omitnil,omitempty" name:"List"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -7707,7 +7800,7 @@ type VerifyQARequest struct {
 	// 问答列表
 	List []*QAList `json:"List,omitnil,omitempty" name:"List"`
 
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)

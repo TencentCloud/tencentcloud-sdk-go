@@ -1782,6 +1782,12 @@ type SendEmailRequestParams struct {
 
 	// 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
 	TriggerType *uint64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// smtp头中的Message-Id字段
+	SmtpMessageId *string `json:"SmtpMessageId,omitnil,omitempty" name:"SmtpMessageId"`
+
+	// smtp头中可以设置的其它字段
+	SmtpHeaders *string `json:"SmtpHeaders,omitnil,omitempty" name:"SmtpHeaders"`
 }
 
 type SendEmailRequest struct {
@@ -1822,6 +1828,12 @@ type SendEmailRequest struct {
 
 	// 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
 	TriggerType *uint64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// smtp头中的Message-Id字段
+	SmtpMessageId *string `json:"SmtpMessageId,omitnil,omitempty" name:"SmtpMessageId"`
+
+	// smtp头中可以设置的其它字段
+	SmtpHeaders *string `json:"SmtpHeaders,omitnil,omitempty" name:"SmtpHeaders"`
 }
 
 func (r *SendEmailRequest) ToJsonString() string {
@@ -1847,6 +1859,8 @@ func (r *SendEmailRequest) FromJsonString(s string) error {
 	delete(f, "Attachments")
 	delete(f, "Unsubscribe")
 	delete(f, "TriggerType")
+	delete(f, "SmtpMessageId")
+	delete(f, "SmtpHeaders")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendEmailRequest has unknown keys!", "")
 	}

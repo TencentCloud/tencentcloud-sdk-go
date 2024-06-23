@@ -41,8 +41,8 @@ const (
 	// 需要解锁所需能力位
 	FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
 
-	// 未开通RTMP
-	FAILEDOPERATION_NOTRTMPFUNCTION = "FailedOperation.NotRtmpFunction"
+	// 不允许此操作，请提交工单联系我们
+	FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
 
 	// 查询任务失败
 	FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"

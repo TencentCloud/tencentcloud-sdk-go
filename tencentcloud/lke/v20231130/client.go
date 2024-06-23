@@ -378,7 +378,13 @@ func NewCreateReconstructDocumentFlowResponse() (response *CreateReconstructDocu
 }
 
 // CreateReconstructDocumentFlow
-// 文档解析，异步接口。
+// 本接口为异步接口的发起请求接口，用于发起文档解析任务。
+//
+// 文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 
+//
+// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -396,7 +402,13 @@ func (c *Client) CreateReconstructDocumentFlow(request *CreateReconstructDocumen
 }
 
 // CreateReconstructDocumentFlow
-// 文档解析，异步接口。
+// 本接口为异步接口的发起请求接口，用于发起文档解析任务。
+//
+// 文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 
+//
+// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -659,7 +671,7 @@ func NewDeleteDocResponse() (response *DeleteDocResponse) {
 }
 
 // DeleteDoc
-// 创建企业
+// 删除文档
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -668,7 +680,7 @@ func (c *Client) DeleteDoc(request *DeleteDocRequest) (response *DeleteDocRespon
 }
 
 // DeleteDoc
-// 创建企业
+// 删除文档
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1247,7 +1259,7 @@ func NewDescribeRobotBizIDByAppKeyResponse() (response *DescribeRobotBizIDByAppK
 }
 
 // DescribeRobotBizIDByAppKey
-// 通过appKey获取机器人业务ID
+// 通过appKey获取应用业务ID
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1256,7 +1268,7 @@ func (c *Client) DescribeRobotBizIDByAppKey(request *DescribeRobotBizIDByAppKeyR
 }
 
 // DescribeRobotBizIDByAppKey
-// 通过appKey获取机器人业务ID
+// 通过appKey获取应用业务ID
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1839,7 +1851,7 @@ func NewGetReconstructDocumentResultResponse() (response *GetReconstructDocument
 }
 
 // GetReconstructDocumentResult
-// 获取文档解析任务执行结果
+// 本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
@@ -1853,7 +1865,7 @@ func (c *Client) GetReconstructDocumentResult(request *GetReconstructDocumentRes
 }
 
 // GetReconstructDocumentResult
-// 获取文档解析任务执行结果
+// 本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
@@ -3280,6 +3292,8 @@ func NewParseDocResponse() (response *ParseDocResponse) {
 }
 
 // ParseDoc
+// 接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
+//
 // 解析拆分文档。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或 [联系客服](https://cloud.tencent.com/act/event/Online_service)  。
 //
 // 可能返回的错误码:
@@ -3293,6 +3307,8 @@ func (c *Client) ParseDoc(request *ParseDocRequest) (response *ParseDocResponse,
 }
 
 // ParseDoc
+// 接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
+//
 // 解析拆分文档。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或 [联系客服](https://cloud.tencent.com/act/event/Online_service)  。
 //
 // 可能返回的错误码:
@@ -3514,6 +3530,10 @@ func NewReconstructDocumentResponse() (response *ReconstructDocumentResponse) {
 // ReconstructDocument
 // 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
 //
+// 
+//
+// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -3528,6 +3548,10 @@ func (c *Client) ReconstructDocument(request *ReconstructDocumentRequest) (respo
 
 // ReconstructDocument
 // 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 
+//
+// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"

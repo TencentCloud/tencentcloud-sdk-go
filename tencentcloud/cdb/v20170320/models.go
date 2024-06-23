@@ -1721,6 +1721,14 @@ type ClusterNodeInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type ClusterTopology struct {
+	// RW 节点拓扑。
+	ReadWriteNode *ReadWriteNode `json:"ReadWriteNode,omitnil,omitempty" name:"ReadWriteNode"`
+
+	// RO 节点拓扑。
+	ReadOnlyNodes []*ReadonlyNode `json:"ReadOnlyNodes,omitnil,omitempty" name:"ReadOnlyNodes"`
+}
+
 type ColumnPrivilege struct {
 	// 数据库名
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
@@ -8399,6 +8407,150 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceUpgradeTypeRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 目标实例cpu
+	DstCpu *float64 `json:"DstCpu,omitnil,omitempty" name:"DstCpu"`
+
+	// 目标实例内存
+	DstMemory *uint64 `json:"DstMemory,omitnil,omitempty" name:"DstMemory"`
+
+	// 目标实例磁盘
+	DstDisk *uint64 `json:"DstDisk,omitnil,omitempty" name:"DstDisk"`
+
+	// 目标实例版本
+	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
+
+	// 目标实例部署模型
+	DstDeployMode *int64 `json:"DstDeployMode,omitnil,omitempty" name:"DstDeployMode"`
+
+	// 目标实例复制类型
+	DstProtectMode *int64 `json:"DstProtectMode,omitnil,omitempty" name:"DstProtectMode"`
+
+	// 目标实例备机1可用区
+	DstSlaveZone *int64 `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
+
+	// 目标实例备机2可用区
+	DstBackupZone *int64 `json:"DstBackupZone,omitnil,omitempty" name:"DstBackupZone"`
+
+	// 目标实例类型
+	DstCdbType *string `json:"DstCdbType,omitnil,omitempty" name:"DstCdbType"`
+
+	// 目标实例主可用区
+	DstZoneId *int64 `json:"DstZoneId,omitnil,omitempty" name:"DstZoneId"`
+
+	// 独享集群CDB实例的节点分布情况
+	NodeDistribution *NodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
+
+	// 集群版的节点拓扑配置
+	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
+}
+
+type DescribeInstanceUpgradeTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 目标实例cpu
+	DstCpu *float64 `json:"DstCpu,omitnil,omitempty" name:"DstCpu"`
+
+	// 目标实例内存
+	DstMemory *uint64 `json:"DstMemory,omitnil,omitempty" name:"DstMemory"`
+
+	// 目标实例磁盘
+	DstDisk *uint64 `json:"DstDisk,omitnil,omitempty" name:"DstDisk"`
+
+	// 目标实例版本
+	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
+
+	// 目标实例部署模型
+	DstDeployMode *int64 `json:"DstDeployMode,omitnil,omitempty" name:"DstDeployMode"`
+
+	// 目标实例复制类型
+	DstProtectMode *int64 `json:"DstProtectMode,omitnil,omitempty" name:"DstProtectMode"`
+
+	// 目标实例备机1可用区
+	DstSlaveZone *int64 `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
+
+	// 目标实例备机2可用区
+	DstBackupZone *int64 `json:"DstBackupZone,omitnil,omitempty" name:"DstBackupZone"`
+
+	// 目标实例类型
+	DstCdbType *string `json:"DstCdbType,omitnil,omitempty" name:"DstCdbType"`
+
+	// 目标实例主可用区
+	DstZoneId *int64 `json:"DstZoneId,omitnil,omitempty" name:"DstZoneId"`
+
+	// 独享集群CDB实例的节点分布情况
+	NodeDistribution *NodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
+
+	// 集群版的节点拓扑配置
+	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
+}
+
+func (r *DescribeInstanceUpgradeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceUpgradeTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DstCpu")
+	delete(f, "DstMemory")
+	delete(f, "DstDisk")
+	delete(f, "DstVersion")
+	delete(f, "DstDeployMode")
+	delete(f, "DstProtectMode")
+	delete(f, "DstSlaveZone")
+	delete(f, "DstBackupZone")
+	delete(f, "DstCdbType")
+	delete(f, "DstZoneId")
+	delete(f, "NodeDistribution")
+	delete(f, "ClusterTopology")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceUpgradeTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceUpgradeTypeResponseParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例升级类型
+	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceUpgradeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceUpgradeTypeResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceUpgradeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceUpgradeTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLocalBinlogConfigRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13321,6 +13473,17 @@ func (r *ModifyTimeWindowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NodeDistribution struct {
+	// 主实例Master节点所在主机ID或者只读实例所在主机ID
+	Node *string `json:"Node,omitnil,omitempty" name:"Node"`
+
+	// 主实例第一Slave节点所在主机ID
+	SlaveNodeOne *string `json:"SlaveNodeOne,omitnil,omitempty" name:"SlaveNodeOne"`
+
+	// 主实例第二Slave节点所在主机ID
+	SlaveNodeTwo *string `json:"SlaveNodeTwo,omitnil,omitempty" name:"SlaveNodeTwo"`
+}
+
 // Predefined struct for user
 type OfflineIsolatedInstancesRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
@@ -14056,6 +14219,22 @@ type ProxyNodeCustom struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type ReadWriteNode struct {
+	// RW 节点所在可用区。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+}
+
+type ReadonlyNode struct {
+	// 是否分布在随机可用区。传入YES表示随机可用区。否则使用Zone指定的可用区。
+	IsRandomZone *string `json:"IsRandomZone,omitnil,omitempty" name:"IsRandomZone"`
+
+	// 指定该节点分布在哪个可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 

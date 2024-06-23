@@ -20582,7 +20582,7 @@ type UpgradeClusterReleaseRequestParams struct {
 	// 自定义参数，覆盖chart 中values.yaml 中的参数
 	Values *ReleaseValues `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market 或 other
+	// 制品来源，范围：tke-market 或 other默认值：tke-market。
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
 	// 制品版本( 从第三方安装时，不传这个参数）
@@ -20622,7 +20622,7 @@ type UpgradeClusterReleaseRequest struct {
 	// 自定义参数，覆盖chart 中values.yaml 中的参数
 	Values *ReleaseValues `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market 或 other
+	// 制品来源，范围：tke-market 或 other默认值：tke-market。
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
 	// 制品版本( 从第三方安装时，不传这个参数）

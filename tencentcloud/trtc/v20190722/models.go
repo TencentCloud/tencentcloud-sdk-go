@@ -4401,12 +4401,18 @@ type StartStreamIngestRequestParams struct {
 	PrivateMapKey *string `json:"PrivateMapKey,omitnil,omitempty" name:"PrivateMapKey"`
 
 	// 【本字段已废弃】视频编码参数。可选，如果不填，保持原始流的参数。
+	//
+	// Deprecated: VideoEncodeParams is deprecated.
 	VideoEncodeParams *VideoEncodeParams `json:"VideoEncodeParams,omitnil,omitempty" name:"VideoEncodeParams"`
 
 	// 【本字段已废弃】音频编码参数。可选，如果不填，保持原始流的参数。
+	//
+	// Deprecated: AudioEncodeParams is deprecated.
 	AudioEncodeParams *AudioEncodeParams `json:"AudioEncodeParams,omitnil,omitempty" name:"AudioEncodeParams"`
 
 	// 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
+	//
+	// Deprecated: SourceUrl is deprecated.
 	SourceUrl []*string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
 
 	// 指定视频从某个秒时间戳播放

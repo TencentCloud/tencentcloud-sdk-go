@@ -6917,15 +6917,14 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicsRequestParams struct {
-	// * topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String。必选：否
-	// * logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String。必选：否
-	// * topicId 按照【日志主题ID】进行过滤。类型：String。必选：否
-	// * logsetId 按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String。必选：否
-	// * tagKey 按照【标签键】进行过滤。类型：String。必选：否
-	// * tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String。必选：否
-	// * storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否
-	// 
-	// 注意：每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+	// <li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+	// <li>logsetId 按照【日志集ID】进行过滤，可通过调用 DescribeLogsets 查询已创建的日志集列表或登录控制台进行查看；也可以调用 CreateLogset 创建新的日志集。类型：String。必选：否</li>
+	// <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
+	// <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
+	// <li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+	// 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
@@ -6935,30 +6934,29 @@ type DescribeTopicsRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 控制Filters相关字段是否为精确匹配。
-	// - 0: 默认值，topicName和logsetName模糊匹配
-	// - 1: topicName精确匹配
-	// - 2: logsetName精确匹配
-	// - 3: topicName和logsetName都精确匹配
+	// <ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
+	// <li>1: topicName   精确匹配</li>
+	// <li>2: logsetName精确匹配</li>
+	// <li>3: topicName 和logsetName 都精确匹配</li></ul>
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
 	// 主题类型
-	// - 0:日志主题，默认值
-	// - 1:指标主题
+	// <ul><li>0:日志主题，默认值</li>
+	// <li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
 type DescribeTopicsRequest struct {
 	*tchttp.BaseRequest
 	
-	// * topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String。必选：否
-	// * logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用PreciseSearch参数设置为精确匹配。类型：String。必选：否
-	// * topicId 按照【日志主题ID】进行过滤。类型：String。必选：否
-	// * logsetId 按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String。必选：否
-	// * tagKey 按照【标签键】进行过滤。类型：String。必选：否
-	// * tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String。必选：否
-	// * storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否
-	// 
-	// 注意：每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+	// <li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+	// <li>logsetId 按照【日志集ID】进行过滤，可通过调用 DescribeLogsets 查询已创建的日志集列表或登录控制台进行查看；也可以调用 CreateLogset 创建新的日志集。类型：String。必选：否</li>
+	// <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
+	// <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
+	// <li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+	// 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
@@ -6968,15 +6966,15 @@ type DescribeTopicsRequest struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 控制Filters相关字段是否为精确匹配。
-	// - 0: 默认值，topicName和logsetName模糊匹配
-	// - 1: topicName精确匹配
-	// - 2: logsetName精确匹配
-	// - 3: topicName和logsetName都精确匹配
+	// <ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
+	// <li>1: topicName   精确匹配</li>
+	// <li>2: logsetName精确匹配</li>
+	// <li>3: topicName 和logsetName 都精确匹配</li></ul>
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
 	// 主题类型
-	// - 0:日志主题，默认值
-	// - 1:指标主题
+	// <ul><li>0:日志主题，默认值</li>
+	// <li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 

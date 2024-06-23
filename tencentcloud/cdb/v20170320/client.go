@@ -5727,6 +5727,75 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceUpgradeTypeRequest() (request *DescribeInstanceUpgradeTypeRequest) {
+    request = &DescribeInstanceUpgradeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceUpgradeType")
+    
+    
+    return
+}
+
+func NewDescribeInstanceUpgradeTypeResponse() (response *DescribeInstanceUpgradeTypeResponse) {
+    response = &DescribeInstanceUpgradeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceUpgradeType
+// 本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeInstanceUpgradeType(request *DescribeInstanceUpgradeTypeRequest) (response *DescribeInstanceUpgradeTypeResponse, err error) {
+    return c.DescribeInstanceUpgradeTypeWithContext(context.Background(), request)
+}
+
+// DescribeInstanceUpgradeType
+// 本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeInstanceUpgradeTypeWithContext(ctx context.Context, request *DescribeInstanceUpgradeTypeRequest) (response *DescribeInstanceUpgradeTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceUpgradeTypeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceUpgradeType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceUpgradeTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLocalBinlogConfigRequest() (request *DescribeLocalBinlogConfigRequest) {
     request = &DescribeLocalBinlogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
