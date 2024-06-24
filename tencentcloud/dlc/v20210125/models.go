@@ -4404,6 +4404,34 @@ type DataEngineInfo struct {
 	EngineResourceUsedCU *int64 `json:"EngineResourceUsedCU,omitnil,omitempty" name:"EngineResourceUsedCU"`
 }
 
+type DataEngineScaleInfo struct {
+	// 引擎ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 引擎规格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleDetail []*DataEngineScaleInfoDetail `json:"ScaleDetail,omitnil,omitempty" name:"ScaleDetail"`
+}
+
+type DataEngineScaleInfoDetail struct {
+	// 统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 当前统计时间段，引擎规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CU *int64 `json:"CU,omitnil,omitempty" name:"CU"`
+}
+
 type DataFormat struct {
 	// 文本格式，TextFile。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6231,6 +6259,78 @@ func (r *DescribeDataEnginesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDataEnginesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEnginesScaleDetailRequestParams struct {
+	// 引擎名称列表
+	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
+
+	// 开始时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeDataEnginesScaleDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎名称列表
+	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
+
+	// 开始时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDataEnginesScaleDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEnginesScaleDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineNames")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEnginesScaleDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEnginesScaleDetailResponseParams struct {
+	// 引擎规格统计详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scales []*DataEngineScaleInfo `json:"Scales,omitnil,omitempty" name:"Scales"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataEnginesScaleDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEnginesScaleDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEnginesScaleDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEnginesScaleDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

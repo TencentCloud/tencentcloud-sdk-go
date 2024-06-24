@@ -6177,6 +6177,137 @@ func (r *DescribePulsarProInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRabbitMQExchangesRequestParams struct {
+	// 实例 id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// vhost 参数
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 分页 offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页 limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索关键词, 支持模糊匹配 
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// 筛选 exchange 类型, 数组中每个元素为选中的过滤类型
+	ExchangeTypeFilters []*string `json:"ExchangeTypeFilters,omitnil,omitempty" name:"ExchangeTypeFilters"`
+
+	// 筛选 exchange 创建来源,  "system":"系统创建", "user":"用户创建"
+	ExchangeCreatorFilters []*string `json:"ExchangeCreatorFilters,omitnil,omitempty" name:"ExchangeCreatorFilters"`
+
+	// exchange 名称，用于精确匹配
+	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
+
+	// 排序依据的字段：
+	// MessageRateInOut - 生产消费速率之和；
+	// MessageRateIn - 生产速率；
+	// MessageRateOut - 消费速率；
+	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
+
+	// 排序顺序，ascend 或 descend
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeRabbitMQExchangesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// vhost 参数
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 分页 offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页 limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索关键词, 支持模糊匹配 
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// 筛选 exchange 类型, 数组中每个元素为选中的过滤类型
+	ExchangeTypeFilters []*string `json:"ExchangeTypeFilters,omitnil,omitempty" name:"ExchangeTypeFilters"`
+
+	// 筛选 exchange 创建来源,  "system":"系统创建", "user":"用户创建"
+	ExchangeCreatorFilters []*string `json:"ExchangeCreatorFilters,omitnil,omitempty" name:"ExchangeCreatorFilters"`
+
+	// exchange 名称，用于精确匹配
+	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
+
+	// 排序依据的字段：
+	// MessageRateInOut - 生产消费速率之和；
+	// MessageRateIn - 生产速率；
+	// MessageRateOut - 消费速率；
+	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
+
+	// 排序顺序，ascend 或 descend
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeRabbitMQExchangesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQExchangesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VirtualHost")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchWord")
+	delete(f, "ExchangeTypeFilters")
+	delete(f, "ExchangeCreatorFilters")
+	delete(f, "ExchangeName")
+	delete(f, "SortElement")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQExchangesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQExchangesResponseParams struct {
+	// 策略列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExchangeInfoList []*RabbitMQExchangeListInfo `json:"ExchangeInfoList,omitnil,omitempty" name:"ExchangeInfoList"`
+
+	// 策略结果总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRabbitMQExchangesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQExchangesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQExchangesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQExchangesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRabbitMQNodeListRequestParams struct {
 	// rabbitmq集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12513,6 +12644,70 @@ type RabbitMQClusterWhiteListInfo struct {
 	// 公网数据流白名单状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicDataStreamWhiteListStatus *string `json:"PublicDataStreamWhiteListStatus,omitnil,omitempty" name:"PublicDataStreamWhiteListStatus"`
+}
+
+type RabbitMQExchangeListInfo struct {
+	// exchange 名
+	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
+
+	// 备注说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// exchange 类型, 支持 "fanout","direct","topic","headers"
+	ExchangeType *string `json:"ExchangeType,omitnil,omitempty" name:"ExchangeType"`
+
+	// VHost参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// exchange 创建者, "system":"系统创建", "user":"用户创建"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExchangeCreator *string `json:"ExchangeCreator,omitnil,omitempty" name:"ExchangeCreator"`
+
+	// exchange 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimeStamp *string `json:"CreateTimeStamp,omitnil,omitempty" name:"CreateTimeStamp"`
+
+	// exchange 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModTimeStamp *string `json:"ModTimeStamp,omitnil,omitempty" name:"ModTimeStamp"`
+
+	// 输入消息速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRateIn *float64 `json:"MessageRateIn,omitnil,omitempty" name:"MessageRateIn"`
+
+	// 输出消息速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRateOut *float64 `json:"MessageRateOut,omitnil,omitempty" name:"MessageRateOut"`
+
+	// 是否为持久化交换机，true 为持久化，false 为非持久化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Durable *bool `json:"Durable,omitnil,omitempty" name:"Durable"`
+
+	// 是否为自动删除交换机，true 为自动删除，false 为非自动删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoDelete *bool `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
+
+	// 是否为内部交换机，true 为内部交换机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Internal *bool `json:"Internal,omitnil,omitempty" name:"Internal"`
+
+	// 交换机所属实例 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 生效的策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 扩展参数 key-value 对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+
+	// 未调度的延时消息数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessagesDelayed *uint64 `json:"MessagesDelayed,omitnil,omitempty" name:"MessagesDelayed"`
 }
 
 type RabbitMQPrivateNode struct {

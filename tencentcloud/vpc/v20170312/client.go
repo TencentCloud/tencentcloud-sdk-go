@@ -337,7 +337,7 @@ func NewAddTemplateMemberResponse() (response *AddTemplateMemberResponse) {
 }
 
 // AddTemplateMember
-// 增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -353,7 +353,7 @@ func (c *Client) AddTemplateMember(request *AddTemplateMemberRequest) (response 
 }
 
 // AddTemplateMember
-// 增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8088,7 +8088,7 @@ func NewDeleteTemplateMemberResponse() (response *DeleteTemplateMemberResponse) 
 }
 
 // DeleteTemplateMember
-// 删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8101,7 +8101,7 @@ func (c *Client) DeleteTemplateMember(request *DeleteTemplateMemberRequest) (res
 }
 
 // DeleteTemplateMember
-// 删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12806,7 +12806,7 @@ func NewDescribeVpcEndPointServiceResponse() (response *DescribeVpcEndPointServi
 }
 
 // DescribeVpcEndPointService
-// 查询终端节点服务列表。
+// 本接口（DescribeVpcEndPointService）用于查询终端节点服务列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
@@ -12815,6 +12815,7 @@ func NewDescribeVpcEndPointServiceResponse() (response *DescribeVpcEndPointServi
 //  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_INSTANCEMISMATCH = "UnsupportedOperation.InstanceMismatch"
@@ -12824,7 +12825,7 @@ func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceR
 }
 
 // DescribeVpcEndPointService
-// 查询终端节点服务列表。
+// 本接口（DescribeVpcEndPointService）用于查询终端节点服务列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
@@ -12833,6 +12834,7 @@ func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceR
 //  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_INSTANCEMISMATCH = "UnsupportedOperation.InstanceMismatch"
@@ -18618,7 +18620,7 @@ func NewModifyTemplateMemberResponse() (response *ModifyTemplateMemberResponse) 
 }
 
 // ModifyTemplateMember
-// 修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -18631,7 +18633,7 @@ func (c *Client) ModifyTemplateMember(request *ModifyTemplateMemberRequest) (res
 }
 
 // ModifyTemplateMember
-// 修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

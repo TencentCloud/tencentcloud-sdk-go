@@ -131,6 +131,9 @@ const (
 	// 解析请求数据失败。
 	INVALIDPARAMETER_ERRORPARSEQUEST = "InvalidParameter.ErrorParsequest"
 
+	// 音频解码失败，请检查音频格式是否正确
+	INVALIDPARAMETER_FAILEDVOICEPRINTDECODE = "InvalidParameter.FailedVoicePrintDecode"
+
 	// 文件编码错误。
 	INVALIDPARAMETER_FILEENCODE = "InvalidParameter.FileEncode"
 

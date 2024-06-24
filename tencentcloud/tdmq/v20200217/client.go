@@ -4068,6 +4068,59 @@ func (c *Client) DescribePulsarProInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRabbitMQExchangesRequest() (request *DescribeRabbitMQExchangesRequest) {
+    request = &DescribeRabbitMQExchangesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQExchanges")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQExchangesResponse() (response *DescribeRabbitMQExchangesResponse) {
+    response = &DescribeRabbitMQExchangesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRabbitMQExchanges
+// 查询RabbitMQ exchange 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQExchanges(request *DescribeRabbitMQExchangesRequest) (response *DescribeRabbitMQExchangesResponse, err error) {
+    return c.DescribeRabbitMQExchangesWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQExchanges
+// 查询RabbitMQ exchange 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQExchangesWithContext(ctx context.Context, request *DescribeRabbitMQExchangesRequest) (response *DescribeRabbitMQExchangesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQExchangesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQExchanges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQExchangesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRabbitMQNodeListRequest() (request *DescribeRabbitMQNodeListRequest) {
     request = &DescribeRabbitMQNodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},

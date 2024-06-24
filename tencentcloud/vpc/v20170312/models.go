@@ -11392,7 +11392,7 @@ type DescribeGatewayFlowMonitorDetailRequestParams struct {
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。默认值`OutTraffic`。
+	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
@@ -11426,7 +11426,7 @@ type DescribeGatewayFlowMonitorDetailRequest struct {
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。默认值`OutTraffic`。
+	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
@@ -14970,7 +14970,7 @@ type DescribeVpcEndPointServiceRequestParams struct {
 	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitnil,omitempty" name:"EndPointServiceIds"`
 
-	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil,omitempty" name:"IsListAuthorizedEndPointService"`
 }
 
@@ -14993,7 +14993,7 @@ type DescribeVpcEndPointServiceRequest struct {
 	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitnil,omitempty" name:"EndPointServiceIds"`
 
-	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil,omitempty" name:"IsListAuthorizedEndPointService"`
 }
 
@@ -18266,6 +18266,12 @@ type GatewayFlowMonitorDetail struct {
 
 	// 出流量，单位：`Byte`。
 	OutTraffic *uint64 `json:"OutTraffic,omitnil,omitempty" name:"OutTraffic"`
+
+	// 并发连接数。仅标准型nat支持此参数。
+	ConcurrentConnectionCount *uint64 `json:"ConcurrentConnectionCount,omitnil,omitempty" name:"ConcurrentConnectionCount"`
+
+	// 新建连接速率。仅标准型nat支持此参数。
+	NewConnectionRate *uint64 `json:"NewConnectionRate,omitnil,omitempty" name:"NewConnectionRate"`
 }
 
 type GatewayQos struct {

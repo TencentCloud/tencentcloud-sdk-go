@@ -68,7 +68,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.948
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.949
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -233,6 +233,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsi v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump v0.0.0
@@ -486,6 +487,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc => ../tencentcloud/trtc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse => ../tencentcloud/tse
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf => ../tencentcloud/tsf
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsi => ../tencentcloud/tsi
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw => ../tencentcloud/tsw
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts => ../tencentcloud/tts
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump => ../tencentcloud/ump

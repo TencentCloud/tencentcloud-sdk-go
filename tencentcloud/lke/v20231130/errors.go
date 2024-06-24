@@ -29,6 +29,9 @@ const (
 	// 图片解码失败。
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 
+	// 图片尺寸过大，请参考输入参数中关于图片大小限制的说明。
+	FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+
 	// OCR识别失败。
 	FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 

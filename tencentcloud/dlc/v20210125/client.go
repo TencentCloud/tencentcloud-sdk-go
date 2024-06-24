@@ -4150,6 +4150,55 @@ func (c *Client) DescribeDataEnginesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeDataEnginesScaleDetailRequest() (request *DescribeDataEnginesScaleDetailRequest) {
+    request = &DescribeDataEnginesScaleDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDataEnginesScaleDetail")
+    
+    
+    return
+}
+
+func NewDescribeDataEnginesScaleDetailResponse() (response *DescribeDataEnginesScaleDetailResponse) {
+    response = &DescribeDataEnginesScaleDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataEnginesScaleDetail
+// 查询引擎规格详情
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
+func (c *Client) DescribeDataEnginesScaleDetail(request *DescribeDataEnginesScaleDetailRequest) (response *DescribeDataEnginesScaleDetailResponse, err error) {
+    return c.DescribeDataEnginesScaleDetailWithContext(context.Background(), request)
+}
+
+// DescribeDataEnginesScaleDetail
+// 查询引擎规格详情
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
+func (c *Client) DescribeDataEnginesScaleDetailWithContext(ctx context.Context, request *DescribeDataEnginesScaleDetailRequest) (response *DescribeDataEnginesScaleDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataEnginesScaleDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataEnginesScaleDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataEnginesScaleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
     request = &DescribeDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},

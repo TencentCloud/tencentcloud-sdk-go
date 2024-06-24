@@ -1793,6 +1793,81 @@ func (c *Client) VoicePrintEnrollWithContext(ctx context.Context, request *Voice
     return
 }
 
+func NewVoicePrintGroupVerifyRequest() (request *VoicePrintGroupVerifyRequest) {
+    request = &VoicePrintGroupVerifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintGroupVerify")
+    
+    
+    return
+}
+
+func NewVoicePrintGroupVerifyResponse() (response *VoicePrintGroupVerifyResponse) {
+    response = &VoicePrintGroupVerifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VoicePrintGroupVerify
+// 说话人验证1:N接口，可以通过传入一段说话人音频，并且指定已存在的groupId, 和返回topN,  接口返回groupId内所有声纹和传入音频声纹比对打分TopN的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILEDVOICEPRINTDECODE = "InternalError.FailedVoicePrintDecode"
+//  INTERNALERROR_FAILEDVOICEPRINTVERIFY = "InternalError.FailedVoicePrintVerify"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FAILEDVOICEPRINTDECODE = "InvalidParameter.FailedVoicePrintDecode"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
+func (c *Client) VoicePrintGroupVerify(request *VoicePrintGroupVerifyRequest) (response *VoicePrintGroupVerifyResponse, err error) {
+    return c.VoicePrintGroupVerifyWithContext(context.Background(), request)
+}
+
+// VoicePrintGroupVerify
+// 说话人验证1:N接口，可以通过传入一段说话人音频，并且指定已存在的groupId, 和返回topN,  接口返回groupId内所有声纹和传入音频声纹比对打分TopN的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILEDVOICEPRINTDECODE = "InternalError.FailedVoicePrintDecode"
+//  INTERNALERROR_FAILEDVOICEPRINTVERIFY = "InternalError.FailedVoicePrintVerify"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FAILEDVOICEPRINTDECODE = "InvalidParameter.FailedVoicePrintDecode"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"
+func (c *Client) VoicePrintGroupVerifyWithContext(ctx context.Context, request *VoicePrintGroupVerifyRequest) (response *VoicePrintGroupVerifyResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintGroupVerifyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintGroupVerify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintGroupVerifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVoicePrintUpdateRequest() (request *VoicePrintUpdateRequest) {
     request = &VoicePrintUpdateRequest{
         BaseRequest: &tchttp.BaseRequest{},

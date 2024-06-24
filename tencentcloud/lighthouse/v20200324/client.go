@@ -360,6 +360,7 @@ func NewAssociateInstancesKeyPairsResponse() (response *AssociateInstancesKeyPai
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_KEYPAIRBINDDUPLICATE = "UnsupportedOperation.KeyPairBindDuplicate"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
@@ -402,6 +403,7 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_KEYPAIRBINDDUPLICATE = "UnsupportedOperation.KeyPairBindDuplicate"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
@@ -522,6 +524,7 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
@@ -548,6 +551,7 @@ func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisks
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
@@ -680,6 +684,7 @@ func NewCreateBlueprintResponse() (response *CreateBlueprintResponse) {
 //  LIMITEXCEEDED_BLUEPRINTQUOTALIMITEXCEEDED = "LimitExceeded.BlueprintQuotaLimitExceeded"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) CreateBlueprint(request *CreateBlueprintRequest) (response *CreateBlueprintResponse, err error) {
@@ -701,6 +706,7 @@ func (c *Client) CreateBlueprint(request *CreateBlueprintRequest) (response *Cre
 //  LIMITEXCEEDED_BLUEPRINTQUOTALIMITEXCEEDED = "LimitExceeded.BlueprintQuotaLimitExceeded"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) CreateBlueprintWithContext(ctx context.Context, request *CreateBlueprintRequest) (response *CreateBlueprintResponse, err error) {
@@ -1141,6 +1147,7 @@ func NewCreateInstanceSnapshotResponse() (response *CreateInstanceSnapshotRespon
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_DISKBUSY = "UnsupportedOperation.DiskBusy"
 //  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) CreateInstanceSnapshot(request *CreateInstanceSnapshotRequest) (response *CreateInstanceSnapshotResponse, err error) {
@@ -1165,6 +1172,7 @@ func (c *Client) CreateInstanceSnapshot(request *CreateInstanceSnapshotRequest) 
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_DISKBUSY = "UnsupportedOperation.DiskBusy"
 //  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) CreateInstanceSnapshotWithContext(ctx context.Context, request *CreateInstanceSnapshotRequest) (response *CreateInstanceSnapshotResponse, err error) {
@@ -1224,6 +1232,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
 //  INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 //  INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
@@ -1269,6 +1278,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
 //  INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 //  INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
@@ -2104,6 +2114,8 @@ func NewDescribeBundleDiscountResponse() (response *DescribeBundleDiscountRespon
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
+//  MISSINGPARAMETER_BUNDLEMISSINGPARAMETERBLUEPRINTID = "MissingParameter.BundleMissingParameterBlueprintId"
 //  RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
 func (c *Client) DescribeBundleDiscount(request *DescribeBundleDiscountRequest) (response *DescribeBundleDiscountResponse, err error) {
     return c.DescribeBundleDiscountWithContext(context.Background(), request)
@@ -2121,6 +2133,8 @@ func (c *Client) DescribeBundleDiscount(request *DescribeBundleDiscountRequest) 
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
+//  MISSINGPARAMETER_BUNDLEMISSINGPARAMETERBLUEPRINTID = "MissingParameter.BundleMissingParameterBlueprintId"
 //  RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
 func (c *Client) DescribeBundleDiscountWithContext(ctx context.Context, request *DescribeBundleDiscountRequest) (response *DescribeBundleDiscountResponse, err error) {
     if request == nil {
@@ -5024,6 +5038,8 @@ func NewInquirePriceCreateInstancesResponse() (response *InquirePriceCreateInsta
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
 //  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
+//  MISSINGPARAMETER_BUNDLEMISSINGPARAMETERBLUEPRINTID = "MissingParameter.BundleMissingParameterBlueprintId"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
 //  RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -5044,6 +5060,8 @@ func (c *Client) InquirePriceCreateInstances(request *InquirePriceCreateInstance
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
 //  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
+//  INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
+//  MISSINGPARAMETER_BUNDLEMISSINGPARAMETERBLUEPRINTID = "MissingParameter.BundleMissingParameterBlueprintId"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
 //  RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -6188,6 +6206,7 @@ func NewModifyInstancesBundleResponse() (response *ModifyInstancesBundleResponse
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTMODIFYINSTANCEBUNDLETYPE = "InvalidParameterValue.NotSupportModifyInstanceBundleType"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"
 //  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
@@ -6219,6 +6238,7 @@ func (c *Client) ModifyInstancesBundle(request *ModifyInstancesBundleRequest) (r
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTMODIFYINSTANCEBUNDLETYPE = "InvalidParameterValue.NotSupportModifyInstanceBundleType"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"
 //  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
@@ -6963,7 +6983,7 @@ func NewRerunDockerContainerResponse() (response *RerunDockerContainerResponse) 
 }
 
 // RerunDockerContainer
-// 重新创建并运行实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重建情况。
+// 重新创建并运行实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重建情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6981,7 +7001,7 @@ func (c *Client) RerunDockerContainer(request *RerunDockerContainerRequest) (res
 }
 
 // RerunDockerContainer
-// 重新创建并运行实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重建情况。
+// 重新创建并运行实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重建情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7190,6 +7210,8 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 //  RESOURCEUNAVAILABLE_BLUEPRINTUNAVAILABLE = "ResourceUnavailable.BlueprintUnavailable"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_BLUEPRINTTYPENOTSUPPORTOPERATION = "UnsupportedOperation.BlueprintTypeNotSupportOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"
@@ -7236,6 +7258,8 @@ func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetIn
 //  RESOURCEUNAVAILABLE_BLUEPRINTUNAVAILABLE = "ResourceUnavailable.BlueprintUnavailable"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_BLUEPRINTTYPENOTSUPPORTOPERATION = "UnsupportedOperation.BlueprintTypeNotSupportOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"

@@ -2177,6 +2177,26 @@ func (r *UpdateAsrVocabResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VerifyTop struct {
+	// 相似度打分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *string `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 说话人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 说话人昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+}
+
+type VerifyTopResult struct {
+	// 对比打分结果，按照打分降序排列返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyTops []*VerifyTop `json:"VerifyTops,omitnil,omitempty" name:"VerifyTops"`
+}
+
 type Vocab struct {
 	// 热词表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2306,16 +2326,33 @@ type VoicePrintCountData struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 说话人id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoicePrintList []*VoicePrintBaseData `json:"VoicePrintList,omitnil,omitempty" name:"VoicePrintList"`
 }
 
 // Predefined struct for user
 type VoicePrintCountRequestParams struct {
+	// 分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
+	// 统计模式
+	// 0: 统计所有声纹数量
+	// 1: 统计指定分组下的声纹数量
+	CountMod *int64 `json:"CountMod,omitnil,omitempty" name:"CountMod"`
 }
 
 type VoicePrintCountRequest struct {
 	*tchttp.BaseRequest
 	
+	// 分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 统计模式
+	// 0: 统计所有声纹数量
+	// 1: 统计指定分组下的声纹数量
+	CountMod *int64 `json:"CountMod,omitnil,omitempty" name:"CountMod"`
 }
 
 func (r *VoicePrintCountRequest) ToJsonString() string {
@@ -2330,7 +2367,8 @@ func (r *VoicePrintCountRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "GroupId")
+	delete(f, "CountMod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintCountRequest has unknown keys!", "")
 	}
@@ -2366,6 +2404,15 @@ func (r *VoicePrintCountResponse) FromJsonString(s string) error {
 type VoicePrintDeleteRequestParams struct {
 	// 说话人id，说话人唯一标识
 	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 说话人分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 删除模式: 
+	// 0.默认值，删除该条声纹
+	// 1.从分组中删除该条声纹，声纹本身不删除
+	// 2.从声纹库中删除分组，仅删除分组信息，不会真正删除分组中的声纹
+	DelMod *int64 `json:"DelMod,omitnil,omitempty" name:"DelMod"`
 }
 
 type VoicePrintDeleteRequest struct {
@@ -2373,6 +2420,15 @@ type VoicePrintDeleteRequest struct {
 	
 	// 说话人id，说话人唯一标识
 	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 说话人分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 删除模式: 
+	// 0.默认值，删除该条声纹
+	// 1.从分组中删除该条声纹，声纹本身不删除
+	// 2.从声纹库中删除分组，仅删除分组信息，不会真正删除分组中的声纹
+	DelMod *int64 `json:"DelMod,omitnil,omitempty" name:"DelMod"`
 }
 
 func (r *VoicePrintDeleteRequest) ToJsonString() string {
@@ -2388,6 +2444,8 @@ func (r *VoicePrintDeleteRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "VoicePrintId")
+	delete(f, "GroupId")
+	delete(f, "DelMod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintDeleteRequest has unknown keys!", "")
 	}
@@ -2432,6 +2490,9 @@ type VoicePrintEnrollRequestParams struct {
 
 	// 说话人昵称  不超过32字节
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
+
+	// 分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type VoicePrintEnrollRequest struct {
@@ -2448,6 +2509,9 @@ type VoicePrintEnrollRequest struct {
 
 	// 说话人昵称  不超过32字节
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
+
+	// 分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *VoicePrintEnrollRequest) ToJsonString() string {
@@ -2466,6 +2530,7 @@ func (r *VoicePrintEnrollRequest) FromJsonString(s string) error {
 	delete(f, "SampleRate")
 	delete(f, "Data")
 	delete(f, "SpeakerNick")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintEnrollRequest has unknown keys!", "")
 	}
@@ -2494,6 +2559,91 @@ func (r *VoicePrintEnrollResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VoicePrintEnrollResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintGroupVerifyRequestParams struct {
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率，目前支持16000，单位：Hz，必填
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 分组id, 支持数字，字母，下划线，长度不超过128
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 返回打分结果降序排列topN, TopN大于0， 小于可创建声纹最大数量
+	TopN *uint64 `json:"TopN,omitnil,omitempty" name:"TopN"`
+}
+
+type VoicePrintGroupVerifyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率，目前支持16000，单位：Hz，必填
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 分组id, 支持数字，字母，下划线，长度不超过128
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 返回打分结果降序排列topN, TopN大于0， 小于可创建声纹最大数量
+	TopN *uint64 `json:"TopN,omitnil,omitempty" name:"TopN"`
+}
+
+func (r *VoicePrintGroupVerifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintGroupVerifyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceFormat")
+	delete(f, "SampleRate")
+	delete(f, "Data")
+	delete(f, "GroupId")
+	delete(f, "TopN")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintGroupVerifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintGroupVerifyResponseParams struct {
+	// TopN 返回结果;系统建议打分70分以上为同一个人音色，评分也取决于音频质量、长度等其他原因影响，您可以按照业务需求适当提高或降低分数要求
+	Data *VerifyTopResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VoicePrintGroupVerifyResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintGroupVerifyResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintGroupVerifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintGroupVerifyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -276,6 +276,7 @@ import (
 	trtcv20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc/v20190722"
 	tsev20201207 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse/v20201207"
 	tsfv20180326 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf/v20180326"
+	tsiv20210325 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsi/v20210325"
 	tswv20200924 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw/v20200924"
 	tswv20210412 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsw/v20210412"
 	ttsv20190823 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts/v20190823"
@@ -3627,6 +3628,19 @@ func TestTsfv20180326Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tsf_v20180326 client: %v", err)
+    }
+}
+
+func TestTsiv20210325Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tsiv20210325.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tsi_v20210325 client: %v", err)
     }
 }
 

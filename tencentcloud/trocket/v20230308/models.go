@@ -2820,6 +2820,61 @@ func (r *DescribeMQTTUserListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProductSKUsRequestParams struct {
+
+}
+
+type DescribeProductSKUsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeProductSKUsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductSKUsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductSKUsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProductSKUsResponseParams struct {
+	// 商品配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ProductSKU `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProductSKUsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProductSKUsResponseParams `json:"Response"`
+}
+
+func (r *DescribeProductSKUsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductSKUsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoleListRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4424,6 +4479,69 @@ type PacketStatistics struct {
 	// 指标值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type PriceTag struct {
+	// 计价名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 步长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
+}
+
+type ProductSKU struct {
+	// 产品类型，
+	// EXPERIMENT，体验版
+	// BASIC，基础版
+	// PRO，专业版
+	// PLATINUM，铂金版
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 规格代码
+	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
+
+	// TPS上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
+
+	// 弹性TPS上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaledTpsLimit *int64 `json:"ScaledTpsLimit,omitnil,omitempty" name:"ScaledTpsLimit"`
+
+	// 主题数量上限默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
+
+	// 消费组数量上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupNumLimit *int64 `json:"GroupNumLimit,omitnil,omitempty" name:"GroupNumLimit"`
+
+	// 默认消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultRetention *int64 `json:"DefaultRetention,omitnil,omitempty" name:"DefaultRetention"`
+
+	// 可调整消息保留时间上限，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionUpperLimit *int64 `json:"RetentionUpperLimit,omitnil,omitempty" name:"RetentionUpperLimit"`
+
+	// 可调整消息保留时间下限，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionLowerLimit *int64 `json:"RetentionLowerLimit,omitnil,omitempty" name:"RetentionLowerLimit"`
+
+	// 延时消息最大时长，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxMessageDelay *int64 `json:"MaxMessageDelay,omitnil,omitempty" name:"MaxMessageDelay"`
+
+	// 是否可购买
+	OnSale *bool `json:"OnSale,omitnil,omitempty" name:"OnSale"`
+
+	// 计费项信息
+	PriceTags []*PriceTag `json:"PriceTags,omitnil,omitempty" name:"PriceTags"`
+
+	// 主题数量上限默认最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumUpperLimit *int64 `json:"TopicNumUpperLimit,omitnil,omitempty" name:"TopicNumUpperLimit"`
 }
 
 type PublicAccessRule struct {

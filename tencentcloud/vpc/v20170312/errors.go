@@ -329,6 +329,9 @@ const (
 	// 未找到网络接口ID，或私有IP地址未在网络接口配置。
 	INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = "InvalidParameterValue.NetworkInterfaceNotFound"
 
+	// 不是UTF8编码。
+	INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
+
 	// 该操作仅对主网卡支持。
 	INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = "InvalidParameterValue.OnlySupportedForMasterNetworkCard"
 

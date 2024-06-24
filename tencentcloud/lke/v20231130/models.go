@@ -422,6 +422,87 @@ type Context struct {
 	FileInfos []*MsgFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 }
 
+// Predefined struct for user
+type ConvertDocumentRequestParams struct {
+	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 建议一次请求的页面不超过3页。
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+}
+
+type ConvertDocumentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 建议一次请求的页面不超过3页。
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+}
+
+func (r *ConvertDocumentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConvertDocumentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileUrl")
+	delete(f, "FileBase64")
+	delete(f, "FileStartPageNumber")
+	delete(f, "FileEndPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConvertDocumentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConvertDocumentResponseParams struct {
+	// 识别生成的word文件base64编码的字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WordRecognizeInfo []*WordRecognizeInfo `json:"WordRecognizeInfo,omitnil,omitempty" name:"WordRecognizeInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ConvertDocumentResponse struct {
+	*tchttp.BaseResponse
+	Response *ConvertDocumentResponseParams `json:"Response"`
+}
+
+func (r *ConvertDocumentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConvertDocumentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Coord struct {
 	// 横坐标
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
@@ -878,10 +959,10 @@ type CreateReconstructDocumentFlowRequestParams struct {
 	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 100M。文件下载时间不超过 15 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为100，表示识别到pdf文件的第100页。单次调用最多支持识别100页内容，即FileEndPageNumber-FileStartPageNumber需要不大于100。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
 	// 创建文档解析任务配置信息
@@ -897,10 +978,10 @@ type CreateReconstructDocumentFlowRequest struct {
 	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 100M。文件下载时间不超过 15 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为100，表示识别到pdf文件的第100页。单次调用最多支持识别100页内容，即FileEndPageNumber-FileStartPageNumber需要不大于100。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
 	// 创建文档解析任务配置信息
@@ -2898,6 +2979,125 @@ func (r *GenerateQAResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetAnswerTypeDataCountRequestParams struct {
+	// 开始日期
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束日期
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id
+	AppBizId []*string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 消息来源(1、分享用户端  2、对话API  3、对话测试  4、应用评测)
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type GetAnswerTypeDataCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始日期
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束日期
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id
+	AppBizId []*string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 消息来源(1、分享用户端  2、对话API  3、对话测试  4、应用评测)
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *GetAnswerTypeDataCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAnswerTypeDataCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizId")
+	delete(f, "Type")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAnswerTypeDataCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAnswerTypeDataCountResponseParams struct {
+	// 总消息数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 大模型直接回复总数
+	ModelReplyCount *uint64 `json:"ModelReplyCount,omitnil,omitempty" name:"ModelReplyCount"`
+
+	// 知识型回复总数
+	KnowledgeCount *uint64 `json:"KnowledgeCount,omitnil,omitempty" name:"KnowledgeCount"`
+
+	// 任务流回复总数
+	TaskFlowCount *uint64 `json:"TaskFlowCount,omitnil,omitempty" name:"TaskFlowCount"`
+
+	// 搜索引擎回复总数
+	SearchEngineCount *uint64 `json:"SearchEngineCount,omitnil,omitempty" name:"SearchEngineCount"`
+
+	// 图片理解回复总数
+	ImageUnderstandingCount *uint64 `json:"ImageUnderstandingCount,omitnil,omitempty" name:"ImageUnderstandingCount"`
+
+	// 拒答回复总数
+	RejectCount *uint64 `json:"RejectCount,omitnil,omitempty" name:"RejectCount"`
+
+	// 敏感回复总数
+	SensitiveCount *uint64 `json:"SensitiveCount,omitnil,omitempty" name:"SensitiveCount"`
+
+	// 并发超限回复总数
+	ConcurrentLimitCount *uint64 `json:"ConcurrentLimitCount,omitnil,omitempty" name:"ConcurrentLimitCount"`
+
+	// 未知问题回复总数
+	UnknownIssuesCount *uint64 `json:"UnknownIssuesCount,omitnil,omitempty" name:"UnknownIssuesCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetAnswerTypeDataCountResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAnswerTypeDataCountResponseParams `json:"Response"`
+}
+
+func (r *GetAnswerTypeDataCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAnswerTypeDataCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetAppKnowledgeCountRequestParams struct {
 	// 类型：doc-文档；qa-问答对
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -3196,6 +3396,116 @@ func (r *GetEmbeddingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetEmbeddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLikeDataCountRequestParams struct {
+	// 开始日期
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束日期
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id
+	AppBizId []*string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 消息来源(1、分享用户端  2、对话API)
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type GetLikeDataCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始日期
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束日期
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id
+	AppBizId []*string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 消息来源(1、分享用户端  2、对话API)
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *GetLikeDataCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLikeDataCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizId")
+	delete(f, "Type")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLikeDataCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLikeDataCountResponseParams struct {
+	// 可评价消息数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 评价数
+	AppraisalTotal *uint64 `json:"AppraisalTotal,omitnil,omitempty" name:"AppraisalTotal"`
+
+	// 参评率
+	ParticipationRate *float64 `json:"ParticipationRate,omitnil,omitempty" name:"ParticipationRate"`
+
+	// 点赞数
+	LikeTotal *uint64 `json:"LikeTotal,omitnil,omitempty" name:"LikeTotal"`
+
+	// 点赞率
+	LikeRate *float64 `json:"LikeRate,omitnil,omitempty" name:"LikeRate"`
+
+	// 点踩数
+	DislikeTotal *uint64 `json:"DislikeTotal,omitnil,omitempty" name:"DislikeTotal"`
+
+	// 点踩率
+	DislikeRate *float64 `json:"DislikeRate,omitnil,omitempty" name:"DislikeRate"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetLikeDataCountResponse struct {
+	*tchttp.BaseResponse
+	Response *GetLikeDataCountResponseParams `json:"Response"`
+}
+
+func (r *GetLikeDataCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLikeDataCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6777,10 +7087,10 @@ type ReconstructDocumentRequestParams struct {
 	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。单次调用，最多支持10页pdf的文档解析。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为10，表示识别到pdf文件的第10页。单次调用最多支持识别10页内容，即FileEndPageNumber-FileStartPageNumber需要不大于10。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
 	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
@@ -6796,10 +7106,10 @@ type ReconstructDocumentRequest struct {
 	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。单次调用，最多支持10页pdf的文档解析。
+	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为10，表示识别到pdf文件的第10页。单次调用最多支持识别10页内容，即FileEndPageNumber-FileStartPageNumber需要不大于10。
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
 	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
@@ -7852,4 +8162,14 @@ func (r *VerifyQAResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VerifyQAResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WordRecognizeInfo struct {
+	// 输入文件的页码数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// word的base64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WordBase64 *string `json:"WordBase64,omitnil,omitempty" name:"WordBase64"`
 }

@@ -4379,6 +4379,8 @@ type CreateLegalSealQrCodeRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 机构信息，暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 

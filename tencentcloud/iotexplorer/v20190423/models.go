@@ -5160,6 +5160,100 @@ func (r *DescribeFenceEventListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFirmwareRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+}
+
+type DescribeFirmwareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+}
+
+func (r *DescribeFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FirmwareVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFirmwareResponseParams struct {
+	// 固件版本号
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 固件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 固件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 固件Md5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5sum *string `json:"Md5sum,omitnil,omitempty" name:"Md5sum"`
+
+	// 固件上传的秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Createtime *uint64 `json:"Createtime,omitnil,omitempty" name:"Createtime"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 固件升级模块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 固件用户自定义配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFirmwareResponseParams `json:"Response"`
+}
+
+func (r *DescribeFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFirmwareTaskRequestParams struct {
 	// 产品ID
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`

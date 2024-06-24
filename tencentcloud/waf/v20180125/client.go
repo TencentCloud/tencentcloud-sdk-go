@@ -157,6 +157,81 @@ func (c *Client) AddAntiInfoLeakRulesWithContext(ctx context.Context, request *A
     return
 }
 
+func NewAddAreaBanAreasRequest() (request *AddAreaBanAreasRequest) {
+    request = &AddAreaBanAreasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "AddAreaBanAreas")
+    
+    
+    return
+}
+
+func NewAddAreaBanAreasResponse() (response *AddAreaBanAreasResponse) {
+    response = &AddAreaBanAreasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddAreaBanAreas
+// 添加地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddAreaBanAreas(request *AddAreaBanAreasRequest) (response *AddAreaBanAreasResponse, err error) {
+    return c.AddAreaBanAreasWithContext(context.Background(), request)
+}
+
+// AddAreaBanAreas
+// 添加地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddAreaBanAreasWithContext(ctx context.Context, request *AddAreaBanAreasRequest) (response *AddAreaBanAreasResponse, err error) {
+    if request == nil {
+        request = NewAddAreaBanAreasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddAreaBanAreas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddAreaBanAreasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddAttackWhiteRuleRequest() (request *AddAttackWhiteRuleRequest) {
     request = &AddAttackWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

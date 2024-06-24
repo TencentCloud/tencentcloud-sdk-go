@@ -1840,6 +1840,55 @@ func (c *Client) DescribeMQTTUserListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeProductSKUsRequest() (request *DescribeProductSKUsRequest) {
+    request = &DescribeProductSKUsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeProductSKUs")
+    
+    
+    return
+}
+
+func NewDescribeProductSKUsResponse() (response *DescribeProductSKUsResponse) {
+    response = &DescribeProductSKUsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProductSKUs
+// 查询产品售卖规格，针对 RocketMQ 5.x 集群。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
+    return c.DescribeProductSKUsWithContext(context.Background(), request)
+}
+
+// DescribeProductSKUs
+// 查询产品售卖规格，针对 RocketMQ 5.x 集群。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeProductSKUsWithContext(ctx context.Context, request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductSKUsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductSKUs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductSKUsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
     request = &DescribeRoleListRequest{
         BaseRequest: &tchttp.BaseRequest{},

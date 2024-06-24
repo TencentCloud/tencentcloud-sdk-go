@@ -6614,7 +6614,7 @@ func NewReconstructDocumentResponse() (response *ReconstructDocumentResponse) {
 }
 
 // ReconstructDocument
-// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+// 服务已迁移至 [文档解析](https://cloud.tencent.com/document/product/1759/107504)，请跳转查看接口文档。该接口支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -6631,7 +6631,7 @@ func (c *Client) ReconstructDocument(request *ReconstructDocumentRequest) (respo
 }
 
 // ReconstructDocument
-// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+// 服务已迁移至 [文档解析](https://cloud.tencent.com/document/product/1759/107504)，请跳转查看接口文档。该接口支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

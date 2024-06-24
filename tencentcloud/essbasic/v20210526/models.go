@@ -7212,9 +7212,13 @@ type CreateLegalSealQrCodeRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 操作人信息
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 企业信息
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 }
 

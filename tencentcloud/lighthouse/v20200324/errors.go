@@ -317,6 +317,9 @@ const (
 	// 非法的套餐参数。
 	INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
 
+	// 套餐和镜像的组合非法。
+	INVALIDPARAMETERVALUE_INVALIDBUNDLEBLUEPRINTCOMBINATION = "InvalidParameterValue.InvalidBundleBlueprintCombination"
+
 	// 控制台显示类型不合法。
 	INVALIDPARAMETERVALUE_INVALIDCONSOLEDISPLAYTYPES = "InvalidParameterValue.InvalidConsoleDisplayTypes"
 
@@ -379,6 +382,9 @@ const (
 
 	// 不允许改变平台类型。
 	INVALIDPARAMETERVALUE_NOTALLOWTOCHANGEPLATFORMTYPE = "InvalidParameterValue.NotAllowToChangePlatformType"
+
+	// 实例套餐的套餐类型不支持表更至新套餐。
+	INVALIDPARAMETERVALUE_NOTSUPPORTMODIFYINSTANCEBUNDLETYPE = "InvalidParameterValue.NotSupportModifyInstanceBundleType"
 
 	// 参数值非法，不在合法范围内。
 	INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
@@ -457,6 +463,9 @@ const (
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 套餐缺少参数镜像ID。
+	MISSINGPARAMETER_BUNDLEMISSINGPARAMETERBLUEPRINTID = "MissingParameter.BundleMissingParameterBlueprintId"
 
 	// 必须传入参数Period或CurInstanceDeadline。
 	MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = "MissingParameter.MissingParameterPeriodCurInstanceDeadline"
@@ -665,6 +674,9 @@ const (
 	// 镜像被使用中，不支持该操作。
 	UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
 
+	// 该镜像的镜像类型不支持该操作。
+	UNSUPPORTEDOPERATION_BLUEPRINTTYPENOTSUPPORTOPERATION = "UnsupportedOperation.BlueprintTypeNotSupportOperation"
+
 	// 已经关联云联网，不支持再次关联。
 	UNSUPPORTEDOPERATION_CCNALREADYATTACHED = "UnsupportedOperation.CcnAlreadyAttached"
 
@@ -691,6 +703,9 @@ const (
 
 	// 指定的防火墙版本号和当前版本不一致。
 	UNSUPPORTEDOPERATION_FIREWALLVERSIONMISMATCH = "UnsupportedOperation.FirewallVersionMismatch"
+
+	// 实例展示区域不支持该操作。
+	UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"
 
 	// 实例已到期，不支持该操作。
 	UNSUPPORTEDOPERATION_INSTANCEEXPIRED = "UnsupportedOperation.InstanceExpired"

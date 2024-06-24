@@ -3954,6 +3954,67 @@ func (c *Client) DescribeFenceEventListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
+    request = &DescribeFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmware")
+    
+    
+    return
+}
+
+func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
+    response = &DescribeFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFirmware
+// 查询固件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
+    return c.DescribeFirmwareWithContext(context.Background(), request)
+}
+
+// DescribeFirmware
+// 查询固件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmware require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
     request = &DescribeFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

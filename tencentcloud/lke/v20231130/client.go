@@ -131,6 +131,69 @@ func (c *Client) CheckAttributeLabelReferWithContext(ctx context.Context, reques
     return
 }
 
+func NewConvertDocumentRequest() (request *ConvertDocumentRequest) {
+    request = &ConvertDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ConvertDocument")
+    
+    
+    return
+}
+
+func NewConvertDocumentResponse() (response *ConvertDocumentResponse) {
+    response = &ConvertDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ConvertDocument
+// 接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ConvertDocument(request *ConvertDocumentRequest) (response *ConvertDocumentResponse, err error) {
+    return c.ConvertDocumentWithContext(context.Background(), request)
+}
+
+// ConvertDocument
+// 接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ConvertDocumentWithContext(ctx context.Context, request *ConvertDocumentRequest) (response *ConvertDocumentResponse, err error) {
+    if request == nil {
+        request = NewConvertDocumentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ConvertDocument require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewConvertDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAppRequest() (request *CreateAppRequest) {
     request = &CreateAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -152,12 +215,32 @@ func NewCreateAppResponse() (response *CreateAppResponse) {
 
 // CreateApp
 // 创建知识引擎应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateApp(request *CreateAppRequest) (response *CreateAppResponse, err error) {
     return c.CreateAppWithContext(context.Background(), request)
 }
 
 // CreateApp
 // 创建知识引擎应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest) (response *CreateAppResponse, err error) {
     if request == nil {
         request = NewCreateAppRequest()
@@ -195,12 +278,32 @@ func NewCreateAttributeLabelResponse() (response *CreateAttributeLabelResponse) 
 
 // CreateAttributeLabel
 // 创建属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateAttributeLabel(request *CreateAttributeLabelRequest) (response *CreateAttributeLabelResponse, err error) {
     return c.CreateAttributeLabelWithContext(context.Background(), request)
 }
 
 // CreateAttributeLabel
 // 创建属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateAttributeLabelWithContext(ctx context.Context, request *CreateAttributeLabelRequest) (response *CreateAttributeLabelResponse, err error) {
     if request == nil {
         request = NewCreateAttributeLabelRequest()
@@ -238,12 +341,32 @@ func NewCreateCorpResponse() (response *CreateCorpResponse) {
 
 // CreateCorp
 // 创建企业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateCorp(request *CreateCorpRequest) (response *CreateCorpResponse, err error) {
     return c.CreateCorpWithContext(context.Background(), request)
 }
 
 // CreateCorp
 // 创建企业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateCorpWithContext(ctx context.Context, request *CreateCorpRequest) (response *CreateCorpResponse, err error) {
     if request == nil {
         request = NewCreateCorpRequest()
@@ -1582,6 +1705,55 @@ func (c *Client) GenerateQAWithContext(ctx context.Context, request *GenerateQAR
     return
 }
 
+func NewGetAnswerTypeDataCountRequest() (request *GetAnswerTypeDataCountRequest) {
+    request = &GetAnswerTypeDataCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "GetAnswerTypeDataCount")
+    
+    
+    return
+}
+
+func NewGetAnswerTypeDataCountResponse() (response *GetAnswerTypeDataCountResponse) {
+    response = &GetAnswerTypeDataCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetAnswerTypeDataCount
+// 回答类型数据统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetAnswerTypeDataCount(request *GetAnswerTypeDataCountRequest) (response *GetAnswerTypeDataCountResponse, err error) {
+    return c.GetAnswerTypeDataCountWithContext(context.Background(), request)
+}
+
+// GetAnswerTypeDataCount
+// 回答类型数据统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetAnswerTypeDataCountWithContext(ctx context.Context, request *GetAnswerTypeDataCountRequest) (response *GetAnswerTypeDataCountResponse, err error) {
+    if request == nil {
+        request = NewGetAnswerTypeDataCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAnswerTypeDataCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAnswerTypeDataCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAppKnowledgeCountRequest() (request *GetAppKnowledgeCountRequest) {
     request = &GetAppKnowledgeCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1778,6 +1950,55 @@ func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbedd
     request.SetContext(ctx)
     
     response = NewGetEmbeddingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetLikeDataCountRequest() (request *GetLikeDataCountRequest) {
+    request = &GetLikeDataCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "GetLikeDataCount")
+    
+    
+    return
+}
+
+func NewGetLikeDataCountResponse() (response *GetLikeDataCountResponse) {
+    response = &GetLikeDataCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetLikeDataCount
+// 点赞点踩数据统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetLikeDataCount(request *GetLikeDataCountRequest) (response *GetLikeDataCountResponse, err error) {
+    return c.GetLikeDataCountWithContext(context.Background(), request)
+}
+
+// GetLikeDataCount
+// 点赞点踩数据统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetLikeDataCountWithContext(ctx context.Context, request *GetLikeDataCountRequest) (response *GetLikeDataCountResponse, err error) {
+    if request == nil {
+        request = NewGetLikeDataCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLikeDataCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetLikeDataCountResponse()
     err = c.Send(request, response)
     return
 }
