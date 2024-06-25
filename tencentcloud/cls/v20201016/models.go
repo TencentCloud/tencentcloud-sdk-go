@@ -436,6 +436,14 @@ type AnalysisDimensional struct {
 	ConfigInfo []*AlarmAnalysisConfig `json:"ConfigInfo,omitnil,omitempty" name:"ConfigInfo"`
 }
 
+type AnonymousInfo struct {
+	// 操作列表，支持trackLog(JS/HTTP上传日志  )和realtimeProducer(kafka协议上传日志)
+	Operations []*string `json:"Operations,omitnil,omitempty" name:"Operations"`
+
+	// 条件列表
+	Conditions []*ConditionInfo `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+}
+
 // Predefined struct for user
 type ApplyConfigToMachineGroupRequestParams struct {
 	// 采集配置ID
@@ -794,6 +802,17 @@ type Column struct {
 type CompressInfo struct {
 	// 压缩格式，支持gzip、lzop、snappy和none不压缩
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type ConditionInfo struct {
+	// 条件属性，目前只支持VpcID
+	Attributes *string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// 条件规则，1:等于，2:不等于
+	Rule *uint64 `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 对应条件属性的值
+	ConditionValue *string `json:"ConditionValue,omitnil,omitempty" name:"ConditionValue"`
 }
 
 type ConfigExtraInfo struct {
@@ -3303,6 +3322,9 @@ type CreateTopicRequestParams struct {
 	// 免鉴权开关。 false：关闭； true：开启。默认为false。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
+
+	// 日志主题扩展信息
+	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 }
 
 type CreateTopicRequest struct {
@@ -3344,6 +3366,9 @@ type CreateTopicRequest struct {
 	// 免鉴权开关。 false：关闭； true：开启。默认为false。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
+
+	// 日志主题扩展信息
+	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -3369,6 +3394,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "Describes")
 	delete(f, "HotPeriod")
 	delete(f, "IsWebTracking")
+	delete(f, "Extends")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -11354,6 +11380,12 @@ type Tag struct {
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TopicExtendInfo struct {
+	// 日志主题免鉴权配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnonymousAccess *AnonymousInfo `json:"AnonymousAccess,omitnil,omitempty" name:"AnonymousAccess"`
 }
 
 type TopicIdAndRegion struct {

@@ -12214,3 +12214,52 @@ func (c *Client) UploadContentWithContext(ctx context.Context, request *UploadCo
     err = c.Send(request, response)
     return
 }
+
+func NewUploadResourceRequest() (request *UploadResourceRequest) {
+    request = &UploadResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UploadResource")
+    
+    
+    return
+}
+
+func NewUploadResourceResponse() (response *UploadResourceResponse) {
+    response = &UploadResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadResource
+// 资源管理-上传资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UploadResource(request *UploadResourceRequest) (response *UploadResourceResponse, err error) {
+    return c.UploadResourceWithContext(context.Background(), request)
+}
+
+// UploadResource
+// 资源管理-上传资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UploadResourceWithContext(ctx context.Context, request *UploadResourceRequest) (response *UploadResourceResponse, err error) {
+    if request == nil {
+        request = NewUploadResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadResourceResponse()
+    err = c.Send(request, response)
+    return
+}

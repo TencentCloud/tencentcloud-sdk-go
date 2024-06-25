@@ -7684,6 +7684,10 @@ func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
 }
 
 // VatInvoiceVerify
+// 已上线VatInvoiceVerifyNew，VatInvoiceVerify需要下线，产品在官网已发通告
+//
+// 
+//
 // 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
 //
 // 
@@ -7710,6 +7714,10 @@ func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *V
 }
 
 // VatInvoiceVerify
+// 已上线VatInvoiceVerifyNew，VatInvoiceVerify需要下线，产品在官网已发通告
+//
+// 
+//
 // 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
 //
 // 

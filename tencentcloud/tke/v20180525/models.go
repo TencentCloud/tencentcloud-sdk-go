@@ -17485,6 +17485,9 @@ type PrometheusAgentInfo struct {
 
 	// 备注
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// 集群所在地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type PrometheusAgentOverview struct {

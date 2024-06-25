@@ -545,6 +545,63 @@ func (c *Client) CancelAssignTWeCallLicenseWithContext(ctx context.Context, requ
     return
 }
 
+func NewCheckFirmwareUpdateRequest() (request *CheckFirmwareUpdateRequest) {
+    request = &CheckFirmwareUpdateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CheckFirmwareUpdate")
+    
+    
+    return
+}
+
+func NewCheckFirmwareUpdateResponse() (response *CheckFirmwareUpdateResponse) {
+    response = &CheckFirmwareUpdateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckFirmwareUpdate
+// 本接口（CheckFirmwareUpdate）用于查询设备可升级固件版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) CheckFirmwareUpdate(request *CheckFirmwareUpdateRequest) (response *CheckFirmwareUpdateResponse, err error) {
+    return c.CheckFirmwareUpdateWithContext(context.Background(), request)
+}
+
+// CheckFirmwareUpdate
+// 本接口（CheckFirmwareUpdate）用于查询设备可升级固件版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) CheckFirmwareUpdateWithContext(ctx context.Context, request *CheckFirmwareUpdateRequest) (response *CheckFirmwareUpdateResponse, err error) {
+    if request == nil {
+        request = NewCheckFirmwareUpdateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckFirmwareUpdate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckFirmwareUpdateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
     request = &ControlDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4066,6 +4123,63 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareUpdateStatusRequest() (request *DescribeFirmwareUpdateStatusRequest) {
+    request = &DescribeFirmwareUpdateStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmwareUpdateStatus")
+    
+    
+    return
+}
+
+func NewDescribeFirmwareUpdateStatusResponse() (response *DescribeFirmwareUpdateStatusResponse) {
+    response = &DescribeFirmwareUpdateStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFirmwareUpdateStatus
+// 本接口（DescribeFirmwareUpdateStatus）用于查询设备固件升级状态及进度。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOPERMISSION = "InvalidParameterValue.NoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeFirmwareUpdateStatus(request *DescribeFirmwareUpdateStatusRequest) (response *DescribeFirmwareUpdateStatusResponse, err error) {
+    return c.DescribeFirmwareUpdateStatusWithContext(context.Background(), request)
+}
+
+// DescribeFirmwareUpdateStatus
+// 本接口（DescribeFirmwareUpdateStatus）用于查询设备固件升级状态及进度。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOPERMISSION = "InvalidParameterValue.NoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeFirmwareUpdateStatusWithContext(ctx context.Context, request *DescribeFirmwareUpdateStatusRequest) (response *DescribeFirmwareUpdateStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareUpdateStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareUpdateStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareUpdateStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -7661,6 +7775,73 @@ func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewPublishBroadcastMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishFirmwareUpdateMessageRequest() (request *PublishFirmwareUpdateMessageRequest) {
+    request = &PublishFirmwareUpdateMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishFirmwareUpdateMessage")
+    
+    
+    return
+}
+
+func NewPublishFirmwareUpdateMessageResponse() (response *PublishFirmwareUpdateMessageResponse) {
+    response = &PublishFirmwareUpdateMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PublishFirmwareUpdateMessage
+// 本接口（PublishFirmwareUpdateMessage）用于用户确认升级后，云端向设备发起固件升级请求。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEVICEINFOOUTDATED = "FailedOperation.DeviceInfoOutdated"
+//  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOPERMISSION = "InvalidParameterValue.NoPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) PublishFirmwareUpdateMessage(request *PublishFirmwareUpdateMessageRequest) (response *PublishFirmwareUpdateMessageResponse, err error) {
+    return c.PublishFirmwareUpdateMessageWithContext(context.Background(), request)
+}
+
+// PublishFirmwareUpdateMessage
+// 本接口（PublishFirmwareUpdateMessage）用于用户确认升级后，云端向设备发起固件升级请求。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEVICEINFOOUTDATED = "FailedOperation.DeviceInfoOutdated"
+//  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOPERMISSION = "InvalidParameterValue.NoPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) PublishFirmwareUpdateMessageWithContext(ctx context.Context, request *PublishFirmwareUpdateMessageRequest) (response *PublishFirmwareUpdateMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishFirmwareUpdateMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishFirmwareUpdateMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPublishFirmwareUpdateMessageResponse()
     err = c.Send(request, response)
     return
 }

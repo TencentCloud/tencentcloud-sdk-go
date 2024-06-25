@@ -2317,7 +2317,7 @@ type ClusterInfoItem struct {
 	// 集群区域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 监控组件的状态，为Defender_Uninstall、Defender_Normal、Defender_Error、Defender_Installing
+	// 防护状态: 已防护: Defended 未防护: UnDefended
 	DefenderStatus *string `json:"DefenderStatus,omitnil,omitempty" name:"DefenderStatus"`
 
 	// 集群状态
@@ -2384,9 +2384,15 @@ type ClusterInfoItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitnil,omitempty" name:"UnInstallAgentNodeCount"`
 
-	// 计费核数
+	// 计费核数(弹性计费核数+普通计费核数)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil,omitempty" name:"ChargeCoresCnt"`
+
+	// master 地址列表
+	MasterAddresses []*string `json:"MasterAddresses,omitnil,omitempty" name:"MasterAddresses"`
+
+	// 核数
+	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
 }
 
 type ClusterNodeInfo struct {
@@ -10235,17 +10241,7 @@ type DescribeAssetHostListRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
-	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
-	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
-	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
-	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
-	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
-	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
-	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
-	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
+	// 过滤条件。 <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li> <li>HostName - String - 是否必填：否 - 主机名筛选</li> <li>Group- String - 是否必填：否 - 主机群组搜索</li> <li>HostIP- string - 是否必填：否 - 主机ip搜索</li> <li>HostID- string - 是否必填：否 - 主机id搜索</li> <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li> <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li> <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li> <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li> <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -10264,17 +10260,7 @@ type DescribeAssetHostListRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
-	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
-	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
-	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
-	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
-	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
-	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
-	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
-	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
+	// 过滤条件。 <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li> <li>HostName - String - 是否必填：否 - 主机名筛选</li> <li>Group- String - 是否必填：否 - 主机群组搜索</li> <li>HostIP- string - 是否必填：否 - 主机ip搜索</li> <li>HostID- string - 是否必填：否 - 主机id搜索</li> <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li> <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li> <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li> <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li> <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -19090,13 +19076,26 @@ type DescribePurchaseStateInfoResponseParams struct {
 	// 0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 总核数
+	// 总资源核数 = 总防护核数 + 未防护核数
+	AllCoresCnt *uint64 `json:"AllCoresCnt,omitnil,omitempty" name:"AllCoresCnt"`
+
+	// 总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
+
+	// 未防护核数(未开启防护资源核数)
+	UndefendCoresCnt *uint64 `json:"UndefendCoresCnt,omitnil,omitempty" name:"UndefendCoresCnt"`
 
 	// 已购买核数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedCoresCnt *uint64 `json:"AuthorizedCoresCnt,omitnil,omitempty" name:"AuthorizedCoresCnt"`
+
+	// 试用赠送专业版核心数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GivenAuthorizedCoresCnt *int64 `json:"GivenAuthorizedCoresCnt,omitnil,omitempty" name:"GivenAuthorizedCoresCnt"`
+
+	// 当前弹性计费核数数量
+	CurrentFlexibleCoresCnt *uint64 `json:"CurrentFlexibleCoresCnt,omitnil,omitempty" name:"CurrentFlexibleCoresCnt"`
 
 	// 镜像数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19106,13 +19105,13 @@ type DescribePurchaseStateInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedImageCnt *uint64 `json:"AuthorizedImageCnt,omitnil,omitempty" name:"AuthorizedImageCnt"`
 
-	// 已购买镜像授权数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitnil,omitempty" name:"PurchasedAuthorizedCnt"`
-
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpirationTime *string `json:"ExpirationTime,omitnil,omitempty" name:"ExpirationTime"`
+
+	// 已购买镜像授权数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitnil,omitempty" name:"PurchasedAuthorizedCnt"`
 
 	// 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19134,6 +19133,18 @@ type DescribePurchaseStateInfoResponseParams struct {
 	// 计费key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
+
+	// 防护策略
+	DefendPolicy *string `json:"DefendPolicy,omitnil,omitempty" name:"DefendPolicy"`
+
+	// 弹性计费核数上限
+	FlexibleCoresLimit *uint64 `json:"FlexibleCoresLimit,omitnil,omitempty" name:"FlexibleCoresLimit"`
+
+	// 已防护集群核数
+	DefendClusterCoresCnt *uint64 `json:"DefendClusterCoresCnt,omitnil,omitempty" name:"DefendClusterCoresCnt"`
+
+	// 已防护主机核数
+	DefendHostCoresCnt *uint64 `json:"DefendHostCoresCnt,omitnil,omitempty" name:"DefendHostCoresCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -26305,6 +26316,9 @@ type HostInfo struct {
 	// 已防护: Defended
 	// 未防护: UnDefended
 	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
+
+	// 核数
+	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
 }
 
 type ImageAutoAuthorizedTask struct {

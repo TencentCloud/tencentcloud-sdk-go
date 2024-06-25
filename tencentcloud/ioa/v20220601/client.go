@@ -45,6 +45,65 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
+    request = &DescribeAccountGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeAccountGroups")
+    
+    
+    return
+}
+
+func NewDescribeAccountGroupsResponse() (response *DescribeAccountGroupsResponse) {
+    response = &DescribeAccountGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountGroups
+// 以分页的方式查询账户目录列表,私有化调用path为：/capi/Assets/DescribeAccountGroups
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeAccountGroups(request *DescribeAccountGroupsRequest) (response *DescribeAccountGroupsResponse, err error) {
+    return c.DescribeAccountGroupsWithContext(context.Background(), request)
+}
+
+// DescribeAccountGroups
+// 以分页的方式查询账户目录列表,私有化调用path为：/capi/Assets/DescribeAccountGroups
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *DescribeAccountGroupsRequest) (response *DescribeAccountGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -102,6 +161,116 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLocalAccountsRequest() (request *DescribeLocalAccountsRequest) {
+    request = &DescribeLocalAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeLocalAccounts")
+    
+    
+    return
+}
+
+func NewDescribeLocalAccountsResponse() (response *DescribeLocalAccountsResponse) {
+    response = &DescribeLocalAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLocalAccounts
+// 获取账号列表，支持分页，模糊搜索，私有化调用path为：/capi/Assets/Account/DescribeLocalAccounts
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeLocalAccounts(request *DescribeLocalAccountsRequest) (response *DescribeLocalAccountsResponse, err error) {
+    return c.DescribeLocalAccountsWithContext(context.Background(), request)
+}
+
+// DescribeLocalAccounts
+// 获取账号列表，支持分页，模糊搜索，私有化调用path为：/capi/Assets/Account/DescribeLocalAccounts
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeLocalAccountsWithContext(ctx context.Context, request *DescribeLocalAccountsRequest) (response *DescribeLocalAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLocalAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLocalAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLocalAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRootAccountGroupRequest() (request *DescribeRootAccountGroupRequest) {
+    request = &DescribeRootAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeRootAccountGroup")
+    
+    
+    return
+}
+
+func NewDescribeRootAccountGroupResponse() (response *DescribeRootAccountGroupResponse) {
+    response = &DescribeRootAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRootAccountGroup
+// 查询账户根分组详情，私有化调用path为：capi/Assets/DescribeRootAccountGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeRootAccountGroup(request *DescribeRootAccountGroupRequest) (response *DescribeRootAccountGroupResponse, err error) {
+    return c.DescribeRootAccountGroupWithContext(context.Background(), request)
+}
+
+// DescribeRootAccountGroup
+// 查询账户根分组详情，私有化调用path为：capi/Assets/DescribeRootAccountGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeRootAccountGroupWithContext(ctx context.Context, request *DescribeRootAccountGroupRequest) (response *DescribeRootAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeRootAccountGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRootAccountGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRootAccountGroupResponse()
     err = c.Send(request, response)
     return
 }

@@ -563,6 +563,10 @@ type AuditLog struct {
 	// 日志命中规则模板的基本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateInfo []*LogRuleTemplateInfo `json:"TemplateInfo,omitnil,omitempty" name:"TemplateInfo"`
+
+	// 事务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
 }
 
 type AuditLogFile struct {

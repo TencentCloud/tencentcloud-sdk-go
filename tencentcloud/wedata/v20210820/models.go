@@ -28094,6 +28094,194 @@ func (r *UploadContentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UploadResourceRequestParams struct {
+	// 资源上传请求信息
+	UploadResourceRequestInfo *UploadResourceRequestInfo `json:"UploadResourceRequestInfo,omitnil,omitempty" name:"UploadResourceRequestInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type UploadResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源上传请求信息
+	UploadResourceRequestInfo *UploadResourceRequestInfo `json:"UploadResourceRequestInfo,omitnil,omitempty" name:"UploadResourceRequestInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *UploadResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UploadResourceRequestInfo")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadResourceRequestInfo struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 资源路径
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 桶名称
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 所属地区
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 是否为新资源
+	NewFile *bool `json:"NewFile,omitnil,omitempty" name:"NewFile"`
+
+	// 资源列表
+	FileList []*string `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// 资源大小列表
+	FileSizeList []*string `json:"FileSizeList,omitnil,omitempty" name:"FileSizeList"`
+
+	// File Md5（适配私有化，公有云可以不传）
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+}
+
+// Predefined struct for user
+type UploadResourceResponseParams struct {
+	// 资源文件信息列表
+	Data []*UserFileDTONew `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadResourceResponseParams `json:"Response"`
+}
+
+func (r *UploadResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserFileDTONew struct {
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件类型，如 jar zip 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileExtensionType *string `json:"FileExtensionType,omitnil,omitempty" name:"FileExtensionType"`
+
+	// 文件上传类型，资源管理为 resource
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文件MD5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5Value *string `json:"Md5Value,omitnil,omitempty" name:"Md5Value"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 文件大小，单位为字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 本地路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
+
+	// 本地临时路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalTempPath *string `json:"LocalTempPath,omitnil,omitempty" name:"LocalTempPath"`
+
+	// 远程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
+
+	// 文件拥有者名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 文件拥有者uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 文件深度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathDepth *string `json:"PathDepth,omitnil,omitempty" name:"PathDepth"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 本地临时压缩文件绝对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZipPath *string `json:"ZipPath,omitnil,omitempty" name:"ZipPath"`
+
+	// 文件所属存储桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 文件所属存储桶的地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 删除用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteName *string `json:"DeleteName,omitnil,omitempty" name:"DeleteName"`
+
+	// 删除用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteOwner *string `json:"DeleteOwner,omitnil,omitempty" name:"DeleteOwner"`
+
+	// 操作者id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 操作者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 全路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullPath *string `json:"FullPath,omitnil,omitempty" name:"FullPath"`
+}
+
 type UserFileInfo struct {
 	// 资源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。

@@ -1681,7 +1681,7 @@ type CreateDMSTableRequestParams struct {
 	// 基础对象
 	Asset *Asset `json:"Asset,omitnil,omitempty" name:"Asset"`
 
-	// 表类型
+	// 表类型：EXTERNAL_TABLE, VIRTUAL_VIEW, MATERIALIZED_VIEW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据库名称
@@ -1733,7 +1733,7 @@ type CreateDMSTableRequest struct {
 	// 基础对象
 	Asset *Asset `json:"Asset,omitnil,omitempty" name:"Asset"`
 
-	// 表类型
+	// 表类型：EXTERNAL_TABLE, VIRTUAL_VIEW, MATERIALIZED_VIEW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据库名称

@@ -2203,22 +2203,7 @@ type GetFaceIdResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInfoTag *string `json:"RiskInfoTag,omitnil,omitempty" name:"RiskInfoTag"`
 
-	// plus版：描述当前请求活体阶段被拒绝的详细原因，详情如下：
-	// 01-用户全程闭眼
-	// 02-用户未完成指定动作
-	// 03-疑似翻拍攻击
-	// 04-疑似合成图片
-	// 05-疑似合成视频
-	// 06-疑似合成动作
-	// 07-疑似黑产模版
-	// 08-疑似存在水印
-	// 09-反光校验未通过
-	// 10-最佳帧校验未通过
-	// 11-人脸质量过差
-	// 12-人脸距离不匹配
-	// 13-疑似对抗样本攻击
-	// null-无
-	// 增强版：此字段不生效，默认为null
+	// plus版：描述当前请求活体阶段被拒绝的详细原因，详情如下：01-用户全程闭眼02-用户未完成指定动作03-疑似翻拍攻击04-疑似合成图片05-疑似合成视频06-疑似合成动作07-疑似黑产模板08-疑似存在水印09-反光校验未通过10-最佳帧校验未通过11-人脸质量过差12-人脸距离不匹配13-疑似对抗样本攻击null-无增强版：此字段不生效，默认为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessInfoTag *string `json:"LivenessInfoTag,omitnil,omitempty" name:"LivenessInfoTag"`
 

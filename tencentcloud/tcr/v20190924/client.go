@@ -178,6 +178,7 @@ func NewCheckInstanceResponse() (response *CheckInstanceResponse) {
 // 用于校验企业版实例信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -201,6 +202,7 @@ func (c *Client) CheckInstance(request *CheckInstanceRequest) (response *CheckIn
 // 用于校验企业版实例信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -255,6 +257,7 @@ func NewCheckInstanceNameResponse() (response *CheckInstanceNameResponse) {
 // 检查待创建的实例名称是否符合规范
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -278,6 +281,7 @@ func (c *Client) CheckInstanceName(request *CheckInstanceNameRequest) (response 
 // 检查待创建的实例名称是否符合规范
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -4626,6 +4630,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 // 用于在TCR中获取可用区域
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4639,6 +4644,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
 // 用于在TCR中获取可用区域
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"

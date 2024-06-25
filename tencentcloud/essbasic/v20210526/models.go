@@ -2418,8 +2418,10 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 	// <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
 	ReviewMessage *string `json:"ReviewMessage,omitnil,omitempty" name:"ReviewMessage"`
 
-	// 审核节点的签署人标志，用于指定当前审核的签署方
-	// <ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
+	// 审核节点的签署人标志，用于指定当前审核的签署方。
+	// <font color= "red">注意：以下情况必须传递RecipientId</font>
+	// <ul><li> **发起签署流程时，指定签署人需要审批（即签署人需要审批
+	// <a href="https://qian.tencent.com/developers/partnerApis/dataTypes#flowapproverinfo" target="_blank">ApproverNeedSignReview</a>为true），则必须指定RecipientId**</li><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 流程审核操作类型，取值如下：
@@ -2459,8 +2461,10 @@ type ChannelCreateFlowSignReviewRequest struct {
 	// <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
 	ReviewMessage *string `json:"ReviewMessage,omitnil,omitempty" name:"ReviewMessage"`
 
-	// 审核节点的签署人标志，用于指定当前审核的签署方
-	// <ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
+	// 审核节点的签署人标志，用于指定当前审核的签署方。
+	// <font color= "red">注意：以下情况必须传递RecipientId</font>
+	// <ul><li> **发起签署流程时，指定签署人需要审批（即签署人需要审批
+	// <a href="https://qian.tencent.com/developers/partnerApis/dataTypes#flowapproverinfo" target="_blank">ApproverNeedSignReview</a>为true），则必须指定RecipientId**</li><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 流程审核操作类型，取值如下：
@@ -6559,7 +6563,7 @@ type CreateConsoleLoginUrlRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-	// 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
+	// <font color="red">在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。</font>
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`
@@ -6660,7 +6664,7 @@ type CreateConsoleLoginUrlRequest struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-	// 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
+	// <font color="red">在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。</font>
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`

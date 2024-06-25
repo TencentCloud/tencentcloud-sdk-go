@@ -765,6 +765,10 @@ type CommonMixControlParams struct {
 	// 取值范围[0,1]
 	// 填1时，透传原始流的sei
 	PassInputSei *int64 `json:"PassInputSei,omitnil,omitempty" name:"PassInputSei"`
+
+	// 取值范围[0,1]
+	// 填1时，图片输入中的透明通道生效。
+	UsePictureTransparent *int64 `json:"UsePictureTransparent,omitnil,omitempty" name:"UsePictureTransparent"`
 }
 
 type CommonMixCropParams struct {

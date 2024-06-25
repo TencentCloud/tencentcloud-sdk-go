@@ -5594,67 +5594,6 @@ func (r *DeleteAllJavaMemShellsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteAttackLogsRequestParams struct {
-	// 日志ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
-
-	// 是否全部删除
-	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
-}
-
-type DeleteAttackLogsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 日志ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
-
-	// 是否全部删除
-	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
-}
-
-func (r *DeleteAttackLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteAttackLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Ids")
-	delete(f, "IsAll")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAttackLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteAttackLogsResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteAttackLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteAttackLogsResponseParams `json:"Response"`
-}
-
-func (r *DeleteAttackLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteAttackLogsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteBanWhiteListRequestParams struct {
 	// 要删除的白名单ID列表 (最大100条)
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`

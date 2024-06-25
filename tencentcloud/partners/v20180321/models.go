@@ -71,6 +71,10 @@ type AgentAuditedClient struct {
 	// 代客邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
+
+	// 交易类型:交易类型 1-原类型 2-代理型  3-代采型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransactionType *string `json:"TransactionType,omitnil,omitempty" name:"TransactionType"`
 }
 
 type AgentBillElem struct {

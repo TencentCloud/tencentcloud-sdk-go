@@ -42,6 +42,170 @@ type Condition struct {
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 }
 
+type DescribeAccountGroupsData struct {
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+
+	// 账户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// id patch数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
+
+	// 该分组下用户总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
+
+	// 扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 导入类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 同步数据源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// miniIAM id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
+
+	// 组织id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// 是否该账户的直接权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+
+	// 父id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 名称path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+
+	// 父组织id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
+
+	// id path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
+
+	// 自增id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 是否叶子节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+}
+
+type DescribeAccountGroupsPageResp struct {
+	// 账户分响应对象集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeAccountGroupsData `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页公共对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+// Predefined struct for user
+type DescribeAccountGroupsRequestParams struct {
+	// 搜索范围,0-仅搜直接子组,1-深层搜索(只支持32位)
+	Deepin *int64 `json:"Deepin,omitnil,omitempty" name:"Deepin"`
+
+	// 滤条件、分页参数
+	// <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按账号分组过滤。</li>
+	// 排序条件
+	// <li>Itime - string - 是否必填：否 - 排序支持：是 - 按账号分组创建时间排序。</li>
+	// <li>Utime - string - 是否必填：否 - 排序支持：是 - 按账号分组更新时间排序。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 父分组id
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+}
+
+type DescribeAccountGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索范围,0-仅搜直接子组,1-深层搜索(只支持32位)
+	Deepin *int64 `json:"Deepin,omitnil,omitempty" name:"Deepin"`
+
+	// 滤条件、分页参数
+	// <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按账号分组过滤。</li>
+	// 排序条件
+	// <li>Itime - string - 是否必填：否 - 排序支持：是 - 按账号分组创建时间排序。</li>
+	// <li>Utime - string - 是否必填：否 - 排序支持：是 - 按账号分组更新时间排序。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 父分组id
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+}
+
+func (r *DescribeAccountGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Deepin")
+	delete(f, "Condition")
+	delete(f, "ParentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountGroupsResponseParams struct {
+	// 账户分组详情响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeAccountGroupsPageResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccountGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccountGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccountGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicesPageRsp struct {
 	// 数据分页信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -201,6 +365,237 @@ func (r *DescribeDevicesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLocalAccountAccountGroupsData struct {
+	// 组Id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+type DescribeLocalAccountsData struct {
+	// uid，数据库中唯一
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 账号，登录账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 账号id，同Id字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountId *int64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 账号所在的分组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 账号所在的分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 账号所在的分组名称路径，用英文.分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+
+	// 账号来源,0表示本地账号(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 账号状态,0禁用，1启用(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 账号的创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+
+	// 账号的最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+
+	// 账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 用户风险等级，枚举：none, low, middle, high
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 所属组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroups []*DescribeLocalAccountAccountGroupsData `json:"AccountGroups,omitnil,omitempty" name:"AccountGroups"`
+
+	// 绑定手机端设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MobileBindNum *int64 `json:"MobileBindNum,omitnil,omitempty" name:"MobileBindNum"`
+
+	// 绑定Pc端设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PcBindNum *int64 `json:"PcBindNum,omitnil,omitempty" name:"PcBindNum"`
+
+	// 账号在线状态 1：在线 2：离线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
+
+	// 账号活跃状态 1：活跃 2：非活跃
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveStatus *int64 `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
+
+	// 账号登录时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
+
+	// 账号登出时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogoutTime *string `json:"LogoutTime,omitnil,omitempty" name:"LogoutTime"`
+}
+
+type DescribeLocalAccountsPage struct {
+	// 公共分页对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 获取账号列表响应的单个对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeLocalAccountsData `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeLocalAccountsRequestParams struct {
+	// 滤条件、分页参数
+	// <li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号UserName过滤。</li>
+	// <li>UserId - string - 是否必填：否 - 操作符: eq,like  - 排序支持：否 - 按账号UserNd过滤。</li>
+	// <li>Phone - string - 是否必填：否 - 操作符: eq,like - 排序支持：否 - 按手机号过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 获取账号的分组Id，不传默认获取全部(只支持32位)
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
+	ShowFlag *int64 `json:"ShowFlag,omitnil,omitempty" name:"ShowFlag"`
+}
+
+type DescribeLocalAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 滤条件、分页参数
+	// <li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号UserName过滤。</li>
+	// <li>UserId - string - 是否必填：否 - 操作符: eq,like  - 排序支持：否 - 按账号UserNd过滤。</li>
+	// <li>Phone - string - 是否必填：否 - 操作符: eq,like - 排序支持：否 - 按手机号过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 获取账号的分组Id，不传默认获取全部(只支持32位)
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
+	ShowFlag *int64 `json:"ShowFlag,omitnil,omitempty" name:"ShowFlag"`
+}
+
+func (r *DescribeLocalAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLocalAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Condition")
+	delete(f, "AccountGroupId")
+	delete(f, "ShowFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLocalAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLocalAccountsResponseParams struct {
+	// 获取账号列表响应的分页对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeLocalAccountsPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLocalAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLocalAccountsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLocalAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLocalAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRootAccountGroupRequestParams struct {
+
+}
+
+type DescribeRootAccountGroupRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeRootAccountGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRootAccountGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRootAccountGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRootAccountGroupResponseParams struct {
+	// 账户分组详情响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *GetAccountGroupData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRootAccountGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRootAccountGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeRootAccountGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRootAccountGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -396,6 +791,76 @@ type FilterGroup struct {
 	// Filters 条件过滤
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type GetAccountGroupData struct {
+	// 分组Namepath
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+
+	// 分组Id path arr(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
+
+	// 分组扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+
+	// 父分组id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 组织id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// 分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分组id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 分组导入源(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// Id Path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+
+	// 父组织id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
+
+	// 导入信息,json格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Import *string `json:"Import,omitnil,omitempty" name:"Import"`
+
+	// 是否开启导入架构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportEnable *bool `json:"ImportEnable,omitnil,omitempty" name:"ImportEnable"`
+
+	// 导入类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// miniIAMId，MiniIAM源才有
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
 }
 
 type Paging struct {

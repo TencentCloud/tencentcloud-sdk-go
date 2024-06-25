@@ -699,6 +699,75 @@ func (r *CancelAssignTWeCallLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckFirmwareUpdateRequestParams struct {
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type CheckFirmwareUpdateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *CheckFirmwareUpdateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckFirmwareUpdateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckFirmwareUpdateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckFirmwareUpdateResponseParams struct {
+	// 设备当前固件版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentVersion *string `json:"CurrentVersion,omitnil,omitempty" name:"CurrentVersion"`
+
+	// 固件可升级版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckFirmwareUpdateResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckFirmwareUpdateResponseParams `json:"Response"`
+}
+
+func (r *CheckFirmwareUpdateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckFirmwareUpdateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CloudStorageAIServiceTask struct {
 	// 云存 AI 服务任务 ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -5358,6 +5427,93 @@ func (r *DescribeFirmwareTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFirmwareTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFirmwareUpdateStatusRequestParams struct {
+	// 产品 ID。
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type DescribeFirmwareUpdateStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID。
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeFirmwareUpdateStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareUpdateStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareUpdateStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFirmwareUpdateStatusResponseParams struct {
+	// 升级任务源版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriVersion *string `json:"OriVersion,omitnil,omitempty" name:"OriVersion"`
+
+	// 升级任务目标版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
+
+	// 升级状态：
+	// 
+	// - 0：设备离线。
+	// - 1：待处理。
+	// - 2：消息下发成功。
+	// - 3：下载中。
+	// - 4：烧录中。
+	// - 5：失败。
+	// - 6：升级完成。
+	// - 7：正在处理中。
+	// - 8：等待用户确认。
+	// - 20：下载完成。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFirmwareUpdateStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFirmwareUpdateStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeFirmwareUpdateStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareUpdateStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10437,6 +10593,71 @@ func (r *PublishBroadcastMessageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *PublishBroadcastMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PublishFirmwareUpdateMessageRequestParams struct {
+	// 产品 ID。
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type PublishFirmwareUpdateMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID。
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *PublishFirmwareUpdateMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishFirmwareUpdateMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishFirmwareUpdateMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PublishFirmwareUpdateMessageResponseParams struct {
+	// 请求状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PublishFirmwareUpdateMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *PublishFirmwareUpdateMessageResponseParams `json:"Response"`
+}
+
+func (r *PublishFirmwareUpdateMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishFirmwareUpdateMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
