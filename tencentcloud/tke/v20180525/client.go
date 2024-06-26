@@ -2389,7 +2389,7 @@ func NewCreatePrometheusConfigResponse() (response *CreatePrometheusConfigRespon
 }
 
 // CreatePrometheusConfig
-// 创建prometheus配置
+// 创建集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -2408,7 +2408,7 @@ func (c *Client) CreatePrometheusConfig(request *CreatePrometheusConfigRequest) 
 }
 
 // CreatePrometheusConfig
-// 创建prometheus配置
+// 创建集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -2576,7 +2576,7 @@ func NewCreatePrometheusRecordRuleYamlResponse() (response *CreatePrometheusReco
 }
 
 // CreatePrometheusRecordRuleYaml
-// 以Yaml的方式创建聚合规则
+// 创建聚合规则yaml方式
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
@@ -2594,7 +2594,7 @@ func (c *Client) CreatePrometheusRecordRuleYaml(request *CreatePrometheusRecordR
 }
 
 // CreatePrometheusRecordRuleYaml
-// 以Yaml的方式创建聚合规则
+// 创建聚合规则yaml方式
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
@@ -4320,7 +4320,7 @@ func NewDeletePrometheusConfigResponse() (response *DeletePrometheusConfigRespon
 }
 
 // DeletePrometheusConfig
-// 删除Prometheus配置，如果目标不存在，将返回成功
+// 删除集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -4336,7 +4336,7 @@ func (c *Client) DeletePrometheusConfig(request *DeletePrometheusConfigRequest) 
 }
 
 // DeletePrometheusConfig
-// 删除Prometheus配置，如果目标不存在，将返回成功
+// 删除集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -4383,7 +4383,7 @@ func NewDeletePrometheusRecordRuleYamlResponse() (response *DeletePrometheusReco
 }
 
 // DeletePrometheusRecordRuleYaml
-// 删除聚合实例
+// 删除聚合规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -4396,7 +4396,7 @@ func (c *Client) DeletePrometheusRecordRuleYaml(request *DeletePrometheusRecordR
 }
 
 // DeletePrometheusRecordRuleYaml
-// 删除聚合实例
+// 删除聚合规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
@@ -9058,7 +9058,7 @@ func NewDescribePrometheusConfigResponse() (response *DescribePrometheusConfigRe
 }
 
 // DescribePrometheusConfig
-// 拉取Prometheus配置
+// 获取集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -9068,7 +9068,6 @@ func NewDescribePrometheusConfigResponse() (response *DescribePrometheusConfigRe
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
@@ -9080,7 +9079,7 @@ func (c *Client) DescribePrometheusConfig(request *DescribePrometheusConfigReque
 }
 
 // DescribePrometheusConfig
-// 拉取Prometheus配置
+// 获取集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -9090,7 +9089,6 @@ func (c *Client) DescribePrometheusConfig(request *DescribePrometheusConfigReque
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
@@ -13039,7 +13037,7 @@ func NewModifyPrometheusConfigResponse() (response *ModifyPrometheusConfigRespon
 }
 
 // ModifyPrometheusConfig
-// 修改prometheus配置，如果配置项不存在，则会新增
+// 修改集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -13057,7 +13055,7 @@ func (c *Client) ModifyPrometheusConfig(request *ModifyPrometheusConfigRequest) 
 }
 
 // ModifyPrometheusConfig
-// 修改prometheus配置，如果配置项不存在，则会新增
+// 修改集群采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -13165,7 +13163,7 @@ func NewModifyPrometheusRecordRuleYamlResponse() (response *ModifyPrometheusReco
 }
 
 // ModifyPrometheusRecordRuleYaml
-// 通过yaml的方式修改Prometheus聚合实例
+// 修改聚合规则yaml方式
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -13182,7 +13180,7 @@ func (c *Client) ModifyPrometheusRecordRuleYaml(request *ModifyPrometheusRecordR
 }
 
 // ModifyPrometheusRecordRuleYaml
-// 通过yaml的方式修改Prometheus聚合实例
+// 修改聚合规则yaml方式
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"

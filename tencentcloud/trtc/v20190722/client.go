@@ -3978,8 +3978,8 @@ func NewStartWebRecordResponse() (response *StartWebRecordResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
 //  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
-//  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 //  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 func (c *Client) StartWebRecord(request *StartWebRecordRequest) (response *StartWebRecordResponse, err error) {
@@ -3993,8 +3993,8 @@ func (c *Client) StartWebRecord(request *StartWebRecordRequest) (response *Start
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
 //  FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
-//  FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
 //  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 //  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 func (c *Client) StartWebRecordWithContext(ctx context.Context, request *StartWebRecordRequest) (response *StartWebRecordResponse, err error) {

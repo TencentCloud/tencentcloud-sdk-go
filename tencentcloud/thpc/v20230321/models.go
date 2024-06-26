@@ -428,7 +428,7 @@ type ClusterOverview struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群状态。取值范围：<br><li>PENDING：创建中<br><li>INITING：初始化中<br><li>INIT_FAILED：初始化失败<br><li>RUNNING：运行中<br><li>TERMINATING：销毁中
+	// 集群状态。取值范围：<li>PENDING：创建中</li><li>INITING：初始化中</li><li>INIT_FAILED：初始化失败</li><li>RUNNING：运行中</li><li>TERMINATING：销毁中</li>
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
 	// 集群名称。
@@ -442,6 +442,10 @@ type ClusterOverview struct {
 
 	// 集群调度器。
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
+
+	// 集群调度器版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
 	// 计算节点数量。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
@@ -461,7 +465,7 @@ type ClusterOverview struct {
 	// 登录节点数量。
 	LoginNodeCount *int64 `json:"LoginNodeCount,omitnil,omitempty" name:"LoginNodeCount"`
 
-	// 弹性伸缩类型。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+	// 弹性伸缩类型。取值范围：<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 
 	// 集群所属私有网络ID。
@@ -520,8 +524,14 @@ type CreateClusterRequestParams struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。默认取值：SLURM。<li>SGE：SGE调度器。</li><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
+
+	// 创建调度器的版本号，可填写版本号为“latest” 和 各调度器支持的版本号；如果是"latest", 则代表创建的是平台当前支持的该类型调度器最新版本。如果不填写，默认创建的是“latest”版本调度器
+	// 各调度器支持的集群版本：
+	// <li>SLURM：21.08.8、23.11.7</li>
+	// <li>SGE：     8.1.9</li>
+	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
@@ -546,7 +556,7 @@ type CreateClusterRequestParams struct {
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 域名字服务类型。默认取值：NIS。
-	// <li>NIS：NIS域名字服务。
+	// <li>NIS：NIS域名字服务。</li>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -564,7 +574,7 @@ type CreateClusterRequestParams struct {
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性伸缩类型。默认值：THPC_AS<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+	// 弹性伸缩类型。默认值：THPC_AS<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 
 	// 节点初始化脚本信息列表。
@@ -592,8 +602,14 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。默认取值：SLURM。<li>SGE：SGE调度器。</li><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
+
+	// 创建调度器的版本号，可填写版本号为“latest” 和 各调度器支持的版本号；如果是"latest", 则代表创建的是平台当前支持的该类型调度器最新版本。如果不填写，默认创建的是“latest”版本调度器
+	// 各调度器支持的集群版本：
+	// <li>SLURM：21.08.8、23.11.7</li>
+	// <li>SGE：     8.1.9</li>
+	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
@@ -618,7 +634,7 @@ type CreateClusterRequest struct {
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 域名字服务类型。默认取值：NIS。
-	// <li>NIS：NIS域名字服务。
+	// <li>NIS：NIS域名字服务。</li>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -636,7 +652,7 @@ type CreateClusterRequest struct {
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性伸缩类型。默认值：THPC_AS<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+	// 弹性伸缩类型。默认值：THPC_AS<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 
 	// 节点初始化脚本信息列表。
@@ -664,6 +680,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "ComputeNode")
 	delete(f, "ComputeNodeCount")
 	delete(f, "SchedulerType")
+	delete(f, "SchedulerVersion")
 	delete(f, "ImageId")
 	delete(f, "VirtualPrivateCloud")
 	delete(f, "LoginSettings")

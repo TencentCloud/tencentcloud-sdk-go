@@ -48,6 +48,10 @@ type ApiGatewayInstanceList struct {
 
 	// 该地域下apigateway实例总数	
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 // Predefined struct for user
@@ -222,6 +226,24 @@ type BindResourceResult struct {
 	BindResourceRegionResult []*BindResourceRegionResult `json:"BindResourceRegionResult,omitnil,omitempty" name:"BindResourceRegionResult"`
 }
 
+type COSInstanceList struct {
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 实例详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*CosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 地域下总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
 // Predefined struct for user
 type CancelAuditCertificateRequestParams struct {
 	// 证书ID
@@ -357,6 +379,10 @@ type CdnInstanceList struct {
 	// cdn域名详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type CertTaskId struct {
@@ -713,6 +739,10 @@ type ClbInstanceList struct {
 
 	// 该地域下Clb实例总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type ClbListener struct {
@@ -1271,6 +1301,10 @@ type DdosInstanceList struct {
 	// ddos实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 // Predefined struct for user
@@ -1865,6 +1899,10 @@ type DescribeCertificateBindResourceTaskDetailResponseParams struct {
 	// 关联tse资源详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TSE []*TSEInstanceList `json:"TSE,omitnil,omitempty" name:"TSE"`
+
+	// 关联的COS资源详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	COS []*COSInstanceList `json:"COS,omitnil,omitempty" name:"COS"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4862,6 +4900,10 @@ type LiveInstanceList struct {
 	// live实例详情	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type ManagerInfo struct {
@@ -6062,6 +6104,10 @@ type TCBInstanceList struct {
 	// tcb环境实例详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Environments []*TCBEnvironments `json:"Environments,omitnil,omitempty" name:"Environments"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type TSEInstanceDetail struct {
@@ -6088,6 +6134,10 @@ type TSEInstanceList struct {
 
 	// 地域	
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type Tags struct {
@@ -6120,6 +6170,10 @@ type TeoInstanceList struct {
 
 	// edgeone实例总数	
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type TkeIngressDetail struct {
@@ -6160,6 +6214,10 @@ type TkeInstanceList struct {
 
 	// 该地域下tke实例总数	
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type TkeNameSpaceDetail struct {
@@ -6851,6 +6909,10 @@ type VODInstanceList struct {
 
 	// 该地域下vod实例总数	
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 // Predefined struct for user
@@ -6941,4 +7003,8 @@ type WafInstanceList struct {
 
 	// 该地域下waf实例总数	
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }

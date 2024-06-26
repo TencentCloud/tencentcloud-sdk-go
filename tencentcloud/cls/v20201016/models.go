@@ -1314,7 +1314,7 @@ type CreateAlarmRequestParams struct {
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
@@ -1394,7 +1394,7 @@ type CreateAlarmRequest struct {
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
@@ -8102,7 +8102,7 @@ type ModifyAlarmRequestParams struct {
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
@@ -8181,7 +8181,7 @@ type ModifyAlarmRequest struct {
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
@@ -9903,6 +9903,9 @@ type ModifyTopicRequestParams struct {
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
+	// 日志主题扩展信息
+	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
+
 	// 日志主题分区数量
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 }
@@ -9943,6 +9946,9 @@ type ModifyTopicRequest struct {
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
+	// 日志主题扩展信息
+	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
+
 	// 日志主题分区数量
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 }
@@ -9969,6 +9975,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "Describes")
 	delete(f, "HotPeriod")
 	delete(f, "IsWebTracking")
+	delete(f, "Extends")
 	delete(f, "PartitionCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
@@ -9999,13 +10006,14 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 }
 
 type MonitorTime struct {
-	// 执行周期， 可选值：Period；Fixed。
+	// 执行周期， 可选值：`Period`、`Fixed`。
 	// 
 	// - Period：固定频率
 	// - Fixed：固定时间
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
+	// 当type为`Period`,`Fixed`时，time字段生效。
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
@@ -11491,6 +11499,10 @@ type TopicInfo struct {
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
+
+	// 日志主题扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 }
 
 // Predefined struct for user

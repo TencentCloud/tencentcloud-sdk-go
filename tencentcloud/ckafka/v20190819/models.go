@@ -1748,7 +1748,7 @@ func (r *CreateDatahubTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDatahubTopicRequestParams struct {
-	// 名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// Partition个数，大于0
@@ -1767,7 +1767,7 @@ type CreateDatahubTopicRequestParams struct {
 type CreateDatahubTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// Partition个数，大于0
@@ -2593,7 +2593,7 @@ type CreateRouteRequestParams struct {
 	// 实例唯一id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由网络类型(3:vpc路由;4:标准版支撑路由;7:专业版支撑路由)
+	// 路由网络类型(3:vpc路由;7:内部支撑路由)
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
 	// vpc网络Id
@@ -2624,7 +2624,7 @@ type CreateRouteRequest struct {
 	// 实例唯一id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由网络类型(3:vpc路由;4:标准版支撑路由;7:专业版支撑路由)
+	// 路由网络类型(3:vpc路由;7:内部支撑路由)
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
 	// vpc网络Id

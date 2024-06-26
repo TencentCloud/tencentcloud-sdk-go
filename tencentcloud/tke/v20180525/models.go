@@ -3685,6 +3685,9 @@ type CreatePrometheusConfigRequestParams struct {
 
 	// prometheus原生Job配置
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// Probe 配置
+	Probes []*PrometheusConfigItem `json:"Probes,omitnil,omitempty" name:"Probes"`
 }
 
 type CreatePrometheusConfigRequest struct {
@@ -3707,6 +3710,9 @@ type CreatePrometheusConfigRequest struct {
 
 	// prometheus原生Job配置
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// Probe 配置
+	Probes []*PrometheusConfigItem `json:"Probes,omitnil,omitempty" name:"Probes"`
 }
 
 func (r *CreatePrometheusConfigRequest) ToJsonString() string {
@@ -3727,6 +3733,7 @@ func (r *CreatePrometheusConfigRequest) FromJsonString(s string) error {
 	delete(f, "ServiceMonitors")
 	delete(f, "PodMonitors")
 	delete(f, "RawJobs")
+	delete(f, "Probes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusConfigRequest has unknown keys!", "")
 	}
@@ -5628,6 +5635,9 @@ type DeletePrometheusClusterAgentRequestParams struct {
 
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 在7天可回收期间，强制解除绑定
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
 type DeletePrometheusClusterAgentRequest struct {
@@ -5638,6 +5648,9 @@ type DeletePrometheusClusterAgentRequest struct {
 
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 在7天可回收期间，强制解除绑定
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
 func (r *DeletePrometheusClusterAgentRequest) ToJsonString() string {
@@ -5654,6 +5667,7 @@ func (r *DeletePrometheusClusterAgentRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agents")
 	delete(f, "InstanceId")
+	delete(f, "Force")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusClusterAgentRequest has unknown keys!", "")
 	}
@@ -5701,6 +5715,9 @@ type DeletePrometheusConfigRequestParams struct {
 
 	// 要删除的RawJobs名字列表
 	RawJobs []*string `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// 要删除的Probe名字列表
+	Probes []*string `json:"Probes,omitnil,omitempty" name:"Probes"`
 }
 
 type DeletePrometheusConfigRequest struct {
@@ -5723,6 +5740,9 @@ type DeletePrometheusConfigRequest struct {
 
 	// 要删除的RawJobs名字列表
 	RawJobs []*string `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// 要删除的Probe名字列表
+	Probes []*string `json:"Probes,omitnil,omitempty" name:"Probes"`
 }
 
 func (r *DeletePrometheusConfigRequest) ToJsonString() string {
@@ -5743,6 +5763,7 @@ func (r *DeletePrometheusConfigRequest) FromJsonString(s string) error {
 	delete(f, "ServiceMonitors")
 	delete(f, "PodMonitors")
 	delete(f, "RawJobs")
+	delete(f, "Probes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusConfigRequest has unknown keys!", "")
 	}
@@ -11086,6 +11107,9 @@ type DescribePrometheusConfigResponseParams struct {
 
 	// 原生Job
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// Probe配置
+	Probes []*PrometheusConfigItem `json:"Probes,omitnil,omitempty" name:"Probes"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16737,6 +16761,9 @@ type ModifyPrometheusConfigRequestParams struct {
 
 	// prometheus原生Job配置
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// Probes 配置
+	Probes []*PrometheusConfigItem `json:"Probes,omitnil,omitempty" name:"Probes"`
 }
 
 type ModifyPrometheusConfigRequest struct {
@@ -16759,6 +16786,9 @@ type ModifyPrometheusConfigRequest struct {
 
 	// prometheus原生Job配置
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
+
+	// Probes 配置
+	Probes []*PrometheusConfigItem `json:"Probes,omitnil,omitempty" name:"Probes"`
 }
 
 func (r *ModifyPrometheusConfigRequest) ToJsonString() string {
@@ -16779,6 +16809,7 @@ func (r *ModifyPrometheusConfigRequest) FromJsonString(s string) error {
 	delete(f, "ServiceMonitors")
 	delete(f, "PodMonitors")
 	delete(f, "RawJobs")
+	delete(f, "Probes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusConfigRequest has unknown keys!", "")
 	}

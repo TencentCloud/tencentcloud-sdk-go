@@ -65,9 +65,6 @@ const (
 	// AppId下没有此SdkAppId的资源
 	FAILEDOPERATION_SDKAPPIDNOTUNDERAPPID = "FailedOperation.SdkAppIdNotUnderAppId"
 
-	// SdkAppId未开通页面录制能力，请检查。
-	FAILEDOPERATION_SDKAPPIDNOTWEBRECORDABILITY = "FailedOperation.SdkAppIdNotWebRecordAbility"
-
 	// 任务已存在
 	FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
 

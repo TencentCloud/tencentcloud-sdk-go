@@ -829,7 +829,7 @@ func NewCreateDatahubTopicResponse() (response *CreateDatahubTopicResponse) {
 }
 
 // CreateDatahubTopic
-// 创建Datahub主题
+// 创建DIP主题
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -853,7 +853,7 @@ func (c *Client) CreateDatahubTopic(request *CreateDatahubTopicRequest) (respons
 }
 
 // CreateDatahubTopic
-// 创建Datahub主题
+// 创建DIP主题
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1867,7 +1867,7 @@ func NewDeleteDatahubTaskResponse() (response *DeleteDatahubTaskResponse) {
 }
 
 // DeleteDatahubTask
-// 删除Datahub任务
+// 删除Dip任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1881,7 +1881,7 @@ func (c *Client) DeleteDatahubTask(request *DeleteDatahubTaskRequest) (response 
 }
 
 // DeleteDatahubTask
-// 删除Datahub任务
+// 删除Dip任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3263,7 +3263,7 @@ func NewDescribeDatahubTopicResponse() (response *DescribeDatahubTopicResponse) 
 }
 
 // DescribeDatahubTopic
-// 获取Datahub主题属性
+// 获取DIP主题属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3286,7 +3286,7 @@ func (c *Client) DescribeDatahubTopic(request *DescribeDatahubTopicRequest) (res
 }
 
 // DescribeDatahubTopic
-// 获取Datahub主题属性
+// 获取DIP主题属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5228,7 +5228,7 @@ func NewModifyDatahubTopicResponse() (response *ModifyDatahubTopicResponse) {
 }
 
 // ModifyDatahubTopic
-// 修改Datahub主题属性
+// 修改DIP主题属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5250,7 +5250,7 @@ func (c *Client) ModifyDatahubTopic(request *ModifyDatahubTopicRequest) (respons
 }
 
 // ModifyDatahubTopic
-// 修改Datahub主题属性
+// 修改DIP主题属性
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

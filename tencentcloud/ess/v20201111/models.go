@@ -2384,7 +2384,7 @@ type CreateFlowBlockchainEvidenceUrlResponseParams struct {
 	// 二维码图片下载链接，下载链接有效时间5分钟，请尽快下载保存。
 	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
-	// 查看短链，可直接点击短链查看报告。
+	// 查看短链，可直接点击短链查看证书。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 二维码和短链的过期时间戳，过期时间默认为生成链接后7天。
