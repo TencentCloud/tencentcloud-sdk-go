@@ -639,6 +639,9 @@ type BizLicenseOCRRequestParams struct {
 
 	// 是否返回告警码，默认为false
 	EnableCopyWarn *bool `json:"EnableCopyWarn,omitnil,omitempty" name:"EnableCopyWarn"`
+
+	// 是否返回自动拼接的有效期，默认为true
+	EnablePeriodComplete *bool `json:"EnablePeriodComplete,omitnil,omitempty" name:"EnablePeriodComplete"`
 }
 
 type BizLicenseOCRRequest struct {
@@ -659,6 +662,9 @@ type BizLicenseOCRRequest struct {
 
 	// 是否返回告警码，默认为false
 	EnableCopyWarn *bool `json:"EnableCopyWarn,omitnil,omitempty" name:"EnableCopyWarn"`
+
+	// 是否返回自动拼接的有效期，默认为true
+	EnablePeriodComplete *bool `json:"EnablePeriodComplete,omitnil,omitempty" name:"EnablePeriodComplete"`
 }
 
 func (r *BizLicenseOCRRequest) ToJsonString() string {
@@ -676,6 +682,7 @@ func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "EnableCopyWarn")
+	delete(f, "EnablePeriodComplete")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BizLicenseOCRRequest has unknown keys!", "")
 	}
@@ -11094,6 +11101,9 @@ type TrainTicket struct {
 
 	// 是否有退票费标识（0：没有，1：有）
 	RefundMark *int64 `json:"RefundMark,omitnil,omitempty" name:"RefundMark"`
+
+	// 是否有改签费标识（0：没有，1：有）
+	TicketChangeMark *int64 `json:"TicketChangeMark,omitnil,omitempty" name:"TicketChangeMark"`
 }
 
 // Predefined struct for user

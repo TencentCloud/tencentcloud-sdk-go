@@ -693,6 +693,61 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteCertificatesRequest() (request *DeleteCertificatesRequest) {
+    request = &DeleteCertificatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DeleteCertificates")
+    
+    
+    return
+}
+
+func NewDeleteCertificatesResponse() (response *DeleteCertificatesResponse) {
+    response = &DeleteCertificatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCertificates
+// 批量删除证书，删除证书前支持查询证书是否关联了腾讯云云资源 （需自定义配置参数，参数名称：IsSync）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) DeleteCertificates(request *DeleteCertificatesRequest) (response *DeleteCertificatesResponse, err error) {
+    return c.DeleteCertificatesWithContext(context.Background(), request)
+}
+
+// DeleteCertificates
+// 批量删除证书，删除证书前支持查询证书是否关联了腾讯云云资源 （需自定义配置参数，参数名称：IsSync）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) DeleteCertificatesWithContext(ctx context.Context, request *DeleteCertificatesRequest) (response *DeleteCertificatesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCertificatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCertificates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCertificatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteManagerRequest() (request *DeleteManagerRequest) {
     request = &DeleteManagerRequest{
         BaseRequest: &tchttp.BaseRequest{},

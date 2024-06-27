@@ -42,6 +42,141 @@ type Filter struct {
 }
 
 // Predefined struct for user
+type GenerateAvatarRequestParams struct {
+	// 头像风格。
+	// 请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，必须传入风格编号。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 输入图 Base64 数据。
+	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 输入图 Url。
+	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 输入图像质量检测开关，默认开启。
+	// 1：开启
+	// 0：关闭
+	// 建议开启检测，可提升生成效果，关闭检测可能因输入图像质量较差导致生成效果受损。
+	// 开启后，将增强对输入图像的质量要求，如果输入图像单边分辨率<500、图像中人脸占比较小、存在多人、没有检测到人脸、人脸不完整、人脸遮挡等，将被拦截。
+	// 关闭后，将降低对输入图像的质量要求，如果图像中没有检测到人脸或人脸占比过小等，将被拦截。
+	Filter *int64 `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+type GenerateAvatarRequest struct {
+	*tchttp.BaseRequest
+	
+	// 头像风格。
+	// 请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，必须传入风格编号。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 输入图 Base64 数据。
+	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 输入图 Url。
+	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 输入图像质量检测开关，默认开启。
+	// 1：开启
+	// 0：关闭
+	// 建议开启检测，可提升生成效果，关闭检测可能因输入图像质量较差导致生成效果受损。
+	// 开启后，将增强对输入图像的质量要求，如果输入图像单边分辨率<500、图像中人脸占比较小、存在多人、没有检测到人脸、人脸不完整、人脸遮挡等，将被拦截。
+	// 关闭后，将降低对输入图像的质量要求，如果图像中没有检测到人脸或人脸占比过小等，将被拦截。
+	Filter *int64 `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+func (r *GenerateAvatarRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateAvatarRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Style")
+	delete(f, "InputImage")
+	delete(f, "InputUrl")
+	delete(f, "Filter")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateAvatarRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateAvatarResponseParams struct {
+	// 根据入参 RspImgType 填入不同，返回不同的内容。
+	// 如果传入 base64 则返回生成图 Base64 编码。
+	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateAvatarResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateAvatarResponseParams `json:"Response"`
+}
+
+func (r *GenerateAvatarResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateAvatarResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ImageToImageRequestParams struct {
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。

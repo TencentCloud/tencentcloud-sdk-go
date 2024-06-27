@@ -1685,11 +1685,26 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 	// 镜像队列,不传默认为false
 	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitnil,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
 
-	// 自动续费,不传默认为true
+	// 预付费使用。自动续费,不传默认为true
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 购买时长,不传默认为1(月)
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30 和 3.11.8
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 是否国际站请求，默认 false
+	IsIntl *bool `json:"IsIntl,omitnil,omitempty" name:"IsIntl"`
+
+	// 资源标签列表
+	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// 公网带宽大小，单位 M
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
 type CreateRabbitMQVipInstanceRequest struct {
@@ -1719,11 +1734,26 @@ type CreateRabbitMQVipInstanceRequest struct {
 	// 镜像队列,不传默认为false
 	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitnil,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
 
-	// 自动续费,不传默认为true
+	// 预付费使用。自动续费,不传默认为true
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 购买时长,不传默认为1(月)
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30 和 3.11.8
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 是否国际站请求，默认 false
+	IsIntl *bool `json:"IsIntl,omitnil,omitempty" name:"IsIntl"`
+
+	// 资源标签列表
+	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// 公网带宽大小，单位 M
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
 func (r *CreateRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -1748,6 +1778,11 @@ func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableCreateDefaultHaMirrorQueue")
 	delete(f, "AutoRenewFlag")
 	delete(f, "TimeSpan")
+	delete(f, "PayMode")
+	delete(f, "ClusterVersion")
+	delete(f, "IsIntl")
+	delete(f, "ResourceTags")
+	delete(f, "Bandwidth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -3304,6 +3339,9 @@ func (r *DeleteRabbitMQUserResponse) FromJsonString(s string) error {
 type DeleteRabbitMQVipInstanceRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否国际站请求，默认 false
+	IsIntl *bool `json:"IsIntl,omitnil,omitempty" name:"IsIntl"`
 }
 
 type DeleteRabbitMQVipInstanceRequest struct {
@@ -3311,6 +3349,9 @@ type DeleteRabbitMQVipInstanceRequest struct {
 	
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否国际站请求，默认 false
+	IsIntl *bool `json:"IsIntl,omitnil,omitempty" name:"IsIntl"`
 }
 
 func (r *DeleteRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -3326,6 +3367,7 @@ func (r *DeleteRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "IsIntl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -12847,6 +12889,14 @@ type RabbitMQUser struct {
 
 	// 用户类型，System：系统创建，User：用户创建
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 单个用户最大可用连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
+
+	// 单个用户最大可用通道数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
 }
 
 type RabbitMQVipInstance struct {
@@ -12909,6 +12959,10 @@ type RabbitMQVipInstance struct {
 	// VPC 接入点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
+
+	// 创建时间，毫秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type RabbitMQVirtualHostInfo struct {
@@ -13677,6 +13731,26 @@ type RocketMQInstanceConfig struct {
 	// 每个主题最大队列数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQueuesPerTopic *uint64 `json:"MaxQueuesPerTopic,omitnil,omitempty" name:"MaxQueuesPerTopic"`
+
+	// 最大可设置消息保留时间，小时为单位	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetention *int64 `json:"MaxRetention,omitnil,omitempty" name:"MaxRetention"`
+
+	// 最小可设置消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinRetention *int64 `json:"MinRetention,omitnil,omitempty" name:"MinRetention"`
+
+	// 实例消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Retention *int64 `json:"Retention,omitnil,omitempty" name:"Retention"`
+
+	// Topic个数最小配额，即免费额度，默认为集群规格单节点最小配额*节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumLowerLimit *int64 `json:"TopicNumLowerLimit,omitnil,omitempty" name:"TopicNumLowerLimit"`
+
+	// Topic个数最大配额，默认为集群规格单节点最大配额*节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumUpperLimit *int64 `json:"TopicNumUpperLimit,omitnil,omitempty" name:"TopicNumUpperLimit"`
 }
 
 type RocketMQMessageTrack struct {

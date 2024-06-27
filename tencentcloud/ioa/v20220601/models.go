@@ -43,29 +43,37 @@ type Condition struct {
 }
 
 type DescribeAccountGroupsData struct {
-	// 创建时间
+	// 名称path
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// 账户组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// id patch数组
+	// id patch数组(只支持32位)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
-
-	// 该分组下用户总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 
 	// 扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 导入类型
+	// 最后更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+
+	// 父id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 组织id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// 账户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -75,45 +83,45 @@ type DescribeAccountGroupsData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// miniIAM id
+	// id path
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
+	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
-	// 组织id
+	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
-
-	// 是否该账户的直接权限
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
-
-	// 父id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
-
-	// 名称path
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
 	// 父组织id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
-	// id path
+	// 导入类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
 
-	// 自增id
+	// miniIAM id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
+
+	// 该分组下用户总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 
 	// 是否叶子节点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 
-	// 最后更新时间
+	// 是否该账户的直接权限
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+
+	// 最新一次同步任务的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestSyncResult *string `json:"LatestSyncResult,omitnil,omitempty" name:"LatestSyncResult"`
+
+	// 最新一次同步任务的结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestSyncTime *string `json:"LatestSyncTime,omitnil,omitempty" name:"LatestSyncTime"`
 }
 
 type DescribeAccountGroupsPageResp struct {
@@ -600,11 +608,11 @@ func (r *DescribeRootAccountGroupResponse) FromJsonString(s string) error {
 }
 
 type DeviceDetail struct {
-	// 设备ID(只支持32位)
+	// 设备ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 设备唯一标识符
+	// 设备唯一标识码，在ioa中每个设备有唯一标识码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
 
@@ -612,11 +620,11 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备所在分组ID(只支持32位)
+	// 设备所在分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// OS平台(只支持32位)
+	// OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
@@ -624,7 +632,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 在线状态 2 在线 0，1 离线(只支持32位)
+	// 在线状态，2：在线、0或者1:离线
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
@@ -644,7 +652,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnActiveTime *string `json:"ConnActiveTime,omitnil,omitempty" name:"ConnActiveTime"`
 
-	// 设备是否加锁 1 锁定 0 2 非锁定(只支持32位)
+	// 设备是否加锁 ，1：锁定 0或者2：未锁定。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locked *int64 `json:"Locked,omitnil,omitempty" name:"Locked"`
 
@@ -668,7 +676,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CriticalVulListCount *int64 `json:"CriticalVulListCount,omitnil,omitempty" name:"CriticalVulListCount"`
 
-	// 设备名 和Name相同，保留参数
+	// 设备名，和Name相同
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputerName *string `json:"ComputerName,omitnil,omitempty" name:"ComputerName"`
 
@@ -680,11 +688,11 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
 
-	// 漏洞数(只支持32位)
+	// 漏洞数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCount *int64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
 
-	// 病毒风险数(只支持32位)
+	// 病毒风险数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCount *int64 `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
@@ -712,7 +720,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 防火墙状态(只支持32位)
+	// 防火墙状态，不等于0表示开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirewallStatus *int64 `json:"FirewallStatus,omitnil,omitempty" name:"FirewallStatus"`
 
@@ -728,7 +736,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NGNStrategyVer *string `json:"NGNStrategyVer,omitnil,omitempty" name:"NGNStrategyVer"`
 
-	// 最近登录账号
+	// 最近登录账户的账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IOAUserName *string `json:"IOAUserName,omitnil,omitempty" name:"IOAUserName"`
 
@@ -764,7 +772,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
 
-	// 登录账号姓名
+	// 最近登录账户的姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 

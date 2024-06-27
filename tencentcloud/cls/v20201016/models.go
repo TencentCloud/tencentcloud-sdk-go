@@ -314,6 +314,17 @@ type AlarmTargetInfo struct {
 
 	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+
+	// 检索语法规则，默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// 主题类型。
+	// 0: 日志主题，1: 指标主题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
 type AlertHistoryNotice struct {

@@ -6563,7 +6563,8 @@ type CreateConsoleLoginUrlRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-	// <font color="red">在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。</font>
+	// <font color="red">在测试环境联调的过程中，企业名称请使用以下名称 
+	// **子客测试专用企业1 - 子客测试专用企业9**</font>
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`
@@ -6664,7 +6665,8 @@ type CreateConsoleLoginUrlRequest struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-	// <font color="red">在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。</font>
+	// <font color="red">在测试环境联调的过程中，企业名称请使用以下名称 
+	// **子客测试专用企业1 - 子客测试专用企业9**</font>
 	// 
 	// 注:
 	//  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`

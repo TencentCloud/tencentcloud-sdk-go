@@ -265,6 +265,14 @@ type InstanceInfo struct {
 	// 外网地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanAddress *string `json:"WanAddress,omitnil,omitempty" name:"WanAddress"`
+
+	// 隔离时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateAt *string `json:"IsolateAt,omitnil,omitempty" name:"IsolateAt"`
+
+	// 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 }
 
 type Network struct {

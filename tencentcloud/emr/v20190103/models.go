@@ -25,8 +25,11 @@ type AddMetricScaleStrategyRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 1表示按负载规则扩容，2表示按时间规则扩容。
+	// 1表示按负载规则扩容，2表示按时间规则扩容。必须填写，并且和下面的规则策略匹配
 	StrategyType *int64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// 按负载扩容的规则。
+	LoadAutoScaleStrategy *LoadAutoScaleStrategy `json:"LoadAutoScaleStrategy,omitnil,omitempty" name:"LoadAutoScaleStrategy"`
 
 	// 按时间扩缩容的规则。
 	TimeAutoScaleStrategy *TimeAutoScaleStrategy `json:"TimeAutoScaleStrategy,omitnil,omitempty" name:"TimeAutoScaleStrategy"`
@@ -38,8 +41,11 @@ type AddMetricScaleStrategyRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 1表示按负载规则扩容，2表示按时间规则扩容。
+	// 1表示按负载规则扩容，2表示按时间规则扩容。必须填写，并且和下面的规则策略匹配
 	StrategyType *int64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// 按负载扩容的规则。
+	LoadAutoScaleStrategy *LoadAutoScaleStrategy `json:"LoadAutoScaleStrategy,omitnil,omitempty" name:"LoadAutoScaleStrategy"`
 
 	// 按时间扩缩容的规则。
 	TimeAutoScaleStrategy *TimeAutoScaleStrategy `json:"TimeAutoScaleStrategy,omitnil,omitempty" name:"TimeAutoScaleStrategy"`
@@ -59,6 +65,7 @@ func (r *AddMetricScaleStrategyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "StrategyType")
+	delete(f, "LoadAutoScaleStrategy")
 	delete(f, "TimeAutoScaleStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddMetricScaleStrategyRequest has unknown keys!", "")
@@ -270,6 +277,14 @@ type AutoScaleRecord struct {
 	// 重试信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryInfo *string `json:"RetryInfo,omitnil,omitempty" name:"RetryInfo"`
+
+	// 重试英文描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryEnReason *string `json:"RetryEnReason,omitnil,omitempty" name:"RetryEnReason"`
+
+	// 重试描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryReason *string `json:"RetryReason,omitnil,omitempty" name:"RetryReason"`
 }
 
 type AutoScaleResourceConf struct {
@@ -296,6 +311,42 @@ type AutoScaleResourceConf struct {
 	// 优雅缩容开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GraceDownFlag *bool `json:"GraceDownFlag,omitnil,omitempty" name:"GraceDownFlag"`
+
+	// "CVM"表示规格全部使用CVM相关类型，"POD"表示规格使用容器相关类型,默认为"CVM"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HardwareType *string `json:"HardwareType,omitnil,omitempty" name:"HardwareType"`
+
+	// "POSTPAY"表示只使用按量计费，"SPOT_FIRST"表示竞价实例优先，只有HardwareType为"HOST"时支持竞价实例优先，"POD"只支持纯按量计费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostPayPercentMin *int64 `json:"PostPayPercentMin,omitnil,omitempty" name:"PostPayPercentMin"`
+
+	// 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；默认不勾选（0），勾选（1)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeToPod *int64 `json:"ChangeToPod,omitnil,omitempty" name:"ChangeToPod"`
+
+	// 伸缩组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YarnNodeLabel *string `json:"YarnNodeLabel,omitnil,omitempty" name:"YarnNodeLabel"`
+
+	// 伸缩组状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupStatus *int64 `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
+
+	// 并行伸缩 0关闭；1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Parallel *int64 `json:"Parallel,omitnil,omitempty" name:"Parallel"`
+
+	// 是否支持MNode
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableMNode *int64 `json:"EnableMNode,omitnil,omitempty" name:"EnableMNode"`
 }
 
 type BootstrapAction struct {
@@ -1557,6 +1608,9 @@ type DescribeAutoScaleRecordsRequestParams struct {
 
 	// 分页参数。最大支持100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 表示是自动(0)还是托管伸缩(1)
+	RecordSource *int64 `json:"RecordSource,omitnil,omitempty" name:"RecordSource"`
 }
 
 type DescribeAutoScaleRecordsRequest struct {
@@ -1573,6 +1627,9 @@ type DescribeAutoScaleRecordsRequest struct {
 
 	// 分页参数。最大支持100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 表示是自动(0)还是托管伸缩(1)
+	RecordSource *int64 `json:"RecordSource,omitnil,omitempty" name:"RecordSource"`
 }
 
 func (r *DescribeAutoScaleRecordsRequest) ToJsonString() string {
@@ -1591,6 +1648,7 @@ func (r *DescribeAutoScaleRecordsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "RecordSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScaleRecordsRequest has unknown keys!", "")
 	}
@@ -1666,6 +1724,10 @@ func (r *DescribeAutoScaleStrategiesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoScaleStrategiesResponseParams struct {
+	// 按负载伸缩规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadAutoScaleStrategies []*LoadAutoScaleStrategy `json:"LoadAutoScaleStrategies,omitnil,omitempty" name:"LoadAutoScaleStrategies"`
+
 	// 按时间伸缩规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeBasedAutoScaleStrategies []*TimeAutoScaleStrategy `json:"TimeBasedAutoScaleStrategies,omitnil,omitempty" name:"TimeBasedAutoScaleStrategies"`
@@ -4775,6 +4837,120 @@ type KeyValue struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type LoadAutoScaleStrategy struct {
+	// 规则ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *int64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+
+	// 规则名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 规则生效冷却时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalmDownTime *int64 `json:"CalmDownTime,omitnil,omitempty" name:"CalmDownTime"`
+
+	// 扩缩容动作，1表示扩容，2表示缩容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleAction *int64 `json:"ScaleAction,omitnil,omitempty" name:"ScaleAction"`
+
+	// 每次规则生效时的扩缩容数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleNum *int64 `json:"ScaleNum,omitnil,omitempty" name:"ScaleNum"`
+
+	// 扩缩容负载指标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadMetrics *string `json:"LoadMetrics,omitnil,omitempty" name:"LoadMetrics"`
+
+	// 规则元数据记录ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
+
+	// 规则统计周期，提供300s,600s,900s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticPeriod *int64 `json:"StatisticPeriod,omitnil,omitempty" name:"StatisticPeriod"`
+
+	// 指标处理方法，1表示MAX，2表示MIN，3表示AVG。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessMethod *int64 `json:"ProcessMethod,omitnil,omitempty" name:"ProcessMethod"`
+
+	// 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。
+	TriggerThreshold *int64 `json:"TriggerThreshold,omitnil,omitempty" name:"TriggerThreshold"`
+
+	// 条件触发数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerConditions *TriggerConditions `json:"TriggerConditions,omitnil,omitempty" name:"TriggerConditions"`
+
+	// 规则优先级，添加时无效，默认为自增。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 规则状态，1表示启动，3表示禁用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyStatus *int64 `json:"StrategyStatus,omitnil,omitempty" name:"StrategyStatus"`
+
+	// 规则扩容指定 yarn node label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YarnNodeLabel *string `json:"YarnNodeLabel,omitnil,omitempty" name:"YarnNodeLabel"`
+
+	// 规则生效的有效时间
+	PeriodValid *string `json:"PeriodValid,omitnil,omitempty" name:"PeriodValid"`
+
+	// 优雅缩容开关
+	GraceDownFlag *bool `json:"GraceDownFlag,omitnil,omitempty" name:"GraceDownFlag"`
+
+	// 优雅缩容等待时间
+	GraceDownTime *int64 `json:"GraceDownTime,omitnil,omitempty" name:"GraceDownTime"`
+
+	// 绑定标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 预设配置组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigGroupAssigned *string `json:"ConfigGroupAssigned,omitnil,omitempty" name:"ConfigGroupAssigned"`
+
+	// 扩容资源计算方法，"DEFAULT","INSTANCE", "CPU", "MEMORYGB"。
+	// "DEFAULT"表示默认方式，与"INSTANCE"意义相同。
+	// "INSTANCE"表示按照节点计算，默认方式。
+	// "CPU"表示按照机器的核数计算。
+	// "MEMORYGB"表示按照机器内存数计算。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MeasureMethod *string `json:"MeasureMethod,omitnil,omitempty" name:"MeasureMethod"`
+
+	// 多指标触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadMetricsConditions *LoadMetricsConditions `json:"LoadMetricsConditions,omitnil,omitempty" name:"LoadMetricsConditions"`
+}
+
+type LoadMetricsCondition struct {
+	// 规则统计周期，提供1min,3min,5min。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticPeriod *int64 `json:"StatisticPeriod,omitnil,omitempty" name:"StatisticPeriod"`
+
+	// 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerThreshold *int64 `json:"TriggerThreshold,omitnil,omitempty" name:"TriggerThreshold"`
+
+	// 扩缩容负载指标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadMetrics *string `json:"LoadMetrics,omitnil,omitempty" name:"LoadMetrics"`
+
+	// 规则元数据记录ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
+
+	// 触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Conditions []*TriggerCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+}
+
+type LoadMetricsConditions struct {
+	// 触发规则条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadMetrics []*LoadMetricsCondition `json:"LoadMetrics,omitnil,omitempty" name:"LoadMetrics"`
+}
+
 type LoginSettings struct {
 	// 实例登录密码，8-16个字符，包含大写字母、小写字母、数字和特殊字符四种，特殊符号仅支持!@%^*，密码第一位不能为特殊字符
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
@@ -4812,6 +4988,9 @@ type ModifyAutoScaleStrategyRequestParams struct {
 	// 自动扩缩容规则类型，1表示按负载指标扩缩容，2表示按时间扩缩容。
 	StrategyType *int64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
+	// 按负载扩缩容的指标。
+	LoadAutoScaleStrategies []*LoadAutoScaleStrategy `json:"LoadAutoScaleStrategies,omitnil,omitempty" name:"LoadAutoScaleStrategies"`
+
 	// 按时间扩缩容的规则。
 	TimeAutoScaleStrategies []*TimeAutoScaleStrategy `json:"TimeAutoScaleStrategies,omitnil,omitempty" name:"TimeAutoScaleStrategies"`
 
@@ -4827,6 +5006,9 @@ type ModifyAutoScaleStrategyRequest struct {
 
 	// 自动扩缩容规则类型，1表示按负载指标扩缩容，2表示按时间扩缩容。
 	StrategyType *int64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// 按负载扩缩容的指标。
+	LoadAutoScaleStrategies []*LoadAutoScaleStrategy `json:"LoadAutoScaleStrategies,omitnil,omitempty" name:"LoadAutoScaleStrategies"`
 
 	// 按时间扩缩容的规则。
 	TimeAutoScaleStrategies []*TimeAutoScaleStrategy `json:"TimeAutoScaleStrategies,omitnil,omitempty" name:"TimeAutoScaleStrategies"`
@@ -4849,6 +5031,7 @@ func (r *ModifyAutoScaleStrategyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "StrategyType")
+	delete(f, "LoadAutoScaleStrategies")
 	delete(f, "TimeAutoScaleStrategies")
 	delete(f, "GroupId")
 	if len(f) > 0 {
@@ -6278,7 +6461,7 @@ type RenewInstancesInfo struct {
 }
 
 type RepeatStrategy struct {
-	// 取值范围"DAY","DOW","DOM","NONE"，分别表示按天重复、按周重复、按月重复和一次执行。
+	// 取值范围"DAY","DOW","DOM","NONE"，分别表示按天重复、按周重复、按月重复和一次执行。必须填写
 	RepeatType *string `json:"RepeatType,omitnil,omitempty" name:"RepeatType"`
 
 	// 按天重复规则，当RepeatType为"DAY"时有效
@@ -6297,7 +6480,7 @@ type RepeatStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotRepeat *NotRepeatStrategy `json:"NotRepeat,omitnil,omitempty" name:"NotRepeat"`
 
-	// 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。
+	// 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。必须填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expire *string `json:"Expire,omitnil,omitempty" name:"Expire"`
 }
@@ -7696,7 +7879,7 @@ type TimeAutoScaleStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleNum *uint64 `json:"ScaleNum,omitnil,omitempty" name:"ScaleNum"`
 
-	// 规则状态，1表示有效，2表示无效，3表示暂停。
+	// 规则状态，1表示有效，2表示无效，3表示暂停。必须填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyStatus *uint64 `json:"StrategyStatus,omitnil,omitempty" name:"StrategyStatus"`
 
@@ -7748,7 +7931,7 @@ type TimeAutoScaleStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxUse *int64 `json:"MaxUse,omitnil,omitempty" name:"MaxUse"`
 
-	// 节点部署服务列表。
+	// 节点部署服务列表。部署服务仅填写HDFS、YARN。[组件名对应的映射关系表](https://cloud.tencent.com/document/product/589/98760)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftDeployInfo []*int64 `json:"SoftDeployInfo,omitnil,omitempty" name:"SoftDeployInfo"`
 
@@ -7781,6 +7964,21 @@ type TopologyInfo struct {
 	// 节点信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeInfoList []*ShortNodeInfo `json:"NodeInfoList,omitnil,omitempty" name:"NodeInfoList"`
+}
+
+type TriggerCondition struct {
+	// 条件比较方法，1表示大于，2表示小于，3表示大于等于，4表示小于等于。
+	CompareMethod *int64 `json:"CompareMethod,omitnil,omitempty" name:"CompareMethod"`
+
+	// 条件阈值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *float64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+}
+
+type TriggerConditions struct {
+	// 规则触发条件数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Conditions []*TriggerCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
 type UpdateInstanceSettings struct {

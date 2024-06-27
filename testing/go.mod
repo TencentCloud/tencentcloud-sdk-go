@@ -68,7 +68,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.951
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.952
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -238,6 +238,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcg v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vclm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vdb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms v0.0.0
@@ -492,6 +493,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tts => ../tencentcloud/tts
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump => ../tencentcloud/ump
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcg => ../tencentcloud/vcg
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vclm => ../tencentcloud/vclm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vdb => ../tencentcloud/vdb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm => ../tencentcloud/vm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms => ../tencentcloud/vms

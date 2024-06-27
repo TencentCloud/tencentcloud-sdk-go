@@ -209,6 +209,16 @@ func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchDeleteFail struct {
+	// 失败的证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// 失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+}
+
 type BindResourceRegionResult struct {
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1372,6 +1382,66 @@ func (r *DeleteCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCertificatesRequestParams struct {
+
+}
+
+type DeleteCertificatesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteCertificatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCertificatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCertificatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCertificatesResponseParams struct {
+	// 成功的ID
+	Success []*string `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// 失败的ID和原因
+	Fail []*BatchDeleteFail `json:"Fail,omitnil,omitempty" name:"Fail"`
+
+	// 证书ID和异步任务的ID
+	CertTaskIds []*CertTaskId `json:"CertTaskIds,omitnil,omitempty" name:"CertTaskIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCertificatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCertificatesResponseParams `json:"Response"`
+}
+
+func (r *DeleteCertificatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

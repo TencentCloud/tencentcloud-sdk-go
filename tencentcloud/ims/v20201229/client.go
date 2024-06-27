@@ -93,7 +93,7 @@ func NewCreateImageModerationAsyncTaskResponse() (response *CreateImageModeratio
 //
 // ### 接口调用说明：
 //
-// - 图片文件大小支持：**文件<100M**
+// - 图片文件大小限制：**Base64编码内容应小于10MB**；**图片资源应小于100MB**
 //
 // - 图片尺寸支持：**长和宽 需>50分辨率且<40000分辨率，并且图片长宽比<90:1；**
 //
@@ -172,7 +172,7 @@ func (c *Client) CreateImageModerationAsyncTask(request *CreateImageModerationAs
 //
 // ### 接口调用说明：
 //
-// - 图片文件大小支持：**文件<100M**
+// - 图片文件大小限制：**Base64编码内容应小于10MB**；**图片资源应小于100MB**
 //
 // - 图片尺寸支持：**长和宽 需>50分辨率且<40000分辨率，并且图片长宽比<90:1；**
 //
@@ -284,7 +284,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //
 // ### 接口调用说明：
 //
-// - 图片文件大小支持：**文件 < 30M**
+// - 图片文件大小限制：**Base64编码内容应小于10MB**；**URL资源应小于30MB**
 //
 // - 图片默认尺寸支持：**长和宽 需>50分辨率且<10000分辨率，并且图片长宽比<90:1；**
 //
@@ -400,7 +400,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //
 // ### 接口调用说明：
 //
-// - 图片文件大小支持：**文件 < 30M**
+// - 图片文件大小限制：**Base64编码内容应小于10MB**；**URL资源应小于30MB**
 //
 // - 图片默认尺寸支持：**长和宽 需>50分辨率且<10000分辨率，并且图片长宽比<90:1；**
 //
