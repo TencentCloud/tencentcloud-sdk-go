@@ -5028,6 +5028,9 @@ type DescribeNamespacesRequestParams struct {
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
 	// 过滤条件
+	// - 按照【标签】过滤
+	//    Name: Tags
+	//    Value:   tagKey:tagVal
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 仅查询启用了 KMS 镜像签名的空间
@@ -5053,6 +5056,9 @@ type DescribeNamespacesRequest struct {
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
 	// 过滤条件
+	// - 按照【标签】过滤
+	//    Name: Tags
+	//    Value:   tagKey:tagVal
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 仅查询启用了 KMS 镜像签名的空间

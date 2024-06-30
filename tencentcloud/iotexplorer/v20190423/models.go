@@ -8463,6 +8463,10 @@ type GetTWeCallPkgListResponseParams struct {
 	// 总数
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
+	// 分类统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TWeCallCategoryPkgList []*TWeCallCategoryPkgInfo `json:"TWeCallCategoryPkgList,omitnil,omitempty" name:"TWeCallCategoryPkgList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11377,6 +11381,20 @@ type TWeCallActiveInfo struct {
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type TWeCallCategoryPkgInfo struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	All *int64 `json:"All,omitnil,omitempty" name:"All"`
+
+	// 已使用数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
 }
 
 type TWeCallInfo struct {

@@ -38,8 +38,14 @@ const (
 	// 域名CNAME解析未成功，请到域名服务商处检查配置
 	FAILEDOPERATION_NOMATCHEDCNAME = "FailedOperation.NoMatchedCname"
 
+	// 没有该子用户
+	FAILEDOPERATION_NOTHAVESUBUSER = "FailedOperation.NotHaveSubUser"
+
 	// 请求超时
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+
+	// 服务器内部错误
+	INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
 
 	// 无效的输入参数
 	INVALIDPARAMETER = "InvalidParameter"
@@ -100,6 +106,9 @@ const (
 
 	// ChannelList的数量必须小于1000
 	INVALIDPARAMETERVALUE_CHANNELNUMBERMUSTBELESSTHANONETHOUSAND = "InvalidParameterValue.ChannelNumberMustBeLessThanOneThousand"
+
+	// 通道数量超过限制范围
+	INVALIDPARAMETERVALUE_CHANNELSEXCEEDSRANGE = "InvalidParameterValue.ChannelsExceedsRange"
 
 	// 包含无效的ChannelId
 	INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
@@ -206,6 +215,9 @@ const (
 	// 无效的域名，长度或内容不符合规则
 	INVALIDPARAMETERVALUE_INVALIDDOMAIN = "InvalidParameterValue.InvalidDomain"
 
+	// 无效的使能参数
+	INVALIDPARAMETERVALUE_INVALIDENALBEVALUE = "InvalidParameterValue.InvalidEnalbeValue"
+
 	// 无效的结束时间
 	INVALIDPARAMETERVALUE_INVALIDENDTIME = "InvalidParameterValue.InvalidEndTime"
 
@@ -292,6 +304,9 @@ const (
 
 	// 热存储至少1天, 最多3650天
 	INVALIDPARAMETERVALUE_INVALIDTRANSITIONRANGE = "InvalidParameterValue.InvalidTransitionRange"
+
+	// 无效的用户参数
+	INVALIDPARAMETERVALUE_INVALIDUSERPARAM = "InvalidParameterValue.InvalidUserParam"
 
 	// 无效的用户名，长度或内容不符合规则
 	INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
@@ -392,11 +407,17 @@ const (
 	// 缺少生命周期参数
 	MISSINGPARAMETER_MISSINGLIFERULEPARAM = "MissingParameter.MissingLifeRuleParam"
 
+	// 缺少必须参数
+	MISSINGPARAMETER_MISSINGMUSTPARAMETER = "MissingParameter.MissingMustParameter"
+
 	// 缺少取回任务参数
 	MISSINGPARAMETER_MISSINGRETRIEVETASKPARAM = "MissingParameter.MissingRetrieveTaskParam"
 
 	// 没有更新信息
 	MISSINGPARAMETER_MISSINGUPDATEDINFO = "MissingParameter.MissingUpdatedInfo"
+
+	// 缺少用户信息
+	MISSINGPARAMETER_MISSINGUSERINFO = "MissingParameter.MissingUserInfo"
 
 	// 带宽受限
 	OPERATIONDENIED_BANDWIDTHLIMITZERO = "OperationDenied.BandwidthLimitZero"
@@ -409,6 +430,12 @@ const (
 
 	// 新增组织树失败，超出组织树的最大深度
 	OPERATIONDENIED_EXCEEDEDMAXIMUMDEPTH = "OperationDenied.ExceededMaximumDepth"
+
+	// 该功能需要申请白名单配置
+	OPERATIONDENIED_NOWHITELIST = "OperationDenied.NoWhitelist"
+
+	// 播放鉴权未开启
+	OPERATIONDENIED_PLAYAUTHNOTENABLED = "OperationDenied.PlayAuthNotEnabled"
 
 	// 资源不可达，该资源不属于该地域
 	REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"

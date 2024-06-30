@@ -4877,6 +4877,7 @@ func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -4900,6 +4901,7 @@ func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"

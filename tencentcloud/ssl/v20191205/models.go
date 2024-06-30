@@ -226,6 +226,10 @@ type BindResourceRegionResult struct {
 
 	// 关联资源总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 是否查询异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type BindResourceResult struct {
@@ -6318,7 +6322,7 @@ type UpdateCertificateInstanceRequestParams struct {
 	// 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse
+	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 一键更新新证书ID，不传该则证书公钥和私钥必传
@@ -6360,7 +6364,7 @@ type UpdateCertificateInstanceRequest struct {
 	// 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse
+	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 一键更新新证书ID，不传该则证书公钥和私钥必传

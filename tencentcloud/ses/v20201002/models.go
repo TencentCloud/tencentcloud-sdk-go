@@ -170,6 +170,28 @@ func (r *BatchSendEmailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BlackAddressDetail struct {
+	// 黑名单地址id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 邮箱地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireDate *string `json:"ExpireDate,omitnil,omitempty" name:"ExpireDate"`
+
+	// 黑名单状态，0:已过期，1:生效中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type BlackEmailAddress struct {
 	// 邮箱被拉黑时间
 	BounceTime *string `json:"BounceTime,omitnil,omitempty" name:"BounceTime"`
@@ -180,6 +202,67 @@ type BlackEmailAddress struct {
 	// 被拉黑的理由
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IspDesc *string `json:"IspDesc,omitnil,omitempty" name:"IspDesc"`
+}
+
+// Predefined struct for user
+type CreateCustomBlacklistRequestParams struct {
+	// 添加到黑名单的邮件地址
+	Emails []*string `json:"Emails,omitnil,omitempty" name:"Emails"`
+
+	// 过期日期
+	ExpireDate *string `json:"ExpireDate,omitnil,omitempty" name:"ExpireDate"`
+}
+
+type CreateCustomBlacklistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 添加到黑名单的邮件地址
+	Emails []*string `json:"Emails,omitnil,omitempty" name:"Emails"`
+
+	// 过期日期
+	ExpireDate *string `json:"ExpireDate,omitnil,omitempty" name:"ExpireDate"`
+}
+
+func (r *CreateCustomBlacklistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomBlacklistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Emails")
+	delete(f, "ExpireDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomBlacklistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomBlacklistResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCustomBlacklistResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCustomBlacklistResponseParams `json:"Response"`
+}
+
+func (r *CreateCustomBlacklistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomBlacklistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -635,6 +718,60 @@ func (r *DeleteBlackListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBlackListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomBlackListRequestParams struct {
+	// 需要删除的邮箱地址
+	Emails []*string `json:"Emails,omitnil,omitempty" name:"Emails"`
+}
+
+type DeleteCustomBlackListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要删除的邮箱地址
+	Emails []*string `json:"Emails,omitnil,omitempty" name:"Emails"`
+}
+
+func (r *DeleteCustomBlackListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomBlackListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Emails")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomBlackListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomBlackListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomBlackListResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomBlackListResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomBlackListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomBlackListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1268,6 +1405,87 @@ func (r *ListBlackEmailAddressResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListBlackEmailAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListCustomBlacklistRequestParams struct {
+	// 偏移量，整型，从0开始
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目，整型,不超过100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 筛选黑名单的状态，0:已过期，1:生效中, 2:全部
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 黑名单中的邮箱地址
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+}
+
+type ListCustomBlacklistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，整型，从0开始
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目，整型,不超过100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 筛选黑名单的状态，0:已过期，1:生效中, 2:全部
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 黑名单中的邮箱地址
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+}
+
+func (r *ListCustomBlacklistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCustomBlacklistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Status")
+	delete(f, "Email")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCustomBlacklistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListCustomBlacklistResponseParams struct {
+	// 列表总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 黑名单列表详情
+	Data []*BlackAddressDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListCustomBlacklistResponse struct {
+	*tchttp.BaseResponse
+	Response *ListCustomBlacklistResponseParams `json:"Response"`
+}
+
+func (r *ListCustomBlacklistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCustomBlacklistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2059,6 +2277,74 @@ type TemplatesMetadata struct {
 type TimedEmailParam struct {
 	// 定时发送邮件的开始时间
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+}
+
+// Predefined struct for user
+type UpdateCustomBlackListRequestParams struct {
+	// 需要更改的黑名单id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的邮件地址
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 过期时间，为空则表示永久有效
+	ExpireDate *string `json:"ExpireDate,omitnil,omitempty" name:"ExpireDate"`
+}
+
+type UpdateCustomBlackListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要更改的黑名单id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的邮件地址
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 过期时间，为空则表示永久有效
+	ExpireDate *string `json:"ExpireDate,omitnil,omitempty" name:"ExpireDate"`
+}
+
+func (r *UpdateCustomBlackListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomBlackListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Email")
+	delete(f, "ExpireDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCustomBlackListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCustomBlackListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCustomBlackListResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCustomBlackListResponseParams `json:"Response"`
+}
+
+func (r *UpdateCustomBlackListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomBlackListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

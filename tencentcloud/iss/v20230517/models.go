@@ -1313,6 +1313,22 @@ type CarAIResultInfo struct {
 	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+type ChannelAttrInfo struct {
+	// 设备通道所属的设备ID
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 设备通道所属的设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 设备通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 设备通道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+}
+
 type ChannelInfo struct {
 	// 通道所属的设备ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -4888,6 +4904,21 @@ func (r *ListDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListForbidplayChannelsData struct {
+	// 第几页
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 当前页的设备数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 本次查询的设备通道总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 设备通道信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ChannelAttrInfo `json:"List,omitnil,omitempty" name:"List"`
+}
+
 type ListGatewayDevicesData struct {
 	// 网关下设备列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6217,6 +6248,78 @@ func (r *PlayRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryForbidPlayChannelListRequestParams struct {
+	// 子用户uin，也可以是主用户的uin
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 每页最大数量，最大为200，超过按照200返回
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 第几页
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+type QueryForbidPlayChannelListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 子用户uin，也可以是主用户的uin
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 每页最大数量，最大为200，超过按照200返回
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 第几页
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+func (r *QueryForbidPlayChannelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryForbidPlayChannelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryForbidPlayChannelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryForbidPlayChannelListResponseParams struct {
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListForbidplayChannelsData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryForbidPlayChannelListResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryForbidPlayChannelListResponseParams `json:"Response"`
+}
+
+func (r *QueryForbidPlayChannelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryForbidPlayChannelListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RecordPlanBaseInfo struct {
 	// 上云计划ID
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
@@ -6432,6 +6535,75 @@ func (r *RefreshDeviceChannelResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RefreshDeviceChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetForbidPlayChannelsRequestParams struct {
+	// 要禁播的通道参数，一次最多可以设置200个通道
+	Channels []*SetForbidplayChannelParam `json:"Channels,omitnil,omitempty" name:"Channels"`
+
+	// 用户uin，可以是子用户的也可以是主用户的uin
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type SetForbidPlayChannelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要禁播的通道参数，一次最多可以设置200个通道
+	Channels []*SetForbidplayChannelParam `json:"Channels,omitnil,omitempty" name:"Channels"`
+
+	// 用户uin，可以是子用户的也可以是主用户的uin
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *SetForbidPlayChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetForbidPlayChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Channels")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetForbidPlayChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetForbidPlayChannelsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetForbidPlayChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *SetForbidPlayChannelsResponseParams `json:"Response"`
+}
+
+func (r *SetForbidPlayChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetForbidPlayChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetForbidplayChannelParam struct {
+	// 通道Id
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否禁止通道播流
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type SmokingAIResultInfo struct {

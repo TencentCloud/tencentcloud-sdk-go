@@ -4405,13 +4405,23 @@ func NewCreateLegalSealQrCodeResponse() (response *CreateLegalSealQrCodeResponse
 }
 
 // CreateLegalSealQrCode
-// 该接口用于获取创建法人章的二维码<br/>
+// 该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
 //
 // 
 //
 // **注意**
 //
 // 1. 该二维码**有效期为7天**，过期后将失效，可重新创建 。
+//
+// 2. 每个公司**只能有1个法人章**，无法重复创建或者创建多个
+//
+// 
+//
+// 法人章的样式可以参考下图索引（也可以自己上传法人印章图片）：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/36a0a090750c45bb5cac5047ac461b2c.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4431,13 +4441,23 @@ func (c *Client) CreateLegalSealQrCode(request *CreateLegalSealQrCodeRequest) (r
 }
 
 // CreateLegalSealQrCode
-// 该接口用于获取创建法人章的二维码<br/>
+// 该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
 //
 // 
 //
 // **注意**
 //
 // 1. 该二维码**有效期为7天**，过期后将失效，可重新创建 。
+//
+// 2. 每个公司**只能有1个法人章**，无法重复创建或者创建多个
+//
+// 
+//
+// 法人章的样式可以参考下图索引（也可以自己上传法人印章图片）：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/36a0a090750c45bb5cac5047ac461b2c.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8044,9 +8064,13 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 }
 
 // DescribeOrganizationSeals
-// 查询企业印章的列表，需要操作者具有查询印章权限
+// 查询企业印章列表。
 //
-// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
+// 
+//
+// 注：
+//
+// 1. 此操作要求操作者具备<b>印章查询权限</b>（若调用者尚无此权限，请联系超级管理员前往Web控制台【组织管理】->【角色管理】添加相应权限）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8067,9 +8091,13 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 }
 
 // DescribeOrganizationSeals
-// 查询企业印章的列表，需要操作者具有查询印章权限
+// 查询企业印章列表。
 //
-// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
+// 
+//
+// 注：
+//
+// 1. 此操作要求操作者具备<b>印章查询权限</b>（若调用者尚无此权限，请联系超级管理员前往Web控制台【组织管理】->【角色管理】添加相应权限）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -4162,6 +4162,65 @@ func (c *Client) PlayRecordWithContext(ctx context.Context, request *PlayRecordR
     return
 }
 
+func NewQueryForbidPlayChannelListRequest() (request *QueryForbidPlayChannelListRequest) {
+    request = &QueryForbidPlayChannelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "QueryForbidPlayChannelList")
+    
+    
+    return
+}
+
+func NewQueryForbidPlayChannelListResponse() (response *QueryForbidPlayChannelListResponse) {
+    response = &QueryForbidPlayChannelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryForbidPlayChannelList
+// 查询禁播通道列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPARAM = "InvalidParameterValue.InvalidUserParam"
+//  MISSINGPARAMETER_MISSINGUSERINFO = "MissingParameter.MissingUserInfo"
+//  OPERATIONDENIED_NOWHITELIST = "OperationDenied.NoWhitelist"
+func (c *Client) QueryForbidPlayChannelList(request *QueryForbidPlayChannelListRequest) (response *QueryForbidPlayChannelListResponse, err error) {
+    return c.QueryForbidPlayChannelListWithContext(context.Background(), request)
+}
+
+// QueryForbidPlayChannelList
+// 查询禁播通道列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPARAM = "InvalidParameterValue.InvalidUserParam"
+//  MISSINGPARAMETER_MISSINGUSERINFO = "MissingParameter.MissingUserInfo"
+//  OPERATIONDENIED_NOWHITELIST = "OperationDenied.NoWhitelist"
+func (c *Client) QueryForbidPlayChannelListWithContext(ctx context.Context, request *QueryForbidPlayChannelListRequest) (response *QueryForbidPlayChannelListResponse, err error) {
+    if request == nil {
+        request = NewQueryForbidPlayChannelListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryForbidPlayChannelList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryForbidPlayChannelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefreshDeviceChannelRequest() (request *RefreshDeviceChannelRequest) {
     request = &RefreshDeviceChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4221,6 +4280,77 @@ func (c *Client) RefreshDeviceChannelWithContext(ctx context.Context, request *R
     request.SetContext(ctx)
     
     response = NewRefreshDeviceChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetForbidPlayChannelsRequest() (request *SetForbidPlayChannelsRequest) {
+    request = &SetForbidPlayChannelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "SetForbidPlayChannels")
+    
+    
+    return
+}
+
+func NewSetForbidPlayChannelsResponse() (response *SetForbidPlayChannelsResponse) {
+    response = &SetForbidPlayChannelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetForbidPlayChannels
+// 禁止主、子账号对视频通道的实况预览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTHAVESUBUSER = "FailedOperation.NotHaveSubUser"
+//  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
+//  INVALIDPARAMETER_INVALIDCHANNELS = "InvalidParameter.InvalidChannels"
+//  INVALIDPARAMETERVALUE_CHANNELSEXCEEDSRANGE = "InvalidParameterValue.ChannelsExceedsRange"
+//  INVALIDPARAMETERVALUE_ILLEGALCHANNELID = "InvalidParameterValue.IllegalChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDENALBEVALUE = "InvalidParameterValue.InvalidEnalbeValue"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPARAM = "InvalidParameterValue.InvalidUserParam"
+//  MISSINGPARAMETER_MISSINGMUSTPARAMETER = "MissingParameter.MissingMustParameter"
+//  MISSINGPARAMETER_MISSINGUSERINFO = "MissingParameter.MissingUserInfo"
+//  OPERATIONDENIED_NOWHITELIST = "OperationDenied.NoWhitelist"
+//  OPERATIONDENIED_PLAYAUTHNOTENABLED = "OperationDenied.PlayAuthNotEnabled"
+func (c *Client) SetForbidPlayChannels(request *SetForbidPlayChannelsRequest) (response *SetForbidPlayChannelsResponse, err error) {
+    return c.SetForbidPlayChannelsWithContext(context.Background(), request)
+}
+
+// SetForbidPlayChannels
+// 禁止主、子账号对视频通道的实况预览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTHAVESUBUSER = "FailedOperation.NotHaveSubUser"
+//  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
+//  INVALIDPARAMETER_INVALIDCHANNELS = "InvalidParameter.InvalidChannels"
+//  INVALIDPARAMETERVALUE_CHANNELSEXCEEDSRANGE = "InvalidParameterValue.ChannelsExceedsRange"
+//  INVALIDPARAMETERVALUE_ILLEGALCHANNELID = "InvalidParameterValue.IllegalChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDENALBEVALUE = "InvalidParameterValue.InvalidEnalbeValue"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPARAM = "InvalidParameterValue.InvalidUserParam"
+//  MISSINGPARAMETER_MISSINGMUSTPARAMETER = "MissingParameter.MissingMustParameter"
+//  MISSINGPARAMETER_MISSINGUSERINFO = "MissingParameter.MissingUserInfo"
+//  OPERATIONDENIED_NOWHITELIST = "OperationDenied.NoWhitelist"
+//  OPERATIONDENIED_PLAYAUTHNOTENABLED = "OperationDenied.PlayAuthNotEnabled"
+func (c *Client) SetForbidPlayChannelsWithContext(ctx context.Context, request *SetForbidPlayChannelsRequest) (response *SetForbidPlayChannelsResponse, err error) {
+    if request == nil {
+        request = NewSetForbidPlayChannelsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetForbidPlayChannels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetForbidPlayChannelsResponse()
     err = c.Send(request, response)
     return
 }

@@ -4747,26 +4747,24 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 返回最大数量，最大为100
+	// 指定分页每页返回的数据条数，单页最大支持 100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页查询偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询信息类型
-	// 支持的值如下：
-	// <ul><li>0-默认，不返回授权用户信息</li>
-	// <li>1-返回授权用户信息</li>
-	// </ul>
+	// 查询授权用户信息类型，取值如下：
+	// 
+	// <ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
 	InfoType *int64 `json:"InfoType,omitnil,omitempty" name:"InfoType"`
 
-	// 印章id（没有输入返回所有）
+	// 印章id，是否查询特定的印章（没有输入返回所有）
 	// 
 	// 注:  `没有输入返回所有记录，最大返回100条。`
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: (默认)公章</li>
+	// <ul><li>**OFFICIAL**: 公章</li>
 	// <li>**CONTRACT**: 合同专用章;</li>
 	// <li>**FINANCE**: 财务专用章;</li>
 	// <li>**PERSONNEL**: 人事专用章</li>
@@ -4776,7 +4774,10 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// 查询的印章状态列表。 <ul> <li>空，只查询启用状态的印章；</li> <li>ALL，查询所有状态的印章；</li> <li>CHECKING，查询待审核的印章；</li> <li>SUCCESS，查询启用状态的印章；</li> <li>FAIL，查询印章审核拒绝的印章；</li> <li>DISABLE，查询已停用的印章；</li> <li>STOPPED，查询已终止的印章；</li> <li>VOID，查询已作废的印章；</li> <li>INVALID，查询已失效的印章；</li> </ul>
+	// 
+	// 需查询的印章状态列表。
+	// 
+	// <ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -4794,26 +4795,24 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 返回最大数量，最大为100
+	// 指定分页每页返回的数据条数，单页最大支持 100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页查询偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询信息类型
-	// 支持的值如下：
-	// <ul><li>0-默认，不返回授权用户信息</li>
-	// <li>1-返回授权用户信息</li>
-	// </ul>
+	// 查询授权用户信息类型，取值如下：
+	// 
+	// <ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
 	InfoType *int64 `json:"InfoType,omitnil,omitempty" name:"InfoType"`
 
-	// 印章id（没有输入返回所有）
+	// 印章id，是否查询特定的印章（没有输入返回所有）
 	// 
 	// 注:  `没有输入返回所有记录，最大返回100条。`
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: (默认)公章</li>
+	// <ul><li>**OFFICIAL**: 公章</li>
 	// <li>**CONTRACT**: 合同专用章;</li>
 	// <li>**FINANCE**: 财务专用章;</li>
 	// <li>**PERSONNEL**: 人事专用章</li>
@@ -4823,7 +4822,10 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// 查询的印章状态列表。 <ul> <li>空，只查询启用状态的印章；</li> <li>ALL，查询所有状态的印章；</li> <li>CHECKING，查询待审核的印章；</li> <li>SUCCESS，查询启用状态的印章；</li> <li>FAIL，查询印章审核拒绝的印章；</li> <li>DISABLE，查询已停用的印章；</li> <li>STOPPED，查询已终止的印章；</li> <li>VOID，查询已作废的印章；</li> <li>INVALID，查询已失效的印章；</li> </ul>
+	// 
+	// 需查询的印章状态列表。
+	// 
+	// <ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -4854,7 +4856,7 @@ func (r *ChannelDescribeOrganizationSealsRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type ChannelDescribeOrganizationSealsResponseParams struct {
-	// 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
+	// 在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 查询到的印章结果数组
@@ -7273,7 +7275,10 @@ func (r *CreateLegalSealQrCodeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLegalSealQrCodeResponseParams struct {
-	// 二维码图片base64值
+	// 二维码图片base64值，二维码有效期7天（604800秒）
+	// 
+	// 二维码图片的样式如下图：
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/7ec2478761158a35a9c623882839a5df.png)
 	QrcodeBase64 *string `json:"QrcodeBase64,omitnil,omitempty" name:"QrcodeBase64"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

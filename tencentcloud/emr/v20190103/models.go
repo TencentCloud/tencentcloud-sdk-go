@@ -7415,6 +7415,9 @@ type StartStopServiceOrMonitorRequestParams struct {
 
 	// 暂停服务时用的参数
 	StopParams *StopParams `json:"StopParams,omitnil,omitempty" name:"StopParams"`
+
+	// 当OpType为<li>StopMonitor</li>才有用，true表示进入维护模式但是仍然监控进程但是不拉起进程
+	KeepMonitorButNotRecoverProcess *bool `json:"KeepMonitorButNotRecoverProcess,omitnil,omitempty" name:"KeepMonitorButNotRecoverProcess"`
 }
 
 type StartStopServiceOrMonitorRequest struct {
@@ -7439,6 +7442,9 @@ type StartStopServiceOrMonitorRequest struct {
 
 	// 暂停服务时用的参数
 	StopParams *StopParams `json:"StopParams,omitnil,omitempty" name:"StopParams"`
+
+	// 当OpType为<li>StopMonitor</li>才有用，true表示进入维护模式但是仍然监控进程但是不拉起进程
+	KeepMonitorButNotRecoverProcess *bool `json:"KeepMonitorButNotRecoverProcess,omitnil,omitempty" name:"KeepMonitorButNotRecoverProcess"`
 }
 
 func (r *StartStopServiceOrMonitorRequest) ToJsonString() string {
@@ -7458,6 +7464,7 @@ func (r *StartStopServiceOrMonitorRequest) FromJsonString(s string) error {
 	delete(f, "OpScope")
 	delete(f, "StrategyConfig")
 	delete(f, "StopParams")
+	delete(f, "KeepMonitorButNotRecoverProcess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStopServiceOrMonitorRequest has unknown keys!", "")
 	}

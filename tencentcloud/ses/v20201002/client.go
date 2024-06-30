@@ -120,6 +120,59 @@ func (c *Client) BatchSendEmailWithContext(ctx context.Context, request *BatchSe
     return
 }
 
+func NewCreateCustomBlacklistRequest() (request *CreateCustomBlacklistRequest) {
+    request = &CreateCustomBlacklistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "CreateCustomBlacklist")
+    
+    
+    return
+}
+
+func NewCreateCustomBlacklistResponse() (response *CreateCustomBlacklistResponse) {
+    response = &CreateCustomBlacklistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCustomBlacklist
+// 添加自定义黑名单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  LIMITEXCEEDED_RECEIVERDETAILREQUESTLIMIT = "LimitExceeded.ReceiverDetailRequestLimit"
+//  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
+func (c *Client) CreateCustomBlacklist(request *CreateCustomBlacklistRequest) (response *CreateCustomBlacklistResponse, err error) {
+    return c.CreateCustomBlacklistWithContext(context.Background(), request)
+}
+
+// CreateCustomBlacklist
+// 添加自定义黑名单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  LIMITEXCEEDED_RECEIVERDETAILREQUESTLIMIT = "LimitExceeded.ReceiverDetailRequestLimit"
+//  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
+func (c *Client) CreateCustomBlacklistWithContext(ctx context.Context, request *CreateCustomBlacklistRequest) (response *CreateCustomBlacklistResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomBlacklistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomBlacklist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomBlacklistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEmailAddressRequest() (request *CreateEmailAddressRequest) {
     request = &CreateEmailAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -579,6 +632,55 @@ func (c *Client) DeleteBlackListWithContext(ctx context.Context, request *Delete
     request.SetContext(ctx)
     
     response = NewDeleteBlackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomBlackListRequest() (request *DeleteCustomBlackListRequest) {
+    request = &DeleteCustomBlackListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "DeleteCustomBlackList")
+    
+    
+    return
+}
+
+func NewDeleteCustomBlackListResponse() (response *DeleteCustomBlackListResponse) {
+    response = &DeleteCustomBlackListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomBlackList
+// 删除自定义黑名单邮箱地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteCustomBlackList(request *DeleteCustomBlackListRequest) (response *DeleteCustomBlackListResponse, err error) {
+    return c.DeleteCustomBlackListWithContext(context.Background(), request)
+}
+
+// DeleteCustomBlackList
+// 删除自定义黑名单邮箱地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteCustomBlackListWithContext(ctx context.Context, request *DeleteCustomBlackListRequest) (response *DeleteCustomBlackListResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomBlackListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomBlackList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomBlackListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1176,6 +1278,57 @@ func (c *Client) ListBlackEmailAddressWithContext(ctx context.Context, request *
     return
 }
 
+func NewListCustomBlacklistRequest() (request *ListCustomBlacklistRequest) {
+    request = &ListCustomBlacklistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "ListCustomBlacklist")
+    
+    
+    return
+}
+
+func NewListCustomBlacklistResponse() (response *ListCustomBlacklistResponse) {
+    response = &ListCustomBlacklistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListCustomBlacklist
+// 获取自定义黑名单列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListCustomBlacklist(request *ListCustomBlacklistRequest) (response *ListCustomBlacklistResponse, err error) {
+    return c.ListCustomBlacklistWithContext(context.Background(), request)
+}
+
+// ListCustomBlacklist
+// 获取自定义黑名单列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListCustomBlacklistWithContext(ctx context.Context, request *ListCustomBlacklistRequest) (response *ListCustomBlacklistResponse, err error) {
+    if request == nil {
+        request = NewListCustomBlacklistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListCustomBlacklist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListCustomBlacklistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEmailAddressRequest() (request *ListEmailAddressRequest) {
     request = &ListEmailAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1641,6 +1794,59 @@ func (c *Client) SendEmailWithContext(ctx context.Context, request *SendEmailReq
     request.SetContext(ctx)
     
     response = NewSendEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCustomBlackListRequest() (request *UpdateCustomBlackListRequest) {
+    request = &UpdateCustomBlackListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "UpdateCustomBlackList")
+    
+    
+    return
+}
+
+func NewUpdateCustomBlackListResponse() (response *UpdateCustomBlackListResponse) {
+    response = &UpdateCustomBlackListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCustomBlackList
+// 更新自定义黑名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ILLEGALEMAILADDRESS = "InvalidParameterValue.IllegalEmailAddress"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+func (c *Client) UpdateCustomBlackList(request *UpdateCustomBlackListRequest) (response *UpdateCustomBlackListResponse, err error) {
+    return c.UpdateCustomBlackListWithContext(context.Background(), request)
+}
+
+// UpdateCustomBlackList
+// 更新自定义黑名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ILLEGALEMAILADDRESS = "InvalidParameterValue.IllegalEmailAddress"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+func (c *Client) UpdateCustomBlackListWithContext(ctx context.Context, request *UpdateCustomBlackListRequest) (response *UpdateCustomBlackListResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomBlackListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCustomBlackList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCustomBlackListResponse()
     err = c.Send(request, response)
     return
 }

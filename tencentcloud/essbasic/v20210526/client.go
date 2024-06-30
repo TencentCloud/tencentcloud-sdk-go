@@ -4084,15 +4084,13 @@ func NewChannelDescribeOrganizationSealsResponse() (response *ChannelDescribeOrg
 }
 
 // ChannelDescribeOrganizationSeals
-// 此接口（ChannelDescribeOrganizationSeals）查询子客企业电子印章。<br />
+// 此接口查询子企业电子印章。<br />
 //
-// 注: 
+// 
 //
-// 1. `查询子客企业电子印章，需要操作者具有管理印章权限`
+// 注：
 //
-// 2. `客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理`
-//
-// 3. `此接口只能查询启用的印章`
+// 1. 此操作要求操作者具备<b>印章查询权限</b>（若调用者尚无此权限，请联系超级管理员前往Web控制台【组织管理】->【角色管理】添加相应权限）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4109,15 +4107,13 @@ func (c *Client) ChannelDescribeOrganizationSeals(request *ChannelDescribeOrgani
 }
 
 // ChannelDescribeOrganizationSeals
-// 此接口（ChannelDescribeOrganizationSeals）查询子客企业电子印章。<br />
+// 此接口查询子企业电子印章。<br />
 //
-// 注: 
+// 
 //
-// 1. `查询子客企业电子印章，需要操作者具有管理印章权限`
+// 注：
 //
-// 2. `客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理`
-//
-// 3. `此接口只能查询启用的印章`
+// 1. 此操作要求操作者具备<b>印章查询权限</b>（若调用者尚无此权限，请联系超级管理员前往Web控制台【组织管理】->【角色管理】添加相应权限）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6169,7 +6165,23 @@ func NewCreateLegalSealQrCodeResponse() (response *CreateLegalSealQrCodeResponse
 }
 
 // CreateLegalSealQrCode
-// 此接口用于获取创建法人章二维码图片base64
+// 该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
+//
+// 
+//
+// **注意**
+//
+// 1. 该二维码**有效期为7天**，过期后将失效，可重新创建 。
+//
+// 2. 每个公司**只能有1个法人章**，无法重复创建或者创建多个
+//
+// 
+//
+// 法人章的样式可以参考下图索引（也可以自己上传法人印章图片）：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/36a0a090750c45bb5cac5047ac461b2c.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6211,7 +6223,23 @@ func (c *Client) CreateLegalSealQrCode(request *CreateLegalSealQrCodeRequest) (r
 }
 
 // CreateLegalSealQrCode
-// 此接口用于获取创建法人章二维码图片base64
+// 该接口用于获取创建法人章的二维码，需要通过微信扫描。扫描后将跳转到腾讯电子签署，进入到创建法人章的流程。
+//
+// 
+//
+// **注意**
+//
+// 1. 该二维码**有效期为7天**，过期后将失效，可重新创建 。
+//
+// 2. 每个公司**只能有1个法人章**，无法重复创建或者创建多个
+//
+// 
+//
+// 法人章的样式可以参考下图索引（也可以自己上传法人印章图片）：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/36a0a090750c45bb5cac5047ac461b2c.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
