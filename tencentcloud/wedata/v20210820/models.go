@@ -8814,6 +8814,148 @@ func (r *DescribeDsParentFolderTreeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDutyScheduleDetailsRequestParams struct {
+	// 值班表id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 查询时间
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+
+	// 扩展字段
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeDutyScheduleDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 值班表id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 查询时间
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+
+	// 扩展字段
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDutyScheduleDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDutyScheduleDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "QueryDate")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDutyScheduleDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDutyScheduleDetailsResponseParams struct {
+	// 值班日历信息
+	Data []*DutyScheduleDetailsInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDutyScheduleDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDutyScheduleDetailsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDutyScheduleDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDutyScheduleDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDutyScheduleListRequestParams struct {
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小，默认10
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 值班表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeDutyScheduleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小，默认10
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 值班表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeDutyScheduleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDutyScheduleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDutyScheduleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDutyScheduleListResponseParams struct {
+	// 无
+	Data *DutySchedule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDutyScheduleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDutyScheduleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDutyScheduleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDutyScheduleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEventCasesRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -17003,6 +17145,88 @@ func (r *DryRunDIOfflineTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DryRunDIOfflineTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Duty struct {
+	// 值班Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DutyScheduleId *int64 `json:"DutyScheduleId,omitnil,omitempty" name:"DutyScheduleId"`
+
+	// 值班开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 值班结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 值班人员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DutyPersons []*DutyPerson `json:"DutyPersons,omitnil,omitempty" name:"DutyPersons"`
+}
+
+type DutyPerson struct {
+	// 值班人子账号id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 值班人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 值班人员主账号用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUserId *string `json:"OwnerUserId,omitnil,omitempty" name:"OwnerUserId"`
+
+	// 值班人tenantId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantId *int64 `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 2023-11-02 08:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// 扩展字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
+type DutySchedule struct {
+	// 值班表列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*DutyScheduleData `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 页号
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总页数
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+type DutyScheduleData struct {
+	// 值班表Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 值班表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 创建人
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+}
+
+type DutyScheduleDetailsInfo struct {
+	// 值班日期
+	Day *string `json:"Day,omitnil,omitempty" name:"Day"`
+
+	// 值班信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duty []*Duty `json:"Duty,omitnil,omitempty" name:"Duty"`
 }
 
 type EventBatchCaseDTO struct {

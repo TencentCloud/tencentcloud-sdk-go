@@ -4814,6 +4814,322 @@ func (r *CreateNetworkInterfaceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 目的端口转换规则列表。
+	LocalDestinationIpPortTranslationNatRules []*LocalDestinationIpPortTranslationNatRule `json:"LocalDestinationIpPortTranslationNatRules,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRules"`
+}
+
+type CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 目的端口转换规则列表。
+	LocalDestinationIpPortTranslationNatRules []*LocalDestinationIpPortTranslationNatRule `json:"LocalDestinationIpPortTranslationNatRules,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRules"`
+}
+
+func (r *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "LocalDestinationIpPortTranslationNatRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayRequestParams struct {
+	// 私网网关名称
+	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+
+	// 私有网络实例ID。当创建VPC类型私网NAT网关或者专线网关类型私网NAT网关时，此参数必填。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 跨域参数。仅当取值为True时，才会支持跨域绑定VPC。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+
+	// 实例标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// VPC类型私网NAT网关。仅当取值为True时，才会创建VPC类型私网NAT网关。
+	VpcType *bool `json:"VpcType,omitnil,omitempty" name:"VpcType"`
+
+	// 云联网类型私网NAT网关需要绑定的云联网实例ID。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+}
+
+type CreatePrivateNatGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关名称
+	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+
+	// 私有网络实例ID。当创建VPC类型私网NAT网关或者专线网关类型私网NAT网关时，此参数必填。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 跨域参数。仅当取值为True时，才会支持跨域绑定VPC。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+
+	// 实例标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// VPC类型私网NAT网关。仅当取值为True时，才会创建VPC类型私网NAT网关。
+	VpcType *bool `json:"VpcType,omitnil,omitempty" name:"VpcType"`
+
+	// 云联网类型私网NAT网关需要绑定的云联网实例ID。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+}
+
+func (r *CreatePrivateNatGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayName")
+	delete(f, "VpcId")
+	delete(f, "CrossDomain")
+	delete(f, "Tags")
+	delete(f, "VpcType")
+	delete(f, "CcnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateNatGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayResponseParams struct {
+	// 私网网关对象。
+	PrivateNatGatewaySet []*PrivateNatGateway `json:"PrivateNatGatewaySet,omitnil,omitempty" name:"PrivateNatGatewaySet"`
+
+	// 创建实例个数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateNatGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateNatGatewayResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateNatGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayTranslationAclRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 访问控制列表。
+	TranslationAclRules []*TranslationAclRule `json:"TranslationAclRules,omitnil,omitempty" name:"TranslationAclRules"`
+
+	// 源`IP`,当转换规则类型为三层时有效。
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+}
+
+type CreatePrivateNatGatewayTranslationAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 访问控制列表。
+	TranslationAclRules []*TranslationAclRule `json:"TranslationAclRules,omitnil,omitempty" name:"TranslationAclRules"`
+
+	// 源`IP`,当转换规则类型为三层时有效。
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+}
+
+func (r *CreatePrivateNatGatewayTranslationAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayTranslationAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationDirection")
+	delete(f, "TranslationType")
+	delete(f, "TranslationIp")
+	delete(f, "TranslationAclRules")
+	delete(f, "OriginalIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateNatGatewayTranslationAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayTranslationAclRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateNatGatewayTranslationAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateNatGatewayTranslationAclRuleResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateNatGatewayTranslationAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayTranslationAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayTranslationNatRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则对象数组。
+	TranslationNatRules []*TranslationNatRuleInput `json:"TranslationNatRules,omitnil,omitempty" name:"TranslationNatRules"`
+
+	// 跨域参数，当VPC为跨域时填写为True。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+}
+
+type CreatePrivateNatGatewayTranslationNatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则对象数组。
+	TranslationNatRules []*TranslationNatRuleInput `json:"TranslationNatRules,omitnil,omitempty" name:"TranslationNatRules"`
+
+	// 跨域参数，当VPC为跨域时填写为True。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+}
+
+func (r *CreatePrivateNatGatewayTranslationNatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayTranslationNatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationNatRules")
+	delete(f, "CrossDomain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateNatGatewayTranslationNatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateNatGatewayTranslationNatRuleResponseParams struct {
+	// 私网网关唯一`ID`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateNatGatewayTranslationNatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateNatGatewayTranslationNatRuleResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateNatGatewayTranslationNatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateNatGatewayTranslationNatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRouteTableRequestParams struct {
 	// 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -8027,6 +8343,281 @@ func (r *DeleteNetworkInterfaceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNetworkInterfaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 目的端口转换规则数组。
+	LocalDestinationIpPortTranslationNatRules []*LocalDestinationIpPortTranslationNatRule `json:"LocalDestinationIpPortTranslationNatRules,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRules"`
+}
+
+type DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 目的端口转换规则数组。
+	LocalDestinationIpPortTranslationNatRules []*LocalDestinationIpPortTranslationNatRule `json:"LocalDestinationIpPortTranslationNatRules,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRules"`
+}
+
+func (r *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "LocalDestinationIpPortTranslationNatRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponseParams `json:"Response"`
+}
+
+func (r *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayRequestParams struct {
+	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx"。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+}
+
+type DeletePrivateNatGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx"。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+}
+
+func (r *DeletePrivateNatGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateNatGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePrivateNatGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrivateNatGatewayResponseParams `json:"Response"`
+}
+
+func (r *DeletePrivateNatGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayTranslationAclRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 访问控制规则对应`ID`
+	AclRuleIds []*uint64 `json:"AclRuleIds,omitnil,omitempty" name:"AclRuleIds"`
+
+	// 源`IP`,当转换规则类型为三层时有效
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+}
+
+type DeletePrivateNatGatewayTranslationAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 访问控制规则对应`ID`
+	AclRuleIds []*uint64 `json:"AclRuleIds,omitnil,omitempty" name:"AclRuleIds"`
+
+	// 源`IP`,当转换规则类型为三层时有效
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+}
+
+func (r *DeletePrivateNatGatewayTranslationAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayTranslationAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationDirection")
+	delete(f, "TranslationType")
+	delete(f, "TranslationIp")
+	delete(f, "AclRuleIds")
+	delete(f, "OriginalIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateNatGatewayTranslationAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayTranslationAclRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePrivateNatGatewayTranslationAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrivateNatGatewayTranslationAclRuleResponseParams `json:"Response"`
+}
+
+func (r *DeletePrivateNatGatewayTranslationAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayTranslationAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayTranslationNatRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则对象数组。
+	TranslationNatRules []*TranslationNatRule `json:"TranslationNatRules,omitnil,omitempty" name:"TranslationNatRules"`
+
+	// 跨域参数，当VPC为跨域时填写为True。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+}
+
+type DeletePrivateNatGatewayTranslationNatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则对象数组。
+	TranslationNatRules []*TranslationNatRule `json:"TranslationNatRules,omitnil,omitempty" name:"TranslationNatRules"`
+
+	// 跨域参数，当VPC为跨域时填写为True。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+}
+
+func (r *DeletePrivateNatGatewayTranslationNatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayTranslationNatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationNatRules")
+	delete(f, "CrossDomain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateNatGatewayTranslationNatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateNatGatewayTranslationNatRuleResponseParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePrivateNatGatewayTranslationNatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrivateNatGatewayTranslationNatRuleResponseParams `json:"Response"`
+}
+
+func (r *DeletePrivateNatGatewayTranslationNatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateNatGatewayTranslationNatRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13078,6 +13669,514 @@ func (r *DescribeNetworkInterfacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequestParams struct {
+	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx)
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数目，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx)
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数目，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponseParams struct {
+	// 总规则数目。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 目的端口转换规则数组。
+	LocalDestinationIpPortTranslationNatRuleSet []*PrivateNatDestinationIpPortTranslationNatRule `json:"LocalDestinationIpPortTranslationNatRuleSet,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRuleSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayLimitsRequestParams struct {
+	// 查询VPC下可创建的私网网关配额数量，可选值：
+	// <li>VpcId - String - 所在VpcId</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数目，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePrivateNatGatewayLimitsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询VPC下可创建的私网网关配额数量，可选值：
+	// <li>VpcId - String - 所在VpcId</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数目，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrivateNatGatewayLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayLimitsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayLimitsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayLimitsResponseParams struct {
+	// 查询返回结果个数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 私网网关配额。
+	PrivateNatGatewayLimitSet []*PrivateNatGatewayLimit `json:"PrivateNatGatewayLimitSet,omitnil,omitempty" name:"PrivateNatGatewayLimitSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateNatGatewayLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateNatGatewayLimitsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateNatGatewayLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayLimitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayRegionsRequestParams struct {
+
+}
+
+type DescribePrivateNatGatewayRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePrivateNatGatewayRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayRegionsResponseParams struct {
+	// 地域对象
+	RegionSet []*NatRegionInfoWithArea `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
+
+	// 返回可支持地域总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateNatGatewayRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateNatGatewayRegionsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateNatGatewayRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayTranslationAclRulesRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 源`IP`,当转换规则类型为三层时有效。
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 偏移量。默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数目，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePrivateNatGatewayTranslationAclRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 源`IP`,当转换规则类型为三层时有效。
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 偏移量。默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数目，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrivateNatGatewayTranslationAclRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayTranslationAclRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationDirection")
+	delete(f, "TranslationType")
+	delete(f, "TranslationIp")
+	delete(f, "OriginalIp")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayTranslationAclRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayTranslationAclRulesResponseParams struct {
+	// 返回个数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 访问控制规则列表。
+	TranslationAclRuleSet []*TranslationAclRule `json:"TranslationAclRuleSet,omitnil,omitempty" name:"TranslationAclRuleSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateNatGatewayTranslationAclRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateNatGatewayTranslationAclRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateNatGatewayTranslationAclRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayTranslationAclRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayTranslationNatRulesRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 过滤条件。
+	// <li>OriginalIp - String - 转换规则源`IP`。</li>
+	// <li>TranslationIp - String - 转换`IP`。</li>
+	// <li>VpcId - String - 私网网关所在`VpcId`。</li>
+	// <li>Description - String - 转换规则描述</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量。默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePrivateNatGatewayTranslationNatRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 过滤条件。
+	// <li>OriginalIp - String - 转换规则源`IP`。</li>
+	// <li>TranslationIp - String - 转换`IP`。</li>
+	// <li>VpcId - String - 私网网关所在`VpcId`。</li>
+	// <li>Description - String - 转换规则描述</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量。默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrivateNatGatewayTranslationNatRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayTranslationNatRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayTranslationNatRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewayTranslationNatRulesResponseParams struct {
+	// 对象数目。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 转换规则详情数组。
+	TranslationNatRuleSet []*TranslationNatRule `json:"TranslationNatRuleSet,omitnil,omitempty" name:"TranslationNatRuleSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateNatGatewayTranslationNatRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateNatGatewayTranslationNatRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateNatGatewayTranslationNatRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewayTranslationNatRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewaysRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
+
+	// 过滤条件。
+	// <li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
+	// <li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
+	// <li>VpcId - String - 私网网关所在`VpcId`。</li>
+	// <li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方式。可选值："ASC"、"DESC"。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+}
+
+type DescribePrivateNatGatewaysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
+
+	// 过滤条件。
+	// <li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
+	// <li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
+	// <li>VpcId - String - 私网网关所在`VpcId`。</li>
+	// <li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方式。可选值："ASC"、"DESC"。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribePrivateNatGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewaysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewaysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateNatGatewaysResponseParams struct {
+	// 符合条件的对象数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 私网网关对象数组。
+	PrivateNatGatewaySet []*PrivateNatGateway `json:"PrivateNatGatewaySet,omitnil,omitempty" name:"PrivateNatGatewaySet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateNatGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateNatGatewaysResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateNatGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateNatGatewaysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductQuotaRequestParams struct {
 	// 查询的网络产品名称，可查询的产品有：vpc、ccn、vpn、dc、dfw、clb、eip。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
@@ -16301,6 +17400,41 @@ type DestinationIpPortTranslationNatRule struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type DestinationIpPortTranslationNatRuleDiff struct {
+	// 协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 源端口
+	OriginalPort *int64 `json:"OriginalPort,omitnil,omitempty" name:"OriginalPort"`
+
+	// 源IP
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 目的端口
+	TranslationPort *int64 `json:"TranslationPort,omitnil,omitempty" name:"TranslationPort"`
+
+	// 目的IP
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 旧协议。
+	OldProtocol *string `json:"OldProtocol,omitnil,omitempty" name:"OldProtocol"`
+
+	// 旧源端口
+	OldOriginalPort *int64 `json:"OldOriginalPort,omitnil,omitempty" name:"OldOriginalPort"`
+
+	// 旧源IP
+	OldOriginalIp *string `json:"OldOriginalIp,omitnil,omitempty" name:"OldOriginalIp"`
+
+	// 旧目的端口
+	OldTranslationPort *int64 `json:"OldTranslationPort,omitnil,omitempty" name:"OldTranslationPort"`
+
+	// 旧目的IP
+	OldTranslationIp *string `json:"OldTranslationIp,omitnil,omitempty" name:"OldTranslationIp"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 // Predefined struct for user
 type DetachCcnInstancesRequestParams struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
@@ -19163,6 +20297,26 @@ type ItemPrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
+type LocalDestinationIpPortTranslationNatRule struct {
+	// 协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 源端口
+	OriginalPort *int64 `json:"OriginalPort,omitnil,omitempty" name:"OriginalPort"`
+
+	// 源IP
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 目的端口
+	TranslationPort *int64 `json:"TranslationPort,omitnil,omitempty" name:"TranslationPort"`
+
+	// 目的IP
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 type LocalGateway struct {
 	// CDC实例ID
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
@@ -21650,6 +22804,285 @@ func (r *ModifyPrivateIpAddressesAttributeResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type ModifyPrivateNatGatewayAttributeRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 私网网关名称，可任意命名，但不得超过60个字符。
+	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+}
+
+type ModifyPrivateNatGatewayAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 私网网关名称，可任意命名，但不得超过60个字符。
+	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+}
+
+func (r *ModifyPrivateNatGatewayAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "NatGatewayName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateNatGatewayAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPrivateNatGatewayAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrivateNatGatewayAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrivateNatGatewayAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 目的端口转换规则列表。
+	LocalDestinationIpPortTranslationNatRules []*DestinationIpPortTranslationNatRuleDiff `json:"LocalDestinationIpPortTranslationNatRules,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRules"`
+}
+
+type ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 目的端口转换规则列表。
+	LocalDestinationIpPortTranslationNatRules []*DestinationIpPortTranslationNatRuleDiff `json:"LocalDestinationIpPortTranslationNatRules,omitnil,omitempty" name:"LocalDestinationIpPortTranslationNatRules"`
+}
+
+func (r *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "LocalDestinationIpPortTranslationNatRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayTranslationAclRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 访问控制列表，需要附带AclRuleId参数。
+	TranslationAclRules []*TranslationAclRule `json:"TranslationAclRules,omitnil,omitempty" name:"TranslationAclRules"`
+
+	// 源`IP`,当转换规则类型为三层时有效
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+}
+
+type ModifyPrivateNatGatewayTranslationAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则目标，可选值"LOCAL"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 访问控制列表，需要附带AclRuleId参数。
+	TranslationAclRules []*TranslationAclRule `json:"TranslationAclRules,omitnil,omitempty" name:"TranslationAclRules"`
+
+	// 源`IP`,当转换规则类型为三层时有效
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+}
+
+func (r *ModifyPrivateNatGatewayTranslationAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayTranslationAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationDirection")
+	delete(f, "TranslationType")
+	delete(f, "TranslationIp")
+	delete(f, "TranslationAclRules")
+	delete(f, "OriginalIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateNatGatewayTranslationAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayTranslationAclRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPrivateNatGatewayTranslationAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrivateNatGatewayTranslationAclRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrivateNatGatewayTranslationAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayTranslationAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayTranslationNatRuleRequestParams struct {
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则对象数组。仅支持修改单个转换规则
+	TranslationNatRules []*TranslationNatRuleDiff `json:"TranslationNatRules,omitnil,omitempty" name:"TranslationNatRules"`
+
+	// 跨域参数，当VPC为跨域时填写为True。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+}
+
+type ModifyPrivateNatGatewayTranslationNatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 转换规则对象数组。仅支持修改单个转换规则
+	TranslationNatRules []*TranslationNatRuleDiff `json:"TranslationNatRules,omitnil,omitempty" name:"TranslationNatRules"`
+
+	// 跨域参数，当VPC为跨域时填写为True。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+}
+
+func (r *ModifyPrivateNatGatewayTranslationNatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayTranslationNatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "TranslationNatRules")
+	delete(f, "CrossDomain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateNatGatewayTranslationNatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrivateNatGatewayTranslationNatRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPrivateNatGatewayTranslationNatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrivateNatGatewayTranslationNatRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrivateNatGatewayTranslationNatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrivateNatGatewayTranslationNatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRouteTableAttributeRequestParams struct {
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
@@ -23178,6 +24611,10 @@ type NatGatewayDestinationIpPortTranslationNatRule struct {
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
+type NatRegionInfoWithArea struct {
+
+}
+
 type NetDetect struct {
 	// `VPC`实例`ID`。形如：`vpc-12345678`
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -23626,6 +25063,68 @@ type PrivateIpAddressSpecification struct {
 
 	// IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
+}
+
+type PrivateNatDestinationIpPortTranslationNatRule struct {
+	// 协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 原端口
+	OriginalPort *int64 `json:"OriginalPort,omitnil,omitempty" name:"OriginalPort"`
+
+	// 原IP
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 映射端口
+	TranslationPort *int64 `json:"TranslationPort,omitnil,omitempty" name:"TranslationPort"`
+
+	// 映射IP
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type PrivateNatGateway struct {
+	// 私网网关`ID`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 私网网关名称。
+	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+
+	// 私网网关关联`VPC`实例`ID`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 私网网关当前状态。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 私网网关跨域标志。
+	CrossDomain *bool `json:"CrossDomain,omitnil,omitempty" name:"CrossDomain"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 标签键值对。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+}
+
+type PrivateNatGatewayLimit struct {
+	// 私有网络唯一`ID`。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// Vpc下总计可创建私网网关数量。
+	TotalLimit *uint64 `json:"TotalLimit,omitnil,omitempty" name:"TotalLimit"`
+
+	// 可创建私网网关数量。
+	Available *uint64 `json:"Available,omitnil,omitempty" name:"Available"`
 }
 
 type ProductQuota struct {
@@ -26014,6 +27513,94 @@ func (r *TransformAddressResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TransformAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TranslationAclRule struct {
+	// ACL协议类型，可选值:"ALL","TCP","UDP"
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 源端口。
+	SourcePort *string `json:"SourcePort,omitnil,omitempty" name:"SourcePort"`
+
+	// 源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
+	SourceCidr *string `json:"SourceCidr,omitnil,omitempty" name:"SourceCidr"`
+
+	// 目的端口。
+	DestinationPort *string `json:"DestinationPort,omitnil,omitempty" name:"DestinationPort"`
+
+	// 目的地址。
+	DestinationCidr *string `json:"DestinationCidr,omitnil,omitempty" name:"DestinationCidr"`
+
+	// ACL规则`ID`。
+	AclRuleId *uint64 `json:"AclRuleId,omitnil,omitempty" name:"AclRuleId"`
+
+	// 是否匹配。
+	Action *uint64 `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
+type TranslationNatRule struct {
+	// 转换规则目标，可选值"LOCAL","PEER"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 转换规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 源`IP`,当转换规则类型为三层时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type TranslationNatRuleDiff struct {
+	// 转发规则目标，可选值"LOCAL","PEER"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转发规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 转发规则描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 旧转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+	OldTranslationIp *string `json:"OldTranslationIp,omitnil,omitempty" name:"OldTranslationIp"`
+
+	// 新转发规则源`IP`,当转发规则类型为三层时有效
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
+
+	// 旧转发规则源`IP`,当转发规则类型为三层时有效
+	OldOriginalIp *string `json:"OldOriginalIp,omitnil,omitempty" name:"OldOriginalIp"`
+}
+
+type TranslationNatRuleInput struct {
+	// 转换规则目标，可选值"LOCAL","PEER"。
+	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
+
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
+
+	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 转换规则描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 源`IP`,当转换规则类型为三层时有效。
+	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 }
 
 // Predefined struct for user

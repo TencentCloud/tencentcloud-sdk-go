@@ -2163,7 +2163,7 @@ func NewInvokeFunctionResponse() (response *InvokeFunctionResponse) {
 }
 
 // InvokeFunction
-//  SCF同步调用函数接口
+// SCF同步调用函数接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
@@ -2188,7 +2188,7 @@ func (c *Client) InvokeFunction(request *InvokeFunctionRequest) (response *Invok
 }
 
 // InvokeFunction
-//  SCF同步调用函数接口
+// SCF同步调用函数接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"

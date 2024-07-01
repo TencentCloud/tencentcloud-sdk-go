@@ -4252,6 +4252,302 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreatePrivateNatGatewayRequest() (request *CreatePrivateNatGatewayRequest) {
+    request = &CreatePrivateNatGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreatePrivateNatGateway")
+    
+    
+    return
+}
+
+func NewCreatePrivateNatGatewayResponse() (response *CreatePrivateNatGatewayResponse) {
+    response = &CreatePrivateNatGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateNatGateway
+// 本接口（CreatePrivateNatGateway）用于创建私网NAT网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = "LimitExceeded.NatGatewayPerVpcLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
+//  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
+func (c *Client) CreatePrivateNatGateway(request *CreatePrivateNatGatewayRequest) (response *CreatePrivateNatGatewayResponse, err error) {
+    return c.CreatePrivateNatGatewayWithContext(context.Background(), request)
+}
+
+// CreatePrivateNatGateway
+// 本接口（CreatePrivateNatGateway）用于创建私网NAT网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = "LimitExceeded.NatGatewayPerVpcLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
+//  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
+func (c *Client) CreatePrivateNatGatewayWithContext(ctx context.Context, request *CreatePrivateNatGatewayRequest) (response *CreatePrivateNatGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateNatGatewayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateNatGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateNatGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest() (request *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) {
+    request = &CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreatePrivateNatGatewayDestinationIpPortTranslationNatRule")
+    
+    
+    return
+}
+
+func NewCreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse() (response *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) {
+    response = &CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateNatGatewayDestinationIpPortTranslationNatRule
+// 本接口（CreatePrivateNatGatewayDestinationIpPortTranslationNatRule）用于创建私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NATGATEWAYDNATLIMITEXCEEDED = "LimitExceeded.NatGatewayDnatLimitExceeded"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) CreatePrivateNatGatewayDestinationIpPortTranslationNatRule(request *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
+    return c.CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleWithContext(context.Background(), request)
+}
+
+// CreatePrivateNatGatewayDestinationIpPortTranslationNatRule
+// 本接口（CreatePrivateNatGatewayDestinationIpPortTranslationNatRule）用于创建私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NATGATEWAYDNATLIMITEXCEEDED = "LimitExceeded.NatGatewayDnatLimitExceeded"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleWithContext(ctx context.Context, request *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateNatGatewayDestinationIpPortTranslationNatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrivateNatGatewayTranslationAclRuleRequest() (request *CreatePrivateNatGatewayTranslationAclRuleRequest) {
+    request = &CreatePrivateNatGatewayTranslationAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreatePrivateNatGatewayTranslationAclRule")
+    
+    
+    return
+}
+
+func NewCreatePrivateNatGatewayTranslationAclRuleResponse() (response *CreatePrivateNatGatewayTranslationAclRuleResponse) {
+    response = &CreatePrivateNatGatewayTranslationAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateNatGatewayTranslationAclRule
+// 本接口（ CreatePrivateNatGatewayTranslationAclRule）用于创建私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_PRIVATENATTRANSLATIONACLRULE = "LimitExceeded.PrivateNatTranslationAclRule"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) CreatePrivateNatGatewayTranslationAclRule(request *CreatePrivateNatGatewayTranslationAclRuleRequest) (response *CreatePrivateNatGatewayTranslationAclRuleResponse, err error) {
+    return c.CreatePrivateNatGatewayTranslationAclRuleWithContext(context.Background(), request)
+}
+
+// CreatePrivateNatGatewayTranslationAclRule
+// 本接口（ CreatePrivateNatGatewayTranslationAclRule）用于创建私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_PRIVATENATTRANSLATIONACLRULE = "LimitExceeded.PrivateNatTranslationAclRule"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) CreatePrivateNatGatewayTranslationAclRuleWithContext(ctx context.Context, request *CreatePrivateNatGatewayTranslationAclRuleRequest) (response *CreatePrivateNatGatewayTranslationAclRuleResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateNatGatewayTranslationAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateNatGatewayTranslationAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateNatGatewayTranslationAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrivateNatGatewayTranslationNatRuleRequest() (request *CreatePrivateNatGatewayTranslationNatRuleRequest) {
+    request = &CreatePrivateNatGatewayTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreatePrivateNatGatewayTranslationNatRule")
+    
+    
+    return
+}
+
+func NewCreatePrivateNatGatewayTranslationNatRuleResponse() (response *CreatePrivateNatGatewayTranslationNatRuleResponse) {
+    response = &CreatePrivateNatGatewayTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateNatGatewayTranslationNatRule
+// 本接口（CreatePrivateNatGatewayTranslationNatRule）用于创建私网NAT网关源端转换规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVPCCIDR = "InvalidParameterValue.InVpcCidr"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATSNATRULENOTSUPPORT = "InvalidParameterValue.PrivateNatSnatRuleNotSupport"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_PRIVATENATTRANSLATIONNATRULE = "LimitExceeded.PrivateNatTranslationNatRule"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) CreatePrivateNatGatewayTranslationNatRule(request *CreatePrivateNatGatewayTranslationNatRuleRequest) (response *CreatePrivateNatGatewayTranslationNatRuleResponse, err error) {
+    return c.CreatePrivateNatGatewayTranslationNatRuleWithContext(context.Background(), request)
+}
+
+// CreatePrivateNatGatewayTranslationNatRule
+// 本接口（CreatePrivateNatGatewayTranslationNatRule）用于创建私网NAT网关源端转换规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVPCCIDR = "InvalidParameterValue.InVpcCidr"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATSNATRULENOTSUPPORT = "InvalidParameterValue.PrivateNatSnatRuleNotSupport"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_PRIVATENATTRANSLATIONNATRULE = "LimitExceeded.PrivateNatTranslationNatRule"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) CreatePrivateNatGatewayTranslationNatRuleWithContext(ctx context.Context, request *CreatePrivateNatGatewayTranslationNatRuleRequest) (response *CreatePrivateNatGatewayTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateNatGatewayTranslationNatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateNatGatewayTranslationNatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateNatGatewayTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRouteTableRequest() (request *CreateRouteTableRequest) {
     request = &CreateRouteTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7550,6 +7846,258 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivateNatGatewayRequest() (request *DeletePrivateNatGatewayRequest) {
+    request = &DeletePrivateNatGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeletePrivateNatGateway")
+    
+    
+    return
+}
+
+func NewDeletePrivateNatGatewayResponse() (response *DeletePrivateNatGatewayResponse) {
+    response = &DeletePrivateNatGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePrivateNatGateway
+// 本接口（DeletePrivateNatGateway）用于删除私网NAT网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
+func (c *Client) DeletePrivateNatGateway(request *DeletePrivateNatGatewayRequest) (response *DeletePrivateNatGatewayResponse, err error) {
+    return c.DeletePrivateNatGatewayWithContext(context.Background(), request)
+}
+
+// DeletePrivateNatGateway
+// 本接口（DeletePrivateNatGateway）用于删除私网NAT网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
+func (c *Client) DeletePrivateNatGatewayWithContext(ctx context.Context, request *DeletePrivateNatGatewayRequest) (response *DeletePrivateNatGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateNatGatewayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrivateNatGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrivateNatGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest() (request *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) {
+    request = &DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeletePrivateNatGatewayDestinationIpPortTranslationNatRule")
+    
+    
+    return
+}
+
+func NewDeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse() (response *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) {
+    response = &DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePrivateNatGatewayDestinationIpPortTranslationNatRule
+// 本接口（DeletePrivateNatGatewayDestinationIpPortTranslationNatRule）用于删除私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) DeletePrivateNatGatewayDestinationIpPortTranslationNatRule(request *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
+    return c.DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleWithContext(context.Background(), request)
+}
+
+// DeletePrivateNatGatewayDestinationIpPortTranslationNatRule
+// 本接口（DeletePrivateNatGatewayDestinationIpPortTranslationNatRule）用于删除私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleWithContext(ctx context.Context, request *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrivateNatGatewayDestinationIpPortTranslationNatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivateNatGatewayTranslationAclRuleRequest() (request *DeletePrivateNatGatewayTranslationAclRuleRequest) {
+    request = &DeletePrivateNatGatewayTranslationAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeletePrivateNatGatewayTranslationAclRule")
+    
+    
+    return
+}
+
+func NewDeletePrivateNatGatewayTranslationAclRuleResponse() (response *DeletePrivateNatGatewayTranslationAclRuleResponse) {
+    response = &DeletePrivateNatGatewayTranslationAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePrivateNatGatewayTranslationAclRule
+// 本接口（DeletePrivateNatGatewayTranslationAclRule）用于删除私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeletePrivateNatGatewayTranslationAclRule(request *DeletePrivateNatGatewayTranslationAclRuleRequest) (response *DeletePrivateNatGatewayTranslationAclRuleResponse, err error) {
+    return c.DeletePrivateNatGatewayTranslationAclRuleWithContext(context.Background(), request)
+}
+
+// DeletePrivateNatGatewayTranslationAclRule
+// 本接口（DeletePrivateNatGatewayTranslationAclRule）用于删除私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeletePrivateNatGatewayTranslationAclRuleWithContext(ctx context.Context, request *DeletePrivateNatGatewayTranslationAclRuleRequest) (response *DeletePrivateNatGatewayTranslationAclRuleResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateNatGatewayTranslationAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrivateNatGatewayTranslationAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrivateNatGatewayTranslationAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivateNatGatewayTranslationNatRuleRequest() (request *DeletePrivateNatGatewayTranslationNatRuleRequest) {
+    request = &DeletePrivateNatGatewayTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeletePrivateNatGatewayTranslationNatRule")
+    
+    
+    return
+}
+
+func NewDeletePrivateNatGatewayTranslationNatRuleResponse() (response *DeletePrivateNatGatewayTranslationNatRuleResponse) {
+    response = &DeletePrivateNatGatewayTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePrivateNatGatewayTranslationNatRule
+// 本接口（DeletePrivateNatGatewayTranslationNatRule）用于删除私网NAT网关源端转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+func (c *Client) DeletePrivateNatGatewayTranslationNatRule(request *DeletePrivateNatGatewayTranslationNatRuleRequest) (response *DeletePrivateNatGatewayTranslationNatRuleResponse, err error) {
+    return c.DeletePrivateNatGatewayTranslationNatRuleWithContext(context.Background(), request)
+}
+
+// DeletePrivateNatGatewayTranslationNatRule
+// 本接口（DeletePrivateNatGatewayTranslationNatRule）用于删除私网NAT网关源端转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+func (c *Client) DeletePrivateNatGatewayTranslationNatRuleWithContext(ctx context.Context, request *DeletePrivateNatGatewayTranslationNatRuleRequest) (response *DeletePrivateNatGatewayTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateNatGatewayTranslationNatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrivateNatGatewayTranslationNatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrivateNatGatewayTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -11471,6 +12019,396 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeNetworkInterfacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest() (request *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest) {
+    request = &DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribePrivateNatGatewayDestinationIpPortTranslationNatRules")
+    
+    
+    return
+}
+
+func NewDescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse() (response *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse) {
+    response = &DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateNatGatewayDestinationIpPortTranslationNatRules
+// 本接口（DescribePrivateNatGatewayDestinationIpPortTranslationNatRules）用于查询私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DescribePrivateNatGatewayDestinationIpPortTranslationNatRules(request *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest) (response *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse, err error) {
+    return c.DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesWithContext(context.Background(), request)
+}
+
+// DescribePrivateNatGatewayDestinationIpPortTranslationNatRules
+// 本接口（DescribePrivateNatGatewayDestinationIpPortTranslationNatRules）用于查询私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesWithContext(ctx context.Context, request *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest) (response *DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateNatGatewayDestinationIpPortTranslationNatRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateNatGatewayLimitsRequest() (request *DescribePrivateNatGatewayLimitsRequest) {
+    request = &DescribePrivateNatGatewayLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribePrivateNatGatewayLimits")
+    
+    
+    return
+}
+
+func NewDescribePrivateNatGatewayLimitsResponse() (response *DescribePrivateNatGatewayLimitsResponse) {
+    response = &DescribePrivateNatGatewayLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateNatGatewayLimits
+// 本接口（DescribePrivateNatGatewayLimits）用于查询可创建的私网NAT网关配额数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribePrivateNatGatewayLimits(request *DescribePrivateNatGatewayLimitsRequest) (response *DescribePrivateNatGatewayLimitsResponse, err error) {
+    return c.DescribePrivateNatGatewayLimitsWithContext(context.Background(), request)
+}
+
+// DescribePrivateNatGatewayLimits
+// 本接口（DescribePrivateNatGatewayLimits）用于查询可创建的私网NAT网关配额数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribePrivateNatGatewayLimitsWithContext(ctx context.Context, request *DescribePrivateNatGatewayLimitsRequest) (response *DescribePrivateNatGatewayLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateNatGatewayLimitsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateNatGatewayLimits require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateNatGatewayLimitsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateNatGatewayRegionsRequest() (request *DescribePrivateNatGatewayRegionsRequest) {
+    request = &DescribePrivateNatGatewayRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribePrivateNatGatewayRegions")
+    
+    
+    return
+}
+
+func NewDescribePrivateNatGatewayRegionsResponse() (response *DescribePrivateNatGatewayRegionsResponse) {
+    response = &DescribePrivateNatGatewayRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateNatGatewayRegions
+// 本接口（DescribePrivateNatGatewayRegions）用于查询查询私网NAT网关可支持地域
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribePrivateNatGatewayRegions(request *DescribePrivateNatGatewayRegionsRequest) (response *DescribePrivateNatGatewayRegionsResponse, err error) {
+    return c.DescribePrivateNatGatewayRegionsWithContext(context.Background(), request)
+}
+
+// DescribePrivateNatGatewayRegions
+// 本接口（DescribePrivateNatGatewayRegions）用于查询查询私网NAT网关可支持地域
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribePrivateNatGatewayRegionsWithContext(ctx context.Context, request *DescribePrivateNatGatewayRegionsRequest) (response *DescribePrivateNatGatewayRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateNatGatewayRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateNatGatewayRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateNatGatewayRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateNatGatewayTranslationAclRulesRequest() (request *DescribePrivateNatGatewayTranslationAclRulesRequest) {
+    request = &DescribePrivateNatGatewayTranslationAclRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribePrivateNatGatewayTranslationAclRules")
+    
+    
+    return
+}
+
+func NewDescribePrivateNatGatewayTranslationAclRulesResponse() (response *DescribePrivateNatGatewayTranslationAclRulesResponse) {
+    response = &DescribePrivateNatGatewayTranslationAclRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateNatGatewayTranslationAclRules
+// 本接口（DescribePrivateNatGatewayTranslationAclRules）用于查询私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+func (c *Client) DescribePrivateNatGatewayTranslationAclRules(request *DescribePrivateNatGatewayTranslationAclRulesRequest) (response *DescribePrivateNatGatewayTranslationAclRulesResponse, err error) {
+    return c.DescribePrivateNatGatewayTranslationAclRulesWithContext(context.Background(), request)
+}
+
+// DescribePrivateNatGatewayTranslationAclRules
+// 本接口（DescribePrivateNatGatewayTranslationAclRules）用于查询私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+func (c *Client) DescribePrivateNatGatewayTranslationAclRulesWithContext(ctx context.Context, request *DescribePrivateNatGatewayTranslationAclRulesRequest) (response *DescribePrivateNatGatewayTranslationAclRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateNatGatewayTranslationAclRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateNatGatewayTranslationAclRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateNatGatewayTranslationAclRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateNatGatewayTranslationNatRulesRequest() (request *DescribePrivateNatGatewayTranslationNatRulesRequest) {
+    request = &DescribePrivateNatGatewayTranslationNatRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribePrivateNatGatewayTranslationNatRules")
+    
+    
+    return
+}
+
+func NewDescribePrivateNatGatewayTranslationNatRulesResponse() (response *DescribePrivateNatGatewayTranslationNatRulesResponse) {
+    response = &DescribePrivateNatGatewayTranslationNatRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateNatGatewayTranslationNatRules
+// 本接口（DescribePrivateNatGatewayTranslationNatRules）用于查询私网NAT网关源端转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePrivateNatGatewayTranslationNatRules(request *DescribePrivateNatGatewayTranslationNatRulesRequest) (response *DescribePrivateNatGatewayTranslationNatRulesResponse, err error) {
+    return c.DescribePrivateNatGatewayTranslationNatRulesWithContext(context.Background(), request)
+}
+
+// DescribePrivateNatGatewayTranslationNatRules
+// 本接口（DescribePrivateNatGatewayTranslationNatRules）用于查询私网NAT网关源端转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePrivateNatGatewayTranslationNatRulesWithContext(ctx context.Context, request *DescribePrivateNatGatewayTranslationNatRulesRequest) (response *DescribePrivateNatGatewayTranslationNatRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateNatGatewayTranslationNatRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateNatGatewayTranslationNatRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateNatGatewayTranslationNatRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateNatGatewaysRequest() (request *DescribePrivateNatGatewaysRequest) {
+    request = &DescribePrivateNatGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribePrivateNatGateways")
+    
+    
+    return
+}
+
+func NewDescribePrivateNatGatewaysResponse() (response *DescribePrivateNatGatewaysResponse) {
+    response = &DescribePrivateNatGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateNatGateways
+// 本接口（DescribePrivateNatGateways）用于查询私网NAT网关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribePrivateNatGateways(request *DescribePrivateNatGatewaysRequest) (response *DescribePrivateNatGatewaysResponse, err error) {
+    return c.DescribePrivateNatGatewaysWithContext(context.Background(), request)
+}
+
+// DescribePrivateNatGateways
+// 本接口（DescribePrivateNatGateways）用于查询私网NAT网关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribePrivateNatGatewaysWithContext(ctx context.Context, request *DescribePrivateNatGatewaysRequest) (response *DescribePrivateNatGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateNatGatewaysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateNatGateways require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateNatGatewaysResponse()
     err = c.Send(request, response)
     return
 }
@@ -18107,6 +19045,278 @@ func (c *Client) ModifyPrivateIpAddressesAttributeWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyPrivateIpAddressesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrivateNatGatewayAttributeRequest() (request *ModifyPrivateNatGatewayAttributeRequest) {
+    request = &ModifyPrivateNatGatewayAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateNatGatewayAttribute")
+    
+    
+    return
+}
+
+func NewModifyPrivateNatGatewayAttributeResponse() (response *ModifyPrivateNatGatewayAttributeResponse) {
+    response = &ModifyPrivateNatGatewayAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPrivateNatGatewayAttribute
+// 本接口（ModifyPrivateNatGatewayAttribute）用于修改私网NAT网关属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+//  UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = "UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity"
+func (c *Client) ModifyPrivateNatGatewayAttribute(request *ModifyPrivateNatGatewayAttributeRequest) (response *ModifyPrivateNatGatewayAttributeResponse, err error) {
+    return c.ModifyPrivateNatGatewayAttributeWithContext(context.Background(), request)
+}
+
+// ModifyPrivateNatGatewayAttribute
+// 本接口（ModifyPrivateNatGatewayAttribute）用于修改私网NAT网关属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+//  UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = "UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity"
+func (c *Client) ModifyPrivateNatGatewayAttributeWithContext(ctx context.Context, request *ModifyPrivateNatGatewayAttributeRequest) (response *ModifyPrivateNatGatewayAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyPrivateNatGatewayAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrivateNatGatewayAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrivateNatGatewayAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest() (request *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) {
+    request = &ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule")
+    
+    
+    return
+}
+
+func NewModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse() (response *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) {
+    response = &ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule
+// 本接口（ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule）用于修改私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule(request *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
+    return c.ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleWithContext(context.Background(), request)
+}
+
+// ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule
+// 本接口（ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule）用于修改私网NAT网关目的端口转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleWithContext(ctx context.Context, request *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrivateNatGatewayTranslationAclRuleRequest() (request *ModifyPrivateNatGatewayTranslationAclRuleRequest) {
+    request = &ModifyPrivateNatGatewayTranslationAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateNatGatewayTranslationAclRule")
+    
+    
+    return
+}
+
+func NewModifyPrivateNatGatewayTranslationAclRuleResponse() (response *ModifyPrivateNatGatewayTranslationAclRuleResponse) {
+    response = &ModifyPrivateNatGatewayTranslationAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPrivateNatGatewayTranslationAclRule
+// 本接口（ModifyPrivateNatGatewayTranslationAclRule）用于修改私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyPrivateNatGatewayTranslationAclRule(request *ModifyPrivateNatGatewayTranslationAclRuleRequest) (response *ModifyPrivateNatGatewayTranslationAclRuleResponse, err error) {
+    return c.ModifyPrivateNatGatewayTranslationAclRuleWithContext(context.Background(), request)
+}
+
+// ModifyPrivateNatGatewayTranslationAclRule
+// 本接口（ModifyPrivateNatGatewayTranslationAclRule）用于修改私网NAT网关源端转换访问控制规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyPrivateNatGatewayTranslationAclRuleWithContext(ctx context.Context, request *ModifyPrivateNatGatewayTranslationAclRuleRequest) (response *ModifyPrivateNatGatewayTranslationAclRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyPrivateNatGatewayTranslationAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrivateNatGatewayTranslationAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrivateNatGatewayTranslationAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrivateNatGatewayTranslationNatRuleRequest() (request *ModifyPrivateNatGatewayTranslationNatRuleRequest) {
+    request = &ModifyPrivateNatGatewayTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateNatGatewayTranslationNatRule")
+    
+    
+    return
+}
+
+func NewModifyPrivateNatGatewayTranslationNatRuleResponse() (response *ModifyPrivateNatGatewayTranslationNatRuleResponse) {
+    response = &ModifyPrivateNatGatewayTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPrivateNatGatewayTranslationNatRule
+// 本接口（ModifyPrivateNatGatewayTranslationNatRule）用于修改私网NAT网关源端转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVPCCIDR = "InvalidParameterValue.InVpcCidr"
+//  INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
+//  INVALIDPARAMETERVALUE_NOTINVPCCIDR = "InvalidParameterValue.NotInVpcCidr"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) ModifyPrivateNatGatewayTranslationNatRule(request *ModifyPrivateNatGatewayTranslationNatRuleRequest) (response *ModifyPrivateNatGatewayTranslationNatRuleResponse, err error) {
+    return c.ModifyPrivateNatGatewayTranslationNatRuleWithContext(context.Background(), request)
+}
+
+// ModifyPrivateNatGatewayTranslationNatRule
+// 本接口（ModifyPrivateNatGatewayTranslationNatRule）用于修改私网NAT网关源端转换规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVPCCIDR = "InvalidParameterValue.InVpcCidr"
+//  INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
+//  INVALIDPARAMETERVALUE_NOTINVPCCIDR = "InvalidParameterValue.NotInVpcCidr"
+//  INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+//  INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) ModifyPrivateNatGatewayTranslationNatRuleWithContext(ctx context.Context, request *ModifyPrivateNatGatewayTranslationNatRuleRequest) (response *ModifyPrivateNatGatewayTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyPrivateNatGatewayTranslationNatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrivateNatGatewayTranslationNatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrivateNatGatewayTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
 }

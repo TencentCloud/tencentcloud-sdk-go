@@ -6960,6 +6960,12 @@ type CreateUserVerifyUrlRequestParams struct {
 	// 要实名的手机号，兼容带+86的格式
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
+	// 实名完之后的跳转链接，最大长度1000个字符。
+	// 链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>。
+	// 
+	// 注：此参数仅支持 Endpoint 为 <font color="red">H5 或 H5_SHORT_URL </font>的时候传递
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
 	// 要跳转的链接类型
 	// 
 	// - HTTP：
@@ -6971,14 +6977,20 @@ type CreateUserVerifyUrlRequestParams struct {
 	// - APP：
 	// 第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
 	// 
-	// 如果不传递，默认值是 APP
+	// - H5：
+	// 跳转电子签H5实名页面的长链
+	// 
+	// - H5_SHORT_URL：
+	// 跳转电子签H5实名页面的短链
+	// 
+	// 注：如果不传递，默认值是 <font color="red"> APP </font>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 签署完成后是否自动回跳
 	// <ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
 	// 
 	// 注: 
-	// 1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的实名链接有效
+	// 1. 该参数<font color="red">只针对APP类型（第三方APP或小程序跳转电子签小程序）场景</font> 的实名链接有效
 	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
 	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
@@ -7006,6 +7018,12 @@ type CreateUserVerifyUrlRequest struct {
 	// 要实名的手机号，兼容带+86的格式
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
+	// 实名完之后的跳转链接，最大长度1000个字符。
+	// 链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>。
+	// 
+	// 注：此参数仅支持 Endpoint 为 <font color="red">H5 或 H5_SHORT_URL </font>的时候传递
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
 	// 要跳转的链接类型
 	// 
 	// - HTTP：
@@ -7017,14 +7035,20 @@ type CreateUserVerifyUrlRequest struct {
 	// - APP：
 	// 第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
 	// 
-	// 如果不传递，默认值是 APP
+	// - H5：
+	// 跳转电子签H5实名页面的长链
+	// 
+	// - H5_SHORT_URL：
+	// 跳转电子签H5实名页面的短链
+	// 
+	// 注：如果不传递，默认值是 <font color="red"> APP </font>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 签署完成后是否自动回跳
 	// <ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
 	// 
 	// 注: 
-	// 1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的实名链接有效
+	// 1. 该参数<font color="red">只针对APP类型（第三方APP或小程序跳转电子签小程序）场景</font> 的实名链接有效
 	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
 	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
@@ -7050,6 +7074,7 @@ func (r *CreateUserVerifyUrlRequest) FromJsonString(s string) error {
 	delete(f, "IdCardNumber")
 	delete(f, "IdCardType")
 	delete(f, "Mobile")
+	delete(f, "JumpUrl")
 	delete(f, "Endpoint")
 	delete(f, "AutoJumpBack")
 	delete(f, "UserData")
@@ -7073,8 +7098,14 @@ type CreateUserVerifyUrlResponseParams struct {
 	// - 如果EndPoint是HTTP_SHORT_URL，
 	// 得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
 	// 
+	// - 如果EndPoint是H5，
+	// 得到的链接类似于 https://quick.test.qian.tencent.cn/guide?Code=yDU****VJhsS5q&CodeType=xxx&shortKey=yD*****frcb，点击后会跳转到腾讯电子签H5页面进行签署
 	// 
-	// 注： 生成的链路后面不能再增加参数
+	// - 如果EndPoint是H5_SHORT_URL，
+	// 得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签H5页面进行签署
+	// 
+	// 
+	// `注：` <font color="red">生成的链路后面不能再增加参数</font>
 	// 示例值：https://essurl.cn/2n**42Nd
 	UserVerifyUrl *string `json:"UserVerifyUrl,omitnil,omitempty" name:"UserVerifyUrl"`
 

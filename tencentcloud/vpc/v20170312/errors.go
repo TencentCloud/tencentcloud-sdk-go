@@ -212,6 +212,9 @@ const (
 	// 资源格式错误
 	INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
 
+	// 不能在VPC CIDR范围内。
+	INVALIDPARAMETERVALUE_INVPCCIDR = "InvalidParameterValue.InVpcCidr"
+
 	// 该实例的计费方式与其他实例不同。
 	INVALIDPARAMETERVALUE_INCONSISTENTINSTANCEINTERNETCHARGETYPE = "InvalidParameterValue.InconsistentInstanceInternetChargeType"
 
@@ -329,6 +332,9 @@ const (
 	// 未找到网络接口ID，或私有IP地址未在网络接口配置。
 	INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = "InvalidParameterValue.NetworkInterfaceNotFound"
 
+	// 必须在VPC CIDR范围内。
+	INVALIDPARAMETERVALUE_NOTINVPCCIDR = "InvalidParameterValue.NotInVpcCidr"
+
 	// 不是UTF8编码。
 	INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 
@@ -337,6 +343,15 @@ const (
 
 	// 参数值格式不匹配。
 	INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+
+	// 私网NAT网关不存在
+	INVALIDPARAMETERVALUE_PRIVATENATNOTEXISTS = "InvalidParameterValue.PrivateNatNotExists"
+
+	// 私网NAT网关规则不存在。
+	INVALIDPARAMETERVALUE_PRIVATENATRULENOTEXISTS = "InvalidParameterValue.PrivateNatRuleNotExists"
+
+	// 私网NAT网关传入规则类型不支持。
+	INVALIDPARAMETERVALUE_PRIVATENATSNATRULENOTSUPPORT = "InvalidParameterValue.PrivateNatSnatRuleNotSupport"
 
 	// 参数值不在指定范围。
 	INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -553,6 +568,12 @@ const (
 
 	// 过滤参数名称超过限制。
 	LIMITEXCEEDED_NUMBEROFFILTERS = "LimitExceeded.NumberOfFilters"
+
+	// 私网NAT网关转换规则的访问控制规则数量达到上限。
+	LIMITEXCEEDED_PRIVATENATTRANSLATIONACLRULE = "LimitExceeded.PrivateNatTranslationAclRule"
+
+	// 私网NAT网关的转换数量达到上限。
+	LIMITEXCEEDED_PRIVATENATTRANSLATIONNATRULE = "LimitExceeded.PrivateNatTranslationNatRule"
 
 	// NAT网关绑定的弹性IP超过上限。
 	LIMITEXCEEDED_PUBLICIPADDRESSPERNATGATEWAYLIMITEXCEEDED = "LimitExceeded.PublicIpAddressPerNatGatewayLimitExceeded"
@@ -955,6 +976,9 @@ const (
 
 	// 指定的值是主IP。
 	UNSUPPORTEDOPERATION_PRIMARYIP = "UnsupportedOperation.PrimaryIp"
+
+	// 私网NAT网关存在关联规则。
+	UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
 
 	// Nat网关至少存在一个弹性IP，弹性IP不能解绑。
 	UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = "UnsupportedOperation.PublicIpAddressDisassociate"

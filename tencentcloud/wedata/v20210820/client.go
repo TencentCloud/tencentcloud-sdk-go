@@ -4203,6 +4203,104 @@ func (c *Client) DescribeDsParentFolderTreeWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeDutyScheduleDetailsRequest() (request *DescribeDutyScheduleDetailsRequest) {
+    request = &DescribeDutyScheduleDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDutyScheduleDetails")
+    
+    
+    return
+}
+
+func NewDescribeDutyScheduleDetailsResponse() (response *DescribeDutyScheduleDetailsResponse) {
+    response = &DescribeDutyScheduleDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDutyScheduleDetails
+// 获取值班日历
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDutyScheduleDetails(request *DescribeDutyScheduleDetailsRequest) (response *DescribeDutyScheduleDetailsResponse, err error) {
+    return c.DescribeDutyScheduleDetailsWithContext(context.Background(), request)
+}
+
+// DescribeDutyScheduleDetails
+// 获取值班日历
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDutyScheduleDetailsWithContext(ctx context.Context, request *DescribeDutyScheduleDetailsRequest) (response *DescribeDutyScheduleDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDutyScheduleDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDutyScheduleDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDutyScheduleDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDutyScheduleListRequest() (request *DescribeDutyScheduleListRequest) {
+    request = &DescribeDutyScheduleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDutyScheduleList")
+    
+    
+    return
+}
+
+func NewDescribeDutyScheduleListResponse() (response *DescribeDutyScheduleListResponse) {
+    response = &DescribeDutyScheduleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDutyScheduleList
+// 获取值班表列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDutyScheduleList(request *DescribeDutyScheduleListRequest) (response *DescribeDutyScheduleListResponse, err error) {
+    return c.DescribeDutyScheduleListWithContext(context.Background(), request)
+}
+
+// DescribeDutyScheduleList
+// 获取值班表列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDutyScheduleListWithContext(ctx context.Context, request *DescribeDutyScheduleListRequest) (response *DescribeDutyScheduleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDutyScheduleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDutyScheduleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDutyScheduleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventRequest() (request *DescribeEventRequest) {
     request = &DescribeEventRequest{
         BaseRequest: &tchttp.BaseRequest{},

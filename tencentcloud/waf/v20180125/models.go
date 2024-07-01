@@ -10241,69 +10241,6 @@ type MiniPkg struct {
 }
 
 // Predefined struct for user
-type ModifyAccessPeriodRequestParams struct {
-	// 访问日志保存期限，范围为[1, 180]
-	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
-
-	// 日志主题，新版本不需要再传
-	//
-	// Deprecated: TopicId is deprecated.
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-}
-
-type ModifyAccessPeriodRequest struct {
-	*tchttp.BaseRequest
-	
-	// 访问日志保存期限，范围为[1, 180]
-	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
-
-	// 日志主题，新版本不需要再传
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-}
-
-func (r *ModifyAccessPeriodRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyAccessPeriodRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Period")
-	delete(f, "TopicId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessPeriodRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyAccessPeriodResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ModifyAccessPeriodResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyAccessPeriodResponseParams `json:"Response"`
-}
-
-func (r *ModifyAccessPeriodResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyAccessPeriodResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyAntiFakeUrlRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`

@@ -4443,9 +4443,13 @@ type DescribeManagerDetailRequestParams struct {
 	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 分页每页数量
+	//
+	// Deprecated: Limit is deprecated.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量
+	//
+	// Deprecated: Offset is deprecated.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5033,7 +5037,21 @@ type ManagerInfo struct {
 }
 
 type ManagerStatusInfo struct {
+	// 审核类型，枚举值：ov,ev,cs,ev_cs
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 // Predefined struct for user

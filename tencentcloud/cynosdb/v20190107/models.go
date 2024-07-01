@@ -38,6 +38,14 @@ type Ability struct {
 	// 是否支持手动发起快照备份
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportManualSnapshot *string `json:"IsSupportManualSnapshot,omitnil,omitempty" name:"IsSupportManualSnapshot"`
+
+	// 是否支持透明数据加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportTransparentDataEncryption *string `json:"IsSupportTransparentDataEncryption,omitnil,omitempty" name:"IsSupportTransparentDataEncryption"`
+
+	// 不支持透明数据加密原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoSupportTransparentDataEncryptionReason *string `json:"NoSupportTransparentDataEncryptionReason,omitnil,omitempty" name:"NoSupportTransparentDataEncryptionReason"`
 }
 
 type Account struct {
@@ -3461,6 +3469,11 @@ type CynosdbInstanceDetail struct {
 	// 实例状态中文描述
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
+	// serverless实例状态, 可能值：
+	// resume
+	// pause
+	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
+
 	// 数据库类型
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
@@ -3526,11 +3539,6 @@ type CynosdbInstanceDetail struct {
 
 	// serverless实例cpu上限
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
-
-	// serverless实例状态, 可能值：
-	// resume
-	// pause
-	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
 }
 
 type CynosdbInstanceGroup struct {
@@ -12444,6 +12452,10 @@ type ParamInfo struct {
 	// 函数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Func *string `json:"Func,omitnil,omitempty" name:"Func"`
+
+	// 支持公式的参数的默认公式样式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FuncPattern *string `json:"FuncPattern,omitnil,omitempty" name:"FuncPattern"`
 }
 
 type ParamItem struct {
