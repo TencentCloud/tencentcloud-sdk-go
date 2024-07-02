@@ -4599,6 +4599,9 @@ type DescribeAlarmHistoriesRequestParams struct {
 
 	// 告警等级,取值范围：Remind、Serious、Warn
 	AlarmLevels []*string `json:"AlarmLevels,omitnil,omitempty" name:"AlarmLevels"`
+
+	// 收敛历史的唯一id
+	ConvergenceHistoryIDs []*string `json:"ConvergenceHistoryIDs,omitnil,omitempty" name:"ConvergenceHistoryIDs"`
 }
 
 type DescribeAlarmHistoriesRequest struct {
@@ -4662,6 +4665,9 @@ type DescribeAlarmHistoriesRequest struct {
 
 	// 告警等级,取值范围：Remind、Serious、Warn
 	AlarmLevels []*string `json:"AlarmLevels,omitnil,omitempty" name:"AlarmLevels"`
+
+	// 收敛历史的唯一id
+	ConvergenceHistoryIDs []*string `json:"ConvergenceHistoryIDs,omitnil,omitempty" name:"ConvergenceHistoryIDs"`
 }
 
 func (r *DescribeAlarmHistoriesRequest) ToJsonString() string {
@@ -4695,6 +4701,7 @@ func (r *DescribeAlarmHistoriesRequest) FromJsonString(s string) error {
 	delete(f, "ReceiverGroups")
 	delete(f, "PolicyIds")
 	delete(f, "AlarmLevels")
+	delete(f, "ConvergenceHistoryIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmHistoriesRequest has unknown keys!", "")
 	}

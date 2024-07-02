@@ -772,7 +772,7 @@ type AssetViewCFGRisk struct {
 	// 状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// -
+	// 相关规范
 	CFGSTD *string `json:"CFGSTD,omitnil,omitempty" name:"CFGSTD"`
 
 	// 配置详情
@@ -1128,7 +1128,7 @@ type AssetViewWeakPassRisk struct {
 	// 状态，0未处理、1已处置、2已忽略
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 资产唯一id
+	// ID，处理风险使用
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 前端索引
@@ -1166,7 +1166,7 @@ type AssetViewWeakPassRisk struct {
 	// 修复建议
 	Fix *string `json:"Fix,omitnil,omitempty" name:"Fix"`
 
-	// 负载
+	// 证明
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 }
 
@@ -1964,7 +1964,7 @@ type DeleteDomainAndIpRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 资产
 	Content []*PublicIpDomainListKey `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
@@ -1986,7 +1986,7 @@ type DeleteDomainAndIpRequest struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 资产
 	Content []*PublicIpDomainListKey `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
@@ -5659,7 +5659,7 @@ type PortRiskAdvanceCFGParamItem struct {
 }
 
 type PortViewPortRisk struct {
-	// 影响资产
+	// 未处理数量
 	NoHandleCount *int64 `json:"NoHandleCount,omitnil,omitempty" name:"NoHandleCount"`
 
 	// 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
@@ -5683,13 +5683,13 @@ type PortViewPortRisk struct {
 	// 处置建议,0保持现状、1限制访问、2封禁端口
 	Suggestion *uint64 `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 状态，0未处理、1已处置、2已忽略
+	// 影响资产数量
 	AffectAssetCount *string `json:"AffectAssetCount,omitnil,omitempty" name:"AffectAssetCount"`
 
-	// 资产唯一id
+	// ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 资产子类型
+	// 识别来源
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 前端索引
@@ -6933,7 +6933,7 @@ type WebsiteRisk struct {
 	// 状态，0未处理、1已处置、2已忽略
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 资产唯一id
+	// ID,处理风险使用
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 前端索引

@@ -4557,6 +4557,9 @@ type InstanceBackupFileItem struct {
 
 	// 备份结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 对象的存储类型，枚举值：STANDARD（标准存储）、ARCHIVE（归档存储）。
+	StorageClass *string `json:"StorageClass,omitnil,omitempty" name:"StorageClass"`
 }
 
 type InstanceSpec struct {

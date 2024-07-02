@@ -677,6 +677,15 @@ const (
 	// 该站点域名已被禁用。
 	INVALIDPARAMETERVALUE_ACCESSBLACKLIST = "InvalidParameterValue.AccessBlacklist"
 
+	// 边缘双向认证配置中的客户端证书必须是CA证书。
+	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = "InvalidParameterValue.CertificateVerifyClientMustCa"
+
+	// 边缘双向认证配置至少需要配置一本证书。
+	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTNEEDCERT = "InvalidParameterValue.CertificateVerifyClientNeedCert"
+
+	// 边缘双向认证配置中的客户端 CA 证书最多允许配置20本。
+	INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = "InvalidParameterValue.ClientCertInfoQuotaLimit"
+
 	// 与已经添加的记录冲突。
 	INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
 
@@ -748,6 +757,12 @@ const (
 
 	// 不符合指定的正则表达式。
 	INVALIDPARAMETERVALUE_REGEXMISMATCH = "InvalidParameterValue.RegExMismatch"
+
+	// 已开启双向认证，客户端使用 RSA 或者 ECC 算法证书时，HTTPS 证书必须也配置有相同算法证书。
+	INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINRSAORECC = "InvalidParameterValue.ServerCertInfoNeedContainRSAorECC"
+
+	// 已开启双向认证，客户端使用国密算法 CA 证书时，HTTPS 证书必须也配置有国密证书。
+	INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = "InvalidParameterValue.ServerCertInfoNeedContainSM2"
 
 	// 请输入合法的共享 CNAME 前缀，最大支持50个字符。
 	INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = "InvalidParameterValue.SharedCNAMEPrefixNotMatch"

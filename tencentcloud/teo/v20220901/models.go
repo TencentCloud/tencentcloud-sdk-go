@@ -101,9 +101,12 @@ type AccelerationDomainCertificate struct {
 	// 配置证书的模式，取值有： <li>disable：不配置证书；</li> <li>eofreecert：配置 EdgeOne 免费证书；</li> <li>sslcert：配置 SSL 证书。</li>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 证书列表。
+	// 服务端证书列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*CertificateInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 边缘双向认证配置。
+	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
 type AclCondition struct {
@@ -1074,7 +1077,7 @@ type CacheTag struct {
 }
 
 type CertificateInfo struct {
-	// 服务器证书 ID。
+	// 证书 ID。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 证书备注名。
@@ -10102,13 +10105,14 @@ type ModifyHostsCertificateRequestParams struct {
 	// 需要修改证书配置的加速域名。
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 配置证书的模式，取值有：
-	// <li>disable：不配置证书；</li>
-	// <li>eofreecert：配置 EdgeOne 免费证书；</li>
-	// <li>sslcert：配置 SSL 证书。</li>不填时默认取值为 disable。
+	// 配置服务端证书的模式，取值有：
+	// <li>disable：不配置服务端证书；</li>
+	// <li>eofreecert：配置 EdgeOne 免费服务端证书；</li>
+	// <li>sslcert：配置 SSL 托管服务端证书；</li>
+	// 不填写表示服务端证书保持原有配置。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// SSL 证书配置，本参数仅在 mode = sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+	// SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
 	ServerCertInfo []*ServerCertInfo `json:"ServerCertInfo,omitnil,omitempty" name:"ServerCertInfo"`
 
 	// 托管类型，取值有：
@@ -10118,6 +10122,10 @@ type ModifyHostsCertificateRequestParams struct {
 	//
 	// Deprecated: ApplyType is deprecated.
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
+
+	// 边缘双向认证配置。
+	// 不填写表示边缘双向认证保持原有配置。
+	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
 type ModifyHostsCertificateRequest struct {
@@ -10129,13 +10137,14 @@ type ModifyHostsCertificateRequest struct {
 	// 需要修改证书配置的加速域名。
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 配置证书的模式，取值有：
-	// <li>disable：不配置证书；</li>
-	// <li>eofreecert：配置 EdgeOne 免费证书；</li>
-	// <li>sslcert：配置 SSL 证书。</li>不填时默认取值为 disable。
+	// 配置服务端证书的模式，取值有：
+	// <li>disable：不配置服务端证书；</li>
+	// <li>eofreecert：配置 EdgeOne 免费服务端证书；</li>
+	// <li>sslcert：配置 SSL 托管服务端证书；</li>
+	// 不填写表示服务端证书保持原有配置。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// SSL 证书配置，本参数仅在 mode = sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+	// SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
 	ServerCertInfo []*ServerCertInfo `json:"ServerCertInfo,omitnil,omitempty" name:"ServerCertInfo"`
 
 	// 托管类型，取值有：
@@ -10143,6 +10152,10 @@ type ModifyHostsCertificateRequest struct {
 	// <li>apply：托管EO</li>
 	// 不填，默认取值为none。
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
+
+	// 边缘双向认证配置。
+	// 不填写表示边缘双向认证保持原有配置。
+	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
 func (r *ModifyHostsCertificateRequest) ToJsonString() string {
@@ -10162,6 +10175,7 @@ func (r *ModifyHostsCertificateRequest) FromJsonString(s string) error {
 	delete(f, "Mode")
 	delete(f, "ServerCertInfo")
 	delete(f, "ApplyType")
+	delete(f, "ClientCertInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHostsCertificateRequest has unknown keys!", "")
 	}
@@ -11440,6 +11454,17 @@ func (r *ModifyZoneStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyZoneStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MutualTLS struct {
+	// 双向认证配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 双向认证证书列表。
+	// 注意：MutualTLS 在 ModifyHostsCertificate 作为入参使用时，该参数传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+	CertInfos []*CertificateInfo `json:"CertInfos,omitnil,omitempty" name:"CertInfos"`
 }
 
 type NoCache struct {

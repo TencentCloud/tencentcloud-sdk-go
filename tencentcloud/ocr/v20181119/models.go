@@ -72,6 +72,9 @@ type AdvertiseOCRResponseParams struct {
 	// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
 	TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitnil,omitempty" name:"TextDetections"`
 
+	// 图片分辨率信息，单位 px
+	ImageSize *ImageSize `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4384,6 +4387,16 @@ func (r *ImageEnhancementResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImageEnhancementResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ImageSize struct {
+	// 图片的宽，单位像素
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 图片的高，单位像素
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 // Predefined struct for user

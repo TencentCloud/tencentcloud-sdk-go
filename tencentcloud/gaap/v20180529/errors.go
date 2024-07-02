@@ -167,6 +167,9 @@ const (
 	// 规则已经存在。
 	FAILEDOPERATION_RULEALREADYEXISTED = "FailedOperation.RuleAlreadyExisted"
 
+	// 签名校验错误。
+	FAILEDOPERATION_SECRETVALIDATEFAILED = "FailedOperation.SecretValidateFailed"
+
 	// Session不存在或已经被取消。
 	FAILEDOPERATION_SESSIONNOTEXIST = "FailedOperation.SessionNotExist"
 
@@ -199,6 +202,9 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 参数之间出现冲突。
+	INVALIDPARAMETER_CONFLICTPARAMETERS = "InvalidParameter.ConflictParameters"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

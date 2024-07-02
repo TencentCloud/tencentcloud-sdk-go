@@ -6463,6 +6463,9 @@ type CreateVpnConnectionRequestParams struct {
 
 	// BGP配置。
 	BgpConfig *BgpConfig `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
+
+	// 健康检查NQA配置。
+	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 type CreateVpnConnectionRequest struct {
@@ -6525,6 +6528,9 @@ type CreateVpnConnectionRequest struct {
 
 	// BGP配置。
 	BgpConfig *BgpConfig `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
+
+	// 健康检查NQA配置。
+	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -6558,6 +6564,7 @@ func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
 	delete(f, "DpdAction")
 	delete(f, "Route")
 	delete(f, "BgpConfig")
+	delete(f, "HealthCheckConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnConnectionRequest has unknown keys!", "")
 	}
@@ -19735,6 +19742,24 @@ func (r *HaVipDisassociateAddressIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HealthCheckConfig struct {
+	// 探测模式，默认值NQA，不可修改。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProbeType *string `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
+
+	// 探测间隔，腾讯云两次健康检查间隔时间，范围【1000-5000】，单位ms。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProbeInterval *int64 `json:"ProbeInterval,omitnil,omitempty" name:"ProbeInterval"`
+
+	// 探测次数，连续N次健康检查失败后执行路由切换，范围【3-8】，单位次。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProbeThreshold *int64 `json:"ProbeThreshold,omitnil,omitempty" name:"ProbeThreshold"`
+
+	// 探测超时时间，范围【10-5000】，单位ms。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProbeTimeout *int64 `json:"ProbeTimeout,omitnil,omitempty" name:"ProbeTimeout"`
+}
+
 type IKEOptionsSpecification struct {
 	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -24037,6 +24062,9 @@ type ModifyVpnConnectionAttributeRequestParams struct {
 
 	// 对端网关ID，4.0及以上网关下的通道支持更新。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitnil,omitempty" name:"CustomerGatewayId"`
+
+	// 健康检查配置
+	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 type ModifyVpnConnectionAttributeRequest struct {
@@ -24083,6 +24111,9 @@ type ModifyVpnConnectionAttributeRequest struct {
 
 	// 对端网关ID，4.0及以上网关下的通道支持更新。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitnil,omitempty" name:"CustomerGatewayId"`
+
+	// 健康检查配置
+	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {
@@ -24111,6 +24142,7 @@ func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
 	delete(f, "DpdTimeout")
 	delete(f, "DpdAction")
 	delete(f, "CustomerGatewayId")
+	delete(f, "HealthCheckConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnConnectionAttributeRequest has unknown keys!", "")
 	}
@@ -28177,6 +28209,10 @@ type VpnConnection struct {
 	// Bgp配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BgpConfig *BgpConfigAndAsn `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
+
+	// Nqa配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 type VpnGateway struct {

@@ -7939,3 +7939,80 @@ func (c *Client) SetAuthenticationWithContext(ctx context.Context, request *SetA
     err = c.Send(request, response)
     return
 }
+
+func NewSetTlsVersionRequest() (request *SetTlsVersionRequest) {
+    request = &SetTlsVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "SetTlsVersion")
+    
+    
+    return
+}
+
+func NewSetTlsVersionResponse() (response *SetTlsVersionResponse) {
+    response = &SetTlsVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetTlsVersion
+// 设置监听器TLS配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_NOTSUPPORTSCALAR = "FailedOperation.NotSupportScalar"
+//  FAILEDOPERATION_OPERATELIMITNUMOFLISTENER = "FailedOperation.OperateLimitNumofListener"
+//  FAILEDOPERATION_SECRETVALIDATEFAILED = "FailedOperation.SecretValidateFailed"
+//  FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETERS = "InvalidParameter.ConflictParameters"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CERTIFICATECONTENTNOTMATCHKEY = "InvalidParameterValue.CertificateContentNotMatchKey"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CROSSBORDERINISOLATING = "UnauthorizedOperation.CrossBorderInIsolating"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SetTlsVersion(request *SetTlsVersionRequest) (response *SetTlsVersionResponse, err error) {
+    return c.SetTlsVersionWithContext(context.Background(), request)
+}
+
+// SetTlsVersion
+// 设置监听器TLS配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_NOTSUPPORTSCALAR = "FailedOperation.NotSupportScalar"
+//  FAILEDOPERATION_OPERATELIMITNUMOFLISTENER = "FailedOperation.OperateLimitNumofListener"
+//  FAILEDOPERATION_SECRETVALIDATEFAILED = "FailedOperation.SecretValidateFailed"
+//  FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETERS = "InvalidParameter.ConflictParameters"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CERTIFICATECONTENTNOTMATCHKEY = "InvalidParameterValue.CertificateContentNotMatchKey"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CROSSBORDERINISOLATING = "UnauthorizedOperation.CrossBorderInIsolating"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SetTlsVersionWithContext(ctx context.Context, request *SetTlsVersionRequest) (response *SetTlsVersionResponse, err error) {
+    if request == nil {
+        request = NewSetTlsVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTlsVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetTlsVersionResponse()
+    err = c.Send(request, response)
+    return
+}

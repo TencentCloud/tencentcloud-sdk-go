@@ -1532,7 +1532,7 @@ func NewDeleteOrganizationMembersResponse() (response *DeleteOrganizationMembers
 }
 
 // DeleteOrganizationMembers
-// 批量删除企业组织成员
+// 从组织中移除成员账号，不会删除账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"
@@ -1555,7 +1555,7 @@ func (c *Client) DeleteOrganizationMembers(request *DeleteOrganizationMembersReq
 }
 
 // DeleteOrganizationMembers
-// 批量删除企业组织成员
+// 从组织中移除成员账号，不会删除账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"

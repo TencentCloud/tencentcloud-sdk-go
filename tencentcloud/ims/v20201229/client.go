@@ -107,6 +107,10 @@ func NewCreateImageModerationAsyncTaskResponse() (response *CreateImageModeratio
 //
 // - 默认接口请求频率限制：**20次/秒**，超过此调用频率则会报错。
 //
+// - ### 接口回调格式：
+//
+// - 图片异步检测接口回调格式同[图片同步检测接口输出参数](https://cloud.tencent.com/document/product/1125/53273#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+//
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
@@ -185,6 +189,10 @@ func (c *Client) CreateImageModerationAsyncTask(request *CreateImageModerationAs
 // - 若传入图片文件的访问链接，则需要注意**图片下载时间限制为3秒**，为保障被检测图片的稳定性和可靠性，建议您使用腾讯云COS存储或者CDN缓存等；
 //
 // - 默认接口请求频率限制：**20次/秒**，超过此调用频率则会报错。
+//
+// - ### 接口回调格式：
+//
+// - 图片异步检测接口回调格式同[图片同步检测接口输出参数](https://cloud.tencent.com/document/product/1125/53273#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"

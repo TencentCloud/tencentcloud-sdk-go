@@ -9673,6 +9673,74 @@ func (r *SetAuthenticationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetTlsVersionRequestParams struct {
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// TLS版本
+	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
+
+	// 密码套件包
+	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
+}
+
+type SetTlsVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// TLS版本
+	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
+
+	// 密码套件包
+	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
+}
+
+func (r *SetTlsVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetTlsVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ListenerId")
+	delete(f, "TLSSupportVersion")
+	delete(f, "TLSCiphers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetTlsVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetTlsVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetTlsVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *SetTlsVersionResponseParams `json:"Response"`
+}
+
+func (r *SetTlsVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetTlsVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SrcAddressInfo struct {
 	// 内网Ip4地址
 	SrcIpv4 *string `json:"SrcIpv4,omitnil,omitempty" name:"SrcIpv4"`

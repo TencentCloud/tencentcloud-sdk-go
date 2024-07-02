@@ -1705,6 +1705,9 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 
 	// 公网带宽大小，单位 M
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 是否打开公网接入，不传默认为false
+	EnablePublicAccess *bool `json:"EnablePublicAccess,omitnil,omitempty" name:"EnablePublicAccess"`
 }
 
 type CreateRabbitMQVipInstanceRequest struct {
@@ -1754,6 +1757,9 @@ type CreateRabbitMQVipInstanceRequest struct {
 
 	// 公网带宽大小，单位 M
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 是否打开公网接入，不传默认为false
+	EnablePublicAccess *bool `json:"EnablePublicAccess,omitnil,omitempty" name:"EnablePublicAccess"`
 }
 
 func (r *CreateRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -1783,6 +1789,7 @@ func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "IsIntl")
 	delete(f, "ResourceTags")
 	delete(f, "Bandwidth")
+	delete(f, "EnablePublicAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -12991,6 +12998,10 @@ type RabbitMQVirtualHostInfo struct {
 	// vhost概览统计信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHostStatistics *RabbitMQVirtualHostStatistics `json:"VirtualHostStatistics,omitnil,omitempty" name:"VirtualHostStatistics"`
+
+	// 消息轨迹开关,true打开,false关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
 
 	// vhost状态，与原生控制台对应，有running、partial、stopped、unknown
 	// 注意：此字段可能返回 null，表示取不到有效值。
