@@ -582,6 +582,136 @@ func (r *QueryTrainPortraitModelJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ReplaceBackgroundRequestParams struct {
+	// 商品原图 Url。
+	// 图片限制：单边分辨率小于4000，长宽比在2:5 ~ 5:2之间，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	ProductUrl *string `json:"ProductUrl,omitnil,omitempty" name:"ProductUrl"`
+
+	// 商品 Mask 图 Url，要求背景透明，保留商品主体。
+	// 如果不传，将自动使用内置的商品分割算法得到 Mask。
+	// 支持自定义上传 Mask，如果该参数不为空，则以实际上传的数据为准。
+	// 图片限制：Mask 图必须和商品原图分辨率一致，转成 Base64 字符串后小于 6MB，格式仅支持 png。
+	MaskUrl *string `json:"MaskUrl,omitnil,omitempty" name:"MaskUrl"`
+
+	// 对新背景的文本描述。
+	// 最多支持256个 utf-8 字符，支持中、英文。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 替换背景后生成的商品图分辨率。
+	// 支持生成单边分辨率大于500且小于4000、长宽比在2:5 ~ 5:2之间的图片，不传默认生成1280:1280。
+	// 建议图片比例为1:1、9:16、16:9，生成效果更佳，使用其他比例的生成效果可能不如建议比例。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+type ReplaceBackgroundRequest struct {
+	*tchttp.BaseRequest
+	
+	// 商品原图 Url。
+	// 图片限制：单边分辨率小于4000，长宽比在2:5 ~ 5:2之间，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	ProductUrl *string `json:"ProductUrl,omitnil,omitempty" name:"ProductUrl"`
+
+	// 商品 Mask 图 Url，要求背景透明，保留商品主体。
+	// 如果不传，将自动使用内置的商品分割算法得到 Mask。
+	// 支持自定义上传 Mask，如果该参数不为空，则以实际上传的数据为准。
+	// 图片限制：Mask 图必须和商品原图分辨率一致，转成 Base64 字符串后小于 6MB，格式仅支持 png。
+	MaskUrl *string `json:"MaskUrl,omitnil,omitempty" name:"MaskUrl"`
+
+	// 对新背景的文本描述。
+	// 最多支持256个 utf-8 字符，支持中、英文。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 替换背景后生成的商品图分辨率。
+	// 支持生成单边分辨率大于500且小于4000、长宽比在2:5 ~ 5:2之间的图片，不传默认生成1280:1280。
+	// 建议图片比例为1:1、9:16、16:9，生成效果更佳，使用其他比例的生成效果可能不如建议比例。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+func (r *ReplaceBackgroundRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceBackgroundRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductUrl")
+	delete(f, "MaskUrl")
+	delete(f, "Prompt")
+	delete(f, "Resolution")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceBackgroundRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplaceBackgroundResponseParams struct {
+	// 根据入参 RspImgType 填入不同，返回不同的内容。
+	// 如果传入 base64 则返回生成图 Base64 编码。
+	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 如果 MaskUrl 未传，则返回使用内置商品分割算法得到的 Mask 结果。
+	MaskImage *string `json:"MaskImage,omitnil,omitempty" name:"MaskImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReplaceBackgroundResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplaceBackgroundResponseParams `json:"Response"`
+}
+
+func (r *ReplaceBackgroundResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceBackgroundResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResultConfig struct {
 	// 生成图分辨率
 	// 

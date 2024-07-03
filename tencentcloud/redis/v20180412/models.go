@@ -981,7 +981,7 @@ type CommandTake struct {
 	// 命令名。
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 
-	// 耗时时长。
+	// 耗时时长。单位：ms。
 	Took *int64 `json:"Took,omitnil,omitempty" name:"Took"`
 }
 
@@ -3386,20 +3386,28 @@ func (r *DescribeInstanceMonitorTookDistResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeInstanceMonitorTopNCmdRequestParams struct {
-	// 实例Id
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
 type DescribeInstanceMonitorTopNCmdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+	// 时间范围。
+	// - 1：实时。
+	// - 2：近30分钟。
+	// - 3：近6小时。
+	// - 4：近24小时。
 	SpanType *int64 `json:"SpanType,omitnil,omitempty" name:"SpanType"`
 }
 
@@ -6391,7 +6399,7 @@ func (r *InquiryPriceUpgradeInstanceResponse) FromJsonString(s string) error {
 }
 
 type InstanceClusterNode struct {
-	// 节点名称。
+	// 节点组名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 实例运行时节点 ID。
@@ -10094,16 +10102,18 @@ type ZoneCapacityConf struct {
 	// 可用区ID：如ap-guangzhou-3
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 可用区名称
+	// 可用区名称。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 可用区是否售罄
+	// 可用区是否售罄。
 	IsSaleout *bool `json:"IsSaleout,omitnil,omitempty" name:"IsSaleout"`
 
-	// 是否为默认可用区
+	// 是否为默认可用区。
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 网络类型：basenet -- 基础网络；vpcnet -- VPC网络
+	// 网络类型。
+	// - basenet：基础网络。
+	// - vpcnet -- VPC网络。
 	NetWorkType []*string `json:"NetWorkType,omitnil,omitempty" name:"NetWorkType"`
 
 	// 可用区内产品规格等信息

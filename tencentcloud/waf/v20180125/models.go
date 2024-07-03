@@ -1764,6 +1764,26 @@ type ClbObject struct {
 	// 对象地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Proxy *uint64 `json:"Proxy,omitnil,omitempty" name:"Proxy"`
+
+	// 指定获取客户端IP的头部字段列表。IsCdn为3时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
+
+	// bot防护开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
+
+	// api防护开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
+
+	// 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectFlowMode *int64 `json:"ObjectFlowMode,omitnil,omitempty" name:"ObjectFlowMode"`
 }
 
 type ClbWafRegionItem struct {

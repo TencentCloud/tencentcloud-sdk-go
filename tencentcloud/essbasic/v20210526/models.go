@@ -11533,7 +11533,7 @@ type UploadFile struct {
 	// Base64编码后的文件内容
 	FileBody *string `json:"FileBody,omitnil,omitempty" name:"FileBody"`
 
-	// 文件名
+	// 文件名，最大长度不超过200字符
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 
