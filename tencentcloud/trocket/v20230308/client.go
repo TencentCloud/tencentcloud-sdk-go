@@ -1151,15 +1151,15 @@ func NewDescribeInstanceListResponse() (response *DescribeInstanceListResponse) 
 }
 
 // DescribeInstanceList
-// 获取实例列表，Filters参数使用说明如下：
+// 获取集群列表，仅支持 5.x 集群，Filters参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
 //
-// 2. InstanceId，实例ID查询
+// 2. InstanceId，集群ID查询
 //
-// 3. InstanceType, 实例类型查询，支持多选
+// 3. InstanceType, 集群类型查询，支持多选
 //
-// 3. InstanceStatus，实例状态查询，支持多选
+// 3. InstanceStatus，集群状态查询，支持多选
 //
 // 
 //
@@ -1172,15 +1172,15 @@ func (c *Client) DescribeInstanceList(request *DescribeInstanceListRequest) (res
 }
 
 // DescribeInstanceList
-// 获取实例列表，Filters参数使用说明如下：
+// 获取集群列表，仅支持 5.x 集群，Filters参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
 //
-// 2. InstanceId，实例ID查询
+// 2. InstanceId，集群ID查询
 //
-// 3. InstanceType, 实例类型查询，支持多选
+// 3. InstanceType, 集群类型查询，支持多选
 //
-// 3. InstanceStatus，实例状态查询，支持多选
+// 3. InstanceStatus，集群状态查询，支持多选
 //
 // 
 //

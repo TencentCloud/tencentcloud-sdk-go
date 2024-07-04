@@ -356,6 +356,9 @@ const (
 	// 当前账号名称不允许是保留字符。
 	INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = "InvalidParameterValue.InvalidAccountName"
 
+	// 账号设置无效，请遵循账号命名规则：账号名需要1-16个字符，只能由字母、数字或下划线组成；不能为postgres；不能由数字、pg_及tencentdb_开头；所有规则均不区分大小写。
+	INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+
 	// 数据库字符集错误，当前只支持UTF8、LATIN1。
 	INVALIDPARAMETERVALUE_INVALIDCHARSET = "InvalidParameterValue.InvalidCharset"
 

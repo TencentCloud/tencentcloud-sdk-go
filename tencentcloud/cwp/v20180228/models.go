@@ -7689,16 +7689,16 @@ func (r *DeleteWebPageEventLogResponse) FromJsonString(s string) error {
 }
 
 type DeliverTypeDetails struct {
-	// 安全模块类型 1: 入侵检测 2: 漏洞管理 3: 基线管理 4: 高级防御 5:客户端相关 6: 资产指纹
+	// 安全模块类型 1: 入侵检测 2: 漏洞管理 3: 基线管理 4: 高级防御 5:客户端相关 6: 资产指纹 7 主机列表 8 客户端上报
 	SecurityType *uint64 `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 
-	// 安全模块下的日志类型，http://tapd.woa.com/Teneyes/markdown_wikis/show/#1210131751002328905
+	// 安全模块下的日志类型
 	LogType []*int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// kafka topic id
+	// 主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// kafka topic name
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 投递开关 0关闭 1开启
@@ -7710,8 +7710,17 @@ type DeliverTypeDetails struct {
 	// 错误信息
 	ErrInfo *string `json:"ErrInfo,omitnil,omitempty" name:"ErrInfo"`
 
-	// 最近一次状态上报时间戳，s
+	// 最近一次状态上报时间戳
 	StatusTime *int64 `json:"StatusTime,omitnil,omitempty" name:"StatusTime"`
+
+	// 日志集名
+	LogName *string `json:"LogName,omitnil,omitempty" name:"LogName"`
+
+	// 日志集ID
+	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
+
+	// 日志集所在地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 // Predefined struct for user
@@ -33545,29 +33554,27 @@ func (r *ExportBaselineFixListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportBaselineHostDetectListRequestParams struct {
-	// <li>HostTag - string - 是否必填：否 - 主机标签</i>
-	// <li>ItemId - int64 - 是否必填：否 - 项Id</i>
-	// <li>RuleId - int64 - 是否必填：否 - 规则Id</li>
-	// <li>IsPassed - int - 是否必填：否 - 是否通过</li>
-	// <li>RiskTier - int - 是否必填：否 - 风险等级</li>
+	// <li>HostTag - string - 是否必填：否 - 主机标签</li><li>ItemId - int64 - 是否必填：否 - 项Id</li><li>RuleId - int64 - 是否必填：否 - 规则Id</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 0:过滤的结果导出；1:全部导出
 	ExportAll *int64 `json:"ExportAll,omitnil,omitempty" name:"ExportAll"`
+
+	// 0:导出界面展示；1:导出全部结果事件
+	IsExportDetail *int64 `json:"IsExportDetail,omitnil,omitempty" name:"IsExportDetail"`
 }
 
 type ExportBaselineHostDetectListRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li>HostTag - string - 是否必填：否 - 主机标签</i>
-	// <li>ItemId - int64 - 是否必填：否 - 项Id</i>
-	// <li>RuleId - int64 - 是否必填：否 - 规则Id</li>
-	// <li>IsPassed - int - 是否必填：否 - 是否通过</li>
-	// <li>RiskTier - int - 是否必填：否 - 风险等级</li>
+	// <li>HostTag - string - 是否必填：否 - 主机标签</li><li>ItemId - int64 - 是否必填：否 - 项Id</li><li>RuleId - int64 - 是否必填：否 - 规则Id</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 0:过滤的结果导出；1:全部导出
 	ExportAll *int64 `json:"ExportAll,omitnil,omitempty" name:"ExportAll"`
+
+	// 0:导出界面展示；1:导出全部结果事件
+	IsExportDetail *int64 `json:"IsExportDetail,omitnil,omitempty" name:"IsExportDetail"`
 }
 
 func (r *ExportBaselineHostDetectListRequest) ToJsonString() string {
@@ -33584,6 +33591,7 @@ func (r *ExportBaselineHostDetectListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filters")
 	delete(f, "ExportAll")
+	delete(f, "IsExportDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportBaselineHostDetectListRequest has unknown keys!", "")
 	}
@@ -33614,27 +33622,27 @@ func (r *ExportBaselineHostDetectListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportBaselineItemDetectListRequestParams struct {
-	// <li>HostId - string - 是否必填：否 - 主机Id</i>
-	// <li>RuleId - int64 - 是否必填：否 - 规则Id</i>
-	// <li>IsPassed - int - 是否必填：否 - 是否通过</li>
-	// <li>RiskTier - int - 是否必填：否 - 风险等级</li>
+	// <li>HostId - string - 是否必填：否 - 主机Id</li><li>RuleId - int64 - 是否必填：否 - 规则Id</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 0:过滤的结果导出；1:全部导出
 	ExportAll *int64 `json:"ExportAll,omitnil,omitempty" name:"ExportAll"`
+
+	// 0:导出界面展示；1:导出全部结果事件
+	IsExportDetail *int64 `json:"IsExportDetail,omitnil,omitempty" name:"IsExportDetail"`
 }
 
 type ExportBaselineItemDetectListRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li>HostId - string - 是否必填：否 - 主机Id</i>
-	// <li>RuleId - int64 - 是否必填：否 - 规则Id</i>
-	// <li>IsPassed - int - 是否必填：否 - 是否通过</li>
-	// <li>RiskTier - int - 是否必填：否 - 风险等级</li>
+	// <li>HostId - string - 是否必填：否 - 主机Id</li><li>RuleId - int64 - 是否必填：否 - 规则Id</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 0:过滤的结果导出；1:全部导出
 	ExportAll *int64 `json:"ExportAll,omitnil,omitempty" name:"ExportAll"`
+
+	// 0:导出界面展示；1:导出全部结果事件
+	IsExportDetail *int64 `json:"IsExportDetail,omitnil,omitempty" name:"IsExportDetail"`
 }
 
 func (r *ExportBaselineItemDetectListRequest) ToJsonString() string {
@@ -33651,6 +33659,7 @@ func (r *ExportBaselineItemDetectListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filters")
 	delete(f, "ExportAll")
+	delete(f, "IsExportDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportBaselineItemDetectListRequest has unknown keys!", "")
 	}
@@ -33840,25 +33849,27 @@ func (r *ExportBaselineListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportBaselineRuleDetectListRequestParams struct {
-	// <li>RuleName - string - 是否必填：否 - 规则名称</i>
-	// <li>IsPassed - int - 是否必填：否 - 是否通过</li>
-	// <li>RiskTier - int - 是否必填：否 - 风险等级</li>
+	// <li>RuleName - string - 是否必填：否 - 规则名称</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 0:过滤的结果导出；1:全部导出
 	ExportAll *int64 `json:"ExportAll,omitnil,omitempty" name:"ExportAll"`
+
+	// 0:导出界面展示；1:导出全部结果事件
+	IsExportDetail *int64 `json:"IsExportDetail,omitnil,omitempty" name:"IsExportDetail"`
 }
 
 type ExportBaselineRuleDetectListRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li>RuleName - string - 是否必填：否 - 规则名称</i>
-	// <li>IsPassed - int - 是否必填：否 - 是否通过</li>
-	// <li>RiskTier - int - 是否必填：否 - 风险等级</li>
+	// <li>RuleName - string - 是否必填：否 - 规则名称</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 0:过滤的结果导出；1:全部导出
 	ExportAll *int64 `json:"ExportAll,omitnil,omitempty" name:"ExportAll"`
+
+	// 0:导出界面展示；1:导出全部结果事件
+	IsExportDetail *int64 `json:"IsExportDetail,omitnil,omitempty" name:"IsExportDetail"`
 }
 
 func (r *ExportBaselineRuleDetectListRequest) ToJsonString() string {
@@ -33875,6 +33886,7 @@ func (r *ExportBaselineRuleDetectListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filters")
 	delete(f, "ExportAll")
+	delete(f, "IsExportDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportBaselineRuleDetectListRequest has unknown keys!", "")
 	}

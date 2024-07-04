@@ -350,6 +350,9 @@ const (
 	// 参数错误：无效的操作类型。
 	INVALIDPARAMETERVALUE_INVALIDOPERATIONTYPE = "InvalidParameterValue.InvalidOperationType"
 
+	// 参数值错误：错误固化参数。
+	INVALIDPARAMETERVALUE_ISPERSISTENCE = "InvalidParameterValue.IsPersistence"
+
 	// Isps 参数错误。
 	INVALIDPARAMETERVALUE_ISPS = "InvalidParameterValue.Isps"
 
@@ -410,11 +413,20 @@ const (
 	// 参数值错误：文件原存储类型异常。
 	INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = "InvalidParameterValue.OriginalStorageClass"
 
+	// 参数值错误：错误的输出媒体文件类型。
+	INVALIDPARAMETERVALUE_OUTPUTMEDIATYPE = "InvalidParameterValue.OutputMediaType"
+
 	// 参数值错误：ParentId 无效。
 	INVALIDPARAMETERVALUE_PARENTID = "InvalidParameterValue.ParentId"
 
 	// 参数值错误：人脸图片格式错误。
 	INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
+
+	// 参数值错误：错误的精度参数。
+	INVALIDPARAMETERVALUE_PRECISION = "InvalidParameterValue.Precision"
+
+	// 参数值错误：错误的 Procedure 。
+	INVALIDPARAMETERVALUE_PROCEDURE = "InvalidParameterValue.Procedure"
 
 	// 任务流模板名无效。
 	INVALIDPARAMETERVALUE_PROCEDURENAME = "InvalidParameterValue.ProcedureName"

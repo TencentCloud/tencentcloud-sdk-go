@@ -1763,6 +1763,10 @@ func NewDetectProductBetaResponse() (response *DetectProductBetaResponse) {
 }
 
 // DetectProductBeta
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 商品识别-微信识物版，基于人工智能技术、海量训练图片、亿级商品库，可以实现全覆盖、细粒度、高准确率的商品识别和商品推荐功能。
 //
 // 本服务可以识别出图片中的主体位置、主体商品类型，覆盖亿级SKU，输出具体商品的价格、型号等详细信息。
@@ -1795,6 +1799,10 @@ func (c *Client) DetectProductBeta(request *DetectProductBetaRequest) (response 
 }
 
 // DetectProductBeta
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 商品识别-微信识物版，基于人工智能技术、海量训练图片、亿级商品库，可以实现全覆盖、细粒度、高准确率的商品识别和商品推荐功能。
 //
 // 本服务可以识别出图片中的主体位置、主体商品类型，覆盖亿级SKU，输出具体商品的价格、型号等详细信息。

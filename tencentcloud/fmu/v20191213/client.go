@@ -180,6 +180,10 @@ func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
 }
 
 // BeautifyVideo
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 视频美颜(此接口目前已下线)
 //
 // 可能返回的错误码:
@@ -198,6 +202,10 @@ func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *Beautif
 }
 
 // BeautifyVideo
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 视频美颜(此接口目前已下线)
 //
 // 可能返回的错误码:
@@ -247,6 +255,10 @@ func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobRespon
 }
 
 // CancelBeautifyVideoJob
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 撤销视频美颜任务请求
 //
 // 可能返回的错误码:
@@ -262,6 +274,10 @@ func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) 
 }
 
 // CancelBeautifyVideoJob
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 撤销视频美颜任务请求
 //
 // 可能返回的错误码:
@@ -507,6 +523,10 @@ func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse
 }
 
 // QueryBeautifyVideoJob
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 查询视频美颜处理进度
 //
 // 可能返回的错误码:
@@ -525,6 +545,10 @@ func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (r
 }
 
 // QueryBeautifyVideoJob
+// 产品不再维护，准备下线。
+//
+// 
+//
 // 查询视频美颜处理进度
 //
 // 可能返回的错误码:

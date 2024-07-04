@@ -6566,6 +6566,42 @@ func (r *DescribeMachineGroupsResponse) FromJsonString(s string) error {
 type DescribeMachinesRequestParams struct {
 	// 查询的机器组ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// ip
+	// - 按照【ip】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// instance
+	// - 按照【instance】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// version
+	// - 按照【LogListener版本】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// status
+	// - 按照【状态】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// - 可选值：0：离线，1：正常
+	// 
+	// offlineTime
+	// - 按照【机器离线时间】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// - - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目。最大支持100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeMachinesRequest struct {
@@ -6573,6 +6609,42 @@ type DescribeMachinesRequest struct {
 	
 	// 查询的机器组ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// ip
+	// - 按照【ip】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// instance
+	// - 按照【instance】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// version
+	// - 按照【LogListener版本】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// 
+	// status
+	// - 按照【状态】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// - 可选值：0：离线，1：正常
+	// 
+	// offlineTime
+	// - 按照【机器离线时间】进行过滤。
+	// - 类型：String
+	// - 必选：否
+	// - - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目。最大支持100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeMachinesRequest) ToJsonString() string {
@@ -6588,6 +6660,9 @@ func (r *DescribeMachinesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "GroupId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMachinesRequest has unknown keys!", "")
 	}
@@ -6613,6 +6688,10 @@ type DescribeMachinesResponseParams struct {
 
 	// 是否开启服务日志
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
+
+	// 总数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

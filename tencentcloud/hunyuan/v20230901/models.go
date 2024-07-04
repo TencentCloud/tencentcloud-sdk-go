@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type ChatCompletionsRequestParams struct {
-	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro。
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 	// 
 	// 注意：
@@ -32,8 +32,8 @@ type ChatCompletionsRequestParams struct {
 	// 聊天上下文信息。
 	// 说明：
 	// 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
-	// 2. Message.Role 可选值：system、user、assistant。
-	// 其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始和结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
+	// 2. Message.Role 可选值：system、user、assistant、 tool。
+	// 其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
 	// 3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
@@ -80,12 +80,25 @@ type ChatCompletionsRequestParams struct {
 	// 3. 关闭时将直接由主模型生成回复内容，可以降低响应时延（对于流式输出时的首字时延尤为明显）。但在少数场景里，回复效果可能会下降。
 	// 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
+
+	// 可调用的工具列表，仅对 hunyuan-functioncall 模型生效。
+	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// 工具使用选项，可选值包括 none、auto、custom。
+	// 说明：
+	// 1. 仅对 hunyuan-functioncall 模型生效。
+	// 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
+	// 3. 未设置时，默认值为auto
+	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
+
+	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+	CustomTool *Tool `json:"CustomTool,omitnil,omitempty" name:"CustomTool"`
 }
 
 type ChatCompletionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro。
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 	// 
 	// 注意：
@@ -95,8 +108,8 @@ type ChatCompletionsRequest struct {
 	// 聊天上下文信息。
 	// 说明：
 	// 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
-	// 2. Message.Role 可选值：system、user、assistant。
-	// 其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始和结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
+	// 2. Message.Role 可选值：system、user、assistant、 tool。
+	// 其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
 	// 3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
@@ -143,6 +156,19 @@ type ChatCompletionsRequest struct {
 	// 3. 关闭时将直接由主模型生成回复内容，可以降低响应时延（对于流式输出时的首字时延尤为明显）。但在少数场景里，回复效果可能会下降。
 	// 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
+
+	// 可调用的工具列表，仅对 hunyuan-functioncall 模型生效。
+	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// 工具使用选项，可选值包括 none、auto、custom。
+	// 说明：
+	// 1. 仅对 hunyuan-functioncall 模型生效。
+	// 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
+	// 3. 未设置时，默认值为auto
+	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
+
+	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+	CustomTool *Tool `json:"CustomTool,omitnil,omitempty" name:"CustomTool"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -164,6 +190,9 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "TopP")
 	delete(f, "Temperature")
 	delete(f, "EnableEnhancement")
+	delete(f, "Tools")
+	delete(f, "ToolChoice")
+	delete(f, "CustomTool")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -227,12 +256,35 @@ type Choice struct {
 	Message *Message `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
+type Content struct {
+	// 内容类型
+	// 注意：
+	// 当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 当 Type 为 text 时使用，表示具体的文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 当 Type 为 image_url 时使用，表示具体的图片内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *ImageUrl `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
 type Delta struct {
 	// 角色名称。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 内容详情。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 模型生成的工具调用，仅 hunyuan-functioncall 模型支持
+	// 说明：
+	// 对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
 }
 
 type EmbeddingData struct {
@@ -390,12 +442,30 @@ func (r *GetTokenCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ImageUrl struct {
+	// 图片的 Url（以 http:// 或 https:// 开头）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
 type Message struct {
-	// 角色，可选值包括 system、user、assistant。
+	// 角色，可选值包括 system、user、assistant、 tool。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 文本内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 多种类型内容（目前支持图片和文本），仅 hunyuan-vision 模型支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contents []*Content `json:"Contents,omitnil,omitempty" name:"Contents"`
+
+	// 当role为tool时传入，标识具体的函数调用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToolCallId *string `json:"ToolCallId,omitnil,omitempty" name:"ToolCallId"`
+
+	// 模型生成的工具调用，仅 hunyuan-functioncall 模型支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
 }
 
 // Predefined struct for user
@@ -577,6 +647,44 @@ func (r *SubmitHunyuanImageJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SubmitHunyuanImageJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tool struct {
+	// 工具类型，当前只支持function
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 具体要调用的function
+	Function *ToolFunction `json:"Function,omitnil,omitempty" name:"Function"`
+}
+
+type ToolCall struct {
+	// 工具调用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 工具调用类型，当前只支持function
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 具体的function调用
+	Function *ToolCallFunction `json:"Function,omitnil,omitempty" name:"Function"`
+}
+
+type ToolCallFunction struct {
+	// function名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// function参数，一般为json字符串
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+}
+
+type ToolFunction struct {
+	// function名称，只能包含a-z，A-Z，0-9，\_或-
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// function参数，一般为json字符串
+	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
+
+	// function的简单描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type Usage struct {

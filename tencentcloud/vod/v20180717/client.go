@@ -11898,11 +11898,11 @@ func NewSimpleHlsClipResponse() (response *SimpleHlsClipResponse) {
 //
 // 
 //
-// 注意：
+// 裁剪精度支持粗略裁剪和精确裁剪：
 //
-// - 剪辑是基于输入 m3u8 文件进行的，故而其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
+// - 粗略剪辑：基于输入 m3u8 文件进行裁剪，其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 //
-// 
+// - 精确剪辑：按照 StartTimeOffset 和 EndTimeOffset 参数进行精确裁剪。使用精确裁剪需要开通[即时转码](/document/product/266/102174)的功能。
 //
 // 
 //
@@ -11939,6 +11939,10 @@ func NewSimpleHlsClipResponse() (response *SimpleHlsClipResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ENDTIMEOFFSET = "InvalidParameterValue.EndTimeOffset"
 //  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_ISPERSISTENCE = "InvalidParameterValue.IsPersistence"
+//  INVALIDPARAMETERVALUE_OUTPUTMEDIATYPE = "InvalidParameterValue.OutputMediaType"
+//  INVALIDPARAMETERVALUE_PRECISION = "InvalidParameterValue.Precision"
+//  INVALIDPARAMETERVALUE_PROCEDURE = "InvalidParameterValue.Procedure"
 //  INVALIDPARAMETERVALUE_STARTTIMEOFFSET = "InvalidParameterValue.StartTimeOffset"
 //  INVALIDPARAMETERVALUE_URL = "InvalidParameterValue.Url"
 //  RESOURCEUNAVAILABLE_MASTERPLAYLIST = "ResourceUnavailable.MasterPlaylist"
@@ -11960,11 +11964,11 @@ func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleH
 //
 // 
 //
-// 注意：
+// 裁剪精度支持粗略裁剪和精确裁剪：
 //
-// - 剪辑是基于输入 m3u8 文件进行的，故而其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
+// - 粗略剪辑：基于输入 m3u8 文件进行裁剪，其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 //
-// 
+// - 精确剪辑：按照 StartTimeOffset 和 EndTimeOffset 参数进行精确裁剪。使用精确裁剪需要开通[即时转码](/document/product/266/102174)的功能。
 //
 // 
 //
@@ -12001,6 +12005,10 @@ func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleH
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ENDTIMEOFFSET = "InvalidParameterValue.EndTimeOffset"
 //  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_ISPERSISTENCE = "InvalidParameterValue.IsPersistence"
+//  INVALIDPARAMETERVALUE_OUTPUTMEDIATYPE = "InvalidParameterValue.OutputMediaType"
+//  INVALIDPARAMETERVALUE_PRECISION = "InvalidParameterValue.Precision"
+//  INVALIDPARAMETERVALUE_PROCEDURE = "InvalidParameterValue.Procedure"
 //  INVALIDPARAMETERVALUE_STARTTIMEOFFSET = "InvalidParameterValue.StartTimeOffset"
 //  INVALIDPARAMETERVALUE_URL = "InvalidParameterValue.Url"
 //  RESOURCEUNAVAILABLE_MASTERPLAYLIST = "ResourceUnavailable.MasterPlaylist"

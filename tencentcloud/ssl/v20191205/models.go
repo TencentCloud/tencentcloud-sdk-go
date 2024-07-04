@@ -802,6 +802,10 @@ type ClbListenerRule struct {
 	// 不匹配域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoMatchDomains []*string `json:"NoMatchDomains,omitnil,omitempty" name:"NoMatchDomains"`
+
+	// 规则绑定的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 // Predefined struct for user
@@ -1818,6 +1822,10 @@ type DeployRecordDetail struct {
 	// 部署的TCB地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 部署CLB监听器的Url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url []*string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type DeployRecordInfo struct {
@@ -6678,6 +6686,10 @@ type UpdateRecordDetail struct {
 	// TCB部署类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TCBType *string `json:"TCBType,omitnil,omitempty" name:"TCBType"`
+
+	// 监听器Url(clb专属)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type UpdateRecordDetails struct {

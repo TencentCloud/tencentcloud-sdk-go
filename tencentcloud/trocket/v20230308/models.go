@@ -1633,33 +1633,33 @@ func (r *DescribeFusionInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceListRequestParams struct {
-	// 查询起始位置
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 查询结果限制数量
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
 	// 查询条件列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签过滤器
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询起始位置
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 查询结果限制数量
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
 	// 查询条件列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签过滤器
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeInstanceListRequest) ToJsonString() string {
@@ -1674,10 +1674,10 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Offset")
-	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceListRequest has unknown keys!", "")
 	}
@@ -3490,6 +3490,10 @@ type InstanceItem struct {
 	// 延迟消息最大时长，小时为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMessageDelay *int64 `json:"MaxMessageDelay,omitnil,omitempty" name:"MaxMessageDelay"`
+
+	// 是否自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 type InstanceItemExtraInfo struct {

@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type ActivateTWeCallLicenseRequestParams struct {
-	// TWecall类型： 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+	// TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
 	// appId
@@ -35,7 +35,7 @@ type ActivateTWeCallLicenseRequestParams struct {
 type ActivateTWeCallLicenseRequest struct {
 	*tchttp.BaseRequest
 	
-	// TWecall类型： 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+	// TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
 	// appId
@@ -68,6 +68,10 @@ func (r *ActivateTWeCallLicenseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ActivateTWeCallLicenseResponseParams struct {
+	// 设备激活返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceList []*DeviceActiveResult `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6566,6 +6570,20 @@ func (r *DescribeTopicRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceActiveResult struct {
+	// 模版ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// SN信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
+
+	// 设备激活状态，0：激活成功；9800020：设备数超出限制；9800040：资源包类型和设备类型不匹配；9800039：资源包余额不足；9800037：激活码序号已使用；9800038：设备有效期超出限制；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *uint64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 }
 
 type DeviceData struct {
