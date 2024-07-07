@@ -707,6 +707,183 @@ func (c *Client) CreatePersonSampleWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateQualityControlTemplateRequest() (request *CreateQualityControlTemplateRequest) {
+    request = &CreateQualityControlTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateQualityControlTemplate")
+    
+    
+    return
+}
+
+func NewCreateQualityControlTemplateResponse() (response *CreateQualityControlTemplateResponse) {
+    response = &CreateQualityControlTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateQualityControlTemplate
+// 创建媒体质检模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AACDURATIONDEVIATION = "InvalidParameterValue.AACDurationDeviation"
+//  INVALIDPARAMETERVALUE_AVTIMESTAMPINTERLEAVE = "InvalidParameterValue.AVTimestampInterleave"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATEOUTOFRANGE = "InvalidParameterValue.AudioBitrateOutofRange"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNELSCHANGED = "InvalidParameterValue.AudioChannelsChanged"
+//  INVALIDPARAMETERVALUE_AUDIODECODEFAILED = "InvalidParameterValue.AudioDecodeFailed"
+//  INVALIDPARAMETERVALUE_AUDIODROPPINGFRAMES = "InvalidParameterValue.AudioDroppingFrames"
+//  INVALIDPARAMETERVALUE_AUDIODUPLICATEDFRAME = "InvalidParameterValue.AudioDuplicatedFrame"
+//  INVALIDPARAMETERVALUE_AUDIOOUTOFPHASE = "InvalidParameterValue.AudioOutOfPhase"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATECHANGED = "InvalidParameterValue.AudioSampleRateChanged"
+//  INVALIDPARAMETERVALUE_AUDIOSTREAMLACK = "InvalidParameterValue.AudioStreamLack"
+//  INVALIDPARAMETERVALUE_BLACKWHITEEDGE = "InvalidParameterValue.BlackWhiteEdge"
+//  INVALIDPARAMETERVALUE_BLUR = "InvalidParameterValue.Blur"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_CRASHSCREEN = "InvalidParameterValue.CrashScreen"
+//  INVALIDPARAMETERVALUE_DARORSARINVALID = "InvalidParameterValue.DarOrSarInvalid"
+//  INVALIDPARAMETERVALUE_DTSJITTER = "InvalidParameterValue.DtsJitter"
+//  INVALIDPARAMETERVALUE_EMPTYDETECTITEM = "InvalidParameterValue.EmptyDetectItem"
+//  INVALIDPARAMETERVALUE_FPSJITTER = "InvalidParameterValue.FpsJitter"
+//  INVALIDPARAMETERVALUE_HLSBADM3U8FORMAT = "InvalidParameterValue.HLSBadM3u8Format"
+//  INVALIDPARAMETERVALUE_HLSINVALIDMASTERM3U8 = "InvalidParameterValue.HLSInvalidMasterM3u8"
+//  INVALIDPARAMETERVALUE_HLSINVALIDMEDIAM3U8 = "InvalidParameterValue.HLSInvalidMediaM3u8"
+//  INVALIDPARAMETERVALUE_HLSMASTERM3U8RECOMMENDED = "InvalidParameterValue.HLSMasterM3u8Recommended"
+//  INVALIDPARAMETERVALUE_HLSMEDIAM3U8DISCONTINUITYEXIST = "InvalidParameterValue.HLSMediaM3u8DiscontinuityExist"
+//  INVALIDPARAMETERVALUE_HLSMEDIAM3U8RECOMMENDED = "InvalidParameterValue.HLSMediaM3u8Recommended"
+//  INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSDTSJITTERDEVIATION = "InvalidParameterValue.HLSMediaSegmentsDTSJitterDeviation"
+//  INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSPTSJITTERDEVIATION = "InvalidParameterValue.HLSMediaSegmentsPTSJitterDeviation"
+//  INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSSTREAMNUMCHANGE = "InvalidParameterValue.HLSMediaSegmentsStreamNumChange"
+//  INVALIDPARAMETERVALUE_HIGHLIGHTING = "InvalidParameterValue.HighLighting"
+//  INVALIDPARAMETERVALUE_HIGHVOICE = "InvalidParameterValue.HighVoice"
+//  INVALIDPARAMETERVALUE_LACKAUDIORECOVER = "InvalidParameterValue.LackAudioRecover"
+//  INVALIDPARAMETERVALUE_LACKVIDEORECOVER = "InvalidParameterValue.LackVideoRecover"
+//  INVALIDPARAMETERVALUE_LOWEVALUATION = "InvalidParameterValue.LowEvaluation"
+//  INVALIDPARAMETERVALUE_LOWLIGHTING = "InvalidParameterValue.LowLighting"
+//  INVALIDPARAMETERVALUE_LOWVOICE = "InvalidParameterValue.LowVoice"
+//  INVALIDPARAMETERVALUE_MOSAIC = "InvalidParameterValue.Mosaic"
+//  INVALIDPARAMETERVALUE_MP4INVALIDCODECFOURCC = "InvalidParameterValue.Mp4InvalidCodecFourcc"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NOVOICE = "InvalidParameterValue.NoVoice"
+//  INVALIDPARAMETERVALUE_PARAMETERSETSCHANGED = "InvalidParameterValue.ParameterSetsChanged"
+//  INVALIDPARAMETERVALUE_PTSJITTER = "InvalidParameterValue.PtsJitter"
+//  INVALIDPARAMETERVALUE_PTSLESSTHANDTS = "InvalidParameterValue.PtsLessThanDts"
+//  INVALIDPARAMETERVALUE_RECEIVEFPSJITTER = "InvalidParameterValue.ReceiveFpsJitter"
+//  INVALIDPARAMETERVALUE_RECEIVEFPSTOOSMALL = "InvalidParameterValue.ReceiveFpsTooSmall"
+//  INVALIDPARAMETERVALUE_STREAMEND = "InvalidParameterValue.StreamEnd"
+//  INVALIDPARAMETERVALUE_STREAMNALUERROR = "InvalidParameterValue.StreamNALUError"
+//  INVALIDPARAMETERVALUE_STREAMOPENFAILED = "InvalidParameterValue.StreamOpenFailed"
+//  INVALIDPARAMETERVALUE_STREAMPARSEFAILED = "InvalidParameterValue.StreamParseFailed"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATE = "InvalidParameterValue.SvgTemplate"
+//  INVALIDPARAMETERVALUE_TIMECODETRACKEXIST = "InvalidParameterValue.TimecodeTrackExist"
+//  INVALIDPARAMETERVALUE_TIMESTAMPFALLBACK = "InvalidParameterValue.TimestampFallback"
+//  INVALIDPARAMETERVALUE_TSMULTIPROGRAMS = "InvalidParameterValue.TsMultiPrograms"
+//  INVALIDPARAMETERVALUE_TSSTREAMNOAUD = "InvalidParameterValue.TsStreamNoAud"
+//  INVALIDPARAMETERVALUE_UNKNOWNCATEGORY = "InvalidParameterValue.UnknownCategory"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATEOUTOFRANGE = "InvalidParameterValue.VideoBitrateOutofRange"
+//  INVALIDPARAMETERVALUE_VIDEODECODEFAILED = "InvalidParameterValue.VideoDecodeFailed"
+//  INVALIDPARAMETERVALUE_VIDEODROPPINGFRAMES = "InvalidParameterValue.VideoDroppingFrames"
+//  INVALIDPARAMETERVALUE_VIDEODUPLICATEDFRAME = "InvalidParameterValue.VideoDuplicatedFrame"
+//  INVALIDPARAMETERVALUE_VIDEOFIRSTFRAMENOTIDR = "InvalidParameterValue.VideoFirstFrameNotIdr"
+//  INVALIDPARAMETERVALUE_VIDEOFREEZEDFRAME = "InvalidParameterValue.VideoFreezedFrame"
+//  INVALIDPARAMETERVALUE_VIDEORESOLUTIONCHANGED = "InvalidParameterValue.VideoResolutionChanged"
+//  INVALIDPARAMETERVALUE_VIDEOROTATION = "InvalidParameterValue.VideoRotation"
+//  INVALIDPARAMETERVALUE_VIDEOSTREAMLACK = "InvalidParameterValue.VideoStreamLack"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateQualityControlTemplate(request *CreateQualityControlTemplateRequest) (response *CreateQualityControlTemplateResponse, err error) {
+    return c.CreateQualityControlTemplateWithContext(context.Background(), request)
+}
+
+// CreateQualityControlTemplate
+// 创建媒体质检模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AACDURATIONDEVIATION = "InvalidParameterValue.AACDurationDeviation"
+//  INVALIDPARAMETERVALUE_AVTIMESTAMPINTERLEAVE = "InvalidParameterValue.AVTimestampInterleave"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATEOUTOFRANGE = "InvalidParameterValue.AudioBitrateOutofRange"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNELSCHANGED = "InvalidParameterValue.AudioChannelsChanged"
+//  INVALIDPARAMETERVALUE_AUDIODECODEFAILED = "InvalidParameterValue.AudioDecodeFailed"
+//  INVALIDPARAMETERVALUE_AUDIODROPPINGFRAMES = "InvalidParameterValue.AudioDroppingFrames"
+//  INVALIDPARAMETERVALUE_AUDIODUPLICATEDFRAME = "InvalidParameterValue.AudioDuplicatedFrame"
+//  INVALIDPARAMETERVALUE_AUDIOOUTOFPHASE = "InvalidParameterValue.AudioOutOfPhase"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATECHANGED = "InvalidParameterValue.AudioSampleRateChanged"
+//  INVALIDPARAMETERVALUE_AUDIOSTREAMLACK = "InvalidParameterValue.AudioStreamLack"
+//  INVALIDPARAMETERVALUE_BLACKWHITEEDGE = "InvalidParameterValue.BlackWhiteEdge"
+//  INVALIDPARAMETERVALUE_BLUR = "InvalidParameterValue.Blur"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_CRASHSCREEN = "InvalidParameterValue.CrashScreen"
+//  INVALIDPARAMETERVALUE_DARORSARINVALID = "InvalidParameterValue.DarOrSarInvalid"
+//  INVALIDPARAMETERVALUE_DTSJITTER = "InvalidParameterValue.DtsJitter"
+//  INVALIDPARAMETERVALUE_EMPTYDETECTITEM = "InvalidParameterValue.EmptyDetectItem"
+//  INVALIDPARAMETERVALUE_FPSJITTER = "InvalidParameterValue.FpsJitter"
+//  INVALIDPARAMETERVALUE_HLSBADM3U8FORMAT = "InvalidParameterValue.HLSBadM3u8Format"
+//  INVALIDPARAMETERVALUE_HLSINVALIDMASTERM3U8 = "InvalidParameterValue.HLSInvalidMasterM3u8"
+//  INVALIDPARAMETERVALUE_HLSINVALIDMEDIAM3U8 = "InvalidParameterValue.HLSInvalidMediaM3u8"
+//  INVALIDPARAMETERVALUE_HLSMASTERM3U8RECOMMENDED = "InvalidParameterValue.HLSMasterM3u8Recommended"
+//  INVALIDPARAMETERVALUE_HLSMEDIAM3U8DISCONTINUITYEXIST = "InvalidParameterValue.HLSMediaM3u8DiscontinuityExist"
+//  INVALIDPARAMETERVALUE_HLSMEDIAM3U8RECOMMENDED = "InvalidParameterValue.HLSMediaM3u8Recommended"
+//  INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSDTSJITTERDEVIATION = "InvalidParameterValue.HLSMediaSegmentsDTSJitterDeviation"
+//  INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSPTSJITTERDEVIATION = "InvalidParameterValue.HLSMediaSegmentsPTSJitterDeviation"
+//  INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSSTREAMNUMCHANGE = "InvalidParameterValue.HLSMediaSegmentsStreamNumChange"
+//  INVALIDPARAMETERVALUE_HIGHLIGHTING = "InvalidParameterValue.HighLighting"
+//  INVALIDPARAMETERVALUE_HIGHVOICE = "InvalidParameterValue.HighVoice"
+//  INVALIDPARAMETERVALUE_LACKAUDIORECOVER = "InvalidParameterValue.LackAudioRecover"
+//  INVALIDPARAMETERVALUE_LACKVIDEORECOVER = "InvalidParameterValue.LackVideoRecover"
+//  INVALIDPARAMETERVALUE_LOWEVALUATION = "InvalidParameterValue.LowEvaluation"
+//  INVALIDPARAMETERVALUE_LOWLIGHTING = "InvalidParameterValue.LowLighting"
+//  INVALIDPARAMETERVALUE_LOWVOICE = "InvalidParameterValue.LowVoice"
+//  INVALIDPARAMETERVALUE_MOSAIC = "InvalidParameterValue.Mosaic"
+//  INVALIDPARAMETERVALUE_MP4INVALIDCODECFOURCC = "InvalidParameterValue.Mp4InvalidCodecFourcc"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NOVOICE = "InvalidParameterValue.NoVoice"
+//  INVALIDPARAMETERVALUE_PARAMETERSETSCHANGED = "InvalidParameterValue.ParameterSetsChanged"
+//  INVALIDPARAMETERVALUE_PTSJITTER = "InvalidParameterValue.PtsJitter"
+//  INVALIDPARAMETERVALUE_PTSLESSTHANDTS = "InvalidParameterValue.PtsLessThanDts"
+//  INVALIDPARAMETERVALUE_RECEIVEFPSJITTER = "InvalidParameterValue.ReceiveFpsJitter"
+//  INVALIDPARAMETERVALUE_RECEIVEFPSTOOSMALL = "InvalidParameterValue.ReceiveFpsTooSmall"
+//  INVALIDPARAMETERVALUE_STREAMEND = "InvalidParameterValue.StreamEnd"
+//  INVALIDPARAMETERVALUE_STREAMNALUERROR = "InvalidParameterValue.StreamNALUError"
+//  INVALIDPARAMETERVALUE_STREAMOPENFAILED = "InvalidParameterValue.StreamOpenFailed"
+//  INVALIDPARAMETERVALUE_STREAMPARSEFAILED = "InvalidParameterValue.StreamParseFailed"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATE = "InvalidParameterValue.SvgTemplate"
+//  INVALIDPARAMETERVALUE_TIMECODETRACKEXIST = "InvalidParameterValue.TimecodeTrackExist"
+//  INVALIDPARAMETERVALUE_TIMESTAMPFALLBACK = "InvalidParameterValue.TimestampFallback"
+//  INVALIDPARAMETERVALUE_TSMULTIPROGRAMS = "InvalidParameterValue.TsMultiPrograms"
+//  INVALIDPARAMETERVALUE_TSSTREAMNOAUD = "InvalidParameterValue.TsStreamNoAud"
+//  INVALIDPARAMETERVALUE_UNKNOWNCATEGORY = "InvalidParameterValue.UnknownCategory"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATEOUTOFRANGE = "InvalidParameterValue.VideoBitrateOutofRange"
+//  INVALIDPARAMETERVALUE_VIDEODECODEFAILED = "InvalidParameterValue.VideoDecodeFailed"
+//  INVALIDPARAMETERVALUE_VIDEODROPPINGFRAMES = "InvalidParameterValue.VideoDroppingFrames"
+//  INVALIDPARAMETERVALUE_VIDEODUPLICATEDFRAME = "InvalidParameterValue.VideoDuplicatedFrame"
+//  INVALIDPARAMETERVALUE_VIDEOFIRSTFRAMENOTIDR = "InvalidParameterValue.VideoFirstFrameNotIdr"
+//  INVALIDPARAMETERVALUE_VIDEOFREEZEDFRAME = "InvalidParameterValue.VideoFreezedFrame"
+//  INVALIDPARAMETERVALUE_VIDEORESOLUTIONCHANGED = "InvalidParameterValue.VideoResolutionChanged"
+//  INVALIDPARAMETERVALUE_VIDEOROTATION = "InvalidParameterValue.VideoRotation"
+//  INVALIDPARAMETERVALUE_VIDEOSTREAMLACK = "InvalidParameterValue.VideoStreamLack"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateQualityControlTemplateWithContext(ctx context.Context, request *CreateQualityControlTemplateRequest) (response *CreateQualityControlTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateQualityControlTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQualityControlTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateQualityControlTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSampleSnapshotTemplateRequest() (request *CreateSampleSnapshotTemplateRequest) {
     request = &CreateSampleSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1919,6 +2096,61 @@ func (c *Client) DeletePersonSampleWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteQualityControlTemplateRequest() (request *DeleteQualityControlTemplateRequest) {
+    request = &DeleteQualityControlTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteQualityControlTemplate")
+    
+    
+    return
+}
+
+func NewDeleteQualityControlTemplateResponse() (response *DeleteQualityControlTemplateResponse) {
+    response = &DeleteQualityControlTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteQualityControlTemplate
+// 删除媒体质检模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteQualityControlTemplate(request *DeleteQualityControlTemplateRequest) (response *DeleteQualityControlTemplateResponse, err error) {
+    return c.DeleteQualityControlTemplateWithContext(context.Background(), request)
+}
+
+// DeleteQualityControlTemplate
+// 删除媒体质检模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteQualityControlTemplateWithContext(ctx context.Context, request *DeleteQualityControlTemplateRequest) (response *DeleteQualityControlTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteQualityControlTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteQualityControlTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteQualityControlTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSampleSnapshotTemplateRequest() (request *DeleteSampleSnapshotTemplateRequest) {
     request = &DeleteSampleSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2909,6 +3141,65 @@ func (c *Client) DescribePersonSamplesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribePersonSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQualityControlTemplatesRequest() (request *DescribeQualityControlTemplatesRequest) {
+    request = &DescribeQualityControlTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeQualityControlTemplates")
+    
+    
+    return
+}
+
+func NewDescribeQualityControlTemplatesResponse() (response *DescribeQualityControlTemplatesResponse) {
+    response = &DescribeQualityControlTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQualityControlTemplates
+// 查询用户自定义媒体质检模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeQualityControlTemplates(request *DescribeQualityControlTemplatesRequest) (response *DescribeQualityControlTemplatesResponse, err error) {
+    return c.DescribeQualityControlTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeQualityControlTemplates
+// 查询用户自定义媒体质检模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeQualityControlTemplatesWithContext(ctx context.Context, request *DescribeQualityControlTemplatesRequest) (response *DescribeQualityControlTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityControlTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityControlTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQualityControlTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5122,6 +5413,95 @@ func (c *Client) ModifyPersonSampleWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyPersonSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyQualityControlTemplateRequest() (request *ModifyQualityControlTemplateRequest) {
+    request = &ModifyQualityControlTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyQualityControlTemplate")
+    
+    
+    return
+}
+
+func NewModifyQualityControlTemplateResponse() (response *ModifyQualityControlTemplateResponse) {
+    response = &ModifyQualityControlTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyQualityControlTemplate
+// 修改媒体质检模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
+//  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
+//  INVALIDPARAMETERVALUE_CONTAINER = "InvalidParameterValue.Container"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_RESOLUTIONADAPTIVE = "InvalidParameterValue.ResolutionAdaptive"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATE = "InvalidParameterValue.VideoBitrate"
+//  INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyQualityControlTemplate(request *ModifyQualityControlTemplateRequest) (response *ModifyQualityControlTemplateResponse, err error) {
+    return c.ModifyQualityControlTemplateWithContext(context.Background(), request)
+}
+
+// ModifyQualityControlTemplate
+// 修改媒体质检模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
+//  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
+//  INVALIDPARAMETERVALUE_CONTAINER = "InvalidParameterValue.Container"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_RESOLUTIONADAPTIVE = "InvalidParameterValue.ResolutionAdaptive"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATE = "InvalidParameterValue.VideoBitrate"
+//  INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyQualityControlTemplateWithContext(ctx context.Context, request *ModifyQualityControlTemplateRequest) (response *ModifyQualityControlTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyQualityControlTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyQualityControlTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyQualityControlTemplateResponse()
     err = c.Send(request, response)
     return
 }

@@ -230,6 +230,9 @@ const (
 	// 外网访问PublicAccess的取值和预期不符。
 	INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
 
+	// 无效的lucene语法
+	INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+
 	// 地域Region的取值与预期不符。
 	INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 

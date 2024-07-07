@@ -65,6 +65,10 @@ func NewCreateSmpnEpaResponse() (response *CreateSmpnEpaResponse) {
 }
 
 // CreateSmpnEpa
+// 不在使用的API
+//
+// 
+//
 // 企业号码认证
 //
 // 可能返回的错误码:
@@ -78,6 +82,10 @@ func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateS
 }
 
 // CreateSmpnEpa
+// 不在使用的API
+//
+// 
+//
 // 企业号码认证
 //
 // 可能返回的错误码:
@@ -122,6 +130,10 @@ func NewDescribeSmpnChpResponse() (response *DescribeSmpnChpResponse) {
 }
 
 // DescribeSmpnChp
+// 不在使用的API
+//
+// 
+//
 // 查询号码的标记和标记次数
 //
 // 可能返回的错误码:
@@ -134,6 +146,10 @@ func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *Des
 }
 
 // DescribeSmpnChp
+// 不在使用的API
+//
+// 
+//
 // 查询号码的标记和标记次数
 //
 // 可能返回的错误码:
@@ -177,6 +193,10 @@ func NewDescribeSmpnFnrResponse() (response *DescribeSmpnFnrResponse) {
 }
 
 // DescribeSmpnFnr
+// 不在使用的API
+//
+// 
+//
 // 虚假号码识别
 //
 // 可能返回的错误码:
@@ -189,6 +209,10 @@ func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *Des
 }
 
 // DescribeSmpnFnr
+// 不在使用的API
+//
+// 
+//
 // 虚假号码识别
 //
 // 可能返回的错误码:
@@ -232,6 +256,10 @@ func NewDescribeSmpnMhmResponse() (response *DescribeSmpnMhmResponse) {
 }
 
 // DescribeSmpnMhm
+// 不在使用的API
+//
+// 
+//
 // 号码营销监控
 //
 // 可能返回的错误码:
@@ -244,6 +272,10 @@ func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *Des
 }
 
 // DescribeSmpnMhm
+// 不在使用的API
+//
+// 
+//
 // 号码营销监控
 //
 // 可能返回的错误码:
@@ -287,6 +319,10 @@ func NewDescribeSmpnMrlResponse() (response *DescribeSmpnMrlResponse) {
 }
 
 // DescribeSmpnMrl
+// 不在使用的API
+//
+// 
+//
 // 查询号码恶意标记等级
 //
 // 可能返回的错误码:
@@ -298,6 +334,10 @@ func (c *Client) DescribeSmpnMrl(request *DescribeSmpnMrlRequest) (response *Des
 }
 
 // DescribeSmpnMrl
+// 不在使用的API
+//
+// 
+//
 // 查询号码恶意标记等级
 //
 // 可能返回的错误码:

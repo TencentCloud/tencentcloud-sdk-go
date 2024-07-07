@@ -567,6 +567,9 @@ type CreateInstanceRequestParams struct {
 
 	// cdcId，使用cdc子网时传递
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 置放群组亲和度，范围[0,10]，0表示不开启
+	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
 }
 
 type CreateInstanceRequest struct {
@@ -684,6 +687,9 @@ type CreateInstanceRequest struct {
 
 	// cdcId，使用cdc子网时传递
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 置放群组亲和度，范围[0,10]，0表示不开启
+	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -733,6 +739,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DiskEnhance")
 	delete(f, "EnableDiagnose")
 	delete(f, "CdcId")
+	delete(f, "DisasterRecoverGroupAffinity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -2808,6 +2815,77 @@ func (r *DescribeServerlessInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServerlessMetricsRequestParams struct {
+	// space空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// index索引id
+	IndexId *string `json:"IndexId,omitnil,omitempty" name:"IndexId"`
+
+	// 指标类型，暂时只支持Storage
+	MetricType []*string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+}
+
+type DescribeServerlessMetricsRequest struct {
+	*tchttp.BaseRequest
+	
+	// space空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// index索引id
+	IndexId *string `json:"IndexId,omitnil,omitempty" name:"IndexId"`
+
+	// 指标类型，暂时只支持Storage
+	MetricType []*string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+}
+
+func (r *DescribeServerlessMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "IndexId")
+	delete(f, "MetricType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessMetricsResponseParams struct {
+	// storage指标值，单位byte
+	Storage *float64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServerlessMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerlessMetricsResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerlessMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeServerlessSpaceUserRequestParams struct {
 	// 空间的ID
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
@@ -4171,6 +4249,10 @@ type InstanceInfo struct {
 	// 网络连接方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetConnectScheme *string `json:"NetConnectScheme,omitnil,omitempty" name:"NetConnectScheme"`
+
+	// 置放群组相关参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
 }
 
 type InstanceLog struct {

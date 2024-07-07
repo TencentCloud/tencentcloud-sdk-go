@@ -137,7 +137,7 @@ type TongChuanRecognizeRequestParams struct {
 	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *uint64 `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
 
-	// 翻译时机，0 -不翻译 1 - 句子结束时翻译，2 - 句子实时翻译
+	// 翻译时机，0-不翻译 2-句子实时翻译
 	TranslateTime *uint64 `json:"TranslateTime,omitnil,omitempty" name:"TranslateTime"`
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
@@ -168,7 +168,7 @@ type TongChuanRecognizeRequest struct {
 	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *uint64 `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
 
-	// 翻译时机，0 -不翻译 1 - 句子结束时翻译，2 - 句子实时翻译
+	// 翻译时机，0-不翻译 2-句子实时翻译
 	TranslateTime *uint64 `json:"TranslateTime,omitnil,omitempty" name:"TranslateTime"`
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
@@ -247,7 +247,7 @@ type TongChuanSyncRequestParams struct {
 	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *uint64 `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
 
-	// 翻译时机，0 -不翻译 1 - 句子结束时翻译，2 - 句子实时翻译
+	// 翻译时机，0-不翻译 2-句子实时翻译
 	TranslateTime *uint64 `json:"TranslateTime,omitnil,omitempty" name:"TranslateTime"`
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
@@ -278,7 +278,7 @@ type TongChuanSyncRequest struct {
 	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *uint64 `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
 
-	// 翻译时机，0 -不翻译 1 - 句子结束时翻译，2 - 句子实时翻译
+	// 翻译时机，0-不翻译 2-句子实时翻译
 	TranslateTime *uint64 `json:"TranslateTime,omitnil,omitempty" name:"TranslateTime"`
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。

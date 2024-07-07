@@ -302,6 +302,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // 根据不同地域不同用户，获取集群列表信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE_RESOURCEPARAMETERERROR = "InvalidParameterValue.ResourceParameterError"
 //  RESOURCENOTFOUND_FETCHRESOURCEERROR = "ResourceNotFound.FetchResourceError"
 //  RESOURCENOTFOUND_FETCHRESOURCELISTERROR = "ResourceNotFound.FetchResourceListError"
@@ -313,6 +314,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // 根据不同地域不同用户，获取集群列表信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE_RESOURCEPARAMETERERROR = "InvalidParameterValue.ResourceParameterError"
 //  RESOURCENOTFOUND_FETCHRESOURCEERROR = "ResourceNotFound.FetchResourceError"
 //  RESOURCENOTFOUND_FETCHRESOURCELISTERROR = "ResourceNotFound.FetchResourceListError"

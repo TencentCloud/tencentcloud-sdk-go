@@ -173,6 +173,10 @@ type ActivityPara struct {
 	// 视频内容识别类型任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
+
+	// 媒体质检任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityControlTask *AiQualityControlTaskInput `json:"QualityControlTask,omitnil,omitempty" name:"QualityControlTask"`
 }
 
 type ActivityResItem struct {
@@ -211,6 +215,10 @@ type ActivityResItem struct {
 	// 分析任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisTask *ScheduleAnalysisTaskResult `json:"AnalysisTask,omitnil,omitempty" name:"AnalysisTask"`
+
+	// 媒体质检任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityControlTask *ScheduleQualityControlTaskResult `json:"QualityControlTask,omitnil,omitempty" name:"QualityControlTask"`
 }
 
 type ActivityResult struct {
@@ -2790,6 +2798,88 @@ type ComposeVideoStream struct {
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 }
 
+type ContainerDiagnoseResultItem struct {
+	// 诊断出的异常类别，取值范围：
+	// DecodeParamException：解码参数异常
+	// TimeStampException：时间戳异常
+	// FrameException： 帧率异常
+	// StreamStatusException：流状态异常
+	// StreamInfo：流信息异常
+	// StreamAbnormalCharacteristics：流特征异常
+	// DecodeException：解码异常
+	// HLSRequirements：HLS 格式异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 诊断出的具体异常类型，取值如下：
+	// 
+	// VideoResolutionChanged：视频分辨率变化
+	// AudioSampleRateChanged：音频采样率变化
+	// AudioChannelsChanged：音频通道数变化
+	// ParameterSetsChanged：流参数集信息发生变化
+	// DarOrSarInvalid：视频的宽高比异常
+	// TimestampFallback：DTS时间戳回退
+	// DtsJitter：DTS抖动过大
+	// PtsJitter：PTS抖动过大
+	// AACDurationDeviation：AAC帧时间戳间隔不合理
+	// AudioDroppingFrames：音频丢帧
+	// VideoDroppingFrames：视频丢帧
+	// AVTimestampInterleave：音视频交织不合理
+	// PtsLessThanDts：媒体流的 pts 小于 dts
+	// ReceiveFpsJitter：网络接收帧率抖动过大
+	// ReceiveFpsTooSmall：网络接收视频帧率过小
+	// FpsJitter：通过PTS计算得到的流帧率抖动过大
+	// StreamOpenFailed：流打开失败
+	// StreamEnd：流结束
+	// StreamParseFailed：流解析失败
+	// VideoFirstFrameNotIdr：首帧不是IDR帧
+	// StreamNALUError：NALU起始码错误
+	// TsStreamNoAud：mpegts的H26x流缺失 AUD NALU
+	// AudioStreamLack：无音频流
+	// VideoStreamLack：无视频流
+	// LackAudioRecover：缺失音频流恢复
+	// LackVideoRecover：缺失视频流恢复
+	// VideoBitrateOutofRange：视频流码率(kbps)超出范围
+	// AudioBitrateOutofRange：音频流码率(kbps)超出范围
+	// VideoDecodeFailed：视频解码错误
+	// AudioDecodeFailed：音频解码错误
+	// AudioOutOfPhase：双通道音频相位相反
+	// VideoDuplicatedFrame：视频流中存在重复帧
+	// AudioDuplicatedFrame：音频流中存在重复帧
+	// VideoRotation：视频画面旋转
+	// TsMultiPrograms：MPEG2-TS流有多个program
+	// Mp4InvalidCodecFourcc：MP4中codec fourcc不符合Apple HLS要求
+	// HLSBadM3u8Format：无效的m3u8文件
+	// HLSInvalidMasterM3u8：无效的main m3u8文件
+	// HLSInvalidMediaM3u8：无效的media m3u8文件
+	// HLSMasterM3u8Recommended：main m3u8缺少标准推荐的参数
+	// HLSMediaM3u8Recommended：media m3u8缺少标准推荐的参数
+	// HLSMediaM3u8DiscontinuityExist：media m3u8存在EXT-X-DISCONTINUITY
+	// HLSMediaSegmentsStreamNumChange：切片的流数目发生变化
+	// HLSMediaSegmentsPTSJitterDeviation：切片间PTS跳变且没有EXT-X-DISCONTINUITY
+	// HLSMediaSegmentsDTSJitterDeviation：切片间DTS跳变且没有EXT-X-DISCONTINUITY
+	// TimecodeTrackExist：MP4存在tmcd轨道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 诊断出的异常级别，取值范围：
+	// Fatal：影响后续播放和解析，
+	// Error： 可能会影响播放，
+	// Warning： 可能会有潜在风险，但不一定会影响播放，
+	// Notice：比较重要的流信息，
+	// Info：一般性的流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SeverityLevel *string `json:"SeverityLevel,omitnil,omitempty" name:"SeverityLevel"`
+
+	// 警告出现的时间点，形式如 “2022-12-25T13:14:16Z”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DateTimeSet []*string `json:"DateTimeSet,omitnil,omitempty" name:"DateTimeSet"`
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampSet []*float64 `json:"TimestampSet,omitnil,omitempty" name:"TimestampSet"`
+}
+
 type ContentReviewTemplateItem struct {
 	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -3926,6 +4016,77 @@ func (r *CreatePersonSampleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePersonSampleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateQualityControlTemplateRequestParams struct {
+	// 媒体质检模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 媒体质检控制参数。
+	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+
+	// 媒体质检模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type CreateQualityControlTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体质检模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 媒体质检控制参数。
+	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+
+	// 媒体质检模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+func (r *CreateQualityControlTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityControlTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "QualityControlItemSet")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityControlTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateQualityControlTemplateResponseParams struct {
+	// 媒体质检模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateQualityControlTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateQualityControlTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateQualityControlTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityControlTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5435,6 +5596,60 @@ func (r *DeletePersonSampleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePersonSampleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityControlTemplateRequestParams struct {
+	// 媒体质检模板唯一标识。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteQualityControlTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体质检模板唯一标识。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteQualityControlTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityControlTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQualityControlTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityControlTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteQualityControlTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteQualityControlTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteQualityControlTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityControlTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7021,6 +7236,92 @@ func (r *DescribePersonSamplesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePersonSamplesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQualityControlTemplatesRequestParams struct {
+	// 媒体质检模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数
+	// <li>默认值：10；</li>
+	// <li>最大值：100。</li>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// "Preset"：预设，Custom":客户魔板
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeQualityControlTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体质检模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数
+	// <li>默认值：10；</li>
+	// <li>最大值：100。</li>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// "Preset"：预设，Custom":客户魔板
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeQualityControlTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQualityControlTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityControlTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQualityControlTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 媒体质检模板详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityControlTemplateSet []*QualityControlTemplate `json:"QualityControlTemplateSet,omitnil,omitempty" name:"QualityControlTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQualityControlTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQualityControlTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeQualityControlTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQualityControlTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12239,6 +12540,81 @@ func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyQualityControlTemplateRequestParams struct {
+	// 媒体质检模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体质检模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 媒体质检配置参数。
+	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+}
+
+type ModifyQualityControlTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体质检模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体质检模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 媒体质检配置参数。
+	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+}
+
+func (r *ModifyQualityControlTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityControlTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "QualityControlItemSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityControlTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyQualityControlTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyQualityControlTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyQualityControlTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyQualityControlTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityControlTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySampleSnapshotTemplateRequestParams struct {
 	// 采样截图模板唯一标识。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -14194,6 +14570,10 @@ type QualityControlData struct {
 	// 内容质检检出异常项。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlResultSet []*QualityControlResult `json:"QualityControlResultSet,omitnil,omitempty" name:"QualityControlResultSet"`
+
+	// 格式诊断检出异常项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerDiagnoseResultSet []*ContainerDiagnoseResultItem `json:"ContainerDiagnoseResultSet,omitnil,omitempty" name:"ContainerDiagnoseResultSet"`
 }
 
 type QualityControlItem struct {
@@ -14210,6 +14590,37 @@ type QualityControlItem struct {
 	// 区域坐标(px)，即左上角坐标、右下角坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
+}
+
+type QualityControlItemConfig struct {
+	// 质检项名称。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 采样方式，取值范围：
+	// - Time：根据时间间隔采样。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sampling *string `json:"Sampling,omitnil,omitempty" name:"Sampling"`
+
+	// 采样间隔时间，取值范围：[0, 60000]，单位：ms。
+	// 默认值 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalTime *uint64 `json:"IntervalTime,omitnil,omitempty" name:"IntervalTime"`
+
+	// 异常持续时间，取值范围：[0, 60000]，单位：ms。
+	// 默认值 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 检测分值的阈值，使用数学区间格式，当检测值超出区间范围会触发回调。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *string `json:"Threshold,omitnil,omitempty" name:"Threshold"`
 }
 
 type QualityControlResult struct {
@@ -14234,6 +14645,37 @@ type QualityControlResult struct {
 
 	// 质检结果项。
 	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitnil,omitempty" name:"QualityControlItems"`
+}
+
+type QualityControlTemplate struct {
+	// 媒体质检模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体质检模板名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 模板类型，取值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 媒体质检配置参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type RTMPAddressDestination struct {
@@ -15937,7 +16379,7 @@ type VideoTemplateInfoForUpdate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 

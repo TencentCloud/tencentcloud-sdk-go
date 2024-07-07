@@ -2043,6 +2043,87 @@ func (c *Client) CreateRoInstanceIpWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateRotationPasswordRequest() (request *CreateRotationPasswordRequest) {
+    request = &CreateRotationPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateRotationPassword")
+    
+    
+    return
+}
+
+func NewCreateRotationPasswordResponse() (response *CreateRotationPasswordResponse) {
+    response = &CreateRotationPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRotationPassword
+// 开启密码轮转
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_CREATEROVIPERROR = "FailedOperation.CreateRoVipError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) CreateRotationPassword(request *CreateRotationPasswordRequest) (response *CreateRotationPasswordResponse, err error) {
+    return c.CreateRotationPasswordWithContext(context.Background(), request)
+}
+
+// CreateRotationPassword
+// 开启密码轮转
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_CREATEROVIPERROR = "FailedOperation.CreateRoVipError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) CreateRotationPasswordWithContext(ctx context.Context, request *CreateRotationPasswordRequest) (response *CreateRotationPasswordResponse, err error) {
+    if request == nil {
+        request = NewCreateRotationPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRotationPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRotationPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountsRequest() (request *DeleteAccountsRequest) {
     request = &DeleteAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2652,6 +2733,61 @@ func (c *Client) DeleteParamTemplateWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRotationPasswordRequest() (request *DeleteRotationPasswordRequest) {
+    request = &DeleteRotationPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DeleteRotationPassword")
+    
+    
+    return
+}
+
+func NewDeleteRotationPasswordResponse() (response *DeleteRotationPasswordResponse) {
+    response = &DeleteRotationPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRotationPassword
+// 关闭实例账户密码轮转
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRotationPassword(request *DeleteRotationPasswordRequest) (response *DeleteRotationPasswordResponse, err error) {
+    return c.DeleteRotationPasswordWithContext(context.Background(), request)
+}
+
+// DeleteRotationPassword
+// 关闭实例账户密码轮转
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRotationPasswordWithContext(ctx context.Context, request *DeleteRotationPasswordRequest) (response *DeleteRotationPasswordResponse, err error) {
+    if request == nil {
+        request = NewDeleteRotationPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRotationPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRotationPasswordResponse()
     err = c.Send(request, response)
     return
 }
@@ -10033,6 +10169,67 @@ func (c *Client) RenewDBInstanceWithContext(ctx context.Context, request *RenewD
     request.SetContext(ctx)
     
     response = NewRenewDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetPasswordRequest() (request *ResetPasswordRequest) {
+    request = &ResetPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ResetPassword")
+    
+    
+    return
+}
+
+func NewResetPasswordResponse() (response *ResetPasswordResponse) {
+    response = &ResetPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetPassword
+// 手动刷新轮转密码
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) ResetPassword(request *ResetPasswordRequest) (response *ResetPasswordResponse, err error) {
+    return c.ResetPasswordWithContext(context.Background(), request)
+}
+
+// ResetPassword
+// 手动刷新轮转密码
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPasswordRequest) (response *ResetPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetPasswordResponse()
     err = c.Send(request, response)
     return
 }

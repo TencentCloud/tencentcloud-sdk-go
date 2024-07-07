@@ -1376,6 +1376,7 @@ func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) 
 //  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDORDERBYKEY = "InvalidParameter.InvalidOrderByKey"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
@@ -1396,6 +1397,7 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
 //  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDORDERBYKEY = "InvalidParameter.InvalidOrderByKey"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
@@ -1640,6 +1642,7 @@ func NewDescribeLogstashInstanceLogsResponse() (response *DescribeLogstashInstan
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 func (c *Client) DescribeLogstashInstanceLogs(request *DescribeLogstashInstanceLogsRequest) (response *DescribeLogstashInstanceLogsResponse, err error) {
     return c.DescribeLogstashInstanceLogsWithContext(context.Background(), request)
 }
@@ -1650,6 +1653,7 @@ func (c *Client) DescribeLogstashInstanceLogs(request *DescribeLogstashInstanceL
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 func (c *Client) DescribeLogstashInstanceLogsWithContext(ctx context.Context, request *DescribeLogstashInstanceLogsRequest) (response *DescribeLogstashInstanceLogsResponse, err error) {
     if request == nil {
         request = NewDescribeLogstashInstanceLogsRequest()
@@ -1894,6 +1898,57 @@ func (c *Client) DescribeServerlessInstancesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeServerlessInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServerlessMetricsRequest() (request *DescribeServerlessMetricsRequest) {
+    request = &DescribeServerlessMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeServerlessMetrics")
+    
+    
+    return
+}
+
+func NewDescribeServerlessMetricsResponse() (response *DescribeServerlessMetricsResponse) {
+    response = &DescribeServerlessMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServerlessMetrics
+// 获取serverless实例对应指标，获取space维度时不需要传入indexid，获取index时不需要传入spaceid
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeServerlessMetrics(request *DescribeServerlessMetricsRequest) (response *DescribeServerlessMetricsResponse, err error) {
+    return c.DescribeServerlessMetricsWithContext(context.Background(), request)
+}
+
+// DescribeServerlessMetrics
+// 获取serverless实例对应指标，获取space维度时不需要传入indexid，获取index时不需要传入spaceid
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeServerlessMetricsWithContext(ctx context.Context, request *DescribeServerlessMetricsRequest) (response *DescribeServerlessMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessMetricsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerlessMetrics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerlessMetricsResponse()
     err = c.Send(request, response)
     return
 }

@@ -20,6 +20,16 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccessInfo struct {
+	// 访问引擎的方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// 访问引擎的url，内部的部分参数需要根据实际情况替换
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessConnectionInfos []*string `json:"AccessConnectionInfos,omitnil,omitempty" name:"AccessConnectionInfos"`
+}
+
 // Predefined struct for user
 type AddDMSPartitionsRequestParams struct {
 	// 分区
@@ -4402,6 +4412,14 @@ type DataEngineInfo struct {
 	// 引擎当前使用量（Cu）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineResourceUsedCU *int64 `json:"EngineResourceUsedCU,omitnil,omitempty" name:"EngineResourceUsedCU"`
+
+	// 引擎的访问信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessInfos []*AccessInfo `json:"AccessInfos,omitnil,omitempty" name:"AccessInfos"`
+
+	// 引擎所在网络名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkName *string `json:"EngineNetworkName,omitnil,omitempty" name:"EngineNetworkName"`
 }
 
 type DataEngineScaleInfo struct {

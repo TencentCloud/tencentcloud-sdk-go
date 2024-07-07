@@ -4403,6 +4403,10 @@ func NewSummarizeTranscriptionResponse() (response *SummarizeTranscriptionRespon
 }
 
 // SummarizeTranscription
+// 接口不再支持
+//
+// 
+//
 // 对转录的文本进行总结。
 //
 // 可能返回的错误码:
@@ -4413,6 +4417,10 @@ func (c *Client) SummarizeTranscription(request *SummarizeTranscriptionRequest) 
 }
 
 // SummarizeTranscription
+// 接口不再支持
+//
+// 
+//
 // 对转录的文本进行总结。
 //
 // 可能返回的错误码:
