@@ -12785,6 +12785,9 @@ type VerifyOfdVatInvoiceOCRRequestParams struct {
 	// OFD文件的 Base64 值。
 	// OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
 	OfdFileBase64 *string `json:"OfdFileBase64,omitnil,omitempty" name:"OfdFileBase64"`
+
+	// 需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
+	OfdPageNumber *int64 `json:"OfdPageNumber,omitnil,omitempty" name:"OfdPageNumber"`
 }
 
 type VerifyOfdVatInvoiceOCRRequest struct {
@@ -12796,6 +12799,9 @@ type VerifyOfdVatInvoiceOCRRequest struct {
 	// OFD文件的 Base64 值。
 	// OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
 	OfdFileBase64 *string `json:"OfdFileBase64,omitnil,omitempty" name:"OfdFileBase64"`
+
+	// 需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
+	OfdPageNumber *int64 `json:"OfdPageNumber,omitnil,omitempty" name:"OfdPageNumber"`
 }
 
 func (r *VerifyOfdVatInvoiceOCRRequest) ToJsonString() string {
@@ -12812,6 +12818,7 @@ func (r *VerifyOfdVatInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OfdFileUrl")
 	delete(f, "OfdFileBase64")
+	delete(f, "OfdPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyOfdVatInvoiceOCRRequest has unknown keys!", "")
 	}

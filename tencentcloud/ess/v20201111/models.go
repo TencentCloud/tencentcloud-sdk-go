@@ -2348,6 +2348,10 @@ type CreateFlowBlockchainEvidenceUrlRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 链接/二维码的有效截止时间，格式为unix时间戳。最长不超过 2099年12月31日（4102415999）。
+	// 默认值为有效期为当前时间后7天。
+	ExpiredOn *uint64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
 }
 
 type CreateFlowBlockchainEvidenceUrlRequest struct {
@@ -2365,6 +2369,10 @@ type CreateFlowBlockchainEvidenceUrlRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 链接/二维码的有效截止时间，格式为unix时间戳。最长不超过 2099年12月31日（4102415999）。
+	// 默认值为有效期为当前时间后7天。
+	ExpiredOn *uint64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
 }
 
 func (r *CreateFlowBlockchainEvidenceUrlRequest) ToJsonString() string {
@@ -2382,6 +2390,7 @@ func (r *CreateFlowBlockchainEvidenceUrlRequest) FromJsonString(s string) error 
 	delete(f, "Operator")
 	delete(f, "FlowId")
 	delete(f, "Agent")
+	delete(f, "ExpiredOn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowBlockchainEvidenceUrlRequest has unknown keys!", "")
 	}

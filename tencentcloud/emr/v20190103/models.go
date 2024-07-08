@@ -4842,15 +4842,15 @@ type LoadAutoScaleStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleNum *int64 `json:"ScaleNum,omitnil,omitempty" name:"ScaleNum"`
 
-	// 扩缩容负载指标。
+	// 扩缩容负载指标。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadMetrics *string `json:"LoadMetrics,omitnil,omitempty" name:"LoadMetrics"`
 
-	// 规则元数据记录ID。
+	// 规则元数据记录ID。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
 
-	// 规则统计周期，提供300s,600s,900s
+	// 规则统计周期，提供300s,600s,900s。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticPeriod *int64 `json:"StatisticPeriod,omitnil,omitempty" name:"StatisticPeriod"`
 
@@ -4858,10 +4858,10 @@ type LoadAutoScaleStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessMethod *int64 `json:"ProcessMethod,omitnil,omitempty" name:"ProcessMethod"`
 
-	// 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。
+	// 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
 	TriggerThreshold *int64 `json:"TriggerThreshold,omitnil,omitempty" name:"TriggerThreshold"`
 
-	// 条件触发数组。
+	// 条件触发数组。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerConditions *TriggerConditions `json:"TriggerConditions,omitnil,omitempty" name:"TriggerConditions"`
 

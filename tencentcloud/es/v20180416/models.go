@@ -5367,6 +5367,10 @@ type ServerlessIndexOptionsField struct {
 	// 时间分区字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimestampField *string `json:"TimestampField,omitnil,omitempty" name:"TimestampField"`
+
+	// 标准存储时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SinkCycleAge *string `json:"SinkCycleAge,omitnil,omitempty" name:"SinkCycleAge"`
 }
 
 type ServerlessIndexSettingsField struct {

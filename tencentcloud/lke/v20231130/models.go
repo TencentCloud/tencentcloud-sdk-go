@@ -4524,6 +4524,10 @@ type ListDocItem struct {
 	// 有效结束时间，unix时间戳，0代表永久有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 是否允许重试，0：否，1：是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAllowRetry *bool `json:"IsAllowRetry,omitnil,omitempty" name:"IsAllowRetry"`
 }
 
 // Predefined struct for user
