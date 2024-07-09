@@ -14541,7 +14541,7 @@ func (r *DescribeSecurityGroupLimitsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityGroupPoliciesRequestParams struct {
-	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如：sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 过滤条件。
@@ -14560,7 +14560,7 @@ type DescribeSecurityGroupPoliciesRequestParams struct {
 type DescribeSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如：sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 过滤条件。
@@ -24373,6 +24373,63 @@ func (r *ModifyVpnGatewayRoutesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyVpnGatewaySslClientCertRequestParams struct {
+	// SSL-VPN-CLIENT 实例ID列表。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitnil,omitempty" name:"SslVpnClientIds"`
+}
+
+type ModifyVpnGatewaySslClientCertRequest struct {
+	*tchttp.BaseRequest
+	
+	// SSL-VPN-CLIENT 实例ID列表。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitnil,omitempty" name:"SslVpnClientIds"`
+}
+
+func (r *ModifyVpnGatewaySslClientCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVpnGatewaySslClientCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnClientIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnGatewaySslClientCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVpnGatewaySslClientCertResponseParams struct {
+	// 异步任务ID。
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVpnGatewaySslClientCertResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVpnGatewaySslClientCertResponseParams `json:"Response"`
+}
+
+func (r *ModifyVpnGatewaySslClientCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVpnGatewaySslClientCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVpnGatewaySslServerRequestParams struct {
 	// SSL-VPN SERVER 实例ID
 	SslVpnServerId *string `json:"SslVpnServerId,omitnil,omitempty" name:"SslVpnServerId"`
@@ -25057,6 +25114,24 @@ type PeerConnection struct {
 	// 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type PolicyStatistics struct {
+	// 入站IPv4总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IngressIPv4TotalCount *uint64 `json:"IngressIPv4TotalCount,omitnil,omitempty" name:"IngressIPv4TotalCount"`
+
+	// 入站IPv6总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IngressIPv6TotalCount *uint64 `json:"IngressIPv6TotalCount,omitnil,omitempty" name:"IngressIPv6TotalCount"`
+
+	// 出站IPv4总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EgressIPv4TotalCount *uint64 `json:"EgressIPv4TotalCount,omitnil,omitempty" name:"EgressIPv4TotalCount"`
+
+	// 出站IPv6总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EgressIPv6TotalCount *uint64 `json:"EgressIPv6TotalCount,omitnil,omitempty" name:"EgressIPv6TotalCount"`
 }
 
 type Price struct {
@@ -26870,37 +26945,48 @@ type SecurityGroupLimitSet struct {
 
 type SecurityGroupPolicy struct {
 	// 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyIndex *int64 `json:"PolicyIndex,omitnil,omitempty" name:"PolicyIndex"`
 
 	// 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口(all, 离散port,  range)。
 	// 说明：如果Protocol设置为ALL，则Port也需要设置为all。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate,omitnil,omitempty" name:"ServiceTemplate"`
 
 	// 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
 	// 网段或IPv6(互斥)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 
 	// 安全组实例ID，例如：sg-ohuuioma。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// IP地址ID或者IP地址组ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressTemplate *AddressTemplateSpecification `json:"AddressTemplate,omitnil,omitempty" name:"AddressTemplate"`
 
 	// ACCEPT 或 DROP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 安全组规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
 
 	// 安全组最近修改时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
@@ -26916,6 +27002,10 @@ type SecurityGroupPolicySet struct {
 	// 入站规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ingress []*SecurityGroupPolicy `json:"Ingress,omitnil,omitempty" name:"Ingress"`
+
+	// 安全组策略条目统计。只用于出参。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyStatistics *PolicyStatistics `json:"PolicyStatistics,omitnil,omitempty" name:"PolicyStatistics"`
 }
 
 type SecurityPolicyDatabase struct {

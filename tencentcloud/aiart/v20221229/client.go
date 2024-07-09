@@ -289,10 +289,6 @@ func NewQueryDrawPortraitJobResponse() (response *QueryDrawPortraitJobResponse) 
 //
 // - 查询生成写真图片任务：根据任务 ID 查询生成图片任务的处理状态、处理结果。
 //
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
@@ -310,10 +306,6 @@ func (c *Client) QueryDrawPortraitJob(request *QueryDrawPortraitJobRequest) (res
 // - 提交生成写真图片任务：完成训练写真模型后，选择写真风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 开始生成人物形象在指定风格上的写真图片，获得任务 ID。
 //
 // - 查询生成写真图片任务：根据任务 ID 查询生成图片任务的处理状态、处理结果。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
@@ -433,10 +425,6 @@ func NewQueryTrainPortraitModelJobResponse() (response *QueryTrainPortraitModelJ
 //
 // - 查询训练写真模型任务：根据写真模型 ID 查询训练任务的处理状态、处理结果。
 //
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) QueryTrainPortraitModelJob(request *QueryTrainPortraitModelJobRequest) (response *QueryTrainPortraitModelJobResponse, err error) {
@@ -453,10 +441,6 @@ func (c *Client) QueryTrainPortraitModelJob(request *QueryTrainPortraitModelJobR
 // - 提交训练写真模型任务：完成上传训练图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
 //
 // - 查询训练写真模型任务：根据写真模型 ID 查询训练任务的处理状态、处理结果。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

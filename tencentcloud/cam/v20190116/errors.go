@@ -146,6 +146,9 @@ const (
 	// 一次操作实体数过多。
 	INVALIDPARAMETER_OPERATEENTITIESOVERLIMIT = "InvalidParameter.OperateEntitiesOverLimit"
 
+	// 一次操作策略数过多。
+	INVALIDPARAMETER_OPERATEPOLICIESOVERLIMIT = "InvalidParameter.OperatePoliciesOverLimit"
+
 	// 当前角色仅支持企业管理员操作，如需修改，请联系企业管理员。
 	INVALIDPARAMETER_ORGANIZATIONROLEOPERATEERROR = "InvalidParameter.OrganizationRoleOperateError"
 

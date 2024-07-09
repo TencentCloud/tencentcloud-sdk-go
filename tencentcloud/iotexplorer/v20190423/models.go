@@ -5491,18 +5491,7 @@ type DescribeFirmwareUpdateStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
 
-	// 升级状态：
-	// 
-	// - 0：设备离线。
-	// - 1：待处理。
-	// - 2：消息下发成功。
-	// - 3：下载中。
-	// - 4：烧录中。
-	// - 5：失败。
-	// - 6：升级完成。
-	// - 7：正在处理中。
-	// - 8：等待用户确认。
-	// - 20：下载完成。
+	// 升级状态：- 0：设备离线。- 1：待处理。- 2：消息下发成功。- 3：下载中。- 4：烧录中。- 5：失败。- 6：升级完成。- 7：正在处理中。- 8：等待用户确认。- 10：升级超时。- 20：下载完成。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 进度

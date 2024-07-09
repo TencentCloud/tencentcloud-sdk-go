@@ -605,6 +605,195 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
     return
 }
 
+func NewCreateVideoSummaryTaskRequest() (request *CreateVideoSummaryTaskRequest) {
+    request = &CreateVideoSummaryTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ivld", APIVersion, "CreateVideoSummaryTask")
+    
+    
+    return
+}
+
+func NewCreateVideoSummaryTaskResponse() (response *CreateVideoSummaryTaskResponse) {
+    response = &CreateVideoSummaryTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoSummaryTask
+// 创建一个视频缩编任务。
+//
+// 
+//
+// ### 回调事件消息通知协议
+//
+// 
+//
+// #### 网络协议
+//
+// - 回调接口协议目前仅支持http/https协议；
+//
+// - 请求：HTTP POST 请求，包体内容为 JSON，每一种消息的具体包体内容参见后文。
+//
+// - 应答：HTTP STATUS CODE = 200，服务端忽略应答包具体内容，为了协议友好，建议客户应答内容携带 JSON： `{"code":0}`
+//
+// 
+//
+// #### 通知可靠性
+//
+// 
+//
+// 事件通知服务具备重试能力，事件通知失败后会总计重试3次；
+//
+// 为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
+//
+// - 长时间（5 秒）未回包应答。
+//
+// - 应答 HTTP STATUS 不为200。
+//
+// 
+//
+// 
+//
+// #### 回调接口协议
+//
+// 
+//
+// ##### 分析任务完成消息回调
+//
+// | 参数名称 | 必选 | 类型 | 描述 |
+//
+// |---------|---------|---------|---------|
+//
+// | TaskId | 是 | String | 任务ID |
+//
+// | TaskStatus | 是 | Integer | 任务执行状态 |
+//
+// | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
+//  FAILEDOPERATION_MEDIAEXPIRED = "FailedOperation.MediaExpired"
+//  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
+//  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIALABEL = "InvalidParameter.InvalidMediaLabel"
+//  INVALIDPARAMETER_INVALIDMEDIALANG = "InvalidParameter.InvalidMediaLang"
+//  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
+//  INVALIDPARAMETER_INVALIDMEDIATYPE = "InvalidParameter.InvalidMediaType"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
+//  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateVideoSummaryTask(request *CreateVideoSummaryTaskRequest) (response *CreateVideoSummaryTaskResponse, err error) {
+    return c.CreateVideoSummaryTaskWithContext(context.Background(), request)
+}
+
+// CreateVideoSummaryTask
+// 创建一个视频缩编任务。
+//
+// 
+//
+// ### 回调事件消息通知协议
+//
+// 
+//
+// #### 网络协议
+//
+// - 回调接口协议目前仅支持http/https协议；
+//
+// - 请求：HTTP POST 请求，包体内容为 JSON，每一种消息的具体包体内容参见后文。
+//
+// - 应答：HTTP STATUS CODE = 200，服务端忽略应答包具体内容，为了协议友好，建议客户应答内容携带 JSON： `{"code":0}`
+//
+// 
+//
+// #### 通知可靠性
+//
+// 
+//
+// 事件通知服务具备重试能力，事件通知失败后会总计重试3次；
+//
+// 为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
+//
+// - 长时间（5 秒）未回包应答。
+//
+// - 应答 HTTP STATUS 不为200。
+//
+// 
+//
+// 
+//
+// #### 回调接口协议
+//
+// 
+//
+// ##### 分析任务完成消息回调
+//
+// | 参数名称 | 必选 | 类型 | 描述 |
+//
+// |---------|---------|---------|---------|
+//
+// | TaskId | 是 | String | 任务ID |
+//
+// | TaskStatus | 是 | Integer | 任务执行状态 |
+//
+// | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
+//  FAILEDOPERATION_MEDIAEXPIRED = "FailedOperation.MediaExpired"
+//  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
+//  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIALABEL = "InvalidParameter.InvalidMediaLabel"
+//  INVALIDPARAMETER_INVALIDMEDIALANG = "InvalidParameter.InvalidMediaLang"
+//  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
+//  INVALIDPARAMETER_INVALIDMEDIATYPE = "InvalidParameter.InvalidMediaType"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
+//  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateVideoSummaryTaskWithContext(ctx context.Context, request *CreateVideoSummaryTaskRequest) (response *CreateVideoSummaryTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoSummaryTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoSummaryTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoSummaryTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomCategoryRequest() (request *DeleteCustomCategoryRequest) {
     request = &DeleteCustomCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1637,6 +1826,156 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUsageAmountRequest() (request *DescribeUsageAmountRequest) {
+    request = &DescribeUsageAmountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ivld", APIVersion, "DescribeUsageAmount")
+    
+    
+    return
+}
+
+func NewDescribeUsageAmountResponse() (response *DescribeUsageAmountResponse) {
+    response = &DescribeUsageAmountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUsageAmount
+// 获取用户资源使用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
+//  INVALIDPARAMETER_INVALIDTASKSTATUS = "InvalidParameter.InvalidTaskStatus"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeUsageAmount(request *DescribeUsageAmountRequest) (response *DescribeUsageAmountResponse, err error) {
+    return c.DescribeUsageAmountWithContext(context.Background(), request)
+}
+
+// DescribeUsageAmount
+// 获取用户资源使用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
+//  INVALIDPARAMETER_INVALIDTASKSTATUS = "InvalidParameter.InvalidTaskStatus"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeUsageAmountWithContext(ctx context.Context, request *DescribeUsageAmountRequest) (response *DescribeUsageAmountResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsageAmountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsageAmount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsageAmountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoSummaryDetailRequest() (request *DescribeVideoSummaryDetailRequest) {
+    request = &DescribeVideoSummaryDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ivld", APIVersion, "DescribeVideoSummaryDetail")
+    
+    
+    return
+}
+
+func NewDescribeVideoSummaryDetailResponse() (response *DescribeVideoSummaryDetailResponse) {
+    response = &DescribeVideoSummaryDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoSummaryDetail
+// 描述任务信息，如果任务成功完成，还将返回任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
+//  INVALIDPARAMETER_INVALIDTASKSTATUS = "InvalidParameter.InvalidTaskStatus"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeVideoSummaryDetail(request *DescribeVideoSummaryDetailRequest) (response *DescribeVideoSummaryDetailResponse, err error) {
+    return c.DescribeVideoSummaryDetailWithContext(context.Background(), request)
+}
+
+// DescribeVideoSummaryDetail
+// 描述任务信息，如果任务成功完成，还将返回任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
+//  INVALIDPARAMETER_INVALIDTASKSTATUS = "InvalidParameter.InvalidTaskStatus"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeVideoSummaryDetailWithContext(ctx context.Context, request *DescribeVideoSummaryDetailRequest) (response *DescribeVideoSummaryDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoSummaryDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoSummaryDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoSummaryDetailResponse()
     err = c.Send(request, response)
     return
 }

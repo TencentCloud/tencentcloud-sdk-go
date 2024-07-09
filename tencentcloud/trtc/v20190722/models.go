@@ -46,6 +46,24 @@ type AbnormalExperience struct {
 	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 }
 
+type AgentConfig struct {
+	// 机器人的UserId，用于进房发起任务。【注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个任务时，机器人的UserId也不能相互重复，否则会中断前一个任务。需要保证机器人UserId在房间内唯一。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 机器人拉流的UserId, 填写后，机器人会拉取该UserId的流进行实时处理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetUserId *string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
+
+	// 房间内推流用户全部退出后超过MaxIdleTime秒，后台自动关闭任务，默认值是60s。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+}
+
 type AgentParams struct {
 	// 转推服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -495,6 +513,86 @@ func (r *DeletePictureResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePictureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIConversationRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 唯一标识一次任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 开启任务时填写的SessionId，如果没写则不返回。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DescribeAIConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 唯一标识一次任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 开启任务时填写的SessionId，如果没写则不返回。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeAIConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIConversationResponseParams struct {
+	// 任务开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务状态。有4个值：1、Idle表示任务未开始2、Preparing表示任务准备中3、InProgress表示任务正在运行4、Stopped表示任务已停止，正在清理资源中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一标识一次任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 开启对话任务时填写的SessionId，如果没写则不返回。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIConversationResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIConversationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3871,6 +3969,41 @@ type RowValues struct {
 	RowValue []*int64 `json:"RowValue,omitnil,omitempty" name:"RowValue"`
 }
 
+type STTConfig struct {
+	// 语音识别支持的语言，默认是"zh" 中文
+	// 目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循[ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)：
+	// 1.     Chinese = "zh" # 中文
+	// 2.     Chinese_TW = "zh-TW" # 中国台湾
+	// 3.     Chinese_DIALECT = "zh-dialect" # 中国方言
+	// 4.     English = "en" # 英语
+	// 5.     Vietnamese = "vi" # 越南语
+	// 6.     Japanese = "ja" # 日语
+	// 7.     Korean = "ko" # 汉语
+	// 8.     Indonesia = "id" # 印度尼西亚语
+	// 9.     Thai = "th" # 泰语
+	// 10.     Portuguese = "pt" # 葡萄牙语
+	// 11.     Turkish = "tr" # 土耳其语
+	// 12.     Arabic = "ar" # 阿拉伯语
+	// 13.     Spanish = "es" # 西班牙语
+	// 14.     Hindi = "hi" # 印地语
+	// 15.     French = "fr" # 法语
+	// 16.     Malay = "ms" # 马来语
+	// 17.     Filipino = "fil" # 菲律宾语
+	// 18.     German = "de" # 德语
+	// 19.     Italian = "it" # 意大利语
+	// 20.     Russian = "ru" # 俄语
+	// 
+	// 注意：
+	// 如果缺少满足您需求的语言，请联系我们技术人员。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 额外识别可能替代语言,最多3个, 需高级版支持,Language指定方言时，不允许设置该字段
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlternativeLanguage []*string `json:"AlternativeLanguage,omitnil,omitempty" name:"AlternativeLanguage"`
+}
+
 type ScaleInfomation struct {
 	// 每天开始的时间
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
@@ -3959,6 +4092,116 @@ type SmallVideoLayoutParams struct {
 
 	// 小画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
 	LocationY *uint64 `json:"LocationY,omitnil,omitempty" name:"LocationY"`
+}
+
+// Predefined struct for user
+type StartAIConversationRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，表示开启对话任务的房间号。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 机器人参数
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 调用方传入的唯一Id，服务端用来去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 语音识别配置。
+	STTConfig *STTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// LLM配置。需符合openai规范，为JSON字符串，示例如下：
+	// <pre> { <br> &emsp;  "LLMType": “大模型类型"，  // String 必填，目前固定为"openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的OpenAI API密钥", // String 必填，相当于环境变量中的OPENAI_API_KEY<br> &emsp;  "APIBaseUrl": "https://api.openai.com", // String 必填，OpenAI API的基础URL<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
+	LLMConfig *string `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// TTS配置。目前支持腾讯云TTS, 为JSON字符串，示例如下：
+	//  <pre>{ <br> &emsp; "AppId": "您的应用ID", // String 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SercetId": "您的密钥ID", // String 必填<br> &emsp; "SercetKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "PrimaryLanguage": "zh-CN" // String 非必填，主要语言<br> &emsp;}</pre>
+	TTSConfig *string `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+}
+
+type StartAIConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，表示开启对话任务的房间号。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 机器人参数
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 调用方传入的唯一Id，服务端用来去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 语音识别配置。
+	STTConfig *STTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// LLM配置。需符合openai规范，为JSON字符串，示例如下：
+	// <pre> { <br> &emsp;  "LLMType": “大模型类型"，  // String 必填，目前固定为"openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的OpenAI API密钥", // String 必填，相当于环境变量中的OPENAI_API_KEY<br> &emsp;  "APIBaseUrl": "https://api.openai.com", // String 必填，OpenAI API的基础URL<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
+	LLMConfig *string `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// TTS配置。目前支持腾讯云TTS, 为JSON字符串，示例如下：
+	//  <pre>{ <br> &emsp; "AppId": "您的应用ID", // String 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SercetId": "您的密钥ID", // String 必填<br> &emsp; "SercetKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "PrimaryLanguage": "zh-CN" // String 非必填，主要语言<br> &emsp;}</pre>
+	TTSConfig *string `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+}
+
+func (r *StartAIConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartAIConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "AgentConfig")
+	delete(f, "SessionId")
+	delete(f, "RoomIdType")
+	delete(f, "STTConfig")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAIConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartAIConversationResponseParams struct {
+	// 用于唯一标识对话任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartAIConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *StartAIConversationResponseParams `json:"Response"`
+}
+
+func (r *StartAIConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartAIConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4605,6 +4848,60 @@ func (r *StartWebRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartWebRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopAIConversationRequestParams struct {
+	// 唯一标识任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type StopAIConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 唯一标识任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *StopAIConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopAIConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopAIConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopAIConversationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopAIConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *StopAIConversationResponseParams `json:"Response"`
+}
+
+func (r *StopAIConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopAIConversationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

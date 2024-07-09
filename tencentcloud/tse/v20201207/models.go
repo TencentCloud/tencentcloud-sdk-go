@@ -1549,6 +1549,9 @@ type CreateCloudNativeAPIGatewayRequestParams struct {
 
 	// 公网相关配置
 	InternetConfig *InternetConfig `json:"InternetConfig,omitnil,omitempty" name:"InternetConfig"`
+
+	// 关联的prometheus ID
+	PromId *string `json:"PromId,omitnil,omitempty" name:"PromId"`
 }
 
 type CreateCloudNativeAPIGatewayRequest struct {
@@ -1602,6 +1605,9 @@ type CreateCloudNativeAPIGatewayRequest struct {
 
 	// 公网相关配置
 	InternetConfig *InternetConfig `json:"InternetConfig,omitnil,omitempty" name:"InternetConfig"`
+
+	// 关联的prometheus ID
+	PromId *string `json:"PromId,omitnil,omitempty" name:"PromId"`
 }
 
 func (r *CreateCloudNativeAPIGatewayRequest) ToJsonString() string {
@@ -1630,6 +1636,7 @@ func (r *CreateCloudNativeAPIGatewayRequest) FromJsonString(s string) error {
 	delete(f, "IngressClassName")
 	delete(f, "TradeType")
 	delete(f, "InternetConfig")
+	delete(f, "PromId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayRequest has unknown keys!", "")
 	}
@@ -11172,6 +11179,10 @@ type PublicAddressConfig struct {
 	// 公网负载均衡 id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkId *string `json:"NetworkId,omitnil,omitempty" name:"NetworkId"`
+
+	// 公网负载均衡描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user

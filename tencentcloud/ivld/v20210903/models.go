@@ -116,6 +116,17 @@ type AppearInfo struct {
 	VideoAppearSet []*VideoAppearInfo `json:"VideoAppearSet,omitnil,omitempty" name:"VideoAppearSet"`
 }
 
+type AsrResult struct {
+	// ASR提取的文字信息
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// ASR起始时间戳，从0开始
+	StartTimeStamp *float64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
+
+	// ASR结束时间戳，从0开始
+	EndTimeStamp *float64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
+}
+
 type AudioData struct {
 	// 音频识别文本结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -521,6 +532,140 @@ func (r *CreateTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSummaryTaskRequestParams struct {
+	// 目前只支持 1，表示新闻缩编。
+	SummaryType *int64 `json:"SummaryType,omitnil,omitempty" name:"SummaryType"`
+
+	// 待处理的视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
+
+	// 任务处理完成的回调地址。
+	CallbackURL *string `json:"CallbackURL,omitnil,omitempty" name:"CallbackURL"`
+
+	// 如果需要你输出 TTS 或者视频，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+	WriteBackCosPath *string `json:"WriteBackCosPath,omitnil,omitempty" name:"WriteBackCosPath"`
+
+	// 是否开启结果视频生成功能，如果开启，需要指定WriteBackCosPath 参数
+	ActiveVideoGenerate *bool `json:"ActiveVideoGenerate,omitnil,omitempty" name:"ActiveVideoGenerate"`
+
+	// 生成结果视频的时候，控制生成的结果视频的横转竖参数。如果 ActiveVideoGenerate 为 false, 该参数无效。
+	VideoRotationMode *VideoRotationMode `json:"VideoRotationMode,omitnil,omitempty" name:"VideoRotationMode"`
+
+	// 语音合成相关的控制参数
+	TTSMode *TTSMode `json:"TTSMode,omitnil,omitempty" name:"TTSMode"`
+
+	// 是否输出合成好的语音列表。
+	ActiveTTSOutput *bool `json:"ActiveTTSOutput,omitnil,omitempty" name:"ActiveTTSOutput"`
+
+	// 用户指定的精确的 asr 结果列表 
+	ExactAsrSet []*AsrResult `json:"ExactAsrSet,omitnil,omitempty" name:"ExactAsrSet"`
+
+	// 用户指定的精确的文本摘要
+	ExactTextSummary *string `json:"ExactTextSummary,omitnil,omitempty" name:"ExactTextSummary"`
+
+	// 用户指定的精确的文本摘要分割结果
+	ExactTextSegSet []*string `json:"ExactTextSegSet,omitnil,omitempty" name:"ExactTextSegSet"`
+
+	// 用户指定的精确的镜头分割结果
+	ExactShotSegSet []*ShotInfo `json:"ExactShotSegSet,omitnil,omitempty" name:"ExactShotSegSet"`
+}
+
+type CreateVideoSummaryTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目前只支持 1，表示新闻缩编。
+	SummaryType *int64 `json:"SummaryType,omitnil,omitempty" name:"SummaryType"`
+
+	// 待处理的视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
+
+	// 任务处理完成的回调地址。
+	CallbackURL *string `json:"CallbackURL,omitnil,omitempty" name:"CallbackURL"`
+
+	// 如果需要你输出 TTS 或者视频，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+	WriteBackCosPath *string `json:"WriteBackCosPath,omitnil,omitempty" name:"WriteBackCosPath"`
+
+	// 是否开启结果视频生成功能，如果开启，需要指定WriteBackCosPath 参数
+	ActiveVideoGenerate *bool `json:"ActiveVideoGenerate,omitnil,omitempty" name:"ActiveVideoGenerate"`
+
+	// 生成结果视频的时候，控制生成的结果视频的横转竖参数。如果 ActiveVideoGenerate 为 false, 该参数无效。
+	VideoRotationMode *VideoRotationMode `json:"VideoRotationMode,omitnil,omitempty" name:"VideoRotationMode"`
+
+	// 语音合成相关的控制参数
+	TTSMode *TTSMode `json:"TTSMode,omitnil,omitempty" name:"TTSMode"`
+
+	// 是否输出合成好的语音列表。
+	ActiveTTSOutput *bool `json:"ActiveTTSOutput,omitnil,omitempty" name:"ActiveTTSOutput"`
+
+	// 用户指定的精确的 asr 结果列表 
+	ExactAsrSet []*AsrResult `json:"ExactAsrSet,omitnil,omitempty" name:"ExactAsrSet"`
+
+	// 用户指定的精确的文本摘要
+	ExactTextSummary *string `json:"ExactTextSummary,omitnil,omitempty" name:"ExactTextSummary"`
+
+	// 用户指定的精确的文本摘要分割结果
+	ExactTextSegSet []*string `json:"ExactTextSegSet,omitnil,omitempty" name:"ExactTextSegSet"`
+
+	// 用户指定的精确的镜头分割结果
+	ExactShotSegSet []*ShotInfo `json:"ExactShotSegSet,omitnil,omitempty" name:"ExactShotSegSet"`
+}
+
+func (r *CreateVideoSummaryTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSummaryTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SummaryType")
+	delete(f, "VideoURL")
+	delete(f, "CallbackURL")
+	delete(f, "WriteBackCosPath")
+	delete(f, "ActiveVideoGenerate")
+	delete(f, "VideoRotationMode")
+	delete(f, "TTSMode")
+	delete(f, "ActiveTTSOutput")
+	delete(f, "ExactAsrSet")
+	delete(f, "ExactTextSummary")
+	delete(f, "ExactTextSegSet")
+	delete(f, "ExactShotSegSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoSummaryTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSummaryTaskResponseParams struct {
+	// 返回的任务 id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoSummaryTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoSummaryTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoSummaryTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSummaryTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1474,6 +1619,151 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsageAmountRequestParams struct {
+
+}
+
+type DescribeUsageAmountRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeUsageAmountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsageAmountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsageAmountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUsageAmountResponseParams struct {
+	// 资源使用小时数
+	UsedHours *float64 `json:"UsedHours,omitnil,omitempty" name:"UsedHours"`
+
+	// 资源包总量小时数
+	TotalHours *float64 `json:"TotalHours,omitnil,omitempty" name:"TotalHours"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUsageAmountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUsageAmountResponseParams `json:"Response"`
+}
+
+func (r *DescribeUsageAmountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsageAmountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSummaryDetailRequestParams struct {
+	// 要查询的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeVideoSummaryDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeVideoSummaryDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSummaryDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoSummaryDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSummaryDetailResponseParams struct {
+	// 任务的状态
+	// 1: 等待处理中
+	// 2: 处理中
+	// 3: 处理成功
+	// 4: 处理失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 如果处理失败，返回失败的原因
+	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
+
+	// 提取出的视频的 Asr 结果
+	AsrSet []*AsrResult `json:"AsrSet,omitnil,omitempty" name:"AsrSet"`
+
+	// 文本摘要结果
+	TextSummary *string `json:"TextSummary,omitnil,omitempty" name:"TextSummary"`
+
+	// 文本摘要分割结果
+	TextSegSet []*string `json:"TextSegSet,omitnil,omitempty" name:"TextSegSet"`
+
+	// 镜头分割结果
+	ShotSegSet []*ShotInfo `json:"ShotSegSet,omitnil,omitempty" name:"ShotSegSet"`
+
+	// 数组第 i 个结构 TextSegMatchShotConfidenceSet[i] 表示第 i 个文本摘要分割结果和所有镜头的匹配度。
+	TextSegMatchShotScoreSet []*TextSegMatchShotScore `json:"TextSegMatchShotScoreSet,omitnil,omitempty" name:"TextSegMatchShotScoreSet"`
+
+	// TTS 输出音频下载地址列表
+	TTSResultURLSet []*string `json:"TTSResultURLSet,omitnil,omitempty" name:"TTSResultURLSet"`
+
+	// 合成视频输出下载地址
+	VideoResultURL *string `json:"VideoResultURL,omitnil,omitempty" name:"VideoResultURL"`
+
+	// 合成后的视频横竖屏转换后的视频下载地址
+	VideoRotateResultURL *string `json:"VideoRotateResultURL,omitnil,omitempty" name:"VideoRotateResultURL"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoSummaryDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoSummaryDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoSummaryDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSummaryDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ImageData struct {
 	// 图片中出现的可视文本识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1998,6 +2288,16 @@ type Rectf struct {
 	Height *float64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
+type ShotInfo struct {
+	// 镜头开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeStamp *float64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
+
+	// 镜头结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeStamp *float64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
+}
+
 type ShowInfo struct {
 	// 节目日期(只在新闻有效)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2074,6 +2374,37 @@ type SortBy struct {
 
 	// true表示降序，false表示升序
 	Descend *bool `json:"Descend,omitnil,omitempty" name:"Descend"`
+}
+
+type TTSMode struct {
+	// 语速，范围：[-2，2]，分别对应不同语速：
+	// -2代表0.6倍
+	// -1代表0.8倍
+	// 0代表1.0倍（默认）
+	// 1代表1.2倍
+	// 2代表1.5倍
+	// 如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。
+	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+
+	// 音色 ID，[音色体验地址](https://cloud.tencent.com/product/tts)。
+	// 
+	// 
+	// |音乐ID|音色名称|推荐场景|
+	// |--|--|--|
+	// |1001|智瑜|情感女声|
+	// |1002|智聆|通用女声|
+	// |1003|智美|客服女声|
+	// |1004|智云|通用男声|
+	// |1005|智莉|通用女声|
+	// |1007|智娜|客服女声|
+	// |1008|智琪|客服女声|
+	// |1009|智芸|知性女声|
+	// |1010|智华|通用男声|
+	// |1017|智蓉|情感女声|
+	// |1018|智靖|情感男声|
+	// 
+	// 
+	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 }
 
 type TaskFilter struct {
@@ -2222,6 +2553,12 @@ type TextMetadata struct {
 	// 媒资文本文件格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type TextSegMatchShotScore struct {
+	// 数组第 i 个值表示该文本摘要和第 i 个镜头的匹配度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScoreSet []*float64 `json:"ScoreSet,omitnil,omitempty" name:"ScoreSet"`
 }
 
 type UnknownPerson struct {
@@ -2393,4 +2730,9 @@ type VideoAppearInfo struct {
 
 	// 关键词在视觉信息中的封面图片
 	ImageURL *string `json:"ImageURL,omitnil,omitempty" name:"ImageURL"`
+}
+
+type VideoRotationMode struct {
+	// 生成的视频是否需要横屏转竖屏。
+	ActiveVideoRotation *bool `json:"ActiveVideoRotation,omitnil,omitempty" name:"ActiveVideoRotation"`
 }

@@ -278,6 +278,24 @@ func (r *BatchDeleteClientNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChargeAttribute struct {
+	// 到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
+
+	// 付费方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
 type ClientClusterManagerNodeInfo struct {
 	// 客户端节点IP
 	NodeIp *string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
@@ -1163,6 +1181,9 @@ type ExpandCapacityRequestParams struct {
 
 	// 新增扩容的系统容量
 	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitnil,omitempty" name:"ExpandedCapacity"`
+
+	// 容量修改类型：add/sub
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 }
 
 type ExpandCapacityRequest struct {
@@ -1173,6 +1194,9 @@ type ExpandCapacityRequest struct {
 
 	// 新增扩容的系统容量
 	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitnil,omitempty" name:"ExpandedCapacity"`
+
+	// 容量修改类型：add/sub
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 }
 
 func (r *ExpandCapacityRequest) ToJsonString() string {
@@ -1189,6 +1213,7 @@ func (r *ExpandCapacityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	delete(f, "ExpandedCapacity")
+	delete(f, "ModifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpandCapacityRequest has unknown keys!", "")
 	}
@@ -1255,6 +1280,10 @@ type FSAttribute struct {
 
 	// 更新属性时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 文件系统付费信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeAttribute *ChargeAttribute `json:"ChargeAttribute,omitnil,omitempty" name:"ChargeAttribute"`
 }
 
 type GooseFSxAttribute struct {
@@ -1332,6 +1361,10 @@ type MappedBucket struct {
 	// 桶所在的园区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// 自定义Endpoint
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
 // Predefined struct for user

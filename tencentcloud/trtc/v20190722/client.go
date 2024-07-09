@@ -383,6 +383,57 @@ func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePi
     return
 }
 
+func NewDescribeAIConversationRequest() (request *DescribeAIConversationRequest) {
+    request = &DescribeAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeAIConversation")
+    
+    
+    return
+}
+
+func NewDescribeAIConversationResponse() (response *DescribeAIConversationResponse) {
+    response = &DescribeAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIConversation
+// 查询AI对话任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeAIConversation(request *DescribeAIConversationRequest) (response *DescribeAIConversationResponse, err error) {
+    return c.DescribeAIConversationWithContext(context.Background(), request)
+}
+
+// DescribeAIConversation
+// 查询AI对话任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeAIConversationWithContext(ctx context.Context, request *DescribeAIConversationRequest) (response *DescribeAIConversationResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIConversationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAITranscriptionRequest() (request *DescribeAITranscriptionRequest) {
     request = &DescribeAITranscriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2791,6 +2842,63 @@ func (c *Client) RemoveUserByStrRoomIdWithContext(ctx context.Context, request *
     return
 }
 
+func NewStartAIConversationRequest() (request *StartAIConversationRequest) {
+    request = &StartAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "StartAIConversation")
+    
+    
+    return
+}
+
+func NewStartAIConversationResponse() (response *StartAIConversationResponse) {
+    response = &StartAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartAIConversation
+// 启动一个任务，机器人将进入TRTC房间，与指定成员进行AI对话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartAIConversation(request *StartAIConversationRequest) (response *StartAIConversationResponse, err error) {
+    return c.StartAIConversationWithContext(context.Background(), request)
+}
+
+// StartAIConversation
+// 启动一个任务，机器人将进入TRTC房间，与指定成员进行AI对话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartAIConversationWithContext(ctx context.Context, request *StartAIConversationRequest) (response *StartAIConversationResponse, err error) {
+    if request == nil {
+        request = NewStartAIConversationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartAITranscriptionRequest() (request *StartAITranscriptionRequest) {
     request = &StartAITranscriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4009,6 +4117,57 @@ func (c *Client) StartWebRecordWithContext(ctx context.Context, request *StartWe
     request.SetContext(ctx)
     
     response = NewStartWebRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopAIConversationRequest() (request *StopAIConversationRequest) {
+    request = &StopAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "StopAIConversation")
+    
+    
+    return
+}
+
+func NewStopAIConversationResponse() (response *StopAIConversationResponse) {
+    response = &StopAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopAIConversation
+// 停止AI对话任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) StopAIConversation(request *StopAIConversationRequest) (response *StopAIConversationResponse, err error) {
+    return c.StopAIConversationWithContext(context.Background(), request)
+}
+
+// StopAIConversation
+// 停止AI对话任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) StopAIConversationWithContext(ctx context.Context, request *StopAIConversationRequest) (response *StopAIConversationResponse, err error) {
+    if request == nil {
+        request = NewStopAIConversationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopAIConversationResponse()
     err = c.Send(request, response)
     return
 }

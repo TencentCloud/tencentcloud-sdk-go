@@ -22,9 +22,11 @@ import (
 
 type Account struct {
 	// 新账户的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 新账户的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 

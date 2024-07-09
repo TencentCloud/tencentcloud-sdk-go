@@ -1491,6 +1491,7 @@ func NewDeletePolicyResponse() (response *DeletePolicyResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_OPERATEPOLICIESOVERLIMIT = "InvalidParameter.OperatePoliciesOverLimit"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
@@ -1506,6 +1507,7 @@ func (c *Client) DeletePolicy(request *DeletePolicyRequest) (response *DeletePol
 // 可能返回的错误码:
 //  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_OPERATEPOLICIESOVERLIMIT = "InvalidParameter.OperatePoliciesOverLimit"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"

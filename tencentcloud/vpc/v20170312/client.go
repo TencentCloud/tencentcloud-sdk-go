@@ -20432,6 +20432,57 @@ func (c *Client) ModifyVpnGatewayRoutesWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyVpnGatewaySslClientCertRequest() (request *ModifyVpnGatewaySslClientCertRequest) {
+    request = &ModifyVpnGatewaySslClientCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewaySslClientCert")
+    
+    
+    return
+}
+
+func NewModifyVpnGatewaySslClientCertResponse() (response *ModifyVpnGatewaySslClientCertResponse) {
+    response = &ModifyVpnGatewaySslClientCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVpnGatewaySslClientCert
+// 更新SslVpnClient证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_SSLVPNCLIENTIDNOTFOUND = "UnsupportedOperation.SslVpnClientIdNotFound"
+func (c *Client) ModifyVpnGatewaySslClientCert(request *ModifyVpnGatewaySslClientCertRequest) (response *ModifyVpnGatewaySslClientCertResponse, err error) {
+    return c.ModifyVpnGatewaySslClientCertWithContext(context.Background(), request)
+}
+
+// ModifyVpnGatewaySslClientCert
+// 更新SslVpnClient证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_SSLVPNCLIENTIDNOTFOUND = "UnsupportedOperation.SslVpnClientIdNotFound"
+func (c *Client) ModifyVpnGatewaySslClientCertWithContext(ctx context.Context, request *ModifyVpnGatewaySslClientCertRequest) (response *ModifyVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewModifyVpnGatewaySslClientCertRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpnGatewaySslClientCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVpnGatewaySslClientCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVpnGatewaySslServerRequest() (request *ModifyVpnGatewaySslServerRequest) {
     request = &ModifyVpnGatewaySslServerRequest{
         BaseRequest: &tchttp.BaseRequest{},

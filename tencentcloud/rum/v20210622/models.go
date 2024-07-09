@@ -4704,6 +4704,9 @@ type DescribeReleaseFileSignRequestParams struct {
 
 	// bucket类型，不填默认1:web，2:app
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+	Site *int64 `json:"Site,omitnil,omitempty" name:"Site"`
 }
 
 type DescribeReleaseFileSignRequest struct {
@@ -4714,6 +4717,9 @@ type DescribeReleaseFileSignRequest struct {
 
 	// bucket类型，不填默认1:web，2:app
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+	Site *int64 `json:"Site,omitnil,omitempty" name:"Site"`
 }
 
 func (r *DescribeReleaseFileSignRequest) ToJsonString() string {
@@ -4730,6 +4736,7 @@ func (r *DescribeReleaseFileSignRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Timeout")
 	delete(f, "FileType")
+	delete(f, "Site")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReleaseFileSignRequest has unknown keys!", "")
 	}
