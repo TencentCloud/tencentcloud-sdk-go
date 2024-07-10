@@ -1411,6 +1411,55 @@ func (c *Client) DescribeRobotBizIDByAppKeyWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeSegmentsRequest() (request *DescribeSegmentsRequest) {
+    request = &DescribeSegmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeSegments")
+    
+    
+    return
+}
+
+func NewDescribeSegmentsResponse() (response *DescribeSegmentsResponse) {
+    response = &DescribeSegmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSegments
+// 获取片段详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSegments(request *DescribeSegmentsRequest) (response *DescribeSegmentsResponse, err error) {
+    return c.DescribeSegmentsWithContext(context.Background(), request)
+}
+
+// DescribeSegments
+// 获取片段详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSegmentsWithContext(ctx context.Context, request *DescribeSegmentsRequest) (response *DescribeSegmentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSegmentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSegments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSegmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStorageCredentialRequest() (request *DescribeStorageCredentialRequest) {
     request = &DescribeStorageCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},

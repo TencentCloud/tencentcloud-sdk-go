@@ -1949,14 +1949,14 @@ func (r *DescribeAllScenesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBlueprintInstancesRequestParams struct {
-	// 实例 ID 列表，当前最多支持 1 个。
+	// 实例 ID 列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。 当前最多支持1个。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DescribeBlueprintInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 列表，当前最多支持 1 个。
+	// 实例 ID 列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。 当前最多支持1个。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 

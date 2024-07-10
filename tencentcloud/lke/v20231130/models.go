@@ -2395,6 +2395,71 @@ func (r *DescribeRobotBizIDByAppKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSegmentsRequestParams struct {
+	// 应用ID
+	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 文档ID
+	SegBizId []*string `json:"SegBizId,omitnil,omitempty" name:"SegBizId"`
+}
+
+type DescribeSegmentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 文档ID
+	SegBizId []*string `json:"SegBizId,omitnil,omitempty" name:"SegBizId"`
+}
+
+func (r *DescribeSegmentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSegmentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotBizId")
+	delete(f, "SegBizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSegmentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSegmentsResponseParams struct {
+	// 片段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DocSegment `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSegmentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSegmentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSegmentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSegmentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeStorageCredentialRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -2576,6 +2641,48 @@ func (r *DescribeUnsatisfiedReplyContextResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DocSegment struct {
+	// 片段ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 文件类型(markdown,word,txt)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 文档切片类型(segment-文档切片 table-表格)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// 标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 段落内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageContent *string `json:"PageContent,omitnil,omitempty" name:"PageContent"`
+
+	// 段落原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgData *string `json:"OrgData,omitnil,omitempty" name:"OrgData"`
+
+	// 文章ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// 文档业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 文档链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocUrl *string `json:"DocUrl,omitnil,omitempty" name:"DocUrl"`
 }
 
 type DocumentElement struct {
@@ -7660,7 +7767,7 @@ type SaveDocRequestParams struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入；2:文档导入
+	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 }
 
@@ -7713,7 +7820,7 @@ type SaveDocRequest struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入；2:文档导入
+	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 }
 

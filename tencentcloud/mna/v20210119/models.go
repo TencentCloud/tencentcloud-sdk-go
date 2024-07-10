@@ -58,6 +58,14 @@ type ActivateHardware struct {
 	// 设备分组名称，预留参数，需要分组时传入GroupId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
+
+	// 激活后的设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 }
 
 // Predefined struct for user
@@ -150,6 +158,9 @@ type AddDeviceRequestParams struct {
 
 	// 设备分组ID，非必选，如果不填写则默认设备无分组
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
 type AddDeviceRequest struct {
@@ -185,6 +196,9 @@ type AddDeviceRequest struct {
 
 	// 设备分组ID，非必选，如果不填写则默认设备无分组
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
 func (r *AddDeviceRequest) ToJsonString() string {
@@ -207,6 +221,7 @@ func (r *AddDeviceRequest) FromJsonString(s string) error {
 	delete(f, "LicensePayMode")
 	delete(f, "GroupName")
 	delete(f, "GroupId")
+	delete(f, "FlowTrunc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDeviceRequest has unknown keys!", "")
 	}
@@ -242,6 +257,70 @@ func (r *AddDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddGroupRequestParams struct {
+	// 分组的名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 分组的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type AddGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组的名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 分组的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *AddGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddGroupResponseParams struct {
+	// 分组的唯一ID，仅做分组唯一区分
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *AddGroupResponseParams `json:"Response"`
+}
+
+func (r *AddGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -577,6 +656,60 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteGroupRequestParams struct {
+	// 删除指定分组
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+type DeleteGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 删除指定分组
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+func (r *DeleteGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteQosRequestParams struct {
 	// 单次加速唯一 Id
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -749,6 +882,10 @@ type DeviceBaseInfo struct {
 	// 设备分组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
 type DeviceDetails struct {
@@ -1442,6 +1579,107 @@ func (r *GetFlowStatisticByGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetFlowStatisticByRegionRequestParams struct {
+	// 开始查找时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 网关类型。0：公有云网关；1：自有网关。 
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+}
+
+type GetFlowStatisticByRegionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始查找时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 网关类型。0：公有云网关；1：自有网关。 
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+}
+
+func (r *GetFlowStatisticByRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowStatisticByRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "TimeGranularity")
+	delete(f, "GatewayType")
+	delete(f, "AccessRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowStatisticByRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowStatisticByRegionResponseParams struct {
+	// 流量详细信息
+	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
+
+	// 查找时间段流量使用最大值（单位：byte）
+	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
+
+	// 查找时间段流量使用平均值（单位：byte）
+	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
+
+	// 查找时间段流量使用总量（单位：byte）
+	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFlowStatisticByRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFlowStatisticByRegionResponseParams `json:"Response"`
+}
+
+func (r *GetFlowStatisticByRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowStatisticByRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetFlowStatisticRequestParams struct {
 	// 设备ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -1553,6 +1791,170 @@ func (r *GetFlowStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFlowStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetGroupDetailRequestParams struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 搜索关键字
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
+}
+
+type GetGroupDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 搜索关键字
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
+}
+
+func (r *GetGroupDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGroupDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "KeyWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGroupDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetGroupDetailResponseParams struct {
+	// 分组基本信息
+	GroupInfo *GroupInfo `json:"GroupInfo,omitnil,omitempty" name:"GroupInfo"`
+
+	// 分组中设备列表
+	DeviceInfos []*DeviceBaseInfo `json:"DeviceInfos,omitnil,omitempty" name:"DeviceInfos"`
+
+	// 设备总记录条数
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 总页数
+	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetGroupDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *GetGroupDetailResponseParams `json:"Response"`
+}
+
+func (r *GetGroupDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGroupDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetGroupListRequestParams struct {
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 搜索分组的关键字，为空时匹配所有分组
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type GetGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 搜索分组的关键字，为空时匹配所有分组
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *GetGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetGroupListResponseParams struct {
+	// 设备信息列表
+	GroupInfos []*GroupInfo `json:"GroupInfos,omitnil,omitempty" name:"GroupInfos"`
+
+	// 设备总记录条数
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 总页数
+	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetGroupListResponseParams `json:"Response"`
+}
+
+func (r *GetGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2079,6 +2481,155 @@ func (r *GetVendorHardwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GroupAddDeviceRequestParams struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 待添加的设备列表
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type GroupAddDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 待添加的设备列表
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *GroupAddDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GroupAddDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GroupAddDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GroupAddDeviceResponseParams struct {
+	// 分组中的设备数量
+	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GroupAddDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *GroupAddDeviceResponseParams `json:"Response"`
+}
+
+func (r *GroupAddDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GroupAddDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GroupDeleteDeviceRequestParams struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 待删除的设备列表
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type GroupDeleteDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 待删除的设备列表
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *GroupDeleteDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GroupDeleteDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GroupDeleteDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GroupDeleteDeviceResponseParams struct {
+	// 分组中的设备数量
+	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GroupDeleteDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *GroupDeleteDeviceResponseParams `json:"Response"`
+}
+
+func (r *GroupDeleteDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GroupDeleteDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GroupInfo struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 分组名
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 分组创建的时间，单位：ms	
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 分组更新的时间，单位：ms	
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 分组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 分组中的设备数量
+	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
+}
+
 type Hardware struct {
 	// 硬件序列号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2157,6 +2708,10 @@ type HardwareInfo struct {
 	// 设备分组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
 // Predefined struct for user
@@ -2382,6 +2937,74 @@ func (r *OrderFlowPackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetNotifyUrlRequestParams struct {
+	// 告警通知回调url
+	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
+
+	// 告警通知回调key
+	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
+
+	// 流量包的告警阈值
+	AlarmValue *int64 `json:"AlarmValue,omitnil,omitempty" name:"AlarmValue"`
+}
+
+type SetNotifyUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警通知回调url
+	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
+
+	// 告警通知回调key
+	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
+
+	// 流量包的告警阈值
+	AlarmValue *int64 `json:"AlarmValue,omitnil,omitempty" name:"AlarmValue"`
+}
+
+func (r *SetNotifyUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetNotifyUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotifyUrl")
+	delete(f, "CallbackKey")
+	delete(f, "AlarmValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetNotifyUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetNotifyUrlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetNotifyUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *SetNotifyUrlResponseParams `json:"Response"`
+}
+
+func (r *SetNotifyUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetNotifyUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SlotNetInfo struct {
 	// 网卡名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2420,6 +3043,9 @@ type UpdateDeviceRequestParams struct {
 
 	// 更新设备网络信息
 	UpdateNetInfo []*UpdateNetInfo `json:"UpdateNetInfo,omitnil,omitempty" name:"UpdateNetInfo"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
 type UpdateDeviceRequest struct {
@@ -2436,6 +3062,9 @@ type UpdateDeviceRequest struct {
 
 	// 更新设备网络信息
 	UpdateNetInfo []*UpdateNetInfo `json:"UpdateNetInfo,omitnil,omitempty" name:"UpdateNetInfo"`
+
+	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
 func (r *UpdateDeviceRequest) ToJsonString() string {
@@ -2454,6 +3083,7 @@ func (r *UpdateDeviceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "Remark")
 	delete(f, "UpdateNetInfo")
+	delete(f, "FlowTrunc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeviceRequest has unknown keys!", "")
 	}
@@ -2479,6 +3109,67 @@ func (r *UpdateDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateGroupRequestParams struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 分组备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 分组备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateGroupResponseParams `json:"Response"`
+}
+
+func (r *UpdateGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

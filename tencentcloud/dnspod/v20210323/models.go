@@ -1094,6 +1094,9 @@ type CreateRecordRequestParams struct {
 
 	// 开启DNSSEC时，强制添加CNAME/URL记录
 	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
+
+	// 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type CreateRecordRequest struct {
@@ -1137,6 +1140,9 @@ type CreateRecordRequest struct {
 
 	// 开启DNSSEC时，强制添加CNAME/URL记录
 	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
+
+	// 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *CreateRecordRequest) ToJsonString() string {
@@ -1164,6 +1170,7 @@ func (r *CreateRecordRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Remark")
 	delete(f, "DnssecConflictMode")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordRequest has unknown keys!", "")
 	}

@@ -10681,6 +10681,10 @@ type LiveStreamObjectRecognitionResult struct {
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
+
+	// 截图链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type LiveStreamOcrFullTextRecognitionResult struct {
@@ -10792,6 +10796,10 @@ type LiveStreamTaskNotifyConfig struct {
 
 	// HTTP回调地址，NotifyType为URL时必填。
 	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
+
+	// 用于生成回调签名的 Key。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyKey *string `json:"NotifyKey,omitnil,omitempty" name:"NotifyKey"`
 }
 
 type LiveStreamTransTextRecognitionResult struct {

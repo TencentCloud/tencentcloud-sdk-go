@@ -761,6 +761,9 @@ const (
 	// 部署组不存在。
 	INVALIDPARAMETERVALUE_DEPLOYGROUPNOTEXISTS = "InvalidParameterValue.DeployGroupNotExists"
 
+	// 重复数据集名。
+	INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
+
 	// 文件配置项已经发布。
 	INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
 
@@ -866,6 +869,9 @@ const (
 	// 参数格式异常。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 
+	// 数据集名非法。
+	INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+
 	// 已经绑定灰度规则，无法删除。
 	INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
 
@@ -940,6 +946,9 @@ const (
 
 	// 无法获取命名空间。
 	INVALIDPARAMETERVALUE_NAMESPACENOTEXISTS = "InvalidParameterValue.NamespaceNotExists"
+
+	// 数据集项不存在。
+	INVALIDPARAMETERVALUE_PROGRAMITEMNOTEXISTS = "InvalidParameterValue.ProgramItemNotExists"
 
 	// 配置项已经发布，不允许删除。
 	INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedConfigCanNotBeDeleted"

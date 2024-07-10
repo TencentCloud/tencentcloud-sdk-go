@@ -2799,11 +2799,11 @@ type VoicePrintVerifyRequestParams struct {
 	// 音频采样率，目前支持16000，单位：Hz，必填
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 说话人id, 说话人唯一标识
-	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
-
 	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 说话人id, 说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
 }
 
 type VoicePrintVerifyRequest struct {
@@ -2815,11 +2815,11 @@ type VoicePrintVerifyRequest struct {
 	// 音频采样率，目前支持16000，单位：Hz，必填
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 说话人id, 说话人唯一标识
-	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
-
 	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 说话人id, 说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
 }
 
 func (r *VoicePrintVerifyRequest) ToJsonString() string {
@@ -2836,8 +2836,8 @@ func (r *VoicePrintVerifyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VoiceFormat")
 	delete(f, "SampleRate")
-	delete(f, "VoicePrintId")
 	delete(f, "Data")
+	delete(f, "VoicePrintId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintVerifyRequest has unknown keys!", "")
 	}

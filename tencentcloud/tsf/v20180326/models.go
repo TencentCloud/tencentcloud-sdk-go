@@ -4531,6 +4531,77 @@ func (r *CreatePathRewritesWithDetailRespResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type CreateProgramRequestParams struct {
+	// 数据集名称
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// 数据集描述
+	ProgramDesc *string `json:"ProgramDesc,omitnil,omitempty" name:"ProgramDesc"`
+
+	// 数据项列表，传入null或空数组时不新增
+	ProgramItemList []*ProgramItem `json:"ProgramItemList,omitnil,omitempty" name:"ProgramItemList"`
+}
+
+type CreateProgramRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据集名称
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// 数据集描述
+	ProgramDesc *string `json:"ProgramDesc,omitnil,omitempty" name:"ProgramDesc"`
+
+	// 数据项列表，传入null或空数组时不新增
+	ProgramItemList []*ProgramItem `json:"ProgramItemList,omitnil,omitempty" name:"ProgramItemList"`
+}
+
+func (r *CreateProgramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProgramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProgramName")
+	delete(f, "ProgramDesc")
+	delete(f, "ProgramItemList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProgramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProgramResponseParams struct {
+	// true: 创建成功；false: 创建失败
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateProgramResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProgramResponseParams `json:"Response"`
+}
+
+func (r *CreateProgramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProgramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePublicConfigRequestParams struct {
 	// 配置项名称
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
@@ -18295,6 +18366,91 @@ func (r *ModifyPathRewriteResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyPathRewriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProgramRequestParams struct {
+	// 数据集ID
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// 数据集名称，不传入时不更新
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// 数据集描述，不传入时不更新
+	ProgramDesc *string `json:"ProgramDesc,omitnil,omitempty" name:"ProgramDesc"`
+
+	// 数据项列表，传入null不更新，传入空数组全量删除
+	ProgramItemList []*ProgramItem `json:"ProgramItemList,omitnil,omitempty" name:"ProgramItemList"`
+
+	// ProgramItemList是否是空数组
+	EmptyProgramItemList *bool `json:"EmptyProgramItemList,omitnil,omitempty" name:"EmptyProgramItemList"`
+}
+
+type ModifyProgramRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据集ID
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// 数据集名称，不传入时不更新
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// 数据集描述，不传入时不更新
+	ProgramDesc *string `json:"ProgramDesc,omitnil,omitempty" name:"ProgramDesc"`
+
+	// 数据项列表，传入null不更新，传入空数组全量删除
+	ProgramItemList []*ProgramItem `json:"ProgramItemList,omitnil,omitempty" name:"ProgramItemList"`
+
+	// ProgramItemList是否是空数组
+	EmptyProgramItemList *bool `json:"EmptyProgramItemList,omitnil,omitempty" name:"EmptyProgramItemList"`
+}
+
+func (r *ModifyProgramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProgramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProgramId")
+	delete(f, "ProgramName")
+	delete(f, "ProgramDesc")
+	delete(f, "ProgramItemList")
+	delete(f, "EmptyProgramItemList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProgramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProgramResponseParams struct {
+	// true: 更新成功；false: 更新失败
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProgramResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProgramResponseParams `json:"Response"`
+}
+
+func (r *ModifyProgramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProgramResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

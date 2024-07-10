@@ -165,6 +165,59 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     return
 }
 
+func NewAddGroupRequest() (request *AddGroupRequest) {
+    request = &AddGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddGroup")
+    
+    
+    return
+}
+
+func NewAddGroupResponse() (response *AddGroupResponse) {
+    response = &AddGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddGroup
+// 新建分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AddGroup(request *AddGroupRequest) (response *AddGroupResponse, err error) {
+    return c.AddGroupWithContext(context.Background(), request)
+}
+
+// AddGroup
+// 新建分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AddGroupWithContext(ctx context.Context, request *AddGroupRequest) (response *AddGroupResponse, err error) {
+    if request == nil {
+        request = NewAddGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddHardwareRequest() (request *AddHardwareRequest) {
     request = &AddHardwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -397,6 +450,59 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
+    request = &DeleteGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DeleteGroup")
+    
+    
+    return
+}
+
+func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
+    response = &DeleteGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGroup
+// 删除分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+    return c.DeleteGroupWithContext(context.Background(), request)
+}
+
+// DeleteGroup
+// 删除分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -900,6 +1006,169 @@ func (c *Client) GetFlowStatisticByGroupWithContext(ctx context.Context, request
     return
 }
 
+func NewGetFlowStatisticByRegionRequest() (request *GetFlowStatisticByRegionRequest) {
+    request = &GetFlowStatisticByRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetFlowStatisticByRegion")
+    
+    
+    return
+}
+
+func NewGetFlowStatisticByRegionResponse() (response *GetFlowStatisticByRegionResponse) {
+    response = &GetFlowStatisticByRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFlowStatisticByRegion
+// 获取指定区域，指定时间点数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticByRegion(request *GetFlowStatisticByRegionRequest) (response *GetFlowStatisticByRegionResponse, err error) {
+    return c.GetFlowStatisticByRegionWithContext(context.Background(), request)
+}
+
+// GetFlowStatisticByRegion
+// 获取指定区域，指定时间点数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticByRegionWithContext(ctx context.Context, request *GetFlowStatisticByRegionRequest) (response *GetFlowStatisticByRegionResponse, err error) {
+    if request == nil {
+        request = NewGetFlowStatisticByRegionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFlowStatisticByRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFlowStatisticByRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetGroupDetailRequest() (request *GetGroupDetailRequest) {
+    request = &GetGroupDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetGroupDetail")
+    
+    
+    return
+}
+
+func NewGetGroupDetailResponse() (response *GetGroupDetailResponse) {
+    response = &GetGroupDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetGroupDetail
+// 查看分组详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetGroupDetail(request *GetGroupDetailRequest) (response *GetGroupDetailResponse, err error) {
+    return c.GetGroupDetailWithContext(context.Background(), request)
+}
+
+// GetGroupDetail
+// 查看分组详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetGroupDetailWithContext(ctx context.Context, request *GetGroupDetailRequest) (response *GetGroupDetailResponse, err error) {
+    if request == nil {
+        request = NewGetGroupDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGroupDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetGroupDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetGroupListRequest() (request *GetGroupListRequest) {
+    request = &GetGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetGroupList")
+    
+    
+    return
+}
+
+func NewGetGroupListResponse() (response *GetGroupListResponse) {
+    response = &GetGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetGroupList
+// 获取分组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupListResponse, err error) {
+    return c.GetGroupListWithContext(context.Background(), request)
+}
+
+// GetGroupList
+// 获取分组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupListRequest) (response *GetGroupListResponse, err error) {
+    if request == nil {
+        request = NewGetGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetHardwareListRequest() (request *GetHardwareListRequest) {
     request = &GetHardwareListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1226,6 +1495,112 @@ func (c *Client) GetVendorHardwareWithContext(ctx context.Context, request *GetV
     return
 }
 
+func NewGroupAddDeviceRequest() (request *GroupAddDeviceRequest) {
+    request = &GroupAddDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GroupAddDevice")
+    
+    
+    return
+}
+
+func NewGroupAddDeviceResponse() (response *GroupAddDeviceResponse) {
+    response = &GroupAddDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GroupAddDevice
+// 向已存在分组中添加设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GroupAddDevice(request *GroupAddDeviceRequest) (response *GroupAddDeviceResponse, err error) {
+    return c.GroupAddDeviceWithContext(context.Background(), request)
+}
+
+// GroupAddDevice
+// 向已存在分组中添加设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GroupAddDeviceWithContext(ctx context.Context, request *GroupAddDeviceRequest) (response *GroupAddDeviceResponse, err error) {
+    if request == nil {
+        request = NewGroupAddDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GroupAddDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGroupAddDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGroupDeleteDeviceRequest() (request *GroupDeleteDeviceRequest) {
+    request = &GroupDeleteDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GroupDeleteDevice")
+    
+    
+    return
+}
+
+func NewGroupDeleteDeviceResponse() (response *GroupDeleteDeviceResponse) {
+    response = &GroupDeleteDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GroupDeleteDevice
+// 删除分组中的设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GroupDeleteDevice(request *GroupDeleteDeviceRequest) (response *GroupDeleteDeviceResponse, err error) {
+    return c.GroupDeleteDeviceWithContext(context.Background(), request)
+}
+
+// GroupDeleteDevice
+// 删除分组中的设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GroupDeleteDeviceWithContext(ctx context.Context, request *GroupDeleteDeviceRequest) (response *GroupDeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewGroupDeleteDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GroupDeleteDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGroupDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPackageRenewFlagRequest() (request *ModifyPackageRenewFlagRequest) {
     request = &ModifyPackageRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1360,6 +1735,61 @@ func (c *Client) OrderFlowPackageWithContext(ctx context.Context, request *Order
     return
 }
 
+func NewSetNotifyUrlRequest() (request *SetNotifyUrlRequest) {
+    request = &SetNotifyUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "SetNotifyUrl")
+    
+    
+    return
+}
+
+func NewSetNotifyUrlResponse() (response *SetNotifyUrlResponse) {
+    response = &SetNotifyUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetNotifyUrl
+// 设置用户流量告警信息接口，通过该接口设置流量包告警阈值以及告警时回调的url和key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) SetNotifyUrl(request *SetNotifyUrlRequest) (response *SetNotifyUrlResponse, err error) {
+    return c.SetNotifyUrlWithContext(context.Background(), request)
+}
+
+// SetNotifyUrl
+// 设置用户流量告警信息接口，通过该接口设置流量包告警阈值以及告警时回调的url和key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) SetNotifyUrlWithContext(ctx context.Context, request *SetNotifyUrlRequest) (response *SetNotifyUrlResponse, err error) {
+    if request == nil {
+        request = NewSetNotifyUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetNotifyUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetNotifyUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateDeviceRequest() (request *UpdateDeviceRequest) {
     request = &UpdateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1411,6 +1841,59 @@ func (c *Client) UpdateDeviceWithContext(ctx context.Context, request *UpdateDev
     request.SetContext(ctx)
     
     response = NewUpdateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateGroupRequest() (request *UpdateGroupRequest) {
+    request = &UpdateGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateGroup")
+    
+    
+    return
+}
+
+func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
+    response = &UpdateGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateGroup
+// 更新分组备注
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
+    return c.UpdateGroupWithContext(context.Background(), request)
+}
+
+// UpdateGroup
+// 更新分组备注
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateGroupWithContext(ctx context.Context, request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
+    if request == nil {
+        request = NewUpdateGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateGroupResponse()
     err = c.Send(request, response)
     return
 }

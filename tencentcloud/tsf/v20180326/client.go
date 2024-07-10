@@ -2187,6 +2187,57 @@ func (c *Client) CreatePathRewritesWithDetailRespWithContext(ctx context.Context
     return
 }
 
+func NewCreateProgramRequest() (request *CreateProgramRequest) {
+    request = &CreateProgramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateProgram")
+    
+    
+    return
+}
+
+func NewCreateProgramResponse() (response *CreateProgramResponse) {
+    response = &CreateProgramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateProgram
+// 创建数据集
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
+//  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+func (c *Client) CreateProgram(request *CreateProgramRequest) (response *CreateProgramResponse, err error) {
+    return c.CreateProgramWithContext(context.Background(), request)
+}
+
+// CreateProgram
+// 创建数据集
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
+//  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+func (c *Client) CreateProgramWithContext(ctx context.Context, request *CreateProgramRequest) (response *CreateProgramResponse, err error) {
+    if request == nil {
+        request = NewCreateProgramRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProgram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProgramResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePublicConfigRequest() (request *CreatePublicConfigRequest) {
     request = &CreatePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12035,6 +12086,59 @@ func (c *Client) ModifyPathRewriteWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyPathRewriteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProgramRequest() (request *ModifyProgramRequest) {
+    request = &ModifyProgramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyProgram")
+    
+    
+    return
+}
+
+func NewModifyProgramResponse() (response *ModifyProgramResponse) {
+    response = &ModifyProgramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProgram
+// 更新数据集
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
+//  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+//  INVALIDPARAMETERVALUE_PROGRAMITEMNOTEXISTS = "InvalidParameterValue.ProgramItemNotExists"
+func (c *Client) ModifyProgram(request *ModifyProgramRequest) (response *ModifyProgramResponse, err error) {
+    return c.ModifyProgramWithContext(context.Background(), request)
+}
+
+// ModifyProgram
+// 更新数据集
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
+//  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+//  INVALIDPARAMETERVALUE_PROGRAMITEMNOTEXISTS = "InvalidParameterValue.ProgramItemNotExists"
+func (c *Client) ModifyProgramWithContext(ctx context.Context, request *ModifyProgramRequest) (response *ModifyProgramResponse, err error) {
+    if request == nil {
+        request = NewModifyProgramRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProgram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProgramResponse()
     err = c.Send(request, response)
     return
 }
