@@ -5592,6 +5592,71 @@ func (c *Client) CreateConsoleLoginUrlWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateEmployeeQualificationSealQrCodeRequest() (request *CreateEmployeeQualificationSealQrCodeRequest) {
+    request = &CreateEmployeeQualificationSealQrCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateEmployeeQualificationSealQrCode")
+    
+    
+    return
+}
+
+func NewCreateEmployeeQualificationSealQrCodeResponse() (response *CreateEmployeeQualificationSealQrCodeResponse) {
+    response = &CreateEmployeeQualificationSealQrCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEmployeeQualificationSealQrCode
+// 该接口用于获取个人授权执业章给企业的二维码，需要个人用户通过微信扫码。扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。个人用户授权成功后，企业印章管理员需对印章进行审核，审核通过后，即可使用个人授权的执业章进行盖章操作。
+//
+// 
+//
+// **注意**
+//
+// 1. 该二维码**有效期为7天**，过期后将失效，可重新创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+func (c *Client) CreateEmployeeQualificationSealQrCode(request *CreateEmployeeQualificationSealQrCodeRequest) (response *CreateEmployeeQualificationSealQrCodeResponse, err error) {
+    return c.CreateEmployeeQualificationSealQrCodeWithContext(context.Background(), request)
+}
+
+// CreateEmployeeQualificationSealQrCode
+// 该接口用于获取个人授权执业章给企业的二维码，需要个人用户通过微信扫码。扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。个人用户授权成功后，企业印章管理员需对印章进行审核，审核通过后，即可使用个人授权的执业章进行盖章操作。
+//
+// 
+//
+// **注意**
+//
+// 1. 该二维码**有效期为7天**，过期后将失效，可重新创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+func (c *Client) CreateEmployeeQualificationSealQrCodeWithContext(ctx context.Context, request *CreateEmployeeQualificationSealQrCodeRequest) (response *CreateEmployeeQualificationSealQrCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateEmployeeQualificationSealQrCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEmployeeQualificationSealQrCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEmployeeQualificationSealQrCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowBlockchainEvidenceUrlRequest() (request *CreateFlowBlockchainEvidenceUrlRequest) {
     request = &CreateFlowBlockchainEvidenceUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

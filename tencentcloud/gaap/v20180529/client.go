@@ -5851,6 +5851,79 @@ func (c *Client) DescribeTCPListenersWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
+    request = &DescribeTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
+    response = &DescribeTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskStatus
+// 查询异步任务执行状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
+    return c.DescribeTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeTaskStatus
+// 查询异步任务执行状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUDPListenersRequest() (request *DescribeUDPListenersRequest) {
     request = &DescribeUDPListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},

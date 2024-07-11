@@ -2047,7 +2047,7 @@ func NewDescribeTrtcUsageResponse() (response *DescribeTrtcUsageResponse) {
 }
 
 // DescribeTrtcUsage
-// 获取TRTC音视频互动的用量明细。
+// 获取TRTC音视频互动的用量明细，单位:分钟。
 //
 // - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
 //
@@ -2067,7 +2067,7 @@ func (c *Client) DescribeTrtcUsage(request *DescribeTrtcUsageRequest) (response 
 }
 
 // DescribeTrtcUsage
-// 获取TRTC音视频互动的用量明细。
+// 获取TRTC音视频互动的用量明细，单位:分钟。
 //
 // - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
 //

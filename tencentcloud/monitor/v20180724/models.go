@@ -2473,7 +2473,7 @@ type CreatePrometheusMultiTenantInstancePostPayModeRequestParams struct {
 	// 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据存储时间（单位天），限制值为15，30，45之一
+	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 
 	// 可用区(与子网同可用区)
@@ -2498,7 +2498,7 @@ type CreatePrometheusMultiTenantInstancePostPayModeRequest struct {
 	// 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据存储时间（单位天），限制值为15，30，45之一
+	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 
 	// 可用区(与子网同可用区)

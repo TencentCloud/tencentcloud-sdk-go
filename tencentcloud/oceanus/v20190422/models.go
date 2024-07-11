@@ -3477,6 +3477,10 @@ type JobConfig struct {
 	// es空间中文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
+
+	// flink 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 }
 
 type JobEvent struct {
@@ -4506,6 +4510,10 @@ type SlotSharingGroup struct {
 	// SlotSharingGroup的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// SlotSharingGroup的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Configuration []*Property `json:"Configuration,omitnil,omitempty" name:"Configuration"`
 }
 
 type SlotSharingGroupSpec struct {

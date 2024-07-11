@@ -2124,6 +2124,77 @@ func (r *CreateEmbedWebUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateEmployeeQualificationSealQrCodeRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
+}
+
+type CreateEmployeeQualificationSealQrCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
+}
+
+func (r *CreateEmployeeQualificationSealQrCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmployeeQualificationSealQrCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "HintText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmployeeQualificationSealQrCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEmployeeQualificationSealQrCodeResponseParams struct {
+	// 二维码图片的Base64  注:  `此二维码的有效时间为7天，过期后需要重新生成新的二维码图片`
+	QrcodeBase64 *string `json:"QrcodeBase64,omitnil,omitempty" name:"QrcodeBase64"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEmployeeQualificationSealQrCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEmployeeQualificationSealQrCodeResponseParams `json:"Response"`
+}
+
+func (r *CreateEmployeeQualificationSealQrCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmployeeQualificationSealQrCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateExtendedServiceAuthInfosRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -2436,7 +2507,7 @@ type CreateFlowByFilesRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 合同流程的名称（可自定义此名称），长度不能超过200个字符，只能由中文、字母、数字、中划线和下划线组成。
 	// 
 	// 该名称还将用于合同签署完成后的下载文件名。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
@@ -2465,6 +2536,7 @@ type CreateFlowByFilesRequestParams struct {
 	// <li> 勾选框控件        </li>
 	// <li> 数字控件          </li>
 	// <li> 图片控件          </li>
+	// <li> 水印控件          </li>
 	// <li> 动态表格等填写控件</li></ul>
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
@@ -2563,7 +2635,7 @@ type CreateFlowByFilesRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 合同流程的名称（可自定义此名称），长度不能超过200个字符，只能由中文、字母、数字、中划线和下划线组成。
 	// 
 	// 该名称还将用于合同签署完成后的下载文件名。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
@@ -2592,6 +2664,7 @@ type CreateFlowByFilesRequest struct {
 	// <li> 勾选框控件        </li>
 	// <li> 数字控件          </li>
 	// <li> 图片控件          </li>
+	// <li> 水印控件          </li>
 	// <li> 动态表格等填写控件</li></ul>
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
@@ -8146,6 +8219,7 @@ type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// 默认为空，即查询当前支持的所有扩展服务信息。
 	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>AUTO_SIGN_CAN_FILL_IN：本企业自动签合同支持签前内容补充</li>
 	// <li>BATCH_SIGN：批量签署</li>
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
@@ -8154,7 +8228,8 @@ type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
 	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
-	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
+	// <li>FLOW_APPROVAL：合同审批强制开启</li>
 	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
@@ -8174,6 +8249,7 @@ type DescribeExtendedServiceAuthInfosRequest struct {
 	// 默认为空，即查询当前支持的所有扩展服务信息。
 	// 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>AUTO_SIGN_CAN_FILL_IN：本企业自动签合同支持签前内容补充</li>
 	// <li>BATCH_SIGN：批量签署</li>
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
@@ -8182,7 +8258,8 @@ type DescribeExtendedServiceAuthInfosRequest struct {
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
 	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
-	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
+	// <li>FLOW_APPROVAL：合同审批强制开启</li>
 	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
@@ -9440,11 +9517,7 @@ type DescribeOrganizationSealsRequestParams struct {
 	// 印章id，是否查询特定的印章（没有输入返回所有）
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 
-	// 
-	// 目前支持以下几种：
-	// 
-	// <ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> </ul>
+	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 代理企业和员工的信息。
@@ -9487,11 +9560,7 @@ type DescribeOrganizationSealsRequest struct {
 	// 印章id，是否查询特定的印章（没有输入返回所有）
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 
-	// 
-	// 目前支持以下几种：
-	// 
-	// <ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> </ul>
+	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 代理企业和员工的信息。
@@ -11264,6 +11333,7 @@ type ModifyExtendedServiceRequestParams struct {
 
 	// 要管理的拓展服务类型。
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>AUTO_SIGN_CAN_FILL_IN：本企业自动签合同支持签前内容补充</li>
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
 	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
@@ -11271,7 +11341,8 @@ type ModifyExtendedServiceRequestParams struct {
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
 	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
-	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
+	// <li>FLOW_APPROVAL：合同审批强制开启</li>
 	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
@@ -11303,6 +11374,7 @@ type ModifyExtendedServiceRequest struct {
 
 	// 要管理的拓展服务类型。
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+	// <li>AUTO_SIGN_CAN_FILL_IN：本企业自动签合同支持签前内容补充</li>
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
 	// <li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
@@ -11310,7 +11382,8 @@ type ModifyExtendedServiceRequest struct {
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
 	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
-	// <li>PAGING_SEAL：骑缝章</li>
+	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
+	// <li>FLOW_APPROVAL：合同审批强制开启</li>
 	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 

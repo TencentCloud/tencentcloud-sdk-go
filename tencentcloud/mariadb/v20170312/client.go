@@ -4802,3 +4802,72 @@ func (c *Client) UpgradeDedicatedDBInstanceWithContext(ctx context.Context, requ
     err = c.Send(request, response)
     return
 }
+
+func NewUpgradeHourDBInstanceRequest() (request *UpgradeHourDBInstanceRequest) {
+    request = &UpgradeHourDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "UpgradeHourDBInstance")
+    
+    
+    return
+}
+
+func NewUpgradeHourDBInstanceResponse() (response *UpgradeHourDBInstanceResponse) {
+    response = &UpgradeHourDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeHourDBInstance
+// 升级MariaDB按量计费实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEINUSE_TEMPINSTANCEEXIST = "ResourceInUse.TempInstanceExist"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_OPERATIONNOTAPPLICABLE = "UnsupportedOperation.OperationNotApplicable"
+func (c *Client) UpgradeHourDBInstance(request *UpgradeHourDBInstanceRequest) (response *UpgradeHourDBInstanceResponse, err error) {
+    return c.UpgradeHourDBInstanceWithContext(context.Background(), request)
+}
+
+// UpgradeHourDBInstance
+// 升级MariaDB按量计费实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEINUSE_TEMPINSTANCEEXIST = "ResourceInUse.TempInstanceExist"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_OPERATIONNOTAPPLICABLE = "UnsupportedOperation.OperationNotApplicable"
+func (c *Client) UpgradeHourDBInstanceWithContext(ctx context.Context, request *UpgradeHourDBInstanceRequest) (response *UpgradeHourDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeHourDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeHourDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeHourDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}

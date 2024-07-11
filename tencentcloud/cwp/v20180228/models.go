@@ -22303,6 +22303,12 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 	// 是否开启恶意进程查杀[0:未开启,1:开启]
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
+	// 防护模式 0 标准 1 重保
+	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
+
+	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -40812,6 +40818,10 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 	// 是否杀掉进程 1杀掉 0不杀掉
 	KillProcess *uint64 `json:"KillProcess,omitnil,omitempty" name:"KillProcess"`
 
+	// 1 清理, 0 不清理
+	// <li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+	DoClean *uint64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
+
 	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
@@ -40820,6 +40830,12 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 
 	// 是否开启恶意进程查杀[0:未开启,1:开启]
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
+
+	// 防护模式 0 标准 1重保
+	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
+
+	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
 }
 
 type ModifyMalwareTimingScanSettingsRequest struct {
@@ -40858,6 +40874,10 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 	// 是否杀掉进程 1杀掉 0不杀掉
 	KillProcess *uint64 `json:"KillProcess,omitnil,omitempty" name:"KillProcess"`
 
+	// 1 清理, 0 不清理
+	// <li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+	DoClean *uint64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
+
 	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
@@ -40866,6 +40886,12 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// 是否开启恶意进程查杀[0:未开启,1:开启]
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
+
+	// 防护模式 0 标准 1重保
+	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
+
+	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -40891,9 +40917,12 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "QuuidList")
 	delete(f, "AutoIsolation")
 	delete(f, "KillProcess")
+	delete(f, "DoClean")
 	delete(f, "EngineType")
 	delete(f, "EnableInspiredEngine")
 	delete(f, "EnableMemShellScan")
+	delete(f, "ProtectMode")
+	delete(f, "ProtectFileScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}

@@ -445,30 +445,32 @@ func (r *CreateBackupDownloadTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBInstanceHourRequestParams struct {
-	// 实例内存大小，单位：GB。
+	// 实例内存大小，单位：GB。具体售卖的内存规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例硬盘大小，单位：GB。
+	// 实例硬盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 指副本集数量。
-	// - 创建副本集实例，该参数只能为1。
-	// - 创建分片实例，指分片的数量。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指副本集数量，该参数只能为1。
+	// - 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
-	// 指每个副本集内节点个数。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 指版本信息。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 机器类型。
-	// - HIO：高IO型。
-	// - HIO10G：高IO万兆。
+	// 产品规格类型。
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版类型。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例数量，最小值1，最大值为10。
@@ -493,22 +495,21 @@ type CreateDBInstanceHourRequestParams struct {
 	// 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 项目ID。若不设置该参数，则为默认项目。
+	// 项目ID。
+	// - 若不设置该参数，则为默认项目。
+	// - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 实例标签信息。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例类型。
-	// - 1：正式实例。
-	// - 3：只读实例。
-	// - 4：灾备实例。
+	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：克隆实例，注意：克隆实例RestoreTime为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
 	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组。
+	// 安全组 ID。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 克隆实例回档时间。
@@ -519,28 +520,30 @@ type CreateDBInstanceHourRequestParams struct {
 	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 多可用区部署的节点列表。具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)获取。
+	// 若多可用区部署云数据库实例，指定多可用区列表。
+	// - 多可用区部署实例，参数 **Zone** 指定实例主可用区信息；**AvailabilityZoneList** 指定所有可用区信息，包含主可用区。输入格式如：[ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4]。
+	// - 通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 可获取云数据库不同地域规划的可用区信息，以便指定有效的可用区。
 	// - 多可用区部署节点只能部署在3个不同可用区。不支持将集群的大多数节点部署在同一个可用区。例如：3节点集群不支持2个节点部署在同一个区。
-	// - 不支持4.2及以上版本。
-	// - 不支持只读灾备实例。
-	// - 不能选择基础网络。
 	AvailabilityZoneList []*string `json:"AvailabilityZoneList,omitnil,omitempty" name:"AvailabilityZoneList"`
 
-	// Mongos CPU 核数。购买分片集群时，必须填写。
+	// Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
 	MongosCpu *uint64 `json:"MongosCpu,omitnil,omitempty" name:"MongosCpu"`
 
-	// Mongos 内存大小。购买分片集群时，必须填写。
+	// Mongos 内存大小。
+	// -  购买分片集群时，必须填写。
+	// - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
 	// 
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// Mongos 数量。购买分片集群时，必须填写。
-	// 
+	// - 单可用区部署实例，其数量范围为[3,32]。
+	// - 多可用区部署实例，其数量范围为[6,32]。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil,omitempty" name:"MongosNodeNum"`
 
-	// 只读节点数量，最大不超过7个。
+	// 只读节点数量，取值范围[0,5]。
 	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitnil,omitempty" name:"ReadonlyNodeNum"`
 
-	// 指只读节点所属可用区。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
+	// 指只读节点所属可用区数组。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
 	ReadonlyNodeAvailabilityZoneList []*string `json:"ReadonlyNodeAvailabilityZoneList,omitnil,omitempty" name:"ReadonlyNodeAvailabilityZoneList"`
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
@@ -550,30 +553,32 @@ type CreateDBInstanceHourRequestParams struct {
 type CreateDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例内存大小，单位：GB。
+	// 实例内存大小，单位：GB。具体售卖的内存规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例硬盘大小，单位：GB。
+	// 实例硬盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 指副本集数量。
-	// - 创建副本集实例，该参数只能为1。
-	// - 创建分片实例，指分片的数量。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指副本集数量，该参数只能为1。
+	// - 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
-	// 指每个副本集内节点个数。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 指版本信息。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 机器类型。
-	// - HIO：高IO型。
-	// - HIO10G：高IO万兆。
+	// 产品规格类型。
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版类型。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例数量，最小值1，最大值为10。
@@ -598,22 +603,21 @@ type CreateDBInstanceHourRequest struct {
 	// 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 项目ID。若不设置该参数，则为默认项目。
+	// 项目ID。
+	// - 若不设置该参数，则为默认项目。
+	// - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 实例标签信息。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例类型。
-	// - 1：正式实例。
-	// - 3：只读实例。
-	// - 4：灾备实例。
+	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：克隆实例，注意：克隆实例RestoreTime为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
 	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组。
+	// 安全组 ID。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 克隆实例回档时间。
@@ -624,28 +628,30 @@ type CreateDBInstanceHourRequest struct {
 	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 多可用区部署的节点列表。具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)获取。
+	// 若多可用区部署云数据库实例，指定多可用区列表。
+	// - 多可用区部署实例，参数 **Zone** 指定实例主可用区信息；**AvailabilityZoneList** 指定所有可用区信息，包含主可用区。输入格式如：[ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4]。
+	// - 通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 可获取云数据库不同地域规划的可用区信息，以便指定有效的可用区。
 	// - 多可用区部署节点只能部署在3个不同可用区。不支持将集群的大多数节点部署在同一个可用区。例如：3节点集群不支持2个节点部署在同一个区。
-	// - 不支持4.2及以上版本。
-	// - 不支持只读灾备实例。
-	// - 不能选择基础网络。
 	AvailabilityZoneList []*string `json:"AvailabilityZoneList,omitnil,omitempty" name:"AvailabilityZoneList"`
 
-	// Mongos CPU 核数。购买分片集群时，必须填写。
+	// Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
 	MongosCpu *uint64 `json:"MongosCpu,omitnil,omitempty" name:"MongosCpu"`
 
-	// Mongos 内存大小。购买分片集群时，必须填写。
+	// Mongos 内存大小。
+	// -  购买分片集群时，必须填写。
+	// - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
 	// 
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// Mongos 数量。购买分片集群时，必须填写。
-	// 
+	// - 单可用区部署实例，其数量范围为[3,32]。
+	// - 多可用区部署实例，其数量范围为[6,32]。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil,omitempty" name:"MongosNodeNum"`
 
-	// 只读节点数量，最大不超过7个。
+	// 只读节点数量，取值范围[0,5]。
 	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitnil,omitempty" name:"ReadonlyNodeNum"`
 
-	// 指只读节点所属可用区。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
+	// 指只读节点所属可用区数组。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
 	ReadonlyNodeAvailabilityZoneList []*string `json:"ReadonlyNodeAvailabilityZoneList,omitnil,omitempty" name:"ReadonlyNodeAvailabilityZoneList"`
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
@@ -726,20 +732,23 @@ func (r *CreateDBInstanceHourResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBInstanceRequestParams struct {
-	// 指每个副本集内节点个数。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 实例内存大小，单位：GB。
+	// 实例内存大小，单位：GB。具体售卖的内存规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例硬盘大小，单位：GB。
+	// 实例硬盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 指版本信息。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
 	// 实例数量, 最小值1，最大值为10。
@@ -750,12 +759,12 @@ type CreateDBInstanceRequestParams struct {
 	// - 该参数为主可用区，如果多可用区部署，Zone必须是AvailabilityZoneList中的一个。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+	// 指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 机器类型。
-	// - HIO：高IO型。
-	// - HIO10G：高IO万兆。
+	// 产品规格类型。
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版类型。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例架构类型。
@@ -763,12 +772,13 @@ type CreateDBInstanceRequestParams struct {
 	// - SHARD：分片集群。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 指副本集数量。
-	// - 创建副本集实例，该参数只能为1。
-	// - 创建分片实例，指分片的数量。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指副本集数量，该参数只能为1。
+	// - 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
-	// 项目ID。若不设置该参数，则为默认项目。
+	// 项目ID。
+	// - 若不设置该参数，则为默认项目。
+	// - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 私有网络ID。如果不设置该参数，则默认选择基础网络。
@@ -784,7 +794,7 @@ type CreateDBInstanceRequestParams struct {
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 自动续费标记。
-	// - 0：不自动续费。默认为不自动续费。
+	// - 0：不自动续费。
 	// - 1：自动续费。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
@@ -793,21 +803,16 @@ type CreateDBInstanceRequestParams struct {
 	// - 0：否。默认为0。
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 实例类型。
-	// - 1：正式实例。
-	// - 3：只读实例。
-	// - 4：灾备实例。
+	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：整实例克隆，注意：克隆实例时，RestoreTime为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
 	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组。
+	// 安全组 ID。 
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 克隆实例回档时间。
-	// - 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。
-	// - 回档时间范围：仅能回档7天内时间点的数据。
+	// 克隆实例回档时间，当Clone取值为5或6时为必填。- 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。- 回档时间范围：仅能回档7天内时间点的数据。
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 
 	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
@@ -820,19 +825,23 @@ type CreateDBInstanceRequestParams struct {
 	// - 不能选择基础网络。
 	AvailabilityZoneList []*string `json:"AvailabilityZoneList,omitnil,omitempty" name:"AvailabilityZoneList"`
 
-	// Mongos CPU 核数，购买MongoDB 4.2 及以上WiredTiger存储引擎版本的分片集群时，必须填写。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
 	MongosCpu *uint64 `json:"MongosCpu,omitnil,omitempty" name:"MongosCpu"`
 
-	// Mongos 内存大小。购买MongoDB 4.2 及以上WiredTiger存储引擎版本的分片集群时，必须填写。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// Mongos 内存大小。
+	// -  购买分片集群时，必须填写。
+	// - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
-	// Mongos 数量。购买MongoDB 4.2 及以上WiredTiger存储引擎版本的分片集群时，必须填写。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。为了保障高可用，取值范围为[3,32]。
+	// Mongos 数量。购买分片集群时，必须填写。
+	// - 单可用区部署实例，其数量范围为[3,32]。
+	// - 多可用区部署实例，其数量范围为[6,32]。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil,omitempty" name:"MongosNodeNum"`
 
 	// 只读节点数量，取值范围[0,5]。
 	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitnil,omitempty" name:"ReadonlyNodeNum"`
 
-	// 指只读节点所属可用区。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
+	// 指只读节点所属可用区数组。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
 	ReadonlyNodeAvailabilityZoneList []*string `json:"ReadonlyNodeAvailabilityZoneList,omitnil,omitempty" name:"ReadonlyNodeAvailabilityZoneList"`
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
@@ -842,20 +851,23 @@ type CreateDBInstanceRequestParams struct {
 type CreateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指每个副本集内节点个数。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 实例内存大小，单位：GB。
+	// 实例内存大小，单位：GB。具体售卖的内存规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例硬盘大小，单位：GB。
+	// 实例硬盘大小，单位：GB。每一个 CPU 规格对应的最大磁盘与最小磁盘范围，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 指版本信息。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
 	// 实例数量, 最小值1，最大值为10。
@@ -866,12 +878,12 @@ type CreateDBInstanceRequest struct {
 	// - 该参数为主可用区，如果多可用区部署，Zone必须是AvailabilityZoneList中的一个。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+	// 指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 机器类型。
-	// - HIO：高IO型。
-	// - HIO10G：高IO万兆。
+	// 产品规格类型。
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版类型。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例架构类型。
@@ -879,12 +891,13 @@ type CreateDBInstanceRequest struct {
 	// - SHARD：分片集群。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 指副本集数量。
-	// - 创建副本集实例，该参数只能为1。
-	// - 创建分片实例，指分片的数量。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建副本集实例，指副本集数量，该参数只能为1。
+	// - 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
-	// 项目ID。若不设置该参数，则为默认项目。
+	// 项目ID。
+	// - 若不设置该参数，则为默认项目。
+	// - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 私有网络ID。如果不设置该参数，则默认选择基础网络。
@@ -900,7 +913,7 @@ type CreateDBInstanceRequest struct {
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 自动续费标记。
-	// - 0：不自动续费。默认为不自动续费。
+	// - 0：不自动续费。
 	// - 1：自动续费。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
@@ -909,21 +922,16 @@ type CreateDBInstanceRequest struct {
 	// - 0：否。默认为0。
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 实例类型。
-	// - 1：正式实例。
-	// - 3：只读实例。
-	// - 4：灾备实例。
+	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：整实例克隆，注意：克隆实例时，RestoreTime为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
 	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组。
+	// 安全组 ID。 
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 克隆实例回档时间。
-	// - 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。
-	// - 回档时间范围：仅能回档7天内时间点的数据。
+	// 克隆实例回档时间，当Clone取值为5或6时为必填。- 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。- 回档时间范围：仅能回档7天内时间点的数据。
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 
 	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
@@ -936,19 +944,23 @@ type CreateDBInstanceRequest struct {
 	// - 不能选择基础网络。
 	AvailabilityZoneList []*string `json:"AvailabilityZoneList,omitnil,omitempty" name:"AvailabilityZoneList"`
 
-	// Mongos CPU 核数，购买MongoDB 4.2 及以上WiredTiger存储引擎版本的分片集群时，必须填写。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
 	MongosCpu *uint64 `json:"MongosCpu,omitnil,omitempty" name:"MongosCpu"`
 
-	// Mongos 内存大小。购买MongoDB 4.2 及以上WiredTiger存储引擎版本的分片集群时，必须填写。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// Mongos 内存大小。
+	// -  购买分片集群时，必须填写。
+	// - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
-	// Mongos 数量。购买MongoDB 4.2 及以上WiredTiger存储引擎版本的分片集群时，必须填写。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。为了保障高可用，取值范围为[3,32]。
+	// Mongos 数量。购买分片集群时，必须填写。
+	// - 单可用区部署实例，其数量范围为[3,32]。
+	// - 多可用区部署实例，其数量范围为[6,32]。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil,omitempty" name:"MongosNodeNum"`
 
 	// 只读节点数量，取值范围[0,5]。
 	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitnil,omitempty" name:"ReadonlyNodeNum"`
 
-	// 指只读节点所属可用区。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
+	// 指只读节点所属可用区数组。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
 	ReadonlyNodeAvailabilityZoneList []*string `json:"ReadonlyNodeAvailabilityZoneList,omitnil,omitempty" name:"ReadonlyNodeAvailabilityZoneList"`
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。

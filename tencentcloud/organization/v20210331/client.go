@@ -264,7 +264,7 @@ func NewAddShareUnitResponse() (response *AddShareUnitResponse) {
 }
 
 // AddShareUnit
-// 创建共享单元，只有企业组织管理员可创建。
+// 创建共享单元。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -282,7 +282,7 @@ func (c *Client) AddShareUnit(request *AddShareUnitRequest) (response *AddShareU
 }
 
 // AddShareUnit
-// 创建共享单元，只有企业组织管理员可创建。
+// 创建共享单元。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

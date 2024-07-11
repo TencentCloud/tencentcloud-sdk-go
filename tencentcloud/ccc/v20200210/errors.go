@@ -20,11 +20,26 @@ const (
 	// 外呼失败。
 	FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 
+	// 高风险用户，请勿呼叫
+	FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
+
 	// 被叫号码外呼受限。
 	FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
 
 	// 主叫号码外呼超频。
 	FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+
+	// 触发默认被叫规则，呼叫盲区
+	FAILEDOPERATION_CALLOUTRULEBLINDAREA = "FailedOperation.CalloutRuleBlindArea"
+
+	// 触发默认外呼规则，被叫一段时间内呼叫量
+	FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEINTERVALTIME = "FailedOperation.CalloutRuleMaxCallCountCalleeIntervalTime"
+
+	// 触发默认外呼规则，被叫每日最大呼叫量
+	FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEPERDAYAPPID = "FailedOperation.CalloutRuleMaxCallCountCalleePerDayAppID"
+
+	// 触发默认外呼规则，不在可外呼时间
+	FAILEDOPERATION_CALLOUTRULENOTWORKTIME = "FailedOperation.CalloutRuleNotWorkTime"
 
 	// 当前号码状态不能被修改。
 	FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
@@ -127,6 +142,9 @@ const (
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// 套餐包耗尽
+	LIMITEXCEEDED_BASEPACKAGEEXPIRED = "LimitExceeded.BasePackageExpired"
 
 	// 超出数量限制。
 	LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"

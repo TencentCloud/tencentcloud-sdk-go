@@ -4787,6 +4787,9 @@ type DescribeReleaseFilesRequestParams struct {
 
 	// 文件版本
 	FileVersion *string `json:"FileVersion,omitnil,omitempty" name:"FileVersion"`
+
+	// 查询过滤条件（根据sourcemap的文件名模糊匹配）
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 
 type DescribeReleaseFilesRequest struct {
@@ -4797,6 +4800,9 @@ type DescribeReleaseFilesRequest struct {
 
 	// 文件版本
 	FileVersion *string `json:"FileVersion,omitnil,omitempty" name:"FileVersion"`
+
+	// 查询过滤条件（根据sourcemap的文件名模糊匹配）
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 
 func (r *DescribeReleaseFilesRequest) ToJsonString() string {
@@ -4813,6 +4819,7 @@ func (r *DescribeReleaseFilesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectID")
 	delete(f, "FileVersion")
+	delete(f, "FileName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReleaseFilesRequest has unknown keys!", "")
 	}

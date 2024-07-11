@@ -6817,6 +6817,102 @@ func (r *UpgradeDedicatedDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpgradeHourDBInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 内存大小，单位：GB
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 存储大小，单位：GB
+	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// 切换结束时间,  格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// 是否自动重试。 0：不自动重试  1：自动重试
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitnil,omitempty" name:"SwitchAutoRetry"`
+
+	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+}
+
+type UpgradeHourDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 内存大小，单位：GB
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 存储大小，单位：GB
+	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// 切换结束时间,  格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// 是否自动重试。 0：不自动重试  1：自动重试
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitnil,omitempty" name:"SwitchAutoRetry"`
+
+	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+}
+
+func (r *UpgradeHourDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeHourDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	delete(f, "SwitchAutoRetry")
+	delete(f, "Zones")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeHourDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeHourDBInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeHourDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeHourDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *UpgradeHourDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeHourDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ViewPrivileges struct {
 	// 数据库名
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`

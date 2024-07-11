@@ -1775,6 +1775,7 @@ func NewDeleteSAMLProviderResponse() (response *DeleteSAMLProviderResponse) {
 // 删除SAML身份提供商
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CICIDENTITYFORBIDDEN = "FailedOperation.CICIdentityForbidden"
 //  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 func (c *Client) DeleteSAMLProvider(request *DeleteSAMLProviderRequest) (response *DeleteSAMLProviderResponse, err error) {
@@ -1785,6 +1786,7 @@ func (c *Client) DeleteSAMLProvider(request *DeleteSAMLProviderRequest) (respons
 // 删除SAML身份提供商
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CICIDENTITYFORBIDDEN = "FailedOperation.CICIdentityForbidden"
 //  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 func (c *Client) DeleteSAMLProviderWithContext(ctx context.Context, request *DeleteSAMLProviderRequest) (response *DeleteSAMLProviderResponse, err error) {
@@ -1881,6 +1883,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNMODIFIABLE = "FailedOperation.Unmodifiable"
 //  OPERATIONDENIED_HAVEKEYS = "OperationDenied.HaveKeys"
 //  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
@@ -1895,6 +1898,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNMODIFIABLE = "FailedOperation.Unmodifiable"
 //  OPERATIONDENIED_HAVEKEYS = "OperationDenied.HaveKeys"
 //  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
@@ -5192,6 +5196,7 @@ func NewUpdateSAMLProviderResponse() (response *UpdateSAMLProviderResponse) {
 // 更新SAML身份提供商信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CICIDENTITYFORBIDDEN = "FailedOperation.CICIdentityForbidden"
 //  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
 //  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 func (c *Client) UpdateSAMLProvider(request *UpdateSAMLProviderRequest) (response *UpdateSAMLProviderResponse, err error) {
@@ -5202,6 +5207,7 @@ func (c *Client) UpdateSAMLProvider(request *UpdateSAMLProviderRequest) (respons
 // 更新SAML身份提供商信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CICIDENTITYFORBIDDEN = "FailedOperation.CICIdentityForbidden"
 //  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
 //  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 func (c *Client) UpdateSAMLProviderWithContext(ctx context.Context, request *UpdateSAMLProviderRequest) (response *UpdateSAMLProviderResponse, err error) {
@@ -5245,6 +5251,7 @@ func NewUpdateUserResponse() (response *UpdateUserResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNMODIFIABLE = "FailedOperation.Unmodifiable"
 //  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
 //  INVALIDPARAMETER_USERNAMEILLEGAL = "InvalidParameter.UserNameIllegal"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
@@ -5258,6 +5265,7 @@ func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserRes
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNMODIFIABLE = "FailedOperation.Unmodifiable"
 //  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
 //  INVALIDPARAMETER_USERNAMEILLEGAL = "InvalidParameter.UserNameIllegal"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"

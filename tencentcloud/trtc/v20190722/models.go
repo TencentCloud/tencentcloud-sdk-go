@@ -2400,7 +2400,7 @@ type DescribeTrtcUsageResponseParams struct {
 	// 用量类型，与UsageValue中各个位置的值对应。
 	UsageKey []*string `json:"UsageKey,omitnil,omitempty" name:"UsageKey"`
 
-	// 各个时间点用量明细。
+	// 各个时间点用量明细，单位:分钟
 	UsageList []*TrtcUsage `json:"UsageList,omitnil,omitempty" name:"UsageList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5451,7 +5451,10 @@ type TrtcUsage struct {
 	// 时间点，格式为YYYY-MM-DD HH:mm:ss。多天查询时，HH:mm:ss为00:00:00。
 	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
 
-	// 用量数组。每个数值含义与UsageKey对应。单位：分钟。
+	// 时间点时间戳
+	TimeStampKey *uint64 `json:"TimeStampKey,omitnil,omitempty" name:"TimeStampKey"`
+
+	// 用量数组。每个数值含义与UsageKey对应。单位:分钟。
 	UsageValue []*float64 `json:"UsageValue,omitnil,omitempty" name:"UsageValue"`
 }
 

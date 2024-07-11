@@ -4763,15 +4763,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 注:  `没有输入返回所有记录，最大返回100条。`
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: 公章</li>
-	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 财务专用章;</li>
-	// <li>**PERSONNEL**: 人事专用章</li>
-	// <li>**INVOICE**: 发票专用章</li>
-	// </ul>
-	// 
-	// 注:  `为空时查询所有类型的印章。`
+	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><<li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 
@@ -4811,15 +4803,7 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 注:  `没有输入返回所有记录，最大返回100条。`
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: 公章</li>
-	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 财务专用章;</li>
-	// <li>**PERSONNEL**: 人事专用章</li>
-	// <li>**INVOICE**: 发票专用章</li>
-	// </ul>
-	// 
-	// 注:  `为空时查询所有类型的印章。`
+	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><<li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 
@@ -6565,7 +6549,9 @@ type CreateConsoleLoginUrlRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-	// <font color="red">在测试环境联调的过程中，企业名称请使用以下名称 
+	// <font color="red">
+	// 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
+	// 企业名称请使用以下名称, 以下名称可以不用走收录。
 	// **子客测试专用企业1 - 子客测试专用企业9**</font>
 	// 
 	// 注:
@@ -6667,7 +6653,9 @@ type CreateConsoleLoginUrlRequest struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-	// <font color="red">在测试环境联调的过程中，企业名称请使用以下名称 
+	// <font color="red">
+	// 在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
+	// 企业名称请使用以下名称, 以下名称可以不用走收录。
 	// **子客测试专用企业1 - 子客测试专用企业9**</font>
 	// 
 	// 注:
@@ -6825,6 +6813,70 @@ func (r *CreateConsoleLoginUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEmployeeQualificationSealQrCodeRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
+}
+
+type CreateEmployeeQualificationSealQrCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
+}
+
+func (r *CreateEmployeeQualificationSealQrCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmployeeQualificationSealQrCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "HintText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmployeeQualificationSealQrCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEmployeeQualificationSealQrCodeResponseParams struct {
+	// 二维码图片的Base64  注:  `此二维码的有效时间为7天，过期后需要重新生成新的二维码图片`
+	QrcodeBase64 *string `json:"QrcodeBase64,omitnil,omitempty" name:"QrcodeBase64"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEmployeeQualificationSealQrCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEmployeeQualificationSealQrCodeResponseParams `json:"Response"`
+}
+
+func (r *CreateEmployeeQualificationSealQrCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmployeeQualificationSealQrCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9230,7 +9282,6 @@ type ExtentServiceAuthInfo struct {
 	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
 	// <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
-	// <li> PAGING_SEAL           骑缝章</li>
 	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>

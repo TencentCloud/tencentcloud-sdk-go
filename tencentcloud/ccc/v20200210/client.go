@@ -637,10 +637,18 @@ func NewCreateIVRSessionResponse() (response *CreateIVRSessionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_CALLOUTRULEBLINDAREA = "FailedOperation.CalloutRuleBlindArea"
+//  FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEINTERVALTIME = "FailedOperation.CalloutRuleMaxCallCountCalleeIntervalTime"
+//  FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEPERDAYAPPID = "FailedOperation.CalloutRuleMaxCallCountCalleePerDayAppID"
+//  FAILEDOPERATION_CALLOUTRULENOTWORKTIME = "FailedOperation.CalloutRuleNotWorkTime"
 //  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  LIMITEXCEEDED_BASEPACKAGEEXPIRED = "LimitExceeded.BasePackageExpired"
 func (c *Client) CreateIVRSession(request *CreateIVRSessionRequest) (response *CreateIVRSessionResponse, err error) {
     return c.CreateIVRSessionWithContext(context.Background(), request)
 }
@@ -650,10 +658,18 @@ func (c *Client) CreateIVRSession(request *CreateIVRSessionRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_CALLOUTRULEBLINDAREA = "FailedOperation.CalloutRuleBlindArea"
+//  FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEINTERVALTIME = "FailedOperation.CalloutRuleMaxCallCountCalleeIntervalTime"
+//  FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEPERDAYAPPID = "FailedOperation.CalloutRuleMaxCallCountCalleePerDayAppID"
+//  FAILEDOPERATION_CALLOUTRULENOTWORKTIME = "FailedOperation.CalloutRuleNotWorkTime"
 //  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  LIMITEXCEEDED_BASEPACKAGEEXPIRED = "LimitExceeded.BasePackageExpired"
 func (c *Client) CreateIVRSessionWithContext(ctx context.Context, request *CreateIVRSessionRequest) (response *CreateIVRSessionResponse, err error) {
     if request == nil {
         request = NewCreateIVRSessionRequest()
