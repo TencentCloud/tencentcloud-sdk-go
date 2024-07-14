@@ -649,6 +649,16 @@ func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CamTag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
 // Predefined struct for user
 type CancelAssignTWeCallLicenseRequestParams struct {
 	// 订单号
@@ -6545,6 +6555,10 @@ type DescribeTopicRuleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *TopicRule `json:"Rule,omitnil,omitempty" name:"Rule"`
 
+	// 规则绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CamTag []*CamTag `json:"CamTag,omitnil,omitempty" name:"CamTag"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7112,6 +7126,14 @@ type FenceEventItem struct {
 	Data *FenceAlarmPoint `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
+type Filter struct {
+	// 需要过滤的字段
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段的过滤的一个或多个值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type FirmwareInfo struct {
 	// 固件版本
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
@@ -7610,6 +7632,9 @@ type GetDeviceListRequestParams struct {
 
 	// 项目ID。产品 ID 为 -1 时，该参数必填
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 每次请求的Filters的上限为10，Filter.Values的上限为1。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type GetDeviceListRequest struct {
@@ -7632,6 +7657,9 @@ type GetDeviceListRequest struct {
 
 	// 项目ID。产品 ID 为 -1 时，该参数必填
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 每次请求的Filters的上限为10，Filter.Values的上限为1。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *GetDeviceListRequest) ToJsonString() string {
@@ -7652,6 +7680,7 @@ func (r *GetDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareVersion")
 	delete(f, "DeviceName")
 	delete(f, "ProjectId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDeviceListRequest has unknown keys!", "")
 	}
@@ -11227,6 +11256,9 @@ type SearchStudioProductRequestParams struct {
 
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 每次请求的Filters的上限为10，Filter.Values的上限为1。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type SearchStudioProductRequest struct {
@@ -11249,6 +11281,9 @@ type SearchStudioProductRequest struct {
 
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 每次请求的Filters的上限为10，Filter.Values的上限为1。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *SearchStudioProductRequest) ToJsonString() string {
@@ -11269,6 +11304,7 @@ func (r *SearchStudioProductRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "DevStatus")
 	delete(f, "ProductId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchStudioProductRequest has unknown keys!", "")
 	}

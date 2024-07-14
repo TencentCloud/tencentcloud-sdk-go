@@ -6238,12 +6238,15 @@ func (r *DescribeTCPListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskStatusRequestParams struct {
-
+	// 任务ID，值为异步接口返回的RequestId
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// 任务ID，值为异步接口返回的RequestId
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeTaskStatusRequest) ToJsonString() string {
@@ -6258,7 +6261,7 @@ func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskStatusRequest has unknown keys!", "")
 	}

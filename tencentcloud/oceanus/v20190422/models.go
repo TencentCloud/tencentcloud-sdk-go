@@ -719,6 +719,9 @@ type CreateJobConfigRequestParams struct {
 
 	// es索引空间
 	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil,omitempty" name:"EsServerlessSpace"`
+
+	// flink版本
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 }
 
 type CreateJobConfigRequest struct {
@@ -807,6 +810,9 @@ type CreateJobConfigRequest struct {
 
 	// es索引空间
 	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil,omitempty" name:"EsServerlessSpace"`
+
+	// flink版本
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -849,6 +855,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "JobGraph")
 	delete(f, "EsServerlessIndex")
 	delete(f, "EsServerlessSpace")
+	delete(f, "FlinkVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}

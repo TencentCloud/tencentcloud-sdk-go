@@ -953,6 +953,9 @@ type CreateReconstructDocumentFlowConfig struct {
 
 // Predefined struct for user
 type CreateReconstructDocumentFlowRequestParams struct {
+	// 文件类型。支持的文件类型：PDF、DOCX、DOC、XLS、XLSX、PPT、PPTX、PNG、JPG、JPEG、CSV
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
 	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
@@ -972,6 +975,9 @@ type CreateReconstructDocumentFlowRequestParams struct {
 type CreateReconstructDocumentFlowRequest struct {
 	*tchttp.BaseRequest
 	
+	// 文件类型。支持的文件类型：PDF、DOCX、DOC、XLS、XLSX、PPT、PPTX、PNG、JPG、JPEG、CSV
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
 	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
@@ -1000,6 +1006,7 @@ func (r *CreateReconstructDocumentFlowRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "FileType")
 	delete(f, "FileBase64")
 	delete(f, "FileUrl")
 	delete(f, "FileStartPageNumber")
@@ -1013,7 +1020,7 @@ func (r *CreateReconstructDocumentFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReconstructDocumentFlowResponseParams struct {
-	// 任务唯一id
+	// 任务唯一id。30天内可以通过GetReconstructDocumentResult接口查询TaskId对应的处理结果。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
