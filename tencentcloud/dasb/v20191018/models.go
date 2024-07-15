@@ -1559,7 +1559,7 @@ type CreateUserRequestParams struct {
 	// 用户姓名，最大长度20个字符，不能包含空白字符
 	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
 
-	// 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	// 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 电子邮件
@@ -1595,7 +1595,7 @@ type CreateUserRequest struct {
 	// 用户姓名，最大长度20个字符，不能包含空白字符
 	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
 
-	// 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	// 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 电子邮件
@@ -5088,7 +5088,7 @@ type ModifyUserRequestParams struct {
 	// 用户姓名，最大长度20个字符，不能包含空格
 	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
 
-	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	// 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 电子邮件
@@ -5124,7 +5124,7 @@ type ModifyUserRequest struct {
 	// 用户姓名，最大长度20个字符，不能包含空格
 	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
 
-	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	// 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 电子邮件

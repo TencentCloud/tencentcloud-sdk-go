@@ -14888,7 +14888,8 @@ type ResetWorkflowRequestParams struct {
 	// 视频处理的文件输出配置。不填则继承 Trigger 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 视频处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致，即`{inputDir}`。
+	// 视频处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与触发文件所在的目录一致，即`{inputDir}`。
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
 	// 视频处理类型任务参数。
@@ -14925,7 +14926,8 @@ type ResetWorkflowRequest struct {
 	// 视频处理的文件输出配置。不填则继承 Trigger 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 视频处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致，即`{inputDir}`。
+	// 视频处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与触发文件所在的目录一致，即`{inputDir}`。
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
 	// 视频处理类型任务参数。
@@ -16318,7 +16320,8 @@ type VideoTemplateInfo struct {
 	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。 注意：自适应码率时取值范围是 [0, 60]
+	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+	// 注意：自适应码率时取值范围是 [0, 60]
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
 	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。

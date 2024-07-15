@@ -361,3 +361,56 @@ func (c *Client) SubmitHunyuanImageJobWithContext(ctx context.Context, request *
     err = c.Send(request, response)
     return
 }
+
+func NewTextToImageLiteRequest() (request *TextToImageLiteRequest) {
+    request = &TextToImageLiteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "TextToImageLite")
+    
+    
+    return
+}
+
+func NewTextToImageLiteResponse() (response *TextToImageLiteResponse) {
+    response = &TextToImageLiteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TextToImageLite
+// 文生图轻量版接口根据输入的文本描述，智能生成与之相关的结果图。
+//
+// 文生图轻量版默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) TextToImageLite(request *TextToImageLiteRequest) (response *TextToImageLiteResponse, err error) {
+    return c.TextToImageLiteWithContext(context.Background(), request)
+}
+
+// TextToImageLite
+// 文生图轻量版接口根据输入的文本描述，智能生成与之相关的结果图。
+//
+// 文生图轻量版默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) TextToImageLiteWithContext(ctx context.Context, request *TextToImageLiteRequest) (response *TextToImageLiteResponse, err error) {
+    if request == nil {
+        request = NewTextToImageLiteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToImageLite require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextToImageLiteResponse()
+    err = c.Send(request, response)
+    return
+}

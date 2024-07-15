@@ -1393,7 +1393,7 @@ func NewCreateTranscodeTemplateResponse() (response *CreateTranscodeTemplateResp
 }
 
 // CreateTranscodeTemplate
-// 创建用户自定义转码模板，数量上限：1000。
+// 创建用户自定义转码模板，数量上限：1000
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -1421,7 +1421,7 @@ func (c *Client) CreateTranscodeTemplate(request *CreateTranscodeTemplateRequest
 }
 
 // CreateTranscodeTemplate
-// 创建用户自定义转码模板，数量上限：1000。
+// 创建用户自定义转码模板，数量上限：1000
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -4505,6 +4505,7 @@ func NewDisableWorkflowResponse() (response *DisableWorkflowResponse) {
 // 禁用工作流。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
@@ -4520,6 +4521,7 @@ func (c *Client) DisableWorkflow(request *DisableWorkflowRequest) (response *Dis
 // 禁用工作流。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
 //  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"

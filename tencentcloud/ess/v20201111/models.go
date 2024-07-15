@@ -2507,9 +2507,9 @@ type CreateFlowByFilesRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200个字符，只能由中文、字母、数字、中划线和下划线组成。
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
 	// 
-	// 该名称还将用于合同签署完成后的下载文件名。
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
@@ -2635,9 +2635,9 @@ type CreateFlowByFilesRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200个字符，只能由中文、字母、数字、中划线和下划线组成。
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
 	// 
-	// 该名称还将用于合同签署完成后的下载文件名。
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
@@ -3468,9 +3468,9 @@ type CreateFlowRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
 	// 
-	// 该名称还将用于合同签署完成后的下载文件名。
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
@@ -3571,9 +3571,9 @@ type CreateFlowRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
 	// 
-	// 该名称还将用于合同签署完成后的下载文件名。
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
@@ -5405,7 +5405,9 @@ type CreatePrepareFlowRequestParams struct {
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+	// 
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 资源类型，取值有：
@@ -5500,7 +5502,9 @@ type CreatePrepareFlowRequest struct {
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+	// 
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 资源类型，取值有：
@@ -6350,14 +6354,7 @@ type CreateSealRequestParams struct {
 	// </ul>
 	GenerateSource *string `json:"GenerateSource,omitnil,omitempty" name:"GenerateSource"`
 
-	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: (默认)公章</li>
-	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 财务专用章;</li>
-	// <li>**PERSONNEL**: 人事专用章</li>
-	// <li>**INVOICE**: 发票专用章</li>
-	// </ul>
-	// 注: `同企业下只能有一个公章, 重复创建会报错`
+	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li></ul>注: `同企业下只能有<font color="red">一个</font>公章, 重复创建会报错`
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 电子印章图片文件名称，1-50个中文字符。
@@ -6440,14 +6437,7 @@ type CreateSealRequest struct {
 	// </ul>
 	GenerateSource *string `json:"GenerateSource,omitnil,omitempty" name:"GenerateSource"`
 
-	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: (默认)公章</li>
-	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 财务专用章;</li>
-	// <li>**PERSONNEL**: 人事专用章</li>
-	// <li>**INVOICE**: 发票专用章</li>
-	// </ul>
-	// 注: `同企业下只能有一个公章, 重复创建会报错`
+	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li></ul>注: `同企业下只能有<font color="red">一个</font>公章, 重复创建会报错`
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 电子印章图片文件名称，1-50个中文字符。

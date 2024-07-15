@@ -1460,6 +1460,61 @@ func (c *Client) DescribeInstancesDiskNumWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSnapshotOverviewRequest() (request *DescribeSnapshotOverviewRequest) {
+    request = &DescribeSnapshotOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeSnapshotOverview")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotOverviewResponse() (response *DescribeSnapshotOverviewResponse) {
+    response = &DescribeSnapshotOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSnapshotOverview
+// 该接口用于查询用户快照使用概览，包括快照总容量、计费容量等信息。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSnapshotOverview(request *DescribeSnapshotOverviewRequest) (response *DescribeSnapshotOverviewResponse, err error) {
+    return c.DescribeSnapshotOverviewWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotOverview
+// 该接口用于查询用户快照使用概览，包括快照总容量、计费容量等信息。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSnapshotOverviewWithContext(ctx context.Context, request *DescribeSnapshotOverviewRequest) (response *DescribeSnapshotOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSnapshotSharePermissionRequest() (request *DescribeSnapshotSharePermissionRequest) {
     request = &DescribeSnapshotSharePermissionRequest{
         BaseRequest: &tchttp.BaseRequest{},

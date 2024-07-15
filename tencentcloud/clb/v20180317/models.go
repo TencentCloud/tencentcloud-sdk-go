@@ -1445,6 +1445,9 @@ type CreateLoadBalancerRequestParams struct {
 
 	// 网络出口
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
+
+	// 负载均衡实例的预付费相关属性
+	LBChargePrepaid *LBChargePrepaid `json:"LBChargePrepaid,omitnil,omitempty" name:"LBChargePrepaid"`
 }
 
 type CreateLoadBalancerRequest struct {
@@ -1536,6 +1539,9 @@ type CreateLoadBalancerRequest struct {
 
 	// 网络出口
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
+
+	// 负载均衡实例的预付费相关属性
+	LBChargePrepaid *LBChargePrepaid `json:"LBChargePrepaid,omitnil,omitempty" name:"LBChargePrepaid"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -1577,6 +1583,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerPassToTarget")
 	delete(f, "DynamicVip")
 	delete(f, "Egress")
+	delete(f, "LBChargePrepaid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
 	}

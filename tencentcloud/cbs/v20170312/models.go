@@ -1706,6 +1706,69 @@ func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSnapshotOverviewRequestParams struct {
+
+}
+
+type DescribeSnapshotOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSnapshotOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotOverviewResponseParams struct {
+	// 当前总有效快照数量
+	TotalNums *uint64 `json:"TotalNums,omitnil,omitempty" name:"TotalNums"`
+
+	// 已使用快照总容量大小，容量单位为GiB
+	TotalSize *float64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
+
+	// 快照免费额度大小，额度单位为GiB
+	FreeQuota *float64 `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
+
+	// 快照真实产生计费的总容量大小，单位为GiB
+	RealTradeSize *float64 `json:"RealTradeSize,omitnil,omitempty" name:"RealTradeSize"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSnapshotSharePermissionRequestParams struct {
 	// 要查询快照的ID。可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`

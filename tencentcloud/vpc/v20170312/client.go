@@ -1308,6 +1308,67 @@ func (c *Client) AssociateDirectConnectGatewayNatGatewayWithContext(ctx context.
     return
 }
 
+func NewAssociateInstancesToCcnRouteTableRequest() (request *AssociateInstancesToCcnRouteTableRequest) {
+    request = &AssociateInstancesToCcnRouteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateInstancesToCcnRouteTable")
+    
+    
+    return
+}
+
+func NewAssociateInstancesToCcnRouteTableResponse() (response *AssociateInstancesToCcnRouteTableResponse) {
+    response = &AssociateInstancesToCcnRouteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssociateInstancesToCcnRouteTable
+// 本接口（AssociateInstancesToCcnRouteTable）用于将指定的云联网实例关联到指定的云联网路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) AssociateInstancesToCcnRouteTable(request *AssociateInstancesToCcnRouteTableRequest) (response *AssociateInstancesToCcnRouteTableResponse, err error) {
+    return c.AssociateInstancesToCcnRouteTableWithContext(context.Background(), request)
+}
+
+// AssociateInstancesToCcnRouteTable
+// 本接口（AssociateInstancesToCcnRouteTable）用于将指定的云联网实例关联到指定的云联网路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) AssociateInstancesToCcnRouteTableWithContext(ctx context.Context, request *AssociateInstancesToCcnRouteTableRequest) (response *AssociateInstancesToCcnRouteTableResponse, err error) {
+    if request == nil {
+        request = NewAssociateInstancesToCcnRouteTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateInstancesToCcnRouteTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateInstancesToCcnRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateNatGatewayAddressRequest() (request *AssociateNatGatewayAddressRequest) {
     request = &AssociateNatGatewayAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2109,6 +2170,73 @@ func (c *Client) CheckNetDetectStateWithContext(ctx context.Context, request *Ch
     return
 }
 
+func NewClearRouteTableSelectionPoliciesRequest() (request *ClearRouteTableSelectionPoliciesRequest) {
+    request = &ClearRouteTableSelectionPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ClearRouteTableSelectionPolicies")
+    
+    
+    return
+}
+
+func NewClearRouteTableSelectionPoliciesResponse() (response *ClearRouteTableSelectionPoliciesResponse) {
+    response = &ClearRouteTableSelectionPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ClearRouteTableSelectionPolicies
+// 本接口（ClearRouteTableSelectionPolicies）用于清空指定云联网的路由表选择策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
+func (c *Client) ClearRouteTableSelectionPolicies(request *ClearRouteTableSelectionPoliciesRequest) (response *ClearRouteTableSelectionPoliciesResponse, err error) {
+    return c.ClearRouteTableSelectionPoliciesWithContext(context.Background(), request)
+}
+
+// ClearRouteTableSelectionPolicies
+// 本接口（ClearRouteTableSelectionPolicies）用于清空指定云联网的路由表选择策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
+func (c *Client) ClearRouteTableSelectionPoliciesWithContext(ctx context.Context, request *ClearRouteTableSelectionPoliciesRequest) (response *ClearRouteTableSelectionPoliciesResponse, err error) {
+    if request == nil {
+        request = NewClearRouteTableSelectionPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearRouteTableSelectionPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewClearRouteTableSelectionPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloneSecurityGroupRequest() (request *CloneSecurityGroupRequest) {
     request = &CloneSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2706,6 +2834,69 @@ func (c *Client) CreateCcnWithContext(ctx context.Context, request *CreateCcnReq
     request.SetContext(ctx)
     
     response = NewCreateCcnResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCcnRouteTablesRequest() (request *CreateCcnRouteTablesRequest) {
+    request = &CreateCcnRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCcnRouteTables")
+    
+    
+    return
+}
+
+func NewCreateCcnRouteTablesResponse() (response *CreateCcnRouteTablesResponse) {
+    response = &CreateCcnRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCcnRouteTables
+// 本接口（CreateCcnRouteTables）用于给指定的云联网实例新建路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
+//  UNSUPPORTEDOPERATION_ROUTETABLEEXCEEDPERVBCLIMIT = "UnsupportedOperation.RouteTableExceedPerVbcLimit"
+func (c *Client) CreateCcnRouteTables(request *CreateCcnRouteTablesRequest) (response *CreateCcnRouteTablesResponse, err error) {
+    return c.CreateCcnRouteTablesWithContext(context.Background(), request)
+}
+
+// CreateCcnRouteTables
+// 本接口（CreateCcnRouteTables）用于给指定的云联网实例新建路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
+//  UNSUPPORTEDOPERATION_ROUTETABLEEXCEEDPERVBCLIMIT = "UnsupportedOperation.RouteTableExceedPerVbcLimit"
+func (c *Client) CreateCcnRouteTablesWithContext(ctx context.Context, request *CreateCcnRouteTablesRequest) (response *CreateCcnRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewCreateCcnRouteTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCcnRouteTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCcnRouteTablesResponse()
     err = c.Send(request, response)
     return
 }
@@ -6884,6 +7075,69 @@ func (c *Client) DeleteCcnWithContext(ctx context.Context, request *DeleteCcnReq
     return
 }
 
+func NewDeleteCcnRouteTablesRequest() (request *DeleteCcnRouteTablesRequest) {
+    request = &DeleteCcnRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCcnRouteTables")
+    
+    
+    return
+}
+
+func NewDeleteCcnRouteTablesResponse() (response *DeleteCcnRouteTablesResponse) {
+    response = &DeleteCcnRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCcnRouteTables
+// 本接口（DeleteCcnRouteTables）用于删除云联网路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
+//  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+func (c *Client) DeleteCcnRouteTables(request *DeleteCcnRouteTablesRequest) (response *DeleteCcnRouteTablesResponse, err error) {
+    return c.DeleteCcnRouteTablesWithContext(context.Background(), request)
+}
+
+// DeleteCcnRouteTables
+// 本接口（DeleteCcnRouteTables）用于删除云联网路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
+//  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+func (c *Client) DeleteCcnRouteTablesWithContext(ctx context.Context, request *DeleteCcnRouteTablesRequest) (response *DeleteCcnRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCcnRouteTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCcnRouteTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCcnRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
     request = &DeleteCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9972,6 +10226,167 @@ func (c *Client) DescribeCcnRegionBandwidthLimitsWithContext(ctx context.Context
     return
 }
 
+func NewDescribeCcnRouteTableBroadcastPolicysRequest() (request *DescribeCcnRouteTableBroadcastPolicysRequest) {
+    request = &DescribeCcnRouteTableBroadcastPolicysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRouteTableBroadcastPolicys")
+    
+    
+    return
+}
+
+func NewDescribeCcnRouteTableBroadcastPolicysResponse() (response *DescribeCcnRouteTableBroadcastPolicysResponse) {
+    response = &DescribeCcnRouteTableBroadcastPolicysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCcnRouteTableBroadcastPolicys
+// 本接口(DescribeCcnRouteTableBroadcastPolicys)用于查询指定云联网路由表的路由传播策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeCcnRouteTableBroadcastPolicys(request *DescribeCcnRouteTableBroadcastPolicysRequest) (response *DescribeCcnRouteTableBroadcastPolicysResponse, err error) {
+    return c.DescribeCcnRouteTableBroadcastPolicysWithContext(context.Background(), request)
+}
+
+// DescribeCcnRouteTableBroadcastPolicys
+// 本接口(DescribeCcnRouteTableBroadcastPolicys)用于查询指定云联网路由表的路由传播策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeCcnRouteTableBroadcastPolicysWithContext(ctx context.Context, request *DescribeCcnRouteTableBroadcastPolicysRequest) (response *DescribeCcnRouteTableBroadcastPolicysResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnRouteTableBroadcastPolicysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnRouteTableBroadcastPolicys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCcnRouteTableBroadcastPolicysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnRouteTableInputPolicysRequest() (request *DescribeCcnRouteTableInputPolicysRequest) {
+    request = &DescribeCcnRouteTableInputPolicysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRouteTableInputPolicys")
+    
+    
+    return
+}
+
+func NewDescribeCcnRouteTableInputPolicysResponse() (response *DescribeCcnRouteTableInputPolicysResponse) {
+    response = &DescribeCcnRouteTableInputPolicysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCcnRouteTableInputPolicys
+// 本接口(DescribeCcnRouteTableInputPolicys)用于查询指定云联网路由表的路由接收策略。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeCcnRouteTableInputPolicys(request *DescribeCcnRouteTableInputPolicysRequest) (response *DescribeCcnRouteTableInputPolicysResponse, err error) {
+    return c.DescribeCcnRouteTableInputPolicysWithContext(context.Background(), request)
+}
+
+// DescribeCcnRouteTableInputPolicys
+// 本接口(DescribeCcnRouteTableInputPolicys)用于查询指定云联网路由表的路由接收策略。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeCcnRouteTableInputPolicysWithContext(ctx context.Context, request *DescribeCcnRouteTableInputPolicysRequest) (response *DescribeCcnRouteTableInputPolicysResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnRouteTableInputPolicysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnRouteTableInputPolicys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCcnRouteTableInputPolicysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnRouteTablesRequest() (request *DescribeCcnRouteTablesRequest) {
+    request = &DescribeCcnRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRouteTables")
+    
+    
+    return
+}
+
+func NewDescribeCcnRouteTablesResponse() (response *DescribeCcnRouteTablesResponse) {
+    response = &DescribeCcnRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCcnRouteTables
+// 该接口用于查询指定的云联网实例的路由表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCcnRouteTables(request *DescribeCcnRouteTablesRequest) (response *DescribeCcnRouteTablesResponse, err error) {
+    return c.DescribeCcnRouteTablesWithContext(context.Background(), request)
+}
+
+// DescribeCcnRouteTables
+// 该接口用于查询指定的云联网实例的路由表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCcnRouteTablesWithContext(ctx context.Context, request *DescribeCcnRouteTablesRequest) (response *DescribeCcnRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnRouteTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnRouteTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCcnRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCcnRoutesRequest() (request *DescribeCcnRoutesRequest) {
     request = &DescribeCcnRoutesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12513,6 +12928,122 @@ func (c *Client) DescribeRouteConflictsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeRouteConflictsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRouteTableAssociatedInstancesRequest() (request *DescribeRouteTableAssociatedInstancesRequest) {
+    request = &DescribeRouteTableAssociatedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteTableAssociatedInstances")
+    
+    
+    return
+}
+
+func NewDescribeRouteTableAssociatedInstancesResponse() (response *DescribeRouteTableAssociatedInstancesResponse) {
+    response = &DescribeRouteTableAssociatedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRouteTableAssociatedInstances
+// 本接口（DescribeRouteTableAssociatedInstances）用于查询指定的云联网关联的实例所绑定的路由表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRouteTableAssociatedInstances(request *DescribeRouteTableAssociatedInstancesRequest) (response *DescribeRouteTableAssociatedInstancesResponse, err error) {
+    return c.DescribeRouteTableAssociatedInstancesWithContext(context.Background(), request)
+}
+
+// DescribeRouteTableAssociatedInstances
+// 本接口（DescribeRouteTableAssociatedInstances）用于查询指定的云联网关联的实例所绑定的路由表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRouteTableAssociatedInstancesWithContext(ctx context.Context, request *DescribeRouteTableAssociatedInstancesRequest) (response *DescribeRouteTableAssociatedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRouteTableAssociatedInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRouteTableAssociatedInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRouteTableAssociatedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRouteTableSelectionPoliciesRequest() (request *DescribeRouteTableSelectionPoliciesRequest) {
+    request = &DescribeRouteTableSelectionPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteTableSelectionPolicies")
+    
+    
+    return
+}
+
+func NewDescribeRouteTableSelectionPoliciesResponse() (response *DescribeRouteTableSelectionPoliciesResponse) {
+    response = &DescribeRouteTableSelectionPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRouteTableSelectionPolicies
+// 本接口（DescribeRouteTableSelectionPolicies）用于查询云联网路由表选择策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+func (c *Client) DescribeRouteTableSelectionPolicies(request *DescribeRouteTableSelectionPoliciesRequest) (response *DescribeRouteTableSelectionPoliciesResponse, err error) {
+    return c.DescribeRouteTableSelectionPoliciesWithContext(context.Background(), request)
+}
+
+// DescribeRouteTableSelectionPolicies
+// 本接口（DescribeRouteTableSelectionPolicies）用于查询云联网路由表选择策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+func (c *Client) DescribeRouteTableSelectionPoliciesWithContext(ctx context.Context, request *DescribeRouteTableSelectionPoliciesRequest) (response *DescribeRouteTableSelectionPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRouteTableSelectionPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRouteTableSelectionPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRouteTableSelectionPoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -17782,6 +18313,69 @@ func (c *Client) ModifyCcnRegionBandwidthLimitsTypeWithContext(ctx context.Conte
     return
 }
 
+func NewModifyCcnRouteTablesRequest() (request *ModifyCcnRouteTablesRequest) {
+    request = &ModifyCcnRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnRouteTables")
+    
+    
+    return
+}
+
+func NewModifyCcnRouteTablesResponse() (response *ModifyCcnRouteTablesResponse) {
+    response = &ModifyCcnRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCcnRouteTables
+// 该接口用于修改云联网路由表名称和备注。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+func (c *Client) ModifyCcnRouteTables(request *ModifyCcnRouteTablesRequest) (response *ModifyCcnRouteTablesResponse, err error) {
+    return c.ModifyCcnRouteTablesWithContext(context.Background(), request)
+}
+
+// ModifyCcnRouteTables
+// 该接口用于修改云联网路由表名称和备注。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+func (c *Client) ModifyCcnRouteTablesWithContext(ctx context.Context, request *ModifyCcnRouteTablesRequest) (response *ModifyCcnRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewModifyCcnRouteTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCcnRouteTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCcnRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayAttributeRequest) {
     request = &ModifyCustomerGatewayAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -19370,6 +19964,79 @@ func (c *Client) ModifyRouteTableAttributeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyRouteTableAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRouteTableSelectionPoliciesRequest() (request *ModifyRouteTableSelectionPoliciesRequest) {
+    request = &ModifyRouteTableSelectionPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyRouteTableSelectionPolicies")
+    
+    
+    return
+}
+
+func NewModifyRouteTableSelectionPoliciesResponse() (response *ModifyRouteTableSelectionPoliciesResponse) {
+    response = &ModifyRouteTableSelectionPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRouteTableSelectionPolicies
+// 该接口用于编辑云联网路由表选择策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
+//  UNSUPPORTEDOPERATION_ROUTETABLESELECTPOLICYEXCEED = "UnsupportedOperation.RouteTableSelectPolicyExceed"
+func (c *Client) ModifyRouteTableSelectionPolicies(request *ModifyRouteTableSelectionPoliciesRequest) (response *ModifyRouteTableSelectionPoliciesResponse, err error) {
+    return c.ModifyRouteTableSelectionPoliciesWithContext(context.Background(), request)
+}
+
+// ModifyRouteTableSelectionPolicies
+// 该接口用于编辑云联网路由表选择策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
+//  UNSUPPORTEDOPERATION_ROUTETABLESELECTPOLICYEXCEED = "UnsupportedOperation.RouteTableSelectPolicyExceed"
+func (c *Client) ModifyRouteTableSelectionPoliciesWithContext(ctx context.Context, request *ModifyRouteTableSelectionPoliciesRequest) (response *ModifyRouteTableSelectionPoliciesResponse, err error) {
+    if request == nil {
+        request = NewModifyRouteTableSelectionPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRouteTableSelectionPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRouteTableSelectionPoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -21164,6 +21831,272 @@ func (c *Client) RenewVpnGatewayWithContext(ctx context.Context, request *RenewV
     request.SetContext(ctx)
     
     response = NewRenewVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceCcnRouteTableBroadcastPolicysRequest() (request *ReplaceCcnRouteTableBroadcastPolicysRequest) {
+    request = &ReplaceCcnRouteTableBroadcastPolicysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ReplaceCcnRouteTableBroadcastPolicys")
+    
+    
+    return
+}
+
+func NewReplaceCcnRouteTableBroadcastPolicysResponse() (response *ReplaceCcnRouteTableBroadcastPolicysResponse) {
+    response = &ReplaceCcnRouteTableBroadcastPolicysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaceCcnRouteTableBroadcastPolicys
+// 本接口(ReplaceCcnRouteTableBroadcastPolicys)用于替换云联网路由表路由传播策略。
+//
+// > 特别注意：是全量覆盖，非增量添加
+//
+// 
+//
+// **路由条件支持以下四种：**
+//
+// 
+//
+// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+//
+// - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
+//
+// - 实例地域: `instance-region`，例如：`ap-guangzhou`<br />产品支持的所有地域列表可通过接口 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询，其中参数 `Product` 设置为 `ccn`
+//
+// - 路由前缀: `cidr-block`，例如：`10.1.0.0/16`
+//
+// 
+//
+// 
+//
+// **传播条件支持以下三种：**
+//
+// 
+//
+// - 实例类型: `instance-type`，格式同路由条件
+//
+// - 实例ID: `instance-id`，格式同路由条件
+//
+// - 实例地域: `instance-region`，格式同路由条件
+//
+// 
+//
+// 
+//
+// **使用限制：**
+//
+// - 一条策略内的单个条件类型，最大支持设置 `25` 个条件值
+//
+// - 一张路由表，最大支持 `100` 条路由传播策略
+//
+// - 路由条件类型中，只有 `cidr-block` 类型支持模糊匹配和精确匹配两种，其它类型只支持精确匹配一种模式
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDKEY = "InvalidParameter.InvalidKey"
+//  INVALIDPARAMETER_NOTDICT = "InvalidParameter.NotDict"
+//  INVALIDPARAMETER_NOTLIST = "InvalidParameter.NotList"
+//  INVALIDPARAMETER_NOTSTR = "InvalidParameter.NotStr"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
+func (c *Client) ReplaceCcnRouteTableBroadcastPolicys(request *ReplaceCcnRouteTableBroadcastPolicysRequest) (response *ReplaceCcnRouteTableBroadcastPolicysResponse, err error) {
+    return c.ReplaceCcnRouteTableBroadcastPolicysWithContext(context.Background(), request)
+}
+
+// ReplaceCcnRouteTableBroadcastPolicys
+// 本接口(ReplaceCcnRouteTableBroadcastPolicys)用于替换云联网路由表路由传播策略。
+//
+// > 特别注意：是全量覆盖，非增量添加
+//
+// 
+//
+// **路由条件支持以下四种：**
+//
+// 
+//
+// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+//
+// - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
+//
+// - 实例地域: `instance-region`，例如：`ap-guangzhou`<br />产品支持的所有地域列表可通过接口 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询，其中参数 `Product` 设置为 `ccn`
+//
+// - 路由前缀: `cidr-block`，例如：`10.1.0.0/16`
+//
+// 
+//
+// 
+//
+// **传播条件支持以下三种：**
+//
+// 
+//
+// - 实例类型: `instance-type`，格式同路由条件
+//
+// - 实例ID: `instance-id`，格式同路由条件
+//
+// - 实例地域: `instance-region`，格式同路由条件
+//
+// 
+//
+// 
+//
+// **使用限制：**
+//
+// - 一条策略内的单个条件类型，最大支持设置 `25` 个条件值
+//
+// - 一张路由表，最大支持 `100` 条路由传播策略
+//
+// - 路由条件类型中，只有 `cidr-block` 类型支持模糊匹配和精确匹配两种，其它类型只支持精确匹配一种模式
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDKEY = "InvalidParameter.InvalidKey"
+//  INVALIDPARAMETER_NOTDICT = "InvalidParameter.NotDict"
+//  INVALIDPARAMETER_NOTLIST = "InvalidParameter.NotList"
+//  INVALIDPARAMETER_NOTSTR = "InvalidParameter.NotStr"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
+func (c *Client) ReplaceCcnRouteTableBroadcastPolicysWithContext(ctx context.Context, request *ReplaceCcnRouteTableBroadcastPolicysRequest) (response *ReplaceCcnRouteTableBroadcastPolicysResponse, err error) {
+    if request == nil {
+        request = NewReplaceCcnRouteTableBroadcastPolicysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceCcnRouteTableBroadcastPolicys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceCcnRouteTableBroadcastPolicysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceCcnRouteTableInputPolicysRequest() (request *ReplaceCcnRouteTableInputPolicysRequest) {
+    request = &ReplaceCcnRouteTableInputPolicysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ReplaceCcnRouteTableInputPolicys")
+    
+    
+    return
+}
+
+func NewReplaceCcnRouteTableInputPolicysResponse() (response *ReplaceCcnRouteTableInputPolicysResponse) {
+    response = &ReplaceCcnRouteTableInputPolicysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaceCcnRouteTableInputPolicys
+// 本接口(ReplaceRouteTableInputPolicys)用于替换云联网路由表路由接收策略。
+//
+// > 特别注意：是全量覆盖，非增量添加
+//
+// 
+//
+// **路由条件支持以下四种：**
+//
+// 
+//
+// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+//
+// - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
+//
+// - 实例地域: `instance-region`，例如：`ap-guangzhou`<br />产品支持的所有地域列表可通过接口 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询，其中参数 `Product` 设置为 `ccn`
+//
+// - 路由前缀: `cidr-block`，例如：`10.1.0.0/16`
+//
+// 
+//
+// 
+//
+// **使用限制：**
+//
+// - 一条策略内的单个条件类型，最大支持设置 `25` 个条件值
+//
+// - 一张路由表，最大支持 `100` 条路由接收策略
+//
+// - 路由条件类型中，只有 `cidr-block` 类型支持模糊匹配和精确匹配两种，其它类型只支持精确匹配一种模式
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDKEY = "InvalidParameter.InvalidKey"
+//  INVALIDPARAMETER_NOTDICT = "InvalidParameter.NotDict"
+//  INVALIDPARAMETER_NOTLIST = "InvalidParameter.NotList"
+//  INVALIDPARAMETER_NOTSTR = "InvalidParameter.NotStr"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
+func (c *Client) ReplaceCcnRouteTableInputPolicys(request *ReplaceCcnRouteTableInputPolicysRequest) (response *ReplaceCcnRouteTableInputPolicysResponse, err error) {
+    return c.ReplaceCcnRouteTableInputPolicysWithContext(context.Background(), request)
+}
+
+// ReplaceCcnRouteTableInputPolicys
+// 本接口(ReplaceRouteTableInputPolicys)用于替换云联网路由表路由接收策略。
+//
+// > 特别注意：是全量覆盖，非增量添加
+//
+// 
+//
+// **路由条件支持以下四种：**
+//
+// 
+//
+// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+//
+// - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
+//
+// - 实例地域: `instance-region`，例如：`ap-guangzhou`<br />产品支持的所有地域列表可通过接口 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询，其中参数 `Product` 设置为 `ccn`
+//
+// - 路由前缀: `cidr-block`，例如：`10.1.0.0/16`
+//
+// 
+//
+// 
+//
+// **使用限制：**
+//
+// - 一条策略内的单个条件类型，最大支持设置 `25` 个条件值
+//
+// - 一张路由表，最大支持 `100` 条路由接收策略
+//
+// - 路由条件类型中，只有 `cidr-block` 类型支持模糊匹配和精确匹配两种，其它类型只支持精确匹配一种模式
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDKEY = "InvalidParameter.InvalidKey"
+//  INVALIDPARAMETER_NOTDICT = "InvalidParameter.NotDict"
+//  INVALIDPARAMETER_NOTLIST = "InvalidParameter.NotList"
+//  INVALIDPARAMETER_NOTSTR = "InvalidParameter.NotStr"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
+//  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
+func (c *Client) ReplaceCcnRouteTableInputPolicysWithContext(ctx context.Context, request *ReplaceCcnRouteTableInputPolicysRequest) (response *ReplaceCcnRouteTableInputPolicysResponse, err error) {
+    if request == nil {
+        request = NewReplaceCcnRouteTableInputPolicysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceCcnRouteTableInputPolicys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceCcnRouteTableInputPolicysResponse()
     err = c.Send(request, response)
     return
 }

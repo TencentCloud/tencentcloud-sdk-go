@@ -110,8 +110,20 @@ const (
 	// 该过滤规则不合法。
 	INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 
+	// 指定参数值不是预期的字典格式。
+	INVALIDPARAMETER_INVALIDKEY = "InvalidParameter.InvalidKey"
+
 	// 下一跳类型与下一跳网关不匹配。
 	INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
+
+	// 指定参数值不是键值对。
+	INVALIDPARAMETER_NOTDICT = "InvalidParameter.NotDict"
+
+	// 指定参数值不是一个列表。
+	INVALIDPARAMETER_NOTLIST = "InvalidParameter.NotList"
+
+	// 指定键值不是一个字符串型。
+	INVALIDPARAMETER_NOTSTR = "InvalidParameter.NotStr"
 
 	// 专线网关跨可用区容灾组不存在。
 	INVALIDPARAMETER_VPGHAGROUPNOTFOUND = "InvalidParameter.VpgHaGroupNotFound"
@@ -530,6 +542,12 @@ const (
 	// 当前带宽包加入资源上限。
 	LIMITEXCEEDED_BANDWIDTHPACKAGERESOURCEQUOTA = "LimitExceeded.BandwidthPackageResourceQuota"
 
+	// 云联网路由传播策略数量已达到上限。
+	LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
+
+	// 云联网路由传播策略条件数量已达到上限。
+	LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+
 	// 超过更换IP配额。
 	LIMITEXCEEDED_CHANGEADDRESSQUOTA = "LimitExceeded.ChangeAddressQuota"
 
@@ -728,6 +746,9 @@ const (
 	// 指定VPC CIDR范围不支持私有网络和基础网络设备互通。
 	UNSUPPORTEDOPERATION_CIDRUNSUPPORTEDCLASSICLINK = "UnsupportedOperation.CIDRUnSupportedClassicLink"
 
+	// 路由表选择策略不支持默认路由表。
+	UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
+
 	// 实例已关联CCN。
 	UNSUPPORTEDOPERATION_CCNATTACHED = "UnsupportedOperation.CcnAttached"
 
@@ -742,6 +763,9 @@ const (
 
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
+
+	// 当前云联网未开启路由传播策略。
+	UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
 
 	// 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
 	UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.CcnOrdinaryAccountRefuseAttach"
@@ -845,6 +869,9 @@ const (
 	// 指定实例资源不匹配。
 	UNSUPPORTEDOPERATION_INSTANCEMISMATCH = "UnsupportedOperation.InstanceMismatch"
 
+	// 路由表选择策略配置的实例不存在。
+	UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
+
 	// 跨账号场景下不支持普通账号实例关联自驾云账号云联网。
 	UNSUPPORTEDOPERATION_INSTANCEORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.InstanceOrdinaryAccountRefuseAttach"
 
@@ -944,11 +971,23 @@ const (
 	// 当前云联网不支持同时关联EDGE实例和跨境实例
 	UNSUPPORTEDOPERATION_NOTSUPPORTATTACHEDGEANDCROSSBORDERINSTANCE = "UnsupportedOperation.NotSupportAttachEdgeAndCrossBorderInstance"
 
+	// 没有开启多路由表特性，不能创建用户路由表。
+	UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
+
+	// 默认路由表，不支持删除。
+	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
+
 	// 不支持删除默认路由表。
 	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultRouteTable"
 
 	// 公有云到黑石的对等连接不支持删除。
 	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEVPCBMPEER = "UnsupportedOperation.NotSupportDeleteVpcBmPeer"
+
+	// 默认路由表，不支持修改。
+	UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+
+	// 不支持编辑相同的实例和源地址。
+	UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
 
 	// 不支持的可用区
 	UNSUPPORTEDOPERATION_NOTSUPPORTZONE = "UnsupportedOperation.NotSupportZone"
@@ -1013,8 +1052,14 @@ const (
 	// 当前路由表删除失败，请先检查是否存在关联的策略。
 	UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
 
+	// 当前云联网的路由表数量已超过限制。
+	UNSUPPORTEDOPERATION_ROUTETABLEEXCEEDPERVBCLIMIT = "UnsupportedOperation.RouteTableExceedPerVbcLimit"
+
 	// 路由表绑定了子网。
 	UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = "UnsupportedOperation.RouteTableHasSubnetRule"
+
+	// 当前云联网的路由表选择策略数量已超过限制。
+	UNSUPPORTEDOPERATION_ROUTETABLESELECTPOLICYEXCEED = "UnsupportedOperation.RouteTableSelectPolicyExceed"
 
 	// SslVpnClientIds：`vpnc-20f9b3d7` 证书状态已禁用或Client证书状态不可用，不支持禁用证书。
 	UNSUPPORTEDOPERATION_SSLCLIENTCERTALREADYDISABLEORCERTABNORMAL = "UnsupportedOperation.SSLClientCertAlreadyDisableOrCertAbnormal"

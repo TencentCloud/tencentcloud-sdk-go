@@ -649,6 +649,120 @@ func (r *SubmitHunyuanImageJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TextToImageLiteRequestParams struct {
+	// 文本描述。
+	// 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
+	// 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 反向文本描述。
+	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
+	// 推荐使用中文。最多可传256个 utf-8 字符。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	// 绘画风格。
+	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
+	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 生成图分辨率。
+	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按0处理。
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+type TextToImageLiteRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文本描述。
+	// 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
+	// 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 反向文本描述。
+	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
+	// 推荐使用中文。最多可传256个 utf-8 字符。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	// 绘画风格。
+	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
+	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 生成图分辨率。
+	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按0处理。
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+func (r *TextToImageLiteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToImageLiteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "NegativePrompt")
+	delete(f, "Style")
+	delete(f, "Resolution")
+	delete(f, "LogoAdd")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToImageLiteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToImageLiteResponseParams struct {
+	// 根据入参 RspImgType 填入不同，返回不同的内容。如果传入 base64 则返回生成图 Base64 编码。如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToImageLiteResponse struct {
+	*tchttp.BaseResponse
+	Response *TextToImageLiteResponseParams `json:"Response"`
+}
+
+func (r *TextToImageLiteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToImageLiteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Tool struct {
 	// 工具类型，当前只支持function
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
