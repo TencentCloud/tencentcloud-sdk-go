@@ -585,6 +585,34 @@ type DedicatedClusterOrder struct {
 	// 订单类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 验收状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
+
+	// 交付预期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverExpectTime *string `json:"DeliverExpectTime,omitnil,omitempty" name:"DeliverExpectTime"`
+
+	// 交付实际完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverFinishTime *string `json:"DeliverFinishTime,omitnil,omitempty" name:"DeliverFinishTime"`
+
+	// 验收预期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckExpectTime *string `json:"CheckExpectTime,omitnil,omitempty" name:"CheckExpectTime"`
+
+	// 验收实际完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckFinishTime *string `json:"CheckFinishTime,omitnil,omitempty" name:"CheckFinishTime"`
+
+	// 订单SLA
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderSLA *string `json:"OrderSLA,omitnil,omitempty" name:"OrderSLA"`
+
+	// 订单支付计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderPayPlan *string `json:"OrderPayPlan,omitnil,omitempty" name:"OrderPayPlan"`
 }
 
 type DedicatedClusterOrderItem struct {
@@ -1195,6 +1223,9 @@ type DescribeDedicatedClusterOrdersRequestParams struct {
 
 	// 订单类型为过滤条件：CREATE  EXTEND
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 订单类型列表
+	OrderTypes []*string `json:"OrderTypes,omitnil,omitempty" name:"OrderTypes"`
 }
 
 type DescribeDedicatedClusterOrdersRequest struct {
@@ -1217,6 +1248,9 @@ type DescribeDedicatedClusterOrdersRequest struct {
 
 	// 订单类型为过滤条件：CREATE  EXTEND
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 订单类型列表
+	OrderTypes []*string `json:"OrderTypes,omitnil,omitempty" name:"OrderTypes"`
 }
 
 func (r *DescribeDedicatedClusterOrdersRequest) ToJsonString() string {
@@ -1237,6 +1271,7 @@ func (r *DescribeDedicatedClusterOrdersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Status")
 	delete(f, "ActionType")
+	delete(f, "OrderTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDedicatedClusterOrdersRequest has unknown keys!", "")
 	}

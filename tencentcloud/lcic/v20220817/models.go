@@ -1185,6 +1185,9 @@ type CreateRoomRequestParams struct {
 	//
 	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
+	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 }
 
 type CreateRoomRequest struct {
@@ -1295,6 +1298,9 @@ type CreateRoomRequest struct {
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
+	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1338,6 +1344,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordBackground")
 	delete(f, "RecordScene")
 	delete(f, "RecordLang")
+	delete(f, "RecordStream")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -3031,7 +3038,7 @@ type DescribeRoomResponseParams struct {
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播类型：0 常规（默认）1 伪直播
+	// 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
 	// 伪直播链接
@@ -5190,6 +5197,9 @@ type RoomInfo struct {
 	//
 	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
+	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 }
 
 type RoomItem struct {

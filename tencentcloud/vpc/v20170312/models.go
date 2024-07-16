@@ -2352,6 +2352,10 @@ type CcnInstance struct {
 	// 实例关联的路由表ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
+
+	// 实例付费方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type CcnInstanceInfo struct {
@@ -4181,17 +4185,20 @@ type CreateHaVipRequestParams struct {
 	// `HAVIP`所在私有网络`ID`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// `HAVIP`所在子网`ID`。
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
 	// `HAVIP`名称。
 	HaVipName *string `json:"HaVipName,omitnil,omitempty" name:"HaVipName"`
+
+	// `HAVIP`所在子网`ID`。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// `HAVIP`所在弹性网卡`ID`。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
+
+	// 是否开启`HAVIP`漂移时子机或网卡范围的校验。默认不开启。
+	CheckAssociate *bool `json:"CheckAssociate,omitnil,omitempty" name:"CheckAssociate"`
 }
 
 type CreateHaVipRequest struct {
@@ -4200,17 +4207,20 @@ type CreateHaVipRequest struct {
 	// `HAVIP`所在私有网络`ID`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// `HAVIP`所在子网`ID`。
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
 	// `HAVIP`名称。
 	HaVipName *string `json:"HaVipName,omitnil,omitempty" name:"HaVipName"`
+
+	// `HAVIP`所在子网`ID`。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// `HAVIP`所在弹性网卡`ID`。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
+
+	// 是否开启`HAVIP`漂移时子机或网卡范围的校验。默认不开启。
+	CheckAssociate *bool `json:"CheckAssociate,omitnil,omitempty" name:"CheckAssociate"`
 }
 
 func (r *CreateHaVipRequest) ToJsonString() string {
@@ -4226,10 +4236,11 @@ func (r *CreateHaVipRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "VpcId")
-	delete(f, "SubnetId")
 	delete(f, "HaVipName")
+	delete(f, "SubnetId")
 	delete(f, "Vip")
 	delete(f, "NetworkInterfaceId")
+	delete(f, "CheckAssociate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHaVipRequest has unknown keys!", "")
 	}
@@ -7367,6 +7378,14 @@ type CrossBorderCompliance struct {
 
 	// 审批单创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 法定代表人身份证号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonId *string `json:"LegalPersonId,omitnil,omitempty" name:"LegalPersonId"`
+
+	// 法定代表人身份证。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonIdCard *string `json:"LegalPersonIdCard,omitnil,omitempty" name:"LegalPersonIdCard"`
 }
 
 type CrossBorderFlowMonitorData struct {
@@ -12776,13 +12795,7 @@ type DescribeHaVipsRequestParams struct {
 	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
 	HaVipIds []*string `json:"HaVipIds,omitnil,omitempty" name:"HaVipIds"`
 
-	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
-	// <li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li>
-	// <li>havip-name - String - `HAVIP`名称。</li>
-	// <li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li>
-	// <li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
-	// <li>vip - String - `HAVIP`的地址`VIP`。</li>
-	// <li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
+	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -12798,13 +12811,7 @@ type DescribeHaVipsRequest struct {
 	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
 	HaVipIds []*string `json:"HaVipIds,omitnil,omitempty" name:"HaVipIds"`
 
-	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
-	// <li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li>
-	// <li>havip-name - String - `HAVIP`名称。</li>
-	// <li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li>
-	// <li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
-	// <li>vip - String - `HAVIP`的地址`VIP`。</li>
-	// <li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
+	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -20413,6 +20420,18 @@ type HaVip struct {
 
 	// 使用havip的业务标识。
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// `HAVIP`的飘移范围。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaVipAssociationSet []*HaVipAssociation `json:"HaVipAssociationSet,omitnil,omitempty" name:"HaVipAssociationSet"`
+
+	// 是否开启`HAVIP`的飘移范围校验。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckAssociate *bool `json:"CheckAssociate,omitnil,omitempty" name:"CheckAssociate"`
+
+	// HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlushedTime *string `json:"FlushedTime,omitnil,omitempty" name:"FlushedTime"`
 }
 
 // Predefined struct for user
@@ -20474,6 +20493,20 @@ func (r *HaVipAssociateAddressIpResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *HaVipAssociateAddressIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type HaVipAssociation struct {
+	// HaVip实例唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
+
+	// HaVip绑定的子机或网卡唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// HaVip绑定的类型。取值:CVM, ENI。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 // Predefined struct for user

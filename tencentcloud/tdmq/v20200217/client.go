@@ -5661,6 +5661,59 @@ func (c *Client) DescribeRocketMQTopicMsgsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeRocketMQTopicStatsRequest() (request *DescribeRocketMQTopicStatsRequest) {
+    request = &DescribeRocketMQTopicStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQTopicStats")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQTopicStatsResponse() (response *DescribeRocketMQTopicStatsResponse) {
+    response = &DescribeRocketMQTopicStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQTopicStats
+// 获取Topic生产详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQTopicStats(request *DescribeRocketMQTopicStatsRequest) (response *DescribeRocketMQTopicStatsResponse, err error) {
+    return c.DescribeRocketMQTopicStatsWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQTopicStats
+// 获取Topic生产详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQTopicStatsWithContext(ctx context.Context, request *DescribeRocketMQTopicStatsRequest) (response *DescribeRocketMQTopicStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQTopicStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQTopicStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQTopicStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQTopicsRequest() (request *DescribeRocketMQTopicsRequest) {
     request = &DescribeRocketMQTopicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5720,6 +5773,63 @@ func (c *Client) DescribeRocketMQTopicsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQTopicsByGroupRequest() (request *DescribeRocketMQTopicsByGroupRequest) {
+    request = &DescribeRocketMQTopicsByGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQTopicsByGroup")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQTopicsByGroupResponse() (response *DescribeRocketMQTopicsByGroupResponse) {
+    response = &DescribeRocketMQTopicsByGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQTopicsByGroup
+// 获取指定消费组下订阅的主题列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQTopicsByGroup(request *DescribeRocketMQTopicsByGroupRequest) (response *DescribeRocketMQTopicsByGroupResponse, err error) {
+    return c.DescribeRocketMQTopicsByGroupWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQTopicsByGroup
+// 获取指定消费组下订阅的主题列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQTopicsByGroupWithContext(ctx context.Context, request *DescribeRocketMQTopicsByGroupRequest) (response *DescribeRocketMQTopicsByGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQTopicsByGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQTopicsByGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQTopicsByGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -7063,6 +7173,55 @@ func (c *Client) ModifyRocketMQGroupWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyRocketMQGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRocketMQInstanceRequest() (request *ModifyRocketMQInstanceRequest) {
+    request = &ModifyRocketMQInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQInstance")
+    
+    
+    return
+}
+
+func NewModifyRocketMQInstanceResponse() (response *ModifyRocketMQInstanceResponse) {
+    response = &ModifyRocketMQInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRocketMQInstance
+// 修改RocketMQ专享实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyRocketMQInstance(request *ModifyRocketMQInstanceRequest) (response *ModifyRocketMQInstanceResponse, err error) {
+    return c.ModifyRocketMQInstanceWithContext(context.Background(), request)
+}
+
+// ModifyRocketMQInstance
+// 修改RocketMQ专享实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyRocketMQInstanceWithContext(ctx context.Context, request *ModifyRocketMQInstanceRequest) (response *ModifyRocketMQInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRocketMQInstanceResponse()
     err = c.Send(request, response)
     return
 }

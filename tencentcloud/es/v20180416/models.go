@@ -2085,7 +2085,7 @@ type DescribeInstancePluginListRequestParams struct {
 	// 分页大小，默认值10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段<li>1：插件名 pluginName
+	// 排序字段<li>1：插件名 pluginName</li>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 排序方式<li>0：升序 asc</li><li>1：降序 desc</li>
@@ -2107,7 +2107,7 @@ type DescribeInstancePluginListRequest struct {
 	// 分页大小，默认值10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段<li>1：插件名 pluginName
+	// 排序字段<li>1：插件名 pluginName</li>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 排序方式<li>0：升序 asc</li><li>1：降序 desc</li>
@@ -6066,6 +6066,12 @@ type UpdateInstanceRequestParams struct {
 
 	// cvm延迟上架参数
 	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
+
+	// 分片迁移并发数
+	ShardAllocationConcurrents *uint64 `json:"ShardAllocationConcurrents,omitnil,omitempty" name:"ShardAllocationConcurrents"`
+
+	// 分片迁移并发速度
+	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
 }
 
 type UpdateInstanceRequest struct {
@@ -6204,6 +6210,12 @@ type UpdateInstanceRequest struct {
 
 	// cvm延迟上架参数
 	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
+
+	// 分片迁移并发数
+	ShardAllocationConcurrents *uint64 `json:"ShardAllocationConcurrents,omitnil,omitempty" name:"ShardAllocationConcurrents"`
+
+	// 分片迁移并发速度
+	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -6256,6 +6268,8 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "OutboundPublicAcls")
 	delete(f, "OutboundPublicAccess")
 	delete(f, "CvmDelayOnlineTime")
+	delete(f, "ShardAllocationConcurrents")
+	delete(f, "ShardAllocationBytes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

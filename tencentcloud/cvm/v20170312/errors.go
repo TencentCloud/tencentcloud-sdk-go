@@ -239,6 +239,15 @@ const (
 	// 边缘可用区指定三网外网IP参数需要先指定主ip外网IP参数。
 	INVALIDPARAMETER_EDGEZONEMISSINTERNETACCESSIBLE = "InvalidParameter.EdgeZoneMissInternetAccessible"
 
+	// 指定的CDH母机不支持自定义类型的子机规格
+	INVALIDPARAMETER_HOSTIDCUSTOMIZEDINSTANCETYPENOTSUPPORT = "InvalidParameter.HostIdCustomizedInstanceTypeNotSupport"
+
+	// 指定的CDH母机不支持该子机机型规格
+	INVALIDPARAMETER_HOSTIDINSTANCETYPENOTSUPPORT = "InvalidParameter.HostIdInstanceTypeNotSupport"
+
+	// 指定的CDH母机不支持标准类型的子机规格
+	INVALIDPARAMETER_HOSTIDSTANDARDINSTANCETYPENOTSUPPORT = "InvalidParameter.HostIdStandardInstanceTypeNotSupport"
+
 	// 该主机当前状态不支持该操作。
 	INVALIDPARAMETER_HOSTIDSTATUSNOTSUPPORT = "InvalidParameter.HostIdStatusNotSupport"
 
@@ -250,6 +259,9 @@ const (
 
 	// 当前接口不支持实例镜像。
 	INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+
+	// 不存在支持指定子机规格的CDH母机
+	INVALIDPARAMETER_INSTANCETYPESUPPORTEDHOSTNOTFOUND = "InvalidParameter.InstanceTypeSupportedHostNotFound"
 
 	// 不支持设置公网带宽相关信息。
 	INVALIDPARAMETER_INTERNETACCESSIBLENOTSUPPORTED = "InvalidParameter.InternetAccessibleNotSupported"
@@ -943,6 +955,12 @@ const (
 
 	// 请求不支持正在销毁的实例
 	UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+
+	// 实例类型不支持设置`EnableJumboFrame` 状态
+	UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTJUMBOFRAME = "UnsupportedOperation.InstanceTypeNotSupportJumboFrame"
+
+	// 不支持不重启情况下修改Jumbo Frame状态
+	UNSUPPORTEDOPERATION_INSTANCESENABLEJUMBOWITHOUTREBOOT = "UnsupportedOperation.InstancesEnableJumboWithoutReboot"
 
 	// 不支持已启用销毁保护的实例，请先到设置实例销毁保护，关闭实例销毁保护，然后重试。
 	UNSUPPORTEDOPERATION_INSTANCESPROTECTED = "UnsupportedOperation.InstancesProtected"

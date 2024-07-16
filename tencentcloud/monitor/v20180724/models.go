@@ -2940,7 +2940,38 @@ type CreateServiceDiscoveryRequestParams struct {
 	// <li> 3 = JobMonitor</li>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 服务发现配置信息
+	// 服务发现配置信息，YAML 格式
+	// 
+	// 示例值：
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: go-demo    # 填写一个唯一名称
+	//   namespace: cm-prometheus  # namespace固定，不要修改
+	// spec:
+	//   endpoints:
+	//   - interval: 30s
+	//     # 填写service yaml中Prometheus Exporter对应的Port的Name
+	//     port: 2112
+	//     # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
+	//     path: /metrics
+	//     relabelings:
+	//     # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
+	//     # 我们通过 relabel 的 replace 动作把它替换成了 application
+	//     - action: replace
+	//       sourceLabels:  [__meta_kubernetes_pod_label_app]
+	//       targetLabel: application
+	//   # 选择要监控service所在的namespace
+	//   namespaceSelector:
+	//     matchNames:
+	//     - golang-demo
+	//     # 填写要监控service的Label值，以定位目标service
+	//   selector:
+	//     matchLabels:
+	//       app: golang-app-demo
+	// ```
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 }
 
@@ -2963,7 +2994,38 @@ type CreateServiceDiscoveryRequest struct {
 	// <li> 3 = JobMonitor</li>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 服务发现配置信息
+	// 服务发现配置信息，YAML 格式
+	// 
+	// 示例值：
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: go-demo    # 填写一个唯一名称
+	//   namespace: cm-prometheus  # namespace固定，不要修改
+	// spec:
+	//   endpoints:
+	//   - interval: 30s
+	//     # 填写service yaml中Prometheus Exporter对应的Port的Name
+	//     port: 2112
+	//     # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
+	//     path: /metrics
+	//     relabelings:
+	//     # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
+	//     # 我们通过 relabel 的 replace 动作把它替换成了 application
+	//     - action: replace
+	//       sourceLabels:  [__meta_kubernetes_pod_label_app]
+	//       targetLabel: application
+	//   # 选择要监控service所在的namespace
+	//   namespaceSelector:
+	//     matchNames:
+	//     - golang-demo
+	//     # 填写要监控service的Label值，以定位目标service
+	//   selector:
+	//     matchLabels:
+	//       app: golang-app-demo
+	// ```
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 }
 
@@ -4223,7 +4285,38 @@ type DeleteServiceDiscoveryRequestParams struct {
 	// <li> 3 = PodMonitor</li>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 服务发现配置信息
+	// 服务发现配置信息，YAML 格式
+	// 
+	// 示例值：
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: go-demo    # 填写一个唯一名称
+	//   namespace: cm-prometheus  # namespace固定，不要修改
+	// spec:
+	//   endpoints:
+	//   - interval: 30s
+	//     # 填写service yaml中Prometheus Exporter对应的Port的Name
+	//     port: 2112
+	//     # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
+	//     path: /metrics
+	//     relabelings:
+	//     # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
+	//     # 我们通过 relabel 的 replace 动作把它替换成了 application
+	//     - action: replace
+	//       sourceLabels:  [__meta_kubernetes_pod_label_app]
+	//       targetLabel: application
+	//   # 选择要监控service所在的namespace
+	//   namespaceSelector:
+	//     matchNames:
+	//     - golang-demo
+	//     # 填写要监控service的Label值，以定位目标service
+	//   selector:
+	//     matchLabels:
+	//       app: golang-app-demo
+	// ```
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 }
 
@@ -4246,7 +4339,38 @@ type DeleteServiceDiscoveryRequest struct {
 	// <li> 3 = PodMonitor</li>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 服务发现配置信息
+	// 服务发现配置信息，YAML 格式
+	// 
+	// 示例值：
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: go-demo    # 填写一个唯一名称
+	//   namespace: cm-prometheus  # namespace固定，不要修改
+	// spec:
+	//   endpoints:
+	//   - interval: 30s
+	//     # 填写service yaml中Prometheus Exporter对应的Port的Name
+	//     port: 2112
+	//     # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
+	//     path: /metrics
+	//     relabelings:
+	//     # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
+	//     # 我们通过 relabel 的 replace 动作把它替换成了 application
+	//     - action: replace
+	//       sourceLabels:  [__meta_kubernetes_pod_label_app]
+	//       targetLabel: application
+	//   # 选择要监控service所在的namespace
+	//   namespaceSelector:
+	//     matchNames:
+	//     - golang-demo
+	//     # 填写要监控service的Label值，以定位目标service
+	//   selector:
+	//     matchLabels:
+	//       app: golang-app-demo
+	// ```
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 }
 
@@ -9270,7 +9394,7 @@ func (r *DescribePrometheusInstanceInitStatusResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribePrometheusInstanceUsageRequestParams struct {
-	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 开始时间
@@ -9283,7 +9407,7 @@ type DescribePrometheusInstanceUsageRequestParams struct {
 type DescribePrometheusInstanceUsageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 开始时间
@@ -12618,7 +12742,7 @@ type ModifyPrometheusInstanceAttributesRequestParams struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 存储时长（取值为 15、30、45。此参数不适用于包年包月实例）
+	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 }
 
@@ -12631,7 +12755,7 @@ type ModifyPrometheusInstanceAttributesRequest struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 存储时长（取值为 15、30、45。此参数不适用于包年包月实例）
+	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 }
 
@@ -13242,7 +13366,7 @@ type PrometheusAlertRule struct {
 }
 
 type PrometheusClusterAgentBasic struct {
-	// 集群ID
+	// 地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
@@ -15566,6 +15690,8 @@ type UpdatePrometheusAgentStatusRequestParams struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
+	// 
+	// 示例值：["agent-abcd1234"]
 	AgentIds []*string `json:"AgentIds,omitnil,omitempty" name:"AgentIds"`
 
 	// 要更新的状态
@@ -15581,6 +15707,8 @@ type UpdatePrometheusAgentStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
+	// 
+	// 示例值：["agent-abcd1234"]
 	AgentIds []*string `json:"AgentIds,omitnil,omitempty" name:"AgentIds"`
 
 	// 要更新的状态
@@ -16078,7 +16206,38 @@ type UpdateServiceDiscoveryRequestParams struct {
 	// <li> 3 = JobMonitor</li>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 服务发现配置信息
+	// 服务发现配置信息，YAML 格式
+	// 
+	// 示例值：
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: go-demo    # 填写一个唯一名称
+	//   namespace: cm-prometheus  # namespace固定，不要修改
+	// spec:
+	//   endpoints:
+	//   - interval: 30s
+	//     # 填写service yaml中Prometheus Exporter对应的Port的Name
+	//     port: 2112
+	//     # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
+	//     path: /metrics
+	//     relabelings:
+	//     # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
+	//     # 我们通过 relabel 的 replace 动作把它替换成了 application
+	//     - action: replace
+	//       sourceLabels:  [__meta_kubernetes_pod_label_app]
+	//       targetLabel: application
+	//   # 选择要监控service所在的namespace
+	//   namespaceSelector:
+	//     matchNames:
+	//     - golang-demo
+	//     # 填写要监控service的Label值，以定位目标service
+	//   selector:
+	//     matchLabels:
+	//       app: golang-app-demo
+	// ```
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 }
 
@@ -16101,7 +16260,38 @@ type UpdateServiceDiscoveryRequest struct {
 	// <li> 3 = JobMonitor</li>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 服务发现配置信息
+	// 服务发现配置信息，YAML 格式
+	// 
+	// 示例值：
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: go-demo    # 填写一个唯一名称
+	//   namespace: cm-prometheus  # namespace固定，不要修改
+	// spec:
+	//   endpoints:
+	//   - interval: 30s
+	//     # 填写service yaml中Prometheus Exporter对应的Port的Name
+	//     port: 2112
+	//     # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
+	//     path: /metrics
+	//     relabelings:
+	//     # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
+	//     # 我们通过 relabel 的 replace 动作把它替换成了 application
+	//     - action: replace
+	//       sourceLabels:  [__meta_kubernetes_pod_label_app]
+	//       targetLabel: application
+	//   # 选择要监控service所在的namespace
+	//   namespaceSelector:
+	//     matchNames:
+	//     - golang-demo
+	//     # 填写要监控service的Label值，以定位目标service
+	//   selector:
+	//     matchLabels:
+	//       app: golang-app-demo
+	// ```
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 }
 
@@ -16158,33 +16348,7 @@ type UpgradeGrafanaDashboardRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：
-	// <li>qcloud</li>
-	// <li>cvm_process_exporter</li>
-	// <li>cvm_node_exporter</li>
-	// <li>cvm</li>
-	// <li>kubernetes</li>
-	// <li>cdwch</li>
-	// <li>rocketmq</li>
-	// <li>spring_mvc</li>
-	// <li>mysql</li>
-	// <li>go</li>
-	// <li>redis</li>
-	// <li>jvm</li>
-	// <li>pgsql</li>
-	// <li>mongo</li>
-	// <li>kafka</li>
-	// <li>es</li>
-	// <li>flink</li>
-	// <li>blackbox</li>
-	// <li>consule</li>
-	// <li>memcached</li>
-	// <li>zk</li>
-	// <li>tps</li>
-	// <li>istio</li>
-	// <li>etcd</li>
-	// <li>pts</li>
-	// <li>kong</li>
+	// Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：<li>qcloud</li><li>cvm_process_exporter</li><li>cvm_node_exporter</li><li>cvm</li><li>tps</li><li>nginx-ingress</li><li>nvidia-gpu</li><li>cdwch</li><li>emr</li><li>apache</li><li>rocketmq</li><li>rabbitmq</li><li>spring_mvc</li><li>mysql</li><li>mssql</li><li>go</li><li>redis</li><li>jvm</li><li>pgsql</li><li>ceph</li><li>docker</li><li>nginx</li><li>oracledb</li><li>mongo</li><li>kafka</li><li>es</li><li>flink</li><li>blackbox</li><li>consule</li><li>memcached</li><li>zk</li><li>tps</li><li>istio</li><li>etcd</li><li>pts</li><li>kong</li>
 	IntegrationCodes []*string `json:"IntegrationCodes,omitnil,omitempty" name:"IntegrationCodes"`
 }
 
@@ -16194,33 +16358,7 @@ type UpgradeGrafanaDashboardRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：
-	// <li>qcloud</li>
-	// <li>cvm_process_exporter</li>
-	// <li>cvm_node_exporter</li>
-	// <li>cvm</li>
-	// <li>kubernetes</li>
-	// <li>cdwch</li>
-	// <li>rocketmq</li>
-	// <li>spring_mvc</li>
-	// <li>mysql</li>
-	// <li>go</li>
-	// <li>redis</li>
-	// <li>jvm</li>
-	// <li>pgsql</li>
-	// <li>mongo</li>
-	// <li>kafka</li>
-	// <li>es</li>
-	// <li>flink</li>
-	// <li>blackbox</li>
-	// <li>consule</li>
-	// <li>memcached</li>
-	// <li>zk</li>
-	// <li>tps</li>
-	// <li>istio</li>
-	// <li>etcd</li>
-	// <li>pts</li>
-	// <li>kong</li>
+	// Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：<li>qcloud</li><li>cvm_process_exporter</li><li>cvm_node_exporter</li><li>cvm</li><li>tps</li><li>nginx-ingress</li><li>nvidia-gpu</li><li>cdwch</li><li>emr</li><li>apache</li><li>rocketmq</li><li>rabbitmq</li><li>spring_mvc</li><li>mysql</li><li>mssql</li><li>go</li><li>redis</li><li>jvm</li><li>pgsql</li><li>ceph</li><li>docker</li><li>nginx</li><li>oracledb</li><li>mongo</li><li>kafka</li><li>es</li><li>flink</li><li>blackbox</li><li>consule</li><li>memcached</li><li>zk</li><li>tps</li><li>istio</li><li>etcd</li><li>pts</li><li>kong</li>
 	IntegrationCodes []*string `json:"IntegrationCodes,omitnil,omitempty" name:"IntegrationCodes"`
 }
 

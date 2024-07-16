@@ -2076,7 +2076,7 @@ func NewGetMsgRecordResponse() (response *GetMsgRecordResponse) {
 }
 
 // GetMsgRecord
-// 获取推荐问题
+// 获取聊天历史请求
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2085,7 +2085,7 @@ func (c *Client) GetMsgRecord(request *GetMsgRecordRequest) (response *GetMsgRec
 }
 
 // GetMsgRecord
-// 获取推荐问题
+// 获取聊天历史请求
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

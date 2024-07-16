@@ -9237,6 +9237,165 @@ func (r *DescribeRocketMQTopicMsgsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQTopicStatsRequestParams struct {
+	// 实例ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 主题名
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+}
+
+type DescribeRocketMQTopicStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 主题名
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+}
+
+func (r *DescribeRocketMQTopicStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "TopicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopicStatsResponseParams struct {
+	// 生产详情列表
+	TopicStatsList []*TopicStats `json:"TopicStatsList,omitnil,omitempty" name:"TopicStatsList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQTopicStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQTopicStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQTopicStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopicsByGroupRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRocketMQTopicsByGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRocketMQTopicsByGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicsByGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "GroupId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicsByGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopicsByGroupResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 主题列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQTopicsByGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQTopicsByGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQTopicsByGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicsByGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQTopicsRequestParams struct {
 	// 查询偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -11612,6 +11771,81 @@ func (r *ModifyRocketMQGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyRocketMQGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRocketMQInstanceRequestParams struct {
+	// 专享实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例备注信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 实例消息保留时间，小时为单位
+	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
+}
+
+type ModifyRocketMQInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 专享实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例备注信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 实例消息保留时间，小时为单位
+	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
+}
+
+func (r *ModifyRocketMQInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRocketMQInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Remark")
+	delete(f, "MessageRetention")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRocketMQInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRocketMQInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRocketMQInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyRocketMQInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRocketMQInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14913,6 +15147,32 @@ type TopicRecord struct {
 
 	// 主题名称。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+}
+
+type TopicStats struct {
+	// 所属Broker节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerName *string `json:"BrokerName,omitnil,omitempty" name:"BrokerName"`
+
+	// 队列编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueId *int64 `json:"QueueId,omitnil,omitempty" name:"QueueId"`
+
+	// 最小位点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinOffset *int64 `json:"MinOffset,omitnil,omitempty" name:"MinOffset"`
+
+	// 最大位点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxOffset *int64 `json:"MaxOffset,omitnil,omitempty" name:"MaxOffset"`
+
+	// 消息条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageCount *int64 `json:"MessageCount,omitnil,omitempty" name:"MessageCount"`
+
+	// 消息最后写入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTimestamp *int64 `json:"LastUpdateTimestamp,omitnil,omitempty" name:"LastUpdateTimestamp"`
 }
 
 type TraceResult struct {

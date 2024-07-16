@@ -5962,15 +5962,27 @@ func (r *DescribeDataEngineEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataEngineImageVersionsRequestParams struct {
-	// 引擎类型：SQL、SparkBatch、StandardSpark、StandardPresto
+	// 引擎类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 排序字段: InsertTime（插入时间，默认），UpdateTime（更新时间）
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 排序方式：false（降序，默认），true（升序）
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
 }
 
 type DescribeDataEngineImageVersionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 引擎类型：SQL、SparkBatch、StandardSpark、StandardPresto
+	// 引擎类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 排序字段: InsertTime（插入时间，默认），UpdateTime（更新时间）
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 排序方式：false（降序，默认），true（升序）
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
 }
 
 func (r *DescribeDataEngineImageVersionsRequest) ToJsonString() string {
@@ -5986,6 +5998,8 @@ func (r *DescribeDataEngineImageVersionsRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "EngineType")
+	delete(f, "Sort")
+	delete(f, "Asc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineImageVersionsRequest has unknown keys!", "")
 	}
