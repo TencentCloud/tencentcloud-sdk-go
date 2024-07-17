@@ -53,6 +53,9 @@ const (
 	// 子网不属于zone。
 	INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
 
+	// 主题名已存在
+	INVALIDPARAMETERVALUE_TOPICNAMEALREADYEXIST = "InvalidParameterValue.TopicNameAlreadyExist"
+
 	// 无效的 Vpc Id。
 	INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
 
@@ -109,6 +112,9 @@ const (
 
 	// 批量删除实例限制。
 	UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+
+	// 删除主题频率过快
+	UNSUPPORTEDOPERATION_FREQUENCYTOPICDELETEOPERATE = "UnsupportedOperation.FrequencyTopicDeleteOperate"
 
 	// Oss拒绝该操作。
 	UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"

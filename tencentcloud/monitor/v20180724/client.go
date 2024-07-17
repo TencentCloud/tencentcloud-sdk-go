@@ -8289,7 +8289,7 @@ func NewModifyPrometheusConfigResponse() (response *ModifyPrometheusConfigRespon
 }
 
 // ModifyPrometheusConfig
-// 修改prometheus配置，如果配置项不存在，则会新增
+// 修改prometheus采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -8308,7 +8308,7 @@ func (c *Client) ModifyPrometheusConfig(request *ModifyPrometheusConfigRequest) 
 }
 
 // ModifyPrometheusConfig
-// 修改prometheus配置，如果配置项不存在，则会新增
+// 修改prometheus采集配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"

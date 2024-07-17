@@ -2110,6 +2110,15 @@ type CreateDSPADiscoveryTaskRequestParams struct {
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
+
+	// random-随机，asc生序，desc降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 抽样的条数，范围30-1000
+	Rows *int64 `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 抽样的排序字段
+	GlobalOrderField *string `json:"GlobalOrderField,omitnil,omitempty" name:"GlobalOrderField"`
 }
 
 type CreateDSPADiscoveryTaskRequest struct {
@@ -2161,6 +2170,15 @@ type CreateDSPADiscoveryTaskRequest struct {
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
+
+	// random-随机，asc生序，desc降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 抽样的条数，范围30-1000
+	Rows *int64 `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 抽样的排序字段
+	GlobalOrderField *string `json:"GlobalOrderField,omitnil,omitempty" name:"GlobalOrderField"`
 }
 
 func (r *CreateDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -2188,6 +2206,9 @@ func (r *CreateDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "Condition")
 	delete(f, "ComplianceGroupIds")
 	delete(f, "TimingStartTime")
+	delete(f, "Order")
+	delete(f, "Rows")
+	delete(f, "GlobalOrderField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPADiscoveryTaskRequest has unknown keys!", "")
 	}
@@ -8062,6 +8083,12 @@ type DescribeDSPAESDataSampleRequestParams struct {
 
 	// 字段扫描结果ID
 	FieldResultId *int64 `json:"FieldResultId,omitnil,omitempty" name:"FieldResultId"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeDSPAESDataSampleRequest struct {
@@ -8072,6 +8099,12 @@ type DescribeDSPAESDataSampleRequest struct {
 
 	// 字段扫描结果ID
 	FieldResultId *int64 `json:"FieldResultId,omitnil,omitempty" name:"FieldResultId"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 func (r *DescribeDSPAESDataSampleRequest) ToJsonString() string {
@@ -8088,6 +8121,8 @@ func (r *DescribeDSPAESDataSampleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DspaId")
 	delete(f, "FieldResultId")
+	delete(f, "Order")
+	delete(f, "OrderField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAESDataSampleRequest has unknown keys!", "")
 	}
@@ -8599,6 +8634,12 @@ type DescribeDSPATaskResultDataSampleRequestParams struct {
 
 	// 字段扫描结果ID
 	FieldResultId *int64 `json:"FieldResultId,omitnil,omitempty" name:"FieldResultId"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeDSPATaskResultDataSampleRequest struct {
@@ -8609,6 +8650,12 @@ type DescribeDSPATaskResultDataSampleRequest struct {
 
 	// 字段扫描结果ID
 	FieldResultId *int64 `json:"FieldResultId,omitnil,omitempty" name:"FieldResultId"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 func (r *DescribeDSPATaskResultDataSampleRequest) ToJsonString() string {
@@ -8625,6 +8672,8 @@ func (r *DescribeDSPATaskResultDataSampleRequest) FromJsonString(s string) error
 	}
 	delete(f, "DspaId")
 	delete(f, "FieldResultId")
+	delete(f, "Order")
+	delete(f, "OrderField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPATaskResultDataSampleRequest has unknown keys!", "")
 	}

@@ -1433,6 +1433,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
 //  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
 //  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_TOPICNAMEALREADYEXIST = "InvalidParameterValue.TopicNameAlreadyExist"
 //  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
 //  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
@@ -1457,6 +1458,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 //  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
 //  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
 //  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_TOPICNAMEALREADYEXIST = "InvalidParameterValue.TopicNameAlreadyExist"
 //  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
 //  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
@@ -2358,6 +2360,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_FREQUENCYTOPICDELETEOPERATE = "UnsupportedOperation.FrequencyTopicDeleteOperate"
 //  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     return c.DeleteTopicWithContext(context.Background(), request)
@@ -2382,6 +2385,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_FREQUENCYTOPICDELETEOPERATE = "UnsupportedOperation.FrequencyTopicDeleteOperate"
 //  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
 func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     if request == nil {

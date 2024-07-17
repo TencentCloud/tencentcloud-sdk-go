@@ -62,6 +62,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ckafka v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudapp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio v0.0.0
@@ -69,7 +70,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.965
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.966
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
@@ -318,6 +319,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cis => ../tencentcloud/cis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ckafka => ../tencentcloud/ckafka
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb => ../tencentcloud/clb
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudapp => ../tencentcloud/cloudapp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit => ../tencentcloud/cloudaudit
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm => ../tencentcloud/cloudhsm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio => ../tencentcloud/cloudstudio

@@ -635,7 +635,11 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //
 // - 参与人点击链接后需短信验证码才能查看合同内容。
 //
-// - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。暂时仅支持给<font color="red">自建应用集成企业</font>生成员工批签链接，不支持子客企业。
+// - 个人用户批量签署，需要传Name，Mobile，IdCardNumber(IdCardType) 参数。
+//
+// - saas企业员工用户批量签署，在传递了姓名等基本信息参数的情况下，还需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。
+//
+// - 子客企业员工用户批签签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。
 //
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
 //
@@ -666,7 +670,11 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 //
 // - 参与人点击链接后需短信验证码才能查看合同内容。
 //
-// - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。暂时仅支持给<font color="red">自建应用集成企业</font>生成员工批签链接，不支持子客企业。
+// - 个人用户批量签署，需要传Name，Mobile，IdCardNumber(IdCardType) 参数。
+//
+// - saas企业员工用户批量签署，在传递了姓名等基本信息参数的情况下，还需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。
+//
+// - 子客企业员工用户批签签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。
 //
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
 //
