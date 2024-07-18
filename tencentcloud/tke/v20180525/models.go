@@ -2037,7 +2037,7 @@ type CreateClusterReleaseRequestParams struct {
 	// 自定义参数
 	Values *ReleaseValues `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market 或 other
+	// 制品来源，范围：tke-market 或 other默认值：tke-market。
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
 	// 制品版本
@@ -2052,7 +2052,7 @@ type CreateClusterReleaseRequestParams struct {
 	// 制品访问密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 制品命名空间
+	// 制品命名空间，ChartFrom为tke-market时ChartNamespace不为空，值为DescribeProducts接口反馈的Namespace
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
 	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
@@ -2077,7 +2077,7 @@ type CreateClusterReleaseRequest struct {
 	// 自定义参数
 	Values *ReleaseValues `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market 或 other
+	// 制品来源，范围：tke-market 或 other默认值：tke-market。
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
 	// 制品版本
@@ -2092,7 +2092,7 @@ type CreateClusterReleaseRequest struct {
 	// 制品访问密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 制品命名空间
+	// 制品命名空间，ChartFrom为tke-market时ChartNamespace不为空，值为DescribeProducts接口反馈的Namespace
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
 	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
@@ -20616,7 +20616,7 @@ type UpgradeClusterReleaseRequestParams struct {
 	// 自定义参数，覆盖chart 中values.yaml 中的参数
 	Values *ReleaseValues `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market 或 other默认值：tke-market。
+	// 制品来源，范围：tke-market 或 other 默认值：tke-market，示例值：tke-market
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
 	// 制品版本( 从第三方安装时，不传这个参数）
@@ -20631,7 +20631,7 @@ type UpgradeClusterReleaseRequestParams struct {
 	// 制品访问密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 制品命名空间
+	// 制品命名空间，ChartFrom为tke-market时ChartNamespace不为空，值为DescribeProducts接口反馈的Namespace
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
 	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）
@@ -20656,7 +20656,7 @@ type UpgradeClusterReleaseRequest struct {
 	// 自定义参数，覆盖chart 中values.yaml 中的参数
 	Values *ReleaseValues `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market 或 other默认值：tke-market。
+	// 制品来源，范围：tke-market 或 other 默认值：tke-market，示例值：tke-market
 	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
 
 	// 制品版本( 从第三方安装时，不传这个参数）
@@ -20671,7 +20671,7 @@ type UpgradeClusterReleaseRequest struct {
 	// 制品访问密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 制品命名空间
+	// 制品命名空间，ChartFrom为tke-market时ChartNamespace不为空，值为DescribeProducts接口反馈的Namespace
 	ChartNamespace *string `json:"ChartNamespace,omitnil,omitempty" name:"ChartNamespace"`
 
 	// 集群类型，支持传 tke, eks, tkeedge, external(注册集群）

@@ -768,6 +768,7 @@ type CheckIdNameDateResponseParams struct {
 	// -5: 身份信息无效
 	// -6: 证件库服务异常
 	// -7: 证件库中无此身份证记录
+	// -8: 认证次数超过当日限制，请次日重试
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -851,6 +852,7 @@ type CheckPhoneAndNameResponseParams struct {
 	// -3:引擎服务异常
 	// -4:姓名校验不通过
 	// -5:手机号码不合法
+	// -6: 认证次数超过当日限制，请次日重试
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述
@@ -4364,6 +4366,7 @@ type PhoneVerificationResponseParams struct {
 	// -8: 姓名校验不通过
 	// -9: 没有记录
 	// -11: 验证中心服务繁忙
+	// -12: 认证次数超过当日限制，请次日重试
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。

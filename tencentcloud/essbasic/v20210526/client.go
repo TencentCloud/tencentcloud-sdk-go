@@ -5389,7 +5389,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //
 // <td>员工未认证</td>
 //
-// <td>进入员认证并加入企业流程</td>
+// <td>进入员工认证并加入企业流程</td>
 //
 // </tr>
 //
@@ -5509,7 +5509,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //
 // <td>员工未认证</td>
 //
-// <td>进入员认证并加入企业流程</td>
+// <td>进入员工认证并加入企业流程</td>
 //
 // </tr>
 //

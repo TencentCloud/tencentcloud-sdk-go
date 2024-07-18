@@ -4553,6 +4553,8 @@ func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttr
 // ModifyLoadBalancerAttributes
 // 修改负载均衡实例的属性。支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
 //
+// 注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。
+//
 // 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
@@ -4576,6 +4578,8 @@ func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttribu
 
 // ModifyLoadBalancerAttributes
 // 修改负载均衡实例的属性。支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
+//
+// 注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。
 //
 // 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 //

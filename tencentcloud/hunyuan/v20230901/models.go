@@ -549,7 +549,9 @@ func (r *QueryHunyuanImageJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitHunyuanImageJobRequestParams struct {
-	// 文本描述。 算法将根据输入的文本智能生成与之相关的图像。 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+	// 文本描述。 
+	// 算法将根据输入的文本智能生成与之相关的图像。 
+	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
 	// 绘画风格。
@@ -578,7 +580,9 @@ type SubmitHunyuanImageJobRequestParams struct {
 type SubmitHunyuanImageJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文本描述。 算法将根据输入的文本智能生成与之相关的图像。 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+	// 文本描述。 
+	// 算法将根据输入的文本智能生成与之相关的图像。 
+	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
 	// 绘画风格。

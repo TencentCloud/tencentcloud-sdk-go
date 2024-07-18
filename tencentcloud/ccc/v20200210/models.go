@@ -3654,7 +3654,7 @@ type DescribeStaffStatusMetricsRequestParams struct {
 	// 筛选技能组ID列表
 	GroupIdList []*int64 `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
 
-	// 筛选坐席状态列表
+	// 筛选坐席状态列表 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线 
 	StatusList []*string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
 }
 
@@ -3670,7 +3670,7 @@ type DescribeStaffStatusMetricsRequest struct {
 	// 筛选技能组ID列表
 	GroupIdList []*int64 `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
 
-	// 筛选坐席状态列表
+	// 筛选坐席状态列表 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线 
 	StatusList []*string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
 }
 

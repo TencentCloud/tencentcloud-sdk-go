@@ -156,7 +156,7 @@ func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
 }
 
 // GetEmbedding
-// 腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。
+// 腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
@@ -168,7 +168,7 @@ func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbedd
 }
 
 // GetEmbedding
-// 腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。
+// 腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"

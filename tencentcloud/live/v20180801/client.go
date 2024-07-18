@@ -2164,7 +2164,7 @@ func NewCreateRecordTaskResponse() (response *CreateRecordTaskResponse) {
 //
 // - 使用前提
 //
-// 1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+// 1. 录制文件存放于点播平台或对象存储内，所以用户如需使用录制功能，需首先自行开通点播服务或对象存储服务。
 //
 // 2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考[对应文档](https://cloud.tencent.com/document/product/266/2837)。
 //
@@ -2201,7 +2201,7 @@ func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *C
 //
 // - 使用前提
 //
-// 1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+// 1. 录制文件存放于点播平台或对象存储内，所以用户如需使用录制功能，需首先自行开通点播服务或对象存储服务。
 //
 // 2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考[对应文档](https://cloud.tencent.com/document/product/266/2837)。
 //

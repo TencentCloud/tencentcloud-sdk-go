@@ -107,7 +107,7 @@ const (
 	// 客户库自建库或认证中心返照失败，请稍后再试。
 	FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = "FailedOperation.IdPhotoSystemNoanswer"
 
-	// 身份认证次数超限。默认：同一身份证号，1分钟15次，1天30次。如需提高限频，请联系慧眼小助手。
+	// 姓名/身份证号认证次数超过当日限制，请次日重试
 	FAILEDOPERATION_IDENTITYAUTHLIMITEXCEEDED = "FailedOperation.IdentityAuthLimitExceeded"
 
 	// 图片模糊。
