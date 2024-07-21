@@ -639,7 +639,7 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //
 // - saas企业员工用户批量签署，在传递了姓名等基本信息参数的情况下，还需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。
 //
-// - 子客企业员工用户批签签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。
+// - 子客企业员工用户批量签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。
 //
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
 //
@@ -674,7 +674,7 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 //
 // - saas企业员工用户批量签署，在传递了姓名等基本信息参数的情况下，还需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。
 //
-// - 子客企业员工用户批签签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。
+// - 子客企业员工用户批量签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。
 //
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
 //
@@ -1004,21 +1004,29 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 }
 
 // ChannelCreateEmbedWebUrl
-// 本接口（ChannelCreateEmbedWebUrl）用于创建常规模块嵌入web的链接
+// 本接口（ChannelCreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
+//
+// 1. 创建印章
+//
+// 2. 创建模板
+//
+// 3. 修改模板
+//
+// 4. 预览模板
+//
+// 5. 预览合同流程
 //
 // 
 //
-// 本接口下面功能的签署页面链接的生成
+// 预览模板的嵌入页面长相如下：
 //
-// - 创建印章
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/57bdda4a884e3f5b2de12d5a282a3651.png)
 //
-// - 创建模板
+// 
 //
-// - 修改模板
+// 预览合同流程的嵌入页面长相如下：
 //
-// - 预览模板
-//
-// - 预览合同流程
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dc7af994e2f6da56bdad5975e927de34.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1034,21 +1042,29 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 }
 
 // ChannelCreateEmbedWebUrl
-// 本接口（ChannelCreateEmbedWebUrl）用于创建常规模块嵌入web的链接
+// 本接口（ChannelCreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
+//
+// 1. 创建印章
+//
+// 2. 创建模板
+//
+// 3. 修改模板
+//
+// 4. 预览模板
+//
+// 5. 预览合同流程
 //
 // 
 //
-// 本接口下面功能的签署页面链接的生成
+// 预览模板的嵌入页面长相如下：
 //
-// - 创建印章
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/57bdda4a884e3f5b2de12d5a282a3651.png)
 //
-// - 创建模板
+// 
 //
-// - 修改模板
+// 预览合同流程的嵌入页面长相如下：
 //
-// - 预览模板
-//
-// - 预览合同流程
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dc7af994e2f6da56bdad5975e927de34.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2679,6 +2695,12 @@ func NewChannelCreateOrganizationBatchSignUrlResponse() (response *ChannelCreate
 //
 // - 员工批量签署，支持多种签名方式，包括手写签名、临摹签名、系统签名、个人印章、签批控件等。
 //
+// 
+//
+// 签署的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/a4754bc835a3f837ddec1e28b02ed9c0.png)
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -2704,6 +2726,12 @@ func (c *Client) ChannelCreateOrganizationBatchSignUrl(request *ChannelCreateOrg
 // - 仅支持传入待签署或者待领取的合同，待填写暂不支持。
 //
 // - 员工批量签署，支持多种签名方式，包括手写签名、临摹签名、系统签名、个人印章、签批控件等。
+//
+// 
+//
+// 签署的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/a4754bc835a3f837ddec1e28b02ed9c0.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4870,25 +4898,33 @@ func NewCreateBatchOrganizationRegistrationTasksResponse() (response *CreateBatc
 }
 
 // CreateBatchOrganizationRegistrationTasks
-// 本接口（CreateBatchOrganizationRegistrationTasks）用于批量创建企业认证链接
+// 该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
 //
-// 该接口为异步提交任务接口,需要跟查询企业批量认证链接(DescribeBatchOrganizationRegistrationUrls) 配合使用.
+// 此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qcloudimg.tencent-cloud.cn/raw/1d3737991b2a3be78002bd78a47d6917.png)配合使用，整体流程如下图。
 //
-// 
-//
-// 批量创建链接有以下限制：
-//
-// 1. 单次最多创建10个子客。
-//
-// 2. 一天同一家企业最多创建8000个子客。
-//
-// 3. 同一批创建的子客不能重复 其中包括 企业名称，企业统一信用代码，子客经办人openId。
-//
-// 4. 跳转到小程序的实现，参考微信官方文档（分为全屏、半屏两种方式），如何配置也可以请参考: 跳转电子签小程序配置
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 //
 // 
 //
-// 注： 1. 如果生成的链接是APP链接，跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+// 
+//
+// 
+//
+// **注意**
+//
+// 
+//
+// 1. 单次最多创建10个子企业。
+//
+// 2. 一天内，同一家企业最多创建8000个子企业。
+//
+// 3. 同一批创建的子客户不能重复，包括企业名称、企业统一信用代码和子客户经办人openId。
+//
+// 4. 跳转到小程序的实现，请参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）。如何配置跳转电子签小程序，可参考：<a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
+//
+// 
+//
+// 
 //
 // 
 //
@@ -4918,25 +4954,33 @@ func (c *Client) CreateBatchOrganizationRegistrationTasks(request *CreateBatchOr
 }
 
 // CreateBatchOrganizationRegistrationTasks
-// 本接口（CreateBatchOrganizationRegistrationTasks）用于批量创建企业认证链接
+// 该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
 //
-// 该接口为异步提交任务接口,需要跟查询企业批量认证链接(DescribeBatchOrganizationRegistrationUrls) 配合使用.
+// 此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qcloudimg.tencent-cloud.cn/raw/1d3737991b2a3be78002bd78a47d6917.png)配合使用，整体流程如下图。
 //
-// 
-//
-// 批量创建链接有以下限制：
-//
-// 1. 单次最多创建10个子客。
-//
-// 2. 一天同一家企业最多创建8000个子客。
-//
-// 3. 同一批创建的子客不能重复 其中包括 企业名称，企业统一信用代码，子客经办人openId。
-//
-// 4. 跳转到小程序的实现，参考微信官方文档（分为全屏、半屏两种方式），如何配置也可以请参考: 跳转电子签小程序配置
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 //
 // 
 //
-// 注： 1. 如果生成的链接是APP链接，跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+// 
+//
+// 
+//
+// **注意**
+//
+// 
+//
+// 1. 单次最多创建10个子企业。
+//
+// 2. 一天内，同一家企业最多创建8000个子企业。
+//
+// 3. 同一批创建的子客户不能重复，包括企业名称、企业统一信用代码和子客户经办人openId。
+//
+// 4. 跳转到小程序的实现，请参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）。如何配置跳转电子签小程序，可参考：<a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
+//
+// 
+//
+// 
 //
 // 
 //
@@ -6732,15 +6776,17 @@ func NewDescribeBatchOrganizationRegistrationUrlsResponse() (response *DescribeB
 }
 
 // DescribeBatchOrganizationRegistrationUrls
-// 此接口用于获取企业批量认证异步任务的状态及结果。
+// 此接口用于获取企业批量认证异步任务的状态及结果。需要先调用接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>获取到任务ID，然后再调用此接口获取到各个子企业的注册认证链接。整体流程如下图。
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 //
 // 
 //
-// 前提条件：已调用 CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任务接口，并得到了任务Id。
-//
 // 
 //
-// 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间
+// 注：
+//
+// `异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间`
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -6750,15 +6796,17 @@ func (c *Client) DescribeBatchOrganizationRegistrationUrls(request *DescribeBatc
 }
 
 // DescribeBatchOrganizationRegistrationUrls
-// 此接口用于获取企业批量认证异步任务的状态及结果。
+// 此接口用于获取企业批量认证异步任务的状态及结果。需要先调用接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>获取到任务ID，然后再调用此接口获取到各个子企业的注册认证链接。整体流程如下图。
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 //
 // 
 //
-// 前提条件：已调用 CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任务接口，并得到了任务Id。
-//
 // 
 //
-// 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间
+// 注：
+//
+// `异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间`
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -8121,27 +8169,33 @@ func NewModifyFlowDeadlineResponse() (response *ModifyFlowDeadlineResponse) {
 }
 
 // ModifyFlowDeadline
-// 在已发起的签署流程中，支持对签署截止日期进行延期操作，主要涉及以下两个维度：
+// 在已启动的签署流程中，可对签署截止日期进行延期操作，主要分为以下两个层面：
 //
-// 1. 合同（流程）维度：只需要传递签署流程ID。这将对签署流程和发起时未单独设定签署截止时间的签署人进行延期操作。
+// 1. <b> 合同（流程）层面</b>：仅需提供签署流程ID。此操作将对整个签署流程以及未单独设置签署截止时间的签署人进行延期。
 //
-// 2. 签署人维度：需要传递流程ID和签署人ID。此操作将对签署人进行延期操作，尤其对于有序的合同（流程），签署截止时间不能超过后一位合同（流程）签署人的流程截止时间。
+// 2. <b> 签署人层面</b>  ：需提供流程ID和签署人ID。此操作针对特定签署人进行延期，特别是对于有序合同（流程），签署截止时间不得超过后续签署人的流程截止时间。
 //
 // 
 //
-// 此接口有如下限制条件：
+// 此接口存在以下限制：
 //
-// 1. 执行操作的员工需为发起方企业的超级管理员、法定代表人或签署流程的发起人。
+// 1. 执行操作的员工须为<font  color="red">发起方企业的超级管理员、法定代表人或签署流程发起人</font>。
 //
-// 2. 在延长整个签署流程时，签署流程应至少还有一方未签署（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态）。
+// 2. 延长整个签署流程时，<font  color="red">应至少有一方尚未签署</font>（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 3. 在延长整个签署流程时，新的签署截止日期应晚于合同已设定的签署截止日期和当前日期。
+// 3. 延长整个签署流程时，新的签署截止日期应晚于已设定的签署截止日期和当前日期。
 //
-// 4. 在延长签署方的截止时间时，签署方不能处于流程完结或已终止状态（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
+// 4. 延长签署方截止时间时，<font  color="red">签署方不能处于流程完结或已终止状态</font>（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 5. 在延长签署方的截止时间时，签署方的新签署截止日期应晚于当前日期和签署方已设定的截止日期。若为有序合同，还应早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
+// 5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
 //
-// 6. 不支持操作合同组合同。
+// 6. <font  color="red">不支持操作合同组合同</font>。
+//
+// 
+//
+// 合同（流程）层面截止时间子企业控制台展示的位置：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/f0f88c0eb49a926da9a86e5a6e9efa8b.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
@@ -8164,27 +8218,33 @@ func (c *Client) ModifyFlowDeadline(request *ModifyFlowDeadlineRequest) (respons
 }
 
 // ModifyFlowDeadline
-// 在已发起的签署流程中，支持对签署截止日期进行延期操作，主要涉及以下两个维度：
+// 在已启动的签署流程中，可对签署截止日期进行延期操作，主要分为以下两个层面：
 //
-// 1. 合同（流程）维度：只需要传递签署流程ID。这将对签署流程和发起时未单独设定签署截止时间的签署人进行延期操作。
+// 1. <b> 合同（流程）层面</b>：仅需提供签署流程ID。此操作将对整个签署流程以及未单独设置签署截止时间的签署人进行延期。
 //
-// 2. 签署人维度：需要传递流程ID和签署人ID。此操作将对签署人进行延期操作，尤其对于有序的合同（流程），签署截止时间不能超过后一位合同（流程）签署人的流程截止时间。
+// 2. <b> 签署人层面</b>  ：需提供流程ID和签署人ID。此操作针对特定签署人进行延期，特别是对于有序合同（流程），签署截止时间不得超过后续签署人的流程截止时间。
 //
 // 
 //
-// 此接口有如下限制条件：
+// 此接口存在以下限制：
 //
-// 1. 执行操作的员工需为发起方企业的超级管理员、法定代表人或签署流程的发起人。
+// 1. 执行操作的员工须为<font  color="red">发起方企业的超级管理员、法定代表人或签署流程发起人</font>。
 //
-// 2. 在延长整个签署流程时，签署流程应至少还有一方未签署（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态）。
+// 2. 延长整个签署流程时，<font  color="red">应至少有一方尚未签署</font>（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 3. 在延长整个签署流程时，新的签署截止日期应晚于合同已设定的签署截止日期和当前日期。
+// 3. 延长整个签署流程时，新的签署截止日期应晚于已设定的签署截止日期和当前日期。
 //
-// 4. 在延长签署方的截止时间时，签署方不能处于流程完结或已终止状态（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
+// 4. 延长签署方截止时间时，<font  color="red">签署方不能处于流程完结或已终止状态</font>（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 5. 在延长签署方的截止时间时，签署方的新签署截止日期应晚于当前日期和签署方已设定的截止日期。若为有序合同，还应早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
+// 5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
 //
-// 6. 不支持操作合同组合同。
+// 6. <font  color="red">不支持操作合同组合同</font>。
+//
+// 
+//
+// 合同（流程）层面截止时间子企业控制台展示的位置：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/f0f88c0eb49a926da9a86e5a6e9efa8b.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"

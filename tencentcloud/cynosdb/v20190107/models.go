@@ -8669,6 +8669,119 @@ func (r *ExportInstanceSlowQueriesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ExportResourcePackageDeductDetailsRequestParams struct {
+	// 需要导出的资源包ID
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 使用资源包容量的cynos集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 排序字段，目前支持：createTime（资源包被抵扣时间），successDeductSpec（资源包抵扣量）
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序类型，支持ASC、DESC、asc、desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 单次最大导出数据行数，目前最大支持2000行
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量页数
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 导出数据格式，目前仅支持csv格式，留作扩展
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+}
+
+type ExportResourcePackageDeductDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要导出的资源包ID
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 使用资源包容量的cynos集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 排序字段，目前支持：createTime（资源包被抵扣时间），successDeductSpec（资源包抵扣量）
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序类型，支持ASC、DESC、asc、desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 单次最大导出数据行数，目前最大支持2000行
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量页数
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 导出数据格式，目前仅支持csv格式，留作扩展
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+}
+
+func (r *ExportResourcePackageDeductDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportResourcePackageDeductDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	delete(f, "ClusterIds")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "FileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportResourcePackageDeductDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportResourcePackageDeductDetailsResponseParams struct {
+	// 文件详情
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportResourcePackageDeductDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportResourcePackageDeductDetailsResponseParams `json:"Response"`
+}
+
+func (r *ExportResourcePackageDeductDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportResourcePackageDeductDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GrantAccountPrivilegesRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -11514,6 +11627,74 @@ func (r *ModifyResourcePackageNameResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyResourcePackagesDeductionPriorityRequestParams struct {
+	// 需要修改优先级的资源包类型，CCU：计算资源包，DISK：存储资源包
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 修改后的抵扣优先级对于哪个cynos资源生效
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 资源包抵扣优先级
+	DeductionPriorities []*PackagePriority `json:"DeductionPriorities,omitnil,omitempty" name:"DeductionPriorities"`
+}
+
+type ModifyResourcePackagesDeductionPriorityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改优先级的资源包类型，CCU：计算资源包，DISK：存储资源包
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 修改后的抵扣优先级对于哪个cynos资源生效
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 资源包抵扣优先级
+	DeductionPriorities []*PackagePriority `json:"DeductionPriorities,omitnil,omitempty" name:"DeductionPriorities"`
+}
+
+func (r *ModifyResourcePackagesDeductionPriorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePackagesDeductionPriorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageType")
+	delete(f, "ClusterId")
+	delete(f, "DeductionPriorities")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcePackagesDeductionPriorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourcePackagesDeductionPriorityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyResourcePackagesDeductionPriorityResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourcePackagesDeductionPriorityResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourcePackagesDeductionPriorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePackagesDeductionPriorityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVipVportRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -12342,6 +12523,14 @@ type PackageDetail struct {
 	// 扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendInfo *string `json:"ExtendInfo,omitnil,omitempty" name:"ExtendInfo"`
+}
+
+type PackagePriority struct {
+	// 需要自定义抵扣优先级的资源包
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 自定义的抵扣优先级
+	DeductionPriority *int64 `json:"DeductionPriority,omitnil,omitempty" name:"DeductionPriority"`
 }
 
 type ParamDetail struct {

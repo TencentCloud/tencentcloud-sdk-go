@@ -93,6 +93,9 @@ type ChatCompletionsRequestParams struct {
 
 	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
 	CustomTool *Tool `json:"CustomTool,omitnil,omitempty" name:"CustomTool"`
+
+	// 默认是false，在值为true且命中搜索时，接口会返回SearchInfo
+	SearchInfo *bool `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
 }
 
 type ChatCompletionsRequest struct {
@@ -169,6 +172,9 @@ type ChatCompletionsRequest struct {
 
 	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
 	CustomTool *Tool `json:"CustomTool,omitnil,omitempty" name:"CustomTool"`
+
+	// 默认是false，在值为true且命中搜索时，接口会返回SearchInfo
+	SearchInfo *bool `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -193,6 +199,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Tools")
 	delete(f, "ToolChoice")
 	delete(f, "CustomTool")
+	delete(f, "SearchInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -224,6 +231,9 @@ type ChatCompletionsResponseParams struct {
 
 	// 多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
 	ModerationLevel *string `json:"ModerationLevel,omitnil,omitempty" name:"ModerationLevel"`
+
+	// 搜索结果信息
+	SearchInfo *SearchInfo `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -547,6 +557,26 @@ func (r *QueryHunyuanImageJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SearchInfo struct {
+	// 搜索引文信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchResults []*SearchResult `json:"SearchResults,omitnil,omitempty" name:"SearchResults"`
+}
+
+type SearchResult struct {
+	// 搜索引文序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 搜索引文标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 搜索引文链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
 // Predefined struct for user
 type SubmitHunyuanImageJobRequestParams struct {
 	// 文本描述。 
@@ -669,8 +699,7 @@ type TextToImageLiteRequestParams struct {
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。
-	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
-	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
+	// 请在 [文生图轻量版风格列表](https://cloud.tencent.com/document/product/1729/108992) 中选择期望的风格，传入风格编号。不传默认使用201（日系动漫风格）。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 生成图分辨率。
@@ -702,8 +731,7 @@ type TextToImageLiteRequest struct {
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。
-	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
-	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
+	// 请在 [文生图轻量版风格列表](https://cloud.tencent.com/document/product/1729/108992) 中选择期望的风格，传入风格编号。不传默认使用201（日系动漫风格）。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 生成图分辨率。
@@ -747,7 +775,9 @@ func (r *TextToImageLiteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextToImageLiteResponseParams struct {
-	// 根据入参 RspImgType 填入不同，返回不同的内容。如果传入 base64 则返回生成图 Base64 编码。如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+	// 根据入参 RspImgType 填入不同，返回不同的内容。
+	// 如果传入 base64 则返回生成图 Base64 编码。
+	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
 	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

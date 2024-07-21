@@ -68,6 +68,9 @@ const (
 	// 账号余额不足。
 	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 
+	// 修改资源包抵扣优先级失败，请检查参数并稍后重试
+	FAILEDOPERATION_MODIFYDEDUCTIONPRIORITYERROR = "FailedOperation.ModifyDeductionPriorityError"
+
 	// 操作失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 

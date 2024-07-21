@@ -275,6 +275,63 @@ func (c *Client) AddHardwareWithContext(ctx context.Context, request *AddHardwar
     return
 }
 
+func NewAddL3ConnRequest() (request *AddL3ConnRequest) {
+    request = &AddL3ConnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddL3Conn")
+    
+    
+    return
+}
+
+func NewAddL3ConnResponse() (response *AddL3ConnResponse) {
+    response = &AddL3ConnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddL3Conn
+// 新建互通规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_L3CIDROVERLAP = "OperationDenied.L3CidrOverLap"
+//  OPERATIONDENIED_L3CONNECTIONOVERSIZE = "OperationDenied.L3ConnectionOverSize"
+func (c *Client) AddL3Conn(request *AddL3ConnRequest) (response *AddL3ConnResponse, err error) {
+    return c.AddL3ConnWithContext(context.Background(), request)
+}
+
+// AddL3Conn
+// 新建互通规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_L3CIDROVERLAP = "OperationDenied.L3CidrOverLap"
+//  OPERATIONDENIED_L3CONNECTIONOVERSIZE = "OperationDenied.L3ConnectionOverSize"
+func (c *Client) AddL3ConnWithContext(ctx context.Context, request *AddL3ConnRequest) (response *AddL3ConnResponse, err error) {
+    if request == nil {
+        request = NewAddL3ConnRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddL3Conn require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddL3ConnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEncryptedKeyRequest() (request *CreateEncryptedKeyRequest) {
     request = &CreateEncryptedKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -503,6 +560,59 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     request.SetContext(ctx)
     
     response = NewDeleteGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteL3ConnRequest() (request *DeleteL3ConnRequest) {
+    request = &DeleteL3ConnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DeleteL3Conn")
+    
+    
+    return
+}
+
+func NewDeleteL3ConnResponse() (response *DeleteL3ConnResponse) {
+    response = &DeleteL3ConnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteL3Conn
+// 删除互通规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteL3Conn(request *DeleteL3ConnRequest) (response *DeleteL3ConnResponse, err error) {
+    return c.DeleteL3ConnWithContext(context.Background(), request)
+}
+
+// DeleteL3Conn
+// 删除互通规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteL3ConnWithContext(ctx context.Context, request *DeleteL3ConnRequest) (response *DeleteL3ConnResponse, err error) {
+    if request == nil {
+        request = NewDeleteL3ConnRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteL3Conn require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteL3ConnResponse()
     err = c.Send(request, response)
     return
 }
@@ -1220,6 +1330,59 @@ func (c *Client) GetHardwareListWithContext(ctx context.Context, request *GetHar
     request.SetContext(ctx)
     
     response = NewGetHardwareListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetL3ConnListRequest() (request *GetL3ConnListRequest) {
+    request = &GetL3ConnListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetL3ConnList")
+    
+    
+    return
+}
+
+func NewGetL3ConnListResponse() (response *GetL3ConnListResponse) {
+    response = &GetL3ConnListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetL3ConnList
+// 获取互通规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetL3ConnList(request *GetL3ConnListRequest) (response *GetL3ConnListResponse, err error) {
+    return c.GetL3ConnListWithContext(context.Background(), request)
+}
+
+// GetL3ConnList
+// 获取互通规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetL3ConnListWithContext(ctx context.Context, request *GetL3ConnListRequest) (response *GetL3ConnListResponse, err error) {
+    if request == nil {
+        request = NewGetL3ConnListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetL3ConnList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetL3ConnListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1951,6 +2114,165 @@ func (c *Client) UpdateHardwareWithContext(ctx context.Context, request *UpdateH
     request.SetContext(ctx)
     
     response = NewUpdateHardwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateL3CidrRequest() (request *UpdateL3CidrRequest) {
+    request = &UpdateL3CidrRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateL3Cidr")
+    
+    
+    return
+}
+
+func NewUpdateL3CidrResponse() (response *UpdateL3CidrResponse) {
+    response = &UpdateL3CidrResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateL3Cidr
+// 更新互通规则CIDR
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateL3Cidr(request *UpdateL3CidrRequest) (response *UpdateL3CidrResponse, err error) {
+    return c.UpdateL3CidrWithContext(context.Background(), request)
+}
+
+// UpdateL3Cidr
+// 更新互通规则CIDR
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateL3CidrWithContext(ctx context.Context, request *UpdateL3CidrRequest) (response *UpdateL3CidrResponse, err error) {
+    if request == nil {
+        request = NewUpdateL3CidrRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateL3Cidr require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateL3CidrResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateL3ConnRequest() (request *UpdateL3ConnRequest) {
+    request = &UpdateL3ConnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateL3Conn")
+    
+    
+    return
+}
+
+func NewUpdateL3ConnResponse() (response *UpdateL3ConnResponse) {
+    response = &UpdateL3ConnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateL3Conn
+// 更新互通规则备注
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateL3Conn(request *UpdateL3ConnRequest) (response *UpdateL3ConnResponse, err error) {
+    return c.UpdateL3ConnWithContext(context.Background(), request)
+}
+
+// UpdateL3Conn
+// 更新互通规则备注
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateL3ConnWithContext(ctx context.Context, request *UpdateL3ConnRequest) (response *UpdateL3ConnResponse, err error) {
+    if request == nil {
+        request = NewUpdateL3ConnRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateL3Conn require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateL3ConnResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateL3SwitchRequest() (request *UpdateL3SwitchRequest) {
+    request = &UpdateL3SwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateL3Switch")
+    
+    
+    return
+}
+
+func NewUpdateL3SwitchResponse() (response *UpdateL3SwitchResponse) {
+    response = &UpdateL3SwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateL3Switch
+// 更新互通规则开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateL3Switch(request *UpdateL3SwitchRequest) (response *UpdateL3SwitchResponse, err error) {
+    return c.UpdateL3SwitchWithContext(context.Background(), request)
+}
+
+// UpdateL3Switch
+// 更新互通规则开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateL3SwitchWithContext(ctx context.Context, request *UpdateL3SwitchRequest) (response *UpdateL3SwitchResponse, err error) {
+    if request == nil {
+        request = NewUpdateL3SwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateL3Switch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateL3SwitchResponse()
     err = c.Send(request, response)
     return
 }

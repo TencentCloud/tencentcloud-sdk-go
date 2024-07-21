@@ -5115,6 +5115,12 @@ type RestartNodesRequestParams struct {
 
 	// cvm延迟上架时间
 	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
+
+	// 分片迁移并发数
+	ShardAllocationConcurrents *uint64 `json:"ShardAllocationConcurrents,omitnil,omitempty" name:"ShardAllocationConcurrents"`
+
+	// 分片迁移并发速度
+	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
 }
 
 type RestartNodesRequest struct {
@@ -5137,6 +5143,12 @@ type RestartNodesRequest struct {
 
 	// cvm延迟上架时间
 	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
+
+	// 分片迁移并发数
+	ShardAllocationConcurrents *uint64 `json:"ShardAllocationConcurrents,omitnil,omitempty" name:"ShardAllocationConcurrents"`
+
+	// 分片迁移并发速度
+	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
 }
 
 func (r *RestartNodesRequest) ToJsonString() string {
@@ -5157,6 +5169,8 @@ func (r *RestartNodesRequest) FromJsonString(s string) error {
 	delete(f, "RestartMode")
 	delete(f, "IsOffline")
 	delete(f, "CvmDelayOnlineTime")
+	delete(f, "ShardAllocationConcurrents")
+	delete(f, "ShardAllocationBytes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartNodesRequest has unknown keys!", "")
 	}
@@ -6904,6 +6918,12 @@ type UpgradeInstanceRequestParams struct {
 
 	// cvm延迟上架参数
 	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
+
+	// 分片迁移并发数
+	ShardAllocationConcurrents *uint64 `json:"ShardAllocationConcurrents,omitnil,omitempty" name:"ShardAllocationConcurrents"`
+
+	// 分片迁移并发速度
+	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
 }
 
 type UpgradeInstanceRequest struct {
@@ -6935,6 +6955,12 @@ type UpgradeInstanceRequest struct {
 
 	// cvm延迟上架参数
 	CvmDelayOnlineTime *uint64 `json:"CvmDelayOnlineTime,omitnil,omitempty" name:"CvmDelayOnlineTime"`
+
+	// 分片迁移并发数
+	ShardAllocationConcurrents *uint64 `json:"ShardAllocationConcurrents,omitnil,omitempty" name:"ShardAllocationConcurrents"`
+
+	// 分片迁移并发速度
+	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -6958,6 +6984,8 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CosBackup")
 	delete(f, "SkipCheckForceRestart")
 	delete(f, "CvmDelayOnlineTime")
+	delete(f, "ShardAllocationConcurrents")
+	delete(f, "ShardAllocationBytes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

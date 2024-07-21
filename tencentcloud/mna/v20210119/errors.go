@@ -89,6 +89,12 @@ const (
 	// 余额不足
 	OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
 
+	// 互通规则CIDR重叠
+	OPERATIONDENIED_L3CIDROVERLAP = "OperationDenied.L3CidrOverLap"
+
+	// 互通规则数超过最大限制150条
+	OPERATIONDENIED_L3CONNECTIONOVERSIZE = "OperationDenied.L3ConnectionOverSize"
+
 	// 资源包已经变配或续费
 	OPERATIONDENIED_MODIFIEDORRENEWED = "OperationDenied.ModifiedOrRenewed"
 

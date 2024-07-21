@@ -1255,7 +1255,7 @@ func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
 }
 
 // CreateEmbedWebUrl
-// 本接口（CreateEmbedWebUrl）用于创建嵌入Web的链接，支持以下类型的Web链接创建：
+// 本接口（CreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
 //
 // 1. 创建印章
 //
@@ -1269,7 +1269,15 @@ func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
 //
 // 
 //
-// 用户可以通过这些链接快速将其集成到自己的系统中。
+// 预览模板的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/57bdda4a884e3f5b2de12d5a282a3651.png)
+//
+// 
+//
+// 预览合同流程的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dc7af994e2f6da56bdad5975e927de34.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1288,7 +1296,7 @@ func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response 
 }
 
 // CreateEmbedWebUrl
-// 本接口（CreateEmbedWebUrl）用于创建嵌入Web的链接，支持以下类型的Web链接创建：
+// 本接口（CreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
 //
 // 1. 创建印章
 //
@@ -1302,7 +1310,15 @@ func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response 
 //
 // 
 //
-// 用户可以通过这些链接快速将其集成到自己的系统中。
+// 预览模板的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/57bdda4a884e3f5b2de12d5a282a3651.png)
+//
+// 
+//
+// 预览合同流程的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dc7af994e2f6da56bdad5975e927de34.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4813,15 +4829,27 @@ func NewCreateOrganizationBatchSignUrlResponse() (response *CreateOrganizationBa
 // CreateOrganizationBatchSignUrl
 // 使用此接口，您可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。<br/>
 //
-// 附注：
+// 
 //
-// - 员工必须需作为批量签署合同的签署方，or或签合同的候选人之一。
+// 注：
 //
-// - 对于本方企业：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
+// <ul>
 //
-// - 若要生成他发企业签署链接：应传RecipientIds，且制定的合同必须是接口调用方发起的。
+// <li>员工必须需作为批量签署合同的签署方，或者是或签合同的候选人之一。</li>
 //
-// - 支持待签署、待填写状态的合同生成签署链接。
+// <li><b>本方企业签署链接</b>：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。</li>
+//
+// <li><b>他方企业签署链接</b>：传RecipientIds，且必须是合同发起方调用此接口。打开链接后需要他方签署人登录电子签系统。（<b>如果签署人没有加入对方企业则会引导加入；如果对方企业还没有注册认证，会引导企业注册和认证</b>）</li>
+//
+// <li>只支持待签署、待填写状态的合同生成签署链接。</li>
+//
+// </ul>
+//
+// 
+//
+// 签署的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/a4754bc835a3f837ddec1e28b02ed9c0.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4838,15 +4866,27 @@ func (c *Client) CreateOrganizationBatchSignUrl(request *CreateOrganizationBatch
 // CreateOrganizationBatchSignUrl
 // 使用此接口，您可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。<br/>
 //
-// 附注：
+// 
 //
-// - 员工必须需作为批量签署合同的签署方，or或签合同的候选人之一。
+// 注：
 //
-// - 对于本方企业：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
+// <ul>
 //
-// - 若要生成他发企业签署链接：应传RecipientIds，且制定的合同必须是接口调用方发起的。
+// <li>员工必须需作为批量签署合同的签署方，或者是或签合同的候选人之一。</li>
 //
-// - 支持待签署、待填写状态的合同生成签署链接。
+// <li><b>本方企业签署链接</b>：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。</li>
+//
+// <li><b>他方企业签署链接</b>：传RecipientIds，且必须是合同发起方调用此接口。打开链接后需要他方签署人登录电子签系统。（<b>如果签署人没有加入对方企业则会引导加入；如果对方企业还没有注册认证，会引导企业注册和认证</b>）</li>
+//
+// <li>只支持待签署、待填写状态的合同生成签署链接。</li>
+//
+// </ul>
+//
+// 
+//
+// 签署的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/a4754bc835a3f837ddec1e28b02ed9c0.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5225,11 +5265,17 @@ func NewCreatePrepareFlowResponse() (response *CreatePrepareFlowResponse) {
 }
 
 // CreatePrepareFlow
-// 创建发起流程web页面
+// 创建发起流程Web页面，通过该接口可以获取发起流程的可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。在页面上完成签署控件等信息的编辑与确认后，可快速发起流程。
 //
-// <br/>适用场景：通过该接口（CreatePrepareFlow）传入合同文件/模板编号及签署人信息，可获得发起流程的可嵌入页面，在页面完成签署控件等信息的编辑与确认后，快速发起流程。
+// 
 //
-// <br/>注：该接口包含模板/文件发起流程的全部功能，调用接口后不会立即发起，需在可嵌入页面点击按钮进行发起流程。
+//  <br/>注意：调用接口后，<font color="red">流程不会立即发起，需在嵌入页面上点击【发起合同】按钮来发起流程</font>。
+//
+// 
+//
+// 嵌入页面长相如下:
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/b2ae013fb4d747891dd3815bbe897208.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5309,11 +5355,17 @@ func (c *Client) CreatePrepareFlow(request *CreatePrepareFlowRequest) (response 
 }
 
 // CreatePrepareFlow
-// 创建发起流程web页面
+// 创建发起流程Web页面，通过该接口可以获取发起流程的可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。在页面上完成签署控件等信息的编辑与确认后，可快速发起流程。
 //
-// <br/>适用场景：通过该接口（CreatePrepareFlow）传入合同文件/模板编号及签署人信息，可获得发起流程的可嵌入页面，在页面完成签署控件等信息的编辑与确认后，快速发起流程。
+// 
 //
-// <br/>注：该接口包含模板/文件发起流程的全部功能，调用接口后不会立即发起，需在可嵌入页面点击按钮进行发起流程。
+//  <br/>注意：调用接口后，<font color="red">流程不会立即发起，需在嵌入页面上点击【发起合同】按钮来发起流程</font>。
+//
+// 
+//
+// 嵌入页面长相如下:
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/b2ae013fb4d747891dd3815bbe897208.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8985,27 +9037,33 @@ func NewModifyFlowDeadlineResponse() (response *ModifyFlowDeadlineResponse) {
 }
 
 // ModifyFlowDeadline
-// 在已发起的签署流程中，支持对签署截止日期进行延期操作，主要涉及以下两个维度：
+// 在已启动的签署流程中，可对签署截止日期进行延期操作，主要分为以下两个层面：
 //
-// 1. 合同（流程）维度：只需要传递签署流程ID。这将对签署流程和发起时未单独设定签署截止时间的签署人进行延期操作。
+// 1. <b> 合同（流程）层面</b>：仅需提供签署流程ID。此操作将对整个签署流程以及未单独设置签署截止时间的签署人进行延期。
 //
-// 2. 签署人维度：需要传递流程ID和签署人ID。此操作将对签署人进行延期操作，尤其对于有序的合同（流程），签署截止时间不能超过后一位合同（流程）签署人的流程截止时间。
+// 2. <b> 签署人层面</b>  ：需提供流程ID和签署人ID。此操作针对特定签署人进行延期，特别是对于有序合同（流程），签署截止时间不得超过后续签署人的流程截止时间。
 //
 // 
 //
-// 此接口有如下限制条件：
+// 此接口存在以下限制：
 //
-// 1. 执行操作的员工需为发起方企业的超级管理员、法定代表人或签署流程的发起人。
+// 1. 执行操作的员工须为<font  color="red">发起方企业的超级管理员、法定代表人或签署流程发起人</font>。
 //
-// 2. 在延长整个签署流程时，签署流程应至少还有一方未签署（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态）。
+// 2. 延长整个签署流程时，<font  color="red">应至少有一方尚未签署</font>（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 3. 在延长整个签署流程时，新的签署截止日期应晚于合同已设定的签署截止日期和当前日期。
+// 3. 延长整个签署流程时，新的签署截止日期应晚于已设定的签署截止日期和当前日期。
 //
-// 4. 在延长签署方的截止时间时，签署方不能处于流程完结或已终止状态（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
+// 4. 延长签署方截止时间时，<font  color="red">签署方不能处于流程完结或已终止状态</font>（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 5. 在延长签署方的截止时间时，签署方的新签署截止日期应晚于当前日期和签署方已设定的截止日期。若为有序合同，还应早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
+// 5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
 //
-// 6. 不支持操作合同组合同。
+// 6. <font  color="red">不支持操作合同组合同</font>。
+//
+// 
+//
+// 合同（流程）层面 截止时间控制台展示的位置：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/265b130136bf6e8f01f5880438467dfb.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9034,27 +9092,33 @@ func (c *Client) ModifyFlowDeadline(request *ModifyFlowDeadlineRequest) (respons
 }
 
 // ModifyFlowDeadline
-// 在已发起的签署流程中，支持对签署截止日期进行延期操作，主要涉及以下两个维度：
+// 在已启动的签署流程中，可对签署截止日期进行延期操作，主要分为以下两个层面：
 //
-// 1. 合同（流程）维度：只需要传递签署流程ID。这将对签署流程和发起时未单独设定签署截止时间的签署人进行延期操作。
+// 1. <b> 合同（流程）层面</b>：仅需提供签署流程ID。此操作将对整个签署流程以及未单独设置签署截止时间的签署人进行延期。
 //
-// 2. 签署人维度：需要传递流程ID和签署人ID。此操作将对签署人进行延期操作，尤其对于有序的合同（流程），签署截止时间不能超过后一位合同（流程）签署人的流程截止时间。
+// 2. <b> 签署人层面</b>  ：需提供流程ID和签署人ID。此操作针对特定签署人进行延期，特别是对于有序合同（流程），签署截止时间不得超过后续签署人的流程截止时间。
 //
 // 
 //
-// 此接口有如下限制条件：
+// 此接口存在以下限制：
 //
-// 1. 执行操作的员工需为发起方企业的超级管理员、法定代表人或签署流程的发起人。
+// 1. 执行操作的员工须为<font  color="red">发起方企业的超级管理员、法定代表人或签署流程发起人</font>。
 //
-// 2. 在延长整个签署流程时，签署流程应至少还有一方未签署（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态）。
+// 2. 延长整个签署流程时，<font  color="red">应至少有一方尚未签署</font>（即签署流程不能处于已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 3. 在延长整个签署流程时，新的签署截止日期应晚于合同已设定的签署截止日期和当前日期。
+// 3. 延长整个签署流程时，新的签署截止日期应晚于已设定的签署截止日期和当前日期。
 //
-// 4. 在延长签署方的截止时间时，签署方不能处于流程完结或已终止状态（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
+// 4. 延长签署方截止时间时，<font  color="red">签署方不能处于流程完结或已终止状态</font>（即签署人不能处于已签署、已拒签、已过期、已撤回、拒绝填写、已解除等状态）。
 //
-// 5. 在延长签署方的截止时间时，签署方的新签署截止日期应晚于当前日期和签署方已设定的截止日期。若为有序合同，还应早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
+// 5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
 //
-// 6. 不支持操作合同组合同。
+// 6. <font  color="red">不支持操作合同组合同</font>。
+//
+// 
+//
+// 合同（流程）层面 截止时间控制台展示的位置：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/265b130136bf6e8f01f5880438467dfb.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

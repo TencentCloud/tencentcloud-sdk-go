@@ -177,7 +177,7 @@ type ApproverInfo struct {
 	// 您可以指定签署方签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证，需进行人脸识别成功后才能签署合同；</li>
 	// <li>**2**：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；</li>
-	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。</li></ul>
+	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。（如果是港澳台客户，建议不要选择这个）</li></ul>
 	// 
 	// 默认为1(人脸认证 ),2(签署密码),3(运营商三要素)
 	// 
@@ -1976,7 +1976,7 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEmbedWebUrlRequestParams struct {
 	// 执行本接口操作的员工信息。
-	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// WEB嵌入资源类型，支持以下类型
@@ -2008,17 +2008,7 @@ type CreateEmbedWebUrlRequestParams struct {
 	// 个性化参数，用于控制页面展示内容
 	Option *EmbedUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 
-	// 用户自定义参数
-	// <ul>
-	// <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-	// <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
-	// <li>支持的格式：json字符串的BASE64编码字符串</li>
-	// <li>示例：<ul>
-	//                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
-	//                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
-	// </ul>
-	// </li>
-	// </ul>
+	// <ul> <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li> <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li> <li>支持的格式：json字符串的BASE64编码字符串</li> <li>示例：<ul>                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li> </ul> </li> </ul>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
@@ -2026,7 +2016,7 @@ type CreateEmbedWebUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 执行本接口操作的员工信息。
-	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// WEB嵌入资源类型，支持以下类型
@@ -2058,17 +2048,7 @@ type CreateEmbedWebUrlRequest struct {
 	// 个性化参数，用于控制页面展示内容
 	Option *EmbedUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 
-	// 用户自定义参数
-	// <ul>
-	// <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-	// <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
-	// <li>支持的格式：json字符串的BASE64编码字符串</li>
-	// <li>示例：<ul>
-	//                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
-	//                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
-	// </ul>
-	// </li>
-	// </ul>
+	// <ul> <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li> <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li> <li>支持的格式：json字符串的BASE64编码字符串</li> <li>示例：<ul>                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li> </ul> </li> </ul>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
@@ -4978,8 +4958,11 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
 	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
 	// UserId必须是传入合同（FlowId）中的签署人。
-	// - 1. 若UserId为空，Name和Mobile 必须提供。
-	// - 2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。
+	// 
+	// <ul>
+	// <li>1. 若UserId为空，Name和Mobile 必须提供。</li>
+	// <li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li>
+	// </ul>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 员工姓名，必须与手机号码一起使用。
@@ -5017,8 +5000,11 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
 	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
 	// UserId必须是传入合同（FlowId）中的签署人。
-	// - 1. 若UserId为空，Name和Mobile 必须提供。
-	// - 2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。
+	// 
+	// <ul>
+	// <li>1. 若UserId为空，Name和Mobile 必须提供。</li>
+	// <li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li>
+	// </ul>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 员工姓名，必须与手机号码一起使用。
@@ -10710,7 +10696,7 @@ type FlowCreateApprover struct {
 	// 您可以指定签署方签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证，需进行人脸识别成功后才能签署合同；</li>
 	// <li>**2**：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；</li>
-	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。</li></ul>
+	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。（如果是港澳台客户，建议不要选择这个）</li></ul>
 	// 注：
 	// <ul><li>默认情况下，认证校验方式为人脸认证和签署密码两种形式；</li>
 	// <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>

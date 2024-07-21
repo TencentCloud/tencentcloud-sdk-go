@@ -5587,6 +5587,81 @@ func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyP
     return
 }
 
+func NewModifyRoutineMaintenanceTaskRequest() (request *ModifyRoutineMaintenanceTaskRequest) {
+    request = &ModifyRoutineMaintenanceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "ModifyRoutineMaintenanceTask")
+    
+    
+    return
+}
+
+func NewModifyRoutineMaintenanceTaskResponse() (response *ModifyRoutineMaintenanceTaskResponse) {
+    response = &ModifyRoutineMaintenanceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRoutineMaintenanceTask
+// 设置自动化运维属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) ModifyRoutineMaintenanceTask(request *ModifyRoutineMaintenanceTaskRequest) (response *ModifyRoutineMaintenanceTaskResponse, err error) {
+    return c.ModifyRoutineMaintenanceTaskWithContext(context.Background(), request)
+}
+
+// ModifyRoutineMaintenanceTask
+// 设置自动化运维属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) ModifyRoutineMaintenanceTaskWithContext(ctx context.Context, request *ModifyRoutineMaintenanceTaskRequest) (response *ModifyRoutineMaintenanceTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyRoutineMaintenanceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoutineMaintenanceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoutineMaintenanceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTopicAttributesRequest() (request *ModifyTopicAttributesRequest) {
     request = &ModifyTopicAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},

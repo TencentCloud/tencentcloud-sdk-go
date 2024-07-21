@@ -4663,6 +4663,135 @@ type EnhancedService struct {
 }
 
 // Predefined struct for user
+type EnterRescueModeRequestParams struct {
+	// 需要进入救援模式的实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 救援模式下系统密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 救援模式下系统用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 是否强制关机
+	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
+}
+
+type EnterRescueModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要进入救援模式的实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 救援模式下系统密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 救援模式下系统用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 是否强制关机
+	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
+}
+
+func (r *EnterRescueModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnterRescueModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Password")
+	delete(f, "Username")
+	delete(f, "ForceStop")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnterRescueModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnterRescueModeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnterRescueModeResponse struct {
+	*tchttp.BaseResponse
+	Response *EnterRescueModeResponseParams `json:"Response"`
+}
+
+func (r *EnterRescueModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnterRescueModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExitRescueModeRequestParams struct {
+	// 退出救援模式的实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type ExitRescueModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 退出救援模式的实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *ExitRescueModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExitRescueModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExitRescueModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExitRescueModeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExitRescueModeResponse struct {
+	*tchttp.BaseResponse
+	Response *ExitRescueModeResponseParams `json:"Response"`
+}
+
+func (r *ExitRescueModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExitRescueModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ExportImagesRequestParams struct {
 	// COS存储桶名称
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`

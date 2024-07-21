@@ -9350,6 +9350,133 @@ func (r *ModifyPasswordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRoutineMaintenanceTaskRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自动化运维类别
+	MaintenanceType *string `json:"MaintenanceType,omitnil,omitempty" name:"MaintenanceType"`
+
+	// 自动化运维子类别
+	MaintenanceSubtype *string `json:"MaintenanceSubtype,omitnil,omitempty" name:"MaintenanceSubtype"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 任务触发阈值
+	ConfigureThreshold *int64 `json:"ConfigureThreshold,omitnil,omitempty" name:"ConfigureThreshold"`
+
+	// 任务调整步长
+	ConfigureStepSize *int64 `json:"ConfigureStepSize,omitnil,omitempty" name:"ConfigureStepSize"`
+
+	// 任务调整上限
+	ConfigureLimit *int64 `json:"ConfigureLimit,omitnil,omitempty" name:"ConfigureLimit"`
+
+	// 任务预期触发时间，存储从当日 0AM 开始偏移的秒数
+	PlannedTime *int64 `json:"PlannedTime,omitnil,omitempty" name:"PlannedTime"`
+
+	// 任务额外信息
+	ExtraConfig *string `json:"ExtraConfig,omitnil,omitempty" name:"ExtraConfig"`
+
+	// 任务状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 执行week day
+	Week *string `json:"Week,omitnil,omitempty" name:"Week"`
+}
+
+type ModifyRoutineMaintenanceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自动化运维类别
+	MaintenanceType *string `json:"MaintenanceType,omitnil,omitempty" name:"MaintenanceType"`
+
+	// 自动化运维子类别
+	MaintenanceSubtype *string `json:"MaintenanceSubtype,omitnil,omitempty" name:"MaintenanceSubtype"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 任务触发阈值
+	ConfigureThreshold *int64 `json:"ConfigureThreshold,omitnil,omitempty" name:"ConfigureThreshold"`
+
+	// 任务调整步长
+	ConfigureStepSize *int64 `json:"ConfigureStepSize,omitnil,omitempty" name:"ConfigureStepSize"`
+
+	// 任务调整上限
+	ConfigureLimit *int64 `json:"ConfigureLimit,omitnil,omitempty" name:"ConfigureLimit"`
+
+	// 任务预期触发时间，存储从当日 0AM 开始偏移的秒数
+	PlannedTime *int64 `json:"PlannedTime,omitnil,omitempty" name:"PlannedTime"`
+
+	// 任务额外信息
+	ExtraConfig *string `json:"ExtraConfig,omitnil,omitempty" name:"ExtraConfig"`
+
+	// 任务状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 执行week day
+	Week *string `json:"Week,omitnil,omitempty" name:"Week"`
+}
+
+func (r *ModifyRoutineMaintenanceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoutineMaintenanceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MaintenanceType")
+	delete(f, "MaintenanceSubtype")
+	delete(f, "TopicName")
+	delete(f, "ConfigureThreshold")
+	delete(f, "ConfigureStepSize")
+	delete(f, "ConfigureLimit")
+	delete(f, "PlannedTime")
+	delete(f, "ExtraConfig")
+	delete(f, "Status")
+	delete(f, "Week")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoutineMaintenanceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoutineMaintenanceTaskResponseParams struct {
+	// 返回结果
+	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRoutineMaintenanceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoutineMaintenanceTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoutineMaintenanceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoutineMaintenanceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicAttributesRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

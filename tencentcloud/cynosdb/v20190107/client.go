@@ -5123,6 +5123,69 @@ func (c *Client) ExportInstanceSlowQueriesWithContext(ctx context.Context, reque
     return
 }
 
+func NewExportResourcePackageDeductDetailsRequest() (request *ExportResourcePackageDeductDetailsRequest) {
+    request = &ExportResourcePackageDeductDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ExportResourcePackageDeductDetails")
+    
+    
+    return
+}
+
+func NewExportResourcePackageDeductDetailsResponse() (response *ExportResourcePackageDeductDetailsResponse) {
+    response = &ExportResourcePackageDeductDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportResourcePackageDeductDetails
+// 资源包使用明细导出
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportResourcePackageDeductDetails(request *ExportResourcePackageDeductDetailsRequest) (response *ExportResourcePackageDeductDetailsResponse, err error) {
+    return c.ExportResourcePackageDeductDetailsWithContext(context.Background(), request)
+}
+
+// ExportResourcePackageDeductDetails
+// 资源包使用明细导出
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportResourcePackageDeductDetailsWithContext(ctx context.Context, request *ExportResourcePackageDeductDetailsRequest) (response *ExportResourcePackageDeductDetailsResponse, err error) {
+    if request == nil {
+        request = NewExportResourcePackageDeductDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportResourcePackageDeductDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportResourcePackageDeductDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGrantAccountPrivilegesRequest() (request *GrantAccountPrivilegesRequest) {
     request = &GrantAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7189,6 +7252,69 @@ func (c *Client) ModifyResourcePackageNameWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyResourcePackageNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourcePackagesDeductionPriorityRequest() (request *ModifyResourcePackagesDeductionPriorityRequest) {
+    request = &ModifyResourcePackagesDeductionPriorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyResourcePackagesDeductionPriority")
+    
+    
+    return
+}
+
+func NewModifyResourcePackagesDeductionPriorityResponse() (response *ModifyResourcePackagesDeductionPriorityResponse) {
+    response = &ModifyResourcePackagesDeductionPriorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyResourcePackagesDeductionPriority
+// 修改已绑定资源包抵扣优先级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_MODIFYDEDUCTIONPRIORITYERROR = "FailedOperation.ModifyDeductionPriorityError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyResourcePackagesDeductionPriority(request *ModifyResourcePackagesDeductionPriorityRequest) (response *ModifyResourcePackagesDeductionPriorityResponse, err error) {
+    return c.ModifyResourcePackagesDeductionPriorityWithContext(context.Background(), request)
+}
+
+// ModifyResourcePackagesDeductionPriority
+// 修改已绑定资源包抵扣优先级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_MODIFYDEDUCTIONPRIORITYERROR = "FailedOperation.ModifyDeductionPriorityError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyResourcePackagesDeductionPriorityWithContext(ctx context.Context, request *ModifyResourcePackagesDeductionPriorityRequest) (response *ModifyResourcePackagesDeductionPriorityResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcePackagesDeductionPriorityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcePackagesDeductionPriority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcePackagesDeductionPriorityResponse()
     err = c.Send(request, response)
     return
 }

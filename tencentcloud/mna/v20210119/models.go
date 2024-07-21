@@ -381,6 +381,91 @@ func (r *AddHardwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddL3ConnRequestParams struct {
+	// 设置互通网段CIDR1，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
+
+	// 设置互通网段CIDR2，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
+
+	// CIDR1对应的设备ID
+	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
+
+	// CIDR2对应的设备ID
+	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type AddL3ConnRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设置互通网段CIDR1，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
+
+	// 设置互通网段CIDR2，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
+
+	// CIDR1对应的设备ID
+	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
+
+	// CIDR2对应的设备ID
+	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *AddL3ConnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddL3ConnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cidr1")
+	delete(f, "Cidr2")
+	delete(f, "DeviceId1")
+	delete(f, "DeviceId2")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddL3ConnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddL3ConnResponseParams struct {
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddL3ConnResponse struct {
+	*tchttp.BaseResponse
+	Response *AddL3ConnResponseParams `json:"Response"`
+}
+
+func (r *AddL3ConnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddL3ConnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Capacity struct {
 	// 电信鉴权的Token。要加速的电信手机终端访问 http://qos.189.cn/qos-api/getToken?appid=TencentCloud 页面，获取返回结果中result的值
 	CTCCToken *string `json:"CTCCToken,omitnil,omitempty" name:"CTCCToken"`
@@ -706,6 +791,60 @@ func (r *DeleteGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteL3ConnRequestParams struct {
+	// 互通规则ID列表
+	L3ConnIdList []*string `json:"L3ConnIdList,omitnil,omitempty" name:"L3ConnIdList"`
+}
+
+type DeleteL3ConnRequest struct {
+	*tchttp.BaseRequest
+	
+	// 互通规则ID列表
+	L3ConnIdList []*string `json:"L3ConnIdList,omitnil,omitempty" name:"L3ConnIdList"`
+}
+
+func (r *DeleteL3ConnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteL3ConnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "L3ConnIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteL3ConnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteL3ConnResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteL3ConnResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteL3ConnResponseParams `json:"Response"`
+}
+
+func (r *DeleteL3ConnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteL3ConnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2036,6 +2175,83 @@ func (r *GetHardwareListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetL3ConnListRequestParams struct {
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 搜索分组的DeviceId，为空时匹配所有分组
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+type GetL3ConnListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 搜索分组的DeviceId，为空时匹配所有分组
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+func (r *GetL3ConnListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetL3ConnListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetL3ConnListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetL3ConnListResponseParams struct {
+	// 互通规则列表
+	L3ConnList []*L3ConnInfo `json:"L3ConnList,omitnil,omitempty" name:"L3ConnList"`
+
+	// 设备总记录条数
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 总页数
+	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetL3ConnListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetL3ConnListResponseParams `json:"Response"`
+}
+
+func (r *GetL3ConnListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetL3ConnListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetMultiFlowStatisticRequestParams struct {
 	// 设备id列表，单次最多请求10个设备
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
@@ -2714,6 +2930,30 @@ type HardwareInfo struct {
 	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
+type L3ConnInfo struct {
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通设备ID
+	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
+
+	// 互通规则CIDR
+	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
+
+	// 互通设备ID
+	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
+
+	// 互通规则CIDR
+	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
+
+	// 互通规则启用状态
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 互通规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 // Predefined struct for user
 type ModifyPackageRenewFlagRequestParams struct {
 	// 流量包的唯一资源ID
@@ -3238,6 +3478,210 @@ func (r *UpdateHardwareResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateHardwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateL3CidrRequestParams struct {
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通规则CIDR
+	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
+
+	// 互通设备ID
+	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
+
+	// 互通设备ID
+	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
+
+	// 互通规则CIDR
+	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
+}
+
+type UpdateL3CidrRequest struct {
+	*tchttp.BaseRequest
+	
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通规则CIDR
+	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
+
+	// 互通设备ID
+	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
+
+	// 互通设备ID
+	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
+
+	// 互通规则CIDR
+	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
+}
+
+func (r *UpdateL3CidrRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateL3CidrRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "L3ConnId")
+	delete(f, "Cidr1")
+	delete(f, "DeviceId1")
+	delete(f, "DeviceId2")
+	delete(f, "Cidr2")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateL3CidrRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateL3CidrResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateL3CidrResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateL3CidrResponseParams `json:"Response"`
+}
+
+func (r *UpdateL3CidrResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateL3CidrResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateL3ConnRequestParams struct {
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通规则备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateL3ConnRequest struct {
+	*tchttp.BaseRequest
+	
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通规则备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateL3ConnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateL3ConnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "L3ConnId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateL3ConnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateL3ConnResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateL3ConnResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateL3ConnResponseParams `json:"Response"`
+}
+
+func (r *UpdateL3ConnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateL3ConnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateL3SwitchRequestParams struct {
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通规则开关
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+type UpdateL3SwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 互通规则ID
+	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
+
+	// 互通规则开关
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+func (r *UpdateL3SwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateL3SwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "L3ConnId")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateL3SwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateL3SwitchResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateL3SwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateL3SwitchResponseParams `json:"Response"`
+}
+
+func (r *UpdateL3SwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateL3SwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

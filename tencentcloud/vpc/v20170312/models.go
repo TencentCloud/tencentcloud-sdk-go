@@ -20951,7 +20951,7 @@ type InstanceBind struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例所在地域。
-	InstanceRegion []*string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
+	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 
 	// 实例所属的账户uin。
 	InstanceUin *string `json:"InstanceUin,omitnil,omitempty" name:"InstanceUin"`
