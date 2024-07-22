@@ -38,6 +38,63 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitnil,omitempty" name:"OtherAccount"`
 }
 
+type DataAuthorizationInfo struct {
+	// 客户主体名称。
+	// 
+	// 示例值：某某有限公司。
+	DataProviderName *string `json:"DataProviderName,omitnil,omitempty" name:"DataProviderName"`
+
+	// 接收方主体名称。
+	// 
+	// 固定填：腾讯云计算（北京）有限责任公司
+	// 
+	// 示例值：腾讯云计算（北京）有限责任公司
+	DataRecipientName *string `json:"DataRecipientName,omitnil,omitempty" name:"DataRecipientName"`
+
+	// 客户请求RCE所涉及的用户敏感数据类型，支持多选。实际以接口请求传参为准。
+	// 
+	// 1-手机号；
+	// 
+	// 2-微信开放账号；
+	// 
+	// 3-QQ开放账号；
+	// 
+	// 4-IP地址；
+	// 
+	// 5-设备指纹；
+	// 
+	// 999-其它；
+	// 
+	// 示例值：[1, 4]
+	UserDataType []*uint64 `json:"UserDataType,omitnil,omitempty" name:"UserDataType"`
+
+	// 客户是否已经获取用户授权。
+	// 
+	// 1-已授权；其它值为未授权。
+	// 
+	// 示例值：1
+	IsAuthorize *uint64 `json:"IsAuthorize,omitnil,omitempty" name:"IsAuthorize"`
+
+	// 是否是用户个人敏感数据。
+	// 
+	// 固定填：1。
+	// 
+	// 示例值：1
+	IsPersonalData *uint64 `json:"IsPersonalData,omitnil,omitempty" name:"IsPersonalData"`
+
+	// 客户获得的用户授权期限时间戳（单位秒）。
+	// 
+	// 不填默认无固定期限。
+	// 
+	// 示例值：1719805604
+	AuthorizationTerm *uint64 `json:"AuthorizationTerm,omitnil,omitempty" name:"AuthorizationTerm"`
+
+	// 客户获得用户授权所依赖的协议地址。
+	// 
+	// 示例值：https://www.*****.com/*****
+	PrivacyPolicyLink *string `json:"PrivacyPolicyLink,omitnil,omitempty" name:"PrivacyPolicyLink"`
+}
+
 type InputCryptoManageMarketingRisk struct {
 	// 是否授权：1已授权，否则未授权。
 	//  调用全栈式风控引擎接口服务时，客户需先明确授权
@@ -138,6 +195,9 @@ type InputManageMarketingRisk struct {
 	// 3：H5
 	// 4：小程序
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 数据授权信息。
+	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
 // Predefined struct for user

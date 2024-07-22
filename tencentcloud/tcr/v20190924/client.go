@@ -1131,6 +1131,7 @@ func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
 // 用于企业版创建镜像仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -1150,6 +1151,7 @@ func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *C
 // 用于企业版创建镜像仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -1818,6 +1820,7 @@ func NewDeleteImageResponse() (response *DeleteImageResponse) {
 // 删除指定镜像
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -1837,6 +1840,7 @@ func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImage
 // 删除指定镜像
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -2453,6 +2457,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
@@ -2479,6 +2484,7 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
@@ -2781,6 +2787,7 @@ func NewDeleteRepositoryTagsResponse() (response *DeleteRepositoryTagsResponse) 
 // 用于企业版批量删除Repository Tag
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -2801,6 +2808,7 @@ func (c *Client) DeleteRepositoryTags(request *DeleteRepositoryTagsRequest) (res
 // 用于企业版批量删除Repository Tag
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3756,6 +3764,7 @@ func NewDescribeImageManifestsResponse() (response *DescribeImageManifestsRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3778,6 +3787,7 @@ func (c *Client) DescribeImageManifests(request *DescribeImageManifestsRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3886,6 +3896,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -3899,6 +3910,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
     return c.DescribeImagesWithContext(context.Background(), request)
 }
@@ -3908,6 +3920,7 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -3921,6 +3934,7 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeImagesWithContext(ctx context.Context, request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
     if request == nil {
         request = NewDescribeImagesRequest()
@@ -4022,7 +4036,7 @@ func NewDescribeInstanceAllNamespacesResponse() (response *DescribeInstanceAllNa
 }
 
 // DescribeInstanceAllNamespaces
-// 查询所有实例命名空间列表
+// 查询所有有实例命名空间列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
@@ -4045,7 +4059,7 @@ func (c *Client) DescribeInstanceAllNamespaces(request *DescribeInstanceAllNames
 }
 
 // DescribeInstanceAllNamespaces
-// 查询所有实例命名空间列表
+// 查询所有有实例命名空间列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
@@ -5248,6 +5262,7 @@ func NewDescribeTagRetentionExecutionResponse() (response *DescribeTagRetentionE
 // 查询版本保留执行记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -5269,6 +5284,7 @@ func (c *Client) DescribeTagRetentionExecution(request *DescribeTagRetentionExec
 // 查询版本保留执行记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -5321,6 +5337,7 @@ func NewDescribeTagRetentionExecutionTaskResponse() (response *DescribeTagRetent
 // 查询版本保留执行任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -5341,6 +5358,7 @@ func (c *Client) DescribeTagRetentionExecutionTask(request *DescribeTagRetention
 // 查询版本保留执行任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -5389,9 +5407,10 @@ func NewDescribeTagRetentionRulesResponse() (response *DescribeTagRetentionRules
 }
 
 // DescribeTagRetentionRules
-// 查询版本保留规则
+// 查询镜像版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -5412,9 +5431,10 @@ func (c *Client) DescribeTagRetentionRules(request *DescribeTagRetentionRulesReq
 }
 
 // DescribeTagRetentionRules
-// 查询版本保留规则
+// 查询镜像版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -5581,6 +5601,7 @@ func NewDescribeWebhookTriggerLogResponse() (response *DescribeWebhookTriggerLog
 // 获取触发器日志
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -5588,6 +5609,7 @@ func NewDescribeWebhookTriggerLogResponse() (response *DescribeWebhookTriggerLog
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogRequest) (response *DescribeWebhookTriggerLogResponse, err error) {
     return c.DescribeWebhookTriggerLogWithContext(context.Background(), request)
 }
@@ -5596,6 +5618,7 @@ func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogReq
 // 获取触发器日志
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -5603,6 +5626,7 @@ func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogReq
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeWebhookTriggerLogWithContext(ctx context.Context, request *DescribeWebhookTriggerLogRequest) (response *DescribeWebhookTriggerLogResponse, err error) {
     if request == nil {
         request = NewDescribeWebhookTriggerLogRequest()

@@ -436,6 +436,15 @@ type AddAttackWhiteRuleRequestParams struct {
 
 	// 加白的规则ID列表
 	SignatureIds []*string `json:"SignatureIds,omitnil,omitempty" name:"SignatureIds"`
+
+	// 加白的大类规则ID
+	TypeIds []*string `json:"TypeIds,omitnil,omitempty" name:"TypeIds"`
+
+	// 0:按照特定规则ID加白, 1:按照规则类型加白
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type AddAttackWhiteRuleRequest struct {
@@ -458,6 +467,15 @@ type AddAttackWhiteRuleRequest struct {
 
 	// 加白的规则ID列表
 	SignatureIds []*string `json:"SignatureIds,omitnil,omitempty" name:"SignatureIds"`
+
+	// 加白的大类规则ID
+	TypeIds []*string `json:"TypeIds,omitnil,omitempty" name:"TypeIds"`
+
+	// 0:按照特定规则ID加白, 1:按照规则类型加白
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *AddAttackWhiteRuleRequest) ToJsonString() string {
@@ -478,6 +496,9 @@ func (r *AddAttackWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleId")
 	delete(f, "SignatureId")
 	delete(f, "SignatureIds")
+	delete(f, "TypeIds")
+	delete(f, "Mode")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAttackWhiteRuleRequest has unknown keys!", "")
 	}
@@ -1399,6 +1420,22 @@ type BatchIpAccessControlItem struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 定时任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 周期任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 定时任务配置详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 生效状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
 type BotPkg struct {
@@ -1531,6 +1568,26 @@ type CCRuleItem struct {
 	// 高级参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
+
+	// url长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 关联的Session规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type CCRuleItems struct {
@@ -2175,11 +2232,17 @@ type CreateIpAccessControlRequestParams struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
+	// 可选值为：batch（批量添加）、bot（BOT流量分析中的BOT详情列表中添加时）、cc（在攻击日志列表中对攻击类型为CC的IP添加时）、custom（非批量添加时的默认值）
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 定时配置类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时配置详情
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 type CreateIpAccessControlRequest struct {
@@ -2204,11 +2267,17 @@ type CreateIpAccessControlRequest struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
+	// 可选值为：batch（批量添加）、bot（BOT流量分析中的BOT详情列表中添加时）、cc（在攻击日志列表中对攻击类型为CC的IP添加时）、custom（非批量添加时的默认值）
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 定时配置类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时配置详情
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 func (r *CreateIpAccessControlRequest) ToJsonString() string {
@@ -2231,6 +2300,8 @@ func (r *CreateIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Edition")
 	delete(f, "SourceType")
 	delete(f, "Note")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIpAccessControlRequest has unknown keys!", "")
 	}
@@ -4400,7 +4471,7 @@ type DescribeAttackWhiteRuleRequestParams struct {
 	// 每页容量
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，支持user_id, signature_id, modify_time
+	// 排序的字段，支持user_id, signature_id, modify_time
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
 	// 排序方式
@@ -4422,7 +4493,7 @@ type DescribeAttackWhiteRuleRequest struct {
 	// 每页容量
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，支持user_id, signature_id, modify_time
+	// 排序的字段，支持user_id, signature_id, modify_time
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
 	// 排序方式
@@ -6382,6 +6453,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 过滤数组
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 释放延期标识
+	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 }
 
 type DescribeInstancesRequest struct {
@@ -6395,6 +6469,9 @@ type DescribeInstancesRequest struct {
 
 	// 过滤数组
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 释放延期标识
+	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -6412,6 +6489,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "FreeDelayFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -6476,7 +6554,7 @@ type DescribeIpAccessControlRequestParams struct {
 	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
 	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 
-	// 每页返回的数量
+	// 每页返回的数量，默认为20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 来源
@@ -6499,6 +6577,9 @@ type DescribeIpAccessControlRequestParams struct {
 
 	// 规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 定时任务类型筛选0 1 2 3 4
+	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
 }
 
 type DescribeIpAccessControlRequest struct {
@@ -6528,7 +6609,7 @@ type DescribeIpAccessControlRequest struct {
 	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
 	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 
-	// 每页返回的数量
+	// 每页返回的数量，默认为20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 来源
@@ -6551,6 +6632,9 @@ type DescribeIpAccessControlRequest struct {
 
 	// 规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 定时任务类型筛选0 1 2 3 4
+	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -6581,6 +6665,7 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "ValidTimeStampMin")
 	delete(f, "ValidTimeStampMax")
 	delete(f, "RuleId")
+	delete(f, "TimerType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpAccessControlRequest has unknown keys!", "")
 	}
@@ -6625,7 +6710,7 @@ type DescribeIpHitItemsRequestParams struct {
 	// 计数标识
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 类别
+	// 类别，ip封禁传值auto_deny
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 有效时间最小时间戳
@@ -6675,7 +6760,7 @@ type DescribeIpHitItemsRequest struct {
 	// 计数标识
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 类别
+	// 类别，ip封禁传值auto_deny
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 有效时间最小时间戳
@@ -9907,6 +9992,10 @@ type InstanceInfo struct {
 	// 计费项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// 实例延期释放标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 }
 
 type IpAccessControlData struct {
@@ -9957,6 +10046,18 @@ type IpAccessControlItem struct {
 	// 规则创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 定时任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 周期任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 定时任务配置详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 type IpAccessControlParam struct {
@@ -10894,6 +10995,15 @@ type ModifyAttackWhiteRuleRequestParams struct {
 
 	// 编辑的加白的规则ID列表
 	SignatureIds []*string `json:"SignatureIds,omitnil,omitempty" name:"SignatureIds"`
+
+	// 加白的大类规则ID
+	TypeIds []*string `json:"TypeIds,omitnil,omitempty" name:"TypeIds"`
+
+	// 0表示按照特定规则ID加白, 1表示按照规则类型加白
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type ModifyAttackWhiteRuleRequest struct {
@@ -10916,6 +11026,15 @@ type ModifyAttackWhiteRuleRequest struct {
 
 	// 编辑的加白的规则ID列表
 	SignatureIds []*string `json:"SignatureIds,omitnil,omitempty" name:"SignatureIds"`
+
+	// 加白的大类规则ID
+	TypeIds []*string `json:"TypeIds,omitnil,omitempty" name:"TypeIds"`
+
+	// 0表示按照特定规则ID加白, 1表示按照规则类型加白
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *ModifyAttackWhiteRuleRequest) ToJsonString() string {
@@ -10936,6 +11055,9 @@ func (r *ModifyAttackWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "Rules")
 	delete(f, "SignatureId")
 	delete(f, "SignatureIds")
+	delete(f, "TypeIds")
+	delete(f, "Mode")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAttackWhiteRuleRequest has unknown keys!", "")
 	}
@@ -12452,6 +12574,12 @@ type ModifyIpAccessControlRequestParams struct {
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 定时配置类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时配置详情
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 type ModifyIpAccessControlRequest struct {
@@ -12484,6 +12612,12 @@ type ModifyIpAccessControlRequest struct {
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 定时配置类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时配置详情
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
 func (r *ModifyIpAccessControlRequest) ToJsonString() string {
@@ -12507,6 +12641,8 @@ func (r *ModifyIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Edition")
 	delete(f, "SourceType")
 	delete(f, "Note")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIpAccessControlRequest has unknown keys!", "")
 	}
@@ -14709,6 +14845,9 @@ type UpsertCCRuleRequestParams struct {
 
 	// 规则创建时间
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// url长度
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -14767,6 +14906,9 @@ type UpsertCCRuleRequest struct {
 
 	// 规则创建时间
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// url长度
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -14799,6 +14941,7 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "SessionApplied")
 	delete(f, "RuleId")
 	delete(f, "CreateTime")
+	delete(f, "Length")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}
@@ -15136,6 +15279,10 @@ type UserSignatureRule struct {
 
 	// 0/1
 	Reason *int64 `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 1: 高危 2:中危 3:低危
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 }
 
 type UserWhiteRule struct {
@@ -15151,6 +15298,10 @@ type UserWhiteRule struct {
 	// 匹配域
 	MatchField *string `json:"MatchField,omitnil,omitempty" name:"MatchField"`
 
+	// 匹配参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchParams *string `json:"MatchParams,omitnil,omitempty" name:"MatchParams"`
+
 	// 匹配方法
 	MatchMethod *string `json:"MatchMethod,omitnil,omitempty" name:"MatchMethod"`
 
@@ -15162,6 +15313,34 @@ type UserWhiteRule struct {
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 规则ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignatureIds []*string `json:"SignatureIds,omitnil,omitempty" name:"SignatureIds"`
+
+	// 大类规则ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeIds []*string `json:"TypeIds,omitnil,omitempty" name:"TypeIds"`
+
+	// 大类规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeId *string `json:"TypeId,omitnil,omitempty" name:"TypeId"`
+
+	// 0:按照特定规则ID加白, 1:按照规则类型加白
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 规则名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 匹配规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchInfo []*UserWhiteRuleItem `json:"MatchInfo,omitnil,omitempty" name:"MatchInfo"`
+
+	// MatchInfo字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchInfoStr *string `json:"MatchInfoStr,omitnil,omitempty" name:"MatchInfoStr"`
 }
 
 type UserWhiteRuleItem struct {
@@ -15173,6 +15352,10 @@ type UserWhiteRuleItem struct {
 
 	// 匹配内容
 	MatchContent *string `json:"MatchContent,omitnil,omitempty" name:"MatchContent"`
+
+	// 匹配参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchParams *string `json:"MatchParams,omitnil,omitempty" name:"MatchParams"`
 }
 
 type VipInfo struct {

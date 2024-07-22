@@ -8664,34 +8664,40 @@ func (r *DescribePrometheusAlertGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusAlertPolicyRequestParams struct {
-	// 实例id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页
+	// 分页偏移量，默认为0。 示例值：1
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页
+	// 分页返回数量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤
-	// 支持ID，Name
+	// 仅支持按Name, Values字段过滤:
+	// - Name = Name 
+	//   按照给定的告警规则名称列表匹配
+	// - Name = ID
+	//   按照给定的告警规则ID列表匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrometheusAlertPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页
+	// 分页偏移量，默认为0。 示例值：1
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页
+	// 分页返回数量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤
-	// 支持ID，Name
+	// 仅支持按Name, Values字段过滤:
+	// - Name = Name 
+	//   按照给定的告警规则名称列表匹配
+	// - Name = ID
+	//   按照给定的告警规则ID列表匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -9641,32 +9647,42 @@ func (r *DescribePrometheusRecordRuleYamlResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribePrometheusRecordRulesRequestParams struct {
-	// 实例id
+	// 实例ID
+	// 
+	// 示例值：prom-343kafd34
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页
+	// 偏移量，默认为0。 示例值：1
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页
+	// 返回数量，默认为20，最大值为100。
+	// 示例值：1
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤
+	// 仅支持按Name, Values字段过滤:
+	// - Name = Name
+	//   按照给定的预聚合名称列表匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrometheusRecordRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例ID
+	// 
+	// 示例值：prom-343kafd34
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页
+	// 偏移量，默认为0。 示例值：1
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页
+	// 返回数量，默认为20，最大值为100。
+	// 示例值：1
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤
+	// 仅支持按Name, Values字段过滤:
+	// - Name = Name
+	//   按照给定的预聚合名称列表匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -9969,34 +9985,42 @@ func (r *DescribePrometheusTargetsTMPResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusTempRequestParams struct {
-	// 模糊过滤条件，支持
-	// Level 按模板级别过滤
-	// Name 按名称过滤
-	// Describe 按描述过滤
-	// ID 按templateId过滤
+	// 仅支持按Name, Values字段过滤:
+	// * Name = Name
+	//   按照给定的模板名称列表匹配
+	// * Name = ID
+	//   按照给定的模板ID列表匹配
+	// * Name = Describe
+	//   按照给定的模板描述列表匹配
+	// * Name = Level
+	//   按照给定的模板维度(instance, cluster)列表匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 总数限制
+	// 分页返回数量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribePrometheusTempRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模糊过滤条件，支持
-	// Level 按模板级别过滤
-	// Name 按名称过滤
-	// Describe 按描述过滤
-	// ID 按templateId过滤
+	// 仅支持按Name, Values字段过滤:
+	// * Name = Name
+	//   按照给定的模板名称列表匹配
+	// * Name = ID
+	//   按照给定的模板ID列表匹配
+	// * Name = Describe
+	//   按照给定的模板描述列表匹配
+	// * Name = Level
+	//   按照给定的模板维度(instance, cluster)列表匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 总数限制
+	// 分页返回数量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -12392,20 +12416,20 @@ func (r *ModifyPrometheusAgentExternalLabelsResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type ModifyPrometheusAlertPolicyRequestParams struct {
-	// 实例id
+	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 告警配置
+	// 告警配置，[具体参考](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem)
 	AlertRule *PrometheusAlertPolicyItem `json:"AlertRule,omitnil,omitempty" name:"AlertRule"`
 }
 
 type ModifyPrometheusAlertPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 告警配置
+	// 告警配置，[具体参考](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem)
 	AlertRule *PrometheusAlertPolicyItem `json:"AlertRule,omitnil,omitempty" name:"AlertRule"`
 }
 

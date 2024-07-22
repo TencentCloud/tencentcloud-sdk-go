@@ -566,7 +566,7 @@ type SearchInfo struct {
 type SearchResult struct {
 	// 搜索引文序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 搜索引文标题
 	// 注意：此字段可能返回 null，表示取不到有效值。

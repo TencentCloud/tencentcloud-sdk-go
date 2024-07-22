@@ -11175,7 +11175,7 @@ func NewUpgradeDBInstanceEngineVersionResponse() (response *UpgradeDBInstanceEng
 }
 
 // UpgradeDBInstanceEngineVersion
-// 本接口(UpgradeDBInstanceEngineVersion)用于升级云数据库实例版本，实例类型支持主实例、灾备实例和只读实例。
+// 本接口(UpgradeDBInstanceEngineVersion)用于升级云数据库实例版本，实例类型支持主实例、灾备实例和只读实例等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -11194,7 +11194,7 @@ func (c *Client) UpgradeDBInstanceEngineVersion(request *UpgradeDBInstanceEngine
 }
 
 // UpgradeDBInstanceEngineVersion
-// 本接口(UpgradeDBInstanceEngineVersion)用于升级云数据库实例版本，实例类型支持主实例、灾备实例和只读实例。
+// 本接口(UpgradeDBInstanceEngineVersion)用于升级云数据库实例版本，实例类型支持主实例、灾备实例和只读实例等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"

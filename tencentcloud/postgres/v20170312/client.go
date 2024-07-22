@@ -437,6 +437,77 @@ func (c *Client) CloseServerlessDBExtranetAccessWithContext(ctx context.Context,
     return
 }
 
+func NewCreateAccountRequest() (request *CreateAccountRequest) {
+    request = &CreateAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateAccount")
+    
+    
+    return
+}
+
+func NewCreateAccountResponse() (response *CreateAccountResponse) {
+    response = &CreateAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAccount
+// 此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORDLENGTHERROR = "InvalidParameterValue.InvalidPasswordLengthError"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = "InvalidParameterValue.InvalidPasswordValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERCHARACTERERROR = "InvalidParameterValue.ParameterCharacterError"
+//  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
+    return c.CreateAccountWithContext(context.Background(), request)
+}
+
+// CreateAccount
+// 此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORDLENGTHERROR = "InvalidParameterValue.InvalidPasswordLengthError"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = "InvalidParameterValue.InvalidPasswordValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERCHARACTERERROR = "InvalidParameterValue.ParameterCharacterError"
+//  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBaseBackupRequest() (request *CreateBaseBackupRequest) {
     request = &CreateBaseBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1544,6 +1615,69 @@ func (c *Client) CreateServerlessDBInstanceWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
+    request = &DeleteAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteAccount")
+    
+    
+    return
+}
+
+func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
+    response = &DeleteAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccount
+// 此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
+    return c.DeleteAccountWithContext(context.Background(), request)
+}
+
+// DeleteAccount
+// 此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBaseBackupRequest() (request *DeleteBaseBackupRequest) {
     request = &DeleteBaseBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2031,6 +2165,71 @@ func (c *Client) DeleteServerlessDBInstanceWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteServerlessDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountPrivilegesRequest() (request *DescribeAccountPrivilegesRequest) {
+    request = &DescribeAccountPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeAccountPrivileges")
+    
+    
+    return
+}
+
+func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivilegesResponse) {
+    response = &DescribeAccountPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountPrivileges
+// 查询数据库账号对某数据库对象拥有的权限列表。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
+    return c.DescribeAccountPrivilegesWithContext(context.Background(), request)
+}
+
+// DescribeAccountPrivileges
+// 查询数据库账号对某数据库对象拥有的权限列表。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountPrivilegesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountPrivilegesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3439,6 +3638,63 @@ func (c *Client) DescribeDBXlogsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeDBXlogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabaseObjectsRequest() (request *DescribeDatabaseObjectsRequest) {
+    request = &DescribeDatabaseObjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDatabaseObjects")
+    
+    
+    return
+}
+
+func NewDescribeDatabaseObjectsResponse() (response *DescribeDatabaseObjectsResponse) {
+    response = &DescribeDatabaseObjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabaseObjects
+// 本接口用于查询数据库对象列表。例如查询test数据库下的模式列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDatabaseObjects(request *DescribeDatabaseObjectsRequest) (response *DescribeDatabaseObjectsResponse, err error) {
+    return c.DescribeDatabaseObjectsWithContext(context.Background(), request)
+}
+
+// DescribeDatabaseObjects
+// 本接口用于查询数据库对象列表。例如查询test数据库下的模式列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDatabaseObjectsWithContext(ctx context.Context, request *DescribeDatabaseObjectsRequest) (response *DescribeDatabaseObjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabaseObjectsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabaseObjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabaseObjectsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5215,6 +5471,144 @@ func (c *Client) IsolateDBInstancesWithContext(ctx context.Context, request *Iso
     request.SetContext(ctx)
     
     response = NewIsolateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewLockAccountRequest() (request *LockAccountRequest) {
+    request = &LockAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "LockAccount")
+    
+    
+    return
+}
+
+func NewLockAccountResponse() (response *LockAccountResponse) {
+    response = &LockAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// LockAccount
+// 此接口用于锁定数据库账号，锁定后账号当前连接会断开，并且无法建立新连接。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) LockAccount(request *LockAccountRequest) (response *LockAccountResponse, err error) {
+    return c.LockAccountWithContext(context.Background(), request)
+}
+
+// LockAccount
+// 此接口用于锁定数据库账号，锁定后账号当前连接会断开，并且无法建立新连接。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) LockAccountWithContext(ctx context.Context, request *LockAccountRequest) (response *LockAccountResponse, err error) {
+    if request == nil {
+        request = NewLockAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LockAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewLockAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccountPrivilegesRequest() (request *ModifyAccountPrivilegesRequest) {
+    request = &ModifyAccountPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyAccountPrivileges")
+    
+    
+    return
+}
+
+func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResponse) {
+    response = &ModifyAccountPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccountPrivileges
+// 修改某账号对某数据库对象的权限、修改账号类型。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = "InvalidParameterValue.ParameterOutOfRange"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
+    return c.ModifyAccountPrivilegesWithContext(context.Background(), request)
+}
+
+// ModifyAccountPrivileges
+// 修改某账号对某数据库对象的权限、修改账号类型。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = "InvalidParameterValue.ParameterOutOfRange"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountPrivilegesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccountPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccountPrivilegesResponse()
     err = c.Send(request, response)
     return
 }
@@ -7235,6 +7629,77 @@ func (c *Client) SwitchDBInstancePrimaryWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewSwitchDBInstancePrimaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnlockAccountRequest() (request *UnlockAccountRequest) {
+    request = &UnlockAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "UnlockAccount")
+    
+    
+    return
+}
+
+func NewUnlockAccountResponse() (response *UnlockAccountResponse) {
+    response = &UnlockAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnlockAccount
+// 解除数据库账号的锁定，解锁后账号可以登陆数据库。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) UnlockAccount(request *UnlockAccountRequest) (response *UnlockAccountResponse, err error) {
+    return c.UnlockAccountWithContext(context.Background(), request)
+}
+
+// UnlockAccount
+// 解除数据库账号的锁定，解锁后账号可以登陆数据库。
+//
+// 可能返回的错误码:
+//  DBERROR = "DBError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
+//  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) UnlockAccountWithContext(ctx context.Context, request *UnlockAccountRequest) (response *UnlockAccountResponse, err error) {
+    if request == nil {
+        request = NewUnlockAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnlockAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnlockAccountResponse()
     err = c.Send(request, response)
     return
 }

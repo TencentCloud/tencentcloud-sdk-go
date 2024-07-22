@@ -239,6 +239,9 @@ const (
 	// 无效的Ipv4地址
 	INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
 
+	// 无效的关键字
+	INVALIDPARAMETERVALUE_INVALIDKEYWORD = "InvalidParameterValue.InvalidKeyword"
+
 	// 名称为空或填写有误
 	INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 

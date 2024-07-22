@@ -4314,6 +4314,9 @@ type RunJobDescription struct {
 
 	// 自定义时间戳
 	CustomTimestamp *int64 `json:"CustomTimestamp,omitnil,omitempty" name:"CustomTimestamp"`
+
+	// timestamp; latest-offset;  earliest-offset; 任选一种
+	KafkaScanMode *string `json:"KafkaScanMode,omitnil,omitempty" name:"KafkaScanMode"`
 }
 
 // Predefined struct for user

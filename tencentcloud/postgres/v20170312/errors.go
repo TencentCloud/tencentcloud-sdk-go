@@ -362,6 +362,9 @@ const (
 	// 数据库字符集错误，当前只支持UTF8、LATIN1。
 	INVALIDPARAMETERVALUE_INVALIDCHARSET = "InvalidParameterValue.InvalidCharset"
 
+	// 当前仅支持操作名称为英文、下划线、数字及特殊符号[]组成的数据库对象，函数及存储过程额外支持三个特殊符号(,)
+	INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+
 	// 购买实例数超过限制。
 	INVALIDPARAMETERVALUE_INVALIDINSTANCENUM = "InvalidParameterValue.InvalidInstanceNum"
 

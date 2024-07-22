@@ -5152,6 +5152,89 @@ func (c *Client) CreateOrganizationInfoChangeUrlWithContext(ctx context.Context,
     return
 }
 
+func NewCreatePartnerAutoSignAuthUrlRequest() (request *CreatePartnerAutoSignAuthUrlRequest) {
+    request = &CreatePartnerAutoSignAuthUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreatePartnerAutoSignAuthUrl")
+    
+    
+    return
+}
+
+func NewCreatePartnerAutoSignAuthUrlResponse() (response *CreatePartnerAutoSignAuthUrlResponse) {
+    response = &CreatePartnerAutoSignAuthUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePartnerAutoSignAuthUrl
+// 创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
+//
+// 该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+//
+// 
+//
+// 
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
+//
+// 2. 已经在授权中或者授权成功的企业，无法重复授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreatePartnerAutoSignAuthUrl(request *CreatePartnerAutoSignAuthUrlRequest) (response *CreatePartnerAutoSignAuthUrlResponse, err error) {
+    return c.CreatePartnerAutoSignAuthUrlWithContext(context.Background(), request)
+}
+
+// CreatePartnerAutoSignAuthUrl
+// 创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
+//
+// 该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+//
+// 
+//
+// 
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
+//
+// 2. 已经在授权中或者授权成功的企业，无法重复授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreatePartnerAutoSignAuthUrlWithContext(ctx context.Context, request *CreatePartnerAutoSignAuthUrlRequest) (response *CreatePartnerAutoSignAuthUrlResponse, err error) {
+    if request == nil {
+        request = NewCreatePartnerAutoSignAuthUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePartnerAutoSignAuthUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePartnerAutoSignAuthUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonAuthCertificateImageRequest() (request *CreatePersonAuthCertificateImageRequest) {
     request = &CreatePersonAuthCertificateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},

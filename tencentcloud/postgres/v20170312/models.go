@@ -624,6 +624,88 @@ func (r *CloseServerlessDBExtranetAccessResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type CreateAccountRequestParams struct {
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 创建的账号名称。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 账号对应的密码。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 账号类型。当前支持normal、tencentDBSuper两个输入。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 账号备注。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 创建的账号名称。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 账号对应的密码。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 账号类型。当前支持normal、tencentDBSuper两个输入。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 账号备注。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	delete(f, "Password")
+	delete(f, "Type")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccountResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAccountResponseParams `json:"Response"`
+}
+
+func (r *CreateAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBaseBackupRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -2198,6 +2280,99 @@ type DBNode struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
+type DatabaseObject struct {
+	// 支持使用的数据库对象类型有：account,database,schema,sequence,procedure,type,function,table,view,matview,column。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// 所描述的数据库对象名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
+
+	// 所要描述的数据库对象，所属的数据库名称。当描述对象类型不为database时，此参数必选。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 所要描述的数据库对象，所属的模式名称。当描述对象不为database、schema时，此参数必选。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 所要描述的数据库对象，所属的表名称。当描述的对象类型为column时，此参数必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+type DatabasePrivilege struct {
+	// 数据库对象，当ObjectType为database时，DataseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Object *DatabaseObject `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 指定账号对数据库对象拥有的权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeSet []*string `json:"PrivilegeSet,omitnil,omitempty" name:"PrivilegeSet"`
+}
+
+// Predefined struct for user
+type DeleteAccountRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 删除的账号名称。	
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type DeleteAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 删除的账号名称。	
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+func (r *DeleteAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccountResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccountResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DeleteBaseBackupRequestParams struct {
 	// 实例ID。
@@ -2648,6 +2823,77 @@ func (r *DeleteServerlessDBInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteServerlessDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountPrivilegesRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 查询此账号对某数据库对象所拥有的权限信息。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 要查询的数据库对象信息
+	DatabaseObjectSet []*DatabaseObject `json:"DatabaseObjectSet,omitnil,omitempty" name:"DatabaseObjectSet"`
+}
+
+type DescribeAccountPrivilegesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 查询此账号对某数据库对象所拥有的权限信息。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 要查询的数据库对象信息
+	DatabaseObjectSet []*DatabaseObject `json:"DatabaseObjectSet,omitnil,omitempty" name:"DatabaseObjectSet"`
+}
+
+func (r *DescribeAccountPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	delete(f, "DatabaseObjectSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountPrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountPrivilegesResponseParams struct {
+	// 用户拥有数据库user_database的CREATE、CONNECT、TEMPORARY权限
+	PrivilegeSet []*DatabasePrivilege `json:"PrivilegeSet,omitnil,omitempty" name:"PrivilegeSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccountPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccountPrivilegesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccountPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountPrivilegesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4260,6 +4506,110 @@ func (r *DescribeDBXlogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBXlogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseObjectsRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 查询的对象类型。支持查询的数据对象有：database,schema,sequence,procedure,type,function,table,view,matview,column。
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// 单次显示数量，默认20。可选范围为[0,100]。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据偏移量，从0开始。	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询对象所属的数据库。当查询对象类型不为database时，此参数必填。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 查询对象所属的模式。当查询对象类型不为database、schema时，此参数必填。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 查询对象所属的表。当查询对象类型为column时，此参数必填。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+type DescribeDatabaseObjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 查询的对象类型。支持查询的数据对象有：database,schema,sequence,procedure,type,function,table,view,matview,column。
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// 单次显示数量，默认20。可选范围为[0,100]。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据偏移量，从0开始。	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询对象所属的数据库。当查询对象类型不为database时，此参数必填。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 查询对象所属的模式。当查询对象类型不为database、schema时，此参数必填。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 查询对象所属的表。当查询对象类型为column时，此参数必填。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+func (r *DescribeDatabaseObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseObjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ObjectType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "DatabaseName")
+	delete(f, "SchemaName")
+	delete(f, "TableName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseObjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseObjectsResponseParams struct {
+	// 查询对象列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectSet []*string `json:"ObjectSet,omitnil,omitempty" name:"ObjectSet"`
+
+	// 查询对象总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseObjectsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseObjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6140,6 +6490,67 @@ func (r *IsolateDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type LockAccountRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 账号名称。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type LockAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 账号名称。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+func (r *LockAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LockAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LockAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LockAccountResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type LockAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *LockAccountResponseParams `json:"Response"`
+}
+
+func (r *LockAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LockAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LogBackup struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -6170,6 +6581,74 @@ type LogBackup struct {
 
 	// 备份的过期时间。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+// Predefined struct for user
+type ModifyAccountPrivilegesRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 修改此账号对某数据库对象的权限。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 修改的权限信息，支持批量修改，一次最高修改50条。
+	ModifyPrivilegeSet []*ModifyPrivilege `json:"ModifyPrivilegeSet,omitnil,omitempty" name:"ModifyPrivilegeSet"`
+}
+
+type ModifyAccountPrivilegesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 修改此账号对某数据库对象的权限。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 修改的权限信息，支持批量修改，一次最高修改50条。
+	ModifyPrivilegeSet []*ModifyPrivilege `json:"ModifyPrivilegeSet,omitnil,omitempty" name:"ModifyPrivilegeSet"`
+}
+
+func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	delete(f, "ModifyPrivilegeSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccountPrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccountPrivilegesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAccountPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccountPrivilegesResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7335,6 +7814,20 @@ func (r *ModifyParameterTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyParameterTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPrivilege struct {
+	// 要修改的数据库对象及权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabasePrivilege *DatabasePrivilege `json:"DatabasePrivilege,omitnil,omitempty" name:"DatabasePrivilege"`
+
+	// 修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// 当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCascade *bool `json:"IsCascade,omitnil,omitempty" name:"IsCascade"`
 }
 
 // Predefined struct for user
@@ -8772,6 +9265,67 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+// Predefined struct for user
+type UnlockAccountRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 账号名称。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type UnlockAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 账号名称。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+func (r *UnlockAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnlockAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlockAccountResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnlockAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *UnlockAccountResponseParams `json:"Response"`
+}
+
+func (r *UnlockAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -3279,8 +3279,10 @@ func NewListDevicesResponse() (response *ListDevicesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDACCESSPROTOCOL = "InvalidParameterValue.InvalidAccessProtocol"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICESTATUS = "InvalidParameterValue.InvalidDeviceStatus"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICETYPE = "InvalidParameterValue.InvalidDeviceType"
+//  INVALIDPARAMETERVALUE_INVALIDKEYWORD = "InvalidParameterValue.InvalidKeyword"
 //  INVALIDPARAMETERVALUE_INVALIDORGANIZATIONID = "InvalidParameterValue.InvalidOrganizationId"
 //  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
 //  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
@@ -3294,8 +3296,10 @@ func (c *Client) ListDevices(request *ListDevicesRequest) (response *ListDevices
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDACCESSPROTOCOL = "InvalidParameterValue.InvalidAccessProtocol"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICESTATUS = "InvalidParameterValue.InvalidDeviceStatus"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICETYPE = "InvalidParameterValue.InvalidDeviceType"
+//  INVALIDPARAMETERVALUE_INVALIDKEYWORD = "InvalidParameterValue.InvalidKeyword"
 //  INVALIDPARAMETERVALUE_INVALIDORGANIZATIONID = "InvalidParameterValue.InvalidOrganizationId"
 //  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
 //  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"

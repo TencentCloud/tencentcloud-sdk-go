@@ -16143,6 +16143,9 @@ type UpgradeDBInstanceEngineVersionRequestParams struct {
 
 	// 延迟阈值。取值范围1~10
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
+
+	// 版本升级支持指定参数
+	ParamList []*UpgradeEngineVersionParams `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {
@@ -16162,6 +16165,9 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 
 	// 延迟阈值。取值范围1~10
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
+
+	// 版本升级支持指定参数
+	ParamList []*UpgradeEngineVersionParams `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 }
 
 func (r *UpgradeDBInstanceEngineVersionRequest) ToJsonString() string {
@@ -16181,6 +16187,7 @@ func (r *UpgradeDBInstanceEngineVersionRequest) FromJsonString(s string) error {
 	delete(f, "WaitSwitch")
 	delete(f, "UpgradeSubversion")
 	delete(f, "MaxDelayTime")
+	delete(f, "ParamList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceEngineVersionRequest has unknown keys!", "")
 	}
@@ -16388,6 +16395,16 @@ func (r *UpgradeDBInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeEngineVersionParams struct {
+	// 参数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type UploadInfo struct {

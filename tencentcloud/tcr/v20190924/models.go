@@ -2251,14 +2251,14 @@ type DeleteImageRequestParams struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
 	// 镜像仓库名称
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
 	// 镜像版本
 	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
-
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 }
 
 type DeleteImageRequest struct {
@@ -2267,14 +2267,14 @@ type DeleteImageRequest struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
 	// 镜像仓库名称
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
 	// 镜像版本
 	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
-
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 }
 
 func (r *DeleteImageRequest) ToJsonString() string {
@@ -2290,9 +2290,9 @@ func (r *DeleteImageRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
 	delete(f, "RepositoryName")
 	delete(f, "ImageVersion")
-	delete(f, "NamespaceName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImageRequest has unknown keys!", "")
 	}
@@ -4188,6 +4188,14 @@ type DescribeImageManifestsResponseParams struct {
 
 	// 镜像的配置信息
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 镜像的Labels信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*KeyValueString `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 镜像大小，单位：byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8595,9 +8603,11 @@ type RetentionPolicy struct {
 
 type RetentionRule struct {
 	// 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 规则设置下的对应值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
