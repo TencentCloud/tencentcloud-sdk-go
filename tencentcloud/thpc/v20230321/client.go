@@ -260,6 +260,83 @@ func (c *Client) AddQueueWithContext(ctx context.Context, request *AddQueueReque
     return
 }
 
+func NewAttachNodesRequest() (request *AttachNodesRequest) {
+    request = &AttachNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "AttachNodes")
+    
+    
+    return
+}
+
+func NewAttachNodesResponse() (response *AttachNodesResponse) {
+    response = &AttachNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AttachNodes
+// 本接口 (AttachNodes) 用于绑定一个或者多个计算节点指定资源到指定集群中。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUEUENUMLIMIT = "LimitExceeded.QueueNumLimit"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) AttachNodes(request *AttachNodesRequest) (response *AttachNodesResponse, err error) {
+    return c.AttachNodesWithContext(context.Background(), request)
+}
+
+// AttachNodes
+// 本接口 (AttachNodes) 用于绑定一个或者多个计算节点指定资源到指定集群中。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUEUENUMLIMIT = "LimitExceeded.QueueNumLimit"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) AttachNodesWithContext(ctx context.Context, request *AttachNodesRequest) (response *AttachNodesResponse, err error) {
+    if request == nil {
+        request = NewAttachNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAttachNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1008,6 +1085,81 @@ func (c *Client) DescribeQueuesWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachNodesRequest() (request *DetachNodesRequest) {
+    request = &DetachNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DetachNodes")
+    
+    
+    return
+}
+
+func NewDetachNodesResponse() (response *DetachNodesResponse) {
+    response = &DetachNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetachNodes
+// 本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
+    return c.DetachNodesWithContext(context.Background(), request)
+}
+
+// DetachNodes
+// 本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
+    if request == nil {
+        request = NewDetachNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetachNodesResponse()
     err = c.Send(request, response)
     return
 }

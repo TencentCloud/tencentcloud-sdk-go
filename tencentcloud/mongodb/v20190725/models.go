@@ -731,6 +731,100 @@ func (r *CreateDBInstanceHourResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDBInstanceParamTplRequestParams struct {
+	// 参数模板名称。
+	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
+
+	// 版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
+	// 当MirrorTplId为空时，该字段必填。
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 模板描述信息。
+	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
+
+	// 模板参数，若为空，则以系统默认模板作为新版本参数。
+	Params []*ParamType `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// 镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+	MirrorTplId *string `json:"MirrorTplId,omitnil,omitempty" name:"MirrorTplId"`
+}
+
+type CreateDBInstanceParamTplRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板名称。
+	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
+
+	// 版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
+	// 当MirrorTplId为空时，该字段必填。
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 模板描述信息。
+	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
+
+	// 模板参数，若为空，则以系统默认模板作为新版本参数。
+	Params []*ParamType `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// 镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+	MirrorTplId *string `json:"MirrorTplId,omitnil,omitempty" name:"MirrorTplId"`
+}
+
+func (r *CreateDBInstanceParamTplRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBInstanceParamTplRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TplName")
+	delete(f, "MongoVersion")
+	delete(f, "ClusterType")
+	delete(f, "TplDesc")
+	delete(f, "Params")
+	delete(f, "MirrorTplId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceParamTplRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDBInstanceParamTplResponseParams struct {
+	// 模板ID
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDBInstanceParamTplResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDBInstanceParamTplResponseParams `json:"Response"`
+}
+
+func (r *CreateDBInstanceParamTplResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBInstanceParamTplResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDBInstanceRequestParams struct {
 	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
@@ -1921,6 +2015,182 @@ func (r *DescribeDBInstanceNodePropertyResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeDBInstanceParamTplDetailRequestParams struct {
+	// 参数模板 ID。
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+
+	// 参数名称，传入该值，则只会获取该字段的参数详情。为空时，返回全部参数。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+}
+
+type DescribeDBInstanceParamTplDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板 ID。
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+
+	// 参数名称，传入该值，则只会获取该字段的参数详情。为空时，返回全部参数。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+}
+
+func (r *DescribeDBInstanceParamTplDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceParamTplDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TplId")
+	delete(f, "ParamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceParamTplDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceParamTplDetailResponseParams struct {
+	// 枚举类参数详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceEnumParams []*InstanceEnumParam `json:"InstanceEnumParams,omitnil,omitempty" name:"InstanceEnumParams"`
+
+	// 整形参数详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIntegerParams []*InstanceIntegerParam `json:"InstanceIntegerParams,omitnil,omitempty" name:"InstanceIntegerParams"`
+
+	// 文本参数详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTextParams []*InstanceTextParam `json:"InstanceTextParams,omitnil,omitempty" name:"InstanceTextParams"`
+
+	// 多值参数详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceMultiParams []*InstanceMultiParam `json:"InstanceMultiParams,omitnil,omitempty" name:"InstanceMultiParams"`
+
+	// 参数总个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 模板适配实例版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 模板适配集群类型，副本集或分片。。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 参数模板名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceParamTplDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceParamTplDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceParamTplDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceParamTplDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceParamTplRequestParams struct {
+	// 参数模板 ID 查询条件。
+	TplIds []*string `json:"TplIds,omitnil,omitempty" name:"TplIds"`
+
+	// 模板名称，查询条件。
+	TplNames []*string `json:"TplNames,omitnil,omitempty" name:"TplNames"`
+
+	// 根据版本号插叙参数模板，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	MongoVersion []*string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+	TplType *string `json:"TplType,omitnil,omitempty" name:"TplType"`
+}
+
+type DescribeDBInstanceParamTplRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板 ID 查询条件。
+	TplIds []*string `json:"TplIds,omitnil,omitempty" name:"TplIds"`
+
+	// 模板名称，查询条件。
+	TplNames []*string `json:"TplNames,omitnil,omitempty" name:"TplNames"`
+
+	// 根据版本号插叙参数模板，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	MongoVersion []*string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+	TplType *string `json:"TplType,omitnil,omitempty" name:"TplType"`
+}
+
+func (r *DescribeDBInstanceParamTplRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceParamTplRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TplIds")
+	delete(f, "TplNames")
+	delete(f, "MongoVersion")
+	delete(f, "TplType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceParamTplRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceParamTplResponseParams struct {
+	// 参数模板列表信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTpls []*ParamTpl `json:"ParamTpls,omitnil,omitempty" name:"ParamTpls"`
+
+	// 参数模板总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceParamTplResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceParamTplResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceParamTplResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceParamTplResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
 	// 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -2531,6 +2801,60 @@ func (r *DescribeTransparentDataEncryptionStatusResponse) ToJsonString() string 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTransparentDataEncryptionStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDBInstanceParamTplRequestParams struct {
+	// 参数模板 ID。
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+}
+
+type DropDBInstanceParamTplRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板 ID。
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+}
+
+func (r *DropDBInstanceParamTplRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDBInstanceParamTplRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TplId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDBInstanceParamTplRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDBInstanceParamTplResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DropDBInstanceParamTplResponse struct {
+	*tchttp.BaseResponse
+	Response *DropDBInstanceParamTplResponseParams `json:"Response"`
+}
+
+func (r *DropDBInstanceParamTplResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDBInstanceParamTplResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3657,6 +3981,81 @@ func (r *ModifyDBInstanceNetworkAddressResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type ModifyDBInstanceParamTplRequestParams struct {
+	// 待修改的参数模板 ID，示例：tpl-jglr91vew。
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+
+	// 待修改参数模板名称，为空时，保持原有名称。
+	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
+
+	// 待修改参数模板描述，为空时，保持原有描述。
+	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
+
+	// 待修改参数名及参数值，为空时，各参数保持原有值，支持单条或批量修改。
+	Params []*ParamType `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
+type ModifyDBInstanceParamTplRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待修改的参数模板 ID，示例：tpl-jglr91vew。
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+
+	// 待修改参数模板名称，为空时，保持原有名称。
+	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
+
+	// 待修改参数模板描述，为空时，保持原有描述。
+	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
+
+	// 待修改参数名及参数值，为空时，各参数保持原有值，支持单条或批量修改。
+	Params []*ParamType `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
+func (r *ModifyDBInstanceParamTplRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceParamTplRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TplId")
+	delete(f, "TplName")
+	delete(f, "TplDesc")
+	delete(f, "Params")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceParamTplRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceParamTplResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceParamTplResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceParamTplResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceParamTplResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceParamTplResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceSecurityGroupRequestParams struct {
 	// 实例 ID。例如：cmgo-7pje****。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4069,6 +4468,34 @@ type Operation struct {
 
 	// 操作序号
 	OpId *int64 `json:"OpId,omitnil,omitempty" name:"OpId"`
+}
+
+type ParamTpl struct {
+	// 参数模板名称
+	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
+
+	// 参数模板ID
+	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
+
+	// 适用数据库版本
+	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 适用数据库类型
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 参数模板描述
+	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
+
+	// 模板类型，包括DEFAULT（默认模板）及CUSTOMIZE（定制模板）两种类型
+	TplType *string `json:"TplType,omitnil,omitempty" name:"TplType"`
+}
+
+type ParamType struct {
+	// 参数
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 参数值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RemoveNodeList struct {

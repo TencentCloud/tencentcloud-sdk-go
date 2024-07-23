@@ -2167,6 +2167,26 @@ type CCN struct {
 	// 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteBroadcastPolicyFlag *bool `json:"RouteBroadcastPolicyFlag,omitnil,omitempty" name:"RouteBroadcastPolicyFlag"`
+
+	// 是否开启等价路由功能。`False` 未开启，`True` 开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteECMPFlag *bool `json:"RouteECMPFlag,omitnil,omitempty" name:"RouteECMPFlag"`
+
+	// 是否开启路由重叠功能。`False` 未开启，`True` 开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteOverlapFlag *bool `json:"RouteOverlapFlag,omitnil,omitempty" name:"RouteOverlapFlag"`
+
+	// 是否开启QOS。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficMarkingPolicyFlag *bool `json:"TrafficMarkingPolicyFlag,omitnil,omitempty" name:"TrafficMarkingPolicyFlag"`
+
+	// 是否开启路由表选择策略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteSelectPolicyFlag *bool `json:"RouteSelectPolicyFlag,omitnil,omitempty" name:"RouteSelectPolicyFlag"`
+
+	// 是否开启二层云联网通道。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectConnectAccelerateChannelFlag *bool `json:"DirectConnectAccelerateChannelFlag,omitnil,omitempty" name:"DirectConnectAccelerateChannelFlag"`
 }
 
 type CcnAttachedInstance struct {
@@ -25169,6 +25189,9 @@ type ModifyVpnGatewayAttributeRequestParams struct {
 
 	// BGP ASN。ASN取值范围为1- 4294967295，默认值64551，其中139341、45090和58835不可用。
 	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
+
+	// 服务端最大连接数个数。
+	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 }
 
 type ModifyVpnGatewayAttributeRequest struct {
@@ -25185,6 +25208,9 @@ type ModifyVpnGatewayAttributeRequest struct {
 
 	// BGP ASN。ASN取值范围为1- 4294967295，默认值64551，其中139341、45090和58835不可用。
 	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
+
+	// 服务端最大连接数个数。
+	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 }
 
 func (r *ModifyVpnGatewayAttributeRequest) ToJsonString() string {
@@ -25203,6 +25229,7 @@ func (r *ModifyVpnGatewayAttributeRequest) FromJsonString(s string) error {
 	delete(f, "VpnGatewayName")
 	delete(f, "InstanceChargeType")
 	delete(f, "BgpAsn")
+	delete(f, "MaxConnection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnGatewayAttributeRequest has unknown keys!", "")
 	}

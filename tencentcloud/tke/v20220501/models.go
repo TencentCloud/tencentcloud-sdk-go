@@ -1065,6 +1065,9 @@ type NativeNodePoolInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
+	// 就绪 Machine 个数
+	ReadyReplicas *int64 `json:"ReadyReplicas,omitnil,omitempty" name:"ReadyReplicas"`
+
 	// 公网带宽设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`

@@ -5520,6 +5520,10 @@ type RoleInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*RoleTags `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 角色RoleArn信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 }
 
 type RoleTags struct {

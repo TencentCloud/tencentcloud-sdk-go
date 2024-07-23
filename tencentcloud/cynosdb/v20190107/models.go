@@ -2024,7 +2024,7 @@ type CreateClustersRequestParams struct {
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 包年包月购买是否自动续费，默认为0。
-	// 0标识默认续费方式，1表示自动续费，2表示手不自动续费。
+	// 0标识默认续费方式，1表示自动续费，2表示不自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动选择代金券 1是 0否 默认为0
@@ -2173,7 +2173,7 @@ type CreateClustersRequest struct {
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 包年包月购买是否自动续费，默认为0。
-	// 0标识默认续费方式，1表示自动续费，2表示手不自动续费。
+	// 0标识默认续费方式，1表示自动续费，2表示不自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动选择代金券 1是 0否 默认为0

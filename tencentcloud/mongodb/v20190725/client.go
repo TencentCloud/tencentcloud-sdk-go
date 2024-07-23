@@ -439,6 +439,93 @@ func (c *Client) CreateDBInstanceHourWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateDBInstanceParamTplRequest() (request *CreateDBInstanceParamTplRequest) {
+    request = &CreateDBInstanceParamTplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "CreateDBInstanceParamTpl")
+    
+    
+    return
+}
+
+func NewCreateDBInstanceParamTplResponse() (response *CreateDBInstanceParamTplResponse) {
+    response = &CreateDBInstanceParamTplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDBInstanceParamTpl
+// 本接口(CreateDBInstanceParamTpl)用于创建云数据库MongoDB实例的参数模板
+//
+// **说明：CreateDBInstanceParamTpl API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) CreateDBInstanceParamTpl(request *CreateDBInstanceParamTplRequest) (response *CreateDBInstanceParamTplResponse, err error) {
+    return c.CreateDBInstanceParamTplWithContext(context.Background(), request)
+}
+
+// CreateDBInstanceParamTpl
+// 本接口(CreateDBInstanceParamTpl)用于创建云数据库MongoDB实例的参数模板
+//
+// **说明：CreateDBInstanceParamTpl API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) CreateDBInstanceParamTplWithContext(ctx context.Context, request *CreateDBInstanceParamTplRequest) (response *CreateDBInstanceParamTplResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstanceParamTplRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBInstanceParamTpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDBInstanceParamTplResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountUserRequest() (request *DeleteAccountUserRequest) {
     request = &DeleteAccountUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1013,6 +1100,116 @@ func (c *Client) DescribeDBInstanceNodePropertyWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeDBInstanceParamTplRequest() (request *DescribeDBInstanceParamTplRequest) {
+    request = &DescribeDBInstanceParamTplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceParamTpl")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceParamTplResponse() (response *DescribeDBInstanceParamTplResponse) {
+    response = &DescribeDBInstanceParamTplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceParamTpl
+// 本接口(DescribeDBInstanceParamTpl )用于查询当前账号下所有MongoDB数据库参数模板
+//
+// **说明：DescribeDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeDBInstanceParamTpl(request *DescribeDBInstanceParamTplRequest) (response *DescribeDBInstanceParamTplResponse, err error) {
+    return c.DescribeDBInstanceParamTplWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceParamTpl
+// 本接口(DescribeDBInstanceParamTpl )用于查询当前账号下所有MongoDB数据库参数模板
+//
+// **说明：DescribeDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeDBInstanceParamTplWithContext(ctx context.Context, request *DescribeDBInstanceParamTplRequest) (response *DescribeDBInstanceParamTplResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceParamTplRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceParamTpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceParamTplResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBInstanceParamTplDetailRequest() (request *DescribeDBInstanceParamTplDetailRequest) {
+    request = &DescribeDBInstanceParamTplDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceParamTplDetail")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceParamTplDetailResponse() (response *DescribeDBInstanceParamTplDetailResponse) {
+    response = &DescribeDBInstanceParamTplDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceParamTplDetail
+// 本接口(DescribeDBInstanceParamTplDetail )用于查询MongoDB云数据库实例的参数模板详情。
+//
+// **说明：DescribeDBInstanceParamTplDetail  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeDBInstanceParamTplDetail(request *DescribeDBInstanceParamTplDetailRequest) (response *DescribeDBInstanceParamTplDetailResponse, err error) {
+    return c.DescribeDBInstanceParamTplDetailWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceParamTplDetail
+// 本接口(DescribeDBInstanceParamTplDetail )用于查询MongoDB云数据库实例的参数模板详情。
+//
+// **说明：DescribeDBInstanceParamTplDetail  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeDBInstanceParamTplDetailWithContext(ctx context.Context, request *DescribeDBInstanceParamTplDetailRequest) (response *DescribeDBInstanceParamTplDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceParamTplDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceParamTplDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceParamTplDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1416,6 +1613,61 @@ func (c *Client) DescribeTransparentDataEncryptionStatusWithContext(ctx context.
     request.SetContext(ctx)
     
     response = NewDescribeTransparentDataEncryptionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDropDBInstanceParamTplRequest() (request *DropDBInstanceParamTplRequest) {
+    request = &DropDBInstanceParamTplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DropDBInstanceParamTpl")
+    
+    
+    return
+}
+
+func NewDropDBInstanceParamTplResponse() (response *DropDBInstanceParamTplResponse) {
+    response = &DropDBInstanceParamTplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DropDBInstanceParamTpl
+// 本接口(DropDBInstanceParamTpl )用于删除云数据库MongoDB实例的参数模板
+//
+// **说明：DropDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DropDBInstanceParamTpl(request *DropDBInstanceParamTplRequest) (response *DropDBInstanceParamTplResponse, err error) {
+    return c.DropDBInstanceParamTplWithContext(context.Background(), request)
+}
+
+// DropDBInstanceParamTpl
+// 本接口(DropDBInstanceParamTpl )用于删除云数据库MongoDB实例的参数模板
+//
+// **说明：DropDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DropDBInstanceParamTplWithContext(ctx context.Context, request *DropDBInstanceParamTplRequest) (response *DropDBInstanceParamTplResponse, err error) {
+    if request == nil {
+        request = NewDropDBInstanceParamTplRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DropDBInstanceParamTpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDropDBInstanceParamTplResponse()
     err = c.Send(request, response)
     return
 }
@@ -1939,6 +2191,61 @@ func (c *Client) ModifyDBInstanceNetworkAddressWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewModifyDBInstanceNetworkAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceParamTplRequest() (request *ModifyDBInstanceParamTplRequest) {
+    request = &ModifyDBInstanceParamTplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceParamTpl")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceParamTplResponse() (response *ModifyDBInstanceParamTplResponse) {
+    response = &ModifyDBInstanceParamTplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceParamTpl
+// 本接口(ModifyDBInstanceParamTpl )用于修改MongoDB云数据库实例的参数模板。
+//
+// **说明：ModifyDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) ModifyDBInstanceParamTpl(request *ModifyDBInstanceParamTplRequest) (response *ModifyDBInstanceParamTplResponse, err error) {
+    return c.ModifyDBInstanceParamTplWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceParamTpl
+// 本接口(ModifyDBInstanceParamTpl )用于修改MongoDB云数据库实例的参数模板。
+//
+// **说明：ModifyDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) ModifyDBInstanceParamTplWithContext(ctx context.Context, request *ModifyDBInstanceParamTplRequest) (response *ModifyDBInstanceParamTplResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceParamTplRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceParamTpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceParamTplResponse()
     err = c.Send(request, response)
     return
 }

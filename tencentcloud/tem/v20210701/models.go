@@ -1354,7 +1354,11 @@ type DeployApplicationRequestParams struct {
 	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
 	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
 
-	// 包名。使用 JAR 包或者 WAR 包部署的时候必填。
+	// 传入内容为 /jar包名字 的形式。也就是在 jar包名字前增加一个/。
+	// 
+	// 如上传的 jar 包名字为 demo-1.0.0.jar，那么这里传入内容为：/demo-1.0.0.jar
+	// 
+	// 注：jar 包需要通过 tem 页面上传过，tem 后端才能拉到该 jar 包。
 	PkgName *string `json:"PkgName,omitnil,omitempty" name:"PkgName"`
 
 	// JDK 版本。
@@ -1455,6 +1459,12 @@ type DeployApplicationRequestParams struct {
 
 	// 镜像部署时，仓库类型：0：个人仓库；1：企业版；2：公共仓库；3：tem托管仓库；4：demo仓库
 	RepoType *int64 `json:"RepoType,omitnil,omitempty" name:"RepoType"`
+
+	// 启动后执行的脚本，base64 编码
+	PostStartEncoded *string `json:"PostStartEncoded,omitnil,omitempty" name:"PostStartEncoded"`
+
+	// 停止前执行的脚本，base64 编码
+	PreStopEncoded *string `json:"PreStopEncoded,omitnil,omitempty" name:"PreStopEncoded"`
 }
 
 type DeployApplicationRequest struct {
@@ -1509,7 +1519,11 @@ type DeployApplicationRequest struct {
 	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
 	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
 
-	// 包名。使用 JAR 包或者 WAR 包部署的时候必填。
+	// 传入内容为 /jar包名字 的形式。也就是在 jar包名字前增加一个/。
+	// 
+	// 如上传的 jar 包名字为 demo-1.0.0.jar，那么这里传入内容为：/demo-1.0.0.jar
+	// 
+	// 注：jar 包需要通过 tem 页面上传过，tem 后端才能拉到该 jar 包。
 	PkgName *string `json:"PkgName,omitnil,omitempty" name:"PkgName"`
 
 	// JDK 版本。
@@ -1610,6 +1624,12 @@ type DeployApplicationRequest struct {
 
 	// 镜像部署时，仓库类型：0：个人仓库；1：企业版；2：公共仓库；3：tem托管仓库；4：demo仓库
 	RepoType *int64 `json:"RepoType,omitnil,omitempty" name:"RepoType"`
+
+	// 启动后执行的脚本，base64 编码
+	PostStartEncoded *string `json:"PostStartEncoded,omitnil,omitempty" name:"PostStartEncoded"`
+
+	// 停止前执行的脚本，base64 编码
+	PreStopEncoded *string `json:"PreStopEncoded,omitnil,omitempty" name:"PreStopEncoded"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -1669,6 +1689,8 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "TcrInstanceId")
 	delete(f, "RepoServer")
 	delete(f, "RepoType")
+	delete(f, "PostStartEncoded")
+	delete(f, "PreStopEncoded")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}

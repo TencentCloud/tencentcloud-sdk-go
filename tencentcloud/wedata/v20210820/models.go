@@ -11852,6 +11852,12 @@ type DescribeOrganizationalFunctionsRequestParams struct {
 	// 标准模式生产环境：PROD
 	// 简单模式：ALL
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序条件
+	OrderFields *OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 }
 
 type DescribeOrganizationalFunctionsRequest struct {
@@ -11873,6 +11879,12 @@ type DescribeOrganizationalFunctionsRequest struct {
 	// 标准模式生产环境：PROD
 	// 简单模式：ALL
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序条件
+	OrderFields *OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 }
 
 func (r *DescribeOrganizationalFunctionsRequest) ToJsonString() string {
@@ -11892,6 +11904,8 @@ func (r *DescribeOrganizationalFunctionsRequest) FromJsonString(s string) error 
 	delete(f, "Name")
 	delete(f, "DisplayName")
 	delete(f, "EnvType")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationalFunctionsRequest has unknown keys!", "")
 	}
@@ -15262,6 +15276,9 @@ type DescribeTableSchemaInfoRequestParams struct {
 
 	// 元数据Database下的Schema名称
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 项目空间ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type DescribeTableSchemaInfoRequest struct {
@@ -15284,6 +15301,9 @@ type DescribeTableSchemaInfoRequest struct {
 
 	// 元数据Database下的Schema名称
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 项目空间ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeTableSchemaInfoRequest) ToJsonString() string {
@@ -15304,6 +15324,7 @@ func (r *DescribeTableSchemaInfoRequest) FromJsonString(s string) error {
 	delete(f, "DatasourceId")
 	delete(f, "ConnectionType")
 	delete(f, "SchemaName")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableSchemaInfoRequest has unknown keys!", "")
 	}
@@ -24256,6 +24277,10 @@ type RuleGroupExecStrategy struct {
 	// 触发类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerTypes []*string `json:"TriggerTypes,omitnil,omitempty" name:"TriggerTypes"`
+
+	// DLC资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DlcGroupName *string `json:"DlcGroupName,omitnil,omitempty" name:"DlcGroupName"`
 }
 
 type RuleGroupPage struct {

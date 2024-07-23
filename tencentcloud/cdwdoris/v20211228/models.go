@@ -1464,6 +1464,12 @@ func (r *DestroyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InstanceDetail struct {
+	// 告警策略是否可用	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableAlarmStrategy *bool `json:"EnableAlarmStrategy,omitnil,omitempty" name:"EnableAlarmStrategy"`
+}
+
 type InstanceInfo struct {
 	// 集群实例ID, "cdw-xxxx" 字符串类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1661,6 +1667,10 @@ type InstanceInfo struct {
 	// 冷热分层使用COS桶
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoolDownBucket *string `json:"CoolDownBucket,omitnil,omitempty" name:"CoolDownBucket"`
+
+	// 实例扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details *InstanceDetail `json:"Details,omitnil,omitempty" name:"Details"`
 }
 
 type InstanceNode struct {
