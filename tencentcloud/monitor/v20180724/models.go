@@ -9647,42 +9647,32 @@ func (r *DescribePrometheusRecordRuleYamlResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribePrometheusRecordRulesRequestParams struct {
-	// 实例ID
-	// 
-	// 示例值：prom-343kafd34
+	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量，默认为0。 示例值：1
+	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为20，最大值为100。
-	// 示例值：1
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仅支持按Name, Values字段过滤:
-	// - Name = Name
-	//   按照给定的预聚合名称列表匹配
+	// 仅支持按Name, Values字段过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrometheusRecordRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
-	// 
-	// 示例值：prom-343kafd34
+	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量，默认为0。 示例值：1
+	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量，默认为20，最大值为100。
-	// 示例值：1
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仅支持按Name, Values字段过滤:
-	// - Name = Name
-	//   按照给定的预聚合名称列表匹配
+	// 仅支持按Name, Values字段过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

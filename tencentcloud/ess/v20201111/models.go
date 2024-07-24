@@ -5240,33 +5240,49 @@ func (r *CreateOrganizationInfoChangeUrlResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreatePartnerAutoSignAuthUrlRequestParams struct {
-	// 被授企业id
-	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
-
-	// 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
-	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
-
 	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 被授企业id/授权方企业id，和AuthorizedOrganizationName二选一传入
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
+
+	// 被授企业名称/授权方企业名称，和AuthorizedOrganizationId二选一传入
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
+
+	// 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
+	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// 他方授权给我方：
+	// - false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称
+	// - true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
 }
 
 type CreatePartnerAutoSignAuthUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 被授企业id
-	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
-
-	// 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
-	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
-
 	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 被授企业id/授权方企业id，和AuthorizedOrganizationName二选一传入
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
+
+	// 被授企业名称/授权方企业名称，和AuthorizedOrganizationId二选一传入
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
+
+	// 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
+	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// 他方授权给我方：
+	// - false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称
+	// - true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
 }
 
 func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -5281,10 +5297,12 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "AuthorizedOrganizationId")
-	delete(f, "SealTypes")
 	delete(f, "Agent")
 	delete(f, "Operator")
+	delete(f, "AuthorizedOrganizationId")
+	delete(f, "AuthorizedOrganizationName")
+	delete(f, "SealTypes")
+	delete(f, "AuthToMe")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAutoSignAuthUrlRequest has unknown keys!", "")
 	}

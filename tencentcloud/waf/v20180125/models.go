@@ -13021,10 +13021,7 @@ type ModifySpartaProtectionRequestParams struct {
 	// 必填项。域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 必填项。证书类型。
-	// 0：仅配置HTTP监听端口，没有证书
-	// 1：证书来源为自有证书
-	// 2：证书来源为托管证书
+	// 证书类型。0：仅配置HTTP监听端口，没有证书1：证书来源为自有证书2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -13036,11 +13033,7 @@ type ModifySpartaProtectionRequestParams struct {
 	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// 必填项。waf前是否部署有七层代理服务。
-	// 0：没有部署代理服务
-	// 1：有部署代理服务，waf将使用XFF获取客户端IP
-	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
-	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+	// waf前是否部署有七层代理服务。0：没有部署代理服务1：有部署代理服务，waf将使用XFF获取客户端IP2：有部署代理服务，waf将使用remote_addr获取客户端IP3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
 	IsCdn *int64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
 	// 服务配置有HTTPS端口时，HTTPS的回源协议。
@@ -13051,14 +13044,10 @@ type ModifySpartaProtectionRequestParams struct {
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// 必填项。是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
+	// 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
 	HttpsRewrite *uint64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// 必填项。回源类型。
-	// 0：通过IP回源
-	// 1：通过域名回源
+	// 回源类型。0：通过IP回源1：通过域名回源
 	UpstreamType *int64 `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
@@ -13067,20 +13056,13 @@ type ModifySpartaProtectionRequestParams struct {
 	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
-	// 必填项。是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
+	// 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 必填项。是否开启WebSocket支持。
-	// 0：关闭
-	// 1：开启
+	// 是否开启WebSocket支持。0：关闭1：开启
 	IsWebsocket *int64 `json:"IsWebsocket,omitnil,omitempty" name:"IsWebsocket"`
 
-	// 必填项。回源负载均衡策略。
-	// 0：轮询
-	// 1：IP hash
-	// 2：加权轮询
+	// 回源负载均衡策略。0：轮询1：IP hash2：加权轮询
 	LoadBalance *int64 `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
 	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
@@ -13089,23 +13071,19 @@ type ModifySpartaProtectionRequestParams struct {
 	// 域名所属实例类型
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 必填项。端口信息，可通过DescribeDomains接口获取具体参数信息。
+	// 端口信息，可通过DescribeDomains接口获取具体参数信息。
 	Ports []*SpartaProtectionPort `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 必填项。是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
+	// 是否开启长连接。0： 短连接1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 必填项，待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
 	Weights []*int64 `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// 必填项，是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
+	// 是否开启主动健康检测。0：不开启1：开启
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
 	// TLS版本信息
@@ -13114,11 +13092,7 @@ type ModifySpartaProtectionRequestParams struct {
 	// 加密套件信息
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 必填项。加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
+	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
 	// WAF与源站的读超时时间，默认300s。
@@ -13140,9 +13114,7 @@ type ModifySpartaProtectionRequestParams struct {
 	// IsCdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 必填项。是否开启XFF重置。
-	// 0：关闭
-	// 1：开启
+	// 是否开启XFF重置。0：关闭1：开启
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
 	// 域名备注信息
@@ -13170,10 +13142,7 @@ type ModifySpartaProtectionRequest struct {
 	// 必填项。域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 必填项。证书类型。
-	// 0：仅配置HTTP监听端口，没有证书
-	// 1：证书来源为自有证书
-	// 2：证书来源为托管证书
+	// 证书类型。0：仅配置HTTP监听端口，没有证书1：证书来源为自有证书2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -13185,11 +13154,7 @@ type ModifySpartaProtectionRequest struct {
 	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// 必填项。waf前是否部署有七层代理服务。
-	// 0：没有部署代理服务
-	// 1：有部署代理服务，waf将使用XFF获取客户端IP
-	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
-	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+	// waf前是否部署有七层代理服务。0：没有部署代理服务1：有部署代理服务，waf将使用XFF获取客户端IP2：有部署代理服务，waf将使用remote_addr获取客户端IP3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
 	IsCdn *int64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
 	// 服务配置有HTTPS端口时，HTTPS的回源协议。
@@ -13200,14 +13165,10 @@ type ModifySpartaProtectionRequest struct {
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// 必填项。是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
+	// 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
 	HttpsRewrite *uint64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// 必填项。回源类型。
-	// 0：通过IP回源
-	// 1：通过域名回源
+	// 回源类型。0：通过IP回源1：通过域名回源
 	UpstreamType *int64 `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
@@ -13216,20 +13177,13 @@ type ModifySpartaProtectionRequest struct {
 	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
-	// 必填项。是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
+	// 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 必填项。是否开启WebSocket支持。
-	// 0：关闭
-	// 1：开启
+	// 是否开启WebSocket支持。0：关闭1：开启
 	IsWebsocket *int64 `json:"IsWebsocket,omitnil,omitempty" name:"IsWebsocket"`
 
-	// 必填项。回源负载均衡策略。
-	// 0：轮询
-	// 1：IP hash
-	// 2：加权轮询
+	// 回源负载均衡策略。0：轮询1：IP hash2：加权轮询
 	LoadBalance *int64 `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
 	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
@@ -13238,23 +13192,19 @@ type ModifySpartaProtectionRequest struct {
 	// 域名所属实例类型
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 必填项。端口信息，可通过DescribeDomains接口获取具体参数信息。
+	// 端口信息，可通过DescribeDomains接口获取具体参数信息。
 	Ports []*SpartaProtectionPort `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 必填项。是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
+	// 是否开启长连接。0： 短连接1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 必填项，待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
 	Weights []*int64 `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// 必填项，是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
+	// 是否开启主动健康检测。0：不开启1：开启
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
 	// TLS版本信息
@@ -13263,11 +13213,7 @@ type ModifySpartaProtectionRequest struct {
 	// 加密套件信息
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 必填项。加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
+	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
 	// WAF与源站的读超时时间，默认300s。
@@ -13289,9 +13235,7 @@ type ModifySpartaProtectionRequest struct {
 	// IsCdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 必填项。是否开启XFF重置。
-	// 0：关闭
-	// 1：开启
+	// 是否开启XFF重置。0：关闭1：开启
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
 	// 域名备注信息

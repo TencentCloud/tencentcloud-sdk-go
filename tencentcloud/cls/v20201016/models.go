@@ -11600,7 +11600,9 @@ type UploadLogRequestParams struct {
 	// 主题id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 根据 hashkey 写入相应范围的主题分区
+	// 该参数已废弃，请勿使用
+	//
+	// Deprecated: HashKey is deprecated.
 	HashKey *string `json:"HashKey,omitnil,omitempty" name:"HashKey"`
 
 	// 压缩方法
@@ -11613,7 +11615,7 @@ type UploadLogRequest struct {
 	// 主题id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 根据 hashkey 写入相应范围的主题分区
+	// 该参数已废弃，请勿使用
 	HashKey *string `json:"HashKey,omitnil,omitempty" name:"HashKey"`
 
 	// 压缩方法

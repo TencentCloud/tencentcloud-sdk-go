@@ -22817,6 +22817,10 @@ type OrganizationalFunction struct {
 	// 公有云 Owner ID 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUserIdsStr []*string `json:"OwnerUserIdsStr,omitnil,omitempty" name:"OwnerUserIdsStr"`
+
+	// 数据库环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 }
 
 type Pair struct {

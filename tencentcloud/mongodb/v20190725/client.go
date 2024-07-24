@@ -2675,6 +2675,61 @@ func (c *Client) ResetDBInstancePasswordWithContext(ctx context.Context, request
     return
 }
 
+func NewRestartNodesRequest() (request *RestartNodesRequest) {
+    request = &RestartNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "RestartNodes")
+    
+    
+    return
+}
+
+func NewRestartNodesResponse() (response *RestartNodesResponse) {
+    response = &RestartNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartNodes
+// 本接口用于重启数据库节点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
+    return c.RestartNodesWithContext(context.Background(), request)
+}
+
+// RestartNodes
+// 本接口用于重启数据库节点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) RestartNodesWithContext(ctx context.Context, request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
+    if request == nil {
+        request = NewRestartNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetAccountUserPrivilegeRequest() (request *SetAccountUserPrivilegeRequest) {
     request = &SetAccountUserPrivilegeRequest{
         BaseRequest: &tchttp.BaseRequest{},

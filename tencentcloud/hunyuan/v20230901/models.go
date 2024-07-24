@@ -280,7 +280,8 @@ type Content struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 当 Type 为 image_url 时使用，表示具体的图片内容
+	// 图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
+	// 如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64" 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *ImageUrl `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }

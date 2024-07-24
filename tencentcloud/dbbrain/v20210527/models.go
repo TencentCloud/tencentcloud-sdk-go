@@ -745,6 +745,9 @@ type CreateKillTaskRequestParams struct {
 	// 任务过滤条件，支持单条件前缀匹配。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
+	// 任务过滤条件，支持多个关键字匹配，与Info参数互斥。
+	Infos []*string `json:"Infos,omitnil,omitempty" name:"Infos"`
+
 	// 任务过滤条件，用户类型。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
@@ -776,6 +779,9 @@ type CreateKillTaskRequest struct {
 	// 任务过滤条件，支持单条件前缀匹配。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
+	// 任务过滤条件，支持多个关键字匹配，与Info参数互斥。
+	Infos []*string `json:"Infos,omitnil,omitempty" name:"Infos"`
+
 	// 任务过滤条件，用户类型。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
@@ -804,6 +810,7 @@ func (r *CreateKillTaskRequest) FromJsonString(s string) error {
 	delete(f, "DB")
 	delete(f, "Command")
 	delete(f, "Info")
+	delete(f, "Infos")
 	delete(f, "User")
 	delete(f, "Time")
 	delete(f, "Product")

@@ -6342,6 +6342,9 @@ type PermitOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 是否返回头像照片，默认为 false
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type PermitOCRRequest struct {
@@ -6359,6 +6362,9 @@ type PermitOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 是否返回头像照片，默认为 false
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 func (r *PermitOCRRequest) ToJsonString() string {
@@ -6375,6 +6381,7 @@ func (r *PermitOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "CropPortrait")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PermitOCRRequest has unknown keys!", "")
 	}
@@ -6406,6 +6413,9 @@ type PermitOCRResponseParams struct {
 
 	// 出生日期
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
+
+	// 头像照片的base64
+	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

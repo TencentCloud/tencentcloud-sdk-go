@@ -1713,7 +1713,7 @@ type DeleteStaffRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 待删除客服邮箱列表
+	// 待删除客服邮箱列表，一次最大支持200个。
 	StaffList []*string `json:"StaffList,omitnil,omitempty" name:"StaffList"`
 }
 
@@ -1723,7 +1723,7 @@ type DeleteStaffRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 待删除客服邮箱列表
+	// 待删除客服邮箱列表，一次最大支持200个。
 	StaffList []*string `json:"StaffList,omitnil,omitempty" name:"StaffList"`
 }
 
@@ -3819,10 +3819,10 @@ func (r *DescribeTelCallInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTelCdrRequestParams struct {
-	// 起始时间戳，Unix 秒级时间戳
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 秒级时间戳
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
 	// 实例 ID（废弃）
@@ -3855,10 +3855,10 @@ type DescribeTelCdrRequestParams struct {
 type DescribeTelCdrRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间戳，Unix 秒级时间戳
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 秒级时间戳
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
 	// 实例 ID（废弃）

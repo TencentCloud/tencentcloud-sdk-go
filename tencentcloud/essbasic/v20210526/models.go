@@ -8064,7 +8064,7 @@ func (r *DescribeBatchOrganizationRegistrationUrlsRequest) FromJsonString(s stri
 
 // Predefined struct for user
 type DescribeBatchOrganizationRegistrationUrlsResponseParams struct {
-	// 子企业注册认证的的链接列表
+	// 子企业注册认证的链接列表
 	OrganizationAuthUrls []*OrganizationAuthUrl `json:"OrganizationAuthUrls,omitnil,omitempty" name:"OrganizationAuthUrls"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

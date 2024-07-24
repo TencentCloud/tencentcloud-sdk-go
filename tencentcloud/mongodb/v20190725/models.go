@@ -548,6 +548,9 @@ type CreateDBInstanceHourRequestParams struct {
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
+
+	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
 type CreateDBInstanceHourRequest struct {
@@ -656,6 +659,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
+
+	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -696,6 +702,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "ReadonlyNodeNum")
 	delete(f, "ReadonlyNodeAvailabilityZoneList")
 	delete(f, "HiddenZone")
+	delete(f, "ParamTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
 	}
@@ -940,6 +947,9 @@ type CreateDBInstanceRequestParams struct {
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
+
+	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
 type CreateDBInstanceRequest struct {
@@ -1059,6 +1069,9 @@ type CreateDBInstanceRequest struct {
 
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
+
+	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -1102,6 +1115,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ReadonlyNodeNum")
 	delete(f, "ReadonlyNodeAvailabilityZoneList")
 	delete(f, "HiddenZone")
+	delete(f, "ParamTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}
@@ -4718,6 +4732,70 @@ func (r *ResetDBInstancePasswordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResetDBInstancePasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartNodesRequestParams struct {
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点Id。
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+}
+
+type RestartNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点Id。
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+}
+
+func (r *RestartNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartNodesResponseParams struct {
+	// 流程Id。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestartNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartNodesResponseParams `json:"Response"`
+}
+
+func (r *RestartNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
