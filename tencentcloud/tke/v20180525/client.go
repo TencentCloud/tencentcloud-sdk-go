@@ -10003,6 +10003,61 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeReservedInstanceUtilizationRateRequest() (request *DescribeReservedInstanceUtilizationRateRequest) {
+    request = &DescribeReservedInstanceUtilizationRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeReservedInstanceUtilizationRate")
+    
+    
+    return
+}
+
+func NewDescribeReservedInstanceUtilizationRateResponse() (response *DescribeReservedInstanceUtilizationRateResponse) {
+    response = &DescribeReservedInstanceUtilizationRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReservedInstanceUtilizationRate
+// 查询各种规格类型的预留券使用率
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeReservedInstanceUtilizationRate(request *DescribeReservedInstanceUtilizationRateRequest) (response *DescribeReservedInstanceUtilizationRateResponse, err error) {
+    return c.DescribeReservedInstanceUtilizationRateWithContext(context.Background(), request)
+}
+
+// DescribeReservedInstanceUtilizationRate
+// 查询各种规格类型的预留券使用率
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeReservedInstanceUtilizationRateWithContext(ctx context.Context, request *DescribeReservedInstanceUtilizationRateRequest) (response *DescribeReservedInstanceUtilizationRateResponse, err error) {
+    if request == nil {
+        request = NewDescribeReservedInstanceUtilizationRateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedInstanceUtilizationRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReservedInstanceUtilizationRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReservedInstancesRequest() (request *DescribeReservedInstancesRequest) {
     request = &DescribeReservedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

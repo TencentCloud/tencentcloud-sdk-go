@@ -42,7 +42,7 @@ type AudioResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
+	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
@@ -235,8 +235,7 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVideoModerationTaskRequestParams struct {
-	// 该字段表示策略的具体编号，用于接口调度，在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
-	// 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	// 该字段表示特定审核策略的编号，用于接口调度。需要提前在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中创建策略后获取该Biztype字段，传入该字段，会根据业务场景在审核时调用相应的审核策略。 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
@@ -261,8 +260,7 @@ type CreateVideoModerationTaskRequestParams struct {
 type CreateVideoModerationTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 该字段表示策略的具体编号，用于接口调度，在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
-	// 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	// 该字段表示特定审核策略的编号，用于接口调度。需要提前在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中创建策略后获取该Biztype字段，传入该字段，会根据业务场景在审核时调用相应的审核策略。 备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
@@ -429,11 +427,11 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TryInSeconds *int64 `json:"TryInSeconds,omitnil,omitempty" name:"TryInSeconds"`
 
-	// 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+	// 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSegments []*ImageSegments `json:"ImageSegments,omitnil,omitempty" name:"ImageSegments"`
 
-	// 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+	// 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil,omitempty" name:"AudioSegments"`
 
@@ -615,7 +613,7 @@ type ImageResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*ImageResultResult `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 图片URL地址
+	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 

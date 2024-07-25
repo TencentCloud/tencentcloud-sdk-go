@@ -383,11 +383,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 }
 
 // DescribeTaskDetail
-// 通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。<br>
-//
-// 
-//
-// 默认接口请求频率限制：**200次/秒**。
+// 通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -412,11 +408,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 }
 
 // DescribeTaskDetail
-// 通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。<br>
-//
-// 
-//
-// 默认接口请求频率限制：**200次/秒**。
+// 通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"

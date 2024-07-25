@@ -3181,6 +3181,48 @@ type DescAcItem struct {
 	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
 }
 
+type DescNatDnatRule struct {
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 网络协议，可选值：TCP、UDP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
+
+	// 弹性IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
+
+	// 公网端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicPort *int64 `json:"PublicPort,omitnil,omitempty" name:"PublicPort"`
+
+	// 内网地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
+
+	// 内网端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivatePort *int64 `json:"PrivatePort,omitnil,omitempty" name:"PrivatePort"`
+
+	// NAT防火墙转发规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 是否被关联引用，如被远程运维使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsReferenced *int64 `json:"IsReferenced,omitnil,omitempty" name:"IsReferenced"`
+
+	// 所属防火墙实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
+
+	// 关联的nat网关Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatGwId *string `json:"NatGwId,omitnil,omitempty" name:"NatGwId"`
+}
+
 // Predefined struct for user
 type DescribeAcListsRequestParams struct {
 	// 协议
@@ -5128,6 +5170,116 @@ func (r *DescribeNatAcRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNatAcRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatFwDnatRuleRequestParams struct {
+	// 需要查询的索引，特定场景使用，可不填
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 过滤条件组合
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 检索的起始时间，可不传
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 检索的截止时间，可不传
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序所用到的字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeNatFwDnatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的索引，特定场景使用，可不填
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 过滤条件组合
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 检索的起始时间，可不传
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 检索的截止时间，可不传
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序所用到的字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeNatFwDnatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatFwDnatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Index")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatFwDnatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatFwDnatRuleResponseParams struct {
+	// Dnat规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*DescNatDnatRule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 列表总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNatFwDnatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNatFwDnatRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeNatFwDnatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatFwDnatRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11181,6 +11333,14 @@ type VpcFwGroupInfo struct {
 	// 跨租户模式 1管理员 2单边 0 非跨租户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossUserMode *string `json:"CrossUserMode,omitnil,omitempty" name:"CrossUserMode"`
+
+	// 云联网模式下，当前实例是否需要开启重叠路由开关，1：需要开启，0：不需要开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedSwitchCcnOverlap *int64 `json:"NeedSwitchCcnOverlap,omitnil,omitempty" name:"NeedSwitchCcnOverlap"`
+
+	// 云联网模式下，实例关联的云联网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type VpcFwInstance struct {

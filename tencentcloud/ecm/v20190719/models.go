@@ -10047,6 +10047,12 @@ type ModifyVpcAttributeRequestParams struct {
 
 	// 私有网络描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// DNS地址，最多支持4个，第1个默认为主，其余为备。	
+	DnsServers []*string `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
+
+	// 域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 }
 
 type ModifyVpcAttributeRequest struct {
@@ -10066,6 +10072,12 @@ type ModifyVpcAttributeRequest struct {
 
 	// 私有网络描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// DNS地址，最多支持4个，第1个默认为主，其余为备。	
+	DnsServers []*string `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
+
+	// 域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 }
 
 func (r *ModifyVpcAttributeRequest) ToJsonString() string {
@@ -10085,6 +10097,8 @@ func (r *ModifyVpcAttributeRequest) FromJsonString(s string) error {
 	delete(f, "VpcName")
 	delete(f, "Tags")
 	delete(f, "Description")
+	delete(f, "DnsServers")
+	delete(f, "DomainName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcAttributeRequest has unknown keys!", "")
 	}

@@ -59,6 +59,9 @@ type CreateProbeTasksRequestParams struct {
 
 	// 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
+
+	// 供应商子账户同步标志
+	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
 }
 
 type CreateProbeTasksRequest struct {
@@ -101,6 +104,9 @@ type CreateProbeTasksRequest struct {
 
 	// 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
+
+	// 供应商子账户同步标志
+	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
 }
 
 func (r *CreateProbeTasksRequest) ToJsonString() string {
@@ -127,6 +133,7 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 	delete(f, "PluginSource")
 	delete(f, "ClientNum")
 	delete(f, "NodeIpType")
+	delete(f, "SubSyncFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProbeTasksRequest has unknown keys!", "")
 	}

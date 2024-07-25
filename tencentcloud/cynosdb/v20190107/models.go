@@ -1785,6 +1785,12 @@ type CreateCLSDeliveryRequestParams struct {
 
 	// 日志投递配置
 	CLSInfoList []*CLSInfo `json:"CLSInfoList,omitnil,omitempty" name:"CLSInfoList"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 type CreateCLSDeliveryRequest struct {
@@ -1795,6 +1801,12 @@ type CreateCLSDeliveryRequest struct {
 
 	// 日志投递配置
 	CLSInfoList []*CLSInfo `json:"CLSInfoList,omitnil,omitempty" name:"CLSInfoList"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 func (r *CreateCLSDeliveryRequest) ToJsonString() string {
@@ -1811,6 +1823,8 @@ func (r *CreateCLSDeliveryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "CLSInfoList")
+	delete(f, "LogType")
+	delete(f, "IsInMaintainPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -4002,6 +4016,12 @@ type DeleteCLSDeliveryRequestParams struct {
 
 	// 日志主题id
 	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 type DeleteCLSDeliveryRequest struct {
@@ -4012,6 +4032,12 @@ type DeleteCLSDeliveryRequest struct {
 
 	// 日志主题id
 	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 func (r *DeleteCLSDeliveryRequest) ToJsonString() string {
@@ -4028,6 +4054,8 @@ func (r *DeleteCLSDeliveryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "CLSTopicIds")
+	delete(f, "LogType")
+	delete(f, "IsInMaintainPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -6307,6 +6335,9 @@ func (r *DescribeFlowResponse) FromJsonString(s string) error {
 type DescribeInstanceCLSLogDeliveryRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
 type DescribeInstanceCLSLogDeliveryRequest struct {
@@ -6314,6 +6345,9 @@ type DescribeInstanceCLSLogDeliveryRequest struct {
 	
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
 func (r *DescribeInstanceCLSLogDeliveryRequest) ToJsonString() string {
@@ -6329,6 +6363,7 @@ func (r *DescribeInstanceCLSLogDeliveryRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "LogType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceCLSLogDeliveryRequest has unknown keys!", "")
 	}
@@ -9224,6 +9259,10 @@ type InstanceCLSDeliveryInfo struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 日志类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
 type InstanceInitInfo struct {
@@ -14618,6 +14657,12 @@ type StartCLSDeliveryRequestParams struct {
 
 	// 开通的日志主题id
 	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 type StartCLSDeliveryRequest struct {
@@ -14628,6 +14673,12 @@ type StartCLSDeliveryRequest struct {
 
 	// 开通的日志主题id
 	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 func (r *StartCLSDeliveryRequest) ToJsonString() string {
@@ -14644,6 +14695,8 @@ func (r *StartCLSDeliveryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "CLSTopicIds")
+	delete(f, "LogType")
+	delete(f, "IsInMaintainPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartCLSDeliveryRequest has unknown keys!", "")
 	}
@@ -14682,6 +14735,12 @@ type StopCLSDeliveryRequestParams struct {
 
 	// 日志主题id
 	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 type StopCLSDeliveryRequest struct {
@@ -14692,6 +14751,12 @@ type StopCLSDeliveryRequest struct {
 
 	// 日志主题id
 	CLSTopicIds []*string `json:"CLSTopicIds,omitnil,omitempty" name:"CLSTopicIds"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 是否维护时间运行
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 func (r *StopCLSDeliveryRequest) ToJsonString() string {
@@ -14708,6 +14773,8 @@ func (r *StopCLSDeliveryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "CLSTopicIds")
+	delete(f, "LogType")
+	delete(f, "IsInMaintainPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopCLSDeliveryRequest has unknown keys!", "")
 	}

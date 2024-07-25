@@ -32,6 +32,12 @@ const (
 	// 免费资源包余量已用尽，请购买资源包或开通后付费。
 	FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
 
+	// 水印图解码失败
+	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+
+	// LogoUrl或LogoImage有误，水印图下载失败。
+	FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+
 	// 资源包余量已用尽，请购买资源包或开通后付费。
 	FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
 
@@ -56,6 +62,12 @@ const (
 	// 模型不存在。
 	INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 
+	// 参数字段或者值有误
+	INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// 图片可能包含敏感信息，请重试
+	OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
 )

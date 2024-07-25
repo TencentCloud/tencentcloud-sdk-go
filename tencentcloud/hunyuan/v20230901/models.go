@@ -281,7 +281,7 @@ type Content struct {
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
-	// 如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64" 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"
+	// 如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *ImageUrl `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
@@ -462,6 +462,31 @@ type ImageUrl struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
+type LogoParam struct {
+	// 水印url
+	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
+
+	// 水印base64，url和base64二选一传入
+	LogoImage *string `json:"LogoImage,omitnil,omitempty" name:"LogoImage"`
+
+	// 水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+	LogoRect *LogoRect `json:"LogoRect,omitnil,omitempty" name:"LogoRect"`
+}
+
+type LogoRect struct {
+	// 左上角X坐标
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 左上角Y坐标
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// 方框宽度
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 方框高度
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
 type Message struct {
 	// 角色，可选值包括 system、user、assistant、 tool。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
@@ -594,6 +619,21 @@ type SubmitHunyuanImageJobRequestParams struct {
 	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
+	// 图片生成数量。
+	// 支持1 ~ 4张，默认生成1张。
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 随机种子，默认随机。
+	// 不传：随机种子生成。
+	// 正数：固定种子生成。
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+
 	// 为生成结果图添加显式水印标识的开关，默认为1。  
 	// 1：添加。  
 	// 0：不添加。  
@@ -601,11 +641,9 @@ type SubmitHunyuanImageJobRequestParams struct {
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
-	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
-	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
-	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 type SubmitHunyuanImageJobRequest struct {
@@ -625,6 +663,21 @@ type SubmitHunyuanImageJobRequest struct {
 	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
+	// 图片生成数量。
+	// 支持1 ~ 4张，默认生成1张。
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 随机种子，默认随机。
+	// 不传：随机种子生成。
+	// 正数：固定种子生成。
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+
 	// 为生成结果图添加显式水印标识的开关，默认为1。  
 	// 1：添加。  
 	// 0：不添加。  
@@ -632,11 +685,9 @@ type SubmitHunyuanImageJobRequest struct {
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
-	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
-	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
-	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 func (r *SubmitHunyuanImageJobRequest) ToJsonString() string {
@@ -654,8 +705,11 @@ func (r *SubmitHunyuanImageJobRequest) FromJsonString(s string) error {
 	delete(f, "Prompt")
 	delete(f, "Style")
 	delete(f, "Resolution")
-	delete(f, "LogoAdd")
+	delete(f, "Num")
+	delete(f, "Seed")
 	delete(f, "Revise")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanImageJobRequest has unknown keys!", "")
 	}
@@ -714,6 +768,10 @@ type TextToImageLiteRequestParams struct {
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
@@ -746,6 +804,10 @@ type TextToImageLiteRequest struct {
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
@@ -767,6 +829,7 @@ func (r *TextToImageLiteRequest) FromJsonString(s string) error {
 	delete(f, "Style")
 	delete(f, "Resolution")
 	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToImageLiteRequest has unknown keys!", "")

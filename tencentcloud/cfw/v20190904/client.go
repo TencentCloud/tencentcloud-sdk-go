@@ -3363,6 +3363,61 @@ func (c *Client) DescribeNatAcRuleWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeNatFwDnatRuleRequest() (request *DescribeNatFwDnatRuleRequest) {
+    request = &DescribeNatFwDnatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwDnatRule")
+    
+    
+    return
+}
+
+func NewDescribeNatFwDnatRuleResponse() (response *DescribeNatFwDnatRuleResponse) {
+    response = &DescribeNatFwDnatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNatFwDnatRule
+// 查询Nat防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNatFwDnatRule(request *DescribeNatFwDnatRuleRequest) (response *DescribeNatFwDnatRuleResponse, err error) {
+    return c.DescribeNatFwDnatRuleWithContext(context.Background(), request)
+}
+
+// DescribeNatFwDnatRule
+// 查询Nat防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNatFwDnatRuleWithContext(ctx context.Context, request *DescribeNatFwDnatRuleRequest) (response *DescribeNatFwDnatRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatFwDnatRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwDnatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatFwDnatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatFwInfoCountRequest() (request *DescribeNatFwInfoCountRequest) {
     request = &DescribeNatFwInfoCountRequest{
         BaseRequest: &tchttp.BaseRequest{},

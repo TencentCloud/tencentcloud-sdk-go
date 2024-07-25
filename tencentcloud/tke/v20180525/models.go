@@ -12174,6 +12174,83 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeReservedInstanceUtilizationRateRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+}
+
+type DescribeReservedInstanceUtilizationRateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+}
+
+func (r *DescribeReservedInstanceUtilizationRateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedInstanceUtilizationRateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "ClusterId")
+	delete(f, "NodeName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedInstanceUtilizationRateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReservedInstanceUtilizationRateResponseParams struct {
+	// 预留券使用率
+	UtilizationRateSet []*ReservedInstanceUtilizationRate `json:"UtilizationRateSet,omitnil,omitempty" name:"UtilizationRateSet"`
+
+	// 按量计费的 Pod 总数
+	PodNum *uint64 `json:"PodNum,omitnil,omitempty" name:"PodNum"`
+
+	//  Pod 被预留券抵扣的抵扣率
+	PodRate *float64 `json:"PodRate,omitnil,omitempty" name:"PodRate"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReservedInstanceUtilizationRateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReservedInstanceUtilizationRateResponseParams `json:"Response"`
+}
+
+func (r *DescribeReservedInstanceUtilizationRateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedInstanceUtilizationRateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReservedInstancesRequestParams struct {
 	// 偏移量，默认0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -18638,6 +18715,48 @@ type ReservedInstanceSpec struct {
 
 	// GPU卡数，当Type为GPU类型时设置。
 	Gpu *float64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
+}
+
+type ReservedInstanceUtilizationRate struct {
+	// 使用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rate *float64 `json:"Rate,omitnil,omitempty" name:"Rate"`
+
+	// 预留券数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPU *float64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// 内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	//  预留券类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// GPU 卡数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuNum *string `json:"GpuNum,omitnil,omitempty" name:"GpuNum"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 集群 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// Pod 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodNum *uint64 `json:"PodNum,omitnil,omitempty" name:"PodNum"`
 }
 
 type ResourceDeleteOption struct {

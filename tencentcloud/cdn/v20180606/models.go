@@ -6974,6 +6974,10 @@ type DetailDomain struct {
 	// 其他厂商对象存储回源鉴权
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OthersPrivateAccess *OthersPrivateAccess `json:"OthersPrivateAccess,omitnil,omitempty" name:"OthersPrivateAccess"`
+
+	// 参数黑名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamFilter *ParamFilter `json:"ParamFilter,omitnil,omitempty" name:"ParamFilter"`
 }
 
 type DiagnoseData struct {
@@ -10186,6 +10190,30 @@ type OverseaConfig struct {
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitnil,omitempty" name:"QnPrivateAccess"`
 }
 
+type ParamFilter struct {
+	//  参数黑名单开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 参数黑名单规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterRules []*ParamFilterRule `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
+}
+
+type ParamFilterRule struct {
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 参数值数组, 小于10个
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// http 返回码 ( 暂仅支持403)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnCode *string `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+}
+
 type PathBasedOriginRule struct {
 	// 规则类型：
 	// file：指定文件后缀生效
@@ -12304,6 +12332,9 @@ type UpdateDomainConfigRequestParams struct {
 
 	// HTTPS服务（收费服务，详见计费说明和产品文档）
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitnil,omitempty" name:"HttpsBilling"`
+
+	// 参数黑名单
+	ParamFilter *ParamFilter `json:"ParamFilter,omitnil,omitempty" name:"ParamFilter"`
 }
 
 type UpdateDomainConfigRequest struct {
@@ -12463,6 +12494,9 @@ type UpdateDomainConfigRequest struct {
 
 	// HTTPS服务（收费服务，详见计费说明和产品文档）
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitnil,omitempty" name:"HttpsBilling"`
+
+	// 参数黑名单
+	ParamFilter *ParamFilter `json:"ParamFilter,omitnil,omitempty" name:"ParamFilter"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -12526,6 +12560,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "QnPrivateAccess")
 	delete(f, "OthersPrivateAccess")
 	delete(f, "HttpsBilling")
+	delete(f, "ParamFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}

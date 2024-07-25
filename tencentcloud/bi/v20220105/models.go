@@ -596,7 +596,7 @@ type CreateEmbedTokenRequestParams struct {
 	// 分享页面id，嵌出看板时此为空值0
 	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// page表示嵌出页面，panel表嵌出整个看板
+	// page表示嵌出页面，panel表示嵌出整个看板
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
@@ -665,7 +665,7 @@ type CreateEmbedTokenRequest struct {
 	// 分享页面id，嵌出看板时此为空值0
 	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// page表示嵌出页面，panel表嵌出整个看板
+	// page表示嵌出页面，panel表示嵌出整个看板
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240

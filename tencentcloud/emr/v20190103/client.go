@@ -1720,6 +1720,57 @@ func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeTrinoQueryInfoRequest() (request *DescribeTrinoQueryInfoRequest) {
+    request = &DescribeTrinoQueryInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeTrinoQueryInfo")
+    
+    
+    return
+}
+
+func NewDescribeTrinoQueryInfoResponse() (response *DescribeTrinoQueryInfoResponse) {
+    response = &DescribeTrinoQueryInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrinoQueryInfo
+// 获取trino查询结果
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeTrinoQueryInfo(request *DescribeTrinoQueryInfoRequest) (response *DescribeTrinoQueryInfoResponse, err error) {
+    return c.DescribeTrinoQueryInfoWithContext(context.Background(), request)
+}
+
+// DescribeTrinoQueryInfo
+// 获取trino查询结果
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeTrinoQueryInfoWithContext(ctx context.Context, request *DescribeTrinoQueryInfoRequest) (response *DescribeTrinoQueryInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrinoQueryInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrinoQueryInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrinoQueryInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsersForUserManagerRequest() (request *DescribeUsersForUserManagerRequest) {
     request = &DescribeUsersForUserManagerRequest{
         BaseRequest: &tchttp.BaseRequest{},

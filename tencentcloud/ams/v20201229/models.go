@@ -42,7 +42,7 @@ type AudioResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
+	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
@@ -68,6 +68,15 @@ type AudioResult struct {
 	// 识别类标签结果信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
+
+	// 说话人结果
+	SpeakerResults []*SpeakerResults `json:"SpeakerResults,omitnil,omitempty" name:"SpeakerResults"`
+
+	// 歌曲识别结果
+	LabelResults []*LabelResults `json:"LabelResults,omitnil,omitempty" name:"LabelResults"`
+
+	// 出行结果
+	TravelResults []*TravelResults `json:"TravelResults,omitnil,omitempty" name:"TravelResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -107,6 +116,8 @@ type AudioResultDetailMoanResult struct {
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// *内测中，敬请期待*
+	//
+	// Deprecated: SubLabelCode is deprecated.
 	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
@@ -177,6 +188,10 @@ type AudioSegments struct {
 	// 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *AudioResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 }
 
 type BucketInfo struct {
@@ -408,10 +423,10 @@ type CreateAudioModerationTaskRequestParams struct {
 	// 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
+	// 验证签名参数，具体可以参考[验签说明](https://cloud.tencent.com/document/product/1219/104000#42dd87d2-580f-46cf-a953-639a787d1eda)。
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
+	// 接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1219/104000)。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户
@@ -430,10 +445,10 @@ type CreateAudioModerationTaskRequest struct {
 	// 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
+	// 验证签名参数，具体可以参考[验签说明](https://cloud.tencent.com/document/product/1219/104000#42dd87d2-580f-46cf-a953-639a787d1eda)。
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
+	// 接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1219/104000)。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户
@@ -598,6 +613,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
+	// 媒体信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaInfo *MediaInfo `json:"MediaInfo,omitnil,omitempty" name:"MediaInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -726,6 +745,36 @@ type InputInfo struct {
 	BucketInfo *BucketInfo `json:"BucketInfo,omitnil,omitempty" name:"BucketInfo"`
 }
 
+type LabelResults struct {
+	// 场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *int64 `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 名称：歌曲名，语种名，说话人名 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 得分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 type MediaInfo struct {
 	// 该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
 	Codecs *string `json:"Codecs,omitnil,omitempty" name:"Codecs"`
@@ -776,6 +825,24 @@ type RecognitionResult struct {
 	// 识别标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type SpeakerResults struct {
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 得分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type StorageInfo struct {
@@ -851,6 +918,10 @@ type TaskData struct {
 	// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// 任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputInfo *InputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 }
 
 type TaskFilter struct {
@@ -955,6 +1026,36 @@ type TextResult struct {
 	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+}
+
+type TravelResults struct {
+	// 一级标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 二级标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 出行音频角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioRole *string `json:"AudioRole,omitnil,omitempty" name:"AudioRole"`
+
+	// 出行语音文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type User struct {

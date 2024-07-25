@@ -3140,6 +3140,95 @@ func (r *DescribeResourceScheduleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTrinoQueryInfoRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+type DescribeTrinoQueryInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+func (r *DescribeTrinoQueryInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrinoQueryInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrinoQueryInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrinoQueryInfoResponseParams struct {
+	// 总数，分页查询时使用
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 查询结果数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryInfoList []*TrinoQueryInfo `json:"QueryInfoList,omitnil,omitempty" name:"QueryInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTrinoQueryInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrinoQueryInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrinoQueryInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrinoQueryInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUsersForUserManagerRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4249,9 +4338,6 @@ type InquiryPriceRenewInstanceRequestParams struct {
 	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
 	// 实例计费模式。此处只支持取值为1，表示包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
@@ -4262,6 +4348,9 @@ type InquiryPriceRenewInstanceRequestParams struct {
 	// 货币种类。取值范围：
 	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
 	// 是否按量转包年包月。0：否，1：是。
 	ModifyPayMode *int64 `json:"ModifyPayMode,omitnil,omitempty" name:"ModifyPayMode"`
@@ -4276,9 +4365,6 @@ type InquiryPriceRenewInstanceRequest struct {
 	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
 	// 实例计费模式。此处只支持取值为1，表示包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
@@ -4289,6 +4375,9 @@ type InquiryPriceRenewInstanceRequest struct {
 	// 货币种类。取值范围：
 	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
 	// 是否按量转包年包月。0：否，1：是。
 	ModifyPayMode *int64 `json:"ModifyPayMode,omitnil,omitempty" name:"ModifyPayMode"`
@@ -4308,10 +4397,10 @@ func (r *InquiryPriceRenewInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TimeSpan")
 	delete(f, "ResourceIds")
-	delete(f, "Placement")
 	delete(f, "PayMode")
 	delete(f, "TimeUnit")
 	delete(f, "Currency")
+	delete(f, "Placement")
 	delete(f, "ModifyPayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRenewInstanceRequest has unknown keys!", "")
@@ -4537,13 +4626,13 @@ type InquiryPriceUpdateInstanceRequestParams struct {
 	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 节点变配的目标配置。
-	UpdateSpec *UpdateInstanceSettings `json:"UpdateSpec,omitnil,omitempty" name:"UpdateSpec"`
-
 	// 实例计费模式。取值范围：
 	// <li>0：表示按量计费。</li>
 	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 节点变配的目标配置。
+	UpdateSpec *UpdateInstanceSettings `json:"UpdateSpec,omitnil,omitempty" name:"UpdateSpec"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
@@ -4569,13 +4658,13 @@ type InquiryPriceUpdateInstanceRequest struct {
 	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 节点变配的目标配置。
-	UpdateSpec *UpdateInstanceSettings `json:"UpdateSpec,omitnil,omitempty" name:"UpdateSpec"`
-
 	// 实例计费模式。取值范围：
 	// <li>0：表示按量计费。</li>
 	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 节点变配的目标配置。
+	UpdateSpec *UpdateInstanceSettings `json:"UpdateSpec,omitnil,omitempty" name:"UpdateSpec"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
@@ -4602,8 +4691,8 @@ func (r *InquiryPriceUpdateInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TimeUnit")
 	delete(f, "TimeSpan")
-	delete(f, "UpdateSpec")
 	delete(f, "PayMode")
+	delete(f, "UpdateSpec")
 	delete(f, "Placement")
 	delete(f, "Currency")
 	delete(f, "ResourceIdList")
@@ -4636,6 +4725,10 @@ type InquiryPriceUpdateInstanceResponseParams struct {
 	// 价格详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceDetail []*PriceDetail `json:"PriceDetail,omitnil,omitempty" name:"PriceDetail"`
+
+	// 新配置价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewConfigPrice *PriceResult `json:"NewConfigPrice,omitnil,omitempty" name:"NewConfigPrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4842,28 +4935,9 @@ type LoadAutoScaleStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleNum *int64 `json:"ScaleNum,omitnil,omitempty" name:"ScaleNum"`
 
-	// 扩缩容负载指标。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadMetrics *string `json:"LoadMetrics,omitnil,omitempty" name:"LoadMetrics"`
-
-	// 规则元数据记录ID。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
-
-	// 规则统计周期，提供300s,600s,900s。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatisticPeriod *int64 `json:"StatisticPeriod,omitnil,omitempty" name:"StatisticPeriod"`
-
 	// 指标处理方法，1表示MAX，2表示MIN，3表示AVG。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessMethod *int64 `json:"ProcessMethod,omitnil,omitempty" name:"ProcessMethod"`
-
-	// 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-	TriggerThreshold *int64 `json:"TriggerThreshold,omitnil,omitempty" name:"TriggerThreshold"`
-
-	// 条件触发数组。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TriggerConditions *TriggerConditions `json:"TriggerConditions,omitnil,omitempty" name:"TriggerConditions"`
 
 	// 规则优先级，添加时无效，默认为自增。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6394,6 +6468,16 @@ type PriceResource struct {
 	// 本地盘的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskNum *int64 `json:"LocalDiskNum,omitnil,omitempty" name:"LocalDiskNum"`
+}
+
+type PriceResult struct {
+	// 原价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCost *float64 `json:"OriginalCost,omitnil,omitempty" name:"OriginalCost"`
+
+	// 折扣价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountCost *float64 `json:"DiscountCost,omitnil,omitempty" name:"DiscountCost"`
 }
 
 type QuotaEntity struct {
@@ -7966,10 +8050,82 @@ type TriggerCondition struct {
 	Threshold *float64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
 }
 
-type TriggerConditions struct {
-	// 规则触发条件数组。
+type TrinoQueryInfo struct {
+	// catalog
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Conditions []*TriggerCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// 提交IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIpAddr *string `json:"ClientIpAddr,omitnil,omitempty" name:"ClientIpAddr"`
+
+	// 切片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompletedSplits *string `json:"CompletedSplits,omitnil,omitempty" name:"CompletedSplits"`
+
+	// CPU时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTime *int64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
+
+	// 累计内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CumulativeMemory *int64 `json:"CumulativeMemory,omitnil,omitempty" name:"CumulativeMemory"`
+
+	// 执行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationMillis *int64 `json:"DurationMillis,omitnil,omitempty" name:"DurationMillis"`
+
+	// 结束时间 (s)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 内部传输量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalNetworkBytes *int64 `json:"InternalNetworkBytes,omitnil,omitempty" name:"InternalNetworkBytes"`
+
+	// 输出字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputBytes *int64 `json:"OutputBytes,omitnil,omitempty" name:"OutputBytes"`
+
+	// 峰值内存量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeakUserMemoryBytes *int64 `json:"PeakUserMemoryBytes,omitnil,omitempty" name:"PeakUserMemoryBytes"`
+
+	// 物理输入量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalInputBytes *int64 `json:"PhysicalInputBytes,omitnil,omitempty" name:"PhysicalInputBytes"`
+
+	// 处理输入量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessedInputBytes *int64 `json:"ProcessedInputBytes,omitnil,omitempty" name:"ProcessedInputBytes"`
+
+	// 编译时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlCompileTime *int64 `json:"SqlCompileTime,omitnil,omitempty" name:"SqlCompileTime"`
+
+	// 开始时间 (s)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 执行语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statement *string `json:"Statement,omitnil,omitempty" name:"Statement"`
+
+	// 提交用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 写入字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WrittenBytes *int64 `json:"WrittenBytes,omitnil,omitempty" name:"WrittenBytes"`
 }
 
 type UpdateInstanceSettings struct {

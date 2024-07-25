@@ -42,7 +42,7 @@ type AudioResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
+	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
@@ -417,11 +417,11 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+	// 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSegments []*ImageSegments `json:"ImageSegments,omitnil,omitempty" name:"ImageSegments"`
 
-	// 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+	// 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil,omitempty" name:"AudioSegments"`
 
@@ -438,6 +438,22 @@ type DescribeTaskDetailResponseParams struct {
 	// 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 该字段用于返回检测结果明细数据相关的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentCosUrlList *SegmentCosUrlList `json:"SegmentCosUrlList,omitnil,omitempty" name:"SegmentCosUrlList"`
+
+	// 该字段用于返回音频审核的ASR识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
+
+	// 在秒后重试
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TryInSeconds *int64 `json:"TryInSeconds,omitnil,omitempty" name:"TryInSeconds"`
+
+	// 该字段用于返回音频文件识别出的对应文本内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Asrs []*RcbAsr `json:"Asrs,omitnil,omitempty" name:"Asrs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -575,7 +591,7 @@ type ImageResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*ImageResultResult `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 该字段用于返回审核结果的访问链接（URL），图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式。<br>备注：数据**默认有效期为12小时**。如您需要更长时间的保存，请在数据储存的COS桶中配置对应的储存时长。
+	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
@@ -586,6 +602,10 @@ type ImageResult struct {
 	// 该字段用于返回当前标签（Lable）下的二级标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
 }
 
 type ImageResultResult struct {
@@ -668,6 +688,10 @@ type ImageResultsResultDetail struct {
 	// 该字段用于返回恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
+
+	// 该字段用于返回恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 }
 
 type ImageResultsResultDetailLocation struct {
@@ -698,6 +722,14 @@ type ImageSegments struct {
 
 	// 该字段用于返回视频片段的具体截帧审核结果，详细内容敬请参考ImageResult数据结构的描述。
 	Result *ImageResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 该字段用于返回视频片段的具体截帧审核时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 该字段用于返回视频片段的截帧时间，单位为豪秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OffsetusTime *string `json:"OffsetusTime,omitnil,omitempty" name:"OffsetusTime"`
 }
 
 type InputInfo struct {
@@ -719,6 +751,16 @@ type MediaInfo struct {
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
+type RcbAsr struct {
+	// 该字段用于返回音频文件识别出的对应文本内容，最大支持前1000个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+}
+
 type RecognitionResult struct {
 	// 可能的取值有：Teenager 、Gender
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -727,6 +769,28 @@ type RecognitionResult struct {
 	// 识别标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type SegmentCosUrlList struct {
+	// 全量图片片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageAllUrl *string `json:"ImageAllUrl,omitnil,omitempty" name:"ImageAllUrl"`
+
+	// 全量音频片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioAllUrl *string `json:"AudioAllUrl,omitnil,omitempty" name:"AudioAllUrl"`
+
+	// 违规图片片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageBlockUrl *string `json:"ImageBlockUrl,omitnil,omitempty" name:"ImageBlockUrl"`
+
+	// 违规音频片段的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioBlockUrl *string `json:"AudioBlockUrl,omitnil,omitempty" name:"AudioBlockUrl"`
+
+	// 全量音频识别文本的cos url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrUrl *string `json:"AsrUrl,omitnil,omitempty" name:"AsrUrl"`
 }
 
 type StorageInfo struct {
