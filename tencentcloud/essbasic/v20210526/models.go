@@ -7421,6 +7421,9 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// - FINANCE : 财务专用章
 	// - PERSONNEL : 人事专用章
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// 他方授权给我方：- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
 }
 
 type CreatePartnerAutoSignAuthUrlRequest struct {
@@ -7458,6 +7461,9 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 	// - FINANCE : 财务专用章
 	// - PERSONNEL : 人事专用章
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// 他方授权给我方：- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
 }
 
 func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -7477,6 +7483,7 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedOrganizationName")
 	delete(f, "PlatformAppAuthorization")
 	delete(f, "SealTypes")
+	delete(f, "AuthToMe")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAutoSignAuthUrlRequest has unknown keys!", "")
 	}

@@ -4152,3 +4152,56 @@ func (c *Client) UnbindDocumentFromRoomWithContext(ctx context.Context, request 
     err = c.Send(request, response)
     return
 }
+
+func NewUnblockKickedUserRequest() (request *UnblockKickedUserRequest) {
+    request = &UnblockKickedUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "UnblockKickedUser")
+    
+    
+    return
+}
+
+func NewUnblockKickedUserResponse() (response *UnblockKickedUserResponse) {
+    response = &UnblockKickedUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnblockKickedUser
+// 解禁从房间里面踢出的用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) UnblockKickedUser(request *UnblockKickedUserRequest) (response *UnblockKickedUserResponse, err error) {
+    return c.UnblockKickedUserWithContext(context.Background(), request)
+}
+
+// UnblockKickedUser
+// 解禁从房间里面踢出的用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) UnblockKickedUserWithContext(ctx context.Context, request *UnblockKickedUserRequest) (response *UnblockKickedUserResponse, err error) {
+    if request == nil {
+        request = NewUnblockKickedUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnblockKickedUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnblockKickedUserResponse()
+    err = c.Send(request, response)
+    return
+}

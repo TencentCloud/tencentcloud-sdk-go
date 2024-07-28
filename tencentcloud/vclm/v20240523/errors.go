@@ -62,6 +62,9 @@ const (
 	// 任务队列已满，请稍后重试。
 	FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
 
+	// 音频审核失败
+	FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+
 	// 内容审核不通过。
 	FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
 
@@ -115,6 +118,21 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 不支持的音频时长。
+	INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+
+	// 不支持的图片长宽比。
+	INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+
+	// 不支持的图片格式
+	INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+
+	// 图片分辨率超限。
+	INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+
+	// 不支持的图片大小
+	INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
 
 	// 不支持的视频宽高比。
 	INVALIDPARAMETERVALUE_INVALIDVIDEOASPECTRATIO = "InvalidParameterValue.InvalidVideoAspectRatio"

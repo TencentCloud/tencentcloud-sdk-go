@@ -20,12 +20,159 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ActionFieldConfigDetail struct {
+	// 组件类型
+	// 可选项如下：
+	// input  文本框
+	// textarea  多行文本框
+	// number  数值输入框
+	// select   选择器
+	// cascader  级联选择器
+	// radio  单选
+	// time   时间选择
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 组件label
+	Lable *string `json:"Lable,omitnil,omitempty" name:"Lable"`
+
+	// 组件唯一标识， 传回后端时的key
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
+
+	// 默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 支持配置项如下,可根据需要选择配置项，不需要配置是设置空{}：
+	// 
+	// {
+	// 
+	//   placeholder: string (占位符)
+	// 
+	//   tooltip: string (提示信息)
+	// 
+	//   reg: RegExp (对输入内容格式进行正则校验的规则)
+	// 
+	//   max: number (对于输入框，限制最大输入字符数，对于数值输入框，设置上限)
+	// 
+	//   min: number (对于数值输入框，设置下限)
+	// 
+	//   step: number (设置数值输入框的步长，默认为1)
+	// 
+	//   format: string (时间选择的格式，如YYYY-MM-DD表示年月日, YYYY-MM-DD HH:mm:ss 表示时分秒)
+	// 
+	//   separator:  string[] (多行输入框的分隔符，不传或者为空时表示不分隔，直接返回用户输入的文本字符串)
+	// 
+	//   multiple: boolean (是否多选,对选择器和级联选择器有效)
+	// 
+	//   options:  选择器的选项【支持以下两种形式】
+	// 
+	// 直接给定选项数组  { value: string; label: string }[]
+	// 通过调接口获取选项                                                                                                                                       { api: string(接口地址),                                                                                                                                       params: string[] (接口参数,对应于参数配置的field，前端根据field对应的所有组件的输入值作为参数查询数据， 为空时在组件加载时直接请求数据)                                                                                                    }
+	// }
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 是否必填 (0 -- 否   1-- 是)
+	Required *uint64 `json:"Required,omitnil,omitempty" name:"Required"`
+
+	// compute配置依赖的其他field满足的条件时通过校验（如：三个表单项中必须至少有一个填写了）
+	// 
+	// [fieldName,
+	// 
+	// { config:  此项保留，等待后面具体场景细化  }
+	// 
+	// ]
+	Validate *string `json:"Validate,omitnil,omitempty" name:"Validate"`
+
+	// 是否可见
+	Visible *string `json:"Visible,omitnil,omitempty" name:"Visible"`
+}
+
+type ActionFieldConfigResult struct {
+	// 动作ID
+	ActionId *uint64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// 动作名称
+	ActionName *string `json:"ActionName,omitnil,omitempty" name:"ActionName"`
+
+	// 动作对应的栏位配置详情
+	ConfigDetail []*ActionFieldConfigDetail `json:"ConfigDetail,omitnil,omitempty" name:"ConfigDetail"`
+}
+
 type ActionFilter struct {
 	// 关键字
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
 	// 搜索内容值
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type ActionLibraryListResult struct {
+	// 动作名称
+	ActionName *string `json:"ActionName,omitnil,omitempty" name:"ActionName"`
+
+	// 动作描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 动作类型。范围：["平台","自定义"]
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 创建人
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 动作风险描述
+	RiskDesc *string `json:"RiskDesc,omitnil,omitempty" name:"RiskDesc"`
+
+	// 动作ID
+	ActionId *uint64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// 动作属性（ 1：故障  2：恢复）
+	AttributeId *uint64 `json:"AttributeId,omitnil,omitempty" name:"AttributeId"`
+
+	// 关联的动作ID
+	RelationActionId *uint64 `json:"RelationActionId,omitnil,omitempty" name:"RelationActionId"`
+
+	// 操作命令
+	ActionCommand *string `json:"ActionCommand,omitnil,omitempty" name:"ActionCommand"`
+
+	// 动作类型( 0 -- tat   1 -- 云API）
+	ActionCommandType *uint64 `json:"ActionCommandType,omitnil,omitempty" name:"ActionCommandType"`
+
+	// 自定义动作的参数，json string
+	ActionContent *string `json:"ActionContent,omitnil,omitempty" name:"ActionContent"`
+
+	// 二级分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 动作描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionDetail *string `json:"ActionDetail,omitnil,omitempty" name:"ActionDetail"`
+
+	// 是否允许当前账号使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAllowed *bool `json:"IsAllowed,omitnil,omitempty" name:"IsAllowed"`
+
+	// 最佳实践案例的链接地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionBestCase *string `json:"ActionBestCase,omitnil,omitempty" name:"ActionBestCase"`
+
+	// 对象类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// 监控指标ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricIdList []*uint64 `json:"MetricIdList,omitnil,omitempty" name:"MetricIdList"`
+
+	// 是否是新动作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNewAction *bool `json:"IsNewAction,omitnil,omitempty" name:"IsNewAction"`
 }
 
 type ApmServiceInfo struct {
@@ -40,6 +187,105 @@ type ApmServiceInfo struct {
 	// 地域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+}
+
+// Predefined struct for user
+type CreateTaskFromActionRequestParams struct {
+	// 动作ID，可从动作列表接口DescribeActionLibraryList获取
+	TaskActionId *uint64 `json:"TaskActionId,omitnil,omitempty" name:"TaskActionId"`
+
+	// 参与演练的实例ID
+	TaskInstances []*string `json:"TaskInstances,omitnil,omitempty" name:"TaskInstances"`
+
+	// 演练名称，不填则默认取动作名称
+	TaskTitle *string `json:"TaskTitle,omitnil,omitempty" name:"TaskTitle"`
+
+	// 演练描述，不填则默认取动作描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 动作通用参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数
+	TaskActionGeneralConfiguration *string `json:"TaskActionGeneralConfiguration,omitnil,omitempty" name:"TaskActionGeneralConfiguration"`
+
+	// 动作自定义参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数，注意：必填参数，是没有默认值的 ，务必保证传入有效值
+	TaskActionCustomConfiguration *string `json:"TaskActionCustomConfiguration,omitnil,omitempty" name:"TaskActionCustomConfiguration"`
+
+	// 演练自动暂停时间，单位分钟, 不填则默认为60
+	TaskPauseDuration *uint64 `json:"TaskPauseDuration,omitnil,omitempty" name:"TaskPauseDuration"`
+}
+
+type CreateTaskFromActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 动作ID，可从动作列表接口DescribeActionLibraryList获取
+	TaskActionId *uint64 `json:"TaskActionId,omitnil,omitempty" name:"TaskActionId"`
+
+	// 参与演练的实例ID
+	TaskInstances []*string `json:"TaskInstances,omitnil,omitempty" name:"TaskInstances"`
+
+	// 演练名称，不填则默认取动作名称
+	TaskTitle *string `json:"TaskTitle,omitnil,omitempty" name:"TaskTitle"`
+
+	// 演练描述，不填则默认取动作描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 动作通用参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数
+	TaskActionGeneralConfiguration *string `json:"TaskActionGeneralConfiguration,omitnil,omitempty" name:"TaskActionGeneralConfiguration"`
+
+	// 动作自定义参数，需要json序列化传入，可以从动作详情接口DescribeActionFieldConfigList获取，不填默认使用动作默认参数，注意：必填参数，是没有默认值的 ，务必保证传入有效值
+	TaskActionCustomConfiguration *string `json:"TaskActionCustomConfiguration,omitnil,omitempty" name:"TaskActionCustomConfiguration"`
+
+	// 演练自动暂停时间，单位分钟, 不填则默认为60
+	TaskPauseDuration *uint64 `json:"TaskPauseDuration,omitnil,omitempty" name:"TaskPauseDuration"`
+}
+
+func (r *CreateTaskFromActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFromActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskActionId")
+	delete(f, "TaskInstances")
+	delete(f, "TaskTitle")
+	delete(f, "TaskDescription")
+	delete(f, "TaskActionGeneralConfiguration")
+	delete(f, "TaskActionCustomConfiguration")
+	delete(f, "TaskPauseDuration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFromActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskFromActionResponseParams struct {
+	// 创建成功的演练ID
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTaskFromActionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTaskFromActionResponseParams `json:"Response"`
+}
+
+func (r *CreateTaskFromActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFromActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -157,6 +403,235 @@ func (r *DeleteTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActionFieldConfigListRequestParams struct {
+	// 动作ID列表
+	ActionIds []*uint64 `json:"ActionIds,omitnil,omitempty" name:"ActionIds"`
+
+	// 对象类型ID
+	ObjectTypeId *uint64 `json:"ObjectTypeId,omitnil,omitempty" name:"ObjectTypeId"`
+}
+
+type DescribeActionFieldConfigListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 动作ID列表
+	ActionIds []*uint64 `json:"ActionIds,omitnil,omitempty" name:"ActionIds"`
+
+	// 对象类型ID
+	ObjectTypeId *uint64 `json:"ObjectTypeId,omitnil,omitempty" name:"ObjectTypeId"`
+}
+
+func (r *DescribeActionFieldConfigListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActionFieldConfigListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActionIds")
+	delete(f, "ObjectTypeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActionFieldConfigListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActionFieldConfigListResponseParams struct {
+	// 通用栏位配置列表
+	Common []*ActionFieldConfigResult `json:"Common,omitnil,omitempty" name:"Common"`
+
+	// 动作栏位配置列表
+	Results []*ActionFieldConfigResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 资源下线信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceOffline []*ResourceOffline `json:"ResourceOffline,omitnil,omitempty" name:"ResourceOffline"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeActionFieldConfigListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeActionFieldConfigListResponseParams `json:"Response"`
+}
+
+func (r *DescribeActionFieldConfigListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActionFieldConfigListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActionLibraryListRequestParams struct {
+	// 0-100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 默认值0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 对象类型ID
+	ObjectType *uint64 `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// Keyword取值{"动作名称": "a_title", "描述": "a_desc", "动作类型": "a_type", "创建时间": "a_create_time", "二级分类": "a_resource_type"}
+	Filters []*ActionFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 动作分类，1表示故障动作，2表示恢复动作
+	Attribute []*int64 `json:"Attribute,omitnil,omitempty" name:"Attribute"`
+
+	// 筛选项 -动作ID
+	ActionIds []*uint64 `json:"ActionIds,omitnil,omitempty" name:"ActionIds"`
+}
+
+type DescribeActionLibraryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 0-100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 默认值0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 对象类型ID
+	ObjectType *uint64 `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// Keyword取值{"动作名称": "a_title", "描述": "a_desc", "动作类型": "a_type", "创建时间": "a_create_time", "二级分类": "a_resource_type"}
+	Filters []*ActionFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 动作分类，1表示故障动作，2表示恢复动作
+	Attribute []*int64 `json:"Attribute,omitnil,omitempty" name:"Attribute"`
+
+	// 筛选项 -动作ID
+	ActionIds []*uint64 `json:"ActionIds,omitnil,omitempty" name:"ActionIds"`
+}
+
+func (r *DescribeActionLibraryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActionLibraryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ObjectType")
+	delete(f, "Filters")
+	delete(f, "Attribute")
+	delete(f, "ActionIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActionLibraryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActionLibraryListResponseParams struct {
+	// 查询结果列表
+	Results []*ActionLibraryListResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 符合记录条数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeActionLibraryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeActionLibraryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeActionLibraryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActionLibraryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeObjectTypeListRequestParams struct {
+	// 所支持的对象
+	// 0：全平台产品
+	// 1：平台接入的对象
+	// 2：应用所支持的部分对象
+	SupportType *int64 `json:"SupportType,omitnil,omitempty" name:"SupportType"`
+}
+
+type DescribeObjectTypeListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所支持的对象
+	// 0：全平台产品
+	// 1：平台接入的对象
+	// 2：应用所支持的部分对象
+	SupportType *int64 `json:"SupportType,omitnil,omitempty" name:"SupportType"`
+}
+
+func (r *DescribeObjectTypeListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeObjectTypeListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SupportType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeObjectTypeListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeObjectTypeListResponseParams struct {
+	// 对象类型列表
+	ObjectTypeList []*ObjectType `json:"ObjectTypeList,omitnil,omitempty" name:"ObjectTypeList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeObjectTypeListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeObjectTypeListResponseParams `json:"Response"`
+}
+
+func (r *DescribeObjectTypeListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeObjectTypeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -921,6 +1396,70 @@ func (r *ModifyTaskRunStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ObjectType struct {
+	// 对象类型ID
+	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil,omitempty" name:"ObjectTypeId"`
+
+	// 对象类型名称
+	ObjectTypeTitle *string `json:"ObjectTypeTitle,omitnil,omitempty" name:"ObjectTypeTitle"`
+
+	// 对象类型第一级
+	ObjectTypeLevelOne *string `json:"ObjectTypeLevelOne,omitnil,omitempty" name:"ObjectTypeLevelOne"`
+
+	// 对象类型参数
+	ObjectTypeParams *ObjectTypeConfig `json:"ObjectTypeParams,omitnil,omitempty" name:"ObjectTypeParams"`
+
+	// tke接口json解析规则，null不需要解析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectTypeJsonParse *ObjectTypeJsonParse `json:"ObjectTypeJsonParse,omitnil,omitempty" name:"ObjectTypeJsonParse"`
+
+	// 是否包含新动作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectHasNewAction *bool `json:"ObjectHasNewAction,omitnil,omitempty" name:"ObjectHasNewAction"`
+}
+
+type ObjectTypeConfig struct {
+	// 主键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 对象类型配置字段列表
+	Fields []*ObjectTypeConfigFields `json:"Fields,omitnil,omitempty" name:"Fields"`
+}
+
+type ObjectTypeConfigFields struct {
+	// instanceId
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 实例id
+	Header *string `json:"Header,omitnil,omitempty" name:"Header"`
+
+	// 字段值是否需要转译，当不需要转译时，此字段返回null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Transfer *string `json:"Transfer,omitnil,omitempty" name:"Transfer"`
+
+	// tke的pod字段信息解析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonParse *string `json:"JsonParse,omitnil,omitempty" name:"JsonParse"`
+}
+
+type ObjectTypeJsonParse struct {
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 工作负载名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkloadName *string `json:"WorkloadName,omitnil,omitempty" name:"WorkloadName"`
+
+	// 节点IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LanIP *string `json:"LanIP,omitnil,omitempty" name:"LanIP"`
+
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
 type PolicyTriggerLog struct {
 	// 演练ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -941,6 +1480,20 @@ type PolicyTriggerLog struct {
 	// 触发时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatTime *string `json:"CreatTime,omitnil,omitempty" name:"CreatTime"`
+}
+
+type ResourceOffline struct {
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *int64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源下线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceDeleteTime *string `json:"ResourceDeleteTime,omitnil,omitempty" name:"ResourceDeleteTime"`
+
+	// 资源下线提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceDeleteMessage *string `json:"ResourceDeleteMessage,omitnil,omitempty" name:"ResourceDeleteMessage"`
 }
 
 type TagWithCreate struct {

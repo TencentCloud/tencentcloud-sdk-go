@@ -177,6 +177,77 @@ func (r *DescribeImageAnimateJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePortraitSingJobRequestParams struct {
+	// 任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribePortraitSingJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribePortraitSingJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePortraitSingJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePortraitSingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePortraitSingJobResponseParams struct {
+	// 任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 任务状态码
+	// —RUN：处理中
+	// —FAIL：处理失败
+	// —STOP：处理终止
+	// —DONE：处理完成
+	StatusCode *string `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// 任务状态信息
+	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
+
+	// 生成视频的URL地址
+	// 有效期24小时
+	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePortraitSingJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePortraitSingJobResponseParams `json:"Response"`
+}
+
+func (r *DescribePortraitSingJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePortraitSingJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVideoStylizationJobRequestParams struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -421,6 +492,91 @@ func (r *SubmitImageAnimateJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitImageAnimateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitPortraitSingJobRequestParams struct {
+	// 传入音频URL地址。音频要求：
+	// —音频时长：不超过60秒
+	// —音频格式：mp3、wav、m4a
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 传入图片URL地址，图片要求：
+	// —图片格式：jpg、jpeg、png
+	// —图片分辨率：长边不超过2560
+	// —图片大小：不超过6M
+	// —图片宽高比：图片【宽：高】在1:2到2:1范围内
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 传入图片Base64编码。
+	// —图片Base64编码与URL地址必传其一
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
+type SubmitPortraitSingJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传入音频URL地址。音频要求：
+	// —音频时长：不超过60秒
+	// —音频格式：mp3、wav、m4a
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 传入图片URL地址，图片要求：
+	// —图片格式：jpg、jpeg、png
+	// —图片分辨率：长边不超过2560
+	// —图片大小：不超过6M
+	// —图片宽高比：图片【宽：高】在1:2到2:1范围内
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 传入图片Base64编码。
+	// —图片Base64编码与URL地址必传其一
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
+func (r *SubmitPortraitSingJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitPortraitSingJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AudioUrl")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitPortraitSingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitPortraitSingJobResponseParams struct {
+	// 任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitPortraitSingJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitPortraitSingJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitPortraitSingJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitPortraitSingJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

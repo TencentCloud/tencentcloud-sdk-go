@@ -1684,6 +1684,8 @@ func NewDeleteRecordBatchResponse() (response *DeleteRecordBatchResponse) {
 // DeleteRecordBatch
 // 批量删除解析记录
 //
+// 备注：因存储限制， 建议一次批量删除最多2000条
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
@@ -1703,6 +1705,8 @@ func (c *Client) DeleteRecordBatch(request *DeleteRecordBatchRequest) (response 
 
 // DeleteRecordBatch
 // 批量删除解析记录
+//
+// 备注：因存储限制， 建议一次批量删除最多2000条
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"

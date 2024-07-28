@@ -45,6 +45,49 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateTaskFromActionRequest() (request *CreateTaskFromActionRequest) {
+    request = &CreateTaskFromActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "CreateTaskFromAction")
+    
+    
+    return
+}
+
+func NewCreateTaskFromActionResponse() (response *CreateTaskFromActionResponse) {
+    response = &CreateTaskFromActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTaskFromAction
+// 从动作创建演练
+func (c *Client) CreateTaskFromAction(request *CreateTaskFromActionRequest) (response *CreateTaskFromActionResponse, err error) {
+    return c.CreateTaskFromActionWithContext(context.Background(), request)
+}
+
+// CreateTaskFromAction
+// 从动作创建演练
+func (c *Client) CreateTaskFromActionWithContext(ctx context.Context, request *CreateTaskFromActionRequest) (response *CreateTaskFromActionResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFromActionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskFromAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskFromActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskFromTemplateRequest() (request *CreateTaskFromTemplateRequest) {
     request = &CreateTaskFromTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -161,6 +204,177 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskR
     request.SetContext(ctx)
     
     response = NewDeleteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeActionFieldConfigListRequest() (request *DescribeActionFieldConfigListRequest) {
+    request = &DescribeActionFieldConfigListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "DescribeActionFieldConfigList")
+    
+    
+    return
+}
+
+func NewDescribeActionFieldConfigListResponse() (response *DescribeActionFieldConfigListResponse) {
+    response = &DescribeActionFieldConfigListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeActionFieldConfigList
+// 根据动作ID获取动作栏位动态配置参数信息，里面包含动作自有和通用两部分参数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeActionFieldConfigList(request *DescribeActionFieldConfigListRequest) (response *DescribeActionFieldConfigListResponse, err error) {
+    return c.DescribeActionFieldConfigListWithContext(context.Background(), request)
+}
+
+// DescribeActionFieldConfigList
+// 根据动作ID获取动作栏位动态配置参数信息，里面包含动作自有和通用两部分参数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeActionFieldConfigListWithContext(ctx context.Context, request *DescribeActionFieldConfigListRequest) (response *DescribeActionFieldConfigListResponse, err error) {
+    if request == nil {
+        request = NewDescribeActionFieldConfigListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActionFieldConfigList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeActionFieldConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeActionLibraryListRequest() (request *DescribeActionLibraryListRequest) {
+    request = &DescribeActionLibraryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "DescribeActionLibraryList")
+    
+    
+    return
+}
+
+func NewDescribeActionLibraryListResponse() (response *DescribeActionLibraryListResponse) {
+    response = &DescribeActionLibraryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeActionLibraryList
+// 获取混沌演练平台的动作库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeActionLibraryList(request *DescribeActionLibraryListRequest) (response *DescribeActionLibraryListResponse, err error) {
+    return c.DescribeActionLibraryListWithContext(context.Background(), request)
+}
+
+// DescribeActionLibraryList
+// 获取混沌演练平台的动作库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeActionLibraryListWithContext(ctx context.Context, request *DescribeActionLibraryListRequest) (response *DescribeActionLibraryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeActionLibraryListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActionLibraryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeActionLibraryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeObjectTypeListRequest() (request *DescribeObjectTypeListRequest) {
+    request = &DescribeObjectTypeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "DescribeObjectTypeList")
+    
+    
+    return
+}
+
+func NewDescribeObjectTypeListResponse() (response *DescribeObjectTypeListResponse) {
+    response = &DescribeObjectTypeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeObjectTypeList
+// 查询对象类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeObjectTypeList(request *DescribeObjectTypeListRequest) (response *DescribeObjectTypeListResponse, err error) {
+    return c.DescribeObjectTypeListWithContext(context.Background(), request)
+}
+
+// DescribeObjectTypeList
+// 查询对象类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeObjectTypeListWithContext(ctx context.Context, request *DescribeObjectTypeListRequest) (response *DescribeObjectTypeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeObjectTypeListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeObjectTypeList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeObjectTypeListResponse()
     err = c.Send(request, response)
     return
 }

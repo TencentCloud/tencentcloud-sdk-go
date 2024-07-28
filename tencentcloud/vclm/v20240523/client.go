@@ -169,6 +169,65 @@ func (c *Client) DescribeImageAnimateJobWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePortraitSingJobRequest() (request *DescribePortraitSingJobRequest) {
+    request = &DescribePortraitSingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribePortraitSingJob")
+    
+    
+    return
+}
+
+func NewDescribePortraitSingJobResponse() (response *DescribePortraitSingJobResponse) {
+    response = &DescribePortraitSingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePortraitSingJob
+// 用于查询图片唱演任务。
+//
+// 支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+func (c *Client) DescribePortraitSingJob(request *DescribePortraitSingJobRequest) (response *DescribePortraitSingJobResponse, err error) {
+    return c.DescribePortraitSingJobWithContext(context.Background(), request)
+}
+
+// DescribePortraitSingJob
+// 用于查询图片唱演任务。
+//
+// 支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+func (c *Client) DescribePortraitSingJobWithContext(ctx context.Context, request *DescribePortraitSingJobRequest) (response *DescribePortraitSingJobResponse, err error) {
+    if request == nil {
+        request = NewDescribePortraitSingJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePortraitSingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePortraitSingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoStylizationJobRequest() (request *DescribeVideoStylizationJobRequest) {
     request = &DescribeVideoStylizationJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -382,6 +441,75 @@ func (c *Client) SubmitImageAnimateJobWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewSubmitImageAnimateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitPortraitSingJobRequest() (request *SubmitPortraitSingJobRequest) {
+    request = &SubmitPortraitSingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitPortraitSingJob")
+    
+    
+    return
+}
+
+func NewSubmitPortraitSingJobResponse() (response *SubmitPortraitSingJobResponse) {
+    response = &SubmitPortraitSingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitPortraitSingJob
+// 用于提交图片唱演任务。
+//
+// 支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
+func (c *Client) SubmitPortraitSingJob(request *SubmitPortraitSingJobRequest) (response *SubmitPortraitSingJobResponse, err error) {
+    return c.SubmitPortraitSingJobWithContext(context.Background(), request)
+}
+
+// SubmitPortraitSingJob
+// 用于提交图片唱演任务。
+//
+// 支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
+func (c *Client) SubmitPortraitSingJobWithContext(ctx context.Context, request *SubmitPortraitSingJobRequest) (response *SubmitPortraitSingJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitPortraitSingJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitPortraitSingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitPortraitSingJobResponse()
     err = c.Send(request, response)
     return
 }

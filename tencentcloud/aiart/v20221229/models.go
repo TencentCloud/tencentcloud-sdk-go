@@ -170,13 +170,13 @@ type GenerateAvatarRequestParams struct {
 
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
@@ -212,13 +212,13 @@ type GenerateAvatarRequest struct {
 
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
@@ -301,14 +301,14 @@ func (r *GenerateAvatarResponse) FromJsonString(s string) error {
 type ImageToImageRequestParams struct {
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于8MB。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
 	// 文本描述。
@@ -356,14 +356,14 @@ type ImageToImageRequest struct {
 	
 	// 输入图 Base64 数据。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
-	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于8MB。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
 	// 文本描述。
@@ -462,13 +462,13 @@ func (r *ImageToImageResponse) FromJsonString(s string) error {
 }
 
 type LogoParam struct {
-	// 水印url
+	// 水印 Url
 	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
 
-	// 水印base64，url和base64二选一传入
+	// 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
 	LogoImage *string `json:"LogoImage,omitnil,omitempty" name:"LogoImage"`
 
-	// 水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+	// 水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
 	LogoRect *LogoRect `json:"LogoRect,omitnil,omitempty" name:"LogoRect"`
 }
 
@@ -836,9 +836,7 @@ func (r *ReplaceBackgroundResponse) FromJsonString(s string) error {
 type ResultConfig struct {
 	// 生成图分辨率
 	// 
-	// 智能文生图支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
-	// 
-	// 智能图生图支持生成以下分辨率的图片：origin（与输入图分辨率一致，长边最高为2000，超出将做等比例缩小）、768:768（1:1）、768:1024（3:4）、1024:768（4:3），不传默认使用origin，如果指定生成的长宽比与输入图长宽比差异过大可能导致图片内容被裁剪。
+	// 图像风格化（图生图）支持生成以下分辨率的图片：origin（与输入图分辨率一致，长边最高为2000，超出将做等比例缩小）、768:768（1:1）、768:1024（3:4）、1024:768（4:3），不传默认使用origin，如果指定生成的长宽比与输入图长宽比差异过大可能导致图片内容被裁剪。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
