@@ -2291,6 +2291,90 @@ func (r *DescribeAssetViewVulRiskListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCFWAssetStatisticsRequestParams struct {
+
+}
+
+type DescribeCFWAssetStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCFWAssetStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCFWAssetStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCFWAssetStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCFWAssetStatisticsResponseParams struct {
+	// 网络资产总数
+	NetworkTotal *int64 `json:"NetworkTotal,omitnil,omitempty" name:"NetworkTotal"`
+
+	// 资产clb数量
+	ClbTotal *int64 `json:"ClbTotal,omitnil,omitempty" name:"ClbTotal"`
+
+	// nat数量
+	NatTotal *int64 `json:"NatTotal,omitnil,omitempty" name:"NatTotal"`
+
+	// 公网ip数量
+	PublicAssetTotal *int64 `json:"PublicAssetTotal,omitnil,omitempty" name:"PublicAssetTotal"`
+
+	// 主机数量
+	CVMAssetTotal *int64 `json:"CVMAssetTotal,omitnil,omitempty" name:"CVMAssetTotal"`
+
+	// 配置风险
+	CFGTotal *int64 `json:"CFGTotal,omitnil,omitempty" name:"CFGTotal"`
+
+	// 端口风险
+	PortTotal *int64 `json:"PortTotal,omitnil,omitempty" name:"PortTotal"`
+
+	// 内容风险
+	WebsiteTotal *int64 `json:"WebsiteTotal,omitnil,omitempty" name:"WebsiteTotal"`
+
+	// 风险服务暴露
+	ServerTotal *int64 `json:"ServerTotal,omitnil,omitempty" name:"ServerTotal"`
+
+	// 弱口令风险
+	WeakPasswordTotal *int64 `json:"WeakPasswordTotal,omitnil,omitempty" name:"WeakPasswordTotal"`
+
+	// 漏洞风险
+	VULTotal *int64 `json:"VULTotal,omitnil,omitempty" name:"VULTotal"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCFWAssetStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCFWAssetStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCFWAssetStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCFWAssetStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCVMAssetInfoRequestParams struct {
 	// -
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`

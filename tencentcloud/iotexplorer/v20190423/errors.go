@@ -50,6 +50,9 @@ const (
 	// 存在其他升级任务。
 	FAILEDOPERATION_OTHERUPDATETASKEXIST = "FailedOperation.OtherUpdateTaskExist"
 
+	// 产品未开通 IoT Video 服务
+	FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+
 	// 产品尚未发布。
 	FAILEDOPERATION_PRODUCTNOTRELEASED = "FailedOperation.ProductNotReleased"
 

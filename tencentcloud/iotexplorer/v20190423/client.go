@@ -2524,6 +2524,7 @@ func NewDescribeCloudStorageAIServiceResponse() (response *DescribeCloudStorageA
 // 查询指定设备的云存 AI 服务开通状态与参数配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2535,6 +2536,7 @@ func (c *Client) DescribeCloudStorageAIService(request *DescribeCloudStorageAISe
 // 查询指定设备的云存 AI 服务开通状态与参数配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2578,6 +2580,7 @@ func NewDescribeCloudStorageAIServiceCallbackResponse() (response *DescribeCloud
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2590,6 +2593,7 @@ func (c *Client) DescribeCloudStorageAIServiceCallback(request *DescribeCloudSto
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2688,6 +2692,7 @@ func NewDescribeCloudStorageAIServiceTasksResponse() (response *DescribeCloudSto
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudStorageAIServiceTasks(request *DescribeCloudStorageAIServiceTasksRequest) (response *DescribeCloudStorageAIServiceTasksResponse, err error) {
@@ -2699,6 +2704,7 @@ func (c *Client) DescribeCloudStorageAIServiceTasks(request *DescribeCloudStorag
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudStorageAIServiceTasksWithContext(ctx context.Context, request *DescribeCloudStorageAIServiceTasksRequest) (response *DescribeCloudStorageAIServiceTasksResponse, err error) {
@@ -6778,10 +6784,11 @@ func NewModifyCloudStorageAIServiceResponse() (response *ModifyCloudStorageAISer
 }
 
 // ModifyCloudStorageAIService
-// 修改指定设备的云存 AI 服务开通状态与参数配置
+// 修改指定设备的云存 AI 服务参数配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -6790,10 +6797,11 @@ func (c *Client) ModifyCloudStorageAIService(request *ModifyCloudStorageAIServic
 }
 
 // ModifyCloudStorageAIService
-// 修改指定设备的云存 AI 服务开通状态与参数配置
+// 修改指定设备的云存 AI 服务参数配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -6837,6 +6845,7 @@ func NewModifyCloudStorageAIServiceCallbackResponse() (response *ModifyCloudStor
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
@@ -6851,6 +6860,7 @@ func (c *Client) ModifyCloudStorageAIServiceCallback(request *ModifyCloudStorage
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
@@ -7343,6 +7353,7 @@ func NewModifyProductCloudStorageAIServiceResponse() (response *ModifyProductClo
 // 修改指定产品的云存 AI 服务开通状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -7354,6 +7365,7 @@ func (c *Client) ModifyProductCloudStorageAIService(request *ModifyProductCloudS
 // 修改指定产品的云存 AI 服务开通状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

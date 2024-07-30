@@ -158,6 +158,78 @@ type CloudVod struct {
 }
 
 // Predefined struct for user
+type ControlAIConversationRequestParams struct {
+	// 任务唯一标识
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 控制命令，目前支持命令如下：
+	// 
+	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 服务端发送播报文本命令，当Command为ServerPushText时必填
+	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+}
+
+type ControlAIConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务唯一标识
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 控制命令，目前支持命令如下：
+	// 
+	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 服务端发送播报文本命令，当Command为ServerPushText时必填
+	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+}
+
+func (r *ControlAIConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlAIConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Command")
+	delete(f, "ServerPushText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlAIConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ControlAIConversationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ControlAIConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *ControlAIConversationResponseParams `json:"Response"`
+}
+
+func (r *ControlAIConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlAIConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCloudRecordingRequestParams struct {
 	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4067,6 +4139,14 @@ type SeriesInfos struct {
 	// 数据值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*RowValues `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type ServerPushText struct {
+	// 服务端推送播报文本
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 是否允许该文本打断机器人说话
+	Interrupt *bool `json:"Interrupt,omitnil,omitempty" name:"Interrupt"`
 }
 
 type SingleSubscribeParams struct {

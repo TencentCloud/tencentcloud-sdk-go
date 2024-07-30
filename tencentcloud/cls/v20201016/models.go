@@ -3615,6 +3615,10 @@ type DataTransformTaskInfo struct {
 
 	// 加工逻辑函数。
 	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
+
+	// 数据加工类型。0：标准加工任务；1：前置加工任务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
 }
 
 // Predefined struct for user
@@ -5604,25 +5608,31 @@ func (r *DescribeDashboardsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataTransformInfoRequestParams struct {
-	// <br><li> taskName
-	// 
+	// - taskName
 	// 按照【加工任务名称】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
 	// 
-	// <br><li> taskId
-	// 
+	// - taskId
 	// 按照【加工任务id】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
 	// 
-	// <br><li> topicId
-	// 
+	// - topicId
 	// 按照【源topicId】进行过滤。
 	// 类型：String
-	// 
+	// 必选：否
+	// - status
+	// 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
+	// 类型：String
+	// 必选：否
+	// - hasServiceLog
+	// 按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
+	// 类型：String
+	// 必选：否
+	// - dstTopicType
+	// 按照【目标topic类型】进行过滤。  1：固定，2：动态
+	// 类型：String
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
@@ -5644,25 +5654,31 @@ type DescribeDataTransformInfoRequestParams struct {
 type DescribeDataTransformInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// <br><li> taskName
-	// 
+	// - taskName
 	// 按照【加工任务名称】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
 	// 
-	// <br><li> taskId
-	// 
+	// - taskId
 	// 按照【加工任务id】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
 	// 
-	// <br><li> topicId
-	// 
+	// - topicId
 	// 按照【源topicId】进行过滤。
 	// 类型：String
-	// 
+	// 必选：否
+	// - status
+	// 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
+	// 类型：String
+	// 必选：否
+	// - hasServiceLog
+	// 按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
+	// 类型：String
+	// 必选：否
+	// - dstTopicType
+	// 按照【目标topic类型】进行过滤。  1：固定，2：动态
+	// 类型：String
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。

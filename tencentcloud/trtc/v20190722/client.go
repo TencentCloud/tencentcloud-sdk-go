@@ -45,6 +45,57 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewControlAIConversationRequest() (request *ControlAIConversationRequest) {
+    request = &ControlAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "ControlAIConversation")
+    
+    
+    return
+}
+
+func NewControlAIConversationResponse() (response *ControlAIConversationResponse) {
+    response = &ControlAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ControlAIConversation
+// 提供服务端控制机器人的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) ControlAIConversation(request *ControlAIConversationRequest) (response *ControlAIConversationResponse, err error) {
+    return c.ControlAIConversationWithContext(context.Background(), request)
+}
+
+// ControlAIConversation
+// 提供服务端控制机器人的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) ControlAIConversationWithContext(ctx context.Context, request *ControlAIConversationRequest) (response *ControlAIConversationResponse, err error) {
+    if request == nil {
+        request = NewControlAIConversationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewControlAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
     request = &CreateCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},

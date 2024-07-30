@@ -2648,6 +2648,10 @@ type BashEvent struct {
 	// 自动生成的正则表达式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegexBashCmd *string `json:"RegexBashCmd,omitnil,omitempty" name:"RegexBashCmd"`
+
+	// 主机HostName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 }
 
 type BashEventNew struct {
@@ -2811,6 +2815,10 @@ type BashEventsInfo struct {
 	// 进程号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pid *string `json:"Pid,omitnil,omitempty" name:"Pid"`
+
+	// 数据来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectBy *string `json:"DetectBy,omitnil,omitempty" name:"DetectBy"`
 }
 
 type BashEventsInfoNew struct {

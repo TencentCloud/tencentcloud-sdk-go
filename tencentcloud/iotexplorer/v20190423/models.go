@@ -3048,14 +3048,14 @@ func (r *DescribeBindedProductsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudStorageAIServiceCallbackRequestParams struct {
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 type DescribeCloudStorageAIServiceCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
@@ -3113,15 +3113,14 @@ func (r *DescribeCloudStorageAIServiceCallbackResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeCloudStorageAIServiceRequestParams struct {
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// 
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
@@ -3129,15 +3128,14 @@ type DescribeCloudStorageAIServiceRequestParams struct {
 type DescribeCloudStorageAIServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// 
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
@@ -3165,14 +3163,14 @@ func (r *DescribeCloudStorageAIServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudStorageAIServiceResponseParams struct {
-	// 启用状态
+	// 视频分析启用状态
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 视频分析区域
-	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
-
-	// 云存 AI 服务的配置参数
+	// 视频分析配置参数
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3260,7 +3258,7 @@ type DescribeCloudStorageAIServiceTasksRequestParams struct {
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
@@ -3278,10 +3276,10 @@ type DescribeCloudStorageAIServiceTasksRequestParams struct {
 	// - `4`：执行中
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 用户ID
+	// 用户 ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
@@ -3295,7 +3293,7 @@ type DescribeCloudStorageAIServiceTasksRequest struct {
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
@@ -3313,10 +3311,10 @@ type DescribeCloudStorageAIServiceTasksRequest struct {
 	// - `4`：执行中
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 用户ID
+	// 用户 ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
@@ -6186,14 +6184,14 @@ func (r *DescribePositionFenceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProductCloudStorageAIServiceRequestParams struct {
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 type DescribeProductCloudStorageAIServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
@@ -9178,7 +9176,7 @@ type LoRaGatewayLocation struct {
 
 // Predefined struct for user
 type ModifyCloudStorageAIServiceCallbackRequestParams struct {
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 推送类型。可选值：
@@ -9195,7 +9193,7 @@ type ModifyCloudStorageAIServiceCallbackRequestParams struct {
 type ModifyCloudStorageAIServiceCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 推送类型。可选值：
@@ -9255,48 +9253,48 @@ func (r *ModifyCloudStorageAIServiceCallbackResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type ModifyCloudStorageAIServiceRequestParams struct {
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 启用状态
+	// 视频分析启用状态
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 视频分析区域
+	// 视频分析识别区域
 	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
 
-	// 云存 AI 服务的配置参数
+	// 视频分析配置参数
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type ModifyCloudStorageAIServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 启用状态
+	// 视频分析启用状态
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 视频分析区域
+	// 视频分析识别区域
 	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
 
-	// 云存 AI 服务的配置参数
+	// 视频分析配置参数
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -9829,7 +9827,7 @@ func (r *ModifyPositionSpaceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProductCloudStorageAIServiceRequestParams struct {
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 开通状态
@@ -9839,7 +9837,7 @@ type ModifyProductCloudStorageAIServiceRequestParams struct {
 type ModifyProductCloudStorageAIServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 开通状态

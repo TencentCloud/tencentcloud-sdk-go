@@ -3539,7 +3539,7 @@ type DayStreamPlayInfo struct {
 	// 请求数。
 	Request *uint64 `json:"Request,omitnil,omitempty" name:"Request"`
 
-	// 在线人数。
+	// 在线人数。当前后端接口数据的统计方式与客户端侧不同，该数据仅供参考，具体数据请以业务客户端侧统计数据为准。
 	Online *uint64 `json:"Online,omitnil,omitempty" name:"Online"`
 }
 

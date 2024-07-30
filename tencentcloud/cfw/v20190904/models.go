@@ -3179,6 +3179,10 @@ type DescAcItem struct {
 	// 访问目的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
+
+	// 规则最近命中时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
 }
 
 type DescNatDnatRule struct {
@@ -3567,10 +3571,10 @@ type DescribeAddressTemplateListResponseParams struct {
 	// 协议端口模板数量
 	PortTemplateCount *int64 `json:"PortTemplateCount,omitnil,omitempty" name:"PortTemplateCount"`
 
-	// 已使用的地址模版数
+	// 已使用的地址模板数
 	UsedTemplateCount *int64 `json:"UsedTemplateCount,omitnil,omitempty" name:"UsedTemplateCount"`
 
-	// 地址模版配额数量
+	// 地址模板配额数量
 	TemplateQuotaCount *int64 `json:"TemplateQuotaCount,omitnil,omitempty" name:"TemplateQuotaCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
