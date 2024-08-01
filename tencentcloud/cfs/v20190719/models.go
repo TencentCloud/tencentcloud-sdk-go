@@ -1312,11 +1312,14 @@ type DeleteUserQuotaRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 指定配额类型，包括Uid、Gid
+	// 指定配额类型，包括Uid、Gid、Dir
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
 	// UID/GID信息
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 设置目录配额的目录的绝对路径
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
 }
 
 type DeleteUserQuotaRequest struct {
@@ -1325,11 +1328,14 @@ type DeleteUserQuotaRequest struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 指定配额类型，包括Uid、Gid
+	// 指定配额类型，包括Uid、Gid、Dir
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
 	// UID/GID信息
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 设置目录配额的目录的绝对路径
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
 }
 
 func (r *DeleteUserQuotaRequest) ToJsonString() string {
@@ -1347,6 +1353,7 @@ func (r *DeleteUserQuotaRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "UserType")
 	delete(f, "UserId")
+	delete(f, "DirectoryPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserQuotaRequest has unknown keys!", "")
 	}
@@ -2890,17 +2897,20 @@ type SetUserQuotaRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 指定配额类型，包括Uid、Gid
+	// 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
 	// UID/GID信息
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 容量硬限制，单位GiB
+	// 容量硬限制，单位GiB。设置范围10-10000000。
 	CapacityHardLimit *uint64 `json:"CapacityHardLimit,omitnil,omitempty" name:"CapacityHardLimit"`
 
-	// 文件硬限制，单位个
+	// 文件硬限制，单位个。设置范围1000-100000000
 	FileHardLimit *uint64 `json:"FileHardLimit,omitnil,omitempty" name:"FileHardLimit"`
+
+	// 需设置目录配额的目录绝对路径，不同目录不可存在包含关系
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
 }
 
 type SetUserQuotaRequest struct {
@@ -2909,17 +2919,20 @@ type SetUserQuotaRequest struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 指定配额类型，包括Uid、Gid
+	// 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
 	// UID/GID信息
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 容量硬限制，单位GiB
+	// 容量硬限制，单位GiB。设置范围10-10000000。
 	CapacityHardLimit *uint64 `json:"CapacityHardLimit,omitnil,omitempty" name:"CapacityHardLimit"`
 
-	// 文件硬限制，单位个
+	// 文件硬限制，单位个。设置范围1000-100000000
 	FileHardLimit *uint64 `json:"FileHardLimit,omitnil,omitempty" name:"FileHardLimit"`
+
+	// 需设置目录配额的目录绝对路径，不同目录不可存在包含关系
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
 }
 
 func (r *SetUserQuotaRequest) ToJsonString() string {
@@ -2939,6 +2952,7 @@ func (r *SetUserQuotaRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "CapacityHardLimit")
 	delete(f, "FileHardLimit")
+	delete(f, "DirectoryPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetUserQuotaRequest has unknown keys!", "")
 	}

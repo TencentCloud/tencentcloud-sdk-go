@@ -96,6 +96,13 @@ type ChatCompletionsRequestParams struct {
 
 	// 默认是false，在值为true且命中搜索时，接口会返回SearchInfo
 	SearchInfo *bool `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
+
+	// 搜索引文角标开关。
+	// 说明：
+	// 1. 配合EnableEnhancement和SearchInfo参数使用。打开后，回答中命中搜索的结果会在片段后增加角标标志，对应SearchInfo列表中的链接。
+	// 2. false：开关关闭，true：开关打开。
+	// 3. 未传值时默认开关关闭（false）。
+	Citation *bool `json:"Citation,omitnil,omitempty" name:"Citation"`
 }
 
 type ChatCompletionsRequest struct {
@@ -175,6 +182,13 @@ type ChatCompletionsRequest struct {
 
 	// 默认是false，在值为true且命中搜索时，接口会返回SearchInfo
 	SearchInfo *bool `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
+
+	// 搜索引文角标开关。
+	// 说明：
+	// 1. 配合EnableEnhancement和SearchInfo参数使用。打开后，回答中命中搜索的结果会在片段后增加角标标志，对应SearchInfo列表中的链接。
+	// 2. false：开关关闭，true：开关打开。
+	// 3. 未传值时默认开关关闭（false）。
+	Citation *bool `json:"Citation,omitnil,omitempty" name:"Citation"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -200,6 +214,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "ToolChoice")
 	delete(f, "CustomTool")
 	delete(f, "SearchInfo")
+	delete(f, "Citation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -218,7 +233,7 @@ type ChatCompletionsResponseParams struct {
 	// 免责声明。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 本轮对话的 ID。
+	// 本次请求的 RequestId。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 回复内容。

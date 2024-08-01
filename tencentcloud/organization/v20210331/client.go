@@ -344,6 +344,7 @@ func NewAddShareUnitMembersResponse() (response *AddShareUnitMembersResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SHARINGTOOTHERORGANIZATIONMEMBER = "UnsupportedOperation.SharingToOtherOrganizationMember"
 func (c *Client) AddShareUnitMembers(request *AddShareUnitMembersRequest) (response *AddShareUnitMembersResponse, err error) {
     return c.AddShareUnitMembersWithContext(context.Background(), request)
 }
@@ -362,6 +363,7 @@ func (c *Client) AddShareUnitMembers(request *AddShareUnitMembersRequest) (respo
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SHARINGTOOTHERORGANIZATIONMEMBER = "UnsupportedOperation.SharingToOtherOrganizationMember"
 func (c *Client) AddShareUnitMembersWithContext(ctx context.Context, request *AddShareUnitMembersRequest) (response *AddShareUnitMembersResponse, err error) {
     if request == nil {
         request = NewAddShareUnitMembersRequest()
@@ -3354,6 +3356,59 @@ func (c *Client) ListOrganizationIdentityWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewListOrganizationIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListOrganizationServiceRequest() (request *ListOrganizationServiceRequest) {
+    request = &ListOrganizationServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationService")
+    
+    
+    return
+}
+
+func NewListOrganizationServiceResponse() (response *ListOrganizationServiceResponse) {
+    response = &ListOrganizationServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListOrganizationService
+// 获取集团服务设置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrganizationService(request *ListOrganizationServiceRequest) (response *ListOrganizationServiceResponse, err error) {
+    return c.ListOrganizationServiceWithContext(context.Background(), request)
+}
+
+// ListOrganizationService
+// 获取集团服务设置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrganizationServiceWithContext(ctx context.Context, request *ListOrganizationServiceRequest) (response *ListOrganizationServiceResponse, err error) {
+    if request == nil {
+        request = NewListOrganizationServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOrganizationService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListOrganizationServiceResponse()
     err = c.Send(request, response)
     return
 }

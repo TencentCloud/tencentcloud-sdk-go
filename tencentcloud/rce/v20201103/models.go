@@ -38,6 +38,63 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitnil,omitempty" name:"OtherAccount"`
 }
 
+// Predefined struct for user
+type CreateNameListRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputCreateNameListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type CreateNameListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputCreateNameListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *CreateNameListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNameListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNameListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNameListResponseParams struct {
+	// 业务出参
+	Data *OutputCreateNameListFront `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateNameListResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNameListResponseParams `json:"Response"`
+}
+
+func (r *CreateNameListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNameListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DataAuthorizationInfo struct {
 	// 客户主体名称。
 	// 
@@ -95,6 +152,382 @@ type DataAuthorizationInfo struct {
 	PrivacyPolicyLink *string `json:"PrivacyPolicyLink,omitnil,omitempty" name:"PrivacyPolicyLink"`
 }
 
+type DataContentInfo struct {
+	// 名单数据内容
+	DataContent *string `json:"DataContent,omitnil,omitempty" name:"DataContent"`
+
+	// 名单数据描述
+	DataRemark *string `json:"DataRemark,omitnil,omitempty" name:"DataRemark"`
+
+	// 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+// Predefined struct for user
+type DeleteNameListDataRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputDeleteNameListData `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type DeleteNameListDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputDeleteNameListData `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DeleteNameListDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNameListDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNameListDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNameListDataResponseParams struct {
+	// 业务出参
+	Data *OutputDeleteNameListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNameListDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNameListDataResponseParams `json:"Response"`
+}
+
+func (r *DeleteNameListDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNameListDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNameListRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputDeleteNameListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type DeleteNameListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputDeleteNameListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DeleteNameListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNameListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNameListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNameListResponseParams struct {
+	// 业务出参
+	Data *OutputDeleteNameListFront `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNameListResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNameListResponseParams `json:"Response"`
+}
+
+func (r *DeleteNameListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNameListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNameListDataListRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputDescribeDataListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type DescribeNameListDataListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputDescribeDataListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DescribeNameListDataListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNameListDataListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNameListDataListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNameListDataListResponseParams struct {
+	// 业务出参
+	Data *OutputDescribeDataListFrontData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNameListDataListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNameListDataListResponseParams `json:"Response"`
+}
+
+func (r *DescribeNameListDataListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNameListDataListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNameListDetailRequestParams struct {
+	// 业务入参	
+	BusinessSecurityData *InputDescribeNameListDetail `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type DescribeNameListDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参	
+	BusinessSecurityData *InputDescribeNameListDetail `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DescribeNameListDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNameListDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNameListDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNameListDetailResponseParams struct {
+	// 黑白名单列表详情业务出参
+	Data *OutputDescribeNameListDetailFront `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNameListDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNameListDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeNameListDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNameListDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNameListRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputDescribeNameListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type DescribeNameListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputDescribeNameListFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DescribeNameListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNameListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNameListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNameListResponseParams struct {
+	// 业务出参
+	Data *OutputDescribeNameListFrontFixListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNameListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNameListResponseParams `json:"Response"`
+}
+
+func (r *DescribeNameListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNameListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportNameListDataRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputImportNameListDataFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type ImportNameListDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputImportNameListDataFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *ImportNameListDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportNameListDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportNameListDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportNameListDataResponseParams struct {
+	// 业务出参
+	Data *OutputImportNameListDataFront `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportNameListDataResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportNameListDataResponseParams `json:"Response"`
+}
+
+func (r *ImportNameListDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportNameListDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InputCreateNameListFront struct {
+	// 名单名称
+	ListName *string `json:"ListName,omitnil,omitempty" name:"ListName"`
+
+	// 名单类型 [1 黑名单 2白名单]
+	ListType *int64 `json:"ListType,omitnil,omitempty" name:"ListType"`
+
+	// 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
+	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
+	EncryptionType *int64 `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
+
+	// 场景Code，all_scene代表全部场景
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+}
+
 type InputCryptoManageMarketingRisk struct {
 	// 是否授权：1已授权，否则未授权。
 	//  调用全栈式风控引擎接口服务时，客户需先明确授权
@@ -108,12 +541,75 @@ type InputCryptoManageMarketingRisk struct {
 	CryptoContent *string `json:"CryptoContent,omitnil,omitempty" name:"CryptoContent"`
 }
 
+type InputDeleteNameListData struct {
+	// 黑白名单数据ID集合
+	NameListDataIdList []*int64 `json:"NameListDataIdList,omitnil,omitempty" name:"NameListDataIdList"`
+}
+
+type InputDeleteNameListFront struct {
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+}
+
+type InputDescribeDataListFront struct {
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+
+	// 当前页数
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示条数	
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索关键字，按照名单数据名称或加密名单数据名称搜索
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
+
+	// 黑白名单列表状态[1 启用 2 停用]
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type InputDescribeNameListDetail struct {
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+}
+
+type InputDescribeNameListFront struct {
+	// 当前页数
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 名单类型 [1 黑名单 2 白名单]
+	ListType *int64 `json:"ListType,omitnil,omitempty" name:"ListType"`
+
+	// 数据类型[1 手机号 2 qqOpenId 3 wechatOpenId 4 ip 6 idfa 7 imei]
+	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 关键字，按照名单名称搜索
+	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
+
+	// 记录状态[1 启用 2 停用]
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type InputDetails struct {
 	// 字段名称
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
 	// 字段值
 	FieldValue *string `json:"FieldValue,omitnil,omitempty" name:"FieldValue"`
+}
+
+type InputImportNameListDataFront struct {
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+
+	// 数据来源，固定传2（手工录入）
+	DataSource *int64 `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// 黑白名单数据内容
+	DataContentInfo []*DataContentInfo `json:"DataContentInfo,omitnil,omitempty" name:"DataContentInfo"`
 }
 
 type InputManageMarketingRisk struct {
@@ -200,6 +696,45 @@ type InputManageMarketingRisk struct {
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
+type InputModifyNameFront struct {
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+
+	// 名单名称
+	ListName *string `json:"ListName,omitnil,omitempty" name:"ListName"`
+
+	// 名单状态 [1 启用 2 停用]
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type InputModifyNameListDataFront struct {
+	// 名单数据ID
+	NameListDataId *int64 `json:"NameListDataId,omitnil,omitempty" name:"NameListDataId"`
+
+	// 名单数据内容
+	DataContent *string `json:"DataContent,omitnil,omitempty" name:"DataContent"`
+
+	// 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 记录状态 [1 启用 2 停用]
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 名单数据描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type InputModifyNameListDataFrontListData struct {
+	// 名单数据集合
+	DataList []*InputModifyNameListDataFront `json:"DataList,omitnil,omitempty" name:"DataList"`
+}
+
 // Predefined struct for user
 type ManageMarketingRiskRequestParams struct {
 	// 业务入参
@@ -264,6 +799,120 @@ func (r *ManageMarketingRiskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyNameListDataRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputModifyNameListDataFrontListData `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type ModifyNameListDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputModifyNameListDataFrontListData `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *ModifyNameListDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNameListDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNameListDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNameListDataResponseParams struct {
+	// 业务出参
+	Data *OutputModifyNameListFront `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNameListDataResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNameListDataResponseParams `json:"Response"`
+}
+
+func (r *ModifyNameListDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNameListDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNameListRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputModifyNameFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+type ModifyNameListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *InputModifyNameFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *ModifyNameListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNameListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNameListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNameListResponseParams struct {
+	// 业务出参
+	Data *OutputModifyNameFront `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNameListResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNameListResponseParams `json:"Response"`
+}
+
+func (r *ModifyNameListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNameListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OnlineScamInfo struct {
 	// 内容标签。
 	ContentLabel *string `json:"ContentLabel,omitnil,omitempty" name:"ContentLabel"`
@@ -301,6 +950,240 @@ type OtherAccountInfo struct {
 
 	// 用户设备号（该字段已不推荐使用）。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+type OuntputDescribeDataListInfo struct {
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*OutputDescribeDataListFront `json:"List,omitnil,omitempty" name:"List"`
+}
+
+type OutputCreateNameListFront struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputDeleteNameListData struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputDeleteNameListFront struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputDescribeDataListFront struct {
+	// 名单数据ID
+	NameListDataId *int64 `json:"NameListDataId,omitnil,omitempty" name:"NameListDataId"`
+
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+
+	// 名单数据内容
+	DataContent *string `json:"DataContent,omitnil,omitempty" name:"DataContent"`
+
+	// 数据来源，固定传2（手工录入）
+	DataSource *int64 `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 名单数据状态 [1 启用 2 停用]
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 名单数据描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 名单数据创建时间，时间格式示例"2024-05-05 12:10:15"
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 名单数据更新时间，时间格式示例"2024-05-05 12:10:15"
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 加密名单数据内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptDataContent *string `json:"EncryptDataContent,omitnil,omitempty" name:"EncryptDataContent"`
+}
+
+type OutputDescribeDataListFrontData struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 黑白名单数据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OuntputDescribeDataListInfo `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputDescribeNameListDetail struct {
+	// 名单ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+
+	// 名单名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListName *string `json:"ListName,omitnil,omitempty" name:"ListName"`
+
+	// 名单类型 [1 黑名单 2 白名单]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListType *int64 `json:"ListType,omitnil,omitempty" name:"ListType"`
+
+	// 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 场景Code
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 名单列表状态 [1 启用 2 停用]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 创建时间，时间格式示例"2024-05-05 12:10:15"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间，时间格式示例"2024-05-05 12:10:15"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 加密类型 [0 无需加密，1 MD5加密，2 SHA256加密]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptionType *int64 `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
+}
+
+type OutputDescribeNameListDetailFront struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 列表详情信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputDescribeNameListDetail `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputDescribeNameListFrontFix struct {
+	// 名单ID
+	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
+
+	// 名单名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListName *string `json:"ListName,omitnil,omitempty" name:"ListName"`
+
+	// 名单类型 [1 黑名单 2 白名单]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListType *int64 `json:"ListType,omitnil,omitempty" name:"ListType"`
+
+	// 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
+	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 记录状态 [1 启用 2 停用]
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 创建时间，时间格式示例"2024-05-05 12:10:15"
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间，时间格式示例"2024-05-05 12:10:15"
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 有效数据/数据总数
+	EffectCount *string `json:"EffectCount,omitnil,omitempty" name:"EffectCount"`
+
+	// 加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptionType *int64 `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
+
+	// 场景Code，all_scene代表全部场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+}
+
+type OutputDescribeNameListFrontFixListData struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 黑白名单列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputDescribeNameListInfo `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputDescribeNameListInfo struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*OutputDescribeNameListFrontFix `json:"List,omitnil,omitempty" name:"List"`
+}
+
+type OutputImportNameListDataFront struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OutputManageMarketingRisk struct {
@@ -383,6 +1266,30 @@ type OutputManageMarketingRiskValue struct {
 	// 风险扩展数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInformation *string `json:"RiskInformation,omitnil,omitempty" name:"RiskInformation"`
+}
+
+type OutputModifyNameFront struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OutputModifyNameListFront struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type QQAccountInfo struct {

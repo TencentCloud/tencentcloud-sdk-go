@@ -101,6 +101,9 @@ const (
 	// 获取配置失败。
 	INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
 
+	// 调用 DNSPod 失败，请稍后重试，若无法解决，请联系智能客服或提交工单。
+	INTERNALERROR_FAILEDTOCALLDNSPOD = "InternalError.FailedToCallDNSPod"
+
 	// 上传链接生成失败。
 	INTERNALERROR_FAILEDTOGENERATEURL = "InternalError.FailedToGenerateUrl"
 
@@ -839,8 +842,14 @@ const (
 	// 引用源站组的7层域名服务正在部署中，请稍后再编辑。
 	OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = "OperationDenied.AccelerationDomainStatusNotInOnline"
 
+	// 合规封禁中。
+	OPERATIONDENIED_COMPLIANCEFORBIDDEN = "OperationDenied.ComplianceForbidden"
+
 	// 配置已被锁定，请解除配置锁定之后在重试。
 	OPERATIONDENIED_CONFIGLOCKED = "OperationDenied.ConfigLocked"
+
+	// TEO_QCSLinkedRoleInDnspodAccessEO 角色未进行授权，请授权后重试。
+	OPERATIONDENIED_DNSPODUNAUTHORIZEDROLEOPERATION = "OperationDenied.DNSPodUnauthorizedRoleOperation"
 
 	// 删除站点时预检查未通过。
 	OPERATIONDENIED_DELETEZONEPRECHECKFAILED = "OperationDenied.DeleteZonePreCheckFailed"
@@ -1072,6 +1081,9 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// DNSPod 未正常接入该域名，请在 DNSPod 接入后重试。
+	RESOURCENOTFOUND_DNSPODDOMAINNOTINACCOUNT = "ResourceNotFound.DNSPodDomainNotInAccount"
 
 	// 最大上传大小额度未配置
 	RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = "ResourceNotFound.PostMaxSizeQuotaNotFound"

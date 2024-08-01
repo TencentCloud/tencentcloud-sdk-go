@@ -1368,13 +1368,31 @@ func NewCreateEmployeeQualificationSealQrCodeResponse() (response *CreateEmploye
 }
 
 // CreateEmployeeQualificationSealQrCode
-// 该接口用于获取个人授权执业章给企业的二维码，需要个人用户通过微信扫码。扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。个人用户授权成功后，企业印章管理员需对印章进行审核，审核通过后，即可使用个人授权的执业章进行盖章操作。
+// 该接口用于获取个人授权执业章给企业的微信二维码，需要个人用户通过微信扫码。
+//
+// 
+//
+// 扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。
+//
+// 
+//
+// 个人用户授权成功后，企业印章管理员需对印章进行审核，审核通过后，即可使用个人授权的执业章进行盖章操作。
+//
+// 
 //
 // 
 //
 // **注意**
 //
 // 1. 该二维码**有效期为7天**，过期后将失效，可重新创建。
+//
+// 
+//
+// 整体流程入下图
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/21b6b56dbc796c9d6f402d6ce6febb07.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1385,13 +1403,31 @@ func (c *Client) CreateEmployeeQualificationSealQrCode(request *CreateEmployeeQu
 }
 
 // CreateEmployeeQualificationSealQrCode
-// 该接口用于获取个人授权执业章给企业的二维码，需要个人用户通过微信扫码。扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。个人用户授权成功后，企业印章管理员需对印章进行审核，审核通过后，即可使用个人授权的执业章进行盖章操作。
+// 该接口用于获取个人授权执业章给企业的微信二维码，需要个人用户通过微信扫码。
+//
+// 
+//
+// 扫描后将跳转到腾讯电子签小程序，进入到授权执业章的流程。
+//
+// 
+//
+// 个人用户授权成功后，企业印章管理员需对印章进行审核，审核通过后，即可使用个人授权的执业章进行盖章操作。
+//
+// 
 //
 // 
 //
 // **注意**
 //
 // 1. 该二维码**有效期为7天**，过期后将失效，可重新创建。
+//
+// 
+//
+// 整体流程入下图
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/21b6b56dbc796c9d6f402d6ce6febb07.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1849,21 +1885,63 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 }
 
 // CreateFlowApprovers
-// 适用场景： 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口补充或添加签署人。同一签署人可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
+// **适用场景 ：**
 //
 // 
 //
-// 限制条件：
+// 当通过模板或文件发起合同时， 签署人不制定， 等合同发起后再指定 可以用下面2种方案
+//
+// 
+//
+// <b><font color="red">1. 或签合同</font>: 若未指定企业签署人信息（只指定企业的名字），合同变成或签合同（个人签署方不支持或签合同）</b>。需调用此接口补充或添加签署人。或签签署人在控制台上的展示样式如下（会带有<b>或签</b>标识）：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/b2715f0236faee807cfc0521f93cf01b.png)
+//
+// 
+//
+// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档  [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/) 。动态签署人在控制台上的展示样式如下：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/2729477978e020c3bbb4d2e767bb78eb.png)
+//
+// 
+//
+// 实际签署人需要通过[获取跳转至腾讯电子签小程序的签署链接](https://qian.tencent.com/developers/companyApis/startFlows/CreateSchemeUrl/)生成的链接进入小程序，领取合同并签署。同一签署环节可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
+//
+// 
+//
+// 
+//
+// **限制条件**：
 //
 // 
 //
 // 1.本企业（发起方企业）企业微信签署人仅支持通过企业微信UserId或姓名+手机号进行补充。
 //
+// 
+//
 // 2.本企业（发起方企业）非企业微信签署人仅支持通过姓名+手机号进行补充。
+//
+// 
 //
 // 3.他方企业仅支持通过姓名+手机号进行补充。
 //
-// 4.个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
+// 
+//
+// 4.个人签署人支持通过姓名+手机号进行补充（若<b>个人用户已完成实名</b>，动态签署人合同也可以可通过姓名+证件号码进行补充）
+//
+// 
+//
+// 
+//
+// **整体流程如下图：**
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/29a0fba0ceebf9227849459947384862.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1938,21 +2016,63 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 }
 
 // CreateFlowApprovers
-// 适用场景： 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口补充或添加签署人。同一签署人可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
+// **适用场景 ：**
 //
 // 
 //
-// 限制条件：
+// 当通过模板或文件发起合同时， 签署人不制定， 等合同发起后再指定 可以用下面2种方案
+//
+// 
+//
+// <b><font color="red">1. 或签合同</font>: 若未指定企业签署人信息（只指定企业的名字），合同变成或签合同（个人签署方不支持或签合同）</b>。需调用此接口补充或添加签署人。或签签署人在控制台上的展示样式如下（会带有<b>或签</b>标识）：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/b2715f0236faee807cfc0521f93cf01b.png)
+//
+// 
+//
+// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档  [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/) 。动态签署人在控制台上的展示样式如下：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/2729477978e020c3bbb4d2e767bb78eb.png)
+//
+// 
+//
+// 实际签署人需要通过[获取跳转至腾讯电子签小程序的签署链接](https://qian.tencent.com/developers/companyApis/startFlows/CreateSchemeUrl/)生成的链接进入小程序，领取合同并签署。同一签署环节可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
+//
+// 
+//
+// 
+//
+// **限制条件**：
 //
 // 
 //
 // 1.本企业（发起方企业）企业微信签署人仅支持通过企业微信UserId或姓名+手机号进行补充。
 //
+// 
+//
 // 2.本企业（发起方企业）非企业微信签署人仅支持通过姓名+手机号进行补充。
+//
+// 
 //
 // 3.他方企业仅支持通过姓名+手机号进行补充。
 //
-// 4.个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
+// 
+//
+// 4.个人签署人支持通过姓名+手机号进行补充（若<b>个人用户已完成实名</b>，动态签署人合同也可以可通过姓名+证件号码进行补充）
+//
+// 
+//
+// 
+//
+// **整体流程如下图：**
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/29a0fba0ceebf9227849459947384862.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4338,9 +4458,11 @@ func NewCreateIntegrationSubOrganizationActiveRecordResponse() (response *Create
 }
 
 // CreateIntegrationSubOrganizationActiveRecord
-// 通过此接口，创建子企业激活记录，集团企业管理员可针对未激活的成员企业进行激活。
+// 使用此接口，可创建子企业激活记录。<font color="red">集团企业管理员</font>可以针对尚未激活的成员企业进行激活操作。
 //
-// 激活子企业时请保证子企业 lisence 充足。
+// 
+//
+// 
 //
 // 这个操作与页面端激活成员企业操作类似
 //
@@ -4348,9 +4470,11 @@ func NewCreateIntegrationSubOrganizationActiveRecordResponse() (response *Create
 //
 // 
 //
-// p.s.
+// 注意：
 //
-// 此接口只能用于激活，不能用于续期。
+// 1. 此接口只能用于激活，**不能用于续期**。
+//
+// 2. 在激活子企业时，**请确保子企业的许可证数量充足**。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4364,9 +4488,11 @@ func (c *Client) CreateIntegrationSubOrganizationActiveRecord(request *CreateInt
 }
 
 // CreateIntegrationSubOrganizationActiveRecord
-// 通过此接口，创建子企业激活记录，集团企业管理员可针对未激活的成员企业进行激活。
+// 使用此接口，可创建子企业激活记录。<font color="red">集团企业管理员</font>可以针对尚未激活的成员企业进行激活操作。
 //
-// 激活子企业时请保证子企业 lisence 充足。
+// 
+//
+// 
 //
 // 这个操作与页面端激活成员企业操作类似
 //
@@ -4374,9 +4500,11 @@ func (c *Client) CreateIntegrationSubOrganizationActiveRecord(request *CreateInt
 //
 // 
 //
-// p.s.
+// 注意：
 //
-// 此接口只能用于激活，不能用于续期。
+// 1. 此接口只能用于激活，**不能用于续期**。
+//
+// 2. 在激活子企业时，**请确保子企业的许可证数量充足**。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10058,6 +10186,14 @@ func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
 // VerifyPdf
 // 对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
 //
+// 
+//
+// 
+//
+// **补充**： 可以到控制台[合同验签](https://qian.tencent.com/verifySign)体验验签功能，界面如下
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/81c333ccb07f0c5fbaf840d9cee61333.png)
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -10071,6 +10207,14 @@ func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfRespon
 
 // VerifyPdf
 // 对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
+//
+// 
+//
+// 
+//
+// **补充**： 可以到控制台[合同验签](https://qian.tencent.com/verifySign)体验验签功能，界面如下
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/81c333ccb07f0c5fbaf840d9cee61333.png)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

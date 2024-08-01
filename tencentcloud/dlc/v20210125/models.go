@@ -7255,6 +7255,9 @@ type DescribeNotebookSessionsRequestParams struct {
 
 	// 分页参数，默认0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, engine-generation - String（引擎时代： supersql：supersql引擎，native：标准引擎）：notebook-keyword - String（数据引擎名称或sessionid或sessionname的模糊搜索）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeNotebookSessionsRequest struct {
@@ -7277,6 +7280,9 @@ type DescribeNotebookSessionsRequest struct {
 
 	// 分页参数，默认0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, engine-generation - String（引擎时代： supersql：supersql引擎，native：标准引擎）：notebook-keyword - String（数据引擎名称或sessionid或sessionname的模糊搜索）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeNotebookSessionsRequest) ToJsonString() string {
@@ -7297,6 +7303,7 @@ func (r *DescribeNotebookSessionsRequest) FromJsonString(s string) error {
 	delete(f, "Asc")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionsRequest has unknown keys!", "")
 	}
@@ -8613,7 +8620,7 @@ func (r *DescribeTaskLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskResultRequestParams struct {
-	// 任务唯一ID
+	// 任务唯一ID，仅支持30天内的任务
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
@@ -8629,7 +8636,7 @@ type DescribeTaskResultRequestParams struct {
 type DescribeTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一ID
+	// 任务唯一ID，仅支持30天内的任务
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
@@ -9061,6 +9068,12 @@ func (r *DescribeThirdPartyAccessUserResponse) FromJsonString(s string) error {
 type DescribeUpdatableDataEnginesRequestParams struct {
 	// 引擎配置操作命令，UpdateSparkSQLLakefsPath 更新托管表路径，UpdateSparkSQLResultPath 更新结果桶路径
 	DataEngineConfigCommand *string `json:"DataEngineConfigCommand,omitnil,omitempty" name:"DataEngineConfigCommand"`
+
+	// 是否使用托管存储作为结果存储
+	UseLakeFs *bool `json:"UseLakeFs,omitnil,omitempty" name:"UseLakeFs"`
+
+	// 用户自定义结果存储路径
+	CustomResultPath *string `json:"CustomResultPath,omitnil,omitempty" name:"CustomResultPath"`
 }
 
 type DescribeUpdatableDataEnginesRequest struct {
@@ -9068,6 +9081,12 @@ type DescribeUpdatableDataEnginesRequest struct {
 	
 	// 引擎配置操作命令，UpdateSparkSQLLakefsPath 更新托管表路径，UpdateSparkSQLResultPath 更新结果桶路径
 	DataEngineConfigCommand *string `json:"DataEngineConfigCommand,omitnil,omitempty" name:"DataEngineConfigCommand"`
+
+	// 是否使用托管存储作为结果存储
+	UseLakeFs *bool `json:"UseLakeFs,omitnil,omitempty" name:"UseLakeFs"`
+
+	// 用户自定义结果存储路径
+	CustomResultPath *string `json:"CustomResultPath,omitnil,omitempty" name:"CustomResultPath"`
 }
 
 func (r *DescribeUpdatableDataEnginesRequest) ToJsonString() string {
@@ -9083,6 +9102,8 @@ func (r *DescribeUpdatableDataEnginesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DataEngineConfigCommand")
+	delete(f, "UseLakeFs")
+	delete(f, "CustomResultPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpdatableDataEnginesRequest has unknown keys!", "")
 	}

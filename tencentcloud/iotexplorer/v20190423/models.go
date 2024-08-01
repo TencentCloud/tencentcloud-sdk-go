@@ -1071,6 +1071,117 @@ func (r *CreateBatchProductionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCloudStorageAIServiceRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 套餐 ID。可选值：
+	// 
+	// - `1m_low_od`：低功耗目标检测月套餐
+	// - `1y_low_od`：低功耗目标检测年套餐
+	// - `1m_ev_od`：事件目标检测月套餐
+	// - `1y_ev_od`：事件目标检测年套餐
+	// - `1m_ft_od`：全时目标检测月套餐
+	// - `1y_ft_od`：全时目标检测年套餐
+	// - `1m_low_hl`：低功耗视频浓缩月套餐
+	// - `1y_low_hl`：低功耗视频浓缩年套餐
+	// - `1m_ev_hl`：事件视频浓缩月套餐
+	// - `1y_ev_hl`：事件视频浓缩年套餐
+	// - `1m_ft_hl`：全时视频浓缩月套餐
+	// - `1y_ft_hl`：全时视频浓缩年套餐
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 订单 ID
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+}
+
+type CreateCloudStorageAIServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 套餐 ID。可选值：
+	// 
+	// - `1m_low_od`：低功耗目标检测月套餐
+	// - `1y_low_od`：低功耗目标检测年套餐
+	// - `1m_ev_od`：事件目标检测月套餐
+	// - `1y_ev_od`：事件目标检测年套餐
+	// - `1m_ft_od`：全时目标检测月套餐
+	// - `1y_ft_od`：全时目标检测年套餐
+	// - `1m_low_hl`：低功耗视频浓缩月套餐
+	// - `1y_low_hl`：低功耗视频浓缩年套餐
+	// - `1m_ev_hl`：事件视频浓缩月套餐
+	// - `1y_ev_hl`：事件视频浓缩年套餐
+	// - `1m_ft_hl`：全时视频浓缩月套餐
+	// - `1y_ft_hl`：全时视频浓缩年套餐
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 订单 ID
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+}
+
+func (r *CreateCloudStorageAIServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudStorageAIServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "PackageId")
+	delete(f, "ChannelId")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudStorageAIServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudStorageAIServiceResponseParams struct {
+	// 订单 ID
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudStorageAIServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudStorageAIServiceResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudStorageAIServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudStorageAIServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDeviceRequestParams struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -3163,6 +3274,29 @@ func (r *DescribeCloudStorageAIServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudStorageAIServiceResponseParams struct {
+	// 云存 AI 套餐类型。可能取值：
+	// 
+	// - `1`：全时套餐
+	// - `2`：事件套餐
+	// - `3`：低功耗套餐
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 云存 AI 套餐生效状态。可能取值：
+	// 
+	// - `0`：未开通或已过期
+	// - `1`：生效中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 云存 AI 套餐过期时间 UNIX 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 用户 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
 	// 视频分析启用状态
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
@@ -10991,6 +11125,92 @@ func (r *RemoveUserByRoomIdFromTRTCResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RemoveUserByRoomIdFromTRTCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetCloudStorageAIServiceRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 用户 ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type ResetCloudStorageAIServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 用户 ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *ResetCloudStorageAIServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetCloudStorageAIServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceType")
+	delete(f, "ChannelId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetCloudStorageAIServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetCloudStorageAIServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetCloudStorageAIServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetCloudStorageAIServiceResponseParams `json:"Response"`
+}
+
+func (r *ResetCloudStorageAIServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetCloudStorageAIServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

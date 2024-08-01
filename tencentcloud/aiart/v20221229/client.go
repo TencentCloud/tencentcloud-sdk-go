@@ -965,6 +965,10 @@ func NewTextToImageResponse() (response *TextToImageResponse) {
 }
 
 // TextToImage
+// **本接口已迁移至腾讯混元大模型-文生图轻量版，即将停止此处维护，可切换至 [文生图轻量版 API](https://cloud.tencent.com/document/product/1729/108738) 继续使用。**
+//
+// 
+//
 // 智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
 //
 // 
@@ -1002,6 +1006,10 @@ func (c *Client) TextToImage(request *TextToImageRequest) (response *TextToImage
 }
 
 // TextToImage
+// **本接口已迁移至腾讯混元大模型-文生图轻量版，即将停止此处维护，可切换至 [文生图轻量版 API](https://cloud.tencent.com/document/product/1729/108738) 继续使用。**
+//
+// 
+//
 // 智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
 //
 // 

@@ -1179,7 +1179,7 @@ func NewDeleteUserQuotaResponse() (response *DeleteUserQuotaResponse) {
 }
 
 // DeleteUserQuota
-// 指定条件删除文件系统配额
+// 指定条件删除文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1188,7 +1188,7 @@ func (c *Client) DeleteUserQuota(request *DeleteUserQuotaRequest) (response *Del
 }
 
 // DeleteUserQuota
-// 指定条件删除文件系统配额
+// 指定条件删除文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2212,10 +2212,13 @@ func NewSetUserQuotaResponse() (response *SetUserQuotaResponse) {
 }
 
 // SetUserQuota
-// 设置文件系统配额，提供UID/GID的配额设置的接口
+// 设置文件系统配额，提供UID/GID的配额设置的接口（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTAUSERIDORCFSDIRPATH = "InvalidParameterValue.InvalidQuotaUserIdOrCfsDirPath"
+//  INVALIDPARAMETERVALUE_PROJECTQUOTASDIRNESTED = "InvalidParameterValue.ProjectQuotasDirNested"
+//  INVALIDPARAMETERVALUE_PROJECTQUOTASEXCEEDED = "InvalidParameterValue.ProjectQuotasExceeded"
 //  INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"
 //  INVALIDPARAMETERVALUE_QUOTAFILELIMITERROR = "InvalidParameterValue.QuotaFileLimitError"
 //  INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"
@@ -2228,10 +2231,13 @@ func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQu
 }
 
 // SetUserQuota
-// 设置文件系统配额，提供UID/GID的配额设置的接口
+// 设置文件系统配额，提供UID/GID的配额设置的接口（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDQUOTAUSERIDORCFSDIRPATH = "InvalidParameterValue.InvalidQuotaUserIdOrCfsDirPath"
+//  INVALIDPARAMETERVALUE_PROJECTQUOTASDIRNESTED = "InvalidParameterValue.ProjectQuotasDirNested"
+//  INVALIDPARAMETERVALUE_PROJECTQUOTASEXCEEDED = "InvalidParameterValue.ProjectQuotasExceeded"
 //  INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"
 //  INVALIDPARAMETERVALUE_QUOTAFILELIMITERROR = "InvalidParameterValue.QuotaFileLimitError"
 //  INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"

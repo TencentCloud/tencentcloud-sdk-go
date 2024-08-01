@@ -45,6 +45,307 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateNameListRequest() (request *CreateNameListRequest) {
+    request = &CreateNameListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "CreateNameList")
+    
+    
+    return
+}
+
+func NewCreateNameListResponse() (response *CreateNameListResponse) {
+    response = &CreateNameListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNameList
+// 创建黑白名单列表的数据 包含列表名称 列表名单类型id 关联场景id 数据类型id 记录状态 备注 数据来源 手动输入数据或cos文件key
+func (c *Client) CreateNameList(request *CreateNameListRequest) (response *CreateNameListResponse, err error) {
+    return c.CreateNameListWithContext(context.Background(), request)
+}
+
+// CreateNameList
+// 创建黑白名单列表的数据 包含列表名称 列表名单类型id 关联场景id 数据类型id 记录状态 备注 数据来源 手动输入数据或cos文件key
+func (c *Client) CreateNameListWithContext(ctx context.Context, request *CreateNameListRequest) (response *CreateNameListResponse, err error) {
+    if request == nil {
+        request = NewCreateNameListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNameList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNameListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNameListRequest() (request *DeleteNameListRequest) {
+    request = &DeleteNameListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "DeleteNameList")
+    
+    
+    return
+}
+
+func NewDeleteNameListResponse() (response *DeleteNameListResponse) {
+    response = &DeleteNameListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNameList
+// 修改黑白名单状态 关闭 开启 删除
+func (c *Client) DeleteNameList(request *DeleteNameListRequest) (response *DeleteNameListResponse, err error) {
+    return c.DeleteNameListWithContext(context.Background(), request)
+}
+
+// DeleteNameList
+// 修改黑白名单状态 关闭 开启 删除
+func (c *Client) DeleteNameListWithContext(ctx context.Context, request *DeleteNameListRequest) (response *DeleteNameListResponse, err error) {
+    if request == nil {
+        request = NewDeleteNameListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNameList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNameListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNameListDataRequest() (request *DeleteNameListDataRequest) {
+    request = &DeleteNameListDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "DeleteNameListData")
+    
+    
+    return
+}
+
+func NewDeleteNameListDataResponse() (response *DeleteNameListDataResponse) {
+    response = &DeleteNameListDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNameListData
+// 删除黑白名单数据
+func (c *Client) DeleteNameListData(request *DeleteNameListDataRequest) (response *DeleteNameListDataResponse, err error) {
+    return c.DeleteNameListDataWithContext(context.Background(), request)
+}
+
+// DeleteNameListData
+// 删除黑白名单数据
+func (c *Client) DeleteNameListDataWithContext(ctx context.Context, request *DeleteNameListDataRequest) (response *DeleteNameListDataResponse, err error) {
+    if request == nil {
+        request = NewDeleteNameListDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNameListData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNameListDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNameListRequest() (request *DescribeNameListRequest) {
+    request = &DescribeNameListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "DescribeNameList")
+    
+    
+    return
+}
+
+func NewDescribeNameListResponse() (response *DescribeNameListResponse) {
+    response = &DescribeNameListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNameList
+// 列表展示黑白名单列表数据, 包含列表名称, 名单类型, 数据类型, 数据来源, 描述, 状态等
+func (c *Client) DescribeNameList(request *DescribeNameListRequest) (response *DescribeNameListResponse, err error) {
+    return c.DescribeNameListWithContext(context.Background(), request)
+}
+
+// DescribeNameList
+// 列表展示黑白名单列表数据, 包含列表名称, 名单类型, 数据类型, 数据来源, 描述, 状态等
+func (c *Client) DescribeNameListWithContext(ctx context.Context, request *DescribeNameListRequest) (response *DescribeNameListResponse, err error) {
+    if request == nil {
+        request = NewDescribeNameListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNameList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNameListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNameListDataListRequest() (request *DescribeNameListDataListRequest) {
+    request = &DescribeNameListDataListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "DescribeNameListDataList")
+    
+    
+    return
+}
+
+func NewDescribeNameListDataListResponse() (response *DescribeNameListDataListResponse) {
+    response = &DescribeNameListDataListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNameListDataList
+// 黑白名单详情数据展示 名单id 客户appid uin 数据内容 开始时间和结束时间 状态 描述
+func (c *Client) DescribeNameListDataList(request *DescribeNameListDataListRequest) (response *DescribeNameListDataListResponse, err error) {
+    return c.DescribeNameListDataListWithContext(context.Background(), request)
+}
+
+// DescribeNameListDataList
+// 黑白名单详情数据展示 名单id 客户appid uin 数据内容 开始时间和结束时间 状态 描述
+func (c *Client) DescribeNameListDataListWithContext(ctx context.Context, request *DescribeNameListDataListRequest) (response *DescribeNameListDataListResponse, err error) {
+    if request == nil {
+        request = NewDescribeNameListDataListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNameListDataList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNameListDataListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNameListDetailRequest() (request *DescribeNameListDetailRequest) {
+    request = &DescribeNameListDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "DescribeNameListDetail")
+    
+    
+    return
+}
+
+func NewDescribeNameListDetailResponse() (response *DescribeNameListDetailResponse) {
+    response = &DescribeNameListDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNameListDetail
+// 查询黑白名单列表详情
+func (c *Client) DescribeNameListDetail(request *DescribeNameListDetailRequest) (response *DescribeNameListDetailResponse, err error) {
+    return c.DescribeNameListDetailWithContext(context.Background(), request)
+}
+
+// DescribeNameListDetail
+// 查询黑白名单列表详情
+func (c *Client) DescribeNameListDetailWithContext(ctx context.Context, request *DescribeNameListDetailRequest) (response *DescribeNameListDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeNameListDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNameListDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNameListDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportNameListDataRequest() (request *ImportNameListDataRequest) {
+    request = &ImportNameListDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "ImportNameListData")
+    
+    
+    return
+}
+
+func NewImportNameListDataResponse() (response *ImportNameListDataResponse) {
+    response = &ImportNameListDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportNameListData
+// 新增黑白名单详情数据 手动导入或批量导入
+func (c *Client) ImportNameListData(request *ImportNameListDataRequest) (response *ImportNameListDataResponse, err error) {
+    return c.ImportNameListDataWithContext(context.Background(), request)
+}
+
+// ImportNameListData
+// 新增黑白名单详情数据 手动导入或批量导入
+func (c *Client) ImportNameListDataWithContext(ctx context.Context, request *ImportNameListDataRequest) (response *ImportNameListDataResponse, err error) {
+    if request == nil {
+        request = NewImportNameListDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportNameListData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportNameListDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
     request = &ManageMarketingRiskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -84,6 +385,92 @@ func (c *Client) ManageMarketingRiskWithContext(ctx context.Context, request *Ma
     request.SetContext(ctx)
     
     response = NewManageMarketingRiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNameListRequest() (request *ModifyNameListRequest) {
+    request = &ModifyNameListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "ModifyNameList")
+    
+    
+    return
+}
+
+func NewModifyNameListResponse() (response *ModifyNameListResponse) {
+    response = &ModifyNameListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNameList
+// 修改列表数据 列表名称 列表类型 数据类型 状态 备注
+func (c *Client) ModifyNameList(request *ModifyNameListRequest) (response *ModifyNameListResponse, err error) {
+    return c.ModifyNameListWithContext(context.Background(), request)
+}
+
+// ModifyNameList
+// 修改列表数据 列表名称 列表类型 数据类型 状态 备注
+func (c *Client) ModifyNameListWithContext(ctx context.Context, request *ModifyNameListRequest) (response *ModifyNameListResponse, err error) {
+    if request == nil {
+        request = NewModifyNameListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNameList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNameListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNameListDataRequest() (request *ModifyNameListDataRequest) {
+    request = &ModifyNameListDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "ModifyNameListData")
+    
+    
+    return
+}
+
+func NewModifyNameListDataResponse() (response *ModifyNameListDataResponse) {
+    response = &ModifyNameListDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNameListData
+// 修改黑白名单列表详情 详情内容 开始和结束时间 状态 备注等
+func (c *Client) ModifyNameListData(request *ModifyNameListDataRequest) (response *ModifyNameListDataResponse, err error) {
+    return c.ModifyNameListDataWithContext(context.Background(), request)
+}
+
+// ModifyNameListData
+// 修改黑白名单列表详情 详情内容 开始和结束时间 状态 备注等
+func (c *Client) ModifyNameListDataWithContext(ctx context.Context, request *ModifyNameListDataRequest) (response *ModifyNameListDataResponse, err error) {
+    if request == nil {
+        request = NewModifyNameListDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNameListData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNameListDataResponse()
     err = c.Send(request, response)
     return
 }

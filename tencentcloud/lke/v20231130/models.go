@@ -104,6 +104,18 @@ type AppModel struct {
 	// token余量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TokenBalance *float64 `json:"TokenBalance,omitnil,omitempty" name:"TokenBalance"`
+
+	// 是否使用上下文指代轮次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUseContext *bool `json:"IsUseContext,omitnil,omitempty" name:"IsUseContext"`
+
+	// 上下文记忆轮数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HistoryLimit *uint64 `json:"HistoryLimit,omitnil,omitempty" name:"HistoryLimit"`
+
+	// 使用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageType *string `json:"UsageType,omitnil,omitempty" name:"UsageType"`
 }
 
 type AttrLabel struct {
@@ -184,7 +196,10 @@ type BaseConfig struct {
 	// 应用名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用头像
+	// 应用头像url，在CreateApp和ModifyApp中作为入参必填。
+	// 作为入参传入说明：
+	// 1. 传入的url图片限制为jpeg和png，大小限制为500KB，url链接需允许head请求。
+	// 2. 如果用户没有对象存储，可使用“获取文件上传临时密钥”(DescribeStorageCredential)接口，获取cos临时密钥和上传路径，自行上传头像至cos中并获取访问链接。
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
 	// 应用描述
@@ -4046,6 +4061,16 @@ type Highlight struct {
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 }
 
+type HistorySummary struct {
+	// 助手
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Assistant *string `json:"Assistant,omitnil,omitempty" name:"Assistant"`
+
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+}
+
 // Predefined struct for user
 type IgnoreUnsatisfiedReplyRequestParams struct {
 	// 应用ID
@@ -4119,6 +4144,40 @@ func (r *IgnoreUnsatisfiedReplyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IgnoreUnsatisfiedReplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InvokeAPI struct {
+	// 请求方法，如GET/POST等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 请求地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// header参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeaderValues []*StrValue `json:"HeaderValues,omitnil,omitempty" name:"HeaderValues"`
+
+	// 入参Query
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryValues []*StrValue `json:"QueryValues,omitnil,omitempty" name:"QueryValues"`
+
+	// Post请求的原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestPostBody *string `json:"RequestPostBody,omitnil,omitempty" name:"RequestPostBody"`
+
+	// 返回的原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseBody *string `json:"ResponseBody,omitnil,omitempty" name:"ResponseBody"`
+
+	// 出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseValues []*ValueInfo `json:"ResponseValues,omitnil,omitempty" name:"ResponseValues"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
 }
 
 // Predefined struct for user
@@ -4231,6 +4290,10 @@ type KnowledgeQaOutput struct {
 	// 问题澄清关键词列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuestionClarifyKeywords []*string `json:"QuestionClarifyKeywords,omitnil,omitempty" name:"QuestionClarifyKeywords"`
+
+	// 是否打开推荐问题开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseRecommended *bool `json:"UseRecommended,omitnil,omitempty" name:"UseRecommended"`
 }
 
 type KnowledgeQaSearch struct {
@@ -4265,6 +4328,20 @@ type KnowledgeQaSearch struct {
 	// 检索置信度，针对文档和问答有效，最小0.01，最大0.99
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// 资源状态 1：资源可用；2：资源已用尽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+}
+
+type KnowledgeSummary struct {
+	// 1是问答 2是文档片段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 知识内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type Label struct {
@@ -5876,6 +5953,14 @@ type ModelInfo struct {
 	// 模型名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// 资源状态 1：资源可用；2：资源已用尽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+
+	// 提示词内容字符限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptWordsLimit *string `json:"PromptWordsLimit,omitnil,omitempty" name:"PromptWordsLimit"`
 }
 
 // Predefined struct for user
@@ -6878,6 +6963,36 @@ type Procedure struct {
 	// 消耗 token 数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 调试信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Debugging *ProcedureDebugging `json:"Debugging,omitnil,omitempty" name:"Debugging"`
+
+	// 计费资源状态，1：可用，2：不可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+}
+
+type ProcedureDebugging struct {
+	// 检索query
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 系统prompt
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	System *string `json:"System,omitnil,omitempty" name:"System"`
+
+	// 多轮历史信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Histories []*HistorySummary `json:"Histories,omitnil,omitempty" name:"Histories"`
+
+	// 检索知识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Knowledge []*KnowledgeSummary `json:"Knowledge,omitnil,omitempty" name:"Knowledge"`
+
+	// 任务流程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFlow *TaskFlowSummary `json:"TaskFlow,omitnil,omitempty" name:"TaskFlow"`
 }
 
 type QACate struct {
@@ -7726,6 +7841,28 @@ func (r *RetryReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RunNodeInfo struct {
+	// 节点类型，0:未指定，1:开始节点，2:API节点，3:询问节点，4:答案节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *int64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 请求的API
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvokeApi *InvokeAPI `json:"InvokeApi,omitnil,omitempty" name:"InvokeApi"`
+
+	// 当前节点的所有槽位的值，key：SlotID。没有值的时候也要返回空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlotValues []*ValueInfo `json:"SlotValues,omitnil,omitempty" name:"SlotValues"`
+}
+
 // Predefined struct for user
 type SaveDocRequestParams struct {
 	// 应用ID
@@ -7960,6 +8097,16 @@ func (r *StopDocParseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type StrValue struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type SummaryConfig struct {
 	// 模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8014,6 +8161,24 @@ type TaskFlowInfo struct {
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type TaskFlowSummary struct {
+	// 任务流程名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentName *string `json:"IntentName,omitnil,omitempty" name:"IntentName"`
+
+	// 实体列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedSlotValues []*ValueInfo `json:"UpdatedSlotValues,omitnil,omitempty" name:"UpdatedSlotValues"`
+
+	// 节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunNodes []*RunNodeInfo `json:"RunNodes,omitnil,omitempty" name:"RunNodes"`
+
+	// 意图判断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Purposes []*string `json:"Purposes,omitnil,omitempty" name:"Purposes"`
+}
+
 type TaskParams struct {
 	// 下载地址,需要通过cos桶临时密钥去下载
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8064,6 +8229,10 @@ type TokenStat struct {
 	// 执行过程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedures []*Procedure `json:"Procedures,omitnil,omitempty" name:"Procedures"`
+
+	// 执行过程信息TraceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 }
 
 type UnsatisfiedReply struct {
@@ -8205,6 +8374,40 @@ type Usage struct {
 
 	// 总token数
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type ValueInfo struct {
+	// 值ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 值类型：0:未知或者空, 1:string, 2:int, 3:float, 4:bool, 5:array(字符串数组), 6: object_array(结构体数组), 7: object(结构体)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueType *int64 `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// string
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueStr *string `json:"ValueStr,omitnil,omitempty" name:"ValueStr"`
+
+	// int（避免精度丢失使用字符串返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueInt *string `json:"ValueInt,omitnil,omitempty" name:"ValueInt"`
+
+	// float
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueFloat *float64 `json:"ValueFloat,omitnil,omitempty" name:"ValueFloat"`
+
+	// bool
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueBool *bool `json:"ValueBool,omitnil,omitempty" name:"ValueBool"`
+
+	// array
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueStrArray []*string `json:"ValueStrArray,omitnil,omitempty" name:"ValueStrArray"`
 }
 
 // Predefined struct for user

@@ -817,6 +817,9 @@ type CreateClusterRequestParams struct {
 
 	// 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
 	ZoneResourceConfiguration []*ZoneResourceConfiguration `json:"ZoneResourceConfiguration,omitnil,omitempty" name:"ZoneResourceConfiguration"`
+
+	// cos桶路径，创建StarRocks存算分离集群时用到
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 }
 
 type CreateClusterRequest struct {
@@ -900,6 +903,9 @@ type CreateClusterRequest struct {
 
 	// 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
 	ZoneResourceConfiguration []*ZoneResourceConfiguration `json:"ZoneResourceConfiguration,omitnil,omitempty" name:"ZoneResourceConfiguration"`
+
+	// cos桶路径，创建StarRocks存算分离集群时用到
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -934,6 +940,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "MetaDBInfo")
 	delete(f, "DependService")
 	delete(f, "ZoneResourceConfiguration")
+	delete(f, "CosBucket")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1102,6 +1109,9 @@ type CreateInstanceRequestParams struct {
 
 	// 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
 	MultiZoneSettings []*MultiZoneSetting `json:"MultiZoneSettings,omitnil,omitempty" name:"MultiZoneSettings"`
+
+	// cos桶路径，创建StarRocks存算分离集群时用到
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 }
 
 type CreateInstanceRequest struct {
@@ -1241,6 +1251,9 @@ type CreateInstanceRequest struct {
 
 	// 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
 	MultiZoneSettings []*MultiZoneSetting `json:"MultiZoneSettings,omitnil,omitempty" name:"MultiZoneSettings"`
+
+	// cos桶路径，创建StarRocks存算分离集群时用到
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -1287,6 +1300,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "VersionID")
 	delete(f, "MultiZone")
 	delete(f, "MultiZoneSettings")
+	delete(f, "CosBucket")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}

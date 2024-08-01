@@ -3283,6 +3283,10 @@ type McuSeiParams struct {
 type McuUserInfoParams struct {
 	// 用户参数。
 	UserInfo *MixUserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// 混音的音量调整：取值范围是0到100，100为原始上行音量，不填默认为100，值越小则音量越低。
+	// 注：该参数只在音量白名单下配置生效，其他场景配置无效。
+	SoundLevel *uint64 `json:"SoundLevel,omitnil,omitempty" name:"SoundLevel"`
 }
 
 type McuVideoParams struct {
@@ -5552,7 +5556,7 @@ type UpdatePublishCdnStreamRequestParams struct {
 	// 是否转码，0表示无需转码，1表示需要转码。
 	WithTranscoding *uint64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
 
-	// 更新相关参数，只支持更新参与混音的主播列表参数。不填表示不更新此参数。
+	// 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
 	AudioParams *McuAudioParams `json:"AudioParams,omitnil,omitempty" name:"AudioParams"`
 
 	// 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
@@ -5586,7 +5590,7 @@ type UpdatePublishCdnStreamRequest struct {
 	// 是否转码，0表示无需转码，1表示需要转码。
 	WithTranscoding *uint64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
 
-	// 更新相关参数，只支持更新参与混音的主播列表参数。不填表示不更新此参数。
+	// 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
 	AudioParams *McuAudioParams `json:"AudioParams,omitnil,omitempty" name:"AudioParams"`
 
 	// 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。

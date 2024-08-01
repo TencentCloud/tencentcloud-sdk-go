@@ -523,6 +523,9 @@ type DescribeDeviceListRequestParams struct {
 
 	// 当前页码，不填默认为1（首页）
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+	DeviceStatus *string `json:"DeviceStatus,omitnil,omitempty" name:"DeviceStatus"`
 }
 
 type DescribeDeviceListRequest struct {
@@ -542,6 +545,9 @@ type DescribeDeviceListRequest struct {
 
 	// 当前页码，不填默认为1（首页）
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+	DeviceStatus *string `json:"DeviceStatus,omitnil,omitempty" name:"DeviceStatus"`
 }
 
 func (r *DescribeDeviceListRequest) ToJsonString() string {
@@ -561,6 +567,7 @@ func (r *DescribeDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "SearchWords")
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
+	delete(f, "DeviceStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceListRequest has unknown keys!", "")
 	}
@@ -1888,6 +1895,32 @@ func (r *ModifyProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MultiNet struct {
+	// 网卡序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetId *int64 `json:"NetId,omitnil,omitempty" name:"NetId"`
+
+	// 网卡IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetIp *string `json:"NetIp,omitnil,omitempty" name:"NetIp"`
+
+	// 时延，单位ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rtt []*int64 `json:"Rtt,omitnil,omitempty" name:"Rtt"`
+
+	// 丢包率，单位%
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lost []*int64 `json:"Lost,omitnil,omitempty" name:"Lost"`
+
+	// 发送bps，单位kbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendBps []*int64 `json:"SendBps,omitnil,omitempty" name:"SendBps"`
+
+	// 接收bps，单位kbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecvBps []*int64 `json:"RecvBps,omitnil,omitempty" name:"RecvBps"`
+}
+
 type PolicyInfo struct {
 	// 远端设备ID
 	RemoteDeviceId *string `json:"RemoteDeviceId,omitnil,omitempty" name:"RemoteDeviceId"`
@@ -1991,8 +2024,10 @@ type SessionDeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DecodeCost []*int64 `json:"DecodeCost,omitnil,omitempty" name:"DecodeCost"`
 
-	// 渲染耗时，单位：ms
+	// 【已废弃，使用RenderCost】
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RenderConst is deprecated.
 	RenderConst []*int64 `json:"RenderConst,omitnil,omitempty" name:"RenderConst"`
 
 	// 卡顿k100
@@ -2026,6 +2061,46 @@ type SessionDeviceDetail struct {
 	// 采集耗时，单位：ms
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptureCost []*int64 `json:"CaptureCost,omitnil,omitempty" name:"CaptureCost"`
+
+	// 渲染耗时，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenderCost []*int64 `json:"RenderCost,omitnil,omitempty" name:"RenderCost"`
+
+	// 配置宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigWidth *int64 `json:"ConfigWidth,omitnil,omitempty" name:"ConfigWidth"`
+
+	// 配置高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigHeight *int64 `json:"ConfigHeight,omitnil,omitempty" name:"ConfigHeight"`
+
+	// 平均帧间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameDelta []*int64 `json:"FrameDelta,omitnil,omitempty" name:"FrameDelta"`
+
+	// 最大帧间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxFrameDelta []*int64 `json:"MaxFrameDelta,omitnil,omitempty" name:"MaxFrameDelta"`
+
+	// 总码率评估,单位：kbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalBitrateEstimate []*int64 `json:"TotalBitrateEstimate,omitnil,omitempty" name:"TotalBitrateEstimate"`
+
+	// 帧间隔大于100ms的卡顿时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lag100Duration []*int64 `json:"Lag100Duration,omitnil,omitempty" name:"Lag100Duration"`
+
+	// 帧间隔大于150ms的卡顿时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lag150Duration []*int64 `json:"Lag150Duration,omitnil,omitempty" name:"Lag150Duration"`
+
+	// 是否开启多网：0 单网，1 多网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiMode *int64 `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
+
+	// 多网卡信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiNet []*MultiNet `json:"MultiNet,omitnil,omitempty" name:"MultiNet"`
 }
 
 type SessionInfo struct {

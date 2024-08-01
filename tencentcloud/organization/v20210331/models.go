@@ -3843,6 +3843,82 @@ func (r *ListOrganizationIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationServiceRequestParams struct {
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50，默认值：10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 名称搜索关键字。
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+}
+
+type ListOrganizationServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50，默认值：10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 名称搜索关键字。
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+}
+
+func (r *ListOrganizationServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOrganizationServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListOrganizationServiceResponseParams struct {
+	// 总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 集团服务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrganizationServiceAssign `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListOrganizationServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ListOrganizationServiceResponseParams `json:"Response"`
+}
+
+func (r *ListOrganizationServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOrganizationServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListPoliciesForTarget struct {
 	// 策略Id
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
@@ -4645,6 +4721,61 @@ type OrgProductFinancial struct {
 	// 占比%。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+}
+
+type OrganizationServiceAssign struct {
+	// 集团服务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 是否支持委派。取值: 1-是  2-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAssign *uint64 `json:"IsAssign,omitnil,omitempty" name:"IsAssign"`
+
+	// 集团服务描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 当前委派管理员数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberNum *string `json:"MemberNum,omitnil,omitempty" name:"MemberNum"`
+
+	// 帮助文档。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Document *string `json:"Document,omitnil,omitempty" name:"Document"`
+
+	// 集团服务产品控制台路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsoleUrl *string `json:"ConsoleUrl,omitnil,omitempty" name:"ConsoleUrl"`
+
+	// 是否接入使用状态。取值: 1-是 
+	//  2-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUsageStatus *uint64 `json:"IsUsageStatus,omitnil,omitempty" name:"IsUsageStatus"`
+
+	// 委派管理员数量限制。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanAssignCount *uint64 `json:"CanAssignCount,omitnil,omitempty" name:"CanAssignCount"`
+
+	// 集团服务产品标识。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 是否支持集团服务授权。取值 1-是、2-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGrant *uint64 `json:"ServiceGrant,omitnil,omitempty" name:"ServiceGrant"`
+
+	// 集团服务授权启用状态。ServiceGrant值为1时该字段有效 ，取值：Enabled-开启  Disabled-关闭 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrantStatus *string `json:"GrantStatus,omitnil,omitempty" name:"GrantStatus"`
+
+	// 是否支持设置委派管理范围。取值: 1-是  2-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSetManagementScope *uint64 `json:"IsSetManagementScope,omitnil,omitempty" name:"IsSetManagementScope"`
 }
 
 type ProductResource struct {

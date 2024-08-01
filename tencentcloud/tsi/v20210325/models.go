@@ -119,10 +119,20 @@ type TongChuanRecognizeRequestParams struct {
 	// 一段完整的语音对应一个SessionUuid
 	SessionUuid *string `json:"SessionUuid,omitnil,omitempty" name:"SessionUuid"`
 
-	// 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 源语言，支持：
+	// zh：中文
+	// en：英语
+	// ja：日语
+	// ko：韩语
+	// yue：粤语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 目标语言，各源语言的目标语言支持列表如下
+	// <li>zh（中文）：en（英语）、ja（日语）、ko（韩语）、yue（粤语）</li>
+	// <li>en（英语）：zh（中文）</li>
+	// <li>ja（日语）：zh（中文）</li>
+	// <li>ko（韩语）：zh（中文）</li>
+	// <li>yue（粤语）：zh（中文）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 语音编码类型，1-pcm
@@ -150,10 +160,20 @@ type TongChuanRecognizeRequest struct {
 	// 一段完整的语音对应一个SessionUuid
 	SessionUuid *string `json:"SessionUuid,omitnil,omitempty" name:"SessionUuid"`
 
-	// 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 源语言，支持：
+	// zh：中文
+	// en：英语
+	// ja：日语
+	// ko：韩语
+	// yue：粤语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 目标语言，各源语言的目标语言支持列表如下
+	// <li>zh（中文）：en（英语）、ja（日语）、ko（韩语）、yue（粤语）</li>
+	// <li>en（英语）：zh（中文）</li>
+	// <li>ja（日语）：zh（中文）</li>
+	// <li>ko（韩语）：zh（中文）</li>
+	// <li>yue（粤语）：zh（中文）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 语音编码类型，1-pcm
@@ -229,10 +249,20 @@ type TongChuanSyncRequestParams struct {
 	// 一段完整的语音对应一个SessionUuid
 	SessionUuid *string `json:"SessionUuid,omitnil,omitempty" name:"SessionUuid"`
 
-	// 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 源语言，支持：
+	// zh：中文
+	// en：英语
+	// ja：日语
+	// ko：韩语
+	// yue：粤语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 目标语言，各源语言的目标语言支持列表如下
+	// <li>zh（中文）：en（英语）、ja（日语）、ko（韩语）、yue（粤语）</li>
+	// <li>en（英语）：zh（中文）</li>
+	// <li>ja（日语）：zh（中文）</li>
+	// <li>ko（韩语）：zh（中文）</li>
+	// <li>yue（粤语）：zh（中文）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 语音编码类型，1-pcm
@@ -260,10 +290,20 @@ type TongChuanSyncRequest struct {
 	// 一段完整的语音对应一个SessionUuid
 	SessionUuid *string `json:"SessionUuid,omitnil,omitempty" name:"SessionUuid"`
 
-	// 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 源语言，支持：
+	// zh：中文
+	// en：英语
+	// ja：日语
+	// ko：韩语
+	// yue：粤语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 目标语言，各源语言的目标语言支持列表如下
+	// <li>zh（中文）：en（英语）、ja（日语）、ko（韩语）、yue（粤语）</li>
+	// <li>en（英语）：zh（中文）</li>
+	// <li>ja（日语）：zh（中文）</li>
+	// <li>ko（韩语）：zh（中文）</li>
+	// <li>yue（粤语）：zh（中文）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 语音编码类型，1-pcm

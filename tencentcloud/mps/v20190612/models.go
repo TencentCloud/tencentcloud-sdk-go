@@ -16097,6 +16097,11 @@ type TranslateConfigureInfo struct {
 
 	// 翻译目标语言。
 	DestinationLanguage *string `json:"DestinationLanguage,omitnil,omitempty" name:"DestinationLanguage"`
+
+	// 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 }
 
 type TranslateConfigureInfoForUpdate struct {
@@ -16110,6 +16115,10 @@ type TranslateConfigureInfoForUpdate struct {
 
 	// 翻译目标语言。
 	DestinationLanguage *string `json:"DestinationLanguage,omitnil,omitempty" name:"DestinationLanguage"`
+
+	// 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件。</li>
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 }
 
 type UrlInputInfo struct {

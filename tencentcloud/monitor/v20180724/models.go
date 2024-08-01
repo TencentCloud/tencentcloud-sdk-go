@@ -1088,7 +1088,7 @@ type CreateAlarmNoticeRequestParams struct {
 	// 用户通知 最多5个
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多3个
+	// 回调通知 最多6个
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
 	// 推送CLS日志服务的操作 最多1个
@@ -1116,7 +1116,7 @@ type CreateAlarmNoticeRequest struct {
 	// 用户通知 最多5个
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多3个
+	// 回调通知 最多6个
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
 	// 推送CLS日志服务的操作 最多1个
@@ -11547,7 +11547,7 @@ type ModifyAlarmNoticeRequestParams struct {
 	// 用户通知 最多5个
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多3个
+	// 回调通知 最多6个
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
 	// 告警通知推送到CLS服务 最多1个
@@ -11578,7 +11578,7 @@ type ModifyAlarmNoticeRequest struct {
 	// 用户通知 最多5个
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多3个
+	// 回调通知 最多6个
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
 	// 告警通知推送到CLS服务 最多1个

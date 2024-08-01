@@ -8840,6 +8840,10 @@ type KongActiveHealthCheck struct {
 	// 在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpPath *string `json:"HttpPath,omitnil,omitempty" name:"HttpPath"`
+
+	// GET HTTP 请求的超时时间，单位：秒。默认 60。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *float64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type KongCertificate struct {

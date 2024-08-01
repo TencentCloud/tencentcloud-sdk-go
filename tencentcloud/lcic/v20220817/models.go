@@ -3059,6 +3059,12 @@ type DescribeRoomResponseParams struct {
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 
+	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
+
+	// 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

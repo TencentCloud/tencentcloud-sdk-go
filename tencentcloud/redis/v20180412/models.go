@@ -384,6 +384,50 @@ type BigKeyTypeInfo struct {
 	Updatetime *int64 `json:"Updatetime,omitnil,omitempty" name:"Updatetime"`
 }
 
+type CDCResource struct {
+	// 用户的Appid
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 地域id
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 可用区id
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// redis独享集群id
+	RedisClusterId *string `json:"RedisClusterId,omitnil,omitempty" name:"RedisClusterId"`
+
+	// 计费模式，1-包年包月，0-按量计费
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 自动续费标识，0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 独享集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 实例创建时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 实例到期时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 集群状态：1-流程中，2-运行中，3-已隔离
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 基础管控资源包
+	BaseBundles []*ResourceBundle `json:"BaseBundles,omitnil,omitempty" name:"BaseBundles"`
+
+	// 资源包列表
+	ResourceBundles []*ResourceBundle `json:"ResourceBundles,omitnil,omitempty" name:"ResourceBundles"`
+
+	// 所属本地专有集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+}
+
 // Predefined struct for user
 type ChangeInstanceRoleRequestParams struct {
 	// 复制组ID
@@ -4930,6 +4974,182 @@ func (r *DescribeProxySlowLogResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRedisClusterOverviewRequestParams struct {
+	// 本地专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+}
+
+type DescribeRedisClusterOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 本地专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+}
+
+func (r *DescribeRedisClusterOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisClusterOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DedicatedClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisClusterOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisClusterOverviewResponseParams struct {
+	// 资源包总数
+	TotalBundle *int64 `json:"TotalBundle,omitnil,omitempty" name:"TotalBundle"`
+
+	// 资源包总内存大小，单位：GB
+	TotalMemory *int64 `json:"TotalMemory,omitnil,omitempty" name:"TotalMemory"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisClusterOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisClusterOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisClusterOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisClusterOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisClustersRequestParams struct {
+	// Redis独享集群id
+	RedisClusterIds []*string `json:"RedisClusterIds,omitnil,omitempty" name:"RedisClusterIds"`
+
+	// 集群状态：1-流程中，2-运行中，3-已隔离
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 项目ID数组
+	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 续费模式：0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+	AutoRenewFlag []*int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// Redis独享集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 搜索关键词：支持集群Id、集群名称
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// 分页限制返回大小，不传则默认为20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 本地专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+}
+
+type DescribeRedisClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// Redis独享集群id
+	RedisClusterIds []*string `json:"RedisClusterIds,omitnil,omitempty" name:"RedisClusterIds"`
+
+	// 集群状态：1-流程中，2-运行中，3-已隔离
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 项目ID数组
+	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 续费模式：0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+	AutoRenewFlag []*int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// Redis独享集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 搜索关键词：支持集群Id、集群名称
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// 分页限制返回大小，不传则默认为20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 本地专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+}
+
+func (r *DescribeRedisClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RedisClusterIds")
+	delete(f, "Status")
+	delete(f, "ProjectIds")
+	delete(f, "AutoRenewFlag")
+	delete(f, "ClusterName")
+	delete(f, "SearchKey")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "DedicatedClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisClustersResponseParams struct {
+	// 集群总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// CDC集群资源列表
+	Resources []*CDCResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReplicationGroupInstanceRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6822,6 +7042,18 @@ type InstanceSet struct {
 	// 北极星服务地址，内部使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolarisServer *string `json:"PolarisServer,omitnil,omitempty" name:"PolarisServer"`
+
+	// CDC Redis集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedisClusterId *string `json:"RedisClusterId,omitnil,omitempty" name:"RedisClusterId"`
+
+	// CDC 集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// 实例当前Proxy版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9122,6 +9354,17 @@ func (r *ResetPasswordResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceBundle struct {
+	// 资源包名称
+	ResourceBundleName *string `json:"ResourceBundleName,omitnil,omitempty" name:"ResourceBundleName"`
+
+	// 可售卖内存，单位：GB
+	AvailableMemory *int64 `json:"AvailableMemory,omitnil,omitempty" name:"AvailableMemory"`
+
+	// 资源包个数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type ResourceTag struct {

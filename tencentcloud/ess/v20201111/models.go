@@ -2111,7 +2111,9 @@ type CreateEmployeeQualificationSealQrCodeRequestParams struct {
 	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的，会在授权界面下面的位置展示。
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
 	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
 }
 
@@ -2124,7 +2126,9 @@ type CreateEmployeeQualificationSealQrCodeRequest struct {
 	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的，会在授权界面下面的位置展示。
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
 	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
 }
 
@@ -2265,11 +2269,9 @@ type CreateFlowApproversRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 补充企业签署人信息。
+	// 补充签署环节签署候选人信息。
 	// 
-	// - 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充；
-	// 
-	// - 如果不指定，则使用姓名和手机号进行补充。
+	// 注：` 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充； 如果不指定，则使用姓名和手机号进行补充。`
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程ID，为32位字符串。
@@ -2279,9 +2281,9 @@ type CreateFlowApproversRequestParams struct {
 
 	// 签署人信息补充方式
 	// 
-	// <ul><li>**0**: 添加或签人候选人，或签支持一个节点传多个签署人，不传值默认或签。
+	// <ul><li>**0**: <font color="red">或签合同</font>添加签署候选人，或签支持一个节点传多个签署人，不传值默认或签。
 	// 注: `或签只支持企业签署方`</li>
-	// <li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
+	// <li>**1**: <font color="red">动态签署人合同</font>的添加签署候选人，支持企业或个人签署方。</li></ul>
 	FillApproverType *int64 `json:"FillApproverType,omitnil,omitempty" name:"FillApproverType"`
 
 	// 在可定制的企业微信通知中，发起人可以根据具体需求进行自定义设置。
@@ -2302,11 +2304,9 @@ type CreateFlowApproversRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 补充企业签署人信息。
+	// 补充签署环节签署候选人信息。
 	// 
-	// - 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充；
-	// 
-	// - 如果不指定，则使用姓名和手机号进行补充。
+	// 注：` 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充； 如果不指定，则使用姓名和手机号进行补充。`
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程ID，为32位字符串。
@@ -2316,9 +2316,9 @@ type CreateFlowApproversRequest struct {
 
 	// 签署人信息补充方式
 	// 
-	// <ul><li>**0**: 添加或签人候选人，或签支持一个节点传多个签署人，不传值默认或签。
+	// <ul><li>**0**: <font color="red">或签合同</font>添加签署候选人，或签支持一个节点传多个签署人，不传值默认或签。
 	// 注: `或签只支持企业签署方`</li>
-	// <li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
+	// <li>**1**: <font color="red">动态签署人合同</font>的添加签署候选人，支持企业或个人签署方。</li></ul>
 	FillApproverType *int64 `json:"FillApproverType,omitnil,omitempty" name:"FillApproverType"`
 
 	// 在可定制的企业微信通知中，发起人可以根据具体需求进行自定义设置。

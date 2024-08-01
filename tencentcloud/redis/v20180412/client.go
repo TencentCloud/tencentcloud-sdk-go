@@ -3462,6 +3462,108 @@ func (c *Client) DescribeProxySlowLogWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeRedisClusterOverviewRequest() (request *DescribeRedisClusterOverviewRequest) {
+    request = &DescribeRedisClusterOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeRedisClusterOverview")
+    
+    
+    return
+}
+
+func NewDescribeRedisClusterOverviewResponse() (response *DescribeRedisClusterOverviewResponse) {
+    response = &DescribeRedisClusterOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisClusterOverview
+// 查询Redis独享集群概览信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) DescribeRedisClusterOverview(request *DescribeRedisClusterOverviewRequest) (response *DescribeRedisClusterOverviewResponse, err error) {
+    return c.DescribeRedisClusterOverviewWithContext(context.Background(), request)
+}
+
+// DescribeRedisClusterOverview
+// 查询Redis独享集群概览信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) DescribeRedisClusterOverviewWithContext(ctx context.Context, request *DescribeRedisClusterOverviewRequest) (response *DescribeRedisClusterOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisClusterOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisClusterOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisClusterOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisClustersRequest() (request *DescribeRedisClustersRequest) {
+    request = &DescribeRedisClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeRedisClusters")
+    
+    
+    return
+}
+
+func NewDescribeRedisClustersResponse() (response *DescribeRedisClustersResponse) {
+    response = &DescribeRedisClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisClusters
+// 查询Redis独享集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRedisClusters(request *DescribeRedisClustersRequest) (response *DescribeRedisClustersResponse, err error) {
+    return c.DescribeRedisClustersWithContext(context.Background(), request)
+}
+
+// DescribeRedisClusters
+// 查询Redis独享集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRedisClustersWithContext(ctx context.Context, request *DescribeRedisClustersRequest) (response *DescribeRedisClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReplicationGroupRequest() (request *DescribeReplicationGroupRequest) {
     request = &DescribeReplicationGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

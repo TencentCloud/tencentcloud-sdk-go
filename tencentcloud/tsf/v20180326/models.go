@@ -9314,11 +9314,11 @@ func (r *DescribeContainerGroupDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContainerGroupsRequestParams struct {
+	// 分组所属应用ID。
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
 	// 搜索字段，模糊搜索groupName字段
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
-
-	// 分组所属应用ID。必填
-	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 排序字段，默认为 createTime字段，支持id， name， createTime
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
@@ -9342,11 +9342,11 @@ type DescribeContainerGroupsRequestParams struct {
 type DescribeContainerGroupsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 分组所属应用ID。
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
 	// 搜索字段，模糊搜索groupName字段
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
-
-	// 分组所属应用ID。必填
-	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 排序字段，默认为 createTime字段，支持id， name， createTime
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
@@ -9379,8 +9379,8 @@ func (r *DescribeContainerGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "SearchWord")
 	delete(f, "ApplicationId")
+	delete(f, "SearchWord")
 	delete(f, "OrderBy")
 	delete(f, "OrderType")
 	delete(f, "Offset")

@@ -179,6 +179,9 @@ const (
 	// 协议参数错误。
 	INVALIDPARAMETERVALUE_INVALIDPROTOCOL = "InvalidParameterValue.InvalidProtocol"
 
+	// 设置配额的参数错误，UserId 跟DirectoryPath不可同时填写，两个参数必填一个
+	INVALIDPARAMETERVALUE_INVALIDQUOTAUSERIDORCFSDIRPATH = "InvalidParameterValue.InvalidQuotaUserIdOrCfsDirPath"
+
 	// 用户区域选择错误 (ZoneName) 或 (ZoneId, Region)二者必选一。
 	INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
 
@@ -286,6 +289,12 @@ const (
 
 	// 权限组名称长度超过限制（不能超过64字节）。
 	INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = "InvalidParameterValue.PgroupNameLimitExceeded"
+
+	// 目录配额设置的目录嵌套
+	INVALIDPARAMETERVALUE_PROJECTQUOTASDIRNESTED = "InvalidParameterValue.ProjectQuotasDirNested"
+
+	// 目录配额数量超限
+	INVALIDPARAMETERVALUE_PROJECTQUOTASEXCEEDED = "InvalidParameterValue.ProjectQuotasExceeded"
 
 	// 容量硬限制取值范围错误。
 	INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"

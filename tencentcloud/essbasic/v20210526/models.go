@@ -213,14 +213,14 @@ type BaseFlowInfo struct {
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
+	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
+
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
-
-	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 合同流程的签署顺序类型：
 	// **false**：(默认)有序签署, 本合同多个参与人需要依次签署
@@ -6846,7 +6846,9 @@ type CreateEmployeeQualificationSealQrCodeRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的，会在授权界面下面的位置展示。
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
 	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
 }
 
@@ -6856,7 +6858,9 @@ type CreateEmployeeQualificationSealQrCodeRequest struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+	// 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的，会在授权界面下面的位置展示。
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
 	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
 }
 

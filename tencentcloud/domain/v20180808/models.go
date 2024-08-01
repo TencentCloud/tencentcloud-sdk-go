@@ -1388,7 +1388,7 @@ func (r *DeleteTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuctionListRequestParams struct {
-	// 业务ID
+	// 业务ID，通过接口DescribeBiddingList返回结果中获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 条数，默认10条
@@ -1401,7 +1401,7 @@ type DescribeAuctionListRequestParams struct {
 type DescribeAuctionListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务ID
+	// 业务ID，通过接口DescribeBiddingList返回结果中获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 条数，默认10条

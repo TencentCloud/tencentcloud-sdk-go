@@ -776,6 +776,73 @@ func (c *Client) CreateBatchProductionWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateCloudStorageAIServiceRequest() (request *CreateCloudStorageAIServiceRequest) {
+    request = &CreateCloudStorageAIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateCloudStorageAIService")
+    
+    
+    return
+}
+
+func NewCreateCloudStorageAIServiceResponse() (response *CreateCloudStorageAIServiceResponse) {
+    response = &CreateCloudStorageAIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudStorageAIService
+// 开通设备云存AI分析服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAIPACKAGEEXPIRETIMEEXCEEDED = "FailedOperation.CloudStorageAIPackageExpireTimeExceeded"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CLOUDSTORAGEAIPACKAGEIDNOTEXIST = "InvalidParameterValue.CloudStorageAIPackageIdNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETIMEMISMATCH = "UnsupportedOperation.CloudStoragePackageTimeMismatch"
+//  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETYPEMISMATCH = "UnsupportedOperation.CloudStoragePackageTypeMismatch"
+func (c *Client) CreateCloudStorageAIService(request *CreateCloudStorageAIServiceRequest) (response *CreateCloudStorageAIServiceResponse, err error) {
+    return c.CreateCloudStorageAIServiceWithContext(context.Background(), request)
+}
+
+// CreateCloudStorageAIService
+// 开通设备云存AI分析服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEAIPACKAGEEXPIRETIMEEXCEEDED = "FailedOperation.CloudStorageAIPackageExpireTimeExceeded"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CLOUDSTORAGEAIPACKAGEIDNOTEXIST = "InvalidParameterValue.CloudStorageAIPackageIdNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETIMEMISMATCH = "UnsupportedOperation.CloudStoragePackageTimeMismatch"
+//  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETYPEMISMATCH = "UnsupportedOperation.CloudStoragePackageTypeMismatch"
+func (c *Client) CreateCloudStorageAIServiceWithContext(ctx context.Context, request *CreateCloudStorageAIServiceRequest) (response *CreateCloudStorageAIServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudStorageAIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudStorageAIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudStorageAIServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     request = &CreateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8171,6 +8238,61 @@ func (c *Client) ResetCloudStorageWithContext(ctx context.Context, request *Rese
     request.SetContext(ctx)
     
     response = NewResetCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetCloudStorageAIServiceRequest() (request *ResetCloudStorageAIServiceRequest) {
+    request = &ResetCloudStorageAIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ResetCloudStorageAIService")
+    
+    
+    return
+}
+
+func NewResetCloudStorageAIServiceResponse() (response *ResetCloudStorageAIServiceResponse) {
+    response = &ResetCloudStorageAIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetCloudStorageAIService
+// 重置指定设备的云存 AI 服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageAIService(request *ResetCloudStorageAIServiceRequest) (response *ResetCloudStorageAIServiceResponse, err error) {
+    return c.ResetCloudStorageAIServiceWithContext(context.Background(), request)
+}
+
+// ResetCloudStorageAIService
+// 重置指定设备的云存 AI 服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageAIServiceWithContext(ctx context.Context, request *ResetCloudStorageAIServiceRequest) (response *ResetCloudStorageAIServiceResponse, err error) {
+    if request == nil {
+        request = NewResetCloudStorageAIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetCloudStorageAIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetCloudStorageAIServiceResponse()
     err = c.Send(request, response)
     return
 }

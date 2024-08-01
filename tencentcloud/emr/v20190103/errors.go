@@ -185,6 +185,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
 
+	// 无效的CosBucket
+	INVALIDPARAMETER_INVALIDCOSBUCKET = "InvalidParameter.InvalidCosBucket"
+
 	// CosFileUri参数值无效。
 	INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
 
