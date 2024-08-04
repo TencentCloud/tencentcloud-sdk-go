@@ -3887,7 +3887,7 @@ func (r *UpdateFileSystemBandwidthLimitResponse) FromJsonString(s string) error 
 }
 
 type UserQuota struct {
-	// 指定配额类型，包括Uid、Gid
+	// 指定配额类型，包括Uid、Gid、Dir
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
 	// UID/GID信息
@@ -3909,4 +3909,12 @@ type UserQuota struct {
 	// 文件使用个数，单位个
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUsed *uint64 `json:"FileUsed,omitnil,omitempty" name:"FileUsed"`
+
+	// 目录配额的目录绝对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
+
+	// 配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }

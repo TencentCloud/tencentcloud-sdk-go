@@ -1485,6 +1485,65 @@ func (c *Client) CreateReadOnlyDBInstancesWithContext(ctx context.Context, reque
     return
 }
 
+func NewCutXEventsRequest() (request *CutXEventsRequest) {
+    request = &CutXEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CutXEvents")
+    
+    
+    return
+}
+
+func NewCutXEventsResponse() (response *CutXEventsResponse) {
+    response = &CutXEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CutXEvents
+// 本接口(CutXEvents)用于手动切割阻塞日志和死锁日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CutXEvents(request *CutXEventsRequest) (response *CutXEventsResponse, err error) {
+    return c.CutXEventsWithContext(context.Background(), request)
+}
+
+// CutXEvents
+// 本接口(CutXEvents)用于手动切割阻塞日志和死锁日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CutXEventsWithContext(ctx context.Context, request *CutXEventsRequest) (response *CutXEventsResponse, err error) {
+    if request == nil {
+        request = NewCutXEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CutXEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCutXEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
     request = &DeleteAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
