@@ -235,6 +235,7 @@ type CreateCloudRecordingRequestParams struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	// 注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 录制机器人的UserId，用于进房发起录制任务。
@@ -276,6 +277,7 @@ type CreateCloudRecordingRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	// 注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 录制机器人的UserId，用于进房发起录制任务。

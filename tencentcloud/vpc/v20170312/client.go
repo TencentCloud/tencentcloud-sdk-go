@@ -9301,6 +9301,10 @@ func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
 // DeleteVpnConnection
 // 本接口（DeleteVpnConnection）用于删除VPN通道。
 //
+// >?本接口为异步接口
+//
+// >
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -9314,6 +9318,10 @@ func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (respo
 
 // DeleteVpnConnection
 // 本接口（DeleteVpnConnection）用于删除VPN通道。
+//
+// >?本接口为异步接口
+//
+// >
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

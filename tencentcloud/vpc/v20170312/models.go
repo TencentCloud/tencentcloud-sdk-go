@@ -26186,6 +26186,20 @@ type PrivateIpAddressSpecification struct {
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 }
 
+type PrivateNatCrossDomainInfo struct {
+	// 跨域私网NAT关联的云联网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 跨域私网NAT本端Vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalVpcId *string `json:"LocalVpcId,omitnil,omitempty" name:"LocalVpcId"`
+
+	// 跨域私网NAT对端Vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeerVpcId *string `json:"PeerVpcId,omitnil,omitempty" name:"PeerVpcId"`
+}
+
 type PrivateNatDestinationIpPortTranslationNatRule struct {
 	// 协议
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
@@ -26235,6 +26249,26 @@ type PrivateNatGateway struct {
 	// 标签键值对。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+
+	// 专线网关唯一`ID`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitnil,omitempty" name:"DirectConnectGatewayIds"`
+
+	// 私网网关类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatType *string `json:"NatType,omitnil,omitempty" name:"NatType"`
+
+	// 私网NAT跨域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossDomainInfo *PrivateNatCrossDomainInfo `json:"CrossDomainInfo,omitnil,omitempty" name:"CrossDomainInfo"`
+
+	// 是否VPC型私网网关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcType *bool `json:"VpcType,omitnil,omitempty" name:"VpcType"`
+
+	// 跨域私网NAT关联的云联网ID	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type PrivateNatGatewayLimit struct {

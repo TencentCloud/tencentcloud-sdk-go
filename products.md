@@ -87,7 +87,7 @@
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2024-07-31 01:30:16 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2024-07-12 01:14:44 |
 | ds | [文档服务](https://cloud.tencent.com/document/product/869) | 2024-03-20 01:15:13 |
-| dsgc | [数据安全治理中心](https://cloud.tencent.com/document/product/1087) | 2024-07-18 01:10:11 |
+| dsgc | [数据安全治理中心](https://cloud.tencent.com/document/product/1087) | 2024-08-06 01:35:34 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2022-04-04 06:38:57 |
 | dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2024-07-24 01:36:02 |
 | eb | [事件总线](https://cloud.tencent.com/document/product/1359) | 2024-06-07 01:44:56 |
@@ -98,7 +98,7 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-08-01 01:40:41 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-07-22 01:39:08 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-08-02 01:36:15 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-08-06 01:40:35 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-08-02 01:37:11 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-07-16 01:16:45 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-07-31 01:37:45 |
@@ -166,7 +166,7 @@
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2024-06-18 02:05:02 |
 | pts | [云压测](https://cloud.tencent.com/document/product/1484) | 2024-06-20 02:06:03 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2024-08-01 02:05:51 |
-| redis | [云数据库Redis](https://cloud.tencent.com/document/product/239) | 2024-08-02 02:00:28 |
+| redis | [云数据库Redis](https://cloud.tencent.com/document/product/239) | 2024-08-06 02:04:25 |
 | region | [地域管理系统](https://cloud.tencent.com/document/product/1596) | 2024-04-22 01:23:34 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2023-12-25 00:16:39 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2022-04-04 07:04:06 |
@@ -227,7 +227,7 @@
 | trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | 2024-07-05 01:19:38 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2024-06-06 02:42:14 |
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2024-07-31 02:17:29 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-08-05 02:17:49 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-08-06 02:22:34 |
 | tse | [微服务引擎](https://cloud.tencent.com/document/product/1364) | 2024-08-02 02:19:29 |
 | tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-07-30 11:37:37 |
 | tsi | [腾讯同传系统](https://cloud.tencent.com/document/product/1399) | 2024-08-02 02:22:13 |
@@ -240,7 +240,7 @@
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2024-07-26 02:26:34 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2024-03-20 01:30:13 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2024-07-23 11:34:10 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-07-30 02:28:21 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-08-06 02:28:26 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2024-04-02 01:27:45 |
 | vtc | [视频转译](https://cloud.tencent.com/document/product/1769) | 2024-07-31 02:26:05 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2024-07-29 02:30:48 |

@@ -10667,11 +10667,11 @@ type DspaUserResourceMeta struct {
 	// 授权账号名
 	ResourceAuthAccount *string `json:"ResourceAuthAccount,omitnil,omitempty" name:"ResourceAuthAccount"`
 
-	// x
+	// 实例类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// x
+	// 实例值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
 }
@@ -11828,13 +11828,13 @@ type ModifyDSPAAssessmentRiskLatestRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
+	// 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
 	// 最新风险项Id
 	//
 	// Deprecated: RiskLatestTableId is deprecated.
 	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitnil,omitempty" name:"RiskLatestTableId"`
-
-	// 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
@@ -11852,11 +11852,11 @@ type ModifyDSPAAssessmentRiskLatestRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 最新风险项Id
-	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitnil,omitempty" name:"RiskLatestTableId"`
-
 	// 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 最新风险项Id
+	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitnil,omitempty" name:"RiskLatestTableId"`
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
@@ -11881,8 +11881,8 @@ func (r *ModifyDSPAAssessmentRiskLatestRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DspaId")
-	delete(f, "RiskLatestTableId")
 	delete(f, "Status")
+	delete(f, "RiskLatestTableId")
 	delete(f, "Note")
 	delete(f, "ProcessPeople")
 	delete(f, "BathRiskIdList")

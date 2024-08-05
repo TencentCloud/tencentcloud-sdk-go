@@ -1901,7 +1901,7 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 //
 // 
 //
-// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档  [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/) 。动态签署人在控制台上的展示样式如下：
+// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/)    。动态签署人在控制台上的展示样式如下：
 //
 // 
 //
@@ -2032,7 +2032,7 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 //
 // 
 //
-// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档  [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/) 。动态签署人在控制台上的展示样式如下：
+// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/)    。动态签署人在控制台上的展示样式如下：
 //
 // 
 //
@@ -3789,7 +3789,7 @@ func NewCreateFlowSignReviewResponse() (response *CreateFlowSignReviewResponse) 
 //
 // </ul> 
 //
-// 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果</li>
+// 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果（<font color="red">审核对象：本企业合同参与方的签署动作</font>）</li>
 //
 // <li>在通过接口
 //
@@ -3805,21 +3805,39 @@ func NewCreateFlowSignReviewResponse() (response *CreateFlowSignReviewResponse) 
 //
 // </ul>
 //
-// 发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果</li>
+// 发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果（<font color="red">审核对象：本企业、合同企业、自然人合同参与方的签署动作</font>）</li>
 //
 // </ul>
 //
 // </li>
+//
+// 
+//
+// 对应签署人在签署页面会看到下面的提示：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3bf065bf5afa6de862e80da316be1c53.png)
+//
+// 
 //
 // <li>发起审核
 //
 //  <ul>
 //
-// <li>通过接口CreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效
+// <li>通过接口CreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效（<font color="red">审核对象：本企业合同发起方的发起动作</font>）
 //
 // </li>
 //
 // </ul>
+//
+// 
+//
+// 对应发起人在发起合同的最后环节会有<b>提交审批</b>的按钮：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/cb4857b7b57302fdcbcf37dad31214a8.png)
+//
+// 
 //
 // </li>
 //
@@ -3876,7 +3894,7 @@ func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (res
 //
 // </ul> 
 //
-// 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果</li>
+// 发起签署流程时，通过指定NeedSignReview为true，则可以调用此接口，并指定operate=SignReview，以提交企业内部签署审批结果（<font color="red">审核对象：本企业合同参与方的签署动作</font>）</li>
 //
 // <li>在通过接口
 //
@@ -3892,21 +3910,39 @@ func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (res
 //
 // </ul>
 //
-// 发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果</li>
+// 发起签署流程时，通过指定签署人ApproverNeedSignReview为true，则可以调用此接口，并指定operate=SignReview，并指定RecipientId，以提交企业内部签署审批结果（<font color="red">审核对象：本企业、合同企业、自然人合同参与方的签署动作</font>）</li>
 //
 // </ul>
 //
 // </li>
+//
+// 
+//
+// 对应签署人在签署页面会看到下面的提示：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3bf065bf5afa6de862e80da316be1c53.png)
+//
+// 
 //
 // <li>发起审核
 //
 //  <ul>
 //
-// <li>通过接口CreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效
+// <li>通过接口CreatePrepareFlow指定发起后需要审核，那么可以调用此接口，并指定operate=CreateReview，以提交企业内部审批结果。可以多次提交审批结果，但一旦审批通过，后续提交的结果将无效（<font color="red">审核对象：本企业合同发起方的发起动作</font>）
 //
 // </li>
 //
 // </ul>
+//
+// 
+//
+// 对应发起人在发起合同的最后环节会有<b>提交审批</b>的按钮：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/cb4857b7b57302fdcbcf37dad31214a8.png)
+//
+// 
 //
 // </li>
 //
