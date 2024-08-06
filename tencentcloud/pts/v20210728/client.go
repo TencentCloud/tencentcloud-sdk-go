@@ -2448,6 +2448,7 @@ func NewStartJobResponse() (response *StartJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) StartJob(request *StartJobRequest) (response *StartJobResponse, err error) {
     return c.StartJobWithContext(context.Background(), request)
 }
@@ -2467,6 +2468,7 @@ func (c *Client) StartJob(request *StartJobRequest) (response *StartJobResponse,
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) StartJobWithContext(ctx context.Context, request *StartJobRequest) (response *StartJobResponse, err error) {
     if request == nil {
         request = NewStartJobRequest()

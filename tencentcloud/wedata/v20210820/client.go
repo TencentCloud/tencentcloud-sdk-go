@@ -8403,6 +8403,55 @@ func (c *Client) DescribeTaskByStatusReportWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeTaskLineageRequest() (request *DescribeTaskLineageRequest) {
+    request = &DescribeTaskLineageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskLineage")
+    
+    
+    return
+}
+
+func NewDescribeTaskLineageResponse() (response *DescribeTaskLineageResponse) {
+    response = &DescribeTaskLineageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskLineage
+// 通过任务查询表的血缘关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTaskLineage(request *DescribeTaskLineageRequest) (response *DescribeTaskLineageResponse, err error) {
+    return c.DescribeTaskLineageWithContext(context.Background(), request)
+}
+
+// DescribeTaskLineage
+// 通过任务查询表的血缘关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTaskLineageWithContext(ctx context.Context, request *DescribeTaskLineageRequest) (response *DescribeTaskLineageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskLineageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskLineage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskLineageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskLockStatusRequest() (request *DescribeTaskLockStatusRequest) {
     request = &DescribeTaskLockStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -5364,7 +5364,7 @@ type UpdateScenarioRequestParams struct {
 	// 场景ID
 	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 
-	// 场景名
+	// 场景名；调用该接口时，请将 Scenario 中不需要修改的字段保持原样也作为接口的入参，否则场景可能会不可用。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 场景描述
@@ -5434,7 +5434,7 @@ type UpdateScenarioRequest struct {
 	// 场景ID
 	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 
-	// 场景名
+	// 场景名；调用该接口时，请将 Scenario 中不需要修改的字段保持原样也作为接口的入参，否则场景可能会不可用。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 场景描述

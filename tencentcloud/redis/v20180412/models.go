@@ -2272,7 +2272,7 @@ type DescribeCommonDBInstancesRequestParams struct {
 	// 计费类型过滤列表；0表示包年包月，1表示按量计费
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例ID过滤信息列表
+	// 实例ID过滤信息列表，数组最大长度限制为100
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例名称过滤信息列表
@@ -2315,7 +2315,7 @@ type DescribeCommonDBInstancesRequest struct {
 	// 计费类型过滤列表；0表示包年包月，1表示按量计费
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例ID过滤信息列表
+	// 实例ID过滤信息列表，数组最大长度限制为100
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例名称过滤信息列表
@@ -2841,14 +2841,14 @@ type DescribeInstanceDTSInstanceInfo struct {
 
 // Predefined struct for user
 type DescribeInstanceDealDetailRequestParams struct {
-	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。
+	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。数组最大长度限制为10
 	DealIds []*string `json:"DealIds,omitnil,omitempty" name:"DealIds"`
 }
 
 type DescribeInstanceDealDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。
+	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。数组最大长度限制为10
 	DealIds []*string `json:"DealIds,omitnil,omitempty" name:"DealIds"`
 }
 
@@ -4592,12 +4592,14 @@ type DescribeParamTemplatesRequestParams struct {
 	// - 9：Redis 5.0 内存版（集群架构）。
 	// - 15：Redis 6.2 内存版（标准架构）。
 	// - 16：Redis 6.2 内存版（集群架构）。
+	// - 17：Redis 7.0 内存版（标准架构）。
+	// - 18：Redis 7.0 内存版（集群架构）。
 	ProductTypes []*int64 `json:"ProductTypes,omitnil,omitempty" name:"ProductTypes"`
 
-	// 模板名称数组。
+	// 模板名称数组。数组最大长度限制为50
 	TemplateNames []*string `json:"TemplateNames,omitnil,omitempty" name:"TemplateNames"`
 
-	// 模板ID数组。
+	// 模板ID数组。数组最大长度限制为50
 	TemplateIds []*string `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 }
 
@@ -4614,12 +4616,14 @@ type DescribeParamTemplatesRequest struct {
 	// - 9：Redis 5.0 内存版（集群架构）。
 	// - 15：Redis 6.2 内存版（标准架构）。
 	// - 16：Redis 6.2 内存版（集群架构）。
+	// - 17：Redis 7.0 内存版（标准架构）。
+	// - 18：Redis 7.0 内存版（集群架构）。
 	ProductTypes []*int64 `json:"ProductTypes,omitnil,omitempty" name:"ProductTypes"`
 
-	// 模板名称数组。
+	// 模板名称数组。数组最大长度限制为50
 	TemplateNames []*string `json:"TemplateNames,omitnil,omitempty" name:"TemplateNames"`
 
-	// 模板ID数组。
+	// 模板ID数组。数组最大长度限制为50
 	TemplateIds []*string `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 }
 
@@ -8177,7 +8181,7 @@ type ModifyInstanceRequestParams struct {
 	// 修改实例操作，如填写：rename-表示实例重命名；modifyProject-修改实例所属项目；modifyAutoRenew-修改实例续费标记
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 实例Id
+	// 实例Id，每次请求的实例的上限为10。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例的新名称
@@ -8205,7 +8209,7 @@ type ModifyInstanceRequest struct {
 	// 修改实例操作，如填写：rename-表示实例重命名；modifyProject-修改实例所属项目；modifyAutoRenew-修改实例续费标记
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 实例Id
+	// 实例Id，每次请求的实例的上限为10。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例的新名称
@@ -9964,7 +9968,7 @@ type UpgradeInstanceRequestParams struct {
 	// 指实例变更后的副本数量。<ul><li>每次只能修改参数RedisReplicasNum、MemSize和RedisShardNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li><li>多AZ实例修改副本时必须要传入NodeSet。</li></ul>
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitnil,omitempty" name:"RedisReplicasNum"`
 
-	// 多AZ实例，增加副本时的附带信息，包括副本的可用区和副本的类型（NodeType为1）。非多AZ实例不需要配置该参数。
+	// 多AZ实例，增加副本时的节点信息，包括副本的 ID 编号及可用区信息。非多AZ实例不需要配置该参数。
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 }
 
@@ -9983,7 +9987,7 @@ type UpgradeInstanceRequest struct {
 	// 指实例变更后的副本数量。<ul><li>每次只能修改参数RedisReplicasNum、MemSize和RedisShardNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li><li>多AZ实例修改副本时必须要传入NodeSet。</li></ul>
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitnil,omitempty" name:"RedisReplicasNum"`
 
-	// 多AZ实例，增加副本时的附带信息，包括副本的可用区和副本的类型（NodeType为1）。非多AZ实例不需要配置该参数。
+	// 多AZ实例，增加副本时的节点信息，包括副本的 ID 编号及可用区信息。非多AZ实例不需要配置该参数。
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 }
 

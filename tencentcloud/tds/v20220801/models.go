@@ -20,6 +20,36 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type DataAuthorizationInfo struct {
+	// 数据委托方、需求方：客户主体名称。
+	DataProviderName *string `json:"DataProviderName,omitnil,omitempty" name:"DataProviderName"`
+
+	// 数据受托方、提供方：腾讯云主体名称。
+	// 
+	// 固定填：腾讯云计算（北京）有限责任公司
+	DataRecipientName *string `json:"DataRecipientName,omitnil,omitempty" name:"DataRecipientName"`
+
+	// 客户请求所涉及的用户个人信息类型，支持多选。实际以接口请求传参为准。
+	// 1-手机号；
+	// 2-微信开放账号；
+	// 3-QQ开放账号；
+	// 4-IP地址；
+	UserDataType []*uint64 `json:"UserDataType,omitnil,omitempty" name:"UserDataType"`
+
+	// 客户是否已按合规指南要求获取用户授权，同意客户委托腾讯云处理入参信息，结合已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
+	// 
+	// 1-已授权；其它值为未授权。
+	IsAuthorize *uint64 `json:"IsAuthorize,omitnil,omitempty" name:"IsAuthorize"`
+
+	// 客户获得的用户授权期限时间戳（单位秒）。
+	// 
+	// 不填或0默认无固定期限。
+	AuthorizationTerm *uint64 `json:"AuthorizationTerm,omitnil,omitempty" name:"AuthorizationTerm"`
+
+	// 客户获得用户授权所依赖的协议地址。
+	PrivacyPolicyLink *string `json:"PrivacyPolicyLink,omitnil,omitempty" name:"PrivacyPolicyLink"`
+}
+
 // Predefined struct for user
 type DescribeFraudBaseRequestParams struct {
 	// 客户端通过SDK获取的设备Token
@@ -225,6 +255,9 @@ type DescribeFraudUltimateRequestParams struct {
 
 	// QQ的OpenId
 	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
+
+	// 数据授权信息
+	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
 type DescribeFraudUltimateRequest struct {
@@ -256,6 +289,9 @@ type DescribeFraudUltimateRequest struct {
 
 	// QQ的OpenId
 	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
+
+	// 数据授权信息
+	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
 func (r *DescribeFraudUltimateRequest) ToJsonString() string {
@@ -279,6 +315,7 @@ func (r *DescribeFraudUltimateRequest) FromJsonString(s string) error {
 	delete(f, "PhoneNumber")
 	delete(f, "ClientIP")
 	delete(f, "QQOpenId")
+	delete(f, "DataAuthorization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFraudUltimateRequest has unknown keys!", "")
 	}

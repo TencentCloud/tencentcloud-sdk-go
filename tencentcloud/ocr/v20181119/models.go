@@ -11540,6 +11540,9 @@ type VatElectronicInfo struct {
 
 	// 电子发票详细条目信息
 	VatElectronicItems []*VatElectronicItemInfo `json:"VatElectronicItems,omitnil,omitempty" name:"VatElectronicItems"`
+
+	// 业务类型标志
+	ServiceTypeLabel *string `json:"ServiceTypeLabel,omitnil,omitempty" name:"ServiceTypeLabel"`
 }
 
 type VatElectronicItemInfo struct {

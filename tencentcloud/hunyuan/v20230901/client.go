@@ -45,6 +45,63 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActivateServiceRequest() (request *ActivateServiceRequest) {
+    request = &ActivateServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "ActivateService")
+    
+    
+    return
+}
+
+func NewActivateServiceResponse() (response *ActivateServiceResponse) {
+    response = &ActivateServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActivateService
+// 开通服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_PARTNERACCOUNTUNSUPPORT = "FailedOperation.PartnerAccountUnSupport"
+//  FAILEDOPERATION_USERUNAUTHERROR = "FailedOperation.UserUnAuthError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+func (c *Client) ActivateService(request *ActivateServiceRequest) (response *ActivateServiceResponse, err error) {
+    return c.ActivateServiceWithContext(context.Background(), request)
+}
+
+// ActivateService
+// 开通服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_PARTNERACCOUNTUNSUPPORT = "FailedOperation.PartnerAccountUnSupport"
+//  FAILEDOPERATION_USERUNAUTHERROR = "FailedOperation.UserUnAuthError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+func (c *Client) ActivateServiceWithContext(ctx context.Context, request *ActivateServiceRequest) (response *ActivateServiceResponse, err error) {
+    if request == nil {
+        request = NewActivateServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActivateServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChatCompletionsRequest() (request *ChatCompletionsRequest) {
     request = &ChatCompletionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -297,6 +354,57 @@ func (c *Client) QueryHunyuanImageJobWithContext(ctx context.Context, request *Q
     request.SetContext(ctx)
     
     response = NewQueryHunyuanImageJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetPayModeRequest() (request *SetPayModeRequest) {
+    request = &SetPayModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "SetPayMode")
+    
+    
+    return
+}
+
+func NewSetPayModeResponse() (response *SetPayModeResponse) {
+    response = &SetPayModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetPayMode
+// 设置付费模式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_SETPAYMODEEXCEED = "FailedOperation.SetPayModeExceed"
+func (c *Client) SetPayMode(request *SetPayModeRequest) (response *SetPayModeResponse, err error) {
+    return c.SetPayModeWithContext(context.Background(), request)
+}
+
+// SetPayMode
+// 设置付费模式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_SETPAYMODEEXCEED = "FailedOperation.SetPayModeExceed"
+func (c *Client) SetPayModeWithContext(ctx context.Context, request *SetPayModeRequest) (response *SetPayModeResponse, err error) {
+    if request == nil {
+        request = NewSetPayModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetPayMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetPayModeResponse()
     err = c.Send(request, response)
     return
 }

@@ -101,7 +101,7 @@ type CreateVRSTaskRequestParams struct {
 	// 1-中文
 	VoiceLanguage *int64 `json:"VoiceLanguage,omitnil,omitempty" name:"VoiceLanguage"`
 
-	// 音频ID集合
+	// 音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
 	AudioIdList []*string `json:"AudioIdList,omitnil,omitempty" name:"AudioIdList"`
 
 	// 音频采样率：
@@ -119,10 +119,12 @@ type CreateVRSTaskRequestParams struct {
 	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 复刻类型。 0 - 轻量版声音复刻（默认）。
+	// 复刻类型。
+	// 0 - 轻量版声音复刻（默认）；
+	// 5 - 一句话声音复刻。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 校验音频ID。
+	// 校验音频ID。（仅基础版声音复刻使用）
 	VPRAudioId *string `json:"VPRAudioId,omitnil,omitempty" name:"VPRAudioId"`
 }
 
@@ -147,7 +149,7 @@ type CreateVRSTaskRequest struct {
 	// 1-中文
 	VoiceLanguage *int64 `json:"VoiceLanguage,omitnil,omitempty" name:"VoiceLanguage"`
 
-	// 音频ID集合
+	// 音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
 	AudioIdList []*string `json:"AudioIdList,omitnil,omitempty" name:"AudioIdList"`
 
 	// 音频采样率：
@@ -165,10 +167,12 @@ type CreateVRSTaskRequest struct {
 	// 模型类型 1:在线 2:离线  默认为1
 	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 复刻类型。 0 - 轻量版声音复刻（默认）。
+	// 复刻类型。
+	// 0 - 轻量版声音复刻（默认）；
+	// 5 - 一句话声音复刻。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 校验音频ID。
+	// 校验音频ID。（仅基础版声音复刻使用）
 	VPRAudioId *string `json:"VPRAudioId,omitnil,omitempty" name:"VPRAudioId"`
 }
 
@@ -277,13 +281,21 @@ type DescribeVRSTaskStatusRespData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusStr *string `json:"StatusStr,omitnil,omitempty" name:"StatusStr"`
 
-	// 音色id。
+	// 音色id。（若为一句话复刻时，该值为固定值“200000000”）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
 	// 失败原因说明。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 任务过期时间。（当复刻类型为一句话复刻时展示）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 // Predefined struct for user
@@ -325,10 +337,16 @@ type DetectEnvAndSoundQualityRequestParams struct {
 	// 音频格式，音频类型(wav,mp3,aac,m4a)
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 音频采样率：
-	// 
-	// 16000：16k（默认）
+	// 音频采样率。
+	// 16000：16k（默认）；
+	// 24000：24k（仅一句话声音复刻支持）；
+	// 48000：48k（仅一句话声音复刻支持）。
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 复刻类型。
+	// 0 - 轻量版声音复刻（默认）;
+	// 5 - 一句话声音复刻。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 type DetectEnvAndSoundQualityRequest struct {
@@ -346,10 +364,16 @@ type DetectEnvAndSoundQualityRequest struct {
 	// 音频格式，音频类型(wav,mp3,aac,m4a)
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 音频采样率：
-	// 
-	// 16000：16k（默认）
+	// 音频采样率。
+	// 16000：16k（默认）；
+	// 24000：24k（仅一句话声音复刻支持）；
+	// 48000：48k（仅一句话声音复刻支持）。
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 复刻类型。
+	// 0 - 轻量版声音复刻（默认）;
+	// 5 - 一句话声音复刻。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 func (r *DetectEnvAndSoundQualityRequest) ToJsonString() string {
@@ -369,6 +393,7 @@ func (r *DetectEnvAndSoundQualityRequest) FromJsonString(s string) error {
 	delete(f, "TypeId")
 	delete(f, "Codec")
 	delete(f, "SampleRate")
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectEnvAndSoundQualityRequest has unknown keys!", "")
 	}
@@ -506,12 +531,41 @@ type DownloadVRSModelRsp struct {
 
 // Predefined struct for user
 type GetTrainingTextRequestParams struct {
+	// 复刻类型。
+	// 0 - 轻量版声音复刻（默认）;
+	// 5 - 一句话声音复刻。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
+	// 音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
+	// 0 - 通用场景（默认）； 
+	// 1 - 聊天场景； 
+	// 2 - 阅读场景； 
+	// 3 - 资讯播报场景。
+	Domain *int64 `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
+	// 1 - 中文（默认）。
+	TextLanguage *int64 `json:"TextLanguage,omitnil,omitempty" name:"TextLanguage"`
 }
 
 type GetTrainingTextRequest struct {
 	*tchttp.BaseRequest
 	
+	// 复刻类型。
+	// 0 - 轻量版声音复刻（默认）;
+	// 5 - 一句话声音复刻。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
+	// 0 - 通用场景（默认）； 
+	// 1 - 聊天场景； 
+	// 2 - 阅读场景； 
+	// 3 - 资讯播报场景。
+	Domain *int64 `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
+	// 1 - 中文（默认）。
+	TextLanguage *int64 `json:"TextLanguage,omitnil,omitempty" name:"TextLanguage"`
 }
 
 func (r *GetTrainingTextRequest) ToJsonString() string {
@@ -526,7 +580,9 @@ func (r *GetTrainingTextRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TaskType")
+	delete(f, "Domain")
+	delete(f, "TextLanguage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTrainingTextRequest has unknown keys!", "")
 	}
@@ -560,12 +616,19 @@ func (r *GetTrainingTextResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetVRSVoiceTypesRequestParams struct {
-
+	// 复刻类型。
+	// 0 - 除快速声音复刻外其他复刻类型（默认）；
+	// 5 - 一句话声音复刻。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 type GetVRSVoiceTypesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 复刻类型。
+	// 0 - 除快速声音复刻外其他复刻类型（默认）；
+	// 5 - 一句话声音复刻。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 func (r *GetVRSVoiceTypesRequest) ToJsonString() string {
@@ -580,7 +643,7 @@ func (r *GetVRSVoiceTypesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVRSVoiceTypesRequest has unknown keys!", "")
 	}
@@ -629,7 +692,7 @@ type TrainingTexts struct {
 }
 
 type VoiceTypeInfo struct {
-	// 音色id
+	// 音色id。（若为一句话复刻时，该值为固定值“200000000”）
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
 	// 音色名称
@@ -649,6 +712,15 @@ type VoiceTypeInfo struct {
 
 	// 部署状态。若已部署，则可通过语音合成接口调用该音色
 	IsDeployed *bool `json:"IsDeployed,omitnil,omitempty" name:"IsDeployed"`
+
+	// 任务过期时间。（当复刻类型为一句话复刻时展示）
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 type VoiceTypeListData struct {

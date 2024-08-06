@@ -21,6 +21,60 @@ import (
 )
 
 // Predefined struct for user
+type ActivateServiceRequestParams struct {
+	// 开通之后，是否关闭后付费；默认为0，不关闭；1为关闭
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+}
+
+type ActivateServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开通之后，是否关闭后付费；默认为0，不关闭；1为关闭
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+}
+
+func (r *ActivateServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateServiceResponseParams `json:"Response"`
+}
+
+func (r *ActivateServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChatCompletionsRequestParams struct {
 	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
@@ -62,15 +116,13 @@ type ChatCompletionsRequestParams struct {
 	StreamModeration *bool `json:"StreamModeration,omitnil,omitempty" name:"StreamModeration"`
 
 	// 说明：
-	// 1. 影响输出文本的多样性，取值越大，生成文本的多样性越强。
-	// 2. 取值区间为 [0.0, 1.0]，未传值时使用各模型推荐值。
-	// 3. 非必要不建议使用，不合理的取值会影响效果。
+	// 1. 影响输出文本的多样性，取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
-	// 1. 较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
-	// 2. 取值区间为 [0.0, 2.0]，未传值时使用各模型推荐值。
-	// 3. 非必要不建议使用，不合理的取值会影响效果。
+	// 1. 影响模型输出多样性，取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 功能增强（如搜索）开关。
@@ -148,15 +200,13 @@ type ChatCompletionsRequest struct {
 	StreamModeration *bool `json:"StreamModeration,omitnil,omitempty" name:"StreamModeration"`
 
 	// 说明：
-	// 1. 影响输出文本的多样性，取值越大，生成文本的多样性越强。
-	// 2. 取值区间为 [0.0, 1.0]，未传值时使用各模型推荐值。
-	// 3. 非必要不建议使用，不合理的取值会影响效果。
+	// 1. 影响输出文本的多样性，取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
-	// 1. 较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
-	// 2. 取值区间为 [0.0, 2.0]，未传值时使用各模型推荐值。
-	// 3. 非必要不建议使用，不合理的取值会影响效果。
+	// 1. 影响模型输出多样性，取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 功能增强（如搜索）开关。
@@ -616,6 +666,60 @@ type SearchResult struct {
 	// 搜索引文链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+// Predefined struct for user
+type SetPayModeRequestParams struct {
+	// 设置后付费状态，0：后付费；1：预付费
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+}
+
+type SetPayModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设置后付费状态，0：后付费；1：预付费
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+}
+
+func (r *SetPayModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetPayModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetPayModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetPayModeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetPayModeResponse struct {
+	*tchttp.BaseResponse
+	Response *SetPayModeResponseParams `json:"Response"`
+}
+
+func (r *SetPayModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetPayModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 控制台服务异常。
+	FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+
 	// 引擎层请求超时；请稍后重试。
 	FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
 
@@ -38,6 +41,9 @@ const (
 	// LogoUrl或LogoImage有误，水印图下载失败。
 	FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 
+	// 合作伙伴账号不允许开通，请更换账号。
+	FAILEDOPERATION_PARTNERACCOUNTUNSUPPORT = "FailedOperation.PartnerAccountUnSupport"
+
 	// 资源包余量已用尽，请购买资源包或开通后付费。
 	FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
 
@@ -49,6 +55,12 @@ const (
 
 	// 欠费停服。
 	FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+
+	// 后付费设置次数超过每月限制。
+	FAILEDOPERATION_SETPAYMODEEXCEED = "FailedOperation.SetPayModeExceed"
+
+	// 用户未实名，请先进行实名认证。
+	FAILEDOPERATION_USERUNAUTHERROR = "FailedOperation.UserUnAuthError"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -70,4 +82,10 @@ const (
 
 	// 图片可能包含敏感信息，请重试
 	OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+
+	// 账号已欠费。
+	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+
+	// 余额不足。
+	RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
 )
