@@ -904,6 +904,10 @@ type CompanyInfo struct {
 	// ID号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -5042,6 +5046,10 @@ type ManagerInfo struct {
 	// 具体审核状态信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ManagerStatusInfo struct {

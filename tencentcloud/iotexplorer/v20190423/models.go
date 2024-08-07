@@ -72,6 +72,14 @@ type ActivateTWeCallLicenseResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceList []*DeviceActiveResult `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
+	// 设备激活失败返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureList []*DeviceActiveResult `json:"FailureList,omitnil,omitempty" name:"FailureList"`
+
+	// 设备激活成功返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessList []*DeviceActiveResult `json:"SuccessList,omitnil,omitempty" name:"SuccessList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6723,6 +6731,10 @@ type DeviceActiveResult struct {
 	// 设备激活状态，0：激活成功；9800020：设备数超出限制；9800040：资源包类型和设备类型不匹配；9800039：资源包余额不足；9800037：激活码序号已使用；9800038：设备有效期超出限制；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *uint64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 type DeviceData struct {

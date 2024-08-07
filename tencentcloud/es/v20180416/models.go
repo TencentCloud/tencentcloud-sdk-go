@@ -570,6 +570,9 @@ type CreateInstanceRequestParams struct {
 
 	// 置放群组亲和度，范围[0,10]，0表示不开启
 	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
+
+	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 }
 
 type CreateInstanceRequest struct {
@@ -690,6 +693,9 @@ type CreateInstanceRequest struct {
 
 	// 置放群组亲和度，范围[0,10]，0表示不开启
 	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
+
+	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -740,6 +746,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableDiagnose")
 	delete(f, "CdcId")
 	delete(f, "DisasterRecoverGroupAffinity")
+	delete(f, "SubProductCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -2206,6 +2213,9 @@ type DescribeInstancesRequestParams struct {
 
 	// Vpc列表 筛选项
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
+
+	// cdc集群id
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 type DescribeInstancesRequest struct {
@@ -2246,6 +2256,9 @@ type DescribeInstancesRequest struct {
 
 	// Vpc列表 筛选项
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
+
+	// cdc集群id
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -2272,6 +2285,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ZoneList")
 	delete(f, "HealthStatus")
 	delete(f, "VpcIds")
+	delete(f, "CdcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -4253,6 +4267,10 @@ type InstanceInfo struct {
 	// 置放群组相关参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
+
+	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 }
 
 type InstanceLog struct {

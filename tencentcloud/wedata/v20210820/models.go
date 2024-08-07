@@ -3136,6 +3136,9 @@ type CreateDataSourceRequestParams struct {
 
 	// 开发环境数据源配置
 	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
+
+	// 新建数据源的项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type CreateDataSourceRequest struct {
@@ -3197,6 +3200,9 @@ type CreateDataSourceRequest struct {
 
 	// 开发环境数据源配置
 	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
+
+	// 新建数据源的项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *CreateDataSourceRequest) ToJsonString() string {
@@ -3230,6 +3236,7 @@ func (r *CreateDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "COSRegion")
 	delete(f, "ConnectResult")
 	delete(f, "DevelopmentParams")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataSourceRequest has unknown keys!", "")
 	}
@@ -10919,7 +10926,7 @@ type DescribeIntegrationTasksRequestParams struct {
 	// 分页大小
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询filter
+	// 查询filter;默认查询任务的开发态，如需查询生产态任务需添加{"Values":["true"],"Name":"ProductionState"};如需查询查询任务状态需要查询生产态任务列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段信息
@@ -10947,7 +10954,7 @@ type DescribeIntegrationTasksRequest struct {
 	// 分页大小
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询filter
+	// 查询filter;默认查询任务的开发态，如需查询生产态任务需添加{"Values":["true"],"Name":"ProductionState"};如需查询查询任务状态需要查询生产态任务列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段信息
@@ -19518,7 +19525,7 @@ type IntegrationTaskInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
+	// 0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 

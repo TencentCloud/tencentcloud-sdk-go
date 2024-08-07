@@ -4789,7 +4789,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 注:  `没有输入返回所有记录，最大返回100条。`
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><<li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
+	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 
@@ -4829,7 +4829,7 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 注:  `没有输入返回所有记录，最大返回100条。`
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><<li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
+	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 

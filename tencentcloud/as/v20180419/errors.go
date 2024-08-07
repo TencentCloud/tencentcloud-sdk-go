@@ -158,6 +158,9 @@ const (
 	// 主机名不合法。
 	INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = "InvalidParameterValue.HostNameIllegal"
 
+	// 带后缀的主机名称过长，超过了规定上限。
+	INVALIDPARAMETERVALUE_HOSTNAMEWITHSUFFIXTOOLONG = "InvalidParameterValue.HostNameWithSuffixTooLong"
+
 	// 指定的IPv6公网带宽计费模式不合法。
 	INVALIDPARAMETERVALUE_IPV6INTERNETCHARGETYPE = "InvalidParameterValue.IPv6InternetChargeType"
 
@@ -166,6 +169,9 @@ const (
 
 	// 设置的实例名称不合法。
 	INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = "InvalidParameterValue.InstanceNameIllegal"
+
+	// 带后缀的实例名称过长，超过了规定上限。
+	INVALIDPARAMETERVALUE_INSTANCENAMEWITHSUFFIXTOOLONG = "InvalidParameterValue.InstanceNameWithSuffixTooLong"
 
 	// 实例机型不支持。
 	INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTED = "InvalidParameterValue.InstanceTypeNotSupported"

@@ -35,14 +35,35 @@ const (
 	// 下载视频出错。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
 
+	// 驱动失败
+	FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+
 	// 人脸框太小，无法识别使用。
 	FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+
+	// 输入图身体（头顶到脚踝）高度占比不到图片高度的二分之一
+	FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+
+	// 输入图未检测到人体
+	FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
 
 	// 图片解码失败。
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 
+	// 输入图人脸检测失败
+	FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+
+	// 输入图中存在多人
+	FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+
+	// 未上传输入图
+	FAILEDOPERATION_IMAGENOTEXISTED = "FailedOperation.ImageNotExisted"
+
 	// 不支持的图片文件。
 	FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+
+	// 输入图高宽比未在1.2～2.0范围内
+	FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
 
 	// 图片分辨率过大。
 	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
@@ -62,6 +83,9 @@ const (
 	// 任务队列已满，请稍后重试。
 	FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
 
+	// 核心关节点未检测到
+	FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+
 	// 音频审核失败
 	FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
 
@@ -79,6 +103,12 @@ const (
 
 	// 任务状态异常。
 	FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
+
+	// 模板视频首帧未检测到人脸
+	FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+
+	// 模板视频存在未检测到人体的帧
+	FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
 
 	// 文本未通过审核，请修改后重新尝试。
 	FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
@@ -115,6 +145,9 @@ const (
 
 	// 参数不合法。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+
+	// 模板不存在
+	INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

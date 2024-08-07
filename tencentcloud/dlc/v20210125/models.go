@@ -13999,6 +13999,12 @@ type UpdateDataEngineConfigRequestParams struct {
 
 	// 引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
 	DataEngineConfigCommand *string `json:"DataEngineConfigCommand,omitnil,omitempty" name:"DataEngineConfigCommand"`
+
+	// 是否使用lakefs作为结果存储
+	UseLakeFs *bool `json:"UseLakeFs,omitnil,omitempty" name:"UseLakeFs"`
+
+	// 用户自定义结果路径
+	CustomResultPath *string `json:"CustomResultPath,omitnil,omitempty" name:"CustomResultPath"`
 }
 
 type UpdateDataEngineConfigRequest struct {
@@ -14009,6 +14015,12 @@ type UpdateDataEngineConfigRequest struct {
 
 	// 引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
 	DataEngineConfigCommand *string `json:"DataEngineConfigCommand,omitnil,omitempty" name:"DataEngineConfigCommand"`
+
+	// 是否使用lakefs作为结果存储
+	UseLakeFs *bool `json:"UseLakeFs,omitnil,omitempty" name:"UseLakeFs"`
+
+	// 用户自定义结果路径
+	CustomResultPath *string `json:"CustomResultPath,omitnil,omitempty" name:"CustomResultPath"`
 }
 
 func (r *UpdateDataEngineConfigRequest) ToJsonString() string {
@@ -14025,6 +14037,8 @@ func (r *UpdateDataEngineConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DataEngineIds")
 	delete(f, "DataEngineConfigCommand")
+	delete(f, "UseLakeFs")
+	delete(f, "CustomResultPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataEngineConfigRequest has unknown keys!", "")
 	}
