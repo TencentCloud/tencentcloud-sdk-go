@@ -701,6 +701,67 @@ func (c *Client) CheckAccountDeleteWithContext(ctx context.Context, request *Che
     return
 }
 
+func NewCreateOrgServiceAssignRequest() (request *CreateOrgServiceAssignRequest) {
+    request = &CreateOrgServiceAssignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateOrgServiceAssign")
+    
+    
+    return
+}
+
+func NewCreateOrgServiceAssignResponse() (response *CreateOrgServiceAssignResponse) {
+    response = &CreateOrgServiceAssignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOrgServiceAssign
+// 添加集团服务委派管理员
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATEORGSERVICEASSIGNOVERLIMIT = "LimitExceeded.CreateOrgServiceAssignOverLimit"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOrgServiceAssign(request *CreateOrgServiceAssignRequest) (response *CreateOrgServiceAssignResponse, err error) {
+    return c.CreateOrgServiceAssignWithContext(context.Background(), request)
+}
+
+// CreateOrgServiceAssign
+// 添加集团服务委派管理员
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATEORGSERVICEASSIGNOVERLIMIT = "LimitExceeded.CreateOrgServiceAssignOverLimit"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOrgServiceAssignWithContext(ctx context.Context, request *CreateOrgServiceAssignRequest) (response *CreateOrgServiceAssignResponse, err error) {
+    if request == nil {
+        request = NewCreateOrgServiceAssignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrgServiceAssign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrgServiceAssignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationRequest() (request *CreateOrganizationRequest) {
     request = &CreateOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1327,6 +1388,67 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
     request.SetContext(ctx)
     
     response = NewDeleteAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOrgServiceAssignRequest() (request *DeleteOrgServiceAssignRequest) {
+    request = &DeleteOrgServiceAssignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteOrgServiceAssign")
+    
+    
+    return
+}
+
+func NewDeleteOrgServiceAssignResponse() (response *DeleteOrgServiceAssignResponse) {
+    response = &DeleteOrgServiceAssignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOrgServiceAssign
+// 删除集团服务委派管理员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEORGSERVICEUSAGESTATUSERR = "FailedOperation.DescribeOrgServiceUsageStatusErr"
+//  FAILEDOPERATION_ORGANIZATIONSERVICEASSIGNISUSE = "FailedOperation.OrganizationServiceAssignIsUse"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONSERVICEASSIGNNOTEXIST = "ResourceNotFound.OrganizationServiceAssignNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
+func (c *Client) DeleteOrgServiceAssign(request *DeleteOrgServiceAssignRequest) (response *DeleteOrgServiceAssignResponse, err error) {
+    return c.DeleteOrgServiceAssignWithContext(context.Background(), request)
+}
+
+// DeleteOrgServiceAssign
+// 删除集团服务委派管理员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEORGSERVICEUSAGESTATUSERR = "FailedOperation.DescribeOrgServiceUsageStatusErr"
+//  FAILEDOPERATION_ORGANIZATIONSERVICEASSIGNISUSE = "FailedOperation.OrganizationServiceAssignIsUse"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONSERVICEASSIGNNOTEXIST = "ResourceNotFound.OrganizationServiceAssignNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
+func (c *Client) DeleteOrgServiceAssignWithContext(ctx context.Context, request *DeleteOrgServiceAssignRequest) (response *DeleteOrgServiceAssignResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrgServiceAssignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrgServiceAssign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrgServiceAssignResponse()
     err = c.Send(request, response)
     return
 }
@@ -3303,6 +3425,61 @@ func (c *Client) ListNonCompliantResourceWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewListNonCompliantResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListOrgServiceAssignMemberRequest() (request *ListOrgServiceAssignMemberRequest) {
+    request = &ListOrgServiceAssignMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListOrgServiceAssignMember")
+    
+    
+    return
+}
+
+func NewListOrgServiceAssignMemberResponse() (response *ListOrgServiceAssignMemberResponse) {
+    response = &ListOrgServiceAssignMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListOrgServiceAssignMember
+// 获取集团服务委派管理员列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEORGSERVICEUSAGESTATUSERR = "FailedOperation.DescribeOrgServiceUsageStatusErr"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrgServiceAssignMember(request *ListOrgServiceAssignMemberRequest) (response *ListOrgServiceAssignMemberResponse, err error) {
+    return c.ListOrgServiceAssignMemberWithContext(context.Background(), request)
+}
+
+// ListOrgServiceAssignMember
+// 获取集团服务委派管理员列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEORGSERVICEUSAGESTATUSERR = "FailedOperation.DescribeOrgServiceUsageStatusErr"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrgServiceAssignMemberWithContext(ctx context.Context, request *ListOrgServiceAssignMemberRequest) (response *ListOrgServiceAssignMemberResponse, err error) {
+    if request == nil {
+        request = NewListOrgServiceAssignMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOrgServiceAssignMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListOrgServiceAssignMemberResponse()
     err = c.Send(request, response)
     return
 }

@@ -972,6 +972,60 @@ type ConfigInfo struct {
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
+type ConsoleSharingConfig struct {
+	// 分享链接名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 仪表盘: 1; 检索页:2
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分享链接有效期，单位：毫秒，最长支持30天
+	DurationMilliseconds *uint64 `json:"DurationMilliseconds,omitnil,omitempty" name:"DurationMilliseconds"`
+
+	// 允许访问的资源列表
+	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 分享链接域名，可选范围
+	// - 公网匿名分享：填写clsshare.com
+	// - datasight内网匿名分享(若开启)：datasight内网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 验证码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyCode *string `json:"VerifyCode,omitnil,omitempty" name:"VerifyCode"`
+
+	// 开始时间，支持绝对时间(13位时间戳字符串)/相对时间字符串
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，支持绝对时间(13位时间戳字符串)/相对时间字符串
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 当StartTime/EndTime为相对时间时，基于NowTime计算绝对时间，默认为创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NowTime *uint64 `json:"NowTime,omitnil,omitempty" name:"NowTime"`
+
+	// params参数列表，当Type为2时支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*ConsoleSharingParam `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// 是否允许访问者自行修改检索分析时间范围，默认不锁定
+	IsLockTimeRange *bool `json:"IsLockTimeRange,omitnil,omitempty" name:"IsLockTimeRange"`
+
+	// 是否允许访问者自行修改日志检索语句。在检索页分享中表示检索语句锁定状态；在仪表盘中表示过滤变量锁定状态
+	IsLockQuery *bool `json:"IsLockQuery,omitnil,omitempty" name:"IsLockQuery"`
+}
+
+type ConsoleSharingParam struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type ConsumerContent struct {
 	// 是否投递 TAG 信息。
 	// 当EnableTag为true时，表示投递TAG元信息。
@@ -1977,6 +2031,66 @@ func (r *CreateConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsoleSharingRequestParams struct {
+	// 免密分享配置
+	SharingConfig *ConsoleSharingConfig `json:"SharingConfig,omitnil,omitempty" name:"SharingConfig"`
+}
+
+type CreateConsoleSharingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 免密分享配置
+	SharingConfig *ConsoleSharingConfig `json:"SharingConfig,omitnil,omitempty" name:"SharingConfig"`
+}
+
+func (r *CreateConsoleSharingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsoleSharingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SharingConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleSharingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsoleSharingResponseParams struct {
+	// 免密分享链接
+	SharingUrl *string `json:"SharingUrl,omitnil,omitempty" name:"SharingUrl"`
+
+	// 免密分享链接ID
+	SharingId *string `json:"SharingId,omitnil,omitempty" name:"SharingId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConsoleSharingResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConsoleSharingResponseParams `json:"Response"`
+}
+
+func (r *CreateConsoleSharingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsoleSharingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3960,6 +4074,60 @@ func (r *DeleteConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteConsoleSharingRequestParams struct {
+	// 免密分享Id
+	SharingId *string `json:"SharingId,omitnil,omitempty" name:"SharingId"`
+}
+
+type DeleteConsoleSharingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 免密分享Id
+	SharingId *string `json:"SharingId,omitnil,omitempty" name:"SharingId"`
+}
+
+func (r *DeleteConsoleSharingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsoleSharingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SharingId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsoleSharingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsoleSharingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteConsoleSharingResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsoleSharingResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsoleSharingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsoleSharingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteConsumerRequestParams struct {
 	// 投递任务绑定的日志主题 ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -5316,6 +5484,60 @@ func (r *DescribeConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsoleSharingListRequestParams struct {
+
+}
+
+type DescribeConsoleSharingListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeConsoleSharingListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsoleSharingListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsoleSharingListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsoleSharingListResponseParams struct {
+	// 分页的总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsoleSharingListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsoleSharingListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsoleSharingListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsoleSharingListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8839,6 +9061,67 @@ func (r *ModifyConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsoleSharingRequestParams struct {
+	// 免密分享链接Id
+	SharingId *string `json:"SharingId,omitnil,omitempty" name:"SharingId"`
+
+	// 指定分享链接有效期，单位：毫秒，最长可设定有效期为30天
+	DurationMilliseconds *uint64 `json:"DurationMilliseconds,omitnil,omitempty" name:"DurationMilliseconds"`
+}
+
+type ModifyConsoleSharingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 免密分享链接Id
+	SharingId *string `json:"SharingId,omitnil,omitempty" name:"SharingId"`
+
+	// 指定分享链接有效期，单位：毫秒，最长可设定有效期为30天
+	DurationMilliseconds *uint64 `json:"DurationMilliseconds,omitnil,omitempty" name:"DurationMilliseconds"`
+}
+
+func (r *ModifyConsoleSharingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsoleSharingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SharingId")
+	delete(f, "DurationMilliseconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsoleSharingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsoleSharingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyConsoleSharingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConsoleSharingResponseParams `json:"Response"`
+}
+
+func (r *ModifyConsoleSharingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsoleSharingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

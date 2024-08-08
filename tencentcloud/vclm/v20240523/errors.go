@@ -56,9 +56,6 @@ const (
 	// 输入图中存在多人
 	FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
 
-	// 未上传输入图
-	FAILEDOPERATION_IMAGENOTEXISTED = "FailedOperation.ImageNotExisted"
-
 	// 不支持的图片文件。
 	FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
 

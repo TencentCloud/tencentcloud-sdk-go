@@ -731,6 +731,88 @@ func (r *CheckAccountDeleteResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOrgServiceAssignRequestParams struct {
+	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 委派管理员Uin列表。 最大长度20个
+	MemberUins []*int64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+
+	// 委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
+	ManagementScope *uint64 `json:"ManagementScope,omitnil,omitempty" name:"ManagementScope"`
+
+	// 管理的成员Uin列表。ManagementScope为2时该参数有效
+	ManagementScopeUins []*int64 `json:"ManagementScopeUins,omitnil,omitempty" name:"ManagementScopeUins"`
+
+	// 管理的部门ID列表。ManagementScope为2时该参数有效
+	ManagementScopeNodeIds []*int64 `json:"ManagementScopeNodeIds,omitnil,omitempty" name:"ManagementScopeNodeIds"`
+}
+
+type CreateOrgServiceAssignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 委派管理员Uin列表。 最大长度20个
+	MemberUins []*int64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+
+	// 委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
+	ManagementScope *uint64 `json:"ManagementScope,omitnil,omitempty" name:"ManagementScope"`
+
+	// 管理的成员Uin列表。ManagementScope为2时该参数有效
+	ManagementScopeUins []*int64 `json:"ManagementScopeUins,omitnil,omitempty" name:"ManagementScopeUins"`
+
+	// 管理的部门ID列表。ManagementScope为2时该参数有效
+	ManagementScopeNodeIds []*int64 `json:"ManagementScopeNodeIds,omitnil,omitempty" name:"ManagementScopeNodeIds"`
+}
+
+func (r *CreateOrgServiceAssignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrgServiceAssignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "MemberUins")
+	delete(f, "ManagementScope")
+	delete(f, "ManagementScopeUins")
+	delete(f, "ManagementScopeNodeIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrgServiceAssignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrgServiceAssignResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOrgServiceAssignResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrgServiceAssignResponseParams `json:"Response"`
+}
+
+func (r *CreateOrgServiceAssignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrgServiceAssignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrganizationIdentityRequestParams struct {
 	// 身份名称
 	IdentityAliasName *string `json:"IdentityAliasName,omitnil,omitempty" name:"IdentityAliasName"`
@@ -1330,6 +1412,67 @@ func (r *DeleteAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrgServiceAssignRequestParams struct {
+	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 委派管理员Uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+}
+
+type DeleteOrgServiceAssignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 委派管理员Uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+}
+
+func (r *DeleteOrgServiceAssignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrgServiceAssignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "MemberUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrgServiceAssignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrgServiceAssignResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOrgServiceAssignResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOrgServiceAssignResponseParams `json:"Response"`
+}
+
+func (r *DeleteOrgServiceAssignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrgServiceAssignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3754,6 +3897,82 @@ func (r *ListNonCompliantResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListOrgServiceAssignMemberRequestParams struct {
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50，默认值：10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+type ListOrgServiceAssignMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50，默认值：10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+func (r *ListOrgServiceAssignMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOrgServiceAssignMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrgServiceAssignMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListOrgServiceAssignMemberResponseParams struct {
+	// 总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 委派管理员列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrganizationServiceAssignMember `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListOrgServiceAssignMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *ListOrgServiceAssignMemberResponseParams `json:"Response"`
+}
+
+func (r *ListOrgServiceAssignMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOrgServiceAssignMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListOrganizationIdentityRequestParams struct {
 	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -4387,6 +4606,16 @@ func (r *MoveOrganizationNodeMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NodeMainInfo struct {
+	// 部门ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 部门名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+}
+
 type NotAllowReason struct {
 	// 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4776,6 +5005,44 @@ type OrganizationServiceAssign struct {
 	// 是否支持设置委派管理范围。取值: 1-是  2-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSetManagementScope *uint64 `json:"IsSetManagementScope,omitnil,omitempty" name:"IsSetManagementScope"`
+}
+
+type OrganizationServiceAssignMember struct {
+	// 集团服务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 委派管理员Uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 委派管理员名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
+
+	// 启用状态 。取值：0-服务无启用状态  1-已启用  2-未启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageStatus *uint64 `json:"UsageStatus,omitnil,omitempty" name:"UsageStatus"`
+
+	// 委派时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 委派管理员管理范围。取值: 1-全部成员  2-部分成员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagementScope *uint64 `json:"ManagementScope,omitnil,omitempty" name:"ManagementScope"`
+
+	// 管理的成员Uin列表。ManagementScope值为2时该参数有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagementScopeMembers []*MemberMainInfo `json:"ManagementScopeMembers,omitnil,omitempty" name:"ManagementScopeMembers"`
+
+	// 管理的部门ID列表。ManagementScope值为2时该参数有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagementScopeNodes []*NodeMainInfo `json:"ManagementScopeNodes,omitnil,omitempty" name:"ManagementScopeNodes"`
 }
 
 type ProductResource struct {

@@ -116,13 +116,13 @@ type ChatCompletionsRequestParams struct {
 	StreamModeration *bool `json:"StreamModeration,omitnil,omitempty" name:"StreamModeration"`
 
 	// 说明：
-	// 1. 影响输出文本的多样性，取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
-	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
-	// 1. 影响模型输出多样性，取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
-	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 功能增强（如搜索）开关。
@@ -200,13 +200,13 @@ type ChatCompletionsRequest struct {
 	StreamModeration *bool `json:"StreamModeration,omitnil,omitempty" name:"StreamModeration"`
 
 	// 说明：
-	// 1. 影响输出文本的多样性，取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
-	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
 	// 说明：
-	// 1. 影响模型输出多样性，取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
-	// 2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+	// 2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 功能增强（如搜索）开关。

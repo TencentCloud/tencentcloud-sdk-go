@@ -1013,6 +1013,55 @@ func (c *Client) DescribeConsumerGroupListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeConsumerLagRequest() (request *DescribeConsumerLagRequest) {
+    request = &DescribeConsumerLagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerLag")
+    
+    
+    return
+}
+
+func NewDescribeConsumerLagResponse() (response *DescribeConsumerLagResponse) {
+    response = &DescribeConsumerLagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerLag
+// 查询指定消费组堆积数。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerLag(request *DescribeConsumerLagRequest) (response *DescribeConsumerLagResponse, err error) {
+    return c.DescribeConsumerLagWithContext(context.Background(), request)
+}
+
+// DescribeConsumerLag
+// 查询指定消费组堆积数。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerLagWithContext(ctx context.Context, request *DescribeConsumerLagRequest) (response *DescribeConsumerLagResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerLagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerLag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerLagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFusionInstanceListRequest() (request *DescribeFusionInstanceListRequest) {
     request = &DescribeFusionInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -701,6 +701,59 @@ func (c *Client) CreateConfigExtraWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateConsoleSharingRequest() (request *CreateConsoleSharingRequest) {
+    request = &CreateConsoleSharingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateConsoleSharing")
+    
+    
+    return
+}
+
+func NewCreateConsoleSharingResponse() (response *CreateConsoleSharingResponse) {
+    response = &CreateConsoleSharingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConsoleSharing
+// 创建控制台分享
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateConsoleSharing(request *CreateConsoleSharingRequest) (response *CreateConsoleSharingResponse, err error) {
+    return c.CreateConsoleSharingWithContext(context.Background(), request)
+}
+
+// CreateConsoleSharing
+// 创建控制台分享
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateConsoleSharingWithContext(ctx context.Context, request *CreateConsoleSharingRequest) (response *CreateConsoleSharingResponse, err error) {
+    if request == nil {
+        request = NewCreateConsoleSharingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConsoleSharing require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConsoleSharingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConsumerRequest() (request *CreateConsumerRequest) {
     request = &CreateConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2032,6 +2085,59 @@ func (c *Client) DeleteConfigFromMachineGroupWithContext(ctx context.Context, re
     return
 }
 
+func NewDeleteConsoleSharingRequest() (request *DeleteConsoleSharingRequest) {
+    request = &DeleteConsoleSharingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteConsoleSharing")
+    
+    
+    return
+}
+
+func NewDeleteConsoleSharingResponse() (response *DeleteConsoleSharingResponse) {
+    response = &DeleteConsoleSharingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConsoleSharing
+// 删除控制台分享
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConsoleSharing(request *DeleteConsoleSharingRequest) (response *DeleteConsoleSharingResponse, err error) {
+    return c.DeleteConsoleSharingWithContext(context.Background(), request)
+}
+
+// DeleteConsoleSharing
+// 删除控制台分享
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConsoleSharingWithContext(ctx context.Context, request *DeleteConsoleSharingRequest) (response *DeleteConsoleSharingResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsoleSharingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConsoleSharing require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConsoleSharingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteConsumerRequest() (request *DeleteConsumerRequest) {
     request = &DeleteConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3319,6 +3425,57 @@ func (c *Client) DescribeConfigsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsoleSharingListRequest() (request *DescribeConsoleSharingListRequest) {
+    request = &DescribeConsoleSharingListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsoleSharingList")
+    
+    
+    return
+}
+
+func NewDescribeConsoleSharingListResponse() (response *DescribeConsoleSharingListResponse) {
+    response = &DescribeConsoleSharingListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsoleSharingList
+// 批量查询控制台分享列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConsoleSharingList(request *DescribeConsoleSharingListRequest) (response *DescribeConsoleSharingListResponse, err error) {
+    return c.DescribeConsoleSharingListWithContext(context.Background(), request)
+}
+
+// DescribeConsoleSharingList
+// 批量查询控制台分享列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConsoleSharingListWithContext(ctx context.Context, request *DescribeConsoleSharingListRequest) (response *DescribeConsoleSharingListResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsoleSharingListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsoleSharingList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsoleSharingListResponse()
     err = c.Send(request, response)
     return
 }
@@ -5274,6 +5431,59 @@ func (c *Client) ModifyConfigExtraWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyConfigExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConsoleSharingRequest() (request *ModifyConsoleSharingRequest) {
+    request = &ModifyConsoleSharingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyConsoleSharing")
+    
+    
+    return
+}
+
+func NewModifyConsoleSharingResponse() (response *ModifyConsoleSharingResponse) {
+    response = &ModifyConsoleSharingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConsoleSharing
+// 修改控制台分享，目前仅允许修改有效期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConsoleSharing(request *ModifyConsoleSharingRequest) (response *ModifyConsoleSharingResponse, err error) {
+    return c.ModifyConsoleSharingWithContext(context.Background(), request)
+}
+
+// ModifyConsoleSharing
+// 修改控制台分享，目前仅允许修改有效期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConsoleSharingWithContext(ctx context.Context, request *ModifyConsoleSharingRequest) (response *ModifyConsoleSharingResponse, err error) {
+    if request == nil {
+        request = NewModifyConsoleSharingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConsoleSharing require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConsoleSharingResponse()
     err = c.Send(request, response)
     return
 }

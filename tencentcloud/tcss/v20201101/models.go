@@ -891,6 +891,9 @@ func (r *AddAssetImageRegistryRegistryDetailResponse) FromJsonString(s string) e
 type AddComplianceAssetPolicySetToWhitelistRequestParams struct {
 	// 资产ID+检查项IDs. 列表
 	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitnil,omitempty" name:"AssetPolicySetList"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type AddComplianceAssetPolicySetToWhitelistRequest struct {
@@ -898,6 +901,9 @@ type AddComplianceAssetPolicySetToWhitelistRequest struct {
 	
 	// 资产ID+检查项IDs. 列表
 	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitnil,omitempty" name:"AssetPolicySetList"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *AddComplianceAssetPolicySetToWhitelistRequest) ToJsonString() string {
@@ -913,6 +919,7 @@ func (r *AddComplianceAssetPolicySetToWhitelistRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "AssetPolicySetList")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddComplianceAssetPolicySetToWhitelistRequest has unknown keys!", "")
 	}
@@ -2849,6 +2856,18 @@ type ComplianceAssetSummary struct {
 	// 已忽略的检查项总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoredPolicyItemCount *uint64 `json:"IgnoredPolicyItemCount,omitnil,omitempty" name:"IgnoredPolicyItemCount"`
+
+	// 总检测项数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPolicyItemCount *uint64 `json:"TotalPolicyItemCount,omitnil,omitempty" name:"TotalPolicyItemCount"`
+
+	// 检测主机数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectHostCount *uint64 `json:"DetectHostCount,omitnil,omitempty" name:"DetectHostCount"`
+
+	// 当前任务剩余时间，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeftTime *uint64 `json:"LeftTime,omitnil,omitempty" name:"LeftTime"`
 }
 
 type ComplianceBenchmarkStandard struct {
@@ -3052,6 +3071,12 @@ type CompliancePolicyItemSummary struct {
 	// 检查项审计方法
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditProcedure *string `json:"AuditProcedure,omitnil,omitempty" name:"AuditProcedure"`
+
+	// 是否开启
+	// <li>0 关闭</li>
+	// <li>1 开启</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEnable *uint64 `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
 }
 
 type ComplianceScanFailedAsset struct {
@@ -7095,6 +7120,9 @@ type DeleteComplianceAssetPolicySetFromWhitelistRequestParams struct {
 
 	// 需要忽略指定资产内的检查项ID列表
 	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil,omitempty" name:"CustomerPolicyItemIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type DeleteComplianceAssetPolicySetFromWhitelistRequest struct {
@@ -7105,6 +7133,9 @@ type DeleteComplianceAssetPolicySetFromWhitelistRequest struct {
 
 	// 需要忽略指定资产内的检查项ID列表
 	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil,omitempty" name:"CustomerPolicyItemIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *DeleteComplianceAssetPolicySetFromWhitelistRequest) ToJsonString() string {
@@ -7121,6 +7152,7 @@ func (r *DeleteComplianceAssetPolicySetFromWhitelistRequest) FromJsonString(s st
 	}
 	delete(f, "AssetItemId")
 	delete(f, "CustomerPolicyItemIdSet")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteComplianceAssetPolicySetFromWhitelistRequest has unknown keys!", "")
 	}
@@ -14125,6 +14157,9 @@ func (r *DescribeClusterSummaryResponse) FromJsonString(s string) error {
 type DescribeComplianceAssetDetailInfoRequestParams struct {
 	// 客户资产ID。
 	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil,omitempty" name:"CustomerAssetId"`
+
+	// 资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type DescribeComplianceAssetDetailInfoRequest struct {
@@ -14132,6 +14167,9 @@ type DescribeComplianceAssetDetailInfoRequest struct {
 	
 	// 客户资产ID。
 	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil,omitempty" name:"CustomerAssetId"`
+
+	// 资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *DescribeComplianceAssetDetailInfoRequest) ToJsonString() string {
@@ -14147,6 +14185,7 @@ func (r *DescribeComplianceAssetDetailInfoRequest) FromJsonString(s string) erro
 		return err
 	}
 	delete(f, "CustomerAssetId")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComplianceAssetDetailInfoRequest has unknown keys!", "")
 	}
@@ -14288,8 +14327,11 @@ type DescribeComplianceAssetPolicyItemListRequestParams struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤器列表。Name字段支持
-	// RiskLevel
+	// RiskLevel， AppId
 	Filters []*ComplianceFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type DescribeComplianceAssetPolicyItemListRequest struct {
@@ -14305,8 +14347,11 @@ type DescribeComplianceAssetPolicyItemListRequest struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤器列表。Name字段支持
-	// RiskLevel
+	// RiskLevel， AppId
 	Filters []*ComplianceFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *DescribeComplianceAssetPolicyItemListRequest) ToJsonString() string {
@@ -14325,6 +14370,7 @@ func (r *DescribeComplianceAssetPolicyItemListRequest) FromJsonString(s string) 
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComplianceAssetPolicyItemListRequest has unknown keys!", "")
 	}
@@ -14764,10 +14810,7 @@ type DescribeComplianceTaskPolicyItemSummaryListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。
-	// Name - String
-	// Name 可取值：ItemType, StandardId,  RiskLevel。
-	// 当为K8S资产时，还可取ClusterName。
+	// 过滤条件 <li>Name      string 检测项名字</li> <li>ItemType  string 检测项类型</li> <li>RiskLevel string 威胁等级</li> <li>IsOpen    int    是否开启</li>
 	Filters []*ComplianceFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -14791,10 +14834,7 @@ type DescribeComplianceTaskPolicyItemSummaryListRequest struct {
 	// 需要返回的数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。
-	// Name - String
-	// Name 可取值：ItemType, StandardId,  RiskLevel。
-	// 当为K8S资产时，还可取ClusterName。
+	// 过滤条件 <li>Name      string 检测项名字</li> <li>ItemType  string 检测项类型</li> <li>RiskLevel string 威胁等级</li> <li>IsOpen    int    是否开启</li>
 	Filters []*ComplianceFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -31214,6 +31254,9 @@ type ScanComplianceAssetsByPolicyItemRequestParams struct {
 
 	// 要重新扫描的客户资产项ID的列表。
 	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil,omitempty" name:"CustomerAssetIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type ScanComplianceAssetsByPolicyItemRequest struct {
@@ -31224,6 +31267,9 @@ type ScanComplianceAssetsByPolicyItemRequest struct {
 
 	// 要重新扫描的客户资产项ID的列表。
 	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil,omitempty" name:"CustomerAssetIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *ScanComplianceAssetsByPolicyItemRequest) ToJsonString() string {
@@ -31240,6 +31286,7 @@ func (r *ScanComplianceAssetsByPolicyItemRequest) FromJsonString(s string) error
 	}
 	delete(f, "CustomerPolicyItemId")
 	delete(f, "CustomerAssetIdSet")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanComplianceAssetsByPolicyItemRequest has unknown keys!", "")
 	}
@@ -31275,6 +31322,9 @@ func (r *ScanComplianceAssetsByPolicyItemResponse) FromJsonString(s string) erro
 type ScanComplianceAssetsRequestParams struct {
 	// 要重新扫描的客户资产项ID的列表。
 	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil,omitempty" name:"CustomerAssetIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type ScanComplianceAssetsRequest struct {
@@ -31282,6 +31332,9 @@ type ScanComplianceAssetsRequest struct {
 	
 	// 要重新扫描的客户资产项ID的列表。
 	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil,omitempty" name:"CustomerAssetIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *ScanComplianceAssetsRequest) ToJsonString() string {
@@ -31297,6 +31350,7 @@ func (r *ScanComplianceAssetsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CustomerAssetIdSet")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanComplianceAssetsRequest has unknown keys!", "")
 	}
@@ -31389,6 +31443,9 @@ func (r *ScanCompliancePolicyItemsResponse) FromJsonString(s string) error {
 type ScanComplianceScanFailedAssetsRequestParams struct {
 	// 要重新扫描的客户资产项ID的列表。
 	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil,omitempty" name:"CustomerAssetIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type ScanComplianceScanFailedAssetsRequest struct {
@@ -31396,6 +31453,9 @@ type ScanComplianceScanFailedAssetsRequest struct {
 	
 	// 要重新扫描的客户资产项ID的列表。
 	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil,omitempty" name:"CustomerAssetIdSet"`
+
+	// 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *ScanComplianceScanFailedAssetsRequest) ToJsonString() string {
@@ -31411,6 +31471,7 @@ func (r *ScanComplianceScanFailedAssetsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CustomerAssetIdSet")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanComplianceScanFailedAssetsRequest has unknown keys!", "")
 	}
