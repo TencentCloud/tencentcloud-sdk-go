@@ -20,7 +20,7 @@ func main() {
 
 	client, _ := hunyuan.NewClient(credential, regions.Guangzhou, cpf)
 
-	request := hunyuan.NewChatStdRequest()
+	request := hunyuan.NewChatCompletionsRequest()
 
 	msg := &hunyuan.Message{
 		Role:    common.StringPtr("user"),
@@ -28,10 +28,11 @@ func main() {
 	}
 	request.Messages = append(request.Messages, msg)
 
-	// hunyuan ChatStd/ChatPro 同时支持 stream 和非 stream 的情况
+	// hunyuan ChatCompletions 同时支持 stream 和非 stream 的情况
 	request.Stream = common.BoolPtr(true)
-
-	response, err := client.ChatStd(request)
+	request.Model = common.StringPtr("hunyuan-standard")
+	
+	response, err := client.ChatCompletions(request)
 
 	// 处理异常
 	if _, ok := err.(*errors.TencentCloudSDKError); ok {
