@@ -1724,6 +1724,103 @@ func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeServiceNodeInfosRequest() (request *DescribeServiceNodeInfosRequest) {
+    request = &DescribeServiceNodeInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeServiceNodeInfos")
+    
+    
+    return
+}
+
+func NewDescribeServiceNodeInfosResponse() (response *DescribeServiceNodeInfosResponse) {
+    response = &DescribeServiceNodeInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServiceNodeInfos
+// 查询服务进程信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CAMERROR = "InternalError.CamError"
+//  INTERNALERROR_CBSCGWERROR = "InternalError.CbsCgwError"
+//  INTERNALERROR_CBSERROR = "InternalError.CbsError"
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_CONFIGCGWERROR = "InternalError.ConfigCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INTERNALERROR_KMSERROR = "InternalError.KmsError"
+//  INTERNALERROR_PROJECTCGWERROR = "InternalError.ProjectCgwError"
+//  INTERNALERROR_SGERROR = "InternalError.SgError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
+//  INTERNALERROR_VPCCGWERROR = "InternalError.VpcCgwError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) DescribeServiceNodeInfos(request *DescribeServiceNodeInfosRequest) (response *DescribeServiceNodeInfosResponse, err error) {
+    return c.DescribeServiceNodeInfosWithContext(context.Background(), request)
+}
+
+// DescribeServiceNodeInfos
+// 查询服务进程信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CAMERROR = "InternalError.CamError"
+//  INTERNALERROR_CBSCGWERROR = "InternalError.CbsCgwError"
+//  INTERNALERROR_CBSERROR = "InternalError.CbsError"
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_CONFIGCGWERROR = "InternalError.ConfigCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INTERNALERROR_KMSERROR = "InternalError.KmsError"
+//  INTERNALERROR_PROJECTCGWERROR = "InternalError.ProjectCgwError"
+//  INTERNALERROR_SGERROR = "InternalError.SgError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
+//  INTERNALERROR_VPCCGWERROR = "InternalError.VpcCgwError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) DescribeServiceNodeInfosWithContext(ctx context.Context, request *DescribeServiceNodeInfosRequest) (response *DescribeServiceNodeInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceNodeInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceNodeInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceNodeInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrinoQueryInfoRequest() (request *DescribeTrinoQueryInfoRequest) {
     request = &DescribeTrinoQueryInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1885,6 +1982,55 @@ func (c *Client) DescribeYarnApplicationsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeYarnApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeYarnScheduleHistoryRequest() (request *DescribeYarnScheduleHistoryRequest) {
+    request = &DescribeYarnScheduleHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeYarnScheduleHistory")
+    
+    
+    return
+}
+
+func NewDescribeYarnScheduleHistoryResponse() (response *DescribeYarnScheduleHistoryResponse) {
+    response = &DescribeYarnScheduleHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeYarnScheduleHistory
+// 查看yarn资源调度的调度历史
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+func (c *Client) DescribeYarnScheduleHistory(request *DescribeYarnScheduleHistoryRequest) (response *DescribeYarnScheduleHistoryResponse, err error) {
+    return c.DescribeYarnScheduleHistoryWithContext(context.Background(), request)
+}
+
+// DescribeYarnScheduleHistory
+// 查看yarn资源调度的调度历史
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+func (c *Client) DescribeYarnScheduleHistoryWithContext(ctx context.Context, request *DescribeYarnScheduleHistoryRequest) (response *DescribeYarnScheduleHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeYarnScheduleHistoryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeYarnScheduleHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeYarnScheduleHistoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -2806,6 +2952,61 @@ func (c *Client) ModifyUserManagerPwdWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyUserManagerPwdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyYarnDeployRequest() (request *ModifyYarnDeployRequest) {
+    request = &ModifyYarnDeployRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyYarnDeploy")
+    
+    
+    return
+}
+
+func NewModifyYarnDeployResponse() (response *ModifyYarnDeployResponse) {
+    response = &ModifyYarnDeployResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyYarnDeploy
+// 部署生效
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyYarnDeploy(request *ModifyYarnDeployRequest) (response *ModifyYarnDeployResponse, err error) {
+    return c.ModifyYarnDeployWithContext(context.Background(), request)
+}
+
+// ModifyYarnDeploy
+// 部署生效
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyYarnDeployWithContext(ctx context.Context, request *ModifyYarnDeployRequest) (response *ModifyYarnDeployResponse, err error) {
+    if request == nil {
+        request = NewModifyYarnDeployRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyYarnDeploy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyYarnDeployResponse()
     err = c.Send(request, response)
     return
 }

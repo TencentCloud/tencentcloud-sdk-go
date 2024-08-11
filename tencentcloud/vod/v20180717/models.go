@@ -13062,6 +13062,10 @@ type EditMediaStreamInfo struct {
 type EditMediaTEHDConfig struct {
 	// 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示 OFF。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 视频码率上限，当 Type 指定了极速高清类型时有效。
+	// 不填或填0表示不设视频码率上限。
+	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitnil,omitempty" name:"MaxVideoBitrate"`
 }
 
 type EditMediaTask struct {

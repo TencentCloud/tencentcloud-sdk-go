@@ -812,6 +812,10 @@ func NewCreateCloudProtectServiceOrderRecordResponse() (response *CreateCloudPro
 }
 
 // CreateCloudProtectServiceOrderRecord
+// 云护航计费产品已下线
+//
+// 
+//
 // 云护航服务使用完成后，该接口可以确认收货
 //
 // 可能返回的错误码:
@@ -823,6 +827,10 @@ func (c *Client) CreateCloudProtectServiceOrderRecord(request *CreateCloudProtec
 }
 
 // CreateCloudProtectServiceOrderRecord
+// 云护航计费产品已下线
+//
+// 
+//
 // 云护航服务使用完成后，该接口可以确认收货
 //
 // 可能返回的错误码:
@@ -27308,6 +27316,83 @@ func (c *Client) ModifyRansomDefenseStrategyStatusWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyRansomDefenseStrategyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReverseShellRulesAggregationRequest() (request *ModifyReverseShellRulesAggregationRequest) {
+    request = &ModifyReverseShellRulesAggregationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyReverseShellRulesAggregation")
+    
+    
+    return
+}
+
+func NewModifyReverseShellRulesAggregationResponse() (response *ModifyReverseShellRulesAggregationResponse) {
+    response = &ModifyReverseShellRulesAggregationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReverseShellRulesAggregation
+// 编辑反弹Shell规则（支持多服务器选择）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyReverseShellRulesAggregation(request *ModifyReverseShellRulesAggregationRequest) (response *ModifyReverseShellRulesAggregationResponse, err error) {
+    return c.ModifyReverseShellRulesAggregationWithContext(context.Background(), request)
+}
+
+// ModifyReverseShellRulesAggregation
+// 编辑反弹Shell规则（支持多服务器选择）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyReverseShellRulesAggregationWithContext(ctx context.Context, request *ModifyReverseShellRulesAggregationRequest) (response *ModifyReverseShellRulesAggregationResponse, err error) {
+    if request == nil {
+        request = NewModifyReverseShellRulesAggregationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReverseShellRulesAggregation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReverseShellRulesAggregationResponse()
     err = c.Send(request, response)
     return
 }

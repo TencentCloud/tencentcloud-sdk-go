@@ -118,6 +118,152 @@ func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLi
     return
 }
 
+func NewCreateUserRequest() (request *CreateUserRequest) {
+    request = &CreateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("smh", APIVersion, "CreateUser")
+    
+    
+    return
+}
+
+func NewCreateUserResponse() (response *CreateUserResponse) {
+    response = &CreateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUser
+// 新建用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ONEOFACCOUNTNAMEANDACCOUNTPASSWORDISEMPTY = "InvalidParameter.OneOfAccountNameAndAccountPasswordIsEmpty"
+//  INVALIDPARAMETER_ONEOFCOUNTRYCODEANDPHONENUMBERISEMPTY = "InvalidParameter.OneOfCountryCodeAndPhoneNumberIsEmpty"
+//  INVALIDPARAMETERVALUE_ACCOUNTNAMETOOLONG = "InvalidParameterValue.AccountNameTooLong"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORD = "InvalidParameterValue.AccountPassword"
+//  INVALIDPARAMETERVALUE_ACCOUNTUSERIDTOOLONG = "InvalidParameterValue.AccountUserIdTooLong"
+//  INVALIDPARAMETERVALUE_COUNTRYCODETOOLONG = "InvalidParameterValue.CountryCodeTooLong"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTNAME = "InvalidParameterValue.DuplicateAccountName"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTUSERID = "InvalidParameterValue.DuplicateAccountUserId"
+//  INVALIDPARAMETERVALUE_DUPLICATEEMAIL = "InvalidParameterValue.DuplicateEmail"
+//  INVALIDPARAMETERVALUE_DUPLICATEUSERPHONENUMBER = "InvalidParameterValue.DuplicateUserPhoneNumber"
+//  INVALIDPARAMETERVALUE_EMAILTOOLONG = "InvalidParameterValue.EmailTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = "InvalidParameterValue.InvalidAccountName"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTUSERID = "InvalidParameterValue.InvalidAccountUserId"
+//  INVALIDPARAMETERVALUE_INVALIDCOUNTRYCODE = "InvalidParameterValue.InvalidCountryCode"
+//  INVALIDPARAMETERVALUE_INVALIDEMAIL = "InvalidParameterValue.InvalidEmail"
+//  INVALIDPARAMETERVALUE_INVALIDPHONENUMBER = "InvalidParameterValue.InvalidPhoneNumber"
+//  INVALIDPARAMETERVALUE_PHONENUMBERTOOLONG = "InvalidParameterValue.PhoneNumberTooLong"
+//  INVALIDPARAMETERVALUE_ROLENOTSUPPORT = "InvalidParameterValue.RoleNotSupport"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    return c.CreateUserWithContext(context.Background(), request)
+}
+
+// CreateUser
+// 新建用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ONEOFACCOUNTNAMEANDACCOUNTPASSWORDISEMPTY = "InvalidParameter.OneOfAccountNameAndAccountPasswordIsEmpty"
+//  INVALIDPARAMETER_ONEOFCOUNTRYCODEANDPHONENUMBERISEMPTY = "InvalidParameter.OneOfCountryCodeAndPhoneNumberIsEmpty"
+//  INVALIDPARAMETERVALUE_ACCOUNTNAMETOOLONG = "InvalidParameterValue.AccountNameTooLong"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORD = "InvalidParameterValue.AccountPassword"
+//  INVALIDPARAMETERVALUE_ACCOUNTUSERIDTOOLONG = "InvalidParameterValue.AccountUserIdTooLong"
+//  INVALIDPARAMETERVALUE_COUNTRYCODETOOLONG = "InvalidParameterValue.CountryCodeTooLong"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTNAME = "InvalidParameterValue.DuplicateAccountName"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTUSERID = "InvalidParameterValue.DuplicateAccountUserId"
+//  INVALIDPARAMETERVALUE_DUPLICATEEMAIL = "InvalidParameterValue.DuplicateEmail"
+//  INVALIDPARAMETERVALUE_DUPLICATEUSERPHONENUMBER = "InvalidParameterValue.DuplicateUserPhoneNumber"
+//  INVALIDPARAMETERVALUE_EMAILTOOLONG = "InvalidParameterValue.EmailTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = "InvalidParameterValue.InvalidAccountName"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTUSERID = "InvalidParameterValue.InvalidAccountUserId"
+//  INVALIDPARAMETERVALUE_INVALIDCOUNTRYCODE = "InvalidParameterValue.InvalidCountryCode"
+//  INVALIDPARAMETERVALUE_INVALIDEMAIL = "InvalidParameterValue.InvalidEmail"
+//  INVALIDPARAMETERVALUE_INVALIDPHONENUMBER = "InvalidParameterValue.InvalidPhoneNumber"
+//  INVALIDPARAMETERVALUE_PHONENUMBERTOOLONG = "InvalidParameterValue.PhoneNumberTooLong"
+//  INVALIDPARAMETERVALUE_ROLENOTSUPPORT = "InvalidParameterValue.RoleNotSupport"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserLifecycleRequest() (request *CreateUserLifecycleRequest) {
+    request = &CreateUserLifecycleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("smh", APIVersion, "CreateUserLifecycle")
+    
+    
+    return
+}
+
+func NewCreateUserLifecycleResponse() (response *CreateUserLifecycleResponse) {
+    response = &CreateUserLifecycleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserLifecycle
+// 设置用户生命周期。如果指定的用户已经设置了生命周期，重复调用此接口将覆盖已有的设置。也可用于清除指定用户的生命周期。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DESTROYTIME = "InvalidParameterValue.DestroyTime"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  INVALIDPARAMETERVALUE_ISOLATETIME = "InvalidParameterValue.IsolateTime"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) CreateUserLifecycle(request *CreateUserLifecycleRequest) (response *CreateUserLifecycleResponse, err error) {
+    return c.CreateUserLifecycleWithContext(context.Background(), request)
+}
+
+// CreateUserLifecycle
+// 设置用户生命周期。如果指定的用户已经设置了生命周期，重复调用此接口将覆盖已有的设置。也可用于清除指定用户的生命周期。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DESTROYTIME = "InvalidParameterValue.DestroyTime"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  INVALIDPARAMETERVALUE_ISOLATETIME = "InvalidParameterValue.IsolateTime"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) CreateUserLifecycleWithContext(ctx context.Context, request *CreateUserLifecycleRequest) (response *CreateUserLifecycleResponse, err error) {
+    if request == nil {
+        request = NewCreateUserLifecycleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserLifecycle require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserLifecycleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
     request = &DeleteLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -169,6 +315,61 @@ func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLi
     request.SetContext(ctx)
     
     response = NewDeleteLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserRequest() (request *DeleteUserRequest) {
+    request = &DeleteUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("smh", APIVersion, "DeleteUser")
+    
+    
+    return
+}
+
+func NewDeleteUserResponse() (response *DeleteUserResponse) {
+    response = &DeleteUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUser
+// 一次删除多个用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  INVALIDPARAMETERVALUE_TOOMANYFILTERS = "InvalidParameterValue.TooManyFilters"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    return c.DeleteUserWithContext(context.Background(), request)
+}
+
+// DeleteUser
+// 一次删除多个用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  INVALIDPARAMETERVALUE_TOOMANYFILTERS = "InvalidParameterValue.TooManyFilters"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -426,6 +627,61 @@ func (c *Client) DescribeTrafficPackagesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeUserLifecycleRequest() (request *DescribeUserLifecycleRequest) {
+    request = &DescribeUserLifecycleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("smh", APIVersion, "DescribeUserLifecycle")
+    
+    
+    return
+}
+
+func NewDescribeUserLifecycleResponse() (response *DescribeUserLifecycleResponse) {
+    response = &DescribeUserLifecycleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserLifecycle
+// 查询用户生命周期。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) DescribeUserLifecycle(request *DescribeUserLifecycleRequest) (response *DescribeUserLifecycleResponse, err error) {
+    return c.DescribeUserLifecycleWithContext(context.Background(), request)
+}
+
+// DescribeUserLifecycle
+// 查询用户生命周期。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) DescribeUserLifecycleWithContext(ctx context.Context, request *DescribeUserLifecycleRequest) (response *DescribeUserLifecycleResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserLifecycleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserLifecycle require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserLifecycleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLibraryRequest() (request *ModifyLibraryRequest) {
     request = &ModifyLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -475,6 +731,97 @@ func (c *Client) ModifyLibraryWithContext(ctx context.Context, request *ModifyLi
     request.SetContext(ctx)
     
     response = NewModifyLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserRequest() (request *ModifyUserRequest) {
+    request = &ModifyUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("smh", APIVersion, "ModifyUser")
+    
+    
+    return
+}
+
+func NewModifyUserResponse() (response *ModifyUserResponse) {
+    response = &ModifyUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUser
+// 更新用户信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ONEOFACCOUNTNAMEANDACCOUNTPASSWORDISEMPTY = "InvalidParameter.OneOfAccountNameAndAccountPasswordIsEmpty"
+//  INVALIDPARAMETER_ONEOFCOUNTRYCODEANDPHONENUMBERISEMPTY = "InvalidParameter.OneOfCountryCodeAndPhoneNumberIsEmpty"
+//  INVALIDPARAMETERVALUE_ACCOUNTNAMETOOLONG = "InvalidParameterValue.AccountNameTooLong"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORD = "InvalidParameterValue.AccountPassword"
+//  INVALIDPARAMETERVALUE_ACCOUNTUSERIDTOOLONG = "InvalidParameterValue.AccountUserIdTooLong"
+//  INVALIDPARAMETERVALUE_COUNTRYCODETOOLONG = "InvalidParameterValue.CountryCodeTooLong"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTNAME = "InvalidParameterValue.DuplicateAccountName"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTUSERID = "InvalidParameterValue.DuplicateAccountUserId"
+//  INVALIDPARAMETERVALUE_DUPLICATEEMAIL = "InvalidParameterValue.DuplicateEmail"
+//  INVALIDPARAMETERVALUE_DUPLICATEUSERPHONENUMBER = "InvalidParameterValue.DuplicateUserPhoneNumber"
+//  INVALIDPARAMETERVALUE_EMAILTOOLONG = "InvalidParameterValue.EmailTooLong"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = "InvalidParameterValue.InvalidAccountName"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTUSERID = "InvalidParameterValue.InvalidAccountUserId"
+//  INVALIDPARAMETERVALUE_INVALIDCOUNTRYCODE = "InvalidParameterValue.InvalidCountryCode"
+//  INVALIDPARAMETERVALUE_INVALIDEMAIL = "InvalidParameterValue.InvalidEmail"
+//  INVALIDPARAMETERVALUE_INVALIDPHONENUMBER = "InvalidParameterValue.InvalidPhoneNumber"
+//  INVALIDPARAMETERVALUE_PHONENUMBERTOOLONG = "InvalidParameterValue.PhoneNumberTooLong"
+//  INVALIDPARAMETERVALUE_ROLENOTSUPPORT = "InvalidParameterValue.RoleNotSupport"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    return c.ModifyUserWithContext(context.Background(), request)
+}
+
+// ModifyUser
+// 更新用户信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ONEOFACCOUNTNAMEANDACCOUNTPASSWORDISEMPTY = "InvalidParameter.OneOfAccountNameAndAccountPasswordIsEmpty"
+//  INVALIDPARAMETER_ONEOFCOUNTRYCODEANDPHONENUMBERISEMPTY = "InvalidParameter.OneOfCountryCodeAndPhoneNumberIsEmpty"
+//  INVALIDPARAMETERVALUE_ACCOUNTNAMETOOLONG = "InvalidParameterValue.AccountNameTooLong"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORD = "InvalidParameterValue.AccountPassword"
+//  INVALIDPARAMETERVALUE_ACCOUNTUSERIDTOOLONG = "InvalidParameterValue.AccountUserIdTooLong"
+//  INVALIDPARAMETERVALUE_COUNTRYCODETOOLONG = "InvalidParameterValue.CountryCodeTooLong"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTNAME = "InvalidParameterValue.DuplicateAccountName"
+//  INVALIDPARAMETERVALUE_DUPLICATEACCOUNTUSERID = "InvalidParameterValue.DuplicateAccountUserId"
+//  INVALIDPARAMETERVALUE_DUPLICATEEMAIL = "InvalidParameterValue.DuplicateEmail"
+//  INVALIDPARAMETERVALUE_DUPLICATEUSERPHONENUMBER = "InvalidParameterValue.DuplicateUserPhoneNumber"
+//  INVALIDPARAMETERVALUE_EMAILTOOLONG = "InvalidParameterValue.EmailTooLong"
+//  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = "InvalidParameterValue.InvalidAccountName"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTUSERID = "InvalidParameterValue.InvalidAccountUserId"
+//  INVALIDPARAMETERVALUE_INVALIDCOUNTRYCODE = "InvalidParameterValue.InvalidCountryCode"
+//  INVALIDPARAMETERVALUE_INVALIDEMAIL = "InvalidParameterValue.InvalidEmail"
+//  INVALIDPARAMETERVALUE_INVALIDPHONENUMBER = "InvalidParameterValue.InvalidPhoneNumber"
+//  INVALIDPARAMETERVALUE_PHONENUMBERTOOLONG = "InvalidParameterValue.PhoneNumberTooLong"
+//  INVALIDPARAMETERVALUE_ROLENOTSUPPORT = "InvalidParameterValue.RoleNotSupport"
+//  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserResponse()
     err = c.Send(request, response)
     return
 }

@@ -3154,6 +3154,191 @@ func (r *DescribeResourceScheduleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServiceNodeInfosRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索字段
+	SearchText *string `json:"SearchText,omitnil,omitempty" name:"SearchText"`
+
+	// '配置状态，-2：配置失败，-1:配置过期，1：已同步', -99 '全部'
+	ConfStatus *int64 `json:"ConfStatus,omitnil,omitempty" name:"ConfStatus"`
+
+	// 过滤条件：维护状态
+	// 0代表所有状态
+	// 1代表正常模式
+	// 2代表维护模式
+	MaintainStateId *int64 `json:"MaintainStateId,omitnil,omitempty" name:"MaintainStateId"`
+
+	// 过滤条件：操作状态
+	// 0代表所有状态
+	// 1代表已启动
+	// 2代表已停止
+	OperatorStateId *int64 `json:"OperatorStateId,omitnil,omitempty" name:"OperatorStateId"`
+
+	// 过滤条件：健康状态
+	// "0"代表不可用
+	// "1"代表良好
+	// "-2"代表未知
+	// "-99"代表所有
+	// "-3"代表存在隐患
+	// "-4"代表未探测
+	HealthStateId *string `json:"HealthStateId,omitnil,omitempty" name:"HealthStateId"`
+
+	// 服务组件名称，都是大写比如YARN
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 节点名称
+	// master
+	// core
+	// task
+	// common
+	// router
+	NodeTypeName *string `json:"NodeTypeName,omitnil,omitempty" name:"NodeTypeName"`
+
+	// 过滤条件：dn是否处于维护状态
+	// 0代表所有状态
+	// 1代表处于维护状态
+	DataNodeMaintenanceId *int64 `json:"DataNodeMaintenanceId,omitnil,omitempty" name:"DataNodeMaintenanceId"`
+
+	// 支持搜索的字段
+	SearchFields []*SearchItem `json:"SearchFields,omitnil,omitempty" name:"SearchFields"`
+}
+
+type DescribeServiceNodeInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索字段
+	SearchText *string `json:"SearchText,omitnil,omitempty" name:"SearchText"`
+
+	// '配置状态，-2：配置失败，-1:配置过期，1：已同步', -99 '全部'
+	ConfStatus *int64 `json:"ConfStatus,omitnil,omitempty" name:"ConfStatus"`
+
+	// 过滤条件：维护状态
+	// 0代表所有状态
+	// 1代表正常模式
+	// 2代表维护模式
+	MaintainStateId *int64 `json:"MaintainStateId,omitnil,omitempty" name:"MaintainStateId"`
+
+	// 过滤条件：操作状态
+	// 0代表所有状态
+	// 1代表已启动
+	// 2代表已停止
+	OperatorStateId *int64 `json:"OperatorStateId,omitnil,omitempty" name:"OperatorStateId"`
+
+	// 过滤条件：健康状态
+	// "0"代表不可用
+	// "1"代表良好
+	// "-2"代表未知
+	// "-99"代表所有
+	// "-3"代表存在隐患
+	// "-4"代表未探测
+	HealthStateId *string `json:"HealthStateId,omitnil,omitempty" name:"HealthStateId"`
+
+	// 服务组件名称，都是大写比如YARN
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 节点名称
+	// master
+	// core
+	// task
+	// common
+	// router
+	NodeTypeName *string `json:"NodeTypeName,omitnil,omitempty" name:"NodeTypeName"`
+
+	// 过滤条件：dn是否处于维护状态
+	// 0代表所有状态
+	// 1代表处于维护状态
+	DataNodeMaintenanceId *int64 `json:"DataNodeMaintenanceId,omitnil,omitempty" name:"DataNodeMaintenanceId"`
+
+	// 支持搜索的字段
+	SearchFields []*SearchItem `json:"SearchFields,omitnil,omitempty" name:"SearchFields"`
+}
+
+func (r *DescribeServiceNodeInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceNodeInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchText")
+	delete(f, "ConfStatus")
+	delete(f, "MaintainStateId")
+	delete(f, "OperatorStateId")
+	delete(f, "HealthStateId")
+	delete(f, "ServiceName")
+	delete(f, "NodeTypeName")
+	delete(f, "DataNodeMaintenanceId")
+	delete(f, "SearchFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceNodeInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceNodeInfosResponseParams struct {
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
+
+	// 进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceNodeList []*ServiceNodeDetailInfo `json:"ServiceNodeList,omitnil,omitempty" name:"ServiceNodeList"`
+
+	// 集群所有节点的别名序列化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasInfo *string `json:"AliasInfo,omitnil,omitempty" name:"AliasInfo"`
+
+	// 支持的FlagNode列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportNodeFlagFilterList []*string `json:"SupportNodeFlagFilterList,omitnil,omitempty" name:"SupportNodeFlagFilterList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceNodeInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceNodeInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceNodeInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceNodeInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrinoQueryInfoRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3418,6 +3603,118 @@ func (r *DescribeYarnApplicationsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeYarnApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeYarnScheduleHistoryRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 页码
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 页大小
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 调度器类型 可选值为“ALL”，"Capacity Scheduler", "Fair Scheduler"
+	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
+
+	// 任务类型0:等待执行，1:执行中，2：完成，-1:失败 ，-99:全部
+	TaskState *int64 `json:"TaskState,omitnil,omitempty" name:"TaskState"`
+}
+
+type DescribeYarnScheduleHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 页码
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 页大小
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 调度器类型 可选值为“ALL”，"Capacity Scheduler", "Fair Scheduler"
+	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
+
+	// 任务类型0:等待执行，1:执行中，2：完成，-1:失败 ，-99:全部
+	TaskState *int64 `json:"TaskState,omitnil,omitempty" name:"TaskState"`
+}
+
+func (r *DescribeYarnScheduleHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYarnScheduleHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SchedulerType")
+	delete(f, "TaskState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeYarnScheduleHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeYarnScheduleHistoryResponseParams struct {
+	// 任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*SchedulerTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 任务详情总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 调度类型筛选列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerNameList []*string `json:"SchedulerNameList,omitnil,omitempty" name:"SchedulerNameList"`
+
+	// 状态筛选列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StateList []*int64 `json:"StateList,omitnil,omitempty" name:"StateList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeYarnScheduleHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeYarnScheduleHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeYarnScheduleHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYarnScheduleHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3858,6 +4155,17 @@ type GroupGlobalConfs struct {
 	// 当前伸缩组扩容出来的竞价实例节点数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentSpotPaidNodes *int64 `json:"CurrentSpotPaidNodes,omitnil,omitempty" name:"CurrentSpotPaidNodes"`
+}
+
+type HealthStatus struct {
+	// 运行正常
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 运行正常
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 运行正常
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
 type HiveQuery struct {
@@ -5524,6 +5832,82 @@ func (r *ModifyUserManagerPwdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyYarnDeployRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 切换后的调度器，可选值为fair、capacity
+	NewScheduler *string `json:"NewScheduler,omitnil,omitempty" name:"NewScheduler"`
+
+	// 现在使用的调度器，可选值为fair、capacity
+	OldScheduler *string `json:"OldScheduler,omitnil,omitempty" name:"OldScheduler"`
+}
+
+type ModifyYarnDeployRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 切换后的调度器，可选值为fair、capacity
+	NewScheduler *string `json:"NewScheduler,omitnil,omitempty" name:"NewScheduler"`
+
+	// 现在使用的调度器，可选值为fair、capacity
+	OldScheduler *string `json:"OldScheduler,omitnil,omitempty" name:"OldScheduler"`
+}
+
+func (r *ModifyYarnDeployRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyYarnDeployRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NewScheduler")
+	delete(f, "OldScheduler")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyYarnDeployRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyYarnDeployResponseParams struct {
+	// 为false不点亮部署生效、重置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDraft *bool `json:"IsDraft,omitnil,omitempty" name:"IsDraft"`
+
+	// 错误信息，预留
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyYarnDeployResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyYarnDeployResponseParams `json:"Response"`
+}
+
+func (r *ModifyYarnDeployResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyYarnDeployResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MonthRepeatStrategy struct {
 	// 重复任务执行的具体时刻，例如"01:02:00"
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6665,6 +7049,23 @@ type ResourceDetail struct {
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
+type RestartPolicy struct {
+	// 重启策略名。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略展示名称。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 策略描述。
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// 批量重启节点数可选范围。
+	BatchSizeRange []*int64 `json:"BatchSizeRange,omitnil,omitempty" name:"BatchSizeRange"`
+
+	// 是否是默认策略。
+	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+}
+
 // Predefined struct for user
 type RunJobFlowRequestParams struct {
 	// 作业名称。
@@ -7362,6 +7763,48 @@ type SceneSoftwareConfig struct {
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 }
 
+type SchedulerTaskDetail struct {
+	// 步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Step *string `json:"Step,omitnil,omitempty" name:"Step"`
+
+	// 进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *string `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// 用来获取详情的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type SchedulerTaskInfo struct {
+	// 调度器类型
+	SchedulerName *string `json:"SchedulerName,omitnil,omitempty" name:"SchedulerName"`
+
+	// 操作类型
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*SchedulerTaskDetail `json:"Details,omitnil,omitempty" name:"Details"`
+}
+
 type ScriptBootstrapActionConfig struct {
 	// 脚本的cos地址，参照格式：https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh查询cos存储桶列表：[存储桶列表](https://console.cloud.tencent.com/cos/bucket)
 	CosFileURI *string `json:"CosFileURI,omitnil,omitempty" name:"CosFileURI"`
@@ -7398,6 +7841,116 @@ type ServiceBasicRestartInfo struct {
 
 	// 如果没传，则表示所有进程
 	ComponentInfoList []*ComponentBasicRestartInfo `json:"ComponentInfoList,omitnil,omitempty" name:"ComponentInfoList"`
+}
+
+type ServiceNodeDetailInfo struct {
+	// 进程所在节点IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 进程类型
+	NodeType *int64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 进程名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 服务组件状态
+	ServiceStatus *int64 `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
+
+	// 进程监控状态
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+
+	// 服务组件状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 进程端口信息
+	PortsInfo *string `json:"PortsInfo,omitnil,omitempty" name:"PortsInfo"`
+
+	// 最近重启时间
+	LastRestartTime *string `json:"LastRestartTime,omitnil,omitempty" name:"LastRestartTime"`
+
+	// 节点类型
+	Flag *int64 `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 配置组ID
+	ConfGroupId *int64 `json:"ConfGroupId,omitnil,omitempty" name:"ConfGroupId"`
+
+	// 配置组名称
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+
+	// 节点是否需要重启
+	ConfStatus *int64 `json:"ConfStatus,omitnil,omitempty" name:"ConfStatus"`
+
+	// 进程探测信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceDetectionInfo []*ServiceProcessFunctionInfo `json:"ServiceDetectionInfo,omitnil,omitempty" name:"ServiceDetectionInfo"`
+
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeFlagFilter *string `json:"NodeFlagFilter,omitnil,omitempty" name:"NodeFlagFilter"`
+
+	// 进程健康状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthStatus *HealthStatus `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// 角色是否支持监控
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportRoleMonitor *bool `json:"IsSupportRoleMonitor,omitnil,omitempty" name:"IsSupportRoleMonitor"`
+
+	// 暂停策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopPolicies []*RestartPolicy `json:"StopPolicies,omitnil,omitempty" name:"StopPolicies"`
+
+	// 测试环境api强校验，现网没有，emrcc接口返回有。不加会报错
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HAState *string `json:"HAState,omitnil,omitempty" name:"HAState"`
+
+	// NameService名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameService *string `json:"NameService,omitnil,omitempty" name:"NameService"`
+
+	// 是否支持联邦
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFederation *bool `json:"IsFederation,omitnil,omitempty" name:"IsFederation"`
+
+	// datanode是否是维护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataNodeMaintenanceState *int64 `json:"DataNodeMaintenanceState,omitnil,omitempty" name:"DataNodeMaintenanceState"`
+}
+
+type ServiceProcessFunctionInfo struct {
+	// 探测告警级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectAlert *string `json:"DetectAlert,omitnil,omitempty" name:"DetectAlert"`
+
+	// 探测功能描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DetetcFunctionKey is deprecated.
+	DetetcFunctionKey *string `json:"DetetcFunctionKey,omitnil,omitempty" name:"DetetcFunctionKey"`
+
+	// 探测功能结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DetetcFunctionValue is deprecated.
+	DetetcFunctionValue *string `json:"DetetcFunctionValue,omitnil,omitempty" name:"DetetcFunctionValue"`
+
+	// 探测结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DetetcTime is deprecated.
+	DetetcTime *string `json:"DetetcTime,omitnil,omitempty" name:"DetetcTime"`
+
+	// 探测功能描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectFunctionKey *string `json:"DetectFunctionKey,omitnil,omitempty" name:"DetectFunctionKey"`
+
+	// 探测功能结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectFunctionValue *string `json:"DetectFunctionValue,omitnil,omitempty" name:"DetectFunctionValue"`
+
+	// 探测结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectTime *string `json:"DetectTime,omitnil,omitempty" name:"DetectTime"`
 }
 
 type ShortNodeInfo struct {

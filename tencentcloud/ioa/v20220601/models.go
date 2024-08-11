@@ -235,7 +235,8 @@ type DescribeDevicesRequestParams struct {
 	// <li>PageSize 最大值5000，最好不超过100。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 私有化默认分组id-名称-操作系统
+	// 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配）
+	// id-名称-操作系统
 	// 1	全网终端	Win
 	// 2	未分组终端	Win
 	// 30000000	服务器	Win
@@ -251,10 +252,10 @@ type DescribeDevicesRequestParams struct {
 	// 40000502	未分组终端	iOS
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）
+	// 【必填】操作系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 在线状态 2 在线 0，1 离线
+	// 在线状态 （2表示在线，0或者1表示离线）
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
 	// 过滤条件--兼容旧接口,参数同Condition
@@ -263,10 +264,10 @@ type DescribeDevicesRequestParams struct {
 	// 排序字段--兼容旧接口,参数同Condition
 	Sort *Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 获取第几页--兼容旧接口,参数同Condition(只支持32位)
+	// 获取第几页--兼容旧接口,参数同Condition
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页获取数--兼容旧接口,参数同Condition(只支持32位)
+	// 每页获取数--兼容旧接口,参数同Condition
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 授权状态 4未授权 5已授权
@@ -285,7 +286,8 @@ type DescribeDevicesRequest struct {
 	// <li>PageSize 最大值5000，最好不超过100。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 私有化默认分组id-名称-操作系统
+	// 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配）
+	// id-名称-操作系统
 	// 1	全网终端	Win
 	// 2	未分组终端	Win
 	// 30000000	服务器	Win
@@ -301,10 +303,10 @@ type DescribeDevicesRequest struct {
 	// 40000502	未分组终端	iOS
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）
+	// 【必填】操作系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 在线状态 2 在线 0，1 离线
+	// 在线状态 （2表示在线，0或者1表示离线）
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
 	// 过滤条件--兼容旧接口,参数同Condition
@@ -313,10 +315,10 @@ type DescribeDevicesRequest struct {
 	// 排序字段--兼容旧接口,参数同Condition
 	Sort *Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 获取第几页--兼容旧接口,参数同Condition(只支持32位)
+	// 获取第几页--兼容旧接口,参数同Condition
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页获取数--兼容旧接口,参数同Condition(只支持32位)
+	// 每页获取数--兼容旧接口,参数同Condition
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 授权状态 4未授权 5已授权

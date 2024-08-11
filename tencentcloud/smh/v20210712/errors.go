@@ -29,8 +29,23 @@ const (
 	// 发送短信验证码时发生错误。
 	INTERNALERROR_SENDSMS = "InternalError.SendSms"
 
+	// AccountName 和 AccountPassword 必须同时指定或同时不指定。
+	INVALIDPARAMETER_ONEOFACCOUNTNAMEANDACCOUNTPASSWORDISEMPTY = "InvalidParameter.OneOfAccountNameAndAccountPasswordIsEmpty"
+
+	// CountryCode 和 PhoneNumber 必须同时指定或同时不指定。
+	INVALIDPARAMETER_ONEOFCOUNTRYCODEANDPHONENUMBERISEMPTY = "InvalidParameter.OneOfCountryCodeAndPhoneNumberIsEmpty"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// AccountName 过长。
+	INVALIDPARAMETERVALUE_ACCOUNTNAMETOOLONG = "InvalidParameterValue.AccountNameTooLong"
+
+	// AccountPassword 无效。
+	INVALIDPARAMETERVALUE_ACCOUNTPASSWORD = "InvalidParameterValue.AccountPassword"
+
+	// AccountUserId 过长。
+	INVALIDPARAMETERVALUE_ACCOUNTUSERIDTOOLONG = "InvalidParameterValue.AccountUserIdTooLong"
 
 	// 存储桶名称无效。
 	INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
@@ -56,6 +71,48 @@ const (
 	// 指定的国家代码无效。
 	INVALIDPARAMETERVALUE_COUNTRYCODE = "InvalidParameterValue.CountryCode"
 
+	// CountryCode 过长。
+	INVALIDPARAMETERVALUE_COUNTRYCODETOOLONG = "InvalidParameterValue.CountryCodeTooLong"
+
+	// DestroyTime 无效。
+	INVALIDPARAMETERVALUE_DESTROYTIME = "InvalidParameterValue.DestroyTime"
+
+	// AccountName 重复。
+	INVALIDPARAMETERVALUE_DUPLICATEACCOUNTNAME = "InvalidParameterValue.DuplicateAccountName"
+
+	// AccountUserId 重复。
+	INVALIDPARAMETERVALUE_DUPLICATEACCOUNTUSERID = "InvalidParameterValue.DuplicateAccountUserId"
+
+	// Email 重复。
+	INVALIDPARAMETERVALUE_DUPLICATEEMAIL = "InvalidParameterValue.DuplicateEmail"
+
+	// CountryCode 和 PhoneNumber 重复。
+	INVALIDPARAMETERVALUE_DUPLICATEUSERPHONENUMBER = "InvalidParameterValue.DuplicateUserPhoneNumber"
+
+	// Email 过长。
+	INVALIDPARAMETERVALUE_EMAILTOOLONG = "InvalidParameterValue.EmailTooLong"
+
+	// 指定的 Filter 无效。
+	INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
+
+	// AccountName 无效。
+	INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = "InvalidParameterValue.InvalidAccountName"
+
+	// AccountUserId 无效。
+	INVALIDPARAMETERVALUE_INVALIDACCOUNTUSERID = "InvalidParameterValue.InvalidAccountUserId"
+
+	// CountryCode 无效。
+	INVALIDPARAMETERVALUE_INVALIDCOUNTRYCODE = "InvalidParameterValue.InvalidCountryCode"
+
+	// Email 无效。
+	INVALIDPARAMETERVALUE_INVALIDEMAIL = "InvalidParameterValue.InvalidEmail"
+
+	// PhoneNumber 无效。
+	INVALIDPARAMETERVALUE_INVALIDPHONENUMBER = "InvalidParameterValue.InvalidPhoneNumber"
+
+	// IsolateTime 无效。
+	INVALIDPARAMETERVALUE_ISOLATETIME = "InvalidParameterValue.IsolateTime"
+
 	// 参数值数量或字符数超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
@@ -67,6 +124,15 @@ const (
 
 	// 指定的手机号码无效。
 	INVALIDPARAMETERVALUE_PHONENUMBER = "InvalidParameterValue.PhoneNumber"
+
+	// PhoneNumber 过长。
+	INVALIDPARAMETERVALUE_PHONENUMBERTOOLONG = "InvalidParameterValue.PhoneNumberTooLong"
+
+	// 指定的 Role 不支持。
+	INVALIDPARAMETERVALUE_ROLENOTSUPPORT = "InvalidParameterValue.RoleNotSupport"
+
+	// 指定了太多的过滤器，过滤器最多为 100 个。
+	INVALIDPARAMETERVALUE_TOOMANYFILTERS = "InvalidParameterValue.TooManyFilters"
 
 	// 已达到用户数量限制，请先升级产品规格。
 	LIMITEXCEEDED_USERLIMIT = "LimitExceeded.UserLimit"
@@ -82,6 +148,9 @@ const (
 
 	// 官方云盘实例不存在或不属于当前账号。
 	RESOURCENOTFOUND_OFFICIALINSTANCE = "ResourceNotFound.OfficialInstance"
+
+	// 指定的用户不存在。
+	RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 
 	// 未授予 cam:PassRole 权限。
 	UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"

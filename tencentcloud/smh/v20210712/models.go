@@ -106,6 +106,281 @@ func (r *CreateLibraryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUserLifecycleRequestParams struct {
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器。
+	Filter *UserFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 隔离时间，当时间超过该时间点后，指定用户将无法登录，但他的账号信息、文件资源会被保留，可以通过再次调用本接口更新隔离时间，恢复登录。如不指定，则代表不设置隔离时间，且当前用户已经设置的隔离时间会被删除。
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// 销毁时间，当时间超过该时间点后，指定用户的资源将被销毁且无法通过再次调用此接口更新时间。如果同时指定了 IsolateTime 则不能早于 IsolateTime 指定的时间。如不指定，则代表不设置销毁时间，且当前用户已经设置的销毁时间会被删除。
+	DestroyTime *string `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+}
+
+type CreateUserLifecycleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器。
+	Filter *UserFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 隔离时间，当时间超过该时间点后，指定用户将无法登录，但他的账号信息、文件资源会被保留，可以通过再次调用本接口更新隔离时间，恢复登录。如不指定，则代表不设置隔离时间，且当前用户已经设置的隔离时间会被删除。
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// 销毁时间，当时间超过该时间点后，指定用户的资源将被销毁且无法通过再次调用此接口更新时间。如果同时指定了 IsolateTime 则不能早于 IsolateTime 指定的时间。如不指定，则代表不设置销毁时间，且当前用户已经设置的销毁时间会被删除。
+	DestroyTime *string `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+}
+
+func (r *CreateUserLifecycleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserLifecycleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "Filter")
+	delete(f, "IsolateTime")
+	delete(f, "DestroyTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserLifecycleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserLifecycleResponseParams struct {
+	// 用户 ID。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 设置的隔离时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// 设置的销毁时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestroyTime *string `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserLifecycleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserLifecycleResponseParams `json:"Response"`
+}
+
+func (r *CreateUserLifecycleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserLifecycleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserRequestParams struct {
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用户角色，当只支持 user。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 是否启用。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// 手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// 第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 备注。不超过 255 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 昵称。不超过 100 个字符。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 用户头像地址。不超过 255 个字符。
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 自定义信息。不超过 255 个字符。
+	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
+}
+
+type CreateUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用户角色，当只支持 user。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 是否启用。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// 手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// 第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 备注。不超过 255 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 昵称。不超过 100 个字符。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 用户头像地址。不超过 255 个字符。
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 自定义信息。不超过 255 个字符。
+	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
+}
+
+func (r *CreateUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "Role")
+	delete(f, "Enabled")
+	delete(f, "CountryCode")
+	delete(f, "PhoneNumber")
+	delete(f, "Email")
+	delete(f, "AccountName")
+	delete(f, "AccountPassword")
+	delete(f, "AccountUserId")
+	delete(f, "Comment")
+	delete(f, "Nickname")
+	delete(f, "Avatar")
+	delete(f, "Customize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserResponseParams struct {
+	// 用户所在的媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用户 ID。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户创建时间。
+	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 用户角色.
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 是否启用。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 手机号国家码，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// 手机号码，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 账号，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 第三方账号 ID，用于关联第三方账号体系，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 备注。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 昵称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 用户头像地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 自定义信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserResponseParams `json:"Response"`
+}
+
+func (r *CreateUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLibraryRequestParams struct {
 	// 媒体库 ID
 	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
@@ -156,6 +431,67 @@ func (r *DeleteLibraryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLibraryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserRequestParams struct {
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器数组，数组之间为 **或** 的关系，即满足任意一个过滤器的用户，都将被删除，单次传入的过滤器最多为 100 个。
+	Filters []*UserFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DeleteUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器数组，数组之间为 **或** 的关系，即满足任意一个过滤器的用户，都将被删除，单次传入的过滤器最多为 100 个。
+	Filters []*UserFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DeleteUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -560,6 +896,78 @@ func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserLifecycleRequestParams struct {
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器。
+	Filter *UserFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeUserLifecycleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器。
+	Filter *UserFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeUserLifecycleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserLifecycleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserLifecycleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserLifecycleResponseParams struct {
+	// 用户 ID。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 设置的隔离时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// 设置的销毁时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestroyTime *string `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserLifecycleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserLifecycleResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserLifecycleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserLifecycleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Instance struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -776,6 +1184,198 @@ func (r *ModifyLibraryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserRequestParams struct {
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器。
+	Filter *UserFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 用户角色，当只支持 user。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 是否启用。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// 手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// 第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 备注。不超过 255 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 昵称。不超过 100 个字符。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 用户头像地址。不超过 255 个字符。
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 自定义信息。不超过 255 个字符。
+	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
+}
+
+type ModifyUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用于唯一查找用户的过滤器。
+	Filter *UserFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 用户角色，当只支持 user。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 是否启用。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// 手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// 第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 备注。不超过 255 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 昵称。不超过 100 个字符。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 用户头像地址。不超过 255 个字符。
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 自定义信息。不超过 255 个字符。
+	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
+}
+
+func (r *ModifyUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "Filter")
+	delete(f, "Role")
+	delete(f, "Enabled")
+	delete(f, "CountryCode")
+	delete(f, "PhoneNumber")
+	delete(f, "Email")
+	delete(f, "AccountName")
+	delete(f, "AccountPassword")
+	delete(f, "AccountUserId")
+	delete(f, "Comment")
+	delete(f, "Nickname")
+	delete(f, "Avatar")
+	delete(f, "Customize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserResponseParams struct {
+	// 用户所在的媒体库 ID。
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// 用户 ID。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户创建时间。
+	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 用户角色.
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 是否启用。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 手机号国家码，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// 手机号码，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 账号，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 第三方账号 ID，用于关联第三方账号体系，如未指定则为 null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 备注。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 昵称。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 用户头像地址。
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 自定义信息。
+	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SendSmsCodeRequestParams struct {
 	// 验证码目的，当前支持换绑超级管理员账号， BindSuperAdmin；体验版企业升级，ChannelUpdateVerify等
 	Purpose *string `json:"Purpose,omitnil,omitempty" name:"Purpose"`
@@ -882,6 +1482,19 @@ type TrafficPackage struct {
 	// 过期时间，即所抵扣的实例的过期时间。如果流量资源包所抵扣的实例为按量计费或永久有效实例，该属性为 null。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type UserFilter struct {
+	// 过滤类型，当前支持：UserId、PhoneNumber、Email、AccountName、AccountUserId。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 过滤值，只支持完全匹配，不支持模糊搜索。针对不同的 Key，Value 的取值如下：
+	// UserId: user12345678abcde
+	// PhoneNumber: +86-13800000000（格式为：{CountryCode}-{PhoneNumber}）
+	// Email: admin@mail.foobar.com
+	// AccountName: account_name
+	// AccountUserId: x53mYVqykfPqTCqekbNwwa4aXk4
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user

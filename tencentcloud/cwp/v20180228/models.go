@@ -41459,6 +41459,137 @@ func (r *ModifyRansomDefenseStrategyStatusResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type ModifyReverseShellRulesAggregationRequestParams struct {
+	// 规则ID(新增时请留空)
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 客户端ID数组
+	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
+
+	// 主机IP
+	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
+
+	// 目标IP
+	DestIp *string `json:"DestIp,omitnil,omitempty" name:"DestIp"`
+
+	// 目标端口
+	DestPort *string `json:"DestPort,omitnil,omitempty" name:"DestPort"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
+
+	// 是否全局规则(默认否)
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
+
+	// 事件列表和详情点击加白时关联的事件id (新增规则时请留空)
+	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 加白方式， 0:常规加白 1:正则加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+
+	// 正则表达式
+	RuleRegexp *string `json:"RuleRegexp,omitnil,omitempty" name:"RuleRegexp"`
+
+	// 处理历史事件， 0:不处理 1:处理
+	HandleHistory *uint64 `json:"HandleHistory,omitnil,omitempty" name:"HandleHistory"`
+
+	// 批次id
+	GroupID *string `json:"GroupID,omitnil,omitempty" name:"GroupID"`
+}
+
+type ModifyReverseShellRulesAggregationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID(新增时请留空)
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 客户端ID数组
+	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
+
+	// 主机IP
+	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
+
+	// 目标IP
+	DestIp *string `json:"DestIp,omitnil,omitempty" name:"DestIp"`
+
+	// 目标端口
+	DestPort *string `json:"DestPort,omitnil,omitempty" name:"DestPort"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
+
+	// 是否全局规则(默认否)
+	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
+
+	// 事件列表和详情点击加白时关联的事件id (新增规则时请留空)
+	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 加白方式， 0:常规加白 1:正则加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+
+	// 正则表达式
+	RuleRegexp *string `json:"RuleRegexp,omitnil,omitempty" name:"RuleRegexp"`
+
+	// 处理历史事件， 0:不处理 1:处理
+	HandleHistory *uint64 `json:"HandleHistory,omitnil,omitempty" name:"HandleHistory"`
+
+	// 批次id
+	GroupID *string `json:"GroupID,omitnil,omitempty" name:"GroupID"`
+}
+
+func (r *ModifyReverseShellRulesAggregationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReverseShellRulesAggregationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Uuids")
+	delete(f, "HostIp")
+	delete(f, "DestIp")
+	delete(f, "DestPort")
+	delete(f, "ProcessName")
+	delete(f, "IsGlobal")
+	delete(f, "EventId")
+	delete(f, "WhiteType")
+	delete(f, "RuleRegexp")
+	delete(f, "HandleHistory")
+	delete(f, "GroupID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReverseShellRulesAggregationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReverseShellRulesAggregationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyReverseShellRulesAggregationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReverseShellRulesAggregationResponseParams `json:"Response"`
+}
+
+func (r *ModifyReverseShellRulesAggregationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReverseShellRulesAggregationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRiskDnsPolicyRequestParams struct {
 	// 策略
 	Data *RiskDnsPolicy `json:"Data,omitnil,omitempty" name:"Data"`
