@@ -2194,6 +2194,10 @@ type CCN struct {
 	// 是否开启二层云联网通道。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectConnectAccelerateChannelFlag *bool `json:"DirectConnectAccelerateChannelFlag,omitnil,omitempty" name:"DirectConnectAccelerateChannelFlag"`
+
+	// 是否支持ipv6路由表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Flag *string `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 }
 
 type CcnAttachedInstance struct {
@@ -2475,6 +2479,14 @@ type CcnRoute struct {
 
 	// 下一跳扩展名称（关联实例的扩展名称）
 	InstanceExtraName *string `json:"InstanceExtraName,omitnil,omitempty" name:"InstanceExtraName"`
+
+	// 实例类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasType *string `json:"AliasType,omitnil,omitempty" name:"AliasType"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasInstanceId *string `json:"AliasInstanceId,omitnil,omitempty" name:"AliasInstanceId"`
 }
 
 type CcnRouteBroadcastPolicyRouteCondition struct {

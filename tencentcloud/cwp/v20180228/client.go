@@ -10265,6 +10265,10 @@ func NewDescribeCloudProtectServiceOrderListResponse() (response *DescribeCloudP
 }
 
 // DescribeCloudProtectServiceOrderList
+// 云护航计费产品已下线
+//
+// 
+//
 // 查询云护航服务订单列表
 //
 // 可能返回的错误码:
@@ -10283,6 +10287,10 @@ func (c *Client) DescribeCloudProtectServiceOrderList(request *DescribeCloudProt
 }
 
 // DescribeCloudProtectServiceOrderList
+// 云护航计费产品已下线
+//
+// 
+//
 // 查询云护航服务订单列表
 //
 // 可能返回的错误码:
