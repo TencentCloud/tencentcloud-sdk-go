@@ -155,6 +155,9 @@ type ChatCompletionsRequestParams struct {
 	// 2. false：开关关闭，true：开关打开。
 	// 3. 未传值时默认开关关闭（false）。
 	Citation *bool `json:"Citation,omitnil,omitempty" name:"Citation"`
+
+	// 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
+	EnableSpeedSearch *bool `json:"EnableSpeedSearch,omitnil,omitempty" name:"EnableSpeedSearch"`
 }
 
 type ChatCompletionsRequest struct {
@@ -239,6 +242,9 @@ type ChatCompletionsRequest struct {
 	// 2. false：开关关闭，true：开关打开。
 	// 3. 未传值时默认开关关闭（false）。
 	Citation *bool `json:"Citation,omitnil,omitempty" name:"Citation"`
+
+	// 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
+	EnableSpeedSearch *bool `json:"EnableSpeedSearch,omitnil,omitempty" name:"EnableSpeedSearch"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -265,6 +271,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "CustomTool")
 	delete(f, "SearchInfo")
 	delete(f, "Citation")
+	delete(f, "EnableSpeedSearch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}

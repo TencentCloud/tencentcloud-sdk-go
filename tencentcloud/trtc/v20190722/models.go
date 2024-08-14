@@ -66,6 +66,14 @@ type AgentConfig struct {
 	// 机器人的欢迎语
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WelcomeMessage *string `json:"WelcomeMessage,omitnil,omitempty" name:"WelcomeMessage"`
+
+	// 智能打断模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterruptMode *uint64 `json:"InterruptMode,omitnil,omitempty" name:"InterruptMode"`
+
+	// InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterruptSpeechDuration *uint64 `json:"InterruptSpeechDuration,omitnil,omitempty" name:"InterruptSpeechDuration"`
 }
 
 type AgentParams struct {

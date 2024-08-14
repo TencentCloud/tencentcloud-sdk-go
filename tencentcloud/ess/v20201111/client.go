@@ -633,6 +633,83 @@ func (c *Client) CreateBatchInitOrganizationUrlWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateBatchOrganizationAuthorizationUrlRequest() (request *CreateBatchOrganizationAuthorizationUrlRequest) {
+    request = &CreateBatchOrganizationAuthorizationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateBatchOrganizationAuthorizationUrl")
+    
+    
+    return
+}
+
+func NewCreateBatchOrganizationAuthorizationUrlResponse() (response *CreateBatchOrganizationAuthorizationUrlResponse) {
+    response = &CreateBatchOrganizationAuthorizationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchOrganizationAuthorizationUrl
+// 此接口用于获取企业批量认证链接-单链接包含多条认证流。
+//
+// 
+//
+// 前提条件：已调用 [CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任务接口](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks) 和[查询企业批量认证链接DescribeBatchOrganizationRegistrationUrls](https://qian.tencent.com/developers/companyApis/organizations/DescribeBatchOrganizationRegistrationUrls) 确保认证任务已经完成。
+//
+// 
+//
+// 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间。
+//
+// 此链接包含多条认证流程，使用该链接可以批量的对企业进行认证。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateBatchOrganizationAuthorizationUrl(request *CreateBatchOrganizationAuthorizationUrlRequest) (response *CreateBatchOrganizationAuthorizationUrlResponse, err error) {
+    return c.CreateBatchOrganizationAuthorizationUrlWithContext(context.Background(), request)
+}
+
+// CreateBatchOrganizationAuthorizationUrl
+// 此接口用于获取企业批量认证链接-单链接包含多条认证流。
+//
+// 
+//
+// 前提条件：已调用 [CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任务接口](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks) 和[查询企业批量认证链接DescribeBatchOrganizationRegistrationUrls](https://qian.tencent.com/developers/companyApis/organizations/DescribeBatchOrganizationRegistrationUrls) 确保认证任务已经完成。
+//
+// 
+//
+// 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间。
+//
+// 此链接包含多条认证流程，使用该链接可以批量的对企业进行认证。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateBatchOrganizationAuthorizationUrlWithContext(ctx context.Context, request *CreateBatchOrganizationAuthorizationUrlRequest) (response *CreateBatchOrganizationAuthorizationUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchOrganizationAuthorizationUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchOrganizationAuthorizationUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchOrganizationAuthorizationUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchOrganizationRegistrationTasksRequest() (request *CreateBatchOrganizationRegistrationTasksRequest) {
     request = &CreateBatchOrganizationRegistrationTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

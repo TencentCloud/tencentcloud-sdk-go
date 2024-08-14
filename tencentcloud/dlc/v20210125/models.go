@@ -10776,6 +10776,22 @@ type LakeFsInfo struct {
 
 	// 创建时候的时间戳
 	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitnil,omitempty" name:"CreateTimeStamp"`
+
+	// 是否是用户默认桶，0：默认桶，1：非默认桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultBucket *int64 `json:"DefaultBucket,omitnil,omitempty" name:"DefaultBucket"`
+
+	// 托管存储short name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShortName *string `json:"ShortName,omitnil,omitempty" name:"ShortName"`
+
+	// 桶描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 托管桶状态，当前取值为：creating、bind、readOnly、isolate
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -12916,6 +12932,14 @@ type SmartOptimizerLifecyclePolicy struct {
 	// 是否删表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropTable *bool `json:"DropTable,omitnil,omitempty" name:"DropTable"`
+
+	// 过期字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredField *string `json:"ExpiredField,omitnil,omitempty" name:"ExpiredField"`
+
+	// 过期字段格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredFieldFormat *string `json:"ExpiredFieldFormat,omitnil,omitempty" name:"ExpiredFieldFormat"`
 }
 
 type SmartOptimizerPolicy struct {
@@ -12941,7 +12965,9 @@ type SmartOptimizerPolicy struct {
 }
 
 type SmartOptimizerWrittenPolicy struct {
-
+	// none/enable/disable/default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WrittenEnable *string `json:"WrittenEnable,omitnil,omitempty" name:"WrittenEnable"`
 }
 
 type SmartPolicy struct {
@@ -13431,26 +13457,41 @@ func (r *SwitchDataEngineResponse) FromJsonString(s string) error {
 
 type TColumn struct {
 	// 字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 字段默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
 
 	// 字段是否是非空
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotNull *bool `json:"NotNull,omitnil,omitempty" name:"NotNull"`
 
 	// 表示整个 numeric 的长度,取值1-38
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Precision *int64 `json:"Precision,omitnil,omitempty" name:"Precision"`
 
 	// 表示小数部分的长度
 	// Scale小于Precision
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// 字段位置，小的在前
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// 是否为分区字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartition *bool `json:"IsPartition,omitnil,omitempty" name:"IsPartition"`
 }
 
 type TPartition struct {

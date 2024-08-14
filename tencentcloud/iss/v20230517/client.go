@@ -677,11 +677,15 @@ func NewAddUserDeviceResponse() (response *AddUserDeviceResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
 //  INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = "InvalidParameterValue.InvalidRTMPAppName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
 //  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
+//  INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = "InvalidParameterValue.RTMPPushStreamParamRepeat"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
 //  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
+//  UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = "UnsupportedOperation.PushDomainNotExist"
 func (c *Client) AddUserDevice(request *AddUserDeviceRequest) (response *AddUserDeviceResponse, err error) {
     return c.AddUserDeviceWithContext(context.Background(), request)
 }
@@ -697,11 +701,15 @@ func (c *Client) AddUserDevice(request *AddUserDeviceRequest) (response *AddUser
 //  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
 //  INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = "InvalidParameterValue.InvalidRTMPAppName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
 //  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
+//  INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = "InvalidParameterValue.RTMPPushStreamParamRepeat"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
 //  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
+//  UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = "UnsupportedOperation.PushDomainNotExist"
 func (c *Client) AddUserDeviceWithContext(ctx context.Context, request *AddUserDeviceRequest) (response *AddUserDeviceResponse, err error) {
     if request == nil {
         request = NewAddUserDeviceRequest()
@@ -1878,6 +1886,7 @@ func NewDescribeCNAMEResponse() (response *DescribeCNAMEResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDOMAINTYPE = "InvalidParameterValue.InvalidDomainType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCNAME(request *DescribeCNAMERequest) (response *DescribeCNAMEResponse, err error) {
     return c.DescribeCNAMEWithContext(context.Background(), request)
@@ -1889,6 +1898,7 @@ func (c *Client) DescribeCNAME(request *DescribeCNAMERequest) (response *Describ
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDOMAINTYPE = "InvalidParameterValue.InvalidDomainType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCNAMEWithContext(ctx context.Context, request *DescribeCNAMERequest) (response *DescribeCNAMEResponse, err error) {
     if request == nil {

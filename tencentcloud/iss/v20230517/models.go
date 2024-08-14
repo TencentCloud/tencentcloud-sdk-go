@@ -1080,6 +1080,12 @@ type AddUserDeviceRequestParams struct {
 
 	// 设备 SN，仅IVCP 协议设备需要
 	SNCode *string `json:"SNCode,omitnil,omitempty" name:"SNCode"`
+
+	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
 type AddUserDeviceRequest struct {
@@ -1126,6 +1132,12 @@ type AddUserDeviceRequest struct {
 
 	// 设备 SN，仅IVCP 协议设备需要
 	SNCode *string `json:"SNCode,omitnil,omitempty" name:"SNCode"`
+
+	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
 func (r *AddUserDeviceRequest) ToJsonString() string {
@@ -1154,6 +1166,8 @@ func (r *AddUserDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Port")
 	delete(f, "Username")
 	delete(f, "SNCode")
+	delete(f, "AppName")
+	delete(f, "StreamName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddUserDeviceRequest has unknown keys!", "")
 	}
@@ -2543,6 +2557,9 @@ func (r *DescribeAITaskResultResponse) FromJsonString(s string) error {
 type DescribeCNAMERequestParams struct {
 	// 服务节点 ID（从查询域名可绑定服务节点接口DescribeDomainRegion中获取）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 域名类型，0:拉流域名 1:推流域名
+	DomainType *int64 `json:"DomainType,omitnil,omitempty" name:"DomainType"`
 }
 
 type DescribeCNAMERequest struct {
@@ -2550,6 +2567,9 @@ type DescribeCNAMERequest struct {
 	
 	// 服务节点 ID（从查询域名可绑定服务节点接口DescribeDomainRegion中获取）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 域名类型，0:拉流域名 1:推流域名
+	DomainType *int64 `json:"DomainType,omitnil,omitempty" name:"DomainType"`
 }
 
 func (r *DescribeCNAMERequest) ToJsonString() string {
@@ -2565,6 +2585,7 @@ func (r *DescribeCNAMERequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "DomainType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCNAMERequest has unknown keys!", "")
 	}
@@ -2808,6 +2829,14 @@ type DescribeDeviceData struct {
 	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
+
+	// RTMP推流地址自定义appName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// RTMP推流地址自定义streamName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
 type DescribeDevicePresetData struct {
@@ -2977,6 +3006,10 @@ type DescribeDomainData struct {
 	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// 域名类型 0:拉流域名 1:推流域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainType *int64 `json:"DomainType,omitnil,omitempty" name:"DomainType"`
 }
 
 type DescribeDomainRegionData struct {

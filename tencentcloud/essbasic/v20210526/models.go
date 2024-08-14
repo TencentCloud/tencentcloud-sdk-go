@@ -11042,6 +11042,12 @@ type Recipient struct {
 	// <li> 5 :设备指纹识别</li>
 	// <li> 6 :设备面容识别</li></ul>
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
+
+	// 签署方是否可以转他人处理
+	// 
+	// <ul><li> **false** : ( 默认)可以转他人处理</li>
+	// <li> **true** :不可以转他人处理</li></ul>
+	NoTransfer *bool `json:"NoTransfer,omitnil,omitempty" name:"NoTransfer"`
 }
 
 type RecipientComponentInfo struct {

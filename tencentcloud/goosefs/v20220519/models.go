@@ -316,6 +316,19 @@ type ClientNodeAttribute struct {
 
 	// 客户端节点类型，extend(扩展节点)，manager(管理节点)
 	ClientType *string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
+
+	// 节点所属vpcid	
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 节点所属子网id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// cvmId
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自定义挂载点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 }
 
 type ClientToken struct {
@@ -1323,6 +1336,9 @@ type LinuxNodeAttribute struct {
 
 	// linux客户端节点地址
 	LinuxClientNodeIp *string `json:"LinuxClientNodeIp,omitnil,omitempty" name:"LinuxClientNodeIp"`
+
+	// 自定义挂载点
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 }
 
 type MappedBucket struct {

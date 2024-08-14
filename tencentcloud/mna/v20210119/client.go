@@ -1898,6 +1898,75 @@ func (c *Client) OrderFlowPackageWithContext(ctx context.Context, request *Order
     return
 }
 
+func NewOrderPerLicenseRequest() (request *OrderPerLicenseRequest) {
+    request = &OrderPerLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "OrderPerLicense")
+    
+    
+    return
+}
+
+func NewOrderPerLicenseResponse() (response *OrderPerLicenseResponse) {
+    response = &OrderPerLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OrderPerLicense
+// 购买一次性授权License
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DEVICENOTFOUND = "OperationDenied.DeviceNotFound"
+//  OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
+//  OPERATIONDENIED_NOTALLOWEDTOPAY = "OperationDenied.NotAllowedToPay"
+//  OPERATIONDENIED_REPEATPURCHASE = "OperationDenied.RepeatPurchase"
+//  OPERATIONDENIED_UNAUTHORIZEDUSER = "OperationDenied.UnauthorizedUser"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) OrderPerLicense(request *OrderPerLicenseRequest) (response *OrderPerLicenseResponse, err error) {
+    return c.OrderPerLicenseWithContext(context.Background(), request)
+}
+
+// OrderPerLicense
+// 购买一次性授权License
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DEVICENOTFOUND = "OperationDenied.DeviceNotFound"
+//  OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
+//  OPERATIONDENIED_NOTALLOWEDTOPAY = "OperationDenied.NotAllowedToPay"
+//  OPERATIONDENIED_REPEATPURCHASE = "OperationDenied.RepeatPurchase"
+//  OPERATIONDENIED_UNAUTHORIZEDUSER = "OperationDenied.UnauthorizedUser"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) OrderPerLicenseWithContext(ctx context.Context, request *OrderPerLicenseRequest) (response *OrderPerLicenseResponse, err error) {
+    if request == nil {
+        request = NewOrderPerLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OrderPerLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOrderPerLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetNotifyUrlRequest() (request *SetNotifyUrlRequest) {
     request = &SetNotifyUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
