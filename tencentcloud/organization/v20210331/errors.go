@@ -47,6 +47,9 @@ const (
 	// 检查邮箱绑定状态失败。
 	FAILEDOPERATION_CHECKMAILACCOUNT = "FailedOperation.CheckMailAccount"
 
+	// 一个目录的权限配置创建超过上限
+	FAILEDOPERATION_CONFIGURATIONOVERUPPERLIMIT = "FailedOperation.ConfigurationOverUpperLimit"
+
 	// 创建成员异常。
 	FAILEDOPERATION_CREATEACCOUNT = "FailedOperation.CreateAccount"
 
@@ -67,6 +70,18 @@ const (
 
 	// 创建角色异常。
 	FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+
+	// 权限配置绑定自定义策略超过上限
+	FAILEDOPERATION_CUSTOMPOLICYOVERUPPERLIMIT = "FailedOperation.CustomPolicyOverUpperLimit"
+
+	// SQL执行报错
+	FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+
+	// 解码元数据文档失败。
+	FAILEDOPERATION_DECODEMETADATADOCUMENTFAILED = "FailedOperation.DecodeMetadataDocumentFailed"
+
+	// 用户组还存在用户，不允许删除用户
+	FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
 
 	// 删除授权策略异常。
 	FAILEDOPERATION_DELETEPOLICY = "FailedOperation.DeletePolicy"
@@ -92,8 +107,32 @@ const (
 	// 查询策略失败。
 	FAILEDOPERATION_GETPOLICYDETAIL = "FailedOperation.GetPolicyDetail"
 
+	// 用户组创建超过限制
+	FAILEDOPERATION_GROUPOVERUPPERLIMIT = "FailedOperation.GroupOverUpperLimit"
+
+	// CIC的用户组组员超出限制。
+	FAILEDOPERATION_GROUPUSERCOUNTOVERUPPERLIMIT = "FailedOperation.GroupUserCountOverUpperLimit"
+
 	// 共享单元存在不同的共享资源类型
 	FAILEDOPERATION_HASDIFFERENTRESOURCETYPE = "FailedOperation.HasDifferentResourceType"
+
+	// CIC服务已经被开通
+	FAILEDOPERATION_IDENTITYCENTERALREADYOPEN = "FailedOperation.IdentityCenterAlreadyOpen"
+
+	// 用户没有实名认证，无法开通CIC服务
+	FAILEDOPERATION_IDENTITYCENTERNOTAUTH = "FailedOperation.IdentityCenterNotAuth"
+
+	// 用户没有企业实名认证，无法开通CIC服务
+	FAILEDOPERATION_IDENTITYCENTERNOTENTERPRISEAUTH = "FailedOperation.IdentityCenterNotEnterpriseAuth"
+
+	// CIC服务没有开通
+	FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+
+	// 用户不是集团账号管理员，无法开通CIC服务
+	FAILEDOPERATION_IDENTITYCENTERNOTORGANIZATIONMANAGER = "FailedOperation.IdentityCenterNotOrganizationManager"
+
+	// 用户没有开通集团账号，无法开通CIC服务
+	FAILEDOPERATION_IDENTITYCENTERORGANIZATIONNOTOPEN = "FailedOperation.IdentityCenterOrganizationNotOpen"
 
 	// 邮箱绑定失败。
 	FAILEDOPERATION_MEMBERBINDEMAILERROR = "FailedOperation.MemberBindEmailError"
@@ -121,6 +160,9 @@ const (
 
 	// 成员正在共享资源，不允许退出组织。
 	FAILEDOPERATION_MEMBERSHARERESOURCE = "FailedOperation.MemberShareResource"
+
+	// idp原数据解析失败
+	FAILEDOPERATION_METADATACOSPARSINGFAILED = "FailedOperation.MetadataCosParsingFailed"
 
 	// 企业组织单元成员不为空。
 	FAILEDOPERATION_NODENOTEMPTY = "FailedOperation.NodeNotEmpty"
@@ -154,6 +196,9 @@ const (
 
 	// 成员名已存在。
 	FAILEDOPERATION_ORGANIZATIONMEMBERNAMEUSED = "FailedOperation.OrganizationMemberNameUsed"
+
+	// 成员账号不存在。
+	FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
 
 	// 删除节点超过上限。
 	FAILEDOPERATION_ORGANIZATIONNODEDELETEOVERLIMIT = "FailedOperation.OrganizationNodeDeleteOverLimit"
@@ -215,6 +260,30 @@ const (
 	// 资源超过最大上限。
 	FAILEDOPERATION_RESOURCEOVERLIMIT = "FailedOperation.ResourceOverLimit"
 
+	// 权限授权已经存在了。
+	FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONALREADYEXIST = "FailedOperation.RoleConfigurationAuthorizationAlreadyExist"
+
+	// 存在权限配置授权。
+	FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+
+	// 配置权限授权数量超出限制。
+	FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONOVERLIMIT = "FailedOperation.RoleConfigurationAuthorizationOverLimit"
+
+	// 访问配置已经部署到成员账号。
+	FAILEDOPERATION_ROLECONFIGURATIONPROVISIONINGALREADYDEPLOYED = "FailedOperation.RoleConfigurationProvisioningAlreadyDeployed"
+
+	// 权限配置同步状态错误。
+	FAILEDOPERATION_ROLECONFIGURATIONPROVISIONINGSTATUSERROR = "FailedOperation.RoleConfigurationProvisioningStatusError"
+
+	// saml元数据文档获取失败。
+	FAILEDOPERATION_SAMLMETADATADOCUMENTGETFAILED = "FailedOperation.SAMLMetadataDocumentGetFailed"
+
+	// SAML服务提供商创建失败
+	FAILEDOPERATION_SAMLSERVICEPROVIDERCREATEFAILED = "FailedOperation.SAMLServiceProviderCreateFailed"
+
+	// 当 SSO 登录处于开启状态时不能清空 SAML 身份提供商信息。
+	FAILEDOPERATION_SSOSTATUSENABLENOTCLEARIDENTITYPROVIDER = "FailedOperation.SSoStatusEnableNotClearIdentityProvider"
+
 	// 共享地域不存在。
 	FAILEDOPERATION_SHAREAREANOTEXIST = "FailedOperation.ShareAreaNotExist"
 
@@ -245,6 +314,60 @@ const (
 	// 子账号不存在。
 	FAILEDOPERATION_SUBACCOUNTNOTEXIST = "FailedOperation.SubAccountNotExist"
 
+	// 同步的用户组不允许添加用户
+	FAILEDOPERATION_SYNCHRONIZEDGROUPNOTADDUSER = "FailedOperation.SynchronizedGroupNotAddUser"
+
+	// 同步的用户组不允许删除
+	FAILEDOPERATION_SYNCHRONIZEDGROUPNOTDELETE = "FailedOperation.SynchronizedGroupNotDelete"
+
+	// 同步的用户组不允许删除用户
+	FAILEDOPERATION_SYNCHRONIZEDGROUPNOTREMOVEUSER = "FailedOperation.SynchronizedGroupNotRemoveUser"
+
+	// 同步的用户组不允许更新
+	FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
+
+	// 同步的用户不允许删除
+	FAILEDOPERATION_SYNCHRONIZEDUSERNOTDELETE = "FailedOperation.SynchronizedUserNotDelete"
+
+	// 同步的用户不允许修改
+	FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
+
+	// 权限配置绑定系统策略超过上限
+	FAILEDOPERATION_SYSTEMPOLICYOVERUPPERLIMIT = "FailedOperation.SystemPolicyOverUpperLimit"
+
+	// 上传数据文件失败。
+	FAILEDOPERATION_UPLOADMETADATAFAILED = "FailedOperation.UploadMetadataFailed"
+
+	// 用户加入用户组超出限制。
+	FAILEDOPERATION_USERADDGROUPCOUNTOVERUPPERLIMIT = "FailedOperation.UserAddGroupCountOverUpperLimit"
+
+	// 用户创建超过上限
+	FAILEDOPERATION_USEROVERUPPERLIMIT = "FailedOperation.UserOverUpperLimit"
+
+	// 用户同步已经存在了。
+	FAILEDOPERATION_USERPROVISIONINGALREADYEXISTS = "FailedOperation.UserProvisioningAlreadyExists"
+
+	// 存在用户同步。
+	FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
+
+	// 用户同步失败。
+	FAILEDOPERATION_USERPROVISIONINGFAILED = "FailedOperation.UserProvisioningFailed"
+
+	// 用户同步数量超出限制。
+	FAILEDOPERATION_USERPROVISIONINGOVERLIMIT = "FailedOperation.UserProvisioningOverLimit"
+
+	// 该x509证书已经存在了。
+	FAILEDOPERATION_X509CERTIFICATEALREADYEXIST = "FailedOperation.X509CertificateAlreadyExist"
+
+	// X509证书解析失败。
+	FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
+
+	// 元数据文档解析XML失败。
+	FAILEDOPERATION_XMLDATAUNMARSHALFAILED = "FailedOperation.XMLDataUnmarshalFailed"
+
+	// CIC服务的用户zoneId不存在
+	FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -269,6 +392,9 @@ const (
 	// 授权对象策略已达上限。
 	INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 
+	// 权限配置不允许绑定该策略。
+	INVALIDPARAMETER_BINDPOLICYNAMENOTALLOWED = "InvalidParameter.BindPolicyNameNotAllowed"
+
 	// 手机验证码错误。
 	INVALIDPARAMETER_CODEERROR = "InvalidParameter.CodeError"
 
@@ -284,17 +410,44 @@ const (
 	// 策略语法中条件操作符不正确。
 	INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
 
+	// 权限配置名称已经存在
+	INVALIDPARAMETER_CONFIGURATIONNAMEALREADYEXISTS = "InvalidParameter.ConfigurationNameAlreadyExists"
+
+	// 权限配置名称格式错误
+	INVALIDPARAMETER_CONFIGURATIONNAMEFORMATERROR = "InvalidParameter.ConfigurationNameFormatError"
+
 	// Description入参长度不能大于300字节。
 	INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
 
 	// 策略文档的Effect字段不合法。
 	INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
 
+	// 邮箱已经存在
+	INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+
+	// 用户组名称已经存在
+	INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
+
+	// 用户组名称格式错误
+	INVALIDPARAMETER_GROUPNAMEFORMATERROR = "InvalidParameter.GroupNameFormatError"
+
+	// 用户组不存在
+	INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+
+	// 用户组已经存在该用户
+	INVALIDPARAMETER_GROUPUSERALREADYEXISTS = "InvalidParameter.GroupUserAlreadyExists"
+
+	// 用户组不存在该用户
+	INVALIDPARAMETER_GROUPUSERNOTEXIST = "InvalidParameter.GroupUserNotExist"
+
 	// 接口不存在。
 	INVALIDPARAMETER_INTERFACENOTEXIST = "InvalidParameter.InterfaceNotExist"
 
 	// 无效的邮箱。
 	INVALIDPARAMETER_INVALIDEMAIL = "InvalidParameter.InvalidEmail"
+
+	// 无效的nextToken
+	INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
 
 	// CAM不支持策略文档中所指定的资源类型。
 	INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
@@ -317,6 +470,9 @@ const (
 	// 密码不合法。
 	INVALIDPARAMETER_PASSWORDILLEGAL = "InvalidParameter.PasswordIllegal"
 
+	// 自定义策略内容不能为空
+	INVALIDPARAMETER_POLICYDOCUMENTEMPTY = "InvalidParameter.PolicyDocumentEmpty"
+
 	// PolicyDocument字段不合法。
 	INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
 
@@ -329,11 +485,17 @@ const (
 	// 标签策略内容的策略键有重复。
 	INVALIDPARAMETER_POLICYKEYDUPLICATED = "InvalidParameter.PolicyKeyDuplicated"
 
+	// 策略名称已经存在
+	INVALIDPARAMETER_POLICYNAMEALREADYEXISTS = "InvalidParameter.PolicyNameAlreadyExists"
+
 	// PolicyName字段不合法。
 	INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 
 	// 策略名称已经存在。
 	INVALIDPARAMETER_POLICYNAMEEXISTED = "InvalidParameter.PolicyNameExisted"
+
+	// 策略名称长度超限。
+	INVALIDPARAMETER_POLICYNAMESIZEOVERUPPERLIMIT = "InvalidParameter.PolicyNameSizeOverUpperLimit"
 
 	// 策略文档的principal字段不合法。
 	INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
@@ -371,23 +533,65 @@ const (
 	// 策略语法中资源所属主账号不正确。
 	INVALIDPARAMETER_RESOURCEUINERROR = "InvalidParameter.ResourceUinError"
 
+	// 权限配置不存在
+	INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+
+	// 权限配置还存在策略
+	INVALIDPARAMETER_ROLEPOLICYALREADYEXIST = "InvalidParameter.RolePolicyAlreadyExist"
+
+	// 策略不存在
+	INVALIDPARAMETER_ROLEPOLICYNOTEXIST = "InvalidParameter.RolePolicyNotExist"
+
 	// 策略文档的Statement字段不合法。
 	INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
 
 	// 当前业务不支持标签操作。
 	INVALIDPARAMETER_UNSUPPORTEDSERVICE = "InvalidParameter.UnsupportedService"
 
+	// 用户还存在用户组里。
+	INVALIDPARAMETER_USERALREADYEXISTSGROUP = "InvalidParameter.UserAlreadyExistsGroup"
+
+	// 用户名已经存在
+	INVALIDPARAMETER_USERNAMEALREADYEXISTS = "InvalidParameter.UsernameAlreadyExists"
+
+	// 用户名格式错误
+	INVALIDPARAMETER_USERNAMEFORMATERROR = "InvalidParameter.UsernameFormatError"
+
 	// 策略文档的Version字段不合法。
 	INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 
+	// CIC空间名称已经存在，需要更换空间名称。
+	INVALIDPARAMETERVALUE_IDENTITYCENTERZONENAMEALREADYEXIST = "InvalidParameterValue.IdentityCenterZoneNameAlreadyExist"
+
 	// 策略内容不合法。
 	INVALIDPARAMETERVALUE_POLICYCONTENTINVALID = "InvalidParameterValue.PolicyContentInvalid"
+
+	// sso登陆启用状态值非法
+	INVALIDPARAMETERVALUE_SSOSTATUSINVALID = "InvalidParameterValue.SSoStatusInvalid"
+
+	// X509证书格式错误。
+	INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
+
+	// 空间名不符合规范
+	INVALIDPARAMETERVALUE_ZONENAMEFORMATERROR = "InvalidParameterValue.ZoneNameFormatError"
+
+	// 请求加入用户到用户组超出限制。
+	LIMITEXCEEDED_ADDUSERTOGROUPLIMITEXCEEDED = "LimitExceeded.AddUserToGroupLimitExceeded"
 
 	// 创建成员超过上限。
 	LIMITEXCEEDED_CREATEMEMBEROVERLIMIT = "LimitExceeded.CreateMemberOverLimit"
 
 	// 服务委派管理员超过上限。
 	LIMITEXCEEDED_CREATEORGSERVICEASSIGNOVERLIMIT = "LimitExceeded.CreateOrgServiceAssignOverLimit"
+
+	// 请求创建权限配置超出限制。
+	LIMITEXCEEDED_CREATEROLEASSIGNMENTLIMITEXCEEDED = "LimitExceeded.CreateRoleAssignmentLimitExceeded"
+
+	// 请求创建用户超出限制。
+	LIMITEXCEEDED_CREATEUSERLIMITEXCEEDED = "LimitExceeded.CreateUserLimitExceeded"
+
+	// 请求创建用户同步超出限制。
+	LIMITEXCEEDED_CREATEUSERSYNCPROVISIONINGLIMITEXCEEDED = "LimitExceeded.CreateUserSyncProvisioningLimitExceeded"
 
 	// 配置邮箱超过当日上限。
 	LIMITEXCEEDED_EMAILBINDOVERLIMIT = "LimitExceeded.EmailBindOverLimit"
@@ -406,6 +610,9 @@ const (
 
 	// 手机超过绑定上限。
 	LIMITEXCEEDED_PHONENUMBOUND = "LimitExceeded.PhoneNumBound"
+
+	// 请求用户组移除用户超出限制。
+	LIMITEXCEEDED_REMOVEUSERFROMGROUPLIMITEXCEEDED = "LimitExceeded.RemoveUserFromGroupLimitExceeded"
 
 	// 当次操作的共享成员超过上限。
 	LIMITEXCEEDED_SHAREUNITMEMBEROVERLIMIT = "LimitExceeded.ShareUnitMemberOverLimit"
@@ -494,6 +701,21 @@ const (
 	// 可共享资源类型不存在。
 	RESOURCENOTFOUND_RESOURCETYPENOTEXIST = "ResourceNotFound.ResourceTypeNotExist"
 
+	// 权限授权记录不存在。
+	RESOURCENOTFOUND_ROLECONFIGURATIONAUTHORIZATIONNOTFOUND = "ResourceNotFound.RoleConfigurationAuthorizationNotFound"
+
+	// 权限配置同步不存在。
+	RESOURCENOTFOUND_ROLECONFIGURATIONPROVISIONINGNOTFOUND = "ResourceNotFound.RoleConfigurationProvisioningNotFound"
+
+	// 权限配置任务不存在。
+	RESOURCENOTFOUND_ROLECONFIGURATIONTASKNOTFOUND = "ResourceNotFound.RoleConfigurationTaskNotFound"
+
+	// saml 身份提供商配置不存在。
+	RESOURCENOTFOUND_SAMLIDENTITYPROVIDERNOTFOUND = "ResourceNotFound.SAMLIdentityProviderNotFound"
+
+	// 服务提供商信息不存在。
+	RESOURCENOTFOUND_SAMLSERVICEPROVIDERNOTFOUND = "ResourceNotFound.SAMLServiceProviderNotFound"
+
 	// 组织服务角色不存在。
 	RESOURCENOTFOUND_SERVICEROLENOTEXIST = "ResourceNotFound.ServiceRoleNotExist"
 
@@ -502,6 +724,15 @@ const (
 
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+
+	// 用户同步不存在。
+	RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+
+	// 用户同步任务不存在。
+	RESOURCENOTFOUND_USERPROVISIONINGTASKNOTFOUND = "ResourceNotFound.UserProvisioningTaskNotFound"
+
+	// 该x509证书不存在。
+	RESOURCENOTFOUND_X509CERTIFICATENOTFOUND = "ResourceNotFound.X509CertificateNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"

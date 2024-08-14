@@ -3111,8 +3111,8 @@ type InquirePriceCreateDBInstancesRequestParams struct {
 	// 实例所属区域及可用区信息。格式：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 每个分片的主从节点数量。
-	// 取值范围：请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinNodeNum与MaxNodeNum分别对应其最小值与最大值。
+	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 实例内存大小。
@@ -3126,18 +3126,17 @@ type InquirePriceCreateDBInstancesRequestParams struct {
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
 	// 实例版本信息。具体支持的版本，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：
-	// - MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本。
-	// - MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本。
 	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 机器类型。
-	// - HIO：高IO型。
-	// - HIO10G：高IO万兆型。
+	// 产品规格类型。
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例数量，取值范围为[1,10]。
@@ -3146,16 +3145,13 @@ type InquirePriceCreateDBInstancesRequestParams struct {
 	// 实例类型。
 	// - REPLSET：副本集。
 	// - SHARD：分片集群。
-	// - STANDALONE：单节点。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 副本集个数。
-	// - 创建副本集实例时，该参数固定设置为1。
-	// - 创建分片集群时，指分片数量，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
-	// - 若为单节点实例，该参数固定设置为0。
+	// - 创建副本集实例，指副本集数量，该参数只能为1。
+	// - 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 	ReplicateSetNum *int64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
-	// - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，需设定购买实例的时长。该参数取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
+	// - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，必须设置该参数，指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
 	// -选择按量计费，即 <b>InstanceChargeType</b> 设定为 **POSTPAID_BY_HOUR** 时，该参数仅可配置为 1。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
@@ -3164,22 +3160,22 @@ type InquirePriceCreateDBInstancesRequestParams struct {
 	// - POSTPAID_BY_HOUR：按量计费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 分片实例询价必填参数，指 Mongos CPU核数，取值范围为[1,16]。
+	// Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。注意为空时取默认取值为2C。
 	MongosCpu *uint64 `json:"MongosCpu,omitnil,omitempty" name:"MongosCpu"`
 
-	// 分片实例询价必填参数，指 Mongos 内存，取值范围为[2,32]，单位：GB。
+	// Mongos 内存大小。-  购买分片集群时，必须填写。- 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。注意为空时取默认取值为4G。
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
-	// 分片实例询价必填参数，指 Mongos 个数，取值范围为[3,32]。
+	// 指 Mongos 个数，取值范围为[3,32]。若为分片集群实例询价，则该参数必须设置。注意为空时取默认取值为3个节点。
 	MongosNum *uint64 `json:"MongosNum,omitnil,omitempty" name:"MongosNum"`
 
-	// 分片实例询价必填参数，指 ConfigServer CPU核数，取值为1，单位：GB。
+	// 指 ConfigServer CPU核数，取值为1，单位：GB。若为分片集群实例询价，该参数必须设置。
 	ConfigServerCpu *uint64 `json:"ConfigServerCpu,omitnil,omitempty" name:"ConfigServerCpu"`
 
-	// 分片实例询价必填参数，指 ConfigServer 内存大小，取值为2，单位：GB。
+	// 指 ConfigServer 内存大小，取值为2，单位：GB。若为分片集群实例询价，则该参数必须设置。
 	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitnil,omitempty" name:"ConfigServerMemory"`
 
-	// 分片实例询价必填参数，指 ConfigServer 磁盘大小，取值为 20，单位：GB。
+	// 指 ConfigServer 磁盘大小，取值为 20，单位：GB。若为分片集群实例询价，则该参数必须设置。
 	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitnil,omitempty" name:"ConfigServerVolume"`
 }
 
@@ -3189,8 +3185,8 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// 实例所属区域及可用区信息。格式：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 每个分片的主从节点数量。
-	// 取值范围：请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinNodeNum与MaxNodeNum分别对应其最小值与最大值。
+	// - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 实例内存大小。
@@ -3204,18 +3200,17 @@ type InquirePriceCreateDBInstancesRequest struct {
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
 	// 实例版本信息。具体支持的版本，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：
-	// - MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本。
-	// - MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本。
 	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 机器类型。
-	// - HIO：高IO型。
-	// - HIO10G：高IO万兆型。
+	// 产品规格类型。
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例数量，取值范围为[1,10]。
@@ -3224,16 +3219,13 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// 实例类型。
 	// - REPLSET：副本集。
 	// - SHARD：分片集群。
-	// - STANDALONE：单节点。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 副本集个数。
-	// - 创建副本集实例时，该参数固定设置为1。
-	// - 创建分片集群时，指分片数量，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
-	// - 若为单节点实例，该参数固定设置为0。
+	// - 创建副本集实例，指副本集数量，该参数只能为1。
+	// - 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 	ReplicateSetNum *int64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
-	// - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，需设定购买实例的时长。该参数取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
+	// - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，必须设置该参数，指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
 	// -选择按量计费，即 <b>InstanceChargeType</b> 设定为 **POSTPAID_BY_HOUR** 时，该参数仅可配置为 1。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
@@ -3242,22 +3234,22 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// - POSTPAID_BY_HOUR：按量计费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 分片实例询价必填参数，指 Mongos CPU核数，取值范围为[1,16]。
+	// Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。注意为空时取默认取值为2C。
 	MongosCpu *uint64 `json:"MongosCpu,omitnil,omitempty" name:"MongosCpu"`
 
-	// 分片实例询价必填参数，指 Mongos 内存，取值范围为[2,32]，单位：GB。
+	// Mongos 内存大小。-  购买分片集群时，必须填写。- 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。注意为空时取默认取值为4G。
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
-	// 分片实例询价必填参数，指 Mongos 个数，取值范围为[3,32]。
+	// 指 Mongos 个数，取值范围为[3,32]。若为分片集群实例询价，则该参数必须设置。注意为空时取默认取值为3个节点。
 	MongosNum *uint64 `json:"MongosNum,omitnil,omitempty" name:"MongosNum"`
 
-	// 分片实例询价必填参数，指 ConfigServer CPU核数，取值为1，单位：GB。
+	// 指 ConfigServer CPU核数，取值为1，单位：GB。若为分片集群实例询价，该参数必须设置。
 	ConfigServerCpu *uint64 `json:"ConfigServerCpu,omitnil,omitempty" name:"ConfigServerCpu"`
 
-	// 分片实例询价必填参数，指 ConfigServer 内存大小，取值为2，单位：GB。
+	// 指 ConfigServer 内存大小，取值为2，单位：GB。若为分片集群实例询价，则该参数必须设置。
 	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitnil,omitempty" name:"ConfigServerMemory"`
 
-	// 分片实例询价必填参数，指 ConfigServer 磁盘大小，取值为 20，单位：GB。
+	// 指 ConfigServer 磁盘大小，取值为 20，单位：GB。若为分片集群实例询价，则该参数必须设置。
 	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitnil,omitempty" name:"ConfigServerVolume"`
 }
 
@@ -5118,67 +5110,89 @@ type SlowLogPattern struct {
 }
 
 type SpecItem struct {
-	// 规格信息标识
+	// 规格信息标识。格式如：mongo.HIO10G.128g。由节点类型、规格类型、内存规格三部分组成。
+	// - 节点类型，如下所示。
+	//   - mongo：Mongod 节点。
+	//  - mongos：Mongos 节点。
+	//  - cfgstr：Configserver 节点。
+	// - 规格类型，如下所示。
+	//  - HIO10G：通用高HIO万兆型。
+	//  - HCD：云盘版类型。
+	// - 内存规格，如下所示：
+	//  - 支持4、8、16、32、64、128、240、512。
+	//  - 单位g：表示GB。128g则表示128GB。
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
-	// 规格有效标志，取值：0-停止售卖，1-开放售卖
+	// 售卖规格有效标志，取值范围如下：
+	// - 0：停止售卖，
+	// - 1：开放售卖。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 计算资源规格，单位为CPU核心数
+	// 计算资源规格，CPU核数。
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存规格，单位为MB
+	// 内存规格，单位为：MB。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 默认磁盘规格，单位MB
+	// 默认磁盘规格，单位为：MB。
 	DefaultStorage *uint64 `json:"DefaultStorage,omitnil,omitempty" name:"DefaultStorage"`
 
-	// 最大磁盘规格，单位MB
+	// 最大磁盘规格，单位为：MB。
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 最小磁盘规格，单位MB
+	// 最小磁盘规格，单位为：MB。
 	MinStorage *uint64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
-	// 可承载qps信息
+	// 指每秒最大请求次数，单位为：次/秒。
 	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 连接数限制
+	// 规格所支持的最大连接数限制。
 	Conns *uint64 `json:"Conns,omitnil,omitempty" name:"Conns"`
 
-	// 实例mongodb版本信息
+	// 实例存储引擎版本信息。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersionCode *string `json:"MongoVersionCode,omitnil,omitempty" name:"MongoVersionCode"`
 
-	// 实例mongodb版本号
+	// 实例版本对应的数字版本。
 	MongoVersionValue *uint64 `json:"MongoVersionValue,omitnil,omitempty" name:"MongoVersionValue"`
 
-	// 实例mongodb版本号（短）
+	// 实例版本信息。支持：3.6、4.2、4.4、5.0、6.0。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 存储引擎
+	// 存储引擎。
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
-	// 集群类型，取值：1-分片集群，0-副本集集群
+	// 集群类型，取值如下：
+	// - 1：分片集群。
+	// - 0：副本集集群。
 	ClusterType *uint64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 最小副本集从节点数
+	// 每个副本集最小节点数。
 	MinNodeNum *uint64 `json:"MinNodeNum,omitnil,omitempty" name:"MinNodeNum"`
 
-	// 最大副本集从节点数
+	// 每个副本集最大节点数。
 	MaxNodeNum *uint64 `json:"MaxNodeNum,omitnil,omitempty" name:"MaxNodeNum"`
 
-	// 最小分片数
+	// 最小分片数。
 	MinReplicateSetNum *uint64 `json:"MinReplicateSetNum,omitnil,omitempty" name:"MinReplicateSetNum"`
 
-	// 最大分片数
+	// 最大分片数。
 	MaxReplicateSetNum *uint64 `json:"MaxReplicateSetNum,omitnil,omitempty" name:"MaxReplicateSetNum"`
 
-	// 最小分片从节点数
+	// 每个分片最小节点数。
 	MinReplicateSetNodeNum *uint64 `json:"MinReplicateSetNodeNum,omitnil,omitempty" name:"MinReplicateSetNodeNum"`
 
-	// 最大分片从节点数
+	// 每个分片最大节点数。
 	MaxReplicateSetNodeNum *uint64 `json:"MaxReplicateSetNodeNum,omitnil,omitempty" name:"MaxReplicateSetNodeNum"`
 
-	// 机器类型，取值：0-HIO，4-HIO10G
+	// 集群的规格类型，取值范围如下：
+	// - HIO10G：通用高HIO万兆型。
+	// - HCD：云盘版类型。
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 

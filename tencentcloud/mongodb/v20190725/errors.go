@@ -173,7 +173,7 @@ const (
 	// 设置的磁盘大小不得低于已用磁盘的1.2倍。
 	INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = "InvalidParameterValue.SetDiskLessThanUsed"
 
-	// slowMS参数取值范围[100.65536]。
+	// slowMS参数取值范围[100,65536]。
 	INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
 
 	// 购买规格错误。

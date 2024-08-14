@@ -53,6 +53,9 @@ const (
 	// 输入图人脸检测失败
 	FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
 
+	// 人脸检测失败。
+	FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFacedetectFailed"
+
 	// 输入图中存在多人
 	FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
 
@@ -190,6 +193,21 @@ const (
 
 	// 风格化强度参数不存在。
 	INVALIDPARAMETERVALUE_STYLESTRENGTHNOTEXIST = "InvalidParameterValue.StyleStrengthNotExist"
+
+	// 人脸角度过大。
+	INVALIDPARAMETERVALUE_TOOLARGEFACEANGLE = "InvalidParameterValue.TooLargeFaceAngle"
+
+	// 人脸质量过低。
+	INVALIDPARAMETERVALUE_TOOLOWFACEQUALITY = "InvalidParameterValue.TooLowFaceQuality"
+
+	// 人脸数量超过1。
+	INVALIDPARAMETERVALUE_TOOMANYFACES = "InvalidParameterValue.TooManyFaces"
+
+	// 人脸遮挡过多。
+	INVALIDPARAMETERVALUE_TOOMUCHFACEOCCLUSION = "InvalidParameterValue.TooMuchFaceOcclusion"
+
+	// 人脸过小。
+	INVALIDPARAMETERVALUE_TOOSMALLFACESIZE = "InvalidParameterValue.TooSmallFaceSize"
 
 	// URL格式不合法。
 	INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"

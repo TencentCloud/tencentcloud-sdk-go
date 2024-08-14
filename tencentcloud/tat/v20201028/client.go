@@ -1294,6 +1294,77 @@ func (c *Client) DescribeRegisterInstancesWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeScenesRequest() (request *DescribeScenesRequest) {
+    request = &DescribeScenesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DescribeScenes")
+    
+    
+    return
+}
+
+func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
+    response = &DescribeScenesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScenes
+// 此接口用于查询场景详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEID = "InvalidParameterValue.InvalidSceneId"
+//  INVALIDPARAMETERVALUE_INVALIDSCENENAME = "InvalidParameterValue.InvalidSceneName"
+//  LIMITEXCEEDED_FILTERVALUEEXCEEDED = "LimitExceeded.FilterValueExceeded"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
+    return c.DescribeScenesWithContext(context.Background(), request)
+}
+
+// DescribeScenes
+// 此接口用于查询场景详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEID = "InvalidParameterValue.InvalidSceneId"
+//  INVALIDPARAMETERVALUE_INVALIDSCENENAME = "InvalidParameterValue.InvalidSceneName"
+//  LIMITEXCEEDED_FILTERVALUEEXCEEDED = "LimitExceeded.FilterValueExceeded"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeScenesWithContext(ctx context.Context, request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
+    if request == nil {
+        request = NewDescribeScenesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScenes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScenesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
     request = &DisableInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1785,7 +1856,9 @@ func NewModifyRegisterInstanceResponse() (response *ModifyRegisterInstanceRespon
 // 接口用于修改托管实例信息。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
@@ -1797,7 +1870,9 @@ func (c *Client) ModifyRegisterInstance(request *ModifyRegisterInstanceRequest) 
 // 接口用于修改托管实例信息。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"

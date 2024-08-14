@@ -516,6 +516,123 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateBatchInitOrganizationUrlRequest() (request *CreateBatchInitOrganizationUrlRequest) {
+    request = &CreateBatchInitOrganizationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateBatchInitOrganizationUrl")
+    
+    
+    return
+}
+
+func NewCreateBatchInitOrganizationUrlResponse() (response *CreateBatchInitOrganizationUrlResponse) {
+    response = &CreateBatchInitOrganizationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchInitOrganizationUrl
+// 支持企业进行批量初始化操作：
+//
+// 
+//
+// 此接口存在以下限制：
+//
+// 1. 若批量操作中包含<font  color="red">加入集团企业</font>操作,则调用此接口的员工须有<font  color="red">集团企业管理权限</font>。
+//
+// 2. 批量操作的企业需要已经完成电子签的认证流程。
+//
+// 3. 通过此接口生成的链接在小程序端进行操作时，操作人需要是<font  color="red">所有企业的超管或法人</font>。
+//
+// 4. 批量操作的企业，需要是<a href="https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl" target="_blank">通过平台方引导认证</a>的企业。
+//
+// 5. <font  color="red">操作链接过期时间默认为生成链接后7天。</font>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateBatchInitOrganizationUrl(request *CreateBatchInitOrganizationUrlRequest) (response *CreateBatchInitOrganizationUrlResponse, err error) {
+    return c.CreateBatchInitOrganizationUrlWithContext(context.Background(), request)
+}
+
+// CreateBatchInitOrganizationUrl
+// 支持企业进行批量初始化操作：
+//
+// 
+//
+// 此接口存在以下限制：
+//
+// 1. 若批量操作中包含<font  color="red">加入集团企业</font>操作,则调用此接口的员工须有<font  color="red">集团企业管理权限</font>。
+//
+// 2. 批量操作的企业需要已经完成电子签的认证流程。
+//
+// 3. 通过此接口生成的链接在小程序端进行操作时，操作人需要是<font  color="red">所有企业的超管或法人</font>。
+//
+// 4. 批量操作的企业，需要是<a href="https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl" target="_blank">通过平台方引导认证</a>的企业。
+//
+// 5. <font  color="red">操作链接过期时间默认为生成链接后7天。</font>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateBatchInitOrganizationUrlWithContext(ctx context.Context, request *CreateBatchInitOrganizationUrlRequest) (response *CreateBatchInitOrganizationUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchInitOrganizationUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchInitOrganizationUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchInitOrganizationUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchOrganizationRegistrationTasksRequest() (request *CreateBatchOrganizationRegistrationTasksRequest) {
     request = &CreateBatchOrganizationRegistrationTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

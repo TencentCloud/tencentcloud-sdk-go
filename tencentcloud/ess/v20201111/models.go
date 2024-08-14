@@ -1205,6 +1205,101 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBatchInitOrganizationUrlRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 初始化操作类型
+	// <ul><li>CREATE_SEAL : 创建印章</li>
+	// <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
+	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
+
+	// 批量操作的企业Id列表，最大支持50个
+	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateBatchInitOrganizationUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 初始化操作类型
+	// <ul><li>CREATE_SEAL : 创建印章</li>
+	// <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
+	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
+
+	// 批量操作的企业Id列表，最大支持50个
+	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateBatchInitOrganizationUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchInitOrganizationUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "OperateTypes")
+	delete(f, "OrganizationIds")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchInitOrganizationUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchInitOrganizationUrlResponseParams struct {
+	// 小程序路径
+	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
+
+	// 操作长链
+	OperateLongUrl *string `json:"OperateLongUrl,omitnil,omitempty" name:"OperateLongUrl"`
+
+	// 操作短链
+	OperateShortUrl *string `json:"OperateShortUrl,omitnil,omitempty" name:"OperateShortUrl"`
+
+	// 操作二维码
+	QRCodeUrl *string `json:"QRCodeUrl,omitnil,omitempty" name:"QRCodeUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchInitOrganizationUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchInitOrganizationUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchInitOrganizationUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchInitOrganizationUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBatchOrganizationRegistrationTasksRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`

@@ -80,7 +80,7 @@ const (
 	// 地域尚不支持查询客户端信息。
 	INVALIDPARAMETERVALUE_REGIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.RegionNotSupportQueryClient"
 
-	// slowMS参数取值范围[100.65536]。
+	// slowMS参数取值范围[100,65536]。
 	INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
 
 	// 起始时间晚于结束时间。

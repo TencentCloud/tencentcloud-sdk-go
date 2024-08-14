@@ -1112,6 +1112,9 @@ type CreateServerlessSpaceV2RequestParams struct {
 
 	// 空间id
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type CreateServerlessSpaceV2Request struct {
@@ -1131,6 +1134,9 @@ type CreateServerlessSpaceV2Request struct {
 
 	// 空间id
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *CreateServerlessSpaceV2Request) ToJsonString() string {
@@ -1150,6 +1156,7 @@ func (r *CreateServerlessSpaceV2Request) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "KibanaWhiteIpList")
 	delete(f, "ZoneId")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServerlessSpaceV2Request has unknown keys!", "")
 	}
@@ -2836,8 +2843,11 @@ type DescribeServerlessMetricsRequestParams struct {
 	// index索引id
 	IndexId *string `json:"IndexId,omitnil,omitempty" name:"IndexId"`
 
-	// 指标类型，暂时只支持Storage
+	// 指标类型，暂时只支持Storage(存储大小),AllMetric(所有存储指标：索引流量、存储大小、文档数量、读请求和写请求)
 	MetricType []*string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 时间长度类型DurationType(1: 3小时, 2: 昨天1天,3: 今日0点到现在)
+	DurationType *int64 `json:"DurationType,omitnil,omitempty" name:"DurationType"`
 }
 
 type DescribeServerlessMetricsRequest struct {
@@ -2849,8 +2859,11 @@ type DescribeServerlessMetricsRequest struct {
 	// index索引id
 	IndexId *string `json:"IndexId,omitnil,omitempty" name:"IndexId"`
 
-	// 指标类型，暂时只支持Storage
+	// 指标类型，暂时只支持Storage(存储大小),AllMetric(所有存储指标：索引流量、存储大小、文档数量、读请求和写请求)
 	MetricType []*string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 时间长度类型DurationType(1: 3小时, 2: 昨天1天,3: 今日0点到现在)
+	DurationType *int64 `json:"DurationType,omitnil,omitempty" name:"DurationType"`
 }
 
 func (r *DescribeServerlessMetricsRequest) ToJsonString() string {
@@ -2868,6 +2881,7 @@ func (r *DescribeServerlessMetricsRequest) FromJsonString(s string) error {
 	delete(f, "SpaceId")
 	delete(f, "IndexId")
 	delete(f, "MetricType")
+	delete(f, "DurationType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessMetricsRequest has unknown keys!", "")
 	}
@@ -2878,6 +2892,18 @@ func (r *DescribeServerlessMetricsRequest) FromJsonString(s string) error {
 type DescribeServerlessMetricsResponseParams struct {
 	// storage指标值，单位byte
 	Storage *float64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// IndexTraffic指标值，单位byte
+	IndexTraffic *float64 `json:"IndexTraffic,omitnil,omitempty" name:"IndexTraffic"`
+
+	// 读请求数，单位次数
+	ReadReqTimes *int64 `json:"ReadReqTimes,omitnil,omitempty" name:"ReadReqTimes"`
+
+	// 写请求数，单位次数
+	WriteReqTimes *int64 `json:"WriteReqTimes,omitnil,omitempty" name:"WriteReqTimes"`
+
+	// 文档数量，单位个数
+	DocCount *int64 `json:"DocCount,omitnil,omitempty" name:"DocCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3016,6 +3042,9 @@ type DescribeServerlessSpacesRequestParams struct {
 
 	// 分页条数
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type DescribeServerlessSpacesRequest struct {
@@ -3041,6 +3070,9 @@ type DescribeServerlessSpacesRequest struct {
 
 	// 分页条数
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *DescribeServerlessSpacesRequest) ToJsonString() string {
@@ -3062,6 +3094,7 @@ func (r *DescribeServerlessSpacesRequest) FromJsonString(s string) error {
 	delete(f, "VpcIds")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessSpacesRequest has unknown keys!", "")
 	}
@@ -5363,6 +5396,10 @@ type ServerlessIndexMetaField struct {
 
 	// 标签信息
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 3782478.47
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexTraffic *float64 `json:"IndexTraffic,omitnil,omitempty" name:"IndexTraffic"`
 }
 
 type ServerlessIndexNetworkField struct {
@@ -5486,6 +5523,10 @@ type ServerlessSpace struct {
 	// 0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// key:value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type ServerlessSpaceUser struct {

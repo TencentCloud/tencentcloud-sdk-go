@@ -110,6 +110,63 @@ func (c *Client) AcceptJoinShareUnitInvitationWithContext(ctx context.Context, r
     return
 }
 
+func NewAddExternalSAMLIdPCertificateRequest() (request *AddExternalSAMLIdPCertificateRequest) {
+    request = &AddExternalSAMLIdPCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "AddExternalSAMLIdPCertificate")
+    
+    
+    return
+}
+
+func NewAddExternalSAMLIdPCertificateResponse() (response *AddExternalSAMLIdPCertificateResponse) {
+    response = &AddExternalSAMLIdPCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddExternalSAMLIdPCertificate
+// 添加SAML签名证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_X509CERTIFICATEALREADYEXIST = "FailedOperation.X509CertificateAlreadyExist"
+//  FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
+func (c *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPCertificateRequest) (response *AddExternalSAMLIdPCertificateResponse, err error) {
+    return c.AddExternalSAMLIdPCertificateWithContext(context.Background(), request)
+}
+
+// AddExternalSAMLIdPCertificate
+// 添加SAML签名证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_X509CERTIFICATEALREADYEXIST = "FailedOperation.X509CertificateAlreadyExist"
+//  FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
+func (c *Client) AddExternalSAMLIdPCertificateWithContext(ctx context.Context, request *AddExternalSAMLIdPCertificateRequest) (response *AddExternalSAMLIdPCertificateResponse, err error) {
+    if request == nil {
+        request = NewAddExternalSAMLIdPCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddExternalSAMLIdPCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddExternalSAMLIdPCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddOrganizationMemberEmailRequest() (request *AddOrganizationMemberEmailRequest) {
     request = &AddOrganizationMemberEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -240,6 +297,75 @@ func (c *Client) AddOrganizationNodeWithContext(ctx context.Context, request *Ad
     request.SetContext(ctx)
     
     response = NewAddOrganizationNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddPermissionPolicyToRoleConfigurationRequest() (request *AddPermissionPolicyToRoleConfigurationRequest) {
+    request = &AddPermissionPolicyToRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "AddPermissionPolicyToRoleConfiguration")
+    
+    
+    return
+}
+
+func NewAddPermissionPolicyToRoleConfigurationResponse() (response *AddPermissionPolicyToRoleConfigurationResponse) {
+    response = &AddPermissionPolicyToRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddPermissionPolicyToRoleConfiguration
+// 为权限配置添加策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CUSTOMPOLICYOVERUPPERLIMIT = "FailedOperation.CustomPolicyOverUpperLimit"
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYSTEMPOLICYOVERUPPERLIMIT = "FailedOperation.SystemPolicyOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_BINDPOLICYNAMENOTALLOWED = "InvalidParameter.BindPolicyNameNotAllowed"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTEMPTY = "InvalidParameter.PolicyDocumentEmpty"
+//  INVALIDPARAMETER_POLICYNAMEALREADYEXISTS = "InvalidParameter.PolicyNameAlreadyExists"
+//  INVALIDPARAMETER_POLICYNAMESIZEOVERUPPERLIMIT = "InvalidParameter.PolicyNameSizeOverUpperLimit"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) AddPermissionPolicyToRoleConfiguration(request *AddPermissionPolicyToRoleConfigurationRequest) (response *AddPermissionPolicyToRoleConfigurationResponse, err error) {
+    return c.AddPermissionPolicyToRoleConfigurationWithContext(context.Background(), request)
+}
+
+// AddPermissionPolicyToRoleConfiguration
+// 为权限配置添加策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CUSTOMPOLICYOVERUPPERLIMIT = "FailedOperation.CustomPolicyOverUpperLimit"
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYSTEMPOLICYOVERUPPERLIMIT = "FailedOperation.SystemPolicyOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_BINDPOLICYNAMENOTALLOWED = "InvalidParameter.BindPolicyNameNotAllowed"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTEMPTY = "InvalidParameter.PolicyDocumentEmpty"
+//  INVALIDPARAMETER_POLICYNAMEALREADYEXISTS = "InvalidParameter.PolicyNameAlreadyExists"
+//  INVALIDPARAMETER_POLICYNAMESIZEOVERUPPERLIMIT = "InvalidParameter.PolicyNameSizeOverUpperLimit"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) AddPermissionPolicyToRoleConfigurationWithContext(ctx context.Context, request *AddPermissionPolicyToRoleConfigurationRequest) (response *AddPermissionPolicyToRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewAddPermissionPolicyToRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddPermissionPolicyToRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddPermissionPolicyToRoleConfigurationResponse()
     err = c.Send(request, response)
     return
 }
@@ -449,6 +575,71 @@ func (c *Client) AddShareUnitResourcesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewAddShareUnitResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddUserToGroupRequest() (request *AddUserToGroupRequest) {
+    request = &AddUserToGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "AddUserToGroup")
+    
+    
+    return
+}
+
+func NewAddUserToGroupResponse() (response *AddUserToGroupResponse) {
+    response = &AddUserToGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddUserToGroup
+// 为用户组添加用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPUSERCOUNTOVERUPPERLIMIT = "FailedOperation.GroupUserCountOverUpperLimit"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTADDUSER = "FailedOperation.SynchronizedGroupNotAddUser"
+//  FAILEDOPERATION_USERADDGROUPCOUNTOVERUPPERLIMIT = "FailedOperation.UserAddGroupCountOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_GROUPUSERALREADYEXISTS = "InvalidParameter.GroupUserAlreadyExists"
+//  LIMITEXCEEDED_ADDUSERTOGROUPLIMITEXCEEDED = "LimitExceeded.AddUserToGroupLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) AddUserToGroup(request *AddUserToGroupRequest) (response *AddUserToGroupResponse, err error) {
+    return c.AddUserToGroupWithContext(context.Background(), request)
+}
+
+// AddUserToGroup
+// 为用户组添加用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPUSERCOUNTOVERUPPERLIMIT = "FailedOperation.GroupUserCountOverUpperLimit"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTADDUSER = "FailedOperation.SynchronizedGroupNotAddUser"
+//  FAILEDOPERATION_USERADDGROUPCOUNTOVERUPPERLIMIT = "FailedOperation.UserAddGroupCountOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_GROUPUSERALREADYEXISTS = "InvalidParameter.GroupUserAlreadyExists"
+//  LIMITEXCEEDED_ADDUSERTOGROUPLIMITEXCEEDED = "LimitExceeded.AddUserToGroupLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) AddUserToGroupWithContext(ctx context.Context, request *AddUserToGroupRequest) (response *AddUserToGroupResponse, err error) {
+    if request == nil {
+        request = NewAddUserToGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddUserToGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddUserToGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -697,6 +888,118 @@ func (c *Client) CheckAccountDeleteWithContext(ctx context.Context, request *Che
     request.SetContext(ctx)
     
     response = NewCheckAccountDeleteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewClearExternalSAMLIdentityProviderRequest() (request *ClearExternalSAMLIdentityProviderRequest) {
+    request = &ClearExternalSAMLIdentityProviderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ClearExternalSAMLIdentityProvider")
+    
+    
+    return
+}
+
+func NewClearExternalSAMLIdentityProviderResponse() (response *ClearExternalSAMLIdentityProviderResponse) {
+    response = &ClearExternalSAMLIdentityProviderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ClearExternalSAMLIdentityProvider
+// 清空SAML身份提供商配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_SSOSTATUSENABLENOTCLEARIDENTITYPROVIDER = "FailedOperation.SSoStatusEnableNotClearIdentityProvider"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_SAMLIDENTITYPROVIDERNOTFOUND = "ResourceNotFound.SAMLIdentityProviderNotFound"
+func (c *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSAMLIdentityProviderRequest) (response *ClearExternalSAMLIdentityProviderResponse, err error) {
+    return c.ClearExternalSAMLIdentityProviderWithContext(context.Background(), request)
+}
+
+// ClearExternalSAMLIdentityProvider
+// 清空SAML身份提供商配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_SSOSTATUSENABLENOTCLEARIDENTITYPROVIDER = "FailedOperation.SSoStatusEnableNotClearIdentityProvider"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_SAMLIDENTITYPROVIDERNOTFOUND = "ResourceNotFound.SAMLIdentityProviderNotFound"
+func (c *Client) ClearExternalSAMLIdentityProviderWithContext(ctx context.Context, request *ClearExternalSAMLIdentityProviderRequest) (response *ClearExternalSAMLIdentityProviderResponse, err error) {
+    if request == nil {
+        request = NewClearExternalSAMLIdentityProviderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearExternalSAMLIdentityProvider require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewClearExternalSAMLIdentityProviderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGroupRequest() (request *CreateGroupRequest) {
+    request = &CreateGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateGroup")
+    
+    
+    return
+}
+
+func NewCreateGroupResponse() (response *CreateGroupResponse) {
+    response = &CreateGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGroup
+// 创建用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPOVERUPPERLIMIT = "FailedOperation.GroupOverUpperLimit"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
+//  INVALIDPARAMETER_GROUPNAMEFORMATERROR = "InvalidParameter.GroupNameFormatError"
+func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
+    return c.CreateGroupWithContext(context.Background(), request)
+}
+
+// CreateGroup
+// 创建用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPOVERUPPERLIMIT = "FailedOperation.GroupOverUpperLimit"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
+//  INVALIDPARAMETER_GROUPNAMEFORMATERROR = "InvalidParameter.GroupNameFormatError"
+func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1325,6 +1628,250 @@ func (c *Client) CreatePolicyWithContext(ctx context.Context, request *CreatePol
     return
 }
 
+func NewCreateRoleAssignmentRequest() (request *CreateRoleAssignmentRequest) {
+    request = &CreateRoleAssignmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateRoleAssignment")
+    
+    
+    return
+}
+
+func NewCreateRoleAssignmentResponse() (response *CreateRoleAssignmentResponse) {
+    response = &CreateRoleAssignmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRoleAssignment
+// 在成员账号上授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONALREADYEXIST = "FailedOperation.RoleConfigurationAuthorizationAlreadyExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONOVERLIMIT = "FailedOperation.RoleConfigurationAuthorizationOverLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  LIMITEXCEEDED_CREATEROLEASSIGNMENTLIMITEXCEEDED = "LimitExceeded.CreateRoleAssignmentLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateRoleAssignment(request *CreateRoleAssignmentRequest) (response *CreateRoleAssignmentResponse, err error) {
+    return c.CreateRoleAssignmentWithContext(context.Background(), request)
+}
+
+// CreateRoleAssignment
+// 在成员账号上授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONALREADYEXIST = "FailedOperation.RoleConfigurationAuthorizationAlreadyExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONOVERLIMIT = "FailedOperation.RoleConfigurationAuthorizationOverLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  LIMITEXCEEDED_CREATEROLEASSIGNMENTLIMITEXCEEDED = "LimitExceeded.CreateRoleAssignmentLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateRoleAssignmentWithContext(ctx context.Context, request *CreateRoleAssignmentRequest) (response *CreateRoleAssignmentResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleAssignmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRoleAssignment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRoleAssignmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRoleConfigurationRequest() (request *CreateRoleConfigurationRequest) {
+    request = &CreateRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateRoleConfiguration")
+    
+    
+    return
+}
+
+func NewCreateRoleConfigurationResponse() (response *CreateRoleConfigurationResponse) {
+    response = &CreateRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRoleConfiguration
+// 创建权限配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGURATIONOVERUPPERLIMIT = "FailedOperation.ConfigurationOverUpperLimit"
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_CONFIGURATIONNAMEALREADYEXISTS = "InvalidParameter.ConfigurationNameAlreadyExists"
+//  INVALIDPARAMETER_CONFIGURATIONNAMEFORMATERROR = "InvalidParameter.ConfigurationNameFormatError"
+func (c *Client) CreateRoleConfiguration(request *CreateRoleConfigurationRequest) (response *CreateRoleConfigurationResponse, err error) {
+    return c.CreateRoleConfigurationWithContext(context.Background(), request)
+}
+
+// CreateRoleConfiguration
+// 创建权限配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGURATIONOVERUPPERLIMIT = "FailedOperation.ConfigurationOverUpperLimit"
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_CONFIGURATIONNAMEALREADYEXISTS = "InvalidParameter.ConfigurationNameAlreadyExists"
+//  INVALIDPARAMETER_CONFIGURATIONNAMEFORMATERROR = "InvalidParameter.ConfigurationNameFormatError"
+func (c *Client) CreateRoleConfigurationWithContext(ctx context.Context, request *CreateRoleConfigurationRequest) (response *CreateRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserRequest() (request *CreateUserRequest) {
+    request = &CreateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateUser")
+    
+    
+    return
+}
+
+func NewCreateUserResponse() (response *CreateUserResponse) {
+    response = &CreateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUser
+// 创建用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_USEROVERUPPERLIMIT = "FailedOperation.UserOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEALREADYEXISTS = "InvalidParameter.UsernameAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEFORMATERROR = "InvalidParameter.UsernameFormatError"
+//  LIMITEXCEEDED_CREATEUSERLIMITEXCEEDED = "LimitExceeded.CreateUserLimitExceeded"
+func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    return c.CreateUserWithContext(context.Background(), request)
+}
+
+// CreateUser
+// 创建用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_USEROVERUPPERLIMIT = "FailedOperation.UserOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEALREADYEXISTS = "InvalidParameter.UsernameAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEFORMATERROR = "InvalidParameter.UsernameFormatError"
+//  LIMITEXCEEDED_CREATEUSERLIMITEXCEEDED = "LimitExceeded.CreateUserLimitExceeded"
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserSyncProvisioningRequest() (request *CreateUserSyncProvisioningRequest) {
+    request = &CreateUserSyncProvisioningRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateUserSyncProvisioning")
+    
+    
+    return
+}
+
+func NewCreateUserSyncProvisioningResponse() (response *CreateUserSyncProvisioningResponse) {
+    response = &CreateUserSyncProvisioningResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserSyncProvisioning
+// 创建子用户同步任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_USERPROVISIONINGALREADYEXISTS = "FailedOperation.UserProvisioningAlreadyExists"
+//  FAILEDOPERATION_USERPROVISIONINGOVERLIMIT = "FailedOperation.UserProvisioningOverLimit"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  LIMITEXCEEDED_CREATEUSERSYNCPROVISIONINGLIMITEXCEEDED = "LimitExceeded.CreateUserSyncProvisioningLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateUserSyncProvisioning(request *CreateUserSyncProvisioningRequest) (response *CreateUserSyncProvisioningResponse, err error) {
+    return c.CreateUserSyncProvisioningWithContext(context.Background(), request)
+}
+
+// CreateUserSyncProvisioning
+// 创建子用户同步任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_USERPROVISIONINGALREADYEXISTS = "FailedOperation.UserProvisioningAlreadyExists"
+//  FAILEDOPERATION_USERPROVISIONINGOVERLIMIT = "FailedOperation.UserProvisioningOverLimit"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  LIMITEXCEEDED_CREATEUSERSYNCPROVISIONINGLIMITEXCEEDED = "LimitExceeded.CreateUserSyncProvisioningLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateUserSyncProvisioningWithContext(ctx context.Context, request *CreateUserSyncProvisioningRequest) (response *CreateUserSyncProvisioningResponse, err error) {
+    if request == nil {
+        request = NewCreateUserSyncProvisioningRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserSyncProvisioning require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserSyncProvisioningResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
     request = &DeleteAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1388,6 +1935,67 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
     request.SetContext(ctx)
     
     response = NewDeleteAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
+    request = &DeleteGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteGroup")
+    
+    
+    return
+}
+
+func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
+    response = &DeleteGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGroup
+// 删除用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTDELETE = "FailedOperation.SynchronizedGroupNotDelete"
+//  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+    return c.DeleteGroupWithContext(context.Background(), request)
+}
+
+// DeleteGroup
+// 删除用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTDELETE = "FailedOperation.SynchronizedGroupNotDelete"
+//  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1898,6 +2506,118 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, request *DeletePol
     return
 }
 
+func NewDeleteRoleAssignmentRequest() (request *DeleteRoleAssignmentRequest) {
+    request = &DeleteRoleAssignmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteRoleAssignment")
+    
+    
+    return
+}
+
+func NewDeleteRoleAssignmentResponse() (response *DeleteRoleAssignmentResponse) {
+    response = &DeleteRoleAssignmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRoleAssignment
+// 移除成员账号上的授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_ROLECONFIGURATIONAUTHORIZATIONNOTFOUND = "ResourceNotFound.RoleConfigurationAuthorizationNotFound"
+func (c *Client) DeleteRoleAssignment(request *DeleteRoleAssignmentRequest) (response *DeleteRoleAssignmentResponse, err error) {
+    return c.DeleteRoleAssignmentWithContext(context.Background(), request)
+}
+
+// DeleteRoleAssignment
+// 移除成员账号上的授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_ROLECONFIGURATIONAUTHORIZATIONNOTFOUND = "ResourceNotFound.RoleConfigurationAuthorizationNotFound"
+func (c *Client) DeleteRoleAssignmentWithContext(ctx context.Context, request *DeleteRoleAssignmentRequest) (response *DeleteRoleAssignmentResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleAssignmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoleAssignment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoleAssignmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRoleConfigurationRequest() (request *DeleteRoleConfigurationRequest) {
+    request = &DeleteRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteRoleConfiguration")
+    
+    
+    return
+}
+
+func NewDeleteRoleConfigurationResponse() (response *DeleteRoleConfigurationResponse) {
+    response = &DeleteRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRoleConfiguration
+// 删除权限配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ROLECONFIGURATIONPROVISIONINGALREADYDEPLOYED = "FailedOperation.RoleConfigurationProvisioningAlreadyDeployed"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  INVALIDPARAMETER_ROLEPOLICYALREADYEXIST = "InvalidParameter.RolePolicyAlreadyExist"
+func (c *Client) DeleteRoleConfiguration(request *DeleteRoleConfigurationRequest) (response *DeleteRoleConfigurationResponse, err error) {
+    return c.DeleteRoleConfigurationWithContext(context.Background(), request)
+}
+
+// DeleteRoleConfiguration
+// 删除权限配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ROLECONFIGURATIONPROVISIONINGALREADYDEPLOYED = "FailedOperation.RoleConfigurationProvisioningAlreadyDeployed"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  INVALIDPARAMETER_ROLEPOLICYALREADYEXIST = "InvalidParameter.RolePolicyAlreadyExist"
+func (c *Client) DeleteRoleConfigurationWithContext(ctx context.Context, request *DeleteRoleConfigurationRequest) (response *DeleteRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteShareUnitRequest() (request *DeleteShareUnitRequest) {
     request = &DeleteShareUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2101,6 +2821,122 @@ func (c *Client) DeleteShareUnitResourcesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDeleteUserRequest() (request *DeleteUserRequest) {
+    request = &DeleteUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteUser")
+    
+    
+    return
+}
+
+func NewDeleteUserResponse() (response *DeleteUserResponse) {
+    response = &DeleteUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUser
+// 删除用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+//  FAILEDOPERATION_SYNCHRONIZEDUSERNOTDELETE = "FailedOperation.SynchronizedUserNotDelete"
+//  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_USERALREADYEXISTSGROUP = "InvalidParameter.UserAlreadyExistsGroup"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    return c.DeleteUserWithContext(context.Background(), request)
+}
+
+// DeleteUser
+// 删除用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+//  FAILEDOPERATION_SYNCHRONIZEDUSERNOTDELETE = "FailedOperation.SynchronizedUserNotDelete"
+//  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_USERALREADYEXISTSGROUP = "InvalidParameter.UserAlreadyExistsGroup"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserSyncProvisioningRequest() (request *DeleteUserSyncProvisioningRequest) {
+    request = &DeleteUserSyncProvisioningRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteUserSyncProvisioning")
+    
+    
+    return
+}
+
+func NewDeleteUserSyncProvisioningResponse() (response *DeleteUserSyncProvisioningResponse) {
+    response = &DeleteUserSyncProvisioningResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserSyncProvisioning
+// 删除子用户同步任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_USERPROVISIONINGFAILED = "FailedOperation.UserProvisioningFailed"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+func (c *Client) DeleteUserSyncProvisioning(request *DeleteUserSyncProvisioningRequest) (response *DeleteUserSyncProvisioningResponse, err error) {
+    return c.DeleteUserSyncProvisioningWithContext(context.Background(), request)
+}
+
+// DeleteUserSyncProvisioning
+// 删除子用户同步任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_USERPROVISIONINGFAILED = "FailedOperation.UserProvisioningFailed"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+func (c *Client) DeleteUserSyncProvisioningWithContext(ctx context.Context, request *DeleteUserSyncProvisioningRequest) (response *DeleteUserSyncProvisioningResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserSyncProvisioningRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserSyncProvisioning require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserSyncProvisioningResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEffectivePolicyRequest() (request *DescribeEffectivePolicyRequest) {
     request = &DescribeEffectivePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2158,6 +2994,57 @@ func (c *Client) DescribeEffectivePolicyWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeEffectivePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIdentityCenterRequest() (request *DescribeIdentityCenterRequest) {
+    request = &DescribeIdentityCenterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeIdentityCenter")
+    
+    
+    return
+}
+
+func NewDescribeIdentityCenterResponse() (response *DescribeIdentityCenterResponse) {
+    response = &DescribeIdentityCenterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIdentityCenter
+// 获取cam身份中心服务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+func (c *Client) DescribeIdentityCenter(request *DescribeIdentityCenterRequest) (response *DescribeIdentityCenterResponse, err error) {
+    return c.DescribeIdentityCenterWithContext(context.Background(), request)
+}
+
+// DescribeIdentityCenter
+// 获取cam身份中心服务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+func (c *Client) DescribeIdentityCenterWithContext(ctx context.Context, request *DescribeIdentityCenterRequest) (response *DescribeIdentityCenterResponse, err error) {
+    if request == nil {
+        request = NewDescribeIdentityCenterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIdentityCenter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIdentityCenterResponse()
     err = c.Send(request, response)
     return
 }
@@ -3317,6 +4204,65 @@ func (c *Client) DisablePolicyTypeWithContext(ctx context.Context, request *Disa
     return
 }
 
+func NewDismantleRoleConfigurationRequest() (request *DismantleRoleConfigurationRequest) {
+    request = &DismantleRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DismantleRoleConfiguration")
+    
+    
+    return
+}
+
+func NewDismantleRoleConfigurationResponse() (response *DismantleRoleConfigurationResponse) {
+    response = &DismantleRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DismantleRoleConfiguration
+// 解除权限配置在成员账号上的部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONPROVISIONINGSTATUSERROR = "FailedOperation.RoleConfigurationProvisioningStatusError"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_ROLECONFIGURATIONPROVISIONINGNOTFOUND = "ResourceNotFound.RoleConfigurationProvisioningNotFound"
+func (c *Client) DismantleRoleConfiguration(request *DismantleRoleConfigurationRequest) (response *DismantleRoleConfigurationResponse, err error) {
+    return c.DismantleRoleConfigurationWithContext(context.Background(), request)
+}
+
+// DismantleRoleConfiguration
+// 解除权限配置在成员账号上的部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
+//  FAILEDOPERATION_ROLECONFIGURATIONPROVISIONINGSTATUSERROR = "FailedOperation.RoleConfigurationProvisioningStatusError"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_ROLECONFIGURATIONPROVISIONINGNOTFOUND = "ResourceNotFound.RoleConfigurationProvisioningNotFound"
+func (c *Client) DismantleRoleConfigurationWithContext(ctx context.Context, request *DismantleRoleConfigurationRequest) (response *DismantleRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewDismantleRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DismantleRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDismantleRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnablePolicyTypeRequest() (request *EnablePolicyTypeRequest) {
     request = &EnablePolicyTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3372,6 +4318,697 @@ func (c *Client) EnablePolicyTypeWithContext(ctx context.Context, request *Enabl
     request.SetContext(ctx)
     
     response = NewEnablePolicyTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetExternalSAMLIdentityProviderRequest() (request *GetExternalSAMLIdentityProviderRequest) {
+    request = &GetExternalSAMLIdentityProviderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetExternalSAMLIdentityProvider")
+    
+    
+    return
+}
+
+func NewGetExternalSAMLIdentityProviderResponse() (response *GetExternalSAMLIdentityProviderResponse) {
+    response = &GetExternalSAMLIdentityProviderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetExternalSAMLIdentityProvider
+// 查询SAML身份提供商配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_SAMLIDENTITYPROVIDERNOTFOUND = "ResourceNotFound.SAMLIdentityProviderNotFound"
+func (c *Client) GetExternalSAMLIdentityProvider(request *GetExternalSAMLIdentityProviderRequest) (response *GetExternalSAMLIdentityProviderResponse, err error) {
+    return c.GetExternalSAMLIdentityProviderWithContext(context.Background(), request)
+}
+
+// GetExternalSAMLIdentityProvider
+// 查询SAML身份提供商配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_SAMLIDENTITYPROVIDERNOTFOUND = "ResourceNotFound.SAMLIdentityProviderNotFound"
+func (c *Client) GetExternalSAMLIdentityProviderWithContext(ctx context.Context, request *GetExternalSAMLIdentityProviderRequest) (response *GetExternalSAMLIdentityProviderResponse, err error) {
+    if request == nil {
+        request = NewGetExternalSAMLIdentityProviderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetExternalSAMLIdentityProvider require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetExternalSAMLIdentityProviderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetGroupRequest() (request *GetGroupRequest) {
+    request = &GetGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetGroup")
+    
+    
+    return
+}
+
+func NewGetGroupResponse() (response *GetGroupResponse) {
+    response = &GetGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetGroup
+// 查询用户组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) GetGroup(request *GetGroupRequest) (response *GetGroupResponse, err error) {
+    return c.GetGroupWithContext(context.Background(), request)
+}
+
+// GetGroup
+// 查询用户组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) GetGroupWithContext(ctx context.Context, request *GetGroupRequest) (response *GetGroupResponse, err error) {
+    if request == nil {
+        request = NewGetGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetProvisioningTaskStatusRequest() (request *GetProvisioningTaskStatusRequest) {
+    request = &GetProvisioningTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetProvisioningTaskStatus")
+    
+    
+    return
+}
+
+func NewGetProvisioningTaskStatusResponse() (response *GetProvisioningTaskStatusResponse) {
+    response = &GetProvisioningTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetProvisioningTaskStatus
+// 查询用户同步异步任务的状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGTASKNOTFOUND = "ResourceNotFound.UserProvisioningTaskNotFound"
+func (c *Client) GetProvisioningTaskStatus(request *GetProvisioningTaskStatusRequest) (response *GetProvisioningTaskStatusResponse, err error) {
+    return c.GetProvisioningTaskStatusWithContext(context.Background(), request)
+}
+
+// GetProvisioningTaskStatus
+// 查询用户同步异步任务的状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGTASKNOTFOUND = "ResourceNotFound.UserProvisioningTaskNotFound"
+func (c *Client) GetProvisioningTaskStatusWithContext(ctx context.Context, request *GetProvisioningTaskStatusRequest) (response *GetProvisioningTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewGetProvisioningTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetProvisioningTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetProvisioningTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetRoleConfigurationRequest() (request *GetRoleConfigurationRequest) {
+    request = &GetRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetRoleConfiguration")
+    
+    
+    return
+}
+
+func NewGetRoleConfigurationResponse() (response *GetRoleConfigurationResponse) {
+    response = &GetRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetRoleConfiguration
+// 查询权限配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) GetRoleConfiguration(request *GetRoleConfigurationRequest) (response *GetRoleConfigurationResponse, err error) {
+    return c.GetRoleConfigurationWithContext(context.Background(), request)
+}
+
+// GetRoleConfiguration
+// 查询权限配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) GetRoleConfigurationWithContext(ctx context.Context, request *GetRoleConfigurationRequest) (response *GetRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewGetRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTaskStatusRequest() (request *GetTaskStatusRequest) {
+    request = &GetTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetTaskStatus")
+    
+    
+    return
+}
+
+func NewGetTaskStatusResponse() (response *GetTaskStatusResponse) {
+    response = &GetTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTaskStatus
+// 查询异步任务的状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_ROLECONFIGURATIONTASKNOTFOUND = "ResourceNotFound.RoleConfigurationTaskNotFound"
+func (c *Client) GetTaskStatus(request *GetTaskStatusRequest) (response *GetTaskStatusResponse, err error) {
+    return c.GetTaskStatusWithContext(context.Background(), request)
+}
+
+// GetTaskStatus
+// 查询异步任务的状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_ROLECONFIGURATIONTASKNOTFOUND = "ResourceNotFound.RoleConfigurationTaskNotFound"
+func (c *Client) GetTaskStatusWithContext(ctx context.Context, request *GetTaskStatusRequest) (response *GetTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewGetTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetUserRequest() (request *GetUserRequest) {
+    request = &GetUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetUser")
+    
+    
+    return
+}
+
+func NewGetUserResponse() (response *GetUserResponse) {
+    response = &GetUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUser
+// 查询用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, err error) {
+    return c.GetUserWithContext(context.Background(), request)
+}
+
+// GetUser
+// 查询用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest) (response *GetUserResponse, err error) {
+    if request == nil {
+        request = NewGetUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetUserSyncProvisioningRequest() (request *GetUserSyncProvisioningRequest) {
+    request = &GetUserSyncProvisioningRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetUserSyncProvisioning")
+    
+    
+    return
+}
+
+func NewGetUserSyncProvisioningResponse() (response *GetUserSyncProvisioningResponse) {
+    response = &GetUserSyncProvisioningResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUserSyncProvisioning
+// 查询CAM用户同步
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+func (c *Client) GetUserSyncProvisioning(request *GetUserSyncProvisioningRequest) (response *GetUserSyncProvisioningResponse, err error) {
+    return c.GetUserSyncProvisioningWithContext(context.Background(), request)
+}
+
+// GetUserSyncProvisioning
+// 查询CAM用户同步
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+func (c *Client) GetUserSyncProvisioningWithContext(ctx context.Context, request *GetUserSyncProvisioningRequest) (response *GetUserSyncProvisioningResponse, err error) {
+    if request == nil {
+        request = NewGetUserSyncProvisioningRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUserSyncProvisioning require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUserSyncProvisioningResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetZoneSAMLServiceProviderInfoRequest() (request *GetZoneSAMLServiceProviderInfoRequest) {
+    request = &GetZoneSAMLServiceProviderInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetZoneSAMLServiceProviderInfo")
+    
+    
+    return
+}
+
+func NewGetZoneSAMLServiceProviderInfoResponse() (response *GetZoneSAMLServiceProviderInfoResponse) {
+    response = &GetZoneSAMLServiceProviderInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetZoneSAMLServiceProviderInfo
+// 查询SAML服务提供商配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_SAMLMETADATADOCUMENTGETFAILED = "FailedOperation.SAMLMetadataDocumentGetFailed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_SAMLSERVICEPROVIDERNOTFOUND = "ResourceNotFound.SAMLServiceProviderNotFound"
+func (c *Client) GetZoneSAMLServiceProviderInfo(request *GetZoneSAMLServiceProviderInfoRequest) (response *GetZoneSAMLServiceProviderInfoResponse, err error) {
+    return c.GetZoneSAMLServiceProviderInfoWithContext(context.Background(), request)
+}
+
+// GetZoneSAMLServiceProviderInfo
+// 查询SAML服务提供商配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_SAMLMETADATADOCUMENTGETFAILED = "FailedOperation.SAMLMetadataDocumentGetFailed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_SAMLSERVICEPROVIDERNOTFOUND = "ResourceNotFound.SAMLServiceProviderNotFound"
+func (c *Client) GetZoneSAMLServiceProviderInfoWithContext(ctx context.Context, request *GetZoneSAMLServiceProviderInfoRequest) (response *GetZoneSAMLServiceProviderInfoResponse, err error) {
+    if request == nil {
+        request = NewGetZoneSAMLServiceProviderInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetZoneSAMLServiceProviderInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetZoneSAMLServiceProviderInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetZoneStatisticsRequest() (request *GetZoneStatisticsRequest) {
+    request = &GetZoneStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetZoneStatistics")
+    
+    
+    return
+}
+
+func NewGetZoneStatisticsResponse() (response *GetZoneStatisticsResponse) {
+    response = &GetZoneStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetZoneStatistics
+// 查询空间的统计信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+func (c *Client) GetZoneStatistics(request *GetZoneStatisticsRequest) (response *GetZoneStatisticsResponse, err error) {
+    return c.GetZoneStatisticsWithContext(context.Background(), request)
+}
+
+// GetZoneStatistics
+// 查询空间的统计信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+func (c *Client) GetZoneStatisticsWithContext(ctx context.Context, request *GetZoneStatisticsRequest) (response *GetZoneStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetZoneStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetZoneStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetZoneStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListExternalSAMLIdPCertificatesRequest() (request *ListExternalSAMLIdPCertificatesRequest) {
+    request = &ListExternalSAMLIdPCertificatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListExternalSAMLIdPCertificates")
+    
+    
+    return
+}
+
+func NewListExternalSAMLIdPCertificatesResponse() (response *ListExternalSAMLIdPCertificatesResponse) {
+    response = &ListExternalSAMLIdPCertificatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListExternalSAMLIdPCertificates
+// 查询SAML签名证书列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListExternalSAMLIdPCertificates(request *ListExternalSAMLIdPCertificatesRequest) (response *ListExternalSAMLIdPCertificatesResponse, err error) {
+    return c.ListExternalSAMLIdPCertificatesWithContext(context.Background(), request)
+}
+
+// ListExternalSAMLIdPCertificates
+// 查询SAML签名证书列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListExternalSAMLIdPCertificatesWithContext(ctx context.Context, request *ListExternalSAMLIdPCertificatesRequest) (response *ListExternalSAMLIdPCertificatesResponse, err error) {
+    if request == nil {
+        request = NewListExternalSAMLIdPCertificatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListExternalSAMLIdPCertificates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListExternalSAMLIdPCertificatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListGroupMembersRequest() (request *ListGroupMembersRequest) {
+    request = &ListGroupMembersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListGroupMembers")
+    
+    
+    return
+}
+
+func NewListGroupMembersResponse() (response *ListGroupMembersResponse) {
+    response = &ListGroupMembersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListGroupMembers
+// 查询用户组中的用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) ListGroupMembers(request *ListGroupMembersRequest) (response *ListGroupMembersResponse, err error) {
+    return c.ListGroupMembersWithContext(context.Background(), request)
+}
+
+// ListGroupMembers
+// 查询用户组中的用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) ListGroupMembersWithContext(ctx context.Context, request *ListGroupMembersRequest) (response *ListGroupMembersResponse, err error) {
+    if request == nil {
+        request = NewListGroupMembersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListGroupMembers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListGroupMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListGroupsRequest() (request *ListGroupsRequest) {
+    request = &ListGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListGroups")
+    
+    
+    return
+}
+
+func NewListGroupsResponse() (response *ListGroupsResponse) {
+    response = &ListGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListGroups
+// 查询用户组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListGroups(request *ListGroupsRequest) (response *ListGroupsResponse, err error) {
+    return c.ListGroupsWithContext(context.Background(), request)
+}
+
+// ListGroups
+// 查询用户组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsRequest) (response *ListGroupsResponse, err error) {
+    if request == nil {
+        request = NewListGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListJoinedGroupsForUserRequest() (request *ListJoinedGroupsForUserRequest) {
+    request = &ListJoinedGroupsForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListJoinedGroupsForUser")
+    
+    
+    return
+}
+
+func NewListJoinedGroupsForUserResponse() (response *ListJoinedGroupsForUserResponse) {
+    response = &ListJoinedGroupsForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListJoinedGroupsForUser
+// 查询用户加入的用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ListJoinedGroupsForUser(request *ListJoinedGroupsForUserRequest) (response *ListJoinedGroupsForUserResponse, err error) {
+    return c.ListJoinedGroupsForUserWithContext(context.Background(), request)
+}
+
+// ListJoinedGroupsForUser
+// 查询用户加入的用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ListJoinedGroupsForUserWithContext(ctx context.Context, request *ListJoinedGroupsForUserRequest) (response *ListJoinedGroupsForUserResponse, err error) {
+    if request == nil {
+        request = NewListJoinedGroupsForUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListJoinedGroupsForUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListJoinedGroupsForUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -3586,6 +5223,59 @@ func (c *Client) ListOrganizationServiceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewListOrganizationServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListPermissionPoliciesInRoleConfigurationRequest() (request *ListPermissionPoliciesInRoleConfigurationRequest) {
+    request = &ListPermissionPoliciesInRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListPermissionPoliciesInRoleConfiguration")
+    
+    
+    return
+}
+
+func NewListPermissionPoliciesInRoleConfigurationResponse() (response *ListPermissionPoliciesInRoleConfigurationResponse) {
+    response = &ListPermissionPoliciesInRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListPermissionPoliciesInRoleConfiguration
+// 获取权限配置中的策略列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) ListPermissionPoliciesInRoleConfiguration(request *ListPermissionPoliciesInRoleConfigurationRequest) (response *ListPermissionPoliciesInRoleConfigurationResponse, err error) {
+    return c.ListPermissionPoliciesInRoleConfigurationWithContext(context.Background(), request)
+}
+
+// ListPermissionPoliciesInRoleConfiguration
+// 获取权限配置中的策略列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) ListPermissionPoliciesInRoleConfigurationWithContext(ctx context.Context, request *ListPermissionPoliciesInRoleConfigurationRequest) (response *ListPermissionPoliciesInRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewListPermissionPoliciesInRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPermissionPoliciesInRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPermissionPoliciesInRoleConfigurationResponse()
     err = c.Send(request, response)
     return
 }
@@ -3814,6 +5504,173 @@ func (c *Client) ListPoliciesForTargetWithContext(ctx context.Context, request *
     return
 }
 
+func NewListRoleAssignmentsRequest() (request *ListRoleAssignmentsRequest) {
+    request = &ListRoleAssignmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListRoleAssignments")
+    
+    
+    return
+}
+
+func NewListRoleAssignmentsResponse() (response *ListRoleAssignmentsResponse) {
+    response = &ListRoleAssignmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListRoleAssignments
+// 查询授权列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListRoleAssignments(request *ListRoleAssignmentsRequest) (response *ListRoleAssignmentsResponse, err error) {
+    return c.ListRoleAssignmentsWithContext(context.Background(), request)
+}
+
+// ListRoleAssignments
+// 查询授权列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListRoleAssignmentsWithContext(ctx context.Context, request *ListRoleAssignmentsRequest) (response *ListRoleAssignmentsResponse, err error) {
+    if request == nil {
+        request = NewListRoleAssignmentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRoleAssignments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListRoleAssignmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListRoleConfigurationProvisioningsRequest() (request *ListRoleConfigurationProvisioningsRequest) {
+    request = &ListRoleConfigurationProvisioningsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListRoleConfigurationProvisionings")
+    
+    
+    return
+}
+
+func NewListRoleConfigurationProvisioningsResponse() (response *ListRoleConfigurationProvisioningsResponse) {
+    response = &ListRoleConfigurationProvisioningsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListRoleConfigurationProvisionings
+// 查询权限配置部署列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListRoleConfigurationProvisionings(request *ListRoleConfigurationProvisioningsRequest) (response *ListRoleConfigurationProvisioningsResponse, err error) {
+    return c.ListRoleConfigurationProvisioningsWithContext(context.Background(), request)
+}
+
+// ListRoleConfigurationProvisionings
+// 查询权限配置部署列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListRoleConfigurationProvisioningsWithContext(ctx context.Context, request *ListRoleConfigurationProvisioningsRequest) (response *ListRoleConfigurationProvisioningsResponse, err error) {
+    if request == nil {
+        request = NewListRoleConfigurationProvisioningsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRoleConfigurationProvisionings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListRoleConfigurationProvisioningsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListRoleConfigurationsRequest() (request *ListRoleConfigurationsRequest) {
+    request = &ListRoleConfigurationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListRoleConfigurations")
+    
+    
+    return
+}
+
+func NewListRoleConfigurationsResponse() (response *ListRoleConfigurationsResponse) {
+    response = &ListRoleConfigurationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListRoleConfigurations
+// 查询权限配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListRoleConfigurations(request *ListRoleConfigurationsRequest) (response *ListRoleConfigurationsResponse, err error) {
+    return c.ListRoleConfigurationsWithContext(context.Background(), request)
+}
+
+// ListRoleConfigurations
+// 查询权限配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListRoleConfigurationsWithContext(ctx context.Context, request *ListRoleConfigurationsRequest) (response *ListRoleConfigurationsResponse, err error) {
+    if request == nil {
+        request = NewListRoleConfigurationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRoleConfigurations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListRoleConfigurationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTargetsForPolicyRequest() (request *ListTargetsForPolicyRequest) {
     request = &ListTargetsForPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3921,6 +5778,167 @@ func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, request *L
     return
 }
 
+func NewListTasksRequest() (request *ListTasksRequest) {
+    request = &ListTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListTasks")
+    
+    
+    return
+}
+
+func NewListTasksResponse() (response *ListTasksResponse) {
+    response = &ListTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTasks
+// 查询异步任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListTasks(request *ListTasksRequest) (response *ListTasksResponse, err error) {
+    return c.ListTasksWithContext(context.Background(), request)
+}
+
+// ListTasks
+// 查询异步任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksRequest) (response *ListTasksResponse, err error) {
+    if request == nil {
+        request = NewListTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListUserSyncProvisioningsRequest() (request *ListUserSyncProvisioningsRequest) {
+    request = &ListUserSyncProvisioningsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListUserSyncProvisionings")
+    
+    
+    return
+}
+
+func NewListUserSyncProvisioningsResponse() (response *ListUserSyncProvisioningsResponse) {
+    response = &ListUserSyncProvisioningsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListUserSyncProvisionings
+// 查询CAM用户同步列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListUserSyncProvisionings(request *ListUserSyncProvisioningsRequest) (response *ListUserSyncProvisioningsResponse, err error) {
+    return c.ListUserSyncProvisioningsWithContext(context.Background(), request)
+}
+
+// ListUserSyncProvisionings
+// 查询CAM用户同步列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListUserSyncProvisioningsWithContext(ctx context.Context, request *ListUserSyncProvisioningsRequest) (response *ListUserSyncProvisioningsResponse, err error) {
+    if request == nil {
+        request = NewListUserSyncProvisioningsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUserSyncProvisionings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListUserSyncProvisioningsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListUsersRequest() (request *ListUsersRequest) {
+    request = &ListUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListUsers")
+    
+    
+    return
+}
+
+func NewListUsersResponse() (response *ListUsersResponse) {
+    response = &ListUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListUsers
+// 查询用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersResponse, err error) {
+    return c.ListUsersWithContext(context.Background(), request)
+}
+
+// ListUsers
+// 查询用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest) (response *ListUsersResponse, err error) {
+    if request == nil {
+        request = NewListUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewMoveOrganizationNodeMembersRequest() (request *MoveOrganizationNodeMembersRequest) {
     request = &MoveOrganizationNodeMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3976,6 +5994,130 @@ func (c *Client) MoveOrganizationNodeMembersWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewMoveOrganizationNodeMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenIdentityCenterRequest() (request *OpenIdentityCenterRequest) {
+    request = &OpenIdentityCenterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "OpenIdentityCenter")
+    
+    
+    return
+}
+
+func NewOpenIdentityCenterResponse() (response *OpenIdentityCenterResponse) {
+    response = &OpenIdentityCenterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenIdentityCenter
+// 开通CIC服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERALREADYOPEN = "FailedOperation.IdentityCenterAlreadyOpen"
+//  FAILEDOPERATION_IDENTITYCENTERNOTAUTH = "FailedOperation.IdentityCenterNotAuth"
+//  FAILEDOPERATION_IDENTITYCENTERNOTENTERPRISEAUTH = "FailedOperation.IdentityCenterNotEnterpriseAuth"
+//  FAILEDOPERATION_IDENTITYCENTERNOTORGANIZATIONMANAGER = "FailedOperation.IdentityCenterNotOrganizationManager"
+//  FAILEDOPERATION_IDENTITYCENTERORGANIZATIONNOTOPEN = "FailedOperation.IdentityCenterOrganizationNotOpen"
+//  INVALIDPARAMETERVALUE_IDENTITYCENTERZONENAMEALREADYEXIST = "InvalidParameterValue.IdentityCenterZoneNameAlreadyExist"
+//  RESOURCENOTFOUND_SERVICEROLENOTEXIST = "ResourceNotFound.ServiceRoleNotExist"
+func (c *Client) OpenIdentityCenter(request *OpenIdentityCenterRequest) (response *OpenIdentityCenterResponse, err error) {
+    return c.OpenIdentityCenterWithContext(context.Background(), request)
+}
+
+// OpenIdentityCenter
+// 开通CIC服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERALREADYOPEN = "FailedOperation.IdentityCenterAlreadyOpen"
+//  FAILEDOPERATION_IDENTITYCENTERNOTAUTH = "FailedOperation.IdentityCenterNotAuth"
+//  FAILEDOPERATION_IDENTITYCENTERNOTENTERPRISEAUTH = "FailedOperation.IdentityCenterNotEnterpriseAuth"
+//  FAILEDOPERATION_IDENTITYCENTERNOTORGANIZATIONMANAGER = "FailedOperation.IdentityCenterNotOrganizationManager"
+//  FAILEDOPERATION_IDENTITYCENTERORGANIZATIONNOTOPEN = "FailedOperation.IdentityCenterOrganizationNotOpen"
+//  INVALIDPARAMETERVALUE_IDENTITYCENTERZONENAMEALREADYEXIST = "InvalidParameterValue.IdentityCenterZoneNameAlreadyExist"
+//  RESOURCENOTFOUND_SERVICEROLENOTEXIST = "ResourceNotFound.ServiceRoleNotExist"
+func (c *Client) OpenIdentityCenterWithContext(ctx context.Context, request *OpenIdentityCenterRequest) (response *OpenIdentityCenterResponse, err error) {
+    if request == nil {
+        request = NewOpenIdentityCenterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenIdentityCenter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenIdentityCenterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewProvisionRoleConfigurationRequest() (request *ProvisionRoleConfigurationRequest) {
+    request = &ProvisionRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ProvisionRoleConfiguration")
+    
+    
+    return
+}
+
+func NewProvisionRoleConfigurationResponse() (response *ProvisionRoleConfigurationResponse) {
+    response = &ProvisionRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ProvisionRoleConfiguration
+// 将权限配置部署到成员账号上
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_USEROVERUPPERLIMIT = "FailedOperation.UserOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEALREADYEXISTS = "InvalidParameter.UsernameAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEFORMATERROR = "InvalidParameter.UsernameFormatError"
+func (c *Client) ProvisionRoleConfiguration(request *ProvisionRoleConfigurationRequest) (response *ProvisionRoleConfigurationResponse, err error) {
+    return c.ProvisionRoleConfigurationWithContext(context.Background(), request)
+}
+
+// ProvisionRoleConfiguration
+// 将权限配置部署到成员账号上
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_USEROVERUPPERLIMIT = "FailedOperation.UserOverUpperLimit"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEALREADYEXISTS = "InvalidParameter.UsernameAlreadyExists"
+//  INVALIDPARAMETER_USERNAMEFORMATERROR = "InvalidParameter.UsernameFormatError"
+func (c *Client) ProvisionRoleConfigurationWithContext(ctx context.Context, request *ProvisionRoleConfigurationRequest) (response *ProvisionRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewProvisionRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ProvisionRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewProvisionRoleConfigurationResponse()
     err = c.Send(request, response)
     return
 }
@@ -4116,6 +6258,301 @@ func (c *Client) RejectJoinShareUnitInvitationWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewRejectJoinShareUnitInvitationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveExternalSAMLIdPCertificateRequest() (request *RemoveExternalSAMLIdPCertificateRequest) {
+    request = &RemoveExternalSAMLIdPCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "RemoveExternalSAMLIdPCertificate")
+    
+    
+    return
+}
+
+func NewRemoveExternalSAMLIdPCertificateResponse() (response *RemoveExternalSAMLIdPCertificateResponse) {
+    response = &RemoveExternalSAMLIdPCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveExternalSAMLIdPCertificate
+// 移除SAML签名证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_X509CERTIFICATENOTFOUND = "ResourceNotFound.X509CertificateNotFound"
+func (c *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSAMLIdPCertificateRequest) (response *RemoveExternalSAMLIdPCertificateResponse, err error) {
+    return c.RemoveExternalSAMLIdPCertificateWithContext(context.Background(), request)
+}
+
+// RemoveExternalSAMLIdPCertificate
+// 移除SAML签名证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_X509CERTIFICATENOTFOUND = "ResourceNotFound.X509CertificateNotFound"
+func (c *Client) RemoveExternalSAMLIdPCertificateWithContext(ctx context.Context, request *RemoveExternalSAMLIdPCertificateRequest) (response *RemoveExternalSAMLIdPCertificateResponse, err error) {
+    if request == nil {
+        request = NewRemoveExternalSAMLIdPCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveExternalSAMLIdPCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveExternalSAMLIdPCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemovePermissionPolicyFromRoleConfigurationRequest() (request *RemovePermissionPolicyFromRoleConfigurationRequest) {
+    request = &RemovePermissionPolicyFromRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "RemovePermissionPolicyFromRoleConfiguration")
+    
+    
+    return
+}
+
+func NewRemovePermissionPolicyFromRoleConfigurationResponse() (response *RemovePermissionPolicyFromRoleConfigurationResponse) {
+    response = &RemovePermissionPolicyFromRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemovePermissionPolicyFromRoleConfiguration
+// 为权限配置移除策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  INVALIDPARAMETER_ROLEPOLICYNOTEXIST = "InvalidParameter.RolePolicyNotExist"
+func (c *Client) RemovePermissionPolicyFromRoleConfiguration(request *RemovePermissionPolicyFromRoleConfigurationRequest) (response *RemovePermissionPolicyFromRoleConfigurationResponse, err error) {
+    return c.RemovePermissionPolicyFromRoleConfigurationWithContext(context.Background(), request)
+}
+
+// RemovePermissionPolicyFromRoleConfiguration
+// 为权限配置移除策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  INVALIDPARAMETER_ROLEPOLICYNOTEXIST = "InvalidParameter.RolePolicyNotExist"
+func (c *Client) RemovePermissionPolicyFromRoleConfigurationWithContext(ctx context.Context, request *RemovePermissionPolicyFromRoleConfigurationRequest) (response *RemovePermissionPolicyFromRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewRemovePermissionPolicyFromRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemovePermissionPolicyFromRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemovePermissionPolicyFromRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveUserFromGroupRequest() (request *RemoveUserFromGroupRequest) {
+    request = &RemoveUserFromGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "RemoveUserFromGroup")
+    
+    
+    return
+}
+
+func NewRemoveUserFromGroupResponse() (response *RemoveUserFromGroupResponse) {
+    response = &RemoveUserFromGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveUserFromGroup
+// 从用户组中移除用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTREMOVEUSER = "FailedOperation.SynchronizedGroupNotRemoveUser"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_GROUPUSERNOTEXIST = "InvalidParameter.GroupUserNotExist"
+//  LIMITEXCEEDED_REMOVEUSERFROMGROUPLIMITEXCEEDED = "LimitExceeded.RemoveUserFromGroupLimitExceeded"
+func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (response *RemoveUserFromGroupResponse, err error) {
+    return c.RemoveUserFromGroupWithContext(context.Background(), request)
+}
+
+// RemoveUserFromGroup
+// 从用户组中移除用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTREMOVEUSER = "FailedOperation.SynchronizedGroupNotRemoveUser"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_GROUPUSERNOTEXIST = "InvalidParameter.GroupUserNotExist"
+//  LIMITEXCEEDED_REMOVEUSERFROMGROUPLIMITEXCEEDED = "LimitExceeded.RemoveUserFromGroupLimitExceeded"
+func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *RemoveUserFromGroupRequest) (response *RemoveUserFromGroupResponse, err error) {
+    if request == nil {
+        request = NewRemoveUserFromGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveUserFromGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveUserFromGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetExternalSAMLIdentityProviderRequest() (request *SetExternalSAMLIdentityProviderRequest) {
+    request = &SetExternalSAMLIdentityProviderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "SetExternalSAMLIdentityProvider")
+    
+    
+    return
+}
+
+func NewSetExternalSAMLIdentityProviderResponse() (response *SetExternalSAMLIdentityProviderResponse) {
+    response = &SetExternalSAMLIdentityProviderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetExternalSAMLIdentityProvider
+// 配置SAML身份提供商信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_DECODEMETADATADOCUMENTFAILED = "FailedOperation.DecodeMetadataDocumentFailed"
+//  FAILEDOPERATION_METADATACOSPARSINGFAILED = "FailedOperation.MetadataCosParsingFailed"
+//  FAILEDOPERATION_SAMLSERVICEPROVIDERCREATEFAILED = "FailedOperation.SAMLServiceProviderCreateFailed"
+//  FAILEDOPERATION_UPLOADMETADATAFAILED = "FailedOperation.UploadMetadataFailed"
+//  FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
+//  FAILEDOPERATION_XMLDATAUNMARSHALFAILED = "FailedOperation.XMLDataUnmarshalFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_SSOSTATUSINVALID = "InvalidParameterValue.SSoStatusInvalid"
+//  INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
+func (c *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLIdentityProviderRequest) (response *SetExternalSAMLIdentityProviderResponse, err error) {
+    return c.SetExternalSAMLIdentityProviderWithContext(context.Background(), request)
+}
+
+// SetExternalSAMLIdentityProvider
+// 配置SAML身份提供商信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_DECODEMETADATADOCUMENTFAILED = "FailedOperation.DecodeMetadataDocumentFailed"
+//  FAILEDOPERATION_METADATACOSPARSINGFAILED = "FailedOperation.MetadataCosParsingFailed"
+//  FAILEDOPERATION_SAMLSERVICEPROVIDERCREATEFAILED = "FailedOperation.SAMLServiceProviderCreateFailed"
+//  FAILEDOPERATION_UPLOADMETADATAFAILED = "FailedOperation.UploadMetadataFailed"
+//  FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
+//  FAILEDOPERATION_XMLDATAUNMARSHALFAILED = "FailedOperation.XMLDataUnmarshalFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_SSOSTATUSINVALID = "InvalidParameterValue.SSoStatusInvalid"
+//  INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
+func (c *Client) SetExternalSAMLIdentityProviderWithContext(ctx context.Context, request *SetExternalSAMLIdentityProviderRequest) (response *SetExternalSAMLIdentityProviderResponse, err error) {
+    if request == nil {
+        request = NewSetExternalSAMLIdentityProviderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetExternalSAMLIdentityProvider require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetExternalSAMLIdentityProviderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateGroupRequest() (request *UpdateGroupRequest) {
+    request = &UpdateGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateGroup")
+    
+    
+    return
+}
+
+func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
+    response = &UpdateGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateGroup
+// 修改用户组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
+    return c.UpdateGroupWithContext(context.Background(), request)
+}
+
+// UpdateGroup
+// 修改用户组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+func (c *Client) UpdateGroupWithContext(ctx context.Context, request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
+    if request == nil {
+        request = NewUpdateGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -4537,6 +6974,61 @@ func (c *Client) UpdatePolicyWithContext(ctx context.Context, request *UpdatePol
     return
 }
 
+func NewUpdateRoleConfigurationRequest() (request *UpdateRoleConfigurationRequest) {
+    request = &UpdateRoleConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateRoleConfiguration")
+    
+    
+    return
+}
+
+func NewUpdateRoleConfigurationResponse() (response *UpdateRoleConfigurationResponse) {
+    response = &UpdateRoleConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateRoleConfiguration
+// 修改权限配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) UpdateRoleConfiguration(request *UpdateRoleConfigurationRequest) (response *UpdateRoleConfigurationResponse, err error) {
+    return c.UpdateRoleConfigurationWithContext(context.Background(), request)
+}
+
+// UpdateRoleConfiguration
+// 修改权限配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+func (c *Client) UpdateRoleConfigurationWithContext(ctx context.Context, request *UpdateRoleConfigurationRequest) (response *UpdateRoleConfigurationResponse, err error) {
+    if request == nil {
+        request = NewUpdateRoleConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRoleConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateShareUnitRequest() (request *UpdateShareUnitRequest) {
     request = &UpdateShareUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4596,6 +7088,224 @@ func (c *Client) UpdateShareUnitWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdateShareUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserRequest() (request *UpdateUserRequest) {
+    request = &UpdateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateUser")
+    
+    
+    return
+}
+
+func NewUpdateUserResponse() (response *UpdateUserResponse) {
+    response = &UpdateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUser
+// 修改用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
+    return c.UpdateUserWithContext(context.Background(), request)
+}
+
+// UpdateUser
+// 修改用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserStatusRequest() (request *UpdateUserStatusRequest) {
+    request = &UpdateUserStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateUserStatus")
+    
+    
+    return
+}
+
+func NewUpdateUserStatusResponse() (response *UpdateUserStatusResponse) {
+    response = &UpdateUserStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUserStatus
+// 修改用户状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) UpdateUserStatus(request *UpdateUserStatusRequest) (response *UpdateUserStatusResponse, err error) {
+    return c.UpdateUserStatusWithContext(context.Background(), request)
+}
+
+// UpdateUserStatus
+// 修改用户状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) UpdateUserStatusWithContext(ctx context.Context, request *UpdateUserStatusRequest) (response *UpdateUserStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUserStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUserStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserSyncProvisioningRequest() (request *UpdateUserSyncProvisioningRequest) {
+    request = &UpdateUserSyncProvisioningRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateUserSyncProvisioning")
+    
+    
+    return
+}
+
+func NewUpdateUserSyncProvisioningResponse() (response *UpdateUserSyncProvisioningResponse) {
+    response = &UpdateUserSyncProvisioningResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUserSyncProvisioning
+// 创建子用户同步任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+func (c *Client) UpdateUserSyncProvisioning(request *UpdateUserSyncProvisioningRequest) (response *UpdateUserSyncProvisioningResponse, err error) {
+    return c.UpdateUserSyncProvisioningWithContext(context.Background(), request)
+}
+
+// UpdateUserSyncProvisioning
+// 创建子用户同步任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
+func (c *Client) UpdateUserSyncProvisioningWithContext(ctx context.Context, request *UpdateUserSyncProvisioningRequest) (response *UpdateUserSyncProvisioningResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserSyncProvisioningRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUserSyncProvisioning require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUserSyncProvisioningResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateZoneRequest() (request *UpdateZoneRequest) {
+    request = &UpdateZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateZone")
+    
+    
+    return
+}
+
+func NewUpdateZoneResponse() (response *UpdateZoneResponse) {
+    response = &UpdateZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateZone
+// 更新用户空间名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETERVALUE_ZONENAMEFORMATERROR = "InvalidParameterValue.ZoneNameFormatError"
+func (c *Client) UpdateZone(request *UpdateZoneRequest) (response *UpdateZoneResponse, err error) {
+    return c.UpdateZoneWithContext(context.Background(), request)
+}
+
+// UpdateZone
+// 更新用户空间名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETERVALUE_ZONENAMEFORMATERROR = "InvalidParameterValue.ZoneNameFormatError"
+func (c *Client) UpdateZoneWithContext(ctx context.Context, request *UpdateZoneRequest) (response *UpdateZoneResponse, err error) {
+    if request == nil {
+        request = NewUpdateZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateZoneResponse()
     err = c.Send(request, response)
     return
 }

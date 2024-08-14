@@ -9000,6 +9000,38 @@ type UsageDetails struct {
 	// 商品细节
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductName *string `json:"SubProductName,omitnil,omitempty" name:"SubProductName"`
+
+	// 产品码	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 子产品码	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 计费项码	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItemCode *string `json:"BillingItemCode,omitnil,omitempty" name:"BillingItemCode"`
+
+	// 计费细项码	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubBillingItemCode *string `json:"SubBillingItemCode,omitnil,omitempty" name:"SubBillingItemCode"`
+
+	// 产品英文名	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductEnName *string `json:"ProductEnName,omitnil,omitempty" name:"ProductEnName"`
+
+	// 子产品英文名	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductEnName *string `json:"SubProductEnName,omitnil,omitempty" name:"SubProductEnName"`
+
+	// 结算周期	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcUnit *string `json:"CalcUnit,omitnil,omitempty" name:"CalcUnit"`
+
+	// payMode为prepay 且 payScene为common的情况下存在
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 }
 
 type UsageRecords struct {
@@ -9012,6 +9044,21 @@ type UsageRecords struct {
 	// 使用记录细节
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsageDetails []*UsageDetails `json:"UsageDetails,omitnil,omitempty" name:"UsageDetails"`
+
+	// 付费模式
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 查询的券id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoucherId *string `json:"VoucherId,omitnil,omitempty" name:"VoucherId"`
+
+	// 交易场景：（adjust：调账、common：正常交易场景）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayScene *string `json:"PayScene,omitnil,omitempty" name:"PayScene"`
+
+	// 唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SeqId *string `json:"SeqId,omitnil,omitempty" name:"SeqId"`
 }
 
 type VoucherInfos struct {

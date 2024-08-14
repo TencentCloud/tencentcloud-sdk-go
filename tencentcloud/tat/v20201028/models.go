@@ -912,6 +912,7 @@ type DescribeCommandsRequestParams struct {
 	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li>
 	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。</li>
 	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。</li>
+	// <li> scene-id - String - 是否必填：否 -（过滤条件）按照场景ID过滤。</li>
 	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
@@ -937,6 +938,7 @@ type DescribeCommandsRequest struct {
 	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li>
 	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。</li>
 	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。</li>
+	// <li> scene-id - String - 是否必填：否 -（过滤条件）按照场景ID过滤。</li>
 	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
@@ -1671,6 +1673,97 @@ func (r *DescribeRegisterInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRegisterInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScenesRequestParams struct {
+	// 场景 ID 数组
+	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
+
+	// 过滤条件。
+	// <li> scene-id - String - 是否必填：否 -（过滤条件）按照场景 ID 过滤。</li>
+	// <li> scene-name - String - 是否必填：否 -（过滤条件）按照场景名称过滤。</li>
+	// <li> created-by - String - 是否必填：否 -（过滤条件）按照场景创建者过滤，取值为 TAT 或 USER。TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+	// 
+	// 每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `SceneIds` 和 `Filters` 。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeScenesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 场景 ID 数组
+	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
+
+	// 过滤条件。
+	// <li> scene-id - String - 是否必填：否 -（过滤条件）按照场景 ID 过滤。</li>
+	// <li> scene-name - String - 是否必填：否 -（过滤条件）按照场景名称过滤。</li>
+	// <li> created-by - String - 是否必填：否 -（过滤条件）按照场景创建者过滤，取值为 TAT 或 USER。TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+	// 
+	// 每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `SceneIds` 和 `Filters` 。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeScenesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScenesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SceneIds")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScenesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScenesResponseParams struct {
+	// 符合条件的场景总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 场景详情列表。
+	SceneSet []*Scene `json:"SceneSet,omitnil,omitempty" name:"SceneSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScenesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScenesResponseParams `json:"Response"`
+}
+
+func (r *DescribeScenesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScenesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2427,7 +2520,7 @@ type ModifyRegisterInstanceRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名。
+	// 实例名称。有效长度为 1～60 字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -2437,7 +2530,7 @@ type ModifyRegisterInstanceRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名。
+	// 实例名称。有效长度为 1～60 字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -2878,6 +2971,28 @@ func (r *RunCommandResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Scene struct {
+	// 场景 ID 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 场景名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 场景创建者。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 type ScheduleSettings struct {

@@ -147,7 +147,7 @@ type CreateInstanceRequestParams struct {
 	// PLATINUM 铂金版
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例名称
+	// 集群名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 商品规格，可用规格如下：experiment_500, basic_1k, basic_2k, basic_3k, basic_4k, basic_5k, basic_6k, basic_7k, basic_8k, basic_9k, basic_10k, pro_4k, pro_6k, pro_8k, pro_1w, pro_15k, pro_2w, pro_25k, pro_3w, pro_35k, pro_4w, pro_45k, pro_5w, pro_55k, pro_60k, pro_65k, pro_70k, pro_75k, pro_80k, pro_85k, pro_90k, pro_95k, pro_100k, platinum_1w, platinum_2w, platinum_3w, platinum_4w, platinum_5w, platinum_6w, platinum_7w, platinum_8w, platinum_9w, platinum_10w, platinum_12w, platinum_14w, platinum_16w, platinum_18w, platinum_20w, platinum_25w, platinum_30w, platinum_35w, platinum_40w, platinum_45w, platinum_50w, platinum_60w, platinum_70w, platinum_80w, platinum_90w, platinum_100w
@@ -159,13 +159,16 @@ type CreateInstanceRequestParams struct {
 	// 标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 实例绑定的VPC信息
+	// 集群绑定的VPC信息，必填
 	VpcList []*VpcInfo `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
-	// 是否开启公网
+	// 是否开启公网，默认值为false表示不开启
 	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
 
-	// 公网带宽（单位：兆）
+	// 公网是否按流量计费，默认值为false表示不按流量计费
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
+
+	// 公网带宽（单位：兆），默认值为0。如果开启公网，该字段必须为大于0的正整数
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 公网访问白名单
@@ -174,13 +177,13 @@ type CreateInstanceRequestParams struct {
 	// 消息保留时长（单位：小时）
 	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
 
-	// 付费模式（0: 后付费；1: 预付费）
+	// 付费模式（0: 后付费；1: 预付费），默认值为0
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 是否自动续费（0: 不自动续费；1: 自动续费）
+	// 是否自动续费（0: 不自动续费；1: 自动续费），默认值为0
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 购买时长（单位：月）
+	// 购买时长（单位：月），默认值为1
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 最大可创建主题数
@@ -197,7 +200,7 @@ type CreateInstanceRequest struct {
 	// PLATINUM 铂金版
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例名称
+	// 集群名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 商品规格，可用规格如下：experiment_500, basic_1k, basic_2k, basic_3k, basic_4k, basic_5k, basic_6k, basic_7k, basic_8k, basic_9k, basic_10k, pro_4k, pro_6k, pro_8k, pro_1w, pro_15k, pro_2w, pro_25k, pro_3w, pro_35k, pro_4w, pro_45k, pro_5w, pro_55k, pro_60k, pro_65k, pro_70k, pro_75k, pro_80k, pro_85k, pro_90k, pro_95k, pro_100k, platinum_1w, platinum_2w, platinum_3w, platinum_4w, platinum_5w, platinum_6w, platinum_7w, platinum_8w, platinum_9w, platinum_10w, platinum_12w, platinum_14w, platinum_16w, platinum_18w, platinum_20w, platinum_25w, platinum_30w, platinum_35w, platinum_40w, platinum_45w, platinum_50w, platinum_60w, platinum_70w, platinum_80w, platinum_90w, platinum_100w
@@ -209,13 +212,16 @@ type CreateInstanceRequest struct {
 	// 标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 实例绑定的VPC信息
+	// 集群绑定的VPC信息，必填
 	VpcList []*VpcInfo `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
-	// 是否开启公网
+	// 是否开启公网，默认值为false表示不开启
 	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
 
-	// 公网带宽（单位：兆）
+	// 公网是否按流量计费，默认值为false表示不按流量计费
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
+
+	// 公网带宽（单位：兆），默认值为0。如果开启公网，该字段必须为大于0的正整数
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 公网访问白名单
@@ -224,13 +230,13 @@ type CreateInstanceRequest struct {
 	// 消息保留时长（单位：小时）
 	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
 
-	// 付费模式（0: 后付费；1: 预付费）
+	// 付费模式（0: 后付费；1: 预付费），默认值为0
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 是否自动续费（0: 不自动续费；1: 自动续费）
+	// 是否自动续费（0: 不自动续费；1: 自动续费），默认值为0
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 购买时长（单位：月）
+	// 购买时长（单位：月），默认值为1
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 最大可创建主题数
@@ -256,6 +262,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "TagList")
 	delete(f, "VpcList")
 	delete(f, "EnablePublic")
+	delete(f, "BillingFlow")
 	delete(f, "Bandwidth")
 	delete(f, "IpRules")
 	delete(f, "MessageRetention")
@@ -4690,6 +4697,22 @@ type SourceClusterGroupConfig struct {
 	// AlreadyExists 已存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportStatus *string `json:"ImportStatus,omitnil,omitempty" name:"ImportStatus"`
+
+	// 4.x的命名空间，出参使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
+
+	// 4.x的消费组名，出参使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupNameV4 *string `json:"GroupNameV4,omitnil,omitempty" name:"GroupNameV4"`
+
+	// 4.x的完整命名空间，出参使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
+
+	// 是否为顺序投递，5.0有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 }
 
 type SourceClusterTopicConfig struct {

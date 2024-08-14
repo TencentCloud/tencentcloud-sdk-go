@@ -4890,6 +4890,107 @@ func (c *Client) ChannelVerifyPdfWithContext(ctx context.Context, request *Chann
     return
 }
 
+func NewCreateBatchInitOrganizationUrlRequest() (request *CreateBatchInitOrganizationUrlRequest) {
+    request = &CreateBatchInitOrganizationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateBatchInitOrganizationUrl")
+    
+    
+    return
+}
+
+func NewCreateBatchInitOrganizationUrlResponse() (response *CreateBatchInitOrganizationUrlResponse) {
+    response = &CreateBatchInitOrganizationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchInitOrganizationUrl
+// 支持企业进行批量初始化操作：
+//
+// 
+//
+// 此接口存在以下限制：
+//
+// 1. 批量操作的企业需要已经完成电子签的认证流程。
+//
+// 2. 通过此接口生成的链接在小程序端进行操作时，操作人需要是<font  color="red">所有企业的超管或法人</font>。
+//
+// 3. 批量操作的企业，需要是本方第三方应用下的企业。
+//
+// 4. <font  color="red">操作链接过期时间默认为生成链接后7天。</font>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchInitOrganizationUrl(request *CreateBatchInitOrganizationUrlRequest) (response *CreateBatchInitOrganizationUrlResponse, err error) {
+    return c.CreateBatchInitOrganizationUrlWithContext(context.Background(), request)
+}
+
+// CreateBatchInitOrganizationUrl
+// 支持企业进行批量初始化操作：
+//
+// 
+//
+// 此接口存在以下限制：
+//
+// 1. 批量操作的企业需要已经完成电子签的认证流程。
+//
+// 2. 通过此接口生成的链接在小程序端进行操作时，操作人需要是<font  color="red">所有企业的超管或法人</font>。
+//
+// 3. 批量操作的企业，需要是本方第三方应用下的企业。
+//
+// 4. <font  color="red">操作链接过期时间默认为生成链接后7天。</font>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchInitOrganizationUrlWithContext(ctx context.Context, request *CreateBatchInitOrganizationUrlRequest) (response *CreateBatchInitOrganizationUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchInitOrganizationUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchInitOrganizationUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchInitOrganizationUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchOrganizationRegistrationTasksRequest() (request *CreateBatchOrganizationRegistrationTasksRequest) {
     request = &CreateBatchOrganizationRegistrationTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
