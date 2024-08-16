@@ -66,7 +66,7 @@ type FileTranslateRequestParams struct {
 	// 数据来源，0：url，1：直接传文件编码后数据
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 需要翻译文件url，文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
+	// 需要翻译文件url，长度不超过256字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
@@ -126,7 +126,7 @@ type FileTranslateRequest struct {
 	// 数据来源，0：url，1：直接传文件编码后数据
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 需要翻译文件url，文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
+	// 需要翻译文件url，长度不超过256字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。

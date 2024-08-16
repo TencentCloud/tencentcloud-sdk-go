@@ -760,6 +760,75 @@ func (c *Client) ClassifyDetectOCRWithContext(ctx context.Context, request *Clas
     return
 }
 
+func NewClassifyStoreNameRequest() (request *ClassifyStoreNameRequest) {
+    request = &ClassifyStoreNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "ClassifyStoreName")
+    
+    
+    return
+}
+
+func NewClassifyStoreNameResponse() (response *ClassifyStoreNameResponse) {
+    response = &ClassifyStoreNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ClassifyStoreName
+// 本接口用于识别门头照分类标签信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSIFYSTOREFAILED = "FailedOperation.ClassifyStoreFailed"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ClassifyStoreName(request *ClassifyStoreNameRequest) (response *ClassifyStoreNameResponse, err error) {
+    return c.ClassifyStoreNameWithContext(context.Background(), request)
+}
+
+// ClassifyStoreName
+// 本接口用于识别门头照分类标签信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSIFYSTOREFAILED = "FailedOperation.ClassifyStoreFailed"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ClassifyStoreNameWithContext(ctx context.Context, request *ClassifyStoreNameRequest) (response *ClassifyStoreNameResponse, err error) {
+    if request == nil {
+        request = NewClassifyStoreNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClassifyStoreName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewClassifyStoreNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIFormTaskRequest() (request *CreateAIFormTaskRequest) {
     request = &CreateAIFormTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6278,6 +6347,77 @@ func (c *Client) RecognizePhilippinesVoteIDOCRWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewRecognizePhilippinesVoteIDOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecognizeStoreNameRequest() (request *RecognizeStoreNameRequest) {
+    request = &RecognizeStoreNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeStoreName")
+    
+    
+    return
+}
+
+func NewRecognizeStoreNameResponse() (response *RecognizeStoreNameResponse) {
+    response = &RecognizeStoreNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeStoreName
+// 本接口用于识别门头照文字识别结果以及对应分类标签信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSIFYSTOREFAILED = "FailedOperation.ClassifyStoreFailed"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_NOSTORELABEL = "FailedOperation.NoStoreLabel"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeStoreName(request *RecognizeStoreNameRequest) (response *RecognizeStoreNameResponse, err error) {
+    return c.RecognizeStoreNameWithContext(context.Background(), request)
+}
+
+// RecognizeStoreName
+// 本接口用于识别门头照文字识别结果以及对应分类标签信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSIFYSTOREFAILED = "FailedOperation.ClassifyStoreFailed"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_NOSTORELABEL = "FailedOperation.NoStoreLabel"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeStoreNameWithContext(ctx context.Context, request *RecognizeStoreNameRequest) (response *RecognizeStoreNameResponse, err error) {
+    if request == nil {
+        request = NewRecognizeStoreNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeStoreName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeStoreNameResponse()
     err = c.Send(request, response)
     return
 }

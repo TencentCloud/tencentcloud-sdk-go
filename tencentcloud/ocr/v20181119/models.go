@@ -1330,6 +1330,78 @@ func (r *ClassifyDetectOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ClassifyStoreNameRequestParams struct {
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+type ClassifyStoreNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+func (r *ClassifyStoreNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClassifyStoreNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClassifyStoreNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ClassifyStoreNameResponseParams struct {
+	// 门头照标签
+	StoreLabel []*string `json:"StoreLabel,omitnil,omitempty" name:"StoreLabel"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ClassifyStoreNameResponse struct {
+	*tchttp.BaseResponse
+	Response *ClassifyStoreNameResponseParams `json:"Response"`
+}
+
+func (r *ClassifyStoreNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClassifyStoreNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Coord struct {
 	// 横坐标
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
@@ -6644,7 +6716,12 @@ type QrcodePositionObj struct {
 }
 
 type QrcodeResultsInfo struct {
-	// 类型（二维码、条形码）
+	// 类型包括
+	// 二维码：QR_CODE
+	// 一维码：EAN-13、EAN-8、EAN-2、UPC-A、UPC-E、CODE-39、CODE-93、CODE-128 
+	// PDF：PDF_417
+	// DataMatrix：DATA_MATRIX
+	// 小程序码：WX_CODE
 	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
 	// 二维码/条形码包含的地址
@@ -8617,6 +8694,84 @@ func (r *RecognizePhilippinesVoteIDOCRResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RecognizeStoreNameRequestParams struct {
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+type RecognizeStoreNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizeStoreNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeStoreNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeStoreNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeStoreNameResponseParams struct {
+	// 门头照名称
+	StoreInfo []*StoreInfo `json:"StoreInfo,omitnil,omitempty" name:"StoreInfo"`
+
+	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负
+	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// 门头照标签
+	StoreLabel []*string `json:"StoreLabel,omitnil,omitempty" name:"StoreLabel"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeStoreNameResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeStoreNameResponseParams `json:"Response"`
+}
+
+func (r *RecognizeStoreNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeStoreNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RecognizeTableAccurateOCRRequestParams struct {
 	// 图片/PDF的 Base64 值。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
@@ -10155,6 +10310,18 @@ func (r *SmartStructuralOCRV2Response) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SmartStructuralOCRV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StoreInfo struct {
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标
+	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
 }
 
 type StructuralItem struct {

@@ -11605,6 +11605,14 @@ type MediaVideoStreamItem struct {
 	// 视频Codecs。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codecs *string `json:"Codecs,omitnil,omitempty" name:"Codecs"`
+
+	// 帧率分子部分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsNumerator *int64 `json:"FpsNumerator,omitnil,omitempty" name:"FpsNumerator"`
+
+	// 帧率分母部分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
 }
 
 // Predefined struct for user
@@ -16329,11 +16337,13 @@ type VideoTemplateInfo struct {
 	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
-	// 注意：自适应码率时取值范围是 [0, 60]
+	// 视频帧率，取值范围：
+	// 当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
+	// 当FpsDenominator的值不为空时，Fps/FpsDenominator的范围：[0,120]
+	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
@@ -16386,6 +16396,11 @@ type VideoTemplateInfo struct {
 	// 默认值：0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentType *int64 `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// 帧率分母部分
+	// 注意：值必须大于0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -16407,11 +16422,14 @@ type VideoTemplateInfoForUpdate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+	// 视频帧率，取值范围：
+	// 当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
+	// 当FpsDenominator的值不为空时，Fps/FpsDenominator的范围：[0,120]
+	// 当取值为 0，表示帧率和原始视频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
@@ -16467,6 +16485,11 @@ type VideoTemplateInfoForUpdate struct {
 	// 默认值：0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentType *int64 `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// 帧率分母部分
+	// 注意：值必须大于0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
 }
 
 type VolumeBalanceConfig struct {

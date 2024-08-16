@@ -3303,6 +3303,10 @@ type CanFixVulInfo struct {
 	// 修复提示tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixTag []*string `json:"FixTag,omitnil,omitempty" name:"FixTag"`
+
+	// 漏洞分类1 web cms漏洞,2应用漏洞,4linux软件漏洞,5windows系统漏洞
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulCategory *uint64 `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
 }
 
 type CanNotSeparateInfo struct {
@@ -5390,6 +5394,9 @@ type CreateVulFixTaskQuuids struct {
 
 	// 需要修复漏洞的主机，所有主机必须有VulId的这个漏洞且是待修复状态。
 	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
+
+	// 修复方式 0组件更新或者安装补丁,1禁用服务
+	FixMethod *uint64 `json:"FixMethod,omitnil,omitempty" name:"FixMethod"`
 }
 
 // Predefined struct for user
@@ -47617,6 +47624,10 @@ type VulFixStatusInfo struct {
 	// 修复成功的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixSuccessCnt *uint64 `json:"FixSuccessCnt,omitnil,omitempty" name:"FixSuccessCnt"`
+
+	// 修复方式 0组件更新或者安装补丁,1禁用服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixMethod *uint64 `json:"FixMethod,omitnil,omitempty" name:"FixMethod"`
 }
 
 type VulFixStatusSnapshotInfo struct {

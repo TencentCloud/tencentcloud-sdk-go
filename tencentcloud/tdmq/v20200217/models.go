@@ -8501,6 +8501,10 @@ type DescribeRocketMQPublicAccessPointResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
+	// 公网是否按流量计费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -14862,6 +14866,9 @@ type SetRocketMQPublicAccessPointRequestParams struct {
 
 	// 公网访问安全规则列表，Enabled为true时必须传入
 	Rules []*PublicAccessRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 公网是否按流量计费
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
 }
 
 type SetRocketMQPublicAccessPointRequest struct {
@@ -14881,6 +14888,9 @@ type SetRocketMQPublicAccessPointRequest struct {
 
 	// 公网访问安全规则列表，Enabled为true时必须传入
 	Rules []*PublicAccessRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 公网是否按流量计费
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
 }
 
 func (r *SetRocketMQPublicAccessPointRequest) ToJsonString() string {
@@ -14900,6 +14910,7 @@ func (r *SetRocketMQPublicAccessPointRequest) FromJsonString(s string) error {
 	delete(f, "Bandwidth")
 	delete(f, "PayMode")
 	delete(f, "Rules")
+	delete(f, "BillingFlow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetRocketMQPublicAccessPointRequest has unknown keys!", "")
 	}

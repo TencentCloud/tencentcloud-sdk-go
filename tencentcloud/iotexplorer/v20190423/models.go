@@ -805,7 +805,7 @@ type CloudStorageAIServiceTask struct {
 
 	// 云存 AI 服务类型。可能取值：
 	// 
-	// - `PackageDetect`：包裹检测
+	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
@@ -829,6 +829,9 @@ type CloudStorageAIServiceTask struct {
 
 	// 最后更新时间
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 }
 
 type CloudStorageEvent struct {
@@ -3287,22 +3290,18 @@ type DescribeCloudStorageAIServiceResponseParams struct {
 	// - `1`：全时套餐
 	// - `2`：事件套餐
 	// - `3`：低功耗套餐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 云存 AI 套餐生效状态。可能取值：
 	// 
 	// - `0`：未开通或已过期
 	// - `1`：生效中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 云存 AI 套餐过期时间 UNIX 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 用户 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 视频分析启用状态

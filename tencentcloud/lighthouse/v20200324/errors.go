@@ -473,6 +473,9 @@ const (
 	// 必须传入参数Period或CurInstanceDeadline。
 	MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = "MissingParameter.MissingParameterPeriodCurInstanceDeadline"
 
+	// 指定参数`Order`时，必须传入参数 `OrderField`。
+	MISSINGPARAMETER_ORDERFIELDREQUIRED = "MissingParameter.OrderFieldRequired"
+
 	// 镜像在操作中。请稍后再试。
 	OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
 

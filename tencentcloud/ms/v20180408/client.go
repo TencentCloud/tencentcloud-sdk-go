@@ -65,10 +65,6 @@ func NewCancelEncryptTaskResponse() (response *CancelEncryptTaskResponse) {
 }
 
 // CancelEncryptTask
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务
 //
 // 可能返回的错误码:
@@ -85,10 +81,6 @@ func (c *Client) CancelEncryptTask(request *CancelEncryptTaskRequest) (response 
 }
 
 // CancelEncryptTask
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务
 //
 // 可能返回的错误码:
@@ -136,10 +128,6 @@ func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
 }
 
 // CreateBindInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 将应用和资源进行绑定。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -155,10 +143,6 @@ func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (respons
 }
 
 // CreateBindInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 将应用和资源进行绑定。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -205,10 +189,6 @@ func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResp
 }
 
 // CreateCosSecKeyInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性，请保管好临时密钥。
 //
 // 可能返回的错误码:
@@ -222,10 +202,6 @@ func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest
 }
 
 // CreateCosSecKeyInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性，请保管好临时密钥。
 //
 // 可能返回的错误码:
@@ -270,10 +246,6 @@ func NewCreateEncryptInstanceResponse() (response *CreateEncryptInstanceResponse
 }
 
 // CreateEncryptInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
 //
 // 可能返回的错误码:
@@ -308,10 +280,6 @@ func (c *Client) CreateEncryptInstance(request *CreateEncryptInstanceRequest) (r
 }
 
 // CreateEncryptInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
 //
 // 可能返回的错误码:
@@ -377,10 +345,6 @@ func NewCreateOrderInstanceResponse() (response *CreateOrderInstanceResponse) {
 }
 
 // CreateOrderInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
 //
 // 订单类型有：免费试用、按年收费、按次收费。
@@ -401,10 +365,6 @@ func (c *Client) CreateOrderInstance(request *CreateOrderInstanceRequest) (respo
 }
 
 // CreateOrderInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
 //
 // 订单类型有：免费试用、按年收费、按次收费。
@@ -456,10 +416,6 @@ func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResp
 }
 
 // CreateResourceInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 用户可以使用该接口自建资源，只支持白名单用户
 //
 // 可能返回的错误码:
@@ -476,10 +432,6 @@ func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest
 }
 
 // CreateResourceInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 用户可以使用该接口自建资源，只支持白名单用户
 //
 // 可能返回的错误码:
@@ -527,10 +479,6 @@ func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) 
 }
 
 // CreateShieldInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -550,10 +498,6 @@ func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (res
 }
 
 // CreateShieldInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -604,10 +548,6 @@ func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceRe
 }
 
 // CreateShieldPlanInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 对资源进行策略新增。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -623,10 +563,6 @@ func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceReque
 }
 
 // CreateShieldPlanInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 对资源进行策略新增。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -673,10 +609,6 @@ func NewDeleteShieldInstancesResponse() (response *DeleteShieldInstancesResponse
 }
 
 // DeleteShieldInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 删除一个或者多个app加固信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -691,10 +623,6 @@ func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (r
 }
 
 // DeleteShieldInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 删除一个或者多个app加固信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -740,10 +668,6 @@ func NewDescribeApkDetectionResultResponse() (response *DescribeApkDetectionResu
 }
 
 // DescribeApkDetectionResult
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口采用同步模式请求腾讯APK云检测服务，即时返回检测数据，需要用户用轮询的方式调用本接口来进行样本送检并获取检测结果(每隔60s发送一次请求，传相同的参数，重试30次)，一般情况下0.5h内会出检测结果，最长时间是3h。当Result为ok并且ResultList数组非空有值时，代表检测完毕，若长时间获取不到检测结果，请联系客服。
 //
 // 可能返回的错误码:
@@ -761,10 +685,6 @@ func (c *Client) DescribeApkDetectionResult(request *DescribeApkDetectionResultR
 }
 
 // DescribeApkDetectionResult
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口采用同步模式请求腾讯APK云检测服务，即时返回检测数据，需要用户用轮询的方式调用本接口来进行样本送检并获取检测结果(每隔60s发送一次请求，传相同的参数，重试30次)，一般情况下0.5h内会出检测结果，最长时间是3h。当Result为ok并且ResultList数组非空有值时，代表检测完毕，若长时间获取不到检测结果，请联系客服。
 //
 // 可能返回的错误码:
@@ -813,10 +733,6 @@ func NewDescribeEncryptInstancesResponse() (response *DescribeEncryptInstancesRe
 }
 
 // DescribeEncryptInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点: 1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 //
 // 可能返回的错误码:
@@ -832,10 +748,6 @@ func (c *Client) DescribeEncryptInstances(request *DescribeEncryptInstancesReque
 }
 
 // DescribeEncryptInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点: 1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 //
 // 可能返回的错误码:
@@ -882,10 +794,6 @@ func NewDescribeEncryptPlanResponse() (response *DescribeEncryptPlanResponse) {
 }
 
 // DescribeEncryptPlan
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。入参中的条件过滤字段均为精准匹配。
 //
 // 可能返回的错误码:
@@ -901,10 +809,6 @@ func (c *Client) DescribeEncryptPlan(request *DescribeEncryptPlanRequest) (respo
 }
 
 // DescribeEncryptPlan
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。入参中的条件过滤字段均为精准匹配。
 //
 // 可能返回的错误码:
@@ -951,10 +855,6 @@ func NewDescribeOrderInstancesResponse() (response *DescribeOrderInstancesRespon
 }
 
 // DescribeOrderInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配.
 //
 // 接口功能点：
@@ -976,10 +876,6 @@ func (c *Client) DescribeOrderInstances(request *DescribeOrderInstancesRequest) 
 }
 
 // DescribeOrderInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配.
 //
 // 接口功能点：
@@ -1032,10 +928,6 @@ func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstances
 }
 
 // DescribeResourceInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 获取某个用户的所有资源信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -1054,10 +946,6 @@ func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesReq
 }
 
 // DescribeResourceInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 获取某个用户的所有资源信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -1107,10 +995,6 @@ func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResp
 }
 
 // DescribeShieldInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 本接口用于查看app列表。
 //
 // 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
@@ -1131,10 +1015,6 @@ func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest
 }
 
 // DescribeShieldInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 本接口用于查看app列表。
 //
 // 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
@@ -1186,10 +1066,6 @@ func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstan
 }
 
 // DescribeShieldPlanInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 查询加固策略。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -1204,10 +1080,6 @@ func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceR
 }
 
 // DescribeShieldPlanInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 查询加固策略。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -1253,10 +1125,6 @@ func NewDescribeShieldResultResponse() (response *DescribeShieldResultResponse) 
 }
 
 // DescribeShieldResult
-// 产品已经停止售卖
-//
-// 
-//
 // 通过唯一标识获取加固的结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -1271,10 +1139,6 @@ func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (res
 }
 
 // DescribeShieldResult
-// 产品已经停止售卖
-//
-// 
-//
 // 通过唯一标识获取加固的结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
@@ -1320,10 +1184,6 @@ func NewDescribeUrlDetectionResultResponse() (response *DescribeUrlDetectionResu
 }
 
 // DescribeUrlDetectionResult
-// 产品已经停止售卖
-//
-// 
-//
 // 移动安全-网址检测服务
 //
 // 可能返回的错误码:
@@ -1339,10 +1199,6 @@ func (c *Client) DescribeUrlDetectionResult(request *DescribeUrlDetectionResultR
 }
 
 // DescribeUrlDetectionResult
-// 产品已经停止售卖
-//
-// 
-//
 // 移动安全-网址检测服务
 //
 // 可能返回的错误码:
@@ -1389,10 +1245,6 @@ func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoIn
 }
 
 // DescribeUserBaseInfoInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 获取用户基础信息
 //
 // 可能返回的错误码:
@@ -1408,10 +1260,6 @@ func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInsta
 }
 
 // DescribeUserBaseInfoInstance
-// 产品已经停止售卖
-//
-// 
-//
 // 获取用户基础信息
 //
 // 可能返回的错误码:
@@ -1458,10 +1306,6 @@ func NewDestroyResourceInstancesResponse() (response *DestroyResourceInstancesRe
 }
 
 // DestroyResourceInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 渠道合作资源销毁
 //
 // 安卓应用加固-按年收费资源销毁，其他类型暂不支持
@@ -1474,10 +1318,6 @@ func (c *Client) DestroyResourceInstances(request *DestroyResourceInstancesReque
 }
 
 // DestroyResourceInstances
-// 产品已经停止售卖
-//
-// 
-//
 // 渠道合作资源销毁
 //
 // 安卓应用加固-按年收费资源销毁，其他类型暂不支持
@@ -1521,10 +1361,6 @@ func NewRequestLocalTaskResponse() (response *RequestLocalTaskResponse) {
 }
 
 // RequestLocalTask
-// 产品已经停止售卖
-//
-// 
-//
 // client任务请求
 //
 // 可能返回的错误码:
@@ -1535,10 +1371,6 @@ func (c *Client) RequestLocalTask(request *RequestLocalTaskRequest) (response *R
 }
 
 // RequestLocalTask
-// 产品已经停止售卖
-//
-// 
-//
 // client任务请求
 //
 // 可能返回的错误码:
@@ -1580,10 +1412,6 @@ func NewUpdateClientStateResponse() (response *UpdateClientStateResponse) {
 }
 
 // UpdateClientState
-// 产品已经停止售卖
-//
-// 
-//
 // 更新client状态，需要白名单
 //
 // 可能返回的错误码:
@@ -1593,10 +1421,6 @@ func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response 
 }
 
 // UpdateClientState
-// 产品已经停止售卖
-//
-// 
-//
 // 更新client状态，需要白名单
 //
 // 可能返回的错误码:
@@ -1637,10 +1461,6 @@ func NewUpdateLocalTaskResultResponse() (response *UpdateLocalTaskResultResponse
 }
 
 // UpdateLocalTaskResult
-// 产品已经停止售卖
-//
-// 
-//
 // 更新本地任务执行结果
 //
 // 可能返回的错误码:
@@ -1650,10 +1470,6 @@ func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (r
 }
 
 // UpdateLocalTaskResult
-// 产品已经停止售卖
-//
-// 
-//
 // 更新本地任务执行结果
 //
 // 可能返回的错误码:

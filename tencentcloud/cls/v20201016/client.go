@@ -3638,7 +3638,7 @@ func NewDescribeDashboardSubscribesResponse() (response *DescribeDashboardSubscr
 }
 
 // DescribeDashboardSubscribes
-//  本接口用于获取仪表盘订阅列表，支持分页
+// 本接口用于获取仪表盘订阅列表，支持分页
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3658,7 +3658,7 @@ func (c *Client) DescribeDashboardSubscribes(request *DescribeDashboardSubscribe
 }
 
 // DescribeDashboardSubscribes
-//  本接口用于获取仪表盘订阅列表，支持分页
+// 本接口用于获取仪表盘订阅列表，支持分页
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

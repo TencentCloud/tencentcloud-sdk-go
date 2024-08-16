@@ -2198,6 +2198,14 @@ type CCN struct {
 	// 是否支持ipv6路由表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Flag *string `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
+
+	// 是否支持路由表聚合策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MrtbAggregatePolicyFlag *bool `json:"MrtbAggregatePolicyFlag,omitnil,omitempty" name:"MrtbAggregatePolicyFlag"`
+
+	// 是否支持策略值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MrtbPolicyValueFlag *bool `json:"MrtbPolicyValueFlag,omitnil,omitempty" name:"MrtbPolicyValueFlag"`
 }
 
 type CcnAttachedInstance struct {
@@ -2532,6 +2540,22 @@ type CcnRouteTableBroadcastPolicy struct {
 
 	// 策略描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// as-path操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateAsPath *string `json:"OperateAsPath,omitnil,omitempty" name:"OperateAsPath"`
+
+	// as-path操作模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsPathOperateMode *string `json:"AsPathOperateMode,omitnil,omitempty" name:"AsPathOperateMode"`
+
+	// community操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateCommunitySet []*string `json:"OperateCommunitySet,omitnil,omitempty" name:"OperateCommunitySet"`
+
+	// community操作模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommunityOperateMode *string `json:"CommunityOperateMode,omitnil,omitempty" name:"CommunityOperateMode"`
 }
 
 type CcnRouteTableBroadcastPolicys struct {
@@ -2554,6 +2578,14 @@ type CcnRouteTableInputPolicy struct {
 
 	// 策略描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// as-path操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateAsPath *string `json:"OperateAsPath,omitnil,omitempty" name:"OperateAsPath"`
+
+	// as-path操作模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsPathOperateMode *string `json:"AsPathOperateMode,omitnil,omitempty" name:"AsPathOperateMode"`
 }
 
 type CcnRouteTableInputPolicys struct {

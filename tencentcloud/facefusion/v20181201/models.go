@@ -416,13 +416,19 @@ type MaterialFaceList struct {
 
 type MergeInfo struct {
 	// 输入图片base64。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
+	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
+	// ●支持图片格式：支持jpg或png。
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 输入图片url。
-	// Url、Image必须提供一个，如果都提供，只使用 Url。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
+	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
+	// ●支持图片格式：支持jpg或png。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 输入图片人脸位置信息（人脸框）。不填默认取输入图中最大人脸。
+	// Width、Height >= 30。
 	InputImageFaceRect *FaceRect `json:"InputImageFaceRect,omitnil,omitempty" name:"InputImageFaceRect"`
 
 	// 素材人脸ID，不填默认取素材中最大人脸。
@@ -430,10 +436,10 @@ type MergeInfo struct {
 }
 
 type MetaData struct {
-	// MetaData的Key
+	// MetaData的Key，长度不能超过32。
 	MetaKey *string `json:"MetaKey,omitnil,omitempty" name:"MetaKey"`
 
-	// MetaData的Value
+	// MetaData的Value，长度不能超过256。
 	MetaValue *string `json:"MetaValue,omitnil,omitempty" name:"MetaValue"`
 }
 

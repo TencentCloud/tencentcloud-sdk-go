@@ -2090,6 +2090,10 @@ type TemplateGroupAction struct {
 	// 动作类型：平台和自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 动作风险等级，1:低风险 2:中风险 3:高风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionRisk *string `json:"ActionRisk,omitnil,omitempty" name:"ActionRisk"`
 }
 
 type TemplateListItem struct {

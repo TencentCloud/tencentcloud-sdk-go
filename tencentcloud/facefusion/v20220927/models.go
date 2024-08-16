@@ -140,7 +140,7 @@ type FuseFaceRequestParams struct {
 	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
-	// 用户人脸图片、素材模板图的人脸位置信息。
+	// 用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
@@ -178,7 +178,7 @@ type FuseFaceRequest struct {
 	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
-	// 用户人脸图片、素材模板图的人脸位置信息。
+	// 用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
@@ -233,7 +233,7 @@ func (r *FuseFaceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FuseFaceResponseParams struct {
-	// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+	// RspImgType 为 url 时，返回结果的 url（有效期7天）， RspImgType 为 base64 时返回 base64 数据。
 	FusedImage *string `json:"FusedImage,omitnil,omitempty" name:"FusedImage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -435,18 +435,22 @@ type FusionUltraParam struct {
 }
 
 type ImageCodecParam struct {
-	// 元数据
+	// 元数据，个数不能大于1。
 	MetaData []*MetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
 type LogoParam struct {
-	// 标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+	// 标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配。
 	LogoRect *FaceRect `json:"LogoRect,omitnil,omitempty" name:"LogoRect"`
 
-	// 标识图片Url地址
+	// 标识图片Url地址。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
+	// ●支持图片格式：支持jpg或png。
 	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
 
 	// 标识图片base64
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
+	// ●支持图片格式：支持jpg或png。
 	LogoImage *string `json:"LogoImage,omitnil,omitempty" name:"LogoImage"`
 }
 
@@ -459,19 +463,27 @@ type MaterialFaces struct {
 }
 
 type MergeInfo struct {
-	// 输入图片base64
+	// 输入图片base64。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
+	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
+	// ●支持图片格式：支持jpg或png
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 输入图片url
+	// 输入图片url。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
+	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
+	// ●支持图片格式：支持jpg或png
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 上传的图片人脸位置信息（人脸框）
+	// Width、Height >= 30。
 	InputImageFaceRect *FaceRect `json:"InputImageFaceRect,omitnil,omitempty" name:"InputImageFaceRect"`
 
 	// 素材人脸ID，不填默认取最大人脸。
 	TemplateFaceID *string `json:"TemplateFaceID,omitnil,omitempty" name:"TemplateFaceID"`
 
 	// 模板中人脸位置信息(人脸框)，不填默认取最大人脸。此字段仅适用于图片融合自定义模板素材场景。
+	// Width、Height >= 30。
 	TemplateFaceRect *FaceRect `json:"TemplateFaceRect,omitnil,omitempty" name:"TemplateFaceRect"`
 }
 

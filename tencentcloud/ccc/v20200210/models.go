@@ -4509,6 +4509,9 @@ type ModifyStaffRequestParams struct {
 	// 座席昵称
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
+	// 座席工号
+	StaffNo *string `json:"StaffNo,omitnil,omitempty" name:"StaffNo"`
+
 	// 绑定技能组ID列表
 	SkillGroupIds []*int64 `json:"SkillGroupIds,omitnil,omitempty" name:"SkillGroupIds"`
 
@@ -4537,6 +4540,9 @@ type ModifyStaffRequest struct {
 	// 座席昵称
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
+	// 座席工号
+	StaffNo *string `json:"StaffNo,omitnil,omitempty" name:"StaffNo"`
+
 	// 绑定技能组ID列表
 	SkillGroupIds []*int64 `json:"SkillGroupIds,omitnil,omitempty" name:"SkillGroupIds"`
 
@@ -4564,6 +4570,7 @@ func (r *ModifyStaffRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Phone")
 	delete(f, "Nick")
+	delete(f, "StaffNo")
 	delete(f, "SkillGroupIds")
 	delete(f, "UseMobileCallOut")
 	delete(f, "UseMobileAccept")
