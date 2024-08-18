@@ -276,7 +276,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //
 // - 支持对图片文件或链接进行检测，通过深度学习技术，识别可能令人反感、不安全或不适宜的违规图片内容；
 //
-// - 支持对GIF图/长图进行截帧或拆分检测；
+// - 支持对长图进行拆分检测；
 //
 // - 支持识别多种违规场景，包括：低俗、违法违规、色情、广告等场景；
 //
@@ -392,7 +392,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //
 // - 支持对图片文件或链接进行检测，通过深度学习技术，识别可能令人反感、不安全或不适宜的违规图片内容；
 //
-// - 支持对GIF图/长图进行截帧或拆分检测；
+// - 支持对长图进行拆分检测；
 //
 // - 支持识别多种违规场景，包括：低俗、违法违规、色情、广告等场景；
 //

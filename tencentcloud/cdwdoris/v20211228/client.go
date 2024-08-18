@@ -1849,6 +1849,55 @@ func (c *Client) DescribeSqlApisWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeTableListRequest() (request *DescribeTableListRequest) {
+    request = &DescribeTableListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeTableList")
+    
+    
+    return
+}
+
+func NewDescribeTableListResponse() (response *DescribeTableListResponse) {
+    response = &DescribeTableListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableList
+// 获取指定数据源和库下的表列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeTableList(request *DescribeTableListRequest) (response *DescribeTableListResponse, err error) {
+    return c.DescribeTableListWithContext(context.Background(), request)
+}
+
+// DescribeTableList
+// 获取指定数据源和库下的表列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeTableListWithContext(ctx context.Context, request *DescribeTableListRequest) (response *DescribeTableListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserBindWorkloadGroupRequest() (request *DescribeUserBindWorkloadGroupRequest) {
     request = &DescribeUserBindWorkloadGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

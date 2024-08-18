@@ -3045,6 +3045,9 @@ type DescribeMySqlProcessListRequestParams struct {
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 会话统计的维度信息,可以多个维度。
+	StatDimensions []*StatDimension `json:"StatDimensions,omitnil,omitempty" name:"StatDimensions"`
 }
 
 type DescribeMySqlProcessListRequest struct {
@@ -3082,6 +3085,9 @@ type DescribeMySqlProcessListRequest struct {
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 会话统计的维度信息,可以多个维度。
+	StatDimensions []*StatDimension `json:"StatDimensions,omitnil,omitempty" name:"StatDimensions"`
 }
 
 func (r *DescribeMySqlProcessListRequest) ToJsonString() string {
@@ -3107,6 +3113,7 @@ func (r *DescribeMySqlProcessListRequest) FromJsonString(s string) error {
 	delete(f, "Info")
 	delete(f, "Limit")
 	delete(f, "Product")
+	delete(f, "StatDimensions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMySqlProcessListRequest has unknown keys!", "")
 	}
@@ -3117,6 +3124,10 @@ func (r *DescribeMySqlProcessListRequest) FromJsonString(s string) error {
 type DescribeMySqlProcessListResponseParams struct {
 	// 实时线程列表。
 	ProcessList []*MySqlProcess `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
+
+	// sql会话统计信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*StatisticInfo `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6421,6 +6432,47 @@ type SlowLogUser struct {
 
 	// 该来源用户名的慢日志数目。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type StatDimension struct {
+	// 维度名称，目前仅支持：SqlTag。
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// SQL 标签过滤与统计信息
+	// 示例：
+	// 
+	// 示例 1：[p=position] 统计包含 p=position 标签的 SQL 会话。
+	// 示例 2：[p] 统计包含 p 标签的 SQL 会话。
+	// 示例 3：[p=position, c=idCard] 统计同时包含 p=position 标签和 c=idCard 标签的 SQL 会话。
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type StatisticDataInfo struct {
+	// 统计维度的值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 平均时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeAvg *float64 `json:"TimeAvg,omitnil,omitempty" name:"TimeAvg"`
+
+	// 总时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSum *float64 `json:"TimeSum,omitnil,omitempty" name:"TimeSum"`
+
+	// 数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type StatisticInfo struct {
+	// 统计分析的维度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 统计分析的维度下的统计数据详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*StatisticDataInfo `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type Table struct {

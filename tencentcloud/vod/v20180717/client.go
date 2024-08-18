@@ -1694,6 +1694,10 @@ func NewCreateRoundPlayResponse() (response *CreateRoundPlayResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
+//  LIMITEXCEEDED_RUNNINGROUNDPLAYS = "LimitExceeded.RunningRoundPlays"
 func (c *Client) CreateRoundPlay(request *CreateRoundPlayRequest) (response *CreateRoundPlayResponse, err error) {
     return c.CreateRoundPlayWithContext(context.Background(), request)
 }
@@ -1708,6 +1712,10 @@ func (c *Client) CreateRoundPlay(request *CreateRoundPlayRequest) (response *Cre
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
+//  LIMITEXCEEDED_RUNNINGROUNDPLAYS = "LimitExceeded.RunningRoundPlays"
 func (c *Client) CreateRoundPlayWithContext(ctx context.Context, request *CreateRoundPlayRequest) (response *CreateRoundPlayResponse, err error) {
     if request == nil {
         request = NewCreateRoundPlayRequest()
@@ -9499,6 +9507,9 @@ func NewModifyRoundPlayResponse() (response *ModifyRoundPlayResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
+//  LIMITEXCEEDED_RUNNINGROUNDPLAYS = "LimitExceeded.RunningRoundPlays"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRoundPlay(request *ModifyRoundPlayRequest) (response *ModifyRoundPlayResponse, err error) {
     return c.ModifyRoundPlayWithContext(context.Background(), request)
@@ -9513,6 +9524,9 @@ func (c *Client) ModifyRoundPlay(request *ModifyRoundPlayRequest) (response *Mod
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
+//  LIMITEXCEEDED_RUNNINGROUNDPLAYS = "LimitExceeded.RunningRoundPlays"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRoundPlayWithContext(ctx context.Context, request *ModifyRoundPlayRequest) (response *ModifyRoundPlayResponse, err error) {
     if request == nil {

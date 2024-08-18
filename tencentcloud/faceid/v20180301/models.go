@@ -900,6 +900,12 @@ type DetectAIFakeFacesRequestParams struct {
 	// 2- 传入的是视频类型
 	// 其他 - 返回错误码InvalidParameter
 	FaceInputType *int64 `json:"FaceInputType,omitnil,omitempty" name:"FaceInputType"`
+
+	// 是否需要对请求信息进行全包体加密； 支持的加密算法:AES-256-CBC、SM4-GCM； 有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 加密后的密文； 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 type DetectAIFakeFacesRequest struct {
@@ -923,6 +929,12 @@ type DetectAIFakeFacesRequest struct {
 	// 2- 传入的是视频类型
 	// 其他 - 返回错误码InvalidParameter
 	FaceInputType *int64 `json:"FaceInputType,omitnil,omitempty" name:"FaceInputType"`
+
+	// 是否需要对请求信息进行全包体加密； 支持的加密算法:AES-256-CBC、SM4-GCM； 有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 加密后的密文； 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 func (r *DetectAIFakeFacesRequest) ToJsonString() string {
@@ -939,6 +951,8 @@ func (r *DetectAIFakeFacesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FaceInput")
 	delete(f, "FaceInputType")
+	delete(f, "Encryption")
+	delete(f, "EncryptedBody")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAIFakeFacesRequest has unknown keys!", "")
 	}

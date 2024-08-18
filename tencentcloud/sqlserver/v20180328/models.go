@@ -110,7 +110,7 @@ type AccountPrivilegeModifyInfo struct {
 	// 数据库用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账号权限变更信息
+	// 账号权限变更信息。参数DBPrivileges和AccAllDB只能二选一
 	DBPrivileges []*DBPrivilegeModifyInfo `json:"DBPrivileges,omitnil,omitempty" name:"DBPrivileges"`
 
 	// 表示是否为管理员账户，当值为true，表示是 管理员。若实例 是 单节点，则管理员所在的 账号类型为超级权限账号 ，即AccountType=L0；若实例 是 双节点，则管理员所在的 账号类型为高级权限账号，即AccountType=L1；当值为false，表示 不是管理员，则账号类型为普通账号，即AccountType=L3
@@ -118,6 +118,9 @@ type AccountPrivilegeModifyInfo struct {
 
 	// 账号类型，IsAdmin字段的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// 全量修改指定账号下的所有DB权限，只支持特殊权限账号和普通权限账号。参数DBPrivileges和AccAllDB只能二选一
+	AccAllDB *SelectAllDB `json:"AccAllDB,omitnil,omitempty" name:"AccAllDB"`
 }
 
 type AccountRemark struct {
@@ -2845,6 +2848,14 @@ type DBTDEEncrypt struct {
 
 	// enable-开启数据库TDE加密，disable-关闭数据库TDE加密
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+}
+
+type DataBasePrivilegeModifyInfo struct {
+	// 数据库名称
+	DataBaseName *string `json:"DataBaseName,omitnil,omitempty" name:"DataBaseName"`
+
+	// 数据库权限变更信息
+	AccountPrivileges []*AccountPrivilege `json:"AccountPrivileges,omitnil,omitempty" name:"AccountPrivileges"`
 }
 
 type DatabaseTuple struct {
@@ -11306,6 +11317,70 @@ func (r *ModifyDatabaseMdfResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDatabasePrivilegeRequestParams struct {
+	// 数据库实例ID，形如mssql-njj2mtpl
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库权限变更信息
+	DataBaseSet []*DataBasePrivilegeModifyInfo `json:"DataBaseSet,omitnil,omitempty" name:"DataBaseSet"`
+}
+
+type ModifyDatabasePrivilegeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库实例ID，形如mssql-njj2mtpl
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库权限变更信息
+	DataBaseSet []*DataBasePrivilegeModifyInfo `json:"DataBaseSet,omitnil,omitempty" name:"DataBaseSet"`
+}
+
+func (r *ModifyDatabasePrivilegeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabasePrivilegeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DataBaseSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatabasePrivilegeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatabasePrivilegeResponseParams struct {
+	// 异步任务流程ID
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDatabasePrivilegeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDatabasePrivilegeResponseParams `json:"Response"`
+}
+
+func (r *ModifyDatabasePrivilegeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabasePrivilegeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDatabaseShrinkMDFRequestParams struct {
 	// 数据库名数组
 	DBNames []*string `json:"DBNames,omitnil,omitempty" name:"DBNames"`
@@ -13309,6 +13384,11 @@ type SecurityGroupPolicy struct {
 
 	// 规则限定的方向，OUTPUT-出战规则  INPUT-进站规则
 	Dir *string `json:"Dir,omitnil,omitempty" name:"Dir"`
+}
+
+type SelectAllDB struct {
+	// 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限，DBOwner所有者
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type SlaveZones struct {

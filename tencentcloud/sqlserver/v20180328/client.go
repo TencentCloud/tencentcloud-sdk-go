@@ -7486,6 +7486,75 @@ func (c *Client) ModifyDatabaseMdfWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyDatabasePrivilegeRequest() (request *ModifyDatabasePrivilegeRequest) {
+    request = &ModifyDatabasePrivilegeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabasePrivilege")
+    
+    
+    return
+}
+
+func NewModifyDatabasePrivilegeResponse() (response *ModifyDatabasePrivilegeResponse) {
+    response = &ModifyDatabasePrivilegeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDatabasePrivilege
+// 本接口（ModifyDatabasePrivilege）用于修改实例数据库权限。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+//  INVALIDPARAMETERVALUE_GRANTISILLEGAL = "InvalidParameterValue.GrantIsIllegal"
+//  RESOURCENOTFOUND_ACCOUNTNOTEXIST = "ResourceNotFound.AccountNotExist"
+//  RESOURCENOTFOUND_DBNOTEXIT = "ResourceNotFound.DBNotExit"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDatabasePrivilege(request *ModifyDatabasePrivilegeRequest) (response *ModifyDatabasePrivilegeResponse, err error) {
+    return c.ModifyDatabasePrivilegeWithContext(context.Background(), request)
+}
+
+// ModifyDatabasePrivilege
+// 本接口（ModifyDatabasePrivilege）用于修改实例数据库权限。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+//  INVALIDPARAMETERVALUE_GRANTISILLEGAL = "InvalidParameterValue.GrantIsIllegal"
+//  RESOURCENOTFOUND_ACCOUNTNOTEXIST = "ResourceNotFound.AccountNotExist"
+//  RESOURCENOTFOUND_DBNOTEXIT = "ResourceNotFound.DBNotExit"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDatabasePrivilegeWithContext(ctx context.Context, request *ModifyDatabasePrivilegeRequest) (response *ModifyDatabasePrivilegeResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabasePrivilegeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDatabasePrivilege require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDatabasePrivilegeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDatabaseShrinkMDFRequest() (request *ModifyDatabaseShrinkMDFRequest) {
     request = &ModifyDatabaseShrinkMDFRequest{
         BaseRequest: &tchttp.BaseRequest{},

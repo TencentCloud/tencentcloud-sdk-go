@@ -964,6 +964,16 @@ type CreateReconstructDocumentFlowConfig struct {
 	// 1，表格以HTML形式返回
 	// 默认为1
 	TableResultType *string `json:"TableResultType,omitnil,omitempty" name:"TableResultType"`
+
+	// 智能文档解析返回结果的格式
+	// 0：只返回全文MD；
+	// 1：只返回每一页的OCR原始Json；
+	// 2：只返回每一页的MD，
+	// 3：返回全文MD + 每一页的OCR原始Json；
+	// 4：返回全文MD + 每一页的MD，
+	// 默认值为3（返回全文MD + 每一页的OCR原始Json）
+	// 
+	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 }
 
 // Predefined struct for user

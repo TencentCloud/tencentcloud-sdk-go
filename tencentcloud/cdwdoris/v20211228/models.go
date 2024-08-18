@@ -3760,6 +3760,96 @@ func (r *DescribeSqlApisResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableListRequestParams struct {
+	// 资源ID，建表所用的TCHouse-D资源ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要获取表列表的库
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 使用该用户进行操作，该用户需要有对应的权限。如果该TCHouse-D集群使用CAM用户注册内核账户，则不需要填写
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 用户对应的密码。如果该TCHouse-D集群使用CAM用户注册内核账户，则不需要填写
+	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
+
+	// 查询库所在的数据源，不填则默认为内部数据源（internal）。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type DescribeTableListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID，建表所用的TCHouse-D资源ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要获取表列表的库
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 使用该用户进行操作，该用户需要有对应的权限。如果该TCHouse-D集群使用CAM用户注册内核账户，则不需要填写
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 用户对应的密码。如果该TCHouse-D集群使用CAM用户注册内核账户，则不需要填写
+	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
+
+	// 查询库所在的数据源，不填则默认为内部数据源（internal）。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+func (r *DescribeTableListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DbName")
+	delete(f, "UserName")
+	delete(f, "PassWord")
+	delete(f, "CatalogName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableListResponseParams struct {
+	// 表名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNames []*string `json:"TableNames,omitnil,omitempty" name:"TableNames"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserBindWorkloadGroupRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

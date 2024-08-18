@@ -1667,91 +1667,6 @@ func (r *DetectPetResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DetectProductBetaRequestParams struct {
-	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
-	// 建议先对图片进行压缩，以便提升处理速度。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
-	// 与ImageUrl同时存在时优先使用ImageUrl字段。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 是否需要百科信息 1：是，0: 否，默认是0
-	NeedLemma *int64 `json:"NeedLemma,omitnil,omitempty" name:"NeedLemma"`
-}
-
-type DetectProductBetaRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
-	// 建议先对图片进行压缩，以便提升处理速度。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
-	// 与ImageUrl同时存在时优先使用ImageUrl字段。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 是否需要百科信息 1：是，0: 否，默认是0
-	NeedLemma *int64 `json:"NeedLemma,omitnil,omitempty" name:"NeedLemma"`
-}
-
-func (r *DetectProductBetaRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectProductBetaRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageUrl")
-	delete(f, "ImageBase64")
-	delete(f, "NeedLemma")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectProductBetaRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DetectProductBetaResponseParams struct {
-	// 检测到的图片中的商品位置和品类预测。 
-	// 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
-	// 最多可以输出__3组__检测结果。
-	RegionDetected []*RegionDetected `json:"RegionDetected,omitnil,omitempty" name:"RegionDetected"`
-
-	// 图像识别出的商品的详细信息。 
-	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
-	ProductInfo *ProductInfo `json:"ProductInfo,omitnil,omitempty" name:"ProductInfo"`
-
-	// 相似商品信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductInfoList []*ProductInfo `json:"ProductInfoList,omitnil,omitempty" name:"ProductInfoList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DetectProductBetaResponse struct {
-	*tchttp.BaseResponse
-	Response *DetectProductBetaResponseParams `json:"Response"`
-}
-
-func (r *DetectProductBetaResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectProductBetaResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DetectProductRequestParams struct {
 	// 图片URL地址。 
 	// 图片限制： 
@@ -2090,34 +2005,6 @@ type ImageTag struct {
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 }
 
-type LemmaInfo struct {
-	// 词条
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LemmaTitle *string `json:"LemmaTitle,omitnil,omitempty" name:"LemmaTitle"`
-
-	// 词条描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LemmaAbstract *string `json:"LemmaAbstract,omitnil,omitempty" name:"LemmaAbstract"`
-
-	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
-}
-
-type Location struct {
-	// 位置矩形框的左上角横坐标
-	XMin *int64 `json:"XMin,omitnil,omitempty" name:"XMin"`
-
-	// 位置矩形框的左上角纵坐标
-	YMin *int64 `json:"YMin,omitnil,omitempty" name:"YMin"`
-
-	// 位置矩形框的右下角横坐标
-	XMax *int64 `json:"XMax,omitnil,omitempty" name:"XMax"`
-
-	// 位置矩形框的右下角纵坐标
-	YMax *int64 `json:"YMax,omitnil,omitempty" name:"YMax"`
-}
-
 type ObjectInfo struct {
 	// 图像主体区域。
 	Box *Box `json:"Box,omitnil,omitempty" name:"Box"`
@@ -2168,40 +2055,6 @@ type Product struct {
 
 	// 商品坐标Y轴的最大值
 	YMax *int64 `json:"YMax,omitnil,omitempty" name:"YMax"`
-}
-
-type ProductInfo struct {
-	// 1表示找到同款商品，以下字段为同款商品信息； 
-	// 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目和参考图片（商品库中找到的最相似图片，供参考）。  
-	// 是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
-	FindSKU *int64 `json:"FindSKU,omitnil,omitempty" name:"FindSKU"`
-
-	// 本商品在图片中的坐标，表示为矩形框的四个顶点坐标。
-	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
-
-	// 商品名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 商品品牌
-	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
-
-	// 参考价格，综合多个信息源，仅供参考。
-	Price *string `json:"Price,omitnil,omitempty" name:"Price"`
-
-	// 识别结果的商品类目。 
-	// 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。 
-	// 当类别为“非商品”时，除Location、Score和本字段之外的商品信息为空。
-	ProductCategory *string `json:"ProductCategory,omitnil,omitempty" name:"ProductCategory"`
-
-	// 输入图片中的主体物品和输出结果的相似度。分值越大，输出结果与输入图片是同款的可能性越高。
-	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
-
-	// 搜索到的商品配图URL。
-	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
-
-	// 百科词条列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LemmaInfoList []*LemmaInfo `json:"LemmaInfoList,omitnil,omitempty" name:"LemmaInfoList"`
 }
 
 // Predefined struct for user
@@ -2387,18 +2240,6 @@ type Rect struct {
 
 	// (x,y)坐标距离高度
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
-}
-
-type RegionDetected struct {
-	// 商品的品类预测结果。 
-	// 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
-	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
-
-	// 商品品类预测的置信度
-	CategoryScore *float64 `json:"CategoryScore,omitnil,omitempty" name:"CategoryScore"`
-
-	// 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标
-	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 // Predefined struct for user

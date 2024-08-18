@@ -12188,6 +12188,9 @@ type OrganizationAuthUrl struct {
 
 	// 企业批量注册的错误信息，例如：企业三要素不通过	
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationAuthorizationUrl)。
+	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
 }
 
 type OrganizationInfo struct {
