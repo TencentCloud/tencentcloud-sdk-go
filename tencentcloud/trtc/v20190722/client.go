@@ -4378,3 +4378,62 @@ func (c *Client) UpdatePublishCdnStreamWithContext(ctx context.Context, request 
     err = c.Send(request, response)
     return
 }
+
+func NewUpdateStreamIngestRequest() (request *UpdateStreamIngestRequest) {
+    request = &UpdateStreamIngestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "UpdateStreamIngest")
+    
+    
+    return
+}
+
+func NewUpdateStreamIngestResponse() (response *UpdateStreamIngestResponse) {
+    response = &UpdateStreamIngestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateStreamIngest
+// 更新输入在线媒体流任务的StreamUrl
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_STREAMURL = "InvalidParameter.StreamUrl"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+func (c *Client) UpdateStreamIngest(request *UpdateStreamIngestRequest) (response *UpdateStreamIngestResponse, err error) {
+    return c.UpdateStreamIngestWithContext(context.Background(), request)
+}
+
+// UpdateStreamIngest
+// 更新输入在线媒体流任务的StreamUrl
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_STREAMURL = "InvalidParameter.StreamUrl"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+func (c *Client) UpdateStreamIngestWithContext(ctx context.Context, request *UpdateStreamIngestRequest) (response *UpdateStreamIngestResponse, err error) {
+    if request == nil {
+        request = NewUpdateStreamIngestRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateStreamIngest require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateStreamIngestResponse()
+    err = c.Send(request, response)
+    return
+}

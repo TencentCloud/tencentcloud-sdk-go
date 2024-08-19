@@ -2600,6 +2600,55 @@ func (c *Client) DescribeBackupListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeBinlogConfigRequest() (request *DescribeBinlogConfigRequest) {
+    request = &DescribeBinlogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBinlogConfig")
+    
+    
+    return
+}
+
+func NewDescribeBinlogConfigResponse() (response *DescribeBinlogConfigResponse) {
+    response = &DescribeBinlogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBinlogConfig
+// 该接口（DescribeBinlogConfig）用于查询binlog配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+func (c *Client) DescribeBinlogConfig(request *DescribeBinlogConfigRequest) (response *DescribeBinlogConfigResponse, err error) {
+    return c.DescribeBinlogConfigWithContext(context.Background(), request)
+}
+
+// DescribeBinlogConfig
+// 该接口（DescribeBinlogConfig）用于查询binlog配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+func (c *Client) DescribeBinlogConfigWithContext(ctx context.Context, request *DescribeBinlogConfigRequest) (response *DescribeBinlogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBinlogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBinlogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBinlogDownloadUrlRequest() (request *DescribeBinlogDownloadUrlRequest) {
     request = &DescribeBinlogDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6215,6 +6264,57 @@ func (c *Client) ModifyBackupNameWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyBackupNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBinlogConfigRequest() (request *ModifyBinlogConfigRequest) {
+    request = &ModifyBinlogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyBinlogConfig")
+    
+    
+    return
+}
+
+func NewModifyBinlogConfigResponse() (response *ModifyBinlogConfigResponse) {
+    response = &ModifyBinlogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBinlogConfig
+// 该接口（ModifyBinlogConfig）用于修改Binlog配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+func (c *Client) ModifyBinlogConfig(request *ModifyBinlogConfigRequest) (response *ModifyBinlogConfigResponse, err error) {
+    return c.ModifyBinlogConfigWithContext(context.Background(), request)
+}
+
+// ModifyBinlogConfig
+// 该接口（ModifyBinlogConfig）用于修改Binlog配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+func (c *Client) ModifyBinlogConfigWithContext(ctx context.Context, request *ModifyBinlogConfigRequest) (response *ModifyBinlogConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyBinlogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBinlogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBinlogConfigResponse()
     err = c.Send(request, response)
     return
 }

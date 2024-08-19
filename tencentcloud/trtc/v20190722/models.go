@@ -5691,6 +5691,77 @@ func (r *UpdatePublishCdnStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateStreamIngestRequestParams struct {
+	// TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务的唯一Id，在启动任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 源流URL【必填】。
+	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
+}
+
+type UpdateStreamIngestRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务的唯一Id，在启动任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 源流URL【必填】。
+	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
+}
+
+func (r *UpdateStreamIngestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStreamIngestRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "StreamUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStreamIngestRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStreamIngestResponseParams struct {
+	// 任务的状态信息。InProgress：表示当前任务正在进行中。NotExist：表示当前任务不存在。示例值：InProgress
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateStreamIngestResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateStreamIngestResponseParams `json:"Response"`
+}
+
+func (r *UpdateStreamIngestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStreamIngestResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UserInformation struct {
 	// 房间号
 	RoomStr *string `json:"RoomStr,omitnil,omitempty" name:"RoomStr"`

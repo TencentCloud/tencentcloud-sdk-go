@@ -4758,6 +4758,55 @@ func (c *Client) DescribeContentReviewTemplatesWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeCurrentPlaylistRequest() (request *DescribeCurrentPlaylistRequest) {
+    request = &DescribeCurrentPlaylistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeCurrentPlaylist")
+    
+    
+    return
+}
+
+func NewDescribeCurrentPlaylistResponse() (response *DescribeCurrentPlaylistResponse) {
+    response = &DescribeCurrentPlaylistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCurrentPlaylist
+// 查询轮播当前播放列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
+func (c *Client) DescribeCurrentPlaylist(request *DescribeCurrentPlaylistRequest) (response *DescribeCurrentPlaylistResponse, err error) {
+    return c.DescribeCurrentPlaylistWithContext(context.Background(), request)
+}
+
+// DescribeCurrentPlaylist
+// 查询轮播当前播放列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
+func (c *Client) DescribeCurrentPlaylistWithContext(ctx context.Context, request *DescribeCurrentPlaylistRequest) (response *DescribeCurrentPlaylistResponse, err error) {
+    if request == nil {
+        request = NewDescribeCurrentPlaylistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCurrentPlaylist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCurrentPlaylistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDailyMediaPlayStatRequest() (request *DescribeDailyMediaPlayStatRequest) {
     request = &DescribeDailyMediaPlayStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7760,6 +7809,59 @@ func (c *Client) ExtractTraceWatermarkWithContext(ctx context.Context, request *
     return
 }
 
+func NewFastEditMediaRequest() (request *FastEditMediaRequest) {
+    request = &FastEditMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "FastEditMedia")
+    
+    
+    return
+}
+
+func NewFastEditMediaResponse() (response *FastEditMediaResponse) {
+    response = &FastEditMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FastEditMedia
+// 对 HLS 视频实现快速拼接和快速剪辑，生成新的 HLS 格式的媒体。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) FastEditMedia(request *FastEditMediaRequest) (response *FastEditMediaResponse, err error) {
+    return c.FastEditMediaWithContext(context.Background(), request)
+}
+
+// FastEditMedia
+// 对 HLS 视频实现快速拼接和快速剪辑，生成新的 HLS 格式的媒体。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) FastEditMediaWithContext(ctx context.Context, request *FastEditMediaRequest) (response *FastEditMediaResponse, err error) {
+    if request == nil {
+        request = NewFastEditMediaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FastEditMedia require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFastEditMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewForbidMediaDistributionRequest() (request *ForbidMediaDistributionRequest) {
     request = &ForbidMediaDistributionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7823,6 +7925,65 @@ func (c *Client) ForbidMediaDistributionWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewForbidMediaDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewHandleCurrentPlaylistRequest() (request *HandleCurrentPlaylistRequest) {
+    request = &HandleCurrentPlaylistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "HandleCurrentPlaylist")
+    
+    
+    return
+}
+
+func NewHandleCurrentPlaylistResponse() (response *HandleCurrentPlaylistResponse) {
+    response = &HandleCurrentPlaylistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// HandleCurrentPlaylist
+// 操作轮播当前播放列表。支持的操作有：<li> Insert：向当前播列表插入播放节目。</li><li> Delete：删除播列表中的播放节目。</li>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_INDEX = "InvalidParameterValue.Index"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+func (c *Client) HandleCurrentPlaylist(request *HandleCurrentPlaylistRequest) (response *HandleCurrentPlaylistResponse, err error) {
+    return c.HandleCurrentPlaylistWithContext(context.Background(), request)
+}
+
+// HandleCurrentPlaylist
+// 操作轮播当前播放列表。支持的操作有：<li> Insert：向当前播列表插入播放节目。</li><li> Delete：删除播列表中的播放节目。</li>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_INDEX = "InvalidParameterValue.Index"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+func (c *Client) HandleCurrentPlaylistWithContext(ctx context.Context, request *HandleCurrentPlaylistRequest) (response *HandleCurrentPlaylistResponse, err error) {
+    if request == nil {
+        request = NewHandleCurrentPlaylistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HandleCurrentPlaylist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewHandleCurrentPlaylistResponse()
     err = c.Send(request, response)
     return
 }

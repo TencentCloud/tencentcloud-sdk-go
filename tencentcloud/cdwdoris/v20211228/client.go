@@ -88,6 +88,49 @@ func (c *Client) CancelBackupJobWithContext(ctx context.Context, request *Cancel
     return
 }
 
+func NewCheckCoolDownWorkingVariableConfigCorrectRequest() (request *CheckCoolDownWorkingVariableConfigCorrectRequest) {
+    request = &CheckCoolDownWorkingVariableConfigCorrectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "CheckCoolDownWorkingVariableConfigCorrect")
+    
+    
+    return
+}
+
+func NewCheckCoolDownWorkingVariableConfigCorrectResponse() (response *CheckCoolDownWorkingVariableConfigCorrectResponse) {
+    response = &CheckCoolDownWorkingVariableConfigCorrectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckCoolDownWorkingVariableConfigCorrect
+// 查询冷热分层生效变量和配置是否正确
+func (c *Client) CheckCoolDownWorkingVariableConfigCorrect(request *CheckCoolDownWorkingVariableConfigCorrectRequest) (response *CheckCoolDownWorkingVariableConfigCorrectResponse, err error) {
+    return c.CheckCoolDownWorkingVariableConfigCorrectWithContext(context.Background(), request)
+}
+
+// CheckCoolDownWorkingVariableConfigCorrect
+// 查询冷热分层生效变量和配置是否正确
+func (c *Client) CheckCoolDownWorkingVariableConfigCorrectWithContext(ctx context.Context, request *CheckCoolDownWorkingVariableConfigCorrectRequest) (response *CheckCoolDownWorkingVariableConfigCorrectResponse, err error) {
+    if request == nil {
+        request = NewCheckCoolDownWorkingVariableConfigCorrectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckCoolDownWorkingVariableConfigCorrect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckCoolDownWorkingVariableConfigCorrectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBackUpScheduleRequest() (request *CreateBackUpScheduleRequest) {
     request = &CreateBackUpScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -127,6 +170,49 @@ func (c *Client) CreateBackUpScheduleWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateBackUpScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCoolDownPolicyRequest() (request *CreateCoolDownPolicyRequest) {
+    request = &CreateCoolDownPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "CreateCoolDownPolicy")
+    
+    
+    return
+}
+
+func NewCreateCoolDownPolicyResponse() (response *CreateCoolDownPolicyResponse) {
+    response = &CreateCoolDownPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCoolDownPolicy
+// 创建冷热分层策略
+func (c *Client) CreateCoolDownPolicy(request *CreateCoolDownPolicyRequest) (response *CreateCoolDownPolicyResponse, err error) {
+    return c.CreateCoolDownPolicyWithContext(context.Background(), request)
+}
+
+// CreateCoolDownPolicy
+// 创建冷热分层策略
+func (c *Client) CreateCoolDownPolicyWithContext(ctx context.Context, request *CreateCoolDownPolicyRequest) (response *CreateCoolDownPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateCoolDownPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCoolDownPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCoolDownPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -653,6 +739,153 @@ func (c *Client) DescribeClusterConfigsHistoryWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeCoolDownBackendsRequest() (request *DescribeCoolDownBackendsRequest) {
+    request = &DescribeCoolDownBackendsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeCoolDownBackends")
+    
+    
+    return
+}
+
+func NewDescribeCoolDownBackendsResponse() (response *DescribeCoolDownBackendsResponse) {
+    response = &DescribeCoolDownBackendsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCoolDownBackends
+// 查询冷热分层backend节点信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCoolDownBackends(request *DescribeCoolDownBackendsRequest) (response *DescribeCoolDownBackendsResponse, err error) {
+    return c.DescribeCoolDownBackendsWithContext(context.Background(), request)
+}
+
+// DescribeCoolDownBackends
+// 查询冷热分层backend节点信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCoolDownBackendsWithContext(ctx context.Context, request *DescribeCoolDownBackendsRequest) (response *DescribeCoolDownBackendsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCoolDownBackendsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCoolDownBackends require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCoolDownBackendsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCoolDownPoliciesRequest() (request *DescribeCoolDownPoliciesRequest) {
+    request = &DescribeCoolDownPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeCoolDownPolicies")
+    
+    
+    return
+}
+
+func NewDescribeCoolDownPoliciesResponse() (response *DescribeCoolDownPoliciesResponse) {
+    response = &DescribeCoolDownPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCoolDownPolicies
+// 查询冷热分层策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCoolDownPolicies(request *DescribeCoolDownPoliciesRequest) (response *DescribeCoolDownPoliciesResponse, err error) {
+    return c.DescribeCoolDownPoliciesWithContext(context.Background(), request)
+}
+
+// DescribeCoolDownPolicies
+// 查询冷热分层策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCoolDownPoliciesWithContext(ctx context.Context, request *DescribeCoolDownPoliciesRequest) (response *DescribeCoolDownPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCoolDownPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCoolDownPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCoolDownPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCoolDownTableDataRequest() (request *DescribeCoolDownTableDataRequest) {
+    request = &DescribeCoolDownTableDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeCoolDownTableData")
+    
+    
+    return
+}
+
+func NewDescribeCoolDownTableDataResponse() (response *DescribeCoolDownTableDataResponse) {
+    response = &DescribeCoolDownTableDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCoolDownTableData
+// 查询冷热分层Table数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCoolDownTableData(request *DescribeCoolDownTableDataRequest) (response *DescribeCoolDownTableDataResponse, err error) {
+    return c.DescribeCoolDownTableDataWithContext(context.Background(), request)
+}
+
+// DescribeCoolDownTableData
+// 查询冷热分层Table数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCoolDownTableDataWithContext(ctx context.Context, request *DescribeCoolDownTableDataRequest) (response *DescribeCoolDownTableDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCoolDownTableDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCoolDownTableData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCoolDownTableDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabaseAuditDownloadRequest() (request *DescribeDatabaseAuditDownloadRequest) {
     request = &DescribeDatabaseAuditDownloadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -751,306 +984,6 @@ func (c *Client) DescribeDatabaseAuditRecordsWithContext(ctx context.Context, re
     return
 }
 
-func NewDescribeDatabaseAuditResourceRequest() (request *DescribeDatabaseAuditResourceRequest) {
-    request = &DescribeDatabaseAuditResourceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeDatabaseAuditResource")
-    
-    
-    return
-}
-
-func NewDescribeDatabaseAuditResourceResponse() (response *DescribeDatabaseAuditResourceResponse) {
-    response = &DescribeDatabaseAuditResourceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDatabaseAuditResource
-// 数据库审计数据库、用户等
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeDatabaseAuditResource(request *DescribeDatabaseAuditResourceRequest) (response *DescribeDatabaseAuditResourceResponse, err error) {
-    return c.DescribeDatabaseAuditResourceWithContext(context.Background(), request)
-}
-
-// DescribeDatabaseAuditResource
-// 数据库审计数据库、用户等
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeDatabaseAuditResourceWithContext(ctx context.Context, request *DescribeDatabaseAuditResourceRequest) (response *DescribeDatabaseAuditResourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDatabaseAuditResourceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDatabaseAuditResource require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDatabaseAuditResourceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDmsSqlHistoryRequest() (request *DescribeDmsSqlHistoryRequest) {
-    request = &DescribeDmsSqlHistoryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeDmsSqlHistory")
-    
-    
-    return
-}
-
-func NewDescribeDmsSqlHistoryResponse() (response *DescribeDmsSqlHistoryResponse) {
-    response = &DescribeDmsSqlHistoryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDmsSqlHistory
-// 查询sql工作区历史运行记录
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeDmsSqlHistory(request *DescribeDmsSqlHistoryRequest) (response *DescribeDmsSqlHistoryResponse, err error) {
-    return c.DescribeDmsSqlHistoryWithContext(context.Background(), request)
-}
-
-// DescribeDmsSqlHistory
-// 查询sql工作区历史运行记录
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeDmsSqlHistoryWithContext(ctx context.Context, request *DescribeDmsSqlHistoryRequest) (response *DescribeDmsSqlHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDmsSqlHistoryRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDmsSqlHistory require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDmsSqlHistoryResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDorisMetricFilesRequest() (request *DescribeDorisMetricFilesRequest) {
-    request = &DescribeDorisMetricFilesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeDorisMetricFiles")
-    
-    
-    return
-}
-
-func NewDescribeDorisMetricFilesResponse() (response *DescribeDorisMetricFilesResponse) {
-    response = &DescribeDorisMetricFilesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDorisMetricFiles
-// 展示监控指标文件
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeDorisMetricFiles(request *DescribeDorisMetricFilesRequest) (response *DescribeDorisMetricFilesResponse, err error) {
-    return c.DescribeDorisMetricFilesWithContext(context.Background(), request)
-}
-
-// DescribeDorisMetricFiles
-// 展示监控指标文件
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeDorisMetricFilesWithContext(ctx context.Context, request *DescribeDorisMetricFilesRequest) (response *DescribeDorisMetricFilesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDorisMetricFilesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDorisMetricFiles require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDorisMetricFilesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeFederationTokenRequest() (request *DescribeFederationTokenRequest) {
-    request = &DescribeFederationTokenRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeFederationToken")
-    
-    
-    return
-}
-
-func NewDescribeFederationTokenResponse() (response *DescribeFederationTokenResponse) {
-    response = &DescribeFederationTokenResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeFederationToken
-// 获取联合身份临时访问凭证
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeFederationToken(request *DescribeFederationTokenRequest) (response *DescribeFederationTokenResponse, err error) {
-    return c.DescribeFederationTokenWithContext(context.Background(), request)
-}
-
-// DescribeFederationToken
-// 获取联合身份临时访问凭证
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeFederationTokenWithContext(ctx context.Context, request *DescribeFederationTokenRequest) (response *DescribeFederationTokenResponse, err error) {
-    if request == nil {
-        request = NewDescribeFederationTokenRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeFederationToken require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeFederationTokenResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeFrontEndRequest() (request *DescribeFrontEndRequest) {
-    request = &DescribeFrontEndRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeFrontEnd")
-    
-    
-    return
-}
-
-func NewDescribeFrontEndResponse() (response *DescribeFrontEndResponse) {
-    response = &DescribeFrontEndResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeFrontEnd
-// 查询前端内容
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeFrontEnd(request *DescribeFrontEndRequest) (response *DescribeFrontEndResponse, err error) {
-    return c.DescribeFrontEndWithContext(context.Background(), request)
-}
-
-// DescribeFrontEnd
-// 查询前端内容
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeFrontEndWithContext(ctx context.Context, request *DescribeFrontEndRequest) (response *DescribeFrontEndResponse, err error) {
-    if request == nil {
-        request = NewDescribeFrontEndRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeFrontEnd require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeFrontEndResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeGoodsDetailRequest() (request *DescribeGoodsDetailRequest) {
-    request = &DescribeGoodsDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeGoodsDetail")
-    
-    
-    return
-}
-
-func NewDescribeGoodsDetailResponse() (response *DescribeGoodsDetailResponse) {
-    response = &DescribeGoodsDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeGoodsDetail
-// 生成计费相关接口的GoodsDetail结构
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeGoodsDetail(request *DescribeGoodsDetailRequest) (response *DescribeGoodsDetailResponse, err error) {
-    return c.DescribeGoodsDetailWithContext(context.Background(), request)
-}
-
-// DescribeGoodsDetail
-// 生成计费相关接口的GoodsDetail结构
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeGoodsDetailWithContext(ctx context.Context, request *DescribeGoodsDetailRequest) (response *DescribeGoodsDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeGoodsDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeGoodsDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeGoodsDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
     request = &DescribeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1074,7 +1007,6 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 // 根据集群ID查询某个集群的具体信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     return c.DescribeInstanceWithContext(context.Background(), request)
@@ -1084,7 +1016,6 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 // 根据集群ID查询某个集群的具体信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     if request == nil {
@@ -1125,7 +1056,6 @@ func NewDescribeInstanceNodesResponse() (response *DescribeInstanceNodesResponse
 // 获取集群节点信息列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     return c.DescribeInstanceNodesWithContext(context.Background(), request)
@@ -1135,7 +1065,6 @@ func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (r
 // 获取集群节点信息列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     if request == nil {
@@ -1176,7 +1105,6 @@ func NewDescribeInstanceNodesInfoResponse() (response *DescribeInstanceNodesInfo
 // 获取BE/FE节点角色
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceNodesInfo(request *DescribeInstanceNodesInfoRequest) (response *DescribeInstanceNodesInfoResponse, err error) {
     return c.DescribeInstanceNodesInfoWithContext(context.Background(), request)
@@ -1186,7 +1114,6 @@ func (c *Client) DescribeInstanceNodesInfo(request *DescribeInstanceNodesInfoReq
 // 获取BE/FE节点角色
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceNodesInfoWithContext(ctx context.Context, request *DescribeInstanceNodesInfoRequest) (response *DescribeInstanceNodesInfoResponse, err error) {
     if request == nil {
@@ -1227,7 +1154,6 @@ func NewDescribeInstanceNodesRoleResponse() (response *DescribeInstanceNodesRole
 // 获取集群节点角色
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceNodesRole(request *DescribeInstanceNodesRoleRequest) (response *DescribeInstanceNodesRoleResponse, err error) {
     return c.DescribeInstanceNodesRoleWithContext(context.Background(), request)
@@ -1237,7 +1163,6 @@ func (c *Client) DescribeInstanceNodesRole(request *DescribeInstanceNodesRoleReq
 // 获取集群节点角色
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceNodesRoleWithContext(ctx context.Context, request *DescribeInstanceNodesRoleRequest) (response *DescribeInstanceNodesRoleResponse, err error) {
     if request == nil {
@@ -1278,7 +1203,6 @@ func NewDescribeInstanceOperationsResponse() (response *DescribeInstanceOperatio
 // 在集群详情页面，拉取该集群的操作
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
     return c.DescribeInstanceOperationsWithContext(context.Background(), request)
@@ -1288,7 +1212,6 @@ func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsR
 // 在集群详情页面，拉取该集群的操作
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceOperationsWithContext(ctx context.Context, request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
     if request == nil {
@@ -1329,7 +1252,6 @@ func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse
 // 集群详情页中显示集群状态、流程进度等
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
     return c.DescribeInstanceStateWithContext(context.Background(), request)
@@ -1339,7 +1261,6 @@ func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (r
 // 集群详情页中显示集群状态、流程进度等
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
     if request == nil {
@@ -1380,7 +1301,6 @@ func NewDescribeInstanceUsedSubnetsResponse() (response *DescribeInstanceUsedSub
 // 获取集群已使用子网信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceUsedSubnets(request *DescribeInstanceUsedSubnetsRequest) (response *DescribeInstanceUsedSubnetsResponse, err error) {
     return c.DescribeInstanceUsedSubnetsWithContext(context.Background(), request)
@@ -1390,7 +1310,6 @@ func (c *Client) DescribeInstanceUsedSubnets(request *DescribeInstanceUsedSubnet
 // 获取集群已使用子网信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeInstanceUsedSubnetsWithContext(ctx context.Context, request *DescribeInstanceUsedSubnetsRequest) (response *DescribeInstanceUsedSubnetsResponse, err error) {
     if request == nil {
@@ -1502,104 +1421,6 @@ func (c *Client) DescribeInstancesHealthStateWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeInstancesHealthStateResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRegionZoneRequest() (request *DescribeRegionZoneRequest) {
-    request = &DescribeRegionZoneRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeRegionZone")
-    
-    
-    return
-}
-
-func NewDescribeRegionZoneResponse() (response *DescribeRegionZoneResponse) {
-    response = &DescribeRegionZoneResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRegionZone
-// 购买页获取地域及可用区列表、内核版本、网络规则等
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeRegionZone(request *DescribeRegionZoneRequest) (response *DescribeRegionZoneResponse, err error) {
-    return c.DescribeRegionZoneWithContext(context.Background(), request)
-}
-
-// DescribeRegionZone
-// 购买页获取地域及可用区列表、内核版本、网络规则等
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeRegionZoneWithContext(ctx context.Context, request *DescribeRegionZoneRequest) (response *DescribeRegionZoneResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionZoneRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRegionZone require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRegionZoneResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeReplicaVersionRequest() (request *DescribeReplicaVersionRequest) {
-    request = &DescribeReplicaVersionRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "DescribeReplicaVersion")
-    
-    
-    return
-}
-
-func NewDescribeReplicaVersionResponse() (response *DescribeReplicaVersionResponse) {
-    response = &DescribeReplicaVersionResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeReplicaVersion
-// 检查内核版本是否支持新的备份恢复语法
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeReplicaVersion(request *DescribeReplicaVersionRequest) (response *DescribeReplicaVersionResponse, err error) {
-    return c.DescribeReplicaVersionWithContext(context.Background(), request)
-}
-
-// DescribeReplicaVersion
-// 检查内核版本是否支持新的备份恢复语法
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeReplicaVersionWithContext(ctx context.Context, request *DescribeReplicaVersionRequest) (response *DescribeReplicaVersionResponse, err error) {
-    if request == nil {
-        request = NewDescribeReplicaVersionRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeReplicaVersion require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeReplicaVersionResponse()
     err = c.Send(request, response)
     return
 }
@@ -2045,51 +1866,51 @@ func (c *Client) DestroyInstanceWithContext(ctx context.Context, request *Destro
     return
 }
 
-func NewFitClsLogRequest() (request *FitClsLogRequest) {
-    request = &FitClsLogRequest{
+func NewModifyCoolDownPolicyRequest() (request *ModifyCoolDownPolicyRequest) {
+    request = &ModifyCoolDownPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "FitClsLog")
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "ModifyCoolDownPolicy")
     
     
     return
 }
 
-func NewFitClsLogResponse() (response *FitClsLogResponse) {
-    response = &FitClsLogResponse{
+func NewModifyCoolDownPolicyResponse() (response *ModifyCoolDownPolicyResponse) {
+    response = &ModifyCoolDownPolicyResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// FitClsLog
-// 给已存在集群，配置日志服务
+// ModifyCoolDownPolicy
+// 修改冷热分层策略
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-func (c *Client) FitClsLog(request *FitClsLogRequest) (response *FitClsLogResponse, err error) {
-    return c.FitClsLogWithContext(context.Background(), request)
+func (c *Client) ModifyCoolDownPolicy(request *ModifyCoolDownPolicyRequest) (response *ModifyCoolDownPolicyResponse, err error) {
+    return c.ModifyCoolDownPolicyWithContext(context.Background(), request)
 }
 
-// FitClsLog
-// 给已存在集群，配置日志服务
+// ModifyCoolDownPolicy
+// 修改冷热分层策略
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-func (c *Client) FitClsLogWithContext(ctx context.Context, request *FitClsLogRequest) (response *FitClsLogResponse, err error) {
+func (c *Client) ModifyCoolDownPolicyWithContext(ctx context.Context, request *ModifyCoolDownPolicyRequest) (response *ModifyCoolDownPolicyResponse, err error) {
     if request == nil {
-        request = NewFitClsLogRequest()
+        request = NewModifyCoolDownPolicyRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("FitClsLog require credential")
+        return nil, errors.New("ModifyCoolDownPolicy require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewFitClsLogResponse()
+    response = NewModifyCoolDownPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2486,51 +2307,100 @@ func (c *Client) ModifyWorkloadGroupStatusWithContext(ctx context.Context, reque
     return
 }
 
-func NewOpenBackUpRequest() (request *OpenBackUpRequest) {
-    request = &OpenBackUpRequest{
+func NewOpenCoolDownRequest() (request *OpenCoolDownRequest) {
+    request = &OpenCoolDownRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cdwdoris", APIVersion, "OpenBackUp")
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "OpenCoolDown")
     
     
     return
 }
 
-func NewOpenBackUpResponse() (response *OpenBackUpResponse) {
-    response = &OpenBackUpResponse{
+func NewOpenCoolDownResponse() (response *OpenCoolDownResponse) {
+    response = &OpenCoolDownResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// OpenBackUp
-// 开启或者关闭策略
+// OpenCoolDown
+// 开始启用冷热分层
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-func (c *Client) OpenBackUp(request *OpenBackUpRequest) (response *OpenBackUpResponse, err error) {
-    return c.OpenBackUpWithContext(context.Background(), request)
+func (c *Client) OpenCoolDown(request *OpenCoolDownRequest) (response *OpenCoolDownResponse, err error) {
+    return c.OpenCoolDownWithContext(context.Background(), request)
 }
 
-// OpenBackUp
-// 开启或者关闭策略
+// OpenCoolDown
+// 开始启用冷热分层
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-func (c *Client) OpenBackUpWithContext(ctx context.Context, request *OpenBackUpRequest) (response *OpenBackUpResponse, err error) {
+func (c *Client) OpenCoolDownWithContext(ctx context.Context, request *OpenCoolDownRequest) (response *OpenCoolDownResponse, err error) {
     if request == nil {
-        request = NewOpenBackUpRequest()
+        request = NewOpenCoolDownRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("OpenBackUp require credential")
+        return nil, errors.New("OpenCoolDown require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewOpenBackUpResponse()
+    response = NewOpenCoolDownResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenCoolDownPolicyRequest() (request *OpenCoolDownPolicyRequest) {
+    request = &OpenCoolDownPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "OpenCoolDownPolicy")
+    
+    
+    return
+}
+
+func NewOpenCoolDownPolicyResponse() (response *OpenCoolDownPolicyResponse) {
+    response = &OpenCoolDownPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenCoolDownPolicy
+// 开通、描述降冷策略接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) OpenCoolDownPolicy(request *OpenCoolDownPolicyRequest) (response *OpenCoolDownPolicyResponse, err error) {
+    return c.OpenCoolDownPolicyWithContext(context.Background(), request)
+}
+
+// OpenCoolDownPolicy
+// 开通、描述降冷策略接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) OpenCoolDownPolicyWithContext(ctx context.Context, request *OpenCoolDownPolicyRequest) (response *OpenCoolDownPolicyResponse, err error) {
+    if request == nil {
+        request = NewOpenCoolDownPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenCoolDownPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenCoolDownPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2874,6 +2744,55 @@ func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleU
     request.SetContext(ctx)
     
     response = NewScaleUpInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCoolDownRequest() (request *UpdateCoolDownRequest) {
+    request = &UpdateCoolDownRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "UpdateCoolDown")
+    
+    
+    return
+}
+
+func NewUpdateCoolDownResponse() (response *UpdateCoolDownResponse) {
+    response = &UpdateCoolDownResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCoolDown
+// 更新集群冷热分层信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) UpdateCoolDown(request *UpdateCoolDownRequest) (response *UpdateCoolDownResponse, err error) {
+    return c.UpdateCoolDownWithContext(context.Background(), request)
+}
+
+// UpdateCoolDown
+// 更新集群冷热分层信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) UpdateCoolDownWithContext(ctx context.Context, request *UpdateCoolDownRequest) (response *UpdateCoolDownResponse, err error) {
+    if request == nil {
+        request = NewUpdateCoolDownRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCoolDown require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCoolDownResponse()
     err = c.Send(request, response)
     return
 }

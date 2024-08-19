@@ -819,6 +819,20 @@ type BindInstanceInfo struct {
 	ExtendIds []*string `json:"ExtendIds,omitnil,omitempty" name:"ExtendIds"`
 }
 
+type BinlogConfigInfo struct {
+	// binlog保留时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BinlogSaveDays *int64 `json:"BinlogSaveDays,omitnil,omitempty" name:"BinlogSaveDays"`
+
+	// binlog异地地域备份是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BinlogCrossRegionsEnable *string `json:"BinlogCrossRegionsEnable,omitnil,omitempty" name:"BinlogCrossRegionsEnable"`
+
+	// binlog异地地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BinlogCrossRegions []*string `json:"BinlogCrossRegions,omitnil,omitempty" name:"BinlogCrossRegions"`
+}
+
 type BinlogItem struct {
 	// Binlog文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -5224,6 +5238,68 @@ func (r *DescribeBackupListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBackupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBinlogConfigRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeBinlogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeBinlogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBinlogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBinlogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBinlogConfigResponseParams struct {
+	// Binlog跨地域配置更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BinlogCrossRegionsConfigUpdateTime *string `json:"BinlogCrossRegionsConfigUpdateTime,omitnil,omitempty" name:"BinlogCrossRegionsConfigUpdateTime"`
+
+	// Binlog配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BinlogConfig *BinlogConfigInfo `json:"BinlogConfig,omitnil,omitempty" name:"BinlogConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBinlogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBinlogConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeBinlogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBinlogConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10253,6 +10329,67 @@ func (r *ModifyBackupNameResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBackupNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBinlogConfigRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Binlog配置信息
+	BinlogConfig *BinlogConfigInfo `json:"BinlogConfig,omitnil,omitempty" name:"BinlogConfig"`
+}
+
+type ModifyBinlogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Binlog配置信息
+	BinlogConfig *BinlogConfigInfo `json:"BinlogConfig,omitnil,omitempty" name:"BinlogConfig"`
+}
+
+func (r *ModifyBinlogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBinlogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "BinlogConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBinlogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBinlogConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBinlogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBinlogConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyBinlogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBinlogConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

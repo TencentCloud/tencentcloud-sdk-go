@@ -28542,7 +28542,7 @@ type SnapshotPolicy struct {
 }
 
 type SourceIpTranslationNatRule struct {
-	// 资源ID，如果ResourceType为USERDEFINED，可以为空
+	// 资源ID，如果ResourceType为USERDEFINED，可以为空字符串
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED

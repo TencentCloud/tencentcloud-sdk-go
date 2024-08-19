@@ -17,9 +17,6 @@ package v20211228
 const (
 	// 此产品的特有错误码
 
-	// CAM签名/鉴权错误。
-	AUTHFAILURE = "AuthFailure"
-
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 )

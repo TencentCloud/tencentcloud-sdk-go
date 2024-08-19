@@ -4813,6 +4813,9 @@ type InquiryPriceScaleOutInstanceRequestParams struct {
 
 	// 计算资源id
 	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 扩容资源类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
 }
 
 type InquiryPriceScaleOutInstanceRequest struct {
@@ -4860,6 +4863,9 @@ type InquiryPriceScaleOutInstanceRequest struct {
 
 	// 计算资源id
 	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 扩容资源类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
 }
 
 func (r *InquiryPriceScaleOutInstanceRequest) ToJsonString() string {
@@ -4886,6 +4892,7 @@ func (r *InquiryPriceScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MasterCount")
 	delete(f, "ResourceBaseType")
 	delete(f, "ComputeResourceId")
+	delete(f, "HardwareResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceScaleOutInstanceRequest has unknown keys!", "")
 	}

@@ -2252,13 +2252,13 @@ func (r *DescribeCarrierPrivilegeNumberApplicantsResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type DescribeChatMessagesRequestParams struct {
+	// 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
 	// 实例 ID（废弃）
 	//
 	// Deprecated: InstanceId is deprecated.
 	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
-	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 服务记录ID（废弃）
 	//
@@ -2281,11 +2281,11 @@ type DescribeChatMessagesRequestParams struct {
 type DescribeChatMessagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID（废弃）
-	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
 	// 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 实例 ID（废弃）
+	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 服务记录ID（废弃）
 	CdrId *string `json:"CdrId,omitnil,omitempty" name:"CdrId"`
@@ -2315,8 +2315,8 @@ func (r *DescribeChatMessagesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "InstanceId")
 	delete(f, "SdkAppId")
+	delete(f, "InstanceId")
 	delete(f, "CdrId")
 	delete(f, "Limit")
 	delete(f, "Offset")

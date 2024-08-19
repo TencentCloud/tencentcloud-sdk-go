@@ -9185,6 +9185,77 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeCurrentPlaylistRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
+
+	// 返回的播放列表的长度。最大10，默认值为5。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCurrentPlaylistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
+
+	// 返回的播放列表的长度。最大10，默认值为5。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCurrentPlaylistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurrentPlaylistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "RoundPlayId")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCurrentPlaylistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCurrentPlaylistResponseParams struct {
+	// 当前播放列表信息。
+	CurrentPlaylist []*RoundPlayFilePlayInfo `json:"CurrentPlaylist,omitnil,omitempty" name:"CurrentPlaylist"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCurrentPlaylistResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCurrentPlaylistResponseParams `json:"Response"`
+}
+
+func (r *DescribeCurrentPlaylistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurrentPlaylistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDailyMediaPlayStatRequestParams struct {
 	// 媒体文件 ID 。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
@@ -14033,6 +14104,100 @@ type FaceEnhanceInfo struct {
 	Intensity *float64 `json:"Intensity,omitnil,omitempty" name:"Intensity"`
 }
 
+type FastEditMediaFileInfo struct {
+	// 媒体的 ID。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 操作的音视频类型，可选值有：
+	// <li>Transcode：转码输出；</li>
+	// <li>Original：原始音视频。</li>
+	// 注意：操作的音视频，必须为 HLS 格式。
+	AudioVideoType *string `json:"AudioVideoType,omitnil,omitempty" name:"AudioVideoType"`
+
+	// 当 AudioVideoType 为 Transcode 时有效，表示操作媒体的的转码模板 ID。
+	TranscodeDefinition *int64 `json:"TranscodeDefinition,omitnil,omitempty" name:"TranscodeDefinition"`
+
+	// 媒体剪辑起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
+
+	// 媒体剪辑结束的时间偏移，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+}
+
+// Predefined struct for user
+type FastEditMediaRequestParams struct {
+	// 输入的媒体文件信息。最多支持传入100个媒体。
+	FileInfos []*FastEditMediaFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// ClipMode 用来表示剪辑时间点落在一个 TS 分片中间时，是否包含这个分片。共有两种取值： <li>StartInclusiveEndInclusive：当剪辑起始时间点和结束时间点落在一个分片的中间时，都会包含这个分片；</li> <li>StartInclusiveEndExclusive：当起始时间点落在一个分片的中间时，会包含这个分片；而当结束时间点落在一个分片的中间时，不会包含这个分片。</li> 不填时，默认为 StartInclusiveEndInclusive。
+	ClipMode *string `json:"ClipMode,omitnil,omitempty" name:"ClipMode"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type FastEditMediaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输入的媒体文件信息。最多支持传入100个媒体。
+	FileInfos []*FastEditMediaFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// ClipMode 用来表示剪辑时间点落在一个 TS 分片中间时，是否包含这个分片。共有两种取值： <li>StartInclusiveEndInclusive：当剪辑起始时间点和结束时间点落在一个分片的中间时，都会包含这个分片；</li> <li>StartInclusiveEndExclusive：当起始时间点落在一个分片的中间时，会包含这个分片；而当结束时间点落在一个分片的中间时，不会包含这个分片。</li> 不填时，默认为 StartInclusiveEndInclusive。
+	ClipMode *string `json:"ClipMode,omitnil,omitempty" name:"ClipMode"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *FastEditMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FastEditMediaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileInfos")
+	delete(f, "ClipMode")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FastEditMediaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FastEditMediaResponseParams struct {
+	// 快速编辑后的视频的媒体文件的唯一标识。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 快速编辑后的媒体播放地址。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FastEditMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *FastEditMediaResponseParams `json:"Response"`
+}
+
+func (r *FastEditMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FastEditMediaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FileDeleteResultItem struct {
 	// 删除的文件 ID 。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
@@ -14199,6 +14364,91 @@ type HDRInfo struct {
 	// <li> 仅当高动态范围类型控制开关为 ON 时有效；</li>
 	// <li>当画质重生目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx265 时有效。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+// Predefined struct for user
+type HandleCurrentPlaylistRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
+
+	// 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
+
+	// 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil,omitempty" name:"RoundPlaylist"`
+}
+
+type HandleCurrentPlaylistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
+
+	// 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
+
+	// 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil,omitempty" name:"RoundPlaylist"`
+}
+
+func (r *HandleCurrentPlaylistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HandleCurrentPlaylistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "RoundPlayId")
+	delete(f, "Operation")
+	delete(f, "ItemId")
+	delete(f, "RoundPlaylist")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HandleCurrentPlaylistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type HandleCurrentPlaylistResponseParams struct {
+	// 操作成功的节目列表。
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil,omitempty" name:"RoundPlaylist"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type HandleCurrentPlaylistResponse struct {
+	*tchttp.BaseResponse
+	Response *HandleCurrentPlaylistResponseParams `json:"Response"`
+}
+
+func (r *HandleCurrentPlaylistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HandleCurrentPlaylistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HeadTailConfigureInfo struct {
@@ -23175,6 +23425,25 @@ type ReviewTemplate struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type RoundPlayFilePlayInfo struct {
+	// 播单节目的 ID，由系统分配。
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
+
+	// 媒体文件标识。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartPlayTime *string `json:"StartPlayTime,omitnil,omitempty" name:"StartPlayTime"`
+
+	// 播放时长，单位为秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 播放进度，单位为妙。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+}
+
 type RoundPlayInfo struct {
 	// 轮播播单标识。
 	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
@@ -23205,6 +23474,14 @@ type RoundPlayInfo struct {
 
 	// 轮播播放地址。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 创建时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type RoundPlayListItemInfo struct {

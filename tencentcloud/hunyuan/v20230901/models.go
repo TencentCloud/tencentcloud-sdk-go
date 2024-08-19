@@ -328,8 +328,10 @@ func (r *ChatCompletionsResponse) FromJsonString(s string) error {
 }
 
 type Choice struct {
-	// 结束标志位，可能为 stop 或 sensitive。
-	// stop 表示输出正常结束，sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
+	// 结束标志位，可能为 stop、 sensitive或者tool_calls。
+	// stop 表示输出正常结束。
+	// sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
+	// tool_calls 标识函数调用。
 	FinishReason *string `json:"FinishReason,omitnil,omitempty" name:"FinishReason"`
 
 	// 增量返回值，流式调用时使用该字段。
