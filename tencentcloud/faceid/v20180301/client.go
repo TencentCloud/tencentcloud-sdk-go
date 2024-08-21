@@ -637,7 +637,7 @@ func NewDetectAIFakeFacesResponse() (response *DetectAIFakeFacesResponse) {
 }
 
 // DetectAIFakeFaces
-// 提供对人脸图片/视频的AI合成、翻拍、水印等攻击痕迹的检测，增强图片/视频防伪能力
+// 基于多模态的AI大模型算法，提供对人脸图片、视频的防攻击检测能力，可针对性有效识别高仿真的AIGC换脸、高清翻拍、批量黑产攻击、水印等攻击痕迹，增强对图片和视频的防伪安全能力。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COVEREDFACE = "FailedOperation.CoveredFace"
@@ -657,7 +657,7 @@ func (c *Client) DetectAIFakeFaces(request *DetectAIFakeFacesRequest) (response 
 }
 
 // DetectAIFakeFaces
-// 提供对人脸图片/视频的AI合成、翻拍、水印等攻击痕迹的检测，增强图片/视频防伪能力
+// 基于多模态的AI大模型算法，提供对人脸图片、视频的防攻击检测能力，可针对性有效识别高仿真的AIGC换脸、高清翻拍、批量黑产攻击、水印等攻击痕迹，增强对图片和视频的防伪安全能力。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COVEREDFACE = "FailedOperation.CoveredFace"

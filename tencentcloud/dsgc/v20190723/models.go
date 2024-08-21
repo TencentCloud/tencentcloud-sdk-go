@@ -656,6 +656,14 @@ type CategoryRule struct {
 	// 别名规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasRuleName *string `json:"AliasRuleName,omitnil,omitempty" name:"AliasRuleName"`
+
+	// 各类分类分级规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleEffectItems []*RuleEffectItem `json:"RuleEffectItems,omitnil,omitempty" name:"RuleEffectItems"`
+
+	// 规则状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleStatus *int64 `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
 }
 
 type CategoryRuleStatistic struct {
@@ -1993,6 +2001,9 @@ type CreateDSPADiscoveryRuleRequestParams struct {
 
 	// COS类敏感数据识别规则
 	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil,omitempty" name:"COSRules"`
+
+	// 规则状态；0 不启用, 1 启用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CreateDSPADiscoveryRuleRequest struct {
@@ -2012,6 +2023,9 @@ type CreateDSPADiscoveryRuleRequest struct {
 
 	// COS类敏感数据识别规则
 	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil,omitempty" name:"COSRules"`
+
+	// 规则状态；0 不启用, 1 启用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *CreateDSPADiscoveryRuleRequest) ToJsonString() string {
@@ -2031,6 +2045,7 @@ func (r *CreateDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "RDBRules")
 	delete(f, "COSRules")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPADiscoveryRuleRequest has unknown keys!", "")
 	}
@@ -10216,6 +10231,10 @@ type DspaDiscoveryRuleDetail struct {
 	// COS规则详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil,omitempty" name:"COSRules"`
+
+	// 0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DspaDiscoveryTaskCOSCondition struct {
@@ -12722,6 +12741,9 @@ type ModifyDSPADiscoveryRuleRequestParams struct {
 
 	// COS类敏感数据识别规则
 	COSRules *ScanTaskCOSRules `json:"COSRules,omitnil,omitempty" name:"COSRules"`
+
+	// 规则状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyDSPADiscoveryRuleRequest struct {
@@ -12744,6 +12766,9 @@ type ModifyDSPADiscoveryRuleRequest struct {
 
 	// COS类敏感数据识别规则
 	COSRules *ScanTaskCOSRules `json:"COSRules,omitnil,omitempty" name:"COSRules"`
+
+	// 规则状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *ModifyDSPADiscoveryRuleRequest) ToJsonString() string {
@@ -12764,6 +12789,7 @@ func (r *ModifyDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "RDBRules")
 	delete(f, "COSRules")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPADiscoveryRuleRequest has unknown keys!", "")
 	}
@@ -14166,6 +14192,16 @@ type RuleDistribution struct {
 	// 规则数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleCnt *int64 `json:"RuleCnt,omitnil,omitempty" name:"RuleCnt"`
+}
+
+type RuleEffectItem struct {
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ScanTaskCOSRules struct {

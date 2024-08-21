@@ -505,6 +505,10 @@ type AddressTemplate struct {
 
 	// 带备注的IP地址信息。
 	AddressExtraSet []*AddressInfo `json:"AddressExtraSet,omitnil,omitempty" name:"AddressExtraSet"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type AddressTemplateGroup struct {
@@ -522,6 +526,10 @@ type AddressTemplateGroup struct {
 
 	// IP地址模板实例。
 	AddressTemplateSet []*AddressTemplateItem `json:"AddressTemplateSet,omitnil,omitempty" name:"AddressTemplateSet"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type AddressTemplateItem struct {
@@ -20138,6 +20146,10 @@ type EndPoint struct {
 	// 终端节点服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type EndPointService struct {
@@ -20183,6 +20195,10 @@ type EndPointService struct {
 	// 服务IP类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessIpType *int64 `json:"BusinessIpType,omitnil,omitempty" name:"BusinessIpType"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type Filter struct {
@@ -20505,6 +20521,10 @@ type HaVip struct {
 	// HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlushedTime *string `json:"FlushedTime,omitnil,omitempty" name:"FlushedTime"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 // Predefined struct for user
@@ -21281,7 +21301,7 @@ type LocalGateway struct {
 	// VPC实例ID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 本地网关实例ID
+	// 本地网关实例ID（计划弃用）
 	UniqLocalGwId *string `json:"UniqLocalGwId,omitnil,omitempty" name:"UniqLocalGwId"`
 
 	// 本地网关名称
@@ -21292,6 +21312,13 @@ type LocalGateway struct {
 
 	// 本地网关创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+
+	// 本地网关实例ID（计划起用）
+	LocalGatewayId *string `json:"LocalGatewayId,omitnil,omitempty" name:"LocalGatewayId"`
 }
 
 // Predefined struct for user
@@ -25825,6 +25852,10 @@ type NetDetect struct {
 	// 创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type NetDetectIpState struct {
@@ -28298,6 +28329,10 @@ type ServiceTemplate struct {
 
 	// 带备注的协议端口信息。
 	ServiceExtraSet []*ServicesInfo `json:"ServiceExtraSet,omitnil,omitempty" name:"ServiceExtraSet"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type ServiceTemplateGroup struct {
@@ -28315,6 +28350,10 @@ type ServiceTemplateGroup struct {
 
 	// 协议端口模板实例信息。
 	ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitnil,omitempty" name:"ServiceTemplateSet"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type ServiceTemplateSpecification struct {
@@ -28539,6 +28578,10 @@ type SnapshotPolicy struct {
 	// 创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type SourceIpTranslationNatRule struct {

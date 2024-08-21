@@ -5572,6 +5572,95 @@ type TrtcUsage struct {
 }
 
 // Predefined struct for user
+type UpdateAIConversationRequestParams struct {
+	// 唯一标识一个任务
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 不填写则不进行更新，机器人的欢迎语
+	WelcomeMessage *string `json:"WelcomeMessage,omitnil,omitempty" name:"WelcomeMessage"`
+
+	// 不填写则不进行更新。智能打断模式，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+	InterruptMode *uint64 `json:"InterruptMode,omitnil,omitempty" name:"InterruptMode"`
+
+	// 不填写则不进行更新。InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断
+	InterruptSpeechDuration *uint64 `json:"InterruptSpeechDuration,omitnil,omitempty" name:"InterruptSpeechDuration"`
+
+	// 不填写则不进行更新，LLM配置，详情见StartAIConversation接口
+	LLMConfig *string `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 不填写则不进行更新，TTS配置，详情见StartAIConversation接口
+	TTSConfig *string `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+}
+
+type UpdateAIConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 唯一标识一个任务
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 不填写则不进行更新，机器人的欢迎语
+	WelcomeMessage *string `json:"WelcomeMessage,omitnil,omitempty" name:"WelcomeMessage"`
+
+	// 不填写则不进行更新。智能打断模式，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+	InterruptMode *uint64 `json:"InterruptMode,omitnil,omitempty" name:"InterruptMode"`
+
+	// 不填写则不进行更新。InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断
+	InterruptSpeechDuration *uint64 `json:"InterruptSpeechDuration,omitnil,omitempty" name:"InterruptSpeechDuration"`
+
+	// 不填写则不进行更新，LLM配置，详情见StartAIConversation接口
+	LLMConfig *string `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 不填写则不进行更新，TTS配置，详情见StartAIConversation接口
+	TTSConfig *string `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+}
+
+func (r *UpdateAIConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "WelcomeMessage")
+	delete(f, "InterruptMode")
+	delete(f, "InterruptSpeechDuration")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAIConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAIConversationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAIConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAIConversationResponseParams `json:"Response"`
+}
+
+func (r *UpdateAIConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdatePublishCdnStreamRequestParams struct {
 	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`

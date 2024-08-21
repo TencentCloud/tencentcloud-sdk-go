@@ -29,6 +29,9 @@ const (
 	// 音频处理任务未完成，不能执行翻译结果确认
 	FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
 
+	// 人体关键点检测失败。
+	FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+
 	// 翻译结果确认任务异常。
 	FAILEDOPERATION_CONFIRMTASKEXCEPTION = "FailedOperation.ConfirmTaskException"
 
@@ -40,6 +43,9 @@ const (
 
 	// 人脸框太小，无法识别使用。
 	FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+
+	// 图片身体部位有遮挡或不全，请重新上传图片
+	FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
 
 	// 输入图身体（头顶到脚踝）高度占比不到图片高度的二分之一
 	FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
@@ -53,8 +59,8 @@ const (
 	// 输入图人脸检测失败
 	FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
 
-	// 人脸检测失败。
-	FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFacedetectFailed"
+	// 人脸检测失败
+	FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
 
 	// 输入图中存在多人
 	FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"

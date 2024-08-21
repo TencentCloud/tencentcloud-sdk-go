@@ -45,6 +45,55 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActionAlterUserRequest() (request *ActionAlterUserRequest) {
+    request = &ActionAlterUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "ActionAlterUser")
+    
+    
+    return
+}
+
+func NewActionAlterUserResponse() (response *ActionAlterUserResponse) {
+    response = &ActionAlterUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActionAlterUser
+// 新增和修改用户接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ActionAlterUser(request *ActionAlterUserRequest) (response *ActionAlterUserResponse, err error) {
+    return c.ActionAlterUserWithContext(context.Background(), request)
+}
+
+// ActionAlterUser
+// 新增和修改用户接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ActionAlterUserWithContext(ctx context.Context, request *ActionAlterUserRequest) (response *ActionAlterUserResponse, err error) {
+    if request == nil {
+        request = NewActionAlterUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActionAlterUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActionAlterUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelBackupJobRequest() (request *CancelBackupJobRequest) {
     request = &CancelBackupJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -66,12 +115,18 @@ func NewCancelBackupJobResponse() (response *CancelBackupJobResponse) {
 
 // CancelBackupJob
 // 取消对应的备份实例任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CancelBackupJob(request *CancelBackupJobRequest) (response *CancelBackupJobResponse, err error) {
     return c.CancelBackupJobWithContext(context.Background(), request)
 }
 
 // CancelBackupJob
 // 取消对应的备份实例任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CancelBackupJobWithContext(ctx context.Context, request *CancelBackupJobRequest) (response *CancelBackupJobResponse, err error) {
     if request == nil {
         request = NewCancelBackupJobRequest()
@@ -109,12 +164,18 @@ func NewCheckCoolDownWorkingVariableConfigCorrectResponse() (response *CheckCool
 
 // CheckCoolDownWorkingVariableConfigCorrect
 // 查询冷热分层生效变量和配置是否正确
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CheckCoolDownWorkingVariableConfigCorrect(request *CheckCoolDownWorkingVariableConfigCorrectRequest) (response *CheckCoolDownWorkingVariableConfigCorrectResponse, err error) {
     return c.CheckCoolDownWorkingVariableConfigCorrectWithContext(context.Background(), request)
 }
 
 // CheckCoolDownWorkingVariableConfigCorrect
 // 查询冷热分层生效变量和配置是否正确
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CheckCoolDownWorkingVariableConfigCorrectWithContext(ctx context.Context, request *CheckCoolDownWorkingVariableConfigCorrectRequest) (response *CheckCoolDownWorkingVariableConfigCorrectResponse, err error) {
     if request == nil {
         request = NewCheckCoolDownWorkingVariableConfigCorrectRequest()
@@ -152,12 +213,18 @@ func NewCreateBackUpScheduleResponse() (response *CreateBackUpScheduleResponse) 
 
 // CreateBackUpSchedule
 // 创建或者修改备份策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateBackUpSchedule(request *CreateBackUpScheduleRequest) (response *CreateBackUpScheduleResponse, err error) {
     return c.CreateBackUpScheduleWithContext(context.Background(), request)
 }
 
 // CreateBackUpSchedule
 // 创建或者修改备份策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateBackUpScheduleWithContext(ctx context.Context, request *CreateBackUpScheduleRequest) (response *CreateBackUpScheduleResponse, err error) {
     if request == nil {
         request = NewCreateBackUpScheduleRequest()
@@ -195,12 +262,18 @@ func NewCreateCoolDownPolicyResponse() (response *CreateCoolDownPolicyResponse) 
 
 // CreateCoolDownPolicy
 // 创建冷热分层策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateCoolDownPolicy(request *CreateCoolDownPolicyRequest) (response *CreateCoolDownPolicyResponse, err error) {
     return c.CreateCoolDownPolicyWithContext(context.Background(), request)
 }
 
 // CreateCoolDownPolicy
 // 创建冷热分层策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateCoolDownPolicyWithContext(ctx context.Context, request *CreateCoolDownPolicyRequest) (response *CreateCoolDownPolicyResponse, err error) {
     if request == nil {
         request = NewCreateCoolDownPolicyRequest()
@@ -238,12 +311,18 @@ func NewCreateInstanceNewResponse() (response *CreateInstanceNewResponse) {
 
 // CreateInstanceNew
 // 通过API创建集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateInstanceNew(request *CreateInstanceNewRequest) (response *CreateInstanceNewResponse, err error) {
     return c.CreateInstanceNewWithContext(context.Background(), request)
 }
 
 // CreateInstanceNew
 // 通过API创建集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateInstanceNewWithContext(ctx context.Context, request *CreateInstanceNewRequest) (response *CreateInstanceNewResponse, err error) {
     if request == nil {
         request = NewCreateInstanceNewRequest()
@@ -281,12 +360,18 @@ func NewCreateWorkloadGroupResponse() (response *CreateWorkloadGroupResponse) {
 
 // CreateWorkloadGroup
 // 创建资源组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateWorkloadGroup(request *CreateWorkloadGroupRequest) (response *CreateWorkloadGroupResponse, err error) {
     return c.CreateWorkloadGroupWithContext(context.Background(), request)
 }
 
 // CreateWorkloadGroup
 // 创建资源组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateWorkloadGroupWithContext(ctx context.Context, request *CreateWorkloadGroupRequest) (response *CreateWorkloadGroupResponse, err error) {
     if request == nil {
         request = NewCreateWorkloadGroupRequest()
@@ -324,12 +409,18 @@ func NewDeleteBackUpDataResponse() (response *DeleteBackUpDataResponse) {
 
 // DeleteBackUpData
 // 删除备份数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteBackUpData(request *DeleteBackUpDataRequest) (response *DeleteBackUpDataResponse, err error) {
     return c.DeleteBackUpDataWithContext(context.Background(), request)
 }
 
 // DeleteBackUpData
 // 删除备份数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteBackUpDataWithContext(ctx context.Context, request *DeleteBackUpDataRequest) (response *DeleteBackUpDataResponse, err error) {
     if request == nil {
         request = NewDeleteBackUpDataRequest()
@@ -367,12 +458,18 @@ func NewDeleteWorkloadGroupResponse() (response *DeleteWorkloadGroupResponse) {
 
 // DeleteWorkloadGroup
 // 删除资源组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteWorkloadGroup(request *DeleteWorkloadGroupRequest) (response *DeleteWorkloadGroupResponse, err error) {
     return c.DeleteWorkloadGroupWithContext(context.Background(), request)
 }
 
 // DeleteWorkloadGroup
 // 删除资源组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteWorkloadGroupWithContext(ctx context.Context, request *DeleteWorkloadGroupRequest) (response *DeleteWorkloadGroupResponse, err error) {
     if request == nil {
         request = NewDeleteWorkloadGroupRequest()
@@ -410,12 +507,18 @@ func NewDescribeAreaRegionResponse() (response *DescribeAreaRegionResponse) {
 
 // DescribeAreaRegion
 // 集群列表页上显示地域信息及各个地域的集群总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeAreaRegion(request *DescribeAreaRegionRequest) (response *DescribeAreaRegionResponse, err error) {
     return c.DescribeAreaRegionWithContext(context.Background(), request)
 }
 
 // DescribeAreaRegion
 // 集群列表页上显示地域信息及各个地域的集群总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeAreaRegionWithContext(ctx context.Context, request *DescribeAreaRegionRequest) (response *DescribeAreaRegionResponse, err error) {
     if request == nil {
         request = NewDescribeAreaRegionRequest()
@@ -453,12 +556,18 @@ func NewDescribeBackUpJobResponse() (response *DescribeBackUpJobResponse) {
 
 // DescribeBackUpJob
 // 查询备份实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpJob(request *DescribeBackUpJobRequest) (response *DescribeBackUpJobResponse, err error) {
     return c.DescribeBackUpJobWithContext(context.Background(), request)
 }
 
 // DescribeBackUpJob
 // 查询备份实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpJobWithContext(ctx context.Context, request *DescribeBackUpJobRequest) (response *DescribeBackUpJobResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpJobRequest()
@@ -496,12 +605,18 @@ func NewDescribeBackUpJobDetailResponse() (response *DescribeBackUpJobDetailResp
 
 // DescribeBackUpJobDetail
 // 查询备份任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpJobDetail(request *DescribeBackUpJobDetailRequest) (response *DescribeBackUpJobDetailResponse, err error) {
     return c.DescribeBackUpJobDetailWithContext(context.Background(), request)
 }
 
 // DescribeBackUpJobDetail
 // 查询备份任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpJobDetailWithContext(ctx context.Context, request *DescribeBackUpJobDetailRequest) (response *DescribeBackUpJobDetailResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpJobDetailRequest()
@@ -539,12 +654,18 @@ func NewDescribeBackUpSchedulesResponse() (response *DescribeBackUpSchedulesResp
 
 // DescribeBackUpSchedules
 // 获取备份、迁移的调度任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpSchedules(request *DescribeBackUpSchedulesRequest) (response *DescribeBackUpSchedulesResponse, err error) {
     return c.DescribeBackUpSchedulesWithContext(context.Background(), request)
 }
 
 // DescribeBackUpSchedules
 // 获取备份、迁移的调度任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpSchedulesWithContext(ctx context.Context, request *DescribeBackUpSchedulesRequest) (response *DescribeBackUpSchedulesResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpSchedulesRequest()
@@ -582,12 +703,18 @@ func NewDescribeBackUpTablesResponse() (response *DescribeBackUpTablesResponse) 
 
 // DescribeBackUpTables
 // 获取可备份表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpTables(request *DescribeBackUpTablesRequest) (response *DescribeBackUpTablesResponse, err error) {
     return c.DescribeBackUpTablesWithContext(context.Background(), request)
 }
 
 // DescribeBackUpTables
 // 获取可备份表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpTablesWithContext(ctx context.Context, request *DescribeBackUpTablesRequest) (response *DescribeBackUpTablesResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpTablesRequest()
@@ -625,12 +752,18 @@ func NewDescribeBackUpTaskDetailResponse() (response *DescribeBackUpTaskDetailRe
 
 // DescribeBackUpTaskDetail
 // 查询备份任务进度详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpTaskDetail(request *DescribeBackUpTaskDetailRequest) (response *DescribeBackUpTaskDetailResponse, err error) {
     return c.DescribeBackUpTaskDetailWithContext(context.Background(), request)
 }
 
 // DescribeBackUpTaskDetail
 // 查询备份任务进度详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeBackUpTaskDetailWithContext(ctx context.Context, request *DescribeBackUpTaskDetailRequest) (response *DescribeBackUpTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpTaskDetailRequest()
@@ -668,12 +801,18 @@ func NewDescribeClusterConfigsResponse() (response *DescribeClusterConfigsRespon
 
 // DescribeClusterConfigs
 // 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeClusterConfigs(request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
     return c.DescribeClusterConfigsWithContext(context.Background(), request)
 }
 
 // DescribeClusterConfigs
 // 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeClusterConfigsWithContext(ctx context.Context, request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterConfigsRequest()

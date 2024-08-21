@@ -427,6 +427,9 @@ type SubmitImageAnimateJobRequestParams struct {
 
 	// 结果视频是否保留模板音频。默认为true
 	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
+
+	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
 }
 
 type SubmitImageAnimateJobRequest struct {
@@ -446,6 +449,9 @@ type SubmitImageAnimateJobRequest struct {
 
 	// 结果视频是否保留模板音频。默认为true
 	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
+
+	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
 }
 
 func (r *SubmitImageAnimateJobRequest) ToJsonString() string {
@@ -464,6 +470,7 @@ func (r *SubmitImageAnimateJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "TemplateId")
 	delete(f, "EnableAudio")
+	delete(f, "EnableBodyJoins")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageAnimateJobRequest has unknown keys!", "")
 	}

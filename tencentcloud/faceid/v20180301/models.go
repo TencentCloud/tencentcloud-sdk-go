@@ -566,6 +566,12 @@ type CheckIdCardInformationRequestParams struct {
 	// 是否需要对返回中的敏感信息进行加密。默认false。
 	// 其中敏感信息包括：Response.IdNum、Response.Name
 	IsEncrypt *bool `json:"IsEncrypt,omitnil,omitempty" name:"IsEncrypt"`
+
+	// 是否需要对响应体加密
+	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
+
+	// 是否需要对返回中的敏感信息进行加密,需指定加密算法Algorithm、CBC加密的初始向量、加密后的对称密钥。
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type CheckIdCardInformationRequest struct {
@@ -602,6 +608,12 @@ type CheckIdCardInformationRequest struct {
 	// 是否需要对返回中的敏感信息进行加密。默认false。
 	// 其中敏感信息包括：Response.IdNum、Response.Name
 	IsEncrypt *bool `json:"IsEncrypt,omitnil,omitempty" name:"IsEncrypt"`
+
+	// 是否需要对响应体加密
+	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
+
+	// 是否需要对返回中的敏感信息进行加密,需指定加密算法Algorithm、CBC加密的初始向量、加密后的对称密钥。
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 func (r *CheckIdCardInformationRequest) ToJsonString() string {
@@ -620,6 +632,8 @@ func (r *CheckIdCardInformationRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Config")
 	delete(f, "IsEncrypt")
+	delete(f, "IsEncryptResponse")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIdCardInformationRequest has unknown keys!", "")
 	}
@@ -676,6 +690,9 @@ type CheckIdCardInformationResponseParams struct {
 	// 敏感数据加密信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 加密后的数据
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

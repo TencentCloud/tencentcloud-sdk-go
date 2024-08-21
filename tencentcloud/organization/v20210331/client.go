@@ -3018,7 +3018,7 @@ func NewDescribeIdentityCenterResponse() (response *DescribeIdentityCenterRespon
 }
 
 // DescribeIdentityCenter
-// 获取cam身份中心服务信息
+// 获取集团账号身份中心服务信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
@@ -3028,7 +3028,7 @@ func (c *Client) DescribeIdentityCenter(request *DescribeIdentityCenterRequest) 
 }
 
 // DescribeIdentityCenter
-// 获取cam身份中心服务信息
+// 获取集团账号身份中心服务信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
@@ -6018,7 +6018,7 @@ func NewOpenIdentityCenterResponse() (response *OpenIdentityCenterResponse) {
 }
 
 // OpenIdentityCenter
-// 开通CIC服务
+// 开通身份中心服务（CIC）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
@@ -6034,7 +6034,7 @@ func (c *Client) OpenIdentityCenter(request *OpenIdentityCenterRequest) (respons
 }
 
 // OpenIdentityCenter
-// 开通CIC服务
+// 开通身份中心服务（CIC）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"

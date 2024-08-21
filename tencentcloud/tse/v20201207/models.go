@@ -6584,6 +6584,9 @@ type DescribeGovernanceInstancesRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 地域
+	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 type DescribeGovernanceInstancesRequest struct {
@@ -6621,6 +6624,9 @@ type DescribeGovernanceInstancesRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 地域
+	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 func (r *DescribeGovernanceInstancesRequest) ToJsonString() string {
@@ -6646,6 +6652,7 @@ func (r *DescribeGovernanceInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Metadatas")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Location")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGovernanceInstancesRequest has unknown keys!", "")
 	}
@@ -6659,6 +6666,9 @@ type DescribeGovernanceInstancesResponseParams struct {
 
 	// 服务里实例列表。
 	Content []*GovernanceInstance `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 地域
+	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9286,6 +9296,20 @@ type ListFilter struct {
 
 	// 过滤值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Location struct {
+	// 大区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 机房
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Campus *string `json:"Campus,omitnil,omitempty" name:"Campus"`
 }
 
 type Metadata struct {

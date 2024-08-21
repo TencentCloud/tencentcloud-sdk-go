@@ -20,6 +20,78 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type ActionAlterUserRequestParams struct {
+	// 用户信息
+	UserInfo *UserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// api接口类型
+	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
+
+	// 用户权限类型 0:普通用户 1:管理员
+	UserPrivilege *int64 `json:"UserPrivilege,omitnil,omitempty" name:"UserPrivilege"`
+}
+
+type ActionAlterUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户信息
+	UserInfo *UserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// api接口类型
+	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
+
+	// 用户权限类型 0:普通用户 1:管理员
+	UserPrivilege *int64 `json:"UserPrivilege,omitnil,omitempty" name:"UserPrivilege"`
+}
+
+func (r *ActionAlterUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActionAlterUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserInfo")
+	delete(f, "ApiType")
+	delete(f, "UserPrivilege")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActionAlterUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActionAlterUserResponseParams struct {
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActionAlterUserResponse struct {
+	*tchttp.BaseResponse
+	Response *ActionAlterUserResponseParams `json:"Response"`
+}
+
+func (r *ActionAlterUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActionAlterUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AttachCBSSpec struct {
 	// 节点磁盘类型，例如“CLOUD_SSD”\"CLOUD_PREMIUM"
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
@@ -3916,6 +3988,14 @@ type InstanceInfo struct {
 	// 实例扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details *InstanceDetail `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 是否启用DLC 0:关闭 1:开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDlc *int64 `json:"EnableDlc,omitnil,omitempty" name:"EnableDlc"`
+
+	// 账户类型 0:普通用户 1:CAM用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type InstanceNode struct {
@@ -5874,6 +5954,29 @@ func (r *UpdateCoolDownResponse) FromJsonString(s string) error {
 type UpdateUserPrivileges struct {
 	// 是否设置catalog权限
 	IsSetGlobalCatalog *bool `json:"IsSetGlobalCatalog,omitnil,omitempty" name:"IsSetGlobalCatalog"`
+}
+
+type UserInfo struct {
+	// 集群实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 密码
+	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
+
+	// 用户链接来自的 IP
+	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
+
+	// 修改前用户链接来自的 IP
+	OldWhiteHost *string `json:"OldWhiteHost,omitnil,omitempty" name:"OldWhiteHost"`
+
+	// 描述
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// 旧密码
+	OldPwd *string `json:"OldPwd,omitnil,omitempty" name:"OldPwd"`
 }
 
 type UserWorkloadGroup struct {

@@ -23439,7 +23439,7 @@ type RoundPlayFilePlayInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 播放进度，单位为妙。
+	// 播放进度，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }

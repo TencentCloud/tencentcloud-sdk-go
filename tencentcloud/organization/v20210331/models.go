@@ -1776,16 +1776,16 @@ type CreateRoleConfigurationRequestParams struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 访问配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
+	// 权限配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
 	RoleConfigurationName *string `json:"RoleConfigurationName,omitnil,omitempty" name:"RoleConfigurationName"`
 
-	// 访问配置的描述。 长度：最大 1024 个字符。
+	// 权限配置的描述。 长度：最大 1024 个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 会话持续时间。 CIC用户使用访问配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900~43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
+	// 会话持续时间。 CIC用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900 ~ 43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
 	SessionDuration *int64 `json:"SessionDuration,omitnil,omitempty" name:"SessionDuration"`
 
-	// 初始访问页面。 CIC用户使用访问配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
+	// 初始访问页面。 CIC用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
 	RelayState *string `json:"RelayState,omitnil,omitempty" name:"RelayState"`
 }
 
@@ -1795,16 +1795,16 @@ type CreateRoleConfigurationRequest struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 访问配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
+	// 权限配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
 	RoleConfigurationName *string `json:"RoleConfigurationName,omitnil,omitempty" name:"RoleConfigurationName"`
 
-	// 访问配置的描述。 长度：最大 1024 个字符。
+	// 权限配置的描述。 长度：最大 1024 个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 会话持续时间。 CIC用户使用访问配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900~43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
+	// 会话持续时间。 CIC用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900 ~ 43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
 	SessionDuration *int64 `json:"SessionDuration,omitnil,omitempty" name:"SessionDuration"`
 
-	// 初始访问页面。 CIC用户使用访问配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
+	// 初始访问页面。 CIC用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
 	RelayState *string `json:"RelayState,omitnil,omitempty" name:"RelayState"`
 }
 
@@ -2605,13 +2605,13 @@ type DeleteRoleAssignmentRequestParams struct {
 	// 集团账号目标账号的UIN
 	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// CAM用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
-	// CAM用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）， 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。 	
+	// 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-********）， 当PrincipalType取值为User时，该值为用户 ID（u-********）。 	
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
-	// 当您移除一个集团账号目标账号上使用某访问配置的最后一个授权时，是否同时解除访问配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除访问配置部署。 None（默认值）：不解除访问配置部署。
+	// 当您移除一个集团账号目标账号上使用某权限配置的最后一个授权时，是否同时解除权限配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除权限配置部署。 None（默认值）：不解除权限配置部署。
 	DeprovisionStrategy *string `json:"DeprovisionStrategy,omitnil,omitempty" name:"DeprovisionStrategy"`
 }
 
@@ -2630,13 +2630,13 @@ type DeleteRoleAssignmentRequest struct {
 	// 集团账号目标账号的UIN
 	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// CAM用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
-	// CAM用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）， 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。 	
+	// 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-********）， 当PrincipalType取值为User时，该值为用户 ID（u-********）。 	
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
-	// 当您移除一个集团账号目标账号上使用某访问配置的最后一个授权时，是否同时解除访问配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除访问配置部署。 None（默认值）：不解除访问配置部署。
+	// 当您移除一个集团账号目标账号上使用某权限配置的最后一个授权时，是否同时解除权限配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除权限配置部署。 None（默认值）：不解除权限配置部署。
 	DeprovisionStrategy *string `json:"DeprovisionStrategy,omitnil,omitempty" name:"DeprovisionStrategy"`
 }
 
@@ -6628,10 +6628,10 @@ type ListRoleAssignmentsRequestParams struct {
 	// 同步的集团账号目标账号的UIN。
 	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// CAM 用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
-	// CAM 用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。
+	// 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****)，当PrincipalType取值为User时，该值为用户 ID （u-****）。
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
 	// 查询条件，目前只支持权限配置名称查询。
@@ -6659,10 +6659,10 @@ type ListRoleAssignmentsRequest struct {
 	// 同步的集团账号目标账号的UIN。
 	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// CAM 用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
-	// CAM 用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。
+	// 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****)，当PrincipalType取值为User时，该值为用户 ID （u-****）。
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
 	// 查询条件，目前只支持权限配置名称查询。
@@ -6862,7 +6862,7 @@ type ListRoleConfigurationsRequestParams struct {
 	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部访问配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的访问配置。
+	// 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部权限配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的权限配置。
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
@@ -6884,7 +6884,7 @@ type ListRoleConfigurationsRequest struct {
 	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部访问配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的访问配置。
+	// 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部权限配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的权限配置。
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
@@ -7071,7 +7071,7 @@ type ListTasksRequestParams struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// CAM 用户同步的身份 ID。取值：  当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+	// 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****）， 当PrincipalType取值为User时，该值为用户 ID（u-****）。
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
 	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
@@ -7080,7 +7080,7 @@ type ListTasksRequestParams struct {
 	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// CAM 用户同步的身份类型。取值：  User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
 	// 同步的集团账号目标账号的UIN。
@@ -7105,7 +7105,7 @@ type ListTasksRequest struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// CAM 用户同步的身份 ID。取值：  当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+	// 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****）， 当PrincipalType取值为User时，该值为用户 ID（u-****）。
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
 	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
@@ -7114,7 +7114,7 @@ type ListTasksRequest struct {
 	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// CAM 用户同步的身份类型。取值：  User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
 	// 同步的集团账号目标账号的UIN。
@@ -7203,7 +7203,7 @@ type ListUserSyncProvisioningsRequestParams struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// CAM 用户同步的身份 ID。取值：  当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+	// 用户同步 ID。取值：  当PrincipalType取值为Group时，该值为用户组 ID（g-********）。 当PrincipalType取值为User时，该值为用户 ID（u-********）。
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
 	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
@@ -7212,7 +7212,7 @@ type ListUserSyncProvisioningsRequestParams struct {
 	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// CAM 用户同步的身份类型。取值：  User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
 	// 集团账号目标账号的UIN。
@@ -7231,7 +7231,7 @@ type ListUserSyncProvisioningsRequest struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// CAM 用户同步的身份 ID。取值：  当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+	// 用户同步 ID。取值：  当PrincipalType取值为Group时，该值为用户组 ID（g-********）。 当PrincipalType取值为User时，该值为用户 ID（u-********）。
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 
 	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
@@ -7240,7 +7240,7 @@ type ListUserSyncProvisioningsRequest struct {
 	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// CAM 用户同步的身份类型。取值：  User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+	// CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
 	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
 
 	// 集团账号目标账号的UIN。
@@ -9419,13 +9419,13 @@ type UpdateRoleConfigurationRequestParams struct {
 	// 权限配置 ID
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 新的访问配置描述。  长度：最大 1024 个字符。
+	// 新的权限配置描述。  长度：最大 1024 个字符。
 	NewDescription *string `json:"NewDescription,omitnil,omitempty" name:"NewDescription"`
 
-	// 新的会话持续时间。  CIC 用户使用访问配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+	// 新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
 	NewSessionDuration *int64 `json:"NewSessionDuration,omitnil,omitempty" name:"NewSessionDuration"`
 
-	// 新的初始访问页面。  CIC 用户使用访问配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+	// 新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
 	NewRelayState *string `json:"NewRelayState,omitnil,omitempty" name:"NewRelayState"`
 }
 
@@ -9438,13 +9438,13 @@ type UpdateRoleConfigurationRequest struct {
 	// 权限配置 ID
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 新的访问配置描述。  长度：最大 1024 个字符。
+	// 新的权限配置描述。  长度：最大 1024 个字符。
 	NewDescription *string `json:"NewDescription,omitnil,omitempty" name:"NewDescription"`
 
-	// 新的会话持续时间。  CIC 用户使用访问配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+	// 新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
 	NewSessionDuration *int64 `json:"NewSessionDuration,omitnil,omitempty" name:"NewSessionDuration"`
 
-	// 新的初始访问页面。  CIC 用户使用访问配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+	// 新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
 	NewRelayState *string `json:"NewRelayState,omitnil,omitempty" name:"NewRelayState"`
 }
 
