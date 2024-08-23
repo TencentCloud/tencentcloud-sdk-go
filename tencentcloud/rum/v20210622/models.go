@@ -2457,6 +2457,9 @@ type DescribeDataLogUrlStatisticsRequestParams struct {
 
 	// 环境区分
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// js异常信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 }
 
 type DescribeDataLogUrlStatisticsRequest struct {
@@ -2524,6 +2527,9 @@ type DescribeDataLogUrlStatisticsRequest struct {
 
 	// 环境区分
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// js异常信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 }
 
 func (r *DescribeDataLogUrlStatisticsRequest) ToJsonString() string {
@@ -2559,6 +2565,7 @@ func (r *DescribeDataLogUrlStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "Os")
 	delete(f, "Browser")
 	delete(f, "Env")
+	delete(f, "ErrorMsg")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataLogUrlStatisticsRequest has unknown keys!", "")
 	}

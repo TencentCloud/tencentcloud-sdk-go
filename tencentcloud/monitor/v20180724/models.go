@@ -16347,4 +16347,8 @@ type UserNotice struct {
 	// 值班表id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
+
+	// 电话按键确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceConfirmKey *string `json:"VoiceConfirmKey,omitnil,omitempty" name:"VoiceConfirmKey"`
 }

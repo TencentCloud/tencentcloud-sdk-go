@@ -119,6 +119,9 @@ const (
 	// 证书状态不允许重新申请。
 	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = "FailedOperation.CertificateStatusNotAllowResubmit"
 
+	// 证书关联云资源查询任务ID无效
+	FAILEDOPERATION_CERTIFICATESYNCTASKIDINVALID = "FailedOperation.CertificateSyncTaskIdInvalid"
+
 	// 无法查到当前证书类型详情。
 	FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = "FailedOperation.CertificateTypeInfoNotFound"
 

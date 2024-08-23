@@ -1025,6 +1025,14 @@ type DeviceBaseInfo struct {
 	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
+
+	// 设备sn
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
+
+	// 厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 }
 
 type DeviceDetails struct {

@@ -266,13 +266,13 @@ type FuseFaceUltraRequestParams struct {
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
 
 	// 素材模版图片的url地址。
-	// ●base64 和 url 必须提供一个，如果都提供以 base64 为准。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
 	// ●图片格式：支持jpg或png
 	ModelUrl *string `json:"ModelUrl,omitnil,omitempty" name:"ModelUrl"`
 
 	// 素材模版图片base64数据。
-	// ●base64 和 url 必须提供一个，如果都提供以 base64 为准。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
 	// ●支持图片格式：支持jpg或png
 	ModelImage *string `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
@@ -293,11 +293,11 @@ type FuseFaceUltraRequestParams struct {
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
 	// 融合模型类型参数：默认为1。
-	// 图片人脸融合（专业版）针对不同场景，提供多种模型供选择。如您的产品是泛娱乐场景，推荐使用1；如您主要用于影像场景，推荐使用5。其他模型类型也可以结合您的产品使用场景进行选择，也许会有意想不到的效果
+	// 图片人脸融合（专业版）针对不同场景，提供多种模型供选择。如您的产品是泛娱乐场景，推荐使用1；如您主要用于影像场景，推荐使用4、5。其他模型类型也可以结合您的产品使用场景进行选择，也许会有意想不到的效果
 	// 1：默认泛娱乐场景，画面偏锐。
 	// 2：影视级场景，画面偏自然。
 	// 3：影视级场景，高分辨率，画面偏自然。
-	// 4：影视级场景，高分辨率，画面偏自然。
+	// 4：影视级场景，高分辦率，高人脸相似度，画面偏自然，可用于证件照等场景。
 	// 5：影视级场景，高分辨率，对闭眼和遮挡更友好。
 	SwapModelType *int64 `json:"SwapModelType,omitnil,omitempty" name:"SwapModelType"`
 }
@@ -313,13 +313,13 @@ type FuseFaceUltraRequest struct {
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
 
 	// 素材模版图片的url地址。
-	// ●base64 和 url 必须提供一个，如果都提供以 base64 为准。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
 	// ●图片格式：支持jpg或png
 	ModelUrl *string `json:"ModelUrl,omitnil,omitempty" name:"ModelUrl"`
 
 	// 素材模版图片base64数据。
-	// ●base64 和 url 必须提供一个，如果都提供以 base64 为准。
+	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
 	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
 	// ●支持图片格式：支持jpg或png
 	ModelImage *string `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
@@ -340,11 +340,11 @@ type FuseFaceUltraRequest struct {
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
 	// 融合模型类型参数：默认为1。
-	// 图片人脸融合（专业版）针对不同场景，提供多种模型供选择。如您的产品是泛娱乐场景，推荐使用1；如您主要用于影像场景，推荐使用5。其他模型类型也可以结合您的产品使用场景进行选择，也许会有意想不到的效果
+	// 图片人脸融合（专业版）针对不同场景，提供多种模型供选择。如您的产品是泛娱乐场景，推荐使用1；如您主要用于影像场景，推荐使用4、5。其他模型类型也可以结合您的产品使用场景进行选择，也许会有意想不到的效果
 	// 1：默认泛娱乐场景，画面偏锐。
 	// 2：影视级场景，画面偏自然。
 	// 3：影视级场景，高分辨率，画面偏自然。
-	// 4：影视级场景，高分辨率，画面偏自然。
+	// 4：影视级场景，高分辦率，高人脸相似度，画面偏自然，可用于证件照等场景。
 	// 5：影视级场景，高分辨率，对闭眼和遮挡更友好。
 	SwapModelType *int64 `json:"SwapModelType,omitnil,omitempty" name:"SwapModelType"`
 }
@@ -408,21 +408,29 @@ type FuseParam struct {
 type FusionUltraParam struct {
 	// 拉脸强度。主要用于调整生成结果人脸脸型更像素材模板还是用户人脸。取值越大越像用户人脸。
 	// 取值范围：0-1之间。默认取值0.7。
+	// 
+	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarpRadio *float64 `json:"WarpRadio,omitnil,omitempty" name:"WarpRadio"`
 
 	// 人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
 	// 取值范围：0-1之间。默认取值1。
+	// 
+	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceRadio *float64 `json:"EnhanceRadio,omitnil,omitempty" name:"EnhanceRadio"`
 
 	// 磨皮强度。当生成脸的图像面部显脏时，可进行设置。
 	// 取值范围：0-1之间。默认取值1。
+	// 
+	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MpRadio *float64 `json:"MpRadio,omitnil,omitempty" name:"MpRadio"`
 
 	// 人脸模糊开关（暂不支持）
 	// 当生成人脸比较清晰时，将人脸模糊到接近模板的清晰度的程度
+	// 
+	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlurRadio *float64 `json:"BlurRadio,omitnil,omitempty" name:"BlurRadio"`
 
@@ -430,6 +438,7 @@ type FusionUltraParam struct {
 	// 牙齿增强，修复牙齿。当生成牙齿不好（如牙齿裂开）可以打开此开关
 	// 0：牙齿增强关闭
 	// 1：牙齿增强打开
+	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TeethEnhanceRadio *float64 `json:"TeethEnhanceRadio,omitnil,omitempty" name:"TeethEnhanceRadio"`
 }

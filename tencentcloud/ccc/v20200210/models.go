@@ -5505,6 +5505,15 @@ type TelCdrInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrUrl *string `json:"AsrUrl,omitnil,omitempty" name:"AsrUrl"`
 
+	// AsrUrl的状态：Complete
+	// 已完成;
+	// Processing
+	// 正在生成中;
+	// NotExists
+	// 无记录(未开启生成离线asr或者无套餐包)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrStatus *string `json:"AsrStatus,omitnil,omitempty" name:"AsrStatus"`
+
 	// 录音转存第三方COS地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`

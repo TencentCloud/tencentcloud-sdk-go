@@ -140,7 +140,7 @@ type ActionLibraryListResult struct {
 	// 操作命令
 	ActionCommand *string `json:"ActionCommand,omitnil,omitempty" name:"ActionCommand"`
 
-	// 动作类型( 0 -- tat   1 -- 云API）
+	// 动作类型（0 -- tat   1 -- 云API）
 	ActionCommandType *uint64 `json:"ActionCommandType,omitnil,omitempty" name:"ActionCommandType"`
 
 	// 自定义动作的参数，json string

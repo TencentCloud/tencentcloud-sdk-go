@@ -4744,6 +4744,9 @@ type CreateMalwareWhiteListRequestParams struct {
 
 	// 木马事件ID
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 对历史待处理执行加白操作；0是不处理，1是处理
+	IsHandleHistoryEvents *uint64 `json:"IsHandleHistoryEvents,omitnil,omitempty" name:"IsHandleHistoryEvents"`
 }
 
 type CreateMalwareWhiteListRequest struct {
@@ -4775,6 +4778,9 @@ type CreateMalwareWhiteListRequest struct {
 
 	// 木马事件ID
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 对历史待处理执行加白操作；0是不处理，1是处理
+	IsHandleHistoryEvents *uint64 `json:"IsHandleHistoryEvents,omitnil,omitempty" name:"IsHandleHistoryEvents"`
 }
 
 func (r *CreateMalwareWhiteListRequest) ToJsonString() string {
@@ -4798,6 +4804,7 @@ func (r *CreateMalwareWhiteListRequest) FromJsonString(s string) error {
 	delete(f, "FileExtension")
 	delete(f, "Md5List")
 	delete(f, "EventId")
+	delete(f, "IsHandleHistoryEvents")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMalwareWhiteListRequest has unknown keys!", "")
 	}
@@ -25969,6 +25976,9 @@ type DescribeScanVulSettingResponseParams struct {
 	// 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
+	// 0版本比对,2版本比对+poc
+	ScanMethod *uint64 `json:"ScanMethod,omitnil,omitempty" name:"ScanMethod"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -30176,6 +30186,9 @@ type DescribeWarningHostConfigResponseParams struct {
 	// 项目或标签的id列表，自选主机时为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemLabelIds []*string `json:"ItemLabelIds,omitnil,omitempty" name:"ItemLabelIds"`
+
+	// 需排除的机器列表
+	ExcludedQuuids []*string `json:"ExcludedQuuids,omitnil,omitempty" name:"ExcludedQuuids"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -42075,6 +42088,9 @@ type ModifyWarningHostConfigRequestParams struct {
 
 	// 项目或标签的id列表，自选主机时为空
 	ItemLabelIds []*string `json:"ItemLabelIds,omitnil,omitempty" name:"ItemLabelIds"`
+
+	// 需排除的机器列表
+	ExcludedQuuids []*string `json:"ExcludedQuuids,omitnil,omitempty" name:"ExcludedQuuids"`
 }
 
 type ModifyWarningHostConfigRequest struct {
@@ -42094,6 +42110,9 @@ type ModifyWarningHostConfigRequest struct {
 
 	// 项目或标签的id列表，自选主机时为空
 	ItemLabelIds []*string `json:"ItemLabelIds,omitnil,omitempty" name:"ItemLabelIds"`
+
+	// 需排除的机器列表
+	ExcludedQuuids []*string `json:"ExcludedQuuids,omitnil,omitempty" name:"ExcludedQuuids"`
 }
 
 func (r *ModifyWarningHostConfigRequest) ToJsonString() string {
@@ -42113,6 +42132,7 @@ func (r *ModifyWarningHostConfigRequest) FromJsonString(s string) error {
 	delete(f, "ItemLabels")
 	delete(f, "Quuids")
 	delete(f, "ItemLabelIds")
+	delete(f, "ExcludedQuuids")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWarningHostConfigRequest has unknown keys!", "")
 	}
@@ -42223,6 +42243,9 @@ type ModifyWebHookPolicyRequestParams struct {
 
 	// 主机列表
 	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
+
+	// 需排除的机器列表	
+	ExcludedQuuids []*string `json:"ExcludedQuuids,omitnil,omitempty" name:"ExcludedQuuids"`
 }
 
 type ModifyWebHookPolicyRequest struct {
@@ -42254,6 +42277,9 @@ type ModifyWebHookPolicyRequest struct {
 
 	// 主机列表
 	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
+
+	// 需排除的机器列表	
+	ExcludedQuuids []*string `json:"ExcludedQuuids,omitnil,omitempty" name:"ExcludedQuuids"`
 }
 
 func (r *ModifyWebHookPolicyRequest) ToJsonString() string {
@@ -42277,6 +42303,7 @@ func (r *ModifyWebHookPolicyRequest) FromJsonString(s string) error {
 	delete(f, "CustomFields")
 	delete(f, "IsDisabled")
 	delete(f, "Quuids")
+	delete(f, "ExcludedQuuids")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWebHookPolicyRequest has unknown keys!", "")
 	}
@@ -45074,6 +45101,9 @@ type ScanVulRequestParams struct {
 
 	// 需要扫描的漏洞id
 	VulIds []*uint64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
+
+	// 0版本比对，2版本比对+poc
+	ScanMethod *uint64 `json:"ScanMethod,omitnil,omitempty" name:"ScanMethod"`
 }
 
 type ScanVulRequest struct {
@@ -45099,6 +45129,9 @@ type ScanVulRequest struct {
 
 	// 需要扫描的漏洞id
 	VulIds []*uint64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
+
+	// 0版本比对，2版本比对+poc
+	ScanMethod *uint64 `json:"ScanMethod,omitnil,omitempty" name:"ScanMethod"`
 }
 
 func (r *ScanVulRequest) ToJsonString() string {
@@ -45120,6 +45153,7 @@ func (r *ScanVulRequest) FromJsonString(s string) error {
 	delete(f, "VulEmergency")
 	delete(f, "TimeoutPeriod")
 	delete(f, "VulIds")
+	delete(f, "ScanMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVulRequest has unknown keys!", "")
 	}
@@ -45180,6 +45214,9 @@ type ScanVulSettingRequestParams struct {
 
 	// 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
+
+	// 0版本比对，2版本比对+poc
+	ScanMethod *uint64 `json:"ScanMethod,omitnil,omitempty" name:"ScanMethod"`
 }
 
 type ScanVulSettingRequest struct {
@@ -45211,6 +45248,9 @@ type ScanVulSettingRequest struct {
 
 	// 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
+
+	// 0版本比对，2版本比对+poc
+	ScanMethod *uint64 `json:"ScanMethod,omitnil,omitempty" name:"ScanMethod"`
 }
 
 func (r *ScanVulSettingRequest) ToJsonString() string {
@@ -45234,6 +45274,7 @@ func (r *ScanVulSettingRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "EnableScan")
 	delete(f, "Uuids")
+	delete(f, "ScanMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVulSettingRequest has unknown keys!", "")
 	}

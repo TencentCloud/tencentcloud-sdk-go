@@ -661,8 +661,8 @@ type TextTranslateBatchRequestParams struct {
 
 	// 目标语言，各源语言的目标语言支持列表如下
 	// 
-	// <li> zh（简体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
-	// <li>zh-TW（繁体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
+	// <li> zh（简体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
+	// <li>zh-TW（繁体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
 	// <li>en（英语）：zh（中文）、zh-TW（繁体中文）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）、hi（印地语）</li>
 	// <li>ja（日语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ko（韩语）</li>
 	// <li>ko（韩语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ja（日语）</li>
@@ -677,7 +677,7 @@ type TextTranslateBatchRequestParams struct {
 	// <li>id（印尼语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>th（泰语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>ms（马来语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
-	// <li>ar（阿拉伯语）：en（英语）</li>
+	// <li>ar（阿拉伯语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>hi（印地语）：en（英语）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
@@ -721,8 +721,8 @@ type TextTranslateBatchRequest struct {
 
 	// 目标语言，各源语言的目标语言支持列表如下
 	// 
-	// <li> zh（简体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
-	// <li>zh-TW（繁体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
+	// <li> zh（简体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
+	// <li>zh-TW（繁体中文）：en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
 	// <li>en（英语）：zh（中文）、zh-TW（繁体中文）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）、hi（印地语）</li>
 	// <li>ja（日语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ko（韩语）</li>
 	// <li>ko（韩语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ja（日语）</li>
@@ -737,7 +737,7 @@ type TextTranslateBatchRequest struct {
 	// <li>id（印尼语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>th（泰语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>ms（马来语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
-	// <li>ar（阿拉伯语）：en（英语）</li>
+	// <li>ar（阿拉伯语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>hi（印地语）：en（英语）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
@@ -838,8 +838,8 @@ type TextTranslateRequestParams struct {
 
 	// 目标语言，各源语言的目标语言支持列表如下
 	// 
-	// <li> zh（简体中文）：zh-TW（繁体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
-	// <li>zh-TW（繁体中文）：zh（简体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
+	// <li> zh（简体中文）：zh-TW（繁体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
+	// <li>zh-TW（繁体中文）：zh（简体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
 	// <li>en（英语）：zh（中文）、zh-TW（繁体中文）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）、hi（印地语）</li>
 	// <li>ja（日语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ko（韩语）</li>
 	// <li>ko（韩语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ja（日语）</li>
@@ -854,7 +854,7 @@ type TextTranslateRequestParams struct {
 	// <li>id（印尼语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>th（泰语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>ms（马来语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
-	// <li>ar（阿拉伯语）：en（英语）</li>
+	// <li>ar（阿拉伯语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>hi（印地语）：en（英语）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
@@ -901,8 +901,8 @@ type TextTranslateRequest struct {
 
 	// 目标语言，各源语言的目标语言支持列表如下
 	// 
-	// <li> zh（简体中文）：zh-TW（繁体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
-	// <li>zh-TW（繁体中文）：zh（简体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）</li>
+	// <li> zh（简体中文）：zh-TW（繁体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
+	// <li>zh-TW（繁体中文）：zh（简体中文）、en（英语）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）</li>
 	// <li>en（英语）：zh（中文）、zh-TW（繁体中文）、ja（日语）、ko（韩语）、fr（法语）、es（西班牙语）、it（意大利语）、de（德语）、tr（土耳其语）、ru（俄语）、pt（葡萄牙语）、vi（越南语）、id（印尼语）、th（泰语）、ms（马来语）、ar（阿拉伯语）、hi（印地语）</li>
 	// <li>ja（日语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ko（韩语）</li>
 	// <li>ko（韩语）：zh（中文）、zh-TW（繁体中文）、en（英语）、ja（日语）</li>
@@ -917,7 +917,7 @@ type TextTranslateRequest struct {
 	// <li>id（印尼语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>th（泰语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>ms（马来语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
-	// <li>ar（阿拉伯语）：en（英语）</li>
+	// <li>ar（阿拉伯语）：zh（中文）、zh-TW（繁体中文）、en（英语）</li>
 	// <li>hi（印地语）：en（英语）</li>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 

@@ -157,7 +157,7 @@ func (r *AddResourceTagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachResourcesTagRequestParams struct {
-	// 业务的英文简称，即资源六段式第三段。资源六段式的描述方式参考：https://cloud.tencent.com/document/product/651/89122
+	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -172,14 +172,14 @@ type AttachResourcesTagRequestParams struct {
 	// 资源所在地域，不区分地域的资源则不必填。区分地域的资源则必填，且必填时必须是参数ResourceIds.N资源所对应的地域，且如果ResourceIds.N为批量时，这些资源也必须是同一个地域的。例如示例值：ap-beijing，则参数ResourceIds.N中都应该填写该地域的资源。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
+	// 资源前缀（资源六段式中最后一段"/"前面的部分，例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 }
 
 type AttachResourcesTagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务的英文简称，即资源六段式第三段。资源六段式的描述方式参考：https://cloud.tencent.com/document/product/651/89122
+	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -194,7 +194,7 @@ type AttachResourcesTagRequest struct {
 	// 资源所在地域，不区分地域的资源则不必填。区分地域的资源则必填，且必填时必须是参数ResourceIds.N资源所对应的地域，且如果ResourceIds.N为批量时，这些资源也必须是同一个地域的。例如示例值：ap-beijing，则参数ResourceIds.N中都应该填写该地域的资源。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
+	// 资源前缀（资源六段式中最后一段"/"前面的部分，例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 }
 
@@ -366,7 +366,7 @@ type DeleteResourceTagRequestParams struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+	// 资源六段式。示例：qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 }
 
@@ -376,7 +376,7 @@ type DeleteResourceTagRequest struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+	// 资源六段式。示例：qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 }
 
@@ -629,16 +629,16 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceTagsByResourceIdsRequestParams struct {
-	// 业务类型
+	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 资源前缀，示例 instance
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源ID数组，大小不超过50
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -654,16 +654,16 @@ type DescribeResourceTagsByResourceIdsRequestParams struct {
 type DescribeResourceTagsByResourceIdsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务类型
+	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 资源前缀，示例 instance
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源ID数组，大小不超过50
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -737,16 +737,16 @@ func (r *DescribeResourceTagsByResourceIdsResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeResourceTagsByResourceIdsSeqRequestParams struct {
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -759,16 +759,16 @@ type DescribeResourceTagsByResourceIdsSeqRequestParams struct {
 type DescribeResourceTagsByResourceIdsSeqRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -838,13 +838,13 @@ func (r *DescribeResourceTagsByResourceIdsSeqResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeResourceTagsByTagKeysRequestParams struct {
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
-	// 资源地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资源唯一标识ID的列表，列表容量不超过20
@@ -863,13 +863,13 @@ type DescribeResourceTagsByTagKeysRequestParams struct {
 type DescribeResourceTagsByTagKeysRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
-	// 资源地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资源唯一标识ID的列表，列表容量不超过20
@@ -946,19 +946,19 @@ func (r *DescribeResourceTagsByTagKeysResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceTagsRequestParams struct {
-	// 创建者uin
+	// 资源创建者UIN
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 业务类型
+	// 业务类型，示例 ckafka。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
-	// 资源唯一标识。只输入ResourceId进行查询可能会查询较慢，或者无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）
+	// 资源唯一标识（资源六段式中最后一段"/"后面的部分）。注：只输入ResourceId查询时，如资源量大可能较慢，或无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）。若传入的是cos资源的Id，则CosResourceId 字段请同时传1。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -967,26 +967,26 @@ type DescribeResourceTagsRequestParams struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否是cos的资源（0或者1），输入的ResourceId为cos资源时必填
+	// 是否为cos的资源，取值 0 表示：非cos资源。取值1 表示：cos资源，且此时ResourceId也为必填。不填则默认为 0 
 	CosResourceId *uint64 `json:"CosResourceId,omitnil,omitempty" name:"CosResourceId"`
 }
 
 type DescribeResourceTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 创建者uin
+	// 资源创建者UIN
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 业务类型
+	// 业务类型，示例 ckafka。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
-	// 资源唯一标识。只输入ResourceId进行查询可能会查询较慢，或者无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）
+	// 资源唯一标识（资源六段式中最后一段"/"后面的部分）。注：只输入ResourceId查询时，如资源量大可能较慢，或无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）。若传入的是cos资源的Id，则CosResourceId 字段请同时传1。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -995,7 +995,7 @@ type DescribeResourceTagsRequest struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否是cos的资源（0或者1），输入的ResourceId为cos资源时必填
+	// 是否为cos的资源，取值 0 表示：非cos资源。取值1 表示：cos资源，且此时ResourceId也为必填。不填则默认为 0 
 	CosResourceId *uint64 `json:"CosResourceId,omitnil,omitempty" name:"CosResourceId"`
 }
 
@@ -1074,16 +1074,16 @@ type DescribeResourcesByTagsRequestParams struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -1102,16 +1102,16 @@ type DescribeResourcesByTagsRequest struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -1190,16 +1190,16 @@ type DescribeResourcesByTagsUnionRequestParams struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -1218,16 +1218,16 @@ type DescribeResourcesByTagsUnionRequest struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源前缀
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源所在地域
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 业务类型
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -1302,7 +1302,7 @@ type DescribeTagKeysRequestParams struct {
 	// 每页大小，默认为 15，最大1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否展现项目
+	// 是否展现项目。1:展示  0:不展示
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 
 	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
@@ -1321,7 +1321,7 @@ type DescribeTagKeysRequest struct {
 	// 每页大小，默认为 15，最大1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否展现项目
+	// 是否展现项目。1:展示  0:不展示
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 
 	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
@@ -1586,7 +1586,7 @@ type DescribeTagsRequestParams struct {
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 是否展现项目标签
+	// 是否展现项目标签。1:展示  0:不展示
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 }
 
@@ -1611,7 +1611,7 @@ type DescribeTagsRequest struct {
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 是否展现项目标签
+	// 是否展现项目标签。1:展示  0:不展示
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 }
 
@@ -1694,7 +1694,7 @@ type DescribeTagsSeqRequestParams struct {
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 是否展现项目标签
+	// 是否展现项目标签。1:展示  0:不展示
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 }
 
@@ -1719,7 +1719,7 @@ type DescribeTagsSeqRequest struct {
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 是否展现项目标签
+	// 是否展现项目标签。1:展示  0:不展示
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 }
 
@@ -1784,7 +1784,7 @@ func (r *DescribeTagsSeqResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachResourcesTagRequestParams struct {
-	// 资源所属业务名称（资源六段式中的第三段）
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -1793,17 +1793,17 @@ type DetachResourcesTagRequestParams struct {
 	// 需要解绑的标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 }
 
 type DetachResourcesTagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源所属业务名称（资源六段式中的第三段）
+	// 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -1812,10 +1812,10 @@ type DetachResourcesTagRequest struct {
 	// 需要解绑的标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou 。不区分地域的资源则不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
+	// 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 }
 
@@ -2298,7 +2298,7 @@ func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyResourcesTagValueRequestParams struct {
-	// 资源所属业务名称（资源六段式中的第三段）
+	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -2310,17 +2310,17 @@ type ModifyResourcesTagValueRequestParams struct {
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
-	// 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
+	// 资源前缀（资源六段式中最后一段"/"前面的部分），例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 }
 
 type ModifyResourcesTagValueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源所属业务名称（资源六段式中的第三段）
+	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -2332,10 +2332,10 @@ type ModifyResourcesTagValueRequest struct {
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
-	// 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
+	// 资源前缀（资源六段式中最后一段"/"前面的部分），例如“qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584” 中资源前缀为ckafkaId），cos存储桶不需要传入该字段，其他云资源必填
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 }
 

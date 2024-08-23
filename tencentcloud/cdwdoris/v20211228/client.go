@@ -1780,7 +1780,7 @@ func NewDescribeSqlApisResponse() (response *DescribeSqlApisResponse) {
 }
 
 // DescribeSqlApis
-// 针对驱动sql命令查询ck集群接口
+// 针对驱动sql命令查询集群接口
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1789,7 +1789,7 @@ func (c *Client) DescribeSqlApis(request *DescribeSqlApisRequest) (response *Des
 }
 
 // DescribeSqlApis
-// 针对驱动sql命令查询ck集群接口
+// 针对驱动sql命令查询集群接口
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2001,6 +2001,55 @@ func (c *Client) DestroyInstanceWithContext(ctx context.Context, request *Destro
     request.SetContext(ctx)
     
     response = NewDestroyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterConfigsRequest() (request *ModifyClusterConfigsRequest) {
+    request = &ModifyClusterConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwdoris", APIVersion, "ModifyClusterConfigs")
+    
+    
+    return
+}
+
+func NewModifyClusterConfigsResponse() (response *ModifyClusterConfigsResponse) {
+    response = &ModifyClusterConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterConfigs
+// 在集群配置页面修改集群配置文件接口，xml模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyClusterConfigs(request *ModifyClusterConfigsRequest) (response *ModifyClusterConfigsResponse, err error) {
+    return c.ModifyClusterConfigsWithContext(context.Background(), request)
+}
+
+// ModifyClusterConfigs
+// 在集群配置页面修改集群配置文件接口，xml模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyClusterConfigsWithContext(ctx context.Context, request *ModifyClusterConfigsRequest) (response *ModifyClusterConfigsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterConfigsResponse()
     err = c.Send(request, response)
     return
 }

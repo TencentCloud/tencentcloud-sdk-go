@@ -546,7 +546,7 @@ type BGPInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicPlusFlag *uint64 `json:"BasicPlusFlag,omitnil,omitempty" name:"BasicPlusFlag"`
 
-	// 是否是商业模式优化-普惠版
+	// 是否标准版2.0 0: 包含标准版2.0 1: 只查询标准版2.0 2: 不查标准版2.0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanCntFlag *uint64 `json:"PlanCntFlag,omitnil,omitempty" name:"PlanCntFlag"`
 
@@ -3376,6 +3376,9 @@ type DescribeBGPIPL7RulesRequestParams struct {
 
 	// 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
 	Export *bool `json:"Export,omitnil,omitempty" name:"Export"`
+
+	// 源站，模糊查询
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type DescribeBGPIPL7RulesRequest struct {
@@ -3407,6 +3410,9 @@ type DescribeBGPIPL7RulesRequest struct {
 
 	// 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
 	Export *bool `json:"Export,omitnil,omitempty" name:"Export"`
+
+	// 源站，模糊查询
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 func (r *DescribeBGPIPL7RulesRequest) ToJsonString() string {
@@ -3430,6 +3436,7 @@ func (r *DescribeBGPIPL7RulesRequest) FromJsonString(s string) error {
 	delete(f, "ProtocolList")
 	delete(f, "Cname")
 	delete(f, "Export")
+	delete(f, "Source")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBGPIPL7RulesRequest has unknown keys!", "")
 	}

@@ -471,6 +471,20 @@ type ConfigKeyValue struct {
 	SupportHotUpdate *int64 `json:"SupportHotUpdate,omitnil,omitempty" name:"SupportHotUpdate"`
 }
 
+type ConfigSubmitContext struct {
+	// 配置文件名称
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 配置文件新内容，base64编码
+	NewConfValue *string `json:"NewConfValue,omitnil,omitempty" name:"NewConfValue"`
+
+	// 配置文件旧内容，base64编码
+	OldConfValue *string `json:"OldConfValue,omitnil,omitempty" name:"OldConfValue"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+}
+
 type CoolDownBackend struct {
 	// 字段：Host
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1039,7 +1053,7 @@ type DeleteBackUpDataRequestParams struct {
 	// 任务id
 	BackUpJobId *int64 `json:"BackUpJobId,omitnil,omitempty" name:"BackUpJobId"`
 
-	// 是否删除所有数据
+	// 是否删除所有实例
 	IsDeleteAll *bool `json:"IsDeleteAll,omitnil,omitempty" name:"IsDeleteAll"`
 }
 
@@ -1052,7 +1066,7 @@ type DeleteBackUpDataRequest struct {
 	// 任务id
 	BackUpJobId *int64 `json:"BackUpJobId,omitnil,omitempty" name:"BackUpJobId"`
 
-	// 是否删除所有数据
+	// 是否删除所有实例
 	IsDeleteAll *bool `json:"IsDeleteAll,omitnil,omitempty" name:"IsDeleteAll"`
 }
 
@@ -4073,6 +4087,80 @@ type InstanceOperation struct {
 }
 
 // Predefined struct for user
+type ModifyClusterConfigsRequestParams struct {
+	// 集群ID，例如cdwch-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置文件修改信息
+	ModifyConfContext []*ConfigSubmitContext `json:"ModifyConfContext,omitnil,omitempty" name:"ModifyConfContext"`
+
+	// 修改原因
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyClusterConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID，例如cdwch-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置文件修改信息
+	ModifyConfContext []*ConfigSubmitContext `json:"ModifyConfContext,omitnil,omitempty" name:"ModifyConfContext"`
+
+	// 修改原因
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyClusterConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ModifyConfContext")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterConfigsResponseParams struct {
+	// 流程相关信息
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterConfigsResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCoolDownPolicyRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4815,7 +4903,7 @@ type NodeInfo struct {
 }
 
 type NodeInfos struct {
-	// 节点在doris中明朝n
+	// 节点名称
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 节点状态

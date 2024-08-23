@@ -1749,6 +1749,11 @@ type DriverLicenseOCRResponseParams struct {
 	// 驾驶证副页证号
 	BackPageCardCode *string `json:"BackPageCardCode,omitnil,omitempty" name:"BackPageCardCode"`
 
+	// 驾驶证类型
+	// 电子驾驶证：Electronic
+	// 普通驾驶证：Normal
+	DriverLicenseType *string `json:"DriverLicenseType,omitnil,omitempty" name:"DriverLicenseType"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

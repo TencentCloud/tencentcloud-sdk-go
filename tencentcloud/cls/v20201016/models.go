@@ -2420,6 +2420,9 @@ type CreateDataTransformRequestParams struct {
 
 	// 用于预览加工结果的测试数据
 	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
+
+	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
+	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
 }
 
 type CreateDataTransformRequest struct {
@@ -2454,6 +2457,9 @@ type CreateDataTransformRequest struct {
 
 	// 用于预览加工结果的测试数据
 	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
+
+	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
+	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
 }
 
 func (r *CreateDataTransformRequest) ToJsonString() string {
@@ -2476,6 +2482,7 @@ func (r *CreateDataTransformRequest) FromJsonString(s string) error {
 	delete(f, "DstResources")
 	delete(f, "EnableFlag")
 	delete(f, "PreviewLogStatistics")
+	delete(f, "DataTransformType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataTransformRequest has unknown keys!", "")
 	}
@@ -10474,10 +10481,11 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 }
 
 type MonitorTime struct {
-	// 执行周期， 可选值：`Period`、`Fixed`。
+	// 执行周期， 可选值：`Period`、`Fixed`、`Cron`。
 	// 
 	// - Period：固定频率
 	// - Fixed：固定时间
+	// - Cron：Cron表达式
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
