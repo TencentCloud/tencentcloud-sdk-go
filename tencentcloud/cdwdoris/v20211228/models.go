@@ -2799,7 +2799,7 @@ type DescribeInstancesHealthStateRequestParams struct {
 	// Deprecated: InstanceID is deprecated.
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// "" 或者  某个集群Id
+	// 为空：代表当前appId下所有集群 或者  某个集群Id
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
@@ -2809,7 +2809,7 @@ type DescribeInstancesHealthStateRequest struct {
 	// 集群Id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// "" 或者  某个集群Id
+	// 为空：代表当前appId下所有集群 或者  某个集群Id
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
@@ -2835,7 +2835,7 @@ func (r *DescribeInstancesHealthStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesHealthStateResponseParams struct {
-	// 出参
+	// base64编码后的数据，包含了集群的健康信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -6065,6 +6065,9 @@ type UserInfo struct {
 
 	// 旧密码
 	OldPwd *string `json:"OldPwd,omitnil,omitempty" name:"OldPwd"`
+
+	// 绑定的子用户uin
+	CamUin *string `json:"CamUin,omitnil,omitempty" name:"CamUin"`
 }
 
 type UserWorkloadGroup struct {

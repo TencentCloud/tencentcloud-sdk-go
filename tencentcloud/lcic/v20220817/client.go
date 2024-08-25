@@ -2378,6 +2378,69 @@ func (c *Client) DescribeQuestionListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeRecordStreamRequest() (request *DescribeRecordStreamRequest) {
+    request = &DescribeRecordStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeRecordStream")
+    
+    
+    return
+}
+
+func NewDescribeRecordStreamResponse() (response *DescribeRecordStreamResponse) {
+    response = &DescribeRecordStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecordStream
+// 录制流查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
+    return c.DescribeRecordStreamWithContext(context.Background(), request)
+}
+
+// DescribeRecordStream
+// 录制流查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRecordStreamWithContext(ctx context.Context, request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordStreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},

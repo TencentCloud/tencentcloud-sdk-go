@@ -497,6 +497,7 @@ func NewSubmitPortraitSingJobResponse() (response *SubmitPortraitSingJobResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
@@ -521,6 +522,7 @@ func (c *Client) SubmitPortraitSingJob(request *SubmitPortraitSingJobRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"

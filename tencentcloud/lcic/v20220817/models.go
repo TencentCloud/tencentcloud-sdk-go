@@ -2845,6 +2845,79 @@ func (r *DescribeQuestionListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordStreamRequestParams struct {
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeRecordStreamRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeRecordStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordStreamResponseParams struct {
+	// 学校ID
+	SchoolId *uint64 `json:"SchoolId,omitnil,omitempty" name:"SchoolId"`
+
+	// 课堂ID
+	ClassId *uint64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// 课堂类型
+	ClassType *uint64 `json:"ClassType,omitnil,omitempty" name:"ClassType"`
+
+	// 用户流信息
+	StreamInfo []*SingleStreamInfo `json:"StreamInfo,omitnil,omitempty" name:"StreamInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordStreamResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomForbiddenUserRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -5690,6 +5763,44 @@ func (r *SetWatermarkResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SingleStreamInfo struct {
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
+
+	// 总时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 文件格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileFormat *string `json:"FileFormat,omitnil,omitempty" name:"FileFormat"`
+
+	// 流url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
+
+	// 流大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordSize *uint64 `json:"RecordSize,omitnil,omitempty" name:"RecordSize"`
+
+	// 流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoId *string `json:"VideoId,omitnil,omitempty" name:"VideoId"`
+
+	// 流类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
 // Predefined struct for user

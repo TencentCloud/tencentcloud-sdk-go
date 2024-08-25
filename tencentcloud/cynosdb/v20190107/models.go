@@ -1337,6 +1337,10 @@ type ClusterInstanceDetail struct {
 	// 实例机器类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceDeviceType *string `json:"InstanceDeviceType,omitnil,omitempty" name:"InstanceDeviceType"`
+
+	// 实例存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
 }
 
 type ClusterParamModifyLog struct {
@@ -3461,6 +3465,10 @@ type CynosdbInstance struct {
 	// 实例机器类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 实例存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
 }
 
 type CynosdbInstanceDetail struct {
