@@ -203,6 +203,9 @@ const (
 	// 模板内容存在敏感词，请参考[正文模板审核标准](https://cloud.tencent.com/document/product/382/39023)。
 	INVALIDPARAMETERVALUE_TEMPLATEWITHDIRTYWORDS = "InvalidParameterValue.TemplateWithDirtyWords"
 
+	// 申请国内短信通知和营销短信模板不支持添加变量。可参考 [控制台说明](https://console.cloud.tencent.com/smsv2/csms-template)，更多疑问可咨询 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)
+	INVALIDPARAMETERVALUE_UNSUPPORTEDTEMPLATEVARIABLE = "InvalidParameterValue.UnsupportedTemplateVariable"
+
 	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整国际港澳台短信发送限制。
 	LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
 

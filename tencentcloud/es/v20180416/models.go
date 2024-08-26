@@ -573,6 +573,9 @@ type CreateInstanceRequestParams struct {
 
 	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
 }
 
 type CreateInstanceRequest struct {
@@ -696,6 +699,9 @@ type CreateInstanceRequest struct {
 
 	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -747,6 +753,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CdcId")
 	delete(f, "DisasterRecoverGroupAffinity")
 	delete(f, "SubProductCode")
+	delete(f, "ReadWriteMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -4304,6 +4311,14 @@ type InstanceInfo struct {
 	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 存算分离cos用量，单位M
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucketStorageSize *uint64 `json:"CosBucketStorageSize,omitnil,omitempty" name:"CosBucketStorageSize"`
+
+	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
 }
 
 type InstanceLog struct {
@@ -6145,6 +6160,9 @@ type UpdateInstanceRequestParams struct {
 
 	// 分片迁移并发速度
 	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
+
+	// 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
 }
 
 type UpdateInstanceRequest struct {
@@ -6289,6 +6307,9 @@ type UpdateInstanceRequest struct {
 
 	// 分片迁移并发速度
 	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
+
+	// 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -6343,6 +6364,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CvmDelayOnlineTime")
 	delete(f, "ShardAllocationConcurrents")
 	delete(f, "ShardAllocationBytes")
+	delete(f, "ReadWriteMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

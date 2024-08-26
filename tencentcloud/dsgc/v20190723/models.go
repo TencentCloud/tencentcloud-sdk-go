@@ -8512,6 +8512,12 @@ type DescribeDSPARDBDataAssetDetailRequestParams struct {
 	// 合规组Id
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
 
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
 	// 可信分排序，ASC-升序
 	// DESC降序
 	CreditScore *string `json:"CreditScore,omitnil,omitempty" name:"CreditScore"`
@@ -8525,6 +8531,12 @@ type DescribeDSPARDBDataAssetDetailRequest struct {
 
 	// 合规组Id
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 可信分排序，ASC-升序
 	// DESC降序
@@ -8545,6 +8557,8 @@ func (r *DescribeDSPARDBDataAssetDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DspaId")
 	delete(f, "ComplianceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "CreditScore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPARDBDataAssetDetailRequest has unknown keys!", "")

@@ -6068,6 +6068,9 @@ type UserInfo struct {
 
 	// 绑定的子用户uin
 	CamUin *string `json:"CamUin,omitnil,omitempty" name:"CamUin"`
+
+	// ranger group id列表
+	CamRangerGroupIds []*int64 `json:"CamRangerGroupIds,omitnil,omitempty" name:"CamRangerGroupIds"`
 }
 
 type UserWorkloadGroup struct {

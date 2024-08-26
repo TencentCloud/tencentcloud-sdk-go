@@ -666,6 +666,10 @@ type Certificates struct {
 	// 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil,omitempty" name:"SupportDownloadType"`
+
+	// 证书吊销完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertRevokedTime *string `json:"CertRevokedTime,omitnil,omitempty" name:"CertRevokedTime"`
 }
 
 // Predefined struct for user

@@ -2530,10 +2530,12 @@ type ImageConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerImageAccelerate *bool `json:"ContainerImageAccelerate,omitnil,omitempty" name:"ContainerImageAccelerate"`
 
-	// 镜像函数端口设置
-	// 默认值: 9000
-	// -1: 无端口镜像函数
-	// 其他: 取值范围 0 ~ 65535
+	// 镜像函数端口设置，可指定镜像类型
+	// Web Server镜像：9000
+	// Job 镜像：-1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 默认值：9000
+	// 示例值：9000
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImagePort *int64 `json:"ImagePort,omitnil,omitempty" name:"ImagePort"`
 }
@@ -3788,6 +3790,9 @@ type PublishLayerVersionRequestParams struct {
 
 	// 层的软件许可证
 	LicenseInfo *string `json:"LicenseInfo,omitnil,omitempty" name:"LicenseInfo"`
+
+	// 层Tag 参数，以键值对数组形式传入
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type PublishLayerVersionRequest struct {
@@ -3807,6 +3812,9 @@ type PublishLayerVersionRequest struct {
 
 	// 层的软件许可证
 	LicenseInfo *string `json:"LicenseInfo,omitnil,omitempty" name:"LicenseInfo"`
+
+	// 层Tag 参数，以键值对数组形式传入
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *PublishLayerVersionRequest) ToJsonString() string {
@@ -3826,6 +3834,7 @@ func (r *PublishLayerVersionRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "Description")
 	delete(f, "LicenseInfo")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishLayerVersionRequest has unknown keys!", "")
 	}
