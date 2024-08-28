@@ -3404,6 +3404,12 @@ type DescribeSqlApisRequestParams struct {
 
 	// catalog集合
 	Catalogs []*string `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
 type DescribeSqlApisRequest struct {
@@ -3417,6 +3423,12 @@ type DescribeSqlApisRequest struct {
 
 	// catalog集合
 	Catalogs []*string `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
 func (r *DescribeSqlApisRequest) ToJsonString() string {
@@ -3434,6 +3446,8 @@ func (r *DescribeSqlApisRequest) FromJsonString(s string) error {
 	delete(f, "WhiteHost")
 	delete(f, "Catalog")
 	delete(f, "Catalogs")
+	delete(f, "DatabaseName")
+	delete(f, "TableName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlApisRequest has unknown keys!", "")
 	}

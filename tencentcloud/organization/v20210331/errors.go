@@ -614,6 +614,12 @@ const (
 	// 请求用户组移除用户超出限制。
 	LIMITEXCEEDED_REMOVEUSERFROMGROUPLIMITEXCEEDED = "LimitExceeded.RemoveUserFromGroupLimitExceeded"
 
+	// 重新发送激活邮件次数超过限制。
+	LIMITEXCEEDED_SENDEMAILLIMIT = "LimitExceeded.SendEmailLimit"
+
+	// 一小时内重新发送激活邮件次数超过限制。
+	LIMITEXCEEDED_SENDEMAILWITHINONEHOURLIMIT = "LimitExceeded.SendEmailWithinOneHourLimit"
+
 	// 当次操作的共享成员超过上限。
 	LIMITEXCEEDED_SHAREUNITMEMBEROVERLIMIT = "LimitExceeded.ShareUnitMemberOverLimit"
 

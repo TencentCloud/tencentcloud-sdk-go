@@ -1705,6 +1705,20 @@ func (r *CloseWanServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClusterInfo struct {
+	// 节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 节点类型：主节点，从节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
 type ClusterNodeInfo struct {
 	// 节点id。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
@@ -7436,6 +7450,9 @@ type DescribeDBInstancesRequestParams struct {
 
 	// 数据库引擎类型。
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
+
+	// 是否获取集群版实例节点信息，可填：true或false
+	QueryClusterInfo *bool `json:"QueryClusterInfo,omitnil,omitempty" name:"QueryClusterInfo"`
 }
 
 type DescribeDBInstancesRequest struct {
@@ -7545,6 +7562,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 数据库引擎类型。
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
+
+	// 是否获取集群版实例节点信息，可填：true或false
+	QueryClusterInfo *bool `json:"QueryClusterInfo,omitnil,omitempty" name:"QueryClusterInfo"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -7594,6 +7614,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ProxyVips")
 	delete(f, "ProxyIds")
 	delete(f, "EngineTypes")
+	delete(f, "QueryClusterInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -11024,6 +11045,10 @@ type InstanceInfo struct {
 	// 当前扩容的CPU核心数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpandCpu *int64 `json:"ExpandCpu,omitnil,omitempty" name:"ExpandCpu"`
+
+	// 实例集群版节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
 }
 
 type InstanceRebootTime struct {

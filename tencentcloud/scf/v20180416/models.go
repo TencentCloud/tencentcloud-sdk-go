@@ -2816,6 +2816,10 @@ type LayerVersionInfo struct {
 	// Stamp
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stamp *string `json:"Stamp,omitnil,omitempty" name:"Stamp"`
+
+	// 返回层绑定的标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type LayerVersionSimple struct {

@@ -140,7 +140,7 @@ type AssignTWeCallLicenseRequestParams struct {
 	// appId
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
-	// License数
+	// License数，只支持50,500,1000,5000,10000,20000,50000
 	DeductNum *int64 `json:"DeductNum,omitnil,omitempty" name:"DeductNum"`
 }
 
@@ -153,7 +153,7 @@ type AssignTWeCallLicenseRequest struct {
 	// appId
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
-	// License数
+	// License数，只支持50,500,1000,5000,10000,20000,50000
 	DeductNum *int64 `json:"DeductNum,omitnil,omitempty" name:"DeductNum"`
 }
 

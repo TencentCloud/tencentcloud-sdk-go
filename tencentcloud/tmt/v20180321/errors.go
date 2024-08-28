@@ -47,6 +47,9 @@ const (
 	// 过多未完成任务
 	FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
 
+	// 本月免费额度已用完，如需继续使用您可以在机器翻译控制台购买资源包或开通后付费使用。
+	FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
+
 	// 服务未开通，请在腾讯云官网机器翻译控制台开通服务。
 	FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 

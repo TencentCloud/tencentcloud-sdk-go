@@ -982,7 +982,7 @@ type ConsoleSharingConfig struct {
 	// 分享链接有效期，单位：毫秒，最长支持30天
 	DurationMilliseconds *uint64 `json:"DurationMilliseconds,omitnil,omitempty" name:"DurationMilliseconds"`
 
-	// 允许访问的资源列表
+	// 允许访问的资源列表，目前仅支持一个Resource
 	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 分享链接域名，可选范围

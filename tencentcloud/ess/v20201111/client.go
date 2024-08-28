@@ -984,7 +984,7 @@ func NewCreateBatchSignUrlResponse() (response *CreateBatchSignUrlResponse) {
 //
 // 注意事项：
 //
-// - 使用此接口生成链接，需要贵企业先开通 <font color="red">使用手机号验证签署方身份 </font>功能。您可以在 <b>【腾讯电子签网页端】->【企业设置】->【拓展服务】</b>中找到该功能。
+// - 使用此接口生成链接，需要贵企业先开通 <font color="red">个人签署方仅校验手机号 </font>功能。您可以在 <b>【腾讯电子签网页端】->【企业设置】->【拓展服务】</b>中找到该功能。
 //
 // - 生成批量签署链接时，<font color="red">合同目标参与方的状态必须为<b>待签署</b>状态</font>。签署人点击链接后需要输入短信验证码才能查看合同内容。
 //
@@ -1012,7 +1012,7 @@ func (c *Client) CreateBatchSignUrl(request *CreateBatchSignUrlRequest) (respons
 //
 // 注意事项：
 //
-// - 使用此接口生成链接，需要贵企业先开通 <font color="red">使用手机号验证签署方身份 </font>功能。您可以在 <b>【腾讯电子签网页端】->【企业设置】->【拓展服务】</b>中找到该功能。
+// - 使用此接口生成链接，需要贵企业先开通 <font color="red">个人签署方仅校验手机号 </font>功能。您可以在 <b>【腾讯电子签网页端】->【企业设置】->【拓展服务】</b>中找到该功能。
 //
 // - 生成批量签署链接时，<font color="red">合同目标参与方的状态必须为<b>待签署</b>状态</font>。签署人点击链接后需要输入短信验证码才能查看合同内容。
 //

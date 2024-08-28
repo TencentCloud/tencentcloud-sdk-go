@@ -23,6 +23,9 @@ const (
 	// 控制台服务异常。
 	FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
 
+	// LogoUrl或LogoImage有误，水印图下载失败。
+	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
+
 	// 引擎层请求超时；请稍后重试。
 	FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
 
@@ -34,6 +37,9 @@ const (
 
 	// 免费资源包余量已用尽，请购买资源包或开通后付费。
 	FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+
+	// 图片包含敏感内容
+	FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
 
 	// 水印图解码失败
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -68,6 +74,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 参数不合法。
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
@@ -83,9 +92,21 @@ const (
 	// 图片可能包含敏感信息，请重试
 	OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
 
+	// 文本包含违法违规信息，审核不通过。
+	OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+
+	// 计费资源已耗尽。
+	RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = "ResourceInsufficient.ChargeResourceExhaust"
+
 	// 账号已欠费。
 	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 
 	// 余额不足。
 	RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+
+	// 计费状态未知，请确认是否已在控制台开通服务。
+	RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+
+	// 账号已停服。
+	RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 )

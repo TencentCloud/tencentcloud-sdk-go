@@ -12665,6 +12665,10 @@ type PulsarProClusterInfo struct {
 	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
+
+	// 实例到期时间戳，毫秒级精度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 type PulsarProClusterSpecInfo struct {

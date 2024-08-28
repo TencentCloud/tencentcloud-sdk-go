@@ -2802,11 +2802,10 @@ func (r *CreateProxyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourcePackageRequestParams struct {
-	// 实例类型
+	// 实例类型，目前固定传cynosdb-serverless
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 资源包使用地域
-	// china-中国内地通用，overseas-港澳台及海外通用
+	// 资源包使用地域chineseMainland-中国内地通用，overseas-港澳台及海外通用
 	PackageRegion *string `json:"PackageRegion,omitnil,omitempty" name:"PackageRegion"`
 
 	// 资源包类型：CCU-计算资源包，DISK-存储资源包
@@ -2832,11 +2831,10 @@ type CreateResourcePackageRequestParams struct {
 type CreateResourcePackageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例类型
+	// 实例类型，目前固定传cynosdb-serverless
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 资源包使用地域
-	// china-中国内地通用，overseas-港澳台及海外通用
+	// 资源包使用地域chineseMainland-中国内地通用，overseas-港澳台及海外通用
 	PackageRegion *string `json:"PackageRegion,omitnil,omitempty" name:"PackageRegion"`
 
 	// 资源包类型：CCU-计算资源包，DISK-存储资源包
@@ -12399,12 +12397,27 @@ func (r *OpenClusterPasswordComplexityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenClusterReadOnlyInstanceGroupAccessRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
+	// 端口
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 安全组ID 
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type OpenClusterReadOnlyInstanceGroupAccessRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 端口
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 安全组ID 
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *OpenClusterReadOnlyInstanceGroupAccessRequest) ToJsonString() string {
@@ -12419,7 +12432,9 @@ func (r *OpenClusterReadOnlyInstanceGroupAccessRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
+	delete(f, "Port")
+	delete(f, "SecurityGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenClusterReadOnlyInstanceGroupAccessRequest has unknown keys!", "")
 	}
@@ -12428,6 +12443,9 @@ func (r *OpenClusterReadOnlyInstanceGroupAccessRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type OpenClusterReadOnlyInstanceGroupAccessResponseParams struct {
+	// 开启流程ID
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -12450,44 +12468,44 @@ func (r *OpenClusterReadOnlyInstanceGroupAccessResponse) FromJsonString(s string
 
 // Predefined struct for user
 type OpenReadOnlyInstanceExclusiveAccessRequestParams struct {
-	// 集群ID
+	// 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 clusterId。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 需要开通独有访问的只读实例ID
+	// 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 instanceId。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 指定的vpc ID
+	// 指定的vpc ID，请使用 查询私有网络列表（https://cloud.tencent.com/document/api/215/15778） 获取 vpc ID。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 指定的子网ID
+	// 指定的子网 ID，如果设置了 vpc ID，则 SubnetId 必填，请使用 查询子网列表（https://cloud.tencent.com/document/api/215/15784）获取 SubnetId。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 端口
+	// 用户自定义的端口
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 安全组
+	// 安全组ID，请使用 查看安全组（https://cloud.tencent.com/document/api/215/15808）获取 SecurityGroupId。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type OpenReadOnlyInstanceExclusiveAccessRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 clusterId。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 需要开通独有访问的只读实例ID
+	// 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 instanceId。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 指定的vpc ID
+	// 指定的vpc ID，请使用 查询私有网络列表（https://cloud.tencent.com/document/api/215/15778） 获取 vpc ID。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 指定的子网ID
+	// 指定的子网 ID，如果设置了 vpc ID，则 SubnetId 必填，请使用 查询子网列表（https://cloud.tencent.com/document/api/215/15784）获取 SubnetId。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 端口
+	// 用户自定义的端口
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 安全组
+	// 安全组ID，请使用 查看安全组（https://cloud.tencent.com/document/api/215/15808）获取 SecurityGroupId。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 

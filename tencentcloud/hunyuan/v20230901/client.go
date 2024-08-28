@@ -297,6 +297,69 @@ func (c *Client) GetTokenCountWithContext(ctx context.Context, request *GetToken
     return
 }
 
+func NewQueryHunyuanImageChatJobRequest() (request *QueryHunyuanImageChatJobRequest) {
+    request = &QueryHunyuanImageChatJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "QueryHunyuanImageChatJob")
+    
+    
+    return
+}
+
+func NewQueryHunyuanImageChatJobResponse() (response *QueryHunyuanImageChatJobResponse) {
+    response = &QueryHunyuanImageChatJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryHunyuanImageChatJob
+// 混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
+//
+// 混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) QueryHunyuanImageChatJob(request *QueryHunyuanImageChatJobRequest) (response *QueryHunyuanImageChatJobResponse, err error) {
+    return c.QueryHunyuanImageChatJobWithContext(context.Background(), request)
+}
+
+// QueryHunyuanImageChatJob
+// 混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
+//
+// 混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) QueryHunyuanImageChatJobWithContext(ctx context.Context, request *QueryHunyuanImageChatJobRequest) (response *QueryHunyuanImageChatJobResponse, err error) {
+    if request == nil {
+        request = NewQueryHunyuanImageChatJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryHunyuanImageChatJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryHunyuanImageChatJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryHunyuanImageJobRequest() (request *QueryHunyuanImageJobRequest) {
     request = &QueryHunyuanImageJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -326,7 +389,8 @@ func NewQueryHunyuanImageJobResponse() (response *QueryHunyuanImageJobResponse) 
 // 并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) QueryHunyuanImageJob(request *QueryHunyuanImageJobRequest) (response *QueryHunyuanImageJobResponse, err error) {
     return c.QueryHunyuanImageJobWithContext(context.Background(), request)
 }
@@ -341,7 +405,8 @@ func (c *Client) QueryHunyuanImageJob(request *QueryHunyuanImageJobRequest) (res
 // 并发任务数（并发）说明：并发任务数指能同时处理的任务数量。混元生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) QueryHunyuanImageJobWithContext(ctx context.Context, request *QueryHunyuanImageJobRequest) (response *QueryHunyuanImageJobResponse, err error) {
     if request == nil {
         request = NewQueryHunyuanImageJobRequest()
@@ -405,6 +470,87 @@ func (c *Client) SetPayModeWithContext(ctx context.Context, request *SetPayModeR
     request.SetContext(ctx)
     
     response = NewSetPayModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitHunyuanImageChatJobRequest() (request *SubmitHunyuanImageChatJobRequest) {
+    request = &SubmitHunyuanImageChatJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "SubmitHunyuanImageChatJob")
+    
+    
+    return
+}
+
+func NewSubmitHunyuanImageChatJobResponse() (response *SubmitHunyuanImageChatJobResponse) {
+    response = &SubmitHunyuanImageChatJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitHunyuanImageChatJob
+// 混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
+//
+// 混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
+//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+//  RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = "ResourceInsufficient.ChargeResourceExhaust"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) SubmitHunyuanImageChatJob(request *SubmitHunyuanImageChatJobRequest) (response *SubmitHunyuanImageChatJobResponse, err error) {
+    return c.SubmitHunyuanImageChatJobWithContext(context.Background(), request)
+}
+
+// SubmitHunyuanImageChatJob
+// 混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+//
+// 提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
+//
+// 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
+//
+// 混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
+//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+//  RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = "ResourceInsufficient.ChargeResourceExhaust"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) SubmitHunyuanImageChatJobWithContext(ctx context.Context, request *SubmitHunyuanImageChatJobRequest) (response *SubmitHunyuanImageChatJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitHunyuanImageChatJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHunyuanImageChatJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitHunyuanImageChatJobResponse()
     err = c.Send(request, response)
     return
 }

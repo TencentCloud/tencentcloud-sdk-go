@@ -6433,6 +6433,69 @@ func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *Re
     return
 }
 
+func NewSendOrgMemberAccountBindEmailRequest() (request *SendOrgMemberAccountBindEmailRequest) {
+    request = &SendOrgMemberAccountBindEmailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "SendOrgMemberAccountBindEmail")
+    
+    
+    return
+}
+
+func NewSendOrgMemberAccountBindEmailResponse() (response *SendOrgMemberAccountBindEmailResponse) {
+    response = &SendOrgMemberAccountBindEmailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendOrgMemberAccountBindEmail
+// 重新发送成员绑定邮箱激活邮件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMAILBINDRECORDINVALID = "FailedOperation.EmailBindRecordInvalid"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_SENDEMAILLIMIT = "LimitExceeded.SendEmailLimit"
+//  LIMITEXCEEDED_SENDEMAILWITHINONEHOURLIMIT = "LimitExceeded.SendEmailWithinOneHourLimit"
+//  RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = "ResourceNotFound.EmailBindRecordNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) SendOrgMemberAccountBindEmail(request *SendOrgMemberAccountBindEmailRequest) (response *SendOrgMemberAccountBindEmailResponse, err error) {
+    return c.SendOrgMemberAccountBindEmailWithContext(context.Background(), request)
+}
+
+// SendOrgMemberAccountBindEmail
+// 重新发送成员绑定邮箱激活邮件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMAILBINDRECORDINVALID = "FailedOperation.EmailBindRecordInvalid"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_SENDEMAILLIMIT = "LimitExceeded.SendEmailLimit"
+//  LIMITEXCEEDED_SENDEMAILWITHINONEHOURLIMIT = "LimitExceeded.SendEmailWithinOneHourLimit"
+//  RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = "ResourceNotFound.EmailBindRecordNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) SendOrgMemberAccountBindEmailWithContext(ctx context.Context, request *SendOrgMemberAccountBindEmailRequest) (response *SendOrgMemberAccountBindEmailResponse, err error) {
+    if request == nil {
+        request = NewSendOrgMemberAccountBindEmailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendOrgMemberAccountBindEmail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendOrgMemberAccountBindEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetExternalSAMLIdentityProviderRequest() (request *SetExternalSAMLIdentityProviderRequest) {
     request = &SetExternalSAMLIdentityProviderRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -352,6 +352,90 @@ type AlertExtraInfo struct {
 	// 主机防护命中策略，是策略ID和策略名称的组合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitStrategy *string `json:"HitStrategy,omitnil,omitempty" name:"HitStrategy"`
+
+	// 进程名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
+
+	// PID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PID *string `json:"PID,omitnil,omitempty" name:"PID"`
+
+	// 容器Pod名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 容器PodID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodID *string `json:"PodID,omitnil,omitempty" name:"PodID"`
+
+	// Http响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
+
+	// 系统调用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemCall *string `json:"SystemCall,omitnil,omitempty" name:"SystemCall"`
+
+	// 操作类型verb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Verb *string `json:"Verb,omitnil,omitempty" name:"Verb"`
+
+	// 日志ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogID *string `json:"LogID,omitnil,omitempty" name:"LogID"`
+
+	// 变更内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Different *string `json:"Different,omitnil,omitempty" name:"Different"`
+
+	// 事件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 事件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 目标地址(容器反弹shell)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetAddress *string `json:"TargetAddress,omitnil,omitempty" name:"TargetAddress"`
+
+	// 恶意请求域名(容器恶意外联)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaliciousRequestDomain *string `json:"MaliciousRequestDomain,omitnil,omitempty" name:"MaliciousRequestDomain"`
+
+	// 规则类型(容器K8sAPI异常请求)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 请求资源(容器K8sAPI异常请求)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestURI *string `json:"RequestURI,omitnil,omitempty" name:"RequestURI"`
+
+	// 发起请求用户(容器K8sAPI异常请求)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestUser *string `json:"RequestUser,omitnil,omitempty" name:"RequestUser"`
+
+	// 请求对象(容器K8sAPI异常请求)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestObject *string `json:"RequestObject,omitnil,omitempty" name:"RequestObject"`
+
+	// 响应对象(容器K8sAPI异常请求)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseObject *string `json:"ResponseObject,omitnil,omitempty" name:"ResponseObject"`
+
+	// 文件类型(容器文件篡改)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 标签特征(容器恶意外联)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TIType *string `json:"TIType,omitnil,omitempty" name:"TIType"`
+
+	// 来源IP(容器K8sAPI异常请求)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceIP *string `json:"SourceIP,omitnil,omitempty" name:"SourceIP"`
 }
 
 type AlertInfo struct {
@@ -472,6 +556,14 @@ type AlertInfo struct {
 	// 风险处置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskTreatment *string `json:"RiskTreatment,omitnil,omitempty" name:"RiskTreatment"`
+
+	// 日志类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 语句检索
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSearch *string `json:"LogSearch,omitnil,omitempty" name:"LogSearch"`
 }
 
 type AssetBaseInfoResponse struct {
@@ -1512,6 +1604,21 @@ type CVMAssetVO struct {
 	// 云资产类型：0：腾讯云，1：aws，2：azure
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+
+	// 主机防护状态枚举
+	// 0：未安装
+	// 1：基础版防护中
+	// 2：普惠版防护中
+	// 3：专业版防护中
+	// 4：旗舰版防护中
+	// 5：已离线
+	// 6：已关机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectStatus *int64 `json:"ProtectStatus,omitnil,omitempty" name:"ProtectStatus"`
+
+	// 最后离线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 }
 
 type ClbListenerListInfo struct {
@@ -2530,6 +2637,10 @@ type DescribeCVMAssetsResponseParams struct {
 	// 公网内网枚举
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicPrivateAttr []*FilterDataObject `json:"PublicPrivateAttr,omitnil,omitempty" name:"PublicPrivateAttr"`
+
+	// 主机防护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectStatusList []*FilterDataObject `json:"ProtectStatusList,omitnil,omitempty" name:"ProtectStatusList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5930,6 +6041,14 @@ type RoleInfo struct {
 	// 来源日志分析的信息字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FromLogAnalysisData []*KeyValue `json:"FromLogAnalysisData,omitnil,omitempty" name:"FromLogAnalysisData"`
+
+	// 容器名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+
+	// 容器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerID *string `json:"ContainerID,omitnil,omitempty" name:"ContainerID"`
 }
 
 type ScanTaskInfo struct {

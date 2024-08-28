@@ -7172,6 +7172,9 @@ type ModifyRuleRequestParams struct {
 
 	// TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放。
 	TrpcFunc *string `json:"TrpcFunc,omitnil,omitempty" name:"TrpcFunc"`
+
+	// OAuth配置信息。
+	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
 }
 
 type ModifyRuleRequest struct {
@@ -7207,6 +7210,9 @@ type ModifyRuleRequest struct {
 
 	// TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放。
 	TrpcFunc *string `json:"TrpcFunc,omitnil,omitempty" name:"TrpcFunc"`
+
+	// OAuth配置信息。
+	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -7231,6 +7237,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "ForwardType")
 	delete(f, "TrpcCallee")
 	delete(f, "TrpcFunc")
+	delete(f, "OAuth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
@@ -7647,6 +7654,19 @@ type MultiCertInfo struct {
 
 	// 监听器或规则证书列表，单双向认证，多本服务端证书算法类型不能重复;若SSLMode为双向认证，证书列表必须包含一本ca证书。
 	CertList []*CertInfo `json:"CertList,omitnil,omitempty" name:"CertList"`
+}
+
+type OAuth struct {
+	// 开启或关闭鉴权。
+	// True: 开启;
+	// False: 关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OAuthEnable *bool `json:"OAuthEnable,omitnil,omitempty" name:"OAuthEnable"`
+
+	// IAP全部故障后，拒绝请求还是放行。BYPASS:通过,
+	// REJECT: 拒绝
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OAuthFailureStatus *string `json:"OAuthFailureStatus,omitnil,omitempty" name:"OAuthFailureStatus"`
 }
 
 type Price struct {
@@ -8293,6 +8313,10 @@ type RuleOutput struct {
 	// 绑定的目标组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetGroupList []*BasicTargetGroupInfo `json:"TargetGroupList,omitnil,omitempty" name:"TargetGroupList"`
+
+	// OAuth配置状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
 }
 
 type RuleTargets struct {

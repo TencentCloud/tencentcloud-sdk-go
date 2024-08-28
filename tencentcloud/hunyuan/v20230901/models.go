@@ -530,6 +530,24 @@ func (r *GetTokenCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type History struct {
+	// 对话的 ID，用于唯一标识一轮对话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// 原始输入的 Prompt 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 扩写后的 Prompt 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RevisedPrompt *string `json:"RevisedPrompt,omitnil,omitempty" name:"RevisedPrompt"`
+
+	// 生成图的随机种子
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+}
+
 type ImageUrl struct {
 	// 图片的 Url（以 http:// 或 https:// 开头）
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -579,6 +597,87 @@ type Message struct {
 	// 模型生成的工具调用，仅 hunyuan-functioncall 模型支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+}
+
+// Predefined struct for user
+type QueryHunyuanImageChatJobRequestParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryHunyuanImageChatJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryHunyuanImageChatJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuanImageChatJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryHunyuanImageChatJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryHunyuanImageChatJobResponseParams struct {
+	// 当前任务状态码：
+	// 1：等待中、2：运行中、4：处理失败、5：处理完成。
+	JobStatusCode *string `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
+
+	// 当前任务状态：排队中、处理中、处理失败或者处理完成。
+	JobStatusMsg *string `json:"JobStatusMsg,omitnil,omitempty" name:"JobStatusMsg"`
+
+	// 任务处理失败错误码。
+	JobErrorCode *string `json:"JobErrorCode,omitnil,omitempty" name:"JobErrorCode"`
+
+	// 任务处理失败错误信息。
+	JobErrorMsg *string `json:"JobErrorMsg,omitnil,omitempty" name:"JobErrorMsg"`
+
+	// 本轮对话的 ChatId，ChatId 用于唯一标识一轮对话。
+	// 一个对话组中，最多支持进行100轮对话。
+	// 每轮对话数据有效期为7天，到期后 ChatId 失效，有效期内的历史对话数据可通过 History 查询，如有长期使用需求请及时保存输入输出数据。
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// 生成图 URL 列表，有效期7天，请及时保存。
+	ResultImage []*string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 结果 detail 数组，Success 代表成功。
+	ResultDetails []*string `json:"ResultDetails,omitnil,omitempty" name:"ResultDetails"`
+
+	// 本轮对话前置的历史对话数据（不含生成图）。
+	History []*History `json:"History,omitnil,omitempty" name:"History"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryHunyuanImageChatJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryHunyuanImageChatJobResponseParams `json:"Response"`
+}
+
+func (r *QueryHunyuanImageChatJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuanImageChatJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -728,6 +827,110 @@ func (r *SetPayModeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetPayModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanImageChatJobRequestParams struct {
+	// 本轮对话的文本描述。
+	// 提交一个任务请求对应发起一轮生图对话，每轮对话中可输入一条 Prompt，生成一张图像，支持通过多轮输入 Prompt 来不断调整图像内容。
+	// 推荐使用中文，最多可传1024个 utf-8 字符。
+	// 输入示例：
+	// <li> 第一轮对话：一颗红色的苹果 </li>
+	// <li> 第二轮对话：将苹果改为绿色 </li>
+	// <li> 第三轮对话：苹果放在桌子上 </li>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 上传上一轮对话的 ChatId，本轮对话将在指定的上一轮对话结果基础上继续生成图像。
+	// 如果不传代表新建一个对话组，重新开启一轮新的对话。
+	// 一个对话组中，最多支持进行100轮对话。
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitHunyuanImageChatJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 本轮对话的文本描述。
+	// 提交一个任务请求对应发起一轮生图对话，每轮对话中可输入一条 Prompt，生成一张图像，支持通过多轮输入 Prompt 来不断调整图像内容。
+	// 推荐使用中文，最多可传1024个 utf-8 字符。
+	// 输入示例：
+	// <li> 第一轮对话：一颗红色的苹果 </li>
+	// <li> 第二轮对话：将苹果改为绿色 </li>
+	// <li> 第三轮对话：苹果放在桌子上 </li>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 上传上一轮对话的 ChatId，本轮对话将在指定的上一轮对话结果基础上继续生成图像。
+	// 如果不传代表新建一个对话组，重新开启一轮新的对话。
+	// 一个对话组中，最多支持进行100轮对话。
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitHunyuanImageChatJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanImageChatJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "ChatId")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanImageChatJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanImageChatJobResponseParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuanImageChatJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuanImageChatJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuanImageChatJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanImageChatJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

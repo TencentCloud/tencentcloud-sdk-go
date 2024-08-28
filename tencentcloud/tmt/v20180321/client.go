@@ -76,6 +76,7 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_SUBMISSIONLIMITREACHED = "FailedOperation.SubmissionLimitReached"
 //  FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
+//  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
@@ -94,6 +95,7 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 //  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_SUBMISSIONLIMITREACHED = "FailedOperation.SubmissionLimitReached"
 //  FAILEDOPERATION_TOOMANYWAITPROCESS = "FailedOperation.TooManyWaitProcess"
+//  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
@@ -385,7 +387,7 @@ func NewSpeechTranslateResponse() (response *SpeechTranslateResponse) {
 // SpeechTranslate
 // 本接口提供上传音频，将音频进行语音识别并翻译成文本的服务，目前开放中英互译的语音翻译服务。
 //
-// 待识别和翻译的音频文件可以是 pcm、mp3和speex 格式，pcm采样率要求16kHz、位深16bit、单声道，音频内语音清晰。<br/>
+// 待识别和翻译的音频文件可以是 pcm、mp3和speex 格式，其中支持流式传输的只有pcm格式，pcm采样率要求16kHz、位深16bit、单声道，音频内语音清晰。<br/>
 //
 // 如果采用流式传输的方式，要求每个分片时长200ms~500ms；如果采用非流式的传输方式，要求音频时长不超过8s。注意最后一个分片的IsEnd参数设置为1。<br />
 //
@@ -422,7 +424,7 @@ func (c *Client) SpeechTranslate(request *SpeechTranslateRequest) (response *Spe
 // SpeechTranslate
 // 本接口提供上传音频，将音频进行语音识别并翻译成文本的服务，目前开放中英互译的语音翻译服务。
 //
-// 待识别和翻译的音频文件可以是 pcm、mp3和speex 格式，pcm采样率要求16kHz、位深16bit、单声道，音频内语音清晰。<br/>
+// 待识别和翻译的音频文件可以是 pcm、mp3和speex 格式，其中支持流式传输的只有pcm格式，pcm采样率要求16kHz、位深16bit、单声道，音频内语音清晰。<br/>
 //
 // 如果采用流式传输的方式，要求每个分片时长200ms~500ms；如果采用非流式的传输方式，要求音频时长不超过8s。注意最后一个分片的IsEnd参数设置为1。<br />
 //

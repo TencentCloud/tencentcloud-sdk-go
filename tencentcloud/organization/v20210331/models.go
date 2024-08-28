@@ -8707,6 +8707,67 @@ type SAMLServiceProvider struct {
 }
 
 // Predefined struct for user
+type SendOrgMemberAccountBindEmailRequestParams struct {
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
+	BindId *int64 `json:"BindId,omitnil,omitempty" name:"BindId"`
+}
+
+type SendOrgMemberAccountBindEmailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
+	BindId *int64 `json:"BindId,omitnil,omitempty" name:"BindId"`
+}
+
+func (r *SendOrgMemberAccountBindEmailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendOrgMemberAccountBindEmailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "BindId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendOrgMemberAccountBindEmailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendOrgMemberAccountBindEmailResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SendOrgMemberAccountBindEmailResponse struct {
+	*tchttp.BaseResponse
+	Response *SendOrgMemberAccountBindEmailResponseParams `json:"Response"`
+}
+
+func (r *SendOrgMemberAccountBindEmailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendOrgMemberAccountBindEmailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SetExternalSAMLIdentityProviderRequestParams struct {
 	// 空间ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
