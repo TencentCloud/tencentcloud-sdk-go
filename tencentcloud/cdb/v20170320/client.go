@@ -5863,6 +5863,61 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceUpgradeCheckJobRequest() (request *DescribeInstanceUpgradeCheckJobRequest) {
+    request = &DescribeInstanceUpgradeCheckJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceUpgradeCheckJob")
+    
+    
+    return
+}
+
+func NewDescribeInstanceUpgradeCheckJobResponse() (response *DescribeInstanceUpgradeCheckJobResponse) {
+    response = &DescribeInstanceUpgradeCheckJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceUpgradeCheckJob
+// 该接口（DescribeInstanceUpgradeCheckJob）查询实例版本升级校验任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) DescribeInstanceUpgradeCheckJob(request *DescribeInstanceUpgradeCheckJobRequest) (response *DescribeInstanceUpgradeCheckJobResponse, err error) {
+    return c.DescribeInstanceUpgradeCheckJobWithContext(context.Background(), request)
+}
+
+// DescribeInstanceUpgradeCheckJob
+// 该接口（DescribeInstanceUpgradeCheckJob）查询实例版本升级校验任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) DescribeInstanceUpgradeCheckJobWithContext(ctx context.Context, request *DescribeInstanceUpgradeCheckJobRequest) (response *DescribeInstanceUpgradeCheckJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceUpgradeCheckJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceUpgradeCheckJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceUpgradeCheckJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceUpgradeTypeRequest() (request *DescribeInstanceUpgradeTypeRequest) {
     request = &DescribeInstanceUpgradeTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5886,17 +5941,10 @@ func NewDescribeInstanceUpgradeTypeResponse() (response *DescribeInstanceUpgrade
 // 本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  CDBERROR = "CdbError"
-//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) DescribeInstanceUpgradeType(request *DescribeInstanceUpgradeTypeRequest) (response *DescribeInstanceUpgradeTypeResponse, err error) {
     return c.DescribeInstanceUpgradeTypeWithContext(context.Background(), request)
 }
@@ -5905,17 +5953,10 @@ func (c *Client) DescribeInstanceUpgradeType(request *DescribeInstanceUpgradeTyp
 // 本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  CDBERROR = "CdbError"
-//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) DescribeInstanceUpgradeTypeWithContext(ctx context.Context, request *DescribeInstanceUpgradeTypeRequest) (response *DescribeInstanceUpgradeTypeResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceUpgradeTypeRequest()
@@ -10793,6 +10834,63 @@ func (c *Client) StopRollbackWithContext(ctx context.Context, request *StopRollb
     request.SetContext(ctx)
     
     response = NewStopRollbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitInstanceUpgradeCheckJobRequest() (request *SubmitInstanceUpgradeCheckJobRequest) {
+    request = &SubmitInstanceUpgradeCheckJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "SubmitInstanceUpgradeCheckJob")
+    
+    
+    return
+}
+
+func NewSubmitInstanceUpgradeCheckJobResponse() (response *SubmitInstanceUpgradeCheckJobResponse) {
+    response = &SubmitInstanceUpgradeCheckJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitInstanceUpgradeCheckJob
+// 该接口（SubmitInstanceUpgradeCheckJob）提交实例版本升级校验任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) SubmitInstanceUpgradeCheckJob(request *SubmitInstanceUpgradeCheckJobRequest) (response *SubmitInstanceUpgradeCheckJobResponse, err error) {
+    return c.SubmitInstanceUpgradeCheckJobWithContext(context.Background(), request)
+}
+
+// SubmitInstanceUpgradeCheckJob
+// 该接口（SubmitInstanceUpgradeCheckJob）提交实例版本升级校验任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) SubmitInstanceUpgradeCheckJobWithContext(ctx context.Context, request *SubmitInstanceUpgradeCheckJobRequest) (response *SubmitInstanceUpgradeCheckJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitInstanceUpgradeCheckJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitInstanceUpgradeCheckJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitInstanceUpgradeCheckJobResponse()
     err = c.Send(request, response)
     return
 }

@@ -568,7 +568,7 @@ type CreateDisasterRecoverGroupRequestParams struct {
 	// 分散置放群组名称，长度1-60个字符，支持中、英文。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
@@ -581,7 +581,7 @@ type CreateDisasterRecoverGroupRequest struct {
 	// 分散置放群组名称，长度1-60个字符，支持中、英文。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
@@ -614,7 +614,7 @@ type CreateDisasterRecoverGroupResponseParams struct {
 	// 分散置放群组ID列表。
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分散置放群组名称，长度1-60个字符，支持中、英文。
@@ -4616,7 +4616,10 @@ type DisasterRecoverGroup struct {
 	// 分散置放群组名称，长度1-60个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	// 分散置放群组类型，取值范围：<br>
+	// <li>HOST：物理机<br></li>
+	// <li>SW：交换机<br></li>
+	// <li>RACK：机架</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分散置放群组内最大容纳云服务器数量。
@@ -10011,7 +10014,7 @@ type VirtualPrivateCloud struct {
 	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>true：表示用作公网网关<br><li>false：表示不作为公网网关<br><br>默认取值：false。
+	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<li>true：表示用作公网网关</li><li>false：表示不作为公网网关</li>默认取值：false。
 	AsVpcGateway *bool `json:"AsVpcGateway,omitnil,omitempty" name:"AsVpcGateway"`
 
 	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
@@ -10072,7 +10075,6 @@ type ZoneInfo struct {
 	// <li> na-siliconvalley-2 </li>
 	// <li> eu-frankfurt-1 </li>
 	// <li> eu-frankfurt-2 </li>
-	// <li> na-toronto-1 </li>
 	// <li> na-ashburn-1 </li>
 	// <li> na-ashburn-2 </li>
 	// <li> ap-nanjing-1 </li>

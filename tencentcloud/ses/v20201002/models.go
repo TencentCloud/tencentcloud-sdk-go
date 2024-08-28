@@ -555,6 +555,26 @@ func (r *CreateReceiverDetailWithDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReceiverDetailWithDataResponseParams struct {
+	// 收件人总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实际上传数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidCount *uint64 `json:"ValidCount,omitnil,omitempty" name:"ValidCount"`
+
+	// 数据过长数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TooLongCount *uint64 `json:"TooLongCount,omitnil,omitempty" name:"TooLongCount"`
+
+	// 邮件地址为空数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyEmailCount *uint64 `json:"EmptyEmailCount,omitnil,omitempty" name:"EmptyEmailCount"`
+
+	// 重复数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepeatCount *uint64 `json:"RepeatCount,omitnil,omitempty" name:"RepeatCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1684,6 +1704,15 @@ type ListReceiverDetailsRequestParams struct {
 
 	// 收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 搜索开始时间
+	CreateTimeBegin *string `json:"CreateTimeBegin,omitnil,omitempty" name:"CreateTimeBegin"`
+
+	// 搜索结束时间
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+
+	// 1:有效，2:无效
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ListReceiverDetailsRequest struct {
@@ -1700,6 +1729,15 @@ type ListReceiverDetailsRequest struct {
 
 	// 收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 搜索开始时间
+	CreateTimeBegin *string `json:"CreateTimeBegin,omitnil,omitempty" name:"CreateTimeBegin"`
+
+	// 搜索结束时间
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+
+	// 1:有效，2:无效
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *ListReceiverDetailsRequest) ToJsonString() string {
@@ -1718,6 +1756,9 @@ func (r *ListReceiverDetailsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Email")
+	delete(f, "CreateTimeBegin")
+	delete(f, "CreateTimeEnd")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListReceiverDetailsRequest has unknown keys!", "")
 	}
@@ -1731,6 +1772,12 @@ type ListReceiverDetailsResponseParams struct {
 
 	// 数据记录
 	Data []*ReceiverDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 有效邮件地址数
+	ValidCount *uint64 `json:"ValidCount,omitnil,omitempty" name:"ValidCount"`
+
+	// 无效邮件地址数
+	InvalidCount *uint64 `json:"InvalidCount,omitnil,omitempty" name:"InvalidCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1941,6 +1988,10 @@ type ReceiverData struct {
 
 	// 创建时间,如:2021-09-28 16:40:35
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 无效收件人数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvalidCount *uint64 `json:"InvalidCount,omitnil,omitempty" name:"InvalidCount"`
 }
 
 type ReceiverDetail struct {
@@ -1952,6 +2003,18 @@ type ReceiverDetail struct {
 
 	// 模板参数
 	TemplateData *string `json:"TemplateData,omitnil,omitempty" name:"TemplateData"`
+
+	// 无效原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 1:有效，2:无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 收件人地址id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmailId *uint64 `json:"EmailId,omitnil,omitempty" name:"EmailId"`
 }
 
 type ReceiverInputData struct {

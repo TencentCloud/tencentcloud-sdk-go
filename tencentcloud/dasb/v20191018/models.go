@@ -5486,6 +5486,10 @@ type Resource struct {
 	// 已使用网络域个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedDomainCount *uint64 `json:"UsedDomainCount,omitnil,omitempty" name:"UsedDomainCount"`
+
+	// 0 非试用版，1 试用版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 }
 
 type RunChangePwdTaskDetail struct {
