@@ -1215,6 +1215,10 @@ type DatasourceInfo struct {
 	// 集群id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbTypeName *string `json:"DbTypeName,omitnil,omitempty" name:"DbTypeName"`
 }
 
 type DatasourceInfoData struct {

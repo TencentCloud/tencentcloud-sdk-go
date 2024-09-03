@@ -89,6 +89,80 @@ func (r *CloseAsyncRecognitionTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAsrKeyWordLibRequestParams struct {
+	// 词表名称，长度在1-20之间
+	// 仅限中英文数字-_
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 词文件（纯文本文件）的二进制base64编码，以行分隔
+	// 格式要求：TXT
+	// 每行只有一个词，不满足格式则报错无法上传
+	// 每个词限制**5个汉字，15个字符**，单个词库最多不超过100个词
+	// 注意不要有空行，尤其是最后一行
+	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
+}
+
+type CreateAsrKeyWordLibRequest struct {
+	*tchttp.BaseRequest
+	
+	// 词表名称，长度在1-20之间
+	// 仅限中英文数字-_
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 词文件（纯文本文件）的二进制base64编码，以行分隔
+	// 格式要求：TXT
+	// 每行只有一个词，不满足格式则报错无法上传
+	// 每个词限制**5个汉字，15个字符**，单个词库最多不超过100个词
+	// 注意不要有空行，尤其是最后一行
+	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
+}
+
+func (r *CreateAsrKeyWordLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAsrKeyWordLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "KeyWordFile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAsrKeyWordLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAsrKeyWordLibResponseParams struct {
+	// 词表ID数据
+	Data *KeyWordLibIdData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAsrKeyWordLibResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAsrKeyWordLibResponseParams `json:"Response"`
+}
+
+func (r *CreateAsrKeyWordLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAsrKeyWordLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAsrVocabRequestParams struct {
 	// 热词表名称，长度在1-255之间
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -614,6 +688,9 @@ type CreateRecTaskRequestParams struct {
 	// 
 	// - 热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
 	HotwordList *string `json:"HotwordList,omitnil,omitempty" name:"HotwordList"`
+
+	// 关键词识别ID列表，默认空为不进行识别，最多10个
+	KeyWordLibIdList []*string `json:"KeyWordLibIdList,omitnil,omitempty" name:"KeyWordLibIdList"`
 }
 
 type CreateRecTaskRequest struct {
@@ -822,6 +899,9 @@ type CreateRecTaskRequest struct {
 	// 
 	// - 热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
 	HotwordList *string `json:"HotwordList,omitnil,omitempty" name:"HotwordList"`
+
+	// 关键词识别ID列表，默认空为不进行识别，最多10个
+	KeyWordLibIdList []*string `json:"KeyWordLibIdList,omitnil,omitempty" name:"KeyWordLibIdList"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -858,6 +938,7 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "SentenceMaxLength")
 	delete(f, "Extra")
 	delete(f, "HotwordList")
+	delete(f, "KeyWordLibIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}
@@ -887,6 +968,60 @@ func (r *CreateRecTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateRecTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAsrKeyWordLibRequestParams struct {
+	// 关键词表ID
+	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
+}
+
+type DeleteAsrKeyWordLibRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关键词表ID
+	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
+}
+
+func (r *DeleteAsrKeyWordLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAsrKeyWordLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyWordLibId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAsrKeyWordLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAsrKeyWordLibResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAsrKeyWordLibResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAsrKeyWordLibResponseParams `json:"Response"`
+}
+
+func (r *DeleteAsrKeyWordLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAsrKeyWordLibResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1230,6 +1365,84 @@ func (r *DownloadCustomizationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetAsrKeyWordLibListRequestParams struct {
+	// 分页Offset
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 词库名称或者UIN检索
+	SpecifyNames []*string `json:"SpecifyNames,omitnil,omitempty" name:"SpecifyNames"`
+
+	// 只看用户自己创建的
+	OnlySelf *bool `json:"OnlySelf,omitnil,omitempty" name:"OnlySelf"`
+}
+
+type GetAsrKeyWordLibListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页Offset
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 词库名称或者UIN检索
+	SpecifyNames []*string `json:"SpecifyNames,omitnil,omitempty" name:"SpecifyNames"`
+
+	// 只看用户自己创建的
+	OnlySelf *bool `json:"OnlySelf,omitnil,omitempty" name:"OnlySelf"`
+}
+
+func (r *GetAsrKeyWordLibListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAsrKeyWordLibListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SpecifyNames")
+	delete(f, "OnlySelf")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAsrKeyWordLibListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAsrKeyWordLibListResponseParams struct {
+	// 关键词列表返回数据
+	Data *KeyWordLibListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetAsrKeyWordLibListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAsrKeyWordLibListResponseParams `json:"Response"`
+}
+
+func (r *GetAsrKeyWordLibListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAsrKeyWordLibListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetAsrVocabListRequestParams struct {
 	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
 	TagInfos []*string `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
@@ -1523,6 +1736,58 @@ type HotWord struct {
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
+type KeyWordLib struct {
+	// 关键词表ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
+
+	// 关键词表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 关键词列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordList []*string `json:"KeyWordList,omitnil,omitempty" name:"KeyWordList"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type KeyWordLibIdData struct {
+	// 关键词ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
+}
+
+type KeyWordLibListData struct {
+	// 关键词表列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordLibList []*KeyWordLib `json:"KeyWordLibList,omitnil,omitempty" name:"KeyWordLibList"`
+
+	// 关键词列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type KeyWordResult struct {
+	// 关键词库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordLibID *string `json:"KeyWordLibID,omitnil,omitempty" name:"KeyWordLibID"`
+
+	// 关键词库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordLibName *string `json:"KeyWordLibName,omitnil,omitempty" name:"KeyWordLibName"`
+
+	// 匹配到的关键词
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWords []*string `json:"KeyWords,omitnil,omitempty" name:"KeyWords"`
+}
+
 type Model struct {
 	// 模型名称
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
@@ -1743,6 +2008,10 @@ type SentenceDetail struct {
 	// 情绪类型（可能为空）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmotionType []*string `json:"EmotionType,omitnil,omitempty" name:"EmotionType"`
+
+	// 关键词识别结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordResults []*KeyWordResult `json:"KeyWordResults,omitnil,omitempty" name:"KeyWordResults"`
 }
 
 // Predefined struct for user
@@ -2137,6 +2406,85 @@ type TaskStatus struct {
 	// 音频时长(秒)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioDuration *float64 `json:"AudioDuration,omitnil,omitempty" name:"AudioDuration"`
+}
+
+// Predefined struct for user
+type UpdateAsrKeyWordLibRequestParams struct {
+	// 关键词表ID
+	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
+
+	// 词表名称，长度在1-20之间
+	// 仅限中英文数字-_
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// - 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
+	// - 格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 
+	// - 每个词最多5个汉字或15个字符，单个词库最多不超过100个词
+	// - 此参数为空则只更新词表名称
+	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
+}
+
+type UpdateAsrKeyWordLibRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关键词表ID
+	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
+
+	// 词表名称，长度在1-20之间
+	// 仅限中英文数字-_
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// - 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
+	// - 格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 
+	// - 每个词最多5个汉字或15个字符，单个词库最多不超过100个词
+	// - 此参数为空则只更新词表名称
+	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
+}
+
+func (r *UpdateAsrKeyWordLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAsrKeyWordLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyWordLibId")
+	delete(f, "Name")
+	delete(f, "KeyWordFile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAsrKeyWordLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAsrKeyWordLibResponseParams struct {
+	// 关键词表ID数据
+	Data *KeyWordLibIdData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAsrKeyWordLibResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAsrKeyWordLibResponseParams `json:"Response"`
+}
+
+func (r *UpdateAsrKeyWordLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAsrKeyWordLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

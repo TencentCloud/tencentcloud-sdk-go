@@ -39,6 +39,22 @@ type ConsumeGroupItem struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 4.x的集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIdV4 *string `json:"ClusterIdV4,omitnil,omitempty" name:"ClusterIdV4"`
+
+	// 4.x的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
+
+	// 4.x的消费组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerGroupV4 *string `json:"ConsumerGroupV4,omitnil,omitempty" name:"ConsumerGroupV4"`
+
+	// 4.x的完整命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 }
 
 // Predefined struct for user

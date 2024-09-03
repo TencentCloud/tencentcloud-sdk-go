@@ -86,6 +86,9 @@ const (
 	// 资源包退款失败
 	FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = "FailedOperation.RefundSourcePackageError"
 
+	// 修改策略失败。
+	FAILEDOPERATION_SERVERLESSSETSTRATEGYERROR = "FailedOperation.ServerlessSetStrategyError"
+
 	// 创建并支付订单失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
 

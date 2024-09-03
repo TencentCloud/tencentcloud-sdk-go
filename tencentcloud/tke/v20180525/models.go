@@ -15145,6 +15145,9 @@ type InstallLogAgentRequestParams struct {
 
 	// kubelet根目录
 	KubeletRootDir *string `json:"KubeletRootDir,omitnil,omitempty" name:"KubeletRootDir"`
+
+	// 集群类型 tke/eks，默认tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type InstallLogAgentRequest struct {
@@ -15155,6 +15158,9 @@ type InstallLogAgentRequest struct {
 
 	// kubelet根目录
 	KubeletRootDir *string `json:"KubeletRootDir,omitnil,omitempty" name:"KubeletRootDir"`
+
+	// 集群类型 tke/eks，默认tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *InstallLogAgentRequest) ToJsonString() string {
@@ -15171,6 +15177,7 @@ func (r *InstallLogAgentRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "KubeletRootDir")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallLogAgentRequest has unknown keys!", "")
 	}

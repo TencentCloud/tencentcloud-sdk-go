@@ -869,6 +869,9 @@ type CreateQARequestParams struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 相似问内容
+	SimilarQuestions []*string `json:"SimilarQuestions,omitnil,omitempty" name:"SimilarQuestions"`
 }
 
 type CreateQARequest struct {
@@ -903,6 +906,9 @@ type CreateQARequest struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 相似问内容
+	SimilarQuestions []*string `json:"SimilarQuestions,omitnil,omitempty" name:"SimilarQuestions"`
 }
 
 func (r *CreateQARequest) ToJsonString() string {
@@ -927,6 +933,7 @@ func (r *CreateQARequest) FromJsonString(s string) error {
 	delete(f, "CateBizId")
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
+	delete(f, "SimilarQuestions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQARequest has unknown keys!", "")
 	}
@@ -2131,6 +2138,9 @@ type DescribeQAResponseParams struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 相似问列表信息
+	SimilarQuestions []*SimilarQuestion `json:"SimilarQuestions,omitnil,omitempty" name:"SimilarQuestions"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4949,7 +4959,7 @@ func (r *ListQACateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListQARequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4964,7 +4974,7 @@ type ListQARequestParams struct {
 	// 校验状态(1未校验2采纳3不采纳)
 	AcceptStatus []*int64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
-	// 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败)
+	// 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
 	ReleaseStatus []*int64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
 	// 文档ID
@@ -4983,7 +4993,7 @@ type ListQARequestParams struct {
 type ListQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -4998,7 +5008,7 @@ type ListQARequest struct {
 	// 校验状态(1未校验2采纳3不采纳)
 	AcceptStatus []*int64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
-	// 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败)
+	// 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
 	ReleaseStatus []*int64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
 	// 文档ID
@@ -5130,6 +5140,21 @@ type ListQaItem struct {
 
 	// 问答字符数
 	QaCharSize *string `json:"QaCharSize,omitnil,omitempty" name:"QaCharSize"`
+
+	// 有效开始时间，unix时间戳
+	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
+
+	// 有效结束时间，unix时间戳，0代表永久有效
+	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 属性标签适用范围 1：全部，2：按条件
+	AttrRange *int64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
+
+	// 属性标签
+	AttrLabels []*AttrLabel `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
+
+	// 相似问个数
+	SimilarQuestionNum *uint64 `json:"SimilarQuestionNum,omitnil,omitempty" name:"SimilarQuestionNum"`
 }
 
 // Predefined struct for user
@@ -6546,6 +6571,9 @@ type ModifyQARequestParams struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 相似问修改信息(相似问没有修改则不传)
+	SimilarQuestionModify *SimilarQuestionModify `json:"SimilarQuestionModify,omitnil,omitempty" name:"SimilarQuestionModify"`
 }
 
 type ModifyQARequest struct {
@@ -6583,6 +6611,9 @@ type ModifyQARequest struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 相似问修改信息(相似问没有修改则不传)
+	SimilarQuestionModify *SimilarQuestionModify `json:"SimilarQuestionModify,omitnil,omitempty" name:"SimilarQuestionModify"`
 }
 
 func (r *ModifyQARequest) ToJsonString() string {
@@ -6608,6 +6639,7 @@ func (r *ModifyQARequest) FromJsonString(s string) error {
 	delete(f, "CateBizId")
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
+	delete(f, "SimilarQuestionModify")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQARequest has unknown keys!", "")
 	}
@@ -8044,6 +8076,27 @@ func (r *SaveDocResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SaveDocResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SimilarQuestion struct {
+	// 相似问ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SimBizId *string `json:"SimBizId,omitnil,omitempty" name:"SimBizId"`
+
+	// 相似问内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+}
+
+type SimilarQuestionModify struct {
+	// 需要添加的相似问(内容)列表
+	AddQuestions []*string `json:"AddQuestions,omitnil,omitempty" name:"AddQuestions"`
+
+	// 需要更新的相似问列表
+	UpdateQuestions []*SimilarQuestion `json:"UpdateQuestions,omitnil,omitempty" name:"UpdateQuestions"`
+
+	// 需要删除的相似问列表
+	DeleteQuestions []*SimilarQuestion `json:"DeleteQuestions,omitnil,omitempty" name:"DeleteQuestions"`
 }
 
 // Predefined struct for user

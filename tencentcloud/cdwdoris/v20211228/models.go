@@ -2873,7 +2873,7 @@ type DescribeInstancesRequestParams struct {
 	// 分页参数，分页步长，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索标签列表
+	// 搜索标签列表，没匹配到则不过滤集群列表
 	SearchTags []*SearchTags `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
 }
 
@@ -2892,7 +2892,7 @@ type DescribeInstancesRequest struct {
 	// 分页参数，分页步长，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索标签列表
+	// 搜索标签列表，没匹配到则不过滤集群列表
 	SearchTags []*SearchTags `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
 }
 
@@ -3396,6 +3396,20 @@ func (r *DescribeSpecResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSqlApisRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// GetUsers：获取用户列表；
+	// GetDatabases：获取数据库列表；
+	// GetTables：获取数据库表列表；
+	// GetUserPrivilegesV2：获取用户下的权限，粒度到表级别；
+	// DeleteUser：删除用户；
+	// GetCatalog：获取Catalog列表；
+	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
+
+	// 用户名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
 	// 用户链接来自的 IP
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
@@ -3415,6 +3429,20 @@ type DescribeSqlApisRequestParams struct {
 type DescribeSqlApisRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// GetUsers：获取用户列表；
+	// GetDatabases：获取数据库列表；
+	// GetTables：获取数据库表列表；
+	// GetUserPrivilegesV2：获取用户下的权限，粒度到表级别；
+	// DeleteUser：删除用户；
+	// GetCatalog：获取Catalog列表；
+	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
+
+	// 用户名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
 	// 用户链接来自的 IP
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
@@ -3443,6 +3471,9 @@ func (r *DescribeSqlApisRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
+	delete(f, "ApiType")
+	delete(f, "UserName")
 	delete(f, "WhiteHost")
 	delete(f, "Catalog")
 	delete(f, "Catalogs")
@@ -3456,6 +3487,14 @@ func (r *DescribeSqlApisRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSqlApisResponseParams struct {
+	// 返回的查询数据，大部分情况是list，也可能是bool
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnData *string `json:"ReturnData,omitnil,omitempty" name:"ReturnData"`
+
+	// 错误消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5917,7 +5956,7 @@ type SearchTags struct {
 	// 标签的值
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
-	// 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+	// 1表示只输入标签的键，没有输入值；非1则表示输入键时且输入值
 	AllValue *int64 `json:"AllValue,omitnil,omitempty" name:"AllValue"`
 }
 

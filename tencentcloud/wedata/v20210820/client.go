@@ -8122,6 +8122,61 @@ func (c *Client) DescribeTableMetasWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTablePartitionsRequest() (request *DescribeTablePartitionsRequest) {
+    request = &DescribeTablePartitionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTablePartitions")
+    
+    
+    return
+}
+
+func NewDescribeTablePartitionsResponse() (response *DescribeTablePartitionsResponse) {
+    response = &DescribeTablePartitionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTablePartitions
+// 查询表的分区详情信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTablePartitions(request *DescribeTablePartitionsRequest) (response *DescribeTablePartitionsResponse, err error) {
+    return c.DescribeTablePartitionsWithContext(context.Background(), request)
+}
+
+// DescribeTablePartitions
+// 查询表的分区详情信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTablePartitionsWithContext(ctx context.Context, request *DescribeTablePartitionsRequest) (response *DescribeTablePartitionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablePartitionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTablePartitions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTablePartitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableQualityDetailsRequest() (request *DescribeTableQualityDetailsRequest) {
     request = &DescribeTableQualityDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},

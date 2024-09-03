@@ -15619,6 +15619,95 @@ func (r *DescribeTableMetasResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTablePartitionsRequestParams struct {
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 分页number
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页size
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤器
+	FilterSet []*Filter `json:"FilterSet,omitnil,omitempty" name:"FilterSet"`
+
+	// 排序字段
+	OrderFieldSet []*OrderField `json:"OrderFieldSet,omitnil,omitempty" name:"OrderFieldSet"`
+}
+
+type DescribeTablePartitionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 分页number
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页size
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤器
+	FilterSet []*Filter `json:"FilterSet,omitnil,omitempty" name:"FilterSet"`
+
+	// 排序字段
+	OrderFieldSet []*OrderField `json:"OrderFieldSet,omitnil,omitempty" name:"OrderFieldSet"`
+}
+
+func (r *DescribeTablePartitionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablePartitionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "FilterSet")
+	delete(f, "OrderFieldSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablePartitionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablePartitionsResponseParams struct {
+	// 分区详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePartitionSet []*TablePartition `json:"TablePartitionSet,omitnil,omitempty" name:"TablePartitionSet"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTablePartitionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTablePartitionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTablePartitionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablePartitionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableQualityDetailsRequestParams struct {
 	// 统计日期
 	StatisticsDate *int64 `json:"StatisticsDate,omitnil,omitempty" name:"StatisticsDate"`
@@ -28189,6 +28278,34 @@ type TableNameFilter struct {
 
 	// 表名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type TablePartition struct {
+	// 分区名称
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// 分区记录数
+	RecordCount *int64 `json:"RecordCount,omitnil,omitempty" name:"RecordCount"`
+
+	// 分区数据存储大小，字节数
+	StorageSize *string `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// 分区创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 分区修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 分区数据存储大小，已转为适合的单位
+	StorageSizeWithUnit *string `json:"StorageSizeWithUnit,omitnil,omitempty" name:"StorageSizeWithUnit"`
+
+	// 文件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumFiles *int64 `json:"NumFiles,omitnil,omitempty" name:"NumFiles"`
+
+	// 平均文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AverageFileSizeWithUnit *string `json:"AverageFileSizeWithUnit,omitnil,omitempty" name:"AverageFileSizeWithUnit"`
 }
 
 type TablePropertyScore struct {

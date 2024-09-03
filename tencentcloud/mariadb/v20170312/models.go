@@ -2117,6 +2117,66 @@ func (r *DescribeBackupTimeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBinlogTimeRequestParams struct {
+	// 实例 ID，形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeBinlogTimeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBinlogTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBinlogTimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBinlogTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBinlogTimeResponseParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBinlogTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBinlogTimeResponseParams `json:"Response"`
+}
+
+func (r *DescribeBinlogTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBinlogTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBEncryptAttributesRequestParams struct {
 	// 实例Id，形如：tdsql-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

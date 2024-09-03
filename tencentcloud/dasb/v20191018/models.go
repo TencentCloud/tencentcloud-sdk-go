@@ -1397,6 +1397,9 @@ type CreateResourceRequestParams struct {
 
 	// 部署zone
 	DeployZone *string `json:"DeployZone,omitnil,omitempty" name:"DeployZone"`
+
+	// 0非试用版，1试用版
+	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 }
 
 type CreateResourceRequest struct {
@@ -1431,6 +1434,9 @@ type CreateResourceRequest struct {
 
 	// 部署zone
 	DeployZone *string `json:"DeployZone,omitnil,omitempty" name:"DeployZone"`
+
+	// 0非试用版，1试用版
+	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 }
 
 func (r *CreateResourceRequest) ToJsonString() string {
@@ -1455,6 +1461,7 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "AutoRenewFlag")
 	delete(f, "DeployZone")
+	delete(f, "Trial")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
 	}

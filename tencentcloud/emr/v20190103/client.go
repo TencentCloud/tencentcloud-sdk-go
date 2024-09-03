@@ -2596,6 +2596,63 @@ func (c *Client) InquiryPriceUpdateInstanceWithContext(ctx context.Context, requ
     return
 }
 
+func NewModifyAutoRenewFlagRequest() (request *ModifyAutoRenewFlagRequest) {
+    request = &ModifyAutoRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyAutoRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyAutoRenewFlagResponse() (response *ModifyAutoRenewFlagResponse) {
+    response = &ModifyAutoRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoRenewFlag
+// 前提：预付费集群
+//
+// 资源级别开启或关闭自动续费
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) ModifyAutoRenewFlag(request *ModifyAutoRenewFlagRequest) (response *ModifyAutoRenewFlagResponse, err error) {
+    return c.ModifyAutoRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyAutoRenewFlag
+// 前提：预付费集群
+//
+// 资源级别开启或关闭自动续费
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) ModifyAutoRenewFlagWithContext(ctx context.Context, request *ModifyAutoRenewFlagRequest) (response *ModifyAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAutoScaleStrategyRequest() (request *ModifyAutoScaleStrategyRequest) {
     request = &ModifyAutoScaleStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},

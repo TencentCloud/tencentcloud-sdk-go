@@ -6331,11 +6331,11 @@ type SlowLogInfoItem struct {
 	UserHost *string `json:"UserHost,omitnil,omitempty" name:"UserHost"`
 
 	// 执行时间,单位秒
-	QueryTime *int64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
+	QueryTime *float64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
 
 	// 锁时间,单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LockTime *int64 `json:"LockTime,omitnil,omitempty" name:"LockTime"`
+	LockTime *float64 `json:"LockTime,omitnil,omitempty" name:"LockTime"`
 
 	// 扫描行数
 	// 注意：此字段可能返回 null，表示取不到有效值。

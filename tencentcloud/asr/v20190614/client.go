@@ -100,6 +100,97 @@ func (c *Client) CloseAsyncRecognitionTaskWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateAsrKeyWordLibRequest() (request *CreateAsrKeyWordLibRequest) {
+    request = &CreateAsrKeyWordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "CreateAsrKeyWordLib")
+    
+    
+    return
+}
+
+func NewCreateAsrKeyWordLibResponse() (response *CreateAsrKeyWordLibResponse) {
+    response = &CreateAsrKeyWordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAsrKeyWordLib
+// 用户通过本接口进行关键字词表的创建。
+//
+// <br>•   默认每个用户最多可创建30个关键字词表。
+//
+// <br>•   每个关键词词表最多可添加100个词，每个词最多5个汉字或15个字符。
+//
+// <br>•   词表通过本地文件形式上传。
+//
+// <br>•   本地文件必须为UTF-8编码格式，每行仅添加一个词且不能包含标点和特殊字符。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORCONTENTLENGTH = "InvalidParameter.ErrorContentlength"
+//  INVALIDPARAMETER_ERRORPARAMSMISSING = "InvalidParameter.ErrorParamsMissing"
+//  INVALIDPARAMETER_KEYWORDLIBNAMEEXIST = "InvalidParameter.KeyWordLibNameExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERLENGTH = "InvalidParameterValue.InvalidParameterLength"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateAsrKeyWordLib(request *CreateAsrKeyWordLibRequest) (response *CreateAsrKeyWordLibResponse, err error) {
+    return c.CreateAsrKeyWordLibWithContext(context.Background(), request)
+}
+
+// CreateAsrKeyWordLib
+// 用户通过本接口进行关键字词表的创建。
+//
+// <br>•   默认每个用户最多可创建30个关键字词表。
+//
+// <br>•   每个关键词词表最多可添加100个词，每个词最多5个汉字或15个字符。
+//
+// <br>•   词表通过本地文件形式上传。
+//
+// <br>•   本地文件必须为UTF-8编码格式，每行仅添加一个词且不能包含标点和特殊字符。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORCONTENTLENGTH = "InvalidParameter.ErrorContentlength"
+//  INVALIDPARAMETER_ERRORPARAMSMISSING = "InvalidParameter.ErrorParamsMissing"
+//  INVALIDPARAMETER_KEYWORDLIBNAMEEXIST = "InvalidParameter.KeyWordLibNameExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERLENGTH = "InvalidParameterValue.InvalidParameterLength"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateAsrKeyWordLibWithContext(ctx context.Context, request *CreateAsrKeyWordLibRequest) (response *CreateAsrKeyWordLibResponse, err error) {
+    if request == nil {
+        request = NewCreateAsrKeyWordLibRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAsrKeyWordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAsrKeyWordLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAsrVocabRequest() (request *CreateAsrVocabRequest) {
     request = &CreateAsrVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -482,6 +573,69 @@ func (c *Client) CreateRecTaskWithContext(ctx context.Context, request *CreateRe
     request.SetContext(ctx)
     
     response = NewCreateRecTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAsrKeyWordLibRequest() (request *DeleteAsrKeyWordLibRequest) {
+    request = &DeleteAsrKeyWordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "DeleteAsrKeyWordLib")
+    
+    
+    return
+}
+
+func NewDeleteAsrKeyWordLibResponse() (response *DeleteAsrKeyWordLibResponse) {
+    response = &DeleteAsrKeyWordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAsrKeyWordLib
+// 用户通过本接口进行关键词表的删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORCONTENTLENGTH = "InvalidParameter.ErrorContentlength"
+//  INVALIDPARAMETER_ERRORPARAMSMISSING = "InvalidParameter.ErrorParamsMissing"
+//  INVALIDPARAMETER_ERRORPARSEQUEST = "InvalidParameter.ErrorParsequest"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+func (c *Client) DeleteAsrKeyWordLib(request *DeleteAsrKeyWordLibRequest) (response *DeleteAsrKeyWordLibResponse, err error) {
+    return c.DeleteAsrKeyWordLibWithContext(context.Background(), request)
+}
+
+// DeleteAsrKeyWordLib
+// 用户通过本接口进行关键词表的删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORCONTENTLENGTH = "InvalidParameter.ErrorContentlength"
+//  INVALIDPARAMETER_ERRORPARAMSMISSING = "InvalidParameter.ErrorParamsMissing"
+//  INVALIDPARAMETER_ERRORPARSEQUEST = "InvalidParameter.ErrorParsequest"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+func (c *Client) DeleteAsrKeyWordLibWithContext(ctx context.Context, request *DeleteAsrKeyWordLibRequest) (response *DeleteAsrKeyWordLibResponse, err error) {
+    if request == nil {
+        request = NewDeleteAsrKeyWordLibRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAsrKeyWordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAsrKeyWordLibResponse()
     err = c.Send(request, response)
     return
 }
@@ -892,6 +1046,69 @@ func (c *Client) DownloadCustomizationWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDownloadCustomizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetAsrKeyWordLibListRequest() (request *GetAsrKeyWordLibListRequest) {
+    request = &GetAsrKeyWordLibListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "GetAsrKeyWordLibList")
+    
+    
+    return
+}
+
+func NewGetAsrKeyWordLibListResponse() (response *GetAsrKeyWordLibListResponse) {
+    response = &GetAsrKeyWordLibListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetAsrKeyWordLibList
+// 用户通过该接口，可获得所有的关键词表及其信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CHECKRESOURCERESPONSECODEERROR = "AuthFailure.CheckResourceResponseCodeError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) GetAsrKeyWordLibList(request *GetAsrKeyWordLibListRequest) (response *GetAsrKeyWordLibListResponse, err error) {
+    return c.GetAsrKeyWordLibListWithContext(context.Background(), request)
+}
+
+// GetAsrKeyWordLibList
+// 用户通过该接口，可获得所有的关键词表及其信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CHECKRESOURCERESPONSECODEERROR = "AuthFailure.CheckResourceResponseCodeError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) GetAsrKeyWordLibListWithContext(ctx context.Context, request *GetAsrKeyWordLibListRequest) (response *GetAsrKeyWordLibListResponse, err error) {
+    if request == nil {
+        request = NewGetAsrKeyWordLibListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAsrKeyWordLibList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAsrKeyWordLibListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1456,6 +1673,73 @@ func (c *Client) SetVocabStateWithContext(ctx context.Context, request *SetVocab
     request.SetContext(ctx)
     
     response = NewSetVocabStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAsrKeyWordLibRequest() (request *UpdateAsrKeyWordLibRequest) {
+    request = &UpdateAsrKeyWordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "UpdateAsrKeyWordLib")
+    
+    
+    return
+}
+
+func NewUpdateAsrKeyWordLibResponse() (response *UpdateAsrKeyWordLibResponse) {
+    response = &UpdateAsrKeyWordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateAsrKeyWordLib
+// 用户通过本接口进行对应的关键词表信息更新。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_KEYWORDLIBNAMEEXIST = "InvalidParameter.KeyWordLibNameExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERLENGTH = "InvalidParameterValue.InvalidParameterLength"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateAsrKeyWordLib(request *UpdateAsrKeyWordLibRequest) (response *UpdateAsrKeyWordLibResponse, err error) {
+    return c.UpdateAsrKeyWordLibWithContext(context.Background(), request)
+}
+
+// UpdateAsrKeyWordLib
+// 用户通过本接口进行对应的关键词表信息更新。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_KEYWORDLIBNAMEEXIST = "InvalidParameter.KeyWordLibNameExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERLENGTH = "InvalidParameterValue.InvalidParameterLength"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateAsrKeyWordLibWithContext(ctx context.Context, request *UpdateAsrKeyWordLibRequest) (response *UpdateAsrKeyWordLibResponse, err error) {
+    if request == nil {
+        request = NewUpdateAsrKeyWordLibRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAsrKeyWordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAsrKeyWordLibResponse()
     err = c.Send(request, response)
     return
 }

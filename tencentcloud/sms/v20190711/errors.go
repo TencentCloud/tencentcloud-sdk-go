@@ -182,6 +182,9 @@ const (
 	// 单个模板变量字符数超过规定的限制数。您可以参考 <a href="https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)">正文模板审核标准</a>下变量规范中关于长度的描述，对于长期未使用的账号及2024年1月25日后开通新账号默认最长支持6个字符，您的账号具体可支持字符长度以<a href="https://console.cloud.tencent.com/smsv2/csms-template/create">控制台显示为准</a>。更多疑问可联系 <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 。
 	INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = "InvalidParameterValue.TemplateParameterLengthLimit"
 
+	// 申请国内短信通知和营销短信模板不支持添加变量。可参考 [控制台说明](https://console.cloud.tencent.com/smsv2/csms-template)，更多疑问可咨询 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)
+	INVALIDPARAMETERVALUE_UNSUPPORTEDTEMPLATEVARIABLE = "InvalidParameterValue.UnsupportedTemplateVariable"
+
 	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整国际港澳台短信发送限制。
 	LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
 

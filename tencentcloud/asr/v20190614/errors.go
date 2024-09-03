@@ -143,6 +143,9 @@ const (
 	// 非法的词表状态。
 	INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
 
+	// 关键词库名字已存在
+	INVALIDPARAMETER_KEYWORDLIBNAMEEXIST = "InvalidParameter.KeyWordLibNameExist"
+
 	// 该模型状态不允许删除。
 	INVALIDPARAMETER_MODELSTATE = "InvalidParameter.ModelState"
 

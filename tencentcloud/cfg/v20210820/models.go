@@ -1334,6 +1334,9 @@ type ModifyTaskRunStatusRequestParams struct {
 
 	// 演习结论（当演习状态转变为执行结束时，需要填写此字段）
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 问题以及改进
+	Issue *string `json:"Issue,omitnil,omitempty" name:"Issue"`
 }
 
 type ModifyTaskRunStatusRequest struct {
@@ -1350,6 +1353,9 @@ type ModifyTaskRunStatusRequest struct {
 
 	// 演习结论（当演习状态转变为执行结束时，需要填写此字段）
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 问题以及改进
+	Issue *string `json:"Issue,omitnil,omitempty" name:"Issue"`
 }
 
 func (r *ModifyTaskRunStatusRequest) ToJsonString() string {
@@ -1368,6 +1374,7 @@ func (r *ModifyTaskRunStatusRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "IsExpect")
 	delete(f, "Summary")
+	delete(f, "Issue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskRunStatusRequest has unknown keys!", "")
 	}
@@ -1416,6 +1423,14 @@ type ObjectType struct {
 	// 是否包含新动作
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectHasNewAction *bool `json:"ObjectHasNewAction,omitnil,omitempty" name:"ObjectHasNewAction"`
+
+	// 对应在平台架构图中的资源类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectPlatformName *string `json:"ObjectPlatformName,omitnil,omitempty" name:"ObjectPlatformName"`
+
+	// 1：平台支持的对象 2：应用支持的部分对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectSupportType *int64 `json:"ObjectSupportType,omitnil,omitempty" name:"ObjectSupportType"`
 }
 
 type ObjectTypeConfig struct {
@@ -1498,9 +1513,11 @@ type ResourceOffline struct {
 
 type TagWithCreate struct {
 	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -1617,6 +1634,22 @@ type Task struct {
 	// 护栏处理方式，1--顺序回滚，2--演练暂停
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDealType *int64 `json:"PolicyDealType,omitnil,omitempty" name:"PolicyDealType"`
+
+	// 计划开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskPlanStartTime *string `json:"TaskPlanStartTime,omitnil,omitempty" name:"TaskPlanStartTime"`
+
+	// 计划结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskPlanEndTime *string `json:"TaskPlanEndTime,omitnil,omitempty" name:"TaskPlanEndTime"`
+
+	// 人员组织
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskOrg []*TaskOrg `json:"TaskOrg,omitnil,omitempty" name:"TaskOrg"`
+
+	// 问题和改进
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskIssue *string `json:"TaskIssue,omitnil,omitempty" name:"TaskIssue"`
 }
 
 type TaskConfig struct {
@@ -1922,6 +1955,16 @@ type TaskMonitor struct {
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 }
 
+type TaskOrg struct {
+	// 演练角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskRole *string `json:"TaskRole,omitnil,omitempty" name:"TaskRole"`
+
+	// 负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskOperator *string `json:"TaskOperator,omitnil,omitempty" name:"TaskOperator"`
+}
+
 type TaskReportInfo struct {
 	// 0--未开始，1--正在导出，2--导出成功，3--导出失败
 	Stage *int64 `json:"Stage,omitnil,omitempty" name:"Stage"`
@@ -1942,6 +1985,12 @@ type TaskReportInfo struct {
 	// 演练报告导出日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
+
+	// 0--未开始，1--正在归档，2--归档成功，3--归档失败
+	ArchiveStage *int64 `json:"ArchiveStage,omitnil,omitempty" name:"ArchiveStage"`
+
+	// 归档时间
+	ArchiveTime *string `json:"ArchiveTime,omitnil,omitempty" name:"ArchiveTime"`
 }
 
 type Template struct {

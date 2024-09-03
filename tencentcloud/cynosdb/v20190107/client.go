@@ -4832,6 +4832,65 @@ func (c *Client) DescribeRollbackTimeValidityWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeServerlessStrategyRequest() (request *DescribeServerlessStrategyRequest) {
+    request = &DescribeServerlessStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeServerlessStrategy")
+    
+    
+    return
+}
+
+func NewDescribeServerlessStrategyResponse() (response *DescribeServerlessStrategyResponse) {
+    response = &DescribeServerlessStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServerlessStrategy
+// 查询serverless策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_DBMODENOTSERVERLESSERROR = "InvalidParameterValue.DbModeNotServerlessError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) DescribeServerlessStrategy(request *DescribeServerlessStrategyRequest) (response *DescribeServerlessStrategyResponse, err error) {
+    return c.DescribeServerlessStrategyWithContext(context.Background(), request)
+}
+
+// DescribeServerlessStrategy
+// 查询serverless策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_DBMODENOTSERVERLESSERROR = "InvalidParameterValue.DbModeNotServerlessError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) DescribeServerlessStrategyWithContext(ctx context.Context, request *DescribeServerlessStrategyRequest) (response *DescribeServerlessStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerlessStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerlessStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSupportProxyVersionRequest() (request *DescribeSupportProxyVersionRequest) {
     request = &DescribeSupportProxyVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7415,6 +7474,79 @@ func (c *Client) ModifyResourcePackagesDeductionPriorityWithContext(ctx context.
     request.SetContext(ctx)
     
     response = NewModifyResourcePackagesDeductionPriorityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyServerlessStrategyRequest() (request *ModifyServerlessStrategyRequest) {
+    request = &ModifyServerlessStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyServerlessStrategy")
+    
+    
+    return
+}
+
+func NewModifyServerlessStrategyResponse() (response *ModifyServerlessStrategyResponse) {
+    response = &ModifyServerlessStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyServerlessStrategy
+// 修改serverless策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_SERVERLESSSETSTRATEGYERROR = "FailedOperation.ServerlessSetStrategyError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_DBMODENOTSERVERLESSERROR = "InvalidParameterValue.DbModeNotServerlessError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyServerlessStrategy(request *ModifyServerlessStrategyRequest) (response *ModifyServerlessStrategyResponse, err error) {
+    return c.ModifyServerlessStrategyWithContext(context.Background(), request)
+}
+
+// ModifyServerlessStrategy
+// 修改serverless策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_SERVERLESSSETSTRATEGYERROR = "FailedOperation.ServerlessSetStrategyError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_DBMODENOTSERVERLESSERROR = "InvalidParameterValue.DbModeNotServerlessError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyServerlessStrategyWithContext(ctx context.Context, request *ModifyServerlessStrategyRequest) (response *ModifyServerlessStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyServerlessStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyServerlessStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyServerlessStrategyResponse()
     err = c.Send(request, response)
     return
 }

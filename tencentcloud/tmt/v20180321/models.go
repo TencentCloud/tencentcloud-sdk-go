@@ -197,7 +197,7 @@ type GetFileTranslateData struct {
 	// 状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 文件数据
+	// 文件数据，目标文件必须小于50M，否则请通过回调方式请求文件翻译接口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileData *string `json:"FileData,omitnil,omitempty" name:"FileData"`
 

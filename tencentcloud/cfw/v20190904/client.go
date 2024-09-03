@@ -1705,6 +1705,59 @@ func (c *Client) DeleteNatFwInstanceWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteRemoteAccessDomainRequest() (request *DeleteRemoteAccessDomainRequest) {
+    request = &DeleteRemoteAccessDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteRemoteAccessDomain")
+    
+    
+    return
+}
+
+func NewDeleteRemoteAccessDomainResponse() (response *DeleteRemoteAccessDomainResponse) {
+    response = &DeleteRemoteAccessDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRemoteAccessDomain
+// 删除远程运维域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteRemoteAccessDomain(request *DeleteRemoteAccessDomainRequest) (response *DeleteRemoteAccessDomainResponse, err error) {
+    return c.DeleteRemoteAccessDomainWithContext(context.Background(), request)
+}
+
+// DeleteRemoteAccessDomain
+// 删除远程运维域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteRemoteAccessDomainWithContext(ctx context.Context, request *DeleteRemoteAccessDomainRequest) (response *DeleteRemoteAccessDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteRemoteAccessDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRemoteAccessDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRemoteAccessDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteResourceGroupRequest() (request *DeleteResourceGroupRequest) {
     request = &DeleteResourceGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

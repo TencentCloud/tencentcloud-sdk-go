@@ -283,6 +283,27 @@ func (r *ClearCmqSubscriptionFilterTagsResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientSubscriptionInfo struct {
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientAddr *string `json:"ClientAddr,omitnil,omitempty" name:"ClientAddr"`
+
+	// 订阅主题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 订阅表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubString *string `json:"SubString,omitnil,omitempty" name:"SubString"`
+
+	// 订阅方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpressionType *string `json:"ExpressionType,omitnil,omitempty" name:"ExpressionType"`
+}
+
 type Cluster struct {
 	// 集群Id。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -12690,6 +12711,11 @@ type PulsarProClusterSpecInfo struct {
 	// 规格外弹性TPS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalableTps *uint64 `json:"ScalableTps,omitnil,omitempty" name:"ScalableTps"`
+
+	// 32或者128
+	// 当前集群topic的最大分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPartitions *uint64 `json:"MaxPartitions,omitnil,omitempty" name:"MaxPartitions"`
 }
 
 type PulsarProInstance struct {
@@ -14203,6 +14229,10 @@ type RocketMQSubscription struct {
 	// 协议类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientProtocol *string `json:"ClientProtocol,omitnil,omitempty" name:"ClientProtocol"`
+
+	// 客户端订阅详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientSubscriptionInfos []*ClientSubscriptionInfo `json:"ClientSubscriptionInfos,omitnil,omitempty" name:"ClientSubscriptionInfos"`
 }
 
 type RocketMQTopic struct {

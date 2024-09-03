@@ -260,6 +260,9 @@ const (
 	// 请求执行异常。
 	INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 
+	// Json数据解析失败，请联系客服进行处理。
+	INTERNALERROR_JSONPARSEERROR = "InternalError.JsonParseError"
+
 	// 后台数据解析失败，请联系客服进行处理。
 	INTERNALERROR_MARSHALERROR = "InternalError.MarshalError"
 
@@ -323,6 +326,9 @@ const (
 	// 数据格式转换失败，请联系客服处理。
 	INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 
+	// 解密密码失败，请确认密码加密是否正确。
+	INVALIDPARAMETERVALUE_DECRYPTPASSWORDFAILED = "InvalidParameterValue.DecryptPasswordFailed"
+
 	// 不支持的计费类型。
 	INVALIDPARAMETERVALUE_ILLEGALCHARGETYPE = "InvalidParameterValue.IllegalChargeType"
 
@@ -359,8 +365,14 @@ const (
 	// 账号设置无效，请遵循账号命名规则：账号名需要1-16个字符，只能由字母、数字或下划线组成；不能为postgres；不能由数字、pg_及tencentdb_开头；所有规则均不区分大小写。
 	INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
 
+	// 账号无效，请遵循账号命名规则：由字母（a-z, A-Z）、数字（0-9）、下划线（_）组成，以字母或（_）开头，最多63个字符。不能使用系统保留关键字，不能为postgres，且不能由pg_或tencentdb_开头。
+	INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+
 	// 数据库字符集错误，当前只支持UTF8、LATIN1。
 	INVALIDPARAMETERVALUE_INVALIDCHARSET = "InvalidParameterValue.InvalidCharset"
+
+	// 数据库名称无效，请遵循命名规则：由字母（a-z, A-Z）、数字（0-9）、下划线（_）组成，以字母或（_）开头，最多63个字符。不能使用系统保留关键字。
+	INVALIDPARAMETERVALUE_INVALIDDATABASENAMEFORMATERROR = "InvalidParameterValue.InvalidDatabaseNameFormatError"
 
 	// 当前仅支持操作名称为英文、下划线、数字及特殊符号[]组成的数据库对象，函数及存储过程额外支持三个特殊符号(,)
 	INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
@@ -472,6 +484,9 @@ const (
 
 	// 实例类型错误
 	OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+
+	// 内核版本过低，导致实例无法创建tencentDBSuper账号。如果您想使用此功能，请升级内核版本。
+	OPERATIONDENIED_KERNELVERSIONERROR = "OperationDenied.KernelVersionError"
 
 	// Serverless不支持当前可用区。
 	OPERATIONDENIED_NOTSUPPORTZONEERROR = "OperationDenied.NotSupportZoneError"

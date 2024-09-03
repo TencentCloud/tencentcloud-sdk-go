@@ -8215,6 +8215,80 @@ func (r *DescribeRollbackTimeValidityResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServerlessStrategyRequestParams struct {
+	// serverless集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeServerlessStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// serverless集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeServerlessStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessStrategyResponseParams struct {
+	// cpu负载为 0 时持续多久（秒）发起自动暂停
+	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
+
+	// cpu负载超过当前规格核数时，持续多久（秒）发起自动扩容
+	AutoScaleUpDelay *int64 `json:"AutoScaleUpDelay,omitnil,omitempty" name:"AutoScaleUpDelay"`
+
+	// cpu 负载低于低一级规格核数时，持续多久（秒）发起自动缩容
+	AutoScaleDownDelay *int64 `json:"AutoScaleDownDelay,omitnil,omitempty" name:"AutoScaleDownDelay"`
+
+	// 是否自动暂停，可能值：
+	// yes
+	// no
+	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// 集群是否允许向上扩容，可选范围<li>yes</li><li>no</li>
+	AutoScaleUp *string `json:"AutoScaleUp,omitnil,omitempty" name:"AutoScaleUp"`
+
+	// 集群是否允许向下缩容，可选范围<li>yes</li><li>no</li>
+	AutoScaleDown *string `json:"AutoScaleDown,omitnil,omitempty" name:"AutoScaleDown"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServerlessStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerlessStrategyResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerlessStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSupportProxyVersionRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -11873,6 +11947,151 @@ func (r *ModifyResourcePackagesDeductionPriorityResponse) ToJsonString() string 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyResourcePackagesDeductionPriorityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServerlessStrategyRequestParams struct {
+	// serverless集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群是否自动暂停，可选范围
+	// <li>yes</li>
+	// <li>no</li>
+	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
+
+	// 该参数暂时无效
+	AutoScaleUpDelay *int64 `json:"AutoScaleUpDelay,omitnil,omitempty" name:"AutoScaleUpDelay"`
+
+	// 该参数暂时无效
+	AutoScaleDownDelay *int64 `json:"AutoScaleDownDelay,omitnil,omitempty" name:"AutoScaleDownDelay"`
+
+	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MinRoCpu *float64 `json:"MinRoCpu,omitnil,omitempty" name:"MinRoCpu"`
+
+	// 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
+
+	// 只读节点最小个数
+	MinRoCount *int64 `json:"MinRoCount,omitnil,omitempty" name:"MinRoCount"`
+
+	// 只读节点最大个数
+	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
+
+	// 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
+	AutoScaleUp *string `json:"AutoScaleUp,omitnil,omitempty" name:"AutoScaleUp"`
+
+	// 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
+	AutoScaleDown *string `json:"AutoScaleDown,omitnil,omitempty" name:"AutoScaleDown"`
+}
+
+type ModifyServerlessStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// serverless集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群是否自动暂停，可选范围
+	// <li>yes</li>
+	// <li>no</li>
+	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
+
+	// 该参数暂时无效
+	AutoScaleUpDelay *int64 `json:"AutoScaleUpDelay,omitnil,omitempty" name:"AutoScaleUpDelay"`
+
+	// 该参数暂时无效
+	AutoScaleDownDelay *int64 `json:"AutoScaleDownDelay,omitnil,omitempty" name:"AutoScaleDownDelay"`
+
+	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MinRoCpu *float64 `json:"MinRoCpu,omitnil,omitempty" name:"MinRoCpu"`
+
+	// 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
+
+	// 只读节点最小个数
+	MinRoCount *int64 `json:"MinRoCount,omitnil,omitempty" name:"MinRoCount"`
+
+	// 只读节点最大个数
+	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
+
+	// 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
+	AutoScaleUp *string `json:"AutoScaleUp,omitnil,omitempty" name:"AutoScaleUp"`
+
+	// 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
+	AutoScaleDown *string `json:"AutoScaleDown,omitnil,omitempty" name:"AutoScaleDown"`
+}
+
+func (r *ModifyServerlessStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AutoPause")
+	delete(f, "AutoPauseDelay")
+	delete(f, "AutoScaleUpDelay")
+	delete(f, "AutoScaleDownDelay")
+	delete(f, "MinCpu")
+	delete(f, "MaxCpu")
+	delete(f, "MinRoCpu")
+	delete(f, "MaxRoCpu")
+	delete(f, "MinRoCount")
+	delete(f, "MaxRoCount")
+	delete(f, "AutoScaleUp")
+	delete(f, "AutoScaleDown")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServerlessStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServerlessStrategyResponseParams struct {
+	// 异步流程id
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyServerlessStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServerlessStrategyResponseParams `json:"Response"`
+}
+
+func (r *ModifyServerlessStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServerlessStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -7192,6 +7192,9 @@ type CreateVpnGatewaySslClientRequestParams struct {
 
 	// SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
 	SslVpnClientNames []*string `json:"SslVpnClientNames,omitnil,omitempty" name:"SslVpnClientNames"`
+
+	// 指定绑定的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateVpnGatewaySslClientRequest struct {
@@ -7205,6 +7208,9 @@ type CreateVpnGatewaySslClientRequest struct {
 
 	// SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
 	SslVpnClientNames []*string `json:"SslVpnClientNames,omitnil,omitempty" name:"SslVpnClientNames"`
+
+	// 指定绑定的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpnGatewaySslClientRequest) ToJsonString() string {
@@ -7222,6 +7228,7 @@ func (r *CreateVpnGatewaySslClientRequest) FromJsonString(s string) error {
 	delete(f, "SslVpnServerId")
 	delete(f, "SslVpnClientName")
 	delete(f, "SslVpnClientNames")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewaySslClientRequest has unknown keys!", "")
 	}
@@ -7293,6 +7300,9 @@ type CreateVpnGatewaySslServerRequestParams struct {
 
 	// SAML-DATA，开启SSO时传。
 	SamlData *string `json:"SamlData,omitnil,omitempty" name:"SamlData"`
+
+	// 指定绑定的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateVpnGatewaySslServerRequest struct {
@@ -7333,6 +7343,9 @@ type CreateVpnGatewaySslServerRequest struct {
 
 	// SAML-DATA，开启SSO时传。
 	SamlData *string `json:"SamlData,omitnil,omitempty" name:"SamlData"`
+
+	// 指定绑定的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpnGatewaySslServerRequest) ToJsonString() string {
@@ -7359,6 +7372,7 @@ func (r *CreateVpnGatewaySslServerRequest) FromJsonString(s string) error {
 	delete(f, "SsoEnabled")
 	delete(f, "AccessPolicyEnabled")
 	delete(f, "SamlData")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewaySslServerRequest has unknown keys!", "")
 	}

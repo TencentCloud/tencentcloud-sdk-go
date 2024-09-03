@@ -2495,6 +2495,63 @@ func (c *Client) InquirePriceRenewInstanceWithContext(ctx context.Context, reque
     return
 }
 
+func NewInstallInstanceModelRequest() (request *InstallInstanceModelRequest) {
+    request = &InstallInstanceModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "InstallInstanceModel")
+    
+    
+    return
+}
+
+func NewInstallInstanceModelResponse() (response *InstallInstanceModelResponse) {
+    response = &InstallInstanceModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InstallInstanceModel
+// ES集群安装模型接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+func (c *Client) InstallInstanceModel(request *InstallInstanceModelRequest) (response *InstallInstanceModelResponse, err error) {
+    return c.InstallInstanceModelWithContext(context.Background(), request)
+}
+
+// InstallInstanceModel
+// ES集群安装模型接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+func (c *Client) InstallInstanceModelWithContext(ctx context.Context, request *InstallInstanceModelRequest) (response *InstallInstanceModelResponse, err error) {
+    if request == nil {
+        request = NewInstallInstanceModelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallInstanceModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallInstanceModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEsVipSecurityGroupRequest() (request *ModifyEsVipSecurityGroupRequest) {
     request = &ModifyEsVipSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

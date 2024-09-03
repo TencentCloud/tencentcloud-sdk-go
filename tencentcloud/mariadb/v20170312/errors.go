@@ -65,6 +65,9 @@ const (
 	// 实例退费失败。
 	FAILEDOPERATION_INSTANCERETURNFAILED = "FailedOperation.InstanceReturnFailed"
 
+	// 日志不存在。
+	FAILEDOPERATION_LOGNOTEXISTED = "FailedOperation.LogNotExisted"
+
 	// 修改账号权限失败。
 	FAILEDOPERATION_MODIFYRIGHTFAILED = "FailedOperation.ModifyRightFailed"
 

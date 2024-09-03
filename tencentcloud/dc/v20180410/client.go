@@ -323,9 +323,7 @@ func NewDeleteDirectConnectResponse() (response *DeleteDirectConnectResponse) {
 }
 
 // DeleteDirectConnect
-// 删除物理专线。
-//
-// 只能删除处于已连接状态的物理专线。
+// 删除物理专线。只能删除处于已连接状态的物理专线。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -342,9 +340,7 @@ func (c *Client) DeleteDirectConnect(request *DeleteDirectConnectRequest) (respo
 }
 
 // DeleteDirectConnect
-// 删除物理专线。
-//
-// 只能删除处于已连接状态的物理专线。
+// 删除物理专线。只能删除处于已连接状态的物理专线。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -392,7 +388,7 @@ func NewDeleteDirectConnectTunnelResponse() (response *DeleteDirectConnectTunnel
 }
 
 // DeleteDirectConnectTunnel
-// 删除专用通道
+// 删除专用通道。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -406,7 +402,7 @@ func (c *Client) DeleteDirectConnectTunnel(request *DeleteDirectConnectTunnelReq
 }
 
 // DeleteDirectConnectTunnel
-// 删除专用通道
+// 删除专用通道。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1088,7 +1084,7 @@ func NewModifyDirectConnectTunnelAttributeResponse() (response *ModifyDirectConn
 }
 
 // ModifyDirectConnectTunnelAttribute
-// 修改专用通道属性
+// 修改专用通道属性。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1102,7 +1098,7 @@ func (c *Client) ModifyDirectConnectTunnelAttribute(request *ModifyDirectConnect
 }
 
 // ModifyDirectConnectTunnelAttribute
-// 修改专用通道属性
+// 修改专用通道属性。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

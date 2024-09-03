@@ -178,7 +178,9 @@ type AutoSignConfig struct {
 	// <li>**true**: 需要</li></ul>
 	SealImgCallback *bool `json:"SealImgCallback,omitnil,omitempty" name:"SealImgCallback"`
 
-	// 回调链接，如果渠道已经配置了，可以不传
+	// 该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 开通时候的身份验证方式, 取值为：
@@ -1837,12 +1839,9 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
-	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块。
-	// 
-	// 注:
-	// `如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
+	// 该字段已废弃，请使用【应用号配置】中的回调地址
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 合同流程的签署顺序类型：
@@ -1957,12 +1956,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
-	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块。
-	// 
-	// 注:
-	// `如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
+	// 该字段已废弃，请使用【应用号配置】中的回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 合同流程的签署顺序类型：
@@ -9882,7 +9876,9 @@ type FlowFileInfo struct {
 	// 签署流程的类型，长度不超过255个字符
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
-	// 签署流程回调地址，长度不超过255个字符
+	// 已废弃，请使用【应用号配置】中的回调地址统一接收消息
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
@@ -9968,10 +9964,9 @@ type FlowInfo struct {
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/b1d3978140ee2b44e2c9fdc96e467a5d.png)
 	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
-	// 合同状态变动结的通知回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性，最大长度1000个字符。
-	// 
-	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块
+	// 该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。

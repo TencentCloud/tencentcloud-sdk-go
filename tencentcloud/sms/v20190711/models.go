@@ -162,7 +162,7 @@ type AddSmsSignResponseParams struct {
 	// 添加签名响应
 	AddSignStatus *AddSignStatus `json:"AddSignStatus,omitnil,omitempty" name:"AddSignStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -190,7 +190,8 @@ type AddSmsTemplateRequestParams struct {
 	// 模板内容。
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
-	// 短信类型，0表示普通短信, 1表示营销短信。
+	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -211,7 +212,8 @@ type AddSmsTemplateRequest struct {
 	// 模板内容。
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
-	// 短信类型，0表示普通短信, 1表示营销短信。
+	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -251,7 +253,7 @@ type AddSmsTemplateResponseParams struct {
 	// 添加短信模板响应包体
 	AddTemplateStatus *AddTemplateStatus `json:"AddTemplateStatus,omitnil,omitempty" name:"AddTemplateStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -376,7 +378,7 @@ type CallbackStatusStatisticsResponseParams struct {
 	// 回执数据统计响应包体。
 	CallbackStatusStatistics *CallbackStatusStatistics `json:"CallbackStatusStatistics,omitnil,omitempty" name:"CallbackStatusStatistics"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -443,7 +445,7 @@ type DeleteSmsSignResponseParams struct {
 	// 删除签名响应
 	DeleteSignStatus *DeleteSignStatus `json:"DeleteSignStatus,omitnil,omitempty" name:"DeleteSignStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -500,7 +502,7 @@ type DeleteSmsTemplateResponseParams struct {
 	// 删除模板响应
 	DeleteTemplateStatus *DeleteTemplateStatus `json:"DeleteTemplateStatus,omitnil,omitempty" name:"DeleteTemplateStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -537,10 +539,7 @@ type DescribeSignListStatus struct {
 	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitnil,omitempty" name:"International"`
 
-	// 申请签名状态。其中：
-	// 0：表示审核通过。
-	// 1：表示审核中。
-	// -1：表示审核未通过或审核失败。
+	// 申请签名状态。其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
 	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
 
 	// 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
@@ -601,7 +600,7 @@ type DescribeSmsSignListResponseParams struct {
 	// 获取签名信息响应
 	DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitnil,omitempty" name:"DescribeSignListStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -669,7 +668,7 @@ type DescribeSmsTemplateListResponseParams struct {
 	// 获取短信模板信息响应
 	DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitnil,omitempty" name:"DescribeTemplateStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -860,7 +859,7 @@ type ModifySmsSignResponseParams struct {
 	// 修改签名响应
 	ModifySignStatus *ModifySignStatus `json:"ModifySignStatus,omitnil,omitempty" name:"ModifySignStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -891,7 +890,8 @@ type ModifySmsTemplateRequestParams struct {
 	// 新的模板内容。
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
-	// 短信类型，0表示普通短信, 1表示营销短信。
+	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -915,7 +915,8 @@ type ModifySmsTemplateRequest struct {
 	// 新的模板内容。
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
-	// 短信类型，0表示普通短信, 1表示营销短信。
+	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -956,7 +957,7 @@ type ModifySmsTemplateResponseParams struct {
 	// 修改模板参数响应
 	ModifyTemplateStatus *ModifyTemplateStatus `json:"ModifyTemplateStatus,omitnil,omitempty" name:"ModifyTemplateStatus"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1080,7 +1081,7 @@ type PullSmsReplyStatusByPhoneNumberResponseParams struct {
 	// 回复状态响应集合。
 	PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitnil,omitempty" name:"PullSmsReplyStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1144,7 +1145,7 @@ type PullSmsReplyStatusResponseParams struct {
 	// 回复状态响应集合。
 	PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitnil,omitempty" name:"PullSmsReplyStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1266,7 +1267,7 @@ type PullSmsSendStatusByPhoneNumberResponseParams struct {
 	// 下发状态响应集合。
 	PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitnil,omitempty" name:"PullSmsSendStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1330,7 +1331,7 @@ type PullSmsSendStatusResponseParams struct {
 	// 下发状态响应集合。
 	PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitnil,omitempty" name:"PullSmsSendStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1438,7 +1439,7 @@ type SendSmsResponseParams struct {
 	// 短信发送状态。
 	SendStatusSet []*SendStatus `json:"SendStatusSet,omitnil,omitempty" name:"SendStatusSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1563,7 +1564,7 @@ type SendStatusStatisticsResponseParams struct {
 	// 发送数据统计响应包体。
 	SendStatusStatistics *SendStatusStatistics `json:"SendStatusStatistics,omitnil,omitempty" name:"SendStatusStatistics"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1668,7 +1669,7 @@ type SmsPackagesStatisticsResponseParams struct {
 	// 发送数据统计响应包体。
 	SmsPackagesStatisticsSet []*SmsPackagesStatistics `json:"SmsPackagesStatisticsSet,omitnil,omitempty" name:"SmsPackagesStatisticsSet"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

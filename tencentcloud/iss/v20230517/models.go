@@ -4493,6 +4493,16 @@ type DescribeVideoDownloadUrlRequestParams struct {
 
 	// 是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
+
+	// 设置URL的有效期, 最小值是1秒, 最大值是86400秒, 不设置的话, 默认是600秒
+	Expires *int64 `json:"Expires,omitnil,omitempty" name:"Expires"`
+
+	// 下载的MP4文件是否支持G711音频编码. 
+	// 注意: 如果云端录像中的音频编码为AAC, 那么下载的MP4默认是支持AAC编码的
+	// 如果云端录像中的音频编码为G711且 IsSupportG711设置为true时, 下载的MP4是支持G711音频编码
+	// 如果云端录像中的音频编码为G711且 IsSupportG711设置为false时, 下载的MP4是不支持G711音频编码
+	// 该参数只对FileType为mp4才有效, 不设置的话, 默认是false
+	IsSupportG711 *bool `json:"IsSupportG711,omitnil,omitempty" name:"IsSupportG711"`
 }
 
 type DescribeVideoDownloadUrlRequest struct {
@@ -4517,6 +4527,16 @@ type DescribeVideoDownloadUrlRequest struct {
 
 	// 是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
+
+	// 设置URL的有效期, 最小值是1秒, 最大值是86400秒, 不设置的话, 默认是600秒
+	Expires *int64 `json:"Expires,omitnil,omitempty" name:"Expires"`
+
+	// 下载的MP4文件是否支持G711音频编码. 
+	// 注意: 如果云端录像中的音频编码为AAC, 那么下载的MP4默认是支持AAC编码的
+	// 如果云端录像中的音频编码为G711且 IsSupportG711设置为true时, 下载的MP4是支持G711音频编码
+	// 如果云端录像中的音频编码为G711且 IsSupportG711设置为false时, 下载的MP4是不支持G711音频编码
+	// 该参数只对FileType为mp4才有效, 不设置的话, 默认是false
+	IsSupportG711 *bool `json:"IsSupportG711,omitnil,omitempty" name:"IsSupportG711"`
 }
 
 func (r *DescribeVideoDownloadUrlRequest) ToJsonString() string {
@@ -4537,6 +4557,8 @@ func (r *DescribeVideoDownloadUrlRequest) FromJsonString(s string) error {
 	delete(f, "FileType")
 	delete(f, "IsRespActualTime")
 	delete(f, "IsInternal")
+	delete(f, "Expires")
+	delete(f, "IsSupportG711")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoDownloadUrlRequest has unknown keys!", "")
 	}

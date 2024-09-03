@@ -296,6 +296,10 @@ type Cluster struct {
 	// 集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingResourceMode *string `json:"BillingResourceMode,omitnil,omitempty" name:"BillingResourceMode"`
+
+	// Cu比例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemRatio *int64 `json:"MemRatio,omitnil,omitempty" name:"MemRatio"`
 }
 
 type ClusterGroupSetItem struct {

@@ -1177,6 +1177,75 @@ func (c *Client) DescribeBackupTimeWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeBinlogTimeRequest() (request *DescribeBinlogTimeRequest) {
+    request = &DescribeBinlogTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "DescribeBinlogTime")
+    
+    
+    return
+}
+
+func NewDescribeBinlogTimeResponse() (response *DescribeBinlogTimeResponse) {
+    response = &DescribeBinlogTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBinlogTime
+// 本接口（DescribeBinlogTime）用于查询可回档时间范围。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LOGNOTEXISTED = "FailedOperation.LogNotExisted"
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogTime(request *DescribeBinlogTimeRequest) (response *DescribeBinlogTimeResponse, err error) {
+    return c.DescribeBinlogTimeWithContext(context.Background(), request)
+}
+
+// DescribeBinlogTime
+// 本接口（DescribeBinlogTime）用于查询可回档时间范围。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LOGNOTEXISTED = "FailedOperation.LogNotExisted"
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogTimeWithContext(ctx context.Context, request *DescribeBinlogTimeRequest) (response *DescribeBinlogTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogTimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBinlogTime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBinlogTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBEncryptAttributesRequest() (request *DescribeDBEncryptAttributesRequest) {
     request = &DescribeDBEncryptAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},

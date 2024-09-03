@@ -10318,8 +10318,7 @@ func (r *SmartStructuralOCRV2Response) FromJsonString(s string) error {
 }
 
 type StoreInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+	// 识别出的字段名称(关键字)，如商店名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。

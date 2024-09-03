@@ -1557,6 +1557,59 @@ func (c *Client) DescribeDBTmpInstancesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDCDBBinlogTimeRequest() (request *DescribeDCDBBinlogTimeRequest) {
+    request = &DescribeDCDBBinlogTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBBinlogTime")
+    
+    
+    return
+}
+
+func NewDescribeDCDBBinlogTimeResponse() (response *DescribeDCDBBinlogTimeResponse) {
+    response = &DescribeDCDBBinlogTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDCDBBinlogTime
+// 获取实例回档时可选的时间范围
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDCDBBinlogTime(request *DescribeDCDBBinlogTimeRequest) (response *DescribeDCDBBinlogTimeResponse, err error) {
+    return c.DescribeDCDBBinlogTimeWithContext(context.Background(), request)
+}
+
+// DescribeDCDBBinlogTime
+// 获取实例回档时可选的时间范围
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDCDBBinlogTimeWithContext(ctx context.Context, request *DescribeDCDBBinlogTimeRequest) (response *DescribeDCDBBinlogTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDCDBBinlogTimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDCDBBinlogTime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDCDBBinlogTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDCDBInstanceDetailRequest() (request *DescribeDCDBInstanceDetailRequest) {
     request = &DescribeDCDBInstanceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

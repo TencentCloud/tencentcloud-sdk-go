@@ -3986,6 +3986,73 @@ func (r *InquirePriceRenewInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InstallInstanceModelRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户上传到自己cos的地址列表
+	UsrCosModelUrlList []*string `json:"UsrCosModelUrlList,omitnil,omitempty" name:"UsrCosModelUrlList"`
+}
+
+type InstallInstanceModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户上传到自己cos的地址列表
+	UsrCosModelUrlList []*string `json:"UsrCosModelUrlList,omitnil,omitempty" name:"UsrCosModelUrlList"`
+}
+
+func (r *InstallInstanceModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallInstanceModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UsrCosModelUrlList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallInstanceModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstallInstanceModelResponseParams struct {
+	// 发起异步流程的flowId
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 调用接口的错误信息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InstallInstanceModelResponse struct {
+	*tchttp.BaseResponse
+	Response *InstallInstanceModelResponseParams `json:"Response"`
+}
+
+func (r *InstallInstanceModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallInstanceModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceInfo struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
