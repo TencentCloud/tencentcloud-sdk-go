@@ -305,6 +305,63 @@ func (c *Client) CheckCertificateChainWithContext(ctx context.Context, request *
     return
 }
 
+func NewCheckCertificateDomainVerificationRequest() (request *CheckCertificateDomainVerificationRequest) {
+    request = &CheckCertificateDomainVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "CheckCertificateDomainVerification")
+    
+    
+    return
+}
+
+func NewCheckCertificateDomainVerificationResponse() (response *CheckCertificateDomainVerificationResponse) {
+    response = &CheckCertificateDomainVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckCertificateDomainVerification
+// 检查证书域名验证
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWVERIFY = "FailedOperation.CertificateStatusNotAllowVerify"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+func (c *Client) CheckCertificateDomainVerification(request *CheckCertificateDomainVerificationRequest) (response *CheckCertificateDomainVerificationResponse, err error) {
+    return c.CheckCertificateDomainVerificationWithContext(context.Background(), request)
+}
+
+// CheckCertificateDomainVerification
+// 检查证书域名验证
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWVERIFY = "FailedOperation.CertificateStatusNotAllowVerify"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+func (c *Client) CheckCertificateDomainVerificationWithContext(ctx context.Context, request *CheckCertificateDomainVerificationRequest) (response *CheckCertificateDomainVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckCertificateDomainVerificationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckCertificateDomainVerification require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckCertificateDomainVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommitCertificateInformationRequest() (request *CommitCertificateInformationRequest) {
     request = &CommitCertificateInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},

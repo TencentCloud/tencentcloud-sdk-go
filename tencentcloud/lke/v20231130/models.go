@@ -528,7 +528,7 @@ type Coord struct {
 
 // Predefined struct for user
 type CreateAppRequestParams struct {
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；knowledge_qa-知识问答管理
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 应用基础配置
@@ -538,7 +538,7 @@ type CreateAppRequestParams struct {
 type CreateAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；knowledge_qa-知识问答管理
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 应用基础配置

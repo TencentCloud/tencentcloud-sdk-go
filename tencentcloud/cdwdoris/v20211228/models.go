@@ -551,6 +551,12 @@ type CosSourceInfo struct {
 
 // Predefined struct for user
 type CreateBackUpScheduleRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 操作类型 create(创建) update(编辑修改)
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
 	// 编辑时需要传
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 
@@ -582,11 +588,32 @@ type CreateBackUpScheduleRequestParams struct {
 
 	// cos认证的信息
 	CosSourceInfo *CosSourceInfo `json:"CosSourceInfo,omitnil,omitempty" name:"CosSourceInfo"`
+
+	// 调度任务名
+	ScheduleName *string `json:"ScheduleName,omitnil,omitempty" name:"ScheduleName"`
+
+	// 调度信息
+	ScheduleInfo *ScheduleInfo `json:"ScheduleInfo,omitnil,omitempty" name:"ScheduleInfo"`
+
+	// 更新任务状态：
+	// 3-暂停,
+	// 2-删除,
+	// 1-启动
+	UpdateStatus *int64 `json:"UpdateStatus,omitnil,omitempty" name:"UpdateStatus"`
+
+	// 当前任务的cos桶信息
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 }
 
 type CreateBackUpScheduleRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 操作类型 create(创建) update(编辑修改)
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
 	// 编辑时需要传
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 
@@ -618,6 +645,21 @@ type CreateBackUpScheduleRequest struct {
 
 	// cos认证的信息
 	CosSourceInfo *CosSourceInfo `json:"CosSourceInfo,omitnil,omitempty" name:"CosSourceInfo"`
+
+	// 调度任务名
+	ScheduleName *string `json:"ScheduleName,omitnil,omitempty" name:"ScheduleName"`
+
+	// 调度信息
+	ScheduleInfo *ScheduleInfo `json:"ScheduleInfo,omitnil,omitempty" name:"ScheduleInfo"`
+
+	// 更新任务状态：
+	// 3-暂停,
+	// 2-删除,
+	// 1-启动
+	UpdateStatus *int64 `json:"UpdateStatus,omitnil,omitempty" name:"UpdateStatus"`
+
+	// 当前任务的cos桶信息
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 }
 
 func (r *CreateBackUpScheduleRequest) ToJsonString() string {
@@ -632,6 +674,8 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
+	delete(f, "OperationType")
 	delete(f, "ScheduleId")
 	delete(f, "WeekDays")
 	delete(f, "ExecuteHour")
@@ -642,6 +686,10 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 	delete(f, "RestoreType")
 	delete(f, "AuthType")
 	delete(f, "CosSourceInfo")
+	delete(f, "ScheduleName")
+	delete(f, "ScheduleInfo")
+	delete(f, "UpdateStatus")
+	delete(f, "CosBucket")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackUpScheduleRequest has unknown keys!", "")
 	}
@@ -5947,6 +5995,44 @@ func (r *ScaleUpInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScheduleInfo struct {
+	// 生效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectivePeriod *string `json:"EffectivePeriod,omitnil,omitempty" name:"EffectivePeriod"`
+
+	// 调度类型：
+	// Day-天
+	// Week-周
+	// Month-月
+	// Once-单次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleType *string `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
+
+	// 执行调度的日期。调度类型为周和月时以英文逗号分隔；
+	// 调度类型为单次时，该值是个日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleData *string `json:"ScheduleData,omitnil,omitempty" name:"ScheduleData"`
+
+	// 执行时间：时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleHour *int64 `json:"ScheduleHour,omitnil,omitempty" name:"ScheduleHour"`
+
+	// 执行时间：分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleMin *int64 `json:"ScheduleMin,omitnil,omitempty" name:"ScheduleMin"`
+
+	// 备份粒度：
+	// All-全量
+	// Database-按库
+	// Table-按表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupScope *string `json:"BackupScope,omitnil,omitempty" name:"BackupScope"`
+
+	// 备份库：如果是按库备份，则需要该字段，库之间用英文逗号分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupDatabase *string `json:"BackupDatabase,omitnil,omitempty" name:"BackupDatabase"`
 }
 
 type SearchTags struct {

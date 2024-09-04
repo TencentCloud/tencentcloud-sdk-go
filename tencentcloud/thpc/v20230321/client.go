@@ -414,6 +414,75 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     return
 }
 
+func NewCreateWorkspacesRequest() (request *CreateWorkspacesRequest) {
+    request = &CreateWorkspacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "CreateWorkspaces")
+    
+    
+    return
+}
+
+func NewCreateWorkspacesResponse() (response *CreateWorkspacesResponse) {
+    response = &CreateWorkspacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateWorkspaces
+// 本接口 (CreateWorkspaces) 用于创建工作空间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+func (c *Client) CreateWorkspaces(request *CreateWorkspacesRequest) (response *CreateWorkspacesResponse, err error) {
+    return c.CreateWorkspacesWithContext(context.Background(), request)
+}
+
+// CreateWorkspaces
+// 本接口 (CreateWorkspaces) 用于创建工作空间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+func (c *Client) CreateWorkspacesWithContext(ctx context.Context, request *CreateWorkspacesRequest) (response *CreateWorkspacesResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkspacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWorkspaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWorkspacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},

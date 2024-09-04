@@ -735,6 +735,64 @@ func (r *CheckCertificateChainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckCertificateDomainVerificationRequestParams struct {
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+}
+
+type CheckCertificateDomainVerificationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+}
+
+func (r *CheckCertificateDomainVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckCertificateDomainVerificationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckCertificateDomainVerificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckCertificateDomainVerificationResponseParams struct {
+	// 域名验证结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerificationResults []*DomainValidationResult `json:"VerificationResults,omitnil,omitempty" name:"VerificationResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckCertificateDomainVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckCertificateDomainVerificationResponseParams `json:"Response"`
+}
+
+func (r *CheckCertificateDomainVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckCertificateDomainVerificationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ClbInstanceDetail struct {
 	// CLB实例ID
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -4803,6 +4861,35 @@ func (r *DescribePackagesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribePackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DomainValidationResult struct {
+	// 域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 验证类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
+
+	// 本地检查结果。
+	LocalCheck *int64 `json:"LocalCheck,omitnil,omitempty" name:"LocalCheck"`
+
+	// CA检查结果。
+	CaCheck *int64 `json:"CaCheck,omitnil,omitempty" name:"CaCheck"`
+
+	// 检查失败原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalCheckFailReason *string `json:"LocalCheckFailReason,omitnil,omitempty" name:"LocalCheckFailReason"`
+
+	// 检查到的值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckValue []*string `json:"CheckValue,omitnil,omitempty" name:"CheckValue"`
+
+	// 是否频繁请求。
+	Frequently *bool `json:"Frequently,omitnil,omitempty" name:"Frequently"`
+
+	// 是否已经签发。
+	Issued *bool `json:"Issued,omitnil,omitempty" name:"Issued"`
 }
 
 // Predefined struct for user

@@ -1420,6 +1420,9 @@ type DeleteJobsRequestParams struct {
 
 	// 工作空间Id
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 作业名称列表
+	JobNames []*string `json:"JobNames,omitnil,omitempty" name:"JobNames"`
 }
 
 type DeleteJobsRequest struct {
@@ -1430,6 +1433,9 @@ type DeleteJobsRequest struct {
 
 	// 工作空间Id
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 作业名称列表
+	JobNames []*string `json:"JobNames,omitnil,omitempty" name:"JobNames"`
 }
 
 func (r *DeleteJobsRequest) ToJsonString() string {
@@ -1446,6 +1452,7 @@ func (r *DeleteJobsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobIds")
 	delete(f, "WorkSpaceId")
+	delete(f, "JobNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJobsRequest has unknown keys!", "")
 	}

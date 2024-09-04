@@ -822,6 +822,210 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWorkspacesRequestParams struct {
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
+	Placement *SpacePlacement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+
+	// 工作空间计费类型
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// 工作空间规格
+	SpaceType *string `json:"SpaceType,omitnil,omitempty" name:"SpaceType"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 工作空间系统盘信息
+	SystemDisk *SpaceSystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// 工作空间数据盘信息
+	DataDisks []*SpaceDataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// 私有网络相关信息
+	VirtualPrivateCloud *SpaceVirtualPrivateCloud `json:"VirtualPrivateCloud,omitnil,omitempty" name:"VirtualPrivateCloud"`
+
+	// 公网带宽相关信息设置
+	InternetAccessible *SpaceInternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
+
+	// 购买工作空间数量
+	SpaceCount *int64 `json:"SpaceCount,omitnil,omitempty" name:"SpaceCount"`
+
+	// 工作空间显示名称
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 工作空间登陆设置
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// 工作空间所属安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 增强服务
+	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
+
+	// 是否只预检此次请求
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 提供给工作空间使用的用户数据
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 置放群组id
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 标签描述列表
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 高性能计算集群ID
+	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
+
+	// CAM角色名称
+	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
+
+	// 实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+}
+
+type CreateWorkspacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
+	Placement *SpacePlacement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+
+	// 工作空间计费类型
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// 工作空间规格
+	SpaceType *string `json:"SpaceType,omitnil,omitempty" name:"SpaceType"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 工作空间系统盘信息
+	SystemDisk *SpaceSystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// 工作空间数据盘信息
+	DataDisks []*SpaceDataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// 私有网络相关信息
+	VirtualPrivateCloud *SpaceVirtualPrivateCloud `json:"VirtualPrivateCloud,omitnil,omitempty" name:"VirtualPrivateCloud"`
+
+	// 公网带宽相关信息设置
+	InternetAccessible *SpaceInternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
+
+	// 购买工作空间数量
+	SpaceCount *int64 `json:"SpaceCount,omitnil,omitempty" name:"SpaceCount"`
+
+	// 工作空间显示名称
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 工作空间登陆设置
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// 工作空间所属安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 增强服务
+	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
+
+	// 是否只预检此次请求
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 提供给工作空间使用的用户数据
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 置放群组id
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 标签描述列表
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 高性能计算集群ID
+	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
+
+	// CAM角色名称
+	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
+
+	// 实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+}
+
+func (r *CreateWorkspacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkspacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientToken")
+	delete(f, "Placement")
+	delete(f, "SpaceChargePrepaid")
+	delete(f, "SpaceChargeType")
+	delete(f, "SpaceType")
+	delete(f, "ImageId")
+	delete(f, "SystemDisk")
+	delete(f, "DataDisks")
+	delete(f, "VirtualPrivateCloud")
+	delete(f, "InternetAccessible")
+	delete(f, "SpaceCount")
+	delete(f, "SpaceName")
+	delete(f, "LoginSettings")
+	delete(f, "SecurityGroupIds")
+	delete(f, "EnhancedService")
+	delete(f, "DryRun")
+	delete(f, "UserData")
+	delete(f, "DisasterRecoverGroupIds")
+	delete(f, "TagSpecification")
+	delete(f, "HpcClusterId")
+	delete(f, "CamRoleName")
+	delete(f, "HostName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkspacesResponseParams struct {
+	// 工作空间ID
+	SpaceIdSet []*string `json:"SpaceIdSet,omitnil,omitempty" name:"SpaceIdSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWorkspacesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkspacesResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkspacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkspacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DataDisk struct {
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2226,6 +2430,162 @@ func (r *SetAutoScalingConfigurationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SpaceChargePrepaid struct {
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 12, 24, 36。默认取值为1。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 自动续费标识。取值范围：
+	// 
+	// NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+	// 
+	// NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+	// 
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+	// 
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
+type SpaceDataDisk struct {
+	// 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
+	// <li>
+	//   LOCAL_BASIC：本地硬盘<br />
+	//   <li>
+	//     LOCAL_SSD：本地SSD硬盘<br />
+	//     <li>
+	//       LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br />
+	//       <li>
+	//         LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br />
+	//         <li>
+	//           CLOUD_BASIC：普通云硬盘<br />
+	//           <li>
+	//             CLOUD_PREMIUM：高性能云硬盘<br />
+	//             <li>
+	//               CLOUD_SSD：SSD云硬盘<br />
+	//               <li>
+	//                 CLOUD_HSSD：增强型SSD云硬盘<br />
+	//                 <li>
+	//                   CLOUD_TSSD：极速型SSD云硬盘<br />
+	//                   <li>
+	//                     CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。
+	//                   </li>
+	//                 </li>
+	//               </li>
+	//             </li>
+	//           </li>
+	//         </li>
+	//       </li>
+	//     </li>
+	//   </li>
+	// </li>
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 数据盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 数据盘是否随子机销毁。取值范围：
+	// <li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+	// <li>
+	//   FALSE：子机销毁时，保留数据盘<br />
+	//   默认取值：TRUE<br />
+	//   该参数目前仅用于 `RunInstances` 接口。
+	// </li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+
+	// 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// 数据盘是加密。取值范围：
+	// <li>true：加密</li>
+	// <li>
+	//   false：不加密<br />
+	//   默认取值：false<br />
+	//   该参数目前仅用于 `RunInstances` 接口。
+	// </li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
+
+	// 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
+	// 
+	// 该参数目前仅用于 `CreateWorkspaces` 接口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
+
+	// 云硬盘性能，单位：MB/s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
+
+	// 突发性能
+	// 
+	// 注：内测中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
+}
+
+type SpaceInternetAccessible struct {
+	// 网络计费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
+
+	// 公网出带宽上限，默认为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 是否分配公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIpAssigned *bool `json:"PublicIpAssigned,omitnil,omitempty" name:"PublicIpAssigned"`
+
+	// 带宽包ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+}
+
+type SpacePlacement struct {
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 项目，默认是0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type SpaceSystemDisk struct {
+	// 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<ul><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用性SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li></ul>默认取值：当前有库存的硬盘类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 系统盘大小，单位：GB。默认值为 50
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type SpaceVirtualPrivateCloud struct {
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 私有网络子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 是否用作公网网关
+	AsVpcGateway *bool `json:"AsVpcGateway,omitnil,omitempty" name:"AsVpcGateway"`
+
+	// 私有网络子网 IP 数组
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
+
+	// 为弹性网卡指定随机生成
+	Ipv6AddressCount *uint64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
+}
+
 type StorageOption struct {
 	// 集群挂载CFS文件系统选项。
 	CFSOptions []*CFSOption `json:"CFSOptions,omitnil,omitempty" name:"CFSOptions"`
@@ -2269,6 +2629,16 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TagSpecification struct {
+	// 标签绑定的资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 标签对列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type VirtualPrivateCloud struct {

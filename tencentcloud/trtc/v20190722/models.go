@@ -3795,7 +3795,7 @@ type RecognizeConfig struct {
 	// - English = "en" # 英语
 	// - Vietnamese = "vi" # 越南语
 	// - Japanese = "ja" # 日语
-	// - Korean = "ko" # 汉语
+	// - Korean = "ko" # 韩语
 	// - Indonesia = "id" # 印度尼西亚语
 	// - Thai = "th" # 泰语
 	// - Portuguese = "pt" # 葡萄牙语
@@ -4054,7 +4054,7 @@ type STTConfig struct {
 	// 4.     English = "en" # 英语
 	// 5.     Vietnamese = "vi" # 越南语
 	// 6.     Japanese = "ja" # 日语
-	// 7.     Korean = "ko" # 汉语
+	// 7.     Korean = "ko" # 韩语
 	// 8.     Indonesia = "id" # 印度尼西亚语
 	// 9.     Thai = "th" # 泰语
 	// 10.     Portuguese = "pt" # 葡萄牙语
