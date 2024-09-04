@@ -628,6 +628,9 @@ func (r *AssignMangedTablePropertiesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssignMangedTablePropertiesResponseParams struct {
+	// 分配的原生表表属性
+	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9236,7 +9239,7 @@ type DescribeUserInfoRequestParams struct {
 	// 用户Id
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限
+	// 必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 查询的过滤条件。
@@ -9285,7 +9288,7 @@ type DescribeUserInfoRequest struct {
 	// 用户Id
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限
+	// 必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 查询的过滤条件。
@@ -14479,6 +14482,10 @@ type UserDetailInfo struct {
 	// 行过滤集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RowFilterInfo *Policys `json:"RowFilterInfo,omitnil,omitempty" name:"RowFilterInfo"`
+
+	// 账号类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type UserIdSetOfWorkGroupId struct {

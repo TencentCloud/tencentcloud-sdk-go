@@ -628,6 +628,7 @@ func NewCreateInstanceCustomizedDomainResponse() (response *CreateInstanceCustom
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ERRORTCRUNAUTHORIZED = "UnauthorizedOperation.ErrorTcrUnauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstanceCustomizedDomain(request *CreateInstanceCustomizedDomainRequest) (response *CreateInstanceCustomizedDomainResponse, err error) {
@@ -650,6 +651,7 @@ func (c *Client) CreateInstanceCustomizedDomain(request *CreateInstanceCustomize
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ERRORTCRUNAUTHORIZED = "UnauthorizedOperation.ErrorTcrUnauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstanceCustomizedDomainWithContext(ctx context.Context, request *CreateInstanceCustomizedDomainRequest) (response *CreateInstanceCustomizedDomainResponse, err error) {
@@ -1454,6 +1456,7 @@ func NewCreateSignaturePolicyResponse() (response *CreateSignaturePolicyResponse
 // 创建镜像签名策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1465,6 +1468,7 @@ func (c *Client) CreateSignaturePolicy(request *CreateSignaturePolicyRequest) (r
 // 创建镜像签名策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -5974,6 +5978,7 @@ func NewManageInternalEndpointResponse() (response *ManageInternalEndpointRespon
 //  RESOURCEINSUFFICIENT_ERRORVPCDNSSTATUS = "ResourceInsufficient.ErrorVpcDnsStatus"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ERRORTCRUNAUTHORIZED = "UnauthorizedOperation.ErrorTcrUnauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageInternalEndpoint(request *ManageInternalEndpointRequest) (response *ManageInternalEndpointResponse, err error) {
@@ -5995,6 +6000,7 @@ func (c *Client) ManageInternalEndpoint(request *ManageInternalEndpointRequest) 
 //  RESOURCEINSUFFICIENT_ERRORVPCDNSSTATUS = "ResourceInsufficient.ErrorVpcDnsStatus"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ERRORTCRUNAUTHORIZED = "UnauthorizedOperation.ErrorTcrUnauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageInternalEndpointWithContext(ctx context.Context, request *ManageInternalEndpointRequest) (response *ManageInternalEndpointResponse, err error) {

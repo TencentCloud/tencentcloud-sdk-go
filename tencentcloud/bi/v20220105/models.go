@@ -2905,6 +2905,9 @@ type ModifyUserRoleRequestParams struct {
 
 	// 企业微信应用用户id
 	AppUserId *string `json:"AppUserId,omitnil,omitempty" name:"AppUserId"`
+
+	// 是否开启手机验证码登录（0 关闭，1 开启）
+	LoginSecurityStatus *int64 `json:"LoginSecurityStatus,omitnil,omitempty" name:"LoginSecurityStatus"`
 }
 
 type ModifyUserRoleRequest struct {
@@ -2930,6 +2933,9 @@ type ModifyUserRoleRequest struct {
 
 	// 企业微信应用用户id
 	AppUserId *string `json:"AppUserId,omitnil,omitempty" name:"AppUserId"`
+
+	// 是否开启手机验证码登录（0 关闭，1 开启）
+	LoginSecurityStatus *int64 `json:"LoginSecurityStatus,omitnil,omitempty" name:"LoginSecurityStatus"`
 }
 
 func (r *ModifyUserRoleRequest) ToJsonString() string {
@@ -2951,6 +2957,7 @@ func (r *ModifyUserRoleRequest) FromJsonString(s string) error {
 	delete(f, "PhoneNumber")
 	delete(f, "AreaCode")
 	delete(f, "AppUserId")
+	delete(f, "LoginSecurityStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRoleRequest has unknown keys!", "")
 	}

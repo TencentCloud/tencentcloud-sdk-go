@@ -8088,7 +8088,7 @@ func (r *ModifyInstanceParamsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceParamsResponseParams struct {
-	// 说明修改参数配置是否成功。<br><li>true：指修改成功；<br><li>false：指修改失败。<br>
+	// 说明修改参数配置是否成功。<br><li>true：指修改成功；</li><li>false：指修改失败。</li>
 	Changed *bool `json:"Changed,omitnil,omitempty" name:"Changed"`
 
 	// 任务ID。
@@ -9567,7 +9567,7 @@ func (r *StartupInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartupInstanceResponseParams struct {
-	// 任务id
+	// 该字段已废弃，请通过查询实例接口获取到的状态来判断实例是否已解隔离
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

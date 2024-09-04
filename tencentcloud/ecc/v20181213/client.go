@@ -271,8 +271,6 @@ func NewECCResponse() (response *ECCResponse) {
 }
 
 // ECC
-// 接口请求域名： ecc.tencentcloudapi.com 
-//
 // 纯文本英语作文批改
 //
 // 可能返回的错误码:
@@ -286,8 +284,6 @@ func (c *Client) ECC(request *ECCRequest) (response *ECCResponse, err error) {
 }
 
 // ECC
-// 接口请求域名： ecc.tencentcloudapi.com 
-//
 // 纯文本英语作文批改
 //
 // 可能返回的错误码:

@@ -1792,6 +1792,87 @@ func (r *DescribeQueuesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWorkspacesRequestParams struct {
+	// 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeWorkspacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeWorkspacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspacesResponseParams struct {
+	// 集群概览信息列表
+	SpaceSet []*SpaceInfo `json:"SpaceSet,omitnil,omitempty" name:"SpaceSet"`
+
+	// 集群数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DetachNodesRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -2143,6 +2224,67 @@ func (r *ModifyInitNodeScriptsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyInitNodeScriptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkspacesAttributeRequestParams struct {
+	// 工作空间列表
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 修改后的工作空间名称。可任意命名，但不得超过60个字符。
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+}
+
+type ModifyWorkspacesAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间列表
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 修改后的工作空间名称。可任意命名，但不得超过60个字符。
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+}
+
+func (r *ModifyWorkspacesAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkspacesAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	delete(f, "SpaceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWorkspacesAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkspacesAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyWorkspacesAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyWorkspacesAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyWorkspacesAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkspacesAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2531,6 +2673,52 @@ type SpaceDataDisk struct {
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
 }
 
+type SpaceInfo struct {
+	// 工作空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 工作空间类型
+	SpaceFamily *string `json:"SpaceFamily,omitnil,omitempty" name:"SpaceFamily"`
+
+	// 工作空间规格
+	SpaceType *string `json:"SpaceType,omitnil,omitempty" name:"SpaceType"`
+
+	// 工作空间名称
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
+	SpaceState *string `json:"SpaceState,omitnil,omitempty" name:"SpaceState"`
+
+	// 工作空间计费模式
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// 工作空间对应资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 自动续费标识
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 工作空间关联的工作列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 到期时间
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 工作空间所在位置
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// 工作空间的最新操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
+
+	// 工作空间的最新操作状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
+}
+
 type SpaceInternetAccessible struct {
 	// 网络计费类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2639,6 +2827,67 @@ type TagSpecification struct {
 	// 标签对列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+// Predefined struct for user
+type TerminateWorkspacesRequestParams struct {
+	// 工作空间ID
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 释放空间挂载的包年包月数据盘。true表示销毁空间同时释放包年包月数据盘，false表示只销毁空间。
+	ReleasePrepaidDataDisks *bool `json:"ReleasePrepaidDataDisks,omitnil,omitempty" name:"ReleasePrepaidDataDisks"`
+}
+
+type TerminateWorkspacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间ID
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 释放空间挂载的包年包月数据盘。true表示销毁空间同时释放包年包月数据盘，false表示只销毁空间。
+	ReleasePrepaidDataDisks *bool `json:"ReleasePrepaidDataDisks,omitnil,omitempty" name:"ReleasePrepaidDataDisks"`
+}
+
+func (r *TerminateWorkspacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateWorkspacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	delete(f, "ReleasePrepaidDataDisks")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateWorkspacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateWorkspacesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateWorkspacesResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateWorkspacesResponseParams `json:"Response"`
+}
+
+func (r *TerminateWorkspacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateWorkspacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VirtualPrivateCloud struct {

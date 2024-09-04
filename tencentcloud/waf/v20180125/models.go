@@ -9265,7 +9265,7 @@ type GetAttackTotalCountRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 查询的域名，全部域名不指定
+	// 查询的域名，全部域名填all
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 查询条件，默认为""
@@ -9281,7 +9281,7 @@ type GetAttackTotalCountRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 查询的域名，全部域名不指定
+	// 查询的域名，全部域名填all
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 查询条件，默认为""

@@ -1158,6 +1158,55 @@ func (c *Client) DescribeQueuesWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeWorkspacesRequest() (request *DescribeWorkspacesRequest) {
+    request = &DescribeWorkspacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeWorkspaces")
+    
+    
+    return
+}
+
+func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
+    response = &DescribeWorkspacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkspaces
+// 本接口（DescribeWorkspaces）用于查询工作空间列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
+    return c.DescribeWorkspacesWithContext(context.Background(), request)
+}
+
+// DescribeWorkspaces
+// 本接口（DescribeWorkspaces）用于查询工作空间列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachNodesRequest() (request *DetachNodesRequest) {
     request = &DetachNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1181,20 +1230,7 @@ func NewDetachNodesResponse() (response *DetachNodesResponse) {
 // 本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
-//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
 func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
     return c.DetachNodesWithContext(context.Background(), request)
 }
@@ -1203,20 +1239,7 @@ func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodes
 // 本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
-//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
 func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
     if request == nil {
         request = NewDetachNodesRequest()
@@ -1278,6 +1301,55 @@ func (c *Client) ModifyInitNodeScriptsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyInitNodeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWorkspacesAttributeRequest() (request *ModifyWorkspacesAttributeRequest) {
+    request = &ModifyWorkspacesAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyWorkspacesAttribute")
+    
+    
+    return
+}
+
+func NewModifyWorkspacesAttributeResponse() (response *ModifyWorkspacesAttributeResponse) {
+    response = &ModifyWorkspacesAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyWorkspacesAttribute
+// 本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) ModifyWorkspacesAttribute(request *ModifyWorkspacesAttributeRequest) (response *ModifyWorkspacesAttributeResponse, err error) {
+    return c.ModifyWorkspacesAttributeWithContext(context.Background(), request)
+}
+
+// ModifyWorkspacesAttribute
+// 本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) ModifyWorkspacesAttributeWithContext(ctx context.Context, request *ModifyWorkspacesAttributeRequest) (response *ModifyWorkspacesAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkspacesAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWorkspacesAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWorkspacesAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1351,6 +1423,79 @@ func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewSetAutoScalingConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateWorkspacesRequest() (request *TerminateWorkspacesRequest) {
+    request = &TerminateWorkspacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "TerminateWorkspaces")
+    
+    
+    return
+}
+
+func NewTerminateWorkspacesResponse() (response *TerminateWorkspacesResponse) {
+    response = &TerminateWorkspacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateWorkspaces
+// 本接口 (TerminateWorkspaces) 用于主动退还工作空间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+func (c *Client) TerminateWorkspaces(request *TerminateWorkspacesRequest) (response *TerminateWorkspacesResponse, err error) {
+    return c.TerminateWorkspacesWithContext(context.Background(), request)
+}
+
+// TerminateWorkspaces
+// 本接口 (TerminateWorkspaces) 用于主动退还工作空间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+func (c *Client) TerminateWorkspacesWithContext(ctx context.Context, request *TerminateWorkspacesRequest) (response *TerminateWorkspacesResponse, err error) {
+    if request == nil {
+        request = NewTerminateWorkspacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateWorkspaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateWorkspacesResponse()
     err = c.Send(request, response)
     return
 }

@@ -1011,7 +1011,7 @@ type BackupInfo struct {
 	// 异地备份详细信息
 	RemoteInfo []*RemoteBackupInfo `json:"RemoteInfo,omitnil,omitempty" name:"RemoteInfo"`
 
-	// 存储方式，0-常规存储，1-归档存储，默认为0
+	// 存储方式，0-常规存储，1-归档存储，2-标准存储，默认为0
 	CosStorageType *int64 `json:"CosStorageType,omitnil,omitempty" name:"CosStorageType"`
 
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
@@ -1162,7 +1162,7 @@ type BinlogInfo struct {
 	// binlog异地备份详细信息
 	RemoteInfo []*RemoteBackupInfo `json:"RemoteInfo,omitnil,omitempty" name:"RemoteInfo"`
 
-	// 存储方式，0-常规存储，1-归档存储，默认为0
+	// 存储方式，0-常规存储，1-归档存储，2-标准存储，默认为0
 	CosStorageType *int64 `json:"CosStorageType,omitnil,omitempty" name:"CosStorageType"`
 
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。

@@ -4081,6 +4081,71 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeIsolatedInstancesRequest() (request *DescribeIsolatedInstancesRequest) {
+    request = &DescribeIsolatedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeIsolatedInstances")
+    
+    
+    return
+}
+
+func NewDescribeIsolatedInstancesResponse() (response *DescribeIsolatedInstancesResponse) {
+    response = &DescribeIsolatedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIsolatedInstances
+// 本接口(DescribeIsolatedInstances)用于查询回收站实例列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = "InvalidParameterValue.ParamBothSetError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeIsolatedInstances(request *DescribeIsolatedInstancesRequest) (response *DescribeIsolatedInstancesResponse, err error) {
+    return c.DescribeIsolatedInstancesWithContext(context.Background(), request)
+}
+
+// DescribeIsolatedInstances
+// 本接口(DescribeIsolatedInstances)用于查询回收站实例列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = "InvalidParameterValue.ParamBothSetError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeIsolatedInstancesWithContext(ctx context.Context, request *DescribeIsolatedInstancesRequest) (response *DescribeIsolatedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIsolatedInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIsolatedInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIsolatedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMaintainPeriodRequest() (request *DescribeMaintainPeriodRequest) {
     request = &DescribeMaintainPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},

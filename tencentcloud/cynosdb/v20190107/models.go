@@ -7061,6 +7061,109 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIsolatedInstancesRequestParams struct {
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 记录偏移量，默认值为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，取值范围：
+	// <li> CREATETIME：创建时间</li>
+	// <li> PERIODENDTIME：过期时间</li>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序类型，取值范围：
+	// <li> ASC：升序排序 </li>
+	// <li> DESC：降序排序 </li>
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	Filters []*QueryFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+}
+
+type DescribeIsolatedInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 记录偏移量，默认值为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，取值范围：
+	// <li> CREATETIME：创建时间</li>
+	// <li> PERIODENDTIME：过期时间</li>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序类型，取值范围：
+	// <li> ASC：升序排序 </li>
+	// <li> DESC：降序排序 </li>
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	Filters []*QueryFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+}
+
+func (r *DescribeIsolatedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIsolatedInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Filters")
+	delete(f, "DbType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIsolatedInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIsolatedInstancesResponseParams struct {
+	// 实例个数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例列表
+	InstanceSet []*CynosdbInstance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIsolatedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIsolatedInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeIsolatedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIsolatedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMaintainPeriodRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
