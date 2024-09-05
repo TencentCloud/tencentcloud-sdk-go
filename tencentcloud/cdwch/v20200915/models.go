@@ -172,7 +172,7 @@ type CkUserAlterInfo struct {
 	// 用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 密码
+	// base64加密后的密码
 	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
 
 	// 描述

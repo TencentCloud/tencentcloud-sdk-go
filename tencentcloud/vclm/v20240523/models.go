@@ -691,6 +691,9 @@ type SubmitVideoTranslateJobRequestParams struct {
 
 	// 是否开启口型驱动，0：不开启，1：开启。默认开启。
 	LipSync *int64 `json:"LipSync,omitnil,omitempty" name:"LipSync"`
+
+	// 音色 Id
+	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 }
 
 type SubmitVideoTranslateJobRequest struct {
@@ -713,6 +716,9 @@ type SubmitVideoTranslateJobRequest struct {
 
 	// 是否开启口型驱动，0：不开启，1：开启。默认开启。
 	LipSync *int64 `json:"LipSync,omitnil,omitempty" name:"LipSync"`
+
+	// 音色 Id
+	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 }
 
 func (r *SubmitVideoTranslateJobRequest) ToJsonString() string {
@@ -733,6 +739,7 @@ func (r *SubmitVideoTranslateJobRequest) FromJsonString(s string) error {
 	delete(f, "AudioUrl")
 	delete(f, "Confirm")
 	delete(f, "LipSync")
+	delete(f, "VoiceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitVideoTranslateJobRequest has unknown keys!", "")
 	}

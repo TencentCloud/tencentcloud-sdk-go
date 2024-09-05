@@ -444,22 +444,29 @@ type FusionUltraParam struct {
 }
 
 type ImageCodecParam struct {
-	// 元数据，个数不能大于1。
+	// 元数据是描述媒体文件的附加信息。通过添加自定义的元数据，可以将一些附加信息嵌入到文件中。这些信息可以用于版权、描述、标识等目的，并在后续的媒体处理或管理过程中使用。
+	// 个数不能大于1。
 	MetaData []*MetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
 type LogoParam struct {
 	// 标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配。
+	// Width、Height <= 2160。
 	LogoRect *FaceRect `json:"LogoRect,omitnil,omitempty" name:"LogoRect"`
 
-	// 标识图片Url地址。
+	// 标识图片Url地址
+	// 
 	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-	// ●支持图片格式：支持jpg或png。
+	// ●支持图片格式：支持jpg或png
+	// 专业版：base64 编码后大小不超过10M。
+	// 非专业版：base64 编码后大小不超过5M。
 	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
 
-	// 标识图片base64
+	// 输入图片base64。
 	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-	// ●支持图片格式：支持jpg或png。
+	// ●支持图片格式：支持jpg或png
+	// 专业版：base64 编码后大小不超过10M。
+	// 非专业版：base64 编码后大小不超过5M。
 	LogoImage *string `json:"LogoImage,omitnil,omitempty" name:"LogoImage"`
 }
 
@@ -497,10 +504,10 @@ type MergeInfo struct {
 }
 
 type MetaData struct {
-	// MetaData的Key
+	// MetaData的Key，字符长度不能超过32
 	MetaKey *string `json:"MetaKey,omitnil,omitempty" name:"MetaKey"`
 
-	// MetaData的Value
+	// MetaData的Value，字符长度不能超过256
 	MetaValue *string `json:"MetaValue,omitnil,omitempty" name:"MetaValue"`
 }
 
