@@ -39309,7 +39309,7 @@ type ModifyEventAttackStatusRequestParams struct {
 	// 是否更新全部，即是否对所有的事件进行操作，当ids 不为空时，此参数无效
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 0：待处理 1：已处理 2： 已加白 3： 已忽略 4：已删除 
+	// 0：待处理 1：已处理 3： 已忽略 4：已删除 
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 过滤条件。
@@ -39335,7 +39335,7 @@ type ModifyEventAttackStatusRequest struct {
 	// 是否更新全部，即是否对所有的事件进行操作，当ids 不为空时，此参数无效
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 0：待处理 1：已处理 2： 已加白 3： 已忽略 4：已删除 
+	// 0：待处理 1：已处理 3： 已忽略 4：已删除 
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 过滤条件。

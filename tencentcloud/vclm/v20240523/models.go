@@ -675,15 +675,23 @@ func (r *SubmitVideoStylizationJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SubmitVideoTranslateJobRequestParams struct {
 	// 视频地址URL。
+	// 格式要求：支持 mp4、mov 。
+	// 时长要求：【10-300】秒。
+	// fps 要求：【15-60】fps
+	// 分辨率要求：单边像素要求在 【540~1920】 之间。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 源语言：zh, en
+	// 源语言：zh(中文), en(英文)
 	SrcLang *string `json:"SrcLang,omitnil,omitempty" name:"SrcLang"`
 
-	// 目标语言：zh, en	
+	// 目标语种：
+	// zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
 	DstLang *string `json:"DstLang,omitnil,omitempty" name:"DstLang"`
 
-	// 当音频 URL 不为空时，默认以音频驱动视频任务口型
+	// 当音频 URL 不为空时，默认以音频驱动视频任务口型。
+	// 格式要求：支持 mp3、m4a、acc、wav 格式。
+	// 时长要求：【10~300】秒
+	// 大小要求：不超过 100M。
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
 	// 是否需要确认翻译结果0：不需要，1：需要
@@ -692,7 +700,11 @@ type SubmitVideoTranslateJobRequestParams struct {
 	// 是否开启口型驱动，0：不开启，1：开启。默认开启。
 	LipSync *int64 `json:"LipSync,omitnil,omitempty" name:"LipSync"`
 
-	// 音色 Id
+	// 音色种别：一种音色种别对应一种不同区域的音色
+	// 1）目标语种为小语种(非zh,en)时，该项为必填
+	// 2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
+	// 
+	// 具体音色包含请见“支持音色种别列表”
 	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 }
 
@@ -700,15 +712,23 @@ type SubmitVideoTranslateJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 视频地址URL。
+	// 格式要求：支持 mp4、mov 。
+	// 时长要求：【10-300】秒。
+	// fps 要求：【15-60】fps
+	// 分辨率要求：单边像素要求在 【540~1920】 之间。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 源语言：zh, en
+	// 源语言：zh(中文), en(英文)
 	SrcLang *string `json:"SrcLang,omitnil,omitempty" name:"SrcLang"`
 
-	// 目标语言：zh, en	
+	// 目标语种：
+	// zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
 	DstLang *string `json:"DstLang,omitnil,omitempty" name:"DstLang"`
 
-	// 当音频 URL 不为空时，默认以音频驱动视频任务口型
+	// 当音频 URL 不为空时，默认以音频驱动视频任务口型。
+	// 格式要求：支持 mp3、m4a、acc、wav 格式。
+	// 时长要求：【10~300】秒
+	// 大小要求：不超过 100M。
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
 	// 是否需要确认翻译结果0：不需要，1：需要
@@ -717,7 +737,11 @@ type SubmitVideoTranslateJobRequest struct {
 	// 是否开启口型驱动，0：不开启，1：开启。默认开启。
 	LipSync *int64 `json:"LipSync,omitnil,omitempty" name:"LipSync"`
 
-	// 音色 Id
+	// 音色种别：一种音色种别对应一种不同区域的音色
+	// 1）目标语种为小语种(非zh,en)时，该项为必填
+	// 2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
+	// 
+	// 具体音色包含请见“支持音色种别列表”
 	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 }
 

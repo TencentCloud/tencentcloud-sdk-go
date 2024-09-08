@@ -1977,67 +1977,6 @@ func (c *Client) DeleteVpcFwGroupWithContext(ctx context.Context, request *Delet
     return
 }
 
-func NewDeleteVpcInstanceRequest() (request *DeleteVpcInstanceRequest) {
-    request = &DeleteVpcInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DeleteVpcInstance")
-    
-    
-    return
-}
-
-func NewDeleteVpcInstanceResponse() (response *DeleteVpcInstanceResponse) {
-    response = &DeleteVpcInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteVpcInstance
-// 接口废弃
-//
-// 
-//
-// 删除防火墙实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) DeleteVpcInstance(request *DeleteVpcInstanceRequest) (response *DeleteVpcInstanceResponse, err error) {
-    return c.DeleteVpcInstanceWithContext(context.Background(), request)
-}
-
-// DeleteVpcInstance
-// 接口废弃
-//
-// 
-//
-// 删除防火墙实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) DeleteVpcInstanceWithContext(ctx context.Context, request *DeleteVpcInstanceRequest) (response *DeleteVpcInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpcInstanceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteVpcInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteVpcInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAcListsRequest() (request *DescribeAcListsRequest) {
     request = &DescribeAcListsRequest{
         BaseRequest: &tchttp.BaseRequest{},

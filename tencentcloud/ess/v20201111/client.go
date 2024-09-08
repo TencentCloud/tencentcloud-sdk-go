@@ -5114,13 +5114,37 @@ func NewCreateOrganizationAuthUrlResponse() (response *CreateOrganizationAuthUrl
 }
 
 // CreateOrganizationAuthUrl
-// 本接口（CreateOrganizationAuthUrl）用于生成创建企业认证链接。
-//
-// 用于业务方系统自己生成认证链接进行跳转.而不用电子签自带的生成链接
+// 本接口（CreateOrganizationAuthUrl）的主要功能是生成合作企业的认证链接。
 //
 // 
 //
-// 注： **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+// 在生成链接的过程中，可以提供一部分已知信息，以便为对方进行认证流程提供便利。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/7ec91b79a0a4860e77c9ff9f4a5f13ad/channel_SyncProxyOrganization2.png)
+//
+// 
+//
+// 
+//
+// - **企业统一社会信用代码**: 对应上图中的**1**
+//
+// - **企业名称**: 对应上图中的**2**
+//
+// - **企业法定代表人的名字**:对应上图中的**3**
+//
+// - **企业详细住所**:对应上图中的**4**
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// <b>注</b>：此接口需要 <font  color="red"><b>购买单独的实名套餐包</b></font>方可调用，如有需求请联系对接人员评估
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -5134,13 +5158,37 @@ func (c *Client) CreateOrganizationAuthUrl(request *CreateOrganizationAuthUrlReq
 }
 
 // CreateOrganizationAuthUrl
-// 本接口（CreateOrganizationAuthUrl）用于生成创建企业认证链接。
-//
-// 用于业务方系统自己生成认证链接进行跳转.而不用电子签自带的生成链接
+// 本接口（CreateOrganizationAuthUrl）的主要功能是生成合作企业的认证链接。
 //
 // 
 //
-// 注： **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+// 在生成链接的过程中，可以提供一部分已知信息，以便为对方进行认证流程提供便利。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/7ec91b79a0a4860e77c9ff9f4a5f13ad/channel_SyncProxyOrganization2.png)
+//
+// 
+//
+// 
+//
+// - **企业统一社会信用代码**: 对应上图中的**1**
+//
+// - **企业名称**: 对应上图中的**2**
+//
+// - **企业法定代表人的名字**:对应上图中的**3**
+//
+// - **企业详细住所**:对应上图中的**4**
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// <b>注</b>：此接口需要 <font  color="red"><b>购买单独的实名套餐包</b></font>方可调用，如有需求请联系对接人员评估
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

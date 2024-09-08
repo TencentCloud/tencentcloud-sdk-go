@@ -601,6 +601,67 @@ func (c *Client) DeleteUserManagerUserListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeployYarnConfRequest() (request *DeployYarnConfRequest) {
+    request = &DeployYarnConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DeployYarnConf")
+    
+    
+    return
+}
+
+func NewDeployYarnConfResponse() (response *DeployYarnConfResponse) {
+    response = &DeployYarnConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeployYarnConf
+// yarn资源调度-部署生效
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DeployYarnConf(request *DeployYarnConfRequest) (response *DeployYarnConfResponse, err error) {
+    return c.DeployYarnConfWithContext(context.Background(), request)
+}
+
+// DeployYarnConf
+// yarn资源调度-部署生效
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DeployYarnConfWithContext(ctx context.Context, request *DeployYarnConfRequest) (response *DeployYarnConfResponse, err error) {
+    if request == nil {
+        request = NewDeployYarnConfRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployYarnConf require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployYarnConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScaleGroupGlobalConfRequest() (request *DescribeAutoScaleGroupGlobalConfRequest) {
     request = &DescribeAutoScaleGroupGlobalConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1685,7 +1746,7 @@ func NewDescribeResourceScheduleResponse() (response *DescribeResourceScheduleRe
 }
 
 // DescribeResourceSchedule
-// 查询YARN资源调度数据信息
+// 查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1699,7 +1760,7 @@ func (c *Client) DescribeResourceSchedule(request *DescribeResourceScheduleReque
 }
 
 // DescribeResourceSchedule
-// 查询YARN资源调度数据信息
+// 查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1986,6 +2047,61 @@ func (c *Client) DescribeYarnApplicationsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeYarnQueueRequest() (request *DescribeYarnQueueRequest) {
+    request = &DescribeYarnQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeYarnQueue")
+    
+    
+    return
+}
+
+func NewDescribeYarnQueueResponse() (response *DescribeYarnQueueResponse) {
+    response = &DescribeYarnQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeYarnQueue
+// 获取资源调度中的队列信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeYarnQueue(request *DescribeYarnQueueRequest) (response *DescribeYarnQueueResponse, err error) {
+    return c.DescribeYarnQueueWithContext(context.Background(), request)
+}
+
+// DescribeYarnQueue
+// 获取资源调度中的队列信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeYarnQueueWithContext(ctx context.Context, request *DescribeYarnQueueRequest) (response *DescribeYarnQueueResponse, err error) {
+    if request == nil {
+        request = NewDescribeYarnQueueRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeYarnQueue require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeYarnQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeYarnScheduleHistoryRequest() (request *DescribeYarnScheduleHistoryRequest) {
     request = &DescribeYarnScheduleHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2006,7 +2122,7 @@ func NewDescribeYarnScheduleHistoryResponse() (response *DescribeYarnScheduleHis
 }
 
 // DescribeYarnScheduleHistory
-// 查看yarn资源调度的调度历史
+// 查看yarn资源调度的调度历史。废弃，请使用流程中心查看历史记录。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -2015,7 +2131,7 @@ func (c *Client) DescribeYarnScheduleHistory(request *DescribeYarnScheduleHistor
 }
 
 // DescribeYarnScheduleHistory
-// 查看yarn资源调度的调度历史
+// 查看yarn资源调度的调度历史。废弃，请使用流程中心查看历史记录。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -2744,7 +2860,7 @@ func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
 }
 
 // ModifyResourcePools
-// 刷新YARN的动态资源池
+// 刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2759,7 +2875,7 @@ func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (respo
 }
 
 // ModifyResourcePools
-// 刷新YARN的动态资源池
+// 刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2805,7 +2921,7 @@ func NewModifyResourceScheduleConfigResponse() (response *ModifyResourceSchedule
 }
 
 // ModifyResourceScheduleConfig
-// 修改YARN资源调度的资源配置
+// 修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2820,7 +2936,7 @@ func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleCon
 }
 
 // ModifyResourceScheduleConfig
-// 修改YARN资源调度的资源配置
+// 修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2866,7 +2982,7 @@ func NewModifyResourceSchedulerResponse() (response *ModifyResourceSchedulerResp
 }
 
 // ModifyResourceScheduler
-// 修改了yarn的资源调度器，点击部署生效
+// 修改了yarn的资源调度器，点击部署生效。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2878,7 +2994,7 @@ func (c *Client) ModifyResourceScheduler(request *ModifyResourceSchedulerRequest
 }
 
 // ModifyResourceScheduler
-// 修改了yarn的资源调度器，点击部署生效
+// 修改了yarn的资源调度器，点击部署生效。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3033,7 +3149,7 @@ func NewModifyYarnDeployResponse() (response *ModifyYarnDeployResponse) {
 }
 
 // ModifyYarnDeploy
-// 部署生效
+// 部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3045,7 +3161,7 @@ func (c *Client) ModifyYarnDeploy(request *ModifyYarnDeployRequest) (response *M
 }
 
 // ModifyYarnDeploy
-// 部署生效
+// 部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3064,6 +3180,122 @@ func (c *Client) ModifyYarnDeployWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyYarnDeployResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyYarnQueueV2Request() (request *ModifyYarnQueueV2Request) {
+    request = &ModifyYarnQueueV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyYarnQueueV2")
+    
+    
+    return
+}
+
+func NewModifyYarnQueueV2Response() (response *ModifyYarnQueueV2Response) {
+    response = &ModifyYarnQueueV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyYarnQueueV2
+// 修改资源调度中队列信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyYarnQueueV2(request *ModifyYarnQueueV2Request) (response *ModifyYarnQueueV2Response, err error) {
+    return c.ModifyYarnQueueV2WithContext(context.Background(), request)
+}
+
+// ModifyYarnQueueV2
+// 修改资源调度中队列信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyYarnQueueV2WithContext(ctx context.Context, request *ModifyYarnQueueV2Request) (response *ModifyYarnQueueV2Response, err error) {
+    if request == nil {
+        request = NewModifyYarnQueueV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyYarnQueueV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyYarnQueueV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetYarnConfigRequest() (request *ResetYarnConfigRequest) {
+    request = &ResetYarnConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ResetYarnConfig")
+    
+    
+    return
+}
+
+func NewResetYarnConfigResponse() (response *ResetYarnConfigResponse) {
+    response = &ResetYarnConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetYarnConfig
+// 修改YARN资源调度的资源配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ResetYarnConfig(request *ResetYarnConfigRequest) (response *ResetYarnConfigResponse, err error) {
+    return c.ResetYarnConfigWithContext(context.Background(), request)
+}
+
+// ResetYarnConfig
+// 修改YARN资源调度的资源配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ResetYarnConfigWithContext(ctx context.Context, request *ResetYarnConfigRequest) (response *ResetYarnConfigResponse, err error) {
+    if request == nil {
+        request = NewResetYarnConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetYarnConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetYarnConfigResponse()
     err = c.Send(request, response)
     return
 }

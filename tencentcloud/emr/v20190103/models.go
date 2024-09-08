@@ -729,6 +729,117 @@ type ComponentBasicRestartInfo struct {
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
+type ConfigModifyInfoV2 struct {
+	// 操作类型，可选值：
+	// 
+	// - 0：新建队列
+	// - 1：编辑-全量覆盖
+	// - 2：新建子队列
+	// - 3：删除
+	// - 4：克隆，与新建子队列的行为一样，特别的对于`fair`，可以复制子队列到新建队列
+	// - 6：编辑-增量更新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpType *uint64 `json:"OpType,omitnil,omitempty" name:"OpType"`
+
+	// 队列名称，不支持修改。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 新建队列 传root的MyId；新建子队列 传 选中队列的 myId；克隆 要传 选中队列 parentId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 编辑、删除 传选中队列的 myId。克隆只有在调度器是`fair`时才需要传，用来复制子队列到新队列。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MyId *string `json:"MyId,omitnil,omitempty" name:"MyId"`
+
+	// 基础配置信息。key的取值与**DescribeYarnQueue**返回的字段一致。
+	// ###### 公平调度器
+	// key的取值信息如下：
+	// 
+	// - type，父队列，取值为 **parent** 或 **null**
+	// - aclSubmitApps，提交访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+	// - aclAdministerApps，管理访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+	// - minSharePreemptionTimeout，最小共享优先权超时时间，取值为**数字字符串**或**null**
+	// - fairSharePreemptionTimeout，公平份额抢占超时时间，取值为**数字字符串**或**null**
+	// - fairSharePreemptionThreshold，公平份额抢占阈值，取值为**数字字符串**或**null**，其中数字的范围是（0，1]
+	// - allowPreemptionFrom，抢占模式，取值为**布尔字符串**或**null**
+	// - schedulingPolicy，调度策略，取值为**drf**、**fair**、**fifo**或**null**
+	// 
+	// ```
+	// type AclForYarnQueue struct {
+	// 	User  *string `json:"user"` //用户名
+	// 	Group *string `json:"group"`//组名
+	// }
+	// ```
+	// ###### 容量调度器
+	// key的取值信息如下：
+	// 
+	// - state，队列状态，取值为**STOPPED**或**RUNNING**
+	// - default-node-label-expression，默认标签表达式，取值为**标签**或**null**
+	// - acl_submit_applications，提交访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+	// - acl_administer_queue，管理访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+	// - maximum-allocation-mb，分配Container最大内存数量，取值为**数字字符串**或**null**
+	// - maximum-allocation-vcores，Container最大vCore数量，取值为**数字字符串**或**null**
+	// ```
+	// type AclForYarnQueue struct {
+	// 	User  *string `json:"user"` //用户名
+	// 	Group *string `json:"group"`//组名
+	// }
+	// ```
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicParams *ItemSeq `json:"BasicParams,omitnil,omitempty" name:"BasicParams"`
+
+	// 配置集信息，取值见该复杂类型的参数说明。配置集是计划模式在队列中表现，表示的是不同时间段不同的配置值，所有队列的配置集名称都一样，对于单个队列，每个配置集中的标签与参数都一样，只是参数值不同。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigSetParams []*ConfigSetInfo `json:"ConfigSetParams,omitnil,omitempty" name:"ConfigSetParams"`
+
+	// 容量调度专用，`OpType`为`6`时才生效，表示要删除这个队列中的哪些标签。优先级高于ConfigSetParams中的LabelParams。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteLables []*string `json:"DeleteLables,omitnil,omitempty" name:"DeleteLables"`
+}
+
+type ConfigSetInfo struct {
+	// 配置集名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigSet *string `json:"ConfigSet,omitnil,omitempty" name:"ConfigSet"`
+
+	// 容量调度器会使用，里面设置了标签相关的配置。key的取值与**DescribeYarnQueue**返回的字段一致。
+	// key的取值信息如下：
+	// - labelName，标签名称，标签管理里的标签。
+	// - capacity，容量，取值为**数字字符串**
+	// - maximum-capacity，最大容量，取值为**数字字符串**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelParams []*ItemSeq `json:"LabelParams,omitnil,omitempty" name:"LabelParams"`
+
+	// 设置配置集相关的参数。key的取值与**DescribeYarnQueue**返回的字段一致。
+	// ###### 公平调度器
+	// key的取值信息如下：
+	// - minResources，最大资源量，取值为**YarnResource类型的json串**或**null**
+	// - maxResources，最大资源量，取值为**YarnResource类型的json串**或**null**
+	// - maxChildResources，能够分配给为未声明子队列的最大资源量，取值为**数字字符串**或**null**
+	// - maxRunningApps，最高可同时处于运行的App数量，取值为**数字字符串**或**null**
+	// - weight，权重，取值为**数字字符串**或**null**
+	// - maxAMShare，App Master最大份额，取值为**数字字符串**或**null**，其中数字的范围是[0，1]或-1
+	// 
+	// ```
+	// type YarnResource struct {
+	// 	Vcores *int `json:"vcores"`
+	// 	Memory *int `json:"memory"`
+	// 	Type *string `json:"type"` // 取值为`percent`或`null`当值为`percent`时，表示使用的百分比，否则就是使用的绝对数值。只有maxResources、maxChildResources才可以取值为`percent`
+	// }
+	// ```
+	// 
+	// ###### 容量调度器
+	// key的取值信息如下：
+	// - minimum-user-limit-percent，用户最小容量，取值为**YarnResource类型的json串**或**null**，其中数字的范围是[0，100]
+	// - user-limit-factor，用户资源因子，取值为**YarnResource类型的json串**或**null**
+	// - maximum-applications，最大应用数Max-Applications，取值为**数字字符串**或**null**，其中数字为正整数
+	// - maximum-am-resource-percent，最大AM比例，取值为**数字字符串**或**null**，其中数字的范围是[0，1]或-1
+	// - default-application-priority，资源池优先级，取值为**数字字符串**或**null**，其中数字为正整数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicParams []*Item `json:"BasicParams,omitnil,omitempty" name:"BasicParams"`
+}
+
 type Configuration struct {
 	// 配置文件名，支持SPARK、HIVE、HDFS、YARN的部分配置文件自定义。
 	Classification *string `json:"Classification,omitnil,omitempty" name:"Classification"`
@@ -1545,6 +1656,63 @@ type DependService struct {
 
 	// 共用组件集群
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+// Predefined struct for user
+type DeployYarnConfRequestParams struct {
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DeployYarnConfRequest struct {
+	*tchttp.BaseRequest
+	
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DeployYarnConfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployYarnConfRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployYarnConfRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployYarnConfResponseParams struct {
+	// 启动流程后的流程ID，可以使用[DescribeClusterFlowStatusDetail](https://cloud.tencent.com/document/product/589/107224)接口来获取流程状态
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeployYarnConfResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployYarnConfResponseParams `json:"Response"`
+}
+
+func (r *DeployYarnConfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployYarnConfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3607,6 +3775,171 @@ func (r *DescribeYarnApplicationsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeYarnQueueRequestParams struct {
+	// 集群Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 调度器，可选值：
+	// 
+	// 1. capacity
+	// 2. fair
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+}
+
+type DescribeYarnQueueRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 调度器，可选值：
+	// 
+	// 1. capacity
+	// 2. fair
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+}
+
+func (r *DescribeYarnQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYarnQueueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Scheduler")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeYarnQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeYarnQueueResponseParams struct {
+	// 队列信息。是一个对象转成的json字符串，对应的golang结构体如下所示，比如`QueueWithConfigSetForFairScheduler`的第一个字段`Name`：
+	// 
+	// ```
+	// Name                         string                               `json:"name"` //队列名称
+	// ```
+	// - `Name`：字段名
+	// - `string`：字段类型
+	// - `json:"name"`：表示在序列化和反序列化`json`时，对应的`json key`，下面以`json key`来指代
+	// - `//`：后面的注释内容对应页面上看到的名称
+	// 
+	// 字段类型以`*`开头的表示取值可能为json规范下的null，不同的语言需要使用能表达null的类型来接收，比如java的包装类型；字段类型以`[]`开头的表示是数组类型；`json key`在调用`ModifyYarnQueueV2 `接口也会使用。
+	// 
+	// - 公平调度器
+	// 
+	// ```
+	// type QueueWithConfigSetForFairScheduler struct {
+	// 	Name                         string                               `json:"name"` //队列名称
+	// 	MyId                         string                  `json:"myId"` // 队列id，用于编辑、删除、克隆时使用
+	// 	ParentId                     string                  `json:"parentId"`  // 父队列Id
+	// 	Type                         *string                              `json:"type"` // 队列归属。parent或空，当确定某个队列是父队列，且没有子队列时，才可以设置，通常用来支持放置策略nestedUserQueue
+	// 	AclSubmitApps                *AclForYarnQueue                     `json:"aclSubmitApps"` // 提交访问控制
+	// 	AclAdministerApps            *AclForYarnQueue                     `json:"aclAdministerApps"` // 管理访问控制
+	// 	MinSharePreemptionTimeout    *int                                 `json:"minSharePreemptionTimeout"` // 最小共享优先权超时时间
+	// 	FairSharePreemptionTimeout   *int                                 `json:"fairSharePreemptionTimeout"` // 公平份额抢占超时时间
+	// 	FairSharePreemptionThreshold *float32                             `json:"fairSharePreemptionThreshold"` // 公平份额抢占阈值。取值 （0，1]
+	// 	AllowPreemptionFrom          *bool                                `json:"allowPreemptionFrom"`                                        // 抢占模式
+	// 	SchedulingPolicy             *string                              `json:"schedulingPolicy"`  // 调度策略，取值有drf、fair、fifo
+	// 	IsDefault                    *bool                                `json:"isDefault"` // 是否是root.default队列
+	// 	IsRoot                       *bool                                `json:"isRoot"` // 是否是root队列
+	// 	ConfigSets                   []ConfigSetForFairScheduler          `json:"configSets"` // 配置集设置
+	// 	Children                     []QueueWithConfigSetForFairScheduler `json:"queues"` // 子队列信息。递归
+	// }
+	// 
+	// type AclForYarnQueue struct {
+	// 	User  *string `json:"user"` //用户名
+	// 	Group *string `json:"group"`//组名
+	// }
+	// 
+	// type ConfigSetForFairScheduler struct {
+	// 	Name              string        `json:"name"` // 配置集名称
+	// 	MinResources      *YarnResource `json:"minResources"` // 最小资源量
+	// 	MaxResources      *YarnResource `json:"maxResources"` // 最大资源量
+	// 	MaxChildResources *YarnResource `json:"maxChildResources"` // 能够分配给为未声明子队列的最大资源量
+	// 	MaxRunningApps    *int          `json:"maxRunningApps"` // 最高可同时处于运行的App数量
+	// 	Weight            *float32      `json:"weight"`                   // 权重
+	// 	MaxAMShare        *float32      `json:"maxAMShare"` // App Master最大份额
+	// }
+	// 
+	// type YarnResource struct {
+	// 	Vcores *int `json:"vcores"`
+	// 	Memory *int `json:"memory"`
+	// 	Type *string `json:"type"` // 当值为`percent`时，表示使用的百分比，否则就是使用的绝对数值
+	// }
+	// ```
+	// 
+	// - 容量调度器
+	// 
+	// ```
+	// type QueueForCapacitySchedulerV3 struct {
+	// 	Name                       string                `json:"name"` // 队列名称
+	// 	MyId                       string                `json:"myId"` // 队列id，用于编辑、删除、克隆时使用
+	// 	ParentId                   string                `json:"parentId"` // 父队列Id
+	// 	Configs                    []ConfigForCapacityV3 `json:"configs"` //配置集设置
+	// 	State                      *string         `json:"state"` // 资源池状态
+	// 	DefaultNodeLabelExpression *string               `json:"default-node-label-expression"` // 默认标签表达式
+	// 	AclSubmitApps              *AclForYarnQueue      `json:"acl_submit_applications"` // 提交访问控制
+	// 	AclAdminQueue              *AclForYarnQueue      `json:"acl_administer_queue"` //管理访问控制
+	// 	MaxAllocationMB *int32 `json:"maximum-allocation-mb"` // 分配Container最大内存数量
+	// 	MaxAllocationVcores *int32                         `json:"maximum-allocation-vcores"` // Container最大vCore数量
+	// 	IsDefault           *bool                          `json:"isDefault"`// 是否是root.default队列
+	// 	IsRoot              *bool                          `json:"isRoot"` // 是否是root队列
+	// 	Queues              []*QueueForCapacitySchedulerV3 `json:"queues"`//子队列信息。递归
+	// }
+	// type ConfigForCapacityV3 struct {
+	// 	Name                string          `json:"configName"` // 配置集名称
+	// 	Labels              []CapacityLabel `json:"labels"` // 标签信息
+	// 	MinUserLimitPercent *int32          `json:"minimum-user-limit-percent"` // 用户最小容量
+	// 	UserLimitFactor     *float32        `json:"user-limit-factor" valid:"rangeExcludeLeft(0|)"`  // 用户资源因子
+	// 	MaxApps *int32 `json:"maximum-applications" valid:"rangeExcludeLeft(0|)"` // 最大应用数Max-Applications
+	// 	MaxAmPercent               *float32 `json:"maximum-am-resource-percent"` // 最大AM比例
+	// 	DefaultApplicationPriority *int32   `json:"default-application-priority"` // 资源池优先级
+	// }
+	// type CapacityLabel struct {
+	// 	Name        string   `json:"labelName"`
+	// 	Capacity    *float32 `json:"capacity"`  // 容量
+	// 	MaxCapacity *float32 `json:"maximum-capacity"` //最大容量
+	// }
+	// 
+	// type AclForYarnQueue struct {
+	// 	User  *string `json:"user"` //用户名
+	// 	Group *string `json:"group"`//组名
+	// }
+	// ```
+	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// 版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeYarnQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeYarnQueueResponseParams `json:"Response"`
+}
+
+func (r *DescribeYarnQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYarnQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeYarnScheduleHistoryRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5168,6 +5501,22 @@ type InstanceChargePrepaid struct {
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
+type Item struct {
+	// 健值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ItemSeq struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*Item `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type JobFlowResource struct {
 	// 机器类型描述。
 	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
@@ -5980,6 +6329,80 @@ func (r *ModifyYarnDeployResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyYarnDeployResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyYarnQueueV2RequestParams struct {
+	// 集群Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 调度器类型。可选值：
+	// 
+	// 1. capacity
+	// 2. fair
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+
+	// 资源池数据
+	ConfigModifyInfoList []*ConfigModifyInfoV2 `json:"ConfigModifyInfoList,omitnil,omitempty" name:"ConfigModifyInfoList"`
+}
+
+type ModifyYarnQueueV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 调度器类型。可选值：
+	// 
+	// 1. capacity
+	// 2. fair
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+
+	// 资源池数据
+	ConfigModifyInfoList []*ConfigModifyInfoV2 `json:"ConfigModifyInfoList,omitnil,omitempty" name:"ConfigModifyInfoList"`
+}
+
+func (r *ModifyYarnQueueV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyYarnQueueV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Scheduler")
+	delete(f, "ConfigModifyInfoList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyYarnQueueV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyYarnQueueV2ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyYarnQueueV2Response struct {
+	*tchttp.BaseResponse
+	Response *ModifyYarnQueueV2ResponseParams `json:"Response"`
+}
+
+func (r *ModifyYarnQueueV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyYarnQueueV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7024,6 +7447,75 @@ type RepeatStrategy struct {
 	// 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。必须填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expire *string `json:"Expire,omitnil,omitempty" name:"Expire"`
+}
+
+// Predefined struct for user
+type ResetYarnConfigRequestParams struct {
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要重置的配置别名，可选值：
+	// 
+	// - capacityLabel：重置标签管理的配置
+	// - fair：重置公平调度的配置
+	// - capacity：重置容量调度的配置
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+type ResetYarnConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要重置的配置别名，可选值：
+	// 
+	// - capacityLabel：重置标签管理的配置
+	// - fair：重置公平调度的配置
+	// - capacity：重置容量调度的配置
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+func (r *ResetYarnConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetYarnConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Key")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetYarnConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetYarnConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetYarnConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetYarnConfigResponseParams `json:"Response"`
+}
+
+func (r *ResetYarnConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetYarnConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Resource struct {

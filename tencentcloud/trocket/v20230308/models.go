@@ -2271,6 +2271,9 @@ type DescribeMQTTInstanceListRequestParams struct {
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否包含新控制台集群
+	IncludeNew *bool `json:"IncludeNew,omitnil,omitempty" name:"IncludeNew"`
 }
 
 type DescribeMQTTInstanceListRequest struct {
@@ -2284,6 +2287,9 @@ type DescribeMQTTInstanceListRequest struct {
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否包含新控制台集群
+	IncludeNew *bool `json:"IncludeNew,omitnil,omitempty" name:"IncludeNew"`
 }
 
 func (r *DescribeMQTTInstanceListRequest) ToJsonString() string {
@@ -2301,6 +2307,7 @@ func (r *DescribeMQTTInstanceListRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "IncludeNew")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMQTTInstanceListRequest has unknown keys!", "")
 	}

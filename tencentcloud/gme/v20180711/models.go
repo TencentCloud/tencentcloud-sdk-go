@@ -2120,10 +2120,10 @@ type ScanDetail struct {
 	// 违规关键字
 	KeyWord *string `json:"KeyWord,omitnil,omitempty" name:"KeyWord"`
 
-	// 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒
+	// 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒，Label=moan时有效
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒
+	// 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒，Label=moan时有效
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
