@@ -389,6 +389,9 @@ const (
 	// 未找到关键字配置信息，请检查控件传参，检查文件资源配置，并在修改后重试。
 	MISSINGPARAMETER_KEYWORD = "MissingParameter.KeyWord"
 
+	// 参数缺失，企业名称和统一信用代码不能同时为空。
+	MISSINGPARAMETER_ORGNAMEORUNIFORMSOCIALCREDITCODE = "MissingParameter.OrgNameOrUniformSocialCreditCode"
+
 	// 缺少机构ID参数。
 	MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
 

@@ -554,6 +554,89 @@ func (r *ConfigureChcDeployVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ConvertOperatingSystemsRequestParams struct {
+	// 执行操作系统转换的实例 ID
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 是否最小规模转换
+	MinimalConversion *bool `json:"MinimalConversion,omitnil,omitempty" name:"MinimalConversion"`
+
+	// 是否只预检
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 转换的目标操作系统类型。仅支持 TencentOS。
+	TargetOSType *string `json:"TargetOSType,omitnil,omitempty" name:"TargetOSType"`
+}
+
+type ConvertOperatingSystemsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行操作系统转换的实例 ID
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 是否最小规模转换
+	MinimalConversion *bool `json:"MinimalConversion,omitnil,omitempty" name:"MinimalConversion"`
+
+	// 是否只预检
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 转换的目标操作系统类型。仅支持 TencentOS。
+	TargetOSType *string `json:"TargetOSType,omitnil,omitempty" name:"TargetOSType"`
+}
+
+func (r *ConvertOperatingSystemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConvertOperatingSystemsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "MinimalConversion")
+	delete(f, "DryRun")
+	delete(f, "TargetOSType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConvertOperatingSystemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConvertOperatingSystemsResponseParams struct {
+	// 转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportTargetOSList []*TargetOS `json:"SupportTargetOSList,omitnil,omitempty" name:"SupportTargetOSList"`
+
+	// 操作系统转换的任务 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ConvertOperatingSystemsResponse struct {
+	*tchttp.BaseResponse
+	Response *ConvertOperatingSystemsResponseParams `json:"Response"`
+}
+
+func (r *ConvertOperatingSystemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConvertOperatingSystemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CpuTopology struct {
 	// 决定启用的CPU物理核心数。
 	CoreCount *int64 `json:"CoreCount,omitnil,omitempty" name:"CoreCount"`
@@ -9942,6 +10025,14 @@ type TagSpecification struct {
 	// 标签对列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type TargetOS struct {
+	// 目标操作系统类型
+	TargetOSType *string `json:"TargetOSType,omitnil,omitempty" name:"TargetOSType"`
+
+	// 目标操作系统版本
+	TargetOSVersion *string `json:"TargetOSVersion,omitnil,omitempty" name:"TargetOSVersion"`
 }
 
 // Predefined struct for user

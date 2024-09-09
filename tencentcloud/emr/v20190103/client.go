@@ -1785,6 +1785,65 @@ func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeResourceScheduleDiffDetailRequest() (request *DescribeResourceScheduleDiffDetailRequest) {
+    request = &DescribeResourceScheduleDiffDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeResourceScheduleDiffDetail")
+    
+    
+    return
+}
+
+func NewDescribeResourceScheduleDiffDetailResponse() (response *DescribeResourceScheduleDiffDetailResponse) {
+    response = &DescribeResourceScheduleDiffDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceScheduleDiffDetail
+// YARN资源调度-变更详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeResourceScheduleDiffDetail(request *DescribeResourceScheduleDiffDetailRequest) (response *DescribeResourceScheduleDiffDetailResponse, err error) {
+    return c.DescribeResourceScheduleDiffDetailWithContext(context.Background(), request)
+}
+
+// DescribeResourceScheduleDiffDetail
+// YARN资源调度-变更详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeResourceScheduleDiffDetailWithContext(ctx context.Context, request *DescribeResourceScheduleDiffDetailRequest) (response *DescribeResourceScheduleDiffDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceScheduleDiffDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceScheduleDiffDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceScheduleDiffDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceNodeInfosRequest() (request *DescribeServiceNodeInfosRequest) {
     request = &DescribeServiceNodeInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

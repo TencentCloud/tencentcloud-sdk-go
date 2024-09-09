@@ -22,14 +22,14 @@ import (
 
 // Predefined struct for user
 type AcceptDirectConnectTunnelRequestParams struct {
-	// 物理专线拥有者接受共享专用通道申请
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
 type AcceptDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 物理专线拥有者接受共享专用通道申请
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
@@ -739,8 +739,7 @@ func (r *DeleteDirectConnectTunnelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessPointsRequestParams struct {
-	// 接入点所在的地域。使用DescribeRegions查询
-	// 
+	// 接入点所在的地域。使用DescribeRegions查询。
 	// 您可以通过调用 DescribeRegions接口获取地域ID。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
@@ -754,8 +753,7 @@ type DescribeAccessPointsRequestParams struct {
 type DescribeAccessPointsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 接入点所在的地域。使用DescribeRegions查询
-	// 
+	// 接入点所在的地域。使用DescribeRegions查询。
 	// 您可以通过调用 DescribeRegions接口获取地域ID。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
@@ -792,7 +790,7 @@ type DescribeAccessPointsResponseParams struct {
 	// 接入点信息。
 	AccessPointSet []*AccessPoint `json:"AccessPointSet,omitnil,omitempty" name:"AccessPointSet"`
 
-	// 符合接入点数量。
+	// 接入点总数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -817,14 +815,14 @@ func (r *DescribeAccessPointsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDirectConnectTunnelExtraRequestParams struct {
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
 type DescribeDirectConnectTunnelExtraRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
@@ -849,7 +847,7 @@ func (r *DescribeDirectConnectTunnelExtraRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeDirectConnectTunnelExtraResponseParams struct {
-	// 专用通道扩展信息
+	// 专用通道扩展信息。
 	DirectConnectTunnelExtra *DirectConnectTunnelExtra `json:"DirectConnectTunnelExtra,omitnil,omitempty" name:"DirectConnectTunnelExtra"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2369,14 +2367,14 @@ type NQAInfo struct {
 
 // Predefined struct for user
 type RejectDirectConnectTunnelRequestParams struct {
-	// 无
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
 type RejectDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 

@@ -65,7 +65,7 @@ func NewAcceptDirectConnectTunnelResponse() (response *AcceptDirectConnectTunnel
 }
 
 // AcceptDirectConnectTunnel
-// 接受专用通道申请
+// 接受专用通道申请。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -79,7 +79,7 @@ func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelReq
 }
 
 // AcceptDirectConnectTunnel
-// 接受专用通道申请
+// 接受专用通道申请。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -447,7 +447,7 @@ func NewDescribeAccessPointsResponse() (response *DescribeAccessPointsResponse) 
 }
 
 // DescribeAccessPoints
-// 查询物理专线接入点
+// 查询物理专线接入点。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -463,7 +463,7 @@ func (c *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (res
 }
 
 // DescribeAccessPoints
-// 查询物理专线接入点
+// 查询物理专线接入点。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -510,7 +510,7 @@ func NewDescribeDirectConnectTunnelExtraResponse() (response *DescribeDirectConn
 }
 
 // DescribeDirectConnectTunnelExtra
-// 本接口（DescribeDirectConnectTunnelExtra）用于查询专用通道扩展信息
+// 查询专用通道扩展信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -521,7 +521,7 @@ func (c *Client) DescribeDirectConnectTunnelExtra(request *DescribeDirectConnect
 }
 
 // DescribeDirectConnectTunnelExtra
-// 本接口（DescribeDirectConnectTunnelExtra）用于查询专用通道扩展信息
+// 查询专用通道扩展信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1210,7 +1210,7 @@ func NewRejectDirectConnectTunnelResponse() (response *RejectDirectConnectTunnel
 }
 
 // RejectDirectConnectTunnel
-// 拒绝专用通道申请
+// 拒绝专用通道申请。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1223,7 +1223,7 @@ func (c *Client) RejectDirectConnectTunnel(request *RejectDirectConnectTunnelReq
 }
 
 // RejectDirectConnectTunnel
-// 拒绝专用通道申请
+// 拒绝专用通道申请。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

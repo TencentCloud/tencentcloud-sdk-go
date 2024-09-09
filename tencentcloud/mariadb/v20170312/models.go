@@ -501,7 +501,7 @@ type CreateAccountRequestParams struct {
 	// 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否创建为只读账号，0：否:； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
+	// 是否创建为只读账号，0：否； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
@@ -515,6 +515,9 @@ type CreateAccountRequestParams struct {
 
 	// 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
 	MaxUserConnections *uint64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 type CreateAccountRequest struct {
@@ -532,7 +535,7 @@ type CreateAccountRequest struct {
 	// 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否创建为只读账号，0：否:； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
+	// 是否创建为只读账号，0：否； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
@@ -546,6 +549,9 @@ type CreateAccountRequest struct {
 
 	// 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
 	MaxUserConnections *uint64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 func (r *CreateAccountRequest) ToJsonString() string {
@@ -569,6 +575,7 @@ func (r *CreateAccountRequest) FromJsonString(s string) error {
 	delete(f, "DelayThresh")
 	delete(f, "SlaveConst")
 	delete(f, "MaxUserConnections")
+	delete(f, "EncryptedPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountRequest has unknown keys!", "")
 	}
@@ -6214,6 +6221,9 @@ type ResetAccountPasswordRequestParams struct {
 
 	// 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 type ResetAccountPasswordRequest struct {
@@ -6230,6 +6240,9 @@ type ResetAccountPasswordRequest struct {
 
 	// 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 func (r *ResetAccountPasswordRequest) ToJsonString() string {
@@ -6248,6 +6261,7 @@ func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "Host")
 	delete(f, "Password")
+	delete(f, "EncryptedPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetAccountPasswordRequest has unknown keys!", "")
 	}

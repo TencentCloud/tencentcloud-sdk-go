@@ -8591,6 +8591,61 @@ func (c *Client) DescribeIntegrationRolesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeOrganizationAuthStatusRequest() (request *DescribeOrganizationAuthStatusRequest) {
+    request = &DescribeOrganizationAuthStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeOrganizationAuthStatus")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationAuthStatusResponse() (response *DescribeOrganizationAuthStatusResponse) {
+    response = &DescribeOrganizationAuthStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOrganizationAuthStatus
+// 查询企业认证状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_ORGNAMEORUNIFORMSOCIALCREDITCODE = "MissingParameter.OrgNameOrUniformSocialCreditCode"
+//  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+func (c *Client) DescribeOrganizationAuthStatus(request *DescribeOrganizationAuthStatusRequest) (response *DescribeOrganizationAuthStatusResponse, err error) {
+    return c.DescribeOrganizationAuthStatusWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationAuthStatus
+// 查询企业认证状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_ORGNAMEORUNIFORMSOCIALCREDITCODE = "MissingParameter.OrgNameOrUniformSocialCreditCode"
+//  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+func (c *Client) DescribeOrganizationAuthStatusWithContext(ctx context.Context, request *DescribeOrganizationAuthStatusRequest) (response *DescribeOrganizationAuthStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationAuthStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationAuthStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationAuthStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationGroupOrganizationsRequest() (request *DescribeOrganizationGroupOrganizationsRequest) {
     request = &DescribeOrganizationGroupOrganizationsRequest{
         BaseRequest: &tchttp.BaseRequest{},

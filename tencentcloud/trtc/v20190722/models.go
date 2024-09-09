@@ -4079,6 +4079,10 @@ type STTConfig struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlternativeLanguage []*string `json:"AlternativeLanguage,omitnil,omitempty" name:"AlternativeLanguage"`
+
+	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VadSilenceTime *uint64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
 }
 
 type ScaleInfomation struct {

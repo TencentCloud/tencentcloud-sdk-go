@@ -191,7 +191,7 @@ type AddSmsTemplateRequestParams struct {
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
 	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
-	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
+	// 注：为进一步提升短信发送质量、提高短信模板审核通过率，从2024年5月16日起，腾讯云短信模板类型优化为“验证码短信”、“通知短信”、“营销短信”，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。新开通短信服务的客户需严格参考新的短信类型申请短信模板。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -213,7 +213,7 @@ type AddSmsTemplateRequest struct {
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
 	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
-	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
+	// 注：为进一步提升短信发送质量、提高短信模板审核通过率，从2024年5月16日起，腾讯云短信模板类型优化为“验证码短信”、“通知短信”、“营销短信”，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。新开通短信服务的客户需严格参考新的短信类型申请短信模板。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -891,7 +891,7 @@ type ModifySmsTemplateRequestParams struct {
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
 	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
-	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
+	// 注：为进一步提升短信发送质量、提高短信模板审核通过率，从2024年5月16日起，腾讯云短信模板类型优化为“验证码短信”、“通知短信”、“营销短信”，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。新开通短信服务的客户需严格参考新的短信类型申请短信模板。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
@@ -916,7 +916,7 @@ type ModifySmsTemplateRequest struct {
 	TemplateContent *string `json:"TemplateContent,omitnil,omitempty" name:"TemplateContent"`
 
 	// 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
-	// 注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
+	// 注：为进一步提升短信发送质量、提高短信模板审核通过率，从2024年5月16日起，腾讯云短信模板类型优化为“验证码短信”、“通知短信”、“营销短信”，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。新开通短信服务的客户需严格参考新的短信类型申请短信模板。
 	SmsType *uint64 `json:"SmsType,omitnil,omitempty" name:"SmsType"`
 
 	// 是否国际/港澳台短信：

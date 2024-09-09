@@ -4990,6 +4990,60 @@ func (r *DeleteSparkAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteTableRequestParams struct {
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+}
+
+type DeleteTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+}
+
+func (r *DeleteTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableBaseInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTableResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTableResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTableResponseParams `json:"Response"`
+}
+
+func (r *DeleteTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteThirdPartyAccessUserRequestParams struct {
 
 }
@@ -12274,6 +12328,70 @@ type PythonSparkImage struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+// Predefined struct for user
+type QueryInternalTableWarehouseRequestParams struct {
+	// 库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+type QueryInternalTableWarehouseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+func (r *QueryInternalTableWarehouseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryInternalTableWarehouseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "TableName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryInternalTableWarehouseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryInternalTableWarehouseResponseParams struct {
+	// warehouse路径
+	WarehousePath *string `json:"WarehousePath,omitnil,omitempty" name:"WarehousePath"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryInternalTableWarehouseResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryInternalTableWarehouseResponseParams `json:"Response"`
+}
+
+func (r *QueryInternalTableWarehouseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryInternalTableWarehouseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

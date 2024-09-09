@@ -3279,6 +3279,61 @@ func (c *Client) DeleteSparkAppWithContext(ctx context.Context, request *DeleteS
     return
 }
 
+func NewDeleteTableRequest() (request *DeleteTableRequest) {
+    request = &DeleteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteTable")
+    
+    
+    return
+}
+
+func NewDeleteTableResponse() (response *DeleteTableResponse) {
+    response = &DeleteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTable
+// 删除表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+func (c *Client) DeleteTable(request *DeleteTableRequest) (response *DeleteTableResponse, err error) {
+    return c.DeleteTableWithContext(context.Background(), request)
+}
+
+// DeleteTable
+// 删除表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+func (c *Client) DeleteTableWithContext(ctx context.Context, request *DeleteTableRequest) (response *DeleteTableResponse, err error) {
+    if request == nil {
+        request = NewDeleteTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteThirdPartyAccessUserRequest() (request *DeleteThirdPartyAccessUserRequest) {
     request = &DeleteThirdPartyAccessUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7950,6 +8005,63 @@ func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryInternalTableWarehouseRequest() (request *QueryInternalTableWarehouseRequest) {
+    request = &QueryInternalTableWarehouseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "QueryInternalTableWarehouse")
+    
+    
+    return
+}
+
+func NewQueryInternalTableWarehouseResponse() (response *QueryInternalTableWarehouseResponse) {
+    response = &QueryInternalTableWarehouseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryInternalTableWarehouse
+// 本接口（QueryInternalTableWarehouse）用于获取原生表warehouse路径
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) QueryInternalTableWarehouse(request *QueryInternalTableWarehouseRequest) (response *QueryInternalTableWarehouseResponse, err error) {
+    return c.QueryInternalTableWarehouseWithContext(context.Background(), request)
+}
+
+// QueryInternalTableWarehouse
+// 本接口（QueryInternalTableWarehouse）用于获取原生表warehouse路径
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) QueryInternalTableWarehouseWithContext(ctx context.Context, request *QueryInternalTableWarehouseRequest) (response *QueryInternalTableWarehouseResponse, err error) {
+    if request == nil {
+        request = NewQueryInternalTableWarehouseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryInternalTableWarehouse require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryInternalTableWarehouseResponse()
     err = c.Send(request, response)
     return
 }

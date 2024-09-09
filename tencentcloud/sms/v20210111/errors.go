@@ -161,6 +161,9 @@ const (
 	// SignPurpose 字段校验错误，请参照 API 接口说明中对该字段的说明，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	INVALIDPARAMETERVALUE_INVALIDSIGNPURPOSE = "InvalidParameterValue.InvalidSignPurpose"
 
+	// SmsType 字段校验错误，请参照 API 接口说明中对该字段的描述，更多疑问可咨询 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
+	INVALIDPARAMETERVALUE_INVALIDSMSTYPE = "InvalidParameterValue.InvalidSmsType"
+
 	// 无效的拉取起始/截止时间，具体原因可能是请求的 SendDateTime 大于 EndDateTime。
 	INVALIDPARAMETERVALUE_INVALIDSTARTTIME = "InvalidParameterValue.InvalidStartTime"
 

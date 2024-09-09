@@ -478,6 +478,79 @@ func (c *Client) ConfigureChcDeployVpcWithContext(ctx context.Context, request *
     return
 }
 
+func NewConvertOperatingSystemsRequest() (request *ConvertOperatingSystemsRequest) {
+    request = &ConvertOperatingSystemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "ConvertOperatingSystems")
+    
+    
+    return
+}
+
+func NewConvertOperatingSystemsResponse() (response *ConvertOperatingSystemsResponse) {
+    response = &ConvertOperatingSystemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ConvertOperatingSystems
+// 本接口(ConvertOperatingSystem)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = "FailedOperation.GetInstanceTATAgentStatusFailed"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER_AUTOSNAPSHOTNOTSUPPORTED = "InvalidParameter.AutoSnapshotNotSupported"
+//  INVALIDPARAMETER_INVALIDTARGETOSTYPE = "InvalidParameter.InvalidTargetOSType"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  UNSUPPORTEDOPERATION_INSTANCEOSCONVERTOSNOTSUPPORT = "UnsupportedOperation.InstanceOsConvertOsNotSupport"
+//  UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = "UnsupportedOperation.InstanceOsWindows"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTRUNNING = "UnsupportedOperation.InstanceStateNotRunning"
+//  UNSUPPORTEDOPERATION_MARKETIMAGECONVERTOSUNSUPPORTED = "UnsupportedOperation.MarketImageConvertOSUnsupported"
+//  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
+//  UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = "UnsupportedOperation.TatAgentNotOnline"
+//  UNSUPPORTEDOPERATION_USERCONVERTOSNOTSUPPORT = "UnsupportedOperation.UserConvertOsNotSupport"
+func (c *Client) ConvertOperatingSystems(request *ConvertOperatingSystemsRequest) (response *ConvertOperatingSystemsResponse, err error) {
+    return c.ConvertOperatingSystemsWithContext(context.Background(), request)
+}
+
+// ConvertOperatingSystems
+// 本接口(ConvertOperatingSystem)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = "FailedOperation.GetInstanceTATAgentStatusFailed"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER_AUTOSNAPSHOTNOTSUPPORTED = "InvalidParameter.AutoSnapshotNotSupported"
+//  INVALIDPARAMETER_INVALIDTARGETOSTYPE = "InvalidParameter.InvalidTargetOSType"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  UNSUPPORTEDOPERATION_INSTANCEOSCONVERTOSNOTSUPPORT = "UnsupportedOperation.InstanceOsConvertOsNotSupport"
+//  UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = "UnsupportedOperation.InstanceOsWindows"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTRUNNING = "UnsupportedOperation.InstanceStateNotRunning"
+//  UNSUPPORTEDOPERATION_MARKETIMAGECONVERTOSUNSUPPORTED = "UnsupportedOperation.MarketImageConvertOSUnsupported"
+//  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
+//  UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = "UnsupportedOperation.TatAgentNotOnline"
+//  UNSUPPORTEDOPERATION_USERCONVERTOSNOTSUPPORT = "UnsupportedOperation.UserConvertOsNotSupport"
+func (c *Client) ConvertOperatingSystemsWithContext(ctx context.Context, request *ConvertOperatingSystemsRequest) (response *ConvertOperatingSystemsResponse, err error) {
+    if request == nil {
+        request = NewConvertOperatingSystemsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ConvertOperatingSystems require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewConvertOperatingSystemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDisasterRecoverGroupRequest() (request *CreateDisasterRecoverGroupRequest) {
     request = &CreateDisasterRecoverGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

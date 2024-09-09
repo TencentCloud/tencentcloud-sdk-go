@@ -3256,6 +3256,71 @@ func (r *DescribeJobFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResourceScheduleDiffDetailRequestParams struct {
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询的变更明细对应的调度器，可选值为fair、capacity。如果不传或者传空会使用最新的调度器
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+}
+
+type DescribeResourceScheduleDiffDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询的变更明细对应的调度器，可选值为fair、capacity。如果不传或者传空会使用最新的调度器
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+}
+
+func (r *DescribeResourceScheduleDiffDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceScheduleDiffDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Scheduler")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceScheduleDiffDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceScheduleDiffDetailResponseParams struct {
+	// 变化项的明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*DiffDetail `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceScheduleDiffDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceScheduleDiffDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceScheduleDiffDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceScheduleDiffDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceScheduleRequestParams struct {
 	// emr集群的英文id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4049,6 +4114,84 @@ func (r *DescribeYarnScheduleHistoryResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeYarnScheduleHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiffDetail struct {
+	// tab页的头
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 变化项的个数
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 要渲染的明细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*DiffDetailItem `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 要渲染的头部信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Header []*DiffHeader `json:"Header,omitnil,omitempty" name:"Header"`
+}
+
+type DiffDetailItem struct {
+	// 属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attribute *string `json:"Attribute,omitnil,omitempty" name:"Attribute"`
+
+	// 当前生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InEffect *string `json:"InEffect,omitnil,omitempty" name:"InEffect"`
+
+	// 待生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PendingEffectiveness *string `json:"PendingEffectiveness,omitnil,omitempty" name:"PendingEffectiveness"`
+
+	// 操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// 配置集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigSet *string `json:"ConfigSet,omitnil,omitempty" name:"ConfigSet"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
+
+	// 当前所在位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InEffectIndex *string `json:"InEffectIndex,omitnil,omitempty" name:"InEffectIndex"`
+
+	// 待生效的位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PendingEffectIndex *string `json:"PendingEffectIndex,omitnil,omitempty" name:"PendingEffectIndex"`
+
+	// 计划模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 放置规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type DiffHeader struct {
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// ID，前端会使用
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DiskGroup struct {

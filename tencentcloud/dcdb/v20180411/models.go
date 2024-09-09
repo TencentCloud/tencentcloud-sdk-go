@@ -546,6 +546,9 @@ type CreateAccountRequestParams struct {
 
 	// 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
 	MaxUserConnections *uint64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 type CreateAccountRequest struct {
@@ -578,6 +581,9 @@ type CreateAccountRequest struct {
 
 	// 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
 	MaxUserConnections *uint64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 func (r *CreateAccountRequest) ToJsonString() string {
@@ -601,6 +607,7 @@ func (r *CreateAccountRequest) FromJsonString(s string) error {
 	delete(f, "DelayThresh")
 	delete(f, "SlaveConst")
 	delete(f, "MaxUserConnections")
+	delete(f, "EncryptedPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountRequest has unknown keys!", "")
 	}
@@ -6513,6 +6520,9 @@ type ResetAccountPasswordRequestParams struct {
 
 	// 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码，加密算法是PKCS1v15
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 type ResetAccountPasswordRequest struct {
@@ -6529,6 +6539,9 @@ type ResetAccountPasswordRequest struct {
 
 	// 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 使用GetPublicKey返回的RSA2048公钥加密后的密码，加密算法是PKCS1v15
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
 }
 
 func (r *ResetAccountPasswordRequest) ToJsonString() string {
@@ -6547,6 +6560,7 @@ func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "Host")
 	delete(f, "Password")
+	delete(f, "EncryptedPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetAccountPasswordRequest has unknown keys!", "")
 	}

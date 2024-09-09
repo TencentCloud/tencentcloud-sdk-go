@@ -317,6 +317,30 @@ type AuthInfoDetail struct {
 	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil,omitempty" name:"AuthOrganizationTotal"`
 }
 
+type AuthRecord struct {
+	// 经办人姓名。
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 经办人手机号。
+	OperatorMobile *string `json:"OperatorMobile,omitnil,omitempty" name:"OperatorMobile"`
+
+	// 认证授权方式：
+	// <ul><li> **0**：未选择授权方式（默认值）</li>
+	// <li> **1**：上传授权书</li>
+	// <li> **2**：法人授权</li>
+	// <li> **3**：法人认证</li></ul>
+	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// 企业认证授权书审核状态：
+	// <ul><li> **0**：未提交授权书（默认值）</li>
+	// <li> **1**：审核通过</li>
+	// <li> **2**：审核驳回</li>
+	// <li> **3**：审核中</li>
+	// <li> **4**：AI识别中</li>
+	// <li> **5**：客户确认AI信息</li></ul>
+	AuditStatus *int64 `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
+}
+
 type AuthorizedUser struct {
 	// 电子签系统中的用户id
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -9651,6 +9675,97 @@ func (r *DescribeIntegrationRolesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIntegrationRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationAuthStatusRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构名称。 请确认该名称与企业营业执照中注册的名称一致。 如果名称中包含英文括号()，请使用中文括号（）代替。
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 企业统一社会信用代码
+	// 注意：OrganizationName和UniformSocialCreditCode不能同时为空
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
+
+	// 法人姓名
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+}
+
+type DescribeOrganizationAuthStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构名称。 请确认该名称与企业营业执照中注册的名称一致。 如果名称中包含英文括号()，请使用中文括号（）代替。
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 企业统一社会信用代码
+	// 注意：OrganizationName和UniformSocialCreditCode不能同时为空
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
+
+	// 法人姓名
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+}
+
+func (r *DescribeOrganizationAuthStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationAuthStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "OrganizationName")
+	delete(f, "UniformSocialCreditCode")
+	delete(f, "LegalName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationAuthStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationAuthStatusResponseParams struct {
+	// 企业是否已认证
+	IsVerified *bool `json:"IsVerified,omitnil,omitempty" name:"IsVerified"`
+
+	// 企业认证状态 0-未认证 1-认证中 2-已认证
+	AuthStatus *int64 `json:"AuthStatus,omitnil,omitempty" name:"AuthStatus"`
+
+	// 企业认证信息
+	AuthRecords []*AuthRecord `json:"AuthRecords,omitnil,omitempty" name:"AuthRecords"`
+
+	// 企业在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多"->"企业设置"->"企业中心"- 中查看企业电子签账号。
+	// p.s. 只有当前企业认证成功的时候返回
+	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationAuthStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationAuthStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationAuthStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationAuthStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2025,9 +2025,6 @@ type CreateCloudNativeAPIGatewayServiceRequestParams struct {
 	// - udp
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 请求路径
-	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
-
 	// 超时时间，单位ms
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
@@ -2044,6 +2041,9 @@ type CreateCloudNativeAPIGatewayServiceRequestParams struct {
 
 	// 服务配置信息
 	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
+
+	// 请求路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 type CreateCloudNativeAPIGatewayServiceRequest struct {
@@ -2062,9 +2062,6 @@ type CreateCloudNativeAPIGatewayServiceRequest struct {
 	// - udp
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 请求路径
-	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
-
 	// 超时时间，单位ms
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
@@ -2081,6 +2078,9 @@ type CreateCloudNativeAPIGatewayServiceRequest struct {
 
 	// 服务配置信息
 	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
+
+	// 请求路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 func (r *CreateCloudNativeAPIGatewayServiceRequest) ToJsonString() string {
@@ -2098,11 +2098,11 @@ func (r *CreateCloudNativeAPIGatewayServiceRequest) FromJsonString(s string) err
 	delete(f, "GatewayId")
 	delete(f, "Name")
 	delete(f, "Protocol")
-	delete(f, "Path")
 	delete(f, "Timeout")
 	delete(f, "Retries")
 	delete(f, "UpstreamType")
 	delete(f, "UpstreamInfo")
+	delete(f, "Path")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayServiceRequest has unknown keys!", "")
 	}
@@ -10038,9 +10038,6 @@ type ModifyCloudNativeAPIGatewayServiceRequestParams struct {
 	// - udp
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 请求路径
-	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
-
 	// 超时时间，单位ms
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
@@ -10060,6 +10057,9 @@ type ModifyCloudNativeAPIGatewayServiceRequestParams struct {
 
 	// 服务ID
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 请求路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 type ModifyCloudNativeAPIGatewayServiceRequest struct {
@@ -10078,9 +10078,6 @@ type ModifyCloudNativeAPIGatewayServiceRequest struct {
 	// - udp
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 请求路径
-	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
-
 	// 超时时间，单位ms
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
@@ -10100,6 +10097,9 @@ type ModifyCloudNativeAPIGatewayServiceRequest struct {
 
 	// 服务ID
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 请求路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayServiceRequest) ToJsonString() string {
@@ -10117,12 +10117,12 @@ func (r *ModifyCloudNativeAPIGatewayServiceRequest) FromJsonString(s string) err
 	delete(f, "GatewayId")
 	delete(f, "Name")
 	delete(f, "Protocol")
-	delete(f, "Path")
 	delete(f, "Timeout")
 	delete(f, "Retries")
 	delete(f, "UpstreamType")
 	delete(f, "UpstreamInfo")
 	delete(f, "ID")
+	delete(f, "Path")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayServiceRequest has unknown keys!", "")
 	}

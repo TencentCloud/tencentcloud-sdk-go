@@ -2855,6 +2855,9 @@ type DescribeServerlessMetricsRequestParams struct {
 
 	// 时间长度类型DurationType(1: 3小时, 2: 昨天1天,3: 今日0点到现在)
 	DurationType *int64 `json:"DurationType,omitnil,omitempty" name:"DurationType"`
+
+	// 索引数据
+	BatchIndexList []*string `json:"BatchIndexList,omitnil,omitempty" name:"BatchIndexList"`
 }
 
 type DescribeServerlessMetricsRequest struct {
@@ -2871,6 +2874,9 @@ type DescribeServerlessMetricsRequest struct {
 
 	// 时间长度类型DurationType(1: 3小时, 2: 昨天1天,3: 今日0点到现在)
 	DurationType *int64 `json:"DurationType,omitnil,omitempty" name:"DurationType"`
+
+	// 索引数据
+	BatchIndexList []*string `json:"BatchIndexList,omitnil,omitempty" name:"BatchIndexList"`
 }
 
 func (r *DescribeServerlessMetricsRequest) ToJsonString() string {
@@ -2889,6 +2895,7 @@ func (r *DescribeServerlessMetricsRequest) FromJsonString(s string) error {
 	delete(f, "IndexId")
 	delete(f, "MetricType")
 	delete(f, "DurationType")
+	delete(f, "BatchIndexList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessMetricsRequest has unknown keys!", "")
 	}
@@ -2911,6 +2918,10 @@ type DescribeServerlessMetricsResponseParams struct {
 
 	// 文档数量，单位个数
 	DocCount *int64 `json:"DocCount,omitnil,omitempty" name:"DocCount"`
+
+	// 指标数据数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricMapList []*MetricMapByIndexId `json:"MetricMapList,omitnil,omitempty" name:"MetricMapList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4733,12 +4744,37 @@ type Metric struct {
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type MetricAllData struct {
+	// 索引流量
+	IndexTraffic *float64 `json:"IndexTraffic,omitnil,omitempty" name:"IndexTraffic"`
+
+	// 存储大小
+	Storage *float64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 读请求次数
+	ReadReqTimes *int64 `json:"ReadReqTimes,omitnil,omitempty" name:"ReadReqTimes"`
+
+	// 写请求次数
+	WriteReqTimes *int64 `json:"WriteReqTimes,omitnil,omitempty" name:"WriteReqTimes"`
+
+	// 文档数量
+	DocCount *int64 `json:"DocCount,omitnil,omitempty" name:"DocCount"`
+}
+
 type MetricDetail struct {
 	// 指标详情名
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 指标详情值
 	Metrics []*Metric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+}
+
+type MetricMapByIndexId struct {
+	// 实例id
+	IndexId *string `json:"IndexId,omitnil,omitempty" name:"IndexId"`
+
+	// 指标数据
+	MetricAllData *MetricAllData `json:"MetricAllData,omitnil,omitempty" name:"MetricAllData"`
 }
 
 // Predefined struct for user
