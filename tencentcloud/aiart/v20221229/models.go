@@ -354,6 +354,16 @@ type ImageToImageRequestParams struct {
 
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+
+	// 画质增强开关，默认关闭。
+	// 1：开启
+	// 0：关闭
+	// 开启后将增强图像的画质清晰度，生成耗时有所增加。
+	EnhanceImage *int64 `json:"EnhanceImage,omitnil,omitempty" name:"EnhanceImage"`
+
+	// 细节优化的面部数量上限，支持0 ~ 6，默认为0。
+	// 若上传大于0的值，将以此为上限对每张图片中面积占比较小的面部进行细节修复，生成耗时根据实际优化的面部个数有所增加。
+	RestoreFace *int64 `json:"RestoreFace,omitnil,omitempty" name:"RestoreFace"`
 }
 
 type ImageToImageRequest struct {
@@ -409,6 +419,16 @@ type ImageToImageRequest struct {
 
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+
+	// 画质增强开关，默认关闭。
+	// 1：开启
+	// 0：关闭
+	// 开启后将增强图像的画质清晰度，生成耗时有所增加。
+	EnhanceImage *int64 `json:"EnhanceImage,omitnil,omitempty" name:"EnhanceImage"`
+
+	// 细节优化的面部数量上限，支持0 ~ 6，默认为0。
+	// 若上传大于0的值，将以此为上限对每张图片中面积占比较小的面部进行细节修复，生成耗时根据实际优化的面部个数有所增加。
+	RestoreFace *int64 `json:"RestoreFace,omitnil,omitempty" name:"RestoreFace"`
 }
 
 func (r *ImageToImageRequest) ToJsonString() string {
@@ -433,6 +453,8 @@ func (r *ImageToImageRequest) FromJsonString(s string) error {
 	delete(f, "LogoParam")
 	delete(f, "Strength")
 	delete(f, "RspImgType")
+	delete(f, "EnhanceImage")
+	delete(f, "RestoreFace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageToImageRequest has unknown keys!", "")
 	}
@@ -852,6 +874,122 @@ type ResultConfig struct {
 	// 
 	// 图像风格化（图生图）支持生成以下分辨率的图片：origin（与输入图分辨率一致，长边最高为2000，超出将做等比例缩小）、768:768（1:1）、768:1024（3:4）、1024:768（4:3），不传默认使用origin，如果指定生成的长宽比与输入图长宽比差异过大可能导致图片内容被裁剪。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+// Predefined struct for user
+type SketchToImageRequestParams struct {
+	// 用于线稿生图的文本描述。
+	// 最多支持200个 utf-8 字符。
+	// 建议格式：线稿中的主体对象+画面场景+配色/材质/元素/风格等
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 线稿图 Base64 数据。
+	// Base64 和 Url 必须提供一个，如果都提供以Url 为准。
+	// 图片限制：黑白线稿图片，单边分辨率小于5000且大于512（分辨率过小会导致效果受损），转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 线稿图 Url。
+	// Base64 和 Url 必须提供一个，如果都提供以Url 为准。
+	// 图片限制：黑白线稿图片，单边分辨率小于5000且大于512（分辨率过小会导致效果受损），转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+type SketchToImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用于线稿生图的文本描述。
+	// 最多支持200个 utf-8 字符。
+	// 建议格式：线稿中的主体对象+画面场景+配色/材质/元素/风格等
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 线稿图 Base64 数据。
+	// Base64 和 Url 必须提供一个，如果都提供以Url 为准。
+	// 图片限制：黑白线稿图片，单边分辨率小于5000且大于512（分辨率过小会导致效果受损），转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 线稿图 Url。
+	// Base64 和 Url 必须提供一个，如果都提供以Url 为准。
+	// 图片限制：黑白线稿图片，单边分辨率小于5000且大于512（分辨率过小会导致效果受损），转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+}
+
+func (r *SketchToImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SketchToImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "InputImage")
+	delete(f, "InputUrl")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SketchToImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SketchToImageResponseParams struct {
+	// 根据入参 RspImgType 填入不同，返回不同的内容。
+	// 如果传入 base64 则返回生成图 Base64 编码。
+	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SketchToImageResponse struct {
+	*tchttp.BaseResponse
+	Response *SketchToImageResponseParams `json:"Response"`
+}
+
+func (r *SketchToImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SketchToImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

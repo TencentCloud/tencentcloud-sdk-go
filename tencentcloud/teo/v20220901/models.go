@@ -4315,9 +4315,6 @@ type DescribeAccelerationDomainsRequestParams struct {
 	// <li>backup-origin： 按照备用源站地址进行过滤；</li>
 	// <li>domain-cname：按照 CNAME 进行过滤；</li>
 	// <li>share-cname：按照共享 CNAME 进行过滤；</li>
-	// <li>vodeo-sub-app-id：按照【 vodeo 子应用 ID】进行过滤；</li>
-	// <li>vodeo-distribution-range：按照【 vodeo 分发范围】进行过滤；</li>
-	// <li>vodeo-bucket-id：按照【vodeo 存储桶 ID】进行过滤；</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 可根据该字段对返回结果进行排序，取值有：
@@ -4355,9 +4352,6 @@ type DescribeAccelerationDomainsRequest struct {
 	// <li>backup-origin： 按照备用源站地址进行过滤；</li>
 	// <li>domain-cname：按照 CNAME 进行过滤；</li>
 	// <li>share-cname：按照共享 CNAME 进行过滤；</li>
-	// <li>vodeo-sub-app-id：按照【 vodeo 子应用 ID】进行过滤；</li>
-	// <li>vodeo-distribution-range：按照【 vodeo 分发范围】进行过滤；</li>
-	// <li>vodeo-bucket-id：按照【vodeo 存储桶 ID】进行过滤；</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 可根据该字段对返回结果进行排序，取值有：
@@ -7096,8 +7090,8 @@ type DescribeTimingL4DataRequestParams struct {
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 过滤条件，详细的过滤条件Key值如下：
-	// <li>ruleId<br>   按照【<strong>转发规则ID</strong>】进行过滤。</li>
-	// <li>proxyId<br>   按照【<strong>四层代理实例ID</strong>】进行过滤。</li>
+	// <li>ruleId：按照转发规则 ID 进行过滤。</li>
+	// <li>proxyId：按照四层代理实例 ID 进行过滤。</li>
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 数据归属地区，取值有：
@@ -7137,8 +7131,8 @@ type DescribeTimingL4DataRequest struct {
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 过滤条件，详细的过滤条件Key值如下：
-	// <li>ruleId<br>   按照【<strong>转发规则ID</strong>】进行过滤。</li>
-	// <li>proxyId<br>   按照【<strong>四层代理实例ID</strong>】进行过滤。</li>
+	// <li>ruleId：按照转发规则 ID 进行过滤。</li>
+	// <li>proxyId：按照四层代理实例 ID 进行过滤。</li>
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 数据归属地区，取值有：
@@ -11536,7 +11530,6 @@ type OriginDetail struct {
 	// <li>COS：腾讯云 COS 对象存储源站；</li>
 	// <li>AWS_S3：AWS S3 对象存储源站；</li>
 	// <li>ORIGIN_GROUP：源站组类型源站；</li>
-	// <li>VODEO：云点播-混合云版；</li>
 	// <li>VOD：云点播；</li>
 	// <li>SPACE：源站卸载，当前仅白名单开放；</li>
 	// <li>LB：负载均衡，当前仅白名单开放。</li>
@@ -11548,7 +11541,6 @@ type OriginDetail struct {
 	// <li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
 	// <li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
 	// <li>当 OriginType = VOD 时，该参数请填写云点播应用 ID ；</li>
-	// <li>当 OriginType = VODEO 时，如果 VodeoDistributionRange = ALL，则该参数为 "all-buckets-in-vodeo-application"；如果 VodeoDistributionRange = Bucket，则该参数为对应存储桶域名。</li>
 	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
 
 	// 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 且配置了备源站组时会生效。
@@ -11571,12 +11563,18 @@ type OriginDetail struct {
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitnil,omitempty" name:"PrivateParameters"`
 
 	// MO 子应用 ID
+	//
+	// Deprecated: VodeoSubAppId is deprecated.
 	VodeoSubAppId *int64 `json:"VodeoSubAppId,omitnil,omitempty" name:"VodeoSubAppId"`
 
 	// MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>
+	//
+	// Deprecated: VodeoDistributionRange is deprecated.
 	VodeoDistributionRange *string `json:"VodeoDistributionRange,omitnil,omitempty" name:"VodeoDistributionRange"`
 
 	// MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填
+	//
+	// Deprecated: VodeoBucketId is deprecated.
 	VodeoBucketId *string `json:"VodeoBucketId,omitnil,omitempty" name:"VodeoBucketId"`
 }
 
@@ -11658,14 +11656,20 @@ type OriginInfo struct {
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitnil,omitempty" name:"PrivateParameters"`
 
 	// VODEO 子应用 ID。该参数当 OriginType = VODEO 时必填。
+	//
+	// Deprecated: VodeoSubAppId is deprecated.
 	VodeoSubAppId *int64 `json:"VodeoSubAppId,omitnil,omitempty" name:"VodeoSubAppId"`
 
 	// VODEO 分发范围，该参数当 OriginType = VODEO 时必填。取值有： 
 	// <li>All：当前应用下所有存储桶；</li> 
 	// <li>Bucket：指定的某一个存储桶。</li>
+	//
+	// Deprecated: VodeoDistributionRange is deprecated.
 	VodeoDistributionRange *string `json:"VodeoDistributionRange,omitnil,omitempty" name:"VodeoDistributionRange"`
 
 	// VODEO 存储桶 ID，该参数当 OriginType = VODEO 且 VodeoDistributionRange = Bucket 时必填。
+	//
+	// Deprecated: VodeoBucketId is deprecated.
 	VodeoBucketId *string `json:"VodeoBucketId,omitnil,omitempty" name:"VodeoBucketId"`
 }
 
@@ -12830,7 +12834,7 @@ type TemplateScope struct {
 }
 
 type TimingDataItem struct {
-	// 返回数据对应时间点，采用unix秒级时间戳。
+	// 返回数据对应时间点，采用 unix 秒级时间戳。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 具体数值。
@@ -13137,7 +13141,6 @@ type Zone struct {
 	// <li> full：NS 接入；</li>
 	// <li> partial：CNAME 接入；</li>
 	// <li> noDomainAccess：无域名接入；</li>
-	// <li> vodeo：开启 VODEO 后默认接入。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 站点是否关闭。

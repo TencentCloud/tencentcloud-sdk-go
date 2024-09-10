@@ -6649,6 +6649,99 @@ func (c *Client) CreatePartnerAutoSignAuthUrlWithContext(ctx context.Context, re
     return
 }
 
+func NewCreatePersonAuthCertificateImageRequest() (request *CreatePersonAuthCertificateImageRequest) {
+    request = &CreatePersonAuthCertificateImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreatePersonAuthCertificateImage")
+    
+    
+    return
+}
+
+func NewCreatePersonAuthCertificateImageResponse() (response *CreatePersonAuthCertificateImageResponse) {
+    response = &CreatePersonAuthCertificateImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePersonAuthCertificateImage
+// 获取个人用户认证证书图片下载URL
+//
+// 
+//
+// 个人用户认证证书图片样式如下图
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+//
+// 
+//
+// 注:  
+//
+// <ul>
+//
+// <li>只能获取个人用户证明图片, 企业员工的暂不支持</li>
+//
+// <li>处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。  </li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCertificateImageRequest) (response *CreatePersonAuthCertificateImageResponse, err error) {
+    return c.CreatePersonAuthCertificateImageWithContext(context.Background(), request)
+}
+
+// CreatePersonAuthCertificateImage
+// 获取个人用户认证证书图片下载URL
+//
+// 
+//
+// 个人用户认证证书图片样式如下图
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+//
+// 
+//
+// 注:  
+//
+// <ul>
+//
+// <li>只能获取个人用户证明图片, 企业员工的暂不支持</li>
+//
+// <li>处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。  </li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePersonAuthCertificateImageWithContext(ctx context.Context, request *CreatePersonAuthCertificateImageRequest) (response *CreatePersonAuthCertificateImageResponse, err error) {
+    if request == nil {
+        request = NewCreatePersonAuthCertificateImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePersonAuthCertificateImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePersonAuthCertificateImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSealByImageRequest() (request *CreateSealByImageRequest) {
     request = &CreateSealByImageRequest{
         BaseRequest: &tchttp.BaseRequest{},

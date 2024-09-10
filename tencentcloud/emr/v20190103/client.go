@@ -491,6 +491,99 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewCreateSLInstanceRequest() (request *CreateSLInstanceRequest) {
+    request = &CreateSLInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "CreateSLInstance")
+    
+    
+    return
+}
+
+func NewCreateSLInstanceResponse() (response *CreateSLInstanceResponse) {
+    response = &CreateSLInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSLInstance
+// 本接口（CreateSLInstance）用于创建 Lite HBase 实例
+//
+// - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回创建实例的 InstaceId 和请求的 RequestID。
+//
+// - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDNODECOUNT = "InvalidParameter.InvalidNodeCount"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
+//  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
+//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDUINNUM = "InvalidParameter.InvalidUinNum"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) CreateSLInstance(request *CreateSLInstanceRequest) (response *CreateSLInstanceResponse, err error) {
+    return c.CreateSLInstanceWithContext(context.Background(), request)
+}
+
+// CreateSLInstance
+// 本接口（CreateSLInstance）用于创建 Lite HBase 实例
+//
+// - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回创建实例的 InstaceId 和请求的 RequestID。
+//
+// - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDNODECOUNT = "InvalidParameter.InvalidNodeCount"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
+//  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
+//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDUINNUM = "InvalidParameter.InvalidUinNum"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) CreateSLInstanceWithContext(ctx context.Context, request *CreateSLInstanceRequest) (response *CreateSLInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateSLInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSLInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSLInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAutoScaleStrategyRequest() (request *DeleteAutoScaleStrategyRequest) {
     request = &DeleteAutoScaleStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1844,6 +1937,266 @@ func (c *Client) DescribeResourceScheduleDiffDetailWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeSLInstanceRequest() (request *DescribeSLInstanceRequest) {
+    request = &DescribeSLInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeSLInstance")
+    
+    
+    return
+}
+
+func NewDescribeSLInstanceResponse() (response *DescribeSLInstanceResponse) {
+    response = &DescribeSLInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSLInstance
+// 本接口（DescribeSLInstance）用于查询 Lite HBase 实例基本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) DescribeSLInstance(request *DescribeSLInstanceRequest) (response *DescribeSLInstanceResponse, err error) {
+    return c.DescribeSLInstanceWithContext(context.Background(), request)
+}
+
+// DescribeSLInstance
+// 本接口（DescribeSLInstance）用于查询 Lite HBase 实例基本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) DescribeSLInstanceWithContext(ctx context.Context, request *DescribeSLInstanceRequest) (response *DescribeSLInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeSLInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSLInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSLInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSLInstanceListRequest() (request *DescribeSLInstanceListRequest) {
+    request = &DescribeSLInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeSLInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeSLInstanceListResponse() (response *DescribeSLInstanceListResponse) {
+    response = &DescribeSLInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSLInstanceList
+// 本接口（DescribeSLInstanceList）用于查询 Lite HBase 实例列表详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CAMERROR = "InternalError.CamError"
+//  INTERNALERROR_CBSCGWERROR = "InternalError.CbsCgwError"
+//  INTERNALERROR_CBSERROR = "InternalError.CbsError"
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_CHECKQUOTAERR = "InternalError.CheckQuotaErr"
+//  INTERNALERROR_CONFIGCGWERROR = "InternalError.ConfigCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INTERNALERROR_KMSERROR = "InternalError.KmsError"
+//  INTERNALERROR_PROJECTCGWERROR = "InternalError.ProjectCgwError"
+//  INTERNALERROR_SGERROR = "InternalError.SgError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
+//  INTERNALERROR_VPCCGWERROR = "InternalError.VpcCgwError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DISPLAYSTRATEGYNOTMATCH = "InvalidParameter.DisplayStrategyNotMatch"
+//  INVALIDPARAMETER_INVALIDAUTORENEW = "InvalidParameter.InvalidAutoRenew"
+//  INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
+//  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
+//  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDEXTENDFIELD = "InvalidParameter.InvalidExtendField"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
+//  INVALIDPARAMETER_INVALIDLOGINSETTING = "InvalidParameter.InvalidLoginSetting"
+//  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
+//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
+//  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
+//  INVALIDPARAMETER_INVALIDPREEXECUTEDFILE = "InvalidParameter.InvalidPreExecutedFile"
+//  INVALIDPARAMETER_INVALIDPRODUCTID = "InvalidParameter.InvalidProductId"
+//  INVALIDPARAMETER_INVALIDPROJECTID = "InvalidParameter.InvalidProjectId"
+//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDSERCURITYGRPUPID = "InvalidParameter.InvalidSercurityGrpupId"
+//  INVALIDPARAMETER_INVALIDSERVICENAME = "InvalidParameter.InvalidServiceName"
+//  INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = "InvalidParameter.InvalidSoftDeployInfo"
+//  INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
+//  INVALIDPARAMETER_INVALIDSOFTWARE = "InvalidParameter.InvalidSoftWare"
+//  INVALIDPARAMETER_INVALIDSOFTWARENAME = "InvalidParameter.InvalidSoftWareName"
+//  INVALIDPARAMETER_INVALIDSOFTWAREVERSION = "InvalidParameter.InvalidSoftWareVersion"
+//  INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
+//  INVALIDPARAMETER_INVALIDSUPPORTHA = "InvalidParameter.InvalidSupportHA"
+//  INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
+//  INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
+//  INVALIDPARAMETER_INVALIDVPCID = "InvalidParameter.InvalidVpcId"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETER_NOTCONTAINMUSTSELECTSOFTWARE = "InvalidParameter.NotContainMustSelectSoftware"
+//  INVALIDPARAMETER_ORDERFIELDNOTMATCH = "InvalidParameter.OrderFieldNotMatch"
+//  INVALIDPARAMETER_PAYMODERESOURCENOTMATCH = "InvalidParameter.PayModeResourceNotMatch"
+//  INVALIDPARAMETER_SOFTWARENOTINPRODUCT = "InvalidParameter.SoftwareNotInProduct"
+//  INVALIDPARAMETER_UNGRANTEDPOLICY = "InvalidParameter.UngrantedPolicy"
+//  INVALIDPARAMETER_UNGRANTEDROLE = "InvalidParameter.UngrantedRole"
+//  INVALIDPARAMETER_ZONERESOURCENOTMATCH = "InvalidParameter.ZoneResourceNotMatch"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_DISKINSUFFICIENT = "ResourceInsufficient.DiskInsufficient"
+//  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+//  RESOURCENOTFOUND_TAGSNOTFOUND = "ResourceNotFound.TagsNotFound"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  RESOURCESSOLDOUT_CBSSOLDOUT = "ResourcesSoldOut.CbsSoldOut"
+//  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSLInstanceList(request *DescribeSLInstanceListRequest) (response *DescribeSLInstanceListResponse, err error) {
+    return c.DescribeSLInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeSLInstanceList
+// 本接口（DescribeSLInstanceList）用于查询 Lite HBase 实例列表详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CAMERROR = "InternalError.CamError"
+//  INTERNALERROR_CBSCGWERROR = "InternalError.CbsCgwError"
+//  INTERNALERROR_CBSERROR = "InternalError.CbsError"
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_CHECKQUOTAERR = "InternalError.CheckQuotaErr"
+//  INTERNALERROR_CONFIGCGWERROR = "InternalError.ConfigCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INTERNALERROR_KMSERROR = "InternalError.KmsError"
+//  INTERNALERROR_PROJECTCGWERROR = "InternalError.ProjectCgwError"
+//  INTERNALERROR_SGERROR = "InternalError.SgError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
+//  INTERNALERROR_VPCCGWERROR = "InternalError.VpcCgwError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DISPLAYSTRATEGYNOTMATCH = "InvalidParameter.DisplayStrategyNotMatch"
+//  INVALIDPARAMETER_INVALIDAUTORENEW = "InvalidParameter.InvalidAutoRenew"
+//  INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
+//  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
+//  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDEXTENDFIELD = "InvalidParameter.InvalidExtendField"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
+//  INVALIDPARAMETER_INVALIDLOGINSETTING = "InvalidParameter.InvalidLoginSetting"
+//  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
+//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
+//  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
+//  INVALIDPARAMETER_INVALIDPREEXECUTEDFILE = "InvalidParameter.InvalidPreExecutedFile"
+//  INVALIDPARAMETER_INVALIDPRODUCTID = "InvalidParameter.InvalidProductId"
+//  INVALIDPARAMETER_INVALIDPROJECTID = "InvalidParameter.InvalidProjectId"
+//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDSERCURITYGRPUPID = "InvalidParameter.InvalidSercurityGrpupId"
+//  INVALIDPARAMETER_INVALIDSERVICENAME = "InvalidParameter.InvalidServiceName"
+//  INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = "InvalidParameter.InvalidSoftDeployInfo"
+//  INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
+//  INVALIDPARAMETER_INVALIDSOFTWARE = "InvalidParameter.InvalidSoftWare"
+//  INVALIDPARAMETER_INVALIDSOFTWARENAME = "InvalidParameter.InvalidSoftWareName"
+//  INVALIDPARAMETER_INVALIDSOFTWAREVERSION = "InvalidParameter.InvalidSoftWareVersion"
+//  INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
+//  INVALIDPARAMETER_INVALIDSUPPORTHA = "InvalidParameter.InvalidSupportHA"
+//  INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
+//  INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
+//  INVALIDPARAMETER_INVALIDVPCID = "InvalidParameter.InvalidVpcId"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETER_NOTCONTAINMUSTSELECTSOFTWARE = "InvalidParameter.NotContainMustSelectSoftware"
+//  INVALIDPARAMETER_ORDERFIELDNOTMATCH = "InvalidParameter.OrderFieldNotMatch"
+//  INVALIDPARAMETER_PAYMODERESOURCENOTMATCH = "InvalidParameter.PayModeResourceNotMatch"
+//  INVALIDPARAMETER_SOFTWARENOTINPRODUCT = "InvalidParameter.SoftwareNotInProduct"
+//  INVALIDPARAMETER_UNGRANTEDPOLICY = "InvalidParameter.UngrantedPolicy"
+//  INVALIDPARAMETER_UNGRANTEDROLE = "InvalidParameter.UngrantedRole"
+//  INVALIDPARAMETER_ZONERESOURCENOTMATCH = "InvalidParameter.ZoneResourceNotMatch"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_DISKINSUFFICIENT = "ResourceInsufficient.DiskInsufficient"
+//  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+//  RESOURCENOTFOUND_TAGSNOTFOUND = "ResourceNotFound.TagsNotFound"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  RESOURCESSOLDOUT_CBSSOLDOUT = "ResourcesSoldOut.CbsSoldOut"
+//  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSLInstanceListWithContext(ctx context.Context, request *DescribeSLInstanceListRequest) (response *DescribeSLInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSLInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSLInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSLInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceNodeInfosRequest() (request *DescribeServiceNodeInfosRequest) {
     request = &DescribeServiceNodeInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3131,6 +3484,93 @@ func (c *Client) ModifyResourcesTagsWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifySLInstanceRequest() (request *ModifySLInstanceRequest) {
+    request = &ModifySLInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifySLInstance")
+    
+    
+    return
+}
+
+func NewModifySLInstanceResponse() (response *ModifySLInstanceResponse) {
+    response = &ModifySLInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySLInstance
+// 本接口（ModifySLInstance）用于修改Lite HBase 实例节点数。
+//
+// - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回请求的 RequestID。
+//
+// - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDNODECOUNT = "InvalidParameter.InvalidNodeCount"
+//  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) ModifySLInstance(request *ModifySLInstanceRequest) (response *ModifySLInstanceResponse, err error) {
+    return c.ModifySLInstanceWithContext(context.Background(), request)
+}
+
+// ModifySLInstance
+// 本接口（ModifySLInstance）用于修改Lite HBase 实例节点数。
+//
+// - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回请求的 RequestID。
+//
+// - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDNODECOUNT = "InvalidParameter.InvalidNodeCount"
+//  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) ModifySLInstanceWithContext(ctx context.Context, request *ModifySLInstanceRequest) (response *ModifySLInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifySLInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySLInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySLInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserManagerPwdRequest() (request *ModifyUserManagerPwdRequest) {
     request = &ModifyUserManagerPwdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4096,6 +4536,83 @@ func (c *Client) TerminateInstanceWithContext(ctx context.Context, request *Term
     request.SetContext(ctx)
     
     response = NewTerminateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateSLInstanceRequest() (request *TerminateSLInstanceRequest) {
+    request = &TerminateSLInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "TerminateSLInstance")
+    
+    
+    return
+}
+
+func NewTerminateSLInstanceResponse() (response *TerminateSLInstanceResponse) {
+    response = &TerminateSLInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateSLInstance
+// 本接口（TerminateSLInstance）用于销毁 Lite HBase 实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) TerminateSLInstance(request *TerminateSLInstanceRequest) (response *TerminateSLInstanceResponse, err error) {
+    return c.TerminateSLInstanceWithContext(context.Background(), request)
+}
+
+// TerminateSLInstance
+// 本接口（TerminateSLInstance）用于销毁 Lite HBase 实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REFUNDCVMFAILED = "FailedOperation.RefundCvmFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) TerminateSLInstanceWithContext(ctx context.Context, request *TerminateSLInstanceRequest) (response *TerminateSLInstanceResponse, err error) {
+    if request == nil {
+        request = NewTerminateSLInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateSLInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateSLInstanceResponse()
     err = c.Send(request, response)
     return
 }

@@ -7614,6 +7614,107 @@ func (r *CreatePartnerAutoSignAuthUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePersonAuthCertificateImageRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 个人用户名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 证件类型，支持以下类型<ul><li> ID_CARD  : 居民身份证 (默认值)</li><li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li><li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
+
+	// 证件号码，应符合以下规则<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li><li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+}
+
+type CreatePersonAuthCertificateImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 个人用户名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 证件类型，支持以下类型<ul><li> ID_CARD  : 居民身份证 (默认值)</li><li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li><li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
+
+	// 证件号码，应符合以下规则<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li><li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+}
+
+func (r *CreatePersonAuthCertificateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePersonAuthCertificateImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "UserName")
+	delete(f, "IdCardType")
+	delete(f, "IdCardNumber")
+	delete(f, "SceneKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonAuthCertificateImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePersonAuthCertificateImageResponseParams struct {
+	// 个人用户认证证书图片下载URL，`有效期为5分钟`，超过有效期后将无法再下载。
+	AuthCertUrl *string `json:"AuthCertUrl,omitnil,omitempty" name:"AuthCertUrl"`
+
+	// 个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageCertId *string `json:"ImageCertId,omitnil,omitempty" name:"ImageCertId"`
+
+	// CA供应商下发给用户的证书编号，在证书到期后自动续期后此证书编号会发生变动，且不会合成到个人用户证书证明图片中。注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下。`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
+
+	// CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidFrom *uint64 `json:"ValidFrom,omitnil,omitempty" name:"ValidFrom"`
+
+	// CA证书有效截止时间，格式为Unix标准时间戳（秒）该时间格式化后会合成到个人用户证书证明图片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePersonAuthCertificateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePersonAuthCertificateImageResponseParams `json:"Response"`
+}
+
+func (r *CreatePersonAuthCertificateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePersonAuthCertificateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSealByImageRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 

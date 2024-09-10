@@ -1045,6 +1045,67 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeBackupConfigsRequest() (request *DescribeBackupConfigsRequest) {
+    request = &DescribeBackupConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeBackupConfigs")
+    
+    
+    return
+}
+
+func NewDescribeBackupConfigsResponse() (response *DescribeBackupConfigsResponse) {
+    response = &DescribeBackupConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupConfigs
+// 本接口(DescribeBackupConfigs)用于查询数据库备份配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupConfigs(request *DescribeBackupConfigsRequest) (response *DescribeBackupConfigsResponse, err error) {
+    return c.DescribeBackupConfigsWithContext(context.Background(), request)
+}
+
+// DescribeBackupConfigs
+// 本接口(DescribeBackupConfigs)用于查询数据库备份配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupConfigsWithContext(ctx context.Context, request *DescribeBackupConfigsRequest) (response *DescribeBackupConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupFilesRequest() (request *DescribeBackupFilesRequest) {
     request = &DescribeBackupFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3641,6 +3702,63 @@ func (c *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyAccountPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupConfigsRequest() (request *ModifyBackupConfigsRequest) {
+    request = &ModifyBackupConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyBackupConfigs")
+    
+    
+    return
+}
+
+func NewModifyBackupConfigsResponse() (response *ModifyBackupConfigsResponse) {
+    response = &ModifyBackupConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBackupConfigs
+// 本接口(ModifyBackupConfigs)用于修改数据库备份配置信息。
+//
+// 
+//
+// 1. 修改数据库超期备份配置，目前按年、按月、按日只支持一种，存在互斥关系，如当前策略按年备份，如果传入按月备份策略将会覆盖当前的按年备份策略，务必注意。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+func (c *Client) ModifyBackupConfigs(request *ModifyBackupConfigsRequest) (response *ModifyBackupConfigsResponse, err error) {
+    return c.ModifyBackupConfigsWithContext(context.Background(), request)
+}
+
+// ModifyBackupConfigs
+// 本接口(ModifyBackupConfigs)用于修改数据库备份配置信息。
+//
+// 
+//
+// 1. 修改数据库超期备份配置，目前按年、按月、按日只支持一种，存在互斥关系，如当前策略按年备份，如果传入按月备份策略将会覆盖当前的按年备份策略，务必注意。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+func (c *Client) ModifyBackupConfigsWithContext(ctx context.Context, request *ModifyBackupConfigsRequest) (response *ModifyBackupConfigsResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupConfigsResponse()
     err = c.Send(request, response)
     return
 }

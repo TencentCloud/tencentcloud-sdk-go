@@ -2928,6 +2928,70 @@ func (r *DescribeDomainShareInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainShareUserListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type DescribeDomainShareUserListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeDomainShareUserListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainShareUserListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainShareUserListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainShareUserListResponseParams struct {
+	// 域名套餐信息
+	DomainShareList []*DomainShareUserInfo `json:"DomainShareList,omitnil,omitempty" name:"DomainShareList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainShareUserListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainShareUserListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainShareUserListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainShareUserListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDomainWhoisRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -4759,6 +4823,31 @@ type DomainShareInfo struct {
 
 	// 共享状态“enabled”：共享成功。“pending”：共享到的账号不存在, 等待注册
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DomainShareUserInfo struct {
+	// 共享记录ID
+	DomainShareId *uint64 `json:"DomainShareId,omitnil,omitempty" name:"DomainShareId"`
+
+	// 共享模式。r-只读；w-可写；rw-可读写。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 共享到的用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 共享到的用户UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QCloudUIN *string `json:"QCloudUIN,omitnil,omitempty" name:"QCloudUIN"`
+
+	// 共享状态。enabled-有效；pause-无效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 共享的子域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 }
 
 // Predefined struct for user

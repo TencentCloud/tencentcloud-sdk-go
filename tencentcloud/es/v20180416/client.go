@@ -2115,6 +2115,81 @@ func (c *Client) DescribeServerlessSpacesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSpaceKibanaToolsRequest() (request *DescribeSpaceKibanaToolsRequest) {
+    request = &DescribeSpaceKibanaToolsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeSpaceKibanaTools")
+    
+    
+    return
+}
+
+func NewDescribeSpaceKibanaToolsResponse() (response *DescribeSpaceKibanaToolsResponse) {
+    response = &DescribeSpaceKibanaToolsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSpaceKibanaTools
+// space维度的kibana获取登录token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSpaceKibanaTools(request *DescribeSpaceKibanaToolsRequest) (response *DescribeSpaceKibanaToolsResponse, err error) {
+    return c.DescribeSpaceKibanaToolsWithContext(context.Background(), request)
+}
+
+// DescribeSpaceKibanaTools
+// space维度的kibana获取登录token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSpaceKibanaToolsWithContext(ctx context.Context, request *DescribeSpaceKibanaToolsRequest) (response *DescribeSpaceKibanaToolsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpaceKibanaToolsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpaceKibanaTools require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpaceKibanaToolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserCosSnapshotListRequest() (request *DescribeUserCosSnapshotListRequest) {
     request = &DescribeUserCosSnapshotListRequest{
         BaseRequest: &tchttp.BaseRequest{},

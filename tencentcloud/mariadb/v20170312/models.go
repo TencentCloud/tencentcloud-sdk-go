@@ -156,6 +156,39 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BackupConfig struct {
+	// 备份策略是否启用。
+	EnableBackupPolicy *bool `json:"EnableBackupPolicy,omitnil,omitempty" name:"EnableBackupPolicy"`
+
+	// 超期保留开始日期，早于开始日期的超期备份不保留，格式：yyyy-mm-dd。
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
+
+	// 超期备份保留时长，超出保留时间的超期备份将被删除，可填写1-3650整数。
+	MaxRetentionDays *int64 `json:"MaxRetentionDays,omitnil,omitempty" name:"MaxRetentionDays"`
+
+	// 备份模式，可选择按年月周模式保存
+	// * 按年：annually
+	// * 按月：monthly
+	// * 按周：weekly
+	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
+
+	// Frequency等于weekly时生效。
+	// 表示保留特定工作日备份。可选择周一到周日，支持多选，取星期英文：
+	// * 星期一 ：Monday
+	// * 星期二 ：Tuesday
+	// * 星期三：Wednesday
+	// * 星期四：Thursday
+	// * 星期五：Friday
+	// * 星期六：Saturday
+	// * 星期日：Sunday
+	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 保留备份个数，Frequency等于monthly或weekly时生效。
+	// 备份模式选择按月时，可填写1-28整数；
+	// 备份模式选择年时，可填写1-336整数。
+	BackupCount *int64 `json:"BackupCount,omitnil,omitempty" name:"BackupCount"`
+}
+
 // Predefined struct for user
 type CancelDcnJobRequestParams struct {
 	// 灾备实例ID
@@ -1950,6 +1983,81 @@ func (r *DescribeAccountsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupConfigsRequestParams struct {
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeBackupConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBackupConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupConfigsResponseParams struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 常规备份存储时长，范围[1, 3650]。
+	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
+
+	// 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00。
+	StartBackupTime *string `json:"StartBackupTime,omitnil,omitempty" name:"StartBackupTime"`
+
+	// 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59。
+	EndBackupTime *string `json:"EndBackupTime,omitnil,omitempty" name:"EndBackupTime"`
+
+	// 执行备份周期，枚举值：Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 沉降到归档存储时长，-1表示关闭归档设置。
+	ArchiveDays *int64 `json:"ArchiveDays,omitnil,omitempty" name:"ArchiveDays"`
+
+	// 超期备份配置。
+	BackupConfigSet []*BackupConfig `json:"BackupConfigSet,omitnil,omitempty" name:"BackupConfigSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5092,6 +5200,102 @@ func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyBackupConfigsRequestParams struct {
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 常规备份存储时长，范围[1, 3650]。
+	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
+
+	// 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00。
+	StartBackupTime *string `json:"StartBackupTime,omitnil,omitempty" name:"StartBackupTime"`
+
+	// 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59。
+	EndBackupTime *string `json:"EndBackupTime,omitnil,omitempty" name:"EndBackupTime"`
+
+	// 执行备份周期，枚举值：Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 沉降到归档存储时长，-1表示关闭归档设置。
+	ArchiveDays *int64 `json:"ArchiveDays,omitnil,omitempty" name:"ArchiveDays"`
+
+	// 超期备份配置。
+	BackupConfigSet []*NewBackupConfig `json:"BackupConfigSet,omitnil,omitempty" name:"BackupConfigSet"`
+}
+
+type ModifyBackupConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 常规备份存储时长，范围[1, 3650]。
+	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
+
+	// 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00。
+	StartBackupTime *string `json:"StartBackupTime,omitnil,omitempty" name:"StartBackupTime"`
+
+	// 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59。
+	EndBackupTime *string `json:"EndBackupTime,omitnil,omitempty" name:"EndBackupTime"`
+
+	// 执行备份周期，枚举值：Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 沉降到归档存储时长，-1表示关闭归档设置。
+	ArchiveDays *int64 `json:"ArchiveDays,omitnil,omitempty" name:"ArchiveDays"`
+
+	// 超期备份配置。
+	BackupConfigSet []*NewBackupConfig `json:"BackupConfigSet,omitnil,omitempty" name:"BackupConfigSet"`
+}
+
+func (r *ModifyBackupConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Days")
+	delete(f, "StartBackupTime")
+	delete(f, "EndBackupTime")
+	delete(f, "WeekDays")
+	delete(f, "ArchiveDays")
+	delete(f, "BackupConfigSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupConfigsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupConfigsResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyBackupTimeRequestParams struct {
 	// 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5962,6 +6166,39 @@ func (r *ModifySyncTaskAttributeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifySyncTaskAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NewBackupConfig struct {
+	// 备份策略是否启用。
+	EnableBackupPolicy *bool `json:"EnableBackupPolicy,omitnil,omitempty" name:"EnableBackupPolicy"`
+
+	// 超期保留开始日期，早于开始日期的超期备份不保留，格式：yyyy-mm-dd。
+	BeginDate *string `json:"BeginDate,omitnil,omitempty" name:"BeginDate"`
+
+	// 超期备份保留时长，超出保留时间的超期备份将被删除，可填写1-3650整数。
+	MaxRetentionDays *int64 `json:"MaxRetentionDays,omitnil,omitempty" name:"MaxRetentionDays"`
+
+	// 备份模式，可选择按年月周模式保存
+	// * 按年：annually
+	// * 按月：monthly
+	// * 按周：weekly
+	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
+
+	// Frequency等于weekly时生效。
+	// 表示保留特定工作日备份。可选择周一到周日，支持多选，取星期英文： 
+	// * 星期一 ：Monday 
+	// * 星期二 ：Tuesday 
+	// * 星期三：Wednesday
+	// * 星期四：Thursday 
+	// * 星期五：Friday
+	// * 星期六：Saturday
+	// * 星期日：Sunday
+	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 保留备份个数，Frequency等于monthly或weekly时生效。
+	// 备份模式选择按月时，可填写1-28整数；
+	// 备份模式选择年时，可填写1-336整数。
+	BackupCount *int64 `json:"BackupCount,omitnil,omitempty" name:"BackupCount"`
 }
 
 type NodeInfo struct {

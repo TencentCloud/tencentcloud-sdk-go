@@ -1650,6 +1650,10 @@ type Task struct {
 	// 问题和改进
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskIssue *string `json:"TaskIssue,omitnil,omitempty" name:"TaskIssue"`
+
+	// region信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskRegionName *string `json:"TaskRegionName,omitnil,omitempty" name:"TaskRegionName"`
 }
 
 type TaskConfig struct {

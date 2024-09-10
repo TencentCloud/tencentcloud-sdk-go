@@ -22,4 +22,25 @@ const (
 
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 )

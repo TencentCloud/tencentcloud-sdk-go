@@ -21,6 +21,183 @@ import (
 )
 
 // Predefined struct for user
+type AssociateSecurityGroupsRequestParams struct {
+	// 要绑定的安全组 ID，类似sg-efil7***。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 实例 ID，格式如：vdb-c1nl9***，支持指定多个实例
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type AssociateSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要绑定的安全组 ID，类似sg-efil7***。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 实例 ID，格式如：vdb-c1nl9***，支持指定多个实例
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *AssociateSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecurityGroupIds")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateSecurityGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *AssociateSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBSecurityGroupsRequestParams struct {
+	// 实例ID，格式如：vdb-c1nl9***。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：vdb-c1nl9***。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBSecurityGroupsResponseParams struct {
+	// 安全组规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*SecurityGroup `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceNodesRequestParams struct {
+
+}
+
+type DescribeInstanceNodesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeInstanceNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceNodesResponseParams struct {
+	// 实例pod列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*NodeInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 查询结果总数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstancesRequestParams struct {
 	// 实例ID数组。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -165,6 +342,93 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisassociateSecurityGroupsRequestParams struct {
+	// 要绑定的安全组 ID，类似sg-efil****。
+	SecurityGroupIds *string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 实例 ID，格式如：vdb-c1nl****，支持指定多个实例。
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type DisassociateSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要绑定的安全组 ID，类似sg-efil****。
+	SecurityGroupIds *string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 实例 ID，格式如：vdb-c1nl****，支持指定多个实例。
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *DisassociateSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecurityGroupIds")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateSecurityGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Inbound struct {
+	// 策略，ACCEPT或者DROP。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 地址组id代表的地址集合。
+	AddressModule *string `json:"AddressModule,omitnil,omitempty" name:"AddressModule"`
+
+	// 来源Ip或Ip段，例如192.168.0.0/16。
+	CidrIp *string `json:"CidrIp,omitnil,omitempty" name:"CidrIp"`
+
+	// 描述。
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 网络协议，支持udp、tcp等。
+	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
+
+	// 端口。
+	PortRange *string `json:"PortRange,omitnil,omitempty" name:"PortRange"`
+
+	// 服务组id代表的协议和端口集合。
+	ServiceModule *string `json:"ServiceModule,omitnil,omitempty" name:"ServiceModule"`
+
+	// 安全组id代表的地址集合。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
 type InstanceInfo struct {
 	// 实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -275,6 +539,67 @@ type InstanceInfo struct {
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 }
 
+// Predefined struct for user
+type ModifyDBInstanceSecurityGroupsRequestParams struct {
+	// 要修改的安全组ID列表，一个或者多个安全组 ID 组成的数组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 实例ID，格式如：vdb-c9s3****。
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type ModifyDBInstanceSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要修改的安全组ID列表，一个或者多个安全组 ID 组成的数组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 实例ID，格式如：vdb-c9s3****。
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *ModifyDBInstanceSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecurityGroupIds")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceSecurityGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Network struct {
 	// VpcId(VPC网络下有效)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -291,6 +616,64 @@ type Network struct {
 	// 内网访问Port。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+}
+
+type NodeInfo struct {
+	// Pod名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type Outbound struct {
+	// 策略，ACCEPT或者DROP。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 地址组id代表的地址集合。
+	AddressModule *string `json:"AddressModule,omitnil,omitempty" name:"AddressModule"`
+
+	// 来源Ip或Ip段，例如192.168.0.0/16。
+	CidrIp *string `json:"CidrIp,omitnil,omitempty" name:"CidrIp"`
+
+	// 描述。
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 网络协议，支持udp、tcp等。
+	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
+
+	// 端口。
+	PortRange *string `json:"PortRange,omitnil,omitempty" name:"PortRange"`
+
+	// 服务组id代表的协议和端口集合。
+	ServiceModule *string `json:"ServiceModule,omitnil,omitempty" name:"ServiceModule"`
+
+	// 安全组id代表的地址集合。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type SecurityGroup struct {
+	// 创建时间，时间格式：yyyy-mm-dd hh:mm:ss。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 安全组ID。
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+
+	// 安全组名称。
+	SecurityGroupName *string `json:"SecurityGroupName,omitnil,omitempty" name:"SecurityGroupName"`
+
+	// 安全组备注。
+	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitnil,omitempty" name:"SecurityGroupRemark"`
+
+	// 出站规则。
+	Outbound []*Outbound `json:"Outbound,omitnil,omitempty" name:"Outbound"`
+
+	// 入站规则。
+	Inbound []*Inbound `json:"Inbound,omitnil,omitempty" name:"Inbound"`
+
+	// 修改时间，时间格式：yyyy-mm-dd hh:mm:ss。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type Tag struct {

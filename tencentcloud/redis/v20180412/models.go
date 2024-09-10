@@ -3022,6 +3022,63 @@ func (r *DescribeInstanceEventsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceLogDeliveryRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeInstanceLogDeliveryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceLogDeliveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLogDeliveryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogDeliveryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLogDeliveryResponseParams struct {
+	// 实例慢日志投递信息。
+	SlowLog *LogDeliveryInfo `json:"SlowLog,omitnil,omitempty" name:"SlowLog"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceLogDeliveryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceLogDeliveryResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceLogDeliveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLogDeliveryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceMonitorBigKeyRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7295,6 +7352,24 @@ func (r *KillMasterGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LogDeliveryInfo struct {
+	// 日志投递开启状态，开启：true，关闭：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 日志集ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 日志主题ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志集所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
+}
+
 // Predefined struct for user
 type ManualBackupInstanceRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
@@ -8044,6 +8119,127 @@ func (r *ModifyInstanceEventResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyInstanceEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceLogDeliveryRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志类型。当前仅支持设置为slowlog，指慢查询日志。
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 日志投递开启状态。
+	// - true：开启。
+	// - false：关闭。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 投递的日志集ID。
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 投递的日志主题ID。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志集名称。若**LogsetId**未指定具体的日志集ID，请配置该参数，设置日志集名称，系统会以设置的日志集名称自动创建新的日志集。
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
+
+	// 日志主题名称，TopicId为空时必传，会自动创建新的日志主题。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志集所在地域，不传默认使用实例所在地域。
+	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
+
+	// 日志存储时间，默认为30天，可选范围1-3600天。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 创建日志主题时，是否创建索引。
+	CreateIndex *bool `json:"CreateIndex,omitnil,omitempty" name:"CreateIndex"`
+}
+
+type ModifyInstanceLogDeliveryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志类型。当前仅支持设置为slowlog，指慢查询日志。
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 日志投递开启状态。
+	// - true：开启。
+	// - false：关闭。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 投递的日志集ID。
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 投递的日志主题ID。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志集名称。若**LogsetId**未指定具体的日志集ID，请配置该参数，设置日志集名称，系统会以设置的日志集名称自动创建新的日志集。
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
+
+	// 日志主题名称，TopicId为空时必传，会自动创建新的日志主题。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志集所在地域，不传默认使用实例所在地域。
+	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
+
+	// 日志存储时间，默认为30天，可选范围1-3600天。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 创建日志主题时，是否创建索引。
+	CreateIndex *bool `json:"CreateIndex,omitnil,omitempty" name:"CreateIndex"`
+}
+
+func (r *ModifyInstanceLogDeliveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceLogDeliveryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "Enabled")
+	delete(f, "LogsetId")
+	delete(f, "TopicId")
+	delete(f, "LogsetName")
+	delete(f, "TopicName")
+	delete(f, "LogRegion")
+	delete(f, "Period")
+	delete(f, "CreateIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceLogDeliveryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceLogDeliveryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceLogDeliveryResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceLogDeliveryResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceLogDeliveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceLogDeliveryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

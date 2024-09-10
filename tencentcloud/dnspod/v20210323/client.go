@@ -2780,6 +2780,69 @@ func (c *Client) DescribeDomainShareInfoWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainShareUserListRequest() (request *DescribeDomainShareUserListRequest) {
+    request = &DescribeDomainShareUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainShareUserList")
+    
+    
+    return
+}
+
+func NewDescribeDomainShareUserListResponse() (response *DescribeDomainShareUserListResponse) {
+    response = &DescribeDomainShareUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDomainShareUserList
+// 获取指定域名的已共享列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainShareUserList(request *DescribeDomainShareUserListRequest) (response *DescribeDomainShareUserListResponse, err error) {
+    return c.DescribeDomainShareUserListWithContext(context.Background(), request)
+}
+
+// DescribeDomainShareUserList
+// 获取指定域名的已共享列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainShareUserListWithContext(ctx context.Context, request *DescribeDomainShareUserListRequest) (response *DescribeDomainShareUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainShareUserListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainShareUserList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainShareUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainWhoisRequest() (request *DescribeDomainWhoisRequest) {
     request = &DescribeDomainWhoisRequest{
         BaseRequest: &tchttp.BaseRequest{},

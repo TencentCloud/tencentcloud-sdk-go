@@ -1444,6 +1444,105 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSLInstanceRequestParams struct {
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例计费模式，0表示后付费，即按量计费。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于10000，容量调整步长为20。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。
+	ZoneSettings []*ZoneSetting `json:"ZoneSettings,omitnil,omitempty" name:"ZoneSettings"`
+
+	// 实例要绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateSLInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例计费模式，0表示后付费，即按量计费。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于10000，容量调整步长为20。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。
+	ZoneSettings []*ZoneSetting `json:"ZoneSettings,omitnil,omitempty" name:"ZoneSettings"`
+
+	// 实例要绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateSLInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSLInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "PayMode")
+	delete(f, "DiskType")
+	delete(f, "DiskSize")
+	delete(f, "NodeType")
+	delete(f, "ZoneSettings")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSLInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSLInstanceResponseParams struct {
+	// 实例唯一标识符（字符串表示）
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSLInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSLInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateSLInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSLInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CustomMetaDBInfo struct {
 	// 自定义MetaDB的JDBC连接，示例: jdbc:mysql://10.10.10.10:3306/dbname
 	MetaDataJdbcUrl *string `json:"MetaDataJdbcUrl,omitnil,omitempty" name:"MetaDataJdbcUrl"`
@@ -3383,6 +3482,177 @@ func (r *DescribeResourceScheduleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeResourceScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSLInstanceListRequestParams struct {
+	// 实例筛选策略。取值范围：<li>clusterList：表示查询除了已销毁实例之外的实例列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的实例之外的实例列表。</li>
+	DisplayStrategy *string `json:"DisplayStrategy,omitnil,omitempty" name:"DisplayStrategy"`
+
+	// 页编号，默认值为0，表示第一页。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回数量，默认值为10，最大值为100。	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+	Asc *int64 `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 自定义查询过滤器。
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeSLInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例筛选策略。取值范围：<li>clusterList：表示查询除了已销毁实例之外的实例列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的实例之外的实例列表。</li>
+	DisplayStrategy *string `json:"DisplayStrategy,omitnil,omitempty" name:"DisplayStrategy"`
+
+	// 页编号，默认值为0，表示第一页。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回数量，默认值为10，最大值为100。	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+	Asc *int64 `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 自定义查询过滤器。
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeSLInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSLInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DisplayStrategy")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Asc")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSLInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSLInstanceListResponseParams struct {
+	// 符合条件的实例总数。	
+	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
+
+	// 实例信息列表，如果进行了分页，只显示当前分页的示例信息列表。
+	InstancesList []*SLInstanceInfo `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSLInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSLInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSLInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSLInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSLInstanceRequestParams struct {
+	// 实例唯一标识符（字符串表示）
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeSLInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一标识符（字符串表示）
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeSLInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSLInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSLInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSLInstanceResponseParams struct {
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例计费模式。0表示后付费，即按量计费，1表示预付费，即包年包月。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 实例存储类型。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 实例单节点磁盘容量，单位GB。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 实例节点规格。
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 实例可用区详细配置，包含可用区名称，VPC信息、节点数量。
+	ZoneSettings []*ZoneSetting `json:"ZoneSettings,omitnil,omitempty" name:"ZoneSettings"`
+
+	// 实例绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSLInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSLInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeSLInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSLInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5869,6 +6139,9 @@ type ModifyAutoRenewFlagRequestParams struct {
 
 	// NOTIFY_AND_MANUAL_RENEW：表示通知即将过期，但不自动续费  NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：表示不通知即将过期，也不自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 type ModifyAutoRenewFlagRequest struct {
@@ -5882,6 +6155,9 @@ type ModifyAutoRenewFlagRequest struct {
 
 	// NOTIFY_AND_MANUAL_RENEW：表示通知即将过期，但不自动续费  NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：表示不通知即将过期，也不自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
 }
 
 func (r *ModifyAutoRenewFlagRequest) ToJsonString() string {
@@ -5899,6 +6175,7 @@ func (r *ModifyAutoRenewFlagRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "ResourceIds")
 	delete(f, "RenewFlag")
+	delete(f, "ComputeResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoRenewFlagRequest has unknown keys!", "")
 	}
@@ -6328,6 +6605,74 @@ func (r *ModifyResourcesTagsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyResourcesTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySLInstanceRequestParams struct {
+	// 实例唯一标识符（字符串表示）。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要变更的区域名称。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+}
+
+type ModifySLInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一标识符（字符串表示）。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要变更的区域名称。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+}
+
+func (r *ModifySLInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySLInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Zone")
+	delete(f, "NodeNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySLInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySLInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySLInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySLInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifySLInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySLInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7936,6 +8281,55 @@ func (r *RunJobFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SLInstanceInfo struct {
+	// 集群实例字符串ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群实例数字ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
+	// 实例名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 地域ID
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 主可用区ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 主可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 用户APPID
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 主可用区私有网络ID
+	VpcId *uint64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 主可用区子网ID
+	SubnetId *uint64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 状态码
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// 集群计费类型。0表示按量计费，1表示包年包月
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 多可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneSettings []*ZoneSetting `json:"ZoneSettings,omitnil,omitempty" name:"ZoneSettings"`
+
+	// 实例标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
 // Predefined struct for user
 type ScaleOutClusterRequestParams struct {
 	// 节点计费模式。取值范围：
@@ -9154,6 +9548,60 @@ func (r *TerminateInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type TerminateSLInstanceRequestParams struct {
+	// 实例唯一标识符（字符串表示）
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type TerminateSLInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一标识符（字符串表示）
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *TerminateSLInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateSLInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateSLInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateSLInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateSLInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateSLInstanceResponseParams `json:"Response"`
+}
+
+func (r *TerminateSLInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateSLInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type TerminateTasksRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9723,4 +10171,15 @@ type ZoneResourceConfiguration struct {
 	//   <li>third-party</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneTag *string `json:"ZoneTag,omitnil,omitempty" name:"ZoneTag"`
+}
+
+type ZoneSetting struct {
+	// 可用区名称
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 可用区VPC和子网
+	VPCSettings *VPCSettings `json:"VPCSettings,omitnil,omitempty" name:"VPCSettings"`
+
+	// 可用区节点数量
+	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 }

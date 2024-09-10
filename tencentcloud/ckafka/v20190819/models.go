@@ -9125,6 +9125,8 @@ type ModifyInstanceAttributesRequestParams struct {
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
 	// 动态硬盘扩容策略配置
+	//
+	// Deprecated: DynamicDiskConfig is deprecated.
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
 	// 实例级别单条消息大小（单位byte)
@@ -9378,7 +9380,7 @@ type ModifyRoutineMaintenanceTaskRequestParams struct {
 	// 自动化运维类别
 	MaintenanceType *string `json:"MaintenanceType,omitnil,omitempty" name:"MaintenanceType"`
 
-	// 自动化运维子类别
+	// INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
 	MaintenanceSubtype *string `json:"MaintenanceSubtype,omitnil,omitempty" name:"MaintenanceSubtype"`
 
 	// 主题名称
@@ -9415,7 +9417,7 @@ type ModifyRoutineMaintenanceTaskRequest struct {
 	// 自动化运维类别
 	MaintenanceType *string `json:"MaintenanceType,omitnil,omitempty" name:"MaintenanceType"`
 
-	// 自动化运维子类别
+	// INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
 	MaintenanceSubtype *string `json:"MaintenanceSubtype,omitnil,omitempty" name:"MaintenanceSubtype"`
 
 	// 主题名称

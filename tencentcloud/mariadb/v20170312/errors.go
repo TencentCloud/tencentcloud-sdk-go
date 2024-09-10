@@ -68,6 +68,9 @@ const (
 	// 日志不存在。
 	FAILEDOPERATION_LOGNOTEXISTED = "FailedOperation.LogNotExisted"
 
+	// 修改备份设置失败
+	FAILEDOPERATION_MODIFYBACKUPCONFIGSFAILED = "FailedOperation.ModifyBackupConfigsFailed"
+
 	// 修改账号权限失败。
 	FAILEDOPERATION_MODIFYRIGHTFAILED = "FailedOperation.ModifyRightFailed"
 

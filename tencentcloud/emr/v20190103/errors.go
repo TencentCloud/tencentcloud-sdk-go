@@ -257,6 +257,9 @@ const (
 	// 变配规格无效。
 	INVALIDPARAMETER_INVALIDMODIFYSPEC = "InvalidParameter.InvalidModifySpec"
 
+	// 不合法的节点数量。
+	INVALIDPARAMETER_INVALIDNODECOUNT = "InvalidParameter.InvalidNodeCount"
+
 	// 不合法的节点类型。
 	INVALIDPARAMETER_INVALIDNODEFLAG = "InvalidParameter.InvalidNodeFlag"
 
@@ -374,6 +377,9 @@ const (
 	// 无效的Tke集群ID，或Tke集群不符合条件。
 	INVALIDPARAMETER_INVALIDTKEINSTANCE = "InvalidParameter.InvalidTkeInstance"
 
+	// 父帐号uin参数输入异常。
+	INVALIDPARAMETER_INVALIDUINNUM = "InvalidParameter.InvalidUinNum"
+
 	// 无效的统一元数据库。
 	INVALIDPARAMETER_INVALIDUNIFYMETA = "InvalidParameter.InvalidUnifyMeta"
 
@@ -475,6 +481,9 @@ const (
 
 	// 当前资源规格不存在默认规格。
 	RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpecNotDefaultSpec"
+
+	// 资源规格不存在。
+	RESOURCEUNAVAILABLE_RESOURCESPECNOTEXIST = "ResourceUnavailable.ResourceSpecNotExist"
 
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"

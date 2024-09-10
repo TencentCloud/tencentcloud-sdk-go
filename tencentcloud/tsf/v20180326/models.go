@@ -579,6 +579,18 @@ type ApiRateLimitRule struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
+	// 分页参数limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数offset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type ApiRequestDescr struct {
@@ -2336,6 +2348,9 @@ type CreateAllGatewayApiAsyncRequestParams struct {
 
 	// 微服务ID
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 }
 
 type CreateAllGatewayApiAsyncRequest struct {
@@ -2346,6 +2361,9 @@ type CreateAllGatewayApiAsyncRequest struct {
 
 	// 微服务ID
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 }
 
 func (r *CreateAllGatewayApiAsyncRequest) ToJsonString() string {
@@ -2362,6 +2380,7 @@ func (r *CreateAllGatewayApiAsyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "GroupId")
 	delete(f, "MicroserviceId")
+	delete(f, "NamespaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAllGatewayApiAsyncRequest has unknown keys!", "")
 	}

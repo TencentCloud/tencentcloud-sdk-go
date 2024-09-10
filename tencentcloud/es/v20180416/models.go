@@ -3150,6 +3150,66 @@ func (r *DescribeServerlessSpacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSpaceKibanaToolsRequestParams struct {
+	// space的ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type DescribeSpaceKibanaToolsRequest struct {
+	*tchttp.BaseRequest
+	
+	// space的ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *DescribeSpaceKibanaToolsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpaceKibanaToolsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpaceKibanaToolsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSpaceKibanaToolsResponseParams struct {
+	// 该token用于登录内嵌kibana
+	KibanaToken *string `json:"KibanaToken,omitnil,omitempty" name:"KibanaToken"`
+
+	// token的过期时间
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSpaceKibanaToolsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSpaceKibanaToolsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSpaceKibanaToolsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpaceKibanaToolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserCosSnapshotListRequestParams struct {
 	// cos桶名
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
