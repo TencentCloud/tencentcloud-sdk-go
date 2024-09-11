@@ -429,6 +429,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescriptionTask *AiAnalysisTaskDescriptionResult `json:"DescriptionTask,omitnil,omitempty" name:"DescriptionTask"`
+
+	// 视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HorizontalToVerticalTask *AiAnalysisTaskHorizontalToVerticalResult `json:"HorizontalToVerticalTask,omitnil,omitempty" name:"HorizontalToVerticalTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -657,6 +661,48 @@ type AiAnalysisTaskHighlightResult struct {
 	// 智能精彩片段任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskHighlightOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskHorizontalToVerticalInput struct {
+	// 视频智能横转竖模板 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskHorizontalToVerticalOutput struct {
+	// 视频智能横转竖列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 智能横转竖视频的存储位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 置信度。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+}
+
+type AiAnalysisTaskHorizontalToVerticalResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 智能横转竖任务输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *AiAnalysisTaskHorizontalToVerticalInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 智能横转竖任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskHorizontalToVerticalOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskInput struct {
@@ -10133,6 +10179,10 @@ type HighlightSegmentItem struct {
 
 	// 片段结束时间偏移。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+
+	// 片段标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentTags []*string `json:"SegmentTags,omitnil,omitempty" name:"SegmentTags"`
 }
 
 type ImageQualityEnhanceConfig struct {

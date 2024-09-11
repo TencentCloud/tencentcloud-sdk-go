@@ -56,6 +56,70 @@ type AutoscalingAdded struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
+// Predefined struct for user
+type CreateHealthCheckPolicyRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 健康检测策略
+	HealthCheckPolicy *HealthCheckPolicy `json:"HealthCheckPolicy,omitnil,omitempty" name:"HealthCheckPolicy"`
+}
+
+type CreateHealthCheckPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 健康检测策略
+	HealthCheckPolicy *HealthCheckPolicy `json:"HealthCheckPolicy,omitnil,omitempty" name:"HealthCheckPolicy"`
+}
+
+func (r *CreateHealthCheckPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHealthCheckPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "HealthCheckPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHealthCheckPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHealthCheckPolicyResponseParams struct {
+	// 健康检测策略名称
+	HealthCheckPolicyName *string `json:"HealthCheckPolicyName,omitnil,omitempty" name:"HealthCheckPolicyName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateHealthCheckPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHealthCheckPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateHealthCheckPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHealthCheckPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNativeNodePoolParam struct {
 	// 节点池伸缩配置
 	Scaling *MachineSetScaling `json:"Scaling,omitnil,omitempty" name:"Scaling"`
@@ -281,6 +345,67 @@ type DataDisk struct {
 }
 
 // Predefined struct for user
+type DeleteHealthCheckPolicyRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 健康检测策略名称
+	HealthCheckPolicyName *string `json:"HealthCheckPolicyName,omitnil,omitempty" name:"HealthCheckPolicyName"`
+}
+
+type DeleteHealthCheckPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 健康检测策略名称
+	HealthCheckPolicyName *string `json:"HealthCheckPolicyName,omitnil,omitempty" name:"HealthCheckPolicyName"`
+}
+
+func (r *DeleteHealthCheckPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHealthCheckPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "HealthCheckPolicyName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteHealthCheckPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteHealthCheckPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteHealthCheckPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteHealthCheckPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteHealthCheckPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHealthCheckPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteNodePoolRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -432,6 +557,238 @@ func (r *DescribeClusterInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthCheckPoliciesRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// ·  HealthCheckPolicyName
+	//     按照【健康检测策略名称】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeHealthCheckPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// ·  HealthCheckPolicyName
+	//     按照【健康检测策略名称】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeHealthCheckPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthCheckPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHealthCheckPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthCheckPoliciesResponseParams struct {
+	// 健康检测策略数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckPolicies []*HealthCheckPolicy `json:"HealthCheckPolicies,omitnil,omitempty" name:"HealthCheckPolicies"`
+
+	// 数组总数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHealthCheckPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHealthCheckPoliciesResponseParams `json:"Response"`
+}
+
+func (r *DescribeHealthCheckPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthCheckPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthCheckPolicyBindingsRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// ·  HealthCheckPolicyName
+	//     按照【健康检测规则名称】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeHealthCheckPolicyBindingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// ·  HealthCheckPolicyName
+	//     按照【健康检测规则名称】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeHealthCheckPolicyBindingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthCheckPolicyBindingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Filter")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHealthCheckPolicyBindingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthCheckPolicyBindingsResponseParams struct {
+	// 健康检测规则数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckPolicyBindings []*HealthCheckPolicyBinding `json:"HealthCheckPolicyBindings,omitnil,omitempty" name:"HealthCheckPolicyBindings"`
+
+	// 健康检测规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHealthCheckPolicyBindingsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHealthCheckPolicyBindingsResponseParams `json:"Response"`
+}
+
+func (r *DescribeHealthCheckPolicyBindingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthCheckPolicyBindingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthCheckTemplateRequestParams struct {
+
+}
+
+type DescribeHealthCheckTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeHealthCheckTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthCheckTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHealthCheckTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthCheckTemplateResponseParams struct {
+	// 健康检测策略模板
+	HealthCheckTemplate *HealthCheckTemplate `json:"HealthCheckTemplate,omitnil,omitempty" name:"HealthCheckTemplate"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHealthCheckTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHealthCheckTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeHealthCheckTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthCheckTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -604,6 +961,64 @@ type Filter struct {
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type HealthCheckPolicy struct {
+	// 健康检测策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 健康检测策略规则列表
+	Rules []*HealthCheckPolicyRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+type HealthCheckPolicyBinding struct {
+	// 健康检测策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 关联节点池数组
+	NodePools []*string `json:"NodePools,omitnil,omitempty" name:"NodePools"`
+}
+
+type HealthCheckPolicyRule struct {
+	// 健康检测规则
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否检测此项目
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 是否启用修复
+	AutoRepairEnabled *bool `json:"AutoRepairEnabled,omitnil,omitempty" name:"AutoRepairEnabled"`
+}
+
+type HealthCheckTemplate struct {
+	// 健康检测项
+	Rules []*HealthCheckTemplateRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+type HealthCheckTemplateRule struct {
+	// 健康检测项目名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 健康检测规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 修复动作
+	RepairAction *string `json:"RepairAction,omitnil,omitempty" name:"RepairAction"`
+
+	// 修复影响
+	RepairEffect *string `json:"RepairEffect,omitnil,omitempty" name:"RepairEffect"`
+
+	// 是否建议开启检测
+	ShouldEnable *bool `json:"ShouldEnable,omitnil,omitempty" name:"ShouldEnable"`
+
+	// 是否建议修复
+	ShouldRepair *bool `json:"ShouldRepair,omitnil,omitempty" name:"ShouldRepair"`
+
+	// 问题严重程度
+	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
 }
 
 type Instance struct {
@@ -800,6 +1215,67 @@ type ManuallyAdded struct {
 
 	// 节点总数
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+// Predefined struct for user
+type ModifyHealthCheckPolicyRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 健康检测策略
+	HealthCheckPolicy *HealthCheckPolicy `json:"HealthCheckPolicy,omitnil,omitempty" name:"HealthCheckPolicy"`
+}
+
+type ModifyHealthCheckPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 健康检测策略
+	HealthCheckPolicy *HealthCheckPolicy `json:"HealthCheckPolicy,omitnil,omitempty" name:"HealthCheckPolicy"`
+}
+
+func (r *ModifyHealthCheckPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHealthCheckPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "HealthCheckPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHealthCheckPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHealthCheckPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyHealthCheckPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyHealthCheckPolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyHealthCheckPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHealthCheckPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

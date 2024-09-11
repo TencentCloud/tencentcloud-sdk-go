@@ -5821,6 +5821,9 @@ type CreateSecurityGroupWithPoliciesRequestParams struct {
 
 	// 安全组规则集合。
 	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitnil,omitempty" name:"SecurityGroupPolicySet"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateSecurityGroupWithPoliciesRequest struct {
@@ -5837,6 +5840,9 @@ type CreateSecurityGroupWithPoliciesRequest struct {
 
 	// 安全组规则集合。
 	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitnil,omitempty" name:"SecurityGroupPolicySet"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateSecurityGroupWithPoliciesRequest) ToJsonString() string {
@@ -5855,6 +5861,7 @@ func (r *CreateSecurityGroupWithPoliciesRequest) FromJsonString(s string) error 
 	delete(f, "GroupDescription")
 	delete(f, "ProjectId")
 	delete(f, "SecurityGroupPolicySet")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecurityGroupWithPoliciesRequest has unknown keys!", "")
 	}

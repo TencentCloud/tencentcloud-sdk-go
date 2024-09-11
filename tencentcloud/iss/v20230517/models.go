@@ -1301,6 +1301,77 @@ type BodyAIResultInfo struct {
 	BodyInfo []*BaseAIResultInfo `json:"BodyInfo,omitnil,omitempty" name:"BodyInfo"`
 }
 
+// Predefined struct for user
+type CallISAPIRequestParams struct {
+	// 设备ID
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// url 资源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 输入参数
+	InputData *string `json:"InputData,omitnil,omitempty" name:"InputData"`
+}
+
+type CallISAPIRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备ID
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// url 资源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 输入参数
+	InputData *string `json:"InputData,omitnil,omitempty" name:"InputData"`
+}
+
+func (r *CallISAPIRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallISAPIRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "Url")
+	delete(f, "InputData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CallISAPIRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CallISAPIResponseParams struct {
+	// 返回数据
+	Data *ISAPIOutputData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CallISAPIResponse struct {
+	*tchttp.BaseResponse
+	Response *CallISAPIResponseParams `json:"Response"`
+}
+
+func (r *CallISAPIResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallISAPIResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CarAIResultInfo struct {
 	// 车系
 	Serial *string `json:"Serial,omitnil,omitempty" name:"Serial"`
@@ -4689,6 +4760,12 @@ type GatewaysData struct {
 	// 所属网关设备数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
+}
+
+type ISAPIOutputData struct {
+	// 输出参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputData *string `json:"OutputData,omitnil,omitempty" name:"OutputData"`
 }
 
 type LifeCycleData struct {

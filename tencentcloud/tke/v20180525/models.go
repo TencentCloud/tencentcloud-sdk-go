@@ -2183,6 +2183,9 @@ type CreateClusterRequestParams struct {
 
 	// 需要安装的扩展组件信息
 	ExtensionAddons []*ExtensionAddon `json:"ExtensionAddons,omitnil,omitempty" name:"ExtensionAddons"`
+
+	// 本地专用集群Id
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 type CreateClusterRequest struct {
@@ -2214,6 +2217,9 @@ type CreateClusterRequest struct {
 
 	// 需要安装的扩展组件信息
 	ExtensionAddons []*ExtensionAddon `json:"ExtensionAddons,omitnil,omitempty" name:"ExtensionAddons"`
+
+	// 本地专用集群Id
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -2237,6 +2243,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "ExistedInstancesForNode")
 	delete(f, "InstanceDataDiskMountSettings")
 	delete(f, "ExtensionAddons")
+	delete(f, "CdcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}

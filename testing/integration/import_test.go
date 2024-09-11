@@ -292,6 +292,7 @@ import (
 	vmv20210922 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20210922"
 	vmsv20200902 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms/v20200902"
 	vodv20180717 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod/v20180717"
+	vodv20240718 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod/v20240718"
 	vpcv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
 	vrsv20200824 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vrs/v20200824"
 	vtcv20240223 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vtc/v20240223"
@@ -3840,6 +3841,19 @@ func TestVodv20180717Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init vod_v20180717 client: %v", err)
+    }
+}
+
+func TestVodv20240718Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := vodv20240718.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init vod_v20240718 client: %v", err)
     }
 }
 

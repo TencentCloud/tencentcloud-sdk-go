@@ -5482,6 +5482,9 @@ type MainlandPermitOCRResponseParams struct {
 	// RetProfile为True时返回头像字段， Base64编码
 	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
 
+	// 国籍
+	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
+
 	// 背面字段信息
 	MainlandTravelPermitBackInfos *MainlandTravelPermitBackInfos `json:"MainlandTravelPermitBackInfos,omitnil,omitempty" name:"MainlandTravelPermitBackInfos"`
 

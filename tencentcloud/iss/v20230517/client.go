@@ -783,6 +783,63 @@ func (c *Client) BatchOperateDeviceWithContext(ctx context.Context, request *Bat
     return
 }
 
+func NewCallISAPIRequest() (request *CallISAPIRequest) {
+    request = &CallISAPIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "CallISAPI")
+    
+    
+    return
+}
+
+func NewCallISAPIResponse() (response *CallISAPIResponse) {
+    response = &CallISAPIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CallISAPI
+// 本接口可基于海康ISUP 5.0协议实现透传ISAPI的请求数据，调用接口前需确保设备采用ISUP协议成功注册至本平台
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTOPERATECMD = "InvalidParameterValue.UnSupportOperateCMD"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
+func (c *Client) CallISAPI(request *CallISAPIRequest) (response *CallISAPIResponse, err error) {
+    return c.CallISAPIWithContext(context.Background(), request)
+}
+
+// CallISAPI
+// 本接口可基于海康ISUP 5.0协议实现透传ISAPI的请求数据，调用接口前需确保设备采用ISUP协议成功注册至本平台
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTOPERATECMD = "InvalidParameterValue.UnSupportOperateCMD"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
+func (c *Client) CallISAPIWithContext(ctx context.Context, request *CallISAPIRequest) (response *CallISAPIResponse, err error) {
+    if request == nil {
+        request = NewCallISAPIRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CallISAPI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCallISAPIResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckDomainRequest() (request *CheckDomainRequest) {
     request = &CheckDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},

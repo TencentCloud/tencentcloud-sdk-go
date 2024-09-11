@@ -45,6 +45,59 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateHealthCheckPolicyRequest() (request *CreateHealthCheckPolicyRequest) {
+    request = &CreateHealthCheckPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateHealthCheckPolicy")
+    
+    
+    return
+}
+
+func NewCreateHealthCheckPolicyResponse() (response *CreateHealthCheckPolicyResponse) {
+    response = &CreateHealthCheckPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHealthCheckPolicy
+// 创建健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) CreateHealthCheckPolicy(request *CreateHealthCheckPolicyRequest) (response *CreateHealthCheckPolicyResponse, err error) {
+    return c.CreateHealthCheckPolicyWithContext(context.Background(), request)
+}
+
+// CreateHealthCheckPolicy
+// 创建健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) CreateHealthCheckPolicyWithContext(ctx context.Context, request *CreateHealthCheckPolicyRequest) (response *CreateHealthCheckPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateHealthCheckPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHealthCheckPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHealthCheckPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNodePoolRequest() (request *CreateNodePoolRequest) {
     request = &CreateNodePoolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -98,6 +151,59 @@ func (c *Client) CreateNodePoolWithContext(ctx context.Context, request *CreateN
     request.SetContext(ctx)
     
     response = NewCreateNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteHealthCheckPolicyRequest() (request *DeleteHealthCheckPolicyRequest) {
+    request = &DeleteHealthCheckPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteHealthCheckPolicy")
+    
+    
+    return
+}
+
+func NewDeleteHealthCheckPolicyResponse() (response *DeleteHealthCheckPolicyResponse) {
+    response = &DeleteHealthCheckPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteHealthCheckPolicy
+// 删除健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DeleteHealthCheckPolicy(request *DeleteHealthCheckPolicyRequest) (response *DeleteHealthCheckPolicyResponse, err error) {
+    return c.DeleteHealthCheckPolicyWithContext(context.Background(), request)
+}
+
+// DeleteHealthCheckPolicy
+// 删除健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DeleteHealthCheckPolicyWithContext(ctx context.Context, request *DeleteHealthCheckPolicyRequest) (response *DeleteHealthCheckPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteHealthCheckPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHealthCheckPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteHealthCheckPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -234,6 +340,161 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeHealthCheckPoliciesRequest() (request *DescribeHealthCheckPoliciesRequest) {
+    request = &DescribeHealthCheckPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeHealthCheckPolicies")
+    
+    
+    return
+}
+
+func NewDescribeHealthCheckPoliciesResponse() (response *DescribeHealthCheckPoliciesResponse) {
+    response = &DescribeHealthCheckPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHealthCheckPolicies
+// 查询健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeHealthCheckPolicies(request *DescribeHealthCheckPoliciesRequest) (response *DescribeHealthCheckPoliciesResponse, err error) {
+    return c.DescribeHealthCheckPoliciesWithContext(context.Background(), request)
+}
+
+// DescribeHealthCheckPolicies
+// 查询健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeHealthCheckPoliciesWithContext(ctx context.Context, request *DescribeHealthCheckPoliciesRequest) (response *DescribeHealthCheckPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHealthCheckPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHealthCheckPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHealthCheckPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHealthCheckPolicyBindingsRequest() (request *DescribeHealthCheckPolicyBindingsRequest) {
+    request = &DescribeHealthCheckPolicyBindingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeHealthCheckPolicyBindings")
+    
+    
+    return
+}
+
+func NewDescribeHealthCheckPolicyBindingsResponse() (response *DescribeHealthCheckPolicyBindingsResponse) {
+    response = &DescribeHealthCheckPolicyBindingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHealthCheckPolicyBindings
+// 查询健康检测策略绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeHealthCheckPolicyBindings(request *DescribeHealthCheckPolicyBindingsRequest) (response *DescribeHealthCheckPolicyBindingsResponse, err error) {
+    return c.DescribeHealthCheckPolicyBindingsWithContext(context.Background(), request)
+}
+
+// DescribeHealthCheckPolicyBindings
+// 查询健康检测策略绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeHealthCheckPolicyBindingsWithContext(ctx context.Context, request *DescribeHealthCheckPolicyBindingsRequest) (response *DescribeHealthCheckPolicyBindingsResponse, err error) {
+    if request == nil {
+        request = NewDescribeHealthCheckPolicyBindingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHealthCheckPolicyBindings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHealthCheckPolicyBindingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHealthCheckTemplateRequest() (request *DescribeHealthCheckTemplateRequest) {
+    request = &DescribeHealthCheckTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeHealthCheckTemplate")
+    
+    
+    return
+}
+
+func NewDescribeHealthCheckTemplateResponse() (response *DescribeHealthCheckTemplateResponse) {
+    response = &DescribeHealthCheckTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHealthCheckTemplate
+// 查询健康检测策略模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeHealthCheckTemplate(request *DescribeHealthCheckTemplateRequest) (response *DescribeHealthCheckTemplateResponse, err error) {
+    return c.DescribeHealthCheckTemplateWithContext(context.Background(), request)
+}
+
+// DescribeHealthCheckTemplate
+// 查询健康检测策略模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeHealthCheckTemplateWithContext(ctx context.Context, request *DescribeHealthCheckTemplateRequest) (response *DescribeHealthCheckTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeHealthCheckTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHealthCheckTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHealthCheckTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodePoolsRequest() (request *DescribeNodePoolsRequest) {
     request = &DescribeNodePoolsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -291,6 +552,59 @@ func (c *Client) DescribeNodePoolsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeNodePoolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHealthCheckPolicyRequest() (request *ModifyHealthCheckPolicyRequest) {
+    request = &ModifyHealthCheckPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyHealthCheckPolicy")
+    
+    
+    return
+}
+
+func NewModifyHealthCheckPolicyResponse() (response *ModifyHealthCheckPolicyResponse) {
+    response = &ModifyHealthCheckPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHealthCheckPolicy
+// 修改健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyHealthCheckPolicy(request *ModifyHealthCheckPolicyRequest) (response *ModifyHealthCheckPolicyResponse, err error) {
+    return c.ModifyHealthCheckPolicyWithContext(context.Background(), request)
+}
+
+// ModifyHealthCheckPolicy
+// 修改健康检测策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyHealthCheckPolicyWithContext(ctx context.Context, request *ModifyHealthCheckPolicyRequest) (response *ModifyHealthCheckPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyHealthCheckPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHealthCheckPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHealthCheckPolicyResponse()
     err = c.Send(request, response)
     return
 }

@@ -7300,24 +7300,21 @@ func (r *CreateUserMobileChangeUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserMobileChangeUrlResponseParams struct {
-	// 腾讯电子签小程序的实名认证链接。
-	// 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+	// 腾讯电子签小程序的实名认证链接。 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
 	// 
-	// - 如果EndPoint是APP，
-	// 得到的链接类似于pages/guide/index?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcExAlcOvNod0, 用法可以参考描述中的"跳转到小程序的实现"
+	// <b>1.如果EndPoint是APP</b>，
+	// 得到的链接类似于<a href="">pages/guide/index?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
 	// 
-	// - 如果EndPoint是HTTP，
-	// 得到的链接类似于https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcChrfpaswT0d，点击后会跳转到腾讯电子签小程序进行签署
+	// <b>2.如果EndPoint是HTTP</b>，
+	// 得到的链接类似于<a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
 	// 
-	// - 如果EndPoint是HTTP_SHORT_URL，
-	// 得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
+	// <b>3.如果EndPoint是HTTP_SHORT_URL</b>，
+	// 得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
 	// 
-	// 
-	// 注： 生成的链路后面不能再增加参数
-	// 示例值：https://essurl.cn/2n**42Nd
+	// 注： <font color="red">生成的链路后面不能再增加参数</font>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 链接失效期限如下：
+	// 链接失效期限，为Unix时间戳（单位秒），有如下规则：
 	// 
 	// <ul>
 	// <li>如果指定更换绑定手机号的用户(指定用户ID或姓名等信息)，则设定的链接失效期限为7天后。</li>
@@ -7371,20 +7368,13 @@ type CreateUserVerifyUrlRequestParams struct {
 
 	// 要跳转的链接类型
 	// 
-	// - HTTP：
-	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型 ，此时返回长链 (默认类型)
-	// 
-	// - HTTP_SHORT_URL：
-	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型，此时返回短链
-	// 
-	// - APP：
-	// 第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
-	// 
-	// - H5：
-	// 跳转电子签H5实名页面的长链
-	// 
-	// - H5_SHORT_URL：
-	// 跳转电子签H5实名页面的短链
+	// <ul>
+	// <li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+	// <li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+	// <li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+	// <li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li>
+	// <li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li>
+	// </ul>
 	// 
 	// 注：如果不传递，默认值是 <font color="red"> APP </font>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
@@ -7429,20 +7419,13 @@ type CreateUserVerifyUrlRequest struct {
 
 	// 要跳转的链接类型
 	// 
-	// - HTTP：
-	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型 ，此时返回长链 (默认类型)
-	// 
-	// - HTTP_SHORT_URL：
-	// 跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型，此时返回短链
-	// 
-	// - APP：
-	// 第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
-	// 
-	// - H5：
-	// 跳转电子签H5实名页面的长链
-	// 
-	// - H5_SHORT_URL：
-	// 跳转电子签H5实名页面的短链
+	// <ul>
+	// <li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+	// <li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+	// <li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+	// <li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li>
+	// <li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li>
+	// </ul>
 	// 
 	// 注：如果不传递，默认值是 <font color="red"> APP </font>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
@@ -7492,27 +7475,27 @@ type CreateUserVerifyUrlResponseParams struct {
 	// 腾讯电子签小程序的实名认证链接。
 	// 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
 	// 
-	// - 如果EndPoint是APP，
-	// 得到的链接类似于pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0, 用法可以参考描述中的"跳转到小程序的实现"
+	// <strong>1.如果EndPoint是APP</strong>：
+	// 得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
 	// 
-	// - 如果EndPoint是HTTP，
-	// 得到的链接类似于https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d，点击后会跳转到腾讯电子签小程序进行签署
+	// <strong>2.如果EndPoint是HTTP</strong>：
+	// 得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
 	// 
-	// - 如果EndPoint是HTTP_SHORT_URL，
-	// 得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
+	// <strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：
+	// 得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
 	// 
-	// - 如果EndPoint是H5，
-	// 得到的链接类似于 https://quick.test.qian.tencent.cn/guide?Code=yDU****VJhsS5q&CodeType=xxx&shortKey=yD*****frcb，点击后会跳转到腾讯电子签H5页面进行签署
+	// <strong>4.如果EndPoint是H5</strong>：
+	// 得到的链接类似于 <a href="">https://quick.test.qian.tencent.cn/guide?Code=yDU****VJhsS5q&CodeType=xxx&shortKey=yD*****frcb</a>，点击后会跳转到腾讯电子签H5页面进行签署
 	// 
-	// - 如果EndPoint是H5_SHORT_URL，
-	// 得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签H5页面进行签署
+	// <strong>5.如果EndPoint是H5_SHORT_URL</strong>：
+	// 得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签H5页面进行签署
 	// 
 	// 
-	// `注：` <font color="red">生成的链路后面不能再增加参数</font>
+	// `注：` <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font>
 	// 示例值：https://essurl.cn/2n**42Nd
 	UserVerifyUrl *string `json:"UserVerifyUrl,omitnil,omitempty" name:"UserVerifyUrl"`
 
-	// 链接过期时间
+	// 链接过期时间，为Unix时间戳（单位为秒）。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回

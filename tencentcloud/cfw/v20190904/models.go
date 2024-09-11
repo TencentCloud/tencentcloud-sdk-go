@@ -657,6 +657,10 @@ type BanAndAllowRule struct {
 	// 自定义白名单规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
+
+	// 放通的引擎: 1针对互联网边界 2针对nat防火墙 4针对vpc防火墙
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type BanAndAllowRuleDel struct {
@@ -664,7 +668,7 @@ type BanAndAllowRuleDel struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
 
-	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的 （DeleteBlockIgnoreRuleNew接口，该字段无效）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
 
@@ -779,6 +783,10 @@ type BlockIgnoreRule struct {
 	// 自定义规则细节
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
+
+	// 1 border 2 nat 4 vpc 8 border-serial
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type CfwNatDnatRule struct {
@@ -2015,6 +2023,9 @@ type CreateNatRuleItem struct {
 
 	// 内部id
 	InternalUuid *int64 `json:"InternalUuid,omitnil,omitempty" name:"InternalUuid"`
+
+	// 规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
 type CreateRuleItem struct {
@@ -3162,9 +3173,14 @@ type DescAcItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*BetaInfoByACL `json:"BetaList,omitnil,omitempty" name:"BetaList"`
 
-	// 生效范围：serial，串行；side，旁路；all，全局
+	// （1）互联网边界防火墙，生效范围：serial，串行；side，旁路；all，全局；
+	// （2）NAT边界防火墙：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 生效范围描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScopeDesc *string `json:"ScopeDesc,omitnil,omitempty" name:"ScopeDesc"`
 
 	// 互联网边界防火墙使用的内部规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6940,6 +6956,10 @@ type EdgeIpInfo struct {
 	// 域名化CLB的域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// IP超量状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverUsedStatus *int64 `json:"OverUsedStatus,omitnil,omitempty" name:"OverUsedStatus"`
 }
 
 type EdgeIpSwitch struct {
@@ -10019,6 +10039,18 @@ type NatSwitchListData struct {
 	// 开关是否异常,0:正常,1:异常
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Abnormal *int64 `json:"Abnormal,omitnil,omitempty" name:"Abnormal"`
+
+	// nat防火墙出口路由表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ORTableId *string `json:"ORTableId,omitnil,omitempty" name:"ORTableId"`
+
+	// nat防火墙出口路由表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ORTableName *string `json:"ORTableName,omitnil,omitempty" name:"ORTableName"`
+
+	// 出口Snat Ip列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ohavips []*string `json:"Ohavips,omitnil,omitempty" name:"Ohavips"`
 }
 
 type NetInstancesInfo struct {
