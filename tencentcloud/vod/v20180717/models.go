@@ -169,6 +169,12 @@ type AdaptiveDynamicStreamingInfoItem struct {
 
 	// 版权信息。
 	CopyRightWatermarkText *string `json:"CopyRightWatermarkText,omitnil,omitempty" name:"CopyRightWatermarkText"`
+
+	// 字幕信息列表。
+	SubtitleSet []*MediaSubtitleItem `json:"SubtitleSet,omitnil,omitempty" name:"SubtitleSet"`
+
+	// 默认字幕的唯一标识。
+	DefaultSubtitleId *string `json:"DefaultSubtitleId,omitnil,omitempty" name:"DefaultSubtitleId"`
 }
 
 type AdaptiveDynamicStreamingTaskInput struct {
@@ -2176,6 +2182,9 @@ type AttachMediaSubtitlesRequestParams struct {
 	// 字幕的唯一标识。
 	SubtitleIds []*string `json:"SubtitleIds,omitnil,omitempty" name:"SubtitleIds"`
 
+	// 默认字幕的唯一标识。不填则不设置默认字幕。
+	DefaultSubtitleId *string `json:"DefaultSubtitleId,omitnil,omitempty" name:"DefaultSubtitleId"`
+
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
@@ -2197,6 +2206,9 @@ type AttachMediaSubtitlesRequest struct {
 	// 字幕的唯一标识。
 	SubtitleIds []*string `json:"SubtitleIds,omitnil,omitempty" name:"SubtitleIds"`
 
+	// 默认字幕的唯一标识。不填则不设置默认字幕。
+	DefaultSubtitleId *string `json:"DefaultSubtitleId,omitnil,omitempty" name:"DefaultSubtitleId"`
+
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
@@ -2217,6 +2229,7 @@ func (r *AttachMediaSubtitlesRequest) FromJsonString(s string) error {
 	delete(f, "Operation")
 	delete(f, "AdaptiveDynamicStreamingDefinition")
 	delete(f, "SubtitleIds")
+	delete(f, "DefaultSubtitleId")
 	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachMediaSubtitlesRequest has unknown keys!", "")

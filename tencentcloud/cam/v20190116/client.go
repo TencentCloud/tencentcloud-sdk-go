@@ -1415,6 +1415,57 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     return
 }
 
+func NewDeleteMessageReceiverRequest() (request *DeleteMessageReceiverRequest) {
+    request = &DeleteMessageReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteMessageReceiver")
+    
+    
+    return
+}
+
+func NewDeleteMessageReceiverResponse() (response *DeleteMessageReceiverResponse) {
+    response = &DeleteMessageReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMessageReceiver
+// 删除消息接收人
+//
+// 可能返回的错误码:
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) DeleteMessageReceiver(request *DeleteMessageReceiverRequest) (response *DeleteMessageReceiverResponse, err error) {
+    return c.DeleteMessageReceiverWithContext(context.Background(), request)
+}
+
+// DeleteMessageReceiver
+// 删除消息接收人
+//
+// 可能返回的错误码:
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) DeleteMessageReceiverWithContext(ctx context.Context, request *DeleteMessageReceiverRequest) (response *DeleteMessageReceiverResponse, err error) {
+    if request == nil {
+        request = NewDeleteMessageReceiverRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMessageReceiver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMessageReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOIDCConfigRequest() (request *DeleteOIDCConfigRequest) {
     request = &DeleteOIDCConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3959,6 +4010,61 @@ func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, request *Lis
     request.SetContext(ctx)
     
     response = NewListPolicyVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListReceiverRequest() (request *ListReceiverRequest) {
+    request = &ListReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "ListReceiver")
+    
+    
+    return
+}
+
+func NewListReceiverResponse() (response *ListReceiverResponse) {
+    response = &ListReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListReceiver
+// 获取消息接收人列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+func (c *Client) ListReceiver(request *ListReceiverRequest) (response *ListReceiverResponse, err error) {
+    return c.ListReceiverWithContext(context.Background(), request)
+}
+
+// ListReceiver
+// 获取消息接收人列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+func (c *Client) ListReceiverWithContext(ctx context.Context, request *ListReceiverRequest) (response *ListReceiverResponse, err error) {
+    if request == nil {
+        request = NewListReceiverRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListReceiver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListReceiverResponse()
     err = c.Send(request, response)
     return
 }

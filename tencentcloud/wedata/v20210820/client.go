@@ -6122,7 +6122,7 @@ func NewDescribePendingSubmitTaskListResponse() (response *DescribePendingSubmit
 }
 
 // DescribePendingSubmitTaskList
-// 获取待提交任务预提交校验信息
+// 获取待提交任务预提交校验信息（注意：工作流编号或者任务编号列表，必须填一项）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6133,7 +6133,7 @@ func (c *Client) DescribePendingSubmitTaskList(request *DescribePendingSubmitTas
 }
 
 // DescribePendingSubmitTaskList
-// 获取待提交任务预提交校验信息
+// 获取待提交任务预提交校验信息（注意：工作流编号或者任务编号列表，必须填一项）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

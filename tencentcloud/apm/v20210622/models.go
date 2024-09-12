@@ -269,6 +269,10 @@ type ApmInstanceDetail struct {
 	// 实例计费模式是否生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayModeEffective *bool `json:"PayModeEffective,omitnil,omitempty" name:"PayModeEffective"`
+
+	// 响应时间满意阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 type ApmMetricRecord struct {
@@ -1353,6 +1357,9 @@ type ModifyApmInstanceRequestParams struct {
 	// 1为预付费
 	// 0为按量付费
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 响应时间满意阈值
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1413,6 +1420,9 @@ type ModifyApmInstanceRequest struct {
 	// 1为预付费
 	// 0为按量付费
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 响应时间满意阈值
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1445,6 +1455,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LogSource")
 	delete(f, "CustomShowTags")
 	delete(f, "PayMode")
+	delete(f, "ResponseDurationWarningThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

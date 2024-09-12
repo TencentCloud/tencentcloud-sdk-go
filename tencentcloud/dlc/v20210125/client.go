@@ -1025,6 +1025,7 @@ func NewCheckDataEngineImageCanBeRollbackResponse() (response *CheckDataEngineIm
 //  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) CheckDataEngineImageCanBeRollback(request *CheckDataEngineImageCanBeRollbackRequest) (response *CheckDataEngineImageCanBeRollbackResponse, err error) {
     return c.CheckDataEngineImageCanBeRollbackWithContext(context.Background(), request)
 }
@@ -1049,6 +1050,7 @@ func (c *Client) CheckDataEngineImageCanBeRollback(request *CheckDataEngineImage
 //  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) CheckDataEngineImageCanBeRollbackWithContext(ctx context.Context, request *CheckDataEngineImageCanBeRollbackRequest) (response *CheckDataEngineImageCanBeRollbackResponse, err error) {
     if request == nil {
         request = NewCheckDataEngineImageCanBeRollbackRequest()
@@ -1102,6 +1104,7 @@ func NewCheckDataEngineImageCanBeUpgradeResponse() (response *CheckDataEngineIma
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) CheckDataEngineImageCanBeUpgrade(request *CheckDataEngineImageCanBeUpgradeRequest) (response *CheckDataEngineImageCanBeUpgradeResponse, err error) {
     return c.CheckDataEngineImageCanBeUpgradeWithContext(context.Background(), request)
 }
@@ -1124,6 +1127,7 @@ func (c *Client) CheckDataEngineImageCanBeUpgrade(request *CheckDataEngineImageC
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) CheckDataEngineImageCanBeUpgradeWithContext(ctx context.Context, request *CheckDataEngineImageCanBeUpgradeRequest) (response *CheckDataEngineImageCanBeUpgradeResponse, err error) {
     if request == nil {
         request = NewCheckDataEngineImageCanBeUpgradeRequest()
@@ -1782,6 +1786,7 @@ func NewCreateNotebookSessionResponse() (response *CreateNotebookSessionResponse
 //  RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
 //  RESOURCENOTFOUND_SHUFFLEDIRNOTFOUND = "ResourceNotFound.ShuffleDirNotFound"
 //  RESOURCENOTFOUND_WAREHOUSEDIRNOTFOUND = "ResourceNotFound.WarehouseDirNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) CreateNotebookSession(request *CreateNotebookSessionRequest) (response *CreateNotebookSessionResponse, err error) {
     return c.CreateNotebookSessionWithContext(context.Background(), request)
 }
@@ -1826,6 +1831,7 @@ func (c *Client) CreateNotebookSession(request *CreateNotebookSessionRequest) (r
 //  RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
 //  RESOURCENOTFOUND_SHUFFLEDIRNOTFOUND = "ResourceNotFound.ShuffleDirNotFound"
 //  RESOURCENOTFOUND_WAREHOUSEDIRNOTFOUND = "ResourceNotFound.WarehouseDirNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) CreateNotebookSessionWithContext(ctx context.Context, request *CreateNotebookSessionRequest) (response *CreateNotebookSessionResponse, err error) {
     if request == nil {
         request = NewCreateNotebookSessionRequest()
@@ -3931,6 +3937,7 @@ func NewDescribeDataEngineResponse() (response *DescribeDataEngineResponse) {
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeDataEngine(request *DescribeDataEngineRequest) (response *DescribeDataEngineResponse, err error) {
     return c.DescribeDataEngineWithContext(context.Background(), request)
 }
@@ -3945,6 +3952,7 @@ func (c *Client) DescribeDataEngine(request *DescribeDataEngineRequest) (respons
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeDataEngineWithContext(ctx context.Context, request *DescribeDataEngineRequest) (response *DescribeDataEngineResponse, err error) {
     if request == nil {
         request = NewDescribeDataEngineRequest()
@@ -3985,6 +3993,7 @@ func NewDescribeDataEngineEventsResponse() (response *DescribeDataEngineEventsRe
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeDataEngineEvents(request *DescribeDataEngineEventsRequest) (response *DescribeDataEngineEventsResponse, err error) {
     return c.DescribeDataEngineEventsWithContext(context.Background(), request)
 }
@@ -3994,6 +4003,7 @@ func (c *Client) DescribeDataEngineEvents(request *DescribeDataEngineEventsReque
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeDataEngineEventsWithContext(ctx context.Context, request *DescribeDataEngineEventsRequest) (response *DescribeDataEngineEventsResponse, err error) {
     if request == nil {
         request = NewDescribeDataEngineEventsRequest()
@@ -4162,7 +4172,7 @@ func NewDescribeDataEnginesResponse() (response *DescribeDataEnginesResponse) {
 }
 
 // DescribeDataEngines
-// 本接口（DescribeDataEngines）用于查询DataEngines信息列表
+// 本接口（DescribeDataEngines）用于查询DataEngines信息列表.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
@@ -4178,7 +4188,7 @@ func (c *Client) DescribeDataEngines(request *DescribeDataEnginesRequest) (respo
 }
 
 // DescribeDataEngines
-// 本接口（DescribeDataEngines）用于查询DataEngines信息列表
+// 本接口（DescribeDataEngines）用于查询DataEngines信息列表.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
@@ -5027,6 +5037,7 @@ func NewDescribeNotebookSessionsResponse() (response *DescribeNotebookSessionsRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeNotebookSessions(request *DescribeNotebookSessionsRequest) (response *DescribeNotebookSessionsResponse, err error) {
     return c.DescribeNotebookSessionsWithContext(context.Background(), request)
 }
@@ -5041,6 +5052,7 @@ func (c *Client) DescribeNotebookSessions(request *DescribeNotebookSessionsReque
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeNotebookSessionsWithContext(ctx context.Context, request *DescribeNotebookSessionsRequest) (response *DescribeNotebookSessionsResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookSessionsRequest()
@@ -7590,6 +7602,7 @@ func NewModifyDataEngineDescriptionResponse() (response *ModifyDataEngineDescrip
 //  INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  UNAUTHORIZEDOPERATION_MODIFYCOMPUTINGENGINE = "UnauthorizedOperation.ModifyComputingEngine"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) ModifyDataEngineDescription(request *ModifyDataEngineDescriptionRequest) (response *ModifyDataEngineDescriptionResponse, err error) {
     return c.ModifyDataEngineDescriptionWithContext(context.Background(), request)
 }
@@ -7603,6 +7616,7 @@ func (c *Client) ModifyDataEngineDescription(request *ModifyDataEngineDescriptio
 //  INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  UNAUTHORIZEDOPERATION_MODIFYCOMPUTINGENGINE = "UnauthorizedOperation.ModifyComputingEngine"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) ModifyDataEngineDescriptionWithContext(ctx context.Context, request *ModifyDataEngineDescriptionRequest) (response *ModifyDataEngineDescriptionResponse, err error) {
     if request == nil {
         request = NewModifyDataEngineDescriptionRequest()
@@ -8155,6 +8169,7 @@ func NewQueryTaskCostDetailResponse() (response *QueryTaskCostDetailResponse) {
 //  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
 //  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) QueryTaskCostDetail(request *QueryTaskCostDetailRequest) (response *QueryTaskCostDetailResponse, err error) {
     return c.QueryTaskCostDetailWithContext(context.Background(), request)
 }
@@ -8178,6 +8193,7 @@ func (c *Client) QueryTaskCostDetail(request *QueryTaskCostDetailRequest) (respo
 //  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
 //  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) QueryTaskCostDetailWithContext(ctx context.Context, request *QueryTaskCostDetailRequest) (response *QueryTaskCostDetailResponse, err error) {
     if request == nil {
         request = NewQueryTaskCostDetailRequest()
@@ -8520,6 +8536,7 @@ func NewRollbackDataEngineImageResponse() (response *RollbackDataEngineImageResp
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) RollbackDataEngineImage(request *RollbackDataEngineImageRequest) (response *RollbackDataEngineImageResponse, err error) {
     return c.RollbackDataEngineImageWithContext(context.Background(), request)
 }
@@ -8554,6 +8571,7 @@ func (c *Client) RollbackDataEngineImage(request *RollbackDataEngineImageRequest
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) RollbackDataEngineImageWithContext(ctx context.Context, request *RollbackDataEngineImageRequest) (response *RollbackDataEngineImageResponse, err error) {
     if request == nil {
         request = NewRollbackDataEngineImageRequest()
@@ -8652,12 +8670,7 @@ func NewSwitchDataEngineResponse() (response *SwitchDataEngineResponse) {
 // 切换主备集群
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATAENGINECLUSTERTYPENOTMATCH = "InvalidParameter.DataEngineClusterTypeNotMatch"
-//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
-//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
-//  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) SwitchDataEngine(request *SwitchDataEngineRequest) (response *SwitchDataEngineResponse, err error) {
     return c.SwitchDataEngineWithContext(context.Background(), request)
 }
@@ -8666,12 +8679,7 @@ func (c *Client) SwitchDataEngine(request *SwitchDataEngineRequest) (response *S
 // 切换主备集群
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATAENGINECLUSTERTYPENOTMATCH = "InvalidParameter.DataEngineClusterTypeNotMatch"
-//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
-//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
-//  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) SwitchDataEngineWithContext(ctx context.Context, request *SwitchDataEngineRequest) (response *SwitchDataEngineResponse, err error) {
     if request == nil {
         request = NewSwitchDataEngineRequest()
@@ -8734,6 +8742,7 @@ func NewSwitchDataEngineImageResponse() (response *SwitchDataEngineImageResponse
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) SwitchDataEngineImage(request *SwitchDataEngineImageRequest) (response *SwitchDataEngineImageResponse, err error) {
     return c.SwitchDataEngineImageWithContext(context.Background(), request)
 }
@@ -8765,6 +8774,7 @@ func (c *Client) SwitchDataEngineImage(request *SwitchDataEngineImageRequest) (r
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) SwitchDataEngineImageWithContext(ctx context.Context, request *SwitchDataEngineImageRequest) (response *SwitchDataEngineImageResponse, err error) {
     if request == nil {
         request = NewSwitchDataEngineImageRequest()

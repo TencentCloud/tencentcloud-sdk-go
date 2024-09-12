@@ -3694,7 +3694,7 @@ type DescribeServiceNodeInfosRequestParams struct {
 	// "-4"代表未探测
 	HealthStateId *string `json:"HealthStateId,omitnil,omitempty" name:"HealthStateId"`
 
-	// 服务组件名称，都是大写比如YARN
+	// 服务组件名称，都是大写例如YARN
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 节点名称
@@ -3753,7 +3753,7 @@ type DescribeServiceNodeInfosRequest struct {
 	// "-4"代表未探测
 	HealthStateId *string `json:"HealthStateId,omitnil,omitempty" name:"HealthStateId"`
 
-	// 服务组件名称，都是大写比如YARN
+	// 服务组件名称，都是大写例如YARN
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 节点名称

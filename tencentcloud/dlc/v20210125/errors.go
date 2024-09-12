@@ -683,6 +683,9 @@ const (
 	// 子用户无权取消特定权限。
 	UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 
+	// 无引擎cam权限
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+
 	// 子用户不是管理员，无权将工作组和用户解绑。
 	UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
 

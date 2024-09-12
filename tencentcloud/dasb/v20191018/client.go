@@ -2222,6 +2222,59 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
+    request = &DescribeDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeDomains")
+    
+    
+    return
+}
+
+func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
+    response = &DescribeDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDomains
+// 查询网络域
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
+    return c.DescribeDomainsWithContext(context.Background(), request)
+}
+
+// DescribeDomains
+// 查询网络域
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoginEventRequest() (request *DescribeLoginEventRequest) {
     request = &DescribeLoginEventRequest{
         BaseRequest: &tchttp.BaseRequest{},

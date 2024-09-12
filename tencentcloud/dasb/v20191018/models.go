@@ -3301,6 +3301,80 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainsRequestParams struct {
+	// 每页条目数量，默认20，最大500
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条目数量，默认20，最大500
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainsResponseParams struct {
+	// 网络域总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 网络域列表
+	DomainSet []*Domain `json:"DomainSet,omitnil,omitempty" name:"DomainSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLoginEventRequestParams struct {
 	// 用户名，如果不包含其他条件时对user_name or real_name两个字段模糊查询
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
@@ -4012,6 +4086,42 @@ type DeviceAccount struct {
 
 	// true-已托管私钥，false-未托管私钥
 	BoundPrivateKey *bool `json:"BoundPrivateKey,omitnil,omitempty" name:"BoundPrivateKey"`
+}
+
+type Domain struct {
+	// 自增id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 网络域id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 网络域名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 堡垒机id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// ip，网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhiteIpSet []*string `json:"WhiteIpSet,omitnil,omitempty" name:"WhiteIpSet"`
+
+	// 是否启用  默认 1启用 0禁用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 状态 0-已断开  1-已连接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 网络域创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否资源默认网络域 1-资源默认网络域 0-用户添加网络域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Default *uint64 `json:"Default,omitnil,omitempty" name:"Default"`
 }
 
 type ExternalDevice struct {

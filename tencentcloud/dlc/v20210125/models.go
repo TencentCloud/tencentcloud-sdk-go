@@ -1435,8 +1435,7 @@ type Column struct {
 	// 列名称，不区分大小写，最大支持25个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 列类型，支持如下类型定义:
-	// string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array<data_type>|map<primitive_type, data_type>|struct<col_name : data_type [COMMENT col_comment], ...>|uniontype<data_type, data_type, ...>。
+	// string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 对该类的注释。
@@ -1470,6 +1469,10 @@ type Column struct {
 	// 是否为分区字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPartition *bool `json:"IsPartition,omitnil,omitempty" name:"IsPartition"`
+
+	// 数据脱敏策略信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataMaskStrategyInfo *DataMaskStrategyInfo `json:"DataMaskStrategyInfo,omitnil,omitempty" name:"DataMaskStrategyInfo"`
 }
 
 type CommonMetrics struct {
@@ -2761,7 +2764,7 @@ type CreateResultDownloadRequestParams struct {
 	// 下载格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 是否重新生成下载文件，仅当之前任务为 Timout | Error 时有效
+	// 是否重新生成下载文件，仅当之前任务状态为 timeout | error 时有效
 	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
@@ -2774,7 +2777,7 @@ type CreateResultDownloadRequest struct {
 	// 下载格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 是否重新生成下载文件，仅当之前任务为 Timout | Error 时有效
+	// 是否重新生成下载文件，仅当之前任务状态为 timeout | error 时有效
 	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
@@ -4489,6 +4492,32 @@ type DataGovernPolicy struct {
 	GovernEngine *string `json:"GovernEngine,omitnil,omitempty" name:"GovernEngine"`
 }
 
+type DataMaskStrategyInfo struct {
+	// 策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// 策略描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyDesc *string `json:"StrategyDesc,omitnil,omitempty" name:"StrategyDesc"`
+
+	// 用户组策略列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 用户子账号uin列表，按;拼接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Users *string `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 策略Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+}
+
 type DataSourceInfo struct {
 	// 数据源实例的唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4613,6 +4642,10 @@ type DatasourceConnectionConfig struct {
 	// TDSQL-PostgreSQL数据源连接的属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TDSQLPostgreSql *DataSourceInfo `json:"TDSQLPostgreSql,omitnil,omitempty" name:"TDSQLPostgreSql"`
+
+	// Doris数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TCHouseD *TCHouseD `json:"TCHouseD,omitnil,omitempty" name:"TCHouseD"`
 }
 
 type DatasourceConnectionInfo struct {
@@ -7509,11 +7542,11 @@ type DescribeResultDownloadResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
-	// 临时AK
+	// 临时SecretId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
 
-	// 临时SK
+	// 临时SecretKey
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
@@ -10682,6 +10715,16 @@ func (r *GrantDLCCatalogAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GroupInfo struct {
+	// 用户组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
+
+	// 策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+}
+
 type HiveInfo struct {
 	// hive metastore的地址
 	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
@@ -12798,6 +12841,10 @@ type ResourceInfo struct {
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 标准引擎资源组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 // Predefined struct for user
@@ -13574,6 +13621,40 @@ func (r *SwitchDataEngineResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SwitchDataEngineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TCHouseD struct {
+	// 数据源实例的唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 数据源的JDBC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JdbcUrl *string `json:"JdbcUrl,omitnil,omitempty" name:"JdbcUrl"`
+
+	// 用于访问数据源的用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 数据源访问密码，需要base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 数据源的VPC和子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *DatasourceConnectionLocation `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 默认数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 访问信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 }
 
 type TColumn struct {

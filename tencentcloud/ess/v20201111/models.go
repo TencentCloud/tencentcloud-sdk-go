@@ -2859,6 +2859,9 @@ type CreateFlowByFilesRequestParams struct {
 	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
 	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -2987,6 +2990,9 @@ type CreateFlowByFilesRequest struct {
 	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
 	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -3022,6 +3028,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "AutoSignScene")
 	delete(f, "NeedSignReview")
+	delete(f, "FlowDisplayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -3795,6 +3802,13 @@ type CreateFlowRequestParams struct {
 	//
 	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： 
+	//  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>
+	// 
+	// 效果如下:
+	// ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 type CreateFlowRequest struct {
@@ -3894,6 +3908,13 @@ type CreateFlowRequest struct {
 
 	// 暂未开放
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： 
+	//  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>
+	// 
+	// 效果如下:
+	// ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 func (r *CreateFlowRequest) ToJsonString() string {
@@ -3925,6 +3946,7 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "AutoSignScene")
 	delete(f, "RelatedFlowId")
 	delete(f, "CallbackUrl")
+	delete(f, "FlowDisplayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
 	}
@@ -4107,7 +4129,7 @@ type CreateFlowSignUrlRequestParams struct {
 	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
 	// 
 	// 注:
-	// `1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
+	// `1. 签署人只能有手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
@@ -4147,7 +4169,7 @@ type CreateFlowSignUrlRequest struct {
 	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
 	// 
 	// 注:
-	// `1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
+	// `1. 签署人只能有手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 	// `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
@@ -8886,8 +8908,8 @@ type DescribeFlowComponentsRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 合同流程ID，为32位字符串。
-	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 代理企业和员工的信息。
@@ -8903,8 +8925,8 @@ type DescribeFlowComponentsRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 合同流程ID，为32位字符串。
-	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+	// 
+	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 代理企业和员工的信息。
@@ -8935,7 +8957,7 @@ func (r *DescribeFlowComponentsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowComponentsResponseParams struct {
-	// 合同流程关联的填写控件信息，按照参与方进行分类返回。
+	// 合同流程关联的填写控件信息，包括填写控件的归属方以及是否填写等内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitnil,omitempty" name:"RecipientComponentInfos"`
 
@@ -11271,6 +11293,9 @@ type FlowGroupInfo struct {
 	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	// 示例值：E_PRESCRIPTION_AUTO_SIGN
 	AutoSignScene *string `json:"AutoSignScene,omitnil,omitempty" name:"AutoSignScene"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 type FlowGroupOptions struct {
@@ -12494,13 +12519,16 @@ type Recipient struct {
 }
 
 type RecipientComponentInfo struct {
-	// 参与方Id
+	// 签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 参与方填写状态
-	// <ul><li>0-未填写</li>
-	// <li>1-已填写</li></ul>
+	// <ul>
+	// <li>**空值** : 此参与方没有填写控件</li>
+	// <li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li>
+	// <li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientFillStatus *string `json:"RecipientFillStatus,omitnil,omitempty" name:"RecipientFillStatus"`
 
@@ -12510,21 +12538,24 @@ type RecipientComponentInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPromoter *bool `json:"IsPromoter,omitnil,omitempty" name:"IsPromoter"`
 
-	// 填写控件列表
+	// 改参与方填写控件信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Components []*FilledComponent `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
 type RegisterInfo struct {
 	// 法人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 社会统一信用代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Uscc is deprecated.
 	Uscc *string `json:"Uscc,omitnil,omitempty" name:"Uscc"`
 
 	// 社会统一信用代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
 }
 

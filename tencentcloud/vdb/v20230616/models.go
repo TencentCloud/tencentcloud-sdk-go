@@ -141,12 +141,27 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceNodesRequestParams struct {
+	// limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// component
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 }
 
 type DescribeInstanceNodesRequest struct {
 	*tchttp.BaseRequest
 	
+	// limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// component
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 }
 
 func (r *DescribeInstanceNodesRequest) ToJsonString() string {
@@ -161,7 +176,9 @@ func (r *DescribeInstanceNodesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Component")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceNodesRequest has unknown keys!", "")
 	}

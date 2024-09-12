@@ -144,6 +144,10 @@ type Command struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultParameterConfs []*DefaultParameterConf `json:"DefaultParameterConfs,omitnil,omitempty" name:"DefaultParameterConfs"`
 
+	// 命令关联的场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
+
 	// 命令的结构化描述。公共命令有值，用户命令为空字符串。
 	FormattedDescription *string `json:"FormattedDescription,omitnil,omitempty" name:"FormattedDescription"`
 

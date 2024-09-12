@@ -2963,6 +2963,10 @@ type DbInfo struct {
 	// 绑定的状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidStatus *string `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 绑定的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
 }
 
 type DbRelationStatusItem struct {
@@ -5957,7 +5961,7 @@ type DescribeDSPAAssessmentTemplatesRequestParams struct {
 	// 结果集个数限制。默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched
+	// 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模版id
 	Filters []*DspaAssessmentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5973,7 +5977,7 @@ type DescribeDSPAAssessmentTemplatesRequest struct {
 	// 结果集个数限制。默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched
+	// 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模版id
 	Filters []*DspaAssessmentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

@@ -1689,6 +1689,60 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteMessageReceiverRequestParams struct {
+	// 消息接受者的名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DeleteMessageReceiverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 消息接受者的名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DeleteMessageReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMessageReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMessageReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMessageReceiverResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMessageReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMessageReceiverResponseParams `json:"Response"`
+}
+
+func (r *DeleteMessageReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMessageReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteOIDCConfigRequestParams struct {
 	// OIDC身份提供商名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4941,6 +4995,73 @@ func (r *ListPolicyVersionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListReceiverRequestParams struct {
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数目
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type ListReceiverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数目
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *ListReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListReceiverResponseParams struct {
+	// 总数目
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 联系人列表
+	Receivers []*Receiver `json:"Receivers,omitnil,omitempty" name:"Receivers"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *ListReceiverResponseParams `json:"Response"`
+}
+
+func (r *ListReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListSAMLProvidersRequestParams struct {
 
 }
@@ -5427,6 +5548,41 @@ func (r *PutUserPermissionsBoundaryResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PutUserPermissionsBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Receiver struct {
+	// id
+	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 手机号码
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 手机号码是否验证
+	PhoneFlag *int64 `json:"PhoneFlag,omitnil,omitempty" name:"PhoneFlag"`
+
+	// 邮箱
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 邮箱是否验证
+	EmailFlag *int64 `json:"EmailFlag,omitnil,omitempty" name:"EmailFlag"`
+
+	// 是否主联系人
+	IsReceiverOwner *int64 `json:"IsReceiverOwner,omitnil,omitempty" name:"IsReceiverOwner"`
+
+	// 是否允许微信接收通知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatFlag *int64 `json:"WechatFlag,omitnil,omitempty" name:"WechatFlag"`
+
+	// 账号uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
 // Predefined struct for user

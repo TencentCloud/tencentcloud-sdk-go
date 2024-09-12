@@ -6274,6 +6274,9 @@ type DescribeAIAnalysisTemplatesRequestParams struct {
 	// * Preset：系统预置模板；
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 视频内容分析模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeAIAnalysisTemplatesRequest struct {
@@ -6292,6 +6295,9 @@ type DescribeAIAnalysisTemplatesRequest struct {
 	// * Preset：系统预置模板；
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 视频内容分析模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeAIAnalysisTemplatesRequest) ToJsonString() string {
@@ -6310,6 +6316,7 @@ func (r *DescribeAIAnalysisTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIAnalysisTemplatesRequest has unknown keys!", "")
 	}
@@ -6359,6 +6366,9 @@ type DescribeAIRecognitionTemplatesRequestParams struct {
 	// * Preset：系统预置模板；
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 视频内容识别模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeAIRecognitionTemplatesRequest struct {
@@ -6377,6 +6387,9 @@ type DescribeAIRecognitionTemplatesRequest struct {
 	// * Preset：系统预置模板；
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 视频内容识别模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeAIRecognitionTemplatesRequest) ToJsonString() string {
@@ -6395,6 +6408,7 @@ func (r *DescribeAIRecognitionTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIRecognitionTemplatesRequest has unknown keys!", "")
 	}
@@ -6447,6 +6461,9 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequestParams struct {
 
 	// 是否为纯音频，0表示视频，1表示纯音频
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// 自适应转码模板标识过滤条件，长度限制：64 个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
@@ -6468,6 +6485,9 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 
 	// 是否为纯音频，0表示视频，1表示纯音频
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
+
+	// 自适应转码模板标识过滤条件，长度限制：64 个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) ToJsonString() string {
@@ -6487,6 +6507,7 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) FromJsonString(s stri
 	delete(f, "Limit")
 	delete(f, "Type")
 	delete(f, "PureAudio")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAdaptiveDynamicStreamingTemplatesRequest has unknown keys!", "")
 	}
@@ -6536,6 +6557,9 @@ type DescribeAnimatedGraphicsTemplatesRequestParams struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 转动图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeAnimatedGraphicsTemplatesRequest struct {
@@ -6554,6 +6578,9 @@ type DescribeAnimatedGraphicsTemplatesRequest struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 转动图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeAnimatedGraphicsTemplatesRequest) ToJsonString() string {
@@ -6572,6 +6599,7 @@ func (r *DescribeAnimatedGraphicsTemplatesRequest) FromJsonString(s string) erro
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnimatedGraphicsTemplatesRequest has unknown keys!", "")
 	}
@@ -6621,6 +6649,9 @@ type DescribeContentReviewTemplatesRequestParams struct {
 	// * Preset：系统预置模板；
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 智能审核模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeContentReviewTemplatesRequest struct {
@@ -6639,6 +6670,9 @@ type DescribeContentReviewTemplatesRequest struct {
 	// * Preset：系统预置模板；
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 智能审核模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeContentReviewTemplatesRequest) ToJsonString() string {
@@ -6657,6 +6691,7 @@ func (r *DescribeContentReviewTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContentReviewTemplatesRequest has unknown keys!", "")
 	}
@@ -6770,6 +6805,9 @@ type DescribeImageSpriteTemplatesRequestParams struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 雪碧图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeImageSpriteTemplatesRequest struct {
@@ -6788,6 +6826,9 @@ type DescribeImageSpriteTemplatesRequest struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 雪碧图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeImageSpriteTemplatesRequest) ToJsonString() string {
@@ -6806,6 +6847,7 @@ func (r *DescribeImageSpriteTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageSpriteTemplatesRequest has unknown keys!", "")
 	}
@@ -7313,6 +7355,9 @@ type DescribeQualityControlTemplatesRequestParams struct {
 
 	// "Preset"：预设，Custom":客户魔板
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 媒体质检模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeQualityControlTemplatesRequest struct {
@@ -7331,6 +7376,9 @@ type DescribeQualityControlTemplatesRequest struct {
 
 	// "Preset"：预设，Custom":客户魔板
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 媒体质检模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeQualityControlTemplatesRequest) ToJsonString() string {
@@ -7349,6 +7397,7 @@ func (r *DescribeQualityControlTemplatesRequest) FromJsonString(s string) error 
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityControlTemplatesRequest has unknown keys!", "")
 	}
@@ -7415,6 +7464,9 @@ type DescribeSampleSnapshotTemplatesRequestParams struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 采样截图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeSampleSnapshotTemplatesRequest struct {
@@ -7433,6 +7485,9 @@ type DescribeSampleSnapshotTemplatesRequest struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 采样截图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeSampleSnapshotTemplatesRequest) ToJsonString() string {
@@ -7451,6 +7506,7 @@ func (r *DescribeSampleSnapshotTemplatesRequest) FromJsonString(s string) error 
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSampleSnapshotTemplatesRequest has unknown keys!", "")
 	}
@@ -7600,6 +7656,9 @@ type DescribeSnapshotByTimeOffsetTemplatesRequestParams struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 指定时间点截图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
@@ -7618,6 +7677,9 @@ type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
 	// <li>Preset：系统预置模板；</li>
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 指定时间点截图模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) ToJsonString() string {
@@ -7636,6 +7698,7 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) FromJsonString(s string) 
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotByTimeOffsetTemplatesRequest has unknown keys!", "")
 	}
@@ -8842,6 +8905,9 @@ type DescribeTranscodeTemplatesRequestParams struct {
 	// <li>Enhance：音视频增强模板。</li>
 	// 默认空，不限制类型。
 	TranscodeType *string `json:"TranscodeType,omitnil,omitempty" name:"TranscodeType"`
+
+	// 转码模板标识过滤条件，长度限制：64 个字符。	
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeTranscodeTemplatesRequest struct {
@@ -8879,6 +8945,9 @@ type DescribeTranscodeTemplatesRequest struct {
 	// <li>Enhance：音视频增强模板。</li>
 	// 默认空，不限制类型。
 	TranscodeType *string `json:"TranscodeType,omitnil,omitempty" name:"TranscodeType"`
+
+	// 转码模板标识过滤条件，长度限制：64 个字符。	
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
@@ -8900,6 +8969,7 @@ func (r *DescribeTranscodeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "TranscodeType")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTemplatesRequest has unknown keys!", "")
 	}
@@ -8951,6 +9021,9 @@ type DescribeWatermarkTemplatesRequestParams struct {
 	// <li>默认值：10；</li>
 	// <li>最大值：100。</li>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 水印模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeWatermarkTemplatesRequest struct {
@@ -8971,6 +9044,9 @@ type DescribeWatermarkTemplatesRequest struct {
 	// <li>默认值：10；</li>
 	// <li>最大值：100。</li>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 水印模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeWatermarkTemplatesRequest) ToJsonString() string {
@@ -8989,6 +9065,7 @@ func (r *DescribeWatermarkTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWatermarkTemplatesRequest has unknown keys!", "")
 	}
@@ -16437,7 +16514,7 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 
 	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet *string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
+	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitnil,omitempty" name:"BlockConfidence"`
@@ -16517,12 +16594,14 @@ type VideoTemplateInfo struct {
 	// <li>vp9：VP9 编码</li>
 	// <li>mpeg2：MPEG2 编码</li>
 	// <li>dnxhd：DNxHD 编码</li>
+	// <li>mv-hevc：MV-HEVC 编码</li>
 	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 	// 
 	// 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 	// 注意：VP8、VP9编码容器目前只支持webm，mkv。
 	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
+	// 注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：
@@ -16558,8 +16637,7 @@ type VideoTemplateInfo struct {
 	// 默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-	// 当填 0 或不填时，系统将自动设置 gop 长度。
+	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。 当填 0 或不填时，系统将自动设置 gop 长度。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
@@ -16589,6 +16667,13 @@ type VideoTemplateInfo struct {
 	// 注意：值必须大于0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
+
+	// 3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
+	// <li>side_by_side：左右视角</li>
+	// <li>top_bottom：上下视角</li>
+	// 默认值:side_by_side
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stereo3dType *string `json:"Stereo3dType,omitnil,omitempty" name:"Stereo3dType"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -16601,12 +16686,14 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>vp9：VP9 编码</li>
 	// <li>mpeg2：MPEG2 编码</li>
 	// <li>dnxhd：DNxHD 编码</li>
+	// <li>mv-hevc：MV-HEVC 编码</li>
 	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 	// 
 	// 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 	// 注意：VP8、VP9编码容器目前只支持webm，mkv。
 	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
+	// 注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
@@ -16678,6 +16765,13 @@ type VideoTemplateInfoForUpdate struct {
 	// 注意：值必须大于0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
+
+	// 3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
+	// <li>side_by_side：左右视角</li>
+	// <li>top_bottom：上下视角</li>
+	// 默认值:side_by_side
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stereo3dType *string `json:"Stereo3dType,omitnil,omitempty" name:"Stereo3dType"`
 }
 
 type VolumeBalanceConfig struct {
