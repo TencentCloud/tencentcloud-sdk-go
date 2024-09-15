@@ -8169,6 +8169,7 @@ type DescribeBillUsageDetailRequestParams struct {
 	// <li>**OrgEssAuth**: 签署企业实名</li>
 	// <li>**FlowNotify**: 短信通知</li>
 	// <li>**AuthService**: 企业工商信息查询</li>
+	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
@@ -8209,6 +8210,7 @@ type DescribeBillUsageDetailRequest struct {
 	// <li>**OrgEssAuth**: 签署企业实名</li>
 	// <li>**FlowNotify**: 短信通知</li>
 	// <li>**AuthService**: 企业工商信息查询</li>
+	// <li>**NoAuthSign**: 形式签</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
@@ -8909,7 +8911,7 @@ type DescribeFlowComponentsRequestParams struct {
 
 	// 合同流程ID，为32位字符串。
 	// 
-	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 代理企业和员工的信息。
@@ -8926,7 +8928,7 @@ type DescribeFlowComponentsRequest struct {
 
 	// 合同流程ID，为32位字符串。
 	// 
-	// [点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 代理企业和员工的信息。

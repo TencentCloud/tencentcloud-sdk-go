@@ -2896,6 +2896,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -2919,6 +2920,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"

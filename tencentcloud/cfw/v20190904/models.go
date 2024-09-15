@@ -4308,6 +4308,114 @@ func (r *DescribeEnterpriseSGRuleProgressResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DescribeEnterpriseSecurityGroupRuleListRequestParams struct {
+	// 分页每页数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页当前页
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 启用状态 1启用 0 未启用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 规则下发方式筛选  1 新规则和延迟下发  2  仅看新规则  
+	Filter *int64 `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 查询条件
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// 查询条件新
+	SearchFilters []*CommonFilter `json:"SearchFilters,omitnil,omitempty" name:"SearchFilters"`
+}
+
+type DescribeEnterpriseSecurityGroupRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页每页数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页当前页
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 启用状态 1启用 0 未启用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 规则下发方式筛选  1 新规则和延迟下发  2  仅看新规则  
+	Filter *int64 `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 查询条件
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// 查询条件新
+	SearchFilters []*CommonFilter `json:"SearchFilters,omitnil,omitempty" name:"SearchFilters"`
+}
+
+func (r *DescribeEnterpriseSecurityGroupRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseSecurityGroupRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Status")
+	delete(f, "Area")
+	delete(f, "Filter")
+	delete(f, "SearchValue")
+	delete(f, "SearchFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnterpriseSecurityGroupRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnterpriseSecurityGroupRuleListResponseParams struct {
+	// 查询结果总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 规则总数
+	AllTotal *int64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
+
+	// 规则列表
+	Data []*EnterpriseSecurityGroupRuleRuleInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 规则整体启用状态
+	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEnterpriseSecurityGroupRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnterpriseSecurityGroupRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnterpriseSecurityGroupRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseSecurityGroupRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnterpriseSecurityGroupRuleRequestParams struct {
 	// 分页查询时，显示的当前页的页码。
 	// 
@@ -6974,6 +7082,142 @@ type EdgeIpSwitch struct {
 
 	// 0 : 旁路 1 : 串行
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
+}
+
+type EnterpriseSecurityGroupRuleBetaInfo struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
+}
+
+type EnterpriseSecurityGroupRuleRuleInfo struct {
+	// 排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
+
+	// 主键id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleUuid *uint64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
+
+	// 规则uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 源规则内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 源规则类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 目的规则内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 目的规则类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetType *int64 `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 协议名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 策略，1阻断，2放行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// 启用状态 ，0未开启，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclTags *string `json:"AclTags,omitnil,omitempty" name:"AclTags"`
+
+	// 是否最新一次改动的规则,0否，1是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNew *int64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 是否延迟下发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
+
+	// 服务模版id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
+
+	// 源资产名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SouInstanceName *string `json:"SouInstanceName,omitnil,omitempty" name:"SouInstanceName"`
+
+	// 源资产公网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SouPublicIp *string `json:"SouPublicIp,omitnil,omitempty" name:"SouPublicIp"`
+
+	// 源资产内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SouPrivateIp *string `json:"SouPrivateIp,omitnil,omitempty" name:"SouPrivateIp"`
+
+	// 源资产网段信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SouCidr *string `json:"SouCidr,omitnil,omitempty" name:"SouCidr"`
+
+	// 源模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SouParameterName *string `json:"SouParameterName,omitnil,omitempty" name:"SouParameterName"`
+
+	// 目的资产名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 目的资产公网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// 目的资产内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// 目的资产网段信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
+
+	// 目的模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
+
+	// 端口模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolPortName *string `json:"ProtocolPortName,omitnil,omitempty" name:"ProtocolPortName"`
+
+	// 自动化任务任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BetaList []*EnterpriseSecurityGroupRuleBetaInfo `json:"BetaList,omitnil,omitempty" name:"BetaList"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 // Predefined struct for user

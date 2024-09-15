@@ -141,6 +141,9 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceNodesRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// limit
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -154,6 +157,9 @@ type DescribeInstanceNodesRequestParams struct {
 type DescribeInstanceNodesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// limit
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -176,6 +182,7 @@ func (r *DescribeInstanceNodesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Component")

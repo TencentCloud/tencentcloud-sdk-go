@@ -885,7 +885,7 @@ type CreateClusterRequestParams struct {
 	// [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
 	ScriptBootstrapActionConfig []*ScriptBootstrapActionConfig `json:"ScriptBootstrapActionConfig,omitnil,omitempty" name:"ScriptBootstrapActionConfig"`
 
-	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-751a-41b6-aad6-fae360632808
+	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 是否开启集群Master节点公网。取值范围：
@@ -971,7 +971,7 @@ type CreateClusterRequest struct {
 	// [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
 	ScriptBootstrapActionConfig []*ScriptBootstrapActionConfig `json:"ScriptBootstrapActionConfig,omitnil,omitempty" name:"ScriptBootstrapActionConfig"`
 
-	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-751a-41b6-aad6-fae360632808
+	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 是否开启集群Master节点公网。取值范围：
@@ -1160,7 +1160,7 @@ type CreateInstanceRequestParams struct {
 	// <li>1：表示自动续费。</li>
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 是否开启集群Master节点公网。取值范围：
@@ -1302,7 +1302,7 @@ type CreateInstanceRequest struct {
 	// <li>1：表示自动续费。</li>
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 是否开启集群Master节点公网。取值范围：
@@ -8344,7 +8344,7 @@ type ScaleOutClusterRequestParams struct {
 	// 扩容节点类型以及数量
 	ScaleOutNodeConfig *ScaleOutNodeConfig `json:"ScaleOutNodeConfig,omitnil,omitempty" name:"ScaleOutNodeConfig"`
 
-	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
@@ -8414,7 +8414,7 @@ type ScaleOutClusterRequest struct {
 	// 扩容节点类型以及数量
 	ScaleOutNodeConfig *ScaleOutNodeConfig `json:"ScaleOutNodeConfig,omitnil,omitempty" name:"ScaleOutNodeConfig"`
 
-	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
@@ -8564,7 +8564,7 @@ type ScaleOutInstanceRequestParams struct {
 	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 引导操作脚本设置。
@@ -8663,7 +8663,7 @@ type ScaleOutInstanceRequest struct {
 	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+	// 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 引导操作脚本设置。

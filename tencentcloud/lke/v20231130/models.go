@@ -435,6 +435,10 @@ type Context struct {
 	// 文档信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfos []*MsgFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// 回复方式，15：澄清确认回复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplyMethod *uint64 `json:"ReplyMethod,omitnil,omitempty" name:"ReplyMethod"`
 }
 
 // Predefined struct for user
@@ -3672,7 +3676,7 @@ type GetMsgRecordRequestParams struct {
 	// 最后一条记录ID
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
-	// 应用AppKey
+	// 应用AppKey, 当Type=5[API访客]时, 该字段必填
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 场景, 体验: 1; 正式: 2
@@ -3694,7 +3698,7 @@ type GetMsgRecordRequest struct {
 	// 最后一条记录ID
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
-	// 应用AppKey
+	// 应用AppKey, 当Type=5[API访客]时, 该字段必填
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 场景, 体验: 1; 正式: 2
@@ -6816,6 +6820,7 @@ type MsgRecord struct {
 	IsLlmGenerated *bool `json:"IsLlmGenerated,omitnil,omitempty" name:"IsLlmGenerated"`
 
 	// 图片链接，可公有读
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
 
 	// 当次 token 统计信息
@@ -6851,6 +6856,10 @@ type MsgRecord struct {
 	// 用户传入的文件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfos []*FileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// 参考来源引用位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuoteInfos []*QuoteInfo `json:"QuoteInfos,omitnil,omitempty" name:"QuoteInfos"`
 }
 
 type MsgRecordReference struct {
@@ -7268,6 +7277,16 @@ func (r *QueryRewriteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QuoteInfo struct {
+	// 参考来源位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *uint64 `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// 参考来源索引顺序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
 // Predefined struct for user
 type RateMsgRecordRequestParams struct {
 	// 应用appKey
@@ -7488,6 +7507,18 @@ type ReferDetail struct {
 	// 原始内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgData *string `json:"OrgData,omitnil,omitempty" name:"OrgData"`
+
+	// 页码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageInfos []*uint64 `json:"PageInfos,omitnil,omitempty" name:"PageInfos"`
+
+	// sheet信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SheetInfos []*string `json:"SheetInfos,omitnil,omitempty" name:"SheetInfos"`
+
+	// 文档ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 }
 
 type RejectedQuestion struct {

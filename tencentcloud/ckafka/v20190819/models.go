@@ -7527,6 +7527,91 @@ func (r *FetchMessageListByOffsetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FetchMessageListByTimestampRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 查询开始时间，13位时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 最大查询条数，默认20，最大20
+	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitnil,omitempty" name:"SinglePartitionRecordNumber"`
+}
+
+type FetchMessageListByTimestampRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 查询开始时间，13位时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 最大查询条数，默认20，最大20
+	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitnil,omitempty" name:"SinglePartitionRecordNumber"`
+}
+
+func (r *FetchMessageListByTimestampRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchMessageListByTimestampRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "Partition")
+	delete(f, "StartTime")
+	delete(f, "SinglePartitionRecordNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchMessageListByTimestampRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchMessageListByTimestampResponseParams struct {
+	// 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+	Result []*ConsumerRecord `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FetchMessageListByTimestampResponse struct {
+	*tchttp.BaseResponse
+	Response *FetchMessageListByTimestampResponseParams `json:"Response"`
+}
+
+func (r *FetchMessageListByTimestampResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchMessageListByTimestampResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FieldParam struct {
 	// 解析
 	Analyse *AnalyseParam `json:"Analyse,omitnil,omitempty" name:"Analyse"`

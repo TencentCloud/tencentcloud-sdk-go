@@ -9751,6 +9751,9 @@ type DescribeSlowLogDataRequestParams struct {
 
 	// 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
 	InstType *string `json:"InstType,omitnil,omitempty" name:"InstType"`
+
+	// 节点ID
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 type DescribeSlowLogDataRequest struct {
@@ -9788,6 +9791,9 @@ type DescribeSlowLogDataRequest struct {
 
 	// 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
 	InstType *string `json:"InstType,omitnil,omitempty" name:"InstType"`
+
+	// 节点ID
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 func (r *DescribeSlowLogDataRequest) ToJsonString() string {
@@ -9813,6 +9819,7 @@ func (r *DescribeSlowLogDataRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "InstType")
+	delete(f, "OpResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogDataRequest has unknown keys!", "")
 	}

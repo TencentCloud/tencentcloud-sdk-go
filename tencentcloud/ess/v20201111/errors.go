@@ -263,6 +263,9 @@ const (
 	// 不合法的跳转链接，请联系电子签客服添加链接白名单。
 	INVALIDPARAMETER_JUMPURL = "InvalidParameter.JumpUrl"
 
+	// 关键字格式错误或者不存在。
+	INVALIDPARAMETER_KEYWORD = "InvalidParameter.Keyword"
+
 	// Limit参数超出最大限制
 	INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
 

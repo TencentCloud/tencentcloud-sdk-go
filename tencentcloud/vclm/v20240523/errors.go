@@ -71,6 +71,9 @@ const (
 	// 输入图高宽比未在1.2～2.0范围内
 	FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
 
+	// 图片高宽比超过限制。
+	FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+
 	// 图片分辨率过大。
 	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 

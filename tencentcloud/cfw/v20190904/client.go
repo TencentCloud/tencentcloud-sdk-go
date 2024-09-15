@@ -2801,6 +2801,89 @@ func (c *Client) DescribeEnterpriseSecurityGroupRuleWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeEnterpriseSecurityGroupRuleListRequest() (request *DescribeEnterpriseSecurityGroupRuleListRequest) {
+    request = &DescribeEnterpriseSecurityGroupRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeEnterpriseSecurityGroupRuleList")
+    
+    
+    return
+}
+
+func NewDescribeEnterpriseSecurityGroupRuleListResponse() (response *DescribeEnterpriseSecurityGroupRuleListResponse) {
+    response = &DescribeEnterpriseSecurityGroupRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnterpriseSecurityGroupRuleList
+// 查询新企业安全组规则  从node接口迁移   原接口DescribeSecurityGroupNewList
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEnterpriseSecurityGroupRuleList(request *DescribeEnterpriseSecurityGroupRuleListRequest) (response *DescribeEnterpriseSecurityGroupRuleListResponse, err error) {
+    return c.DescribeEnterpriseSecurityGroupRuleListWithContext(context.Background(), request)
+}
+
+// DescribeEnterpriseSecurityGroupRuleList
+// 查询新企业安全组规则  从node接口迁移   原接口DescribeSecurityGroupNewList
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEnterpriseSecurityGroupRuleListWithContext(ctx context.Context, request *DescribeEnterpriseSecurityGroupRuleListRequest) (response *DescribeEnterpriseSecurityGroupRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnterpriseSecurityGroupRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnterpriseSecurityGroupRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnterpriseSecurityGroupRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFwEdgeIpsRequest() (request *DescribeFwEdgeIpsRequest) {
     request = &DescribeFwEdgeIpsRequest{
         BaseRequest: &tchttp.BaseRequest{},

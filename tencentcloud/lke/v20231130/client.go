@@ -3741,7 +3741,7 @@ func NewRateMsgRecordResponse() (response *RateMsgRecordResponse) {
 }
 
 // RateMsgRecord
-// 是否意图转人工
+// 点赞点踩消息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3754,7 +3754,7 @@ func (c *Client) RateMsgRecord(request *RateMsgRecordRequest) (response *RateMsg
 }
 
 // RateMsgRecord
-// 是否意图转人工
+// 点赞点踩消息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

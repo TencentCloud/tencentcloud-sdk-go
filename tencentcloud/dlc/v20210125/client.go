@@ -4408,6 +4408,7 @@ func NewDescribeEngineUsageInfoResponse() (response *DescribeEngineUsageInfoResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeEngineUsageInfo(request *DescribeEngineUsageInfoRequest) (response *DescribeEngineUsageInfoResponse, err error) {
     return c.DescribeEngineUsageInfoWithContext(context.Background(), request)
 }
@@ -4419,6 +4420,7 @@ func (c *Client) DescribeEngineUsageInfo(request *DescribeEngineUsageInfoRequest
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeEngineUsageInfoWithContext(ctx context.Context, request *DescribeEngineUsageInfoRequest) (response *DescribeEngineUsageInfoResponse, err error) {
     if request == nil {
         request = NewDescribeEngineUsageInfoRequest()
@@ -6162,6 +6164,7 @@ func NewDescribeTasksCostInfoResponse() (response *DescribeTasksCostInfoResponse
 //  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
 //  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeTasksCostInfo(request *DescribeTasksCostInfoRequest) (response *DescribeTasksCostInfoResponse, err error) {
     return c.DescribeTasksCostInfoWithContext(context.Background(), request)
 }
@@ -6185,6 +6188,7 @@ func (c *Client) DescribeTasksCostInfo(request *DescribeTasksCostInfoRequest) (r
 //  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
 //  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) DescribeTasksCostInfoWithContext(ctx context.Context, request *DescribeTasksCostInfoRequest) (response *DescribeTasksCostInfoResponse, err error) {
     if request == nil {
         request = NewDescribeTasksCostInfoRequest()
@@ -8395,6 +8399,7 @@ func NewRestartDataEngineResponse() (response *RestartDataEngineResponse) {
 //  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
 //  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) RestartDataEngine(request *RestartDataEngineRequest) (response *RestartDataEngineResponse, err error) {
     return c.RestartDataEngineWithContext(context.Background(), request)
 }
@@ -8410,6 +8415,7 @@ func (c *Client) RestartDataEngine(request *RestartDataEngineRequest) (response 
 //  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
 //  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) RestartDataEngineWithContext(ctx context.Context, request *RestartDataEngineRequest) (response *RestartDataEngineResponse, err error) {
     if request == nil {
         request = NewRestartDataEngineRequest()
@@ -8456,6 +8462,7 @@ func NewRevokeDLCCatalogAccessResponse() (response *RevokeDLCCatalogAccessRespon
 //  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
 //  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) RevokeDLCCatalogAccess(request *RevokeDLCCatalogAccessRequest) (response *RevokeDLCCatalogAccessResponse, err error) {
     return c.RevokeDLCCatalogAccessWithContext(context.Background(), request)
 }
@@ -8471,6 +8478,7 @@ func (c *Client) RevokeDLCCatalogAccess(request *RevokeDLCCatalogAccessRequest) 
 //  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
 //  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) RevokeDLCCatalogAccessWithContext(ctx context.Context, request *RevokeDLCCatalogAccessRequest) (response *RevokeDLCCatalogAccessResponse, err error) {
     if request == nil {
         request = NewRevokeDLCCatalogAccessRequest()
@@ -9279,6 +9287,7 @@ func NewUpgradeDataEngineImageResponse() (response *UpgradeDataEngineImageRespon
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTFOUND = "ResourceNotFound.ImageSessionConfigNotFound"
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) UpgradeDataEngineImage(request *UpgradeDataEngineImageRequest) (response *UpgradeDataEngineImageResponse, err error) {
     return c.UpgradeDataEngineImageWithContext(context.Background(), request)
 }
@@ -9310,6 +9319,7 @@ func (c *Client) UpgradeDataEngineImage(request *UpgradeDataEngineImageRequest) 
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTFOUND = "ResourceNotFound.ImageSessionConfigNotFound"
 //  RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
 //  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
 func (c *Client) UpgradeDataEngineImageWithContext(ctx context.Context, request *UpgradeDataEngineImageRequest) (response *UpgradeDataEngineImageResponse, err error) {
     if request == nil {
         request = NewUpgradeDataEngineImageRequest()

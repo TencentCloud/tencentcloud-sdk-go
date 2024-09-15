@@ -653,6 +653,7 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlRequest) (response *ChannelCreateBatchSignUrlResponse, err error) {
     return c.ChannelCreateBatchSignUrlWithContext(context.Background(), request)
 }
@@ -688,6 +689,7 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 func (c *Client) ChannelCreateBatchSignUrlWithContext(ctx context.Context, request *ChannelCreateBatchSignUrlRequest) (response *ChannelCreateBatchSignUrlResponse, err error) {
     if request == nil {
         request = NewChannelCreateBatchSignUrlRequest()

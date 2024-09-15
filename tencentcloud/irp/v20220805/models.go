@@ -310,6 +310,9 @@ type FeedRecommendRequestParams struct {
 
 	// 当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
 	CurrentItemId *string `json:"CurrentItemId,omitnil,omitempty" name:"CurrentItemId"`
+
+	// 扩展字段，json字符串，需要base64加密
+	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
 }
 
 type FeedRecommendRequest struct {
@@ -332,6 +335,9 @@ type FeedRecommendRequest struct {
 
 	// 当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
 	CurrentItemId *string `json:"CurrentItemId,omitnil,omitempty" name:"CurrentItemId"`
+
+	// 扩展字段，json字符串，需要base64加密
+	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
 }
 
 func (r *FeedRecommendRequest) ToJsonString() string {
@@ -352,6 +358,7 @@ func (r *FeedRecommendRequest) FromJsonString(s string) error {
 	delete(f, "UserIdList")
 	delete(f, "ItemCnt")
 	delete(f, "CurrentItemId")
+	delete(f, "Extension")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FeedRecommendRequest has unknown keys!", "")
 	}
@@ -360,7 +367,7 @@ func (r *FeedRecommendRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FeedRecommendResponseParams struct {
-	// 推荐返回的内容信息列表
+	// 推荐返回的内容信息列表，返回结果已按策略规则做好了排序
 	DataList []*RecItemData `json:"DataList,omitnil,omitempty" name:"DataList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

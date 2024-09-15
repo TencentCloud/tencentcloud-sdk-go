@@ -4913,6 +4913,57 @@ func (c *Client) FetchMessageListByOffsetWithContext(ctx context.Context, reques
     return
 }
 
+func NewFetchMessageListByTimestampRequest() (request *FetchMessageListByTimestampRequest) {
+    request = &FetchMessageListByTimestampRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageListByTimestamp")
+    
+    
+    return
+}
+
+func NewFetchMessageListByTimestampResponse() (response *FetchMessageListByTimestampResponse) {
+    response = &FetchMessageListByTimestampResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FetchMessageListByTimestamp
+// 根据时间戳查询消息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) FetchMessageListByTimestamp(request *FetchMessageListByTimestampRequest) (response *FetchMessageListByTimestampResponse, err error) {
+    return c.FetchMessageListByTimestampWithContext(context.Background(), request)
+}
+
+// FetchMessageListByTimestamp
+// 根据时间戳查询消息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) FetchMessageListByTimestampWithContext(ctx context.Context, request *FetchMessageListByTimestampRequest) (response *FetchMessageListByTimestampResponse, err error) {
+    if request == nil {
+        request = NewFetchMessageListByTimestampRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FetchMessageListByTimestamp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFetchMessageListByTimestampResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquireCkafkaPriceRequest() (request *InquireCkafkaPriceRequest) {
     request = &InquireCkafkaPriceRequest{
         BaseRequest: &tchttp.BaseRequest{},

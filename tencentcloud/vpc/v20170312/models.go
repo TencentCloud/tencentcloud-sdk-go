@@ -1645,7 +1645,7 @@ func (r *AssociateNetworkAclSubnetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateNetworkInterfaceSecurityGroupsRequestParams struct {
-	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
@@ -1655,7 +1655,7 @@ type AssociateNetworkInterfaceSecurityGroupsRequestParams struct {
 type AssociateNetworkInterfaceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
@@ -19876,10 +19876,10 @@ type EnableRoutesRequestParams struct {
 	// 路由表唯一ID。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
-	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
+	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。单次处理上限100个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteIds []*uint64 `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
 
-	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
+	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。单次处理上限100个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteItemIds []*string `json:"RouteItemIds,omitnil,omitempty" name:"RouteItemIds"`
 }
 
@@ -19889,10 +19889,10 @@ type EnableRoutesRequest struct {
 	// 路由表唯一ID。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
-	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
+	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。单次处理上限100个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteIds []*uint64 `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
 
-	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
+	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。单次处理上限100个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteItemIds []*string `json:"RouteItemIds,omitnil,omitempty" name:"RouteItemIds"`
 }
 
