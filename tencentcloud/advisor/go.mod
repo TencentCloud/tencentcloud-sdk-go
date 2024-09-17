@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1003
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1004

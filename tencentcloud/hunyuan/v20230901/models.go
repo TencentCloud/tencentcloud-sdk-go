@@ -133,12 +133,12 @@ type ChatCompletionsRequestParams struct {
 	// 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
 
-	// 可调用的工具列表，仅对 hunyuan-functioncall 模型生效。
+	// 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
 	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
 	// 工具使用选项，可选值包括 none、auto、custom。
 	// 说明：
-	// 1. 仅对 hunyuan-functioncall 模型生效。
+	// 1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
 	// 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
 	// 3. 未设置时，默认值为auto
 	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
@@ -158,6 +158,14 @@ type ChatCompletionsRequestParams struct {
 
 	// 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
 	EnableSpeedSearch *bool `json:"EnableSpeedSearch,omitnil,omitempty" name:"EnableSpeedSearch"`
+
+	// 图文并茂开关。
+	// 说明：
+	// 1. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）时生效。
+	// 2. hunyuan-lite 无图文并茂能力，该参数对 hunyuan-lite 版本不生效。
+	// 3. 未传值时默认关闭。
+	// 4. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
+	EnableMultimedia *bool `json:"EnableMultimedia,omitnil,omitempty" name:"EnableMultimedia"`
 }
 
 type ChatCompletionsRequest struct {
@@ -220,12 +228,12 @@ type ChatCompletionsRequest struct {
 	// 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
 
-	// 可调用的工具列表，仅对 hunyuan-functioncall 模型生效。
+	// 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
 	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
 	// 工具使用选项，可选值包括 none、auto、custom。
 	// 说明：
-	// 1. 仅对 hunyuan-functioncall 模型生效。
+	// 1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
 	// 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
 	// 3. 未设置时，默认值为auto
 	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
@@ -245,6 +253,14 @@ type ChatCompletionsRequest struct {
 
 	// 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
 	EnableSpeedSearch *bool `json:"EnableSpeedSearch,omitnil,omitempty" name:"EnableSpeedSearch"`
+
+	// 图文并茂开关。
+	// 说明：
+	// 1. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）时生效。
+	// 2. hunyuan-lite 无图文并茂能力，该参数对 hunyuan-lite 版本不生效。
+	// 3. 未传值时默认关闭。
+	// 4. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
+	EnableMultimedia *bool `json:"EnableMultimedia,omitnil,omitempty" name:"EnableMultimedia"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -272,6 +288,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "SearchInfo")
 	delete(f, "Citation")
 	delete(f, "EnableSpeedSearch")
+	delete(f, "EnableMultimedia")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -306,6 +323,12 @@ type ChatCompletionsResponseParams struct {
 
 	// 搜索结果信息
 	SearchInfo *SearchInfo `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
+
+	// 多媒体信息。
+	// 说明：
+	// 1. 可以用多媒体信息替换回复内容里的占位符，得到完整的图文信息。
+	// 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
+	Replaces []*Replace `json:"Replaces,omitnil,omitempty" name:"Replaces"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -599,6 +622,17 @@ type Message struct {
 	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
 }
 
+type Multimedia struct {
+	// 多媒体类型，image：图片。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 多媒体预览地址。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 多媒体详情地址。
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+}
+
 // Predefined struct for user
 type QueryHunyuanImageChatJobRequestParams struct {
 	// 任务 ID。
@@ -754,6 +788,14 @@ func (r *QueryHunyuanImageJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryHunyuanImageJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Replace struct {
+	// 占位符序号
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 多媒体详情
+	Multimedia []*Multimedia `json:"Multimedia,omitnil,omitempty" name:"Multimedia"`
 }
 
 type SearchInfo struct {
