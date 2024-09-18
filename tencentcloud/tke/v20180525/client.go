@@ -8450,6 +8450,73 @@ func (c *Client) DescribeLogSwitchesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeOpenPolicyListRequest() (request *DescribeOpenPolicyListRequest) {
+    request = &DescribeOpenPolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeOpenPolicyList")
+    
+    
+    return
+}
+
+func NewDescribeOpenPolicyListResponse() (response *DescribeOpenPolicyListResponse) {
+    response = &DescribeOpenPolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOpenPolicyList
+// 查询opa策略列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeOpenPolicyList(request *DescribeOpenPolicyListRequest) (response *DescribeOpenPolicyListResponse, err error) {
+    return c.DescribeOpenPolicyListWithContext(context.Background(), request)
+}
+
+// DescribeOpenPolicyList
+// 查询opa策略列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeOpenPolicyListWithContext(ctx context.Context, request *DescribeOpenPolicyListRequest) (response *DescribeOpenPolicyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPolicyListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOpenPolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOpenPolicyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePodChargeInfoRequest() (request *DescribePodChargeInfoRequest) {
     request = &DescribePodChargeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12879,6 +12946,77 @@ func (c *Client) ModifyNodePoolInstanceTypesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewModifyNodePoolInstanceTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOpenPolicyListRequest() (request *ModifyOpenPolicyListRequest) {
+    request = &ModifyOpenPolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyOpenPolicyList")
+    
+    
+    return
+}
+
+func NewModifyOpenPolicyListResponse() (response *ModifyOpenPolicyListResponse) {
+    response = &ModifyOpenPolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOpenPolicyList
+// 批量修改opa策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOpenPolicyList(request *ModifyOpenPolicyListRequest) (response *ModifyOpenPolicyListResponse, err error) {
+    return c.ModifyOpenPolicyListWithContext(context.Background(), request)
+}
+
+// ModifyOpenPolicyList
+// 批量修改opa策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOpenPolicyListWithContext(ctx context.Context, request *ModifyOpenPolicyListRequest) (response *ModifyOpenPolicyListResponse, err error) {
+    if request == nil {
+        request = NewModifyOpenPolicyListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOpenPolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOpenPolicyListResponse()
     err = c.Send(request, response)
     return
 }

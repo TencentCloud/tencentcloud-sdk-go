@@ -40,7 +40,7 @@
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2024-07-26 01:15:04 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2024-08-28 01:11:56 |
 | ccc | [云联络中心](https://cloud.tencent.com/document/product/679) | 2024-08-22 01:10:57 |
-| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2024-09-16 01:16:44 |
+| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2024-09-19 01:11:20 |
 | cdc | [本地专用集群](https://cloud.tencent.com/document/product/1346) | 2024-08-28 01:14:49 |
 | cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2024-07-26 01:17:46 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2024-06-18 01:18:51 |
@@ -50,7 +50,7 @@
 | cdz | [专属可用区](https://cloud.tencent.com/document/product/1629) | 2024-08-28 01:17:24 |
 | cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2024-09-13 01:14:11 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2024-08-28 01:17:42 |
-| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2024-09-16 01:21:22 |
+| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2024-09-19 01:15:41 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2024-03-20 01:10:55 |
 | ciam | [账号风控平台](https://cloud.tencent.com/document/product/1441) | 2024-06-17 01:21:02 |
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2023-05-18 01:12:07 |
@@ -70,12 +70,12 @@
 | controlcenter | [控制中心](https://cloud.tencent.com/document/product/1708) | 2024-08-28 15:03:07 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2023-09-21 02:09:54 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
-| csip | [云安全一体化平台](https://cloud.tencent.com/document/product/664) | 2024-08-28 01:24:29 |
+| csip | [云安全一体化平台](https://cloud.tencent.com/document/product/664) | 2024-09-19 01:21:01 |
 | csxg | [5G入云服务](https://cloud.tencent.com/document/product/1687) | 2024-03-20 01:12:25 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2024-09-10 01:20:00 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2024-09-09 01:25:33 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
-| cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-09-06 01:24:52 |
+| cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-09-19 01:26:29 |
 | dasb | [运维安全中心（堡垒机）](https://cloud.tencent.com/document/product/1025) | 2024-09-13 01:25:56 |
 | dataintegration | [数据接入平台](https://cloud.tencent.com/document/product/1591) | 2022-07-26 15:32:15 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2023-05-18 01:20:11 |
@@ -241,7 +241,7 @@
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2024-07-26 02:26:34 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2024-03-20 01:30:13 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2024-09-11 19:07:13 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-09-16 02:41:55 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-09-19 02:31:07 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2024-09-06 02:27:27 |
 | vtc | [视频转译](https://cloud.tencent.com/document/product/1769) | 2024-09-10 02:27:11 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2024-09-09 02:31:32 |

@@ -6366,6 +6366,9 @@ type CreateVpcEndPointRequestParams struct {
 
 	// 安全组ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateVpcEndPointRequest struct {
@@ -6388,6 +6391,9 @@ type CreateVpcEndPointRequest struct {
 
 	// 安全组ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpcEndPointRequest) ToJsonString() string {
@@ -6408,6 +6414,7 @@ func (r *CreateVpcEndPointRequest) FromJsonString(s string) error {
 	delete(f, "EndPointServiceId")
 	delete(f, "EndPointVip")
 	delete(f, "SecurityGroupId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcEndPointRequest has unknown keys!", "")
 	}

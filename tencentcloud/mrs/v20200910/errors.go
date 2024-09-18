@@ -29,6 +29,9 @@ const (
 	// 异步任务处理中，请稍后。
 	FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
 
+	// 异步任务正在重试中，请稍后。
+	FAILEDOPERATION_ASYNCTASKRETRYING = "FailedOperation.AsyncTaskRetrying"
+
 	// 获取结果为空,请检查任务ID是否正确。
 	FAILEDOPERATION_EMPTYRESULT = "FailedOperation.EmptyResult"
 

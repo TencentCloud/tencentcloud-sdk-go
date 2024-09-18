@@ -7163,7 +7163,7 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
-	// 服务模版id
+	// 服务模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
@@ -7183,7 +7183,7 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouCidr *string `json:"SouCidr,omitnil,omitempty" name:"SouCidr"`
 
-	// 源模版名称
+	// 源模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouParameterName *string `json:"SouParameterName,omitnil,omitempty" name:"SouParameterName"`
 
@@ -7203,11 +7203,11 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
-	// 目的模版名称
+	// 目的模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
-	// 端口模版名称
+	// 端口模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolPortName *string `json:"ProtocolPortName,omitnil,omitempty" name:"ProtocolPortName"`
 

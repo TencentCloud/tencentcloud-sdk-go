@@ -1652,6 +1652,9 @@ func (r *CloseSSLResponse) FromJsonString(s string) error {
 type CloseWanServiceRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 type CloseWanServiceRequest struct {
@@ -1659,6 +1662,9 @@ type CloseWanServiceRequest struct {
 	
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 func (r *CloseWanServiceRequest) ToJsonString() string {
@@ -1674,6 +1680,7 @@ func (r *CloseWanServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "OpResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseWanServiceRequest has unknown keys!", "")
 	}
@@ -12952,6 +12959,9 @@ type ModifyDBInstanceSecurityGroupsRequestParams struct {
 
 	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 type ModifyDBInstanceSecurityGroupsRequest struct {
@@ -12965,6 +12975,9 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 
 	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 func (r *ModifyDBInstanceSecurityGroupsRequest) ToJsonString() string {
@@ -12982,6 +12995,7 @@ func (r *ModifyDBInstanceSecurityGroupsRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "SecurityGroupIds")
 	delete(f, "ForReadonlyInstance")
+	delete(f, "OpResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSecurityGroupsRequest has unknown keys!", "")
 	}
@@ -13029,6 +13043,9 @@ type ModifyDBInstanceVipVportRequestParams struct {
 
 	// 进行基础网络转 VPC 网络和 VPC 网络下的子网变更时，原网络中旧IP的回收时间，单位为小时，取值范围为0-168，默认值为24小时。
 	ReleaseDuration *int64 `json:"ReleaseDuration,omitnil,omitempty" name:"ReleaseDuration"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 type ModifyDBInstanceVipVportRequest struct {
@@ -13051,6 +13068,9 @@ type ModifyDBInstanceVipVportRequest struct {
 
 	// 进行基础网络转 VPC 网络和 VPC 网络下的子网变更时，原网络中旧IP的回收时间，单位为小时，取值范围为0-168，默认值为24小时。
 	ReleaseDuration *int64 `json:"ReleaseDuration,omitnil,omitempty" name:"ReleaseDuration"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 func (r *ModifyDBInstanceVipVportRequest) ToJsonString() string {
@@ -13071,6 +13091,7 @@ func (r *ModifyDBInstanceVipVportRequest) FromJsonString(s string) error {
 	delete(f, "UniqVpcId")
 	delete(f, "UniqSubnetId")
 	delete(f, "ReleaseDuration")
+	delete(f, "OpResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceVipVportRequest has unknown keys!", "")
 	}
@@ -14146,6 +14167,9 @@ func (r *OpenSSLResponse) FromJsonString(s string) error {
 type OpenWanServiceRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 type OpenWanServiceRequest struct {
@@ -14153,6 +14177,9 @@ type OpenWanServiceRequest struct {
 	
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 func (r *OpenWanServiceRequest) ToJsonString() string {
@@ -14168,6 +14195,7 @@ func (r *OpenWanServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "OpResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenWanServiceRequest has unknown keys!", "")
 	}
@@ -15974,6 +16002,9 @@ type SwitchDBInstanceMasterSlaveRequestParams struct {
 
 	// 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
 	WaitSwitch *bool `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
+
+	// 集群版实例指定节点id发起主从切换。
+	DstNodeId *string `json:"DstNodeId,omitnil,omitempty" name:"DstNodeId"`
 }
 
 type SwitchDBInstanceMasterSlaveRequest struct {
@@ -15990,6 +16021,9 @@ type SwitchDBInstanceMasterSlaveRequest struct {
 
 	// 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
 	WaitSwitch *bool `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
+
+	// 集群版实例指定节点id发起主从切换。
+	DstNodeId *string `json:"DstNodeId,omitnil,omitempty" name:"DstNodeId"`
 }
 
 func (r *SwitchDBInstanceMasterSlaveRequest) ToJsonString() string {
@@ -16008,6 +16042,7 @@ func (r *SwitchDBInstanceMasterSlaveRequest) FromJsonString(s string) error {
 	delete(f, "DstSlave")
 	delete(f, "ForceSwitch")
 	delete(f, "WaitSwitch")
+	delete(f, "DstNodeId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstanceMasterSlaveRequest has unknown keys!", "")
 	}

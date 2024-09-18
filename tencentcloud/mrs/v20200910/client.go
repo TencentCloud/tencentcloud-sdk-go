@@ -213,6 +213,7 @@ func NewImageMaskAsyncGetResultResponse() (response *ImageMaskAsyncGetResultResp
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"
 //  FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
+//  FAILEDOPERATION_ASYNCTASKRETRYING = "FailedOperation.AsyncTaskRetrying"
 func (c *Client) ImageMaskAsyncGetResult(request *ImageMaskAsyncGetResultRequest) (response *ImageMaskAsyncGetResultResponse, err error) {
     return c.ImageMaskAsyncGetResultWithContext(context.Background(), request)
 }
@@ -223,6 +224,7 @@ func (c *Client) ImageMaskAsyncGetResult(request *ImageMaskAsyncGetResultRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"
 //  FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
+//  FAILEDOPERATION_ASYNCTASKRETRYING = "FailedOperation.AsyncTaskRetrying"
 func (c *Client) ImageMaskAsyncGetResultWithContext(ctx context.Context, request *ImageMaskAsyncGetResultRequest) (response *ImageMaskAsyncGetResultResponse, err error) {
     if request == nil {
         request = NewImageMaskAsyncGetResultRequest()

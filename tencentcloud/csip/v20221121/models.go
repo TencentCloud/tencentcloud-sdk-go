@@ -1772,7 +1772,7 @@ type CreateRiskCenterScanTaskRequestParams struct {
 	// ip/域名/url数组
 	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil,omitempty" name:"SelfDefiningAssets"`
 
-	// 请求发起源，默认为vss表示漏洞扫描服务，云安全中心的用户请填充csip
+	// 请求发起源，vss表示漏洞扫描服务，云安全中心的用户请填充csip，默认csip
 	ScanFrom *string `json:"ScanFrom,omitnil,omitempty" name:"ScanFrom"`
 
 	// 高级配置
@@ -1815,7 +1815,7 @@ type CreateRiskCenterScanTaskRequest struct {
 	// ip/域名/url数组
 	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil,omitempty" name:"SelfDefiningAssets"`
 
-	// 请求发起源，默认为vss表示漏洞扫描服务，云安全中心的用户请填充csip
+	// 请求发起源，vss表示漏洞扫描服务，云安全中心的用户请填充csip，默认csip
 	ScanFrom *string `json:"ScanFrom,omitnil,omitempty" name:"ScanFrom"`
 
 	// 高级配置
