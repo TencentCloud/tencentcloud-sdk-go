@@ -189,6 +189,7 @@ import (
 	mongodbv20190725 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb/v20190725"
 	monitorv20180724 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor/v20180724"
 	mpsv20190612 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mps/v20190612"
+	mqttv20240516 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mqtt/v20240516"
 	mrsv20200910 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mrs/v20200910"
 	msv20180408 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ms/v20180408"
 	mspv20180319 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/msp/v20180319"
@@ -2502,6 +2503,19 @@ func TestMpsv20190612Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init mps_v20190612 client: %v", err)
+    }
+}
+
+func TestMqttv20240516Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := mqttv20240516.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init mqtt_v20240516 client: %v", err)
     }
 }
 

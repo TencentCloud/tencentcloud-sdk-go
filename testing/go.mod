@@ -70,7 +70,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1005
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1006
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -156,6 +156,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mps v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mqtt v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mrs v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/msp v0.0.0
@@ -414,6 +415,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb => ../tencentcloud/mongodb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor => ../tencentcloud/monitor
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mps => ../tencentcloud/mps
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mqtt => ../tencentcloud/mqtt
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mrs => ../tencentcloud/mrs
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ms => ../tencentcloud/ms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/msp => ../tencentcloud/msp

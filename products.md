@@ -151,6 +151,7 @@
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2024-08-28 02:04:37 |
 | monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2024-08-28 02:05:12 |
 | mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2024-09-13 01:54:23 |
+| mqtt | [消息队列 MQTT 版](https://cloud.tencent.com/document/product/1778) | 2024-09-19 14:22:10 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2024-09-12 02:00:38 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2024-08-16 02:04:04 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2024-04-17 14:48:31 |
