@@ -1106,7 +1106,7 @@ func NewCreateHeadTailTemplateResponse() (response *CreateHeadTailTemplateRespon
 // CreateHeadTailTemplate
 // 创建片头片尾模板。
 //
-// - 最大支持模版数量为 100 个。
+// - 最大支持模板数量为 100 个。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1128,7 +1128,7 @@ func (c *Client) CreateHeadTailTemplate(request *CreateHeadTailTemplateRequest) 
 // CreateHeadTailTemplate
 // 创建片头片尾模板。
 //
-// - 最大支持模版数量为 100 个。
+// - 最大支持模板数量为 100 个。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

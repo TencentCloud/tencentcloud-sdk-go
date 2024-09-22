@@ -3652,6 +3652,9 @@ type CreateTasksRequestParams struct {
 
 	// spark集群资源组名称
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 是否使用multi- statement方式运行一批次任务，true: 是，false: 否
+	IsMultiStatement *bool `json:"IsMultiStatement,omitnil,omitempty" name:"IsMultiStatement"`
 }
 
 type CreateTasksRequest struct {
@@ -3671,6 +3674,9 @@ type CreateTasksRequest struct {
 
 	// spark集群资源组名称
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 是否使用multi- statement方式运行一批次任务，true: 是，false: 否
+	IsMultiStatement *bool `json:"IsMultiStatement,omitnil,omitempty" name:"IsMultiStatement"`
 }
 
 func (r *CreateTasksRequest) ToJsonString() string {
@@ -3690,6 +3696,7 @@ func (r *CreateTasksRequest) FromJsonString(s string) error {
 	delete(f, "DatasourceConnectionName")
 	delete(f, "DataEngineName")
 	delete(f, "ResourceGroupName")
+	delete(f, "IsMultiStatement")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksRequest has unknown keys!", "")
 	}

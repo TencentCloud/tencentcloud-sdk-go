@@ -3972,6 +3972,10 @@ func NewDeleteCompliancePolicyItemFromWhitelistResponse() (response *DeleteCompl
 }
 
 // DeleteCompliancePolicyItemFromWhitelist
+// 产品重构优化，这几个接口已经没有调用了
+//
+// 
+//
 // 从白名单中删除将指定的检测项。
 //
 // 可能返回的错误码:
@@ -3986,6 +3990,10 @@ func (c *Client) DeleteCompliancePolicyItemFromWhitelist(request *DeleteComplian
 }
 
 // DeleteCompliancePolicyItemFromWhitelist
+// 产品重构优化，这几个接口已经没有调用了
+//
+// 
+//
 // 从白名单中删除将指定的检测项。
 //
 // 可能返回的错误码:

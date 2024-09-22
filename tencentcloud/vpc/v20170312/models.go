@@ -471,6 +471,10 @@ type Address struct {
 	// 当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+
+	// 传统弹性公网IPv6所属vpc唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnVpcId *string `json:"UnVpcId,omitnil,omitempty" name:"UnVpcId"`
 }
 
 type AddressChargePrepaid struct {
@@ -26410,7 +26414,13 @@ type ProductQuota struct {
 }
 
 type Quota struct {
-	// 配额名称，取值范围：<br><li>`TOTAL_EIP_QUOTA`：用户当前地域下EIP的配额数；<br><li>`DAILY_EIP_APPLY`：用户当前地域下今日申购次数；<br><li>`DAILY_PUBLIC_IP_ASSIGN`：用户当前地域下，重新分配公网 IP次数。
+	// 配额名称，取值范围：
+	// - `TOTAL_EIP_QUOTA`：用户当前地域下EIP的配额数；
+	// - `DAILY_EIP_APPLY`：用户当前地域下今日申购次数；
+	// - `DAILY_PUBLIC_IP_ASSIGN`：用户当前地域下，重新分配公网 IP次数；
+	// - `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
+	// - `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
+	// - `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
 	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
 
 	// 当前数量
@@ -26418,6 +26428,10 @@ type Quota struct {
 
 	// 配额数量
 	QuotaLimit *int64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// 配额所属的网络组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaGroup *string `json:"QuotaGroup,omitnil,omitempty" name:"QuotaGroup"`
 }
 
 type ReferredSecurityGroup struct {

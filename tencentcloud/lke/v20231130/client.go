@@ -1072,6 +1072,153 @@ func (c *Client) DescribeAttributeLabelWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeCallStatsGraphRequest() (request *DescribeCallStatsGraphRequest) {
+    request = &DescribeCallStatsGraphRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeCallStatsGraph")
+    
+    
+    return
+}
+
+func NewDescribeCallStatsGraphResponse() (response *DescribeCallStatsGraphResponse) {
+    response = &DescribeCallStatsGraphResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCallStatsGraph
+// 接口调用折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCallStatsGraph(request *DescribeCallStatsGraphRequest) (response *DescribeCallStatsGraphResponse, err error) {
+    return c.DescribeCallStatsGraphWithContext(context.Background(), request)
+}
+
+// DescribeCallStatsGraph
+// 接口调用折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCallStatsGraphWithContext(ctx context.Context, request *DescribeCallStatsGraphRequest) (response *DescribeCallStatsGraphResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallStatsGraphRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCallStatsGraph require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCallStatsGraphResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConcurrencyUsageRequest() (request *DescribeConcurrencyUsageRequest) {
+    request = &DescribeConcurrencyUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeConcurrencyUsage")
+    
+    
+    return
+}
+
+func NewDescribeConcurrencyUsageResponse() (response *DescribeConcurrencyUsageResponse) {
+    response = &DescribeConcurrencyUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConcurrencyUsage
+// 并发调用响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConcurrencyUsage(request *DescribeConcurrencyUsageRequest) (response *DescribeConcurrencyUsageResponse, err error) {
+    return c.DescribeConcurrencyUsageWithContext(context.Background(), request)
+}
+
+// DescribeConcurrencyUsage
+// 并发调用响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConcurrencyUsageWithContext(ctx context.Context, request *DescribeConcurrencyUsageRequest) (response *DescribeConcurrencyUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeConcurrencyUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConcurrencyUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConcurrencyUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConcurrencyUsageGraphRequest() (request *DescribeConcurrencyUsageGraphRequest) {
+    request = &DescribeConcurrencyUsageGraphRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeConcurrencyUsageGraph")
+    
+    
+    return
+}
+
+func NewDescribeConcurrencyUsageGraphResponse() (response *DescribeConcurrencyUsageGraphResponse) {
+    response = &DescribeConcurrencyUsageGraphResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConcurrencyUsageGraph
+// 并发调用折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConcurrencyUsageGraph(request *DescribeConcurrencyUsageGraphRequest) (response *DescribeConcurrencyUsageGraphResponse, err error) {
+    return c.DescribeConcurrencyUsageGraphWithContext(context.Background(), request)
+}
+
+// DescribeConcurrencyUsageGraph
+// 并发调用折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConcurrencyUsageGraphWithContext(ctx context.Context, request *DescribeConcurrencyUsageGraphRequest) (response *DescribeConcurrencyUsageGraphResponse, err error) {
+    if request == nil {
+        request = NewDescribeConcurrencyUsageGraphRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConcurrencyUsageGraph require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConcurrencyUsageGraphResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCorpRequest() (request *DescribeCorpRequest) {
     request = &DescribeCorpRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1166,6 +1313,104 @@ func (c *Client) DescribeDocWithContext(ctx context.Context, request *DescribeDo
     request.SetContext(ctx)
     
     response = NewDescribeDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKnowledgeUsageRequest() (request *DescribeKnowledgeUsageRequest) {
+    request = &DescribeKnowledgeUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeKnowledgeUsage")
+    
+    
+    return
+}
+
+func NewDescribeKnowledgeUsageResponse() (response *DescribeKnowledgeUsageResponse) {
+    response = &DescribeKnowledgeUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKnowledgeUsage
+// 查询知识库用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeKnowledgeUsage(request *DescribeKnowledgeUsageRequest) (response *DescribeKnowledgeUsageResponse, err error) {
+    return c.DescribeKnowledgeUsageWithContext(context.Background(), request)
+}
+
+// DescribeKnowledgeUsage
+// 查询知识库用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeKnowledgeUsageWithContext(ctx context.Context, request *DescribeKnowledgeUsageRequest) (response *DescribeKnowledgeUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeKnowledgeUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKnowledgeUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKnowledgeUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKnowledgeUsagePieGraphRequest() (request *DescribeKnowledgeUsagePieGraphRequest) {
+    request = &DescribeKnowledgeUsagePieGraphRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeKnowledgeUsagePieGraph")
+    
+    
+    return
+}
+
+func NewDescribeKnowledgeUsagePieGraphResponse() (response *DescribeKnowledgeUsagePieGraphResponse) {
+    response = &DescribeKnowledgeUsagePieGraphResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKnowledgeUsagePieGraph
+// 查询企业知识库容量饼图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeKnowledgeUsagePieGraph(request *DescribeKnowledgeUsagePieGraphRequest) (response *DescribeKnowledgeUsagePieGraphResponse, err error) {
+    return c.DescribeKnowledgeUsagePieGraphWithContext(context.Background(), request)
+}
+
+// DescribeKnowledgeUsagePieGraph
+// 查询企业知识库容量饼图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeKnowledgeUsagePieGraphWithContext(ctx context.Context, request *DescribeKnowledgeUsagePieGraphRequest) (response *DescribeKnowledgeUsagePieGraphResponse, err error) {
+    if request == nil {
+        request = NewDescribeKnowledgeUsagePieGraphRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKnowledgeUsagePieGraph require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKnowledgeUsagePieGraphResponse()
     err = c.Send(request, response)
     return
 }
@@ -1415,6 +1660,55 @@ func (c *Client) DescribeRobotBizIDByAppKeyWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeSearchStatsGraphRequest() (request *DescribeSearchStatsGraphRequest) {
+    request = &DescribeSearchStatsGraphRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeSearchStatsGraph")
+    
+    
+    return
+}
+
+func NewDescribeSearchStatsGraphResponse() (response *DescribeSearchStatsGraphResponse) {
+    response = &DescribeSearchStatsGraphResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSearchStatsGraph
+// 查询搜索服务调用折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSearchStatsGraph(request *DescribeSearchStatsGraphRequest) (response *DescribeSearchStatsGraphResponse, err error) {
+    return c.DescribeSearchStatsGraphWithContext(context.Background(), request)
+}
+
+// DescribeSearchStatsGraph
+// 查询搜索服务调用折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSearchStatsGraphWithContext(ctx context.Context, request *DescribeSearchStatsGraphRequest) (response *DescribeSearchStatsGraphResponse, err error) {
+    if request == nil {
+        request = NewDescribeSearchStatsGraphRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSearchStatsGraph require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSearchStatsGraphResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSegmentsRequest() (request *DescribeSegmentsRequest) {
     request = &DescribeSegmentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1509,6 +1803,104 @@ func (c *Client) DescribeStorageCredentialWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeStorageCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTokenUsageRequest() (request *DescribeTokenUsageRequest) {
+    request = &DescribeTokenUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeTokenUsage")
+    
+    
+    return
+}
+
+func NewDescribeTokenUsageResponse() (response *DescribeTokenUsageResponse) {
+    response = &DescribeTokenUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTokenUsage
+// 接口调用token详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTokenUsage(request *DescribeTokenUsageRequest) (response *DescribeTokenUsageResponse, err error) {
+    return c.DescribeTokenUsageWithContext(context.Background(), request)
+}
+
+// DescribeTokenUsage
+// 接口调用token详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTokenUsageWithContext(ctx context.Context, request *DescribeTokenUsageRequest) (response *DescribeTokenUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTokenUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTokenUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTokenUsageGraphRequest() (request *DescribeTokenUsageGraphRequest) {
+    request = &DescribeTokenUsageGraphRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeTokenUsageGraph")
+    
+    
+    return
+}
+
+func NewDescribeTokenUsageGraphResponse() (response *DescribeTokenUsageGraphResponse) {
+    response = &DescribeTokenUsageGraphResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTokenUsageGraph
+// 接口调用token折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTokenUsageGraph(request *DescribeTokenUsageGraphRequest) (response *DescribeTokenUsageGraphResponse, err error) {
+    return c.DescribeTokenUsageGraphWithContext(context.Background(), request)
+}
+
+// DescribeTokenUsageGraph
+// 接口调用token折线图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTokenUsageGraphWithContext(ctx context.Context, request *DescribeTokenUsageGraphRequest) (response *DescribeTokenUsageGraphResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenUsageGraphRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTokenUsageGraph require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTokenUsageGraphResponse()
     err = c.Send(request, response)
     return
 }

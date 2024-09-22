@@ -1349,6 +1349,61 @@ func (c *Client) GetModelInfoWithContext(ctx context.Context, request *GetModelI
     return
 }
 
+func NewGetUsageByDateRequest() (request *GetUsageByDateRequest) {
+    request = &GetUsageByDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "GetUsageByDate")
+    
+    
+    return
+}
+
+func NewGetUsageByDateResponse() (response *GetUsageByDateResponse) {
+    response = &GetUsageByDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUsageByDate
+// 查询用户用量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetUsageByDate(request *GetUsageByDateRequest) (response *GetUsageByDateResponse, err error) {
+    return c.GetUsageByDateWithContext(context.Background(), request)
+}
+
+// GetUsageByDate
+// 查询用户用量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetUsageByDateWithContext(ctx context.Context, request *GetUsageByDateRequest) (response *GetUsageByDateResponse, err error) {
+    if request == nil {
+        request = NewGetUsageByDateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUsageByDate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUsageByDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
     request = &ModifyCustomizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

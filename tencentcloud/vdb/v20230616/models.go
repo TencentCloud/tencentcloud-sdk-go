@@ -534,6 +534,10 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
+	// api版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiVersion *string `json:"ApiVersion,omitnil,omitempty" name:"ApiVersion"`
+
 	// 计费模式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`

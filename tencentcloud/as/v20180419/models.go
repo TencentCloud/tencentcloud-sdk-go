@@ -5751,6 +5751,13 @@ type ServiceSettings struct {
 
 	// 开启负载均衡不健康替换服务。若开启则对于负载均衡健康检查判断不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
 	ReplaceLoadBalancerUnhealthy *bool `json:"ReplaceLoadBalancerUnhealthy,omitnil,omitempty" name:"ReplaceLoadBalancerUnhealthy"`
+
+	// 不健康替换服务的替换模式。取值范围：
+	// RECREATE：重建实例替代原有不健康实例；
+	// RESET：对原有不健康实例进行重装系统操作，可保持数据盘、内网IP、实例id等信息不发生变化，实例登录设置、主机名、增强服务和 UserData 与当前启动配置保持一致。
+	// 默认取值：RECREATE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplaceMode *string `json:"ReplaceMode,omitnil,omitempty" name:"ReplaceMode"`
 }
 
 // Predefined struct for user

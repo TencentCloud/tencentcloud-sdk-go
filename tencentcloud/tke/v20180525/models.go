@@ -5511,6 +5511,78 @@ func (r *DeleteImageCachesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLogConfigsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 待删除采集规则名称，多个采集规则使用","分隔
+	LogConfigNames *string `json:"LogConfigNames,omitnil,omitempty" name:"LogConfigNames"`
+
+	// 集群集群类型, tke/eks 默认为 tke 集群
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+type DeleteLogConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 待删除采集规则名称，多个采集规则使用","分隔
+	LogConfigNames *string `json:"LogConfigNames,omitnil,omitempty" name:"LogConfigNames"`
+
+	// 集群集群类型, tke/eks 默认为 tke 集群
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+func (r *DeleteLogConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "LogConfigNames")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLogConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogConfigsResponseParams struct {
+	// 删除采集规则遇到错误时返回错误原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLogConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLogConfigsResponseParams `json:"Response"`
+}
+
+func (r *DeleteLogConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeletePrometheusAlertPolicyRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -10164,6 +10236,100 @@ func (r *DescribeImagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogConfigsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 当前集群类型支持tke、eks。默认为tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 按照采集规则名称查找，多个采集规则使用 "," 分隔。
+	LogConfigNames *string `json:"LogConfigNames,omitnil,omitempty" name:"LogConfigNames"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeLogConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 当前集群类型支持tke、eks。默认为tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 按照采集规则名称查找，多个采集规则使用 "," 分隔。
+	LogConfigNames *string `json:"LogConfigNames,omitnil,omitempty" name:"LogConfigNames"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLogConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterType")
+	delete(f, "LogConfigNames")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogConfigsResponseParams struct {
+	// 分页查找时返回采集规则总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 指定采集规则名称查找，部分失败时返回失败采集规则名称及最后一个失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 采集规则查询结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConfigs *string `json:"LogConfigs,omitnil,omitempty" name:"LogConfigs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17661,7 +17827,7 @@ type PendingRelease struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 应用状态
+	// 应用状态(参考helm的发布状态： unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade 或 pending-rollback)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 

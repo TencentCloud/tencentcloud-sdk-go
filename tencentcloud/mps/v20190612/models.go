@@ -7353,7 +7353,7 @@ type DescribeQualityControlTemplatesRequestParams struct {
 	// <li>最大值：100。</li>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// "Preset"：预设，Custom":客户魔板
+	// "Preset"：预设，Custom":自定义模板
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 媒体质检模板标识过滤条件，长度限制：64 个字符。
@@ -7374,7 +7374,7 @@ type DescribeQualityControlTemplatesRequest struct {
 	// <li>最大值：100。</li>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// "Preset"：预设，Custom":客户魔板
+	// "Preset"：预设，Custom":自定义模板
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 媒体质检模板标识过滤条件，长度限制：64 个字符。
@@ -12663,6 +12663,9 @@ type ModifyOutputInfo struct {
 
 	// 绑定的安全组 ID。 仅支持关联一组安全组。	
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 可用区
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
 // Predefined struct for user
@@ -14550,6 +14553,7 @@ type ProcessMediaRequestParams struct {
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
 	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+	// 注意：当InputInfo.Type为URL时，该参数是必填项
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
 	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
@@ -14606,6 +14610,7 @@ type ProcessMediaRequest struct {
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
 	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+	// 注意：当InputInfo.Type为URL时，该参数是必填项
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
 	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
@@ -16733,14 +16738,14 @@ type VideoTemplateInfoForUpdate struct {
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	//  <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 
-	// 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
+	// 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。 
 	// 如果没有特殊需求，不建议指定该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vcrf *uint64 `json:"Vcrf,omitnil,omitempty" name:"Vcrf"`

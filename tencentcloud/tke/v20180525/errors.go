@@ -164,6 +164,9 @@ const (
 	// Kubernetes patch 操作失败。
 	FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 
+	// Kubernetes没有找到。
+	FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = "FailedOperation.KubernetesResourceNotFound"
+
 	// 底层调用CLB未知错误。
 	FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
 

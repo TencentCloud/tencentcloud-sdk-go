@@ -1337,6 +1337,9 @@ type ModifyTaskRunStatusRequestParams struct {
 
 	// 问题以及改进
 	Issue *string `json:"Issue,omitnil,omitempty" name:"Issue"`
+
+	// 演练记录
+	Record *string `json:"Record,omitnil,omitempty" name:"Record"`
 }
 
 type ModifyTaskRunStatusRequest struct {
@@ -1356,6 +1359,9 @@ type ModifyTaskRunStatusRequest struct {
 
 	// 问题以及改进
 	Issue *string `json:"Issue,omitnil,omitempty" name:"Issue"`
+
+	// 演练记录
+	Record *string `json:"Record,omitnil,omitempty" name:"Record"`
 }
 
 func (r *ModifyTaskRunStatusRequest) ToJsonString() string {
@@ -1375,6 +1381,7 @@ func (r *ModifyTaskRunStatusRequest) FromJsonString(s string) error {
 	delete(f, "IsExpect")
 	delete(f, "Summary")
 	delete(f, "Issue")
+	delete(f, "Record")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskRunStatusRequest has unknown keys!", "")
 	}

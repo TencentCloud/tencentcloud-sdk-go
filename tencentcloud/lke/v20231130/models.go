@@ -1841,6 +1841,309 @@ func (r *DescribeAttributeLabelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCallStatsGraphRequestParams struct {
+	// uin
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 子业务类型
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeCallStatsGraphRequest struct {
+	*tchttp.BaseRequest
+	
+	// uin
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 子业务类型
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeCallStatsGraphRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCallStatsGraphRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UinAccount")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "SubBizType")
+	delete(f, "ModelName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallStatsGraphRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCallStatsGraphResponseParams struct {
+	// 统计信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*Stat `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCallStatsGraphResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCallStatsGraphResponseParams `json:"Response"`
+}
+
+func (r *DescribeCallStatsGraphResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCallStatsGraphResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConcurrencyUsageGraphRequestParams struct {
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// uin
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 子业务类型
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeConcurrencyUsageGraphRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// uin
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 子业务类型
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeConcurrencyUsageGraphRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrencyUsageGraphRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "UinAccount")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "SubBizType")
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyUsageGraphRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConcurrencyUsageGraphResponseParams struct {
+	// 统计信息
+	X []*string `json:"X,omitnil,omitempty" name:"X"`
+
+	// 可用并发y轴坐标
+	AvailableY []*int64 `json:"AvailableY,omitnil,omitempty" name:"AvailableY"`
+
+	// 成功调用并发y轴坐标
+	SuccessCallY []*int64 `json:"SuccessCallY,omitnil,omitempty" name:"SuccessCallY"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConcurrencyUsageGraphResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConcurrencyUsageGraphResponseParams `json:"Response"`
+}
+
+func (r *DescribeConcurrencyUsageGraphResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrencyUsageGraphResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConcurrencyUsageRequestParams struct {
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeConcurrencyUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeConcurrencyUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrencyUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConcurrencyUsageResponseParams struct {
+	// 可用并发数
+	AvailableConcurrency *uint64 `json:"AvailableConcurrency,omitnil,omitempty" name:"AvailableConcurrency"`
+
+	// 并发峰值
+	ConcurrencyPeak *uint64 `json:"ConcurrencyPeak,omitnil,omitempty" name:"ConcurrencyPeak"`
+
+	// 调用超可用次数
+	ExceedUsageTime *uint64 `json:"ExceedUsageTime,omitnil,omitempty" name:"ExceedUsageTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConcurrencyUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConcurrencyUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeConcurrencyUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrencyUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCorpRequestParams struct {
 
 }
@@ -2027,6 +2330,123 @@ func (r *DescribeDocResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDocResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeUsagePieGraphRequestParams struct {
+	// 应用ID数组
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeKnowledgeUsagePieGraphRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID数组
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeKnowledgeUsagePieGraphRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeUsagePieGraphRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKnowledgeUsagePieGraphRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeUsagePieGraphResponseParams struct {
+	// 所有应用已用的字符总数
+	AvailableCharSize *string `json:"AvailableCharSize,omitnil,omitempty" name:"AvailableCharSize"`
+
+	// 应用饼图详情列表
+	List []*KnowledgeCapacityPieGraphDetail `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKnowledgeUsagePieGraphResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKnowledgeUsagePieGraphResponseParams `json:"Response"`
+}
+
+func (r *DescribeKnowledgeUsagePieGraphResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeUsagePieGraphResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeUsageRequestParams struct {
+
+}
+
+type DescribeKnowledgeUsageRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeKnowledgeUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKnowledgeUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeUsageResponseParams struct {
+	// 可用字符数
+	AvailableCharSize *string `json:"AvailableCharSize,omitnil,omitempty" name:"AvailableCharSize"`
+
+	// 超量字符数
+	ExceedCharSize *string `json:"ExceedCharSize,omitnil,omitempty" name:"ExceedCharSize"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKnowledgeUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKnowledgeUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeKnowledgeUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2441,6 +2861,113 @@ func (r *DescribeRobotBizIDByAppKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSearchStatsGraphRequestParams struct {
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// uin列表
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 子业务类型
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeSearchStatsGraphRequest struct {
+	*tchttp.BaseRequest
+	
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// uin列表
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 子业务类型
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeSearchStatsGraphRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchStatsGraphRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "UinAccount")
+	delete(f, "SubBizType")
+	delete(f, "ModelName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchStatsGraphRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSearchStatsGraphResponseParams struct {
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*Stat `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSearchStatsGraphResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSearchStatsGraphResponseParams `json:"Response"`
+}
+
+func (r *DescribeSearchStatsGraphResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchStatsGraphResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSegmentsRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -2607,6 +3134,222 @@ func (r *DescribeStorageCredentialResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStorageCredentialResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTokenUsageGraphRequestParams struct {
+	// 腾讯云主账号
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeTokenUsageGraphRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云主账号
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeTokenUsageGraphRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenUsageGraphRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UinAccount")
+	delete(f, "SubBizType")
+	delete(f, "ModelName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageGraphRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTokenUsageGraphResponseParams struct {
+	// 总消耗
+	Total []*Stat `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 输入消耗
+	Input []*Stat `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 输出消耗
+	Output []*Stat `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTokenUsageGraphResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTokenUsageGraphResponseParams `json:"Response"`
+}
+
+func (r *DescribeTokenUsageGraphResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenUsageGraphResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTokenUsageRequestParams struct {
+	// 腾讯云主账号
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+type DescribeTokenUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云主账号
+	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
+	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
+
+	// 模型标识
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用id列表
+	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+}
+
+func (r *DescribeTokenUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UinAccount")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "SubBizType")
+	delete(f, "ModelName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AppBizIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTokenUsageResponseParams struct {
+	// 总token消耗量
+	TotalTokenUsage *float64 `json:"TotalTokenUsage,omitnil,omitempty" name:"TotalTokenUsage"`
+
+	// 输入token消耗
+	InputTokenUsage *float64 `json:"InputTokenUsage,omitnil,omitempty" name:"InputTokenUsage"`
+
+	// 输出token消耗
+	OutputTokenUsage *float64 `json:"OutputTokenUsage,omitnil,omitempty" name:"OutputTokenUsage"`
+
+	// 接口调用次数
+	ApiCallStats *uint64 `json:"ApiCallStats,omitnil,omitempty" name:"ApiCallStats"`
+
+	// 搜索服务调用次数
+	SearchUsage *float64 `json:"SearchUsage,omitnil,omitempty" name:"SearchUsage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTokenUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTokenUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTokenUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4266,6 +5009,20 @@ func (r *IsTransferIntentResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IsTransferIntentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type KnowledgeCapacityPieGraphDetail struct {
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 应用使用的字符数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedCharSize *string `json:"UsedCharSize,omitnil,omitempty" name:"UsedCharSize"`
+
+	// 应用占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Proportion *float64 `json:"Proportion,omitnil,omitempty" name:"Proportion"`
 }
 
 type KnowledgeQaConfig struct {
@@ -8128,6 +8885,16 @@ type SimilarQuestionModify struct {
 
 	// 需要删除的相似问列表
 	DeleteQuestions []*SimilarQuestion `json:"DeleteQuestions,omitnil,omitempty" name:"DeleteQuestions"`
+}
+
+type Stat struct {
+	// x轴时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	X *string `json:"X,omitnil,omitempty" name:"X"`
+
+	// y轴统计值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 
 // Predefined struct for user

@@ -1726,6 +1726,89 @@ func (r *GetModelInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUsageByDateRequestParams struct {
+	// 需要查询的业务类型名字列表
+	// - asr_rt 实时识别
+	// - asr_rec 录音文件识别
+	BizNameList []*string `json:"BizNameList,omitnil,omitempty" name:"BizNameList"`
+
+	// 查询开始时间
+	// 开始时间包含当天，支持 YYYY-MM-DD 日期以国内时区为准
+	// 开始时间到结束时间需要在3个月以内
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	// 结束时间包含当天，，支持 YYYY-MM-DD 日期以国内时区为准
+	// 开始时间到结束时间需要在3个月以内
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+}
+
+type GetUsageByDateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的业务类型名字列表
+	// - asr_rt 实时识别
+	// - asr_rec 录音文件识别
+	BizNameList []*string `json:"BizNameList,omitnil,omitempty" name:"BizNameList"`
+
+	// 查询开始时间
+	// 开始时间包含当天，支持 YYYY-MM-DD 日期以国内时区为准
+	// 开始时间到结束时间需要在3个月以内
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	// 结束时间包含当天，，支持 YYYY-MM-DD 日期以国内时区为准
+	// 开始时间到结束时间需要在3个月以内
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+}
+
+func (r *GetUsageByDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUsageByDateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizNameList")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUsageByDateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetUsageByDateResponseParams struct {
+	// 用量次数
+	Data *UsageByDateInfoData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetUsageByDateResponse struct {
+	*tchttp.BaseResponse
+	Response *GetUsageByDateResponseParams `json:"Response"`
+}
+
+func (r *GetUsageByDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUsageByDateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type HotWord struct {
 	// 热词
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2574,6 +2657,28 @@ func (r *UpdateAsrVocabResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateAsrVocabResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UsageByDateInfo struct {
+	// 业务类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizName *string `json:"BizName,omitnil,omitempty" name:"BizName"`
+
+	// 识别次数
+	// 单位：次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 识别时长
+	// 单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type UsageByDateInfoData struct {
+	// 用量信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageByDateInfoList []*UsageByDateInfo `json:"UsageByDateInfoList,omitnil,omitempty" name:"UsageByDateInfoList"`
 }
 
 type VerifyTop struct {

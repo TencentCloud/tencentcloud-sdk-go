@@ -2932,7 +2932,7 @@ type BashPolicy struct {
 	// 0:告警 1:白名单 2:拦截
 	BashAction *int64 `json:"BashAction,omitnil,omitempty" name:"BashAction"`
 
-	// 正则表达式
+	// 正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 危险等级(0:无，1: 高危 2:中危 3: 低危)
@@ -2971,6 +2971,10 @@ type BashPolicy struct {
 
 	// 老版本兼容可能会用到
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
+
+	// 规则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules *PolicyRules `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type BashRule struct {
@@ -3514,7 +3518,11 @@ func (r *ChangeStrategyEnableStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckBashPolicyParamsRequestParams struct {
-	// 校验内容 Name或Rule ，两个都要校验时逗号分割
+	// 校验内容字段,如果需要检测多个字段时,用逗号分割
+	// <li>Name 策略名称</li>
+	// <li>Process 进程</li>
+	// <li>Name PProcess 父进程</li>
+	// <li>Name AProcess 祖先进程</li>
 	CheckField *string `json:"CheckField,omitnil,omitempty" name:"CheckField"`
 
 	// 在事件列表中新增白名时需要提交事件ID
@@ -3523,17 +3531,24 @@ type CheckBashPolicyParamsRequestParams struct {
 	// 填入的规则名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户填入的正则表达式："正则表达式" 需与 "提交EventId对应的命令内容" 相匹配
+	// 该字段不在维护,如果填入该参数,自动替换到Rules.Process
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 编辑时传的规则id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 规则表达式
+	Rules *PolicyRules `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CheckBashPolicyParamsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 校验内容 Name或Rule ，两个都要校验时逗号分割
+	// 校验内容字段,如果需要检测多个字段时,用逗号分割
+	// <li>Name 策略名称</li>
+	// <li>Process 进程</li>
+	// <li>Name PProcess 父进程</li>
+	// <li>Name AProcess 祖先进程</li>
 	CheckField *string `json:"CheckField,omitnil,omitempty" name:"CheckField"`
 
 	// 在事件列表中新增白名时需要提交事件ID
@@ -3542,11 +3557,14 @@ type CheckBashPolicyParamsRequest struct {
 	// 填入的规则名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户填入的正则表达式："正则表达式" 需与 "提交EventId对应的命令内容" 相匹配
+	// 该字段不在维护,如果填入该参数,自动替换到Rules.Process
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 编辑时传的规则id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 规则表达式
+	Rules *PolicyRules `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 func (r *CheckBashPolicyParamsRequest) ToJsonString() string {
@@ -3566,6 +3584,7 @@ func (r *CheckBashPolicyParamsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Rule")
 	delete(f, "Id")
+	delete(f, "Rules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckBashPolicyParamsRequest has unknown keys!", "")
 	}
@@ -3974,6 +3993,16 @@ type CloudProtectService struct {
 
 	// 购买时间
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+}
+
+type CommandLine struct {
+	// 路径,需要base64加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
+
+	// 命令行,需要base64加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cmdline *string `json:"Cmdline,omitnil,omitempty" name:"Cmdline"`
 }
 
 type ComponentStatistics struct {
@@ -19007,7 +19036,9 @@ func (r *DescribeJavaMemShellInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJavaMemShellListRequestParams struct {
-	// 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+	// 过滤条件：InstanceID、IP、
+	// 
+	// MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -19020,7 +19051,9 @@ type DescribeJavaMemShellListRequestParams struct {
 type DescribeJavaMemShellListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+	// 过滤条件：InstanceID、IP、
+	// 
+	// MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -37564,6 +37597,26 @@ type JavaMemShellInfo struct {
 	// 服务器uuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 类名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassName *string `json:"ClassName,omitnil,omitempty" name:"ClassName"`
+
+	// 父类名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperClassName *string `json:"SuperClassName,omitnil,omitempty" name:"SuperClassName"`
+
+	// 继承的接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interfaces *string `json:"Interfaces,omitnil,omitempty" name:"Interfaces"`
+
+	// 注释
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Annotations *string `json:"Annotations,omitnil,omitempty" name:"Annotations"`
+
+	// 所属的类加载器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoaderClassName *string `json:"LoaderClassName,omitnil,omitempty" name:"LoaderClassName"`
 }
 
 type JavaMemShellPluginInfo struct {
@@ -39696,21 +39749,27 @@ func (r *ModifyJavaMemShellPluginSwitchResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyJavaMemShellsStatusRequestParams struct {
+	// 目标处理状态： 0 - 待处理 1 - 已加白 2 - 已删除 3 - 已忽略 4 - 已手动处理
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
 	// 事件Id数组
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 
-	// 目标处理状态： 0 - 待处理 1 - 已加白 2 - 已删除 3 - 已忽略 4 - 已手动处理
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+	// 是否更新全部，只支持忽略、已处理、删除
+	UpdateAll *bool `json:"UpdateAll,omitnil,omitempty" name:"UpdateAll"`
 }
 
 type ModifyJavaMemShellsStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// 目标处理状态： 0 - 待处理 1 - 已加白 2 - 已删除 3 - 已忽略 4 - 已手动处理
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
 	// 事件Id数组
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 
-	// 目标处理状态： 0 - 待处理 1 - 已加白 2 - 已删除 3 - 已忽略 4 - 已手动处理
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+	// 是否更新全部，只支持忽略、已处理、删除
+	UpdateAll *bool `json:"UpdateAll,omitnil,omitempty" name:"UpdateAll"`
 }
 
 func (r *ModifyJavaMemShellsStatusRequest) ToJsonString() string {
@@ -39725,8 +39784,9 @@ func (r *ModifyJavaMemShellsStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Ids")
 	delete(f, "Status")
+	delete(f, "Ids")
+	delete(f, "UpdateAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyJavaMemShellsStatusRequest has unknown keys!", "")
 	}
@@ -43040,6 +43100,20 @@ type Place struct {
 
 	// 位置名称
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
+type PolicyRules struct {
+	// 进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Process *CommandLine `json:"Process,omitnil,omitempty" name:"Process"`
+
+	// 父进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PProcess *CommandLine `json:"PProcess,omitnil,omitempty" name:"PProcess"`
+
+	// 祖先进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AProcess *CommandLine `json:"AProcess,omitnil,omitempty" name:"AProcess"`
 }
 
 type PrivilegeEscalationProcess struct {
