@@ -227,6 +227,9 @@ type AddOrganizationNodeRequestParams struct {
 
 	// 备注。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 部门标签列表。最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type AddOrganizationNodeRequest struct {
@@ -240,6 +243,9 @@ type AddOrganizationNodeRequest struct {
 
 	// 备注。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 部门标签列表。最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *AddOrganizationNodeRequest) ToJsonString() string {
@@ -257,6 +263,7 @@ func (r *AddOrganizationNodeRequest) FromJsonString(s string) error {
 	delete(f, "ParentNodeId")
 	delete(f, "Name")
 	delete(f, "Remark")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOrganizationNodeRequest has unknown keys!", "")
 	}
@@ -296,13 +303,13 @@ type AddPermissionPolicyToRoleConfigurationRequestParams struct {
 	// 权限配置 ID
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 前期只支持系统策略，自定义策略后期在支持
+	// 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
 	RolePolicyType *string `json:"RolePolicyType,omitnil,omitempty" name:"RolePolicyType"`
 
-	// 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。
+	// 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
 	RolePolicyNames []*string `json:"RolePolicyNames,omitnil,omitempty" name:"RolePolicyNames"`
 
-	// 策略详情。
+	// 添加的系统策略详情。
 	RolePolicies []*PolicyDetail `json:"RolePolicies,omitnil,omitempty" name:"RolePolicies"`
 
 	// 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
@@ -318,13 +325,13 @@ type AddPermissionPolicyToRoleConfigurationRequest struct {
 	// 权限配置 ID
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 前期只支持系统策略，自定义策略后期在支持
+	// 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
 	RolePolicyType *string `json:"RolePolicyType,omitnil,omitempty" name:"RolePolicyType"`
 
-	// 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。
+	// 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
 	RolePolicyNames []*string `json:"RolePolicyNames,omitnil,omitempty" name:"RolePolicyNames"`
 
-	// 策略详情。
+	// 添加的系统策略详情。
 	RolePolicies []*PolicyDetail `json:"RolePolicies,omitnil,omitempty" name:"RolePolicies"`
 
 	// 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
@@ -753,6 +760,16 @@ type AuthNode struct {
 	// 主体管理员
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Manager *MemberMainInfo `json:"Manager,omitnil,omitempty" name:"Manager"`
+}
+
+type AuthRelationFile struct {
+	// 文件名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 // Predefined struct for user
@@ -1401,6 +1418,9 @@ type CreateOrganizationMemberRequestParams struct {
 
 	// 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
 	AuthRelationId *int64 `json:"AuthRelationId,omitnil,omitempty" name:"AuthRelationId"`
+
+	// 成员标签列表。最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateOrganizationMemberRequest struct {
@@ -1435,6 +1455,9 @@ type CreateOrganizationMemberRequest struct {
 
 	// 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
 	AuthRelationId *int64 `json:"AuthRelationId,omitnil,omitempty" name:"AuthRelationId"`
+
+	// 成员标签列表。最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateOrganizationMemberRequest) ToJsonString() string {
@@ -1459,6 +1482,7 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 	delete(f, "PayUin")
 	delete(f, "IdentityRoleID")
 	delete(f, "AuthRelationId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationMemberRequest has unknown keys!", "")
 	}
@@ -3915,6 +3939,9 @@ type DescribeOrganizationMembersRequestParams struct {
 
 	// 可信服务产品简称。可信服务管理员查询时必须指定
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 成员标签搜索列表，最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DescribeOrganizationMembersRequest struct {
@@ -3937,6 +3964,9 @@ type DescribeOrganizationMembersRequest struct {
 
 	// 可信服务产品简称。可信服务管理员查询时必须指定
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 成员标签搜索列表，最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *DescribeOrganizationMembersRequest) ToJsonString() string {
@@ -3957,6 +3987,7 @@ func (r *DescribeOrganizationMembersRequest) FromJsonString(s string) error {
 	delete(f, "SearchKey")
 	delete(f, "AuthName")
 	delete(f, "Product")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMembersRequest has unknown keys!", "")
 	}
@@ -3998,6 +4029,9 @@ type DescribeOrganizationNodesRequestParams struct {
 
 	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 部门标签搜索列表，最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DescribeOrganizationNodesRequest struct {
@@ -4008,6 +4042,9 @@ type DescribeOrganizationNodesRequest struct {
 
 	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 部门标签搜索列表，最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *DescribeOrganizationNodesRequest) ToJsonString() string {
@@ -4024,6 +4061,7 @@ func (r *DescribeOrganizationNodesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationNodesRequest has unknown keys!", "")
 	}
@@ -5574,6 +5612,130 @@ type IdentityPolicy struct {
 	// 自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
+}
+
+// Predefined struct for user
+type InviteOrganizationMemberRequestParams struct {
+	// 被邀请账号Uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 关系策略。取值：Financial
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+	PermissionIds []*uint64 `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
+
+	// 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 备注。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否允许成员退出。允许：Allow，不允许：Denied。
+	IsAllowQuit *string `json:"IsAllowQuit,omitnil,omitempty" name:"IsAllowQuit"`
+
+	// 代付者Uin。成员代付费时需要
+	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
+
+	// 互信实名主体名称。
+	RelationAuthName *string `json:"RelationAuthName,omitnil,omitempty" name:"RelationAuthName"`
+
+	// 互信主体证明文件列表。
+	AuthFile []*AuthRelationFile `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
+
+	// 成员标签列表。最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type InviteOrganizationMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 被邀请账号Uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 关系策略。取值：Financial
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+	PermissionIds []*uint64 `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
+
+	// 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 备注。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否允许成员退出。允许：Allow，不允许：Denied。
+	IsAllowQuit *string `json:"IsAllowQuit,omitnil,omitempty" name:"IsAllowQuit"`
+
+	// 代付者Uin。成员代付费时需要
+	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
+
+	// 互信实名主体名称。
+	RelationAuthName *string `json:"RelationAuthName,omitnil,omitempty" name:"RelationAuthName"`
+
+	// 互信主体证明文件列表。
+	AuthFile []*AuthRelationFile `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
+
+	// 成员标签列表。最大10个
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *InviteOrganizationMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InviteOrganizationMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "Name")
+	delete(f, "PolicyType")
+	delete(f, "PermissionIds")
+	delete(f, "NodeId")
+	delete(f, "Remark")
+	delete(f, "IsAllowQuit")
+	delete(f, "PayUin")
+	delete(f, "RelationAuthName")
+	delete(f, "AuthFile")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InviteOrganizationMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InviteOrganizationMemberResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InviteOrganizationMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *InviteOrganizationMemberResponseParams `json:"Response"`
+}
+
+func (r *InviteOrganizationMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InviteOrganizationMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type JoinedGroups struct {
@@ -7776,6 +7938,10 @@ type OrgMember struct {
 	// 成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PermissionStatus *string `json:"PermissionStatus,omitnil,omitempty" name:"PermissionStatus"`
+
+	// 成员标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type OrgMemberAuthAccount struct {
@@ -7934,6 +8100,10 @@ type OrgNode struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 成员标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type OrgPermission struct {
@@ -8919,6 +9089,16 @@ type ShareUnitResource struct {
 	ShareManagerUin *int64 `json:"ShareManagerUin,omitnil,omitempty" name:"ShareManagerUin"`
 }
 
+type Tag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
 type TagComplianceDetails struct {
 	// 合规状态。true-合规，false-不合规
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8994,6 +9174,81 @@ type TaskStatus struct {
 	// 说明
 	// 只有Status为Failed，才会显示该参数。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
+}
+
+// Predefined struct for user
+type UpdateCustomPolicyForRoleConfigurationRequestParams struct {
+	// 空间 ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 权限配置 ID
+	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
+
+	// 权限策略名称，长度最大为 32 个字符。
+	CustomPolicyName *string `json:"CustomPolicyName,omitnil,omitempty" name:"CustomPolicyName"`
+
+	// 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+	NewCustomPolicyDocument *string `json:"NewCustomPolicyDocument,omitnil,omitempty" name:"NewCustomPolicyDocument"`
+}
+
+type UpdateCustomPolicyForRoleConfigurationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间 ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 权限配置 ID
+	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
+
+	// 权限策略名称，长度最大为 32 个字符。
+	CustomPolicyName *string `json:"CustomPolicyName,omitnil,omitempty" name:"CustomPolicyName"`
+
+	// 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+	NewCustomPolicyDocument *string `json:"NewCustomPolicyDocument,omitnil,omitempty" name:"NewCustomPolicyDocument"`
+}
+
+func (r *UpdateCustomPolicyForRoleConfigurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomPolicyForRoleConfigurationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RoleConfigurationId")
+	delete(f, "CustomPolicyName")
+	delete(f, "NewCustomPolicyDocument")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCustomPolicyForRoleConfigurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCustomPolicyForRoleConfigurationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCustomPolicyForRoleConfigurationResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCustomPolicyForRoleConfigurationResponseParams `json:"Response"`
+}
+
+func (r *UpdateCustomPolicyForRoleConfigurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomPolicyForRoleConfigurationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

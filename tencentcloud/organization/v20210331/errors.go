@@ -23,6 +23,9 @@ const (
 	// 该账号已被注册。
 	FAILEDOPERATION_ACCOUNTALREADYREGISTER = "FailedOperation.AccountAlreadyRegister"
 
+	// 申请已存在。
+	FAILEDOPERATION_APPLYEXIST = "FailedOperation.ApplyExist"
+
 	// 用户未实名。
 	FAILEDOPERATION_AUTHINFOEMPTY = "FailedOperation.AuthInfoEmpty"
 
@@ -98,8 +101,14 @@ const (
 	// 邮箱绑定已经失效。
 	FAILEDOPERATION_EMAILBINDRECORDINVALID = "FailedOperation.EmailBindRecordInvalid"
 
+	// 存在共享资源给其他组织成员或被其他组织成员共享资源。
+	FAILEDOPERATION_EXISTOTHERORGANIZATIONMEMBERSHARED = "FailedOperation.ExistOtherOrganizationMemberShared"
+
 	// 存在不在组织内的共享成员。
 	FAILEDOPERATION_EXISTSHAREMEMBERNOTINORGANIZATION = "FailedOperation.ExistShareMemberNotInOrganization"
+
+	// 获取账号地域属性错误。
+	FAILEDOPERATION_GETACCOUNTREGION = "FailedOperation.GetAccountRegion"
 
 	// 查询实名信息出错。
 	FAILEDOPERATION_GETAUTHINFO = "FailedOperation.GetAuthInfo"
@@ -134,6 +143,12 @@ const (
 	// 用户没有开通集团账号，无法开通CIC服务
 	FAILEDOPERATION_IDENTITYCENTERORGANIZATIONNOTOPEN = "FailedOperation.IdentityCenterOrganizationNotOpen"
 
+	// 上传文件不合法。
+	FAILEDOPERATION_IMPORTFILEILLEGAL = "FailedOperation.ImportFileIllegal"
+
+	// 邀请已存在。
+	FAILEDOPERATION_INVITATIONEXIST = "FailedOperation.InvitationExist"
+
 	// 邮箱绑定失败。
 	FAILEDOPERATION_MEMBERBINDEMAILERROR = "FailedOperation.MemberBindEmailError"
 
@@ -145,6 +160,9 @@ const (
 
 	// 成员存在代付者,不允许删除。
 	FAILEDOPERATION_MEMBEREXISTDELEGATEPAYERNOTALLOWDELETE = "FailedOperation.MemberExistDelegatePayerNotAllowDelete"
+
+	// 成员已存其他组织中。
+	FAILEDOPERATION_MEMBEREXISTINOTHERORGANIZATION = "FailedOperation.MemberExistInOtherOrganization"
 
 	// 成员授权在使用。
 	FAILEDOPERATION_MEMBERIDENTITYAUTHUSED = "FailedOperation.MemberIdentityAuthUsed"
@@ -167,6 +185,9 @@ const (
 	// 企业组织单元成员不为空。
 	FAILEDOPERATION_NODENOTEMPTY = "FailedOperation.NodeNotEmpty"
 
+	// 只能邀请同一个站点内的账号。
+	FAILEDOPERATION_NOTSAMEREGION = "FailedOperation.NotSameRegion"
+
 	// 操作计费侧成员权限错误。
 	FAILEDOPERATION_OPERATEBILLINGPERMISSIONERR = "FailedOperation.OperateBillingPermissionErr"
 
@@ -175,6 +196,9 @@ const (
 
 	// 成员是主体管理账号，不允许退出组织。
 	FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
+
+	// 实名认证关系已经存在。
+	FAILEDOPERATION_ORGANIZATIONAUTHRELATIONEXIST = "FailedOperation.OrganizationAuthRelationExist"
 
 	// 解绑最后一个策略失败。
 	FAILEDOPERATION_ORGANIZATIONDETACHLASTPOLICYERROR = "FailedOperation.OrganizationDetachLastPolicyError"
@@ -193,6 +217,9 @@ const (
 
 	// 组织身份策略不合法。
 	FAILEDOPERATION_ORGANIZATIONIDENTITYPOLICYERROR = "FailedOperation.OrganizationIdentityPolicyError"
+
+	// 成员已存在。
+	FAILEDOPERATION_ORGANIZATIONMEMBEREXIST = "FailedOperation.OrganizationMemberExist"
 
 	// 成员名已存在。
 	FAILEDOPERATION_ORGANIZATIONMEMBERNAMEUSED = "FailedOperation.OrganizationMemberNameUsed"
@@ -256,6 +283,9 @@ const (
 
 	// 退出共享单元失败。
 	FAILEDOPERATION_QUITESHAREUNIT = "FailedOperation.QuiteShareUnit"
+
+	// 重复发送邀请。
+	FAILEDOPERATION_RESENTINVITATION = "FailedOperation.ReSentInvitation"
 
 	// 资源超过最大上限。
 	FAILEDOPERATION_RESOURCEOVERLIMIT = "FailedOperation.ResourceOverLimit"
@@ -334,6 +364,9 @@ const (
 
 	// 权限配置绑定系统策略超过上限
 	FAILEDOPERATION_SYSTEMPOLICYOVERUPPERLIMIT = "FailedOperation.SystemPolicyOverUpperLimit"
+
+	// 打标签异常。
+	FAILEDOPERATION_TAGRESOURCESERROR = "FailedOperation.TagResourcesError"
 
 	// 上传数据文件失败。
 	FAILEDOPERATION_UPLOADMETADATAFAILED = "FailedOperation.UploadMetadataFailed"
@@ -497,6 +530,9 @@ const (
 	// 策略名称长度超限。
 	INVALIDPARAMETER_POLICYNAMESIZEOVERUPPERLIMIT = "InvalidParameter.PolicyNameSizeOverUpperLimit"
 
+	// 修改策略类型错误，只允许修改自定义策略
+	INVALIDPARAMETER_POLICYTYPEERROR = "InvalidParameter.PolicyTypeError"
+
 	// 策略文档的principal字段不合法。
 	INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
 
@@ -544,6 +580,9 @@ const (
 
 	// 策略文档的Statement字段不合法。
 	INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+
+	// 标签值错误。
+	INVALIDPARAMETER_TAGERROR = "InvalidParameter.TagError"
 
 	// 当前业务不支持标签操作。
 	INVALIDPARAMETER_UNSUPPORTEDSERVICE = "InvalidParameter.UnsupportedService"
@@ -598,6 +637,9 @@ const (
 
 	// 组织身份超过最大限制。
 	LIMITEXCEEDED_IDENTITYEXCEEDLIMIT = "LimitExceeded.IdentityExceedLimit"
+
+	// 邀请超过上限。
+	LIMITEXCEEDED_INVITATIONOVERLIMIT = "LimitExceeded.InvitationOverLimit"
 
 	// 企业组织单元层级太多。
 	LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
@@ -752,11 +794,17 @@ const (
 	// 代付者财务状态异常，不支持代付费。
 	UNSUPPORTEDOPERATION_ABNORMALFINANCIALSTATUSOFADMIN = "UnsupportedOperation.AbnormalFinancialStatusOfAdmin"
 
+	// 成员财务状态异常，不支持代付费。
+	UNSUPPORTEDOPERATION_ABNORMALFINANCIALSTATUSOFMEMBER = "UnsupportedOperation.AbnormalFinancialStatusOfMember"
+
 	// 不允许添加代付关系。
 	UNSUPPORTEDOPERATION_ADDDELEGATEPAYERNOTALLOW = "UnsupportedOperation.AddDelegatePayerNotAllow"
 
 	// 不允许添加优惠继承关系。
 	UNSUPPORTEDOPERATION_ADDDISCOUNTINHERITNOTALLOW = "UnsupportedOperation.AddDiscountInheritNotAllow"
+
+	// 管理员和成员的经销商不一致。
+	UNSUPPORTEDOPERATION_AGENTNOTSAME = "UnsupportedOperation.AgentNotSame"
 
 	// 创建的成员不允许创建组织。
 	UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.CreateMemberNotAllowCreateOrganization"
@@ -806,8 +854,14 @@ const (
 	// 成员是集团服务委派管理员，不允许退出组织。
 	UNSUPPORTEDOPERATION_MEMBEREXISTSERVICENOTALLOWDELETE = "UnsupportedOperation.MemberExistServiceNotAllowDelete"
 
+	// 成员存在代金劵，不支持代付费。
+	UNSUPPORTEDOPERATION_MEMBERHASVOUCHER = "UnsupportedOperation.MemberHasVoucher"
+
 	// 账号是代理商或代客。
 	UNSUPPORTEDOPERATION_MEMBERISAGENT = "UnsupportedOperation.MemberIsAgent"
+
+	// 成员不是经销子客。
+	UNSUPPORTEDOPERATION_MEMBERISNOTCLIENT = "UnsupportedOperation.MemberIsNotClient"
 
 	// 成员没有绑卡。
 	UNSUPPORTEDOPERATION_MEMBERNOPAYMENT = "UnsupportedOperation.MemberNoPayment"
