@@ -1245,6 +1245,65 @@ func (c *Client) DescribeEmrOverviewMetricsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeGlobalConfigRequest() (request *DescribeGlobalConfigRequest) {
+    request = &DescribeGlobalConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeGlobalConfig")
+    
+    
+    return
+}
+
+func NewDescribeGlobalConfigResponse() (response *DescribeGlobalConfigResponse) {
+    response = &DescribeGlobalConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalConfig
+// 查询YARN资源调度的全局配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeGlobalConfig(request *DescribeGlobalConfigRequest) (response *DescribeGlobalConfigResponse, err error) {
+    return c.DescribeGlobalConfigWithContext(context.Background(), request)
+}
+
+// DescribeGlobalConfig
+// 查询YARN资源调度的全局配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeGlobalConfigWithContext(ctx context.Context, request *DescribeGlobalConfigRequest) (response *DescribeGlobalConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHBaseTableOverviewRequest() (request *DescribeHBaseTableOverviewRequest) {
     request = &DescribeHBaseTableOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3248,6 +3307,65 @@ func (c *Client) ModifyAutoScaleStrategyWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyAutoScaleStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalConfigRequest() (request *ModifyGlobalConfigRequest) {
+    request = &ModifyGlobalConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyGlobalConfig")
+    
+    
+    return
+}
+
+func NewModifyGlobalConfigResponse() (response *ModifyGlobalConfigResponse) {
+    response = &ModifyGlobalConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalConfig
+// 修改YARN资源调度的全局配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) ModifyGlobalConfig(request *ModifyGlobalConfigRequest) (response *ModifyGlobalConfigResponse, err error) {
+    return c.ModifyGlobalConfigWithContext(context.Background(), request)
+}
+
+// ModifyGlobalConfig
+// 修改YARN资源调度的全局配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) ModifyGlobalConfigWithContext(ctx context.Context, request *ModifyGlobalConfigRequest) (response *ModifyGlobalConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalConfigResponse()
     err = c.Send(request, response)
     return
 }

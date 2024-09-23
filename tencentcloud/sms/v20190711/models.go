@@ -313,7 +313,7 @@ type CallbackStatusStatisticsRequestParams struct {
 	StartDateTime *uint64 `json:"StartDateTime,omitnil,omitempty" name:"StartDateTime"`
 
 	// 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
-	// 注：EndDataTime 必须大于 StartDateTime。
+	// 注：EndDataTime 必须大于等于 StartDateTime。
 	EndDataTime *uint64 `json:"EndDataTime,omitnil,omitempty" name:"EndDataTime"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
@@ -335,7 +335,7 @@ type CallbackStatusStatisticsRequest struct {
 	StartDateTime *uint64 `json:"StartDateTime,omitnil,omitempty" name:"StartDateTime"`
 
 	// 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
-	// 注：EndDataTime 必须大于 StartDateTime。
+	// 注：EndDataTime 必须大于等于 StartDateTime。
 	EndDataTime *uint64 `json:"EndDataTime,omitnil,omitempty" name:"EndDataTime"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
@@ -1499,7 +1499,7 @@ type SendStatusStatisticsRequestParams struct {
 	StartDateTime *uint64 `json:"StartDateTime,omitnil,omitempty" name:"StartDateTime"`
 
 	// 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
-	// 注：EndDataTime 必须大于 StartDateTime。
+	// 注：EndDataTime 必须大于等于 StartDateTime。
 	EndDataTime *uint64 `json:"EndDataTime,omitnil,omitempty" name:"EndDataTime"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
@@ -1521,7 +1521,7 @@ type SendStatusStatisticsRequest struct {
 	StartDateTime *uint64 `json:"StartDateTime,omitnil,omitempty" name:"StartDateTime"`
 
 	// 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
-	// 注：EndDataTime 必须大于 StartDateTime。
+	// 注：EndDataTime 必须大于等于 StartDateTime。
 	EndDataTime *uint64 `json:"EndDataTime,omitnil,omitempty" name:"EndDataTime"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
@@ -1622,10 +1622,10 @@ type SmsPackagesStatisticsRequestParams struct {
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitnil,omitempty" name:"SmsSdkAppid"`
 
 	// 最大上限(需要拉取的套餐包个数)。
+	// 注：Limit默认最大值为500，可结合Offset实现分页查询。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
-	// 注：目前固定设置为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -1636,10 +1636,10 @@ type SmsPackagesStatisticsRequest struct {
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitnil,omitempty" name:"SmsSdkAppid"`
 
 	// 最大上限(需要拉取的套餐包个数)。
+	// 注：Limit默认最大值为500，可结合Offset实现分页查询。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
-	// 注：目前固定设置为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 

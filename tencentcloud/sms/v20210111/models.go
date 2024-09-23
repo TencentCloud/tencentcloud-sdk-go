@@ -306,11 +306,11 @@ type CallbackStatusStatistics struct {
 
 // Predefined struct for user
 type CallbackStatusStatisticsRequestParams struct {
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
-	// 注：EndTime 必须大于 BeginTime，且相差不超过32天。
+	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
+	// 注：EndTime 必须大于等于 BeginTime，且相差不超过32天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
@@ -328,11 +328,11 @@ type CallbackStatusStatisticsRequestParams struct {
 type CallbackStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
-	// 注：EndTime 必须大于 BeginTime，且相差不超过32天。
+	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
+	// 注：EndTime 必须大于等于 BeginTime，且相差不超过32天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
@@ -1684,11 +1684,11 @@ type SendStatusStatistics struct {
 
 // Predefined struct for user
 type SendStatusStatisticsRequestParams struct {
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
-	// 注：EndTime 必须大于 BeginTime。
+	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
+	// 注：EndTime 必须大于等于 BeginTime。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
@@ -1706,11 +1706,11 @@ type SendStatusStatisticsRequestParams struct {
 type SendStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
-	// 注：EndTime 必须大于 BeginTime。
+	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
+	// 注：EndTime 必须大于等于 BeginTime。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
@@ -1802,16 +1802,17 @@ type SmsPackagesStatisticsRequestParams struct {
 	SmsSdkAppId *string `json:"SmsSdkAppId,omitnil,omitempty" name:"SmsSdkAppId"`
 
 	// 最大上限(需要拉取的套餐包个数)。
+	// 注：Limit默认最大值为500，可结合Offset实现分页查询。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 	// 注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
+	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
 	// 注：EndTime 必须大于 BeginTime 且小于当前时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
@@ -1823,16 +1824,17 @@ type SmsPackagesStatisticsRequest struct {
 	SmsSdkAppId *string `json:"SmsSdkAppId,omitnil,omitempty" name:"SmsSdkAppId"`
 
 	// 最大上限(需要拉取的套餐包个数)。
+	// 注：Limit默认最大值为500，可结合Offset实现分页查询。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 	// 注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
+	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
 	// 注：EndTime 必须大于 BeginTime 且小于当前时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }

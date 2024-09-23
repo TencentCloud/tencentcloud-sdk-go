@@ -889,7 +889,7 @@ func NewCreateBatchQuickSignUrlResponse() (response *CreateBatchQuickSignUrlResp
 }
 
 // CreateBatchQuickSignUrl
-// 该接口用于发起合同后，生成个人用户的批量签署链接, 暂时不支持企业端签署。
+// 该接口用于发起合同后，生成个人用户的批量待办链接, 暂时不支持企业端签署。
 //
 // **注意：**
 //
@@ -918,7 +918,7 @@ func (c *Client) CreateBatchQuickSignUrl(request *CreateBatchQuickSignUrlRequest
 }
 
 // CreateBatchQuickSignUrl
-// 该接口用于发起合同后，生成个人用户的批量签署链接, 暂时不支持企业端签署。
+// 该接口用于发起合同后，生成个人用户的批量待办链接, 暂时不支持企业端签署。
 //
 // **注意：**
 //

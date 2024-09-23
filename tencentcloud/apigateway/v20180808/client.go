@@ -3023,6 +3023,73 @@ func (c *Client) DescribeExclusiveInstanceDetailWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeExclusiveInstanceRegionsRequest() (request *DescribeExclusiveInstanceRegionsRequest) {
+    request = &DescribeExclusiveInstanceRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeExclusiveInstanceRegions")
+    
+    
+    return
+}
+
+func NewDescribeExclusiveInstanceRegionsResponse() (response *DescribeExclusiveInstanceRegionsResponse) {
+    response = &DescribeExclusiveInstanceRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExclusiveInstanceRegions
+// Get the list of supported regions for dedicated instances
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
+//  FAILEDOPERATION_INSTANCENOTEXIST = "FailedOperation.InstanceNotExist"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) DescribeExclusiveInstanceRegions(request *DescribeExclusiveInstanceRegionsRequest) (response *DescribeExclusiveInstanceRegionsResponse, err error) {
+    return c.DescribeExclusiveInstanceRegionsWithContext(context.Background(), request)
+}
+
+// DescribeExclusiveInstanceRegions
+// Get the list of supported regions for dedicated instances
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
+//  FAILEDOPERATION_INSTANCENOTEXIST = "FailedOperation.InstanceNotExist"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) DescribeExclusiveInstanceRegionsWithContext(ctx context.Context, request *DescribeExclusiveInstanceRegionsRequest) (response *DescribeExclusiveInstanceRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeExclusiveInstanceRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExclusiveInstanceRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExclusiveInstanceRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExclusiveInstancesRequest() (request *DescribeExclusiveInstancesRequest) {
     request = &DescribeExclusiveInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

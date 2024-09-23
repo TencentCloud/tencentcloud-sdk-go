@@ -1617,6 +1617,9 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// 注：
 	// `不指定该值时，默认为签署方自行选择。`
 	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil,omitempty" name:"SignTypeSelector"`
+
+	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
 }
 
 type CreateBatchQuickSignUrlRequest struct {
@@ -1676,6 +1679,9 @@ type CreateBatchQuickSignUrlRequest struct {
 	// 注：
 	// `不指定该值时，默认为签署方自行选择。`
 	SignTypeSelector *uint64 `json:"SignTypeSelector,omitnil,omitempty" name:"SignTypeSelector"`
+
+	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
 }
 
 func (r *CreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1699,6 +1705,7 @@ func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "SignatureTypes")
 	delete(f, "ApproverSignTypes")
 	delete(f, "SignTypeSelector")
+	delete(f, "FlowBatchUrlInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -5836,6 +5843,9 @@ type CreatePrepareFlowRequestParams struct {
 
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	InitiatorComponents []*Component `json:"InitiatorComponents,omitnil,omitempty" name:"InitiatorComponents"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 type CreatePrepareFlowRequest struct {
@@ -5933,6 +5943,9 @@ type CreatePrepareFlowRequest struct {
 
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	InitiatorComponents []*Component `json:"InitiatorComponents,omitnil,omitempty" name:"InitiatorComponents"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
 func (r *CreatePrepareFlowRequest) ToJsonString() string {
@@ -5966,6 +5979,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "Agent")
 	delete(f, "InitiatorComponents")
+	delete(f, "FlowDisplayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
 	}
