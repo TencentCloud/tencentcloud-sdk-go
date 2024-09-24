@@ -10903,6 +10903,9 @@ type DescribeAssetImageRegistryAssetStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Err *string `json:"Err,omitnil,omitempty" name:"Err"`
 
+	// 最后一次同步成功时间
+	LatestSyncSuccessTime *string `json:"LatestSyncSuccessTime,omitnil,omitempty" name:"LatestSyncSuccessTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11812,6 +11815,9 @@ func (r *DescribeAssetImageRegistrySummaryRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeAssetImageRegistrySummaryResponseParams struct {
+	// 待扫描镜像个数
+	UnScannedImageCnt *uint64 `json:"UnScannedImageCnt,omitnil,omitempty" name:"UnScannedImageCnt"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -12462,6 +12468,14 @@ type DescribeAssetImageScanSettingResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
 
+	// 最后一次扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
+
+	// 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanResult *string `json:"ScanResult,omitnil,omitempty" name:"ScanResult"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -12590,6 +12604,15 @@ func (r *DescribeAssetImageScanTaskRequest) FromJsonString(s string) error {
 type DescribeAssetImageScanTaskResponseParams struct {
 	// 任务id
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
+
+	// 最近扫描时间
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
+
+	// 扫描状态(READY:准备 SCANNING:扫描中 END:完成)
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 扫描子状态(Success:成功 Timeout:超时 Cancel:取消 Error:错误)
+	SubStatus *string `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -13354,6 +13377,9 @@ type DescribeAssetSummaryResponseParams struct {
 
 	// 已扫描镜像个数
 	ScannedImageCnt *uint64 `json:"ScannedImageCnt,omitnil,omitempty" name:"ScannedImageCnt"`
+
+	// 待扫描镜像个数
+	UnScannedImageCnt *uint64 `json:"UnScannedImageCnt,omitnil,omitempty" name:"UnScannedImageCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16368,6 +16394,12 @@ type DescribeImageAuthorizedInfoResponseParams struct {
 	// 是否可免费领取镜像授权数
 	CanApplyFreeImageAuthorize *bool `json:"CanApplyFreeImageAuthorize,omitnil,omitempty" name:"CanApplyFreeImageAuthorize"`
 
+	// 镜像扫描计费信息
+	ImageScanInquireInfo *ImageScanInquireInfo `json:"ImageScanInquireInfo,omitnil,omitempty" name:"ImageScanInquireInfo"`
+
+	// 重复镜像数(本地镜像和仓库镜像)
+	RepeatImageIdCnt *uint64 `json:"RepeatImageIdCnt,omitnil,omitempty" name:"RepeatImageIdCnt"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -16908,6 +16940,13 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	// 排除的镜像资产id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeImageAssetIds []*uint64 `json:"ExcludeImageAssetIds,omitnil,omitempty" name:"ExcludeImageAssetIds"`
+
+	// 最近扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
+
+	// 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+	ScanResult *string `json:"ScanResult,omitnil,omitempty" name:"ScanResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -26695,6 +26734,32 @@ type ImageRiskTendencyInfo struct {
 	// IRT_MALWARE_VIRUS: 木马病毒
 	// IRT_RISK:敏感信息
 	ImageRiskType *string `json:"ImageRiskType,omitnil,omitempty" name:"ImageRiskType"`
+}
+
+type ImageScanInquireInfo struct {
+	// 计费项
+	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
+
+	// 容量
+	Capcity *uint64 `json:"Capcity,omitnil,omitempty" name:"Capcity"`
+
+	// 已使用量
+	Useage *uint64 `json:"Useage,omitnil,omitempty" name:"Useage"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 计费状态
+	// (Pending:待购)
+	// (Normal:正常)
+	// (Isolate:隔离)
+	PurchaseStatus *string `json:"PurchaseStatus,omitnil,omitempty" name:"PurchaseStatus"`
+
+	// 资源ID
+	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
 }
 
 type ImageSimpleInfo struct {

@@ -1199,7 +1199,7 @@ type CreateListenerRequestParams struct {
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示开启，1表示未开启。
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。
@@ -1234,6 +1234,12 @@ type CreateListenerRequestParams struct {
 
 	// 全端口段监听器的结束端口
 	FullEndPorts []*int64 `json:"FullEndPorts,omitnil,omitempty" name:"FullEndPorts"`
+
+	// 内网http监听器开启h2c开关
+	H2cSwitch *bool `json:"H2cSwitch,omitnil,omitempty" name:"H2cSwitch"`
+
+	// TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
+	SslCloseSwitch *bool `json:"SslCloseSwitch,omitnil,omitempty" name:"SslCloseSwitch"`
 }
 
 type CreateListenerRequest struct {
@@ -1264,7 +1270,7 @@ type CreateListenerRequest struct {
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示开启，1表示未开启。
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。
@@ -1299,6 +1305,12 @@ type CreateListenerRequest struct {
 
 	// 全端口段监听器的结束端口
 	FullEndPorts []*int64 `json:"FullEndPorts,omitnil,omitempty" name:"FullEndPorts"`
+
+	// 内网http监听器开启h2c开关
+	H2cSwitch *bool `json:"H2cSwitch,omitnil,omitempty" name:"H2cSwitch"`
+
+	// TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
+	SslCloseSwitch *bool `json:"SslCloseSwitch,omitnil,omitempty" name:"SslCloseSwitch"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -1333,6 +1345,8 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "IdleConnectTimeout")
 	delete(f, "SnatEnable")
 	delete(f, "FullEndPorts")
+	delete(f, "H2cSwitch")
+	delete(f, "SslCloseSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}

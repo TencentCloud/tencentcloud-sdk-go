@@ -812,6 +812,9 @@ const (
 	// VPN通道状态为更新中/销毁中/创建中，不支持此操作。
 	UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = "UnsupportedOperation.DeleteVpnConnInvalidState"
 
+	// 发货失败。
+	UNSUPPORTEDOPERATION_DELIVERYFAILED = "UnsupportedOperation.DeliveryFailed"
+
 	// 专线网关正在更新BGP Community属性。
 	UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = "UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity"
 

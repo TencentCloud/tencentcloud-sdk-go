@@ -29155,6 +29155,10 @@ type TaskOpsDto struct {
 	// 资源获取标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtResourceFlag *ExtResourceFlagDto `json:"ExtResourceFlag,omitnil,omitempty" name:"ExtResourceFlag"`
+
+	// 父任务simple信息(新)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewParentTaskInfos []*AiopsSimpleTaskDto `json:"NewParentTaskInfos,omitnil,omitempty" name:"NewParentTaskInfos"`
 }
 
 type TaskScriptContent struct {

@@ -4987,63 +4987,6 @@ func (c *Client) DescribeApplicationAttributeWithContext(ctx context.Context, re
     return
 }
 
-func NewDescribeApplicationBusinessLogConfigRequest() (request *DescribeApplicationBusinessLogConfigRequest) {
-    request = &DescribeApplicationBusinessLogConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApplicationBusinessLogConfig")
-    
-    
-    return
-}
-
-func NewDescribeApplicationBusinessLogConfigResponse() (response *DescribeApplicationBusinessLogConfigResponse) {
-    response = &DescribeApplicationBusinessLogConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeApplicationBusinessLogConfig
-// 接口未使用，废弃录用
-//
-// 
-//
-// 查询应用关联日志配置项信息
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
-func (c *Client) DescribeApplicationBusinessLogConfig(request *DescribeApplicationBusinessLogConfigRequest) (response *DescribeApplicationBusinessLogConfigResponse, err error) {
-    return c.DescribeApplicationBusinessLogConfigWithContext(context.Background(), request)
-}
-
-// DescribeApplicationBusinessLogConfig
-// 接口未使用，废弃录用
-//
-// 
-//
-// 查询应用关联日志配置项信息
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
-func (c *Client) DescribeApplicationBusinessLogConfigWithContext(ctx context.Context, request *DescribeApplicationBusinessLogConfigRequest) (response *DescribeApplicationBusinessLogConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationBusinessLogConfigRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeApplicationBusinessLogConfig require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeApplicationBusinessLogConfigResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
     request = &DescribeApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},

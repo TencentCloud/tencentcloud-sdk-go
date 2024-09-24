@@ -3889,6 +3889,65 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDedicatedClustersRequest() (request *DescribeDedicatedClustersRequest) {
+    request = &DescribeDedicatedClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDedicatedClusters")
+    
+    
+    return
+}
+
+func NewDescribeDedicatedClustersResponse() (response *DescribeDedicatedClustersResponse) {
+    response = &DescribeDedicatedClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDedicatedClusters
+// 查询专属集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_SERVICEACCESSERROR = "FailedOperation.ServiceAccessError"
+//  INTERNALERROR_JSONPARSEERROR = "InternalError.JsonParseError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeDedicatedClusters(request *DescribeDedicatedClustersRequest) (response *DescribeDedicatedClustersResponse, err error) {
+    return c.DescribeDedicatedClustersWithContext(context.Background(), request)
+}
+
+// DescribeDedicatedClusters
+// 查询专属集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_SERVICEACCESSERROR = "FailedOperation.ServiceAccessError"
+//  INTERNALERROR_JSONPARSEERROR = "InternalError.JsonParseError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeDedicatedClustersWithContext(ctx context.Context, request *DescribeDedicatedClustersRequest) (response *DescribeDedicatedClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeDedicatedClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDedicatedClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDedicatedClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDefaultParametersRequest() (request *DescribeDefaultParametersRequest) {
     request = &DescribeDefaultParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},

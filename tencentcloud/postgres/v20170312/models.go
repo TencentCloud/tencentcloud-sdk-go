@@ -1659,6 +1659,9 @@ type CreateReadOnlyDBInstanceRequestParams struct {
 
 	// 【废弃】不再需要指定，内核版本号与主实例保持一致
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
+
+	// 专属集群ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
@@ -1738,6 +1741,9 @@ type CreateReadOnlyDBInstanceRequest struct {
 
 	// 【废弃】不再需要指定，内核版本号与主实例保持一致
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
+
+	// 专属集群ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 func (r *CreateReadOnlyDBInstanceRequest) ToJsonString() string {
@@ -1772,6 +1778,7 @@ func (r *CreateReadOnlyDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "NeedSupportIpv6")
 	delete(f, "Name")
 	delete(f, "DBVersion")
+	delete(f, "DedicatedClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReadOnlyDBInstanceRequest has unknown keys!", "")
 	}
@@ -2367,6 +2374,10 @@ type DBNode struct {
 
 	// 节点所在可用区，例如 ap-guangzhou-1。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 专属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type Database struct {
@@ -2433,6 +2444,52 @@ type DatabasePrivilege struct {
 	// 指定账号对数据库对象拥有的权限列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivilegeSet []*string `json:"PrivilegeSet,omitnil,omitempty" name:"PrivilegeSet"`
+}
+
+type DedicatedCluster struct {
+	// 专属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 专属集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 专属集群所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 灾备集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandbyDedicatedClusterSet []*string `json:"StandbyDedicatedClusterSet,omitnil,omitempty" name:"StandbyDedicatedClusterSet"`
+
+	// 实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// Cpu总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTotal *int64 `json:"CpuTotal,omitnil,omitempty" name:"CpuTotal"`
+
+	// Cpu可用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuAvailable *int64 `json:"CpuAvailable,omitnil,omitempty" name:"CpuAvailable"`
+
+	// 内存总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemTotal *int64 `json:"MemTotal,omitnil,omitempty" name:"MemTotal"`
+
+	// 内存可用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemAvailable *int64 `json:"MemAvailable,omitnil,omitempty" name:"MemAvailable"`
+
+	// 磁盘总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskTotal *int64 `json:"DiskTotal,omitnil,omitempty" name:"DiskTotal"`
+
+	// 磁盘可用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskAvailable *int64 `json:"DiskAvailable,omitnil,omitempty" name:"DiskAvailable"`
 }
 
 // Predefined struct for user
@@ -4819,6 +4876,65 @@ func (r *DescribeDatabasesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDedicatedClustersRequestParams struct {
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+	// dedicated-cluster-id: 按照专属集群ID筛选，类型为string
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeDedicatedClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+	// dedicated-cluster-id: 按照专属集群ID筛选，类型为string
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDedicatedClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDedicatedClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDedicatedClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDedicatedClustersResponseParams struct {
+	// 专属集群信息
+	DedicatedClusterSet []*DedicatedCluster `json:"DedicatedClusterSet,omitnil,omitempty" name:"DedicatedClusterSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDedicatedClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDedicatedClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeDedicatedClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDedicatedClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

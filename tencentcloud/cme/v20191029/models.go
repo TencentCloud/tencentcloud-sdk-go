@@ -5809,6 +5809,9 @@ type SlotInfo struct {
 
 	// 素材时长，单位秒。
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 卡槽起始时间，单位秒。
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 }
 
 type SlotReplacementInfo struct {

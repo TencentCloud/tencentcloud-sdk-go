@@ -5833,7 +5833,7 @@ func NewRecognizeIndonesiaIDCardOCRResponse() (response *RecognizeIndonesiaIDCar
 //
 // 
 //
-// 默认接口请求频率限制：20次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5855,7 +5855,7 @@ func (c *Client) RecognizeIndonesiaIDCardOCR(request *RecognizeIndonesiaIDCardOC
 //
 // 
 //
-// 默认接口请求频率限制：20次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

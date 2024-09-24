@@ -9103,6 +9103,21 @@ type L4Proxy struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type L4ProxyRemoteAuth struct {
+	// 四层远程鉴权开关，取值有：
+	// <li>on：表示开启;</li>
+	// <li>off：表示关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 远程鉴权服务地址，格式为: domain/ip:port。例：example.auth.com:8888
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 远程鉴权服务不可访问后，经过四层转发规则默认回源行为，取值有：
+	// <li>reject：表示进行拦截，拒绝访问;</li>
+	// <li>allow：表示允许通过。</li>
+	ServerFaultyBehavior *string `json:"ServerFaultyBehavior,omitnil,omitempty" name:"ServerFaultyBehavior"`
+}
+
 type L4ProxyRule struct {
 	// 转发规则 ID。
 	// 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数请勿填写；在 ModifyL4ProxyRules 作为入参使用时，该参数必填。
@@ -9174,6 +9189,11 @@ type L4ProxyRule struct {
 
 	// BuID。
 	BuId *string `json:"BuId,omitnil,omitempty" name:"BuId"`
+
+	// 远程鉴权信息。
+	// 注意：RemoteAuth 在 CreateL4ProxyRules 或 ModifyL4ProxyRules 不可作为入参使用，如有传此参数，会忽略。在 DescribeL4ProxyRules 返回为空时，表示没有开启远程鉴权。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteAuth *L4ProxyRemoteAuth `json:"RemoteAuth,omitnil,omitempty" name:"RemoteAuth"`
 }
 
 type L7OfflineLog struct {
