@@ -1423,7 +1423,7 @@ type UploadTrainPortraitImagesRequestParams struct {
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
 	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
 
-	// 写真模型训练用的图像 URL 列表。
+	// 写真模型训练用的图像 URL 列表，仅常规训练模式需要上传。
 	// 图片数量：19 - 24 张。
 	// 图片内容：单人，脸部清晰，和基础图像中的人物为同一人。
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
@@ -1435,10 +1435,11 @@ type UploadTrainPortraitImagesRequestParams struct {
 	// 建议：关闭以上过滤可能导致写真生成效果受损，建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图像进行训练。
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 是否开启快速训练模式。
-	// 默认不开启。开启后只需要在 BaseUrl 中传入1张图片，Urls.N 中无需传入图片。  
-	// 0：不开启  
-	// 1：开启
+	// 训练模式。
+	// 默认使用常规训练模式。如果使用快速训练模式和免训练模式，只需要在 BaseUrl 中传入1张图片，Urls.N 中无需传入图片。
+	// 0：常规训练模式，上传多张图片用于模型训练，完成训练后可生成写真图片。
+	// 1：快速训练模式，仅需上传1张图片用于模型训练，训练速度更快，完成训练后可生成写真图片。
+	// 2：免训练模式，仅需上传1张图片，跳过模型训练环节，直接生成写真图片。
 	TrainMode *int64 `json:"TrainMode,omitnil,omitempty" name:"TrainMode"`
 }
 
@@ -1455,7 +1456,7 @@ type UploadTrainPortraitImagesRequest struct {
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
 	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
 
-	// 写真模型训练用的图像 URL 列表。
+	// 写真模型训练用的图像 URL 列表，仅常规训练模式需要上传。
 	// 图片数量：19 - 24 张。
 	// 图片内容：单人，脸部清晰，和基础图像中的人物为同一人。
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
@@ -1467,10 +1468,11 @@ type UploadTrainPortraitImagesRequest struct {
 	// 建议：关闭以上过滤可能导致写真生成效果受损，建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图像进行训练。
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 是否开启快速训练模式。
-	// 默认不开启。开启后只需要在 BaseUrl 中传入1张图片，Urls.N 中无需传入图片。  
-	// 0：不开启  
-	// 1：开启
+	// 训练模式。
+	// 默认使用常规训练模式。如果使用快速训练模式和免训练模式，只需要在 BaseUrl 中传入1张图片，Urls.N 中无需传入图片。
+	// 0：常规训练模式，上传多张图片用于模型训练，完成训练后可生成写真图片。
+	// 1：快速训练模式，仅需上传1张图片用于模型训练，训练速度更快，完成训练后可生成写真图片。
+	// 2：免训练模式，仅需上传1张图片，跳过模型训练环节，直接生成写真图片。
 	TrainMode *int64 `json:"TrainMode,omitnil,omitempty" name:"TrainMode"`
 }
 

@@ -11854,6 +11854,10 @@ func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
 }
 
 // DescribeIndexList
+// 接口已废弃
+//
+// 
+//
 // 获取索引列表
 //
 // 可能返回的错误码:
@@ -11864,6 +11868,10 @@ func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response 
 }
 
 // DescribeIndexList
+// 接口已废弃
+//
+// 
+//
 // 获取索引列表
 //
 // 可能返回的错误码:

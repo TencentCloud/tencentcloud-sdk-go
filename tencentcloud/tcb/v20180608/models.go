@@ -762,6 +762,10 @@ type CloudBaseRunVolumeMount struct {
 	// Nfs挂载信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitnil,omitempty" name:"NfsVolumes"`
+
+	// 挂载配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPropagation *string `json:"MountPropagation,omitnil,omitempty" name:"MountPropagation"`
 }
 
 type CloudBaseRunVpcInfo struct {
@@ -2456,6 +2460,9 @@ type DeleteCloudBaseRunServerVersionRequestParams struct {
 
 	// 操作备注
 	OperatorRemark *string `json:"OperatorRemark,omitnil,omitempty" name:"OperatorRemark"`
+
+	// 延迟删除版本时间
+	DelayedDeletionTime *int64 `json:"DelayedDeletionTime,omitnil,omitempty" name:"DelayedDeletionTime"`
 }
 
 type DeleteCloudBaseRunServerVersionRequest struct {
@@ -2478,6 +2485,9 @@ type DeleteCloudBaseRunServerVersionRequest struct {
 
 	// 操作备注
 	OperatorRemark *string `json:"OperatorRemark,omitnil,omitempty" name:"OperatorRemark"`
+
+	// 延迟删除版本时间
+	DelayedDeletionTime *int64 `json:"DelayedDeletionTime,omitnil,omitempty" name:"DelayedDeletionTime"`
 }
 
 func (r *DeleteCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -2498,6 +2508,7 @@ func (r *DeleteCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 	delete(f, "IsDeleteServer")
 	delete(f, "IsDeleteImage")
 	delete(f, "OperatorRemark")
+	delete(f, "DelayedDeletionTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudBaseRunServerVersionRequest has unknown keys!", "")
 	}

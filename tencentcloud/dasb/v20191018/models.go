@@ -130,6 +130,10 @@ type Acl struct {
 	// 关联的白命令命令
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteCmds []*string `json:"WhiteCmds,omitnil,omitempty" name:"WhiteCmds"`
+
+	// 是否允许记录键盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 }
 
 // Predefined struct for user
@@ -765,6 +769,9 @@ type CreateAclRequestParams struct {
 
 	// 是否允许使用访问串，默认允许
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
+
+	// 是否允许记录键盘
+	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 }
 
 type CreateAclRequest struct {
@@ -852,6 +859,9 @@ type CreateAclRequest struct {
 
 	// 是否允许使用访问串，默认允许
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
+
+	// 是否允许记录键盘
+	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 }
 
 func (r *CreateAclRequest) ToJsonString() string {
@@ -893,6 +903,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "ValidateTo")
 	delete(f, "DepartmentId")
 	delete(f, "AllowAccessCredential")
+	delete(f, "AllowKeyboardLogger")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAclRequest has unknown keys!", "")
 	}
@@ -4335,6 +4346,9 @@ type ModifyAclRequestParams struct {
 
 	// 是否允许使用访问串
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
+
+	// 是否允许键盘记录
+	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 }
 
 type ModifyAclRequest struct {
@@ -4425,6 +4439,9 @@ type ModifyAclRequest struct {
 
 	// 是否允许使用访问串
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
+
+	// 是否允许键盘记录
+	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 }
 
 func (r *ModifyAclRequest) ToJsonString() string {
@@ -4467,6 +4484,7 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	delete(f, "ValidateTo")
 	delete(f, "DepartmentId")
 	delete(f, "AllowAccessCredential")
+	delete(f, "AllowKeyboardLogger")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAclRequest has unknown keys!", "")
 	}

@@ -156,7 +156,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //
 // 
 //
-// 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员
+// 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -206,7 +206,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //
 // 
 //
-// 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员
+// 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -443,6 +443,10 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //
 // 3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
 //
+// 
+//
+// 4. 撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -490,6 +494,10 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 // 
 //
 // 3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+//
+// 
+//
+// 4. 撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -895,13 +903,11 @@ func NewCreateBatchQuickSignUrlResponse() (response *CreateBatchQuickSignUrlResp
 //
 // 1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=1)。
 //
-// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
+// 2. 该接口可生成C端签署人的批量签署/查看链接，**签署控件仅支持手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件** 。
 //
-// 3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
+// 3. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
 //
-// 4. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
-//
-// 5. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
+// 4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
 // 跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
 //
@@ -924,13 +930,11 @@ func (c *Client) CreateBatchQuickSignUrl(request *CreateBatchQuickSignUrlRequest
 //
 // 1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=1)。
 //
-// 2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
+// 2. 该接口可生成C端签署人的批量签署/查看链接，**签署控件仅支持手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件** 。
 //
-// 3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
+// 3. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
 //
-// 4. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
-//
-// 5. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
+// 4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
 // 跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
 //
@@ -1166,7 +1170,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 //
 // 
 //
@@ -1297,7 +1301,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 //
 // 
 //
@@ -1792,7 +1796,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 //
 // 
 //
@@ -1952,7 +1956,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 //
 // 
 //
@@ -6058,6 +6062,10 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 //
 // </ul>
 //
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3427941ecb091bf0c55009bad192dd1c.png)
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
@@ -6155,6 +6163,10 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 // <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
 //
 // </ul>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3427941ecb091bf0c55009bad192dd1c.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7998,7 +8010,17 @@ func NewDescribeFlowComponentsResponse() (response *DescribeFlowComponentsRespon
 }
 
 // DescribeFlowComponents
-// 可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容，包括填写控件的归属方、填写控件是否已经填写以及填写的内容等信息。
+// 可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容，包括填写控件的归属方、填写控件是否已经填写以及填写的具体内容。
+//
+// 
+//
+// 
+//
+// 如下图模板所示，发起后对方填写后，可以获取红框中用户填写的信息。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/08f6ea50d3ae88b51c280c2b17c2a126.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
@@ -8011,7 +8033,17 @@ func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) 
 }
 
 // DescribeFlowComponents
-// 可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容，包括填写控件的归属方、填写控件是否已经填写以及填写的内容等信息。
+// 可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容，包括填写控件的归属方、填写控件是否已经填写以及填写的具体内容。
+//
+// 
+//
+// 
+//
+// 如下图模板所示，发起后对方填写后，可以获取红框中用户填写的信息。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/08f6ea50d3ae88b51c280c2b17c2a126.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
@@ -9971,7 +10003,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 //
 // 
 //
@@ -10041,7 +10073,7 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 //
 // 
 //

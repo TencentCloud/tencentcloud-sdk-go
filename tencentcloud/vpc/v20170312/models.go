@@ -475,6 +475,10 @@ type Address struct {
 	// 传统弹性公网IPv6所属vpc唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnVpcId *string `json:"UnVpcId,omitnil,omitempty" name:"UnVpcId"`
+
+	// CDC唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type AddressChargePrepaid struct {
@@ -685,6 +689,9 @@ type AllocateAddressesRequestParams struct {
 	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
+	// CDC唯一ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
 	// 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
@@ -751,6 +758,9 @@ type AllocateAddressesRequest struct {
 	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
+	// CDC唯一ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
 	// 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
@@ -784,6 +794,7 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "BandwidthPackageId")
 	delete(f, "AddressName")
+	delete(f, "DedicatedClusterId")
 	delete(f, "Egress")
 	delete(f, "AntiDDoSPackageId")
 	delete(f, "ClientToken")

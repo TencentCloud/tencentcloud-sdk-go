@@ -670,6 +670,14 @@ type Certificates struct {
 	// 证书吊销完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertRevokedTime *string `json:"CertRevokedTime,omitnil,omitempty" name:"CertRevokedTime"`
+
+	// 托管资源类型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostingResourceTypes []*string `json:"HostingResourceTypes,omitnil,omitempty" name:"HostingResourceTypes"`
+
+	// 托管配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostingConfig *HostingConfig `json:"HostingConfig,omitnil,omitempty" name:"HostingConfig"`
 }
 
 // Predefined struct for user
@@ -5044,6 +5052,16 @@ type GatewayCertificate struct {
 	// 当前绑定的SSL证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+}
+
+type HostingConfig struct {
+	// 托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplaceTime *int64 `json:"ReplaceTime,omitnil,omitempty" name:"ReplaceTime"`
+
+	// 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageTypes []*int64 `json:"MessageTypes,omitnil,omitempty" name:"MessageTypes"`
 }
 
 type LighthouseInstanceDetail struct {

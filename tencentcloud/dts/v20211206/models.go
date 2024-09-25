@@ -534,19 +534,19 @@ type ConfigureSyncJobRequestParams struct {
 	// 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
 	SrcConnectType *string `json:"SrcConnectType,omitnil,omitempty" name:"SrcConnectType"`
 
-	// 源端信息，单节点数据库使用，且SrcNodeType传single
+	// 源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
 	SrcInfo *Endpoint `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 源端信息，多节点数据库使用，且SrcNodeType传cluster
+	// 源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等。
 	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitnil,omitempty" name:"SrcInfos"`
 
 	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
 	SrcNodeType *string `json:"SrcNodeType,omitnil,omitempty" name:"SrcNodeType"`
 
-	// 目标端信息，单节点数据库使用
+	// 目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
 	DstInfo *Endpoint `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 目标端信息，多节点数据库使用，且DstNodeType传cluster
+	// 目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等。
 	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitnil,omitempty" name:"DstInfos"`
 
 	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
@@ -589,19 +589,19 @@ type ConfigureSyncJobRequest struct {
 	// 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
 	SrcConnectType *string `json:"SrcConnectType,omitnil,omitempty" name:"SrcConnectType"`
 
-	// 源端信息，单节点数据库使用，且SrcNodeType传single
+	// 源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
 	SrcInfo *Endpoint `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 源端信息，多节点数据库使用，且SrcNodeType传cluster
+	// 源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等。
 	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitnil,omitempty" name:"SrcInfos"`
 
 	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
 	SrcNodeType *string `json:"SrcNodeType,omitnil,omitempty" name:"SrcNodeType"`
 
-	// 目标端信息，单节点数据库使用
+	// 目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
 	DstInfo *Endpoint `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 目标端信息，多节点数据库使用，且DstNodeType传cluster
+	// 目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等。
 	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitnil,omitempty" name:"DstInfos"`
 
 	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
