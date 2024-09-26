@@ -7881,9 +7881,7 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 }
 
 // DescribeFlowBriefs
-// 查询流程基础信息
-//
-// 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
+// 查询流程基础信息，主要用于<font color="red">查询合同的状态</font>信息。可以配合回调通知使用。
 //
 // 
 //
@@ -7930,9 +7928,7 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 }
 
 // DescribeFlowBriefs
-// 查询流程基础信息
-//
-// 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
+// 查询流程基础信息，主要用于<font color="red">查询合同的状态</font>信息。可以配合回调通知使用。
 //
 // 
 //

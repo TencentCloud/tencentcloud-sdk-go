@@ -6168,6 +6168,9 @@ type InquiryPriceRunInstancesRequestParams struct {
 	// 高性能计算集群ID。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
+	// 描述了实例CPU拓扑结构的相关信息。若不指定该参数，则按系统资源情况决定。
+	CpuTopology *CpuTopology `json:"CpuTopology,omitnil,omitempty" name:"CpuTopology"`
+
 	// 实例启动模板。
 	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitnil,omitempty" name:"LaunchTemplate"`
 }
@@ -6234,6 +6237,9 @@ type InquiryPriceRunInstancesRequest struct {
 	// 高性能计算集群ID。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
+	// 描述了实例CPU拓扑结构的相关信息。若不指定该参数，则按系统资源情况决定。
+	CpuTopology *CpuTopology `json:"CpuTopology,omitnil,omitempty" name:"CpuTopology"`
+
 	// 实例启动模板。
 	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitnil,omitempty" name:"LaunchTemplate"`
 }
@@ -6269,6 +6275,7 @@ func (r *InquiryPriceRunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TagSpecification")
 	delete(f, "InstanceMarketOptions")
 	delete(f, "HpcClusterId")
+	delete(f, "CpuTopology")
 	delete(f, "LaunchTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRunInstancesRequest has unknown keys!", "")

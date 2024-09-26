@@ -9882,7 +9882,7 @@ type FlowApproverInfo struct {
 	// 
 	// 注意：
 	// 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。
-	// 2. 使用视频认证时，<b>合同发起的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
+	// 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
 	// 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
 	Intention *Intention `json:"Intention,omitnil,omitempty" name:"Intention"`
 }

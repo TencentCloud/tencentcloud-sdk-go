@@ -269,14 +269,14 @@ func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachCcnRequestParams struct {
-	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+	// 云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type AttachCcnRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+	// 云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -8083,14 +8083,14 @@ func (r *RerunDockerContainerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResetAttachCcnRequestParams struct {
-	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+	// 云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type ResetAttachCcnRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+	// 云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 

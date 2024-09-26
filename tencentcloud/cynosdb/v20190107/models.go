@@ -11037,7 +11037,7 @@ func (r *ModifyClusterStorageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSecurityGroupsRequestParams struct {
-	// 实例组ID
+	// 网络组id(cynosdbmysql-grp-前缀开头)或集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
@@ -11050,7 +11050,7 @@ type ModifyDBInstanceSecurityGroupsRequestParams struct {
 type ModifyDBInstanceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例组ID
+	// 网络组id(cynosdbmysql-grp-前缀开头)或集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。

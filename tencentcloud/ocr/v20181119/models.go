@@ -5255,6 +5255,16 @@ type MLIDPassportOCRResponseParams struct {
 	// 信息区证件内容
 	PassportRecognizeInfos *PassportRecognizeInfos `json:"PassportRecognizeInfos,omitnil,omitempty" name:"PassportRecognizeInfos"`
 
+	// 告警码
+	// -9101 证件边框不完整告警
+	// -9102 证件复印件告警
+	// -9103 证件翻拍告警
+	// -9104 证件PS告警
+	// -9107 证件反光告警
+	// -9108 证件模糊告警
+	// -9109 告警能力未开通
+	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

@@ -57,6 +57,7 @@ import (
 	bscav20210811 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca/v20210811"
 	btoev20210303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe/v20210303"
 	btoev20210514 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe/v20210514"
+	cav20230228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ca/v20230228"
 	camv20190116 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam/v20190116"
 	captchav20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/captcha/v20190722"
 	carv20220110 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/car/v20220110"
@@ -787,6 +788,19 @@ func TestBtoev20210514Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init btoe_v20210514 client: %v", err)
+    }
+}
+
+func TestCav20230228Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := cav20230228.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init ca_v20230228 client: %v", err)
     }
 }
 

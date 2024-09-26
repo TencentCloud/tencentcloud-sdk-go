@@ -7018,7 +7018,7 @@ func NewModifyInstanceUpgradeLimitDaysResponse() (response *ModifyInstanceUpgrad
 }
 
 // ModifyInstanceUpgradeLimitDays
-// 修改实例小版本升级限制时间
+// 本接口（ModifyInstanceUpgradeLimitDays）用于修改实例内核小版本的升级限制时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -7029,7 +7029,7 @@ func (c *Client) ModifyInstanceUpgradeLimitDays(request *ModifyInstanceUpgradeLi
 }
 
 // ModifyInstanceUpgradeLimitDays
-// 修改实例小版本升级限制时间
+// 本接口（ModifyInstanceUpgradeLimitDays）用于修改实例内核小版本的升级限制时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -7634,7 +7634,7 @@ func NewOfflineClusterResponse() (response *OfflineClusterResponse) {
 }
 
 // OfflineCluster
-// 销毁集群
+// 本接口（OfflineCluster）用于销毁集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -7651,7 +7651,7 @@ func (c *Client) OfflineCluster(request *OfflineClusterRequest) (response *Offli
 }
 
 // OfflineCluster
-// 销毁集群
+// 本接口（OfflineCluster）用于销毁集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -9117,7 +9117,7 @@ func NewStartCLSDeliveryResponse() (response *StartCLSDeliveryResponse) {
 }
 
 // StartCLSDelivery
-// 开启日志投递
+// 本接口（StartCLSDelivery）用于开启日志投递功能。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -9126,7 +9126,7 @@ func (c *Client) StartCLSDelivery(request *StartCLSDeliveryRequest) (response *S
 }
 
 // StartCLSDelivery
-// 开启日志投递
+// 本接口（StartCLSDelivery）用于开启日志投递功能。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -9166,7 +9166,7 @@ func NewStopCLSDeliveryResponse() (response *StopCLSDeliveryResponse) {
 }
 
 // StopCLSDelivery
-// 停止日志投递
+// 本接口（StopCLSDelivery）用于停止日志投递功能。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -9176,7 +9176,7 @@ func (c *Client) StopCLSDelivery(request *StopCLSDeliveryRequest) (response *Sto
 }
 
 // StopCLSDelivery
-// 停止日志投递
+// 本接口（StopCLSDelivery）用于停止日志投递功能。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -9459,7 +9459,7 @@ func NewUpgradeClusterVersionResponse() (response *UpgradeClusterVersionResponse
 }
 
 // UpgradeClusterVersion
-// 更新内核小版本
+// 本接口（UpgradeClusterVersion）用于更新内核小版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -9503,7 +9503,7 @@ func (c *Client) UpgradeClusterVersion(request *UpgradeClusterVersionRequest) (r
 }
 
 // UpgradeClusterVersion
-// 更新内核小版本
+// 本接口（UpgradeClusterVersion）用于更新内核小版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -9578,7 +9578,7 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
 }
 
 // UpgradeInstance
-// 实例变配
+// 本接口（UpgradeInstance）用于实例变配。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
@@ -9600,7 +9600,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
 }
 
 // UpgradeInstance
-// 实例变配
+// 本接口（UpgradeInstance）用于实例变配。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"

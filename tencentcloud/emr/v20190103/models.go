@@ -3031,6 +3031,9 @@ type DescribeInsightListRequestParams struct {
 
 	// 分页查询时的页号，从1开始
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 查询类型,支持HIVE,SPARK,MAPREDUCE,TRINO等类型,默认查询全部
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeInsightListRequest struct {
@@ -3050,6 +3053,9 @@ type DescribeInsightListRequest struct {
 
 	// 分页查询时的页号，从1开始
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 查询类型,支持HIVE,SPARK,MAPREDUCE,TRINO等类型,默认查询全部
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *DescribeInsightListRequest) ToJsonString() string {
@@ -3069,6 +3075,7 @@ func (r *DescribeInsightListRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PageSize")
 	delete(f, "Page")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInsightListRequest has unknown keys!", "")
 	}

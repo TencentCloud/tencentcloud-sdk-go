@@ -1096,7 +1096,7 @@ type CreateRoomRequestParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -1211,7 +1211,7 @@ type CreateRoomRequest struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：

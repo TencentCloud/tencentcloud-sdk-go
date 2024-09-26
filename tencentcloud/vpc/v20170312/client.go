@@ -2903,6 +2903,128 @@ func (c *Client) CreateCcnRouteTablesWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateCdcLDCXListRequest() (request *CreateCdcLDCXListRequest) {
+    request = &CreateCdcLDCXListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCdcLDCXList")
+    
+    
+    return
+}
+
+func NewCreateCdcLDCXListResponse() (response *CreateCdcLDCXListResponse) {
+    response = &CreateCdcLDCXListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCdcLDCXList
+// 创建 IDC 通道
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCdcLDCXList(request *CreateCdcLDCXListRequest) (response *CreateCdcLDCXListResponse, err error) {
+    return c.CreateCdcLDCXListWithContext(context.Background(), request)
+}
+
+// CreateCdcLDCXList
+// 创建 IDC 通道
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCdcLDCXListWithContext(ctx context.Context, request *CreateCdcLDCXListRequest) (response *CreateCdcLDCXListResponse, err error) {
+    if request == nil {
+        request = NewCreateCdcLDCXListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCdcLDCXList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCdcLDCXListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCdcNetPlanesRequest() (request *CreateCdcNetPlanesRequest) {
+    request = &CreateCdcNetPlanesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCdcNetPlanes")
+    
+    
+    return
+}
+
+func NewCreateCdcNetPlanesResponse() (response *CreateCdcNetPlanesResponse) {
+    response = &CreateCdcNetPlanesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCdcNetPlanes
+// 创建虚拟连接，用于支持 CDC 多租户模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCdcNetPlanes(request *CreateCdcNetPlanesRequest) (response *CreateCdcNetPlanesResponse, err error) {
+    return c.CreateCdcNetPlanesWithContext(context.Background(), request)
+}
+
+// CreateCdcNetPlanes
+// 创建虚拟连接，用于支持 CDC 多租户模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCdcNetPlanesWithContext(ctx context.Context, request *CreateCdcNetPlanesRequest) (response *CreateCdcNetPlanesResponse, err error) {
+    if request == nil {
+        request = NewCreateCdcNetPlanesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCdcNetPlanes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCdcNetPlanesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
     request = &CreateCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3541,6 +3663,140 @@ func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVi
     request.SetContext(ctx)
     
     response = NewCreateHaVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateHighPriorityRouteTableRequest() (request *CreateHighPriorityRouteTableRequest) {
+    request = &CreateHighPriorityRouteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateHighPriorityRouteTable")
+    
+    
+    return
+}
+
+func NewCreateHighPriorityRouteTableResponse() (response *CreateHighPriorityRouteTableResponse) {
+    response = &CreateHighPriorityRouteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHighPriorityRouteTable
+// 高优路由表创建
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) CreateHighPriorityRouteTable(request *CreateHighPriorityRouteTableRequest) (response *CreateHighPriorityRouteTableResponse, err error) {
+    return c.CreateHighPriorityRouteTableWithContext(context.Background(), request)
+}
+
+// CreateHighPriorityRouteTable
+// 高优路由表创建
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) CreateHighPriorityRouteTableWithContext(ctx context.Context, request *CreateHighPriorityRouteTableRequest) (response *CreateHighPriorityRouteTableResponse, err error) {
+    if request == nil {
+        request = NewCreateHighPriorityRouteTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHighPriorityRouteTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHighPriorityRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateHighPriorityRoutesRequest() (request *CreateHighPriorityRoutesRequest) {
+    request = &CreateHighPriorityRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateHighPriorityRoutes")
+    
+    
+    return
+}
+
+func NewCreateHighPriorityRoutesResponse() (response *CreateHighPriorityRoutesResponse) {
+    response = &CreateHighPriorityRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHighPriorityRoutes
+// 创建高优路由表条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+func (c *Client) CreateHighPriorityRoutes(request *CreateHighPriorityRoutesRequest) (response *CreateHighPriorityRoutesResponse, err error) {
+    return c.CreateHighPriorityRoutesWithContext(context.Background(), request)
+}
+
+// CreateHighPriorityRoutes
+// 创建高优路由表条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+func (c *Client) CreateHighPriorityRoutesWithContext(ctx context.Context, request *CreateHighPriorityRoutesRequest) (response *CreateHighPriorityRoutesResponse, err error) {
+    if request == nil {
+        request = NewCreateHighPriorityRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHighPriorityRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHighPriorityRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -7142,6 +7398,120 @@ func (c *Client) DeleteCcnRouteTablesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteCdcLDCXListRequest() (request *DeleteCdcLDCXListRequest) {
+    request = &DeleteCdcLDCXListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCdcLDCXList")
+    
+    
+    return
+}
+
+func NewDeleteCdcLDCXListResponse() (response *DeleteCdcLDCXListResponse) {
+    response = &DeleteCdcLDCXListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCdcLDCXList
+// 删除 IDC通道
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
+//  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+func (c *Client) DeleteCdcLDCXList(request *DeleteCdcLDCXListRequest) (response *DeleteCdcLDCXListResponse, err error) {
+    return c.DeleteCdcLDCXListWithContext(context.Background(), request)
+}
+
+// DeleteCdcLDCXList
+// 删除 IDC通道
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
+//  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+func (c *Client) DeleteCdcLDCXListWithContext(ctx context.Context, request *DeleteCdcLDCXListRequest) (response *DeleteCdcLDCXListResponse, err error) {
+    if request == nil {
+        request = NewDeleteCdcLDCXListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCdcLDCXList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCdcLDCXListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCdcNetPlanesRequest() (request *DeleteCdcNetPlanesRequest) {
+    request = &DeleteCdcNetPlanesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCdcNetPlanes")
+    
+    
+    return
+}
+
+func NewDeleteCdcNetPlanesResponse() (response *DeleteCdcNetPlanesResponse) {
+    response = &DeleteCdcNetPlanesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCdcNetPlanes
+// 删除虚拟连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  UNSUPPORTEDOPERATION_LDCXDISASSOCIATE = "UnsupportedOperation.LDCXDisassociate"
+func (c *Client) DeleteCdcNetPlanes(request *DeleteCdcNetPlanesRequest) (response *DeleteCdcNetPlanesResponse, err error) {
+    return c.DeleteCdcNetPlanesWithContext(context.Background(), request)
+}
+
+// DeleteCdcNetPlanes
+// 删除虚拟连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  UNSUPPORTEDOPERATION_LDCXDISASSOCIATE = "UnsupportedOperation.LDCXDisassociate"
+func (c *Client) DeleteCdcNetPlanesWithContext(ctx context.Context, request *DeleteCdcNetPlanesRequest) (response *DeleteCdcNetPlanesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCdcNetPlanesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCdcNetPlanes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCdcNetPlanesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
     request = &DeleteCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7496,6 +7866,134 @@ func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVi
     request.SetContext(ctx)
     
     response = NewDeleteHaVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteHighPriorityRouteTablesRequest() (request *DeleteHighPriorityRouteTablesRequest) {
+    request = &DeleteHighPriorityRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteHighPriorityRouteTables")
+    
+    
+    return
+}
+
+func NewDeleteHighPriorityRouteTablesResponse() (response *DeleteHighPriorityRouteTablesResponse) {
+    response = &DeleteHighPriorityRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteHighPriorityRouteTables
+// 删除高优路由表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteHighPriorityRouteTables(request *DeleteHighPriorityRouteTablesRequest) (response *DeleteHighPriorityRouteTablesResponse, err error) {
+    return c.DeleteHighPriorityRouteTablesWithContext(context.Background(), request)
+}
+
+// DeleteHighPriorityRouteTables
+// 删除高优路由表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteHighPriorityRouteTablesWithContext(ctx context.Context, request *DeleteHighPriorityRouteTablesRequest) (response *DeleteHighPriorityRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewDeleteHighPriorityRouteTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHighPriorityRouteTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteHighPriorityRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteHighPriorityRoutesRequest() (request *DeleteHighPriorityRoutesRequest) {
+    request = &DeleteHighPriorityRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteHighPriorityRoutes")
+    
+    
+    return
+}
+
+func NewDeleteHighPriorityRoutesResponse() (response *DeleteHighPriorityRoutesResponse) {
+    response = &DeleteHighPriorityRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteHighPriorityRoutes
+// 删除高优路由表的路由条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteHighPriorityRoutes(request *DeleteHighPriorityRoutesRequest) (response *DeleteHighPriorityRoutesResponse, err error) {
+    return c.DeleteHighPriorityRoutesWithContext(context.Background(), request)
+}
+
+// DeleteHighPriorityRoutes
+// 删除高优路由表的路由条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteHighPriorityRoutesWithContext(ctx context.Context, request *DeleteHighPriorityRoutesRequest) (response *DeleteHighPriorityRoutesResponse, err error) {
+    if request == nil {
+        request = NewDeleteHighPriorityRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHighPriorityRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteHighPriorityRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -10529,6 +11027,189 @@ func (c *Client) DescribeCcnsWithContext(ctx context.Context, request *DescribeC
     return
 }
 
+func NewDescribeCdcLDCXListRequest() (request *DescribeCdcLDCXListRequest) {
+    request = &DescribeCdcLDCXListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCdcLDCXList")
+    
+    
+    return
+}
+
+func NewDescribeCdcLDCXListResponse() (response *DescribeCdcLDCXListResponse) {
+    response = &DescribeCdcLDCXListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCdcLDCXList
+// 查询 IDC通道信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeCdcLDCXList(request *DescribeCdcLDCXListRequest) (response *DescribeCdcLDCXListResponse, err error) {
+    return c.DescribeCdcLDCXListWithContext(context.Background(), request)
+}
+
+// DescribeCdcLDCXList
+// 查询 IDC通道信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeCdcLDCXListWithContext(ctx context.Context, request *DescribeCdcLDCXListRequest) (response *DescribeCdcLDCXListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdcLDCXListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCdcLDCXList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCdcLDCXListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCdcNetPlanesRequest() (request *DescribeCdcNetPlanesRequest) {
+    request = &DescribeCdcNetPlanesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCdcNetPlanes")
+    
+    
+    return
+}
+
+func NewDescribeCdcNetPlanesResponse() (response *DescribeCdcNetPlanesResponse) {
+    response = &DescribeCdcNetPlanesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCdcNetPlanes
+// 查询虚拟连接
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCdcNetPlanes(request *DescribeCdcNetPlanesRequest) (response *DescribeCdcNetPlanesResponse, err error) {
+    return c.DescribeCdcNetPlanesWithContext(context.Background(), request)
+}
+
+// DescribeCdcNetPlanes
+// 查询虚拟连接
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCdcNetPlanesWithContext(ctx context.Context, request *DescribeCdcNetPlanesRequest) (response *DescribeCdcNetPlanesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdcNetPlanesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCdcNetPlanes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCdcNetPlanesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCdcUsedIdcVlanRequest() (request *DescribeCdcUsedIdcVlanRequest) {
+    request = &DescribeCdcUsedIdcVlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCdcUsedIdcVlan")
+    
+    
+    return
+}
+
+func NewDescribeCdcUsedIdcVlanResponse() (response *DescribeCdcUsedIdcVlanResponse) {
+    response = &DescribeCdcUsedIdcVlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCdcUsedIdcVlan
+// 查询IDC使用的 VLAN
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCdcUsedIdcVlan(request *DescribeCdcUsedIdcVlanRequest) (response *DescribeCdcUsedIdcVlanResponse, err error) {
+    return c.DescribeCdcUsedIdcVlanWithContext(context.Background(), request)
+}
+
+// DescribeCdcUsedIdcVlan
+// 查询IDC使用的 VLAN
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCdcUsedIdcVlanWithContext(ctx context.Context, request *DescribeCdcUsedIdcVlanRequest) (response *DescribeCdcUsedIdcVlanResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdcUsedIdcVlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCdcUsedIdcVlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCdcUsedIdcVlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClassicLinkInstancesRequest() (request *DescribeClassicLinkInstancesRequest) {
     request = &DescribeClassicLinkInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11387,6 +12068,136 @@ func (c *Client) DescribeHaVipsWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeHaVipsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHighPriorityRouteTablesRequest() (request *DescribeHighPriorityRouteTablesRequest) {
+    request = &DescribeHighPriorityRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeHighPriorityRouteTables")
+    
+    
+    return
+}
+
+func NewDescribeHighPriorityRouteTablesResponse() (response *DescribeHighPriorityRouteTablesResponse) {
+    response = &DescribeHighPriorityRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHighPriorityRouteTables
+// 查询高优路由表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHighPriorityRouteTables(request *DescribeHighPriorityRouteTablesRequest) (response *DescribeHighPriorityRouteTablesResponse, err error) {
+    return c.DescribeHighPriorityRouteTablesWithContext(context.Background(), request)
+}
+
+// DescribeHighPriorityRouteTables
+// 查询高优路由表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHighPriorityRouteTablesWithContext(ctx context.Context, request *DescribeHighPriorityRouteTablesRequest) (response *DescribeHighPriorityRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHighPriorityRouteTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHighPriorityRouteTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHighPriorityRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHighPriorityRoutesRequest() (request *DescribeHighPriorityRoutesRequest) {
+    request = &DescribeHighPriorityRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeHighPriorityRoutes")
+    
+    
+    return
+}
+
+func NewDescribeHighPriorityRoutesResponse() (response *DescribeHighPriorityRoutesResponse) {
+    response = &DescribeHighPriorityRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHighPriorityRoutes
+// 查询高优路由表条目信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHighPriorityRoutes(request *DescribeHighPriorityRoutesRequest) (response *DescribeHighPriorityRoutesResponse, err error) {
+    return c.DescribeHighPriorityRoutesWithContext(context.Background(), request)
+}
+
+// DescribeHighPriorityRoutes
+// 查询高优路由表条目信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHighPriorityRoutesWithContext(ctx context.Context, request *DescribeHighPriorityRoutesRequest) (response *DescribeHighPriorityRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHighPriorityRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHighPriorityRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHighPriorityRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -13121,6 +13932,61 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoutesRequest() (request *DescribeRoutesRequest) {
+    request = &DescribeRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeRoutes")
+    
+    
+    return
+}
+
+func NewDescribeRoutesResponse() (response *DescribeRoutesResponse) {
+    response = &DescribeRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRoutes
+// 本接口（DescribeRoutes）用于查询路由列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRoutes(request *DescribeRoutesRequest) (response *DescribeRoutesResponse, err error) {
+    return c.DescribeRoutesWithContext(context.Background(), request)
+}
+
+// DescribeRoutes
+// 本接口（DescribeRoutes）用于查询路由列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRoutesWithContext(ctx context.Context, request *DescribeRoutesRequest) (response *DescribeRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -18388,6 +19254,132 @@ func (c *Client) ModifyCcnRouteTablesWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyCdcLDCXAttributeRequest() (request *ModifyCdcLDCXAttributeRequest) {
+    request = &ModifyCdcLDCXAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCdcLDCXAttribute")
+    
+    
+    return
+}
+
+func NewModifyCdcLDCXAttributeResponse() (response *ModifyCdcLDCXAttributeResponse) {
+    response = &ModifyCdcLDCXAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCdcLDCXAttribute
+// 修改 IDC通道信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+func (c *Client) ModifyCdcLDCXAttribute(request *ModifyCdcLDCXAttributeRequest) (response *ModifyCdcLDCXAttributeResponse, err error) {
+    return c.ModifyCdcLDCXAttributeWithContext(context.Background(), request)
+}
+
+// ModifyCdcLDCXAttribute
+// 修改 IDC通道信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+func (c *Client) ModifyCdcLDCXAttributeWithContext(ctx context.Context, request *ModifyCdcLDCXAttributeRequest) (response *ModifyCdcLDCXAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCdcLDCXAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCdcLDCXAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCdcLDCXAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCdcNetPlaneAttributeRequest() (request *ModifyCdcNetPlaneAttributeRequest) {
+    request = &ModifyCdcNetPlaneAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCdcNetPlaneAttribute")
+    
+    
+    return
+}
+
+func NewModifyCdcNetPlaneAttributeResponse() (response *ModifyCdcNetPlaneAttributeResponse) {
+    response = &ModifyCdcNetPlaneAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCdcNetPlaneAttribute
+// 修改虚拟连接
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+func (c *Client) ModifyCdcNetPlaneAttribute(request *ModifyCdcNetPlaneAttributeRequest) (response *ModifyCdcNetPlaneAttributeResponse, err error) {
+    return c.ModifyCdcNetPlaneAttributeWithContext(context.Background(), request)
+}
+
+// ModifyCdcNetPlaneAttribute
+// 修改虚拟连接
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
+func (c *Client) ModifyCdcNetPlaneAttributeWithContext(ctx context.Context, request *ModifyCdcNetPlaneAttributeRequest) (response *ModifyCdcNetPlaneAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCdcNetPlaneAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCdcNetPlaneAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCdcNetPlaneAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayAttributeRequest) {
     request = &ModifyCustomerGatewayAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -18722,6 +19714,171 @@ func (c *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyHaVipAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHighPriorityRouteAttributeRequest() (request *ModifyHighPriorityRouteAttributeRequest) {
+    request = &ModifyHighPriorityRouteAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyHighPriorityRouteAttribute")
+    
+    
+    return
+}
+
+func NewModifyHighPriorityRouteAttributeResponse() (response *ModifyHighPriorityRouteAttributeResponse) {
+    response = &ModifyHighPriorityRouteAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHighPriorityRouteAttribute
+// 修改高优路由表条目属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyHighPriorityRouteAttribute(request *ModifyHighPriorityRouteAttributeRequest) (response *ModifyHighPriorityRouteAttributeResponse, err error) {
+    return c.ModifyHighPriorityRouteAttributeWithContext(context.Background(), request)
+}
+
+// ModifyHighPriorityRouteAttribute
+// 修改高优路由表条目属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyHighPriorityRouteAttributeWithContext(ctx context.Context, request *ModifyHighPriorityRouteAttributeRequest) (response *ModifyHighPriorityRouteAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyHighPriorityRouteAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHighPriorityRouteAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHighPriorityRouteAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHighPriorityRouteECMPAlgorithmRequest() (request *ModifyHighPriorityRouteECMPAlgorithmRequest) {
+    request = &ModifyHighPriorityRouteECMPAlgorithmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyHighPriorityRouteECMPAlgorithm")
+    
+    
+    return
+}
+
+func NewModifyHighPriorityRouteECMPAlgorithmResponse() (response *ModifyHighPriorityRouteECMPAlgorithmResponse) {
+    response = &ModifyHighPriorityRouteECMPAlgorithmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHighPriorityRouteECMPAlgorithm
+// 修改高优路由表 HASH 策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyHighPriorityRouteECMPAlgorithm(request *ModifyHighPriorityRouteECMPAlgorithmRequest) (response *ModifyHighPriorityRouteECMPAlgorithmResponse, err error) {
+    return c.ModifyHighPriorityRouteECMPAlgorithmWithContext(context.Background(), request)
+}
+
+// ModifyHighPriorityRouteECMPAlgorithm
+// 修改高优路由表 HASH 策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyHighPriorityRouteECMPAlgorithmWithContext(ctx context.Context, request *ModifyHighPriorityRouteECMPAlgorithmRequest) (response *ModifyHighPriorityRouteECMPAlgorithmResponse, err error) {
+    if request == nil {
+        request = NewModifyHighPriorityRouteECMPAlgorithmRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHighPriorityRouteECMPAlgorithm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHighPriorityRouteECMPAlgorithmResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHighPriorityRouteTableAttributeRequest() (request *ModifyHighPriorityRouteTableAttributeRequest) {
+    request = &ModifyHighPriorityRouteTableAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyHighPriorityRouteTableAttribute")
+    
+    
+    return
+}
+
+func NewModifyHighPriorityRouteTableAttributeResponse() (response *ModifyHighPriorityRouteTableAttributeResponse) {
+    response = &ModifyHighPriorityRouteTableAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHighPriorityRouteTableAttribute
+// 修改高优路由表属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyHighPriorityRouteTableAttribute(request *ModifyHighPriorityRouteTableAttributeRequest) (response *ModifyHighPriorityRouteTableAttributeResponse, err error) {
+    return c.ModifyHighPriorityRouteTableAttributeWithContext(context.Background(), request)
+}
+
+// ModifyHighPriorityRouteTableAttribute
+// 修改高优路由表属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyHighPriorityRouteTableAttributeWithContext(ctx context.Context, request *ModifyHighPriorityRouteTableAttributeRequest) (response *ModifyHighPriorityRouteTableAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyHighPriorityRouteTableAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHighPriorityRouteTableAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHighPriorityRouteTableAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -22166,6 +23323,134 @@ func (c *Client) ReplaceDirectConnectGatewayCcnRoutesWithContext(ctx context.Con
     return
 }
 
+func NewReplaceHighPriorityRouteTableAssociationRequest() (request *ReplaceHighPriorityRouteTableAssociationRequest) {
+    request = &ReplaceHighPriorityRouteTableAssociationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ReplaceHighPriorityRouteTableAssociation")
+    
+    
+    return
+}
+
+func NewReplaceHighPriorityRouteTableAssociationResponse() (response *ReplaceHighPriorityRouteTableAssociationResponse) {
+    response = &ReplaceHighPriorityRouteTableAssociationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaceHighPriorityRouteTableAssociation
+// 替换高优路由表和子网绑定关系。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) ReplaceHighPriorityRouteTableAssociation(request *ReplaceHighPriorityRouteTableAssociationRequest) (response *ReplaceHighPriorityRouteTableAssociationResponse, err error) {
+    return c.ReplaceHighPriorityRouteTableAssociationWithContext(context.Background(), request)
+}
+
+// ReplaceHighPriorityRouteTableAssociation
+// 替换高优路由表和子网绑定关系。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) ReplaceHighPriorityRouteTableAssociationWithContext(ctx context.Context, request *ReplaceHighPriorityRouteTableAssociationRequest) (response *ReplaceHighPriorityRouteTableAssociationResponse, err error) {
+    if request == nil {
+        request = NewReplaceHighPriorityRouteTableAssociationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceHighPriorityRouteTableAssociation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceHighPriorityRouteTableAssociationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceHighPriorityRoutesRequest() (request *ReplaceHighPriorityRoutesRequest) {
+    request = &ReplaceHighPriorityRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ReplaceHighPriorityRoutes")
+    
+    
+    return
+}
+
+func NewReplaceHighPriorityRoutesResponse() (response *ReplaceHighPriorityRoutesResponse) {
+    response = &ReplaceHighPriorityRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaceHighPriorityRoutes
+// 替换高优路由表条目信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+func (c *Client) ReplaceHighPriorityRoutes(request *ReplaceHighPriorityRoutesRequest) (response *ReplaceHighPriorityRoutesResponse, err error) {
+    return c.ReplaceHighPriorityRoutesWithContext(context.Background(), request)
+}
+
+// ReplaceHighPriorityRoutes
+// 替换高优路由表条目信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+func (c *Client) ReplaceHighPriorityRoutesWithContext(ctx context.Context, request *ReplaceHighPriorityRoutesRequest) (response *ReplaceHighPriorityRoutesResponse, err error) {
+    if request == nil {
+        request = NewReplaceHighPriorityRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceHighPriorityRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceHighPriorityRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplaceRouteTableAssociationRequest() (request *ReplaceRouteTableAssociationRequest) {
     request = &ReplaceRouteTableAssociationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -22533,6 +23818,69 @@ func (c *Client) ResetAttachCcnInstancesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewResetAttachCcnInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetHighPriorityRoutesRequest() (request *ResetHighPriorityRoutesRequest) {
+    request = &ResetHighPriorityRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetHighPriorityRoutes")
+    
+    
+    return
+}
+
+func NewResetHighPriorityRoutesResponse() (response *ResetHighPriorityRoutesResponse) {
+    response = &ResetHighPriorityRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetHighPriorityRoutes
+// 重置高优路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+func (c *Client) ResetHighPriorityRoutes(request *ResetHighPriorityRoutesRequest) (response *ResetHighPriorityRoutesResponse, err error) {
+    return c.ResetHighPriorityRoutesWithContext(context.Background(), request)
+}
+
+// ResetHighPriorityRoutes
+// 重置高优路由表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+func (c *Client) ResetHighPriorityRoutesWithContext(ctx context.Context, request *ResetHighPriorityRoutesRequest) (response *ResetHighPriorityRoutesResponse, err error) {
+    if request == nil {
+        request = NewResetHighPriorityRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetHighPriorityRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetHighPriorityRoutesResponse()
     err = c.Send(request, response)
     return
 }
