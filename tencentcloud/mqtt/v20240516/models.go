@@ -59,7 +59,7 @@ type AuthorizationPolicyItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// ip地址
+	// IP地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 

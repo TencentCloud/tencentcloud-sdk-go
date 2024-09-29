@@ -22,44 +22,44 @@ import (
 
 // Predefined struct for user
 type CreateVerifyReportRequestParams struct {
-	// 客户类型 1:个人，2:企业
+	// 申请者类型 1:个人，2:企业
 	ApplyCustomerType *string `json:"ApplyCustomerType,omitnil,omitempty" name:"ApplyCustomerType"`
 
 	// 申请企业 or 自然人名称
 	ApplyCustomerName *string `json:"ApplyCustomerName,omitnil,omitempty" name:"ApplyCustomerName"`
 
-	// 验签申请人姓名
+	// 验签申请经办人姓名
 	ApplyName *string `json:"ApplyName,omitnil,omitempty" name:"ApplyName"`
 
-	// 验签申请人电弧
+	// 验签申请经办人电话
 	ApplyMobile *string `json:"ApplyMobile,omitnil,omitempty" name:"ApplyMobile"`
 
 	// 验签文件id
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 验签申请人邮箱
+	// 验签申请经办人邮箱
 	ApplyEmail *string `json:"ApplyEmail,omitnil,omitempty" name:"ApplyEmail"`
 }
 
 type CreateVerifyReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户类型 1:个人，2:企业
+	// 申请者类型 1:个人，2:企业
 	ApplyCustomerType *string `json:"ApplyCustomerType,omitnil,omitempty" name:"ApplyCustomerType"`
 
 	// 申请企业 or 自然人名称
 	ApplyCustomerName *string `json:"ApplyCustomerName,omitnil,omitempty" name:"ApplyCustomerName"`
 
-	// 验签申请人姓名
+	// 验签申请经办人姓名
 	ApplyName *string `json:"ApplyName,omitnil,omitempty" name:"ApplyName"`
 
-	// 验签申请人电弧
+	// 验签申请经办人电话
 	ApplyMobile *string `json:"ApplyMobile,omitnil,omitempty" name:"ApplyMobile"`
 
 	// 验签文件id
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 验签申请人邮箱
+	// 验签申请经办人邮箱
 	ApplyEmail *string `json:"ApplyEmail,omitnil,omitempty" name:"ApplyEmail"`
 }
 
@@ -185,7 +185,7 @@ type FileInfo struct {
 	// BASE64编码后的文件内容
 	FileBody *string `json:"FileBody,omitnil,omitempty" name:"FileBody"`
 
-	// 文件名，最大长度不超过200字符
+	// 文件名及类型，最大长度不超过200字符
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 

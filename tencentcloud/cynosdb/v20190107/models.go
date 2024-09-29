@@ -414,7 +414,8 @@ type Addr struct {
 
 // Predefined struct for user
 type AssociateSecurityGroupsRequestParams struct {
-	// 实例组ID数组
+	// 实例组 ID 数组，cynosdbmysql-grp-前缀开头或集群 ID。
+	// 说明：要获取集群的实例组 ID，可通过 [查询集群实例组](https://cloud.tencent.com/document/product/1003/103934) 进行。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
@@ -427,7 +428,8 @@ type AssociateSecurityGroupsRequestParams struct {
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例组ID数组
+	// 实例组 ID 数组，cynosdbmysql-grp-前缀开头或集群 ID。
+	// 说明：要获取集群的实例组 ID，可通过 [查询集群实例组](https://cloud.tencent.com/document/product/1003/103934) 进行。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
@@ -8534,26 +8536,30 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateSecurityGroupsRequestParams struct {
-	// 实例组ID数组
+	// 实例组 ID 数组，cynosdbmysql-grp-前缀开头或集群 ID。
+	// 说明：要获取集群的实例组 ID，可通过 [查询集群实例组](https://cloud.tencent.com/document/product/1003/103934) 进行。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 可用区
+	// 可用区。
+	// 说明：请正确输入集群所在的主可用区，若输入非集群所在的主可用区可能显示调用成功，但实际执行会失败。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type DisassociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例组ID数组
+	// 实例组 ID 数组，cynosdbmysql-grp-前缀开头或集群 ID。
+	// 说明：要获取集群的实例组 ID，可通过 [查询集群实例组](https://cloud.tencent.com/document/product/1003/103934) 进行。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 可用区
+	// 可用区。
+	// 说明：请正确输入集群所在的主可用区，若输入非集群所在的主可用区可能显示调用成功，但实际执行会失败。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 

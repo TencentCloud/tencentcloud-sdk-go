@@ -122,8 +122,14 @@ const (
 	// 公司信息已经存在。
 	INVALIDPARAMETERVALUE_COMPANYEXIST = "InvalidParameterValue.CompanyExist"
 
+	// 审核单状态错误。
+	INVALIDPARAMETERVALUE_ERRORAPPLYSTATUS = "InvalidParameterValue.ErrorApplyStatus"
+
 	// 实例不存在。
 	INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+
+	// 号码状态无效。
+	INVALIDPARAMETERVALUE_PHONENUMINVALID = "InvalidParameterValue.PhoneNumInvalid"
 
 	// 号码已经绑定别的账号。
 	INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"

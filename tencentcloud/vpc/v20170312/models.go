@@ -6886,6 +6886,9 @@ type CreateVpcPeeringConnectionRequestParams struct {
 
 	// 服务分级：PT、AU、AG。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
+
+	// 标签键值对
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateVpcPeeringConnectionRequest struct {
@@ -6917,6 +6920,9 @@ type CreateVpcPeeringConnectionRequest struct {
 
 	// 服务分级：PT、AU、AG。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
+
+	// 标签键值对
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpcPeeringConnectionRequest) ToJsonString() string {
@@ -6940,6 +6946,7 @@ func (r *CreateVpcPeeringConnectionRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "ChargeType")
 	delete(f, "QosLevel")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcPeeringConnectionRequest has unknown keys!", "")
 	}
@@ -30344,6 +30351,16 @@ type SubnetInput struct {
 }
 
 type Tag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Tags struct {
 	// 标签键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`

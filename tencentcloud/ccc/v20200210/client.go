@@ -777,6 +777,73 @@ func (c *Client) CreateIVRSessionWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateOwnNumberApplyRequest() (request *CreateOwnNumberApplyRequest) {
+    request = &CreateOwnNumberApplyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateOwnNumberApply")
+    
+    
+    return
+}
+
+func NewCreateOwnNumberApplyResponse() (response *CreateOwnNumberApplyResponse) {
+    response = &CreateOwnNumberApplyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOwnNumberApply
+// 创建客户自携号码接入审核
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMINVALID = "InvalidParameterValue.PhoneNumInvalid"
+//  INVALIDPARAMETERVALUE_WAITINGAPPROVALOVERFLOW = "InvalidParameterValue.WaitingApprovalOverflow"
+func (c *Client) CreateOwnNumberApply(request *CreateOwnNumberApplyRequest) (response *CreateOwnNumberApplyResponse, err error) {
+    return c.CreateOwnNumberApplyWithContext(context.Background(), request)
+}
+
+// CreateOwnNumberApply
+// 创建客户自携号码接入审核
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMINVALID = "InvalidParameterValue.PhoneNumInvalid"
+//  INVALIDPARAMETERVALUE_WAITINGAPPROVALOVERFLOW = "InvalidParameterValue.WaitingApprovalOverflow"
+func (c *Client) CreateOwnNumberApplyWithContext(ctx context.Context, request *CreateOwnNumberApplyRequest) (response *CreateOwnNumberApplyResponse, err error) {
+    if request == nil {
+        request = NewCreateOwnNumberApplyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOwnNumberApply require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOwnNumberApplyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePredictiveDialingCampaignRequest() (request *CreatePredictiveDialingCampaignRequest) {
     request = &CreatePredictiveDialingCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2761,6 +2828,73 @@ func (c *Client) ModifyExtensionWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyExtensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOwnNumberApplyRequest() (request *ModifyOwnNumberApplyRequest) {
+    request = &ModifyOwnNumberApplyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ModifyOwnNumberApply")
+    
+    
+    return
+}
+
+func NewModifyOwnNumberApplyResponse() (response *ModifyOwnNumberApplyResponse) {
+    response = &ModifyOwnNumberApplyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwnNumberApply
+// 修改客户自携号码审批单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+//  INVALIDPARAMETERVALUE_ERRORAPPLYSTATUS = "InvalidParameterValue.ErrorApplyStatus"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMINVALID = "InvalidParameterValue.PhoneNumInvalid"
+func (c *Client) ModifyOwnNumberApply(request *ModifyOwnNumberApplyRequest) (response *ModifyOwnNumberApplyResponse, err error) {
+    return c.ModifyOwnNumberApplyWithContext(context.Background(), request)
+}
+
+// ModifyOwnNumberApply
+// 修改客户自携号码审批单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = "InvalidParameterValue.ApplyIDNotExist"
+//  INVALIDPARAMETERVALUE_ERRORAPPLYSTATUS = "InvalidParameterValue.ErrorApplyStatus"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMINVALID = "InvalidParameterValue.PhoneNumInvalid"
+func (c *Client) ModifyOwnNumberApplyWithContext(ctx context.Context, request *ModifyOwnNumberApplyRequest) (response *ModifyOwnNumberApplyResponse, err error) {
+    if request == nil {
+        request = NewModifyOwnNumberApplyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwnNumberApply require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwnNumberApplyResponse()
     err = c.Send(request, response)
     return
 }

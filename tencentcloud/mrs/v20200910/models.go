@@ -2768,6 +2768,9 @@ type ImageToObjectRequestParams struct {
 	// （2）病理报告 15，默认使用 V1，最高支持 V2。
 	// （3）入院记录29、出院记录 28、病历记录 216、病程记录 217、门诊记录 210，默认使用 V1，最高支持 V2。
 	ReportTypeVersion []*ReportTypeVersion `json:"ReportTypeVersion,omitnil,omitempty" name:"ReportTypeVersion"`
+
+	// 可选。 图片OCR信息列表，每一个元素是一张图片的OCR结果。适用于不想将医疗报告图片传入腾讯云的客户，客户可对图片OCR信息中的敏感信息去除之后再传入。与 ImageInfoList 二选一，同时存在则使用OcrInfoList
+	OcrInfoList []*OcrInfo `json:"OcrInfoList,omitnil,omitempty" name:"OcrInfoList"`
 }
 
 type ImageToObjectRequest struct {
@@ -2794,6 +2797,9 @@ type ImageToObjectRequest struct {
 	// （2）病理报告 15，默认使用 V1，最高支持 V2。
 	// （3）入院记录29、出院记录 28、病历记录 216、病程记录 217、门诊记录 210，默认使用 V1，最高支持 V2。
 	ReportTypeVersion []*ReportTypeVersion `json:"ReportTypeVersion,omitnil,omitempty" name:"ReportTypeVersion"`
+
+	// 可选。 图片OCR信息列表，每一个元素是一张图片的OCR结果。适用于不想将医疗报告图片传入腾讯云的客户，客户可对图片OCR信息中的敏感信息去除之后再传入。与 ImageInfoList 二选一，同时存在则使用OcrInfoList
+	OcrInfoList []*OcrInfo `json:"OcrInfoList,omitnil,omitempty" name:"OcrInfoList"`
 }
 
 func (r *ImageToObjectRequest) ToJsonString() string {
@@ -2814,6 +2820,7 @@ func (r *ImageToObjectRequest) FromJsonString(s string) error {
 	delete(f, "IsUsedClassify")
 	delete(f, "UserType")
 	delete(f, "ReportTypeVersion")
+	delete(f, "OcrInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageToObjectRequest has unknown keys!", "")
 	}
@@ -3955,6 +3962,25 @@ type ObstetricalHistoryBlock struct {
 	// 婚育史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FertilityHistory *FertilityHistoryBlock `json:"FertilityHistory,omitnil,omitempty" name:"FertilityHistory"`
+}
+
+type OcrInfo struct {
+	// 图片进行OCR之后得到的所有包含字块的OCR信息
+	Items []*OcrItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 图片进行OCR之后得到的所有字符
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type OcrItem struct {
+	// 图片中文字的字符串
+	Words *string `json:"Words,omitnil,omitempty" name:"Words"`
+
+	// Words 中每个文字的坐标数组，顺序与Words中的字符顺序一致
+	Coords []*Coordinate `json:"Coords,omitnil,omitempty" name:"Coords"`
+
+	// 整个字符块的坐标信息
+	WordCoords *Coordinate `json:"WordCoords,omitnil,omitempty" name:"WordCoords"`
 }
 
 type OphthalmologyBareEyeSight struct {

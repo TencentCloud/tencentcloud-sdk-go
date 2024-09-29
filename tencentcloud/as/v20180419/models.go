@@ -1011,7 +1011,7 @@ type CreateLaunchConfigurationRequestParams struct {
 	// 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
 	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitnil,omitempty" name:"LaunchConfigurationName"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 启动配置所属项目ID。不填为默认项目。
@@ -1097,6 +1097,9 @@ type CreateLaunchConfigurationRequestParams struct {
 
 	// 置放群组id，仅支持指定一个。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 type CreateLaunchConfigurationRequest struct {
@@ -1105,7 +1108,7 @@ type CreateLaunchConfigurationRequest struct {
 	// 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
 	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitnil,omitempty" name:"LaunchConfigurationName"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 启动配置所属项目ID。不填为默认项目。
@@ -1191,6 +1194,9 @@ type CreateLaunchConfigurationRequest struct {
 
 	// 置放群组id，仅支持指定一个。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1230,6 +1236,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "HpcClusterId")
 	delete(f, "IPv6InternetAccessible")
 	delete(f, "DisasterRecoverGroupIds")
+	delete(f, "ImageFamily")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
@@ -2580,8 +2587,7 @@ type DescribeLaunchConfigurationsRequestParams struct {
 	// <li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3
-	// </li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2604,8 +2610,7 @@ type DescribeLaunchConfigurationsRequest struct {
 	// <li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3
-	// </li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3869,6 +3874,10 @@ type LaunchConfiguration struct {
 
 	// 置放群组id，仅支持指定一个。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 镜像族名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 type LifecycleActionResultInfo struct {
@@ -4423,6 +4432,9 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 	// 实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
 	// 该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
+
+	// 镜像族名称。
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 type ModifyLaunchConfigurationAttributesRequest struct {
@@ -4522,6 +4534,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
 	// 该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
+
+	// 镜像族名称。
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -4559,6 +4574,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "DisasterRecoverGroupIds")
 	delete(f, "LoginSettings")
 	delete(f, "InstanceTags")
+	delete(f, "ImageFamily")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

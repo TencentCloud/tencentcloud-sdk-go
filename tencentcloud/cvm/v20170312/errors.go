@@ -446,6 +446,9 @@ const (
 	// 不支持转为非GPU或其他类型GPU实例。
 	INVALIDPARAMETERVALUE_INVALIDGPUFAMILYCHANGE = "InvalidParameterValue.InvalidGPUFamilyChange"
 
+	// 错误格式的镜像族名称
+	INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
+
 	// 镜像ID不支持指定的实例机型。
 	INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = "InvalidParameterValue.InvalidImageForGivenInstanceType"
 
@@ -521,7 +524,7 @@ const (
 	// 不支持删除默认启动模板版本。
 	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEDEFAULTVERSION = "InvalidParameterValue.LaunchTemplateDefaultVersion"
 
-	// 实例启动模板ID格式错误。
+	// 实例启动模板ID格式错误，请提供规范的实例启动模板ID，类似lt-xxxxxxxx，字母x代表小写字符或者数字。
 	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDMALFORMED = "InvalidParameterValue.LaunchTemplateIdMalformed"
 
 	// 实例启动模板ID不存在。

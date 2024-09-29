@@ -1500,6 +1500,84 @@ func (r *CreateIVRSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOwnNumberApplyRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// SIP通道ID
+	SipTrunkId *int64 `json:"SipTrunkId,omitnil,omitempty" name:"SipTrunkId"`
+
+	// 线路相关参数
+	DetailList []*OwnNumberApplyDetailItem `json:"DetailList,omitnil,omitempty" name:"DetailList"`
+
+	// 送号前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+}
+
+type CreateOwnNumberApplyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// SIP通道ID
+	SipTrunkId *int64 `json:"SipTrunkId,omitnil,omitempty" name:"SipTrunkId"`
+
+	// 线路相关参数
+	DetailList []*OwnNumberApplyDetailItem `json:"DetailList,omitnil,omitempty" name:"DetailList"`
+
+	// 送号前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+}
+
+func (r *CreateOwnNumberApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOwnNumberApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SipTrunkId")
+	delete(f, "DetailList")
+	delete(f, "Prefix")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOwnNumberApplyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOwnNumberApplyResponseParams struct {
+	// 审批单号
+	ApplyId *uint64 `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOwnNumberApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOwnNumberApplyResponseParams `json:"Response"`
+}
+
+func (r *CreateOwnNumberApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOwnNumberApplyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePredictiveDialingCampaignRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4709,6 +4787,81 @@ func (r *ModifyExtensionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyOwnNumberApplyRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 线路相关参数
+	DetailList []*OwnNumberApplyDetailItem `json:"DetailList,omitnil,omitempty" name:"DetailList"`
+
+	// 审批单号
+	ApplyId *uint64 `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// 送号前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+}
+
+type ModifyOwnNumberApplyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 线路相关参数
+	DetailList []*OwnNumberApplyDetailItem `json:"DetailList,omitnil,omitempty" name:"DetailList"`
+
+	// 审批单号
+	ApplyId *uint64 `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// 送号前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+}
+
+func (r *ModifyOwnNumberApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOwnNumberApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "DetailList")
+	delete(f, "ApplyId")
+	delete(f, "Prefix")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOwnNumberApplyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOwnNumberApplyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOwnNumberApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOwnNumberApplyResponseParams `json:"Response"`
+}
+
+func (r *ModifyOwnNumberApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOwnNumberApplyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyStaffPasswordRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4895,6 +5048,20 @@ type NumberInfo struct {
 
 	// 号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+}
+
+type OwnNumberApplyDetailItem struct {
+	// 号码类型：0-呼入|1-呼出|2-呼入呼出
+	CallType *int64 `json:"CallType,omitnil,omitempty" name:"CallType"`
+
+	// 线路号码
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 最大并发呼叫数
+	MaxCallCount *int64 `json:"MaxCallCount,omitnil,omitempty" name:"MaxCallCount"`
+
+	// 每秒最大并发数
+	MaxCallPSec *int64 `json:"MaxCallPSec,omitnil,omitempty" name:"MaxCallPSec"`
 }
 
 type PSTNSession struct {

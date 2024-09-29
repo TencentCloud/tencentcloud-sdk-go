@@ -704,6 +704,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  INVALIDPARAMETER_VALUETOOLARGE = "InvalidParameter.ValueTooLarge"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDINSTANCETYPE = "InvalidParameterValue.PreheatNotSupportedInstanceType"
 //  INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDZONE = "InvalidParameterValue.PreheatNotSupportedZone"
@@ -762,6 +763,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 //  INVALIDPARAMETER_VALUETOOLARGE = "InvalidParameter.ValueTooLarge"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDINSTANCETYPE = "InvalidParameterValue.PreheatNotSupportedInstanceType"
 //  INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDZONE = "InvalidParameterValue.PreheatNotSupportedZone"
@@ -2215,6 +2217,57 @@ func (c *Client) DescribeHpcClustersWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeHpcClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageFromFamilyRequest() (request *DescribeImageFromFamilyRequest) {
+    request = &DescribeImageFromFamilyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeImageFromFamily")
+    
+    
+    return
+}
+
+func NewDescribeImageFromFamilyResponse() (response *DescribeImageFromFamilyResponse) {
+    response = &DescribeImageFromFamilyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageFromFamily
+// 本接口(DescribeImageFromFamily) 用于查看镜像族内可用镜像信息。
+//
+// 可能返回的错误码:
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
+func (c *Client) DescribeImageFromFamily(request *DescribeImageFromFamilyRequest) (response *DescribeImageFromFamilyResponse, err error) {
+    return c.DescribeImageFromFamilyWithContext(context.Background(), request)
+}
+
+// DescribeImageFromFamily
+// 本接口(DescribeImageFromFamily) 用于查看镜像族内可用镜像信息。
+//
+// 可能返回的错误码:
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
+func (c *Client) DescribeImageFromFamilyWithContext(ctx context.Context, request *DescribeImageFromFamilyRequest) (response *DescribeImageFromFamilyResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageFromFamilyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageFromFamily require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageFromFamilyResponse()
     err = c.Send(request, response)
     return
 }
@@ -5965,6 +6018,7 @@ func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) 
 //  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
 //  INVALIDIMAGENAME_DUPLICATE = "InvalidImageName.Duplicate"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
@@ -5984,6 +6038,7 @@ func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (res
 //  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
 //  INVALIDIMAGENAME_DUPLICATE = "InvalidImageName.Duplicate"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {

@@ -830,7 +830,7 @@ type CreateImageRequestParams struct {
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
 	// 是否执行强制关机以制作镜像。
-	// 取值范围：<br><li>true：表示关机之后制作镜像<br><li>false：表示开机状态制作镜像<br><br>默认取值：false。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
+	// 取值范围：<br><li>true：表示关机之后制作镜像</li><br><li>false：表示开机状态制作镜像</li><br><br>默认取值：false。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
 	ForcePoweroff *string `json:"ForcePoweroff,omitnil,omitempty" name:"ForcePoweroff"`
 
 	// 创建Windows镜像时是否启用Sysprep。
@@ -850,6 +850,9 @@ type CreateImageRequestParams struct {
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 镜像族
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 type CreateImageRequest struct {
@@ -865,7 +868,7 @@ type CreateImageRequest struct {
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
 	// 是否执行强制关机以制作镜像。
-	// 取值范围：<br><li>true：表示关机之后制作镜像<br><li>false：表示开机状态制作镜像<br><br>默认取值：false。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
+	// 取值范围：<br><li>true：表示关机之后制作镜像</li><br><li>false：表示开机状态制作镜像</li><br><br>默认取值：false。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
 	ForcePoweroff *string `json:"ForcePoweroff,omitnil,omitempty" name:"ForcePoweroff"`
 
 	// 创建Windows镜像时是否启用Sysprep。
@@ -885,6 +888,9 @@ type CreateImageRequest struct {
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 镜像族
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 func (r *CreateImageRequest) ToJsonString() string {
@@ -908,6 +914,7 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 	delete(f, "SnapshotIds")
 	delete(f, "DryRun")
 	delete(f, "TagSpecification")
+	delete(f, "ImageFamily")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageRequest has unknown keys!", "")
 	}
@@ -2573,6 +2580,64 @@ func (r *DescribeHpcClustersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHpcClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageFromFamilyRequestParams struct {
+	// 镜像族
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+}
+
+type DescribeImageFromFamilyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像族
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+}
+
+func (r *DescribeImageFromFamilyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageFromFamilyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageFamily")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageFromFamilyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageFromFamilyResponseParams struct {
+	// 镜像信息，没有可用镜像是返回为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageFromFamilyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageFromFamilyResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageFromFamilyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageFromFamilyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5199,6 +5264,13 @@ type Image struct {
 
 	// 镜像许可类型
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+
+	// 镜像族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 镜像是否废弃
+	ImageDeprecated *bool `json:"ImageDeprecated,omitnil,omitempty" name:"ImageDeprecated"`
 }
 
 type ImageOsList struct {
@@ -5666,7 +5738,7 @@ type InquiryPriceRenewHostsRequestParams struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
 	HostChargePrepaid *ChargePrepaid `json:"HostChargePrepaid,omitnil,omitempty" name:"HostChargePrepaid"`
 
-	// 试运行，测试使用，不执行具体逻辑。取值范围：<br><li>TRUE：跳过执行逻辑<br><li>FALSE：执行逻辑<br><br>默认取值：FALSE。
+	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
@@ -5679,7 +5751,7 @@ type InquiryPriceRenewHostsRequest struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
 	HostChargePrepaid *ChargePrepaid `json:"HostChargePrepaid,omitnil,omitempty" name:"HostChargePrepaid"`
 
-	// 试运行，测试使用，不执行具体逻辑。取值范围：<br><li>TRUE：跳过执行逻辑<br><li>FALSE：执行逻辑<br><br>默认取值：FALSE。
+	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
@@ -7005,7 +7077,7 @@ type LocalDiskType struct {
 }
 
 type LoginSettings struct {
-	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
@@ -7013,7 +7085,7 @@ type LoginSettings struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
-	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。取值范围：<li>true：表示保持镜像的登录设置</li><li>false：表示不保持镜像的登录设置</li>默认取值：false。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitnil,omitempty" name:"KeepImageLogin"`
 }
@@ -7321,6 +7393,12 @@ type ModifyImageAttributeRequestParams struct {
 
 	// 设置新的镜像描述；必须满足下列限制： <li> 不得超过 256 个字符。</li>
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
+
+	// 设置镜像族；
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 设置镜像是否废弃；
+	ImageDeprecated *bool `json:"ImageDeprecated,omitnil,omitempty" name:"ImageDeprecated"`
 }
 
 type ModifyImageAttributeRequest struct {
@@ -7334,6 +7412,12 @@ type ModifyImageAttributeRequest struct {
 
 	// 设置新的镜像描述；必须满足下列限制： <li> 不得超过 256 个字符。</li>
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
+
+	// 设置镜像族；
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 设置镜像是否废弃；
+	ImageDeprecated *bool `json:"ImageDeprecated,omitnil,omitempty" name:"ImageDeprecated"`
 }
 
 func (r *ModifyImageAttributeRequest) ToJsonString() string {
@@ -7351,6 +7435,8 @@ func (r *ModifyImageAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ImageId")
 	delete(f, "ImageName")
 	delete(f, "ImageDescription")
+	delete(f, "ImageFamily")
+	delete(f, "ImageDeprecated")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyImageAttributeRequest has unknown keys!", "")
 	}
@@ -8861,6 +8947,14 @@ type ReservedInstancePrice struct {
 
 	// 后续合计费用的折扣价，单位：元/小时
 	DiscountUsagePrice *float64 `json:"DiscountUsagePrice,omitnil,omitempty" name:"DiscountUsagePrice"`
+
+	// 预支费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixedPriceDiscount *float64 `json:"FixedPriceDiscount,omitnil,omitempty" name:"FixedPriceDiscount"`
+
+	// 后续费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsagePriceDiscount *float64 `json:"UsagePriceDiscount,omitnil,omitempty" name:"UsagePriceDiscount"`
 }
 
 type ReservedInstancePriceItem struct {
@@ -8886,6 +8980,12 @@ type ReservedInstancePriceItem struct {
 	// 预留实例计费的平台描述（即操作系统）。形如：Linux。
 	// 返回项： Linux 。
 	ProductDescription *string `json:"ProductDescription,omitnil,omitempty" name:"ProductDescription"`
+
+	// 预支合计费用，单位：元。
+	DiscountUsagePrice *float64 `json:"DiscountUsagePrice,omitnil,omitempty" name:"DiscountUsagePrice"`
+
+	// 后续合计费用的折扣价，单位：元/小时
+	DiscountFixedPrice *float64 `json:"DiscountFixedPrice,omitnil,omitempty" name:"DiscountFixedPrice"`
 }
 
 type ReservedInstanceTypeItem struct {
