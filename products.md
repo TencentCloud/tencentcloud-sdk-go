@@ -184,7 +184,7 @@
 | solar | [智汇零售](https://cloud.tencent.com/document/product) | 2020-03-19 08:01:59 |
 | sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2024-08-27 02:19:04 |
 | ssa | [安全运营中心](https://cloud.tencent.com/document/product/664) | 2023-11-15 02:18:28 |
-| ssl | [SSL 证书](https://cloud.tencent.com/document/product/400) | 2024-09-26 01:31:18 |
+| ssl | [SSL 证书](https://cloud.tencent.com/document/product/400) | 2024-10-01 01:24:04 |
 | sslpod | [证书监控 SSLPod](https://cloud.tencent.com/document/product/1084) | 2024-03-20 01:24:03 |
 | ssm | [凭据管理系统](https://cloud.tencent.com/document/product/1140) | 2024-05-21 02:06:48 |
 | sts | [安全凭证服务](https://cloud.tencent.com/document/product/1312) | 2024-08-28 02:21:40 |
