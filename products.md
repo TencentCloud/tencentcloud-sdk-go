@@ -46,7 +46,7 @@
 | cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2024-09-27 01:06:23 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2024-06-18 01:18:51 |
 | cdwch | [腾讯云数据仓库TCHouse-C](https://cloud.tencent.com/document/product/1299) | 2024-09-06 01:13:27 |
-| cdwdoris | [腾讯云数据仓库 TCHouse-D](https://cloud.tencent.com/document/product/1387) | 2024-09-30 01:11:18 |
+| cdwdoris | [腾讯云数据仓库 TCHouse-D](https://cloud.tencent.com/document/product/1387) | 2024-10-09 01:10:49 |
 | cdwpg | [云数据仓库 PostgreSQL](https://cloud.tencent.com/document/product/878) | 2024-03-28 01:10:53 |
 | cdz | [专属可用区](https://cloud.tencent.com/document/product/1629) | 2024-08-28 01:17:24 |
 | cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2024-09-20 12:56:59 |
@@ -101,7 +101,7 @@
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-09-27 01:15:03 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-09-10 15:12:32 |
 | ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-09-27 01:15:32 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-09-27 01:15:57 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-10-09 01:18:58 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-09-11 01:42:57 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-09-25 01:20:56 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2024-07-05 01:10:44 |
@@ -153,14 +153,14 @@
 | monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2024-09-25 01:26:32 |
 | mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2024-09-20 13:07:52 |
 | mqtt | [消息队列 MQTT 版](https://cloud.tencent.com/document/product/1778) | 2024-09-30 01:26:55 |
-| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2024-09-30 01:27:01 |
+| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2024-10-09 01:25:21 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2024-08-16 02:04:04 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2024-04-17 14:48:31 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [NLP 服务](https://cloud.tencent.com/document/product/271) | 2024-09-27 01:23:18 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2024-09-04 01:54:37 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2024-09-27 01:23:33 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2024-10-09 01:25:48 |
 | omics | [腾讯健康组学平台](https://cloud.tencent.com/document/product/1643) | 2024-09-26 01:28:34 |
 | organization | [集团账号管理](https://cloud.tencent.com/document/product/850) | 2024-09-23 12:16:37 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2024-06-26 01:21:35 |

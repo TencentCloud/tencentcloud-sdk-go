@@ -1811,6 +1811,10 @@ type DescribeClusterConfigsResponseParams struct {
 	// 返回当前内核版本 如果不存在则返回空字符串
 	BuildVersion *string `json:"BuildVersion,omitnil,omitempty" name:"BuildVersion"`
 
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2302,6 +2306,10 @@ type DescribeDatabaseAuditRecordsResponseParams struct {
 
 	// 记录列表
 	SlowQueryRecords *DataBaseAuditRecord `json:"SlowQueryRecords,omitnil,omitempty" name:"SlowQueryRecords"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5001,6 +5009,10 @@ type NodeInfo struct {
 	// 节点所在可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type NodeInfos struct {
@@ -5021,6 +5033,14 @@ type NodeInfos struct {
 
 	// 上一次重启时间
 	LastRestartTime *string `json:"LastRestartTime,omitnil,omitempty" name:"LastRestartTime"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type NodesSummary struct {
@@ -6096,6 +6116,14 @@ type SlowQueryRecord struct {
 	// DurationMs的秒表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationSec *float64 `json:"DurationSec,omitnil,omitempty" name:"DurationSec"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// Catalog  Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 }
 
 type Tag struct {
@@ -6257,4 +6285,8 @@ type ZoneInfo struct {
 	// Encryptid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *int64 `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
+
+	// 是否为主力园区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Main *bool `json:"Main,omitnil,omitempty" name:"Main"`
 }
