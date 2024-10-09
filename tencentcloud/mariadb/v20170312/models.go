@@ -3191,6 +3191,69 @@ func (r *DescribeDBSlowLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBSyncModeRequestParams struct {
+	// 实例ID，形如：tdsql-ow728lmc
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBSyncModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，形如：tdsql-ow728lmc
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBSyncModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSyncModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSyncModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBSyncModeResponseParams struct {
+	// 同步模式：0 异步，1 强同步， 2 强同步可退化
+	SyncMode *int64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+
+	// 是否有修改流程在执行中：1 是， 0 否。
+	IsModifying *int64 `json:"IsModifying,omitnil,omitempty" name:"IsModifying"`
+
+	// 当前复制方式，0 异步，1 同步
+	CurrentSyncMode *int64 `json:"CurrentSyncMode,omitnil,omitempty" name:"CurrentSyncMode"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBSyncModeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBSyncModeResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBSyncModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSyncModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBTmpInstancesRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

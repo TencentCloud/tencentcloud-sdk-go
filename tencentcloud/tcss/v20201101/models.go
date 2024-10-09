@@ -32557,6 +32557,9 @@ type UpdateAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// 联通性检测的配置
 	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil,omitempty" name:"ConnDetectConfig"`
+
+	// 仓库唯一id
+	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 type UpdateAssetImageRegistryRegistryDetailRequest struct {
@@ -32594,6 +32597,9 @@ type UpdateAssetImageRegistryRegistryDetailRequest struct {
 
 	// 联通性检测的配置
 	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil,omitempty" name:"ConnDetectConfig"`
+
+	// 仓库唯一id
+	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 func (r *UpdateAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -32619,6 +32625,7 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 	delete(f, "SpeedLimit")
 	delete(f, "Insecure")
 	delete(f, "ConnDetectConfig")
+	delete(f, "RegistryId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}

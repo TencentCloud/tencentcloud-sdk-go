@@ -67,22 +67,22 @@ type ApmAgentInfo struct {
 }
 
 type ApmApplicationConfigView struct {
-	// 实例ID	
+	// 业务系统ID	
 	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
 
-	// 服务名	
+	// 应用名	
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 接口过滤
 	OperationNameFilter *string `json:"OperationNameFilter,omitnil,omitempty" name:"OperationNameFilter"`
 
-	// 异常过滤
+	// 错误类型过滤
 	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
 
-	// 错误码过滤	
+	// HTTP状态码过滤
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
-	// 应用诊断开关
+	// 应用诊断开关（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
@@ -101,30 +101,30 @@ type ApmApplicationConfigView struct {
 	// 是否开启日志 0 关 1 开
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志来源	
+	// 日志源	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// CLS日志集 
+	// 日志集 
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 日志主题ID
+	// 日志主题
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// 线程剖析开关
+	// 方法栈快照开关 true 开启 false 关闭
 	SnapshotEnable *bool `json:"SnapshotEnable,omitnil,omitempty" name:"SnapshotEnable"`
 
-	// 线程剖析超时阈值	
+	// 慢调用监听触发阈值
 	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
 
-	// 探针开启开关
+	// 探针总开关
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
-	// 组件列表开关
+	// 组件列表开关（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
-	// 链路压缩开关
+	// 链路压缩开关（已废弃）
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
 }
 
@@ -1486,26 +1486,28 @@ func (r *ModifyApmInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGeneralApmApplicationConfigRequestParams struct {
-	// 实例Id
+	// 业务系统Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 需要修改的字段key value分别指定字段名、字段值
+	// [具体字段请见](https://cloud.tencent.com/document/product/248/111241)
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 需要修改配置的服务列表名称	
+	// 需要修改配置的应用列表名称	
 	ServiceNames []*string `json:"ServiceNames,omitnil,omitempty" name:"ServiceNames"`
 }
 
 type ModifyGeneralApmApplicationConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 业务系统Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 需要修改的字段key value分别指定字段名、字段值
+	// [具体字段请见](https://cloud.tencent.com/document/product/248/111241)
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 需要修改配置的服务列表名称	
+	// 需要修改配置的应用列表名称	
 	ServiceNames []*string `json:"ServiceNames,omitnil,omitempty" name:"ServiceNames"`
 }
 

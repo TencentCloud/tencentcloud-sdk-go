@@ -7255,6 +7255,9 @@ type DescribeShippersRequestParams struct {
 
 	// 分页单页的限制数目，默认值为20，最大值100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 控制Filters相关字段是否为精确匹配。  0: 默认值，shipperName模糊匹配 1: shipperName 精确匹配
+	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 }
 
 type DescribeShippersRequest struct {
@@ -7272,6 +7275,9 @@ type DescribeShippersRequest struct {
 
 	// 分页单页的限制数目，默认值为20，最大值100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 控制Filters相关字段是否为精确匹配。  0: 默认值，shipperName模糊匹配 1: shipperName 精确匹配
+	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 }
 
 func (r *DescribeShippersRequest) ToJsonString() string {
@@ -7289,6 +7295,7 @@ func (r *DescribeShippersRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "PreciseSearch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShippersRequest has unknown keys!", "")
 	}

@@ -156,6 +156,9 @@ type DescribeImageAnimateJobResponseParams struct {
 	// 结果视频URL。有效期 24 小时。
 	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
 
+	// 掩码视频链接
+	MaskVideoUrl *string `json:"MaskVideoUrl,omitnil,omitempty" name:"MaskVideoUrl"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -430,6 +433,9 @@ type SubmitImageAnimateJobRequestParams struct {
 
 	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
+
+	// 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+	EnableSegment *bool `json:"EnableSegment,omitnil,omitempty" name:"EnableSegment"`
 }
 
 type SubmitImageAnimateJobRequest struct {
@@ -452,6 +458,9 @@ type SubmitImageAnimateJobRequest struct {
 
 	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
+
+	// 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+	EnableSegment *bool `json:"EnableSegment,omitnil,omitempty" name:"EnableSegment"`
 }
 
 func (r *SubmitImageAnimateJobRequest) ToJsonString() string {
@@ -471,6 +480,7 @@ func (r *SubmitImageAnimateJobRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "EnableAudio")
 	delete(f, "EnableBodyJoins")
+	delete(f, "EnableSegment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageAnimateJobRequest has unknown keys!", "")
 	}

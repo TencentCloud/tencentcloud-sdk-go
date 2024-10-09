@@ -1032,9 +1032,7 @@ type AddSpartaProtectionRequestParams struct {
 	// SniType为3时，需要填此参数，表示自定义的SNI；
 	SniHost *string `json:"SniHost,omitnil,omitempty" name:"SniHost"`
 
-	// 是否开启XFF重置。
-	// 0：关闭
-	// 1：开启
+	// 是否开启XFF重置。0：关闭 1：开启
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
 	// 域名备注信息
@@ -1043,11 +1041,32 @@ type AddSpartaProtectionRequestParams struct {
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 是否开启缓存 0-关闭 1-开启
+	// 是否开启缓存。 0：关闭 1：开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	// 是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
+
+	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
+
+	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -1192,9 +1211,7 @@ type AddSpartaProtectionRequest struct {
 	// SniType为3时，需要填此参数，表示自定义的SNI；
 	SniHost *string `json:"SniHost,omitnil,omitempty" name:"SniHost"`
 
-	// 是否开启XFF重置。
-	// 0：关闭
-	// 1：开启
+	// 是否开启XFF重置。0：关闭 1：开启
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
 	// 域名备注信息
@@ -1203,11 +1220,32 @@ type AddSpartaProtectionRequest struct {
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 是否开启缓存 0-关闭 1-开启
+	// 是否开启缓存。 0：关闭 1：开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	// 是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
+
+	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
+
+	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1260,6 +1298,13 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamHost")
 	delete(f, "ProxyBuffer")
 	delete(f, "ProbeStatus")
+	delete(f, "GmType")
+	delete(f, "GmCertType")
+	delete(f, "GmCert")
+	delete(f, "GmPrivateKey")
+	delete(f, "GmEncCert")
+	delete(f, "GmEncPrivateKey")
+	delete(f, "GmSSLId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1766,6 +1811,10 @@ type ClbDomainsInfo struct {
 	// 域名备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 域名标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type ClbObject struct {
@@ -1841,6 +1890,10 @@ type ClbObject struct {
 	// 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectFlowMode *int64 `json:"ObjectFlowMode,omitnil,omitempty" name:"ObjectFlowMode"`
+
+	// 数值形式的私有网络 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 }
 
 type ClbWafRegionItem struct {
@@ -3164,16 +3217,16 @@ type DeleteIpAccessControlV2RequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 规则ID列表，支持批量删除
+	// 规则ID列表，支持批量删除，在DeleteAll参数为true的时候可以不传
 	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
-	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
+	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
 	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
 	// batch表示为批量防护的IP黑白名单
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// IP黑白名单类型，40为IP白名单，42为IP黑名单
+	// IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 }
 
@@ -3183,16 +3236,16 @@ type DeleteIpAccessControlV2Request struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 规则ID列表，支持批量删除
+	// 规则ID列表，支持批量删除，在DeleteAll参数为true的时候可以不传
 	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
-	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
+	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
 	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
 	// batch表示为批量防护的IP黑白名单
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// IP黑白名单类型，40为IP白名单，42为IP黑名单
+	// IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 }
 
@@ -5017,7 +5070,7 @@ type DescribeCertificateVerifyResultRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 证书类型。 0：仅配置HTTP监听端口，没有证书 1：证书来源为自有证书 2：证书来源为托管证书
+	// 证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -5028,6 +5081,24 @@ type DescribeCertificateVerifyResultRequestParams struct {
 
 	// CertType为1时，需要填充此参数，表示自有证书的私钥
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 }
 
 type DescribeCertificateVerifyResultRequest struct {
@@ -5036,7 +5107,7 @@ type DescribeCertificateVerifyResultRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 证书类型。 0：仅配置HTTP监听端口，没有证书 1：证书来源为自有证书 2：证书来源为托管证书
+	// 证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -5047,6 +5118,24 @@ type DescribeCertificateVerifyResultRequest struct {
 
 	// CertType为1时，需要填充此参数，表示自有证书的私钥
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 }
 
 func (r *DescribeCertificateVerifyResultRequest) ToJsonString() string {
@@ -5066,6 +5155,12 @@ func (r *DescribeCertificateVerifyResultRequest) FromJsonString(s string) error 
 	delete(f, "Certificate")
 	delete(f, "CertID")
 	delete(f, "PrivateKey")
+	delete(f, "GmCertType")
+	delete(f, "GmCert")
+	delete(f, "GmPrivateKey")
+	delete(f, "GmEncCert")
+	delete(f, "GmEncPrivateKey")
+	delete(f, "GmSSLId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateVerifyResultRequest has unknown keys!", "")
 	}
@@ -5872,7 +5967,7 @@ type DescribeDomainsRequestParams struct {
 	// 返回域名的数量
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤数组
+	// 过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5885,7 +5980,7 @@ type DescribeDomainsRequest struct {
 	// 返回域名的数量
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤数组
+	// 过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -7838,12 +7933,15 @@ func (r *DescribeUserCdcClbWafRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserClbWafRegionsRequestParams struct {
-
+	// 流量来源，不填默认clb。clb：负载均衡器，tsegw：云原生API网关，scf：云函数，apisix：腾讯云上其他网关
+	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 }
 
 type DescribeUserClbWafRegionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 流量来源，不填默认clb。clb：负载均衡器，tsegw：云原生API网关，scf：云函数，apisix：腾讯云上其他网关
+	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 }
 
 func (r *DescribeUserClbWafRegionsRequest) ToJsonString() string {
@@ -7858,7 +7956,7 @@ func (r *DescribeUserClbWafRegionsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "AlbType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserClbWafRegionsRequest has unknown keys!", "")
 	}
@@ -8601,6 +8699,10 @@ type DomainInfo struct {
 	// clbwaf接入状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
+
+	// 域名标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type DomainPackageNew struct {
@@ -8833,6 +8935,38 @@ type DomainsPartInfo struct {
 	// 是否开启缓存 0-关闭 1-开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
+
+	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
+
+	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
+
+	// 域名标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -9607,6 +9741,10 @@ type GoodsDetailNew struct {
 	// 资源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 模式clb-waf或者saas-waf
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MicroVersion *string `json:"MicroVersion,omitnil,omitempty" name:"MicroVersion"`
 }
 
 type HostDel struct {
@@ -13123,11 +13261,32 @@ type ModifySpartaProtectionRequestParams struct {
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 是否开启缓存 0-关闭 1-开启
+	// 是否开启缓存。 0：关闭 1：开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	// 是否开启拨测。 0: 禁用拨测 1: 启用拨测。默认启用拨测
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
+
+	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
+
+	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -13244,11 +13403,32 @@ type ModifySpartaProtectionRequest struct {
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 是否开启缓存 0-关闭 1-开启
+	// 是否开启缓存。 0：关闭 1：开启
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+	// 是否开启拨测。 0: 禁用拨测 1: 启用拨测。默认启用拨测
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
+
+	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
+
+	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
+
+	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
+
+	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -13300,6 +13480,13 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamHost")
 	delete(f, "ProxyBuffer")
 	delete(f, "ProbeStatus")
+	delete(f, "GmType")
+	delete(f, "GmCertType")
+	delete(f, "GmCert")
+	delete(f, "GmPrivateKey")
+	delete(f, "GmEncCert")
+	delete(f, "GmEncPrivateKey")
+	delete(f, "GmSSLId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}
@@ -14457,6 +14644,11 @@ type Strategy struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arg *string `json:"Arg,omitnil,omitempty" name:"Arg"`
+
+	// 0：大小写敏感
+	// 1：大小写不敏感
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseNotSensitive *uint64 `json:"CaseNotSensitive,omitnil,omitempty" name:"CaseNotSensitive"`
 }
 
 type StrategyForAntiInfoLeak struct {

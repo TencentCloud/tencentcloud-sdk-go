@@ -230,7 +230,7 @@ const (
 	// 日志参数有误。
 	INVALIDPARAMETER_CLS = "InvalidParameter.Cls"
 
-	// FunctionName取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// FunctionName取值与规范不符，请修正后再试。
 	INVALIDPARAMETER_FUNCTIONNAME = "InvalidParameter.FunctionName"
 
 	// 创建函数传参异常。
@@ -251,7 +251,7 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// Action取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// Action取值与规范不符，请修正后再试。可参考：https://cloud.tencent.com/document/product/583/17235。
 	INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
 
 	// AdditionalVersionWeights参数传入错误。
@@ -338,7 +338,7 @@ const (
 	// CosBucketName不符合规范。
 	INVALIDPARAMETERVALUE_COSBUCKETNAME = "InvalidParameterValue.CosBucketName"
 
-	// CosBucketRegion取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// CosBucketRegion取值与规范不符，请修正后再试。可参考：https://cloud.tencent.com/document/product/583/17244#Code。
 	INVALIDPARAMETERVALUE_COSBUCKETREGION = "InvalidParameterValue.CosBucketRegion"
 
 	// COS通知规则冲突。
@@ -353,7 +353,7 @@ const (
 	// DateTime传入错误。
 	INVALIDPARAMETERVALUE_DATETIME = "InvalidParameterValue.DateTime"
 
-	// DeadLetterConfig取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// DeadLetterConfig取值与规范不符，请修正后再试。可参考：https://cloud.tencent.com/document/product/583/17244#DeadLetterConfig。
 	INVALIDPARAMETERVALUE_DEADLETTERCONFIG = "InvalidParameterValue.DeadLetterConfig"
 
 	// 默认Namespace无法创建。
@@ -380,7 +380,7 @@ const (
 	// EipConfig参数错误。
 	INVALIDPARAMETERVALUE_EIPCONFIG = "InvalidParameterValue.EipConfig"
 
-	// Enable取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// Enable取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 
 	// Environment传入错误。
@@ -395,9 +395,6 @@ const (
 	// Filters参数错误。
 	INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 
-	// Function取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
-	INVALIDPARAMETERVALUE_FUNCTION = "InvalidParameterValue.Function"
-
 	// 函数不存在。
 	INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 
@@ -410,7 +407,7 @@ const (
 	// GitBranch不符合规范。
 	INVALIDPARAMETERVALUE_GITBRANCH = "InvalidParameterValue.GitBranch"
 
-	// GitCommitId取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// GitCommitId取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_GITCOMMITID = "InvalidParameterValue.GitCommitId"
 
 	// GitDirectory不符合规范。
@@ -473,7 +470,7 @@ const (
 	// MaxConcurrency 参数传入错误。
 	INVALIDPARAMETERVALUE_MAXCONCURRENCY = "InvalidParameterValue.MaxConcurrency"
 
-	// Memory取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// Memory 取值与规范不符，函数运行时内存大小默认为128MB，可选范围64MB、128MB - 3072MB，以128MB为阶梯，请修正后重试。
 	INVALIDPARAMETERVALUE_MEMORY = "InvalidParameterValue.Memory"
 
 	// MemorySize错误。
@@ -503,7 +500,7 @@ const (
 	// Order传入错误。
 	INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 
-	// OrderBy取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// OrderBy取值与规范不符，请修正后再试。可参考对应接口文档中的示例值：https://cloud.tencent.com/document/product/583/17235
 	INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 
 	// 入参不是标准的json。
@@ -539,7 +536,7 @@ const (
 	// RetCode不合法。
 	INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
 
-	// RoutingConfig取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	// RoutingConfig取值与规范不符，请修正后再试。可参考：https://cloud.tencent.com/document/product/583/17244#RoutingConfig。
 	INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
 
 	// Runtime传入错误。

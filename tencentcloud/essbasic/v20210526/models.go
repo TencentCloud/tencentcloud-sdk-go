@@ -5584,6 +5584,16 @@ type ChannelOrganizationInfo struct {
 	//   <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
 	// </ul>
 	AuthorizationType *string `json:"AuthorizationType,omitnil,omitempty" name:"AuthorizationType"`
+
+	// 子企业激活状态。值如下：
+	// <ul>
+	//   <li>**0**： 未激活</li>
+	//   <li>**1**： 已激活</li>
+	// </ul>
+	ActiveStatus *int64 `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
+
+	// 账号过期时间，时间戳
+	LicenseExpireTime *int64 `json:"LicenseExpireTime,omitnil,omitempty" name:"LicenseExpireTime"`
 }
 
 // Predefined struct for user
@@ -6654,6 +6664,96 @@ func (r *CreateChannelOrganizationInfoChangeUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateChannelOrganizationInfoChangeUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelSubOrganizationActiveRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+	SubOrganizationOpenIds []*string `json:"SubOrganizationOpenIds,omitnil,omitempty" name:"SubOrganizationOpenIds"`
+
+	// 操作类型，可以选择如下：
+	// 
+	// **false**：（默认）激活子客企业
+	// **true**：续期子客企业
+	Renew *bool `json:"Renew,omitnil,omitempty" name:"Renew"`
+}
+
+type CreateChannelSubOrganizationActiveRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+	SubOrganizationOpenIds []*string `json:"SubOrganizationOpenIds,omitnil,omitempty" name:"SubOrganizationOpenIds"`
+
+	// 操作类型，可以选择如下：
+	// 
+	// **false**：（默认）激活子客企业
+	// **true**：续期子客企业
+	Renew *bool `json:"Renew,omitnil,omitempty" name:"Renew"`
+}
+
+func (r *CreateChannelSubOrganizationActiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelSubOrganizationActiveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SubOrganizationOpenIds")
+	delete(f, "Renew")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelSubOrganizationActiveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelSubOrganizationActiveResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateChannelSubOrganizationActiveResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChannelSubOrganizationActiveResponseParams `json:"Response"`
+}
+
+func (r *CreateChannelSubOrganizationActiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelSubOrganizationActiveResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
