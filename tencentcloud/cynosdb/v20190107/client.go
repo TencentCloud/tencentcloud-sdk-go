@@ -5472,6 +5472,63 @@ func (c *Client) InquirePriceCreateWithContext(ctx context.Context, request *Inq
     return
 }
 
+func NewInquirePriceModifyRequest() (request *InquirePriceModifyRequest) {
+    request = &InquirePriceModifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "InquirePriceModify")
+    
+    
+    return
+}
+
+func NewInquirePriceModifyResponse() (response *InquirePriceModifyResponse) {
+    response = &InquirePriceModifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceModify
+// 变配预付费集群询价
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceModify(request *InquirePriceModifyRequest) (response *InquirePriceModifyResponse, err error) {
+    return c.InquirePriceModifyWithContext(context.Background(), request)
+}
+
+// InquirePriceModify
+// 变配预付费集群询价
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceModifyWithContext(ctx context.Context, request *InquirePriceModifyRequest) (response *InquirePriceModifyResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceModifyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceModify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceModifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceRenewRequest() (request *InquirePriceRenewRequest) {
     request = &InquirePriceRenewRequest{
         BaseRequest: &tchttp.BaseRequest{},

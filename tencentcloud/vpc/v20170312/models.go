@@ -2220,9 +2220,7 @@ type CCN struct {
 
 	// 是否支持ipv6路由表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	//
-	// Deprecated: Ipv6Flag is deprecated.
-	Ipv6Flag *string `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
+	Ipv6Flag *bool `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 
 	// 是否支持路由表聚合策略
 	// 注意：此字段可能返回 null，表示取不到有效值。

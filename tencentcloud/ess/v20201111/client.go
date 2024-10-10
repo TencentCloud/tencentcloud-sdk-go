@@ -45,6 +45,85 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewArchiveDynamicFlowRequest() (request *ArchiveDynamicFlowRequest) {
+    request = &ArchiveDynamicFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ArchiveDynamicFlow")
+    
+    
+    return
+}
+
+func NewArchiveDynamicFlowResponse() (response *ArchiveDynamicFlowResponse) {
+    response = &ArchiveDynamicFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ArchiveDynamicFlow
+// 该接口用于结束动态签署流程，若当前合同还存在签署方未签署，无法结束。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER_CANCELREASON = "MissingParameter.CancelReason"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ArchiveDynamicFlow(request *ArchiveDynamicFlowRequest) (response *ArchiveDynamicFlowResponse, err error) {
+    return c.ArchiveDynamicFlowWithContext(context.Background(), request)
+}
+
+// ArchiveDynamicFlow
+// 该接口用于结束动态签署流程，若当前合同还存在签署方未签署，无法结束。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER_CANCELREASON = "MissingParameter.CancelReason"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ArchiveDynamicFlowWithContext(ctx context.Context, request *ArchiveDynamicFlowRequest) (response *ArchiveDynamicFlowResponse, err error) {
+    if request == nil {
+        request = NewArchiveDynamicFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ArchiveDynamicFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewArchiveDynamicFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindEmployeeUserIdWithClientOpenIdRequest() (request *BindEmployeeUserIdWithClientOpenIdRequest) {
     request = &BindEmployeeUserIdWithClientOpenIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1429,6 +1508,83 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     request.SetContext(ctx)
     
     response = NewCreateDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDynamicFlowApproverRequest() (request *CreateDynamicFlowApproverRequest) {
+    request = &CreateDynamicFlowApproverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateDynamicFlowApprover")
+    
+    
+    return
+}
+
+func NewCreateDynamicFlowApproverResponse() (response *CreateDynamicFlowApproverResponse) {
+    response = &CreateDynamicFlowApproverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDynamicFlowApprover
+// 此接口（CreateDynamicFlowApprover）用来补充动态合同的签署人信息。<br/>
+//
+// 适用场景：使用CreateFlowByFiles指定：OpenDynamicSignFlow=true发起的合同，可以使用该接口补充后续签署人。<br/>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_FLOWAPPROVERDEADLINE = "InvalidParameter.FlowApproverDeadline"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateDynamicFlowApprover(request *CreateDynamicFlowApproverRequest) (response *CreateDynamicFlowApproverResponse, err error) {
+    return c.CreateDynamicFlowApproverWithContext(context.Background(), request)
+}
+
+// CreateDynamicFlowApprover
+// 此接口（CreateDynamicFlowApprover）用来补充动态合同的签署人信息。<br/>
+//
+// 适用场景：使用CreateFlowByFiles指定：OpenDynamicSignFlow=true发起的合同，可以使用该接口补充后续签署人。<br/>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_FLOWAPPROVERDEADLINE = "InvalidParameter.FlowApproverDeadline"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateDynamicFlowApproverWithContext(ctx context.Context, request *CreateDynamicFlowApproverRequest) (response *CreateDynamicFlowApproverResponse, err error) {
+    if request == nil {
+        request = NewCreateDynamicFlowApproverRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDynamicFlowApprover require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDynamicFlowApproverResponse()
     err = c.Send(request, response)
     return
 }

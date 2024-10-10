@@ -9215,6 +9215,110 @@ func (r *InquirePriceCreateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type InquirePriceModifyRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// CPU核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存大小
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 存储大小，存储资源变配：ClusterId,StorageLimit
+	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
+
+	// 实例ID，计算资源变配必传: ClusterId,InstanceId,Cpu,Memory 
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例设备类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// serverless实例ccu大小
+	Ccu *float64 `json:"Ccu,omitnil,omitempty" name:"Ccu"`
+}
+
+type InquirePriceModifyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// CPU核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存大小
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 存储大小，存储资源变配：ClusterId,StorageLimit
+	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
+
+	// 实例ID，计算资源变配必传: ClusterId,InstanceId,Cpu,Memory 
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例设备类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// serverless实例ccu大小
+	Ccu *float64 `json:"Ccu,omitnil,omitempty" name:"Ccu"`
+}
+
+func (r *InquirePriceModifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceModifyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "StorageLimit")
+	delete(f, "InstanceId")
+	delete(f, "DeviceType")
+	delete(f, "Ccu")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceModifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceModifyResponseParams struct {
+	// 实例价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePrice *TradePrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
+
+	// 存储价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePrice *TradePrice `json:"StoragePrice,omitnil,omitempty" name:"StoragePrice"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceModifyResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceModifyResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceModifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceModifyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InquirePriceRenewRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`

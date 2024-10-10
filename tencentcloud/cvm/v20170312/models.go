@@ -5328,6 +5328,9 @@ type ImportImageRequestParams struct {
 
 	// 启动模式
 	BootMode *string `json:"BootMode,omitnil,omitempty" name:"BootMode"`
+
+	//  镜像族
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 type ImportImageRequest struct {
@@ -5368,6 +5371,9 @@ type ImportImageRequest struct {
 
 	// 启动模式
 	BootMode *string `json:"BootMode,omitnil,omitempty" name:"BootMode"`
+
+	//  镜像族
+	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 }
 
 func (r *ImportImageRequest) ToJsonString() string {
@@ -5393,6 +5399,7 @@ func (r *ImportImageRequest) FromJsonString(s string) error {
 	delete(f, "TagSpecification")
 	delete(f, "LicenseType")
 	delete(f, "BootMode")
+	delete(f, "ImageFamily")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportImageRequest has unknown keys!", "")
 	}

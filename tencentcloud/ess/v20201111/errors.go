@@ -200,6 +200,9 @@ const (
 	// 不合法的EndPoint，请检查修改后重试。
 	INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 
+	// 不合法的合同过期时间
+	INVALIDPARAMETER_FLOWAPPROVERDEADLINE = "InvalidParameter.FlowApproverDeadline"
+
 	// 不合法的签署流程回调链接，请修改后重试。
 	INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
 

@@ -125,6 +125,9 @@ const (
 	// 检索失败
 	INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
 
+	// 内部错误服务器繁忙
+	INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
