@@ -3839,6 +3839,9 @@ type DescribeRecordFileRequestParams struct {
 
 	// 检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否携带每个时间段的播放url
+	WithUrl *bool `json:"WithUrl,omitnil,omitempty" name:"WithUrl"`
 }
 
 type DescribeRecordFileRequest struct {
@@ -3855,6 +3858,9 @@ type DescribeRecordFileRequest struct {
 
 	// 检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否携带每个时间段的播放url
+	WithUrl *bool `json:"WithUrl,omitnil,omitempty" name:"WithUrl"`
 }
 
 func (r *DescribeRecordFileRequest) ToJsonString() string {
@@ -3873,6 +3879,7 @@ func (r *DescribeRecordFileRequest) FromJsonString(s string) error {
 	delete(f, "ChannelId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "WithUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordFileRequest has unknown keys!", "")
 	}
@@ -6615,6 +6622,10 @@ type RecordTimeLine struct {
 
 	// 时间片段结束时间，UTC秒数，例如：1662114146
 	End *uint64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 对应时间片段的播放url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsUrl *string `json:"HlsUrl,omitnil,omitempty" name:"HlsUrl"`
 }
 
 // Predefined struct for user

@@ -132,7 +132,7 @@
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2024-07-08 01:16:48 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2024-03-20 01:18:54 |
 | irp | [智能推荐平台](https://cloud.tencent.com/document/product/1541) | 2024-09-16 01:58:03 |
-| iss | [智能视图计算平台](https://cloud.tencent.com/document/product/1344) | 2024-09-27 01:19:24 |
+| iss | [智能视图计算平台](https://cloud.tencent.com/document/product/1344) | 2024-10-11 18:07:24 |
 | ivld | [媒体智能标签](https://cloud.tencent.com/document/product/1509) | 2024-07-09 14:27:21 |
 | keewidb | [云数据库 KeeWiDB](https://cloud.tencent.com/document/product/1520) | 2024-03-20 01:19:20 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2024-09-16 01:59:35 |
