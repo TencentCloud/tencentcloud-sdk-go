@@ -930,6 +930,65 @@ func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDev
     return
 }
 
+func NewCreateExternalSourceAIServiceTaskRequest() (request *CreateExternalSourceAIServiceTaskRequest) {
+    request = &CreateExternalSourceAIServiceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateExternalSourceAIServiceTask")
+    
+    
+    return
+}
+
+func NewCreateExternalSourceAIServiceTaskResponse() (response *CreateExternalSourceAIServiceTaskResponse) {
+    response = &CreateExternalSourceAIServiceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExternalSourceAIServiceTask
+// 创建外部视频 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) CreateExternalSourceAIServiceTask(request *CreateExternalSourceAIServiceTaskRequest) (response *CreateExternalSourceAIServiceTaskResponse, err error) {
+    return c.CreateExternalSourceAIServiceTaskWithContext(context.Background(), request)
+}
+
+// CreateExternalSourceAIServiceTask
+// 创建外部视频 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) CreateExternalSourceAIServiceTaskWithContext(ctx context.Context, request *CreateExternalSourceAIServiceTaskRequest) (response *CreateExternalSourceAIServiceTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateExternalSourceAIServiceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExternalSourceAIServiceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExternalSourceAIServiceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFenceBindRequest() (request *CreateFenceBindRequest) {
     request = &CreateFenceBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6628,6 +6687,65 @@ func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewInheritCloudStorageUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvokeExternalSourceAIServiceTaskRequest() (request *InvokeExternalSourceAIServiceTaskRequest) {
+    request = &InvokeExternalSourceAIServiceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeExternalSourceAIServiceTask")
+    
+    
+    return
+}
+
+func NewInvokeExternalSourceAIServiceTaskResponse() (response *InvokeExternalSourceAIServiceTaskResponse) {
+    response = &InvokeExternalSourceAIServiceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeExternalSourceAIServiceTask
+// 创建外部视频 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) InvokeExternalSourceAIServiceTask(request *InvokeExternalSourceAIServiceTaskRequest) (response *InvokeExternalSourceAIServiceTaskResponse, err error) {
+    return c.InvokeExternalSourceAIServiceTaskWithContext(context.Background(), request)
+}
+
+// InvokeExternalSourceAIServiceTask
+// 创建外部视频 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) InvokeExternalSourceAIServiceTaskWithContext(ctx context.Context, request *InvokeExternalSourceAIServiceTaskRequest) (response *InvokeExternalSourceAIServiceTaskResponse, err error) {
+    if request == nil {
+        request = NewInvokeExternalSourceAIServiceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeExternalSourceAIServiceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeExternalSourceAIServiceTaskResponse()
     err = c.Send(request, response)
     return
 }

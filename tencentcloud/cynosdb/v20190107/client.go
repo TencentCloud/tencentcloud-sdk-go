@@ -4974,7 +4974,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 }
 
 // DescribeTasks
-// 查询任务列表
+// 本接口（DescribeTasks）用于查询任务列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4987,7 +4987,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 }
 
 // DescribeTasks
-// 查询任务列表
+// 本接口（DescribeTasks）用于查询任务列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"

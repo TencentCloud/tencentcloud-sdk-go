@@ -935,6 +935,8 @@ type BizTaskInfo struct {
 
 	// 修改参数任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ModifyParamsData is deprecated.
 	ModifyParamsData []*ModifyParamsData `json:"ModifyParamsData,omitnil,omitempty" name:"ModifyParamsData"`
 
 	// 创建集群任务信息
@@ -2911,6 +2913,20 @@ func (r *CreateResourcePackageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateResourcePackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CrossRegionBackupItem struct {
+	// 备份的目标地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossRegion *string `json:"CrossRegion,omitnil,omitempty" name:"CrossRegion"`
+
+	// 目标地域的备份任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 目标地域的备份状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStatus *string `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 }
 
 type CynosdbCluster struct {
@@ -8362,6 +8378,9 @@ type DescribeSupportProxyVersionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
+	// 代理版本详情
+	SupportProxyVersionDetail []*ProxyVersionInfo `json:"SupportProxyVersionDetail,omitnil,omitempty" name:"SupportProxyVersionDetail"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9896,6 +9915,10 @@ type ManualBackupData struct {
 
 	// 备份时间
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
+
+	// 跨地域备份项详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossRegionBackupInfos []*CrossRegionBackupItem `json:"CrossRegionBackupInfos,omitnil,omitempty" name:"CrossRegionBackupInfos"`
 }
 
 type ModifiableInfo struct {
@@ -13542,6 +13565,16 @@ type ProxySpec struct {
 
 	// 数据库代理内存
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+}
+
+type ProxyVersionInfo struct {
+	// proxy版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
+
+	// 版本描述：GA:稳定版  BETA:尝鲜版，DEPRECATED:过旧，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyVersionType *string `json:"ProxyVersionType,omitnil,omitempty" name:"ProxyVersionType"`
 }
 
 type ProxyZone struct {

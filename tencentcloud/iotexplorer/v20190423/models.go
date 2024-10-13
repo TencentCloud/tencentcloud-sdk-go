@@ -1299,6 +1299,104 @@ func (r *CreateDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateExternalSourceAIServiceTaskRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+}
+
+type CreateExternalSourceAIServiceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+}
+
+func (r *CreateExternalSourceAIServiceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalSourceAIServiceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ServiceType")
+	delete(f, "VideoURLs")
+	delete(f, "CustomId")
+	delete(f, "Config")
+	delete(f, "ROI")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExternalSourceAIServiceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExternalSourceAIServiceTaskResponseParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateExternalSourceAIServiceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExternalSourceAIServiceTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateExternalSourceAIServiceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalSourceAIServiceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFenceBindRequestParams struct {
 	// 围栏Id
 	FenceId *int64 `json:"FenceId,omitnil,omitempty" name:"FenceId"`
@@ -8979,6 +9077,111 @@ type InstanceDetail struct {
 	// 最大在线设备数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDeviceOnlineCount *int64 `json:"MaxDeviceOnlineCount,omitnil,omitempty" name:"MaxDeviceOnlineCount"`
+}
+
+// Predefined struct for user
+type InvokeExternalSourceAIServiceTaskRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+}
+
+type InvokeExternalSourceAIServiceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+}
+
+func (r *InvokeExternalSourceAIServiceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeExternalSourceAIServiceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ServiceType")
+	delete(f, "VideoURLs")
+	delete(f, "CustomId")
+	delete(f, "Config")
+	delete(f, "ROI")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeExternalSourceAIServiceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeExternalSourceAIServiceTaskResponseParams struct {
+	// 任务是否执行完成
+	Completed *bool `json:"Completed,omitnil,omitempty" name:"Completed"`
+
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfo *CloudStorageAIServiceTask `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InvokeExternalSourceAIServiceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *InvokeExternalSourceAIServiceTaskResponseParams `json:"Response"`
+}
+
+func (r *InvokeExternalSourceAIServiceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeExternalSourceAIServiceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

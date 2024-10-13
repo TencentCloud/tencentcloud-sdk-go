@@ -4881,6 +4881,10 @@ func NewDescribeAbnormalProcessEventsExportResponse() (response *DescribeAbnorma
 }
 
 // DescribeAbnormalProcessEventsExport
+// 接口已废弃
+//
+// 
+//
 // 查询运行时异常进程事件列表信息导出
 //
 // 可能返回的错误码:
@@ -4896,6 +4900,10 @@ func (c *Client) DescribeAbnormalProcessEventsExport(request *DescribeAbnormalPr
 }
 
 // DescribeAbnormalProcessEventsExport
+// 接口已废弃
+//
+// 
+//
 // 查询运行时异常进程事件列表信息导出
 //
 // 可能返回的错误码:
@@ -5125,6 +5133,10 @@ func NewDescribeAbnormalProcessRulesExportResponse() (response *DescribeAbnormal
 }
 
 // DescribeAbnormalProcessRulesExport
+// 接口已废弃
+//
+// 
+//
 // 查询运行时异常进程策略列表信息导出
 //
 // 可能返回的错误码:
@@ -5140,6 +5152,10 @@ func (c *Client) DescribeAbnormalProcessRulesExport(request *DescribeAbnormalPro
 }
 
 // DescribeAbnormalProcessRulesExport
+// 接口已废弃
+//
+// 
+//
 // 查询运行时异常进程策略列表信息导出
 //
 // 可能返回的错误码:
@@ -5497,6 +5513,10 @@ func NewDescribeAccessControlRulesExportResponse() (response *DescribeAccessCont
 }
 
 // DescribeAccessControlRulesExport
+// 接口已废弃
+//
+// 
+//
 // 查询运行时访问控制策略列表导出
 //
 // 可能返回的错误码:
@@ -5512,6 +5532,10 @@ func (c *Client) DescribeAccessControlRulesExport(request *DescribeAccessControl
 }
 
 // DescribeAccessControlRulesExport
+// 接口已废弃
+//
+// 
+//
 // 查询运行时访问控制策略列表导出
 //
 // 可能返回的错误码:
@@ -6543,6 +6567,10 @@ func NewDescribeAssetImageListExportResponse() (response *DescribeAssetImageList
 }
 
 // DescribeAssetImageListExport
+// 接口已废弃
+//
+// 
+//
 // 容器安全搜索查询镜像列表导出
 //
 // 可能返回的错误码:
@@ -6555,6 +6583,10 @@ func (c *Client) DescribeAssetImageListExport(request *DescribeAssetImageListExp
 }
 
 // DescribeAssetImageListExport
+// 接口已废弃
+//
+// 
+//
 // 容器安全搜索查询镜像列表导出
 //
 // 可能返回的错误码:
@@ -9636,6 +9668,10 @@ func NewDescribeEscapeEventsExportResponse() (response *DescribeEscapeEventsExpo
 }
 
 // DescribeEscapeEventsExport
+// 接口已废弃
+//
+// 
+//
 // DescribeEscapeEventsExport  查询容器逃逸事件列表导出
 //
 // 可能返回的错误码:
@@ -9647,6 +9683,10 @@ func (c *Client) DescribeEscapeEventsExport(request *DescribeEscapeEventsExportR
 }
 
 // DescribeEscapeEventsExport
+// 接口已废弃
+//
+// 
+//
 // DescribeEscapeEventsExport  查询容器逃逸事件列表导出
 //
 // 可能返回的错误码:

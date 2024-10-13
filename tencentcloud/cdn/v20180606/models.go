@@ -7299,7 +7299,7 @@ type DomainFilter struct {
 	// - tagKey：标签键。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 过滤字段值。
+	// 过滤字段值，默认最多传 5 个。当 Name 是 origin/domain 且 Fuzzy 传 true，最多传 1 个。
 	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 是否启用模糊查询，仅支持过滤字段名为origin，domain。

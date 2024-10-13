@@ -2258,10 +2258,10 @@ type DiskConfig struct {
 }
 
 type Filter struct {
-	// 过滤键的名称。
+	// 过滤键的名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 一个或者多个过滤值。
+	// 一个或者多个过滤值
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 

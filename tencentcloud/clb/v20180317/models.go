@@ -8392,38 +8392,48 @@ type RulesItems struct {
 
 // Predefined struct for user
 type SetCustomizedConfigForLoadBalancerRequestParams struct {
-	// 操作类型：'ADD', 'DELETE', 'UPDATE', 'BIND', 'UNBIND'
+	// 操作类型。
+	// - ADD：添加
+	// - DELETE：删除
+	// - UPDATE：修改
+	// - BIND：绑定
+	// - UNBIND：解绑
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 除了创建个性化配置外，必传此字段，如：pz-1234abcd
+	// 个性化配置ID。除了创建个性化配置外，必传此字段，如：pz-1234abcd
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
 
-	// 创建个性化配置或修改个性化配置的内容时，必传此字段
+	// 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
 
-	// 创建个性化配置或修改个性化配置的名字时，必传此字段
+	// 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 绑定解绑时，必传此字段
+	// 负载均衡实例ID。绑定解绑时，必传此字段
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 
 type SetCustomizedConfigForLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作类型：'ADD', 'DELETE', 'UPDATE', 'BIND', 'UNBIND'
+	// 操作类型。
+	// - ADD：添加
+	// - DELETE：删除
+	// - UPDATE：修改
+	// - BIND：绑定
+	// - UNBIND：解绑
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 除了创建个性化配置外，必传此字段，如：pz-1234abcd
+	// 个性化配置ID。除了创建个性化配置外，必传此字段，如：pz-1234abcd
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
 
-	// 创建个性化配置或修改个性化配置的内容时，必传此字段
+	// 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
 
-	// 创建个性化配置或修改个性化配置的名字时，必传此字段
+	// 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 绑定解绑时，必传此字段
+	// 负载均衡实例ID。绑定解绑时，必传此字段
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 

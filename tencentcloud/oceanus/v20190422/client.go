@@ -1330,6 +1330,73 @@ func (c *Client) DescribeJobEventsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeJobRuntimeInfoRequest() (request *DescribeJobRuntimeInfoRequest) {
+    request = &DescribeJobRuntimeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobRuntimeInfo")
+    
+    
+    return
+}
+
+func NewDescribeJobRuntimeInfoResponse() (response *DescribeJobRuntimeInfoResponse) {
+    response = &DescribeJobRuntimeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobRuntimeInfo
+// 获取作业运行时的信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  INVALIDPARAMETERVALUE_TIMESTAMP = "InvalidParameterValue.Timestamp"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeJobRuntimeInfo(request *DescribeJobRuntimeInfoRequest) (response *DescribeJobRuntimeInfoResponse, err error) {
+    return c.DescribeJobRuntimeInfoWithContext(context.Background(), request)
+}
+
+// DescribeJobRuntimeInfo
+// 获取作业运行时的信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  INVALIDPARAMETERVALUE_TIMESTAMP = "InvalidParameterValue.Timestamp"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeJobRuntimeInfoWithContext(ctx context.Context, request *DescribeJobRuntimeInfoRequest) (response *DescribeJobRuntimeInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobRuntimeInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobRuntimeInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobRuntimeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobSavepointRequest() (request *DescribeJobSavepointRequest) {
     request = &DescribeJobSavepointRequest{
         BaseRequest: &tchttp.BaseRequest{},

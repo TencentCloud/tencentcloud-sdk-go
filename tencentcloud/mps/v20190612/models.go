@@ -4938,6 +4938,143 @@ func (r *CreateTranscodeTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateVideoDatabaseEntryTaskRequestParams struct {
+	// 待入库视频信息
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 可选，入库任务完成后向指定的回调地址传递任务结果，目前仅支持URL
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+}
+
+type CreateVideoDatabaseEntryTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待入库视频信息
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 可选，入库任务完成后向指定的回调地址传递任务结果，目前仅支持URL
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+}
+
+func (r *CreateVideoDatabaseEntryTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoDatabaseEntryTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	delete(f, "TaskNotifyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoDatabaseEntryTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoDatabaseEntryTaskResponseParams struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoDatabaseEntryTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoDatabaseEntryTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoDatabaseEntryTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoDatabaseEntryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSearchTaskRequestParams struct {
+	// 用于检索任务的输入
+	SearchValueInput *SearchValueInput `json:"SearchValueInput,omitnil,omitempty" name:"SearchValueInput"`
+
+	// 返回视频的最大数量，取值范围[1,20]，将返回最相近的前Limit条视频,默认为5
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 可选，用于检索任务完成后向回调方发送检索结果，目前仅支持URL方式
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+}
+
+type CreateVideoSearchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用于检索任务的输入
+	SearchValueInput *SearchValueInput `json:"SearchValueInput,omitnil,omitempty" name:"SearchValueInput"`
+
+	// 返回视频的最大数量，取值范围[1,20]，将返回最相近的前Limit条视频,默认为5
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 可选，用于检索任务完成后向回调方发送检索结果，目前仅支持URL方式
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+}
+
+func (r *CreateVideoSearchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSearchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchValueInput")
+	delete(f, "Limit")
+	delete(f, "TaskNotifyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoSearchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSearchTaskResponseParams struct {
+	// 检索任务的Id，用于后续查询任务状态和返回任务结果时标识任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoSearchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoSearchTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoSearchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSearchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateWatermarkTemplateRequestParams struct {
 	// 水印类型，可选值：
 	// <li>image：图片水印；</li>
@@ -9001,6 +9138,138 @@ func (r *DescribeTranscodeTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTranscodeTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoDatabaseEntryTaskDetailRequestParams struct {
+	// 待查询的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeVideoDatabaseEntryTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待查询的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeVideoDatabaseEntryTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoDatabaseEntryTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoDatabaseEntryTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoDatabaseEntryTaskDetailResponseParams struct {
+	// 查询的任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 查询的任务的状态，可能为WAITING、PROCESSING、FAIL、SUCCESS。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询的任务的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoDBEntryTaskResults []*VideoDBEntryTaskResult `json:"VideoDBEntryTaskResults,omitnil,omitempty" name:"VideoDBEntryTaskResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoDatabaseEntryTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoDatabaseEntryTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoDatabaseEntryTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoDatabaseEntryTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSearchTaskDetailRequestParams struct {
+	// 待查询的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeVideoSearchTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待查询的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeVideoSearchTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSearchTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoSearchTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSearchTaskDetailResponseParams struct {
+	// 查询的任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 查询的任务的状态，可能为WAITING、PROCESSING、FAIL、SUCCESS。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询的任务的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchTaskResults []*SearchTaskResult `json:"SearchTaskResults,omitnil,omitempty" name:"SearchTaskResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoSearchTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoSearchTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoSearchTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSearchTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15646,6 +15915,26 @@ type ScratchRepairConfig struct {
 	Intensity *float64 `json:"Intensity,omitnil,omitempty" name:"Intensity"`
 }
 
+type SearchTaskResult struct {
+	// 视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 检索获得的视频ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoId *string `json:"VideoId,omitnil,omitempty" name:"VideoId"`
+}
+
+type SearchValueInput struct {
+	// 检索输入的类型，目前支持：
+	// Text：文本检索
+	SearchValueType *string `json:"SearchValueType,omitnil,omitempty" name:"SearchValueType"`
+
+	// 当SearchValueType为Text时有效且必填，用于检索视频的文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextInput *string `json:"TextInput,omitnil,omitempty" name:"TextInput"`
+}
+
 type SegmentRecognitionItem struct {
 	// 置信度。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
@@ -15667,6 +15956,23 @@ type SegmentRecognitionItem struct {
 	// 分段概要。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+}
+
+type SegmentSpecificInfo struct {
+	// 启动分片时长开关，可选值：
+	// on：打开
+	// off：关闭
+	// 默认off
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 启动时分片时长，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentTime *int64 `json:"FragmentTime,omitnil,omitempty" name:"FragmentTime"`
+
+	// 生效分片数，表示前FragmentEndNum个分片以FragmentTime时长切片，取值>=1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentEndNum *int64 `json:"FragmentEndNum,omitnil,omitempty" name:"FragmentEndNum"`
 }
 
 type SharpEnhanceConfig struct {
@@ -16528,6 +16834,12 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
 }
 
+type VideoDBEntryTaskResult struct {
+	// 入库的视频ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoId *string `json:"VideoId,omitnil,omitempty" name:"VideoId"`
+}
+
 type VideoDenoiseConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -16600,7 +16912,6 @@ type VideoTemplateInfo struct {
 	// <li>mpeg2：MPEG2 编码</li>
 	// <li>dnxhd：DNxHD 编码</li>
 	// <li>mv-hevc：MV-HEVC 编码</li>
-	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 	// 
 	// 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
@@ -16642,22 +16953,41 @@ type VideoTemplateInfo struct {
 	// 默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。 当填 0 或不填时，系统将自动设置 gop 长度。
+	// 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]，
+	// 当填 0 或不填时，系统将自动设置 gop 长度。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+
+	// Gop数值单位，可选值：
+	// frame：表示帧
+	// second：表示秒
+	// 默认值：frame
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GopUnit *string `json:"GopUnit,omitnil,omitempty" name:"GopUnit"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+	// <li>smarttailor：智能剪裁：智能选取视频画面，来保证画面比例裁剪。</li>
 	// 默认值：black 。
 	// 注意：自适应码流只支持 stretch、black。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 
-	// 视频恒定码率控制因子，取值范围为[1, 51]。
+	// 视频恒定码率控制因子，取值范围为[0, 51]。
 	// 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
 	// 如果没有特殊需求，不建议指定该参数。
+	// 注意：
+	// 若Mode选择ABR，无需配置Vcrf值
+	// 若Mode选择CBR，无需配置Vcrf值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vcrf *uint64 `json:"Vcrf,omitnil,omitempty" name:"Vcrf"`
+
+	// 分片平均时长，范围：（0-10]，单位：秒
+	// 默认值：10
+	// 注意：只能在封装格式hls的情况下使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsTime *uint64 `json:"HlsTime,omitnil,omitempty" name:"HlsTime"`
 
 	// hls 分片类型，可选值 ：
 	// <li>0：HLS+TS 切片</li>
@@ -16679,6 +17009,68 @@ type VideoTemplateInfo struct {
 	// 默认值:side_by_side
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stereo3dType *string `json:"Stereo3dType,omitnil,omitempty" name:"Stereo3dType"`
+
+	// Profile，适用于不同场景。
+	// baseline: 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。
+	// main: 主流Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。
+	// high: 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。
+	// default：随原视频自动填充。    
+	// 
+	// 仅编码标准选择h264时出现该配置， 支持 baseline/main/high，默认为：default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoProfile *string `json:"VideoProfile,omitnil,omitempty" name:"VideoProfile"`
+
+	// 编码器级别，默认为自动（""）
+	// 若编码标准选择H264: 支持以下选项：""，1 , 1.1 , 1.2 , 1.3 , 2 , 2.1 , 2.2 , 3 , 3.1 , 3.2 , 4 , 4.1 , 4.2 , 5 , 5.1
+	// 若编码标准选择H265: 支持以下选项：""，1 , 2 , 2.1 , 3 , 3.1 , 4 , 4.1 , 5 , 5.1 , 5.2 , 6 , 6.1 , 6.2 , 8.5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoLevel *string `json:"VideoLevel,omitnil,omitempty" name:"VideoLevel"`
+
+	// 参考帧之间的B帧数，默认选自动，支持 0 - 16
+	// 注意：不填表示使用自动
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bframes *int64 `json:"Bframes,omitnil,omitempty" name:"Bframes"`
+
+	// 码率控制模式：可选值：
+	// VBR（Variable Bit Rate）：动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。
+	// ABR（Average Bit Rate）：平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。
+	// CBR（Constant Bit Rate）：恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。
+	// VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。
+	// 默认选择 VBR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 显示高宽比，可选值：[1:1，2:1，default]
+	// 默认值：default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sar *string `json:"Sar,omitnil,omitempty" name:"Sar"`
+
+	// 自适应I帧决策，开启后，媒体处理将自动识别视频中不同场景之间的过渡点（通常是视觉上显著不同的帧，比如从一个镜头切换到另一个镜头），在这些点自适应插入关键帧（I帧），从而提高视频的随机访问性和编码效率。可选值：
+	// 0：关闭自适应I帧决策 
+	// 1：使用自适应I帧决策
+	// 默认值：0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoScenecut *int64 `json:"NoScenecut,omitnil,omitempty" name:"NoScenecut"`
+
+	// 比特位：支持8/10，默认为8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitDepth *int64 `json:"BitDepth,omitnil,omitempty" name:"BitDepth"`
+
+	// 保持原始时间戳：可选值：
+	// 0：表示关闭
+	// 1：表示打开
+	// 默认是关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawPts *int64 `json:"RawPts,omitnil,omitempty" name:"RawPts"`
+
+	// 按比例压缩码率，开启后，将根据比例来调整输出视频的码率。填写压缩率后，系统会根据视频源码率自动计算目标输出码率。压缩率范围0-100
+	// 不填此值表示不开启，默认不开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compress *int64 `json:"Compress,omitnil,omitempty" name:"Compress"`
+
+	// 切片特殊配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSpecificInfo *SegmentSpecificInfo `json:"SegmentSpecificInfo,omitnil,omitempty" name:"SegmentSpecificInfo"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -16692,7 +17084,6 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>mpeg2：MPEG2 编码</li>
 	// <li>dnxhd：DNxHD 编码</li>
 	// <li>mv-hevc：MV-HEVC 编码</li>
-	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 	// 
 	// 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
@@ -16733,20 +17124,35 @@ type VideoTemplateInfoForUpdate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。当填 0 时，系统将自动设置 gop 长度。
+	// 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]。
+	// 当填 0 时，系统将自动设置 gop 长度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+
+	// Gop数值单位，可选值： 
+	// frame：表示帧 
+	// second：表示秒
+	// 默认值：frame
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GopUnit *string `json:"GopUnit,omitnil,omitempty" name:"GopUnit"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	//  <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+	// <li>smarttailor：智能剪裁：智能选取视频画面，来保证画面比例裁剪。</li>
+	// 默认值：black 。
+	// 注意：自适应码流只支持 stretch、black。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 
-	// 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。 
+	// 视频恒定码率控制因子。取值范围为[0, 51]和100。
 	// 如果没有特殊需求，不建议指定该参数。
+	// 注意：
+	// 需要修改为自动时，填100
+	// 若Mode选择ABR，无需配置Vcrf值
+	// 若Mode选择CBR，无需配置Vcrf值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vcrf *uint64 `json:"Vcrf,omitnil,omitempty" name:"Vcrf"`
 
@@ -16756,6 +17162,12 @@ type VideoTemplateInfoForUpdate struct {
 	// 默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentAdaptStream *uint64 `json:"ContentAdaptStream,omitnil,omitempty" name:"ContentAdaptStream"`
+
+	// 分片平均时长，取值范围：（0-10]，单位：秒
+	// 默认值：10
+	// 注意：只在封装格式HLS时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsTime *uint64 `json:"HlsTime,omitnil,omitempty" name:"HlsTime"`
 
 	// hls 分片类型，可选值：
 	// <li>0：HLS+TS 切片</li>
@@ -16777,6 +17189,69 @@ type VideoTemplateInfoForUpdate struct {
 	// 默认值:side_by_side
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stereo3dType *string `json:"Stereo3dType,omitnil,omitempty" name:"Stereo3dType"`
+
+	// Profile，适用于不同场景。 
+	// baseline: 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。 
+	// main: 主流Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。 
+	// high: 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。
+	// default：随原视频自动填充
+	// 
+	// 仅编码标准选择h264时出现该配置，默认为：default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoProfile *string `json:"VideoProfile,omitnil,omitempty" name:"VideoProfile"`
+
+	// 编码器级别，默认为自动（""）
+	// 若编码标准选择H264: 支持以下选项：""，1 , 1.1 , 1.2 , 1.3 , 2 , 2.1 , 2.2 , 3 , 3.1 , 3.2 , 4 , 4.1 , 4.2 , 5 , 5.1 
+	// 若编码标准选择H265: 支持以下选项：""，1 , 2 , 2.1 , 3 , 3.1 , 4 , 4.1 , 5 , 5.1 , 5.2 , 6 , 6.1 , 6.2 , 8.5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoLevel *string `json:"VideoLevel,omitnil,omitempty" name:"VideoLevel"`
+
+	// 最大连续B帧数，默认选自动，支持 0 - 16和-1
+	// 注意：
+	// -1表示修改为自动值	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bframes *int64 `json:"Bframes,omitnil,omitempty" name:"Bframes"`
+
+	// 码率控制模式：可选值： 
+	// VBR（Variable Bit Rate）：动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。 
+	// ABR（Average Bit Rate）：平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。 
+	// CBR（Constant Bit Rate）：恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。 
+	// VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。 
+	// 默认选择 VBR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 显示高宽比，可选值：[1:1，2:1，default]
+	// 默认值：default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sar *string `json:"Sar,omitnil,omitempty" name:"Sar"`
+
+	// 自适应I帧决策，开启后，媒体处理将自动识别视频中不同场景之间的过渡点（通常是视觉上显著不同的帧，比如从一个镜头切换到另一个镜头），在这些点自适应插入关键帧（I帧），从而提高视频的随机访问性和编码效率。可选值： 
+	// 0：关闭自适应I帧决策 
+	// 1：使用自适应I帧决策 
+	// 默认值：0	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoScenecut *int64 `json:"NoScenecut,omitnil,omitempty" name:"NoScenecut"`
+
+	// 比特位：支持8/10，默认为8	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitDepth *int64 `json:"BitDepth,omitnil,omitempty" name:"BitDepth"`
+
+	// 保持原始时间戳：可选值： 
+	// 0：表示关闭 
+	// 1：表示打开 
+	// 默认是关闭	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawPts *int64 `json:"RawPts,omitnil,omitempty" name:"RawPts"`
+
+	// 按比例压缩码率，开启后，将根据比例来调整输出视频的码率。填写压缩率后，系统会根据视频源码率自动计算目标输出码率。压缩率范围0-100，可选值：[0-100]和-1 
+	// 注意：-1表示修改为自动	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compress *int64 `json:"Compress,omitnil,omitempty" name:"Compress"`
+
+	// 切片特殊配置	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSpecificInfo *SegmentSpecificInfo `json:"SegmentSpecificInfo,omitnil,omitempty" name:"SegmentSpecificInfo"`
 }
 
 type VolumeBalanceConfig struct {

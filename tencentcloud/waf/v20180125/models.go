@@ -1333,6 +1333,130 @@ func (r *AddSpartaProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ApiAsset struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 请求方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// api名称
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 数据标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label []*string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 过去7天是否活跃
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Active *bool `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// 最近更新时间
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// api发现时间
+	InsertTime *uint64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// 资产状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 风险等级，100,200,300对应低中高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 近30天调用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否鉴权，1标识是，0表示否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAuth *int64 `json:"IsAuth,omitnil,omitempty" name:"IsAuth"`
+
+	// 如果添加了api入参检测规则，则此id返回值不为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiRequestRuleId *int64 `json:"ApiRequestRuleId,omitnil,omitempty" name:"ApiRequestRuleId"`
+
+	// 如果添加了api限流规则，则此id返回值不为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiLimitRuleId *int64 `json:"ApiLimitRuleId,omitnil,omitempty" name:"ApiLimitRuleId"`
+
+	// 对象接入和泛域名接入时，展示host列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostList []*string `json:"HostList,omitnil,omitempty" name:"HostList"`
+}
+
+type ApiDataFilter struct {
+	// 数据标签，是否活跃，功能场景
+	Entity *string `json:"Entity,omitnil,omitempty" name:"Entity"`
+
+	// 等于
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 日期，手机号，邮箱等
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ApiDetailSampleHistory struct {
+	// 样例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SampleNme *string `json:"SampleNme,omitnil,omitempty" name:"SampleNme"`
+
+	// 请求样例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepLog *string `json:"RepLog,omitnil,omitempty" name:"RepLog"`
+
+	// 响应样例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RspLog *string `json:"RspLog,omitnil,omitempty" name:"RspLog"`
+}
+
+type ApiParameterType struct {
+	// 参数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
+
+	// 参数类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 参数位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 数据标签(敏感字段)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label []*string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 来源是请求或者响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 是否需要泛化 ，0表示不需要，1表示需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+
+	// 是否鉴权，1表示是，0表示否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAuth *int64 `json:"IsAuth,omitnil,omitempty" name:"IsAuth"`
+}
+
 type ApiPkg struct {
 	// 资源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4156,6 +4280,250 @@ type DescribeAntiLeakageItem struct {
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+// Predefined struct for user
+type DescribeApiDetailRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// Api名称
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 请求方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 是否仅查询敏感的，1表示查询，0表示不查询
+	IsSensitive *int64 `json:"IsSensitive,omitnil,omitempty" name:"IsSensitive"`
+
+	// 是否仅查询泛化的，1表示查询，0表示不查询
+	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
+type DescribeApiDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// Api名称
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 请求方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 是否仅查询敏感的，1表示查询，0表示不查询
+	IsSensitive *int64 `json:"IsSensitive,omitnil,omitempty" name:"IsSensitive"`
+
+	// 是否仅查询泛化的，1表示查询，0表示不查询
+	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
+func (r *DescribeApiDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "ApiName")
+	delete(f, "Method")
+	delete(f, "IsSensitive")
+	delete(f, "IsPan")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiDetailResponseParams struct {
+	// 请求样例，json字符串格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
+
+	// 请求参数样例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterList []*ApiParameterType `json:"ParameterList,omitnil,omitempty" name:"ParameterList"`
+
+	// 当前场景标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 敏感字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveFields []*string `json:"SensitiveFields,omitnil,omitempty" name:"SensitiveFields"`
+
+	// 7天内是否活跃
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
+
+	// 访问ip数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpCount *int64 `json:"IpCount,omitnil,omitempty" name:"IpCount"`
+
+	// 访问地域数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCount *int64 `json:"RegionCount,omitnil,omitempty" name:"RegionCount"`
+
+	// 关联事件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 涉敏数据条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveCount *uint64 `json:"SensitiveCount,omitnil,omitempty" name:"SensitiveCount"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 响应体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RspLog *string `json:"RspLog,omitnil,omitempty" name:"RspLog"`
+
+	// 昨日访问峰值QPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxQPS *uint64 `json:"MaxQPS,omitnil,omitempty" name:"MaxQPS"`
+
+	// 历史样例
+	ApiDetailSampleHistory []*ApiDetailSampleHistory `json:"ApiDetailSampleHistory,omitnil,omitempty" name:"ApiDetailSampleHistory"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiListVersionTwoRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 页面索引，第几页
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件
+	Filters []*ApiDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方法，1 升序，-1 降序
+	Sort []*string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 是否进行总数查询
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+
+	// 查询开始时间
+	StartTs *int64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 查询结束时间
+	EndTs *int64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+}
+
+type DescribeApiListVersionTwoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 页面索引，第几页
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件
+	Filters []*ApiDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方法，1 升序，-1 降序
+	Sort []*string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 是否进行总数查询
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+
+	// 查询开始时间
+	StartTs *int64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 查询结束时间
+	EndTs *int64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+}
+
+func (r *DescribeApiListVersionTwoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiListVersionTwoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "Sort")
+	delete(f, "NeedTotalCount")
+	delete(f, "StartTs")
+	delete(f, "EndTs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiListVersionTwoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiListVersionTwoResponseParams struct {
+	// api资产列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ApiAsset `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiListVersionTwoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiListVersionTwoResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiListVersionTwoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiListVersionTwoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

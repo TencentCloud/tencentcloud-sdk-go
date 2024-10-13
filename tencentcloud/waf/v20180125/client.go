@@ -2380,6 +2380,106 @@ func (c *Client) DescribeAntiInfoLeakageRulesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeApiDetailRequest() (request *DescribeApiDetailRequest) {
+    request = &DescribeApiDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiDetail")
+    
+    
+    return
+}
+
+func NewDescribeApiDetailResponse() (response *DescribeApiDetailResponse) {
+    response = &DescribeApiDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiDetail
+// 获取Api请求详情信息
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiDetail(request *DescribeApiDetailRequest) (response *DescribeApiDetailResponse, err error) {
+    return c.DescribeApiDetailWithContext(context.Background(), request)
+}
+
+// DescribeApiDetail
+// 获取Api请求详情信息
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiDetailWithContext(ctx context.Context, request *DescribeApiDetailRequest) (response *DescribeApiDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiListVersionTwoRequest() (request *DescribeApiListVersionTwoRequest) {
+    request = &DescribeApiListVersionTwoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiListVersionTwo")
+    
+    
+    return
+}
+
+func NewDescribeApiListVersionTwoResponse() (response *DescribeApiListVersionTwoResponse) {
+    response = &DescribeApiListVersionTwoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiListVersionTwo
+// api资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiListVersionTwo(request *DescribeApiListVersionTwoRequest) (response *DescribeApiListVersionTwoResponse, err error) {
+    return c.DescribeApiListVersionTwoWithContext(context.Background(), request)
+}
+
+// DescribeApiListVersionTwo
+// api资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiListVersionTwoWithContext(ctx context.Context, request *DescribeApiListVersionTwoRequest) (response *DescribeApiListVersionTwoResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiListVersionTwoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiListVersionTwo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiListVersionTwoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAreaBanAreasRequest() (request *DescribeAreaBanAreasRequest) {
     request = &DescribeAreaBanAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},

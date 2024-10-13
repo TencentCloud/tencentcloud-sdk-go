@@ -1982,6 +1982,14 @@ type InstanceInfo struct {
 	// 实例扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details *InstanceDetail `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 安全组白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWhiteSGs *bool `json:"IsWhiteSGs,omitnil,omitempty" name:"IsWhiteSGs"`
+
+	// 绑定的安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindSGs []*string `json:"BindSGs,omitnil,omitempty" name:"BindSGs"`
 }
 
 type InstanceNode struct {

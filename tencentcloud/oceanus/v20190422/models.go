@@ -2130,6 +2130,77 @@ func (r *DescribeJobEventsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeJobRuntimeInfoRequestParams struct {
+	// 作业ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 工作空间ID
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 作业运行信息 key
+	IncludeInfo []*string `json:"IncludeInfo,omitnil,omitempty" name:"IncludeInfo"`
+}
+
+type DescribeJobRuntimeInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 工作空间ID
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 作业运行信息 key
+	IncludeInfo []*string `json:"IncludeInfo,omitnil,omitempty" name:"IncludeInfo"`
+}
+
+func (r *DescribeJobRuntimeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobRuntimeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "WorkSpaceId")
+	delete(f, "IncludeInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobRuntimeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobRuntimeInfoResponseParams struct {
+	// 作业运行时信息
+	JobRuntimeInfo []*JobRuntimeInfo `json:"JobRuntimeInfo,omitnil,omitempty" name:"JobRuntimeInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobRuntimeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobRuntimeInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobRuntimeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobRuntimeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobSavepointRequestParams struct {
 	// 作业 SerialId
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -3585,6 +3656,16 @@ type JobInstanceForSubmissionLog struct {
 
 	// 作业实例启动的时间（毫秒）
 	StartingMillis *int64 `json:"StartingMillis,omitnil,omitempty" name:"StartingMillis"`
+}
+
+type JobRuntimeInfo struct {
+	// 运行信息的key，目前支持：TaskManagers：taskmanager pod 列表； StreamGraph：作业对应的 StreamGraph；SubTasks：作业的 subtask 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 运行信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type JobV1 struct {

@@ -381,6 +381,12 @@ type AuthorizeDSPAMetaResourcesRequestParams struct {
 
 	// 用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
 	ResourcesAccount []*DspaResourceAccount `json:"ResourcesAccount,omitnil,omitempty" name:"ResourcesAccount"`
+
+	// 创建默认主模板扫描任务
+	CreateDefaultTask *bool `json:"CreateDefaultTask,omitnil,omitempty" name:"CreateDefaultTask"`
+
+	// 授权范围（all:授权整个数据源 manual:手动指定数据库）
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 type AuthorizeDSPAMetaResourcesRequest struct {
@@ -400,6 +406,12 @@ type AuthorizeDSPAMetaResourcesRequest struct {
 
 	// 用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
 	ResourcesAccount []*DspaResourceAccount `json:"ResourcesAccount,omitnil,omitempty" name:"ResourcesAccount"`
+
+	// 创建默认主模板扫描任务
+	CreateDefaultTask *bool `json:"CreateDefaultTask,omitnil,omitempty" name:"CreateDefaultTask"`
+
+	// 授权范围（all:授权整个数据源 manual:手动指定数据库）
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 func (r *AuthorizeDSPAMetaResourcesRequest) ToJsonString() string {
@@ -419,6 +431,8 @@ func (r *AuthorizeDSPAMetaResourcesRequest) FromJsonString(s string) error {
 	delete(f, "MetaType")
 	delete(f, "ResourceRegion")
 	delete(f, "ResourcesAccount")
+	delete(f, "CreateDefaultTask")
+	delete(f, "AuthRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuthorizeDSPAMetaResourcesRequest has unknown keys!", "")
 	}
@@ -2455,12 +2469,6 @@ type CreateDSPASelfBuildMetaResourceRequestParams struct {
 	// 自建云资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 可用于访问自建云资源的IP。
-	ResourceVip *string `json:"ResourceVip,omitnil,omitempty" name:"ResourceVip"`
-
-	// 可用于访问自建云资源的端口。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitnil,omitempty" name:"ResourceVPort"`
-
 	// 自建云资源的VPC ID。
 	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitnil,omitempty" name:"ResourceUniqueVpcId"`
 
@@ -2472,10 +2480,18 @@ type CreateDSPASelfBuildMetaResourceRequestParams struct {
 	// clb - 通过LB的方式进行访问。
 	ResourceAccessType *string `json:"ResourceAccessType,omitnil,omitempty" name:"ResourceAccessType"`
 
-	// 账户名。
+	// 可用于访问自建云资源的IP。
+	// emr的连接不需要使用该字段
+	ResourceVip *string `json:"ResourceVip,omitnil,omitempty" name:"ResourceVip"`
+
+	// 可用于访问自建云资源的端口。
+	// emr的连接不需要使用该字段
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil,omitempty" name:"ResourceVPort"`
+
+	// 账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账户密码。
+	// 账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 资源名称，1-60个字符。
@@ -2489,6 +2505,9 @@ type CreateDSPASelfBuildMetaResourceRequestParams struct {
 
 	// 实例值
 	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
+
+	// 授权范围（all:授权整个数据源 manual:手动指定数据库）
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 type CreateDSPASelfBuildMetaResourceRequest struct {
@@ -2509,12 +2528,6 @@ type CreateDSPASelfBuildMetaResourceRequest struct {
 	// 自建云资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 可用于访问自建云资源的IP。
-	ResourceVip *string `json:"ResourceVip,omitnil,omitempty" name:"ResourceVip"`
-
-	// 可用于访问自建云资源的端口。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitnil,omitempty" name:"ResourceVPort"`
-
 	// 自建云资源的VPC ID。
 	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitnil,omitempty" name:"ResourceUniqueVpcId"`
 
@@ -2526,10 +2539,18 @@ type CreateDSPASelfBuildMetaResourceRequest struct {
 	// clb - 通过LB的方式进行访问。
 	ResourceAccessType *string `json:"ResourceAccessType,omitnil,omitempty" name:"ResourceAccessType"`
 
-	// 账户名。
+	// 可用于访问自建云资源的IP。
+	// emr的连接不需要使用该字段
+	ResourceVip *string `json:"ResourceVip,omitnil,omitempty" name:"ResourceVip"`
+
+	// 可用于访问自建云资源的端口。
+	// emr的连接不需要使用该字段
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil,omitempty" name:"ResourceVPort"`
+
+	// 账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账户密码。
+	// 账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 资源名称，1-60个字符。
@@ -2543,6 +2564,9 @@ type CreateDSPASelfBuildMetaResourceRequest struct {
 
 	// 实例值
 	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
+
+	// 授权范围（all:授权整个数据源 manual:手动指定数据库）
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 func (r *CreateDSPASelfBuildMetaResourceRequest) ToJsonString() string {
@@ -2561,16 +2585,17 @@ func (r *CreateDSPASelfBuildMetaResourceRequest) FromJsonString(s string) error 
 	delete(f, "MetaType")
 	delete(f, "ResourceRegion")
 	delete(f, "ResourceId")
-	delete(f, "ResourceVip")
-	delete(f, "ResourceVPort")
 	delete(f, "ResourceUniqueVpcId")
 	delete(f, "ResourceUniqueSubnetId")
 	delete(f, "ResourceAccessType")
+	delete(f, "ResourceVip")
+	delete(f, "ResourceVPort")
 	delete(f, "UserName")
 	delete(f, "Password")
 	delete(f, "ResourceName")
 	delete(f, "InstanceType")
 	delete(f, "InstanceValue")
+	delete(f, "AuthRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPASelfBuildMetaResourceRequest has unknown keys!", "")
 	}
@@ -2857,6 +2882,9 @@ type DSPACosMetaDataInfo struct {
 
 	// COS桶存储量
 	Storage *float64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 治理授权状态，0:关闭 1：开启
+	GovernAuthStatus *int64 `json:"GovernAuthStatus,omitnil,omitempty" name:"GovernAuthStatus"`
 }
 
 type DSPADataSourceDbInfo struct {
@@ -10508,6 +10536,14 @@ type DspaInstance struct {
 	// 实例渠道
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 已授权的实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsAuthCount *int64 `json:"InsAuthCount,omitnil,omitempty" name:"InsAuthCount"`
+
+	// 已购买的实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsTotalQuota *int64 `json:"InsTotalQuota,omitnil,omitempty" name:"InsTotalQuota"`
 }
 
 type DspaRDBDataAssetCount struct {
@@ -10736,6 +10772,13 @@ type DspaUserResourceMeta struct {
 	// 实例值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
+
+	// //治理授权状态（0：关闭 1：开启）
+	GovernAuthStatus *int64 `json:"GovernAuthStatus,omitnil,omitempty" name:"GovernAuthStatus"`
+
+	// 授权范围：all - 授权整个数据源 manual:手动指定数据源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 type ESAsset struct {
@@ -11397,6 +11440,15 @@ type GetUserQuotaInfoResponseParams struct {
 	// cos月解绑次数
 	COSUnbindNum *int64 `json:"COSUnbindNum,omitnil,omitempty" name:"COSUnbindNum"`
 
+	// 用户购买的实例配额。
+	InsTotalQuota *int64 `json:"InsTotalQuota,omitnil,omitempty" name:"InsTotalQuota"`
+
+	// 用户可用的实例配额。
+	InsRemainQuota *int64 `json:"InsRemainQuota,omitnil,omitempty" name:"InsRemainQuota"`
+
+	// 用户购买的版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11688,6 +11740,8 @@ type ListDSPAMetaResourcesRequestParams struct {
 	// MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
 	// 
 	// ResourceId - 资源ID，支持模糊搜索。
+	// 
+	// CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用dsgc接口时，根据cvmId和vport确定具体的自建实例
 	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页步长，默认为100。
@@ -11717,6 +11771,8 @@ type ListDSPAMetaResourcesRequest struct {
 	// MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
 	// 
 	// ResourceId - 资源ID，支持模糊搜索。
+	// 
+	// CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用dsgc接口时，根据cvmId和vport确定具体的自建实例
 	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页步长，默认为100。
@@ -13951,6 +14007,10 @@ type ReportInfo struct {
 	// 进度百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressPercent *uint64 `json:"ProgressPercent,omitnil,omitempty" name:"ProgressPercent"`
+
+	// 报告模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTemplateName *string `json:"ReportTemplateName,omitnil,omitempty" name:"ReportTemplateName"`
 }
 
 // Predefined struct for user
@@ -14533,6 +14593,9 @@ type UpdateDSPASelfBuildResourceRequestParams struct {
 	// 账户密码，为空则表示不更新。
 	// UserName和Password必须同时填写或同时为空。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 授权范围：all 授权全部  manual：手动指定
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 type UpdateDSPASelfBuildResourceRequest struct {
@@ -14554,6 +14617,9 @@ type UpdateDSPASelfBuildResourceRequest struct {
 	// 账户密码，为空则表示不更新。
 	// UserName和Password必须同时填写或同时为空。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 授权范围：all 授权全部  manual：手动指定
+	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 func (r *UpdateDSPASelfBuildResourceRequest) ToJsonString() string {
@@ -14573,6 +14639,7 @@ func (r *UpdateDSPASelfBuildResourceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceVPort")
 	delete(f, "UserName")
 	delete(f, "Password")
+	delete(f, "AuthRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDSPASelfBuildResourceRequest has unknown keys!", "")
 	}

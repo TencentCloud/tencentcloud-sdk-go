@@ -69,6 +69,9 @@ func NewAuthorizeDSPAMetaResourcesResponse() (response *AuthorizeDSPAMetaResourc
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AuthorizeDSPAMetaResources(request *AuthorizeDSPAMetaResourcesRequest) (response *AuthorizeDSPAMetaResourcesResponse, err error) {
@@ -80,6 +83,9 @@ func (c *Client) AuthorizeDSPAMetaResources(request *AuthorizeDSPAMetaResourcesR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AuthorizeDSPAMetaResourcesWithContext(ctx context.Context, request *AuthorizeDSPAMetaResourcesRequest) (response *AuthorizeDSPAMetaResourcesResponse, err error) {

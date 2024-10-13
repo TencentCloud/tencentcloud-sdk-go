@@ -2753,6 +2753,9 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+	ForbidPersonalMultipleSign *bool `json:"ForbidPersonalMultipleSign,omitnil,omitempty" name:"ForbidPersonalMultipleSign"`
 }
 
 type ChannelCreateMultiFlowSignQRCodeRequest struct {
@@ -2800,6 +2803,9 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 
 	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+	ForbidPersonalMultipleSign *bool `json:"ForbidPersonalMultipleSign,omitnil,omitempty" name:"ForbidPersonalMultipleSign"`
 }
 
 func (r *ChannelCreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -2825,6 +2831,7 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	delete(f, "CallbackUrl")
 	delete(f, "ApproverRestrictions")
 	delete(f, "Operator")
+	delete(f, "ForbidPersonalMultipleSign")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}
@@ -4423,6 +4430,87 @@ func (r *ChannelDeleteSealPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelDeleteSealPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeAccountBillDetailRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// </ul>
+	// 第三方平台子客企业必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type ChannelDescribeAccountBillDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// </ul>
+	// 第三方平台子客企业必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *ChannelDescribeAccountBillDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeAccountBillDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeAccountBillDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeAccountBillDetailResponseParams struct {
+	// 当前绑定中账号数量
+	BoundAccountsNumber *int64 `json:"BoundAccountsNumber,omitnil,omitempty" name:"BoundAccountsNumber"`
+
+	// 剩余可绑定账号数量
+	RemainAvailableAccountsNumber *int64 `json:"RemainAvailableAccountsNumber,omitnil,omitempty" name:"RemainAvailableAccountsNumber"`
+
+	// 已失效账号数量
+	InvalidAccountsNumber *int64 `json:"InvalidAccountsNumber,omitnil,omitempty" name:"InvalidAccountsNumber"`
+
+	// 购买数量
+	TotalBuyAccountsNumber *int64 `json:"TotalBuyAccountsNumber,omitnil,omitempty" name:"TotalBuyAccountsNumber"`
+
+	// 赠送数量
+	TotalGiftAccountsNumber *int64 `json:"TotalGiftAccountsNumber,omitnil,omitempty" name:"TotalGiftAccountsNumber"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChannelDescribeAccountBillDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDescribeAccountBillDetailResponseParams `json:"Response"`
+}
+
+func (r *ChannelDescribeAccountBillDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeAccountBillDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10587,11 +10675,12 @@ func (r *ModifyExtendedServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyExtendedServiceResponseParams struct {
-	// 操作跳转链接，有效期24小时
-	// 若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
+	// 操作跳转链接
+	// <ul><li><strong>链接有效期：</strong> 跳转链接的有效期为24小时。</li>
+	// <li><strong>没有返回链接的情形：</strong> 如果在操作时没有返回跳转链接，说明此次操作无需进行跳转，服务将会直接被开通或关闭。</li>
+	// <li><strong>返回链接的情形：</strong> 当操作类型为“OPEN”（开通服务），并且扩展服务类型为“AUTO_SIGN”（自动签名）、“DOWNLOAD_FLOW”（下载流程）或“OVERSEA_SIGN”（海外签名）时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。由超管或法人点击链接，以完成服务的开通操作。</li>
+	// </ul>
 	// 
-	// 当操作类型是 OPEN 且 扩展服务类型是 AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
-	// 返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作
 	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

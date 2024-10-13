@@ -1460,6 +1460,112 @@ func (c *Client) CreateTranscodeTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateVideoDatabaseEntryTaskRequest() (request *CreateVideoDatabaseEntryTaskRequest) {
+    request = &CreateVideoDatabaseEntryTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateVideoDatabaseEntryTask")
+    
+    
+    return
+}
+
+func NewCreateVideoDatabaseEntryTaskResponse() (response *CreateVideoDatabaseEntryTaskResponse) {
+    response = &CreateVideoDatabaseEntryTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoDatabaseEntryTask
+// 对URL链接或COS中的视频发起入库任务。
+//
+// 可选在任务完成后向回调方发送任务完成状态信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVideoDatabaseEntryTask(request *CreateVideoDatabaseEntryTaskRequest) (response *CreateVideoDatabaseEntryTaskResponse, err error) {
+    return c.CreateVideoDatabaseEntryTaskWithContext(context.Background(), request)
+}
+
+// CreateVideoDatabaseEntryTask
+// 对URL链接或COS中的视频发起入库任务。
+//
+// 可选在任务完成后向回调方发送任务完成状态信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVideoDatabaseEntryTaskWithContext(ctx context.Context, request *CreateVideoDatabaseEntryTaskRequest) (response *CreateVideoDatabaseEntryTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoDatabaseEntryTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoDatabaseEntryTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoDatabaseEntryTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVideoSearchTaskRequest() (request *CreateVideoSearchTaskRequest) {
+    request = &CreateVideoSearchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateVideoSearchTask")
+    
+    
+    return
+}
+
+func NewCreateVideoSearchTaskResponse() (response *CreateVideoSearchTaskResponse) {
+    response = &CreateVideoSearchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoSearchTask
+// 使用检索值检索库中最接近检索值的若干视频。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVideoSearchTask(request *CreateVideoSearchTaskRequest) (response *CreateVideoSearchTaskResponse, err error) {
+    return c.CreateVideoSearchTaskWithContext(context.Background(), request)
+}
+
+// CreateVideoSearchTask
+// 使用检索值检索库中最接近检索值的若干视频。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVideoSearchTaskWithContext(ctx context.Context, request *CreateVideoSearchTaskRequest) (response *CreateVideoSearchTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoSearchTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoSearchTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoSearchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWatermarkTemplateRequest() (request *CreateWatermarkTemplateRequest) {
     request = &CreateWatermarkTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4240,6 +4346,108 @@ func (c *Client) DescribeTranscodeTemplatesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoDatabaseEntryTaskDetailRequest() (request *DescribeVideoDatabaseEntryTaskDetailRequest) {
+    request = &DescribeVideoDatabaseEntryTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeVideoDatabaseEntryTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeVideoDatabaseEntryTaskDetailResponse() (response *DescribeVideoDatabaseEntryTaskDetailResponse) {
+    response = &DescribeVideoDatabaseEntryTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoDatabaseEntryTaskDetail
+// 根据任务ID查询视频入库任务的状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVideoDatabaseEntryTaskDetail(request *DescribeVideoDatabaseEntryTaskDetailRequest) (response *DescribeVideoDatabaseEntryTaskDetailResponse, err error) {
+    return c.DescribeVideoDatabaseEntryTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeVideoDatabaseEntryTaskDetail
+// 根据任务ID查询视频入库任务的状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVideoDatabaseEntryTaskDetailWithContext(ctx context.Context, request *DescribeVideoDatabaseEntryTaskDetailRequest) (response *DescribeVideoDatabaseEntryTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoDatabaseEntryTaskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoDatabaseEntryTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoDatabaseEntryTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoSearchTaskDetailRequest() (request *DescribeVideoSearchTaskDetailRequest) {
+    request = &DescribeVideoSearchTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeVideoSearchTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeVideoSearchTaskDetailResponse() (response *DescribeVideoSearchTaskDetailResponse) {
+    response = &DescribeVideoSearchTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoSearchTaskDetail
+// 根据任务ID查询视频检索任务的状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVideoSearchTaskDetail(request *DescribeVideoSearchTaskDetailRequest) (response *DescribeVideoSearchTaskDetailResponse, err error) {
+    return c.DescribeVideoSearchTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeVideoSearchTaskDetail
+// 根据任务ID查询视频检索任务的状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVideoSearchTaskDetailWithContext(ctx context.Context, request *DescribeVideoSearchTaskDetailRequest) (response *DescribeVideoSearchTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoSearchTaskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoSearchTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoSearchTaskDetailResponse()
     err = c.Send(request, response)
     return
 }
