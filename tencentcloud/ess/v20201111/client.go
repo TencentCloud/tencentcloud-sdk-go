@@ -65,7 +65,27 @@ func NewArchiveDynamicFlowResponse() (response *ArchiveDynamicFlowResponse) {
 }
 
 // ArchiveDynamicFlow
-// 该接口用于结束动态签署流程，若当前合同还存在签署方未签署，无法结束。
+// 该接口用于结束动态签署方2.0的合同流程。
+//
+// 
+//
+// 
+//
+// **功能开通**
+//
+// - 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+//
+// 
+//
+// **使用条件**
+//
+// - 此接口只能在<font color="red">合同处于非终态且<b>所有的签署方都已经完成签署</b></font>。一旦合同进入终态（例如：过期、拒签、撤销或者调用过此接口成功过），将无法通过此接口结束合同流程。
+//
+// 
+//
+// **整体流程**
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/75d323c66e44b05bbc8e949c18664455.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -89,7 +109,27 @@ func (c *Client) ArchiveDynamicFlow(request *ArchiveDynamicFlowRequest) (respons
 }
 
 // ArchiveDynamicFlow
-// 该接口用于结束动态签署流程，若当前合同还存在签署方未签署，无法结束。
+// 该接口用于结束动态签署方2.0的合同流程。
+//
+// 
+//
+// 
+//
+// **功能开通**
+//
+// - 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+//
+// 
+//
+// **使用条件**
+//
+// - 此接口只能在<font color="red">合同处于非终态且<b>所有的签署方都已经完成签署</b></font>。一旦合同进入终态（例如：过期、拒签、撤销或者调用过此接口成功过），将无法通过此接口结束合同流程。
+//
+// 
+//
+// **整体流程**
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/75d323c66e44b05bbc8e949c18664455.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1534,9 +1574,33 @@ func NewCreateDynamicFlowApproverResponse() (response *CreateDynamicFlowApprover
 }
 
 // CreateDynamicFlowApprover
-// 此接口（CreateDynamicFlowApprover）用来补充动态合同的签署人信息。<br/>
+// 此接口（CreateDynamicFlowApprover）接口主要用于补充动态签署方2.0合同的签署方信息，包括但不限于名字、手机号和签署区域等信息。
 //
-// 适用场景：使用CreateFlowByFiles指定：OpenDynamicSignFlow=true发起的合同，可以使用该接口补充后续签署人。<br/>
+// 
+//
+// 
+//
+// **功能开通**
+//
+// 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+//
+// 
+//
+// **使用条件**
+//
+// - 在发起合同时，必须将OpenDynamicSignFlow参数设置为true，以确保合同以动态签署方2.0的方式处理，否则默认处理为普通合同。
+//
+// - 此接口只能在合同处于非终态时调用。一旦合同进入终态（例如：过期、拒签或撤销），将无法通过此接口添加新的签署方。
+//
+// 
+//
+// 
+//
+// 动态签署方2.0合同<font color="red">不会自动结束（整个合同变为签署完成）</font>，需要通过调用<a href="https://qian.tencent.com/developers/companyApis/operateFlows/ArchiveDynamicFlow/" target="_blank">结束动态签署合同</a>来手动结束签署流程。整体的流程如下图
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/75d323c66e44b05bbc8e949c18664455.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1557,9 +1621,33 @@ func (c *Client) CreateDynamicFlowApprover(request *CreateDynamicFlowApproverReq
 }
 
 // CreateDynamicFlowApprover
-// 此接口（CreateDynamicFlowApprover）用来补充动态合同的签署人信息。<br/>
+// 此接口（CreateDynamicFlowApprover）接口主要用于补充动态签署方2.0合同的签署方信息，包括但不限于名字、手机号和签署区域等信息。
 //
-// 适用场景：使用CreateFlowByFiles指定：OpenDynamicSignFlow=true发起的合同，可以使用该接口补充后续签署人。<br/>
+// 
+//
+// 
+//
+// **功能开通**
+//
+// 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+//
+// 
+//
+// **使用条件**
+//
+// - 在发起合同时，必须将OpenDynamicSignFlow参数设置为true，以确保合同以动态签署方2.0的方式处理，否则默认处理为普通合同。
+//
+// - 此接口只能在合同处于非终态时调用。一旦合同进入终态（例如：过期、拒签或撤销），将无法通过此接口添加新的签署方。
+//
+// 
+//
+// 
+//
+// 动态签署方2.0合同<font color="red">不会自动结束（整个合同变为签署完成）</font>，需要通过调用<a href="https://qian.tencent.com/developers/companyApis/operateFlows/ArchiveDynamicFlow/" target="_blank">结束动态签署合同</a>来手动结束签署流程。整体的流程如下图
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/75d323c66e44b05bbc8e949c18664455.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2257,7 +2345,7 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 //
 // 
 //
-// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/)    。动态签署人在控制台上的展示样式如下：
+// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    <a href="https://qian.tencent.com/developers/company/dynamic_signer/" target="_blank">动态签署人合同</a>   。动态签署人在控制台上的展示样式如下：
 //
 // 
 //
@@ -2388,7 +2476,7 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 //
 // 
 //
-// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/)    。动态签署人在控制台上的展示样式如下：
+// <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    <a href="https://qian.tencent.com/developers/company/dynamic_signer/" target="_blank">动态签署人合同</a>   。动态签署人在控制台上的展示样式如下：
 //
 // 
 //
@@ -9308,9 +9396,23 @@ func NewDescribeUserVerifyStatusResponse() (response *DescribeUserVerifyStatusRe
 }
 
 // DescribeUserVerifyStatus
-// 用于客户企业在调用生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口之前判断C端用户是否实名，如果已经实名，就不需要再次调用生成C端链接接口去实名
+// 检测个人用户是否已经实名。
 //
-// 注意：此接口仅会返回当前员工是否通过[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)所实名的员工是否实名，并不会返回个人用户自己在电子签进行实名的状况
+// 
+//
+// 在调用生成C端用户实名链接（[CreateUserVerifyUrl](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)）接口之前，客户企业应首先调用本接口判断C端用户是否已经完成实名认证。如果用户已经实名，那么无需再次调用（[CreateUserVerifyUrl](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)）生成链接并走实名认证流程。
+//
+// 
+//
+// 注意： 
+//
+// 
+//
+// - 此接口<font color="red">仅用于确认通过本公司生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口注册认证的用户，不包括其他途径（如主动注册认证、在签署合同中注册认证等）在电子签平台上进行的实名认证</font>。
+//
+// 
+//
+// - 调用此接口需要购买单独的实名套餐包。<font color="red">使用前请联系对接的客户经理沟通</font>。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -9334,9 +9436,23 @@ func (c *Client) DescribeUserVerifyStatus(request *DescribeUserVerifyStatusReque
 }
 
 // DescribeUserVerifyStatus
-// 用于客户企业在调用生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口之前判断C端用户是否实名，如果已经实名，就不需要再次调用生成C端链接接口去实名
+// 检测个人用户是否已经实名。
 //
-// 注意：此接口仅会返回当前员工是否通过[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)所实名的员工是否实名，并不会返回个人用户自己在电子签进行实名的状况
+// 
+//
+// 在调用生成C端用户实名链接（[CreateUserVerifyUrl](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)）接口之前，客户企业应首先调用本接口判断C端用户是否已经完成实名认证。如果用户已经实名，那么无需再次调用（[CreateUserVerifyUrl](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)）生成链接并走实名认证流程。
+//
+// 
+//
+// 注意： 
+//
+// 
+//
+// - 此接口<font color="red">仅用于确认通过本公司生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口注册认证的用户，不包括其他途径（如主动注册认证、在签署合同中注册认证等）在电子签平台上进行的实名认证</font>。
+//
+// 
+//
+// - 调用此接口需要购买单独的实名套餐包。<font color="red">使用前请联系对接的客户经理沟通</font>。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

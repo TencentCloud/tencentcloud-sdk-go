@@ -21167,6 +21167,7 @@ func NewModifyRouteTableSelectionPoliciesResponse() (response *ModifyRouteTableS
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
 //  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
 //  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
@@ -21188,6 +21189,7 @@ func (c *Client) ModifyRouteTableSelectionPolicies(request *ModifyRouteTableSele
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
 //  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
 //  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
@@ -23034,7 +23036,7 @@ func NewReplaceCcnRouteTableBroadcastPolicysResponse() (response *ReplaceCcnRout
 //
 // 
 //
-// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、VPN网关 `VPNGW`
 //
 // - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
 //
@@ -23076,7 +23078,9 @@ func NewReplaceCcnRouteTableBroadcastPolicysResponse() (response *ReplaceCcnRout
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = "UnsupportedOperation.CcnNotEnableCommunity"
 func (c *Client) ReplaceCcnRouteTableBroadcastPolicys(request *ReplaceCcnRouteTableBroadcastPolicysRequest) (response *ReplaceCcnRouteTableBroadcastPolicysResponse, err error) {
     return c.ReplaceCcnRouteTableBroadcastPolicysWithContext(context.Background(), request)
 }
@@ -23092,7 +23096,7 @@ func (c *Client) ReplaceCcnRouteTableBroadcastPolicys(request *ReplaceCcnRouteTa
 //
 // 
 //
-// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+// - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、VPN网关 `VPNGW`
 //
 // - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
 //
@@ -23134,7 +23138,9 @@ func (c *Client) ReplaceCcnRouteTableBroadcastPolicys(request *ReplaceCcnRouteTa
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = "UnsupportedOperation.CcnNotEnableCommunity"
 func (c *Client) ReplaceCcnRouteTableBroadcastPolicysWithContext(ctx context.Context, request *ReplaceCcnRouteTableBroadcastPolicysRequest) (response *ReplaceCcnRouteTableBroadcastPolicysResponse, err error) {
     if request == nil {
         request = NewReplaceCcnRouteTableBroadcastPolicysRequest()

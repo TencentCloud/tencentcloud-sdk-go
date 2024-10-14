@@ -83,6 +83,20 @@ func (r *AddMachineGroupInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AdvanceFilterRuleInfo struct {
+	// 过滤字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 过滤规则，0:等于，1:字段存在，2:字段不存在
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rule *uint64 `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 过滤值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type AlarmAnalysisConfig struct {
 	// 键。支持以下key：
 	// SyntaxRule：语法规则，value支持 0：Lucene语法；1： CQL语法。
@@ -7623,6 +7637,13 @@ type ExtractRuleInfo struct {
 
 	// Windows事件日志采集规则，只有在LogType为windows_event_log时生效，其余类型无需填写。
 	EventLogRules []*EventLog `json:"EventLogRules,omitnil,omitempty" name:"EventLogRules"`
+
+	// 日志过滤规则列表（新版）。
+	// 注意：
+	// - 2.9.3以下版本LogListener不支持， 请使用FilterKeyRegex配置日志过滤规则。
+	// - 自建k8s采集配置（CreateConfigExtra、ModifyConfigExtra）不支持此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvanceFilterRules []*AdvanceFilterRuleInfo `json:"AdvanceFilterRules,omitnil,omitempty" name:"AdvanceFilterRules"`
 }
 
 type FilePathInfo struct {

@@ -3,7 +3,7 @@
 | aa | [活动防刷](https://cloud.tencent.com/document/product/1189) | 2023-05-18 01:01:13 |
 | aai | [](https://cloud.tencent.com/document/product) | 2019-08-08 23:15:13 |
 | acp | [应用合规平台](https://cloud.tencent.com/document/product/1553) | 2024-03-20 01:07:29 |
-| advisor | [云顾问](https://cloud.tencent.com/document/product/1264) | 2024-03-20 01:07:31 |
+| advisor | [云顾问](https://cloud.tencent.com/document/product/1264) | 2024-10-15 01:02:26 |
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | 2024-05-31 01:07:20 |
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2024-05-31 01:07:25 |
 | aiart | [大模型图像创作引擎](https://cloud.tencent.com/document/product/1668) | 2024-09-26 01:07:24 |
@@ -63,7 +63,7 @@
 | cloudaudit | [操作审计](https://cloud.tencent.com/document/product/629) | 2024-01-15 01:09:37 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2024-03-20 01:11:31 |
 | cloudstudio | [Cloud Studio（云端 IDE）](https://cloud.tencent.com/document/product/1039) | 2024-08-23 01:19:08 |
-| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2024-10-11 01:12:35 |
+| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2024-10-15 01:07:42 |
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2024-09-25 01:13:30 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2024-08-28 01:24:04 |
 | cms | [内容安全](https://cloud.tencent.com/document/product/669) | 2024-06-20 01:24:47 |
@@ -84,7 +84,7 @@
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2024-07-08 01:12:54 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2024-09-10 01:27:21 |
 | dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | 2024-09-11 01:32:35 |
-| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2024-09-20 13:00:46 |
+| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2024-10-15 01:11:21 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2024-09-11 01:34:34 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2024-07-31 01:30:16 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2024-07-12 01:14:44 |
@@ -98,12 +98,12 @@
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2024-08-20 01:35:54 |
 | eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2024-06-25 01:14:34 |
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
-| emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-09-27 01:15:03 |
+| emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-10-15 01:13:47 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-09-10 15:12:32 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-10-14 01:18:57 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-10-15 01:14:14 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-10-14 01:19:22 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-09-11 01:42:57 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-09-25 01:20:56 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-10-15 01:14:56 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2024-07-05 01:10:44 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2024-03-20 01:17:13 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2024-09-12 01:43:09 |
@@ -124,7 +124,7 @@
 | iecp | [物联网边缘计算平台](https://cloud.tencent.com/document/product/1118) | 2024-09-25 01:22:07 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2022-04-04 06:48:05 |
 | ims | [图片内容安全](https://cloud.tencent.com/document/product/1125) | 2024-09-25 01:22:24 |
-| ioa | [iOA 零信任安全管理系统](https://cloud.tencent.com/document/product/1092) | 2024-08-13 01:52:20 |
+| ioa | [iOA 零信任安全管理系统](https://cloud.tencent.com/document/product/1092) | 2024-10-15 01:16:09 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2023-07-17 01:22:28 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2024-06-05 01:47:50 |
 | iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2024-10-12 13:22:15 |
@@ -230,7 +230,7 @@
 | trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | 2024-09-10 02:17:47 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2024-09-09 02:22:32 |
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2024-07-31 02:17:29 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-10-14 01:34:15 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2024-10-15 01:29:17 |
 | tse | [微服务引擎](https://cloud.tencent.com/document/product/1364) | 2024-09-25 01:36:42 |
 | tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2024-09-25 01:37:11 |
 | tsi | [腾讯同传系统](https://cloud.tencent.com/document/product/1399) | 2024-08-02 02:22:13 |
@@ -239,11 +239,11 @@
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2024-03-20 01:30:08 |
 | vcg | [视频生成](https://cloud.tencent.com/document/product/1770) | 2024-06-06 02:47:17 |
 | vclm | [大模型视频创作引擎](https://cloud.tencent.com/document/product/1616) | 2024-10-10 01:34:51 |
-| vdb | [向量数据库](https://cloud.tencent.com/document/product/1709) | 2024-09-20 13:15:27 |
+| vdb | [向量数据库](https://cloud.tencent.com/document/product/1709) | 2024-10-15 01:30:28 |
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2024-07-26 02:26:34 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2024-03-20 01:30:13 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2024-09-11 19:07:13 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-10-11 01:36:00 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-10-15 01:31:18 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2024-09-06 02:27:27 |
 | vtc | [视频转译](https://cloud.tencent.com/document/product/1769) | 2024-09-10 02:27:11 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2024-10-14 01:37:11 |

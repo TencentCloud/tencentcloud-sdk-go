@@ -1235,6 +1235,9 @@ type AssociateAddressRequestParams struct {
 
 	// 指定绑定时是否设置直通。弹性公网 IP 直通请参见 [EIP 直通](https://cloud.tencent.com/document/product/1199/41709)。取值：True、False，默认值为 False。当绑定 CVM 实例、EKS 弹性集群时，可设定此参数为 True。此参数目前处于内测中，如需使用，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2)。
 	EipDirectConnection *bool `json:"EipDirectConnection,omitnil,omitempty" name:"EipDirectConnection"`
+
+	// 要绑定的实例所在的地域
+	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 }
 
 type AssociateAddressRequest struct {
@@ -1254,6 +1257,9 @@ type AssociateAddressRequest struct {
 
 	// 指定绑定时是否设置直通。弹性公网 IP 直通请参见 [EIP 直通](https://cloud.tencent.com/document/product/1199/41709)。取值：True、False，默认值为 False。当绑定 CVM 实例、EKS 弹性集群时，可设定此参数为 True。此参数目前处于内测中，如需使用，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2)。
 	EipDirectConnection *bool `json:"EipDirectConnection,omitnil,omitempty" name:"EipDirectConnection"`
+
+	// 要绑定的实例所在的地域
+	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 }
 
 func (r *AssociateAddressRequest) ToJsonString() string {
@@ -1273,6 +1279,7 @@ func (r *AssociateAddressRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInterfaceId")
 	delete(f, "PrivateIpAddress")
 	delete(f, "EipDirectConnection")
+	delete(f, "InstanceRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateAddressRequest has unknown keys!", "")
 	}
@@ -19668,7 +19675,7 @@ type DisableCcnRoutesRequestParams struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。可通过DescribeCcnRoutes获取。
 	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
 }
 
@@ -19678,7 +19685,7 @@ type DisableCcnRoutesRequest struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。可通过DescribeCcnRoutes获取。
 	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
 }
 
@@ -20621,7 +20628,7 @@ type EnableCcnRoutesRequestParams struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。可通过DescribeCcnRoutes接口获取。
 	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
 }
 
@@ -20631,7 +20638,7 @@ type EnableCcnRoutesRequest struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。可通过DescribeCcnRoutes接口获取。
 	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
 }
 
@@ -25499,10 +25506,10 @@ type ModifyRouteTableInfo struct {
 	// 云联网路由表id。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
-	// 云联网路由表名称。
+	// 云联网路由表名称。Name和Description 两者必传一个。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 云联网路由表描述。
+	// 云联网路由表描述。Name和Description 两者必传一个。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

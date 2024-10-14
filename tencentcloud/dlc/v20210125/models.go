@@ -518,6 +518,64 @@ func (r *AlterDMSTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AnalysisTaskResults struct {
+	// 任务Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务创建时间，毫秒时间戳
+	InstanceStartTime *int64 `json:"InstanceStartTime,omitnil,omitempty" name:"InstanceStartTime"`
+
+	// 任务结束时间，毫秒时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCompleteTime *int64 `json:"InstanceCompleteTime,omitnil,omitempty" name:"InstanceCompleteTime"`
+
+	// 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 任务SQL语句
+	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
+
+	// 计算资源名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 单位毫秒，引擎内执行耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobTimeSum *int64 `json:"JobTimeSum,omitnil,omitempty" name:"JobTimeSum"`
+
+	// 单位秒，CU资源消耗
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTimeSum *int64 `json:"TaskTimeSum,omitnil,omitempty" name:"TaskTimeSum"`
+
+	// 数据扫描总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputRecordsSum *int64 `json:"InputRecordsSum,omitnil,omitempty" name:"InputRecordsSum"`
+
+	// 数据扫描总 bytes
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputBytesSum *int64 `json:"InputBytesSum,omitnil,omitempty" name:"InputBytesSum"`
+
+	// 输出总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputRecordsSum *int64 `json:"OutputRecordsSum,omitnil,omitempty" name:"OutputRecordsSum"`
+
+	// 输出总 bytes
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputBytesSum *int64 `json:"OutputBytesSum,omitnil,omitempty" name:"OutputBytesSum"`
+
+	// shuffle read 总 bytes
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShuffleReadBytesSum *int64 `json:"ShuffleReadBytesSum,omitnil,omitempty" name:"ShuffleReadBytesSum"`
+
+	// shuffle read 总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShuffleReadRecordsSum *int64 `json:"ShuffleReadRecordsSum,omitnil,omitempty" name:"ShuffleReadRecordsSum"`
+
+	// 洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisStatus *string `json:"AnalysisStatus,omitnil,omitempty" name:"AnalysisStatus"`
+}
+
 type Asset struct {
 	// 主键
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8791,6 +8849,115 @@ func (r *DescribeTaskResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksAnalysisRequestParams struct {
+	// 数据引擎名称，用于筛选
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个: task-id - String - （任务ID准确过滤）task-id 取值形如：e386471f-139a-4e59-877f-50ece8135b99。task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)，rule-id - String - （洞察类型）取值范围 SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，支持如下字段类型，instance-start-time (任务开始时间）, instance-complete-time (任务结束时间）,job-time-sum （单位毫秒，引擎内执行耗时）,task-time-sum （CU资源消耗，单位秒）,input-bytes-sum（数据扫描总大小，单位bytes）,shuffle-read-bytes-sum（数据shuffle总大小，单位bytes）
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeTasksAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据引擎名称，用于筛选
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个: task-id - String - （任务ID准确过滤）task-id 取值形如：e386471f-139a-4e59-877f-50ece8135b99。task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)，rule-id - String - （洞察类型）取值范围 SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，支持如下字段类型，instance-start-time (任务开始时间）, instance-complete-time (任务结束时间）,job-time-sum （单位毫秒，引擎内执行耗时）,task-time-sum （CU资源消耗，单位秒）,input-bytes-sum（数据扫描总大小，单位bytes）,shuffle-read-bytes-sum（数据shuffle总大小，单位bytes）
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeTasksAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksAnalysisResponseParams struct {
+	// 洞察结果分页列表
+	TaskList []*AnalysisTaskResults `json:"TaskList,omitnil,omitempty" name:"TaskList"`
+
+	// 洞察结果总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTasksAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTasksAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeTasksAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksAnalysisResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
