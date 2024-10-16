@@ -1460,6 +1460,71 @@ func (c *Client) CreateMachineGroupWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateNoticeContentRequest() (request *CreateNoticeContentRequest) {
+    request = &CreateNoticeContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateNoticeContent")
+    
+    
+    return
+}
+
+func NewCreateNoticeContentResponse() (response *CreateNoticeContentResponse) {
+    response = &CreateNoticeContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNoticeContent
+// 该接口用于创建通知内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateNoticeContent(request *CreateNoticeContentRequest) (response *CreateNoticeContentResponse, err error) {
+    return c.CreateNoticeContentWithContext(context.Background(), request)
+}
+
+// CreateNoticeContent
+// 该接口用于创建通知内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateNoticeContentWithContext(ctx context.Context, request *CreateNoticeContentRequest) (response *CreateNoticeContentResponse, err error) {
+    if request == nil {
+        request = NewCreateNoticeContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNoticeContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNoticeContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScheduledSqlRequest() (request *CreateScheduledSqlRequest) {
     request = &CreateScheduledSqlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2723,6 +2788,73 @@ func (c *Client) DeleteMachineGroupInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteMachineGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNoticeContentRequest() (request *DeleteNoticeContentRequest) {
+    request = &DeleteNoticeContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteNoticeContent")
+    
+    
+    return
+}
+
+func NewDeleteNoticeContentResponse() (response *DeleteNoticeContentResponse) {
+    response = &DeleteNoticeContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNoticeContent
+// 该接口用于删除通知内容配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) DeleteNoticeContent(request *DeleteNoticeContentRequest) (response *DeleteNoticeContentResponse, err error) {
+    return c.DeleteNoticeContentWithContext(context.Background(), request)
+}
+
+// DeleteNoticeContent
+// 该接口用于删除通知内容配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) DeleteNoticeContentWithContext(ctx context.Context, request *DeleteNoticeContentRequest) (response *DeleteNoticeContentResponse, err error) {
+    if request == nil {
+        request = NewDeleteNoticeContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNoticeContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNoticeContentResponse()
     err = c.Send(request, response)
     return
 }
@@ -4565,6 +4697,71 @@ func (c *Client) DescribeMachinesWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeNoticeContentsRequest() (request *DescribeNoticeContentsRequest) {
+    request = &DescribeNoticeContentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeNoticeContents")
+    
+    
+    return
+}
+
+func NewDescribeNoticeContentsResponse() (response *DescribeNoticeContentsResponse) {
+    response = &DescribeNoticeContentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNoticeContents
+// 获取通知内容列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeNoticeContents(request *DescribeNoticeContentsRequest) (response *DescribeNoticeContentsResponse, err error) {
+    return c.DescribeNoticeContentsWithContext(context.Background(), request)
+}
+
+// DescribeNoticeContents
+// 获取通知内容列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeNoticeContentsWithContext(ctx context.Context, request *DescribeNoticeContentsRequest) (response *DescribeNoticeContentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNoticeContentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNoticeContents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNoticeContentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePartitionsRequest() (request *DescribePartitionsRequest) {
     request = &DescribePartitionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6139,6 +6336,77 @@ func (c *Client) ModifyMachineGroupWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyMachineGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNoticeContentRequest() (request *ModifyNoticeContentRequest) {
+    request = &ModifyNoticeContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyNoticeContent")
+    
+    
+    return
+}
+
+func NewModifyNoticeContentResponse() (response *ModifyNoticeContentResponse) {
+    response = &ModifyNoticeContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNoticeContent
+// 该接口用于修改通知内容配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMCONFLICT = "InvalidParameter.AlarmConflict"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) ModifyNoticeContent(request *ModifyNoticeContentRequest) (response *ModifyNoticeContentResponse, err error) {
+    return c.ModifyNoticeContentWithContext(context.Background(), request)
+}
+
+// ModifyNoticeContent
+// 该接口用于修改通知内容配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMCONFLICT = "InvalidParameter.AlarmConflict"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) ModifyNoticeContentWithContext(ctx context.Context, request *ModifyNoticeContentRequest) (response *ModifyNoticeContentResponse, err error) {
+    if request == nil {
+        request = NewModifyNoticeContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNoticeContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNoticeContentResponse()
     err = c.Send(request, response)
     return
 }

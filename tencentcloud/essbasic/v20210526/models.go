@@ -194,8 +194,7 @@ type AutoSignConfig struct {
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。
 	// 
-	// <ul><li>**0**: (默认) 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
-	// <li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
+	// <ul><li><b>1</b>: (默认)不绑定自动签账号许可开通，开通后一直有效,   后续使用合同份额进行合同发起</li></ul>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// 开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
@@ -10678,7 +10677,7 @@ type ModifyExtendedServiceResponseParams struct {
 	// 操作跳转链接
 	// <ul><li><strong>链接有效期：</strong> 跳转链接的有效期为24小时。</li>
 	// <li><strong>没有返回链接的情形：</strong> 如果在操作时没有返回跳转链接，说明此次操作无需进行跳转，服务将会直接被开通或关闭。</li>
-	// <li><strong>返回链接的情形：</strong> 当操作类型为“OPEN”（开通服务），并且扩展服务类型为“AUTO_SIGN”（自动签名）、“DOWNLOAD_FLOW”（下载流程）或“OVERSEA_SIGN”（海外签名）时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。由超管或法人点击链接，以完成服务的开通操作。</li>
+	// <li><strong>返回链接的情形：</strong> 当操作类型为<b>OPEN（开通服务）</b>，并且扩展服务类型为<b>AUTO_SIGN（ 企业自动签署）</b>、<b>DOWNLOAD_FLOW（授权渠道下载合同）</b>或<b>OVERSEA_SIGN（企业与港澳台居民签署合同）</b>时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。<font color="red"><b>由超管或法人点击链接</b></font>，以完成服务的开通操作。</li>
 	// </ul>
 	// 
 	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`

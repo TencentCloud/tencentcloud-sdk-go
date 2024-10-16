@@ -142,6 +142,7 @@ import (
 	gpmv20200820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gpm/v20200820"
 	gsv20191118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs/v20191118"
 	gsev20191112 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gse/v20191112"
+	gwlbv20240906 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gwlb/v20240906"
 	habov20181203 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/habo/v20181203"
 	haiv20230812 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hai/v20230812"
 	hasimv20210716 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim/v20210716"
@@ -1893,6 +1894,19 @@ func TestGsev20191112Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init gse_v20191112 client: %v", err)
+    }
+}
+
+func TestGwlbv20240906Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := gwlbv20240906.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init gwlb_v20240906 client: %v", err)
     }
 }
 

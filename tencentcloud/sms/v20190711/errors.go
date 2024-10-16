@@ -251,6 +251,9 @@ const (
 	// SmsSdkAppId 校验失败，请检查 [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) 是否属于 [云API密钥](https://console.cloud.tencent.com/cam/capi) 的关联账户。
 	UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
 
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
 	// 不支持该请求。
 	UNSUPPORTEDOPERATION_ = "UnsupportedOperation."
 

@@ -235,6 +235,9 @@ type SubmitVideoTranslateJobRequestParams struct {
 	// 示例值：http://xxx/audio.mp3
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
+	// 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
+	RemoveVocal *int64 `json:"RemoveVocal,omitnil,omitempty" name:"RemoveVocal"`
+
 	// 是否需要确认翻译结果0：不需要，1：需要
 	Confirm *int64 `json:"Confirm,omitnil,omitempty" name:"Confirm"`
 
@@ -274,6 +277,9 @@ type SubmitVideoTranslateJobRequest struct {
 	// 示例值：http://xxx/audio.mp3
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
+	// 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
+	RemoveVocal *int64 `json:"RemoveVocal,omitnil,omitempty" name:"RemoveVocal"`
+
 	// 是否需要确认翻译结果0：不需要，1：需要
 	Confirm *int64 `json:"Confirm,omitnil,omitempty" name:"Confirm"`
 
@@ -304,6 +310,7 @@ func (r *SubmitVideoTranslateJobRequest) FromJsonString(s string) error {
 	delete(f, "SrcLang")
 	delete(f, "DstLang")
 	delete(f, "AudioUrl")
+	delete(f, "RemoveVocal")
 	delete(f, "Confirm")
 	delete(f, "LipSync")
 	delete(f, "VoiceType")

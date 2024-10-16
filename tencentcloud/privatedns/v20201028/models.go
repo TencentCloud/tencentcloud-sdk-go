@@ -176,6 +176,93 @@ type AuditLogInfo struct {
 }
 
 // Predefined struct for user
+type CreateEndPointRequestParams struct {
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点服务ID（vpc终端节点服务ID）
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点地域，必须要和终端节点服务所属地域一致
+	EndPointRegion *string `json:"EndPointRegion,omitnil,omitempty" name:"EndPointRegion"`
+
+	// 终端节点ip数量
+	IpNum *int64 `json:"IpNum,omitnil,omitempty" name:"IpNum"`
+}
+
+type CreateEndPointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点服务ID（vpc终端节点服务ID）
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点地域，必须要和终端节点服务所属地域一致
+	EndPointRegion *string `json:"EndPointRegion,omitnil,omitempty" name:"EndPointRegion"`
+
+	// 终端节点ip数量
+	IpNum *int64 `json:"IpNum,omitnil,omitempty" name:"IpNum"`
+}
+
+func (r *CreateEndPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEndPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EndPointName")
+	delete(f, "EndPointServiceId")
+	delete(f, "EndPointRegion")
+	delete(f, "IpNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEndPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEndPointResponseParams struct {
+	// 终端节点id
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点服务ID
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点的IP列表
+	EndPointVipSet []*string `json:"EndPointVipSet,omitnil,omitempty" name:"EndPointVipSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEndPointResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEndPointResponseParams `json:"Response"`
+}
+
+func (r *CreateEndPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrivateDNSAccountRequestParams struct {
 	// 私有域解析账号
 	Account *PrivateDNSAccount `json:"Account,omitnil,omitempty" name:"Account"`

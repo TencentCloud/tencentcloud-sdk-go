@@ -17684,7 +17684,7 @@ type OpenPolicyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 策略模版类型
+	// 策略模板类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
@@ -17708,7 +17708,7 @@ type OpenPolicySwitch struct {
 	// 策略英文名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 策略模版类型
+	// 策略模板类型
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 策略开关状态：open打开，close关闭

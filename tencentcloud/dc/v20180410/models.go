@@ -220,12 +220,158 @@ type BgpPeer struct {
 	AuthKey *string `json:"AuthKey,omitnil,omitempty" name:"AuthKey"`
 }
 
+type CloudAttachInfo struct {
+	// 敏捷上云实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 敏捷上云名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 合作伙伴的AppId
+	IapId *string `json:"IapId,omitnil,omitempty" name:"IapId"`
+
+	// 需要接入敏捷上云的IDC的地址
+	IdcAddress *string `json:"IdcAddress,omitnil,omitempty" name:"IdcAddress"`
+
+	// 需要接入敏捷上云的IDC的互联网服务提供商类型
+	IdcType *string `json:"IdcType,omitnil,omitempty" name:"IdcType"`
+
+	// 敏捷上云的带宽，单位为MB
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 联系电话
+	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
+
+	// 敏捷上云的状态
+	// available：就绪状态
+	// applying：申请，待审核状态
+	// pendingpay：代付款状态
+	// building：建设中状态
+	// confirming：待确认状态
+	// isolate: 隔离状态
+	// stoped：终止状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 敏捷上云申请的时间
+	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
+
+	// 敏捷上云建设完成的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadyTime *string `json:"ReadyTime,omitnil,omitempty" name:"ReadyTime"`
+
+	// 敏捷上云过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 备注信息
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// 敏捷上云的地域状态。
+	// same-region：同地域
+	// cross-region：跨地域
+	RegionStatus *string `json:"RegionStatus,omitnil,omitempty" name:"RegionStatus"`
+
+	// 用户的AppId
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 用户的Uin
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 用户注册名称
+	CustomerAuthName *string `json:"CustomerAuthName,omitnil,omitempty" name:"CustomerAuthName"`
+
+	// 物理专线实例ID
+	DirectConnectId *string `json:"DirectConnectId,omitnil,omitempty" name:"DirectConnectId"`
+
+	// 敏捷上云是否支持创建高速上云专线网关
+	CloudAttachServiceGatewaysSupport *bool `json:"CloudAttachServiceGatewaysSupport,omitnil,omitempty" name:"CloudAttachServiceGatewaysSupport"`
+
+	// 敏捷上云服务是否处于升降配中
+	BUpdateBandwidth *bool `json:"BUpdateBandwidth,omitnil,omitempty" name:"BUpdateBandwidth"`
+}
+
 type Coordinate struct {
 	// 纬度
 	Lat *float64 `json:"Lat,omitnil,omitempty" name:"Lat"`
 
 	// 经度
 	Lng *float64 `json:"Lng,omitnil,omitempty" name:"Lng"`
+}
+
+type CreateCasInput struct {
+	// 敏捷上云名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 需要接入敏捷上云的IDC的地址
+	IdcAddress *string `json:"IdcAddress,omitnil,omitempty" name:"IdcAddress"`
+
+	// 需要接入敏捷上云的IDC的互联网服务提供商类型
+	IdcType *string `json:"IdcType,omitnil,omitempty" name:"IdcType"`
+
+	// 敏捷上云的带宽，单位为MB
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 联系电话
+	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
+
+	// 备注信息
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+}
+
+// Predefined struct for user
+type CreateCloudAttachServiceRequestParams struct {
+	// 创建敏捷上云入参
+	Data *CreateCasInput `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type CreateCloudAttachServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 创建敏捷上云入参
+	Data *CreateCasInput `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+func (r *CreateCloudAttachServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudAttachServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Data")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudAttachServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudAttachServiceResponseParams struct {
+	// 敏捷上云服务详情
+	CloudAttach *CloudAttachInfo `json:"CloudAttach,omitnil,omitempty" name:"CloudAttach"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudAttachServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudAttachServiceResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudAttachServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudAttachServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -153,6 +153,65 @@ func (c *Client) ApplyInternetAddressWithContext(ctx context.Context, request *A
     return
 }
 
+func NewCreateCloudAttachServiceRequest() (request *CreateCloudAttachServiceRequest) {
+    request = &CreateCloudAttachServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dc", APIVersion, "CreateCloudAttachService")
+    
+    
+    return
+}
+
+func NewCreateCloudAttachServiceResponse() (response *CreateCloudAttachServiceResponse) {
+    response = &CreateCloudAttachServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudAttachService
+// 创建敏捷上云服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) CreateCloudAttachService(request *CreateCloudAttachServiceRequest) (response *CreateCloudAttachServiceResponse, err error) {
+    return c.CreateCloudAttachServiceWithContext(context.Background(), request)
+}
+
+// CreateCloudAttachService
+// 创建敏捷上云服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) CreateCloudAttachServiceWithContext(ctx context.Context, request *CreateCloudAttachServiceRequest) (response *CreateCloudAttachServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudAttachServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudAttachService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudAttachServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDirectConnectRequest() (request *CreateDirectConnectRequest) {
     request = &CreateDirectConnectRequest{
         BaseRequest: &tchttp.BaseRequest{},

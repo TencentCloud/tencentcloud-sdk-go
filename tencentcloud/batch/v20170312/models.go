@@ -3206,7 +3206,7 @@ type Task struct {
 	// 任务名称，在一个作业内部唯一
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务实例运行个数
+	// 任务实例运行个数，默认为1
 	TaskInstanceNum *uint64 `json:"TaskInstanceNum,omitnil,omitempty" name:"TaskInstanceNum"`
 
 	// 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
@@ -3252,6 +3252,13 @@ type Task struct {
 	RestartComputeNode *bool `json:"RestartComputeNode,omitnil,omitempty" name:"RestartComputeNode"`
 
 	// 启动任务过程中，创建计算资源如CVM失败后的最大重试次数，默认为0。最大值100。
+	// 计算资源创建重试的等待时间间隔策略设置如下：
+	// [1, 3]: 等待600 s发起重试；
+	// [4, 10]: 等待900 s发起重试；
+	// [11, 50]: 等待1800 s发起重试；
+	// [51, 100]: 等待3600 s发起重试；
+	// [a, b]表示重试次数区间，每次重试的等待时间随着重试次数的增加而递增。
+	// 例如，计算资源创建重试8次的耗时为：3*600 + 5*900 = 6300 s
 	ResourceMaxRetryCount *uint64 `json:"ResourceMaxRetryCount,omitnil,omitempty" name:"ResourceMaxRetryCount"`
 }
 
