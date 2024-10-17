@@ -321,7 +321,7 @@ type AddOrgData struct {
 
 // Predefined struct for user
 type AddOrganizationRequestParams struct {
-	// 组织名称（仅支持中文、英文、数字、_、-的组合，长度不超过16个字符，且组织名称不能重复）
+	// 组织名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组织父节点 ID（从查询组织接口DescribeOrganization中获取，填0代表根组织）
@@ -331,7 +331,7 @@ type AddOrganizationRequestParams struct {
 type AddOrganizationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 组织名称（仅支持中文、英文、数字、_、-的组合，长度不超过16个字符，且组织名称不能重复）
+	// 组织名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组织父节点 ID（从查询组织接口DescribeOrganization中获取，填0代表根组织）
@@ -634,6 +634,9 @@ type AddRecordPlanRequestParams struct {
 
 	// 添加组织目录下所有设备通道，Json数组，可以为空，通道总数量不超过5000个（包括Channel字段的数量）
 	OrganizationId []*string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 录像补录模式（0:不启用，1:启用），无该字段，默认不启用
+	RepairMode *int64 `json:"RepairMode,omitnil,omitempty" name:"RepairMode"`
 }
 
 type AddRecordPlanRequest struct {
@@ -659,6 +662,9 @@ type AddRecordPlanRequest struct {
 
 	// 添加组织目录下所有设备通道，Json数组，可以为空，通道总数量不超过5000个（包括Channel字段的数量）
 	OrganizationId []*string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 录像补录模式（0:不启用，1:启用），无该字段，默认不启用
+	RepairMode *int64 `json:"RepairMode,omitnil,omitempty" name:"RepairMode"`
 }
 
 func (r *AddRecordPlanRequest) ToJsonString() string {
@@ -680,6 +686,7 @@ func (r *AddRecordPlanRequest) FromJsonString(s string) error {
 	delete(f, "StreamType")
 	delete(f, "Channels")
 	delete(f, "OrganizationId")
+	delete(f, "RepairMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddRecordPlanRequest has unknown keys!", "")
 	}
@@ -743,7 +750,7 @@ type AddRecordRetrieveTaskData struct {
 
 // Predefined struct for user
 type AddRecordRetrieveTaskRequestParams struct {
-	// 任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复
+	// 任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，名称全局唯一，不能为空，不能重复
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 取回录像的开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
@@ -768,7 +775,7 @@ type AddRecordRetrieveTaskRequestParams struct {
 type AddRecordRetrieveTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复
+	// 任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，名称全局唯一，不能为空，不能重复
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 取回录像的开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
@@ -1039,7 +1046,7 @@ func (r *AddStreamAuthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddUserDeviceRequestParams struct {
-	// 设备名称，仅支持中文、英文、数字、_、-，长度不超过32个字符；（设备名称无需全局唯一，可以重复）
+	// 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
@@ -1057,10 +1064,10 @@ type AddUserDeviceRequestParams struct {
 	// 设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（国标，网关设备必填，仅支持数字组合，长度为1-64个字符）
+	// 设备密码（国标，网关设备必填，长度为1-64个字符）
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+	// 设备描述，长度不超过128个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
@@ -1081,17 +1088,17 @@ type AddUserDeviceRequestParams struct {
 	// 设备 SN，仅IVCP 协议设备需要
 	SNCode *string `json:"SNCode,omitnil,omitempty" name:"SNCode"`
 
-	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
 type AddUserDeviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备名称，仅支持中文、英文、数字、_、-，长度不超过32个字符；（设备名称无需全局唯一，可以重复）
+	// 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
@@ -1109,10 +1116,10 @@ type AddUserDeviceRequest struct {
 	// 设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（国标，网关设备必填，仅支持数字组合，长度为1-64个字符）
+	// 设备密码（国标，网关设备必填，长度为1-64个字符）
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+	// 设备描述，长度不超过128个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
@@ -1133,10 +1140,10 @@ type AddUserDeviceRequest struct {
 	// 设备 SN，仅IVCP 协议设备需要
 	SNCode *string `json:"SNCode,omitnil,omitempty" name:"SNCode"`
 
-	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
@@ -1221,7 +1228,7 @@ type BatchOperateDeviceRequestParams struct {
 	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
 
-	// 操作命令（enable：启用；disable：禁用；delete：删除；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+	// 操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
@@ -1231,7 +1238,7 @@ type BatchOperateDeviceRequest struct {
 	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
 
-	// 操作命令（enable：启用；disable：禁用；delete：删除；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+	// 操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
@@ -6487,6 +6494,9 @@ type RecordPlanBaseInfo struct {
 
 	// 通道总数
 	ChannelCount *int64 `json:"ChannelCount,omitnil,omitempty" name:"ChannelCount"`
+
+	// 录像补录模式（0:不启用，1:启用）
+	RepairMode *int64 `json:"RepairMode,omitnil,omitempty" name:"RepairMode"`
 }
 
 type RecordPlanChannelInfo struct {
@@ -6507,6 +6517,9 @@ type RecordPlanChannelInfo struct {
 	// 所属组织名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 通道所属设备的接入协议类型
+	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 }
 
 type RecordPlanOptData struct {
@@ -6529,6 +6542,9 @@ type RecordPlanOptData struct {
 	// 码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamType *string `json:"StreamType,omitnil,omitempty" name:"StreamType"`
+
+	// 录像补录模式（0:不启用，1:启用）
+	RepairMode *int64 `json:"RepairMode,omitnil,omitempty" name:"RepairMode"`
 }
 
 type RecordPlaybackUrl struct {
@@ -7409,7 +7425,7 @@ type UpdateOrganizationRequestParams struct {
 	// 组织ID（从查询组织接口DescribeOrganization中获取）
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 组织名称
+	// 组织名称，支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -7419,7 +7435,7 @@ type UpdateOrganizationRequest struct {
 	// 组织ID（从查询组织接口DescribeOrganization中获取）
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 组织名称
+	// 组织名称，支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -7716,6 +7732,9 @@ type UpdateRecordPlanData struct {
 
 	// 组织目录ID，添加组织目录下所有设备通道，Json数组，可以为空，并且通道总数量不超过5000个（包括Add字段通道数量）
 	OrganizationId []*string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
+
+	// 录像补录模式（0:不启用，1:启用）
+	RepairMode *int64 `json:"RepairMode,omitnil,omitempty" name:"RepairMode"`
 }
 
 // Predefined struct for user
@@ -7859,16 +7878,16 @@ type UpdateUserDeviceRequestParams struct {
 	// 设备ID（从获取设备列表接口ListDevices中获取）
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备名称（仅支持中文、英文、数字、_、-，长度不超过32个字符）
+	// 设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（仅国标，网关设备支持）
+	// 设备密码（仅国标，网关设备支持，长度不超过 64 位）
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述（仅支持中文、英文、数字、_、-，长度不超过128位）
+	// 设备描述（长度不超过128位）
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备接入Ip（仅网关接入支持）
@@ -7896,16 +7915,16 @@ type UpdateUserDeviceRequest struct {
 	// 设备ID（从获取设备列表接口ListDevices中获取）
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备名称（仅支持中文、英文、数字、_、-，长度不超过32个字符）
+	// 设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（仅国标，网关设备支持）
+	// 设备密码（仅国标，网关设备支持，长度不超过 64 位）
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述（仅支持中文、英文、数字、_、-，长度不超过128位）
+	// 设备描述（长度不超过128位）
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备接入Ip（仅网关接入支持）

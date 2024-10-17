@@ -11301,7 +11301,7 @@ type QueryMetricRequestParams struct {
 	// 指标主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 查询时间，秒级Unix时间戳	
+	// 查询时间，秒级Unix时间戳。为空时代表当前时间戳。
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
@@ -11314,7 +11314,7 @@ type QueryMetricRequest struct {
 	// 指标主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 查询时间，秒级Unix时间戳	
+	// 查询时间，秒级Unix时间戳。为空时代表当前时间戳。
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
@@ -12523,12 +12523,12 @@ type WebCallback struct {
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 请求头。
-	// 注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求头。
+	// 注意：该参数已废弃，请使用NoticeContentId。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 请求内容。
-	// 注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求内容。
+	// 注意：该参数已废弃，请使用NoticeContentId。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
@@ -12536,4 +12536,12 @@ type WebCallback struct {
 	// - 入参无效。
 	// - 出参有效。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 通知内容模板ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
+
+	// 集成配置ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 }

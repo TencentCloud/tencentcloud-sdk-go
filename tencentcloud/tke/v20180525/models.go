@@ -6598,6 +6598,71 @@ func (r *DescribeBackupStorageLocationsResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeBatchModifyTagsStatusRequestParams struct {
+
+}
+
+type DescribeBatchModifyTagsStatusRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBatchModifyTagsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchModifyTagsStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchModifyTagsStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchModifyTagsStatusResponseParams struct {
+	// 失败资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedResources []*FailedResource `json:"FailedResources,omitnil,omitempty" name:"FailedResources"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否同步集群内子资源标签
+	SyncSubresource *bool `json:"SyncSubresource,omitnil,omitempty" name:"SyncSubresource"`
+
+	// 集群标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchModifyTagsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchModifyTagsStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchModifyTagsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchModifyTagsStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterAsGroupOptionRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -14554,6 +14619,16 @@ type ExtensionAddon struct {
 	AddonParam *string `json:"AddonParam,omitnil,omitempty" name:"AddonParam"`
 }
 
+type FailedResource struct {
+	// 资源六段式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 执行失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
 type Filter struct {
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -16573,6 +16648,78 @@ func (r *ModifyClusterRuntimeConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterRuntimeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterTagsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否同步集群内子资源标签
+	SyncSubresource *bool `json:"SyncSubresource,omitnil,omitempty" name:"SyncSubresource"`
+}
+
+type ModifyClusterTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否同步集群内子资源标签
+	SyncSubresource *bool `json:"SyncSubresource,omitnil,omitempty" name:"SyncSubresource"`
+}
+
+func (r *ModifyClusterTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Tags")
+	delete(f, "SyncSubresource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterTagsResponseParams struct {
+	// 集群标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterTagsResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

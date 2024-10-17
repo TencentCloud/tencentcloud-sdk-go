@@ -53,6 +53,21 @@ const (
 	// 服务内部错误。
 	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 
+	// 素材数据为空。
+	FAILEDOPERATION_MEDIADATAERROR = "FailedOperation.MediaDataError"
+
+	// 审核配置为空。
+	FAILEDOPERATION_MODERATIONCONFIGERROR = "FailedOperation.ModerationConfigError"
+
+	// 素材审核失败。
+	FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+
+	// 素材审核结果为空。
+	FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+
+	// 审核结果配置为空。
+	FAILEDOPERATION_MODERATIONRESULTCONFIGERROR = "FailedOperation.ModerationResultConfigError"
+
 	// 无法检测出人脸, 人脸框配准分低于阈值。
 	FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
 

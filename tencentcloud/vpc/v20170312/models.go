@@ -4823,16 +4823,16 @@ type CreateNatGatewayRequestParams struct {
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// NAT网关最大外网出带宽(单位:Mbps)，支持的参数值：`20, 50, 100, 200, 500, 1000, 2000, 5000`，默认: `100Mbps`。
+	// NAT网关最大外网出带宽(单位：Mbps)，支持的参数值：20, 50, 100, 200, 500, 1000, 2000, 5000，默认: 100Mbps。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为5000Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// NAT网关并发连接上限，支持参数值：`1000000、3000000、10000000`，默认值为`100000`。
+	// NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitnil,omitempty" name:"MaxConcurrentConnection"`
 
-	// 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP，其中AddressCount和PublicAddresses至少传递一个。
+	// 新建弹性公网IP个数，系统会按您的要求创建对应数量的弹性公网IP，其中AddressCount和PublicAddresses两个参数至少填写一个。
 	AddressCount *uint64 `json:"AddressCount,omitnil,omitempty" name:"AddressCount"`
 
-	// 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
+	// 绑定NAT网关的已有弹性公网IP数组，其中AddressCount和PublicAddresses两个参数至少填写一个。 示例值：["139.199.232.119"]
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 可用区，形如：`ap-guangzhou-1`。
@@ -4841,10 +4841,12 @@ type CreateNatGatewayRequestParams struct {
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// NAT网关所属子网
+	// NAT网关所属子网，已废弃
+	//
+	// Deprecated: SubnetId is deprecated.
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+	// 绑定NAT网关的弹性公网IP带宽值（单位：Mbps）。不填写此参数时：则该参数默认为弹性公网IP的带宽值，部分用户默认为该用户类型的弹性公网IP的带宽上限。
 	StockPublicIpAddressesBandwidthOut *uint64 `json:"StockPublicIpAddressesBandwidthOut,omitnil,omitempty" name:"StockPublicIpAddressesBandwidthOut"`
 
 	// 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
@@ -4853,7 +4855,7 @@ type CreateNatGatewayRequestParams struct {
 	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
 	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitnil,omitempty" name:"PublicIpFromSameZone"`
 
-	// NAT网关大版本号，1是传统型，2是标准型，默认是1
+	// NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关，默认值是1。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil,omitempty" name:"NatProductVersion"`
 }
 
@@ -4866,16 +4868,16 @@ type CreateNatGatewayRequest struct {
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// NAT网关最大外网出带宽(单位:Mbps)，支持的参数值：`20, 50, 100, 200, 500, 1000, 2000, 5000`，默认: `100Mbps`。
+	// NAT网关最大外网出带宽(单位：Mbps)，支持的参数值：20, 50, 100, 200, 500, 1000, 2000, 5000，默认: 100Mbps。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为5000Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// NAT网关并发连接上限，支持参数值：`1000000、3000000、10000000`，默认值为`100000`。
+	// NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitnil,omitempty" name:"MaxConcurrentConnection"`
 
-	// 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP，其中AddressCount和PublicAddresses至少传递一个。
+	// 新建弹性公网IP个数，系统会按您的要求创建对应数量的弹性公网IP，其中AddressCount和PublicAddresses两个参数至少填写一个。
 	AddressCount *uint64 `json:"AddressCount,omitnil,omitempty" name:"AddressCount"`
 
-	// 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
+	// 绑定NAT网关的已有弹性公网IP数组，其中AddressCount和PublicAddresses两个参数至少填写一个。 示例值：["139.199.232.119"]
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 可用区，形如：`ap-guangzhou-1`。
@@ -4884,10 +4886,10 @@ type CreateNatGatewayRequest struct {
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// NAT网关所属子网
+	// NAT网关所属子网，已废弃
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+	// 绑定NAT网关的弹性公网IP带宽值（单位：Mbps）。不填写此参数时：则该参数默认为弹性公网IP的带宽值，部分用户默认为该用户类型的弹性公网IP的带宽上限。
 	StockPublicIpAddressesBandwidthOut *uint64 `json:"StockPublicIpAddressesBandwidthOut,omitnil,omitempty" name:"StockPublicIpAddressesBandwidthOut"`
 
 	// 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
@@ -4896,7 +4898,7 @@ type CreateNatGatewayRequest struct {
 	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
 	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitnil,omitempty" name:"PublicIpFromSameZone"`
 
-	// NAT网关大版本号，1是传统型，2是标准型，默认是1
+	// NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关，默认值是1。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil,omitempty" name:"NatProductVersion"`
 }
 
@@ -27054,7 +27056,7 @@ type NatGateway struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestrictState *string `json:"RestrictState,omitnil,omitempty" name:"RestrictState"`
 
-	// NAT网关大版本号，传统型=1，标准型=2
+	// NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil,omitempty" name:"NatProductVersion"`
 
@@ -27401,9 +27403,6 @@ type NetworkInterface struct {
 }
 
 type NetworkInterfaceAttachment struct {
-	// 云主机实例ID。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
 	// 网卡在云主机实例内的序号。
 	DeviceIndex *uint64 `json:"DeviceIndex,omitnil,omitempty" name:"DeviceIndex"`
 
@@ -27412,6 +27411,9 @@ type NetworkInterfaceAttachment struct {
 
 	// 绑定时间。
 	AttachTime *string `json:"AttachTime,omitnil,omitempty" name:"AttachTime"`
+
+	// 云主机实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 // Predefined struct for user

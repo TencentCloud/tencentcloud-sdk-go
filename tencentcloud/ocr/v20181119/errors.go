@@ -173,7 +173,7 @@ const (
 	// 不支持当天发票查询。
 	RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
 
-	// 帐号已欠费。
+	// 账号已欠费。
 	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 
 	// 账号资源包耗尽。

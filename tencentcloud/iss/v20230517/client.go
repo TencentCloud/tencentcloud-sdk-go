@@ -372,7 +372,9 @@ func NewAddRecordPlanResponse() (response *AddRecordPlanResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
 //  INVALIDPARAMETERVALUE_INVALIDCHANNELIDORDEVICEID = "InvalidParameterValue.InvalidChannelIdOrDeviceId"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
+//  INVALIDPARAMETERVALUE_INVALIDREPAIRMODE = "InvalidParameterValue.InvalidRepairMode"
 //  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_LIMITREPAIRTRANSITION = "InvalidParameterValue.LimitRepairTransition"
 //  INVALIDPARAMETERVALUE_ORGANIZATIONCOUNTEXCEEDSRANGE = "InvalidParameterValue.OrganizationCountExceedsRange"
 //  INVALIDPARAMETERVALUE_PLANCHANNELSEXCEEDSRANGE = "InvalidParameterValue.PlanChannelsExceedsRange"
 //  INVALIDPARAMETERVALUE_TOOLONGDESCRIBE = "InvalidParameterValue.TooLongDescribe"
@@ -407,7 +409,9 @@ func (c *Client) AddRecordPlan(request *AddRecordPlanRequest) (response *AddReco
 //  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
 //  INVALIDPARAMETERVALUE_INVALIDCHANNELIDORDEVICEID = "InvalidParameterValue.InvalidChannelIdOrDeviceId"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
+//  INVALIDPARAMETERVALUE_INVALIDREPAIRMODE = "InvalidParameterValue.InvalidRepairMode"
 //  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_LIMITREPAIRTRANSITION = "InvalidParameterValue.LimitRepairTransition"
 //  INVALIDPARAMETERVALUE_ORGANIZATIONCOUNTEXCEEDSRANGE = "InvalidParameterValue.OrganizationCountExceedsRange"
 //  INVALIDPARAMETERVALUE_PLANCHANNELSEXCEEDSRANGE = "InvalidParameterValue.PlanChannelsExceedsRange"
 //  INVALIDPARAMETERVALUE_TOOLONGDESCRIBE = "InvalidParameterValue.TooLongDescribe"
@@ -4314,7 +4318,7 @@ func NewRefreshDeviceChannelResponse() (response *RefreshDeviceChannelResponse) 
 }
 
 // RefreshDeviceChannel
-// 用于刷新国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
+// 用于同步国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4330,7 +4334,7 @@ func (c *Client) RefreshDeviceChannel(request *RefreshDeviceChannelRequest) (res
 }
 
 // RefreshDeviceChannel
-// 用于刷新国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
+// 用于同步国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4969,8 +4973,10 @@ func NewUpdateRecordPlanResponse() (response *UpdateRecordPlanResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
 //  INVALIDPARAMETERVALUE_INVALIDEXPIRATIONRANGE = "InvalidParameterValue.InvalidExpirationRange"
 //  INVALIDPARAMETERVALUE_INVALIDPLANID = "InvalidParameterValue.InvalidPlanId"
+//  INVALIDPARAMETERVALUE_INVALIDREPAIRMODE = "InvalidParameterValue.InvalidRepairMode"
 //  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
 //  INVALIDPARAMETERVALUE_INVALIDTRANSITIONRANGE = "InvalidParameterValue.InvalidTransitionRange"
+//  INVALIDPARAMETERVALUE_LIMITREPAIRTRANSITION = "InvalidParameterValue.LimitRepairTransition"
 //  INVALIDPARAMETERVALUE_PLANCHANNELSEXCEEDSRANGE = "InvalidParameterValue.PlanChannelsExceedsRange"
 //  INVALIDPARAMETERVALUE_TOOLONGDESCRIBE = "InvalidParameterValue.TooLongDescribe"
 //  INVALIDPARAMETERVALUE_TOOLONGNAME = "InvalidParameterValue.TooLongName"
@@ -5011,8 +5017,10 @@ func (c *Client) UpdateRecordPlan(request *UpdateRecordPlanRequest) (response *U
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
 //  INVALIDPARAMETERVALUE_INVALIDEXPIRATIONRANGE = "InvalidParameterValue.InvalidExpirationRange"
 //  INVALIDPARAMETERVALUE_INVALIDPLANID = "InvalidParameterValue.InvalidPlanId"
+//  INVALIDPARAMETERVALUE_INVALIDREPAIRMODE = "InvalidParameterValue.InvalidRepairMode"
 //  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
 //  INVALIDPARAMETERVALUE_INVALIDTRANSITIONRANGE = "InvalidParameterValue.InvalidTransitionRange"
+//  INVALIDPARAMETERVALUE_LIMITREPAIRTRANSITION = "InvalidParameterValue.LimitRepairTransition"
 //  INVALIDPARAMETERVALUE_PLANCHANNELSEXCEEDSRANGE = "InvalidParameterValue.PlanChannelsExceedsRange"
 //  INVALIDPARAMETERVALUE_TOOLONGDESCRIBE = "InvalidParameterValue.TooLongDescribe"
 //  INVALIDPARAMETERVALUE_TOOLONGNAME = "InvalidParameterValue.TooLongName"

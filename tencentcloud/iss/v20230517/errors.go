@@ -284,6 +284,9 @@ const (
 	// 无效的RTMP推流StreamName
 	INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
 
+	// 无效的录像补录参数
+	INVALIDPARAMETERVALUE_INVALIDREPAIRMODE = "InvalidParameterValue.InvalidRepairMode"
+
 	// 无效的取回模式
 	INVALIDPARAMETERVALUE_INVALIDRETRIEVALMODE = "InvalidParameterValue.InvalidRetrievalMode"
 
@@ -325,6 +328,9 @@ const (
 
 	// 无效的用户名，长度或内容不符合规则
 	INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
+
+	// 开启录像补录热存不能小于3天
+	INVALIDPARAMETERVALUE_LIMITREPAIRTRANSITION = "InvalidParameterValue.LimitRepairTransition"
 
 	// 时间不能跨天
 	INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"

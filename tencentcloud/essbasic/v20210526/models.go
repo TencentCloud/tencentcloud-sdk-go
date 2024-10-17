@@ -11451,6 +11451,9 @@ type RegistrationOrganizationInfo struct {
 	// 2. 超管的个人身份必须在电子签已经实名。
 	// 2. 认证方式AuthorizationTypes必须只能是上传授权书方式 
 	PowerOfAttorneys []*string `json:"PowerOfAttorneys,omitnil,omitempty" name:"PowerOfAttorneys"`
+
+	// 认证完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 [跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
+	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
 }
 
 type ReleasedApprover struct {

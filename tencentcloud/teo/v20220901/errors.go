@@ -23,10 +23,10 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 证书已过期，暂不支持下发过期证书。
+	// 边缘HTTPS证书已过期，暂不支持下发过期证书。
 	FAILEDOPERATION_CERTIFICATEHASEXPIRED = "FailedOperation.CertificateHasExpired"
 
-	// 证书不存在。
+	// 边缘HTTPS证书不存在。
 	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 
 	// 配置文件Condition表达式语法错误。
@@ -155,16 +155,16 @@ const (
 	// 查询字符串规则超过了限制。
 	INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = "InvalidParameter.CacheKeyQueryStringTooManyValue"
 
-	// HTTPS证书和域名不匹配。
+	// 无效的边缘HTTPS证书配置，证书与域名不匹配。
 	INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
 
 	// 内部错误。
 	INVALIDPARAMETER_CERTSYSTEMERROR = "InvalidParameter.CertSystemError"
 
-	// HTTPS证书即将过期。
+	// 边缘HTTPS证书即将过期。
 	INVALIDPARAMETER_CERTTOEXPIRE = "InvalidParameter.CertToExpire"
 
-	// 证书错误。
+	// 无效的边缘HTTPS证书配置，密钥长度不符合最短要求RSA>=2048,DSA>=2048,DH>=2048,EC>=225。
 	INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = "InvalidParameter.CertTooShortKeySize"
 
 	// IPv6 访问与客户端 IP 地理位置功能冲突。
@@ -359,7 +359,7 @@ const (
 	// 无效的节点缓存时间。
 	INVALIDPARAMETER_INVALIDCACHETIME = "InvalidParameter.InvalidCacheTime"
 
-	// 证书信息错误。
+	// 无效的边缘HTTPS证书信息。
 	INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
 
 	// 无效的客户端IP地理位置配置，HeaderName由1-100个字母或数字组成的，不能以"-"开头或结尾。
@@ -398,7 +398,7 @@ const (
 	// 无效的HTTPS。
 	INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
 
-	// 无效的HTTPS证书。
+	// 无效的边缘HTTPS证书配置，证书内容无效。
 	INVALIDPARAMETER_INVALIDHTTPSCERTINFO = "InvalidParameter.InvalidHttpsCertInfo"
 
 	// 加密套件与TLS版本不匹配。
@@ -788,10 +788,10 @@ const (
 	// 不符合指定的正则表达式。
 	INVALIDPARAMETERVALUE_REGEXMISMATCH = "InvalidParameterValue.RegExMismatch"
 
-	// 已开启双向认证，客户端使用 RSA 或者 ECC 算法证书时，HTTPS 证书必须也配置有相同算法证书。
+	// 已开启边缘双向认证，客户端使用 RSA 或者 ECC 算法证书时，边缘 HTTPS 证书必须也配置有相同算法证书。
 	INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINRSAORECC = "InvalidParameterValue.ServerCertInfoNeedContainRSAorECC"
 
-	// 已开启双向认证，客户端使用国密算法 CA 证书时，HTTPS 证书必须也配置有国密证书。
+	// 已开启边缘双向认证，客户端使用国密算法 CA 证书时，边缘 HTTPS 证书必须也配置有国密证书。
 	INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = "InvalidParameterValue.ServerCertInfoNeedContainSM2"
 
 	// 请输入合法的共享 CNAME 前缀，最大支持50个字符。

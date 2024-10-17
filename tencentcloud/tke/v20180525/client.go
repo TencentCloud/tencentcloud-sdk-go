@@ -5170,6 +5170,55 @@ func (c *Client) DescribeBackupStorageLocationsWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBatchModifyTagsStatusRequest() (request *DescribeBatchModifyTagsStatusRequest) {
+    request = &DescribeBatchModifyTagsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeBatchModifyTagsStatus")
+    
+    
+    return
+}
+
+func NewDescribeBatchModifyTagsStatusResponse() (response *DescribeBatchModifyTagsStatusResponse) {
+    response = &DescribeBatchModifyTagsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBatchModifyTagsStatus
+// 查询批量修改标签状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+func (c *Client) DescribeBatchModifyTagsStatus(request *DescribeBatchModifyTagsStatusRequest) (response *DescribeBatchModifyTagsStatusResponse, err error) {
+    return c.DescribeBatchModifyTagsStatusWithContext(context.Background(), request)
+}
+
+// DescribeBatchModifyTagsStatus
+// 查询批量修改标签状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+func (c *Client) DescribeBatchModifyTagsStatusWithContext(ctx context.Context, request *DescribeBatchModifyTagsStatusRequest) (response *DescribeBatchModifyTagsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchModifyTagsStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchModifyTagsStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchModifyTagsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterAsGroupOptionRequest() (request *DescribeClusterAsGroupOptionRequest) {
     request = &DescribeClusterAsGroupOptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12780,6 +12829,65 @@ func (c *Client) ModifyClusterRuntimeConfigWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyClusterRuntimeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterTagsRequest() (request *ModifyClusterTagsRequest) {
+    request = &ModifyClusterTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterTags")
+    
+    
+    return
+}
+
+func NewModifyClusterTagsResponse() (response *ModifyClusterTagsResponse) {
+    response = &ModifyClusterTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterTags
+// 修改集群标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TASKCREATEFAILED = "InternalError.TaskCreateFailed"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyClusterTags(request *ModifyClusterTagsRequest) (response *ModifyClusterTagsResponse, err error) {
+    return c.ModifyClusterTagsWithContext(context.Background(), request)
+}
+
+// ModifyClusterTags
+// 修改集群标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TASKCREATEFAILED = "InternalError.TaskCreateFailed"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyClusterTagsWithContext(ctx context.Context, request *ModifyClusterTagsRequest) (response *ModifyClusterTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterTagsResponse()
     err = c.Send(request, response)
     return
 }

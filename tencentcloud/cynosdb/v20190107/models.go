@@ -14858,6 +14858,9 @@ type SaleZone struct {
 
 	// 是否为全链路RDMA可用区
 	IsWholeRdmaZone *string `json:"IsWholeRdmaZone,omitnil,omitempty" name:"IsWholeRdmaZone"`
+
+	// 当前可用区是否允许新购集群，1:允许，0:不允许
+	IsSupportCreateCluster *int64 `json:"IsSupportCreateCluster,omitnil,omitempty" name:"IsSupportCreateCluster"`
 }
 
 // Predefined struct for user

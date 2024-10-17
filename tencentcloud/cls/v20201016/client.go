@@ -6796,7 +6796,9 @@ func NewQueryMetricResponse() (response *QueryMetricResponse) {
 }
 
 // QueryMetric
-// 查询指定时刻指标的最新值
+// 查询指定时刻指标的最新值。
+//
+// 如果该时刻向前推5分钟内均无指标数据，则无相应的查询结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6813,7 +6815,9 @@ func (c *Client) QueryMetric(request *QueryMetricRequest) (response *QueryMetric
 }
 
 // QueryMetric
-// 查询指定时刻指标的最新值
+// 查询指定时刻指标的最新值。
+//
+// 如果该时刻向前推5分钟内均无指标数据，则无相应的查询结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

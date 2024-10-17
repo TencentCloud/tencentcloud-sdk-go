@@ -75,10 +75,10 @@ func (r *AssociateTargetGroupsResponse) FromJsonString(s string) error {
 }
 
 type AssociationItem struct {
-	// 关联到的负载均衡ID
+	// 关联到的网关负载均衡实例ID
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡名称
+	// 网关负载均衡实例名称
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 }
 
@@ -90,7 +90,7 @@ type CreateGatewayLoadBalancerRequestParams struct {
 	// 网关负载均衡后端目标设备所属的私有网络的子网ID。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 网关负载均衡实例名称。可支持输入1-60个字符，允许英文字母、数字、中文字符、“-”、“_”、“.”。不填写时默认自动生成。
+	// 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
@@ -112,7 +112,7 @@ type CreateGatewayLoadBalancerRequest struct {
 	// 网关负载均衡后端目标设备所属的私有网络的子网ID。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 网关负载均衡实例名称。可支持输入1-60个字符，允许英文字母、数字、中文字符、“-”、“_”、“.”。不填写时默认自动生成。
+	// 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
@@ -182,7 +182,7 @@ func (r *CreateGatewayLoadBalancerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTargetGroupRequestParams struct {
-	// 目标组名称，限定50个字符
+	// 目标组名称，限定60个字符。
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
 	// 目标组的vpcid属性，不填则使用默认vpc
@@ -195,14 +195,14 @@ type CreateTargetGroupRequestParams struct {
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 
 	// 网关负载均衡目标组协议。
-	// - AWS_GENEVE：GENEVE 兼容协议 
 	// - TENCENT_GENEVE ：GENEVE 标准协议
+	// - AWS_GENEVE：GENEVE 兼容协议（需要提交工单申请开白）
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 健康检查。
+	// 健康检查设置。
 	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// RS调度算法。
+	// 均衡算法。
 	// - IP_HASH_3_ELASTIC：弹性哈希
 	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
 
@@ -213,7 +213,7 @@ type CreateTargetGroupRequestParams struct {
 type CreateTargetGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标组名称，限定50个字符
+	// 目标组名称，限定60个字符。
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
 	// 目标组的vpcid属性，不填则使用默认vpc
@@ -226,14 +226,14 @@ type CreateTargetGroupRequest struct {
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 
 	// 网关负载均衡目标组协议。
-	// - AWS_GENEVE：GENEVE 兼容协议 
 	// - TENCENT_GENEVE ：GENEVE 标准协议
+	// - AWS_GENEVE：GENEVE 兼容协议（需要提交工单申请开白）
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 健康检查。
+	// 健康检查设置。
 	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// RS调度算法。
+	// 均衡算法。
 	// - IP_HASH_3_ELASTIC：弹性哈希
 	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
 
@@ -348,14 +348,14 @@ func (r *DeleteGatewayLoadBalancerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTargetGroupsRequestParams struct {
-	// 目标组列表。
+	// 目标组ID列表。
 	TargetGroupIds []*string `json:"TargetGroupIds,omitnil,omitempty" name:"TargetGroupIds"`
 }
 
 type DeleteTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标组列表。
+	// 目标组ID列表。
 	TargetGroupIds []*string `json:"TargetGroupIds,omitnil,omitempty" name:"TargetGroupIds"`
 }
 
@@ -1122,7 +1122,7 @@ type ModifyGatewayLoadBalancerAttributeRequestParams struct {
 	// 网关负载均衡的唯一ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 网关负载均衡名称。
+	// 网关负载均衡实例名称。可支持输入1-60个字符。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 }
 
@@ -1132,7 +1132,7 @@ type ModifyGatewayLoadBalancerAttributeRequest struct {
 	// 网关负载均衡的唯一ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 网关负载均衡名称。
+	// 网关负载均衡实例名称。可支持输入1-60个字符。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 }
 
@@ -1258,7 +1258,7 @@ type ModifyTargetGroupInstancesWeightRequestParams struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待修改权重的服务器数组。
+	// 实例绑定配置数组。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -1268,7 +1268,7 @@ type ModifyTargetGroupInstancesWeightRequest struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待修改权重的服务器数组。
+	// 实例绑定配置数组。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -1319,7 +1319,7 @@ type Price struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *ItemPrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
-	// 描述了实例价格。
+	// 描述了GLCU的价格。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LcuPrice *ItemPrice `json:"LcuPrice,omitnil,omitempty" name:"LcuPrice"`
 }
@@ -1394,7 +1394,7 @@ type TagInfo struct {
 }
 
 type TargetGroupAssociation struct {
-	// 负载均衡ID。
+	// 网关负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 目标组ID。
@@ -1446,7 +1446,10 @@ type TargetGroupHealthCheck struct {
 	// 是否开启健康检查。
 	HealthSwitch *bool `json:"HealthSwitch,omitnil,omitempty" name:"HealthSwitch"`
 
-	// 健康检查使用的协议。支持icmp和tcp，默认为icmp。
+	// 健康检查使用的协议。支持ping和tcp，默认为ping。
+	// 
+	// - PING: icmp
+	// - TCP: tcp
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 健康检查端口，探测协议未tcp时，该参数必填。
@@ -1494,8 +1497,7 @@ type TargetGroupInfo struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 调度算法。
-	// ip_hash_3：3元组对称弹性Hash
-	// ip_hash_3_consistent：3元组对称一致性Hash
+	// ip_hash_3：弹性哈希
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
 

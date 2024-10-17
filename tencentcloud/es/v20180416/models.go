@@ -576,6 +576,12 @@ type CreateInstanceRequestParams struct {
 
 	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
 	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+
+	// 置放群组是否开启异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组开启异步任务的可维护时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 type CreateInstanceRequest struct {
@@ -702,6 +708,12 @@ type CreateInstanceRequest struct {
 
 	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
 	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+
+	// 置放群组是否开启异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组开启异步任务的可维护时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -754,6 +766,8 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DisasterRecoverGroupAffinity")
 	delete(f, "SubProductCode")
 	delete(f, "ReadWriteMode")
+	delete(f, "EnableScheduleRecoverGroup")
+	delete(f, "EnableScheduleOperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -3688,6 +3702,24 @@ type Dimension struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type EnableScheduleOperationDuration struct {
+	// 支持开启异步任务的日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Periods []*string `json:"Periods,omitnil,omitempty" name:"Periods"`
+
+	// 支持开启异步的开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeStart *string `json:"TimeStart,omitnil,omitempty" name:"TimeStart"`
+
+	// 支持开启异步的结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeEnd *string `json:"TimeEnd,omitnil,omitempty" name:"TimeEnd"`
+
+	// 支持开启异步的时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+}
+
 type EsAcl struct {
 	// kibana访问黑名单
 	BlackIpList []*string `json:"BlackIpList,omitnil,omitempty" name:"BlackIpList"`
@@ -4997,6 +5029,14 @@ type NodeView struct {
 
 	// CVM运行状态
 	CVMStatus *string `json:"CVMStatus,omitnil,omitempty" name:"CVMStatus"`
+
+	// cvm绑定的置放群组的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVMDisasterRecoverGroupId *string `json:"CVMDisasterRecoverGroupId,omitnil,omitempty" name:"CVMDisasterRecoverGroupId"`
+
+	// cvm绑定置放群组的状态。2: 已绑定；1: 绑定中；0: 未开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVMDisasterRecoverGroupStatus *int64 `json:"CVMDisasterRecoverGroupStatus,omitnil,omitempty" name:"CVMDisasterRecoverGroupStatus"`
 }
 
 type Operation struct {
@@ -5350,6 +5390,12 @@ type RestartNodesRequestParams struct {
 
 	// 分片迁移并发速度
 	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
+
+	// 是否开启置放群组异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组异步任务时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 type RestartNodesRequest struct {
@@ -5378,6 +5424,12 @@ type RestartNodesRequest struct {
 
 	// 分片迁移并发速度
 	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
+
+	// 是否开启置放群组异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组异步任务时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 func (r *RestartNodesRequest) ToJsonString() string {
@@ -5400,6 +5452,8 @@ func (r *RestartNodesRequest) FromJsonString(s string) error {
 	delete(f, "CvmDelayOnlineTime")
 	delete(f, "ShardAllocationConcurrents")
 	delete(f, "ShardAllocationBytes")
+	delete(f, "EnableScheduleRecoverGroup")
+	delete(f, "EnableScheduleOperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartNodesRequest has unknown keys!", "")
 	}
@@ -6326,6 +6380,12 @@ type UpdateInstanceRequestParams struct {
 
 	// 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
 	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+
+	// 是否开启置放群组异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组异步任务可维护时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 type UpdateInstanceRequest struct {
@@ -6473,6 +6533,12 @@ type UpdateInstanceRequest struct {
 
 	// 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
 	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+
+	// 是否开启置放群组异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组异步任务可维护时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -6528,6 +6594,8 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ShardAllocationConcurrents")
 	delete(f, "ShardAllocationBytes")
 	delete(f, "ReadWriteMode")
+	delete(f, "EnableScheduleRecoverGroup")
+	delete(f, "EnableScheduleOperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}
@@ -7168,6 +7236,12 @@ type UpgradeInstanceRequestParams struct {
 
 	// 分片迁移并发速度
 	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
+
+	// 是否开启置放群组异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组异步任务时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 type UpgradeInstanceRequest struct {
@@ -7205,6 +7279,12 @@ type UpgradeInstanceRequest struct {
 
 	// 分片迁移并发速度
 	ShardAllocationBytes *uint64 `json:"ShardAllocationBytes,omitnil,omitempty" name:"ShardAllocationBytes"`
+
+	// 是否开启置放群组异步任务
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 置放群组异步任务时间段
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -7230,6 +7310,8 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CvmDelayOnlineTime")
 	delete(f, "ShardAllocationConcurrents")
 	delete(f, "ShardAllocationBytes")
+	delete(f, "EnableScheduleRecoverGroup")
+	delete(f, "EnableScheduleOperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

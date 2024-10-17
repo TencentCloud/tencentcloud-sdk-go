@@ -8196,6 +8196,9 @@ type DescribeRestoreTaskRequestParams struct {
 
 	// 排序规则（desc-降序，asc-升序），默认desc
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 回档异步任务ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type DescribeRestoreTaskRequest struct {
@@ -8233,6 +8236,9 @@ type DescribeRestoreTaskRequest struct {
 
 	// 排序规则（desc-降序，asc-升序），默认desc
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 回档异步任务ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 func (r *DescribeRestoreTaskRequest) ToJsonString() string {
@@ -8258,6 +8264,7 @@ func (r *DescribeRestoreTaskRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "OrderBy")
 	delete(f, "OrderByType")
+	delete(f, "FlowId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRestoreTaskRequest has unknown keys!", "")
 	}
@@ -13175,6 +13182,9 @@ type RestoreTask struct {
 
 	// 回档状态，0-初始化，1-运行中，2-成功，3-失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 回档异步任务ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 // Predefined struct for user
