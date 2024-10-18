@@ -226,6 +226,12 @@ type DescribePortraitSingJobResponseParams struct {
 	// 任务状态信息
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
 	// 生成视频的URL地址
 	// 有效期24小时
 	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
@@ -514,41 +520,53 @@ func (r *SubmitImageAnimateJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitPortraitSingJobRequestParams struct {
-	// 传入音频URL地址。音频要求：
-	// —音频时长：不超过60秒
-	// —音频格式：mp3、wav、m4a
+	// 传入音频URL地址，音频要求：
+	// - 音频时长：2秒 - 60秒
+	// - 音频格式：mp3、wav、m4a
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
 	// 传入图片URL地址，图片要求：
-	// —图片格式：jpg、jpeg、png
-	// —图片分辨率：长边不超过2560
-	// —图片大小：不超过6M
-	// —图片宽高比：图片【宽：高】在1:2到2:1范围内
+	// - 图片格式：jpg、jpeg、png、bmp、webp
+	// - 图片分辨率：192～4096
+	// - 图片大小：不超过10M
+	// - 图片宽高比：图片【宽：高】在1:2到2:1范围内
+	// - 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 传入图片Base64编码。
-	// —图片Base64编码与URL地址必传其一
+	// 传入图片Base64编码，编码后请求体大小不超过10M。
+	// 图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 唱演模式，默认使用人像模式。
+	// Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
+	// Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type SubmitPortraitSingJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 传入音频URL地址。音频要求：
-	// —音频时长：不超过60秒
-	// —音频格式：mp3、wav、m4a
+	// 传入音频URL地址，音频要求：
+	// - 音频时长：2秒 - 60秒
+	// - 音频格式：mp3、wav、m4a
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
 	// 传入图片URL地址，图片要求：
-	// —图片格式：jpg、jpeg、png
-	// —图片分辨率：长边不超过2560
-	// —图片大小：不超过6M
-	// —图片宽高比：图片【宽：高】在1:2到2:1范围内
+	// - 图片格式：jpg、jpeg、png、bmp、webp
+	// - 图片分辨率：192～4096
+	// - 图片大小：不超过10M
+	// - 图片宽高比：图片【宽：高】在1:2到2:1范围内
+	// - 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 传入图片Base64编码。
-	// —图片Base64编码与URL地址必传其一
+	// 传入图片Base64编码，编码后请求体大小不超过10M。
+	// 图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 唱演模式，默认使用人像模式。
+	// Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
+	// Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 func (r *SubmitPortraitSingJobRequest) ToJsonString() string {
@@ -566,6 +584,7 @@ func (r *SubmitPortraitSingJobRequest) FromJsonString(s string) error {
 	delete(f, "AudioUrl")
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
+	delete(f, "Mode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitPortraitSingJobRequest has unknown keys!", "")
 	}
