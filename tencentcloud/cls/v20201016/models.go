@@ -10710,6 +10710,9 @@ type ModifyTopicRequestParams struct {
 
 	// 日志主题分区数量
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
+
+	// 取消切换存储任务的id
+	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
 }
 
 type ModifyTopicRequest struct {
@@ -10753,6 +10756,9 @@ type ModifyTopicRequest struct {
 
 	// 日志主题分区数量
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
+
+	// 取消切换存储任务的id
+	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -10779,6 +10785,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "IsWebTracking")
 	delete(f, "Extends")
 	delete(f, "PartitionCount")
+	delete(f, "CancelTopicAsyncTaskID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}
@@ -12412,6 +12419,18 @@ type TopicInfo struct {
 	// 日志主题扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
+
+	// 异步迁移任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicAsyncTaskID *string `json:"TopicAsyncTaskID,omitnil,omitempty" name:"TopicAsyncTaskID"`
+
+	// 异步迁移状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigrationStatus *uint64 `json:"MigrationStatus,omitnil,omitempty" name:"MigrationStatus"`
+
+	// 异步迁移完成后，预计生效日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveDate *string `json:"EffectiveDate,omitnil,omitempty" name:"EffectiveDate"`
 }
 
 // Predefined struct for user

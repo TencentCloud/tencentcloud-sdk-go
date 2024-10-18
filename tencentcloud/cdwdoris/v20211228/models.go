@@ -1360,6 +1360,12 @@ type DescribeBackUpJobRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 任务类型：
+	// 0-不限制，或使用TypeFilters过滤；
+	// 1-备份恢复（包括周期备份和一次性备份）；
+	// 2-数据迁移（包括跨集群迁移和cos迁移）	
+	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
+
 	// 分页大小
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
@@ -1381,6 +1387,12 @@ type DescribeBackUpJobRequest struct {
 	
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务类型：
+	// 0-不限制，或使用TypeFilters过滤；
+	// 1-备份恢复（包括周期备份和一次性备份）；
+	// 2-数据迁移（包括跨集群迁移和cos迁移）	
+	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 分页大小
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
@@ -1411,6 +1423,7 @@ func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "ApplicationType")
 	delete(f, "PageSize")
 	delete(f, "PageNum")
 	delete(f, "BeginTime")
@@ -1450,12 +1463,21 @@ func (r *DescribeBackUpJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackUpSchedulesRequestParams struct {
-
+	// 任务类型
+	// 0-不限制，或使用TypeFilters过滤；
+	// 1-备份恢复（包括周期备份和一次性备份）；
+	// 2-数据迁移（包括跨集群迁移和cos迁移）
+	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 }
 
 type DescribeBackUpSchedulesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 任务类型
+	// 0-不限制，或使用TypeFilters过滤；
+	// 1-备份恢复（包括周期备份和一次性备份）；
+	// 2-数据迁移（包括跨集群迁移和cos迁移）
+	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 }
 
 func (r *DescribeBackUpSchedulesRequest) ToJsonString() string {
@@ -1470,7 +1492,7 @@ func (r *DescribeBackUpSchedulesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApplicationType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpSchedulesRequest has unknown keys!", "")
 	}

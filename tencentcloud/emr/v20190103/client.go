@@ -1359,6 +1359,61 @@ func (c *Client) DescribeHBaseTableOverviewWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeHDFSStorageInfoRequest() (request *DescribeHDFSStorageInfoRequest) {
+    request = &DescribeHDFSStorageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeHDFSStorageInfo")
+    
+    
+    return
+}
+
+func NewDescribeHDFSStorageInfoResponse() (response *DescribeHDFSStorageInfoResponse) {
+    response = &DescribeHDFSStorageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHDFSStorageInfo
+// 查询HDFS存储文件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHDFSStorageInfo(request *DescribeHDFSStorageInfoRequest) (response *DescribeHDFSStorageInfoResponse, err error) {
+    return c.DescribeHDFSStorageInfoWithContext(context.Background(), request)
+}
+
+// DescribeHDFSStorageInfo
+// 查询HDFS存储文件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHDFSStorageInfoWithContext(ctx context.Context, request *DescribeHDFSStorageInfoRequest) (response *DescribeHDFSStorageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeHDFSStorageInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHDFSStorageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHDFSStorageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHiveQueriesRequest() (request *DescribeHiveQueriesRequest) {
     request = &DescribeHiveQueriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1878,6 +1933,57 @@ func (c *Client) DescribeJobFlowWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeKyuubiQueryInfoRequest() (request *DescribeKyuubiQueryInfoRequest) {
+    request = &DescribeKyuubiQueryInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeKyuubiQueryInfo")
+    
+    
+    return
+}
+
+func NewDescribeKyuubiQueryInfoResponse() (response *DescribeKyuubiQueryInfoResponse) {
+    response = &DescribeKyuubiQueryInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKyuubiQueryInfo
+// 查询Kyuubi查询信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeKyuubiQueryInfo(request *DescribeKyuubiQueryInfoRequest) (response *DescribeKyuubiQueryInfoResponse, err error) {
+    return c.DescribeKyuubiQueryInfoWithContext(context.Background(), request)
+}
+
+// DescribeKyuubiQueryInfo
+// 查询Kyuubi查询信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeKyuubiQueryInfoWithContext(ctx context.Context, request *DescribeKyuubiQueryInfoRequest) (response *DescribeKyuubiQueryInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeKyuubiQueryInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKyuubiQueryInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKyuubiQueryInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceScheduleRequest() (request *DescribeResourceScheduleRequest) {
     request = &DescribeResourceScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2349,6 +2455,108 @@ func (c *Client) DescribeServiceNodeInfosWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeServiceNodeInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSparkQueriesRequest() (request *DescribeSparkQueriesRequest) {
+    request = &DescribeSparkQueriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeSparkQueries")
+    
+    
+    return
+}
+
+func NewDescribeSparkQueriesResponse() (response *DescribeSparkQueriesResponse) {
+    response = &DescribeSparkQueriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSparkQueries
+// 查询Spark查询信息列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeSparkQueries(request *DescribeSparkQueriesRequest) (response *DescribeSparkQueriesResponse, err error) {
+    return c.DescribeSparkQueriesWithContext(context.Background(), request)
+}
+
+// DescribeSparkQueries
+// 查询Spark查询信息列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeSparkQueriesWithContext(ctx context.Context, request *DescribeSparkQueriesRequest) (response *DescribeSparkQueriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkQueriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkQueries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkQueriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStarRocksQueryInfoRequest() (request *DescribeStarRocksQueryInfoRequest) {
+    request = &DescribeStarRocksQueryInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeStarRocksQueryInfo")
+    
+    
+    return
+}
+
+func NewDescribeStarRocksQueryInfoResponse() (response *DescribeStarRocksQueryInfoResponse) {
+    response = &DescribeStarRocksQueryInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStarRocksQueryInfo
+// 查询StarRocks查询信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeStarRocksQueryInfo(request *DescribeStarRocksQueryInfoRequest) (response *DescribeStarRocksQueryInfoResponse, err error) {
+    return c.DescribeStarRocksQueryInfoWithContext(context.Background(), request)
+}
+
+// DescribeStarRocksQueryInfo
+// 查询StarRocks查询信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeStarRocksQueryInfoWithContext(ctx context.Context, request *DescribeStarRocksQueryInfoRequest) (response *DescribeStarRocksQueryInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeStarRocksQueryInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStarRocksQueryInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStarRocksQueryInfoResponse()
     err = c.Send(request, response)
     return
 }

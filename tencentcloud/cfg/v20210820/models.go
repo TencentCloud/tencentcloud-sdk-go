@@ -173,6 +173,10 @@ type ActionLibraryListResult struct {
 	// 是否是新动作
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewAction *bool `json:"IsNewAction,omitnil,omitempty" name:"IsNewAction"`
+
+	// 对象类型ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil,omitempty" name:"ObjectTypeId"`
 }
 
 type ApmServiceInfo struct {
@@ -2002,6 +2006,10 @@ type TaskReportInfo struct {
 
 	// 归档时间
 	ArchiveTime *string `json:"ArchiveTime,omitnil,omitempty" name:"ArchiveTime"`
+
+	// 归档ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchiveUuid *string `json:"ArchiveUuid,omitnil,omitempty" name:"ArchiveUuid"`
 }
 
 type Template struct {

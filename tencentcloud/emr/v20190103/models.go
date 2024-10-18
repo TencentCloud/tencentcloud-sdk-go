@@ -2798,6 +2798,82 @@ func (r *DescribeHBaseTableOverviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHDFSStorageInfoRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeHDFSStorageInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeHDFSStorageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHDFSStorageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHDFSStorageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHDFSStorageInfoResponseParams struct {
+	// 采样时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SampleTime *int64 `json:"SampleTime,omitnil,omitempty" name:"SampleTime"`
+
+	// hdfs存储详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSummaryDistribution []*StorageSummaryDistribution `json:"StorageSummaryDistribution,omitnil,omitempty" name:"StorageSummaryDistribution"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHDFSStorageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHDFSStorageInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeHDFSStorageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHDFSStorageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHiveQueriesRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3468,6 +3544,95 @@ func (r *DescribeJobFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKyuubiQueryInfoRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+type DescribeKyuubiQueryInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+func (r *DescribeKyuubiQueryInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKyuubiQueryInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKyuubiQueryInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKyuubiQueryInfoResponseParams struct {
+	// 总数，分页查询时使用
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Kyuubi查询信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KyuubiQueryInfoList []*KyuubiQueryInfo `json:"KyuubiQueryInfoList,omitnil,omitempty" name:"KyuubiQueryInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKyuubiQueryInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKyuubiQueryInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeKyuubiQueryInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKyuubiQueryInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceScheduleDiffDetailRequestParams struct {
 	// emr集群的英文id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3951,6 +4116,191 @@ func (r *DescribeServiceNodeInfosResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeServiceNodeInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkQueriesRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 执行状态:RUNNING,COMPLETED,FAILED
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeSparkQueriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 执行状态:RUNNING,COMPLETED,FAILED
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeSparkQueriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkQueriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkQueriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkQueriesResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*SparkQuery `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSparkQueriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSparkQueriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSparkQueriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkQueriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStarRocksQueryInfoRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+type DescribeStarRocksQueryInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 获取查询信息开始时间 (s)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 获取查询信息结束时间 (s)
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页查询时的分页大小，最小1，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页查询时的页号，从1开始
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+func (r *DescribeStarRocksQueryInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStarRocksQueryInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStarRocksQueryInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStarRocksQueryInfoResponseParams struct {
+	// 总数，分页查询时使用
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Starrocks 查询信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StarRocksQueryInfoList []*StarRocksQueryInfo `json:"StarRocksQueryInfoList,omitnil,omitempty" name:"StarRocksQueryInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStarRocksQueryInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStarRocksQueryInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeStarRocksQueryInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStarRocksQueryInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4538,6 +4888,16 @@ type DiskSpecInfo struct {
 	// 额外性能
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraPerformance *int64 `json:"ExtraPerformance,omitnil,omitempty" name:"ExtraPerformance"`
+}
+
+type Dps struct {
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 采样值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type DynamicPodSpec struct {
@@ -6034,6 +6394,56 @@ type KeyValue struct {
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type KyuubiQueryInfo struct {
+	// 提交IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
+
+	// 执行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// Engine Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineID *string `json:"EngineID,omitnil,omitempty" name:"EngineID"`
+
+	// 计算引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// Session Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionID *string `json:"SessionID,omitnil,omitempty" name:"SessionID"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
+
+	// 执行语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStatement *string `json:"ExecutionStatement,omitnil,omitempty" name:"ExecutionStatement"`
+
+	// Statement Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatementID *string `json:"StatementID,omitnil,omitempty" name:"StatementID"`
+
+	// 提交用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
 }
 
 type LoadAutoScaleStrategy struct {
@@ -9195,6 +9605,64 @@ type SoftDependInfo struct {
 	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
 }
 
+type SparkQuery struct {
+	// 执行语句
+	Statement *string `json:"Statement,omitnil,omitempty" name:"Statement"`
+
+	// 执行时长（单位毫秒）
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 执行状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 扫描分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanPartitionNum *int64 `json:"ScanPartitionNum,omitnil,omitempty" name:"ScanPartitionNum"`
+
+	// 扫描总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanRowNum *int64 `json:"ScanRowNum,omitnil,omitempty" name:"ScanRowNum"`
+
+	// 扫描总文件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanFileNum *int64 `json:"ScanFileNum,omitnil,omitempty" name:"ScanFileNum"`
+
+	// 查询扫描总数据量(单位B)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanTotalData *int64 `json:"ScanTotalData,omitnil,omitempty" name:"ScanTotalData"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId []*string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 输出总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputRowNum *int64 `json:"OutputRowNum,omitnil,omitempty" name:"OutputRowNum"`
+
+	// 输出总文件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputFileNum *int64 `json:"OutputFileNum,omitnil,omitempty" name:"OutputFileNum"`
+
+	// 输出分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputPartitionNum *int64 `json:"OutputPartitionNum,omitnil,omitempty" name:"OutputPartitionNum"`
+
+	// 输出总数据量（单位B）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputTotalData *int64 `json:"OutputTotalData,omitnil,omitempty" name:"OutputTotalData"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 type StageInfoDetail struct {
 	// 步骤id
 	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
@@ -9251,6 +9719,84 @@ type StageInfoDetail struct {
 	// 步骤耗时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeConsuming *string `json:"TimeConsuming,omitnil,omitempty" name:"TimeConsuming"`
+}
+
+type StarRocksQueryInfo struct {
+	// 提交IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
+
+	// CPU总时间(ns)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPUCost *int64 `json:"CPUCost,omitnil,omitempty" name:"CPUCost"`
+
+	// 默认DB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDB *string `json:"DefaultDB,omitnil,omitempty" name:"DefaultDB"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 执行IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionIP *string `json:"ExecutionIP,omitnil,omitempty" name:"ExecutionIP"`
+
+	// 查询ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryID *string `json:"QueryID,omitnil,omitempty" name:"QueryID"`
+
+	// 查询类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 消耗总内存(bytes)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemCost *int64 `json:"MemCost,omitnil,omitempty" name:"MemCost"`
+
+	// plan阶段CPU占用(ns)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanCpuCosts *int64 `json:"PlanCpuCosts,omitnil,omitempty" name:"PlanCpuCosts"`
+
+	// plan阶段内存占用(bytes)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanMemCosts *int64 `json:"PlanMemCosts,omitnil,omitempty" name:"PlanMemCosts"`
+
+	// 执行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryTime *int64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
+
+	// 资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 获取行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnRows *int64 `json:"ReturnRows,omitnil,omitempty" name:"ReturnRows"`
+
+	// 扫描数据量(bytes)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanBytes *int64 `json:"ScanBytes,omitnil,omitempty" name:"ScanBytes"`
+
+	// 扫描行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanRows *int64 `json:"ScanRows,omitnil,omitempty" name:"ScanRows"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
+
+	// 执行语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStatement *string `json:"ExecutionStatement,omitnil,omitempty" name:"ExecutionStatement"`
+
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
 }
 
 // Predefined struct for user
@@ -9375,6 +9921,20 @@ type StopParams struct {
 
 	// 线程数
 	ThreadCount *int64 `json:"ThreadCount,omitnil,omitempty" name:"ThreadCount"`
+}
+
+type StorageSummaryDistribution struct {
+	// 数据项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricItem *string `json:"MetricItem,omitnil,omitempty" name:"MetricItem"`
+
+	// 数据项描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 采样值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dps []*Dps `json:"Dps,omitnil,omitempty" name:"Dps"`
 }
 
 type StrategyConfig struct {

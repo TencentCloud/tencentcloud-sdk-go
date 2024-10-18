@@ -5019,7 +5019,7 @@ func NewDescribeTimingL7AnalysisDataResponse() (response *DescribeTimingL7Analys
 }
 
 // DescribeTimingL7AnalysisData
-// 本接口（DescribeTimingL7AnalysisData）查询七层数据分析类时序数据。
+// 本接口查询七层域名业务的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5037,7 +5037,7 @@ func (c *Client) DescribeTimingL7AnalysisData(request *DescribeTimingL7AnalysisD
 }
 
 // DescribeTimingL7AnalysisData
-// 本接口（DescribeTimingL7AnalysisData）查询七层数据分析类时序数据。
+// 本接口查询七层域名业务的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5086,7 +5086,7 @@ func NewDescribeTimingL7CacheDataResponse() (response *DescribeTimingL7CacheData
 }
 
 // DescribeTimingL7CacheData
-// 本接口（DescribeTimingL7CacheData）用于查询七层缓存分析时序类流量数据。
+// 本接口用于查询七层缓存分析时序类流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5098,7 +5098,7 @@ func (c *Client) DescribeTimingL7CacheData(request *DescribeTimingL7CacheDataReq
 }
 
 // DescribeTimingL7CacheData
-// 本接口（DescribeTimingL7CacheData）用于查询七层缓存分析时序类流量数据。
+// 本接口用于查询七层缓存分析时序类流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5141,7 +5141,7 @@ func NewDescribeTopL7AnalysisDataResponse() (response *DescribeTopL7AnalysisData
 }
 
 // DescribeTopL7AnalysisData
-// 本接口（DescribeTopL7AnalysisData）用于查询七层流量前topN的数据。
+// 本接口用于查询七层域名业务按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5160,7 +5160,7 @@ func (c *Client) DescribeTopL7AnalysisData(request *DescribeTopL7AnalysisDataReq
 }
 
 // DescribeTopL7AnalysisData
-// 本接口（DescribeTopL7AnalysisData）用于查询七层流量前topN的数据。
+// 本接口用于查询七层域名业务按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5210,7 +5210,7 @@ func NewDescribeTopL7CacheDataResponse() (response *DescribeTopL7CacheDataRespon
 }
 
 // DescribeTopL7CacheData
-// 本接口（DescribeTopL7CacheData）用于查询七层缓存分析topN流量数据。
+// 本接口用于查询七层缓存分析 topN 数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80646"> DescribeTopL7AnalysisData</a> 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5222,7 +5222,7 @@ func (c *Client) DescribeTopL7CacheData(request *DescribeTopL7CacheDataRequest) 
 }
 
 // DescribeTopL7CacheData
-// 本接口（DescribeTopL7CacheData）用于查询七层缓存分析topN流量数据。
+// 本接口用于查询七层缓存分析 topN 数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80646"> DescribeTopL7AnalysisData</a> 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

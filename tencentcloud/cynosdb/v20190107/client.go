@@ -6892,7 +6892,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 }
 
 // ModifyDBInstanceSecurityGroups
-// 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+// 本接口（ModifyDBInstanceSecurityGroups）用于修改实例绑定的安全组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -6906,7 +6906,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
 }
 
 // ModifyDBInstanceSecurityGroups
-// 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+// 本接口（ModifyDBInstanceSecurityGroups）用于修改实例绑定的安全组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"

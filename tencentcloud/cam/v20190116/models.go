@@ -3253,14 +3253,14 @@ func (r *GetGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetPolicyRequestParams struct {
-	// 策略Id
+	// 策略Id。
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type GetPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略Id
+	// 策略Id。
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -3285,35 +3285,35 @@ func (r *GetPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetPolicyResponseParams struct {
-	// 策略名
+	// 策略名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 策略描述
+	// 策略描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 1 表示自定义策略，2 表示预设策略
+	// 1 表示自定义策略，2 表示预设策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 创建时间
+	// 策略创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 最近更新时间
+	// 策略最近更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 策略文档
+	// 策略文档。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
-	// 备注
+	// 备注。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PresetAlias *string `json:"PresetAlias,omitnil,omitempty" name:"PresetAlias"`
 
-	// 是否服务相关策略
+	// 是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsServiceLinkedRolePolicy *uint64 `json:"IsServiceLinkedRolePolicy,omitnil,omitempty" name:"IsServiceLinkedRolePolicy"`
 
@@ -4251,19 +4251,19 @@ func (r *ListAttachedRolePoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAttachedUserAllPoliciesRequestParams struct {
-	// 目标用户ID
+	// 目标用户Uin
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// 每页数量，必须大于 0 且小于或等于 200
+	// 每页数量，必须大于 0 且小于等于 200。
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 页码，从 1开始，不能大于 200
+	// 页码，从 1开始，不能大于 200。
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
+	// 关联类型。0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 
-	// 策略类型
+	// 策略类型。1表示自定义策略，2表示预设策略。
 	StrategyType *uint64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
 	// 搜索关键字
@@ -4273,19 +4273,19 @@ type ListAttachedUserAllPoliciesRequestParams struct {
 type ListAttachedUserAllPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标用户ID
+	// 目标用户Uin
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// 每页数量，必须大于 0 且小于或等于 200
+	// 每页数量，必须大于 0 且小于等于 200。
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 页码，从 1开始，不能大于 200
+	// 页码，从 1开始，不能大于 200。
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
+	// 关联类型。0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 
-	// 策略类型
+	// 策略类型。1表示自定义策略，2表示预设策略。
 	StrategyType *uint64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
 	// 搜索关键字
@@ -4318,10 +4318,10 @@ func (r *ListAttachedUserAllPoliciesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAttachedUserAllPoliciesResponseParams struct {
-	// 策略列表数据
+	// 策略列表数据。
 	PolicyList []*AttachedUserPolicy `json:"PolicyList,omitnil,omitempty" name:"PolicyList"`
 
-	// 策略总数
+	// 策略总数。
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

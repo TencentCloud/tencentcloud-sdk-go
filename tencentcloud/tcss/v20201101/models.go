@@ -15180,6 +15180,9 @@ func (r *DescribeContainerSecEventSummaryResponse) FromJsonString(s string) erro
 type DescribeESAggregationsRequestParams struct {
 	// ES聚合条件JSON
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 日志类型列表
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
 }
 
 type DescribeESAggregationsRequest struct {
@@ -15187,6 +15190,9 @@ type DescribeESAggregationsRequest struct {
 	
 	// ES聚合条件JSON
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 日志类型列表
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
 }
 
 func (r *DescribeESAggregationsRequest) ToJsonString() string {
@@ -15202,6 +15208,7 @@ func (r *DescribeESAggregationsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Query")
+	delete(f, "LogTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeESAggregationsRequest has unknown keys!", "")
 	}
@@ -15243,6 +15250,9 @@ type DescribeESHitsRequestParams struct {
 
 	// 返回数量，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 日志类型列表
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
 }
 
 type DescribeESHitsRequest struct {
@@ -15256,6 +15266,9 @@ type DescribeESHitsRequest struct {
 
 	// 返回数量，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 日志类型列表
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
 }
 
 func (r *DescribeESHitsRequest) ToJsonString() string {
@@ -15273,6 +15286,7 @@ func (r *DescribeESHitsRequest) FromJsonString(s string) error {
 	delete(f, "Query")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "LogTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeESHitsRequest has unknown keys!", "")
 	}
@@ -20728,6 +20742,9 @@ func (r *DescribeScanIgnoreVulListResponse) FromJsonString(s string) error {
 type DescribeSearchExportListRequestParams struct {
 	// ES查询条件JSON
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 日志类型列表
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
 }
 
 type DescribeSearchExportListRequest struct {
@@ -20735,6 +20752,9 @@ type DescribeSearchExportListRequest struct {
 	
 	// ES查询条件JSON
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 日志类型列表
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
 }
 
 func (r *DescribeSearchExportListRequest) ToJsonString() string {
@@ -20750,6 +20770,7 @@ func (r *DescribeSearchExportListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Query")
+	delete(f, "LogTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchExportListRequest has unknown keys!", "")
 	}
@@ -21430,6 +21451,15 @@ type DescribeSecLogJoinObjectListResponseParams struct {
 
 	// 接入对象列表
 	List []*SecLogJoinObjectInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 日志节点范围类型,0自选 1全部
+	RangeType *int64 `json:"RangeType,omitnil,omitempty" name:"RangeType"`
+
+	// 新增资产是否自动加入，节点范围为全部时生效
+	AutoJoin *bool `json:"AutoJoin,omitnil,omitempty" name:"AutoJoin"`
+
+	// 剔除节点数
+	ExcludedCount *uint64 `json:"ExcludedCount,omitnil,omitempty" name:"ExcludedCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -29110,16 +29140,22 @@ type ModifySecLogJoinObjectsRequestParams struct {
 	// k8sApi: k8s_api
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 绑定主机quuid列表
+	// 绑定列表
 	BindList []*string `json:"BindList,omitnil,omitempty" name:"BindList"`
 
-	// 待解绑主机quuid列表
+	// 待解绑列表，节点范围为全部时，含义为需剔除资产列表
 	UnBindList []*string `json:"UnBindList,omitnil,omitempty" name:"UnBindList"`
 
 	// 节点类型:
 	// NORMAL: 普通节点(默认值)
 	// SUPER: 超级节点
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 日志节点范围类型,0自选 1全部
+	RangeType *int64 `json:"RangeType,omitnil,omitempty" name:"RangeType"`
+
+	// 新增资产是否自动加入，节点范围为全部时生效
+	AutoJoin *bool `json:"AutoJoin,omitnil,omitempty" name:"AutoJoin"`
 }
 
 type ModifySecLogJoinObjectsRequest struct {
@@ -29131,16 +29167,22 @@ type ModifySecLogJoinObjectsRequest struct {
 	// k8sApi: k8s_api
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 绑定主机quuid列表
+	// 绑定列表
 	BindList []*string `json:"BindList,omitnil,omitempty" name:"BindList"`
 
-	// 待解绑主机quuid列表
+	// 待解绑列表，节点范围为全部时，含义为需剔除资产列表
 	UnBindList []*string `json:"UnBindList,omitnil,omitempty" name:"UnBindList"`
 
 	// 节点类型:
 	// NORMAL: 普通节点(默认值)
 	// SUPER: 超级节点
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 日志节点范围类型,0自选 1全部
+	RangeType *int64 `json:"RangeType,omitnil,omitempty" name:"RangeType"`
+
+	// 新增资产是否自动加入，节点范围为全部时生效
+	AutoJoin *bool `json:"AutoJoin,omitnil,omitempty" name:"AutoJoin"`
 }
 
 func (r *ModifySecLogJoinObjectsRequest) ToJsonString() string {
@@ -29159,6 +29201,8 @@ func (r *ModifySecLogJoinObjectsRequest) FromJsonString(s string) error {
 	delete(f, "BindList")
 	delete(f, "UnBindList")
 	delete(f, "NodeType")
+	delete(f, "RangeType")
+	delete(f, "AutoJoin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecLogJoinObjectsRequest has unknown keys!", "")
 	}
@@ -31684,6 +31728,9 @@ type SecLogJoinInfo struct {
 	// k8sApi: "k8s_api"
 	// )
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 已接入集群数量
+	ClusterCount *uint64 `json:"ClusterCount,omitnil,omitempty" name:"ClusterCount"`
 }
 
 type SecLogJoinObjectInfo struct {
@@ -31722,6 +31769,16 @@ type SecLogJoinObjectInfo struct {
 
 	// 集群主节点地址
 	ClusterMainAddress *string `json:"ClusterMainAddress,omitnil,omitempty" name:"ClusterMainAddress"`
+
+	// 容器数
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 }
 
 type SecTendencyEventInfo struct {

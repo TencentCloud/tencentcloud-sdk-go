@@ -506,14 +506,14 @@ func (r *GetFederationTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryApiKeyRequestParams struct {
-	// 待查询的账号(不填默认查当前账号)
+	// 待查询的账号uin(不填默认查当前账号uin)
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 }
 
 type QueryApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待查询的账号(不填默认查当前账号)
+	// 待查询的账号uin(不填默认查当前账号uin)
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 }
 
@@ -538,7 +538,7 @@ func (r *QueryApiKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryApiKeyResponseParams struct {
-	// 密钥ID列表
+	// 密钥ID列表。
 	IdKeys []*ApiKey `json:"IdKeys,omitnil,omitempty" name:"IdKeys"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

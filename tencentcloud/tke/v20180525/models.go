@@ -6632,7 +6632,10 @@ type DescribeBatchModifyTagsStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedResources []*FailedResource `json:"FailedResources,omitnil,omitempty" name:"FailedResources"`
 
-	// 任务状态
+	// 任务状态：
+	// - running 运行中
+	// - failed 失败
+	// - done 成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 

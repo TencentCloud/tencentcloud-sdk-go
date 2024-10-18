@@ -2963,11 +2963,14 @@ func (r *DescribeDeviceAccountsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceGroupMembersRequestParams struct {
-	// 资产组ID
-	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
-
 	// true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
 	Bound *bool `json:"Bound,omitnil,omitempty" name:"Bound"`
+
+	// 资产组ID，Id和IdSet二选一
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 资产组ID集合，传Id，IdSet不生效。
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
 
 	// 资产名或资产IP，模糊查询
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2991,11 +2994,14 @@ type DescribeDeviceGroupMembersRequestParams struct {
 type DescribeDeviceGroupMembersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资产组ID
-	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
-
 	// true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
 	Bound *bool `json:"Bound,omitnil,omitempty" name:"Bound"`
+
+	// 资产组ID，Id和IdSet二选一
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 资产组ID集合，传Id，IdSet不生效。
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
 
 	// 资产名或资产IP，模糊查询
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -3028,8 +3034,9 @@ func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Id")
 	delete(f, "Bound")
+	delete(f, "Id")
+	delete(f, "IdSet")
 	delete(f, "Name")
 	delete(f, "Offset")
 	delete(f, "Limit")
