@@ -535,6 +535,9 @@ type CreateAICallRequestParams struct {
 	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
 
 	// LLM类型
+	// 目前有两种
+	// openai(兼容openai协议的模型)
+	// azure
 	LLMType *string `json:"LLMType,omitnil,omitempty" name:"LLMType"`
 
 	// 模型（当前仅支持openai协议的模型）
@@ -543,7 +546,8 @@ type CreateAICallRequestParams struct {
 	// API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions
+	// API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions；
+	// llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮你填充后缀
 	APIUrl *string `json:"APIUrl,omitnil,omitempty" name:"APIUrl"`
 
 	// 音色，目前仅支持以下音色:
@@ -735,6 +739,9 @@ type CreateAICallRequest struct {
 	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
 
 	// LLM类型
+	// 目前有两种
+	// openai(兼容openai协议的模型)
+	// azure
 	LLMType *string `json:"LLMType,omitnil,omitempty" name:"LLMType"`
 
 	// 模型（当前仅支持openai协议的模型）
@@ -743,7 +750,8 @@ type CreateAICallRequest struct {
 	// API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions
+	// API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions；
+	// llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮你填充后缀
 	APIUrl *string `json:"APIUrl,omitnil,omitempty" name:"APIUrl"`
 
 	// 音色，目前仅支持以下音色:

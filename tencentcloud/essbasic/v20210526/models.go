@@ -8381,7 +8381,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSignUrlsResponseParams struct {
-	// 签署参与者签署H5链接信息数组
+	// 生成的签署参与者的签署链接信息数组。
 	SignUrlInfos []*SignUrlInfo `json:"SignUrlInfos,omitnil,omitempty" name:"SignUrlInfos"`
 
 	// 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致

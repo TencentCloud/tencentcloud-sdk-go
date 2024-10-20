@@ -16548,6 +16548,9 @@ type UpgradeDBInstanceRequestParams struct {
 
 	// 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
 	RoTransType *string `json:"RoTransType,omitnil,omitempty" name:"RoTransType"`
+
+	// 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
+	CheckFastUpgradeReboot *int64 `json:"CheckFastUpgradeReboot,omitnil,omitempty" name:"CheckFastUpgradeReboot"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -16606,6 +16609,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
 	RoTransType *string `json:"RoTransType,omitnil,omitempty" name:"RoTransType"`
+
+	// 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
+	CheckFastUpgradeReboot *int64 `json:"CheckFastUpgradeReboot,omitnil,omitempty" name:"CheckFastUpgradeReboot"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -16637,6 +16643,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CrossCluster")
 	delete(f, "ZoneId")
 	delete(f, "RoTransType")
+	delete(f, "CheckFastUpgradeReboot")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

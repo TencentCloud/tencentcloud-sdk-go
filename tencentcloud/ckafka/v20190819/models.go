@@ -410,7 +410,7 @@ type BatchModifyTopicAttributesRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题属性列表
+	// 主题属性列表 (同一个批次最多支持10个)
 	Topic []*BatchModifyTopicInfo `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
@@ -420,7 +420,7 @@ type BatchModifyTopicAttributesRequest struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题属性列表
+	// 主题属性列表 (同一个批次最多支持10个)
 	Topic []*BatchModifyTopicInfo `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
