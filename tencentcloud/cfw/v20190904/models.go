@@ -692,7 +692,7 @@ type BetaInfoByACL struct {
 }
 
 type BlockIgnoreRule struct {
-	// 1 封禁 2外部IP 3域名 4情报 5assets 6udf  7入侵防御规则id （2-7属于白名单类型）
+	// 规则类型，取值：1 封禁，2外部IP，3域名，4情报，5assets，6自定义策略，7入侵防御规则id （2-7属于白名单类型）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
@@ -3500,10 +3500,10 @@ type DescribeAddressTemplateListRequestParams struct {
 	// 条数，分页用
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，取值 'UpdateTime' | 'RulesNum'
+	// 排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序，取值 'asc'|'desc'
+	// 排序，取值 ：asc正序，desc逆序
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 搜索值
@@ -3512,7 +3512,7 @@ type DescribeAddressTemplateListRequestParams struct {
 	// 检索地址模板唯一id
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 1：ip模板，5：域名模板，6：协议端口模板
+	// 模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 模板Id
@@ -3528,10 +3528,10 @@ type DescribeAddressTemplateListRequest struct {
 	// 条数，分页用
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，取值 'UpdateTime' | 'RulesNum'
+	// 排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序，取值 'asc'|'desc'
+	// 排序，取值 ：asc正序，desc逆序
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 搜索值
@@ -3540,7 +3540,7 @@ type DescribeAddressTemplateListRequest struct {
 	// 检索地址模板唯一id
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 1：ip模板，5：域名模板，6：协议端口模板
+	// 模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 模板Id
@@ -4392,7 +4392,11 @@ type DescribeEnterpriseSecurityGroupRuleListResponseParams struct {
 	// 规则列表
 	Data []*EnterpriseSecurityGroupRuleRuleInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 规则整体启用状态
+	// 规则列表整体启用状态 
+	// 取值范围 0/1/2
+	// 0.表示没有启用的(可以批量启用)  
+	// 1.表示没有禁用的(可以批量禁用)    
+	// 2 表示混合情况（不可批量操作）
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7115,7 +7119,19 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 源规则类型
+	// 源规则类型 
+	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
+	// 0表示ip(net),
+	// 1表示VPC实例(intance)
+	// 2表示子网实例(intance)
+	// 3表示CVM实例(intance)
+	// 4表示CLB实例(intance)
+	// 5表示ENI实例(intance)
+	// 6表示数据库实例(intance)
+	// 7表示模版(template)
+	// 8表示标签(tag)
+	// 9表示地域(region)
+	// 100表示资产分组(resourcegroup)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
@@ -7123,11 +7139,26 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
-	// 目的规则类型
+	// 目的规则类型 
+	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
+	// 0表示ip(net),
+	// 1表示VPC实例(intance)
+	// 2表示子网实例(intance)
+	// 3表示CVM实例(intance)
+	// 4表示CLB实例(intance)
+	// 5表示ENI实例(intance)
+	// 6表示数据库实例(intance)
+	// 7表示模版(template)
+	// 8表示标签(tag)
+	// 9表示地域(region)
+	// 100表示资产分组(resourcegroup)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *int64 `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 协议名称
+	// 取值范围:TCP/ANY/ICMP/UDP
+	// ANY:表示所有
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
@@ -7135,11 +7166,17 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 策略，1阻断，2放行
+	// 规则策略
+	// 取值范围:1/2
+	// 1:阻断
+	// 2:放行
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 启用状态 ，0未开启，1开启
+	// 规则启用状态 
+	// 取值范围： 0/1
+	// 0:未开启
+	// 1:开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -7151,7 +7188,10 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclTags *string `json:"AclTags,omitnil,omitempty" name:"AclTags"`
 
-	// 是否最新一次改动的规则,0否，1是
+	// 规则最新一次是否有改动
+	// 取值范围：0/1
+	// 0:否
+	// 1:是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNew *int64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
 
@@ -7159,7 +7199,9 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 是否延迟下发
+	// 是否延迟下发规则 
+	// 取值范围：0/1
+	// 0:立即下发 1:延迟下发
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
@@ -7211,11 +7253,11 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolPortName *string `json:"ProtocolPortName,omitnil,omitempty" name:"ProtocolPortName"`
 
-	// 自动化任务任务信息
+	// 自动化任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*EnterpriseSecurityGroupRuleBetaInfo `json:"BetaList,omitnil,omitempty" name:"BetaList"`
 
-	// 规则id
+	// 规则id  等同RuleUuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -7548,11 +7590,11 @@ type IntrusionDefenseRule struct {
 	// 规则域名，IP与Domain必填其中之一
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 备注信息，长度不能超过50
-	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
-
 	// 规则开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 备注信息，长度不能超过50
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type IocListData struct {
@@ -8340,7 +8382,7 @@ func (r *ModifyBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBlockIgnoreRuleRequestParams struct {
-	// 规则
+	// 规则列表
 	Rule *IntrusionDefenseRule `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 规则类型，1封禁，2放通
@@ -8350,7 +8392,7 @@ type ModifyBlockIgnoreRuleRequestParams struct {
 type ModifyBlockIgnoreRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则
+	// 规则列表
 	Rule *IntrusionDefenseRule `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 规则类型，1封禁，2放通
@@ -11469,6 +11511,10 @@ type TemplateListInfo struct {
 	// 模板包含地址数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPNum *int64 `json:"IPNum,omitnil,omitempty" name:"IPNum"`
+
+	// IP版本,0,IPv4;1,IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type UnHandleEvent struct {

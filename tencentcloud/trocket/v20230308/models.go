@@ -59,11 +59,8 @@ type ConsumeGroupItem struct {
 
 // Predefined struct for user
 type CreateConsumerGroupRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 消费组名称
-	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 最大重试次数
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
@@ -74,6 +71,9 @@ type CreateConsumerGroupRequestParams struct {
 	// 顺序投递：true
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -82,11 +82,8 @@ type CreateConsumerGroupRequestParams struct {
 type CreateConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 消费组名称
-	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 最大重试次数
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
@@ -97,6 +94,9 @@ type CreateConsumerGroupRequest struct {
 	// 顺序投递：true
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -115,10 +115,10 @@ func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "ConsumerGroup")
 	delete(f, "MaxRetryTimes")
 	delete(f, "ConsumeEnable")
 	delete(f, "ConsumeMessageOrderly")
+	delete(f, "ConsumerGroup")
 	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerGroupRequest has unknown keys!", "")
@@ -128,10 +128,10 @@ func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConsumerGroupResponseParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组
+	// 消费组名称
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -294,7 +294,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceResponseParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -398,28 +398,7 @@ type CreateMQTTInstanceRequestParams struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 商品规格，可用规格如下：
-	// experiment_500,
 	// basic_1k,
-	// basic_2k,
-	// basic_4k,
-	// basic_6k,
-	// pro_4k,
-	// pro_6k,
-	// pro_1w,
-	// pro_2w,
-	// pro_3w,
-	// pro_4w,
-	// pro_5w,
-	// platinum_6k,
-	// platinum_1w,
-	// platinum_2w,
-	// platinum_4w,
-	// platinum_10w,
-	// platinum_15w,
-	// platinum_20w,
-	// platinum_40w,
-	// platinum_60w,
-	// platinum_100w
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 备注信息
@@ -461,28 +440,7 @@ type CreateMQTTInstanceRequest struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 商品规格，可用规格如下：
-	// experiment_500,
 	// basic_1k,
-	// basic_2k,
-	// basic_4k,
-	// basic_6k,
-	// pro_4k,
-	// pro_6k,
-	// pro_1w,
-	// pro_2w,
-	// pro_3w,
-	// pro_4w,
-	// pro_5w,
-	// platinum_6k,
-	// platinum_1w,
-	// platinum_2w,
-	// platinum_4w,
-	// platinum_10w,
-	// platinum_15w,
-	// platinum_20w,
-	// platinum_40w,
-	// platinum_60w,
-	// platinum_100w
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 备注信息
@@ -566,10 +524,10 @@ func (r *CreateMQTTInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMQTTTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 备注
@@ -579,10 +537,10 @@ type CreateMQTTTopicRequestParams struct {
 type CreateMQTTTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 备注
@@ -640,7 +598,7 @@ func (r *CreateMQTTTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMQTTUserRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备注
@@ -662,7 +620,7 @@ type CreateMQTTUserRequestParams struct {
 type CreateMQTTUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备注
@@ -729,7 +687,7 @@ func (r *CreateMQTTUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRoleRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -748,7 +706,7 @@ type CreateRoleRequestParams struct {
 type CreateRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -814,10 +772,10 @@ func (r *CreateRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 主题类型
@@ -841,10 +799,10 @@ type CreateTopicRequestParams struct {
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 主题类型
@@ -891,10 +849,10 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicResponseParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -929,7 +887,7 @@ type CustomMapEntry struct {
 
 // Predefined struct for user
 type DeleteConsumerGroupRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -939,7 +897,7 @@ type DeleteConsumerGroupRequestParams struct {
 type DeleteConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -990,14 +948,14 @@ func (r *DeleteConsumerGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstanceRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1213,7 +1171,7 @@ func (r *DeleteMQTTTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMQTTUserRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
@@ -1223,7 +1181,7 @@ type DeleteMQTTUserRequestParams struct {
 type DeleteMQTTUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
@@ -1274,7 +1232,7 @@ func (r *DeleteMQTTUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRoleRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -1284,7 +1242,7 @@ type DeleteRoleRequestParams struct {
 type DeleteRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -1335,20 +1293,20 @@ func (r *DeleteRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type DeleteTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
@@ -1396,17 +1354,17 @@ func (r *DeleteTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupListRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询条件列表
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询指定主题下的消费组
 	FromTopic *string `json:"FromTopic,omitnil,omitempty" name:"FromTopic"`
@@ -1415,17 +1373,17 @@ type DescribeConsumerGroupListRequestParams struct {
 type DescribeConsumerGroupListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询起始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询条件列表
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询指定主题下的消费组
 	FromTopic *string `json:"FromTopic,omitnil,omitempty" name:"FromTopic"`
@@ -1444,9 +1402,9 @@ func (r *DescribeConsumerGroupListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Filters")
 	delete(f, "FromTopic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerGroupListRequest has unknown keys!", "")
@@ -1485,7 +1443,7 @@ func (r *DescribeConsumerGroupListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -1495,7 +1453,7 @@ type DescribeConsumerGroupRequestParams struct {
 type DescribeConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -1552,6 +1510,11 @@ type DescribeConsumerGroupResponseParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
+	// 消费模式：
+	// BROADCASTING 广播模式
+	// CLUSTERING 集群模式
+	MessageModel *string `json:"MessageModel,omitnil,omitempty" name:"MessageModel"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1574,7 +1537,7 @@ func (r *DescribeConsumerGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerLagRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -1590,7 +1553,7 @@ type DescribeConsumerLagRequestParams struct {
 type DescribeConsumerLagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -1816,14 +1779,14 @@ func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2066,14 +2029,14 @@ func (r *DescribeMQTTClientResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTInsPublicEndpointsRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeMQTTInsPublicEndpointsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2197,14 +2160,14 @@ func (r *DescribeMQTTInsVPCEndpointsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTInstanceCertRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeMQTTInstanceCertRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2272,7 +2235,7 @@ type DescribeMQTTInstanceListRequestParams struct {
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否包含新控制台集群
+	// 是否包含新控制台集群：默认为包含
 	IncludeNew *bool `json:"IncludeNew,omitnil,omitempty" name:"IncludeNew"`
 }
 
@@ -2288,7 +2251,7 @@ type DescribeMQTTInstanceListRequest struct {
 	// 查询结果限制数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否包含新控制台集群
+	// 是否包含新控制台集群：默认为包含
 	IncludeNew *bool `json:"IncludeNew,omitnil,omitempty" name:"IncludeNew"`
 }
 
@@ -2345,14 +2308,14 @@ func (r *DescribeMQTTInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTInstanceRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeMQTTInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2546,10 +2509,10 @@ func (r *DescribeMQTTMessageListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTMessageRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 消息ID
@@ -2559,10 +2522,10 @@ type DescribeMQTTMessageRequestParams struct {
 type DescribeMQTTMessageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 消息ID
@@ -2984,7 +2947,7 @@ func (r *DescribeProductSKUsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoleListRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询起始位置
@@ -3000,7 +2963,7 @@ type DescribeRoleListRequestParams struct {
 type DescribeRoleListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询起始位置
@@ -3066,7 +3029,7 @@ func (r *DescribeRoleListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicListRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表
@@ -3082,7 +3045,7 @@ type DescribeTopicListRequestParams struct {
 type DescribeTopicListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表
@@ -3148,10 +3111,10 @@ func (r *DescribeTopicListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 查询条件列表
@@ -3167,10 +3130,10 @@ type DescribeTopicRequestParams struct {
 type DescribeTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 查询条件列表
@@ -3298,6 +3261,10 @@ type Endpoint struct {
 	// 公网放通规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpRules []*IpRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
+
+	// 公网是否按流量计费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
 }
 
 type Filter struct {
@@ -3703,10 +3670,8 @@ type MQTTInstanceItem struct {
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 实例类型，
-	// EXPERIMENT，体验版
 	// BASIC，基础版
 	// PRO，专业版
-	// PLATINUM，铂金版
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例状态，
@@ -3869,7 +3834,7 @@ type MQTTUserItem struct {
 
 // Predefined struct for user
 type ModifyConsumerGroupRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -3892,7 +3857,7 @@ type ModifyConsumerGroupRequestParams struct {
 type ModifyConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费组名称
@@ -4063,7 +4028,7 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMQTTInsPublicEndpointRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 带宽
@@ -4076,7 +4041,7 @@ type ModifyMQTTInsPublicEndpointRequestParams struct {
 type ModifyMQTTInsPublicEndpointRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 带宽
@@ -4199,7 +4164,7 @@ func (r *ModifyMQTTInstanceCertBindingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMQTTInstanceRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
@@ -4212,7 +4177,7 @@ type ModifyMQTTInstanceRequestParams struct {
 type ModifyMQTTInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
@@ -4267,10 +4232,10 @@ func (r *ModifyMQTTInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMQTTTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 备注信息
@@ -4280,10 +4245,10 @@ type ModifyMQTTTopicRequestParams struct {
 type ModifyMQTTTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 备注信息
@@ -4335,7 +4300,7 @@ func (r *ModifyMQTTTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMQTTUserRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
@@ -4354,7 +4319,7 @@ type ModifyMQTTUserRequestParams struct {
 type ModifyMQTTUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
@@ -4417,7 +4382,7 @@ func (r *ModifyMQTTUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRoleRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -4436,7 +4401,7 @@ type ModifyRoleRequestParams struct {
 type ModifyRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -4499,10 +4464,10 @@ func (r *ModifyRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 队列数量
@@ -4518,10 +4483,10 @@ type ModifyTopicRequestParams struct {
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 队列数量
@@ -4674,17 +4639,17 @@ type RoleItem struct {
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// Access Key
-	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
-
-	// Secret Key
-	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
-
 	// 是否开启消费
 	PermRead *bool `json:"PermRead,omitnil,omitempty" name:"PermRead"`
 
 	// 是否开启生产
 	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
+
+	// Access Key
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// Secret Key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -4783,6 +4748,18 @@ type SourceClusterTopicConfig struct {
 	// Failure 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportStatus *string `json:"ImportStatus,omitnil,omitempty" name:"ImportStatus"`
+
+	// 4.x的命名空间，出参使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
+
+	// 4.x的主题名，出参使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNameV4 *string `json:"TopicNameV4,omitnil,omitempty" name:"TopicNameV4"`
+
+	// 4.x的完整命名空间，出参使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 }
 
 type StatisticsReport struct {
@@ -4885,13 +4862,16 @@ type TopicItem struct {
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 主题类型
+	// NORMAL:普通消息,
+	// FIFO:顺序消息,
+	// DELAY:延时消息,
+	// TRANSACTION:事务消息
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
 	// 队列数量
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 4.x的集群id

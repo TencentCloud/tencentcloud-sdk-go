@@ -193,6 +193,10 @@ type AlarmHistory struct {
 	// 指标名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 策略是否有权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyPermissions *uint64 `json:"PolicyPermissions,omitnil,omitempty" name:"PolicyPermissions"`
 }
 
 type AlarmHistoryMetric struct {
@@ -4552,6 +4556,9 @@ type DescribeAlarmHistoriesRequestParams struct {
 
 	// 收敛历史的唯一id
 	ConvergenceHistoryIDs []*string `json:"ConvergenceHistoryIDs,omitnil,omitempty" name:"ConvergenceHistoryIDs"`
+
+	// 告警类型
+	AlarmTypes []*string `json:"AlarmTypes,omitnil,omitempty" name:"AlarmTypes"`
 }
 
 type DescribeAlarmHistoriesRequest struct {
@@ -4619,6 +4626,9 @@ type DescribeAlarmHistoriesRequest struct {
 
 	// 收敛历史的唯一id
 	ConvergenceHistoryIDs []*string `json:"ConvergenceHistoryIDs,omitnil,omitempty" name:"ConvergenceHistoryIDs"`
+
+	// 告警类型
+	AlarmTypes []*string `json:"AlarmTypes,omitnil,omitempty" name:"AlarmTypes"`
 }
 
 func (r *DescribeAlarmHistoriesRequest) ToJsonString() string {
@@ -4653,6 +4663,7 @@ func (r *DescribeAlarmHistoriesRequest) FromJsonString(s string) error {
 	delete(f, "PolicyIds")
 	delete(f, "AlarmLevels")
 	delete(f, "ConvergenceHistoryIDs")
+	delete(f, "AlarmTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmHistoriesRequest has unknown keys!", "")
 	}

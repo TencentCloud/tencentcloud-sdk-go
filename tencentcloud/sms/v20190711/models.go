@@ -400,11 +400,9 @@ func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
 
 type DeleteSignStatus struct {
 	// 删除状态信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteStatus *string `json:"DeleteStatus,omitnil,omitempty" name:"DeleteStatus"`
 
 	// 删除时间，UNIX 时间戳（单位：秒）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 }
 
@@ -989,7 +987,7 @@ type PullSmsReplyStatus struct {
 	// 国家（或地区）码。
 	NationCode *string `json:"NationCode,omitnil,omitempty" name:"NationCode"`
 
-	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 短信签名。
@@ -1018,7 +1016,7 @@ type PullSmsReplyStatusByPhoneNumberRequestParams struct {
 	// 拉取最大条数，最多 100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
@@ -1042,7 +1040,7 @@ type PullSmsReplyStatusByPhoneNumberRequest struct {
 	// 拉取最大条数，最多 100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
@@ -1175,10 +1173,10 @@ type PullSmsSendStatus struct {
 	// 国家（或地区）码。
 	NationCode *string `json:"NationCode,omitnil,omitempty" name:"NationCode"`
 
-	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PurePhoneNumber *string `json:"PurePhoneNumber,omitnil,omitempty" name:"PurePhoneNumber"`
 
-	// 手机号码，普通格式，示例如：13711112222。
+	// 手机号码，普通格式，示例如：18501234444。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 本次发送标识 ID。
@@ -1204,7 +1202,7 @@ type PullSmsSendStatusByPhoneNumberRequestParams struct {
 	// 拉取最大条数，最多 100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
@@ -1228,7 +1226,7 @@ type PullSmsSendStatusByPhoneNumberRequest struct {
 	// 拉取最大条数，最多 100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
@@ -1353,8 +1351,8 @@ func (r *PullSmsSendStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SendSmsRequestParams struct {
-	// 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
-	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+	// 例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumberSet []*string `json:"PhoneNumberSet,omitnil,omitempty" name:"PhoneNumberSet"`
 
 	// 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
@@ -1382,8 +1380,8 @@ type SendSmsRequestParams struct {
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
-	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+	// 例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumberSet []*string `json:"PhoneNumberSet,omitnil,omitempty" name:"PhoneNumberSet"`
 
 	// 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
@@ -1463,7 +1461,7 @@ type SendStatus struct {
 	// 发送流水号。
 	SerialNo *string `json:"SerialNo,omitnil,omitempty" name:"SerialNo"`
 
-	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	// 手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 计费条数，计费规则请查询 [计费策略](https://cloud.tencent.com/document/product/382/36135)。

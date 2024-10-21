@@ -6206,6 +6206,55 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeProjectUsersRequest() (request *DescribeProjectUsersRequest) {
+    request = &DescribeProjectUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeProjectUsers")
+    
+    
+    return
+}
+
+func NewDescribeProjectUsersResponse() (response *DescribeProjectUsersResponse) {
+    response = &DescribeProjectUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProjectUsers
+// 获取项目下的用户，分页返回
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProjectUsers(request *DescribeProjectUsersRequest) (response *DescribeProjectUsersResponse, err error) {
+    return c.DescribeProjectUsersWithContext(context.Background(), request)
+}
+
+// DescribeProjectUsers
+// 获取项目下的用户，分页返回
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProjectUsersWithContext(ctx context.Context, request *DescribeProjectUsersRequest) (response *DescribeProjectUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjectUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProjectUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQualityScoreRequest() (request *DescribeQualityScoreRequest) {
     request = &DescribeQualityScoreRequest{
         BaseRequest: &tchttp.BaseRequest{},

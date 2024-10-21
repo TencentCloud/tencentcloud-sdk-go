@@ -7827,6 +7827,70 @@ func (r *DescribePortsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProtectionModesRequestParams struct {
+	// sparta-waf或clb
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DescribeProtectionModesRequest struct {
+	*tchttp.BaseRequest
+	
+	// sparta-waf或clb
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DescribeProtectionModesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectionModesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Edition")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProtectionModesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProtectionModesResponseParams struct {
+	// 规则大类ID及防护模式
+	Modes []*TigaMainClassMode `json:"Modes,omitnil,omitempty" name:"Modes"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProtectionModesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProtectionModesResponseParams `json:"Response"`
+}
+
+func (r *DescribeProtectionModesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectionModesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRuleLimitRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -15210,6 +15274,16 @@ type TargetEntity struct {
 
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type TigaMainClassMode struct {
+	// MainclassID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
+
+	// 防护模式，0表示观察，1表示拦截
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type TimedJob struct {

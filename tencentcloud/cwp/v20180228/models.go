@@ -45059,7 +45059,7 @@ type ScanTaskDetails struct {
 	// id唯一
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 失败详情
+	// 失败类型  3离线、4超时、5失败、8agent版本过低
 	FailType *uint64 `json:"FailType,omitnil,omitempty" name:"FailType"`
 
 	// 外网ip
@@ -47910,6 +47910,10 @@ type VulInfoList struct {
 	// 检测方式0 - 版本比对, 1 - POC验证
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *uint64 `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 漏洞是否支持修复 0不支持，1支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulFixSwitch *uint64 `json:"VulFixSwitch,omitnil,omitempty" name:"VulFixSwitch"`
 }
 
 type VulLevelCountInfo struct {
@@ -47962,7 +47966,7 @@ type VulStoreListInfo struct {
 	AttackLevel *uint64 `json:"AttackLevel,omitnil,omitempty" name:"AttackLevel"`
 
 	// 漏洞是否支持自动修复
-	// 0-windows/linux均关闭; 1-windows/linux均打开; 2-仅linux; 3-仅windows
+	// 0-Windows/Linux均关闭; 1-Windows/Linux均打开; 2-仅Linux; 3-仅Windows
 	FixSwitch *uint64 `json:"FixSwitch,omitnil,omitempty" name:"FixSwitch"`
 
 	// 漏洞是否支持防御

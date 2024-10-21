@@ -29,7 +29,17 @@ type Device struct {
 }
 
 type InputBusinessEncryptData struct {
+	// 加密方式；0：AES;1:DES
+	EncryptMethod *uint64 `json:"EncryptMethod,omitnil,omitempty" name:"EncryptMethod"`
 
+	// 业务数据加密字符串
+	EncryptData *string `json:"EncryptData,omitnil,omitempty" name:"EncryptData"`
+
+	// 加密模式；0：ECB,1:CBC;2:CTR;3:CFB;4:OFB
+	EncryptMode *uint64 `json:"EncryptMode,omitnil,omitempty" name:"EncryptMode"`
+
+	// 填充模式;0:ZERO ;1:PKCS5;3:PKCS7
+	PaddingType *uint64 `json:"PaddingType,omitnil,omitempty" name:"PaddingType"`
 }
 
 type InputRecognizeTargetAudience struct {

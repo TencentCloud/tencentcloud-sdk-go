@@ -554,7 +554,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 }
 
 // DeleteInstance
-// 删除实例
+// 删除 RocketMQ 5.x 集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -565,7 +565,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 }
 
 // DeleteInstance
-// 删除实例
+// 删除 RocketMQ 5.x 集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1082,15 +1082,15 @@ func NewDescribeFusionInstanceListResponse() (response *DescribeFusionInstanceLi
 }
 
 // DescribeFusionInstanceList
-// 获取实例列表，Filters参数使用说明如下：
+// 查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
 //
-// 2. InstanceId，实例ID查询
+// 2. InstanceId，集群ID查询
 //
-// 3. InstanceType, 实例类型查询，支持多选
+// 3. InstanceType, 集群类型查询，支持多选
 //
-// 4. Version，实例版本查询
+// 4. Version，集群版本查询
 //
 // 当使用TagFilters查询时，Filters参数失效。
 //
@@ -1101,15 +1101,15 @@ func (c *Client) DescribeFusionInstanceList(request *DescribeFusionInstanceListR
 }
 
 // DescribeFusionInstanceList
-// 获取实例列表，Filters参数使用说明如下：
+// 查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
 //
-// 2. InstanceId，实例ID查询
+// 2. InstanceId，集群ID查询
 //
-// 3. InstanceType, 实例类型查询，支持多选
+// 3. InstanceType, 集群类型查询，支持多选
 //
-// 4. Version，实例版本查询
+// 4. Version，集群版本查询
 //
 // 当使用TagFilters查询时，Filters参数失效。
 //
@@ -1151,7 +1151,7 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 }
 
 // DescribeInstance
-// 查询实例信息
+// 查询 RocketMQ 5.x 集群信息。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1160,7 +1160,7 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 }
 
 // DescribeInstance
-// 查询实例信息
+// 查询 RocketMQ 5.x 集群信息。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"

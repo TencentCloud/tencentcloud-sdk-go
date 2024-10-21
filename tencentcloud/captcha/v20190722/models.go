@@ -711,7 +711,7 @@ func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCaptchaMiniResultRequestParams struct {
-	// 固定填值：9（滑块验证码）
+	// 固定填值：9
 	CaptchaType *uint64 `json:"CaptchaType,omitnil,omitempty" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
@@ -742,7 +742,7 @@ type DescribeCaptchaMiniResultRequestParams struct {
 type DescribeCaptchaMiniResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定填值：9（滑块验证码）
+	// 固定填值：9
 	CaptchaType *uint64 `json:"CaptchaType,omitnil,omitempty" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
@@ -1070,7 +1070,7 @@ func (r *DescribeCaptchaOperDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCaptchaRceResultRequestParams struct {
-	// 固定填值：9。可在控制台配置不同验证码类型。
+	// 固定填值：9。
 	CaptchaType *uint64 `json:"CaptchaType,omitnil,omitempty" name:"CaptchaType"`
 
 	// 前端回调函数返回的用户验证票据
@@ -1107,7 +1107,7 @@ type DescribeCaptchaRceResultRequestParams struct {
 type DescribeCaptchaRceResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定填值：9。可在控制台配置不同验证码类型。
+	// 固定填值：9。
 	CaptchaType *uint64 `json:"CaptchaType,omitnil,omitempty" name:"CaptchaType"`
 
 	// 前端回调函数返回的用户验证票据
@@ -1229,7 +1229,7 @@ func (r *DescribeCaptchaRceResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCaptchaResultRequestParams struct {
-	// 固定填值：9。可在控制台配置不同验证码类型。
+	// 固定填值：9。
 	CaptchaType *uint64 `json:"CaptchaType,omitnil,omitempty" name:"CaptchaType"`
 
 	// 前端回调函数返回的用户验证票据
@@ -1266,7 +1266,7 @@ type DescribeCaptchaResultRequestParams struct {
 type DescribeCaptchaResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定填值：9。可在控制台配置不同验证码类型。
+	// 固定填值：9。
 	CaptchaType *uint64 `json:"CaptchaType,omitnil,omitempty" name:"CaptchaType"`
 
 	// 前端回调函数返回的用户验证票据
@@ -1361,6 +1361,10 @@ type DescribeCaptchaResultResponseParams struct {
 
 	// 提交验证码时间
 	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitnil,omitempty" name:"SubmitCaptchaTime"`
+
+	// 设备风险大类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceRiskCategory *string `json:"DeviceRiskCategory,omitnil,omitempty" name:"DeviceRiskCategory"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

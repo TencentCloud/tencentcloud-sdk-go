@@ -923,6 +923,12 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 
 	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
 	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
+
+	// <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
+	Intention *Intention `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// 是否开启缓存签署人信息
+	CacheApproverInfo *bool `json:"CacheApproverInfo,omitnil,omitempty" name:"CacheApproverInfo"`
 }
 
 type ChannelCreateBatchQuickSignUrlRequest struct {
@@ -979,6 +985,12 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 
 	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
 	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
+
+	// <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
+	Intention *Intention `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// 是否开启缓存签署人信息
+	CacheApproverInfo *bool `json:"CacheApproverInfo,omitnil,omitempty" name:"CacheApproverInfo"`
 }
 
 func (r *ChannelCreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1002,6 +1014,8 @@ func (r *ChannelCreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "ApproverSignTypes")
 	delete(f, "SignTypeSelector")
 	delete(f, "FlowBatchUrlInfo")
+	delete(f, "Intention")
+	delete(f, "CacheApproverInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}

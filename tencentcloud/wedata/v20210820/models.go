@@ -12495,6 +12495,91 @@ func (r *DescribeProjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProjectUsersRequestParams struct {
+	// 分页号
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 【过滤参数】自定义条件查询
+	Filters []*FilterOptional `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 【排序参数】排序字段
+	OrderFields []*OrderFieldOptional `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 是否项目管理员
+	IsProjectAdmin *bool `json:"IsProjectAdmin,omitnil,omitempty" name:"IsProjectAdmin"`
+}
+
+type DescribeProjectUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页号
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 【过滤参数】自定义条件查询
+	Filters []*FilterOptional `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 【排序参数】排序字段
+	OrderFields []*OrderFieldOptional `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 是否项目管理员
+	IsProjectAdmin *bool `json:"IsProjectAdmin,omitnil,omitempty" name:"IsProjectAdmin"`
+}
+
+func (r *DescribeProjectUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "IsProjectAdmin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProjectUsersResponseParams struct {
+	// 项目列表
+	Data *ProjectUsersPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProjectUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProjectUsersResponseParams `json:"Response"`
+}
+
+func (r *DescribeProjectUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQualityScoreRequestParams struct {
 	// 统计日期
 	StatisticsDate *int64 `json:"StatisticsDate,omitnil,omitempty" name:"StatisticsDate"`
@@ -23921,6 +24006,58 @@ type ProjectBaseInfoOpsRequest struct {
 	IsAdmin *bool `json:"IsAdmin,omitnil,omitempty" name:"IsAdmin"`
 }
 
+type ProjectUserRole struct {
+	// 用户角色对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Roles []*SystemRole `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// mc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否创建者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *bool `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 显示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 是否项目管理员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsProjectAdmin *bool `json:"IsProjectAdmin,omitnil,omitempty" name:"IsProjectAdmin"`
+}
+
+type ProjectUsersPage struct {
+	// 用户集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*ProjectUserRole `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
 type Property struct {
 	// key值
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -24687,6 +24824,36 @@ type RobLockState struct {
 
 	// 当前持锁人
 	Locker *string `json:"Locker,omitnil,omitempty" name:"Locker"`
+}
+
+type RolePrivilege struct {
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeId *string `json:"PrivilegeId,omitnil,omitempty" name:"PrivilegeId"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeName *string `json:"PrivilegeName,omitnil,omitempty" name:"PrivilegeName"`
+
+	// 路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestPath *string `json:"RestPath,omitnil,omitempty" name:"RestPath"`
+
+	// 方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestMethod *string `json:"RestMethod,omitnil,omitempty" name:"RestMethod"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 模块id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
+
+	// 权限类型 N、R、RW、RWD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type Rule struct {
@@ -27604,6 +27771,43 @@ func (r *SuspendIntegrationTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SuspendIntegrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SystemRole struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 角色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 角色昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameCn *string `json:"NameCn,omitnil,omitempty" name:"NameCn"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 角色权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// 方法路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MethodPaths []*string `json:"MethodPaths,omitnil,omitempty" name:"MethodPaths"`
+
+	// 角色类型, 分为System,Tenant,Project,Commercial
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 是否系统默认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemInit *bool `json:"SystemInit,omitnil,omitempty" name:"SystemInit"`
+
+	// 自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 }
 
 type Table struct {

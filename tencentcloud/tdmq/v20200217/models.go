@@ -1580,6 +1580,107 @@ func (r *CreateProClusterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRabbitMQBindingRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Vhost参数
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 源exchange
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标类型,取值queue或exchange
+	DestinationType *string `json:"DestinationType,omitnil,omitempty" name:"DestinationType"`
+
+	// 目标
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// 绑定key
+	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
+}
+
+type CreateRabbitMQBindingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Vhost参数
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 源exchange
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标类型,取值queue或exchange
+	DestinationType *string `json:"DestinationType,omitnil,omitempty" name:"DestinationType"`
+
+	// 目标
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// 绑定key
+	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
+}
+
+func (r *CreateRabbitMQBindingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQBindingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VirtualHost")
+	delete(f, "Source")
+	delete(f, "DestinationType")
+	delete(f, "Destination")
+	delete(f, "RoutingKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQBindingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRabbitMQBindingResponseParams struct {
+	// 队列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// vhost参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 路由关系Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRabbitMQBindingResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRabbitMQBindingResponseParams `json:"Response"`
+}
+
+func (r *CreateRabbitMQBindingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQBindingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9587,6 +9688,7 @@ type DescribeRocketMQVipInstancesRequestParams struct {
 	// 查询条件过滤器，支持的查询条件如下：
 	// instanceIds - 实例ID
 	// instanceName - 实例名称
+	// status - 实例状态
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询数目上限，默认20
@@ -9602,6 +9704,7 @@ type DescribeRocketMQVipInstancesRequest struct {
 	// 查询条件过滤器，支持的查询条件如下：
 	// instanceIds - 实例ID
 	// instanceName - 实例名称
+	// status - 实例状态
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询数目上限，默认20

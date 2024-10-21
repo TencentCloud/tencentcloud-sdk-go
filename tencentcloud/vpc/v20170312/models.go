@@ -7553,11 +7553,11 @@ type CreateVpnGatewaySslServerRequestParams struct {
 	// SSL-VPN-SERVER 实例名称，长度不超过60个字节。
 	SslVpnServerName *string `json:"SslVpnServerName,omitnil,omitempty" name:"SslVpnServerName"`
 
-	// 云端地址（CIDR）列表。
-	LocalAddress []*string `json:"LocalAddress,omitnil,omitempty" name:"LocalAddress"`
-
 	// 客户端地址网段。
 	RemoteAddress *string `json:"RemoteAddress,omitnil,omitempty" name:"RemoteAddress"`
+
+	// 云端地址（CIDR）列表。
+	LocalAddress []*string `json:"LocalAddress,omitnil,omitempty" name:"LocalAddress"`
 
 	// SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
 	SslVpnProtocol *string `json:"SslVpnProtocol,omitnil,omitempty" name:"SslVpnProtocol"`
@@ -7596,11 +7596,11 @@ type CreateVpnGatewaySslServerRequest struct {
 	// SSL-VPN-SERVER 实例名称，长度不超过60个字节。
 	SslVpnServerName *string `json:"SslVpnServerName,omitnil,omitempty" name:"SslVpnServerName"`
 
-	// 云端地址（CIDR）列表。
-	LocalAddress []*string `json:"LocalAddress,omitnil,omitempty" name:"LocalAddress"`
-
 	// 客户端地址网段。
 	RemoteAddress *string `json:"RemoteAddress,omitnil,omitempty" name:"RemoteAddress"`
+
+	// 云端地址（CIDR）列表。
+	LocalAddress []*string `json:"LocalAddress,omitnil,omitempty" name:"LocalAddress"`
 
 	// SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
 	SslVpnProtocol *string `json:"SslVpnProtocol,omitnil,omitempty" name:"SslVpnProtocol"`
@@ -7644,8 +7644,8 @@ func (r *CreateVpnGatewaySslServerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VpnGatewayId")
 	delete(f, "SslVpnServerName")
-	delete(f, "LocalAddress")
 	delete(f, "RemoteAddress")
+	delete(f, "LocalAddress")
 	delete(f, "SslVpnProtocol")
 	delete(f, "SslVpnPort")
 	delete(f, "IntegrityAlgorithm")

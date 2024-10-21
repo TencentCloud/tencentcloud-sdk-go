@@ -705,6 +705,59 @@ func (c *Client) CreateProClusterWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateRabbitMQBindingRequest() (request *CreateRabbitMQBindingRequest) {
+    request = &CreateRabbitMQBindingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRabbitMQBinding")
+    
+    
+    return
+}
+
+func NewCreateRabbitMQBindingResponse() (response *CreateRabbitMQBindingResponse) {
+    response = &CreateRabbitMQBindingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRabbitMQBinding
+// 创建RabbitMQ路由关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRabbitMQBinding(request *CreateRabbitMQBindingRequest) (response *CreateRabbitMQBindingResponse, err error) {
+    return c.CreateRabbitMQBindingWithContext(context.Background(), request)
+}
+
+// CreateRabbitMQBinding
+// 创建RabbitMQ路由关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRabbitMQBindingWithContext(ctx context.Context, request *CreateRabbitMQBindingRequest) (response *CreateRabbitMQBindingResponse, err error) {
+    if request == nil {
+        request = NewCreateRabbitMQBindingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRabbitMQBinding require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRabbitMQBindingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRabbitMQUserRequest() (request *CreateRabbitMQUserRequest) {
     request = &CreateRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

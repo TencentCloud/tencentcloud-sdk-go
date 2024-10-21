@@ -299,6 +299,9 @@ const (
 	// 防火墙规则描述长度超出限制。
 	INVALIDPARAMETERVALUE_FIREWALLRULEDESCRIPTIONTOOLONG = "InvalidParameterValue.FirewallRuleDescriptionTooLong"
 
+	// 防火墙模版ID格式非法。
+	INVALIDPARAMETERVALUE_FIREWALLTEMPLATEIDMALFORMED = "InvalidParameterValue.FirewallTemplateIdMalformed"
+
 	// 参数值非法，实例 ID 格式非法。
 	INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 
@@ -376,6 +379,9 @@ const (
 
 	// 指定的公钥格式错误。
 	INVALIDPARAMETERVALUE_KEYPAIRPUBLICKEYMALFORMED = "InvalidParameterValue.KeyPairPublicKeyMalformed"
+
+	// 参数取值长度不合法。
+	INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 
 	// 参数值非法，参数值的数量超过最大限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"

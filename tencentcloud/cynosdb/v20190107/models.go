@@ -7740,12 +7740,15 @@ func (r *DescribeProxyNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxySpecsRequestParams struct {
-
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeProxySpecsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeProxySpecsRequest) ToJsonString() string {
@@ -7760,7 +7763,7 @@ func (r *DescribeProxySpecsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxySpecsRequest has unknown keys!", "")
 	}

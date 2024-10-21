@@ -2581,7 +2581,7 @@ func NewDescribeTrinoQueryInfoResponse() (response *DescribeTrinoQueryInfoRespon
 }
 
 // DescribeTrinoQueryInfo
-// 获取trino查询结果
+// 查询Trino(PrestoSQL)查询信息
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
@@ -2591,7 +2591,7 @@ func (c *Client) DescribeTrinoQueryInfo(request *DescribeTrinoQueryInfoRequest) 
 }
 
 // DescribeTrinoQueryInfo
-// 获取trino查询结果
+// 查询Trino(PrestoSQL)查询信息
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"

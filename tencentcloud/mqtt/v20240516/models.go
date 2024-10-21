@@ -67,7 +67,9 @@ type AuthorizationPolicyItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
 
-	// 1、2、3
+	// 1：表示匹配retain消息
+	// 2：表示匹配非retain消息
+	// 3：表示匹配retain和非retain消息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Retain *int64 `json:"Retain,omitnil,omitempty" name:"Retain"`
 
@@ -1175,7 +1177,7 @@ type Filter struct {
 }
 
 type MQTTAuthenticatorItem struct {
-	// 认证器类型
+	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 

@@ -717,7 +717,7 @@ func NewCreateAccountsResponse() (response *CreateAccountsResponse) {
 }
 
 // CreateAccounts
-// 创建用户账号
+// 本接口（CreateAccounts）用于创建用户账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -762,7 +762,7 @@ func (c *Client) CreateAccounts(request *CreateAccountsRequest) (response *Creat
 }
 
 // CreateAccounts
-// 创建用户账号
+// 本接口（CreateAccounts）用于创建用户账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -946,7 +946,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 }
 
 // CreateBackup
-// 为集群创建手动备份
+// 本接口（CreateBackup）用于为集群创建手动备份。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -962,7 +962,7 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 }
 
 // CreateBackup
-// 为集群创建手动备份
+// 本接口（CreateBackup）用于为集群创建手动备份。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -1062,7 +1062,7 @@ func NewCreateClusterDatabaseResponse() (response *CreateClusterDatabaseResponse
 }
 
 // CreateClusterDatabase
-// 创建数据库
+// 本接口（CreateClusterDatabase）用于创建数据库。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -1074,7 +1074,7 @@ func (c *Client) CreateClusterDatabase(request *CreateClusterDatabaseRequest) (r
 }
 
 // CreateClusterDatabase
-// 创建数据库
+// 本接口（CreateClusterDatabase）用于创建数据库。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -1214,7 +1214,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 本接口（CreateParamTemplate）用于创建参数模板
+// 本接口（CreateParamTemplate）用于创建参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -1227,7 +1227,7 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
 }
 
 // CreateParamTemplate
-// 本接口（CreateParamTemplate）用于创建参数模板
+// 本接口（CreateParamTemplate）用于创建参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -1336,7 +1336,7 @@ func NewCreateProxyEndPointResponse() (response *CreateProxyEndPointResponse) {
 }
 
 // CreateProxyEndPoint
-// 创建数据库代理连接点
+// 本接口（CreateProxyEndPoint）用于创建数据库代理连接点。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1355,7 +1355,7 @@ func (c *Client) CreateProxyEndPoint(request *CreateProxyEndPointRequest) (respo
 }
 
 // CreateProxyEndPoint
-// 创建数据库代理连接点
+// 本接口（CreateProxyEndPoint）用于创建数据库代理连接点。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1464,7 +1464,7 @@ func NewDeleteAccountsResponse() (response *DeleteAccountsResponse) {
 }
 
 // DeleteAccounts
-// 删除用户账号
+// 本接口（DeleteAccounts）用于删除用户账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1485,7 +1485,7 @@ func (c *Client) DeleteAccounts(request *DeleteAccountsRequest) (response *Delet
 }
 
 // DeleteAccounts
-// 删除用户账号
+// 本接口（DeleteAccounts）用于删除用户账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1610,7 +1610,7 @@ func NewDeleteAuditRuleTemplatesResponse() (response *DeleteAuditRuleTemplatesRe
 }
 
 // DeleteAuditRuleTemplates
-// 删除审计规则模板
+// 本接口（DeleteAuditRuleTemplates）用于删除审计规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -1619,7 +1619,7 @@ func (c *Client) DeleteAuditRuleTemplates(request *DeleteAuditRuleTemplatesReque
 }
 
 // DeleteAuditRuleTemplates
-// 删除审计规则模板
+// 本接口（DeleteAuditRuleTemplates）用于删除审计规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -1998,7 +1998,7 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
 }
 
 // DescribeAccountPrivileges
-// 查询账号已有权限
+// 本接口（DescribeAccountPrivileges）用于查询账号已有权限。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2042,7 +2042,7 @@ func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesReq
 }
 
 // DescribeAccountPrivileges
-// 查询账号已有权限
+// 本接口（DescribeAccountPrivileges）用于查询账号已有权限。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2333,7 +2333,7 @@ func NewDescribeAuditRuleTemplatesResponse() (response *DescribeAuditRuleTemplat
 }
 
 // DescribeAuditRuleTemplates
-// 查询审计规则模板信息
+// 本接口（DescribeAuditRuleTemplates）用于查询审计规则模板信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -2344,7 +2344,7 @@ func (c *Client) DescribeAuditRuleTemplates(request *DescribeAuditRuleTemplatesR
 }
 
 // DescribeAuditRuleTemplates
-// 查询审计规则模板信息
+// 本接口（DescribeAuditRuleTemplates）用于查询审计规则模板信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -3345,7 +3345,7 @@ func NewDescribeClusterParamsResponse() (response *DescribeClusterParamsResponse
 }
 
 // DescribeClusterParams
-// 本接口（DescribeClusterParams）用于查询集群参数
+// 本接口（DescribeClusterParams）用于查询集群参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3364,7 +3364,7 @@ func (c *Client) DescribeClusterParams(request *DescribeClusterParamsRequest) (r
 }
 
 // DescribeClusterParams
-// 本接口（DescribeClusterParams）用于查询集群参数
+// 本接口（DescribeClusterParams）用于查询集群参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3414,7 +3414,7 @@ func NewDescribeClusterPasswordComplexityResponse() (response *DescribeClusterPa
 }
 
 // DescribeClusterPasswordComplexity
-// 本接口（DescribeClusterPasswordComplexity）用于查看集群密码复杂度详情
+// 本接口（DescribeClusterPasswordComplexity）用于查看集群密码复杂度详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETOSSINFOERROR = "FailedOperation.GetOssInfoError"
@@ -3431,7 +3431,7 @@ func (c *Client) DescribeClusterPasswordComplexity(request *DescribeClusterPassw
 }
 
 // DescribeClusterPasswordComplexity
-// 本接口（DescribeClusterPasswordComplexity）用于查看集群密码复杂度详情
+// 本接口（DescribeClusterPasswordComplexity）用于查看集群密码复杂度详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETOSSINFOERROR = "FailedOperation.GetOssInfoError"
@@ -3546,7 +3546,7 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 }
 
 // DescribeDBSecurityGroups
-// 查询实例安全组信息
+// 本接口（DescribeDBSecurityGroups）用于查询实例安全组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3559,7 +3559,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
 }
 
 // DescribeDBSecurityGroups
-// 查询实例安全组信息
+// 本接口（DescribeDBSecurityGroups）用于查询实例安全组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3788,7 +3788,7 @@ func NewDescribeInstanceErrorLogsResponse() (response *DescribeInstanceErrorLogs
 }
 
 // DescribeInstanceErrorLogs
-// 查询实例错误日志列表
+// 本接口（DescribeInstanceErrorLogs）用于查询实例错误日志列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3804,7 +3804,7 @@ func (c *Client) DescribeInstanceErrorLogs(request *DescribeInstanceErrorLogsReq
 }
 
 // DescribeInstanceErrorLogs
-// 查询实例错误日志列表
+// 本接口（DescribeInstanceErrorLogs）用于查询实例错误日志列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3851,7 +3851,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 }
 
 // DescribeInstanceParams
-// 该接口(DescribeInstanceParams)查询实例参数列表
+// 本接口（DescribeInstanceParams）用于查询实例参数列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3867,7 +3867,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
 }
 
 // DescribeInstanceParams
-// 该接口(DescribeInstanceParams)查询实例参数列表
+// 本接口（DescribeInstanceParams）用于查询实例参数列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -4227,7 +4227,7 @@ func NewDescribeParamTemplateDetailResponse() (response *DescribeParamTemplateDe
 }
 
 // DescribeParamTemplateDetail
-// 本接口（DescribeParamTemplateDetail）用于查询用户参数模板详情
+// 本接口（DescribeParamTemplateDetail）用于查询用户参数模板详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -4238,7 +4238,7 @@ func (c *Client) DescribeParamTemplateDetail(request *DescribeParamTemplateDetai
 }
 
 // DescribeParamTemplateDetail
-// 本接口（DescribeParamTemplateDetail）用于查询用户参数模板详情
+// 本接口（DescribeParamTemplateDetail）用于查询用户参数模板详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -4280,7 +4280,7 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 }
 
 // DescribeParamTemplates
-// 查询用户指定产品下的所有参数模板信息
+// 本接口（DescribeParamTemplates）用于查询用户指定产品下的所有参数模板信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -4290,7 +4290,7 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 }
 
 // DescribeParamTemplates
-// 查询用户指定产品下的所有参数模板信息
+// 本接口（DescribeParamTemplates）用于查询用户指定产品下的所有参数模板信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -4386,7 +4386,7 @@ func NewDescribeProxiesResponse() (response *DescribeProxiesResponse) {
 }
 
 // DescribeProxies
-// 查询数据库代理列表
+// 本接口（DescribeProxies）用于查询数据库代理列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -4403,7 +4403,7 @@ func (c *Client) DescribeProxies(request *DescribeProxiesRequest) (response *Des
 }
 
 // DescribeProxies
-// 查询数据库代理列表
+// 本接口（DescribeProxies）用于查询数据库代理列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -4724,7 +4724,7 @@ func NewDescribeResourcesByDealNameResponse() (response *DescribeResourcesByDeal
 }
 
 // DescribeResourcesByDealName
-// 查询订单关联实例
+// 本接口（DescribeResourcesByDealName）用于查询订单关联实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4740,7 +4740,7 @@ func (c *Client) DescribeResourcesByDealName(request *DescribeResourcesByDealNam
 }
 
 // DescribeResourcesByDealName
-// 查询订单关联实例
+// 本接口（DescribeResourcesByDealName）用于查询订单关联实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4911,7 +4911,7 @@ func NewDescribeSupportProxyVersionResponse() (response *DescribeSupportProxyVer
 }
 
 // DescribeSupportProxyVersion
-// 查询支持的数据库代理版本
+// 本接口（DescribeSupportProxyVersion）用于查询支持的数据库代理版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4927,7 +4927,7 @@ func (c *Client) DescribeSupportProxyVersion(request *DescribeSupportProxyVersio
 }
 
 // DescribeSupportProxyVersion
-// 查询支持的数据库代理版本
+// 本接口（DescribeSupportProxyVersion）用于查询支持的数据库代理版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5314,7 +5314,7 @@ func NewGrantAccountPrivilegesResponse() (response *GrantAccountPrivilegesRespon
 }
 
 // GrantAccountPrivileges
-// 批量授权账号权限
+// 本接口（GrantAccountPrivileges）用于批量授权账号权限。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5359,7 +5359,7 @@ func (c *Client) GrantAccountPrivileges(request *GrantAccountPrivilegesRequest) 
 }
 
 // GrantAccountPrivileges
-// 批量授权账号权限
+// 本接口（GrantAccountPrivileges）用于批量授权账号权限。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5549,7 +5549,7 @@ func NewInquirePriceRenewResponse() (response *InquirePriceRenewResponse) {
 }
 
 // InquirePriceRenew
-// 查询续费集群价格
+// 本接口（InquirePriceRenew）用于查询续费集群价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BATCHGETINSTANCEERROR = "FailedOperation.BatchGetInstanceError"
@@ -5566,7 +5566,7 @@ func (c *Client) InquirePriceRenew(request *InquirePriceRenewRequest) (response 
 }
 
 // InquirePriceRenew
-// 查询续费集群价格
+// 本接口（InquirePriceRenew）用于查询续费集群价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BATCHGETINSTANCEERROR = "FailedOperation.BatchGetInstanceError"
@@ -5825,7 +5825,7 @@ func NewModifyAccountHostResponse() (response *ModifyAccountHostResponse) {
 }
 
 // ModifyAccountHost
-// 修改账号主机
+// 本接口（ModifyAccountHost）用于修改账号主机。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5868,7 +5868,7 @@ func (c *Client) ModifyAccountHost(request *ModifyAccountHostRequest) (response 
 }
 
 // ModifyAccountHost
-// 修改账号主机
+// 本接口（ModifyAccountHost）用于修改账号主机。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5942,7 +5942,7 @@ func NewModifyAccountParamsResponse() (response *ModifyAccountParamsResponse) {
 }
 
 // ModifyAccountParams
-// 修改账号配置
+// 本接口（ModifyAccountParams）用于修改账号配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5987,7 +5987,7 @@ func (c *Client) ModifyAccountParams(request *ModifyAccountParamsRequest) (respo
 }
 
 // ModifyAccountParams
-// 修改账号配置
+// 本接口（ModifyAccountParams）用于修改账号配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -6063,7 +6063,7 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
 }
 
 // ModifyAccountPrivileges
-// 修改账号库表权限
+// 本接口（ModifyAccountPrivileges）用于修改账号库表权限。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -6107,7 +6107,7 @@ func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest
 }
 
 // ModifyAccountPrivileges
-// 修改账号库表权限
+// 本接口（ModifyAccountPrivileges）用于修改账号库表权限。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -6626,7 +6626,7 @@ func NewModifyClusterParamResponse() (response *ModifyClusterParamResponse) {
 }
 
 // ModifyClusterParam
-// 修改集群参数
+// 本接口（ModifyClusterParam）用于修改集群参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -6646,7 +6646,7 @@ func (c *Client) ModifyClusterParam(request *ModifyClusterParamRequest) (respons
 }
 
 // ModifyClusterParam
-// 修改集群参数
+// 本接口（ModifyClusterParam）用于修改集群参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -6817,7 +6817,7 @@ func NewModifyClusterStorageResponse() (response *ModifyClusterStorageResponse) 
 }
 
 // ModifyClusterStorage
-// 调整包年包月存储容量
+// 本接口（ModifyClusterStorage）用于调整包年包月存储容量。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6839,7 +6839,7 @@ func (c *Client) ModifyClusterStorage(request *ModifyClusterStorageRequest) (res
 }
 
 // ModifyClusterStorage
-// 调整包年包月存储容量
+// 本接口（ModifyClusterStorage）用于调整包年包月存储容量。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7240,7 +7240,7 @@ func NewModifyProxyDescResponse() (response *ModifyProxyDescResponse) {
 }
 
 // ModifyProxyDesc
-// 修改数据库代理描述
+// 本接口（ModifyProxyDesc）用于修改数据库代理描述。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7252,7 +7252,7 @@ func (c *Client) ModifyProxyDesc(request *ModifyProxyDescRequest) (response *Mod
 }
 
 // ModifyProxyDesc
-// 修改数据库代理描述
+// 本接口（ModifyProxyDesc）用于修改数据库代理描述。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7295,7 +7295,7 @@ func NewModifyProxyRwSplitResponse() (response *ModifyProxyRwSplitResponse) {
 }
 
 // ModifyProxyRwSplit
-// 配置数据库代理读写分离
+// 本接口（ModifyProxyRwSplit）用于配置数据库代理读写分离。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7313,7 +7313,7 @@ func (c *Client) ModifyProxyRwSplit(request *ModifyProxyRwSplitRequest) (respons
 }
 
 // ModifyProxyRwSplit
-// 配置数据库代理读写分离
+// 本接口（ModifyProxyRwSplit）用于配置数据库代理读写分离。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7628,7 +7628,7 @@ func NewModifyVipVportResponse() (response *ModifyVipVportResponse) {
 }
 
 // ModifyVipVport
-// 修改实例组ip，端口
+// 本接口（ModifyVipVport）用于修改实例组ip，端口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7644,7 +7644,7 @@ func (c *Client) ModifyVipVport(request *ModifyVipVportRequest) (response *Modif
 }
 
 // ModifyVipVport
-// 修改实例组ip，端口
+// 本接口（ModifyVipVport）用于修改实例组ip，端口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7756,7 +7756,7 @@ func NewOfflineInstanceResponse() (response *OfflineInstanceResponse) {
 }
 
 // OfflineInstance
-// 销毁实例
+// 本接口（OfflineInstance）用于销毁实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7775,7 +7775,7 @@ func (c *Client) OfflineInstance(request *OfflineInstanceRequest) (response *Off
 }
 
 // OfflineInstance
-// 销毁实例
+// 本接口（OfflineInstance）用于销毁实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -8250,7 +8250,7 @@ func NewReloadBalanceProxyNodeResponse() (response *ReloadBalanceProxyNodeRespon
 }
 
 // ReloadBalanceProxyNode
-// 负载均衡数据库代理
+// 本接口（ReloadBalanceProxyNode）用于负载均衡数据库代理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8262,7 +8262,7 @@ func (c *Client) ReloadBalanceProxyNode(request *ReloadBalanceProxyNodeRequest) 
 }
 
 // ReloadBalanceProxyNode
-// 负载均衡数据库代理
+// 本接口（ReloadBalanceProxyNode）用于负载均衡数据库代理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8437,7 +8437,7 @@ func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) 
 }
 
 // ResetAccountPassword
-// 本接口(ResetAccountPassword)用于修改数据库账号密码
+// 本接口（ResetAccountPassword）用于修改数据库账号密码。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -8461,7 +8461,7 @@ func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (res
 }
 
 // ResetAccountPassword
-// 本接口(ResetAccountPassword)用于修改数据库账号密码
+// 本接口（ResetAccountPassword）用于修改数据库账号密码。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -8516,7 +8516,7 @@ func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
 }
 
 // RestartInstance
-// 重启实例
+// 本接口（RestartInstance）用于重启实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -8560,7 +8560,7 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
 }
 
 // RestartInstance
-// 重启实例
+// 本接口（RestartInstance）用于重启实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -8823,7 +8823,7 @@ func NewRollBackClusterResponse() (response *RollBackClusterResponse) {
 }
 
 // RollBackCluster
-// 本接口（RollBackCluster）用于集群回档
+// 本接口（RollBackCluster）用于集群回档。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -8840,7 +8840,7 @@ func (c *Client) RollBackCluster(request *RollBackClusterRequest) (response *Rol
 }
 
 // RollBackCluster
-// 本接口（RollBackCluster）用于集群回档
+// 本接口（RollBackCluster）用于集群回档。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -9040,7 +9040,7 @@ func NewSearchClusterTablesResponse() (response *SearchClusterTablesResponse) {
 }
 
 // SearchClusterTables
-// 本接口(SearchClusterTables)搜索集群数据表列表
+// 本接口（SearchClusterTables）用于搜索集群数据表列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9052,7 +9052,7 @@ func (c *Client) SearchClusterTables(request *SearchClusterTablesRequest) (respo
 }
 
 // SearchClusterTables
-// 本接口(SearchClusterTables)搜索集群数据表列表
+// 本接口（SearchClusterTables）用于搜索集群数据表列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9095,7 +9095,7 @@ func NewSetRenewFlagResponse() (response *SetRenewFlagResponse) {
 }
 
 // SetRenewFlag
-// SetRenewFlag设置实例的自动续费功能
+// 本接口（SetRenewFlag）用于设置实例的自动续费功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9119,7 +9119,7 @@ func (c *Client) SetRenewFlag(request *SetRenewFlagRequest) (response *SetRenewF
 }
 
 // SetRenewFlag
-// SetRenewFlag设置实例的自动续费功能
+// 本接口（SetRenewFlag）用于设置实例的自动续费功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9274,7 +9274,7 @@ func NewSwitchClusterVpcResponse() (response *SwitchClusterVpcResponse) {
 }
 
 // SwitchClusterVpc
-// 更换集群vpc
+// 本接口（SwitchClusterVpc）用于更换集群vpc。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9289,7 +9289,7 @@ func (c *Client) SwitchClusterVpc(request *SwitchClusterVpcRequest) (response *S
 }
 
 // SwitchClusterVpc
-// 更换集群vpc
+// 本接口（SwitchClusterVpc）用于更换集群vpc。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9392,7 +9392,7 @@ func NewSwitchProxyVpcResponse() (response *SwitchProxyVpcResponse) {
 }
 
 // SwitchProxyVpc
-// 本接口(SwitchProxyVpc)更换数据库代理vpc
+// 本接口（SwitchProxyVpc）用于更换数据库代理vpc。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9408,7 +9408,7 @@ func (c *Client) SwitchProxyVpc(request *SwitchProxyVpcRequest) (response *Switc
 }
 
 // SwitchProxyVpc
-// 本接口(SwitchProxyVpc)更换数据库代理vpc
+// 本接口（SwitchProxyVpc）用于更换数据库代理vpc。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -9783,7 +9783,7 @@ func NewUpgradeProxyVersionResponse() (response *UpgradeProxyVersionResponse) {
 }
 
 // UpgradeProxyVersion
-// 升级数据库代理版本
+// 本接口（UpgradeProxyVersion）用于升级数据库代理版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9795,7 +9795,7 @@ func (c *Client) UpgradeProxyVersion(request *UpgradeProxyVersionRequest) (respo
 }
 
 // UpgradeProxyVersion
-// 升级数据库代理版本
+// 本接口（UpgradeProxyVersion）用于升级数据库代理版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -550,7 +550,7 @@ func NewDescribePhoneNumberInfoResponse() (response *DescribePhoneNumberInfoResp
 // DescribePhoneNumberInfo
 // 本接口 (DescribePhoneNumberInfo) 用于提供电话号码的信息查询，包括国家（或地区）码、规范的 E.164 格式号码等。
 //
-// - 例如：查询号码 +86018845720123，可以得到国家码 86、规范的 E.164 号码 +8618845720123 等信息。
+// - 例如：查询号码 +86018501234444，可以得到国家码 86、规范的 E.164 号码 +8618501234444 等信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
@@ -564,7 +564,7 @@ func (c *Client) DescribePhoneNumberInfo(request *DescribePhoneNumberInfoRequest
 // DescribePhoneNumberInfo
 // 本接口 (DescribePhoneNumberInfo) 用于提供电话号码的信息查询，包括国家（或地区）码、规范的 E.164 格式号码等。
 //
-// - 例如：查询号码 +86018845720123，可以得到国家码 86、规范的 E.164 号码 +8618845720123 等信息。
+// - 例如：查询号码 +86018501234444，可以得到国家码 86、规范的 E.164 号码 +8618501234444 等信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"

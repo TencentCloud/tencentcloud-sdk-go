@@ -4838,6 +4838,55 @@ func (c *Client) DescribePortsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeProtectionModesRequest() (request *DescribeProtectionModesRequest) {
+    request = &DescribeProtectionModesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeProtectionModes")
+    
+    
+    return
+}
+
+func NewDescribeProtectionModesResponse() (response *DescribeProtectionModesResponse) {
+    response = &DescribeProtectionModesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProtectionModes
+// 查询Tiga引擎大类规则及其防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeProtectionModes(request *DescribeProtectionModesRequest) (response *DescribeProtectionModesResponse, err error) {
+    return c.DescribeProtectionModesWithContext(context.Background(), request)
+}
+
+// DescribeProtectionModes
+// 查询Tiga引擎大类规则及其防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request *DescribeProtectionModesRequest) (response *DescribeProtectionModesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProtectionModesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProtectionModes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProtectionModesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRuleLimitRequest() (request *DescribeRuleLimitRequest) {
     request = &DescribeRuleLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1132,6 +1132,8 @@ type CreateRoomRequestParams struct {
 	Assistants []*string `json:"Assistants,omitnil,omitempty" name:"Assistants"`
 
 	// rtc人数。
+	//
+	// Deprecated: RTCAudienceNumber is deprecated.
 	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitnil,omitempty" name:"RTCAudienceNumber"`
 
 	// 观看类型。互动观看 （默认）
