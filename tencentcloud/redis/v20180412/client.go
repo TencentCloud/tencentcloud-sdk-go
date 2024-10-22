@@ -276,7 +276,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 }
 
 // AssociateSecurityGroups
-// 本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
+// 本接口 (AssociateSecurityGroups) 用于将一个安全组绑定于一个或多个数据库实例。创建实例时，未配置安全组，建议通过该接口，绑定安全组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -294,7 +294,7 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
 }
 
 // AssociateSecurityGroups
-// 本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
+// 本接口 (AssociateSecurityGroups) 用于将一个安全组绑定于一个或多个数据库实例。创建实例时，未配置安全组，建议通过该接口，绑定安全组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"

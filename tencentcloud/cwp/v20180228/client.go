@@ -7207,6 +7207,10 @@ func NewDescribeAttackSourceResponse() (response *DescribeAttackSourceResponse) 
 }
 
 // DescribeAttackSource
+// 已废弃
+//
+// 
+//
 // 查询攻击溯源
 //
 // 可能返回的错误码:
@@ -7225,6 +7229,10 @@ func (c *Client) DescribeAttackSource(request *DescribeAttackSourceRequest) (res
 }
 
 // DescribeAttackSource
+// 已废弃
+//
+// 
+//
 // 查询攻击溯源
 //
 // 可能返回的错误码:
@@ -7274,6 +7282,10 @@ func NewDescribeAttackSourceEventsResponse() (response *DescribeAttackSourceEven
 }
 
 // DescribeAttackSourceEvents
+// 已废弃
+//
+// 
+//
 // 查询攻击溯源事件
 //
 // 可能返回的错误码:
@@ -7293,6 +7305,10 @@ func (c *Client) DescribeAttackSourceEvents(request *DescribeAttackSourceEventsR
 }
 
 // DescribeAttackSourceEvents
+// 已废弃
+//
+// 
+//
 // 查询攻击溯源事件
 //
 // 可能返回的错误码:

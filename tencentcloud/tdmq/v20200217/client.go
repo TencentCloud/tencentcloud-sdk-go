@@ -2038,6 +2038,59 @@ func (c *Client) DeleteProClusterWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteRabbitMQBindingRequest() (request *DeleteRabbitMQBindingRequest) {
+    request = &DeleteRabbitMQBindingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRabbitMQBinding")
+    
+    
+    return
+}
+
+func NewDeleteRabbitMQBindingResponse() (response *DeleteRabbitMQBindingResponse) {
+    response = &DeleteRabbitMQBindingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRabbitMQBinding
+// 解绑RabbitMQ路由关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRabbitMQBinding(request *DeleteRabbitMQBindingRequest) (response *DeleteRabbitMQBindingResponse, err error) {
+    return c.DeleteRabbitMQBindingWithContext(context.Background(), request)
+}
+
+// DeleteRabbitMQBinding
+// 解绑RabbitMQ路由关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRabbitMQBindingWithContext(ctx context.Context, request *DeleteRabbitMQBindingRequest) (response *DeleteRabbitMQBindingResponse, err error) {
+    if request == nil {
+        request = NewDeleteRabbitMQBindingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRabbitMQBinding require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRabbitMQBindingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRabbitMQUserRequest() (request *DeleteRabbitMQUserRequest) {
     request = &DeleteRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4117,6 +4170,59 @@ func (c *Client) DescribePulsarProInstancesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribePulsarProInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQBindingsRequest() (request *DescribeRabbitMQBindingsRequest) {
+    request = &DescribeRabbitMQBindingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQBindings")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQBindingsResponse() (response *DescribeRabbitMQBindingsResponse) {
+    response = &DescribeRabbitMQBindingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRabbitMQBindings
+// 查询RabbitMQ路由关系列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQBindings(request *DescribeRabbitMQBindingsRequest) (response *DescribeRabbitMQBindingsResponse, err error) {
+    return c.DescribeRabbitMQBindingsWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQBindings
+// 查询RabbitMQ路由关系列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQBindingsWithContext(ctx context.Context, request *DescribeRabbitMQBindingsRequest) (response *DescribeRabbitMQBindingsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQBindingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQBindings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQBindingsResponse()
     err = c.Send(request, response)
     return
 }

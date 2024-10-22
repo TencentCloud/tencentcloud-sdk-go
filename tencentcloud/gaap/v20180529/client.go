@@ -7164,7 +7164,7 @@ func NewModifyProxyGroupAttributeResponse() (response *ModifyProxyGroupAttribute
 }
 
 // ModifyProxyGroupAttribute
-// 本接口（ModifyProxyGroupAttribute）用于修改通道组属性，目前仅支持修改通道组名称。
+// 本接口（ModifyProxyGroupAttribute）用于修改通道组属性，目前仅支持修改通道组名称与项目ID。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7186,7 +7186,7 @@ func (c *Client) ModifyProxyGroupAttribute(request *ModifyProxyGroupAttributeReq
 }
 
 // ModifyProxyGroupAttribute
-// 本接口（ModifyProxyGroupAttribute）用于修改通道组属性，目前仅支持修改通道组名称。
+// 本接口（ModifyProxyGroupAttribute）用于修改通道组属性，目前仅支持修改通道组名称与项目ID。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

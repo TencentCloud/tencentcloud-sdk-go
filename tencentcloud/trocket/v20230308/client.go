@@ -1200,7 +1200,7 @@ func NewDescribeInstanceListResponse() (response *DescribeInstanceListResponse) 
 }
 
 // DescribeInstanceList
-// 获取集群列表，仅支持 5.x 集群，Filters参数使用说明如下：
+// 查询集群列表，仅支持 5.x 集群。Filters参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
 //
@@ -1221,7 +1221,7 @@ func (c *Client) DescribeInstanceList(request *DescribeInstanceListRequest) (res
 }
 
 // DescribeInstanceList
-// 获取集群列表，仅支持 5.x 集群，Filters参数使用说明如下：
+// 查询集群列表，仅支持 5.x 集群。Filters参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
 //
@@ -2282,7 +2282,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 }
 
 // ModifyInstance
-// 修改实例属性
+// 修改 RocketMQ 5.x 集群属性。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2294,7 +2294,7 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
 }
 
 // ModifyInstance
-// 修改实例属性
+// 修改 RocketMQ 5.x 集群属性。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

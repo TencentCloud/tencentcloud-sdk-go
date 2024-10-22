@@ -3925,7 +3925,7 @@ func (r *ModifyConsumerGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
@@ -3946,14 +3946,20 @@ type ModifyInstanceRequestParams struct {
 	// 是否开启弹性TPS
 	ScaledTpsEnabled *bool `json:"ScaledTpsEnabled,omitnil,omitempty" name:"ScaledTpsEnabled"`
 
+	// 是否开启ACL
+	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
+
 	// 最大可创建主题数
 	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
+
+	// 免费额度之外的主题个数
+	ExtraTopicNum *string `json:"ExtraTopicNum,omitnil,omitempty" name:"ExtraTopicNum"`
 }
 
 type ModifyInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
@@ -3974,8 +3980,14 @@ type ModifyInstanceRequest struct {
 	// 是否开启弹性TPS
 	ScaledTpsEnabled *bool `json:"ScaledTpsEnabled,omitnil,omitempty" name:"ScaledTpsEnabled"`
 
+	// 是否开启ACL
+	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
+
 	// 最大可创建主题数
 	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
+
+	// 免费额度之外的主题个数
+	ExtraTopicNum *string `json:"ExtraTopicNum,omitnil,omitempty" name:"ExtraTopicNum"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -3997,7 +4009,9 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SkuCode")
 	delete(f, "MessageRetention")
 	delete(f, "ScaledTpsEnabled")
+	delete(f, "AclEnabled")
 	delete(f, "MaxTopicNum")
+	delete(f, "ExtraTopicNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
 	}

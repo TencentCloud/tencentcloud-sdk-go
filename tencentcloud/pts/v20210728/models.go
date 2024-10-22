@@ -4205,6 +4205,10 @@ type Job struct {
 	// test-scenario
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioName *string `json:"ScenarioName,omitnil,omitempty" name:"ScenarioName"`
+
+	// 付费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 }
 
 type Label struct {

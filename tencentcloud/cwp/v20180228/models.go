@@ -1284,10 +1284,10 @@ type AssetUserBaseInfo struct {
 	// 主机业务组ID
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+	// 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅Windows
 	UserType *uint64 `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 是否域账号：0否， 1是，2否, 999为空  仅windows
+	// 是否域账号：0否， 1是，2否, 999为空  仅Windows
 	IsDomain *uint64 `json:"IsDomain,omitnil,omitempty" name:"IsDomain"`
 
 	// 是否有sudo权限，1是，0否, 999为空, 仅linux
@@ -1364,10 +1364,10 @@ type AssetUserDetail struct {
 	// 账号名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+	// 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅Windows
 	UserType *uint64 `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 是否域账号：0否， 1是, 999为空  仅windows
+	// 是否域账号：0否， 1是, 999为空  仅Windows
 	IsDomain *uint64 `json:"IsDomain,omitnil,omitempty" name:"IsDomain"`
 
 	// 是否允许ssh登录，1是，0否, 999为空, 仅linux
@@ -22490,7 +22490,7 @@ type DescribeMalwareWhiteListRequestParams struct {
 	// 排序方式: [ASC:升序|DESC:降序]
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 可选排序列: [EventsCount]
+	// 可选排序列: [EventsCount|CreateTime|ModifyTime]
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -22515,7 +22515,7 @@ type DescribeMalwareWhiteListRequest struct {
 	// 排序方式: [ASC:升序|DESC:降序]
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 可选排序列: [EventsCount]
+	// 可选排序列: [EventsCount|CreateTime|ModifyTime]
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -26912,7 +26912,7 @@ type DescribeSecurityBroadcastsRequestParams struct {
 	// 筛选发布日期：结束时间
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布
+	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-最佳实践
 	BroadcastType *string `json:"BroadcastType,omitnil,omitempty" name:"BroadcastType"`
 }
 
@@ -26931,7 +26931,7 @@ type DescribeSecurityBroadcastsRequest struct {
 	// 筛选发布日期：结束时间
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布
+	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-最佳实践
 	BroadcastType *string `json:"BroadcastType,omitnil,omitempty" name:"BroadcastType"`
 }
 
@@ -31584,22 +31584,7 @@ type ExportAssetAppListRequestParams struct {
 	// 查询指定Quuid主机的信息
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 过滤条件。
-	// <li>AppName- string - 是否必填：否 - 应用名搜索</li>
-	// <li>IP - String - 是否必填：否 - 主机ip</li>
-	// <li>MachineName - String - 是否必填：否 - 主机名称</li>
-	// <li>InstanceID - string - 是否必填：否 - 实例ID</li>
-	// <li>Type - int - 是否必填：否 - 类型	: 仅linux
-	// 0: 全部
-	// 1: 运维
-	// 2 : 数据库
-	// 3 : 安全
-	// 4 : 可疑应用
-	// 5 : 系统架构
-	// 6 : 系统应用
-	// 7 : WEB服务
-	// 99:其他</li>
-	// <li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+	// 过滤条件。<li>AppName- string - 是否必填：否 - 应用名搜索</li><li>IP - String - 是否必填：否 - 主机ip</li><li>MachineName - String - 是否必填：否 - 主机名称</li><li>InstanceID - string - 是否必填：否 - 实例ID</li><li>Type - int - 是否必填：否 - 类型	: 仅linux0: 全部1: 运维2 : 数据库3 : 安全4 : 可疑应用5 : 系统架构6 : 系统应用7 : WEB服务99:其他</li><li>OsType - uint64 - 是否必填：否 - Windows/Linux</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式，asc升序 或 desc降序
@@ -31615,22 +31600,7 @@ type ExportAssetAppListRequest struct {
 	// 查询指定Quuid主机的信息
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 过滤条件。
-	// <li>AppName- string - 是否必填：否 - 应用名搜索</li>
-	// <li>IP - String - 是否必填：否 - 主机ip</li>
-	// <li>MachineName - String - 是否必填：否 - 主机名称</li>
-	// <li>InstanceID - string - 是否必填：否 - 实例ID</li>
-	// <li>Type - int - 是否必填：否 - 类型	: 仅linux
-	// 0: 全部
-	// 1: 运维
-	// 2 : 数据库
-	// 3 : 安全
-	// 4 : 可疑应用
-	// 5 : 系统架构
-	// 6 : 系统应用
-	// 7 : WEB服务
-	// 99:其他</li>
-	// <li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+	// 过滤条件。<li>AppName- string - 是否必填：否 - 应用名搜索</li><li>IP - String - 是否必填：否 - 主机ip</li><li>MachineName - String - 是否必填：否 - 主机名称</li><li>InstanceID - string - 是否必填：否 - 实例ID</li><li>Type - int - 是否必填：否 - 类型	: 仅linux0: 全部1: 运维2 : 数据库3 : 安全4 : 可疑应用5 : 系统架构6 : 系统应用7 : WEB服务99:其他</li><li>OsType - uint64 - 是否必填：否 - Windows/Linux</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式，asc升序 或 desc降序
@@ -38466,6 +38436,10 @@ type MalwareInfo struct {
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// 参考链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References []*string `json:"References,omitnil,omitempty" name:"References"`
 }
 
 type MalwareRisk struct {
@@ -38549,6 +38523,9 @@ type MalwareWhiteListInfo struct {
 
 	// 受影响记录
 	EventsCount *uint64 `json:"EventsCount,omitnil,omitempty" name:"EventsCount"`
+
+	// 规则修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 // Predefined struct for user
@@ -43700,6 +43677,10 @@ type RansomDefenseRollbackTask struct {
 
 	// 可用区信息
 	RegionInfo *RegionInfo `json:"RegionInfo,omitnil,omitempty" name:"RegionInfo"`
+
+	// 主机示例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type RansomDefenseStrategy struct {
@@ -43894,6 +43875,10 @@ type RansomDefenseStrategyMachineBackupInfo struct {
 	// 备份成功次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSuccessCount *uint64 `json:"BackupSuccessCount,omitnil,omitempty" name:"BackupSuccessCount"`
+
+	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostVersion *uint64 `json:"HostVersion,omitnil,omitempty" name:"HostVersion"`
 }
 
 type RansomDefenseStrategyMachineDetail struct {
@@ -45927,10 +45912,10 @@ func (r *SeparateMalwaresRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SeparateMalwaresResponseParams struct {
-	// 隔离成功的id数组，若无则返回空数组
+	// 隔离成功的ID数组，若无则返回空数组
 	SuccessIds []*uint64 `json:"SuccessIds,omitnil,omitempty" name:"SuccessIds"`
 
-	// 隔离失败的id数组，若无则返回空数组
+	// 隔离失败的ID数组，若无则返回空数组
 	FailedIds []*uint64 `json:"FailedIds,omitnil,omitempty" name:"FailedIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

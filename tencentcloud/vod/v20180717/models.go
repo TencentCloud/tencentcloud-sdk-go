@@ -66,6 +66,11 @@ type AIRecognitionTemplateItem struct {
 	// 视频内容识别模板描述信息。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
+	// 模板类型，取值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
 	// 头尾识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTailConfigure *HeadTailConfigureInfo `json:"HeadTailConfigure,omitnil,omitempty" name:"HeadTailConfigure"`
@@ -93,6 +98,10 @@ type AIRecognitionTemplateItem struct {
 	// 语音关键词识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
+
+	// 语音翻译控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
 	// 物体识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -607,6 +616,7 @@ type AiRecognitionResult struct {
 	// <li>AsrWordsRecognition：语音关键词识别，</li>
 	// <li>OcrWordsRecognition：文本关键词识别，</li>
 	// <li>AsrFullTextRecognition：语音全文识别，</li>
+	// <li>AsrTranslateRecognition：语音翻译识别，</li>
 	// <li>OcrFullTextRecognition：文本全文识别，</li>
 	// <li>HeadTailRecognition：视频片头片尾识别，</li>
 	// <li>ObjectRecognition：物体识别。</li>
@@ -636,6 +646,10 @@ type AiRecognitionResult struct {
 	//  AsrFullTextRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrFullTextTask *AiRecognitionTaskAsrFullTextResult `json:"AsrFullTextTask,omitnil,omitempty" name:"AsrFullTextTask"`
+
+	// 语音翻译结果，当 Type 为 AsrTranslateRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrTranslateTask *AiRecognitionTaskAsrTranslateResult `json:"AsrTranslateTask,omitnil,omitempty" name:"AsrTranslateTask"`
 
 	// 文本关键词识别结果，当 Type 为
 	//  OcrWordsRecognition 时有效。
@@ -707,6 +721,17 @@ type AiRecognitionTaskAsrFullTextResultOutput struct {
 }
 
 type AiRecognitionTaskAsrFullTextResultOutputSubtitleItem struct {
+	// 媒资字幕 ID，用于媒资字幕管理，仅当 Format 为 vtt 时有效。
+	// <font color=red>注意：</font>2024-11-01T10:00:00Z 之前的任务返回此字段无效。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 媒资字幕名字，用于播放器展示，仅当 Format 为 vtt 时有效。
+	// <font color=red>注意：</font>2024-11-01T10:00:00Z 之前的任务返回此字段无效。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字幕语言。
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
 	// 字幕文件格式，取值范围：
 	// <li>vtt：WebVTT 字幕文件；</li>
 	// <li>srt：SRT 字幕文件。</li>
@@ -728,6 +753,73 @@ type AiRecognitionTaskAsrFullTextSegmentItem struct {
 
 	// 识别文本。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type AiRecognitionTaskAsrTranslateResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 语音翻译任务输入信息。
+	Input *AiRecognitionTaskAsrTranslateResultInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 语音翻译任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskAsrTranslateResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 语音翻译任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 语音翻译任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// 语音翻译任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
+type AiRecognitionTaskAsrTranslateResultInput struct {
+	// 语音翻译模板 ID。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskAsrTranslateResultOutput struct {
+	// 语音翻译片段列表。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+	SegmentSet []*AiRecognitionTaskAsrTranslateSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
+
+	// 语音翻译片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitnil,omitempty" name:"SegmentSetFileUrl"`
+
+	// 语音翻译片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitnil,omitempty" name:"SegmentSetFileUrlExpireTime"`
+
+	// 生成的字幕列表。
+	SubtitleSet []*AiRecognitionTaskAsrFullTextResultOutputSubtitleItem `json:"SubtitleSet,omitnil,omitempty" name:"SubtitleSet"`
+}
+
+type AiRecognitionTaskAsrTranslateSegmentItem struct {
+	// 语音翻译片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// 语音翻译片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
+
+	// 语音翻译片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+
+	// 识别文本。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 翻译文本。
+	Translation *string `json:"Translation,omitnil,omitempty" name:"Translation"`
 }
 
 type AiRecognitionTaskAsrWordsResult struct {
@@ -2103,7 +2195,7 @@ type AsrFullTextConfigureInfo struct {
 
 	// 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
 	// <li>vtt：生成 WebVTT 字幕文件；</li>
-	// <li>srt：生成 SRT 字幕文件。</li>
+	// <li>srt：生成 SRT 字幕文件。</li><font color=red>注意：</font>云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
 	SubtitleFormats []*string `json:"SubtitleFormats,omitnil,omitempty" name:"SubtitleFormats"`
 
 	// 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
@@ -2119,6 +2211,10 @@ type AsrFullTextConfigureInfo struct {
 	// <li>zh-ca：粤语。</li>
 	// <font color=red>注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
 	SrcLanguage *string `json:"SrcLanguage,omitnil,omitempty" name:"SrcLanguage"`
+
+	// 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。
+	// <font color=red>注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。
+	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
 }
 
 type AsrFullTextConfigureInfoForUpdate struct {
@@ -2142,6 +2238,238 @@ type AsrFullTextConfigureInfoForUpdate struct {
 	// <li>ja：日语；</li>
 	// <li>zh-ca：粤语。</li>
 	SrcLanguage *string `json:"SrcLanguage,omitnil,omitempty" name:"SrcLanguage"`
+
+	// 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示。
+	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
+}
+
+type AsrTranslateConfigureInfo struct {
+	// 语音翻译任务开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li><font color=red>注意：</font>语音翻译任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译和 ASR 全文识别功能项。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 媒体源语言，当 Switch 为 ON 时，此参数必填。取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>vi：越南语；</li>
+	// <li>ms：马来语；</li>
+	// <li>th：泰语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ar：阿拉伯语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>hi：印地语；</li>
+	// <li>fr：法语。</li>
+	SrcLanguage *string `json:"SrcLanguage,omitnil,omitempty" name:"SrcLanguage"`
+
+	// 翻译目标语言，当 Switch 为 ON 时，此参数必填。
+	// 当 SrcLanguage 为 zh（中文）时，取值范围：
+	// <li>en：英文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>vi：越南语；</li>
+	// <li>id：印尼语；</li>
+	// <li>th：泰语；</li>
+	// <li>ms：马来语。</li>
+	// 当 SrcLanguage 为 en（英文）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>vi：越南语；</li>
+	// <li>id：印尼语；</li>
+	// <li>th：泰语；</li>
+	// <li>ms：马来语；</li>
+	// <li>ar：阿拉伯语；</li>
+	// <li>hi：印地语。</li>
+	// 当 SrcLanguage 为 ja（日文）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ko：韩文。</li>
+	// 当 SrcLanguage 为 ko（韩文）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ja：日文。</li>
+	// 当 SrcLanguage 为 vi（越南语）或 ms（马来语）或 th（泰语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文。</li>
+	// 当 SrcLanguage 为 pt（葡萄牙语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语。</li>
+	// 当 SrcLanguage 为 tr（土耳其语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语。</li>
+	// 当 SrcLanguage 为 es（西班牙语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>fr：法语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语。</li>
+	// 当 SrcLanguage 为 ar（阿拉伯语）或 hi（印地语）时，取值范围：
+	// <li>en：英文。</li>
+	// 当 SrcLanguage 为 fr（法语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语。</li>
+	DstLanguage *string `json:"DstLanguage,omitnil,omitempty" name:"DstLanguage"`
+
+	// 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件；</li>
+	// <li>srt：生成 SRT 字幕文件。</li><font color=red>注意：</font> 云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
+	SubtitleFormats []*string `json:"SubtitleFormats,omitnil,omitempty" name:"SubtitleFormats"`
+
+	// 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。
+	// <font color=red>注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。
+	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
+}
+
+type AsrTranslateConfigureInfoForUpdate struct {
+	// 语音翻译任务开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 媒体源语言，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>vi：越南语；</li>
+	// <li>ms：马来语；</li>
+	// <li>th：泰语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ar：阿拉伯语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>hi：印地语；</li>
+	// <li>fr：法语。</li>
+	SrcLanguage *string `json:"SrcLanguage,omitnil,omitempty" name:"SrcLanguage"`
+
+	// 翻译目标语言。
+	// 当 SrcLanguage 为 zh（中文）时，取值范围：
+	// <li>en：英文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>vi：越南语；</li>
+	// <li>id：印尼语；</li>
+	// <li>th：泰语；</li>
+	// <li>ms：马来语。</li>
+	// 当 SrcLanguage 为 en（英文）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>vi：越南语；</li>
+	// <li>id：印尼语；</li>
+	// <li>th：泰语；</li>
+	// <li>ms：马来语；</li>
+	// <li>ar：阿拉伯语；</li>
+	// <li>hi：印地语。</li>
+	// 当 SrcLanguage 为 ja（日文）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ko：韩文。</li>
+	// 当 SrcLanguage 为 ko（韩文）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ja：日文。</li>
+	// 当 SrcLanguage 为 vi（越南语）或 ms（马来语）或 th（泰语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文。</li>
+	// 当 SrcLanguage 为 pt（葡萄牙语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语。</li>
+	// 当 SrcLanguage 为 tr（土耳其语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>fr：法语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语。</li>
+	// 当 SrcLanguage 为 es（西班牙语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>fr：法语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语。</li>
+	// 当 SrcLanguage 为 ar（阿拉伯语）或 hi（印地语）时，取值范围：
+	// <li>en：英文。</li>
+	// 当 SrcLanguage 为 fr（法语）时，取值范围：
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>es：西班牙语；</li>
+	// <li>it：意大利语；</li>
+	// <li>de：德语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ru：俄语；</li>
+	// <li>pt：葡萄牙语。</li>
+	DstLanguage *string `json:"DstLanguage,omitnil,omitempty" name:"DstLanguage"`
+
+	// 字幕格式列表操作信息。
+	SubtitleFormatsOperation *SubtitleFormatsOperation `json:"SubtitleFormatsOperation,omitnil,omitempty" name:"SubtitleFormatsOperation"`
+
+	// 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示。
+	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
 }
 
 type AsrWordsConfigureInfo struct {
@@ -3210,6 +3538,9 @@ type CreateAIRecognitionTemplateRequestParams struct {
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
+	// 语音翻译控制参数。
+	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
+
 	// 物体识别控制参数。
 	ObjectConfigure *ObjectConfigureInfo `json:"ObjectConfigure,omitnil,omitempty" name:"ObjectConfigure"`
 
@@ -3250,6 +3581,9 @@ type CreateAIRecognitionTemplateRequest struct {
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
+	// 语音翻译控制参数。
+	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
+
 	// 物体识别控制参数。
 	ObjectConfigure *ObjectConfigureInfo `json:"ObjectConfigure,omitnil,omitempty" name:"ObjectConfigure"`
 
@@ -3279,6 +3613,7 @@ func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
 	delete(f, "OcrWordsConfigure")
 	delete(f, "AsrFullTextConfigure")
 	delete(f, "AsrWordsConfigure")
+	delete(f, "AsrTranslateConfigure")
 	delete(f, "ObjectConfigure")
 	delete(f, "ScreenshotInterval")
 	if len(f) > 0 {
@@ -8061,6 +8396,9 @@ type DescribeAIRecognitionTemplatesRequestParams struct {
 	// 音视频内容识别模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
+	// 模板类型过滤条件，可选值：<li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>不填默认为空，即不对模板类型过滤。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -8076,6 +8414,9 @@ type DescribeAIRecognitionTemplatesRequest struct {
 
 	// 音视频内容识别模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 模板类型过滤条件，可选值：<li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>不填默认为空，即不对模板类型过滤。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -8098,6 +8439,7 @@ func (r *DescribeAIRecognitionTemplatesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubAppId")
 	delete(f, "Definitions")
+	delete(f, "Type")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -16180,9 +16522,19 @@ type MediaSubtitleInput struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 字幕语言。常见的取值如下：
-	// <li>cn：中文</li>
-	// <li>ja：日文</li>
-	// <li>en-US：英文</li>
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>vi：越南语；</li>
+	// <li>ms：马来语；</li>
+	// <li>th：泰语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ar：阿拉伯语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>hi：印地语；</li>
+	// <li>fr：法语。</li>
 	// 其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
@@ -16205,9 +16557,19 @@ type MediaSubtitleItem struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 字幕语言。常见的取值如下：
-	// <li>cn：中文</li>
-	// <li>ja：日文</li>
-	// <li>en-US：英文</li>
+	// <li>zh：中文；</li>
+	// <li>en：英文；</li>
+	// <li>ja：日文；</li>
+	// <li>ko：韩文；</li>
+	// <li>vi：越南语；</li>
+	// <li>ms：马来语；</li>
+	// <li>th：泰语；</li>
+	// <li>pt：葡萄牙语；</li>
+	// <li>tr：土耳其语；</li>
+	// <li>ar：阿拉伯语；</li>
+	// <li>es：西班牙语；</li>
+	// <li>hi：印地语；</li>
+	// <li>fr：法语。</li>
 	// 其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
@@ -16217,6 +16579,11 @@ type MediaSubtitleItem struct {
 
 	// 字幕 URL。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 字幕来源，取值范围：
+	// <li>UserUploaded：用户上传；</li>
+	// <li>AIRecognition：AI 识别，通过语音识别或语音翻译生成。</li>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type MediaTrack struct {
@@ -16496,6 +16863,9 @@ type ModifyAIRecognitionTemplateRequestParams struct {
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
+	// 语音翻译控制参数。
+	AsrTranslateConfigure *AsrTranslateConfigureInfoForUpdate `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
+
 	// 物体识别控制参数。
 	ObjectConfigure *ObjectConfigureInfoForUpdate `json:"ObjectConfigure,omitnil,omitempty" name:"ObjectConfigure"`
 
@@ -16539,6 +16909,9 @@ type ModifyAIRecognitionTemplateRequest struct {
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
+	// 语音翻译控制参数。
+	AsrTranslateConfigure *AsrTranslateConfigureInfoForUpdate `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
+
 	// 物体识别控制参数。
 	ObjectConfigure *ObjectConfigureInfoForUpdate `json:"ObjectConfigure,omitnil,omitempty" name:"ObjectConfigure"`
 
@@ -16569,6 +16942,7 @@ func (r *ModifyAIRecognitionTemplateRequest) FromJsonString(s string) error {
 	delete(f, "OcrWordsConfigure")
 	delete(f, "AsrFullTextConfigure")
 	delete(f, "AsrWordsConfigure")
+	delete(f, "AsrTranslateConfigure")
 	delete(f, "ObjectConfigure")
 	delete(f, "ScreenshotInterval")
 	if len(f) > 0 {

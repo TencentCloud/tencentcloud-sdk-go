@@ -3928,6 +3928,10 @@ func NewDescribeNatSwitchListResponse() (response *DescribeNatSwitchListResponse
 }
 
 // DescribeNatSwitchList
+// 旧接口，不再维护
+//
+// 
+//
 // 查询NAT边界防火墙开关列表
 //
 // 可能返回的错误码:
@@ -3938,6 +3942,10 @@ func (c *Client) DescribeNatSwitchList(request *DescribeNatSwitchListRequest) (r
 }
 
 // DescribeNatSwitchList
+// 旧接口，不再维护
+//
+// 
+//
 // 查询NAT边界防火墙开关列表
 //
 // 可能返回的错误码:

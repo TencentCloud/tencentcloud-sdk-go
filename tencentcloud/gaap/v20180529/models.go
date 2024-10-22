@@ -733,20 +733,20 @@ func (r *CloseProxyGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloseSecurityPolicyRequestParams struct {
-	// 通道ID
+	// 通道ID。操作通道组时无需填此参数。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 安全组策略ID
+	// 安全组策略ID。操作通道组时须填此参数。
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type CloseSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道ID
+	// 通道ID。操作通道组时无需填此参数。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 安全组策略ID
+	// 安全组策略ID。操作通道组时须填此参数。
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -1690,7 +1690,7 @@ type CreateProxyGroupRequestParams struct {
 	// 通道组别名
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 源站地域，参考接口DescribeDestRegions 返回参数RegionDetail中的RegionId
+	// 源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
 	RealServerRegion *string `json:"RealServerRegion,omitnil,omitempty" name:"RealServerRegion"`
 
 	// 标签列表
@@ -1718,7 +1718,7 @@ type CreateProxyGroupRequest struct {
 	// 通道组别名
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 源站地域，参考接口DescribeDestRegions 返回参数RegionDetail中的RegionId
+	// 源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
 	RealServerRegion *string `json:"RealServerRegion,omitnil,omitempty" name:"RealServerRegion"`
 
 	// 标签列表
@@ -2890,7 +2890,7 @@ type DeleteListenersRequestParams struct {
 	// 已绑定源站的监听器是否允许强制删除，1：允许， 0：不允许
 	Force *uint64 `json:"Force,omitnil,omitempty" name:"Force"`
 
-	// 通道组ID，该参数和GroupId必须设置一个，但不能同时设置。
+	// 通道组ID，该参数和ProxyId必须设置一个，但不能同时设置。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 通道ID，该参数和GroupId必须设置一个，但不能同时设置。
@@ -2906,7 +2906,7 @@ type DeleteListenersRequest struct {
 	// 已绑定源站的监听器是否允许强制删除，1：允许， 0：不允许
 	Force *uint64 `json:"Force,omitnil,omitempty" name:"Force"`
 
-	// 通道组ID，该参数和GroupId必须设置一个，但不能同时设置。
+	// 通道组ID，该参数和ProxyId必须设置一个，但不能同时设置。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 通道ID，该参数和GroupId必须设置一个，但不能同时设置。
@@ -3767,12 +3767,15 @@ func (r *DescribeCustomHeaderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDestRegionsRequestParams struct {
-
+	// 通道质量:0表示金牌，1表示银牌。默认不传该参数，表示金牌。本参数确定查询指定通道质量的源站区域
+	QualityType *uint64 `json:"QualityType,omitnil,omitempty" name:"QualityType"`
 }
 
 type DescribeDestRegionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 通道质量:0表示金牌，1表示银牌。默认不传该参数，表示金牌。本参数确定查询指定通道质量的源站区域
+	QualityType *uint64 `json:"QualityType,omitnil,omitempty" name:"QualityType"`
 }
 
 func (r *DescribeDestRegionsRequest) ToJsonString() string {
@@ -3787,7 +3790,7 @@ func (r *DescribeDestRegionsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "QualityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDestRegionsRequest has unknown keys!", "")
 	}
@@ -4300,10 +4303,13 @@ func (r *DescribeGroupDomainConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHTTPListenersRequestParams struct {
-	// 通道ID
+	// 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 过滤条件，按照监听器ID进行精确查询
+	// 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 过滤条件，按照监听器名称进行精确查询
@@ -4320,18 +4326,18 @@ type DescribeHTTPListenersRequestParams struct {
 
 	// 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
-
-	// 通道组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeHTTPListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道ID
+	// 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 过滤条件，按照监听器ID进行精确查询
+	// 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 过滤条件，按照监听器名称进行精确查询
@@ -4348,9 +4354,6 @@ type DescribeHTTPListenersRequest struct {
 
 	// 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
-
-	// 通道组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *DescribeHTTPListenersRequest) ToJsonString() string {
@@ -4366,13 +4369,13 @@ func (r *DescribeHTTPListenersRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProxyId")
+	delete(f, "GroupId")
 	delete(f, "ListenerId")
 	delete(f, "ListenerName")
 	delete(f, "Port")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SearchValue")
-	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHTTPListenersRequest has unknown keys!", "")
 	}
@@ -4409,10 +4412,13 @@ func (r *DescribeHTTPListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHTTPSListenersRequestParams struct {
-	// 过滤条件，通道ID
+	// 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 过滤条件，根据监听器ID进行精确查询。
+	// 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件，根据监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 过滤条件，根据监听器名称进行精确查询。
@@ -4429,9 +4435,6 @@ type DescribeHTTPSListenersRequestParams struct {
 
 	// 过滤条件，支持按照端口或监听器名称进行模糊查询
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
-
-	// 过滤条件，通道组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 支持Http3的开关，其中：
 	// 0，表示不需要支持Http3接入；
@@ -4444,10 +4447,13 @@ type DescribeHTTPSListenersRequestParams struct {
 type DescribeHTTPSListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，通道ID
+	// 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 过滤条件，根据监听器ID进行精确查询。
+	// 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件，根据监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 过滤条件，根据监听器名称进行精确查询。
@@ -4464,9 +4470,6 @@ type DescribeHTTPSListenersRequest struct {
 
 	// 过滤条件，支持按照端口或监听器名称进行模糊查询
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
-
-	// 过滤条件，通道组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 支持Http3的开关，其中：
 	// 0，表示不需要支持Http3接入；
@@ -4489,13 +4492,13 @@ func (r *DescribeHTTPSListenersRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProxyId")
+	delete(f, "GroupId")
 	delete(f, "ListenerId")
 	delete(f, "ListenerName")
 	delete(f, "Port")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SearchValue")
-	delete(f, "GroupId")
 	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHTTPSListenersRequest has unknown keys!", "")
@@ -7018,7 +7021,7 @@ type InquiryPriceCreateProxyRequestParams struct {
 	// （旧参数，请切换到RealServerRegion）源站区域名称。
 	DestRegion *string `json:"DestRegion,omitnil,omitempty" name:"DestRegion"`
 
-	// （旧参数，请切换到Concurrent）通道并发量上限，表示同时在线的连接数，单位：万。
+	// （此参数为旧参数，请填写新参数Concurrent，二者必须填写一个）通道并发量上限，表示同时在线的连接数，单位：万。
 	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
 
 	// （新参数）源站区域名称。
@@ -7055,7 +7058,7 @@ type InquiryPriceCreateProxyRequest struct {
 	// （旧参数，请切换到RealServerRegion）源站区域名称。
 	DestRegion *string `json:"DestRegion,omitnil,omitempty" name:"DestRegion"`
 
-	// （旧参数，请切换到Concurrent）通道并发量上限，表示同时在线的连接数，单位：万。
+	// （此参数为旧参数，请填写新参数Concurrent，二者必须填写一个）通道并发量上限，表示同时在线的连接数，单位：万。
 	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
 
 	// （新参数）源站区域名称。
@@ -7834,7 +7837,7 @@ type ModifyProxiesAttributeRequestParams struct {
 	// （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 通道名称。可任意命名，但不得超过30个字符。
+	// 通道名称。可任意命名，但不得超过32个字符。
 	ProxyName *string `json:"ProxyName,omitnil,omitempty" name:"ProxyName"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -7851,7 +7854,7 @@ type ModifyProxiesAttributeRequest struct {
 	// （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 通道名称。可任意命名，但不得超过30个字符。
+	// 通道名称。可任意命名，但不得超过32个字符。
 	ProxyName *string `json:"ProxyName,omitnil,omitempty" name:"ProxyName"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -8083,7 +8086,7 @@ type ModifyProxyGroupAttributeRequestParams struct {
 	// 需要修改的通道组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 修改后的通道组名称：不超过30个字符，超过部分会被截断。
+	// 修改后的通道组名称：不超过30个字符，否则修改失败。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 项目ID
@@ -8096,7 +8099,7 @@ type ModifyProxyGroupAttributeRequest struct {
 	// 需要修改的通道组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 修改后的通道组名称：不超过30个字符，超过部分会被截断。
+	// 修改后的通道组名称：不超过30个字符，否则修改失败。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 项目ID
@@ -8457,7 +8460,7 @@ type ModifyTCPListenerAttributeRequestParams struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
@@ -8494,7 +8497,7 @@ type ModifyTCPListenerAttributeRequest struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
@@ -9056,7 +9059,7 @@ type ProxyGroupDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
 
-	// 是否支持设置TSL设置
+	// 是否支持设置TLS设置
 	// 0表示不支持；
 	// 1表示支持。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9087,6 +9090,7 @@ type ProxyGroupInfo struct {
 	// CREATING表示创建中；
 	// DESTROYING表示销毁中；
 	// MOVING表示通道迁移中；
+	// CLOSED表示已关闭；
 	// CHANGING表示部分部署中。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -9739,10 +9743,10 @@ type SetTlsVersionRequestParams struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// TLS版本
+	// TLS版本,可选TLSv1.0、TLSv1.1、TLSv1.2、TLSv1.3
 	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
 
-	// 密码套件包
+	// 密码套件包,可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认)
 	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
 }
 
@@ -9752,10 +9756,10 @@ type SetTlsVersionRequest struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// TLS版本
+	// TLS版本,可选TLSv1.0、TLSv1.1、TLSv1.2、TLSv1.3
 	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
 
-	// 密码套件包
+	// 密码套件包,可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认)
 	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
 }
 

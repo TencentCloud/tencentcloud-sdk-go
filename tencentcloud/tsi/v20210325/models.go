@@ -41,6 +41,40 @@ type DisplayInfo struct {
 
 	//  当前句子是否已结束
 	IsEnd *bool `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
+
+	// base64编码的wav/mp3音频数据
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+}
+
+type TTS struct {
+	// 返回音频格式，可取值：wav，mp3，pcm
+	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
+
+	// 音色 ID，只包括标准音色（注，日文只有一个固定音色）。
+	// 完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+	VoiceType *uint64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// 音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 语速，范围：[-2，6]，分别对应不同语速：
+	// 
+	// - -2代表0.6倍
+	// - -1代表0.8倍
+	// - 0代表1.0倍（默认）
+	// - 1代表1.2倍
+	// - 2代表1.5倍
+	// - 6代表2.5倍
+	// 
+	// 如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。
+	// 参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+
+	// 音频采样率：
+	// 
+	// - 16000：16k（默认）
+	// - 8000：8k
+	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 }
 
 // Predefined struct for user
@@ -152,6 +186,9 @@ type TongChuanRecognizeRequestParams struct {
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// TTS播报控制参数	
+	TTS *TTS `json:"TTS,omitnil,omitempty" name:"TTS"`
 }
 
 type TongChuanRecognizeRequest struct {
@@ -193,6 +230,9 @@ type TongChuanRecognizeRequest struct {
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// TTS播报控制参数	
+	TTS *TTS `json:"TTS,omitnil,omitempty" name:"TTS"`
 }
 
 func (r *TongChuanRecognizeRequest) ToJsonString() string {
@@ -216,6 +256,7 @@ func (r *TongChuanRecognizeRequest) FromJsonString(s string) error {
 	delete(f, "IsEnd")
 	delete(f, "TranslateTime")
 	delete(f, "Data")
+	delete(f, "TTS")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TongChuanRecognizeRequest has unknown keys!", "")
 	}
@@ -282,6 +323,9 @@ type TongChuanSyncRequestParams struct {
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// TTS播报控制参数
+	TTS *TTS `json:"TTS,omitnil,omitempty" name:"TTS"`
 }
 
 type TongChuanSyncRequest struct {
@@ -323,6 +367,9 @@ type TongChuanSyncRequest struct {
 
 	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// TTS播报控制参数
+	TTS *TTS `json:"TTS,omitnil,omitempty" name:"TTS"`
 }
 
 func (r *TongChuanSyncRequest) ToJsonString() string {
@@ -346,6 +393,7 @@ func (r *TongChuanSyncRequest) FromJsonString(s string) error {
 	delete(f, "IsEnd")
 	delete(f, "TranslateTime")
 	delete(f, "Data")
+	delete(f, "TTS")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TongChuanSyncRequest has unknown keys!", "")
 	}
