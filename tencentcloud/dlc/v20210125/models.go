@@ -4491,6 +4491,10 @@ type DataEngineInfo struct {
 	// 引擎所在网络名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineNetworkName *string `json:"EngineNetworkName,omitnil,omitempty" name:"EngineNetworkName"`
+
+	// 是否使用预留池
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPoolMode *string `json:"IsPoolMode,omitnil,omitempty" name:"IsPoolMode"`
 }
 
 type DataEngineScaleInfo struct {

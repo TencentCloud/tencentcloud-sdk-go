@@ -148,6 +148,10 @@ type BackUpJobDisplay struct {
 	// 备份实例中关于cos的信息	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupCosInfo *BackupCosInfo `json:"BackupCosInfo,omitnil,omitempty" name:"BackupCosInfo"`
+
+	// 是否使用的自定义桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUserDefineBucket *bool `json:"IsUserDefineBucket,omitnil,omitempty" name:"IsUserDefineBucket"`
 }
 
 type BackupCosInfo struct {

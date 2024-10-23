@@ -2042,6 +2042,11 @@ type CreateRuleItem struct {
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
+	// 1. 入方向  旁路防火墙/全局规则 仅支持TCP
+	// 
+	// 2.出方向  旁路防火墙/全局规则 仅支持TCP HTTP/HTTPS TLS/SSL
+	// 
+	// 3.domain  请选择七层协议 如HTTP/HTTPS
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察

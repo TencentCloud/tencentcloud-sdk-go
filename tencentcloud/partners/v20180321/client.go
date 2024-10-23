@@ -644,6 +644,61 @@ func (c *Client) DescribeAgentPayDealsV2WithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeAgentRelateBigDealIdsRequest() (request *DescribeAgentRelateBigDealIdsRequest) {
+    request = &DescribeAgentRelateBigDealIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentRelateBigDealIds")
+    
+    
+    return
+}
+
+func NewDescribeAgentRelateBigDealIdsResponse() (response *DescribeAgentRelateBigDealIdsResponse) {
+    response = &DescribeAgentRelateBigDealIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAgentRelateBigDealIds
+// 根据大订单号查询关联申请合并支付的其他订单号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentRelateBigDealIds(request *DescribeAgentRelateBigDealIdsRequest) (response *DescribeAgentRelateBigDealIdsResponse, err error) {
+    return c.DescribeAgentRelateBigDealIdsWithContext(context.Background(), request)
+}
+
+// DescribeAgentRelateBigDealIds
+// 根据大订单号查询关联申请合并支付的其他订单号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentRelateBigDealIdsWithContext(ctx context.Context, request *DescribeAgentRelateBigDealIdsRequest) (response *DescribeAgentRelateBigDealIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentRelateBigDealIdsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentRelateBigDealIds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentRelateBigDealIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDealsV2Request) {
     request = &DescribeAgentSelfPayDealsV2Request{
         BaseRequest: &tchttp.BaseRequest{},

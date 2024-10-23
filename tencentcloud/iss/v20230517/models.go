@@ -2915,6 +2915,10 @@ type DescribeDeviceData struct {
 	// RTMP推流地址自定义streamName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 是否开启静音帧（0：关闭；1 开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
 }
 
 type DescribeDevicePresetData struct {
@@ -7907,6 +7911,9 @@ type UpdateUserDeviceRequestParams struct {
 
 	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
+
+	// 是否开启静音帧（0：关闭；1 开启）
+	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
 }
 
 type UpdateUserDeviceRequest struct {
@@ -7944,6 +7951,9 @@ type UpdateUserDeviceRequest struct {
 
 	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
+
+	// 是否开启静音帧（0：关闭；1 开启）
+	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
 }
 
 func (r *UpdateUserDeviceRequest) ToJsonString() string {
@@ -7969,6 +7979,7 @@ func (r *UpdateUserDeviceRequest) FromJsonString(s string) error {
 	delete(f, "ProtocolType")
 	delete(f, "AudioSwitch")
 	delete(f, "SubscribeSwitch")
+	delete(f, "SilentFrameSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserDeviceRequest has unknown keys!", "")
 	}

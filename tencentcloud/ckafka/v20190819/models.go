@@ -2889,7 +2889,7 @@ type CreateTopicRequestParams struct {
 	// Segment分片滚动的时长，单位ms，当前最小为3600000ms
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为8388608Byte（即8MB）。
+	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开
@@ -2944,7 +2944,7 @@ type CreateTopicRequest struct {
 	// Segment分片滚动的时长，单位ms，当前最小为3600000ms
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为8388608Byte（即8MB）。
+	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开

@@ -16172,7 +16172,6 @@ func (r *DescribeRouteTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoutesRequestParams struct {
-	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	// <li>gateway-id - String - （过滤条件）网关ID。</li>
 	// <li>description - String - （过滤条件）路由描述。</li>
@@ -16190,7 +16189,6 @@ type DescribeRoutesRequestParams struct {
 type DescribeRoutesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	// <li>gateway-id - String - （过滤条件）网关ID。</li>
 	// <li>description - String - （过滤条件）路由描述。</li>
@@ -29802,11 +29800,11 @@ type SecurityGroupPolicy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate,omitnil,omitempty" name:"ServiceTemplate"`
 
-	// 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。
+	// 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 网段或IPv6(互斥)。
+	// 网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 

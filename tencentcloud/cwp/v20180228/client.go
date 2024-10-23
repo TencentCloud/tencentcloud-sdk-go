@@ -5866,6 +5866,7 @@ func NewDescribeAssetRecentMachineInfoResponse() (response *DescribeAssetRecentM
 // 获取主机最近趋势情况
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
@@ -5881,6 +5882,7 @@ func (c *Client) DescribeAssetRecentMachineInfo(request *DescribeAssetRecentMach
 // 获取主机最近趋势情况
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"

@@ -1556,11 +1556,17 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 
 	// WEB嵌入的业务资源ID
 	// 
+	// 当EmbedType取值
 	// <ul>
-	// <li>当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId</li>
-	// <li>当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId</li>
-	// <li>当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId</li>
+	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li>
+	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li>
+	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li>
+	// <li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li>
 	// </ul>
+	// 
+	// 
+	// 注意：
+	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务](https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi) 来进行转换成PDF资源。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
@@ -1619,11 +1625,17 @@ type ChannelCreateEmbedWebUrlRequest struct {
 
 	// WEB嵌入的业务资源ID
 	// 
+	// 当EmbedType取值
 	// <ul>
-	// <li>当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId</li>
-	// <li>当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId</li>
-	// <li>当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId</li>
+	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li>
+	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li>
+	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li>
+	// <li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li>
 	// </ul>
+	// 
+	// 
+	// 注意：
+	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务](https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi) 来进行转换成PDF资源。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
@@ -9703,6 +9715,14 @@ type EmbedUrlOption struct {
 	// <ul><li> <b>true</b> :允许在模板预览页展示控件</li>
 	// <li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
 	ShowTemplateComponent *bool `json:"ShowTemplateComponent,omitnil,omitempty" name:"ShowTemplateComponent"`
+
+	// 跳过上传文件，默认为false(展示上传文件页）![image](https://qcloudimg.tencent-cloud.cn/raw/8ca33745cf772e79831dbe5a70e82400.png)
+	// - false: 展示上传文件页
+	// - true: 不展示上传文件页
+	//  
+	// 
+	// 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)有效**，
+	SkipUploadFile *string `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
 }
 
 type ExtentServiceAuthInfo struct {

@@ -2457,10 +2457,18 @@ type CreateEmbedWebUrlRequestParams struct {
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// <ul><li>PREVIEW_SEAL_DETAIL，必填，取值为印章id</li>
-	// <li>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id</li>
-	// <li>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id</li>
+	// 
+	// 当EmbedType取值
+	// <ul>
+	// <li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li>
+	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li>
+	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li>
+	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li>
 	// </ul>
+	// 
+	// 注意：
+	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务
+	// ](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi) 来进行转换成PDF资源。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 代理企业和员工的信息。
@@ -2497,10 +2505,18 @@ type CreateEmbedWebUrlRequest struct {
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// <ul><li>PREVIEW_SEAL_DETAIL，必填，取值为印章id</li>
-	// <li>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id</li>
-	// <li>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id</li>
+	// 
+	// 当EmbedType取值
+	// <ul>
+	// <li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li>
+	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li>
+	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li>
+	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li>
 	// </ul>
+	// 
+	// 注意：
+	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务
+	// ](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi) 来进行转换成PDF资源。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 代理企业和员工的信息。
@@ -10865,6 +10881,14 @@ type EmbedUrlOption struct {
 	// <ul><li> <b>true</b> :允许在模板预览页展示控件</li>
 	// <li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
 	ShowTemplateComponent *bool `json:"ShowTemplateComponent,omitnil,omitempty" name:"ShowTemplateComponent"`
+
+	// 跳过上传文件，默认为false(展示上传文件页）![image](https://qcloudimg.tencent-cloud.cn/raw/8ca33745cf772e79831dbe5a70e82400.png)
+	// - false: 展示上传文件页
+	// - true: 不展示上传文件页
+	//  
+	// 
+	// 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)有效**，
+	SkipUploadFile *bool `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
 }
 
 type ExtendAuthInfo struct {

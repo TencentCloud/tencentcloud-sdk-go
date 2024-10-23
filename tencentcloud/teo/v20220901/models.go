@@ -1077,7 +1077,7 @@ type CacheTag struct {
 }
 
 type CertificateInfo struct {
-	// 证书 ID。
+	// 证书 ID。来源于 SSL 侧，您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 证书备注名。
@@ -11029,7 +11029,7 @@ type ModifyHostsCertificateRequestParams struct {
 	// 不填写表示服务端证书保持原有配置。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+	// SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 	ServerCertInfo []*ServerCertInfo `json:"ServerCertInfo,omitnil,omitempty" name:"ServerCertInfo"`
 
 	// 托管类型，取值有：
@@ -11040,8 +11040,7 @@ type ModifyHostsCertificateRequestParams struct {
 	// Deprecated: ApplyType is deprecated.
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 
-	// 边缘双向认证配置。
-	// 不填写表示边缘双向认证保持原有配置。
+	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 的入口侧，用于客户端对 EO 节点进行认证。不填写表示保持原有配置。
 	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
@@ -11061,7 +11060,7 @@ type ModifyHostsCertificateRequest struct {
 	// 不填写表示服务端证书保持原有配置。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+	// SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 	ServerCertInfo []*ServerCertInfo `json:"ServerCertInfo,omitnil,omitempty" name:"ServerCertInfo"`
 
 	// 托管类型，取值有：
@@ -11070,8 +11069,7 @@ type ModifyHostsCertificateRequest struct {
 	// 不填，默认取值为none。
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 
-	// 边缘双向认证配置。
-	// 不填写表示边缘双向认证保持原有配置。
+	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 的入口侧，用于客户端对 EO 节点进行认证。不填写表示保持原有配置。
 	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
@@ -12382,7 +12380,7 @@ type MutualTLS struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 双向认证证书列表。
-	// 注意：MutualTLS 在 ModifyHostsCertificate 作为入参使用时，该参数传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+	// 注意：MutualTLS 在 ModifyHostsCertificate 作为入参使用时，该参数传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 	CertInfos []*CertificateInfo `json:"CertInfos,omitnil,omitempty" name:"CertInfos"`
 }
 
@@ -13507,7 +13505,8 @@ type SecurityType struct {
 }
 
 type ServerCertInfo struct {
-	// 服务器证书 ID。
+	// 服务器证书 ID。来源于 SSL 侧，您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 

@@ -11426,12 +11426,41 @@ func (r *DescribeAssetImageRegistryRegistryDetailResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryListRequestParams struct {
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤字段
+	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式，asc，desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeAssetImageRegistryRegistryListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤字段
+	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式，asc，desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 func (r *DescribeAssetImageRegistryRegistryListRequest) ToJsonString() string {
@@ -11446,7 +11475,11 @@ func (r *DescribeAssetImageRegistryRegistryListRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryRegistryListRequest has unknown keys!", "")
 	}
@@ -11455,6 +11488,14 @@ func (r *DescribeAssetImageRegistryRegistryListRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryListResponseParams struct {
+	// 镜像仓库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ImageRepoRegistryInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -26714,6 +26755,60 @@ type ImageRepoInfo struct {
 
 	// 是否推荐处置
 	RecommendedFix *bool `json:"RecommendedFix,omitnil,omitempty" name:"RecommendedFix"`
+}
+
+type ImageRepoRegistryInfo struct {
+	// 仓库id
+	RegistryId *uint64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 仓库名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 仓库类型，列表：harbor、tcr
+	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
+
+	// 仓库url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 网络类型，列表：public
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 区域，列表：default
+	RegistryRegion *string `json:"RegistryRegion,omitnil,omitempty" name:"RegistryRegion"`
+
+	// 仓库版本
+	RegistryVersion *string `json:"RegistryVersion,omitnil,omitempty" name:"RegistryVersion"`
+
+	// 仓库连接错误信息，待废弃，请使用ConnDetectException
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectMsg *string `json:"ConnectMsg,omitnil,omitempty" name:"ConnectMsg"`
+
+	// 联通性检测方式
+	ConnDetectType *string `json:"ConnDetectType,omitnil,omitempty" name:"ConnDetectType"`
+
+	// 联通性检测主机数
+	ConnDetectHostCount *uint64 `json:"ConnDetectHostCount,omitnil,omitempty" name:"ConnDetectHostCount"`
+
+	// 联通性检测详情
+	ConnDetectDetail []*RegistryConnDetectResult `json:"ConnDetectDetail,omitnil,omitempty" name:"ConnDetectDetail"`
+
+	// tcr情况下的instance_id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 最近同步成功时间
+	LatestSyncTime *string `json:"LatestSyncTime,omitnil,omitempty" name:"LatestSyncTime"`
+
+	// 同步状态
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// 同步失败原因
+	SyncFailReason *string `json:"SyncFailReason,omitnil,omitempty" name:"SyncFailReason"`
+
+	// 同步失败解决方案
+	SyncSolution *string `json:"SyncSolution,omitnil,omitempty" name:"SyncSolution"`
+
+	// 同步失败信息
+	SyncMessage *string `json:"SyncMessage,omitnil,omitempty" name:"SyncMessage"`
 }
 
 type ImageRisk struct {

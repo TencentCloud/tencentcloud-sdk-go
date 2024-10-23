@@ -129,7 +129,7 @@ type CreateAuthorizationPolicyRequestParams struct {
 	// 客户端
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// ip
+	// IP地址
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 备注信息
@@ -172,7 +172,7 @@ type CreateAuthorizationPolicyRequest struct {
 	// 客户端
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// ip
+	// IP地址
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 备注信息
@@ -1333,7 +1333,7 @@ type ModifyAuthorizationPolicyRequestParams struct {
 	// 客户端
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// ip
+	// IP
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 0、1、2
@@ -1379,7 +1379,7 @@ type ModifyAuthorizationPolicyRequest struct {
 	// 客户端
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// ip
+	// IP
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 0、1、2

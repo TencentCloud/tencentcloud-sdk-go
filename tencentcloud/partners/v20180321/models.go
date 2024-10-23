@@ -1311,6 +1311,64 @@ func (r *DescribeAgentPayDealsV2Response) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAgentRelateBigDealIdsRequestParams struct {
+	// 大订单号
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
+}
+
+type DescribeAgentRelateBigDealIdsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大订单号
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
+}
+
+func (r *DescribeAgentRelateBigDealIdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentRelateBigDealIdsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BigDealId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentRelateBigDealIdsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentRelateBigDealIdsResponseParams struct {
+	// 申请合并支付的关联大订单号列表（不包含请求的订单号）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIdList []*string `json:"BigDealIdList,omitnil,omitempty" name:"BigDealIdList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentRelateBigDealIdsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentRelateBigDealIdsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentRelateBigDealIdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentRelateBigDealIdsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAgentSelfPayDealsV2RequestParams struct {
 	// 下单人账号ID
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`

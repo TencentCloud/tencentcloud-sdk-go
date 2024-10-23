@@ -1718,6 +1718,9 @@ type DeleteUserManagerUserListRequestParams struct {
 
 	// 用户组
 	UserGroupList []*UserAndGroup `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
+
+	// 是否删除家目录，只针对cvm集群
+	DeleteHomeDir *bool `json:"DeleteHomeDir,omitnil,omitempty" name:"DeleteHomeDir"`
 }
 
 type DeleteUserManagerUserListRequest struct {
@@ -1737,6 +1740,9 @@ type DeleteUserManagerUserListRequest struct {
 
 	// 用户组
 	UserGroupList []*UserAndGroup `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
+
+	// 是否删除家目录，只针对cvm集群
+	DeleteHomeDir *bool `json:"DeleteHomeDir,omitnil,omitempty" name:"DeleteHomeDir"`
 }
 
 func (r *DeleteUserManagerUserListRequest) ToJsonString() string {
@@ -1756,6 +1762,7 @@ func (r *DeleteUserManagerUserListRequest) FromJsonString(s string) error {
 	delete(f, "TkeClusterId")
 	delete(f, "DisplayStrategy")
 	delete(f, "UserGroupList")
+	delete(f, "DeleteHomeDir")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserManagerUserListRequest has unknown keys!", "")
 	}

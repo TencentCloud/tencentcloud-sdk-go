@@ -5251,6 +5251,9 @@ type OwnNumberApplyDetailItem struct {
 
 	// 每秒最大并发数
 	MaxCallPSec *int64 `json:"MaxCallPSec,omitnil,omitempty" name:"MaxCallPSec"`
+
+	// 呼出被叫格式，使用 {+E.164} 或 {E.164}, 
+	OutboundCalleeFormat *string `json:"OutboundCalleeFormat,omitnil,omitempty" name:"OutboundCalleeFormat"`
 }
 
 type PSTNSession struct {

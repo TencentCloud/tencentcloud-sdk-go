@@ -14572,6 +14572,9 @@ type ReadonlyNode struct {
 
 	// 指定该节点分布在哪个可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 // Predefined struct for user

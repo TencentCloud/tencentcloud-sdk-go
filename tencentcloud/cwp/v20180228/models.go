@@ -1159,7 +1159,7 @@ type AssetProcessBaseInfo struct {
 	// 进程状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 数字签名:0无，1有， 999 空，仅windows
+	// 数字签名:0无，1有， 999 空，仅Windows
 	HasSign *uint64 `json:"HasSign,omitnil,omitempty" name:"HasSign"`
 
 	// 是否通过安装包安装：:0否，1是， 999 空，仅linux
@@ -1540,7 +1540,7 @@ type AssetWebFrameBaseInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*MachineTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 数据库名
+	// Web应用名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 版本
@@ -1716,7 +1716,7 @@ type AssetWebServiceBaseInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*MachineTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 数据库名
+	// 服务名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 版本
@@ -38185,7 +38185,8 @@ type MachineSimple struct {
 	// 地域信息
 	RegionInfo *RegionInfo `json:"RegionInfo,omitnil,omitempty" name:"RegionInfo"`
 
-	// 实例状态 TERMINATED_PRO_VERSION 已销毁
+	// 实例状态请参考CVM实例列表InstanceState值
+	// https://cloud.tencent.com/document/api/213/15753#Instance
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 项目ID
