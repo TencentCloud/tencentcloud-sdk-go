@@ -7646,7 +7646,7 @@ type ForceRedirect struct {
 	RedirectType *string `json:"RedirectType,omitnil,omitempty" name:"RedirectType"`
 
 	// 强制跳转时返回状态码 
-	// 支持 301、302
+	// 支持 301、302、307、308
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitnil,omitempty" name:"RedirectStatusCode"`
 

@@ -417,7 +417,7 @@ type CmqDeadLetterPolicy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterQueue *string `json:"DeadLetterQueue,omitnil,omitempty" name:"DeadLetterQueue"`
 
-	// 死信队列策略。
+	// 死信队列策略。0:最大接收次数;1:最大未消费时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *uint64 `json:"Policy,omitnil,omitempty" name:"Policy"`
 
@@ -425,7 +425,7 @@ type CmqDeadLetterPolicy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTimeToLive *uint64 `json:"MaxTimeToLive,omitnil,omitempty" name:"MaxTimeToLive"`
 
-	// 最大接收次数。
+	// 最大接收次数。Policy为0时必选，范围在1到1000。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReceiveCount *uint64 `json:"MaxReceiveCount,omitnil,omitempty" name:"MaxReceiveCount"`
 }
@@ -455,7 +455,7 @@ type CmqQueue struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bps *uint64 `json:"Bps,omitnil,omitempty" name:"Bps"`
 
-	// 飞行消息最大保留时间。
+	// 飞行消息最大保留时间，需要小于消息保留周期。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDelaySeconds *uint64 `json:"MaxDelaySeconds,omitnil,omitempty" name:"MaxDelaySeconds"`
 
@@ -634,7 +634,7 @@ type CmqTopic struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitnil,omitempty" name:"MsgRetentionSeconds"`
 
-	// 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
+	// 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为1048576。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitnil,omitempty" name:"MaxMsgSize"`
 
@@ -10986,7 +10986,7 @@ type ModifyCmqQueueAttributeRequestParams struct {
 	// 死信队列名称
 	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitnil,omitempty" name:"DeadLetterQueueName"`
 
-	// MaxTimeToLivepolicy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
+	// policy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
 	MaxTimeToLive *uint64 `json:"MaxTimeToLive,omitnil,omitempty" name:"MaxTimeToLive"`
 
 	// 最大接收次数
@@ -11038,7 +11038,7 @@ type ModifyCmqQueueAttributeRequest struct {
 	// 死信队列名称
 	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitnil,omitempty" name:"DeadLetterQueueName"`
 
-	// MaxTimeToLivepolicy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
+	// policy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
 	MaxTimeToLive *uint64 `json:"MaxTimeToLive,omitnil,omitempty" name:"MaxTimeToLive"`
 
 	// 最大接收次数

@@ -161,8 +161,14 @@ const (
 	// 资质照片输入不正确。
 	INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
 
+	// 地区城市填写有误，长度错误长度必须地址长度必须大于2并小于100，或包含非中文字符，或存在空格
+	INVALIDPARAMETER_CITYCNINVALID = "InvalidParameter.CityCnInvalid"
+
 	// 类型只能为手机或者邮箱。
 	INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
+
+	// 地区国家填写有误，长度错误长度必须地址长度必须大于2并小于100，或包含非中文字符，或存在空格
+	INVALIDPARAMETER_COUNTRYCNINVALID = "InvalidParameter.CountryCnInvalid"
 
 	// 自定义 DNS Host 名称未找到。
 	INVALIDPARAMETER_CUSTOMDNSNAMENOTFOUND = "InvalidParameter.CustomDnsNameNotFound"
@@ -206,11 +212,44 @@ const (
 	// 图片大小超过限制(1M)，请重新上传。
 	INVALIDPARAMETER_IMAGESIZELIMIT = "InvalidParameter.ImageSizeLimit"
 
+	// 联系人(中文)不能包含英文以及空格
+	INVALIDPARAMETER_NAMECNISINVALID = "InvalidParameter.NameCnIsInvalid"
+
+	// 联系人(中文)不能包含XML保留字符
+	INVALIDPARAMETER_NAMECNXMLINVALID = "InvalidParameter.NameCnXmlInvalid"
+
+	// 联系人(英文)不符合ASCII规范
+	INVALIDPARAMETER_NAMEENASCIIINVALID = "InvalidParameter.NameEnASCIIInvalid"
+
+	// 联系人(英文)不能包含中文
+	INVALIDPARAMETER_NAMEENCNISINVALID = "InvalidParameter.NameEnCnIsInvalid"
+
+	// 联系人(英文)字符长度不能小于2位且不能大于64位
+	INVALIDPARAMETER_NAMEENISINVALID = "InvalidParameter.NameEnIsInvalid"
+
+	// 联系人(英文)填写有误，或因其他原因无法使用，请更换其他联系人。
+	INVALIDPARAMETER_NAMEENISKEYWORD = "InvalidParameter.NameEnIsKeyword"
+
+	// 联系人(英文)不能包含XML保留字符
+	INVALIDPARAMETER_NAMEENXMLINVALID = "InvalidParameter.NameEnXmlInvalid"
+
 	// 联系人为空或者不合法。
 	INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
 
 	// 联系人填写有误，或因其他原因无法使用，请更换其他联系人。
 	INVALIDPARAMETER_NAMEISKEYWORD = "InvalidParameter.NameIsKeyword"
+
+	// 域名所有者(英文)不符合ASCII规范
+	INVALIDPARAMETER_ORGASCIIINVALID = "InvalidParameter.OrgASCIIInvalid"
+
+	// 域名所有者(中文)不能包含空格与英文
+	INVALIDPARAMETER_ORGCNNOTSPACECN = "InvalidParameter.OrgCnNotSpaceCN"
+
+	// 域名所有者(中文)不能包含XML保留字符
+	INVALIDPARAMETER_ORGCNXMLINVALID = "InvalidParameter.OrgCnXmlInvalid"
+
+	// 域名所有者(英文)不能包含中文字符
+	INVALIDPARAMETER_ORGINCNINVALID = "InvalidParameter.OrgInCNInvalid"
 
 	// 注册人为空或者不合法。
 	INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
@@ -218,8 +257,14 @@ const (
 	// 域名所有者填写有误，或因其他原因无法使用，请更换其他域名所有者。
 	INVALIDPARAMETER_ORGISKEYWORD = "InvalidParameter.OrgIsKeyword"
 
+	// 域名所有者(英文)不能包含XML保留字符
+	INVALIDPARAMETER_ORGXMLINVALID = "InvalidParameter.OrgXMLInvalid"
+
 	// 特惠包ID无效。
 	INVALIDPARAMETER_PACKAGERESOURCEIDINVALID = "InvalidParameter.PackageResourceIdInvalid"
+
+	// 地区省份填写有误，长度错误长度必须地址长度必须大于2并小于100，或包含非中文字符，或存在空格
+	INVALIDPARAMETER_PROVINCECNINVALID = "InvalidParameter.ProvinceCnInvalid"
 
 	// 请求类型错误。
 	INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"

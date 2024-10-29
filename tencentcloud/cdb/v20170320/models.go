@@ -4393,7 +4393,7 @@ type DeleteBackupRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份任务 ID。该任务 ID 为 [创建云数据库备份](https://cloud.tencent.com/document/api/236/15844) 接口返回的任务 ID。
+	// 备份任务 ID。您可通过 [查询数据备份文件列表](https://cloud.tencent.com/document/api/236/15842)  来获取目标备份任务 ID。
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
@@ -4403,7 +4403,7 @@ type DeleteBackupRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份任务 ID。该任务 ID 为 [创建云数据库备份](https://cloud.tencent.com/document/api/236/15844) 接口返回的任务 ID。
+	// 备份任务 ID。您可通过 [查询数据备份文件列表](https://cloud.tencent.com/document/api/236/15842)  来获取目标备份任务 ID。
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
@@ -4631,6 +4631,9 @@ type DeleteRotationPasswordRequestParams struct {
 
 	// 关闭密码轮转后实例账户的最新密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 传入不为空则对密码进行了加密处理
+	EncryptMethod *string `json:"EncryptMethod,omitnil,omitempty" name:"EncryptMethod"`
 }
 
 type DeleteRotationPasswordRequest struct {
@@ -4647,6 +4650,9 @@ type DeleteRotationPasswordRequest struct {
 
 	// 关闭密码轮转后实例账户的最新密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 传入不为空则对密码进行了加密处理
+	EncryptMethod *string `json:"EncryptMethod,omitnil,omitempty" name:"EncryptMethod"`
 }
 
 func (r *DeleteRotationPasswordRequest) ToJsonString() string {
@@ -4665,6 +4671,7 @@ func (r *DeleteRotationPasswordRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Host")
 	delete(f, "Password")
+	delete(f, "EncryptMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRotationPasswordRequest has unknown keys!", "")
 	}

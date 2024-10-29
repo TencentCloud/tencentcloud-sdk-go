@@ -3135,6 +3135,8 @@ type BruteAttackInfo struct {
 	// 83-不阻断(已加白名单)
 	// 86-不阻断(系统白名单)
 	// 87-不阻断(客户端离线)
+	// 88-不阻断(来源Ip归属相同客户)
+	// 89-不阻断(ipv6不支持阻断)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *uint64 `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
 
@@ -16302,7 +16304,13 @@ type DescribeBashRulesRequestParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
+	// <li>Name - String - 是否必填：否 - 规则名称</li>
+	// <li>Rule - String - 是否必填：否 - 规则内容</li>
+	// <li>Level - Int - 是否必填：否 - 威胁等级</li>
+	// <li>White - Int - 是否必填：否 - 白名单类型</li>
+	// <li>RuleCategory - Int - 是否必填：否 - 策略类型</li>
+	// <li>BashAction - Int - 是否必填：否 - 操作动作</li>
+	// <li>Status - Int - 是否必填：否 - 生效状态</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -16319,7 +16327,13 @@ type DescribeBashRulesRequest struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
+	// <li>Name - String - 是否必填：否 - 规则名称</li>
+	// <li>Rule - String - 是否必填：否 - 规则内容</li>
+	// <li>Level - Int - 是否必填：否 - 威胁等级</li>
+	// <li>White - Int - 是否必填：否 - 白名单类型</li>
+	// <li>RuleCategory - Int - 是否必填：否 - 策略类型</li>
+	// <li>BashAction - Int - 是否必填：否 - 操作动作</li>
+	// <li>Status - Int - 是否必填：否 - 生效状态</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -16392,7 +16406,9 @@ type DescribeBruteAttackListRequestParams struct {
 	// <li>CreateEndTime - String - 是否必填：否 - 首次攻击时间筛选，结束时间</li>
 	// <li>ModifyBeginTime - String - 是否必填：否 - 最近攻击时间筛选，开始时间</li>
 	// <li>ModifyEndTime - String - 是否必填：否 - 最近攻击时间筛选，结束时间</li>
-	// <li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-已阻断，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断</li>
+	// <li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-阻断成功(已完成)，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断，10-阻断成功(生效中)</li>
+	// <li>DataFrom - Int - 命中规则：0-登录规则，1-情报规则</li>
+	// <li>EventType - String - 是否必填：否 - 破解状态筛选：200-破解失败(密码错误),300-破解成功,400-破解失败(账号不存在)</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式：根据请求次数排序：asc-升序/desc-降序
@@ -16422,7 +16438,9 @@ type DescribeBruteAttackListRequest struct {
 	// <li>CreateEndTime - String - 是否必填：否 - 首次攻击时间筛选，结束时间</li>
 	// <li>ModifyBeginTime - String - 是否必填：否 - 最近攻击时间筛选，开始时间</li>
 	// <li>ModifyEndTime - String - 是否必填：否 - 最近攻击时间筛选，结束时间</li>
-	// <li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-已阻断，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断</li>
+	// <li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-阻断成功(已完成)，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断，10-阻断成功(生效中)</li>
+	// <li>DataFrom - Int - 命中规则：0-登录规则，1-情报规则</li>
+	// <li>EventType - String - 是否必填：否 - 破解状态筛选：200-破解失败(密码错误),300-破解成功,400-破解失败(账号不存在)</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式：根据请求次数排序：asc-升序/desc-降序
@@ -20374,11 +20392,7 @@ type DescribeLoginWhiteCombinedListRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	// <li>UserName - String - 是否必填：否 - 用户名筛选</li>
-	// <li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
-	// <li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+	// 过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -20391,11 +20405,7 @@ type DescribeLoginWhiteCombinedListRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	// <li>UserName - String - 是否必填：否 - 用户名筛选</li>
-	// <li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
-	// <li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+	// 过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -26912,7 +26922,7 @@ type DescribeSecurityBroadcastsRequestParams struct {
 	// 筛选发布日期：结束时间
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-最佳实践
+	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-实践教程
 	BroadcastType *string `json:"BroadcastType,omitnil,omitempty" name:"BroadcastType"`
 }
 
@@ -26931,7 +26941,7 @@ type DescribeSecurityBroadcastsRequest struct {
 	// 筛选发布日期：结束时间
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-最佳实践
+	// 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-实践教程
 	BroadcastType *string `json:"BroadcastType,omitnil,omitempty" name:"BroadcastType"`
 }
 
@@ -29265,7 +29275,7 @@ type DescribeVulFixStatusResponseParams struct {
 	// 修复失败的主机数
 	FixFailCnt *uint64 `json:"FixFailCnt,omitnil,omitempty" name:"FixFailCnt"`
 
-	// 主机总是
+	// 主机总数
 	HostCnt *uint64 `json:"HostCnt,omitnil,omitempty" name:"HostCnt"`
 
 	// 修复的任务id
@@ -29282,7 +29292,7 @@ type DescribeVulFixStatusResponseParams struct {
 	// 快照创建进度0-100
 	SnapshotProgress *uint64 `json:"SnapshotProgress,omitnil,omitempty" name:"SnapshotProgress"`
 
-	// 修复精度 0-100
+	// 修复进度 0-100
 	FixProgress *uint64 `json:"FixProgress,omitnil,omitempty" name:"FixProgress"`
 
 	// 预计剩余时间（单位秒）
@@ -31063,6 +31073,21 @@ type EditBashRulesRequestParams struct {
 
 	// 是否处理旧事件为白名单 0=不处理 1=处理
 	DealOldEvents *uint64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
+
+	// 策略描述
+	Descript *string `json:"Descript,omitnil,omitempty" name:"Descript"`
+
+	// 生效与否  0:不生效 1:生效
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 0:告警  1:白名单  2:拦截
+	BashAction *int64 `json:"BashAction,omitnil,omitempty" name:"BashAction"`
+
+	// 生效范围（0:一组quuid 1:所有专业版 2:所有专业版+旗舰版 3:所有主机）
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 生效主机的QUUID集合
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 }
 
 type EditBashRulesRequest struct {
@@ -31097,6 +31122,21 @@ type EditBashRulesRequest struct {
 
 	// 是否处理旧事件为白名单 0=不处理 1=处理
 	DealOldEvents *uint64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
+
+	// 策略描述
+	Descript *string `json:"Descript,omitnil,omitempty" name:"Descript"`
+
+	// 生效与否  0:不生效 1:生效
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 0:告警  1:白名单  2:拦截
+	BashAction *int64 `json:"BashAction,omitnil,omitempty" name:"BashAction"`
+
+	// 生效范围（0:一组quuid 1:所有专业版 2:所有专业版+旗舰版 3:所有主机）
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 生效主机的QUUID集合
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 }
 
 func (r *EditBashRulesRequest) ToJsonString() string {
@@ -31121,6 +31161,11 @@ func (r *EditBashRulesRequest) FromJsonString(s string) error {
 	delete(f, "White")
 	delete(f, "EventId")
 	delete(f, "DealOldEvents")
+	delete(f, "Descript")
+	delete(f, "Status")
+	delete(f, "BashAction")
+	delete(f, "Scope")
+	delete(f, "Quuids")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditBashRulesRequest has unknown keys!", "")
 	}
@@ -43068,15 +43113,19 @@ type OsName struct {
 
 type Place struct {
 	// 城市 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CityId *uint64 `json:"CityId,omitnil,omitempty" name:"CityId"`
 
 	// 省份 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProvinceId *uint64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
 
 	// 国家ID，暂只支持国内：1。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CountryId *uint64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
 
 	// 位置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
@@ -44374,7 +44423,7 @@ type ReverseShell struct {
 	// 父进程路径
 	ParentProcPath *string `json:"ParentProcPath,omitnil,omitempty" name:"ParentProcPath"`
 
-	// 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
+	// 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略 6-已拦截
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 产生时间

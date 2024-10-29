@@ -95,6 +95,27 @@ type ActiveCarrierPrivilegeNumber struct {
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type AsrData struct {
+	// 用户方
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 消息内容
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 时间戳
+	//
+	// Deprecated: Timestamp is deprecated.
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 句子开始时间，Unix 毫秒时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 句子结束时间，Unix 毫秒时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+}
+
 type AudioFileInfo struct {
 	// 文件ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -547,7 +568,7 @@ type CreateAICallRequestParams struct {
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
 	// API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions；
-	// llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮你填充后缀
+	// llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮您填充后缀
 	APIUrl *string `json:"APIUrl,omitnil,omitempty" name:"APIUrl"`
 
 	// 音色，目前仅支持以下音色:
@@ -751,7 +772,7 @@ type CreateAICallRequest struct {
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
 	// API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions；
-	// llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮你填充后缀
+	// llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮您填充后缀
 	APIUrl *string `json:"APIUrl,omitnil,omitempty" name:"APIUrl"`
 
 	// 音色，目前仅支持以下音色:
@@ -1193,7 +1214,7 @@ func (r *CreateAutoCalloutTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCCCSkillGroupRequestParams struct {
-	// 应用 ID（必填）
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 技能组名称
@@ -1210,7 +1231,7 @@ type CreateCCCSkillGroupRequestParams struct {
 type CreateCCCSkillGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填）
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 技能组名称
@@ -1381,7 +1402,7 @@ func (r *CreateCallOutSessionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCarrierPrivilegeNumberApplicantRequestParams struct {
-	// SdkAppId
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
@@ -1397,7 +1418,7 @@ type CreateCarrierPrivilegeNumberApplicantRequestParams struct {
 type CreateCarrierPrivilegeNumberApplicantRequest struct {
 	*tchttp.BaseRequest
 	
-	// SdkAppId
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
@@ -2323,7 +2344,7 @@ func (r *DeleteStaffResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeActiveCarrierPrivilegeNumberRequestParams struct {
-	// 实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 默认0
@@ -2339,7 +2360,7 @@ type DescribeActiveCarrierPrivilegeNumberRequestParams struct {
 type DescribeActiveCarrierPrivilegeNumberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 默认0
@@ -2719,7 +2740,7 @@ func (r *DescribeCallInMetricsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCarrierPrivilegeNumberApplicantsRequestParams struct {
-	// 实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 默认0，从0开始
@@ -2735,7 +2756,7 @@ type DescribeCarrierPrivilegeNumberApplicantsRequestParams struct {
 type DescribeCarrierPrivilegeNumberApplicantsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 默认0，从0开始
@@ -4496,6 +4517,71 @@ func (r *DescribeTelCdrResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTelRecordAsrRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DescribeTelRecordAsrRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeTelRecordAsrRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTelRecordAsrRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTelRecordAsrRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTelRecordAsrResponseParams struct {
+	// 录音转文本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrDataList []*AsrData `json:"AsrDataList,omitnil,omitempty" name:"AsrDataList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTelRecordAsrResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTelRecordAsrResponseParams `json:"Response"`
+}
+
+func (r *DescribeTelRecordAsrResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTelRecordAsrResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTelSessionRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4804,13 +4890,29 @@ type IMSatisfaction struct {
 }
 
 type IVRKeyPressedElement struct {
-	// 按键
+	// 命中的关键字或者按键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 按键关联的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// Unix 毫秒时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 节点标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeLabel *string `json:"NodeLabel,omitnil,omitempty" name:"NodeLabel"`
+
+	// 用户原始输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalContent *string `json:"OriginalContent,omitnil,omitempty" name:"OriginalContent"`
+
+	// TTS 提示音内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TTSPrompt *string `json:"TTSPrompt,omitnil,omitempty" name:"TTSPrompt"`
 }
 
 type Message struct {
@@ -5120,7 +5222,7 @@ func (r *ModifyStaffPasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyStaffRequestParams struct {
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 座席账户
@@ -5151,7 +5253,7 @@ type ModifyStaffRequestParams struct {
 type ModifyStaffRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 座席账户
@@ -6316,7 +6418,7 @@ func (r *UnbindStaffSkillGroupListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCCCSkillGroupRequestParams struct {
-	// 应用 ID（必填）
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 技能组ID
@@ -6335,7 +6437,7 @@ type UpdateCCCSkillGroupRequestParams struct {
 type UpdateCCCSkillGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填）
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 技能组ID

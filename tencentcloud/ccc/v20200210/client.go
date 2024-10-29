@@ -2543,6 +2543,63 @@ func (c *Client) DescribeTelCdrWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeTelRecordAsrRequest() (request *DescribeTelRecordAsrRequest) {
+    request = &DescribeTelRecordAsrRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelRecordAsr")
+    
+    
+    return
+}
+
+func NewDescribeTelRecordAsrResponse() (response *DescribeTelRecordAsrResponse) {
+    response = &DescribeTelRecordAsrResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTelRecordAsr
+// 拉取会话录音转文本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTelRecordAsr(request *DescribeTelRecordAsrRequest) (response *DescribeTelRecordAsrResponse, err error) {
+    return c.DescribeTelRecordAsrWithContext(context.Background(), request)
+}
+
+// DescribeTelRecordAsr
+// 拉取会话录音转文本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTelRecordAsrWithContext(ctx context.Context, request *DescribeTelRecordAsrRequest) (response *DescribeTelRecordAsrResponse, err error) {
+    if request == nil {
+        request = NewDescribeTelRecordAsrRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTelRecordAsr require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTelRecordAsrResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
     request = &DescribeTelSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

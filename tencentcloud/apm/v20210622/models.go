@@ -273,6 +273,14 @@ type ApmInstanceDetail struct {
 	// 响应时间满意阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// 是否免费（0=否，1=限额免费，2=完全免费），默认0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
+
+	// 是否tsf默认业务系统（0=否，1-是）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultTSF *int64 `json:"DefaultTSF,omitnil,omitempty" name:"DefaultTSF"`
 }
 
 type ApmMetricRecord struct {

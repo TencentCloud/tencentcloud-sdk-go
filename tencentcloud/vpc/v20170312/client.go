@@ -18896,6 +18896,63 @@ func (c *Client) ModifyAddressesBandwidthWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyAddressesRenewFlagRequest() (request *ModifyAddressesRenewFlagRequest) {
+    request = &ModifyAddressesRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressesRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyAddressesRenewFlagResponse() (response *ModifyAddressesRenewFlagResponse) {
+    response = &ModifyAddressesRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAddressesRenewFlag
+// 调整EIP续费标识
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
+//  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
+//  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
+func (c *Client) ModifyAddressesRenewFlag(request *ModifyAddressesRenewFlagRequest) (response *ModifyAddressesRenewFlagResponse, err error) {
+    return c.ModifyAddressesRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyAddressesRenewFlag
+// 调整EIP续费标识
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
+//  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
+//  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
+func (c *Client) ModifyAddressesRenewFlagWithContext(ctx context.Context, request *ModifyAddressesRenewFlagRequest) (response *ModifyAddressesRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyAddressesRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAddressesRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAddressesRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAssistantCidrRequest() (request *ModifyAssistantCidrRequest) {
     request = &ModifyAssistantCidrRequest{
         BaseRequest: &tchttp.BaseRequest{},

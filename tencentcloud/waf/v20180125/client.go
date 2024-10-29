@@ -8634,6 +8634,71 @@ func (c *Client) ModifyUserSignatureRuleWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyUserSignatureRuleV2Request() (request *ModifyUserSignatureRuleV2Request) {
+    request = &ModifyUserSignatureRuleV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyUserSignatureRuleV2")
+    
+    
+    return
+}
+
+func NewModifyUserSignatureRuleV2Response() (response *ModifyUserSignatureRuleV2Response) {
+    response = &ModifyUserSignatureRuleV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserSignatureRuleV2
+// 修改用户防护规则，开启关闭具体的某条规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserSignatureRuleV2(request *ModifyUserSignatureRuleV2Request) (response *ModifyUserSignatureRuleV2Response, err error) {
+    return c.ModifyUserSignatureRuleV2WithContext(context.Background(), request)
+}
+
+// ModifyUserSignatureRuleV2
+// 修改用户防护规则，开启关闭具体的某条规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserSignatureRuleV2WithContext(ctx context.Context, request *ModifyUserSignatureRuleV2Request) (response *ModifyUserSignatureRuleV2Response, err error) {
+    if request == nil {
+        request = NewModifyUserSignatureRuleV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserSignatureRuleV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserSignatureRuleV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWafAutoDenyRulesRequest() (request *ModifyWafAutoDenyRulesRequest) {
     request = &ModifyWafAutoDenyRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

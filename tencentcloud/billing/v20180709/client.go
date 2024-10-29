@@ -732,6 +732,57 @@ func (c *Client) DescribeAllocationTrendByMonthWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBillAdjustInfoRequest() (request *DescribeBillAdjustInfoRequest) {
+    request = &DescribeBillAdjustInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillAdjustInfo")
+    
+    
+    return
+}
+
+func NewDescribeBillAdjustInfoResponse() (response *DescribeBillAdjustInfoResponse) {
+    response = &DescribeBillAdjustInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillAdjustInfo
+// 可以通过API获取当前UIN是否有调账，客户可以更快地主动地获取调账情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeBillAdjustInfo(request *DescribeBillAdjustInfoRequest) (response *DescribeBillAdjustInfoResponse, err error) {
+    return c.DescribeBillAdjustInfoWithContext(context.Background(), request)
+}
+
+// DescribeBillAdjustInfo
+// 可以通过API获取当前UIN是否有调账，客户可以更快地主动地获取调账情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeBillAdjustInfoWithContext(ctx context.Context, request *DescribeBillAdjustInfoRequest) (response *DescribeBillAdjustInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillAdjustInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillAdjustInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillAdjustInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillDetailRequest() (request *DescribeBillDetailRequest) {
     request = &DescribeBillDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

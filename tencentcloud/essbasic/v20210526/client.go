@@ -1121,13 +1121,43 @@ func NewChannelCreateFlowApproversResponse() (response *ChannelCreateFlowApprove
 }
 
 // ChannelCreateFlowApprovers
-// 适用场景：
+// **适用场景**：
 //
 // 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
 //
 // 
 //
-// 限制条件：
+// **接口使用说明**：
+//
+// 
+//
+// 1.本接口现已支持批量补充签署人
+//
+// 
+//
+// 2.当<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中指定需要补充的FlowId时，可以对指定合同补充签署人；可以指定多个相同发起方的不同合同在完成批量补充
+//
+// 
+//
+// 3.当<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中指定需要补充的FlowId时，是对指定的合同补充多个指定的签署人
+//
+// 
+//
+// 4.如果同时指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，仅使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId作为补充的合同
+//
+// 
+//
+// 5.如果部分指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，又指定了<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId；那么<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>存在指定的FlowId，则使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，不存在则使用<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId作为补充的合同
+//
+// 
+//
+// 
+//
+// 6.如果同时未指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，则传参错误
+//
+// 
+//
+// **限制条件**：
 //
 // 1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
 //
@@ -1145,13 +1175,43 @@ func (c *Client) ChannelCreateFlowApprovers(request *ChannelCreateFlowApproversR
 }
 
 // ChannelCreateFlowApprovers
-// 适用场景：
+// **适用场景**：
 //
 // 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
 //
 // 
 //
-// 限制条件：
+// **接口使用说明**：
+//
+// 
+//
+// 1.本接口现已支持批量补充签署人
+//
+// 
+//
+// 2.当<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中指定需要补充的FlowId时，可以对指定合同补充签署人；可以指定多个相同发起方的不同合同在完成批量补充
+//
+// 
+//
+// 3.当<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中指定需要补充的FlowId时，是对指定的合同补充多个指定的签署人
+//
+// 
+//
+// 4.如果同时指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，仅使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId作为补充的合同
+//
+// 
+//
+// 5.如果部分指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，又指定了<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId；那么<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>存在指定的FlowId，则使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，不存在则使用<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId作为补充的合同
+//
+// 
+//
+// 
+//
+// 6.如果同时未指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，则传参错误
+//
+// 
+//
+// **限制条件**：
 //
 // 1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
 //
@@ -3103,7 +3163,7 @@ func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowRe
 // ChannelCreateReleaseFlow
 // 发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
 //
-// 解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。
+// 解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/partner/flow_release)。
 //
 // 
 //
@@ -3152,7 +3212,7 @@ func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowReque
 // ChannelCreateReleaseFlow
 // 发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
 //
-// 解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。
+// 解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/partner/flow_release)。
 //
 // 
 //
@@ -4644,11 +4704,13 @@ func NewChannelGetTaskResultApiResponse() (response *ChannelGetTaskResultApiResp
 //
 // 
 //
-// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源ID。<br />
 //
 // 注：
 //
-// 1. `大文件转换所需的时间可能会比较长`
+// 1. `大文件转换所需的时间可能会比较长。`
+//
+// 2. `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -4664,11 +4726,13 @@ func (c *Client) ChannelGetTaskResultApi(request *ChannelGetTaskResultApiRequest
 //
 // 
 //
-// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源ID。<br />
 //
 // 注：
 //
-// 1. `大文件转换所需的时间可能会比较长`
+// 1. `大文件转换所需的时间可能会比较长。`
+//
+// 2. `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -5680,6 +5744,89 @@ func (c *Client) CreateChannelSubOrganizationActiveWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewCreateChannelSubOrganizationActiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCloseOrganizationUrlRequest() (request *CreateCloseOrganizationUrlRequest) {
+    request = &CreateCloseOrganizationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateCloseOrganizationUrl")
+    
+    
+    return
+}
+
+func NewCreateCloseOrganizationUrlResponse() (response *CreateCloseOrganizationUrlResponse) {
+    response = &CreateCloseOrganizationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloseOrganizationUrl
+// 创建企业注销链接
+//
+// 
+//
+// 系统将返回操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成企业的注销操作。
+//
+// 
+//
+// 注意： `在调用此接口以管理企业扩展服务时，操作者（ Agent.ProxyOperator.OpenId）必须是企业的超级管理员（超管）或法人。`
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloseOrganizationUrl(request *CreateCloseOrganizationUrlRequest) (response *CreateCloseOrganizationUrlResponse, err error) {
+    return c.CreateCloseOrganizationUrlWithContext(context.Background(), request)
+}
+
+// CreateCloseOrganizationUrl
+// 创建企业注销链接
+//
+// 
+//
+// 系统将返回操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成企业的注销操作。
+//
+// 
+//
+// 注意： `在调用此接口以管理企业扩展服务时，操作者（ Agent.ProxyOperator.OpenId）必须是企业的超级管理员（超管）或法人。`
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloseOrganizationUrlWithContext(ctx context.Context, request *CreateCloseOrganizationUrlRequest) (response *CreateCloseOrganizationUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateCloseOrganizationUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloseOrganizationUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloseOrganizationUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -7196,6 +7343,93 @@ func (c *Client) CreateSignUrlsWithContext(ctx context.Context, request *CreateS
     return
 }
 
+func NewDeleteOrganizationAuthorizationsRequest() (request *DeleteOrganizationAuthorizationsRequest) {
+    request = &DeleteOrganizationAuthorizationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DeleteOrganizationAuthorizations")
+    
+    
+    return
+}
+
+func NewDeleteOrganizationAuthorizationsResponse() (response *DeleteOrganizationAuthorizationsResponse) {
+    response = &DeleteOrganizationAuthorizationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOrganizationAuthorizations
+// 批量清理未认证的企业认证流程。
+//
+// 
+//
+// 此接口用来清除企业方认证信息填写错误，批量清理认证中的认证流信息。
+//
+// 为接口[提交子企业批量认证链接创建任务](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks) 和[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls) 接口的扩展接口。即在批量认证过程中，当发起认证企业发现超管信息错误的时候，可以将当前超管下的所有认证流企业清除。
+//
+// 
+//
+// 注意：
+//
+// **这个接口的操作人必须跟生成批量认证链接接口的应用号一致，才可以调用，否则会返回当前操作人没有认证中的企业认证流**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DeleteOrganizationAuthorizations(request *DeleteOrganizationAuthorizationsRequest) (response *DeleteOrganizationAuthorizationsResponse, err error) {
+    return c.DeleteOrganizationAuthorizationsWithContext(context.Background(), request)
+}
+
+// DeleteOrganizationAuthorizations
+// 批量清理未认证的企业认证流程。
+//
+// 
+//
+// 此接口用来清除企业方认证信息填写错误，批量清理认证中的认证流信息。
+//
+// 为接口[提交子企业批量认证链接创建任务](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks) 和[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls) 接口的扩展接口。即在批量认证过程中，当发起认证企业发现超管信息错误的时候，可以将当前超管下的所有认证流企业清除。
+//
+// 
+//
+// 注意：
+//
+// **这个接口的操作人必须跟生成批量认证链接接口的应用号一致，才可以调用，否则会返回当前操作人没有认证中的企业认证流**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DeleteOrganizationAuthorizationsWithContext(ctx context.Context, request *DeleteOrganizationAuthorizationsRequest) (response *DeleteOrganizationAuthorizationsResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationAuthorizationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganizationAuthorizations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrganizationAuthorizationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchOrganizationRegistrationUrlsRequest() (request *DescribeBatchOrganizationRegistrationUrlsRequest) {
     request = &DescribeBatchOrganizationRegistrationUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7888,13 +8122,29 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 }
 
 // DescribeResourceUrlsByFlows
-// 获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同
+// 获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同。
 //
 // 
 //
-// **注意**:   
+// 
 //
-// 有两种开通权限的途径
+// 
+//
+// 
+//
+// ### 1. 确保合同的PDF已经合成后，再调用本接口。
+//
+//  用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
+//
+// 
+//
+// **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
+//
+// **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo)接口来主动检查合同的签署状态。请仅在确认合同状态为“全部签署完成”后，进行文件的下载操作。
+//
+// 
+//
+// ### 2. 有两种开通下载权限的途径。
 //
 // 
 //
@@ -7946,13 +8196,29 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 }
 
 // DescribeResourceUrlsByFlows
-// 获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同
+// 获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同。
 //
 // 
 //
-// **注意**:   
+// 
 //
-// 有两种开通权限的途径
+// 
+//
+// 
+//
+// ### 1. 确保合同的PDF已经合成后，再调用本接口。
+//
+//  用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
+//
+// 
+//
+// **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
+//
+// **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo)接口来主动检查合同的签署状态。请仅在确认合同状态为“全部签署完成”后，进行文件的下载操作。
+//
+// 
+//
+// ### 2. 有两种开通下载权限的途径。
 //
 // 
 //

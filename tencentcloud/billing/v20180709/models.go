@@ -53,6 +53,35 @@ type ActionSummaryOverviewItem struct {
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 }
 
+type AdjustInfoDetail struct {
+	// 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
+
+	// 账单月份，格式：yyyy-MM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+
+	// 调整类型
+	// 调账：manualAdjustment
+	// 补结算：supplementarySettlement
+	// 重结算：reSettlement
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdjustType *string `json:"AdjustType,omitnil,omitempty" name:"AdjustType"`
+
+	// 调整单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdjustNum *string `json:"AdjustNum,omitnil,omitempty" name:"AdjustNum"`
+
+	// 异常调整完成时间，格式：yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdjustCompletionTime *string `json:"AdjustCompletionTime,omitnil,omitempty" name:"AdjustCompletionTime"`
+
+	// 调整金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdjustAmount *float64 `json:"AdjustAmount,omitnil,omitempty" name:"AdjustAmount"`
+}
+
 type AllocationAverageData struct {
 	// 起始月份
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -354,6 +383,30 @@ type AllocationDetail struct {
 	// 2 - 未分配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllocationType *uint64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
+
+	// 当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountObject *string `json:"DiscountObject,omitnil,omitempty" name:"DiscountObject"`
+
+	// 当前消费项的优惠类型，例如：折扣、合同价。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountType *string `json:"DiscountType,omitnil,omitempty" name:"DiscountType"`
+
+	// 对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountContent *string `json:"DiscountContent,omitnil,omitempty" name:"DiscountContent"`
+
+	// SPDeduction
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeduction *string `json:"SPDeduction,omitnil,omitempty" name:"SPDeduction"`
+
+	// SPDeduction
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeductionRate *string `json:"SPDeductionRate,omitnil,omitempty" name:"SPDeductionRate"`
+
+	// 账单月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
 type AllocationMonthOverviewDetail struct {
@@ -916,6 +969,34 @@ type AllocationSummaryByItem struct {
 	// 配置描述：资源配置规格信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentConfig *string `json:"ComponentConfig,omitnil,omitempty" name:"ComponentConfig"`
+
+	// SPDeduction
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeduction *string `json:"SPDeduction,omitnil,omitempty" name:"SPDeduction"`
+
+	// 节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeductionRate *string `json:"SPDeductionRate,omitnil,omitempty" name:"SPDeductionRate"`
+
+	// AssociatedOrder
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedOrder *string `json:"AssociatedOrder,omitnil,omitempty" name:"AssociatedOrder"`
+
+	// 当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountObject *string `json:"DiscountObject,omitnil,omitempty" name:"DiscountObject"`
+
+	// 当前消费项的优惠类型，例如：折扣、合同价。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountType *string `json:"DiscountType,omitnil,omitempty" name:"DiscountType"`
+
+	// 对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountContent *string `json:"DiscountContent,omitnil,omitempty" name:"DiscountContent"`
+
+	// 账单月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
 type AllocationSummaryByResource struct {
@@ -1093,6 +1174,14 @@ type AllocationSummaryByResource struct {
 	// 配置描述：对应资源下各组件名称及用量（如组件为用量累加型计费则为合计用量）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentConfig *string `json:"ComponentConfig,omitnil,omitempty" name:"ComponentConfig"`
+
+	// SPDeduction
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeduction *string `json:"SPDeduction,omitnil,omitempty" name:"SPDeduction"`
+
+	// 账单月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
 type AllocationTreeNode struct {
@@ -3280,6 +3369,10 @@ type DescribeAllocationBillConditionsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllocationTreeNode []*AllocationTreeNode `json:"AllocationTreeNode,omitnil,omitempty" name:"AllocationTreeNode"`
 
+	// 分账标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4479,6 +4572,86 @@ func (r *DescribeAllocationTrendByMonthResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllocationTrendByMonthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillAdjustInfoRequestParams struct {
+	// 格式：yyyy-MM
+	// 账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+
+	// 格式：yyyy-MM-dd
+	// 开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	TimeFrom *string `json:"TimeFrom,omitnil,omitempty" name:"TimeFrom"`
+
+	// 格式：yyyy-MM-dd
+	// 截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	TimeTo *string `json:"TimeTo,omitnil,omitempty" name:"TimeTo"`
+}
+
+type DescribeBillAdjustInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 格式：yyyy-MM
+	// 账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+
+	// 格式：yyyy-MM-dd
+	// 开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	TimeFrom *string `json:"TimeFrom,omitnil,omitempty" name:"TimeFrom"`
+
+	// 格式：yyyy-MM-dd
+	// 截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	TimeTo *string `json:"TimeTo,omitnil,omitempty" name:"TimeTo"`
+}
+
+func (r *DescribeBillAdjustInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillAdjustInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Month")
+	delete(f, "TimeFrom")
+	delete(f, "TimeTo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillAdjustInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillAdjustInfoResponseParams struct {
+	// 数据总量
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 明细数据
+	Data []*AdjustInfoDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBillAdjustInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillAdjustInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillAdjustInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillAdjustInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -8410,6 +8410,9 @@ type DeleteDirectConnectGatewayCcnRoutesRequestParams struct {
 
 	// 路由ID。形如：ccnr-f49l6u0z。
 	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
+
+	// 地址类型，支持：IPv4、IPv6。默认IPv4。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 type DeleteDirectConnectGatewayCcnRoutesRequest struct {
@@ -8420,6 +8423,9 @@ type DeleteDirectConnectGatewayCcnRoutesRequest struct {
 
 	// 路由ID。形如：ccnr-f49l6u0z。
 	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
+
+	// 地址类型，支持：IPv4、IPv6。默认IPv4。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 func (r *DeleteDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
@@ -8436,6 +8442,7 @@ func (r *DeleteDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) er
 	}
 	delete(f, "DirectConnectGatewayId")
 	delete(f, "RouteIds")
+	delete(f, "AddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDirectConnectGatewayCcnRoutesRequest has unknown keys!", "")
 	}
@@ -12941,6 +12948,9 @@ type DescribeDirectConnectGatewayCcnRoutesRequestParams struct {
 	// <li>`STATIC` - 静态，即用户配置，默认值。</li>
 	CcnRouteType *string `json:"CcnRouteType,omitnil,omitempty" name:"CcnRouteType"`
 
+	// 地址类型，支持：IPv4、IPv6。默认IPv4。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
+
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -12958,6 +12968,9 @@ type DescribeDirectConnectGatewayCcnRoutesRequest struct {
 	// <li>`BGP` - 自动学习。</li>
 	// <li>`STATIC` - 静态，即用户配置，默认值。</li>
 	CcnRouteType *string `json:"CcnRouteType,omitnil,omitempty" name:"CcnRouteType"`
+
+	// 地址类型，支持：IPv4、IPv6。默认IPv4。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -12980,6 +12993,7 @@ func (r *DescribeDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) 
 	}
 	delete(f, "DirectConnectGatewayId")
 	delete(f, "CcnRouteType")
+	delete(f, "AddressType")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -22978,6 +22992,67 @@ func (r *ModifyAddressesBandwidthResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAddressesRenewFlagRequestParams struct {
+	// EIP唯一标识ID列表，形如'eip-xxxx'
+	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
+
+	// 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。 示例值：NOTIFY_AND_AUTO_RENEW
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
+type ModifyAddressesRenewFlagRequest struct {
+	*tchttp.BaseRequest
+	
+	// EIP唯一标识ID列表，形如'eip-xxxx'
+	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
+
+	// 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。 示例值：NOTIFY_AND_AUTO_RENEW
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
+func (r *ModifyAddressesRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAddressesRenewFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddressIds")
+	delete(f, "RenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAddressesRenewFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAddressesRenewFlagResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAddressesRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAddressesRenewFlagResponseParams `json:"Response"`
+}
+
+func (r *ModifyAddressesRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAddressesRenewFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAssistantCidrRequestParams struct {
 	// `VPC`实例`ID`。形如：`vpc-6v2ht8q5`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -27085,7 +27160,7 @@ type NatGatewayDestinationIpPortTranslationNatRule struct {
 	// 网络协议，可选值：`TCP`、`UDP`。
 	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
 
-	// 弹性IP。
+	// 弹性公网IP。
 	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
 
 	// 公网端口。
@@ -28432,6 +28507,9 @@ type ReplaceDirectConnectGatewayCcnRoutesRequestParams struct {
 
 	// 需要连通的IDC网段列表
 	Routes []*DirectConnectGatewayCcnRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+
+	// 地址类型，支持：IPv4、IPv6。默认IPv4。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 type ReplaceDirectConnectGatewayCcnRoutesRequest struct {
@@ -28442,6 +28520,9 @@ type ReplaceDirectConnectGatewayCcnRoutesRequest struct {
 
 	// 需要连通的IDC网段列表
 	Routes []*DirectConnectGatewayCcnRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+
+	// 地址类型，支持：IPv4、IPv6。默认IPv4。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 func (r *ReplaceDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
@@ -28458,6 +28539,7 @@ func (r *ReplaceDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) e
 	}
 	delete(f, "DirectConnectGatewayId")
 	delete(f, "Routes")
+	delete(f, "AddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceDirectConnectGatewayCcnRoutesRequest has unknown keys!", "")
 	}
@@ -29820,7 +29902,7 @@ type SecurityGroupPolicy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 安全组规则描述。
+	// 安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
 

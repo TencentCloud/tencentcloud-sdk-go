@@ -27,11 +27,11 @@ type Autoscaler struct {
 	// 弹性伸缩最大实例数
 	MaxReplicas *int64 `json:"MaxReplicas,omitnil,omitempty" name:"MaxReplicas"`
 
-	// 指标弹性伸缩策略
+	// 指标弹性伸缩策略(指标策略和定时策略必须填写一个)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HorizontalAutoscaler []*HorizontalAutoscaler `json:"HorizontalAutoscaler,omitnil,omitempty" name:"HorizontalAutoscaler"`
 
-	// 定时弹性伸缩策略
+	// 定时弹性伸缩策略(指标策略和定时策略必须填写一个)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronHorizontalAutoscaler []*CronHorizontalAutoscaler `json:"CronHorizontalAutoscaler,omitnil,omitempty" name:"CronHorizontalAutoscaler"`
 
@@ -868,7 +868,7 @@ type CreateResourceRequestParams struct {
 	// 环境 Id
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
+	// 资源类型，目前支持文件系统：CFS；注册中心：TSE_SRE
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源 Id
@@ -890,7 +890,7 @@ type CreateResourceRequest struct {
 	// 环境 Id
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
+	// 资源类型，目前支持文件系统：CFS；注册中心：TSE_SRE
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源 Id
@@ -1311,10 +1311,10 @@ type DeployApplicationRequestParams struct {
 	// 初始化 pod 数
 	InitPodNum *uint64 `json:"InitPodNum,omitnil,omitempty" name:"InitPodNum"`
 
-	// cpu规格
+	// cpu规格 单位：核
 	CpuSpec *float64 `json:"CpuSpec,omitnil,omitempty" name:"CpuSpec"`
 
-	// 内存规格
+	// 内存规格 单位：G
 	MemorySpec *float64 `json:"MemorySpec,omitnil,omitempty" name:"MemorySpec"`
 
 	// 环境ID
@@ -1476,10 +1476,10 @@ type DeployApplicationRequest struct {
 	// 初始化 pod 数
 	InitPodNum *uint64 `json:"InitPodNum,omitnil,omitempty" name:"InitPodNum"`
 
-	// cpu规格
+	// cpu规格 单位：核
 	CpuSpec *float64 `json:"CpuSpec,omitnil,omitempty" name:"CpuSpec"`
 
-	// 内存规格
+	// 内存规格 单位：G
 	MemorySpec *float64 `json:"MemorySpec,omitnil,omitempty" name:"MemorySpec"`
 
 	// 环境ID
@@ -2062,7 +2062,7 @@ type DescribeApplicationServiceListRequestParams struct {
 	// 服务ID
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// xx
+	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
@@ -2075,7 +2075,7 @@ type DescribeApplicationServiceListRequest struct {
 	// 服务ID
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// xx
+	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
@@ -4635,15 +4635,19 @@ func (r *ModifyLogConfigResponse) FromJsonString(s string) error {
 
 type MountedSettingConf struct {
 	// 配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigDataName *string `json:"ConfigDataName,omitnil,omitempty" name:"ConfigDataName"`
 
 	// 挂载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountedPath *string `json:"MountedPath,omitnil,omitempty" name:"MountedPath"`
 
 	// 配置内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*Pair `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 加密配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretDataName *string `json:"SecretDataName,omitnil,omitempty" name:"SecretDataName"`
 }
 
@@ -5299,7 +5303,7 @@ type ServicePage struct {
 }
 
 type ServicePortMapping struct {
-	// 服务类型
+	// 服务类型：如：EXTERNAL，VPC，CLUSTER
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 

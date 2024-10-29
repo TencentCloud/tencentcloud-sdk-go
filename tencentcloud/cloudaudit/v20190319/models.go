@@ -68,147 +68,6 @@ type CosRegionInfo struct {
 }
 
 // Predefined struct for user
-type CreateAuditRequestParams struct {
-	// 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
-	IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitnil,omitempty" name:"IsEnableCmqNotify"`
-
-	// 管理事件的读写属性。1：只读，2：只写，3：全部。
-	ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitnil,omitempty" name:"ReadWriteAttribute"`
-
-	// 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
-	AuditName *string `json:"AuditName,omitnil,omitempty" name:"AuditName"`
-
-	// cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
-	CosRegion *string `json:"CosRegion,omitnil,omitempty" name:"CosRegion"`
-
-	// 是否创建新的cos存储桶。1：是，0：否。
-	IsCreateNewBucket *int64 `json:"IsCreateNewBucket,omitnil,omitempty" name:"IsCreateNewBucket"`
-
-	// cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
-
-	// CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
-	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
-
-	// 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-	CmqQueueName *string `json:"CmqQueueName,omitnil,omitempty" name:"CmqQueueName"`
-
-	// kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
-	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
-
-	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitnil,omitempty" name:"IsEnableKmsEncry"`
-
-	// 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	CmqRegion *string `json:"CmqRegion,omitnil,omitempty" name:"CmqRegion"`
-
-	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
-	LogFilePrefix *string `json:"LogFilePrefix,omitnil,omitempty" name:"LogFilePrefix"`
-
-	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitnil,omitempty" name:"IsCreateNewQueue"`
-}
-
-type CreateAuditRequest struct {
-	*tchttp.BaseRequest
-	
-	// 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
-	IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitnil,omitempty" name:"IsEnableCmqNotify"`
-
-	// 管理事件的读写属性。1：只读，2：只写，3：全部。
-	ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitnil,omitempty" name:"ReadWriteAttribute"`
-
-	// 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
-	AuditName *string `json:"AuditName,omitnil,omitempty" name:"AuditName"`
-
-	// cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
-	CosRegion *string `json:"CosRegion,omitnil,omitempty" name:"CosRegion"`
-
-	// 是否创建新的cos存储桶。1：是，0：否。
-	IsCreateNewBucket *int64 `json:"IsCreateNewBucket,omitnil,omitempty" name:"IsCreateNewBucket"`
-
-	// cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
-
-	// CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
-	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
-
-	// 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-	CmqQueueName *string `json:"CmqQueueName,omitnil,omitempty" name:"CmqQueueName"`
-
-	// kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
-	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
-
-	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitnil,omitempty" name:"IsEnableKmsEncry"`
-
-	// 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	CmqRegion *string `json:"CmqRegion,omitnil,omitempty" name:"CmqRegion"`
-
-	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
-	LogFilePrefix *string `json:"LogFilePrefix,omitnil,omitempty" name:"LogFilePrefix"`
-
-	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitnil,omitempty" name:"IsCreateNewQueue"`
-}
-
-func (r *CreateAuditRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateAuditRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "IsEnableCmqNotify")
-	delete(f, "ReadWriteAttribute")
-	delete(f, "AuditName")
-	delete(f, "CosRegion")
-	delete(f, "IsCreateNewBucket")
-	delete(f, "CosBucketName")
-	delete(f, "KeyId")
-	delete(f, "CmqQueueName")
-	delete(f, "KmsRegion")
-	delete(f, "IsEnableKmsEncry")
-	delete(f, "CmqRegion")
-	delete(f, "LogFilePrefix")
-	delete(f, "IsCreateNewQueue")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateAuditResponseParams struct {
-	// 是否创建成功。
-	IsSuccess *int64 `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateAuditResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateAuditResponseParams `json:"Response"`
-}
-
-func (r *CreateAuditResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateAuditResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateAuditTrackRequestParams struct {
 	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -287,7 +146,7 @@ type CreateAuditTrackResponseParams struct {
 	// 跟踪集 ID
 	TrackId *uint64 `json:"TrackId,omitnil,omitempty" name:"TrackId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -308,59 +167,87 @@ func (r *CreateAuditTrackResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteAuditRequestParams struct {
-	// 跟踪集名称
-	AuditName *string `json:"AuditName,omitnil,omitempty" name:"AuditName"`
+type CreateEventsAuditTrackRequestParams struct {
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 数据过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
 }
 
-type DeleteAuditRequest struct {
+type CreateEventsAuditTrackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 跟踪集名称
-	AuditName *string `json:"AuditName,omitnil,omitempty" name:"AuditName"`
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 数据过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
 }
 
-func (r *DeleteAuditRequest) ToJsonString() string {
+func (r *CreateEventsAuditTrackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *DeleteAuditRequest) FromJsonString(s string) error {
+func (r *CreateEventsAuditTrackRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "AuditName")
+	delete(f, "Name")
+	delete(f, "Status")
+	delete(f, "Storage")
+	delete(f, "Filters")
+	delete(f, "TrackForAllMembers")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEventsAuditTrackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type DeleteAuditResponseParams struct {
-	// 是否删除成功
-	IsSuccess *int64 `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
+type CreateEventsAuditTrackResponseParams struct {
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitnil,omitempty" name:"TrackId"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
-type DeleteAuditResponse struct {
+type CreateEventsAuditTrackResponse struct {
 	*tchttp.BaseResponse
-	Response *DeleteAuditResponseParams `json:"Response"`
+	Response *CreateEventsAuditTrackResponseParams `json:"Response"`
 }
 
-func (r *DeleteAuditResponse) ToJsonString() string {
+func (r *CreateEventsAuditTrackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *DeleteAuditResponse) FromJsonString(s string) error {
+func (r *CreateEventsAuditTrackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -398,7 +285,7 @@ func (r *DeleteAuditTrackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuditTrackResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -491,7 +378,7 @@ type DescribeAuditResponseParams struct {
 	// 日志前缀。
 	LogFilePrefix *string `json:"LogFilePrefix,omitnil,omitempty" name:"LogFilePrefix"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -570,7 +457,11 @@ type DescribeAuditTrackResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 数据投递过滤条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -637,7 +528,7 @@ type DescribeAuditTracksResponseParams struct {
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -740,7 +631,7 @@ type DescribeEventsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -815,6 +706,12 @@ type Event struct {
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+type Filter struct {
+	// 资源筛选条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceFields []*ResourceField `json:"ResourceFields,omitnil,omitempty" name:"ResourceFields"`
+}
+
 // Predefined struct for user
 type GetAttributeKeyRequestParams struct {
 	// 网站类型，取值范围是zh和en。如果不传值默认zh
@@ -852,7 +749,7 @@ type GetAttributeKeyResponseParams struct {
 	// AttributeKey的有效取值范围
 	AttributeKeyDetails []*AttributeKeyDetail `json:"AttributeKeyDetails,omitnil,omitempty" name:"AttributeKeyDetails"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -906,7 +803,7 @@ type InquireAuditCreditResponseParams struct {
 	// 可创建跟踪集的数量
 	AuditAmount *int64 `json:"AuditAmount,omitnil,omitempty" name:"AuditAmount"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -969,7 +866,7 @@ type ListAuditsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditSummarys []*AuditSummary `json:"AuditSummarys,omitnil,omitempty" name:"AuditSummarys"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1026,7 +923,7 @@ type ListCmqEnableRegionResponseParams struct {
 	// 云审计支持的cmq的可用区
 	EnableRegions []*CmqRegionInfo `json:"EnableRegions,omitnil,omitempty" name:"EnableRegions"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1083,7 +980,7 @@ type ListCosEnableRegionResponseParams struct {
 	// 云审计支持的cos可用区
 	EnableRegions []*CosRegionInfo `json:"EnableRegions,omitnil,omitempty" name:"EnableRegions"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1157,7 +1054,7 @@ type ListKeyAliasByRegionResponseParams struct {
 	// 密钥别名
 	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitnil,omitempty" name:"KeyMetadatas"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1258,7 +1155,7 @@ type LookUpEventsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1369,7 +1266,7 @@ func (r *ModifyAuditTrackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAuditTrackResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1389,6 +1286,95 @@ func (r *ModifyAuditTrackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyEventsAuditTrackRequestParams struct {
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitnil,omitempty" name:"TrackId"`
+
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
+
+	// 多产品筛选过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ModifyEventsAuditTrackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitnil,omitempty" name:"TrackId"`
+
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
+
+	// 多产品筛选过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ModifyEventsAuditTrackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEventsAuditTrackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrackId")
+	delete(f, "Name")
+	delete(f, "Status")
+	delete(f, "Storage")
+	delete(f, "TrackForAllMembers")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEventsAuditTrackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEventsAuditTrackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEventsAuditTrackResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEventsAuditTrackResponseParams `json:"Response"`
+}
+
+func (r *ModifyEventsAuditTrackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEventsAuditTrackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Resource struct {
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1397,6 +1383,20 @@ type Resource struct {
 	// 资源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+}
+
+type ResourceField struct {
+	// 跟踪事件所属产品（支持全部产品或单个产品，如：cam，全部：*）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[""]；指定ResourceType时，支持全部接口：[""]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventNames []*string `json:"EventNames,omitnil,omitempty" name:"EventNames"`
 }
 
 // Predefined struct for user
@@ -1436,7 +1436,7 @@ type StartLoggingResponseParams struct {
 	// 是否开启成功
 	IsSuccess *int64 `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1493,7 +1493,7 @@ type StopLoggingResponseParams struct {
 	// 是否关闭成功
 	IsSuccess *int64 `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -1682,7 +1682,7 @@ type UpdateAuditResponseParams struct {
 	// 是否更新成功
 	IsSuccess *int64 `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 

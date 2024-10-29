@@ -26,9 +26,6 @@ const (
 	// 检查cos桶是否存在失败。
 	FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
 
-	// 创建COS存储桶失败
-	FAILEDOPERATION_CREATEBUCKETFAIL = "FailedOperation.CreateBucketFail"
-
 	// 拉取cls日志主题失败。
 	FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
 
@@ -40,12 +37,6 @@ const (
 
 	// 创建cmq时发生异常，可能您准备创建的cmq队列已经存在，也有可能您没有权限或者欠费。
 	INTERNALERROR_CMQERROR = "InternalError.CmqError"
-
-	// 创建跟踪集错误，请联系开发人员。
-	INTERNALERROR_CREATEAUDITERROR = "InternalError.CreateAuditError"
-
-	// 删除跟踪集失败，请联系开发人员
-	INTERNALERROR_DELETEAUDITERROR = "InternalError.DeleteAuditError"
 
 	// 查看跟踪集详情错误，请联系开发人员
 	INTERNALERROR_DESCRIBEAUDITERROR = "InternalError.DescribeAuditError"
@@ -86,9 +77,6 @@ const (
 	// 别名已经存在
 	INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 
-	// 跟踪集名称不符合规则
-	INVALIDPARAMETERVALUE_AUDITNAMEERROR = "InvalidParameterValue.AuditNameError"
-
 	// 跟踪集名称不支持修改。
 	INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
 
@@ -100,15 +88,6 @@ const (
 
 	// 操作审计目前不支持输入的cos地域
 	INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
-
-	// IsCreateNewBucket的有效取值范围是0和1，0代表不创建新的存储桶，1代表创建新的存储桶。
-	INVALIDPARAMETERVALUE_ISCREATENEWBUCKETERROR = "InvalidParameterValue.IsCreateNewBucketError"
-
-	// IsCreateNewQueue的有效取值范围是0和1，0代表不新创建，1代表新创建。
-	INVALIDPARAMETERVALUE_ISCREATENEWQUEUEERROR = "InvalidParameterValue.IsCreateNewQueueError"
-
-	// IsEnableCmqNotify的有效取值范围是0和1，0代表不开启投递cmq,1代表开启cmq投递。
-	INVALIDPARAMETERVALUE_ISENABLECMQNOTIFYERROR = "InvalidParameterValue.IsEnableCmqNotifyError"
 
 	// 操作审计暂不支持该地域的KMS
 	INVALIDPARAMETERVALUE_KMSREGIONERROR = "InvalidParameterValue.KmsRegionError"
@@ -137,26 +116,8 @@ const (
 	// 检索支持的有效时间范围是7天
 	LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 
-	// 缺少跟踪集名称
-	MISSINGPARAMETER_MISSAUDITNAME = "MissingParameter.MissAuditName"
-
-	// 缺少cos存储桶参数
-	MISSINGPARAMETER_MISSCOSBUCKETNAME = "MissingParameter.MissCosBucketName"
-
-	// 缺少cos地域参数
-	MISSINGPARAMETER_MISSCOSREGION = "MissingParameter.MissCosRegion"
-
 	// IsEnableCmqNotify输入1的话，IsCreateNewQueue、CmqQueueName和CmqRegion都是必须参数。
 	MISSINGPARAMETER_CMQ = "MissingParameter.cmq"
-
-	// 已经存在相同名称的跟踪集
-	RESOURCEINUSE_ALREADYEXISTSSAMEAUDIT = "ResourceInUse.AlreadyExistsSameAudit"
-
-	// 已经存在相同cmq投递配置的跟踪集
-	RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCMQCONFIG = "ResourceInUse.AlreadyExistsSameAuditCmqConfig"
-
-	// 已经存在相同cos投递配置的跟踪集
-	RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
 
 	// cos存储桶已经存在
 	RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"

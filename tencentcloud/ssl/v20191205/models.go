@@ -6499,7 +6499,7 @@ type UpdateCertificateInstanceRequestParams struct {
 	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 一键更新新证书ID，不传该则证书公钥和私钥必传
+	// 一键更新新证书ID，不传则证书公钥和私钥必传
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）
@@ -6541,7 +6541,7 @@ type UpdateCertificateInstanceRequest struct {
 	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 一键更新新证书ID，不传该则证书公钥和私钥必传
+	// 一键更新新证书ID，不传则证书公钥和私钥必传
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）

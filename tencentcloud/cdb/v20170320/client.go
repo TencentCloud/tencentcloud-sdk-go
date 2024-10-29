@@ -175,7 +175,7 @@ func NewAdjustCdbProxyAddressResponse() (response *AdjustCdbProxyAddressResponse
 }
 
 // AdjustCdbProxyAddress
-// 调整数据库代理地址配置
+// 本接口（AdjustCdbProxyAddress）用于调整数据库代理地址配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -191,7 +191,7 @@ func (c *Client) AdjustCdbProxyAddress(request *AdjustCdbProxyAddressRequest) (r
 }
 
 // AdjustCdbProxyAddress
-// 调整数据库代理地址配置
+// 本接口（AdjustCdbProxyAddress）用于调整数据库代理地址配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"

@@ -349,7 +349,7 @@ func NewBindClusterResourcePackagesResponse() (response *BindClusterResourcePack
 }
 
 // BindClusterResourcePackages
-// 为集群绑定资源包
+// 本接口（BindClusterResourcePackages）用于为集群绑定资源包。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
@@ -366,7 +366,7 @@ func (c *Client) BindClusterResourcePackages(request *BindClusterResourcePackage
 }
 
 // BindClusterResourcePackages
-// 为集群绑定资源包
+// 本接口（BindClusterResourcePackages）用于为集群绑定资源包。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
@@ -414,7 +414,7 @@ func NewCloseAuditServiceResponse() (response *CloseAuditServiceResponse) {
 }
 
 // CloseAuditService
-// TDSQL-C for MySQL实例关闭审计服务
+// 本接口（CloseAuditService）用于关闭 TDSQL-C MySQL 实例的数据库审计服务。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -423,7 +423,7 @@ func (c *Client) CloseAuditService(request *CloseAuditServiceRequest) (response 
 }
 
 // CloseAuditService
-// TDSQL-C for MySQL实例关闭审计服务
+// 本接口（CloseAuditService）用于关闭 TDSQL-C MySQL 实例的数据库审计服务。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -895,7 +895,7 @@ func NewCreateAuditRuleTemplateResponse() (response *CreateAuditRuleTemplateResp
 }
 
 // CreateAuditRuleTemplate
-// 创建审计规则模板
+// 本接口（CreateAuditRuleTemplate）用于创建审计规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -905,7 +905,7 @@ func (c *Client) CreateAuditRuleTemplate(request *CreateAuditRuleTemplateRequest
 }
 
 // CreateAuditRuleTemplate
-// 创建审计规则模板
+// 本接口（CreateAuditRuleTemplate）用于创建审计规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -1009,7 +1009,7 @@ func NewCreateCLSDeliveryResponse() (response *CreateCLSDeliveryResponse) {
 }
 
 // CreateCLSDelivery
-// 创建日志投递
+// 本接口（CreateCLSDelivery）用于创建日志投递。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -1020,7 +1020,7 @@ func (c *Client) CreateCLSDelivery(request *CreateCLSDeliveryRequest) (response 
 }
 
 // CreateCLSDelivery
-// 创建日志投递
+// 本接口（CreateCLSDelivery）用于创建日志投递。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -1117,7 +1117,7 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
 }
 
 // CreateClusters
-// 购买新集群
+// 本接口（CreateClusters）用于新购集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
@@ -1150,7 +1150,7 @@ func (c *Client) CreateClusters(request *CreateClustersRequest) (response *Creat
 }
 
 // CreateClusters
-// 购买新集群
+// 本接口（CreateClusters）用于新购集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
@@ -1722,7 +1722,7 @@ func NewDeleteCLSDeliveryResponse() (response *DeleteCLSDeliveryResponse) {
 }
 
 // DeleteCLSDelivery
-// 删除日志投递
+// 本接口（DeleteCLSDelivery）用于删除日志投递。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -1731,7 +1731,7 @@ func (c *Client) DeleteCLSDelivery(request *DeleteCLSDeliveryRequest) (response 
 }
 
 // DeleteCLSDelivery
-// 删除日志投递
+// 本接口（DeleteCLSDelivery）用于删除日志投递。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -2182,7 +2182,7 @@ func NewDescribeAuditInstanceListResponse() (response *DescribeAuditInstanceList
 }
 
 // DescribeAuditInstanceList
-// 获取审计实例列表
+// 本接口（DescribeAuditInstanceList）用于获取数据库审计的实例列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
@@ -2191,7 +2191,7 @@ func (c *Client) DescribeAuditInstanceList(request *DescribeAuditInstanceListReq
 }
 
 // DescribeAuditInstanceList
-// 获取审计实例列表
+// 本接口（DescribeAuditInstanceList）用于获取数据库审计的实例列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
@@ -2909,7 +2909,7 @@ func NewDescribeClusterDatabasesResponse() (response *DescribeClusterDatabasesRe
 }
 
 // DescribeClusterDatabases
-// 获取集群数据库列表
+// 本接口（DescribeClusterDatabases）用于获取集群数据库列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2951,7 +2951,7 @@ func (c *Client) DescribeClusterDatabases(request *DescribeClusterDatabasesReque
 }
 
 // DescribeClusterDatabases
-// 获取集群数据库列表
+// 本接口（DescribeClusterDatabases）用于获取集群数据库列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3024,7 +3024,7 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
 }
 
 // DescribeClusterDetail
-// 该接口（DescribeClusterDetail）显示集群详情
+// 该接口（DescribeClusterDetail）用于显示集群详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
@@ -3047,7 +3047,7 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
 }
 
 // DescribeClusterDetail
-// 该接口（DescribeClusterDetail）显示集群详情
+// 该接口（DescribeClusterDetail）用于显示集群详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
@@ -3662,7 +3662,7 @@ func NewDescribeInstanceCLSLogDeliveryResponse() (response *DescribeInstanceCLSL
 }
 
 // DescribeInstanceCLSLogDelivery
-// 查询实例日志投递信息
+// 本接口（DescribeInstanceCLSLogDelivery）用于查询实例日志投递信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3675,7 +3675,7 @@ func (c *Client) DescribeInstanceCLSLogDelivery(request *DescribeInstanceCLSLogD
 }
 
 // DescribeInstanceCLSLogDelivery
-// 查询实例日志投递信息
+// 本接口（DescribeInstanceCLSLogDelivery）用于查询实例日志投递信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4504,7 +4504,7 @@ func NewDescribeProxySpecsResponse() (response *DescribeProxySpecsResponse) {
 }
 
 // DescribeProxySpecs
-// 查询数据库代理规格
+// 本接口（DescribeProxySpecs）用于查询数据库代理规格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4514,7 +4514,7 @@ func (c *Client) DescribeProxySpecs(request *DescribeProxySpecsRequest) (respons
 }
 
 // DescribeProxySpecs
-// 查询数据库代理规格
+// 本接口（DescribeProxySpecs）用于查询数据库代理规格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4555,7 +4555,7 @@ func NewDescribeResourcePackageDetailResponse() (response *DescribeResourcePacka
 }
 
 // DescribeResourcePackageDetail
-// 查询资源包使用详情
+// 本接口（DescribeResourcePackageDetail）用于查询资源包使用详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = "FailedOperation.QuerySourcePackageDetailError"
@@ -4567,7 +4567,7 @@ func (c *Client) DescribeResourcePackageDetail(request *DescribeResourcePackageD
 }
 
 // DescribeResourcePackageDetail
-// 查询资源包使用详情
+// 本接口（DescribeResourcePackageDetail）用于查询资源包使用详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = "FailedOperation.QuerySourcePackageDetailError"
@@ -4610,7 +4610,7 @@ func NewDescribeResourcePackageListResponse() (response *DescribeResourcePackage
 }
 
 // DescribeResourcePackageList
-// 查询资源包列表
+// 本接口（DescribeResourcePackageList）用于查询资源包列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4624,7 +4624,7 @@ func (c *Client) DescribeResourcePackageList(request *DescribeResourcePackageLis
 }
 
 // DescribeResourcePackageList
-// 查询资源包列表
+// 本接口（DescribeResourcePackageList）用于查询资源包列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4669,7 +4669,7 @@ func NewDescribeResourcePackageSaleSpecResponse() (response *DescribeResourcePac
 }
 
 // DescribeResourcePackageSaleSpec
-// 查询资源包规格
+// 本接口（DescribeResourcePackageSaleSpec）用于查询资源包规格。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -4681,7 +4681,7 @@ func (c *Client) DescribeResourcePackageSaleSpec(request *DescribeResourcePackag
 }
 
 // DescribeResourcePackageSaleSpec
-// 查询资源包规格
+// 本接口（DescribeResourcePackageSaleSpec）用于查询资源包规格。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -5614,7 +5614,7 @@ func NewIsolateClusterResponse() (response *IsolateClusterResponse) {
 }
 
 // IsolateCluster
-// 隔离集群
+// 本接口（IsolateCluster）用于隔离集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5635,7 +5635,7 @@ func (c *Client) IsolateCluster(request *IsolateClusterRequest) (response *Isola
 }
 
 // IsolateCluster
-// 隔离集群
+// 本接口（IsolateCluster）用于隔离集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -6182,7 +6182,7 @@ func NewModifyAuditRuleTemplatesResponse() (response *ModifyAuditRuleTemplatesRe
 }
 
 // ModifyAuditRuleTemplates
-// 修改审计规则模板
+// 本接口（ModifyAuditRuleTemplates）用于修改审计规则模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -6193,7 +6193,7 @@ func (c *Client) ModifyAuditRuleTemplates(request *ModifyAuditRuleTemplatesReque
 }
 
 // ModifyAuditRuleTemplates
-// 修改审计规则模板
+// 本接口（ModifyAuditRuleTemplates）用于修改审计规则模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -7362,7 +7362,7 @@ func NewModifyResourcePackageClustersResponse() (response *ModifyResourcePackage
 }
 
 // ModifyResourcePackageClusters
-// 给资源包绑定集群
+// 本接口（ModifyResourcePackageClusters）用于修改资源包与集群之间的绑定关系。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
@@ -7379,7 +7379,7 @@ func (c *Client) ModifyResourcePackageClusters(request *ModifyResourcePackageClu
 }
 
 // ModifyResourcePackageClusters
-// 给资源包绑定集群
+// 本接口（ModifyResourcePackageClusters）用于修改资源包与集群之间的绑定关系。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
@@ -7427,7 +7427,7 @@ func NewModifyResourcePackageNameResponse() (response *ModifyResourcePackageName
 }
 
 // ModifyResourcePackageName
-// 修改资源包名称
+// 本接口（ModifyResourcePackageName）用于修改资源包名称。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
@@ -7444,7 +7444,7 @@ func (c *Client) ModifyResourcePackageName(request *ModifyResourcePackageNameReq
 }
 
 // ModifyResourcePackageName
-// 修改资源包名称
+// 本接口（ModifyResourcePackageName）用于修改资源包名称。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
@@ -7825,7 +7825,7 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 }
 
 // OpenAuditService
-// TDSQL-C for MySQL实例开通审计服务
+// 本接口（OpenAuditService）用于为实例开通数据库审计服务。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -7836,7 +7836,7 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 }
 
 // OpenAuditService
-// TDSQL-C for MySQL实例开通审计服务
+// 本接口（OpenAuditService）用于为实例开通数据库审计服务。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -8195,7 +8195,7 @@ func NewRefundResourcePackageResponse() (response *RefundResourcePackageResponse
 }
 
 // RefundResourcePackage
-// 退款资源包
+// 本接口（RefundResourcePackage）用于资源包退款。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = "FailedOperation.RefundSourcePackageError"
@@ -8207,7 +8207,7 @@ func (c *Client) RefundResourcePackage(request *RefundResourcePackageRequest) (r
 }
 
 // RefundResourcePackage
-// 退款资源包
+// 本接口（RefundResourcePackage）用于资源包退款。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = "FailedOperation.RefundSourcePackageError"
@@ -9455,7 +9455,7 @@ func NewUnbindClusterResourcePackagesResponse() (response *UnbindClusterResource
 }
 
 // UnbindClusterResourcePackages
-// cynos解绑资源包
+// 本接口（UnbindClusterResourcePackages）用于解除资源包与集群之间的绑定关系。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
@@ -9470,7 +9470,7 @@ func (c *Client) UnbindClusterResourcePackages(request *UnbindClusterResourcePac
 }
 
 // UnbindClusterResourcePackages
-// cynos解绑资源包
+// 本接口（UnbindClusterResourcePackages）用于解除资源包与集群之间的绑定关系。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"

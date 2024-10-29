@@ -245,6 +245,85 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, request *CreateAlia
     return
 }
 
+func NewCreateCustomDomainRequest() (request *CreateCustomDomainRequest) {
+    request = &CreateCustomDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "CreateCustomDomain")
+    
+    
+    return
+}
+
+func NewCreateCustomDomainResponse() (response *CreateCustomDomainResponse) {
+    response = &CreateCustomDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCustomDomain
+// 创建自定义域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEALIAS = "FailedOperation.CreateAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
+//  LIMITEXCEEDED_ALIAS = "LimitExceeded.Alias"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ALIAS = "ResourceInUse.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
+    return c.CreateCustomDomainWithContext(context.Background(), request)
+}
+
+// CreateCustomDomain
+// 创建自定义域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEALIAS = "FailedOperation.CreateAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
+//  LIMITEXCEEDED_ALIAS = "LimitExceeded.Alias"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ALIAS = "ResourceInUse.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) CreateCustomDomainWithContext(ctx context.Context, request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFunctionRequest() (request *CreateFunctionRequest) {
     request = &CreateFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -829,6 +908,67 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, request *DeleteAlia
     request.SetContext(ctx)
     
     response = NewDeleteAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomDomainRequest() (request *DeleteCustomDomainRequest) {
+    request = &DeleteCustomDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "DeleteCustomDomain")
+    
+    
+    return
+}
+
+func NewDeleteCustomDomainResponse() (response *DeleteCustomDomainResponse) {
+    response = &DeleteCustomDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomDomain
+// 删除自定义域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEALIAS = "FailedOperation.DeleteAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_ALIAS = "InvalidParameterValue.Alias"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+func (c *Client) DeleteCustomDomain(request *DeleteCustomDomainRequest) (response *DeleteCustomDomainResponse, err error) {
+    return c.DeleteCustomDomainWithContext(context.Background(), request)
+}
+
+// DeleteCustomDomain
+// 删除自定义域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEALIAS = "FailedOperation.DeleteAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_ALIAS = "InvalidParameterValue.Alias"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+func (c *Client) DeleteCustomDomainWithContext(ctx context.Context, request *DeleteCustomDomainRequest) (response *DeleteCustomDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomDomainResponse()
     err = c.Send(request, response)
     return
 }
@@ -1454,6 +1594,61 @@ func (c *Client) GetAsyncEventStatusWithContext(ctx context.Context, request *Ge
     request.SetContext(ctx)
     
     response = NewGetAsyncEventStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetCustomDomainRequest() (request *GetCustomDomainRequest) {
+    request = &GetCustomDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "GetCustomDomain")
+    
+    
+    return
+}
+
+func NewGetCustomDomainResponse() (response *GetCustomDomainResponse) {
+    response = &GetCustomDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetCustomDomain
+// 查看云函数自定义域名详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
+//  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+func (c *Client) GetCustomDomain(request *GetCustomDomainRequest) (response *GetCustomDomainResponse, err error) {
+    return c.GetCustomDomainWithContext(context.Background(), request)
+}
+
+// GetCustomDomain
+// 查看云函数自定义域名详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
+//  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+func (c *Client) GetCustomDomainWithContext(ctx context.Context, request *GetCustomDomainRequest) (response *GetCustomDomainResponse, err error) {
+    if request == nil {
+        request = NewGetCustomDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCustomDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetCustomDomainResponse()
     err = c.Send(request, response)
     return
 }
@@ -2344,6 +2539,71 @@ func (c *Client) ListAsyncEventsWithContext(ctx context.Context, request *ListAs
     request.SetContext(ctx)
     
     response = NewListAsyncEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListCustomDomainsRequest() (request *ListCustomDomainsRequest) {
+    request = &ListCustomDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "ListCustomDomains")
+    
+    
+    return
+}
+
+func NewListCustomDomainsResponse() (response *ListCustomDomainsResponse) {
+    response = &ListCustomDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListCustomDomains
+// 遍历域名列表信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_STATUS = "InvalidParameterValue.Status"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+func (c *Client) ListCustomDomains(request *ListCustomDomainsRequest) (response *ListCustomDomainsResponse, err error) {
+    return c.ListCustomDomainsWithContext(context.Background(), request)
+}
+
+// ListCustomDomains
+// 遍历域名列表信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_STATUS = "InvalidParameterValue.Status"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+func (c *Client) ListCustomDomainsWithContext(ctx context.Context, request *ListCustomDomainsRequest) (response *ListCustomDomainsResponse, err error) {
+    if request == nil {
+        request = NewListCustomDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListCustomDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListCustomDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3295,6 +3555,89 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAlia
     request.SetContext(ctx)
     
     response = NewUpdateAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCustomDomainRequest() (request *UpdateCustomDomainRequest) {
+    request = &UpdateCustomDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "UpdateCustomDomain")
+    
+    
+    return
+}
+
+func NewUpdateCustomDomainResponse() (response *UpdateCustomDomainResponse) {
+    response = &UpdateCustomDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCustomDomain
+// 更新自定义域名相关配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEALIAS = "FailedOperation.UpdateAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) UpdateCustomDomain(request *UpdateCustomDomainRequest) (response *UpdateCustomDomainResponse, err error) {
+    return c.UpdateCustomDomainWithContext(context.Background(), request)
+}
+
+// UpdateCustomDomain
+// 更新自定义域名相关配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEALIAS = "FailedOperation.UpdateAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) UpdateCustomDomainWithContext(ctx context.Context, request *UpdateCustomDomainRequest) (response *UpdateCustomDomainResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCustomDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCustomDomainResponse()
     err = c.Send(request, response)
     return
 }

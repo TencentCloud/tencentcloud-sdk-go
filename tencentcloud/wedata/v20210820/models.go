@@ -5301,6 +5301,94 @@ type DataCheckStat struct {
 	ColumnExec *uint64 `json:"ColumnExec,omitnil,omitempty" name:"ColumnExec"`
 }
 
+type DataServicePublishedApiListFilter struct {
+	// 请求路径关键词筛选
+	PathUrl *string `json:"PathUrl,omitnil,omitempty" name:"PathUrl"`
+
+	// Api名称关键词筛选
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// Api认证方式筛选 0:免认证 1:应用认证
+	AuthTypes []*uint64 `json:"AuthTypes,omitnil,omitempty" name:"AuthTypes"`
+
+	// 服务Api状态 1:已上线  3:已下线
+	ApiStatus []*uint64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
+
+	// API配置方式 0:向导、1、脚本、2、注册Api
+	ConfigTypes []*uint64 `json:"ConfigTypes,omitnil,omitempty" name:"ConfigTypes"`
+}
+
+type DataServiceRequestListOrder struct {
+	// 排序参数名称
+	// 取值： 
+	//   CreateTime 表示按照创建时间排序
+	//   ModifyTime 表示按照更新时间排序
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 排序参数顺序
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type DataServiceRequestParam struct {
+	// 参数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 绑定字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindField *string `json:"BindField,omitnil,omitempty" name:"BindField"`
+
+	// 参数类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// 参数位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamPosition *string `json:"ParamPosition,omitnil,omitempty" name:"ParamPosition"`
+
+	// 操作符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 是否为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonEmpty *uint64 `json:"NonEmpty,omitnil,omitempty" name:"NonEmpty"`
+
+	// 默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 示例值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExampleValue *string `json:"ExampleValue,omitnil,omitempty" name:"ExampleValue"`
+
+	// 参数描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type DataServiceResponseParam struct {
+	// 参数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 绑定字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindField *string `json:"BindField,omitnil,omitempty" name:"BindField"`
+
+	// 参数类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// 示例值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExampleValue *string `json:"ExampleValue,omitnil,omitempty" name:"ExampleValue"`
+
+	// 参数描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 type DataSourceInfo struct {
 	// 若数据源列表为绑定数据库，则为db名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8165,6 +8253,261 @@ func (r *DescribeDataCheckStatResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDataCheckStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataServicePublishedApiDetailRequestParams struct {
+	// 服务Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type DescribeDataServicePublishedApiDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeDataServicePublishedApiDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataServicePublishedApiDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataServicePublishedApiDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataServicePublishedApiDetailResp struct {
+	// 服务Api名称
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 服务请求Path
+	PathUrl *string `json:"PathUrl,omitnil,omitempty" name:"PathUrl"`
+
+	// 服务责任人名称
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 服务请求方式
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+
+	// 服务标签名称集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiTagNames *string `json:"ApiTagNames,omitnil,omitempty" name:"ApiTagNames"`
+
+	// 服务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiDescription *string `json:"ApiDescription,omitnil,omitempty" name:"ApiDescription"`
+
+	// 服务请求返回示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestExample *string `json:"RequestExample,omitnil,omitempty" name:"RequestExample"`
+
+	// 服务请求成功返回示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestSuccess *string `json:"RequestSuccess,omitnil,omitempty" name:"RequestSuccess"`
+
+	// 服务请求失败返回示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestError *string `json:"RequestError,omitnil,omitempty" name:"RequestError"`
+
+	// 服务请求参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestParam []*DataServiceRequestParam `json:"RequestParam,omitnil,omitempty" name:"RequestParam"`
+
+	// 服务响应参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseParam []*DataServiceResponseParam `json:"ResponseParam,omitnil,omitempty" name:"ResponseParam"`
+
+	// 最大qps
+	MaxAllowQps *int64 `json:"MaxAllowQps,omitnil,omitempty" name:"MaxAllowQps"`
+
+	// 最大记录数
+	MaxAllowPageSize *int64 `json:"MaxAllowPageSize,omitnil,omitempty" name:"MaxAllowPageSize"`
+
+	// 超时时间，单位ms
+	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitnil,omitempty" name:"TimeoutPeriod"`
+
+	// ApiId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiId *string `json:"ApiId,omitnil,omitempty" name:"ApiId"`
+
+	// 0:免认证 1:应用认证
+	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// 请求地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayApiUrl *string `json:"GatewayApiUrl,omitnil,omitempty" name:"GatewayApiUrl"`
+
+	// 服务Api状态 1:已上线  3:已下线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiStatus *uint64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
+}
+
+// Predefined struct for user
+type DescribeDataServicePublishedApiDetailResponseParams struct {
+	// 服务详情
+	Data *DescribeDataServicePublishedApiDetailResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataServicePublishedApiDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataServicePublishedApiDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataServicePublishedApiDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataServicePublishedApiDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataServicePublishedApiListRequestParams struct {
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 查询参数
+	Filters *DataServicePublishedApiListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序配置
+	OrderFields []*DataServiceRequestListOrder `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type DescribeDataServicePublishedApiListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 查询参数
+	Filters *DataServicePublishedApiListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序配置
+	OrderFields []*DataServiceRequestListOrder `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *DescribeDataServicePublishedApiListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataServicePublishedApiListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataServicePublishedApiListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataServicePublishedApiListResp struct {
+	// 服务id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 服务Api名称
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 所属目录名称
+	ApiFolderName *string `json:"ApiFolderName,omitnil,omitempty" name:"ApiFolderName"`
+
+	// 服务Api标签名称集合
+	ApiTagNames *string `json:"ApiTagNames,omitnil,omitempty" name:"ApiTagNames"`
+
+	// 服务负责人
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 服务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// Api的id
+	ApiId *string `json:"ApiId,omitnil,omitempty" name:"ApiId"`
+
+	// 服务Api认证方式 0:免认证 1:应用认证
+	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// 服务Api状态 0:创建 1:已上线 2:已删除 3:已下线
+	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
+
+	// 配置方式 0:向导、1、脚本、2、注册Api
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigType *uint64 `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+// Predefined struct for user
+type DescribeDataServicePublishedApiListResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 服务列表
+	DataSet []*DescribeDataServicePublishedApiListResp `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataServicePublishedApiListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataServicePublishedApiListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataServicePublishedApiListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataServicePublishedApiListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

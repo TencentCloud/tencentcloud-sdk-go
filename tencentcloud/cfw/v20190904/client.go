@@ -292,7 +292,7 @@ func NewAddNatAcRuleResponse() (response *AddNatAcRuleResponse) {
 }
 
 // AddNatAcRule
-// 添加nat访问控制规则(地域必填)
+// 添加nat访问控制规则
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -318,7 +318,7 @@ func (c *Client) AddNatAcRule(request *AddNatAcRuleRequest) (response *AddNatAcR
 }
 
 // AddNatAcRule
-// 添加nat访问控制规则(地域必填)
+// 添加nat访问控制规则
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4070,7 +4070,7 @@ func NewDescribeResourceGroupNewResponse() (response *DescribeResourceGroupNewRe
 }
 
 // DescribeResourceGroupNew
-// DescribeResourceGroupNew资产中心资产树信息
+// 资产中心资产组数数据信息查询
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4096,7 +4096,7 @@ func (c *Client) DescribeResourceGroupNew(request *DescribeResourceGroupNewReque
 }
 
 // DescribeResourceGroupNew
-// DescribeResourceGroupNew资产中心资产树信息
+// 资产中心资产组数数据信息查询
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4373,7 +4373,7 @@ func NewDescribeTLogInfoResponse() (response *DescribeTLogInfoResponse) {
 }
 
 // DescribeTLogInfo
-// DescribeTLogInfo告警中心概况
+// DescribeTLogInfo告警中心概况查询
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4399,7 +4399,7 @@ func (c *Client) DescribeTLogInfo(request *DescribeTLogInfoRequest) (response *D
 }
 
 // DescribeTLogInfo
-// DescribeTLogInfo告警中心概况
+// DescribeTLogInfo告警中心概况查询
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5173,6 +5173,10 @@ func NewModifyAllVPCSwitchStatusResponse() (response *ModifyAllVPCSwitchStatusRe
 }
 
 // ModifyAllVPCSwitchStatus
+// 该接口已不再使用
+//
+// 
+//
 // VPC防火墙一键开关
 //
 // 可能返回的错误码:
@@ -5184,6 +5188,10 @@ func (c *Client) ModifyAllVPCSwitchStatus(request *ModifyAllVPCSwitchStatusReque
 }
 
 // ModifyAllVPCSwitchStatus
+// 该接口已不再使用
+//
+// 
+//
 // VPC防火墙一键开关
 //
 // 可能返回的错误码:
@@ -6393,8 +6401,6 @@ func NewModifyResourceGroupResponse() (response *ModifyResourceGroupResponse) {
 // ModifyResourceGroup
 // ModifyResourceGroup-资产中心资产组信息修改
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -6420,8 +6426,6 @@ func (c *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (respo
 
 // ModifyResourceGroup
 // ModifyResourceGroup-资产中心资产组信息修改
-//
-// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

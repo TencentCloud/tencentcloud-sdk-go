@@ -25,7 +25,7 @@ type ApplyEmbedIntervalRequestParams struct {
 	// 分享项目id，必选
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 分享页面id，嵌出看板时此为空值0
+	// 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
 	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 需要申请延期的Token
@@ -34,7 +34,12 @@ type ApplyEmbedIntervalRequestParams struct {
 	// 备用字段
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// panel,看板；page，页面
+	// embed：页面/看板嵌出
+	// chatBIEmbed：ChatBI嵌出
+	Intention *string `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// panel, 看板；page，页面
+	// project，ChatBI嵌出时
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
@@ -44,7 +49,7 @@ type ApplyEmbedIntervalRequest struct {
 	// 分享项目id，必选
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 分享页面id，嵌出看板时此为空值0
+	// 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
 	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 需要申请延期的Token
@@ -53,7 +58,12 @@ type ApplyEmbedIntervalRequest struct {
 	// 备用字段
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// panel,看板；page，页面
+	// embed：页面/看板嵌出
+	// chatBIEmbed：ChatBI嵌出
+	Intention *string `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// panel, 看板；page，页面
+	// project，ChatBI嵌出时
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
@@ -73,6 +83,7 @@ func (r *ApplyEmbedIntervalRequest) FromJsonString(s string) error {
 	delete(f, "PageId")
 	delete(f, "BIToken")
 	delete(f, "ExtraParam")
+	delete(f, "Intention")
 	delete(f, "Scope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyEmbedIntervalRequest has unknown keys!", "")
@@ -593,10 +604,13 @@ type CreateEmbedTokenRequestParams struct {
 	// 分享项目id
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 分享页面id，嵌出看板时此为空值0
+	// 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
 	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// page表示嵌出页面，panel表示嵌出整个看板
+	// embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+	Intention *string `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// page表示嵌出页面，panel表示嵌出整个看板，ChatBI嵌出时使用project
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
@@ -662,10 +676,13 @@ type CreateEmbedTokenRequest struct {
 	// 分享项目id
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 分享页面id，嵌出看板时此为空值0
+	// 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
 	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// page表示嵌出页面，panel表示嵌出整个看板
+	// embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+	Intention *string `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// page表示嵌出页面，panel表示嵌出整个看板，ChatBI嵌出时使用project
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
@@ -739,6 +756,7 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "PageId")
+	delete(f, "Intention")
 	delete(f, "Scope")
 	delete(f, "ExpireTime")
 	delete(f, "ExtraParam")
@@ -2179,6 +2197,10 @@ type EmbedTokenInfo struct {
 	// 全局参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalParam *string `json:"GlobalParam,omitnil,omitempty" name:"GlobalParam"`
+
+	// embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intention *string `json:"Intention,omitnil,omitempty" name:"Intention"`
 }
 
 type ErrorInfo struct {

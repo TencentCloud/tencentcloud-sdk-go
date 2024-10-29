@@ -4087,6 +4087,14 @@ type Device struct {
 	// 网络域名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 是否启用SSL，仅支持Redis资产。0：禁用 1：启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableSSL *int64 `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// 已上传的SSL证书名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
 }
 
 type DeviceAccount struct {
@@ -4160,6 +4168,15 @@ type ExternalDevice struct {
 
 	// 资产多节点：字段ip和端口
 	IpPortSet []*string `json:"IpPortSet,omitnil,omitempty" name:"IpPortSet"`
+
+	// 是否启用SSL,1:启用 0：禁用，仅支持Redis资产
+	EnableSSL *int64 `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// SSL证书，EnableSSL时必填
+	SSLCert *string `json:"SSLCert,omitnil,omitempty" name:"SSLCert"`
+
+	// SSL证书名称，EnableSSL时必填
+	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
 }
 
 type Filter struct {
@@ -5632,6 +5649,18 @@ type Resource struct {
 	// 0 非试用版，1 试用版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
+
+	// cdc集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
+
+	// 日志投递规格信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogDelivery *string `json:"LogDelivery,omitnil,omitempty" name:"LogDelivery"`
+
+	// 部署模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployModel *int64 `json:"DeployModel,omitnil,omitempty" name:"DeployModel"`
 }
 
 type RunChangePwdTaskDetail struct {

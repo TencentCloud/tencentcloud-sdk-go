@@ -12703,6 +12703,79 @@ func (c *Client) ModifyClusterEndpointSPWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyClusterImageRequest() (request *ModifyClusterImageRequest) {
+    request = &ModifyClusterImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterImage")
+    
+    
+    return
+}
+
+func NewModifyClusterImageResponse() (response *ModifyClusterImageResponse) {
+    response = &ModifyClusterImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterImage
+// 修改集群镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_IMAGEIDNOTFOUND = "InternalError.ImageIdNotFound"
+//  INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
+func (c *Client) ModifyClusterImage(request *ModifyClusterImageRequest) (response *ModifyClusterImageResponse, err error) {
+    return c.ModifyClusterImageWithContext(context.Background(), request)
+}
+
+// ModifyClusterImage
+// 修改集群镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_IMAGEIDNOTFOUND = "InternalError.ImageIdNotFound"
+//  INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
+func (c *Client) ModifyClusterImageWithContext(ctx context.Context, request *ModifyClusterImageRequest) (response *ModifyClusterImageResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterNodePoolRequest() (request *ModifyClusterNodePoolRequest) {
     request = &ModifyClusterNodePoolRequest{
         BaseRequest: &tchttp.BaseRequest{},

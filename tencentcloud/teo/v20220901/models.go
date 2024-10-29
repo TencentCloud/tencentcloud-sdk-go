@@ -1171,6 +1171,20 @@ func (r *CheckCnameStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckRegionHealthStatus struct {
+	// 健康检查区域，ISO-3166-1 两位字母代码。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 单健康检查区域下探测源站的健康状态，取值有：
+	// <li>Healthy：健康；</li>
+	// <li>Unhealthy：不健康；</li>
+	// <li> Undetected：未探测到数据。</li>说明：单健康检查区域下所有源站为健康，则状态为健康，否则为不健康。
+	Healthy *string `json:"Healthy,omitnil,omitempty" name:"Healthy"`
+
+	// 源站健康状态。
+	OriginHealthStatus []*OriginHealthStatus `json:"OriginHealthStatus,omitnil,omitempty" name:"OriginHealthStatus"`
+}
+
 type ClientIpCountry struct {
 	// 配置开关，取值有：
 	// <li>on：开启；</li>
@@ -1188,8 +1202,7 @@ type ClientIpHeader struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 回源时，存放客户端 IP 的请求头名称。
-	// 为空则使用默认值：X-Forwarded-IP。
+	// 回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
 }
@@ -2336,6 +2349,115 @@ func (r *CreateL4ProxyRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLoadBalancerRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例类型，取值有：
+	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
+	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
+
+	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
+
+	// 源站组间的流量调度策略，取值有：
+	// <li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
+
+	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
+}
+
+type CreateLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例类型，取值有：
+	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
+	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
+
+	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
+
+	// 源站组间的流量调度策略，取值有：
+	// <li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
+
+	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
+}
+
+func (r *CreateLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "OriginGroups")
+	delete(f, "HealthChecker")
+	delete(f, "SteeringPolicy")
+	delete(f, "FailoverPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLoadBalancerResponseParams struct {
+	// 负载均衡实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *CreateLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOriginGroupRequestParams struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -3406,6 +3528,16 @@ type CustomField struct {
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
+type CustomizedHeader struct {
+	// 自定义头部 Key。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 自定义头部 Value。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type DDoS struct {
 	// 开关，取值有：
 	// <li>on：开启；</li>
@@ -4105,6 +4237,67 @@ func (r *DeleteL4ProxyRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteL4ProxyRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLoadBalancerRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 负载均衡实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DeleteLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 负载均衡实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLoadBalancerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *DeleteLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6624,6 +6817,162 @@ func (r *DescribeL4ProxyRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLoadBalancerListRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量，默认为 0。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，最大值：100。	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有负载均衡实例信息。详细的过滤条件如下：
+	// <li>InstanceName：按照负载均衡实例名称进行过滤；</li>
+	// <li>InstanceId：按照负载均衡实例 ID 进行过滤。</li>  
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeLoadBalancerListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量，默认为 0。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，最大值：100。	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有负载均衡实例信息。详细的过滤条件如下：
+	// <li>InstanceName：按照负载均衡实例名称进行过滤；</li>
+	// <li>InstanceId：按照负载均衡实例 ID 进行过滤。</li>  
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeLoadBalancerListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoadBalancerListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancerListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLoadBalancerListResponseParams struct {
+	// 负载均衡实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 负载均衡实例列表。
+	LoadBalancerList []*LoadBalancer `json:"LoadBalancerList,omitnil,omitempty" name:"LoadBalancerList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLoadBalancerListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLoadBalancerListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLoadBalancerListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoadBalancerListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOriginGroupHealthStatusRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 负载均衡实例 ID。
+	LBInstanceId *string `json:"LBInstanceId,omitnil,omitempty" name:"LBInstanceId"`
+
+	// 源站组 ID。不填写时默认获取负载均衡下所有源站组的健康状态。
+	OriginGroupIds []*string `json:"OriginGroupIds,omitnil,omitempty" name:"OriginGroupIds"`
+}
+
+type DescribeOriginGroupHealthStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 负载均衡实例 ID。
+	LBInstanceId *string `json:"LBInstanceId,omitnil,omitempty" name:"LBInstanceId"`
+
+	// 源站组 ID。不填写时默认获取负载均衡下所有源站组的健康状态。
+	OriginGroupIds []*string `json:"OriginGroupIds,omitnil,omitempty" name:"OriginGroupIds"`
+}
+
+func (r *DescribeOriginGroupHealthStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOriginGroupHealthStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "LBInstanceId")
+	delete(f, "OriginGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOriginGroupHealthStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOriginGroupHealthStatusResponseParams struct {
+	// 源站组下源站的健康状态。
+	OriginGroupHealthStatusList []*OriginGroupHealthStatusDetail `json:"OriginGroupHealthStatusList,omitnil,omitempty" name:"OriginGroupHealthStatusList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOriginGroupHealthStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOriginGroupHealthStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeOriginGroupHealthStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOriginGroupHealthStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOriginGroupRequestParams struct {
 	// 站点ID，此参数必填。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -9126,17 +9475,21 @@ type FollowOrigin struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 源站未返回 Cache-Control 头时, 设置默认的缓存时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultCacheTime *int64 `json:"DefaultCacheTime,omitnil,omitempty" name:"DefaultCacheTime"`
-
-	// 源站未返回 Cache-Control 头时, 设置缓存/不缓存
+	// 源站未返回 Cache-Control 头时，缓存/不缓存开关。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+	// <li>on：缓存；</li>
+	// <li>off：不缓存。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultCache *string `json:"DefaultCache,omitnil,omitempty" name:"DefaultCache"`
 
-	// 源站未返回 Cache-Control 头时, 使用/不使用默认缓存策略
+	// 源站未返回 Cache-Control 头时，使用/不使用默认缓存策略开关。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheTime 不为 0 时，此字段必须为 off。取值有：
+	// <li>on：使用默认缓存策略；</li>
+	// <li>off：不使用默认缓存策略。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultCacheStrategy *string `json:"DefaultCacheStrategy,omitnil,omitempty" name:"DefaultCacheStrategy"`
+
+	// 源站未返回 Cache-Control 头时，表示默认的缓存时间，单位为秒，取值：0～315360000。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheStrategy 为 on 时， 此字段必须为 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultCacheTime *int64 `json:"DefaultCacheTime,omitnil,omitempty" name:"DefaultCacheTime"`
 }
 
 type ForceRedirect struct {
@@ -9318,6 +9671,56 @@ type Header struct {
 
 	// HTTP头部值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type HealthChecker struct {
+	// 健康检查策略，取值有：
+	// <li>HTTP；</li>
+	// <li>HTTPS；</li>
+	// <li>TCP；</li>
+	// <li>UDP；</li>
+	// <li>ICMP Ping；</li>
+	// <li>NoCheck。</li>
+	// 注意：NoCheck 表示不启用健康检查策略。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 检查频率，表示多久发起一次健康检查任务，单位为秒。可取值有：30，60，180，300 或 600。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为”不健康“， 单位为秒，默认值为 5s，取值必须小于 Interval。
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 健康阈值，表示连续几次健康检查结果为"健康"，则判断源站为"健康"，单位为次，默认 3 次，最小取值 1 次。
+	HealthThreshold *uint64 `json:"HealthThreshold,omitnil,omitempty" name:"HealthThreshold"`
+
+	// 不健康阈值，表示连续几次健康检查结果为"不健康"，则判断源站为"不健康"，单位为次，默认 2 次。
+	CriticalThreshold *uint64 `json:"CriticalThreshold,omitnil,omitempty" name:"CriticalThreshold"`
+
+	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：
+	// <li>GET；</li>
+	// <li>HEAD。</li>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。
+	ExpectedCodes []*string `json:"ExpectedCodes,omitnil,omitempty" name:"ExpectedCodes"`
+
+	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。
+	Headers []*CustomizedHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为"健康"的状态码，默认跳转 3 次。
+	FollowRedirect *string `json:"FollowRedirect,omitnil,omitempty" name:"FollowRedirect"`
+
+	// 该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+	SendContext *string `json:"SendContext,omitnil,omitempty" name:"SendContext"`
+
+	// 该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+	RecvContext *string `json:"RecvContext,omitnil,omitempty" name:"RecvContext"`
 }
 
 type Hsts struct {
@@ -9686,6 +10089,13 @@ type Ipv6 struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+type JITVideoProcess struct {
+	// 视频即时处理配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
 type L4OfflineLog struct {
 	// 四层代理实例 ID。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
@@ -9888,6 +10298,46 @@ type L7OfflineLog struct {
 
 	// 日志原始大小，单位 Byte。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+}
+
+type LoadBalancer struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。	
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例类型，取值有：
+	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
+	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。
+	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
+
+	// 源站组间的流量调度策略，取值有：
+	// <li>Pritory：按优先级顺序进行故障转移 。</li>
+	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
+
+	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
+	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
+
+	// 源站组健康状态。
+	OriginGroupHealthStatus []*OriginGroupHealthStatus `json:"OriginGroupHealthStatus,omitnil,omitempty" name:"OriginGroupHealthStatus"`
+
+	// 负载均衡状态，取值有：
+	// <li>Pending：部署中；</li>
+	// <li>Deleting：删除中；</li>
+	// <li>Running：已生效。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 该负载均衡实例绑的定四层层代理实例的列表。
+	L4UsedList []*string `json:"L4UsedList,omitnil,omitempty" name:"L4UsedList"`
+
+	// 该负载均衡实例绑定的七层域名列表。
+	L7UsedList []*string `json:"L7UsedList,omitnil,omitempty" name:"L7UsedList"`
 }
 
 type LogFormat struct {
@@ -11424,6 +11874,108 @@ func (r *ModifyL4ProxyStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLoadBalancerRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 负载均衡实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。不填写表示维持原有配置。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。不填写表示维持原有配置。
+	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
+
+	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写表示维持原有配置。
+	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
+
+	// 源站组间的流量调度策略，取值有：
+	// <li>Pritory：按优先级顺序进行故障转移 。</li>不填写表示维持原有配置。
+	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
+
+	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>不填写表示维持原有配置。
+	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
+}
+
+type ModifyLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 负载均衡实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。不填写表示维持原有配置。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。不填写表示维持原有配置。
+	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
+
+	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写表示维持原有配置。
+	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
+
+	// 源站组间的流量调度策略，取值有：
+	// <li>Pritory：按优先级顺序进行故障转移 。</li>不填写表示维持原有配置。
+	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
+
+	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>不填写表示维持原有配置。
+	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
+}
+
+func (r *ModifyLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "OriginGroups")
+	delete(f, "HealthChecker")
+	delete(f, "SteeringPolicy")
+	delete(f, "FailoverPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLoadBalancerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *ModifyLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOriginGroupRequestParams struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -12159,6 +12711,9 @@ type ModifyZoneSettingRequestParams struct {
 
 	// 标准 Debug 配置。
 	StandardDebug *StandardDebug `json:"StandardDebug,omitnil,omitempty" name:"StandardDebug"`
+
+	// 视频即时处理配置。不填写表示保持原有配置。
+	JITVideoProcess *JITVideoProcess `json:"JITVideoProcess,omitnil,omitempty" name:"JITVideoProcess"`
 }
 
 type ModifyZoneSettingRequest struct {
@@ -12245,6 +12800,9 @@ type ModifyZoneSettingRequest struct {
 
 	// 标准 Debug 配置。
 	StandardDebug *StandardDebug `json:"StandardDebug,omitnil,omitempty" name:"StandardDebug"`
+
+	// 视频即时处理配置。不填写表示保持原有配置。
+	JITVideoProcess *JITVideoProcess `json:"JITVideoProcess,omitnil,omitempty" name:"JITVideoProcess"`
 }
 
 func (r *ModifyZoneSettingRequest) ToJsonString() string {
@@ -12280,6 +12838,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "Grpc")
 	delete(f, "ImageOptimize")
 	delete(f, "StandardDebug")
+	delete(f, "JITVideoProcess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneSettingRequest has unknown keys!", "")
 	}
@@ -12517,6 +13076,47 @@ type OriginGroup struct {
 	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
 }
 
+type OriginGroupHealthStatus struct {
+	// 源站组 ID。
+	OriginGroupID *string `json:"OriginGroupID,omitnil,omitempty" name:"OriginGroupID"`
+
+	// 源站组名。
+	OriginGroupName *string `json:"OriginGroupName,omitnil,omitempty" name:"OriginGroupName"`
+
+	// 源站组类型，取值有：
+	// <li>HTTP：HTTP 专用型；</li>
+	// <li>GENERAL：通用型。</li>
+	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
+
+	// 优先级。
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 源站组里各源站的健康状态。
+	OriginHealthStatus []*OriginHealthStatus `json:"OriginHealthStatus,omitnil,omitempty" name:"OriginHealthStatus"`
+}
+
+type OriginGroupHealthStatusDetail struct {
+	// 源站组 ID。
+	OriginGroupId *string `json:"OriginGroupId,omitnil,omitempty" name:"OriginGroupId"`
+
+	// 根据所有探测区域的结果综合决策出来的源站组下各个源站的健康状态。超过一半的地域判定该源站不健康，则对应状态为不健康，否则为健康。
+	OriginHealthStatus []*OriginHealthStatus `json:"OriginHealthStatus,omitnil,omitempty" name:"OriginHealthStatus"`
+
+	// 各个健康检查区域下源站的健康状态。
+	CheckRegionHealthStatus []*CheckRegionHealthStatus `json:"CheckRegionHealthStatus,omitnil,omitempty" name:"CheckRegionHealthStatus"`
+}
+
+type OriginGroupInLoadBalancer struct {
+	// 优先级，填写格式为 "priority_" + "数字"，最高优先级为 "priority_1"。参考取值有：
+	// <li>priority_1：第一优先级；</li>
+	// <li>priority_2：第二优先级；</li>
+	// <li>priority_3：第三优先级。</li>其他优先级可以将数字递增，最多可以递增至 "priority_10"。
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 源站组 ID。
+	OriginGroupId *string `json:"OriginGroupId,omitnil,omitempty" name:"OriginGroupId"`
+}
+
 type OriginGroupReference struct {
 	// 引用服务类型，取值有：
 	// <li>AccelerationDomain: 加速域名；</li>
@@ -12530,6 +13130,17 @@ type OriginGroupReference struct {
 
 	// 应用类型的实例名称。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+type OriginHealthStatus struct {
+	// 源站。
+	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
+
+	// 源站健康状态，取值有：
+	// <li>Healthy：健康；</li>
+	// <li>Unhealthy：不健康；</li>
+	// <li>Undetected：未探测到数据。</li>
+	Healthy *string `json:"Healthy,omitnil,omitempty" name:"Healthy"`
 }
 
 type OriginInfo struct {
@@ -14208,4 +14819,8 @@ type ZoneSetting struct {
 	// 标准 Debug 配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StandardDebug *StandardDebug `json:"StandardDebug,omitnil,omitempty" name:"StandardDebug"`
+
+	// 视频即时处理配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JITVideoProcess *JITVideoProcess `json:"JITVideoProcess,omitnil,omitempty" name:"JITVideoProcess"`
 }

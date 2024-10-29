@@ -14084,6 +14084,81 @@ func (r *ModifyUserSignatureRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserSignatureRuleV2RequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 主类id
+	MainClassID *string `json:"MainClassID,omitnil,omitempty" name:"MainClassID"`
+
+	// 主类开关0=关闭，1=开启，2=只告警
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 下发修改的规则列表
+	RuleID []*ReqUserRule `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+type ModifyUserSignatureRuleV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 主类id
+	MainClassID *string `json:"MainClassID,omitnil,omitempty" name:"MainClassID"`
+
+	// 主类开关0=关闭，1=开启，2=只告警
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 下发修改的规则列表
+	RuleID []*ReqUserRule `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+func (r *ModifyUserSignatureRuleV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserSignatureRuleV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "MainClassID")
+	delete(f, "Status")
+	delete(f, "RuleID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserSignatureRuleV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserSignatureRuleV2ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserSignatureRuleV2Response struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserSignatureRuleV2ResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserSignatureRuleV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserSignatureRuleV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWafAutoDenyRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`

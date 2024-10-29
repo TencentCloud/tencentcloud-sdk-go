@@ -5289,7 +5289,18 @@ type DescribeProxyStatisticsRequestParams struct {
 	// 结束时间(2019-03-25 12:00:00)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency，http请求量：HttpQPS, Https请求量：HttpsQPS
+	// 统计指标名称列表，支持: 
+	// 入带宽:InBandwidth, 
+	// 出带宽:OutBandwidth, 
+	// 并发:Concurrent, 
+	// 入包量:InPackets, 
+	// 出包量:OutPackets, 
+	// 丢包率:PacketLoss, 
+	// 延迟:Latency，
+	// HTTP请求量：HttpQPS, 
+	// HTTP请求量利用率：HttpQPSPercent,
+	// HTTPS请求量：HttpsQPS,
+	// HTTPS请求量利用率：HttpsQPSPercent
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
@@ -5314,7 +5325,18 @@ type DescribeProxyStatisticsRequest struct {
 	// 结束时间(2019-03-25 12:00:00)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency，http请求量：HttpQPS, Https请求量：HttpsQPS
+	// 统计指标名称列表，支持: 
+	// 入带宽:InBandwidth, 
+	// 出带宽:OutBandwidth, 
+	// 并发:Concurrent, 
+	// 入包量:InPackets, 
+	// 出包量:OutPackets, 
+	// 丢包率:PacketLoss, 
+	// 延迟:Latency，
+	// HTTP请求量：HttpQPS, 
+	// HTTP请求量利用率：HttpQPSPercent,
+	// HTTPS请求量：HttpsQPS,
+	// HTTPS请求量利用率：HttpsQPSPercent
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
@@ -6241,14 +6263,14 @@ func (r *DescribeTCPListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskStatusRequestParams struct {
-	// 任务ID，值为异步接口返回的RequestId
+	// 任务ID，值为异步接口返回的RequestId，此参数不能传空值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID，值为异步接口返回的RequestId
+	// 任务ID，值为异步接口返回的RequestId，此参数不能传空值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -9643,6 +9665,14 @@ type SetAuthenticationRequestParams struct {
 
 	// 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
 	PolyRealServerCertificateIds []*string `json:"PolyRealServerCertificateIds,omitnil,omitempty" name:"PolyRealServerCertificateIds"`
+
+	// TLS支持的版本
+	// 支持TLSv1，TLSv1.1,TLSv1.2,TLSv1.3
+	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
+
+	// 支持的TLS密码套件，可选值为：
+	// [GAAP_TLS_CIPHERS_WIDE,GAAPTLS_CIPHERS_GENERAL,GAAPTLS_CIPHERS_STRICT]
+	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
 }
 
 type SetAuthenticationRequest struct {
@@ -9686,6 +9716,14 @@ type SetAuthenticationRequest struct {
 
 	// 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
 	PolyRealServerCertificateIds []*string `json:"PolyRealServerCertificateIds,omitnil,omitempty" name:"PolyRealServerCertificateIds"`
+
+	// TLS支持的版本
+	// 支持TLSv1，TLSv1.1,TLSv1.2,TLSv1.3
+	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
+
+	// 支持的TLS密码套件，可选值为：
+	// [GAAP_TLS_CIPHERS_WIDE,GAAPTLS_CIPHERS_GENERAL,GAAPTLS_CIPHERS_STRICT]
+	TLSCiphers *string `json:"TLSCiphers,omitnil,omitempty" name:"TLSCiphers"`
 }
 
 func (r *SetAuthenticationRequest) ToJsonString() string {
@@ -9710,6 +9748,8 @@ func (r *SetAuthenticationRequest) FromJsonString(s string) error {
 	delete(f, "RealServerCertificateId")
 	delete(f, "RealServerCertificateDomain")
 	delete(f, "PolyRealServerCertificateIds")
+	delete(f, "TLSSupportVersion")
+	delete(f, "TLSCiphers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetAuthenticationRequest has unknown keys!", "")
 	}
@@ -9743,7 +9783,7 @@ type SetTlsVersionRequestParams struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// TLS版本,可选TLSv1.0、TLSv1.1、TLSv1.2、TLSv1.3
+	// TLS版本,可选TLSv1、TLSv1.1、TLSv1.2、TLSv1.3
 	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
 
 	// 密码套件包,可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认)
@@ -9756,7 +9796,7 @@ type SetTlsVersionRequest struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// TLS版本,可选TLSv1.0、TLSv1.1、TLSv1.2、TLSv1.3
+	// TLS版本,可选TLSv1、TLSv1.1、TLSv1.2、TLSv1.3
 	TLSSupportVersion []*string `json:"TLSSupportVersion,omitnil,omitempty" name:"TLSSupportVersion"`
 
 	// 密码套件包,可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认)

@@ -71,11 +71,17 @@ const (
 	// 网关错误。
 	INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 
+	// 系统内部错误
+	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+
 	// 未定义异常。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 参数错误
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// 参数校验出错
 	INVALIDPARAMETER_PARAMCHECKFAILED = "InvalidParameter.ParamCheckFailed"

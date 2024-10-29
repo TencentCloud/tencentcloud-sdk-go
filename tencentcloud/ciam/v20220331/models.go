@@ -1637,6 +1637,10 @@ type LogMessage struct {
 	// 详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 日志结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionResult *string `json:"ActionResult,omitnil,omitempty" name:"ActionResult"`
 }
 
 type MemberMap struct {

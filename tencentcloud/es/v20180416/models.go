@@ -266,6 +266,78 @@ type CosSnapShotInfo struct {
 }
 
 // Predefined struct for user
+type CreateClusterSnapshotRequestParams struct {
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 索引名称
+	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+}
+
+type CreateClusterSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 索引名称
+	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+}
+
+func (r *CreateClusterSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SnapshotName")
+	delete(f, "Indices")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateClusterSnapshotResponseParams struct {
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateClusterSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateClusterSnapshotResponseParams `json:"Response"`
+}
+
+func (r *CreateClusterSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCosMigrateToServerlessInstanceRequestParams struct {
 	// 快照名
 	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
@@ -1220,6 +1292,77 @@ type DataStreamInfo struct {
 }
 
 // Predefined struct for user
+type DeleteClusterSnapshotRequestParams struct {
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 集群快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+}
+
+type DeleteClusterSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 集群快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+}
+
+func (r *DeleteClusterSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RepositoryName")
+	delete(f, "SnapshotName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteClusterSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterSnapshotResponseParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteClusterSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteClusterSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DeleteClusterSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteIndexRequestParams struct {
 	// ES集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1589,6 +1732,83 @@ func (r *DeleteServerlessSpaceUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteServerlessSpaceUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterSnapshotRequestParams struct {
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 集群快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+}
+
+type DescribeClusterSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 集群快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+}
+
+func (r *DescribeClusterSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RepositoryName")
+	delete(f, "SnapshotName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterSnapshotResponseParams struct {
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 快照备份详情列表
+	Snapshots []*Snapshots `json:"Snapshots,omitnil,omitempty" name:"Snapshots"`
+
+	// 快照仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3761,6 +3981,24 @@ type EsPublicAcl struct {
 	WhiteIpList []*string `json:"WhiteIpList,omitnil,omitempty" name:"WhiteIpList"`
 }
 
+type Failures struct {
+	// 备份失败的索引名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 快照失败的分片号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardId *int64 `json:"ShardId,omitnil,omitempty" name:"ShardId"`
+
+	// 快照失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 快照失败的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type GetDiagnoseSettingsRequestParams struct {
 	// ES实例ID
@@ -5483,6 +5721,127 @@ func (r *RestartNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RestoreClusterSnapshotRequestParams struct {
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 集群快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+
+	// elastic用户名对应的密码信息
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+	IndexSettings *string `json:"IndexSettings,omitnil,omitempty" name:"IndexSettings"`
+
+	// 不应从快照还原的以逗号分隔的索引设置列表。
+	IncludeGlobalState []*string `json:"IncludeGlobalState,omitnil,omitempty" name:"IncludeGlobalState"`
+
+	// 需要恢复的索引名称，非必填，为空则表示恢复所有
+	// 
+	// 支持传多个索引名称
+	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+
+	// 如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
+	// 
+	// 如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+	Partial *string `json:"Partial,omitnil,omitempty" name:"Partial"`
+}
+
+type RestoreClusterSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id，格式：es-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 集群快照名称
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+
+	// elastic用户名对应的密码信息
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+	IndexSettings *string `json:"IndexSettings,omitnil,omitempty" name:"IndexSettings"`
+
+	// 不应从快照还原的以逗号分隔的索引设置列表。
+	IncludeGlobalState []*string `json:"IncludeGlobalState,omitnil,omitempty" name:"IncludeGlobalState"`
+
+	// 需要恢复的索引名称，非必填，为空则表示恢复所有
+	// 
+	// 支持传多个索引名称
+	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+
+	// 如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
+	// 
+	// 如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+	Partial *string `json:"Partial,omitnil,omitempty" name:"Partial"`
+}
+
+func (r *RestoreClusterSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreClusterSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RepositoryName")
+	delete(f, "SnapshotName")
+	delete(f, "TargetInstanceId")
+	delete(f, "Password")
+	delete(f, "IndexSettings")
+	delete(f, "IncludeGlobalState")
+	delete(f, "Indices")
+	delete(f, "Partial")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreClusterSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreClusterSnapshotResponseParams struct {
+	// 集群实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestoreClusterSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *RestoreClusterSnapshotResponseParams `json:"Response"`
+}
+
+func (r *RestoreClusterSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreClusterSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SaveAndDeployLogstashPipelineRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5796,6 +6155,68 @@ type SettingDetail struct {
 
 	// 配置处理建议
 	Advise *string `json:"Advise,omitnil,omitempty" name:"Advise"`
+}
+
+type Snapshots struct {
+	// 快照名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 快照Uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 该快照所属集群的版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 备份的索引列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Indices []*string `json:"Indices,omitnil,omitempty" name:"Indices"`
+
+	// 备份的datastream列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataStreams []*string `json:"DataStreams,omitnil,omitempty" name:"DataStreams"`
+
+	// 备份的状态
+	// 
+	// FAILED            备份失败
+	// 
+	// IN_PROGRESS 备份执行中
+	// 
+	// PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示
+	// 
+	// SUCCESS     备份成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 快照备份的开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 快照备份的结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 快照备份的耗时时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationInMillis *int64 `json:"DurationInMillis,omitnil,omitempty" name:"DurationInMillis"`
+
+	// 备份的总分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalShards *int64 `json:"TotalShards,omitnil,omitempty" name:"TotalShards"`
+
+	// 备份失败的分片数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedShards *int64 `json:"FailedShards,omitnil,omitempty" name:"FailedShards"`
+
+	// 备份成功的分片数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessfulShards *int64 `json:"SuccessfulShards,omitnil,omitempty" name:"SuccessfulShards"`
+
+	// 备份失败的索引分片和失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Failures []*Failures `json:"Failures,omitnil,omitempty" name:"Failures"`
 }
 
 // Predefined struct for user

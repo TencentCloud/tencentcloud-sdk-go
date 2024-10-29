@@ -91,6 +91,12 @@ type AsyncTriggerConfig struct {
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
+type CertConf struct {
+	// ssl证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+}
+
 type CfsConfig struct {
 	// 文件系统信息列表
 	CfsInsList []*CfsInsInfo `json:"CfsInsList,omitnil,omitempty" name:"CfsInsList"`
@@ -377,6 +383,88 @@ func (r *CreateAliasResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAliasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomDomainRequestParams struct {
+	// 域名，不支持泛域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 路由配置
+	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
+
+	// 证书配置信息，HTTPS协议必穿
+	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
+
+	// web 应用防火墙配置
+	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+}
+
+type CreateCustomDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名，不支持泛域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 路由配置
+	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
+
+	// 证书配置信息，HTTPS协议必穿
+	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
+
+	// web 应用防火墙配置
+	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+}
+
+func (r *CreateCustomDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	delete(f, "EndpointsConfig")
+	delete(f, "CertConfig")
+	delete(f, "WafConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCustomDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCustomDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateCustomDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -905,6 +993,60 @@ func (r *DeleteAliasResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCustomDomainRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DeleteCustomDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DeleteCustomDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomDomainResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteFunctionRequestParams struct {
 	// 要删除的函数名称
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
@@ -1305,6 +1447,26 @@ func (r *DeleteTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DomainInfo struct {
+	// 域名，不支持泛域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 路由配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
+
+	// 证书配置信息，HTTPS协议必传路由配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
+
+	// web 应用防火墙配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+}
+
 type EipConfigIn struct {
 	// Eip开启状态，取值['ENABLE','DISABLE']
 	EipStatus *string `json:"EipStatus,omitnil,omitempty" name:"EipStatus"`
@@ -1325,6 +1487,28 @@ type EipOutConfig struct {
 
 	// IP列表
 	Eips []*string `json:"Eips,omitnil,omitempty" name:"Eips"`
+}
+
+type EndpointsConf struct {
+	// 函数命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 函数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 函数别名或版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+
+	// 路径,取值规范：/，/*，/xxx，/xxx/a，/xxx/*"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathMatch *string `json:"PathMatch,omitnil,omitempty" name:"PathMatch"`
+
+	// 路径重写策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathRewrite []*PathRewriteRule `json:"PathRewrite,omitnil,omitempty" name:"PathRewrite"`
 }
 
 type Environment struct {
@@ -1658,6 +1842,75 @@ func (r *GetAsyncEventStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetAsyncEventStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCustomDomainRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type GetCustomDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *GetCustomDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCustomDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCustomDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCustomDomainResponseParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 路由配置
+	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
+
+	// 证书配置信息
+	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
+
+	// web 应用防火墙配置
+	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetCustomDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *GetCustomDomainResponseParams `json:"Response"`
+}
+
+func (r *GetCustomDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCustomDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3063,6 +3316,95 @@ func (r *ListAsyncEventsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListCustomDomainsRequestParams struct {
+	// 偏移量，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 容量，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 取值范围：AddTime，ModTime， 默认AddTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 取值范围：DESC, ASC 默认DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ListCustomDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 容量，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 取值范围：AddTime，ModTime， 默认AddTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 取值范围：DESC, ASC 默认DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ListCustomDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCustomDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "Order")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCustomDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListCustomDomainsResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 域名列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domains []*DomainInfo `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListCustomDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListCustomDomainsResponseParams `json:"Response"`
+}
+
+func (r *ListCustomDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCustomDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListFunctionsRequestParams struct {
 	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
@@ -3752,6 +4094,20 @@ type NamespaceUsage struct {
 	// 命名空间预置使用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalAllocatedProvisionedMem *int64 `json:"TotalAllocatedProvisionedMem,omitnil,omitempty" name:"TotalAllocatedProvisionedMem"`
+}
+
+type PathRewriteRule struct {
+	// 需要重路由的路径，取值规范：/，/*，/xxx，/xxx/a，/xxx/*
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 匹配规，取值范围： WildcardRules 通配符匹配， ExactRules 精确匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 替换值：比如/, /$
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rewrite *string `json:"Rewrite,omitnil,omitempty" name:"Rewrite"`
 }
 
 type ProtocolParams struct {
@@ -4625,6 +4981,88 @@ func (r *UpdateAliasResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateCustomDomainRequestParams struct {
+	// 自定义域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 证书配置信息，HTTPS协议必穿
+	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
+
+	// web 应用防火墙配置
+	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 	路由配置
+	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
+}
+
+type UpdateCustomDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自定义域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 证书配置信息，HTTPS协议必穿
+	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
+
+	// web 应用防火墙配置
+	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 	路由配置
+	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
+}
+
+func (r *UpdateCustomDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	delete(f, "CertConfig")
+	delete(f, "WafConfig")
+	delete(f, "EndpointsConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCustomDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCustomDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCustomDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCustomDomainResponseParams `json:"Response"`
+}
+
+func (r *UpdateCustomDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateFunctionCodeRequestParams struct {
 	// 要修改的函数名称
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
@@ -5394,4 +5832,14 @@ type WSParams struct {
 	// 空闲超时时间, 单位秒，默认15s。可配置范围1~1800s。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdleTimeOut *uint64 `json:"IdleTimeOut,omitnil,omitempty" name:"IdleTimeOut"`
+}
+
+type WafConf struct {
+	// web应用防火墙是否打开， 取值范围:OPEN, CLOSE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafOpen *string `json:"WafOpen,omitnil,omitempty" name:"WafOpen"`
+
+	// web应用防火墙实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafInstanceId *string `json:"WafInstanceId,omitnil,omitempty" name:"WafInstanceId"`
 }

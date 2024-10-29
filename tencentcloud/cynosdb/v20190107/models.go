@@ -4244,6 +4244,16 @@ func (r *DeleteParamTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeliverSummary struct {
+	// 投递类型，store（存储类），mq（消息通道）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverType *string `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递子类型：cls，ckafka。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverSubType *string `json:"DeliverSubType,omitnil,omitempty" name:"DeliverSubType"`
+}
+
 // Predefined struct for user
 type DescribeAccountAllGrantPrivilegesRequestParams struct {
 	// 集群id
@@ -9534,6 +9544,14 @@ type InstanceAuditStatus struct {
 	// 实例所应用的规则模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
+
+	// 是否开启日志投递：ON，OFF
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deliver *string `json:"Deliver,omitnil,omitempty" name:"Deliver"`
+
+	// 日志投递类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverSummary []*DeliverSummary `json:"DeliverSummary,omitnil,omitempty" name:"DeliverSummary"`
 }
 
 type InstanceCLSDeliveryInfo struct {

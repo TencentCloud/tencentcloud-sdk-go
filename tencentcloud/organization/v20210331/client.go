@@ -606,9 +606,12 @@ func NewAddUserToGroupResponse() (response *AddUserToGroupResponse) {
 // 为用户组添加用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GROUPTYPEUSERTYPENOTMATCH = "FailedOperation.GroupTypeUserTypeNotMatch"
 //  FAILEDOPERATION_GROUPUSERCOUNTOVERUPPERLIMIT = "FailedOperation.GroupUserCountOverUpperLimit"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTUPDATE = "FailedOperation.ManualGroupNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTADDUSER = "FailedOperation.SynchronizedGroupNotAddUser"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
 //  FAILEDOPERATION_USERADDGROUPCOUNTOVERUPPERLIMIT = "FailedOperation.UserAddGroupCountOverUpperLimit"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
@@ -623,9 +626,12 @@ func (c *Client) AddUserToGroup(request *AddUserToGroupRequest) (response *AddUs
 // 为用户组添加用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GROUPTYPEUSERTYPENOTMATCH = "FailedOperation.GroupTypeUserTypeNotMatch"
 //  FAILEDOPERATION_GROUPUSERCOUNTOVERUPPERLIMIT = "FailedOperation.GroupUserCountOverUpperLimit"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTUPDATE = "FailedOperation.ManualGroupNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTADDUSER = "FailedOperation.SynchronizedGroupNotAddUser"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
 //  FAILEDOPERATION_USERADDGROUPCOUNTOVERUPPERLIMIT = "FailedOperation.UserAddGroupCountOverUpperLimit"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
@@ -1760,6 +1766,59 @@ func (c *Client) CreateRoleConfigurationWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateSCIMCredentialRequest() (request *CreateSCIMCredentialRequest) {
+    request = &CreateSCIMCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateSCIMCredential")
+    
+    
+    return
+}
+
+func NewCreateSCIMCredentialResponse() (response *CreateSCIMCredentialResponse) {
+    response = &CreateSCIMCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSCIMCredential
+// 创建SCIM密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_SCIMCREDENTIALGENERATEERROR = "FailedOperation.ScimCredentialGenerateError"
+//  LIMITEXCEEDED_SCIMCREDENTIALLIMITEXCEEDED = "LimitExceeded.ScimCredentialLimitExceeded"
+func (c *Client) CreateSCIMCredential(request *CreateSCIMCredentialRequest) (response *CreateSCIMCredentialResponse, err error) {
+    return c.CreateSCIMCredentialWithContext(context.Background(), request)
+}
+
+// CreateSCIMCredential
+// 创建SCIM密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_SCIMCREDENTIALGENERATEERROR = "FailedOperation.ScimCredentialGenerateError"
+//  LIMITEXCEEDED_SCIMCREDENTIALLIMITEXCEEDED = "LimitExceeded.ScimCredentialLimitExceeded"
+func (c *Client) CreateSCIMCredentialWithContext(ctx context.Context, request *CreateSCIMCredentialRequest) (response *CreateSCIMCredentialResponse, err error) {
+    if request == nil {
+        request = NewCreateSCIMCredentialRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSCIMCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSCIMCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1972,6 +2031,7 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTDELETE = "FailedOperation.ManualGroupNotDelete"
 //  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTDELETE = "FailedOperation.SynchronizedGroupNotDelete"
 //  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
@@ -1987,6 +2047,7 @@ func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroup
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTDELETE = "FailedOperation.ManualGroupNotDelete"
 //  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTDELETE = "FailedOperation.SynchronizedGroupNotDelete"
 //  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
@@ -2626,6 +2687,61 @@ func (c *Client) DeleteRoleConfigurationWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteSCIMCredentialRequest() (request *DeleteSCIMCredentialRequest) {
+    request = &DeleteSCIMCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteSCIMCredential")
+    
+    
+    return
+}
+
+func NewDeleteSCIMCredentialResponse() (response *DeleteSCIMCredentialResponse) {
+    response = &DeleteSCIMCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSCIMCredential
+// 删除SCIM密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_SCIMCREDENTIALNOTFOUND = "InvalidParameter.ScimCredentialNotFound"
+func (c *Client) DeleteSCIMCredential(request *DeleteSCIMCredentialRequest) (response *DeleteSCIMCredentialResponse, err error) {
+    return c.DeleteSCIMCredentialWithContext(context.Background(), request)
+}
+
+// DeleteSCIMCredential
+// 删除SCIM密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_SCIMCREDENTIALNOTFOUND = "InvalidParameter.ScimCredentialNotFound"
+func (c *Client) DeleteSCIMCredentialWithContext(ctx context.Context, request *DeleteSCIMCredentialRequest) (response *DeleteSCIMCredentialResponse, err error) {
+    if request == nil {
+        request = NewDeleteSCIMCredentialRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSCIMCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSCIMCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteShareUnitRequest() (request *DeleteShareUnitRequest) {
     request = &DeleteShareUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2853,6 +2969,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALUSERNOTDELETE = "FailedOperation.ManualUserNotDelete"
 //  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
 //  FAILEDOPERATION_SYNCHRONIZEDUSERNOTDELETE = "FailedOperation.SynchronizedUserNotDelete"
 //  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
@@ -2868,6 +2985,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALUSERNOTDELETE = "FailedOperation.ManualUserNotDelete"
 //  FAILEDOPERATION_ROLECONFIGURATIONAUTHORIZATIONEXIST = "FailedOperation.RoleConfigurationAuthorizationExist"
 //  FAILEDOPERATION_SYNCHRONIZEDUSERNOTDELETE = "FailedOperation.SynchronizedUserNotDelete"
 //  FAILEDOPERATION_USERPROVISIONINGEXISTS = "FailedOperation.UserProvisioningExists"
@@ -4544,6 +4662,59 @@ func (c *Client) GetRoleConfigurationWithContext(ctx context.Context, request *G
     return
 }
 
+func NewGetSCIMSynchronizationStatusRequest() (request *GetSCIMSynchronizationStatusRequest) {
+    request = &GetSCIMSynchronizationStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "GetSCIMSynchronizationStatus")
+    
+    
+    return
+}
+
+func NewGetSCIMSynchronizationStatusResponse() (response *GetSCIMSynchronizationStatusResponse) {
+    response = &GetSCIMSynchronizationStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetSCIMSynchronizationStatus
+// 获取SCIM同步状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+func (c *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizationStatusRequest) (response *GetSCIMSynchronizationStatusResponse, err error) {
+    return c.GetSCIMSynchronizationStatusWithContext(context.Background(), request)
+}
+
+// GetSCIMSynchronizationStatus
+// 获取SCIM同步状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+func (c *Client) GetSCIMSynchronizationStatusWithContext(ctx context.Context, request *GetSCIMSynchronizationStatusRequest) (response *GetSCIMSynchronizationStatusResponse, err error) {
+    if request == nil {
+        request = NewGetSCIMSynchronizationStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSCIMSynchronizationStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetSCIMSynchronizationStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTaskStatusRequest() (request *GetTaskStatusRequest) {
     request = &GetTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5826,6 +5997,59 @@ func (c *Client) ListRoleConfigurationsWithContext(ctx context.Context, request 
     return
 }
 
+func NewListSCIMCredentialsRequest() (request *ListSCIMCredentialsRequest) {
+    request = &ListSCIMCredentialsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListSCIMCredentials")
+    
+    
+    return
+}
+
+func NewListSCIMCredentialsResponse() (response *ListSCIMCredentialsResponse) {
+    response = &ListSCIMCredentialsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListSCIMCredentials
+// 查询用户SCIM密钥列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+func (c *Client) ListSCIMCredentials(request *ListSCIMCredentialsRequest) (response *ListSCIMCredentialsResponse, err error) {
+    return c.ListSCIMCredentialsWithContext(context.Background(), request)
+}
+
+// ListSCIMCredentials
+// 查询用户SCIM密钥列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+func (c *Client) ListSCIMCredentialsWithContext(ctx context.Context, request *ListSCIMCredentialsRequest) (response *ListSCIMCredentialsResponse, err error) {
+    if request == nil {
+        request = NewListSCIMCredentialsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSCIMCredentials require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSCIMCredentialsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTargetsForPolicyRequest() (request *ListTargetsForPolicyRequest) {
     request = &ListTargetsForPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6553,7 +6777,9 @@ func NewRemoveUserFromGroupResponse() (response *RemoveUserFromGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTUPDATE = "FailedOperation.ManualGroupNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTREMOVEUSER = "FailedOperation.SynchronizedGroupNotRemoveUser"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
 //  INVALIDPARAMETER_GROUPUSERNOTEXIST = "InvalidParameter.GroupUserNotExist"
@@ -6567,7 +6793,9 @@ func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTUPDATE = "FailedOperation.ManualGroupNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTREMOVEUSER = "FailedOperation.SynchronizedGroupNotRemoveUser"
+//  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
 //  INVALIDPARAMETER_GROUPUSERNOTEXIST = "InvalidParameter.GroupUserNotExist"
@@ -6803,6 +7031,7 @@ func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTUPDATE = "FailedOperation.ManualGroupNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
@@ -6816,6 +7045,7 @@ func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroup
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALGROUPNOTUPDATE = "FailedOperation.ManualGroupNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDGROUPNOTUPDATE = "FailedOperation.SynchronizedGroupNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_GROUPNAMEALREADYEXISTS = "InvalidParameter.GroupNameAlreadyExists"
@@ -7308,6 +7538,118 @@ func (c *Client) UpdateRoleConfigurationWithContext(ctx context.Context, request
     return
 }
 
+func NewUpdateSCIMCredentialStatusRequest() (request *UpdateSCIMCredentialStatusRequest) {
+    request = &UpdateSCIMCredentialStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateSCIMCredentialStatus")
+    
+    
+    return
+}
+
+func NewUpdateSCIMCredentialStatusResponse() (response *UpdateSCIMCredentialStatusResponse) {
+    response = &UpdateSCIMCredentialStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateSCIMCredentialStatus
+// 启用/禁用SCIM密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_SCIMCREDENTIALNOTFOUND = "InvalidParameter.ScimCredentialNotFound"
+//  INVALIDPARAMETER_USERSCIMCREDENTIALSTATUSERROR = "InvalidParameter.UserScimCredentialStatusError"
+func (c *Client) UpdateSCIMCredentialStatus(request *UpdateSCIMCredentialStatusRequest) (response *UpdateSCIMCredentialStatusResponse, err error) {
+    return c.UpdateSCIMCredentialStatusWithContext(context.Background(), request)
+}
+
+// UpdateSCIMCredentialStatus
+// 启用/禁用SCIM密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_SCIMCREDENTIALNOTFOUND = "InvalidParameter.ScimCredentialNotFound"
+//  INVALIDPARAMETER_USERSCIMCREDENTIALSTATUSERROR = "InvalidParameter.UserScimCredentialStatusError"
+func (c *Client) UpdateSCIMCredentialStatusWithContext(ctx context.Context, request *UpdateSCIMCredentialStatusRequest) (response *UpdateSCIMCredentialStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateSCIMCredentialStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSCIMCredentialStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSCIMCredentialStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateSCIMSynchronizationStatusRequest() (request *UpdateSCIMSynchronizationStatusRequest) {
+    request = &UpdateSCIMSynchronizationStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateSCIMSynchronizationStatus")
+    
+    
+    return
+}
+
+func NewUpdateSCIMSynchronizationStatusResponse() (response *UpdateSCIMSynchronizationStatusResponse) {
+    response = &UpdateSCIMSynchronizationStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateSCIMSynchronizationStatus
+// 启用/禁用用户SCIM同步
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_SCIMSYNCSTATUSERROR = "InvalidParameter.ScimSyncStatusError"
+func (c *Client) UpdateSCIMSynchronizationStatus(request *UpdateSCIMSynchronizationStatusRequest) (response *UpdateSCIMSynchronizationStatusResponse, err error) {
+    return c.UpdateSCIMSynchronizationStatusWithContext(context.Background(), request)
+}
+
+// UpdateSCIMSynchronizationStatus
+// 启用/禁用用户SCIM同步
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_SCIMSYNCSTATUSERROR = "InvalidParameter.ScimSyncStatusError"
+func (c *Client) UpdateSCIMSynchronizationStatusWithContext(ctx context.Context, request *UpdateSCIMSynchronizationStatusRequest) (response *UpdateSCIMSynchronizationStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateSCIMSynchronizationStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSCIMSynchronizationStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSCIMSynchronizationStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateShareUnitRequest() (request *UpdateShareUnitRequest) {
     request = &UpdateShareUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7395,6 +7737,7 @@ func NewUpdateUserResponse() (response *UpdateUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALUSERNOTUPDATE = "FailedOperation.ManualUserNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
@@ -7408,6 +7751,7 @@ func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALUSERNOTUPDATE = "FailedOperation.ManualUserNotUpdate"
 //  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
@@ -7452,6 +7796,8 @@ func NewUpdateUserStatusResponse() (response *UpdateUserStatusResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALUSERNOTUPDATE = "FailedOperation.ManualUserNotUpdate"
+//  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) UpdateUserStatus(request *UpdateUserStatusRequest) (response *UpdateUserStatusResponse, err error) {
@@ -7463,6 +7809,8 @@ func (c *Client) UpdateUserStatus(request *UpdateUserStatusRequest) (response *U
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_MANUALUSERNOTUPDATE = "FailedOperation.ManualUserNotUpdate"
+//  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) UpdateUserStatusWithContext(ctx context.Context, request *UpdateUserStatusRequest) (response *UpdateUserStatusResponse, err error) {

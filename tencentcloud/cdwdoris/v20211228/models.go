@@ -4184,6 +4184,10 @@ type InstanceNode struct {
 	// UUID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type InstanceOperation struct {
@@ -6044,15 +6048,16 @@ func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
 }
 
 type ScheduleInfo struct {
-	// 生效时间
+	// 生效周期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EffectivePeriod *string `json:"EffectivePeriod,omitnil,omitempty" name:"EffectivePeriod"`
 
-	// 调度类型：
+	// 调度类型，不传该参数时为立即执行：
 	// Day-天
 	// Week-周
 	// Month-月
 	// Once-单次
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleType *string `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 

@@ -5291,6 +5291,11 @@ type ImageQuota struct {
 	TotalQuota *uint64 `json:"TotalQuota,omitnil,omitempty" name:"TotalQuota"`
 }
 
+type ImportImageDataDisk struct {
+	// 数据盘镜像 COS 链接
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
 // Predefined struct for user
 type ImportImageRequestParams struct {
 	// 导入镜像的操作系统架构，`x86_64` 或 `i386`
@@ -5331,6 +5336,9 @@ type ImportImageRequestParams struct {
 
 	//  镜像族
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 导入的数据盘列表
+	ImportImageDataDiskList []*ImportImageDataDisk `json:"ImportImageDataDiskList,omitnil,omitempty" name:"ImportImageDataDiskList"`
 }
 
 type ImportImageRequest struct {
@@ -5374,6 +5382,9 @@ type ImportImageRequest struct {
 
 	//  镜像族
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 导入的数据盘列表
+	ImportImageDataDiskList []*ImportImageDataDisk `json:"ImportImageDataDiskList,omitnil,omitempty" name:"ImportImageDataDiskList"`
 }
 
 func (r *ImportImageRequest) ToJsonString() string {
@@ -5400,6 +5411,7 @@ func (r *ImportImageRequest) FromJsonString(s string) error {
 	delete(f, "LicenseType")
 	delete(f, "BootMode")
 	delete(f, "ImageFamily")
+	delete(f, "ImportImageDataDiskList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportImageRequest has unknown keys!", "")
 	}
@@ -10036,6 +10048,16 @@ type SyncImagesRequestParams struct {
 	// 是否需要返回目的地域的镜像ID。
 	// 默认值: false
 	ImageSetRequired *bool `json:"ImageSetRequired,omitnil,omitempty" name:"ImageSetRequired"`
+
+	// 是否复制为加密自定义镜像。
+	// 默认值为 false。
+	// 复制加密自定义镜像仅支持同地域。
+	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
+
+	// 加密自定义镜像使用的 KMS 密钥 ID。
+	// 仅当复制加密镜像时，即 Encrypt 为 true 时，此参数有效；
+	// 不指定 KmsKeyId，默认使用 CBS 云产品 KMS 密钥。
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 
 type SyncImagesRequest struct {
@@ -10057,6 +10079,16 @@ type SyncImagesRequest struct {
 	// 是否需要返回目的地域的镜像ID。
 	// 默认值: false
 	ImageSetRequired *bool `json:"ImageSetRequired,omitnil,omitempty" name:"ImageSetRequired"`
+
+	// 是否复制为加密自定义镜像。
+	// 默认值为 false。
+	// 复制加密自定义镜像仅支持同地域。
+	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
+
+	// 加密自定义镜像使用的 KMS 密钥 ID。
+	// 仅当复制加密镜像时，即 Encrypt 为 true 时，此参数有效；
+	// 不指定 KmsKeyId，默认使用 CBS 云产品 KMS 密钥。
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 
 func (r *SyncImagesRequest) ToJsonString() string {
@@ -10076,6 +10108,8 @@ func (r *SyncImagesRequest) FromJsonString(s string) error {
 	delete(f, "DryRun")
 	delete(f, "ImageName")
 	delete(f, "ImageSetRequired")
+	delete(f, "Encrypt")
+	delete(f, "KmsKeyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncImagesRequest has unknown keys!", "")
 	}

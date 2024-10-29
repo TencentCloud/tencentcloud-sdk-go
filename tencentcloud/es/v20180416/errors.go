@@ -203,7 +203,7 @@ const (
 	// 节点规格NodeType的取值和预期不符。
 	INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
 
-	// 温热曾数据结构NodeTypeInfos的取值和预期不符。
+	// 温热层数据结构NodeTypeInfos的取值和预期不符。
 	INVALIDPARAMETER_INVALIDNODETYPESTORAGEINFO = "InvalidParameter.InvalidNodeTypeStorageInfo"
 
 	// 分页起始值Offset的取值和预期不符。
@@ -274,6 +274,9 @@ const (
 
 	// 节点类型Type的取值和预期不符。
 	INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+
+	// Uin的取值和预期不符。
+	INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 
 	// 更新的索引元数据json UpdateMetaJson的取值和预期不符。
 	INVALIDPARAMETER_INVALIDUPDATEMETAJSON = "InvalidParameter.InvalidUpdateMetaJson"

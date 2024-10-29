@@ -15963,6 +15963,15 @@ type TimeShiftStreamInfo struct {
 	// 时移数据存储时长，单位秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 时移自适应码率子流列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeShiftSubStreams []*TimeShiftSubStream `json:"TimeShiftSubStreams,omitnil,omitempty" name:"TimeShiftSubStreams"`
+}
+
+type TimeShiftSubStream struct {
+	// 时移自适应码率子流转码模板ID。
+	TransCodeId *uint64 `json:"TransCodeId,omitnil,omitempty" name:"TransCodeId"`
 }
 
 type TimeShiftTemplate struct {

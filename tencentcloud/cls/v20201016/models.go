@@ -197,8 +197,12 @@ type AlarmInfo struct {
 }
 
 type AlarmNotice struct {
-	// 告警通知模板名称。
+	// 告警通知渠道组名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 告警通知渠道组绑定的标签信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 告警模板的类型。可选值：
 	// <br><li> Trigger - 告警触发</li>
@@ -218,6 +222,23 @@ type AlarmNotice struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
+	// 通知规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
+
+	// 免登录操作告警开关。
+	// 参数值： 1：关闭 2：开启（默认开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
+
+	// 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
+
+	// 投递相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmNoticeDeliverConfig *AlarmNoticeDeliverConfig `json:"AlarmNoticeDeliverConfig,omitnil,omitempty" name:"AlarmNoticeDeliverConfig"`
+
 	// 创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -225,10 +246,15 @@ type AlarmNotice struct {
 	// 最近更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
 
-	// 通知规则。
+type AlarmNoticeDeliverConfig struct {
+	// 通知渠道投递日志配置信息。
+	DeliverConfig *DeliverConfig `json:"DeliverConfig,omitnil,omitempty" name:"DeliverConfig"`
+
+	// 投递失败原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 type AlarmShieldInfo struct {
@@ -1262,39 +1288,44 @@ type CreateAlarmNoticeRequestParams struct {
 	// 通知渠道组名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 通知类型。可选值：
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+	// 需要发送通知的告警类型。可选值：
 	// - Trigger - 告警触发
 	// - Recovery - 告警恢复
 	// - All - 告警触发和告警恢复
-	// 
-	// 
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
 	// 通知接收对象。
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
-	// 接口回调信息（包括企业微信）。
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
+	// 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+	// 接口回调信息（包括企业微信、钉钉、飞书）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
+	// 【高级模式】（简易模式/告警模式二选一，分别配置相应参数）
 	// 通知规则。
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
-	// 
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
+
+	// 查询数据链接。http:// 或者 https:// 开头，不能/结尾
+	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
+
+	// 投递日志开关。可取值如下：
+	// 1：关闭（默认值）；
+	// 2：开启 
+	// 投递日志开关开启时， DeliverConfig参数必填。
+	DeliverStatus *uint64 `json:"DeliverStatus,omitnil,omitempty" name:"DeliverStatus"`
+
+	// 投递日志配置参数。当DeliverStatus开启时，必填。
+	DeliverConfig *DeliverConfig `json:"DeliverConfig,omitnil,omitempty" name:"DeliverConfig"`
+
+	// 免登录操作告警开关。可取值如下：
+	// -      1：关闭
+	// -      2：开启（默认值）
+	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
 }
 
 type CreateAlarmNoticeRequest struct {
@@ -1303,39 +1334,44 @@ type CreateAlarmNoticeRequest struct {
 	// 通知渠道组名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 通知类型。可选值：
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+	// 需要发送通知的告警类型。可选值：
 	// - Trigger - 告警触发
 	// - Recovery - 告警恢复
 	// - All - 告警触发和告警恢复
-	// 
-	// 
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
 	// 通知接收对象。
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
-	// 接口回调信息（包括企业微信）。
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
+	// 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+	// 接口回调信息（包括企业微信、钉钉、飞书）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
+	// 【高级模式】（简易模式/告警模式二选一，分别配置相应参数）
 	// 通知规则。
-	//  注意:  
-	// - Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-	// - 2组rule配置互斥
-	// - rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
-	// 
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
+
+	// 查询数据链接。http:// 或者 https:// 开头，不能/结尾
+	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
+
+	// 投递日志开关。可取值如下：
+	// 1：关闭（默认值）；
+	// 2：开启 
+	// 投递日志开关开启时， DeliverConfig参数必填。
+	DeliverStatus *uint64 `json:"DeliverStatus,omitnil,omitempty" name:"DeliverStatus"`
+
+	// 投递日志配置参数。当DeliverStatus开启时，必填。
+	DeliverConfig *DeliverConfig `json:"DeliverConfig,omitnil,omitempty" name:"DeliverConfig"`
+
+	// 免登录操作告警开关。可取值如下：
+	// -      1：关闭
+	// -      2：开启（默认值）
+	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -1351,10 +1387,15 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "Tags")
 	delete(f, "Type")
 	delete(f, "NoticeReceivers")
 	delete(f, "WebCallbacks")
 	delete(f, "NoticeRules")
+	delete(f, "JumpDomain")
+	delete(f, "DeliverStatus")
+	delete(f, "DeliverConfig")
+	delete(f, "AlarmShieldStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -4972,6 +5013,29 @@ func (r *DeleteTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeliverConfig struct {
+	// 地域信息。
+	// 
+	// 示例：
+	//  ap-guangzhou  广州地域；
+	// ap-nanjing 南京地域。
+	// 
+	// 详细信息请查看官网：
+	// 
+	// https://cloud.tencent.com/document/product/614/18940
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 日志主题ID。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 投递数据范围。
+	// 
+	// 0: 全部日志, 包括告警策略日常周期执行的所有日志，也包括告警策略变更产生的日志，默认值
+	// 
+	// 1:仅告警触发及恢复日志
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+}
+
 // Predefined struct for user
 type DescribeAlarmNoticesRequestParams struct {
 	// <li> name
@@ -7683,6 +7747,33 @@ type DynamicIndex struct {
 	// 键值索引自动配置开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type EscalateNoticeInfo struct {
+	// 告警通知模板接收者信息。
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
+
+	// 告警通知模板回调信息。
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
+
+	// 告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Escalate *bool `json:"Escalate,omitnil,omitempty" name:"Escalate"`
+
+	// 告警升级间隔。单位：分钟，范围`[1，14400]`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
+	// - 无人认领且未恢复：告警没有恢复并且没有人认领则升级
+	// - 未恢复：当前告警持续未恢复则升级
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 告警升级后下一个环节的通知渠道配置，最多可配置5个环节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EscalateNotice *EscalateNoticeInfo `json:"EscalateNotice,omitnil,omitempty" name:"EscalateNotice"`
 }
 
 type EventLog struct {
@@ -10945,10 +11036,14 @@ type NoticeReceiver struct {
 	// - Phone - 电话
 	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
 
-	// 允许接收信息的开始时间。格式：`15:04:05`，必填。
+	// 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
+
+	// 允许接收信息的开始时间。格式：`15:04:05`。必填
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 允许接收信息的结束时间。格式：`15:04:05`，必填。
+	// 允许接收信息的结束时间。格式：`15:04:05`。必填
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 位序。
@@ -10956,21 +11051,9 @@ type NoticeReceiver struct {
 	// - 入参时无效。
 	// - 出参时有效。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
-
-	// 通知内容模板ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 }
 
 type NoticeRule struct {
-	// 告警通知模板接收者信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
-
-	// 告警通知模板回调信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
-
 	// 匹配规则 JSON串。
 	// **rule规则树格式为嵌套结构体JSON字符串**
 	// `{"Value":"AND","Type":"Operation","Children":[{"Value":"OR","Type":"Operation","Children":[{"Type":"Condition","Value":"Level","Children":[{"Value":"In","Type":"Compare"},{"Value":"[1,0]","Type":"Value"}]},{"Type":"Condition","Value":"Level","Children":[{"Value":"NotIn","Type":"Compare"},{"Value":"[2]","Type":"Value"}]}]}]}`
@@ -11031,6 +11114,33 @@ type NoticeRule struct {
 	// `{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">\",\"Type\":\"Compare\"},{\"Value\":1,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">=\",\"Type\":\"Compare\"},{\"Value\":2,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<\",\"Type\":\"Compare\"},{\"Value\":3,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<=\",\"Type\":\"Compare\"},{\"Value\":4,\"Type\":\"Value\"}]}]}]}`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 告警通知接收者信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
+
+	// 告警通知模板回调信息，包括企业微信、钉钉、飞书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
+
+	// 告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Escalate *bool `json:"Escalate,omitnil,omitempty" name:"Escalate"`
+
+	// 告警升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
+	// - 无人认领且未恢复：告警没有恢复并且没有人认领则升级
+	// - 未恢复：当前告警持续未恢复则升级
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 告警升级间隔。单位：分钟，范围`[1，14400]`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 告警升级后下一个环节的通知渠道配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EscalateNotice *EscalateNoticeInfo `json:"EscalateNotice,omitnil,omitempty" name:"EscalateNotice"`
 }
 
 // Predefined struct for user
@@ -12522,32 +12632,53 @@ type ValueInfo struct {
 }
 
 type WebCallback struct {
-	// 回调地址。最大支持1024个字节数。
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
 	// 回调的类型。可选值：
-	// - WeCom
 	// - Http
+	// - WeCom
 	// - DingTalk
 	// - Lark
 	CallbackType *string `json:"CallbackType,omitnil,omitempty" name:"CallbackType"`
+
+	// 回调地址，最大支持1024个字节。
+	// 也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 集成配置ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 
 	// 回调方法。可选值：
 	// - POST（默认值）
 	// - PUT
 	// 
 	// 注意：
-	// - 参数CallbackType为Http时为必选。
+	// - 参数CallbackType为Http时为必选，其它回调方式无需填写。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 请求头。
-	// 注意：该参数已废弃，请使用NoticeContentId。
+	// 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
+
+	// 提醒类型。
+	// 
+	// 0：不提醒；1：指定人；2：所有人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemindType *uint64 `json:"RemindType,omitnil,omitempty" name:"RemindType"`
+
+	// 电话列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mobiles []*string `json:"Mobiles,omitnil,omitempty" name:"Mobiles"`
+
+	// 用户ID列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 该参数已废弃，请使用NoticeContentId。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 请求内容。
-	// 注意：该参数已废弃，请使用NoticeContentId。
+	// 该参数已废弃，请使用NoticeContentId。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
@@ -12555,12 +12686,4 @@ type WebCallback struct {
 	// - 入参无效。
 	// - 出参有效。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
-
-	// 通知内容模板ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
-
-	// 集成配置ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 }

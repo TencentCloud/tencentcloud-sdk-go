@@ -88,6 +88,63 @@ func (c *Client) CheckMigrateIndexMetaDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateClusterSnapshotRequest() (request *CreateClusterSnapshotRequest) {
+    request = &CreateClusterSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateClusterSnapshot")
+    
+    
+    return
+}
+
+func NewCreateClusterSnapshotResponse() (response *CreateClusterSnapshotResponse) {
+    response = &CreateClusterSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateClusterSnapshot
+// 集群快照手动创建
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+func (c *Client) CreateClusterSnapshot(request *CreateClusterSnapshotRequest) (response *CreateClusterSnapshotResponse, err error) {
+    return c.CreateClusterSnapshotWithContext(context.Background(), request)
+}
+
+// CreateClusterSnapshot
+// 集群快照手动创建
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, request *CreateClusterSnapshotRequest) (response *CreateClusterSnapshotResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosMigrateToServerlessInstanceRequest() (request *CreateCosMigrateToServerlessInstanceRequest) {
     request = &CreateCosMigrateToServerlessInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -109,12 +166,26 @@ func NewCreateCosMigrateToServerlessInstanceResponse() (response *CreateCosMigra
 
 // CreateCosMigrateToServerlessInstance
 // cos迁移流程
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 func (c *Client) CreateCosMigrateToServerlessInstance(request *CreateCosMigrateToServerlessInstanceRequest) (response *CreateCosMigrateToServerlessInstanceResponse, err error) {
     return c.CreateCosMigrateToServerlessInstanceWithContext(context.Background(), request)
 }
 
 // CreateCosMigrateToServerlessInstance
 // cos迁移流程
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 func (c *Client) CreateCosMigrateToServerlessInstanceWithContext(ctx context.Context, request *CreateCosMigrateToServerlessInstanceRequest) (response *CreateCosMigrateToServerlessInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCosMigrateToServerlessInstanceRequest()
@@ -768,6 +839,91 @@ func (c *Client) CreateServerlessSpaceV2WithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteClusterSnapshotRequest() (request *DeleteClusterSnapshotRequest) {
+    request = &DeleteClusterSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DeleteClusterSnapshot")
+    
+    
+    return
+}
+
+func NewDeleteClusterSnapshotResponse() (response *DeleteClusterSnapshotResponse) {
+    response = &DeleteClusterSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteClusterSnapshot
+// 删除快照仓库里备份的快照
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
+//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
+    return c.DeleteClusterSnapshotWithContext(context.Background(), request)
+}
+
+// DeleteClusterSnapshot
+// 删除快照仓库里备份的快照
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
+//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
+//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
+//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
+//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
     request = &DeleteIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1152,6 +1308,55 @@ func (c *Client) DeleteServerlessSpaceUserWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteServerlessSpaceUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterSnapshotRequest() (request *DescribeClusterSnapshotRequest) {
+    request = &DescribeClusterSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeClusterSnapshot")
+    
+    
+    return
+}
+
+func NewDescribeClusterSnapshotResponse() (response *DescribeClusterSnapshotResponse) {
+    response = &DescribeClusterSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterSnapshot
+// 获取快照备份列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+func (c *Client) DescribeClusterSnapshot(request *DescribeClusterSnapshotRequest) (response *DescribeClusterSnapshotResponse, err error) {
+    return c.DescribeClusterSnapshotWithContext(context.Background(), request)
+}
+
+// DescribeClusterSnapshot
+// 获取快照备份列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+func (c *Client) DescribeClusterSnapshotWithContext(ctx context.Context, request *DescribeClusterSnapshotRequest) (response *DescribeClusterSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterSnapshotResponse()
     err = c.Send(request, response)
     return
 }
@@ -2960,6 +3165,59 @@ func (c *Client) RestartNodesWithContext(ctx context.Context, request *RestartNo
     request.SetContext(ctx)
     
     response = NewRestartNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestoreClusterSnapshotRequest() (request *RestoreClusterSnapshotRequest) {
+    request = &RestoreClusterSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "RestoreClusterSnapshot")
+    
+    
+    return
+}
+
+func NewRestoreClusterSnapshotResponse() (response *RestoreClusterSnapshotResponse) {
+    response = &RestoreClusterSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestoreClusterSnapshot
+// 快照备份恢复，从仓库中恢复快照到集群中
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+func (c *Client) RestoreClusterSnapshot(request *RestoreClusterSnapshotRequest) (response *RestoreClusterSnapshotResponse, err error) {
+    return c.RestoreClusterSnapshotWithContext(context.Background(), request)
+}
+
+// RestoreClusterSnapshot
+// 快照备份恢复，从仓库中恢复快照到集群中
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+func (c *Client) RestoreClusterSnapshotWithContext(ctx context.Context, request *RestoreClusterSnapshotRequest) (response *RestoreClusterSnapshotResponse, err error) {
+    if request == nil {
+        request = NewRestoreClusterSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreClusterSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreClusterSnapshotResponse()
     err = c.Send(request, response)
     return
 }

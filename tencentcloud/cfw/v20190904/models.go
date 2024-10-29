@@ -967,6 +967,9 @@ type CreateAddressTemplateRequestParams struct {
 
 	// 协议端口模板，协议类型，4:4层协议，7:7层协议，Type=6时必填
 	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
+
+	// IP版本,0 IPV4;1 IPV6
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type CreateAddressTemplateRequest struct {
@@ -989,6 +992,9 @@ type CreateAddressTemplateRequest struct {
 
 	// 协议端口模板，协议类型，4:4层协议，7:7层协议，Type=6时必填
 	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
+
+	// IP版本,0 IPV4;1 IPV6
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 func (r *CreateAddressTemplateRequest) ToJsonString() string {
@@ -1008,6 +1014,7 @@ func (r *CreateAddressTemplateRequest) FromJsonString(s string) error {
 	delete(f, "IpString")
 	delete(f, "Type")
 	delete(f, "ProtocolType")
+	delete(f, "IpVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAddressTemplateRequest has unknown keys!", "")
 	}
@@ -4094,6 +4101,9 @@ func (r *DescribeBlockStaticListRequest) FromJsonString(s string) error {
 type DescribeBlockStaticListResponseParams struct {
 	// 无
 	Data []*StaticInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 异步查询状态，1查询执行中，0查询已结束
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9309,26 +9319,26 @@ func (r *ModifyNatSequenceRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyResourceGroupRequestParams struct {
-	// 组id
+	// 资产组id
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 上级组id
+	// 上级组资产组id
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
 type ModifyResourceGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 组id
+	// 资产组id
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 上级组id
+	// 上级组资产组id
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
@@ -10694,6 +10704,9 @@ type RuleChangeItem struct {
 
 	// 新的sequence 值
 	NewOrderIndex *int64 `json:"NewOrderIndex,omitnil,omitempty" name:"NewOrderIndex"`
+
+	// Ip版本，0：IPv4，1：IPv6，默认为IPv4
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type RuleInfoData struct {
@@ -11891,14 +11904,14 @@ type VpcRuleItem struct {
 	// 规则顺序，-1表示最低，1表示最高
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 规则对应的唯一id
-	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
-
 	// 规则状态，true表示启用，false表示禁用
 	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 规则生效的范围，是在哪对vpc之间还是针对所有vpc间生效
 	EdgeId *string `json:"EdgeId,omitnil,omitempty" name:"EdgeId"`
+
+	// 规则对应的唯一id，添加规则时忽略该字段，修改该规则时需要填写Uuid;查询返回时会返回该参数
+	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 规则的命中次数，增删改查规则时无需传入此参数，主要用于返回查询结果数据
 	DetectedTimes *int64 `json:"DetectedTimes,omitnil,omitempty" name:"DetectedTimes"`
@@ -11939,6 +11952,10 @@ type VpcRuleItem struct {
 	// 访问源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// Ip版本，0：IPv4，1：IPv6，默认为IPv4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type VpcZoneData struct {

@@ -334,10 +334,10 @@ func (r *CreateConnectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEventBusRequestParams struct {
-	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// 事件集描述，不限字符类型，200字符描述以内
+	// 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// EB存储时长
@@ -350,10 +350,10 @@ type CreateEventBusRequestParams struct {
 type CreateEventBusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// 事件集描述，不限字符类型，200字符描述以内
+	// 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// EB存储时长
@@ -415,16 +415,16 @@ type CreateRuleRequestParams struct {
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
 	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
-	// 事件集ID。
+	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 使能开关。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 事件集描述，不限字符类型，200字符描述以内
+	// 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -434,16 +434,16 @@ type CreateRuleRequest struct {
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
 	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
-	// 事件集ID。
+	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 使能开关。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 事件集描述，不限字符类型，200字符描述以内
+	// 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -1958,11 +1958,11 @@ type ListTargetsRequestParams struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
 	// 事件规则ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -1980,11 +1980,11 @@ type ListTargetsRequest struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
 	// 事件规则ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -2009,8 +2009,8 @@ func (r *ListTargetsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EventBusId")
-	delete(f, "OrderBy")
 	delete(f, "RuleId")
+	delete(f, "OrderBy")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Order")
@@ -2726,13 +2726,13 @@ type UpdateRuleRequestParams struct {
 	// 使能开关。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 规则描述，不限字符类型，200字符描述以内。
+	// 规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
 	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
-	// 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// 事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
@@ -2748,13 +2748,13 @@ type UpdateRuleRequest struct {
 	// 使能开关。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 规则描述，不限字符类型，200字符描述以内。
+	// 规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
 	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
-	// 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// 事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 

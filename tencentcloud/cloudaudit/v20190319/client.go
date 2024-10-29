@@ -45,115 +45,6 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewCreateAuditRequest() (request *CreateAuditRequest) {
-    request = &CreateAuditRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cloudaudit", APIVersion, "CreateAudit")
-    
-    
-    return
-}
-
-func NewCreateAuditResponse() (response *CreateAuditResponse) {
-    response = &CreateAuditResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateAudit
-// 参数要求：
-//
-// 1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
-//
-// 2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
-//
-// 3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
-//
-// 4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_CREATEBUCKETFAIL = "FailedOperation.CreateBucketFail"
-//  INTERNALERROR_CMQERROR = "InternalError.CmqError"
-//  INTERNALERROR_CREATEAUDITERROR = "InternalError.CreateAuditError"
-//  INVALIDPARAMETERVALUE_AUDITNAMEERROR = "InvalidParameterValue.AuditNameError"
-//  INVALIDPARAMETERVALUE_CMQREGIONERROR = "InvalidParameterValue.CmqRegionError"
-//  INVALIDPARAMETERVALUE_COSNAMEERROR = "InvalidParameterValue.CosNameError"
-//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
-//  INVALIDPARAMETERVALUE_ISCREATENEWBUCKETERROR = "InvalidParameterValue.IsCreateNewBucketError"
-//  INVALIDPARAMETERVALUE_ISCREATENEWQUEUEERROR = "InvalidParameterValue.IsCreateNewQueueError"
-//  INVALIDPARAMETERVALUE_ISENABLECMQNOTIFYERROR = "InvalidParameterValue.IsEnableCmqNotifyError"
-//  INVALIDPARAMETERVALUE_LOGFILEPREFIXERROR = "InvalidParameterValue.LogFilePrefixError"
-//  INVALIDPARAMETERVALUE_QUEUENAMEERROR = "InvalidParameterValue.QueueNameError"
-//  INVALIDPARAMETERVALUE_READWRITEATTRIBUTEERROR = "InvalidParameterValue.ReadWriteAttributeError"
-//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
-//  MISSINGPARAMETER_MISSAUDITNAME = "MissingParameter.MissAuditName"
-//  MISSINGPARAMETER_MISSCOSBUCKETNAME = "MissingParameter.MissCosBucketName"
-//  MISSINGPARAMETER_MISSCOSREGION = "MissingParameter.MissCosRegion"
-//  MISSINGPARAMETER_CMQ = "MissingParameter.cmq"
-//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDIT = "ResourceInUse.AlreadyExistsSameAudit"
-//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCMQCONFIG = "ResourceInUse.AlreadyExistsSameAuditCmqConfig"
-//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
-//  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
-//  RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
-func (c *Client) CreateAudit(request *CreateAuditRequest) (response *CreateAuditResponse, err error) {
-    return c.CreateAuditWithContext(context.Background(), request)
-}
-
-// CreateAudit
-// 参数要求：
-//
-// 1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
-//
-// 2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
-//
-// 3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
-//
-// 4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_CREATEBUCKETFAIL = "FailedOperation.CreateBucketFail"
-//  INTERNALERROR_CMQERROR = "InternalError.CmqError"
-//  INTERNALERROR_CREATEAUDITERROR = "InternalError.CreateAuditError"
-//  INVALIDPARAMETERVALUE_AUDITNAMEERROR = "InvalidParameterValue.AuditNameError"
-//  INVALIDPARAMETERVALUE_CMQREGIONERROR = "InvalidParameterValue.CmqRegionError"
-//  INVALIDPARAMETERVALUE_COSNAMEERROR = "InvalidParameterValue.CosNameError"
-//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
-//  INVALIDPARAMETERVALUE_ISCREATENEWBUCKETERROR = "InvalidParameterValue.IsCreateNewBucketError"
-//  INVALIDPARAMETERVALUE_ISCREATENEWQUEUEERROR = "InvalidParameterValue.IsCreateNewQueueError"
-//  INVALIDPARAMETERVALUE_ISENABLECMQNOTIFYERROR = "InvalidParameterValue.IsEnableCmqNotifyError"
-//  INVALIDPARAMETERVALUE_LOGFILEPREFIXERROR = "InvalidParameterValue.LogFilePrefixError"
-//  INVALIDPARAMETERVALUE_QUEUENAMEERROR = "InvalidParameterValue.QueueNameError"
-//  INVALIDPARAMETERVALUE_READWRITEATTRIBUTEERROR = "InvalidParameterValue.ReadWriteAttributeError"
-//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
-//  MISSINGPARAMETER_MISSAUDITNAME = "MissingParameter.MissAuditName"
-//  MISSINGPARAMETER_MISSCOSBUCKETNAME = "MissingParameter.MissCosBucketName"
-//  MISSINGPARAMETER_MISSCOSREGION = "MissingParameter.MissCosRegion"
-//  MISSINGPARAMETER_CMQ = "MissingParameter.cmq"
-//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDIT = "ResourceInUse.AlreadyExistsSameAudit"
-//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCMQCONFIG = "ResourceInUse.AlreadyExistsSameAuditCmqConfig"
-//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
-//  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
-//  RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
-func (c *Client) CreateAuditWithContext(ctx context.Context, request *CreateAuditRequest) (response *CreateAuditResponse, err error) {
-    if request == nil {
-        request = NewCreateAuditRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateAudit require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateAuditResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateAuditTrackRequest() (request *CreateAuditTrackRequest) {
     request = &CreateAuditTrackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -227,53 +118,75 @@ func (c *Client) CreateAuditTrackWithContext(ctx context.Context, request *Creat
     return
 }
 
-func NewDeleteAuditRequest() (request *DeleteAuditRequest) {
-    request = &DeleteAuditRequest{
+func NewCreateEventsAuditTrackRequest() (request *CreateEventsAuditTrackRequest) {
+    request = &CreateEventsAuditTrackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cloudaudit", APIVersion, "DeleteAudit")
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "CreateEventsAuditTrack")
     
     
     return
 }
 
-func NewDeleteAuditResponse() (response *DeleteAuditResponse) {
-    response = &DeleteAuditResponse{
+func NewCreateEventsAuditTrackResponse() (response *CreateEventsAuditTrackResponse) {
+    response = &CreateEventsAuditTrackResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// DeleteAudit
-// 删除跟踪集
+// CreateEventsAuditTrack
+// 创建操作审计跟踪集
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DELETEAUDITERROR = "InternalError.DeleteAuditError"
-//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
-func (c *Client) DeleteAudit(request *DeleteAuditRequest) (response *DeleteAuditResponse, err error) {
-    return c.DeleteAuditWithContext(context.Background(), request)
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
+func (c *Client) CreateEventsAuditTrack(request *CreateEventsAuditTrackRequest) (response *CreateEventsAuditTrackResponse, err error) {
+    return c.CreateEventsAuditTrackWithContext(context.Background(), request)
 }
 
-// DeleteAudit
-// 删除跟踪集
+// CreateEventsAuditTrack
+// 创建操作审计跟踪集
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DELETEAUDITERROR = "InternalError.DeleteAuditError"
-//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
-func (c *Client) DeleteAuditWithContext(ctx context.Context, request *DeleteAuditRequest) (response *DeleteAuditResponse, err error) {
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
+func (c *Client) CreateEventsAuditTrackWithContext(ctx context.Context, request *CreateEventsAuditTrackRequest) (response *CreateEventsAuditTrackResponse, err error) {
     if request == nil {
-        request = NewDeleteAuditRequest()
+        request = NewCreateEventsAuditTrackRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("DeleteAudit require credential")
+        return nil, errors.New("CreateEventsAuditTrack require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewDeleteAuditResponse()
+    response = NewCreateEventsAuditTrackResponse()
     err = c.Send(request, response)
     return
 }
@@ -983,6 +896,81 @@ func (c *Client) ModifyAuditTrackWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyAuditTrackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEventsAuditTrackRequest() (request *ModifyEventsAuditTrackRequest) {
+    request = &ModifyEventsAuditTrackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "ModifyEventsAuditTrack")
+    
+    
+    return
+}
+
+func NewModifyEventsAuditTrackResponse() (response *ModifyEventsAuditTrackResponse) {
+    response = &ModifyEventsAuditTrackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEventsAuditTrack
+// 修改操作审计跟踪集
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
+func (c *Client) ModifyEventsAuditTrack(request *ModifyEventsAuditTrackRequest) (response *ModifyEventsAuditTrackResponse, err error) {
+    return c.ModifyEventsAuditTrackWithContext(context.Background(), request)
+}
+
+// ModifyEventsAuditTrack
+// 修改操作审计跟踪集
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+//  RESOURCENOTFOUND_COSNOTEXIST = "ResourceNotFound.CosNotExist"
+func (c *Client) ModifyEventsAuditTrackWithContext(ctx context.Context, request *ModifyEventsAuditTrackRequest) (response *ModifyEventsAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewModifyEventsAuditTrackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEventsAuditTrack require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEventsAuditTrackResponse()
     err = c.Send(request, response)
     return
 }

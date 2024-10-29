@@ -285,7 +285,6 @@ type ZoneInfo struct {
 	// <li> ap-shanghai-5 </li>
 	// <li> ap-mumbai-1 </li>
 	// <li> ap-mumbai-2 </li>
-	// <li> eu-moscow-1 </li>
 	// <li> ap-beijing-1 </li>
 	// <li> ap-beijing-2 </li>
 	// <li> ap-beijing-3 </li>

@@ -160,6 +160,26 @@ type Component struct {
 
 	// 第三方组件的许可证表达式
 	LicenseExpression *string `json:"LicenseExpression,omitnil,omitempty" name:"LicenseExpression"`
+
+	// 第三方组件的版本信息(如果匹配到版本)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionInfo *ComponentVersionInfo `json:"VersionInfo,omitnil,omitempty" name:"VersionInfo"`
+
+	// 第三方组件的最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// 第三方组件的类型标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*string `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type ComponentTagFilter struct {
+	// 包括的Tag
+	IncludeTags []*string `json:"IncludeTags,omitnil,omitempty" name:"IncludeTags"`
+
+	// 排除的Tag
+	ExcludeTags []*string `json:"ExcludeTags,omitnil,omitempty" name:"ExcludeTags"`
 }
 
 type ComponentVersion struct {
@@ -170,6 +190,24 @@ type ComponentVersion struct {
 	// 该组件版本的许可证表达式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseExpression *string `json:"LicenseExpression,omitnil,omitempty" name:"LicenseExpression"`
+
+	// 组件的版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionInfo *ComponentVersionInfo `json:"VersionInfo,omitnil,omitempty" name:"VersionInfo"`
+}
+
+type ComponentVersionInfo struct {
+	// 版本发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 当前版本的所有copyright
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CopyrightList []*string `json:"CopyrightList,omitnil,omitempty" name:"CopyrightList"`
+
+	// 版本标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*string `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type ComponentVulnerabilitySummary struct {
@@ -266,6 +304,21 @@ func (r *DescribeKBComponentResponse) FromJsonString(s string) error {
 type DescribeKBComponentVersionListRequestParams struct {
 	// 要查询的组件 PURL
 	PURL *PURL `json:"PURL,omitnil,omitempty" name:"PURL"`
+
+	// 页号
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序方式，可以是"ASC"或"DESC"，默认"DESC"
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段，可能的字段包括“Version”、"PublishTime"
+	OrderBy []*string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// Tag筛选
+	Filter *ComponentTagFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type DescribeKBComponentVersionListRequest struct {
@@ -273,6 +326,21 @@ type DescribeKBComponentVersionListRequest struct {
 	
 	// 要查询的组件 PURL
 	PURL *PURL `json:"PURL,omitnil,omitempty" name:"PURL"`
+
+	// 页号
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序方式，可以是"ASC"或"DESC"，默认"DESC"
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段，可能的字段包括“Version”、"PublishTime"
+	OrderBy []*string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// Tag筛选
+	Filter *ComponentTagFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 func (r *DescribeKBComponentVersionListRequest) ToJsonString() string {
@@ -288,6 +356,11 @@ func (r *DescribeKBComponentVersionListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PURL")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Order")
+	delete(f, "OrderBy")
+	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBComponentVersionListRequest has unknown keys!", "")
 	}
@@ -363,6 +436,12 @@ type DescribeKBComponentVulnerabilityResponseParams struct {
 	// 漏洞信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityList []*ComponentVulnerabilityUnion `json:"VulnerabilityList,omitnil,omitempty" name:"VulnerabilityList"`
+
+	// 组件purl
+	PURL *PURL `json:"PURL,omitnil,omitempty" name:"PURL"`
+
+	// 推荐版本，当前版本中的所有漏洞都修复了的版本
+	RecommendedVersion *string `json:"RecommendedVersion,omitnil,omitempty" name:"RecommendedVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -785,6 +864,9 @@ type VulnerabilityDetail struct {
 	// 漏洞提交时间
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
+	// 漏洞更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
 	// CWE编号
 	CWEID *string `json:"CWEID,omitnil,omitempty" name:"CWEID"`
 
@@ -823,6 +905,20 @@ type VulnerabilitySummary struct {
 	// <li>Medium</li>
 	// <li>Low</li>
 	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
+
+	// 架构信息，如x86、ARM等，废弃，请使用ArchitectureList
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Architecture is deprecated.
+	Architecture []*string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
+
+	// 架构信息，如x86、ARM等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchitectureList []*string `json:"ArchitectureList,omitnil,omitempty" name:"ArchitectureList"`
+
+	// patch链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PatchUrlList []*string `json:"PatchUrlList,omitnil,omitempty" name:"PatchUrlList"`
 }
 
 type VulnerabilityUnion struct {

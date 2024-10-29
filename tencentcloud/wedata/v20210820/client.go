@@ -3679,6 +3679,104 @@ func (c *Client) DescribeDataCheckStatWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeDataServicePublishedApiDetailRequest() (request *DescribeDataServicePublishedApiDetailRequest) {
+    request = &DescribeDataServicePublishedApiDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataServicePublishedApiDetail")
+    
+    
+    return
+}
+
+func NewDescribeDataServicePublishedApiDetailResponse() (response *DescribeDataServicePublishedApiDetailResponse) {
+    response = &DescribeDataServicePublishedApiDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataServicePublishedApiDetail
+// 查询数据服务API的发布态信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDataServicePublishedApiDetail(request *DescribeDataServicePublishedApiDetailRequest) (response *DescribeDataServicePublishedApiDetailResponse, err error) {
+    return c.DescribeDataServicePublishedApiDetailWithContext(context.Background(), request)
+}
+
+// DescribeDataServicePublishedApiDetail
+// 查询数据服务API的发布态信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDataServicePublishedApiDetailWithContext(ctx context.Context, request *DescribeDataServicePublishedApiDetailRequest) (response *DescribeDataServicePublishedApiDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataServicePublishedApiDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataServicePublishedApiDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataServicePublishedApiDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataServicePublishedApiListRequest() (request *DescribeDataServicePublishedApiListRequest) {
+    request = &DescribeDataServicePublishedApiListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataServicePublishedApiList")
+    
+    
+    return
+}
+
+func NewDescribeDataServicePublishedApiListResponse() (response *DescribeDataServicePublishedApiListResponse) {
+    response = &DescribeDataServicePublishedApiListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataServicePublishedApiList
+// 获取数据服务API的发布态信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDataServicePublishedApiList(request *DescribeDataServicePublishedApiListRequest) (response *DescribeDataServicePublishedApiListResponse, err error) {
+    return c.DescribeDataServicePublishedApiListWithContext(context.Background(), request)
+}
+
+// DescribeDataServicePublishedApiList
+// 获取数据服务API的发布态信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDataServicePublishedApiListWithContext(ctx context.Context, request *DescribeDataServicePublishedApiListRequest) (response *DescribeDataServicePublishedApiListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataServicePublishedApiListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataServicePublishedApiList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataServicePublishedApiListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataSourceInfoListRequest() (request *DescribeDataSourceInfoListRequest) {
     request = &DescribeDataSourceInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

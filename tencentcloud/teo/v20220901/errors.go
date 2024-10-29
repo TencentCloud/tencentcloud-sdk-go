@@ -566,6 +566,24 @@ const (
 	// 修改源站操作中负载均衡实例Id必填。
 	INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = "InvalidParameter.LoadBalanceInstanceIdIsRequired"
 
+	// 引用负载均衡的4层代理服务正在部署中，请稍后再编辑。
+	INVALIDPARAMETER_LOADBALANCERBINDL4NOTINSTABLESTATUS = "InvalidParameter.LoadBalancerBindL4NotInStableStatus"
+
+	// 引用负载均衡的7层域名服务正在部署中，请稍后再编辑。
+	INVALIDPARAMETER_LOADBALANCERBINDL7NOTINSTABLESTATUS = "InvalidParameter.LoadBalancerBindL7NotInStableStatus"
+
+	// 同一站点下的负载均衡名称不可以重复。
+	INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
+
+	// 负载均衡器在L4代理中使用。
+	INVALIDPARAMETER_LOADBALANCERUSEDINL4PROXY = "InvalidParameter.LoadBalancerUsedInL4Proxy"
+
+	// 负载均衡器在L7域名中使用。
+	INVALIDPARAMETER_LOADBALANCERUSEDINL7DOMAIN = "InvalidParameter.LoadBalancerUsedInL7Domain"
+
+	// 负载均衡器在规则引擎中使用。
+	INVALIDPARAMETER_LOADBALANCERUSEDINRULEENGINE = "InvalidParameter.LoadBalancerUsedInRuleEngine"
+
 	// 修改参数缺失。
 	INVALIDPARAMETER_MODIFYPARAMETERSMISSING = "InvalidParameter.ModifyParametersMissing"
 
@@ -577,6 +595,9 @@ const (
 
 	// 域名处于直接回源架构，需要保持智能加速功能的开启。
 	INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = "InvalidParameter.OCDirectOriginRequiresSmartRouting"
+
+	// 源站组类型与负载均衡器类型不匹配。
+	INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = "InvalidParameter.OriginGroupTypeCanNotMatchLBType"
 
 	// 源站是内网IP。
 	INVALIDPARAMETER_ORIGINISINNERIP = "InvalidParameter.OriginIsInnerIp"
@@ -664,6 +685,9 @@ const (
 
 	// 配置项参数错误。
 	INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+
+	// 一些绑定的源站组不存在。
+	INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = "InvalidParameter.SomeOriginGroupNotExist"
 
 	// Shield Space 未绑定源站，请先绑定源站后重试。
 	INVALIDPARAMETER_SPACENOTBINDORIGIN = "InvalidParameter.SpaceNotBindOrigin"
@@ -838,6 +862,9 @@ const (
 
 	// 函数数量达到限制。
 	LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = "LimitExceeded.FunctionLimitExceeded"
+
+	// 负载均衡数量超过限制。
+	LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = "LimitExceeded.LoadBalancingCountLimitExceeded"
 
 	// 计费套餐不支持。
 	LIMITEXCEEDED_PACKNOTALLOW = "LimitExceeded.PackNotAllow"
