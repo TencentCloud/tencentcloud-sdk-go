@@ -420,6 +420,38 @@ func (r *DescribeVideoTranslateJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LogoParam struct {
+	// 水印 Url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
+
+	// 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogoImage *string `json:"LogoImage,omitnil,omitempty" name:"LogoImage"`
+
+	// 水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogoRect *LogoRect `json:"LogoRect,omitnil,omitempty" name:"LogoRect"`
+}
+
+type LogoRect struct {
+	// 左上角X坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 左上角Y坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// 方框宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 方框高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
 // Predefined struct for user
 type SubmitImageAnimateJobRequestParams struct {
 	// 图片格式：支持PNG、JPG、JPEG格式；
@@ -442,6 +474,17 @@ type SubmitImageAnimateJobRequestParams struct {
 
 	// 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
 	EnableSegment *bool `json:"EnableSegment,omitnil,omitempty" name:"EnableSegment"`
+
+	// 为生成视频添加标识的开关，默认为0。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 type SubmitImageAnimateJobRequest struct {
@@ -467,6 +510,17 @@ type SubmitImageAnimateJobRequest struct {
 
 	// 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
 	EnableSegment *bool `json:"EnableSegment,omitnil,omitempty" name:"EnableSegment"`
+
+	// 为生成视频添加标识的开关，默认为0。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 func (r *SubmitImageAnimateJobRequest) ToJsonString() string {
@@ -487,6 +541,8 @@ func (r *SubmitImageAnimateJobRequest) FromJsonString(s string) error {
 	delete(f, "EnableAudio")
 	delete(f, "EnableBodyJoins")
 	delete(f, "EnableSegment")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageAnimateJobRequest has unknown keys!", "")
 	}

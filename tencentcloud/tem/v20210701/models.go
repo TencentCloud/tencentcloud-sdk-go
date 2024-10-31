@@ -607,22 +607,22 @@ type CreateEnvironmentRequestParams struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 
-	// 是否开启tsw服务
+	// 是否开启tsw服务。默认值：false
 	EnableTswTraceService *bool `json:"EnableTswTraceService,omitnil,omitempty" name:"EnableTswTraceService"`
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 环境类型：test、pre、prod
+	// 环境类型：test、pre、prod。默认值：prod
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 创建环境的region
 	CreateRegion *string `json:"CreateRegion,omitnil,omitempty" name:"CreateRegion"`
 
-	// 是否创建私有网络
+	// 是否创建私有网络.默认值:true
 	SetupVpc *bool `json:"SetupVpc,omitnil,omitempty" name:"SetupVpc"`
 
-	// 是否创建 Prometheus 实例
+	// 是否创建 Prometheus 实例。默认值：false
 	SetupPrometheus *bool `json:"SetupPrometheus,omitnil,omitempty" name:"SetupPrometheus"`
 
 	// prometheus 实例 id
@@ -653,22 +653,22 @@ type CreateEnvironmentRequest struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 
-	// 是否开启tsw服务
+	// 是否开启tsw服务。默认值：false
 	EnableTswTraceService *bool `json:"EnableTswTraceService,omitnil,omitempty" name:"EnableTswTraceService"`
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 环境类型：test、pre、prod
+	// 环境类型：test、pre、prod。默认值：prod
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 创建环境的region
 	CreateRegion *string `json:"CreateRegion,omitnil,omitempty" name:"CreateRegion"`
 
-	// 是否创建私有网络
+	// 是否创建私有网络.默认值:true
 	SetupVpc *bool `json:"SetupVpc,omitnil,omitempty" name:"SetupVpc"`
 
-	// 是否创建 Prometheus 实例
+	// 是否创建 Prometheus 实例。默认值：false
 	SetupPrometheus *bool `json:"SetupPrometheus,omitnil,omitempty" name:"SetupPrometheus"`
 
 	// prometheus 实例 id
@@ -1320,6 +1320,10 @@ type DeployApplicationRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
+	// 部署类型为 IMAGE 时，该参数表示镜像 tag。
+	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
+	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
+
 	// 镜像仓库
 	ImgRepo *string `json:"ImgRepo,omitnil,omitempty" name:"ImgRepo"`
 
@@ -1349,10 +1353,6 @@ type DeployApplicationRequestParams struct {
 	// - WAR：通过 war 包部署
 	// - IMAGE：通过镜像部署
 	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
-
-	// 部署类型为 IMAGE 时，该参数表示镜像 tag。
-	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
-	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
 
 	// 传入内容为 /jar包名字 的形式。也就是在 jar包名字前增加一个/。
 	// 
@@ -1485,6 +1485,10 @@ type DeployApplicationRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
+	// 部署类型为 IMAGE 时，该参数表示镜像 tag。
+	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
+	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
+
 	// 镜像仓库
 	ImgRepo *string `json:"ImgRepo,omitnil,omitempty" name:"ImgRepo"`
 
@@ -1514,10 +1518,6 @@ type DeployApplicationRequest struct {
 	// - WAR：通过 war 包部署
 	// - IMAGE：通过镜像部署
 	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
-
-	// 部署类型为 IMAGE 时，该参数表示镜像 tag。
-	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
-	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
 
 	// 传入内容为 /jar包名字 的形式。也就是在 jar包名字前增加一个/。
 	// 
@@ -1649,6 +1649,7 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "CpuSpec")
 	delete(f, "MemorySpec")
 	delete(f, "EnvironmentId")
+	delete(f, "DeployVersion")
 	delete(f, "ImgRepo")
 	delete(f, "VersionDesc")
 	delete(f, "JvmOpts")
@@ -1658,7 +1659,6 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "StorageConfs")
 	delete(f, "StorageMountConfs")
 	delete(f, "DeployMode")
-	delete(f, "DeployVersion")
 	delete(f, "PkgName")
 	delete(f, "JdkVersion")
 	delete(f, "SecurityGroupIds")

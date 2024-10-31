@@ -108,29 +108,23 @@ type AsrData struct {
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 句子开始时间，Unix 毫秒时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
 
 	// 句子结束时间，Unix 毫秒时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 }
 
 type AudioFileInfo struct {
 	// 文件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *uint64 `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 文件别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomFileName *string `json:"CustomFileName,omitnil,omitempty" name:"CustomFileName"`
 
 	// 文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioFileName *string `json:"AudioFileName,omitnil,omitempty" name:"AudioFileName"`
 
 	// 审核状态，0-未审核，1-审核通过，2-审核拒绝
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -404,7 +398,6 @@ type CarrierPrivilegeNumberApplicant struct {
 	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 审批状态:1 待审核、2 通过、3 拒绝
@@ -419,95 +412,72 @@ type CarrierPrivilegeNumberApplicant struct {
 
 type CompanyApplyInfo struct {
 	// 申请人身份，0-公司法定代表人，1-经办人（受法定代表人委托）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicantType *int64 `json:"ApplicantType,omitnil,omitempty" name:"ApplicantType"`
 
 	// 企业名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
 	// 统一社会信用代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 营业执照扫描件(加盖公章)。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessIdPicUrl *string `json:"BusinessIdPicUrl,omitnil,omitempty" name:"BusinessIdPicUrl"`
 
 	// 法定代表人名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationName *string `json:"CorporationName,omitnil,omitempty" name:"CorporationName"`
 
 	// 法定代表人身份证号码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationId *string `json:"CorporationId,omitnil,omitempty" name:"CorporationId"`
 
 	// 法定代表人身份证正反面扫描件。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationIdPicUrl *string `json:"CorporationIdPicUrl,omitnil,omitempty" name:"CorporationIdPicUrl"`
 
 	// 安全合规使用承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkCommitmentPicUrl *string `json:"NetworkCommitmentPicUrl,omitnil,omitempty" name:"NetworkCommitmentPicUrl"`
 
 	// 是否与腾讯云账号的资质一致,0-不一致,1-一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEqualTencentCloud *int64 `json:"IsEqualTencentCloud,omitnil,omitempty" name:"IsEqualTencentCloud"`
 
 	// 法定代表人手机号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationMobile *string `json:"CorporationMobile,omitnil,omitempty" name:"CorporationMobile"`
 
 	// 法定代表人手机号码实名认证。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationMobilePicUrl *string `json:"CorporationMobilePicUrl,omitnil,omitempty" name:"CorporationMobilePicUrl"`
 
 	// 通话话术。(支持doc、docx格式的文档不超过50MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseDescribeFileUrl *string `json:"UseDescribeFileUrl,omitnil,omitempty" name:"UseDescribeFileUrl"`
 
 	// 公司授权函。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompanyAuthLetterPicUrl *string `json:"CompanyAuthLetterPicUrl,omitnil,omitempty" name:"CompanyAuthLetterPicUrl"`
 
 	// 电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AcceptPicUrl *string `json:"AcceptPicUrl,omitnil,omitempty" name:"AcceptPicUrl"`
 
 	// 法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorporationHoldingOnIdPicUrl *string `json:"CorporationHoldingOnIdPicUrl,omitnil,omitempty" name:"CorporationHoldingOnIdPicUrl"`
 
 	// 经办人名称，申请人类型为经办人时必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
 
 	// 经办人证件号码，申请人类型为经办人时必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
 
 	// 经办人身份证正反面扫描件，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorIdPicUrl *string `json:"OperatorIdPicUrl,omitnil,omitempty" name:"OperatorIdPicUrl"`
 
 	// 经办人手持身份证照，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorHoldingOnIdPicUrl *string `json:"OperatorHoldingOnIdPicUrl,omitnil,omitempty" name:"OperatorHoldingOnIdPicUrl"`
 
 	// 委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommissionPicUrl *string `json:"CommissionPicUrl,omitnil,omitempty" name:"CommissionPicUrl"`
 
 	// 经办人手机号，申请人类型为经办人时必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorMobile *string `json:"OperatorMobile,omitnil,omitempty" name:"OperatorMobile"`
 
 	// 经办人邮箱，申请人类型为经办人时必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorEmail *string `json:"OperatorEmail,omitnil,omitempty" name:"OperatorEmail"`
 
 	// 经办人手机号码实名认证，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorMobilePicUrl *string `json:"OperatorMobilePicUrl,omitnil,omitempty" name:"OperatorMobilePicUrl"`
 }
 
@@ -516,31 +486,24 @@ type CompanyStateInfo struct {
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 公司名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 审核时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckTime *int64 `json:"CheckTime,omitnil,omitempty" name:"CheckTime"`
 
 	// 审核备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckMsg *string `json:"CheckMsg,omitnil,omitempty" name:"CheckMsg"`
 
 	// 审核状态，1-待审核，2-审核通过，3-驳回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
 	// 公司统一社会信用代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *int64 `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
@@ -2054,7 +2017,6 @@ func (r *CreateStaffRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStaffResponseParams struct {
 	// 错误坐席列表及错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorStaffList []*ErrStaffItem `json:"ErrorStaffList,omitnil,omitempty" name:"ErrorStaffList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2319,7 +2281,6 @@ func (r *DeleteStaffRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteStaffResponseParams struct {
 	// 无法删除的状态为在线的客服列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineStaffList []*string `json:"OnlineStaffList,omitnil,omitempty" name:"OnlineStaffList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2903,7 +2864,6 @@ type DescribeChatMessagesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 消息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Messages []*MessageBody `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2989,7 +2949,6 @@ func (r *DescribeCompanyListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCompanyListResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 企业资质审核信息
@@ -3259,7 +3218,6 @@ type DescribeIMCdrListResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 服务记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IMCdrList []*IMCdrInfo `json:"IMCdrList,omitnil,omitempty" name:"IMCdrList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3731,35 +3689,27 @@ func (r *DescribePredictiveDialingCampaignResponse) FromJsonString(s string) err
 
 type DescribePredictiveDialingCampaignsElement struct {
 	// 任务 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 
 	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务状态 0 待开始 1 进行中 2 已暂停 3 已终止 4 已完成
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务状态原因 0 正常 1 手动结束 2 超时结束
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusReason *int64 `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
 
 	// 被叫号码个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalleeCount *int64 `json:"CalleeCount,omitnil,omitempty" name:"CalleeCount"`
 
 	// 已完成的被叫个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedCalleeCount *int64 `json:"FinishedCalleeCount,omitnil,omitempty" name:"FinishedCalleeCount"`
 
 	// 相同应用内多个任务运行优先级，从高到底 1 - 5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 使用的座席技能组 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 }
 
@@ -3826,11 +3776,9 @@ func (r *DescribePredictiveDialingCampaignsRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribePredictiveDialingCampaignsResponseParams struct {
 	// 数据总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CampaignList []*DescribePredictiveDialingCampaignsElement `json:"CampaignList,omitnil,omitempty" name:"CampaignList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4860,15 +4808,12 @@ type IMCdrInfo struct {
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 会话ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 技能组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupId *string `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
 	// 技能组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupName *string `json:"SkillGroupName,omitnil,omitempty" name:"SkillGroupName"`
 
 	// 满意度
@@ -4881,37 +4826,29 @@ type IMCdrInfo struct {
 
 type IMSatisfaction struct {
 	// 满意度值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 满意度标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type IVRKeyPressedElement struct {
 	// 命中的关键字或者按键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 按键关联的标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// Unix 毫秒时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 节点标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeLabel *string `json:"NodeLabel,omitnil,omitempty" name:"NodeLabel"`
 
 	// 用户原始输入
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalContent *string `json:"OriginalContent,omitnil,omitempty" name:"OriginalContent"`
 
 	// TTS 提示音内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TTSPrompt *string `json:"TTSPrompt,omitnil,omitempty" name:"TTSPrompt"`
 }
 
@@ -5693,7 +5630,6 @@ type SdkAppIdBuyInfo struct {
 	PhoneNumBuyList []*PhoneNumBuyInfo `json:"PhoneNumBuyList,omitnil,omitempty" name:"PhoneNumBuyList"`
 
 	// 办公电话购买数（还在有效期内）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SipBuyNum *int64 `json:"SipBuyNum,omitnil,omitempty" name:"SipBuyNum"`
 }
 
@@ -5705,7 +5641,6 @@ type SeatUserInfo struct {
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// 工号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
 	// 座席电话号码（带0086前缀）
@@ -5718,88 +5653,68 @@ type SeatUserInfo struct {
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 座席关联的技能组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupNameList []*string `json:"SkillGroupNameList,omitnil,omitempty" name:"SkillGroupNameList"`
 
 	// 1:管理员
 	// 2:质检员
 	// 3:普通座席
 	// else:自定义角色ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *int64 `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
 type ServeParticipant struct {
 	// 座席邮箱
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// 座席电话
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 振铃时间戳，Unix 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RingTimestamp *int64 `json:"RingTimestamp,omitnil,omitempty" name:"RingTimestamp"`
 
 	// 接听时间戳，Unix 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
 
 	// 结束时间戳，Unix 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndedTimestamp *int64 `json:"EndedTimestamp,omitnil,omitempty" name:"EndedTimestamp"`
 
 	// 录音 ID，能够索引到座席侧的录音
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 转接来源座席信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferFrom *string `json:"TransferFrom,omitnil,omitempty" name:"TransferFrom"`
 
 	// 转接来源参与者类型，取值与 Type 一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferFromType *string `json:"TransferFromType,omitnil,omitempty" name:"TransferFromType"`
 
 	// 转接去向座席信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferTo *string `json:"TransferTo,omitnil,omitempty" name:"TransferTo"`
 
 	// 转接去向参与者类型，取值与 Type 一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferToType *string `json:"TransferToType,omitnil,omitempty" name:"TransferToType"`
 
 	// 技能组 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
 	// 结束状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndStatusString *string `json:"EndStatusString,omitnil,omitempty" name:"EndStatusString"`
 
 	// 录音 URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordURL *string `json:"RecordURL,omitnil,omitempty" name:"RecordURL"`
 
 	// 参与者序号，从 0 开始
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sequence *int64 `json:"Sequence,omitnil,omitempty" name:"Sequence"`
 
 	// 开始时间戳，Unix 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
 	// 技能组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupName *string `json:"SkillGroupName,omitnil,omitempty" name:"SkillGroupName"`
 
 	// 录音转存第三方COS地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
 }
 
@@ -5814,27 +5729,21 @@ type SkillGroupInfoItem struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 会话分配策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutePolicy *string `json:"RoutePolicy,omitnil,omitempty" name:"RoutePolicy"`
 
 	// 会话分配是否优先上次服务座席
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsingLastSeat *int64 `json:"UsingLastSeat,omitnil,omitempty" name:"UsingLastSeat"`
 
 	// 单客服最大并发数（电话类型默认1）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
 
 	// 最后修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitnil,omitempty" name:"LastModifyTimestamp"`
 
 	// 技能组类型0-电话，1-在线，3-音频，4-视频	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupType *int64 `json:"SkillGroupType,omitnil,omitempty" name:"SkillGroupType"`
 
 	// 技能组内线号码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
@@ -5863,39 +5772,32 @@ type StaffBuyInfo struct {
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 购买办公电话数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SipNum *int64 `json:"SipNum,omitnil,omitempty" name:"SipNum"`
 }
 
 type StaffInfo struct {
 	// 座席名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 座席邮箱
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// 座席电话号码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 座席昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 座席工号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
 	// 用户角色id
 	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 所属技能组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`
 
 	// 最后修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitnil,omitempty" name:"LastModifyTimestamp"`
 }
 
@@ -6048,7 +5950,6 @@ type TelCdrInfo struct {
 	RecordURL *string `json:"RecordURL,omitnil,omitempty" name:"RecordURL"`
 
 	// 录音 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 座席信息
@@ -6116,35 +6017,27 @@ type TelCdrInfo struct {
 	CallerLocation *string `json:"CallerLocation,omitnil,omitempty" name:"CallerLocation"`
 
 	// IVR 阶段耗时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IVRDuration *int64 `json:"IVRDuration,omitnil,omitempty" name:"IVRDuration"`
 
 	// 振铃时间戳，UNIX 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RingTimestamp *int64 `json:"RingTimestamp,omitnil,omitempty" name:"RingTimestamp"`
 
 	// 接听时间戳，UNIX 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
 
 	// 结束时间戳，UNIX 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndedTimestamp *int64 `json:"EndedTimestamp,omitnil,omitempty" name:"EndedTimestamp"`
 
 	// IVR 按键信息 ，e.g. ["1","2","3"]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IVRKeyPressed []*string `json:"IVRKeyPressed,omitnil,omitempty" name:"IVRKeyPressed"`
 
 	// 挂机方 seat 座席 user 用户 system 系统
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HungUpSide *string `json:"HungUpSide,omitnil,omitempty" name:"HungUpSide"`
 
 	// 服务参与者列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitnil,omitempty" name:"ServeParticipants"`
 
 	// 技能组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
 	// EndStatus与EndStatusString一一对应，具体枚举如下：
@@ -6200,36 +6093,27 @@ type TelCdrInfo struct {
 	// 电话呼出	        210	           notInService	不在服务区
 	// 
 	// 电话呼入&呼出	211    clientError    客户端错误
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndStatusString *string `json:"EndStatusString,omitnil,omitempty" name:"EndStatusString"`
 
 	// 会话开始时间戳，UNIX 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
 	// 进入排队时间，Unix 秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueuedTimestamp *int64 `json:"QueuedTimestamp,omitnil,omitempty" name:"QueuedTimestamp"`
 
 	// 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitnil,omitempty" name:"PostIVRKeyPressed"`
 
 	// 排队技能组Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueuedSkillGroupId *int64 `json:"QueuedSkillGroupId,omitnil,omitempty" name:"QueuedSkillGroupId"`
 
 	// 会话 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectedCaller *string `json:"ProtectedCaller,omitnil,omitempty" name:"ProtectedCaller"`
 
 	// 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectedCallee *string `json:"ProtectedCallee,omitnil,omitempty" name:"ProtectedCallee"`
 
 	// 客户自定义数据（User-to-User Interface）
@@ -6239,15 +6123,12 @@ type TelCdrInfo struct {
 	Uui *string `json:"Uui,omitnil,omitempty" name:"Uui"`
 
 	// 客户自定义数据（User-to-User Interface）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
 	// IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IVRKeyPressedEx []*IVRKeyPressedElement `json:"IVRKeyPressedEx,omitnil,omitempty" name:"IVRKeyPressedEx"`
 
 	// 获取录音ASR文本信息地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrUrl *string `json:"AsrUrl,omitnil,omitempty" name:"AsrUrl"`
 
 	// AsrUrl的状态：Complete
@@ -6256,27 +6137,21 @@ type TelCdrInfo struct {
 	// 正在生成中;
 	// NotExists
 	// 无记录(未开启生成离线asr或者无套餐包)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrStatus *string `json:"AsrStatus,omitnil,omitempty" name:"AsrStatus"`
 
 	// 录音转存第三方COS地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 排队技能组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitnil,omitempty" name:"QueuedSkillGroupName"`
 
 	// 通话中语音留言录音URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoicemailRecordURL []*string `json:"VoicemailRecordURL,omitnil,omitempty" name:"VoicemailRecordURL"`
 
 	// 通话中语音留言ASR文本信息地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitnil,omitempty" name:"VoicemailAsrURL"`
 }
 
@@ -6703,11 +6578,9 @@ func (r *UploadIvrAudioRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadIvrAudioResponseParams struct {
 	// 上传失败的文件列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedFileList []*UploadIvrAudioFailedInfo `json:"FailedFileList,omitnil,omitempty" name:"FailedFileList"`
 
 	// 上传成功文件列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessFileList []*AudioFileInfo `json:"SuccessFileList,omitnil,omitempty" name:"SuccessFileList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

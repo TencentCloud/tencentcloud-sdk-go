@@ -21,10 +21,10 @@ import (
 )
 
 type AuthorizationPolicyItem struct {
-	// 规则id
+	// 规则ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集群id
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 规则名

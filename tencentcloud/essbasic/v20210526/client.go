@@ -1559,8 +1559,6 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// 
-//
 // ### 1. 适用场景
 //
 // 
@@ -1575,7 +1573,11 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
+// 
+//
 // **可以作为发起方和签署方的角色列表**
+//
+// 
 //
 // <table>
 //
@@ -1748,8 +1750,6 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// 
-//
 // ### 1. 适用场景
 //
 // 
@@ -1764,7 +1764,11 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
+// 
+//
 // **可以作为发起方和签署方的角色列表**
+//
+// 
 //
 // <table>
 //
@@ -1966,10 +1970,6 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// 
-//
-// 
-//
 // ### 1. 适用场景
 //
 // 
@@ -1984,7 +1984,11 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
+// 
+//
 // **可以作为发起方和签署方的角色列表**
+//
+// 
 //
 // <table>
 //
@@ -2132,10 +2136,6 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// 
-//
-// 
-//
 // ### 1. 适用场景
 //
 // 
@@ -2150,7 +2150,11 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
+// 
+//
 // **可以作为发起方和签署方的角色列表**
+//
+// 
 //
 // <table>
 //

@@ -1343,6 +1343,97 @@ func (c *Client) CreateUploadPathWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateUploadTestRequest() (request *CreateUploadTestRequest) {
+    request = &CreateUploadTestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUploadTest")
+    
+    
+    return
+}
+
+func NewCreateUploadTestResponse() (response *CreateUploadTestResponse) {
+    response = &CreateUploadTestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUploadTest
+// 设备申请cos上传证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUploadTest(request *CreateUploadTestRequest) (response *CreateUploadTestResponse, err error) {
+    return c.CreateUploadTestWithContext(context.Background(), request)
+}
+
+// CreateUploadTest
+// 设备申请cos上传证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUploadTestWithContext(ctx context.Context, request *CreateUploadTestRequest) (response *CreateUploadTestResponse, err error) {
+    if request == nil {
+        request = NewCreateUploadTestRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUploadTest require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUploadTestResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUsrTokenRequest() (request *CreateUsrTokenRequest) {
     request = &CreateUsrTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5298,6 +5389,97 @@ func (c *Client) RefundStorageServiceWithContext(ctx context.Context, request *R
     request.SetContext(ctx)
     
     response = NewRefundStorageServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewUploadTestRequest() (request *RenewUploadTestRequest) {
+    request = &RenewUploadTestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "RenewUploadTest")
+    
+    
+    return
+}
+
+func NewRenewUploadTestResponse() (response *RenewUploadTestResponse) {
+    response = &RenewUploadTestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewUploadTest
+// 设备刷新cos上传证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewUploadTest(request *RenewUploadTestRequest) (response *RenewUploadTestResponse, err error) {
+    return c.RenewUploadTestWithContext(context.Background(), request)
+}
+
+// RenewUploadTest
+// 设备刷新cos上传证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewUploadTestWithContext(ctx context.Context, request *RenewUploadTestRequest) (response *RenewUploadTestResponse, err error) {
+    if request == nil {
+        request = NewRenewUploadTestRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewUploadTest require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewUploadTestResponse()
     err = c.Send(request, response)
     return
 }

@@ -43,6 +43,24 @@ type BindUsrInfo struct {
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
+type CertificateInfo struct {
+	// SecretId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// SecretKey
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// Token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 过期时间，UNIX时间戳，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *uint64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+}
+
 // Predefined struct for user
 type ClearDeviceActiveCodeRequestParams struct {
 	// 设备TID列表，0<元素数量<=100
@@ -113,6 +131,28 @@ type Contents struct {
 	// 默认语言，最多不超过300个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+}
+
+type CosCertificate struct {
+	// cos存储桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageBucket *string `json:"StorageBucket,omitnil,omitempty" name:"StorageBucket"`
+
+	// cos存储园区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// 存储路径，录制场景下该值为存储目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
+
+	// 证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TempCertificate *CertificateInfo `json:"TempCertificate,omitnil,omitempty" name:"TempCertificate"`
+
+	// SessionKey
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionKey *string `json:"SessionKey,omitnil,omitempty" name:"SessionKey"`
 }
 
 // Predefined struct for user
@@ -1169,6 +1209,71 @@ func (r *CreateUploadPathResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUploadPathResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUploadTestRequestParams struct {
+	// package ID
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
+}
+
+type CreateUploadTestRequest struct {
+	*tchttp.BaseRequest
+	
+	// package ID
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
+}
+
+func (r *CreateUploadTestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUploadTestRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PkgId")
+	delete(f, "Tid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUploadTestRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUploadTestResponseParams struct {
+	// 申请设备证书返回的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CosCertificate `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUploadTestResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUploadTestResponseParams `json:"Response"`
+}
+
+func (r *CreateUploadTestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUploadTestResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4486,6 +4591,84 @@ type RegisteredStatus struct {
 
 	// 注册状态
 	IsRegisted *bool `json:"IsRegisted,omitnil,omitempty" name:"IsRegisted"`
+}
+
+type RenewCertificate struct {
+	// 刷新证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TempCertificate *CertificateInfo `json:"TempCertificate,omitnil,omitempty" name:"TempCertificate"`
+}
+
+// Predefined struct for user
+type RenewUploadTestRequestParams struct {
+	// package ID
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
+
+	// SessionKeys
+	SessionKey *string `json:"SessionKey,omitnil,omitempty" name:"SessionKey"`
+}
+
+type RenewUploadTestRequest struct {
+	*tchttp.BaseRequest
+	
+	// package ID
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitnil,omitempty" name:"Tid"`
+
+	// SessionKeys
+	SessionKey *string `json:"SessionKey,omitnil,omitempty" name:"SessionKey"`
+}
+
+func (r *RenewUploadTestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewUploadTestRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PkgId")
+	delete(f, "Tid")
+	delete(f, "SessionKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewUploadTestRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewUploadTestResponseParams struct {
+	// 刷新证书返回的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *RenewCertificate `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewUploadTestResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewUploadTestResponseParams `json:"Response"`
+}
+
+func (r *RenewUploadTestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewUploadTestResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

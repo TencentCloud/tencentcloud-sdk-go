@@ -176,6 +176,121 @@ type AuditLogInfo struct {
 }
 
 // Predefined struct for user
+type CreateEndPointAndEndPointServiceRequestParams struct {
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 是否自动接受
+	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitnil,omitempty" name:"AutoAcceptFlag"`
+
+	// 后端服务ID
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitnil,omitempty" name:"ServiceInstanceId"`
+
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点地域，必须要和终端节点服务所属地域一致
+	EndPointRegion *string `json:"EndPointRegion,omitnil,omitempty" name:"EndPointRegion"`
+
+	// 终端节点服务名称
+	EndPointServiceName *string `json:"EndPointServiceName,omitnil,omitempty" name:"EndPointServiceName"`
+
+	// 挂载的PAAS服务类型，CLB,CDB,CRS
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 终端节点ip数量
+	IpNum *int64 `json:"IpNum,omitnil,omitempty" name:"IpNum"`
+}
+
+type CreateEndPointAndEndPointServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 是否自动接受
+	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitnil,omitempty" name:"AutoAcceptFlag"`
+
+	// 后端服务ID
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitnil,omitempty" name:"ServiceInstanceId"`
+
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点地域，必须要和终端节点服务所属地域一致
+	EndPointRegion *string `json:"EndPointRegion,omitnil,omitempty" name:"EndPointRegion"`
+
+	// 终端节点服务名称
+	EndPointServiceName *string `json:"EndPointServiceName,omitnil,omitempty" name:"EndPointServiceName"`
+
+	// 挂载的PAAS服务类型，CLB,CDB,CRS
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 终端节点ip数量
+	IpNum *int64 `json:"IpNum,omitnil,omitempty" name:"IpNum"`
+}
+
+func (r *CreateEndPointAndEndPointServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEndPointAndEndPointServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "AutoAcceptFlag")
+	delete(f, "ServiceInstanceId")
+	delete(f, "EndPointName")
+	delete(f, "EndPointRegion")
+	delete(f, "EndPointServiceName")
+	delete(f, "ServiceType")
+	delete(f, "IpNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEndPointAndEndPointServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEndPointAndEndPointServiceResponseParams struct {
+	// 终端节点id
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 终端节点名
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点服务ID
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点的IP列表
+	EndPointVipSet []*string `json:"EndPointVipSet,omitnil,omitempty" name:"EndPointVipSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEndPointAndEndPointServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEndPointAndEndPointServiceResponseParams `json:"Response"`
+}
+
+func (r *CreateEndPointAndEndPointServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEndPointAndEndPointServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateEndPointRequestParams struct {
 	// 终端节点名称
 	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
@@ -259,6 +374,96 @@ func (r *CreateEndPointResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateForwardRuleRequestParams struct {
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 转发规则类型：云上到云下DOWN，云下到云上UP
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 私有域ID，可在私有域列表页面查看
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+}
+
+type CreateForwardRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 转发规则类型：云上到云下DOWN，云下到云上UP
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 私有域ID，可在私有域列表页面查看
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+}
+
+func (r *CreateForwardRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateForwardRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleName")
+	delete(f, "RuleType")
+	delete(f, "ZoneId")
+	delete(f, "EndPointId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateForwardRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateForwardRuleResponseParams struct {
+	// 转发规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 转发规则类型
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateForwardRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateForwardRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateForwardRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateForwardRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1087,6 +1292,155 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEndPointListRequestParams struct {
+	// 分页偏移量，从0开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数目， 最大100，默认20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数，支持EndPointName,EndPointId,EndPointServiceId,EndPointVip
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeEndPointListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，从0开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数目， 最大100，默认20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数，支持EndPointName,EndPointId,EndPointServiceId,EndPointVip
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeEndPointListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEndPointListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEndPointListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEndPointListResponseParams struct {
+	// 终端节点总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 终端节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointSet []*EndPointInfo `json:"EndPointSet,omitnil,omitempty" name:"EndPointSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEndPointListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEndPointListResponseParams `json:"Response"`
+}
+
+func (r *DescribeEndPointListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEndPointListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeForwardRuleListRequestParams struct {
+	// 分页偏移量，从0开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数目， 最大100，默认20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeForwardRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，从0开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数目， 最大100，默认20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeForwardRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeForwardRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeForwardRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeForwardRuleListResponseParams struct {
+	// 私有域数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 私有域列表
+	ForwardRuleSet []*ForwardRule `json:"ForwardRuleSet,omitnil,omitempty" name:"ForwardRuleSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeForwardRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeForwardRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeForwardRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeForwardRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrivateDNSAccountListRequestParams struct {
 	// 分页偏移量，从0开始
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -1554,6 +1908,28 @@ func (r *DescribeRequestDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EndPointInfo struct {
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点服务ID
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点VIP列表
+	EndPointVipSet []*string `json:"EndPointVipSet,omitnil,omitempty" name:"EndPointVipSet"`
+
+	// ap-guangzhou
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 标签键值对集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
 type Filter struct {
 	// 参数名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -1571,6 +1947,46 @@ type FlowUsage struct {
 
 	// 流量包可用额度
 	AvailableQuantity *int64 `json:"AvailableQuantity,omitnil,omitempty" name:"AvailableQuantity"`
+}
+
+type ForwardRule struct {
+	// 私有域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 转发规则类型：云上到云下DOWN、云下到云上DOWN
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 更新时间
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// 终端节点名称
+	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
+
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 转发地址
+	ForwardAddress []*string `json:"ForwardAddress,omitnil,omitempty" name:"ForwardAddress"`
+
+	// 私有域绑定的vpc列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil,omitempty" name:"VpcSet"`
+
+	// 绑定的私有域ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type MetricData struct {

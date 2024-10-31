@@ -7667,14 +7667,14 @@ func (r *ModifyAcRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAclRuleRequestParams struct {
-	// 需要编辑的规则数组
+	// 需要编辑的规则数组，基于Uuid唯一id修改该规则
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type ModifyAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要编辑的规则数组
+	// 需要编辑的规则数组，基于Uuid唯一id修改该规则
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -8860,14 +8860,14 @@ func (r *ModifyFwGroupSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatAcRuleRequestParams struct {
-	// 需要编辑的规则数组
+	// 需要编辑的规则数组,基于Uuid唯一id来修改该规则
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type ModifyNatAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要编辑的规则数组
+	// 需要编辑的规则数组,基于Uuid唯一id来修改该规则
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 

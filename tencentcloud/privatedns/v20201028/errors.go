@@ -59,6 +59,15 @@ const (
 	// 解析域删除失败。
 	FAILEDOPERATION_DELETEZONEFAILED = "FailedOperation.DeleteZoneFailed"
 
+	// 终端节点服务创建失败
+	FAILEDOPERATION_ENDPOINTSERVICECREATEFAILED = "FailedOperation.EndPointServiceCreateFailed"
+
+	// 终端节点服务删除失败
+	FAILEDOPERATION_ENDPOINTSERVICEDELETEFAILED = "FailedOperation.EndPointServiceDeleteFailed"
+
+	// 终端节点服务白名单操作失败。
+	FAILEDOPERATION_ENDPOINTSERVICEWHITELISTFAILED = "FailedOperation.EndPointServiceWhiteListFailed"
+
 	// 获取临时凭证失败
 	FAILEDOPERATION_GETTMPCREDFAILED = "FailedOperation.GetTmpCredFailed"
 
@@ -91,6 +100,9 @@ const (
 
 	// 终端节点服务不存在。
 	INVALIDPARAMETER_ENDPOINTSERVICENOTEXIST = "InvalidParameter.EndPointServiceNotExist"
+
+	// 私有域已经绑定过转发规则。
+	INVALIDPARAMETER_FORWARDRULEZONEREPEATBIND = "InvalidParameter.ForwardRuleZoneRepeatBind"
 
 	// 非法CIDR。
 	INVALIDPARAMETER_ILLEGALCIDR = "InvalidParameter.IllegalCidr"

@@ -241,6 +241,172 @@ func (c *Client) CreateEndPointWithContext(ctx context.Context, request *CreateE
     return
 }
 
+func NewCreateEndPointAndEndPointServiceRequest() (request *CreateEndPointAndEndPointServiceRequest) {
+    request = &CreateEndPointAndEndPointServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "CreateEndPointAndEndPointService")
+    
+    
+    return
+}
+
+func NewCreateEndPointAndEndPointServiceResponse() (response *CreateEndPointAndEndPointServiceResponse) {
+    response = &CreateEndPointAndEndPointServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEndPointAndEndPointService
+// 同时创建终端节点和终端节点服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEVPCENDPOINTERROR = "FailedOperation.CreateVpcEndPointError"
+//  FAILEDOPERATION_CREATEVPCENDPOINTFAILED = "FailedOperation.CreateVpcEndPointFailed"
+//  FAILEDOPERATION_ENDPOINTSERVICECREATEFAILED = "FailedOperation.EndPointServiceCreateFailed"
+//  FAILEDOPERATION_ENDPOINTSERVICEDELETEFAILED = "FailedOperation.EndPointServiceDeleteFailed"
+//  FAILEDOPERATION_ENDPOINTSERVICEWHITELISTFAILED = "FailedOperation.EndPointServiceWhiteListFailed"
+//  FAILEDOPERATION_GETTMPCREDFAILED = "FailedOperation.GetTmpCredFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENDPOINTSERVICENOTEXIST = "InvalidParameter.EndPointServiceNotExist"
+//  INVALIDPARAMETERVALUE_UINNOTINWHITELIST = "InvalidParameterValue.UinNotInWhiteList"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = "ResourceUnavailable.ServiceWhiteListNotAdded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateEndPointAndEndPointService(request *CreateEndPointAndEndPointServiceRequest) (response *CreateEndPointAndEndPointServiceResponse, err error) {
+    return c.CreateEndPointAndEndPointServiceWithContext(context.Background(), request)
+}
+
+// CreateEndPointAndEndPointService
+// 同时创建终端节点和终端节点服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEVPCENDPOINTERROR = "FailedOperation.CreateVpcEndPointError"
+//  FAILEDOPERATION_CREATEVPCENDPOINTFAILED = "FailedOperation.CreateVpcEndPointFailed"
+//  FAILEDOPERATION_ENDPOINTSERVICECREATEFAILED = "FailedOperation.EndPointServiceCreateFailed"
+//  FAILEDOPERATION_ENDPOINTSERVICEDELETEFAILED = "FailedOperation.EndPointServiceDeleteFailed"
+//  FAILEDOPERATION_ENDPOINTSERVICEWHITELISTFAILED = "FailedOperation.EndPointServiceWhiteListFailed"
+//  FAILEDOPERATION_GETTMPCREDFAILED = "FailedOperation.GetTmpCredFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENDPOINTSERVICENOTEXIST = "InvalidParameter.EndPointServiceNotExist"
+//  INVALIDPARAMETERVALUE_UINNOTINWHITELIST = "InvalidParameterValue.UinNotInWhiteList"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = "ResourceUnavailable.ServiceWhiteListNotAdded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateEndPointAndEndPointServiceWithContext(ctx context.Context, request *CreateEndPointAndEndPointServiceRequest) (response *CreateEndPointAndEndPointServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateEndPointAndEndPointServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEndPointAndEndPointService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEndPointAndEndPointServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateForwardRuleRequest() (request *CreateForwardRuleRequest) {
+    request = &CreateForwardRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "CreateForwardRule")
+    
+    
+    return
+}
+
+func NewCreateForwardRuleResponse() (response *CreateForwardRuleResponse) {
+    response = &CreateForwardRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateForwardRule
+// 创建自定义转发规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENDPOINTNOTEXISTS = "InvalidParameter.EndPointNotExists"
+//  INVALIDPARAMETER_FORWARDRULEZONEREPEATBIND = "InvalidParameter.ForwardRuleZoneRepeatBind"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_FREQUENCYLIMIT = "UnsupportedOperation.FrequencyLimit"
+func (c *Client) CreateForwardRule(request *CreateForwardRuleRequest) (response *CreateForwardRuleResponse, err error) {
+    return c.CreateForwardRuleWithContext(context.Background(), request)
+}
+
+// CreateForwardRule
+// 创建自定义转发规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENDPOINTNOTEXISTS = "InvalidParameter.EndPointNotExists"
+//  INVALIDPARAMETER_FORWARDRULEZONEREPEATBIND = "InvalidParameter.ForwardRuleZoneRepeatBind"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_FREQUENCYLIMIT = "UnsupportedOperation.FrequencyLimit"
+func (c *Client) CreateForwardRuleWithContext(ctx context.Context, request *CreateForwardRuleRequest) (response *CreateForwardRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateForwardRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateForwardRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateForwardRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrivateDNSAccountRequest() (request *CreatePrivateDNSAccountRequest) {
     request = &CreatePrivateDNSAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1320,6 +1486,160 @@ func (c *Client) DescribeDashboardWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEndPointListRequest() (request *DescribeEndPointListRequest) {
+    request = &DescribeEndPointListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "DescribeEndPointList")
+    
+    
+    return
+}
+
+func NewDescribeEndPointListResponse() (response *DescribeEndPointListResponse) {
+    response = &DescribeEndPointListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEndPointList
+// 获取终端节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEndPointList(request *DescribeEndPointListRequest) (response *DescribeEndPointListResponse, err error) {
+    return c.DescribeEndPointListWithContext(context.Background(), request)
+}
+
+// DescribeEndPointList
+// 获取终端节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEndPointListWithContext(ctx context.Context, request *DescribeEndPointListRequest) (response *DescribeEndPointListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEndPointListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEndPointList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEndPointListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeForwardRuleListRequest() (request *DescribeForwardRuleListRequest) {
+    request = &DescribeForwardRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "DescribeForwardRuleList")
+    
+    
+    return
+}
+
+func NewDescribeForwardRuleListResponse() (response *DescribeForwardRuleListResponse) {
+    response = &DescribeForwardRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeForwardRuleList
+// 查询转发规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeForwardRuleList(request *DescribeForwardRuleListRequest) (response *DescribeForwardRuleListResponse, err error) {
+    return c.DescribeForwardRuleListWithContext(context.Background(), request)
+}
+
+// DescribeForwardRuleList
+// 查询转发规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeForwardRuleListWithContext(ctx context.Context, request *DescribeForwardRuleListRequest) (response *DescribeForwardRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeForwardRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeForwardRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeForwardRuleListResponse()
     err = c.Send(request, response)
     return
 }

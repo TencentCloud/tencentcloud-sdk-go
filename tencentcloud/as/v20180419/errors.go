@@ -254,6 +254,9 @@ const (
 	// 不支持目标组类型的监听器。
 	INVALIDPARAMETERVALUE_LISTENERTARGETTYPENOTSUPPORTED = "InvalidParameterValue.ListenerTargetTypeNotSupported"
 
+	// 最大额外数量取值过大。
+	INVALIDPARAMETERVALUE_MAXSURGETOOLARGE = "InvalidParameterValue.MaxSurgeTooLarge"
+
 	// 当前账户在带宽包模式中必须填写带宽包ID参数。
 	INVALIDPARAMETERVALUE_MISSINGBANDWIDTHPACKAGEID = "InvalidParameterValue.MissingBandwidthPackageId"
 

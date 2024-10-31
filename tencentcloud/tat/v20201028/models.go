@@ -1943,15 +1943,12 @@ type Filter struct {
 
 type GeneralResourceQuotaSet struct {
 	// 资源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 已使用额度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceQuotaUsed *int64 `json:"ResourceQuotaUsed,omitnil,omitempty" name:"ResourceQuotaUsed"`
 
 	// 总额度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceQuotaTotal *int64 `json:"ResourceQuotaTotal,omitnil,omitempty" name:"ResourceQuotaTotal"`
 }
 
@@ -2676,83 +2673,65 @@ type RegionInfo struct {
 
 type RegisterCodeInfo struct {
 	// 注册码ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisterCodeId *string `json:"RegisterCodeId,omitnil,omitempty" name:"RegisterCodeId"`
 
 	// 注册码描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 注册实例名称前缀。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitnil,omitempty" name:"InstanceNamePrefix"`
 
 	// 该注册码允许注册的实例数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisterLimit *int64 `json:"RegisterLimit,omitnil,omitempty" name:"RegisterLimit"`
 
 	// 该注册码的过期时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpAddressRange *string `json:"IpAddressRange,omitnil,omitempty" name:"IpAddressRange"`
 
 	// 该注册码是否可用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 该注册码已注册数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisteredCount *int64 `json:"RegisteredCount,omitnil,omitempty" name:"RegisteredCount"`
 
 	// 注册码创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 注册码最近一次更新时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 type RegisterInstanceInfo struct {
 	// 注册码ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisterCodeId *string `json:"RegisterCodeId,omitnil,omitempty" name:"RegisterCodeId"`
 
 	// 实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 机器ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineId *string `json:"MachineId,omitnil,omitempty" name:"MachineId"`
 
 	// 系统名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemName *string `json:"SystemName,omitnil,omitempty" name:"SystemName"`
 
 	// 主机名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 内网IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalIp *string `json:"LocalIp,omitnil,omitempty" name:"LocalIp"`
 
 	// 公钥。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
 
 	// 托管状态。
@@ -2760,11 +2739,9 @@ type RegisterInstanceInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 上次更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
