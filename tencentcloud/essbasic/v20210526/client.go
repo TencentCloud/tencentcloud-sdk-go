@@ -1545,11 +1545,15 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+// - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 //
 // 
 //
@@ -1557,19 +1561,19 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// **注**: 
-//
-// <ul>
-//
-// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-//
-// <li>合同组暂不支持抄送功能</li>
-//
-// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
-//
-// </ul>
+// ### 1. 适用场景
 //
 // 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// ### 2. 发起方要求和签署方实名要求
+//
+// - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
+//
+// - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
 // **可以作为发起方和签署方的角色列表**
 //
@@ -1611,7 +1615,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // <td>第三方子企业A员工</td>
 //
-// <td>第三方子企业B(不指定经办人)</td>
+// <td>第三方子企业B员工</td>
 //
 // </tr>
 //
@@ -1623,18 +1627,6 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // <td>第三方子企业A员工</td>
 //
-// <td>第三方子企业B员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景四</td>
-//
-// <td>第三方子企业A员工</td>
-//
 // <td>个人/自然人</td>
 //
 // </tr>
@@ -1643,7 +1635,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // <tr>
 //
-// <td>场景五</td>
+// <td>场景四</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -1657,21 +1649,29 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// **注**: 
+// ### 3. 签署方参数差异
 //
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
-//
-// 
-//
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// ### 4. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
+// ### 5. 静默（自动）签署的限制
+//
+// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+//
+// 
+//
+// ### 6.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1734,11 +1734,15 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+// - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 //
 // 
 //
@@ -1746,19 +1750,19 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// **注**: 
-//
-// <ul>
-//
-// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-//
-// <li>合同组暂不支持抄送功能</li>
-//
-// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
-//
-// </ul>
+// ### 1. 适用场景
 //
 // 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// ### 2. 发起方要求和签署方实名要求
+//
+// - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
+//
+// - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
 // **可以作为发起方和签署方的角色列表**
 //
@@ -1800,7 +1804,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // <td>第三方子企业A员工</td>
 //
-// <td>第三方子企业B(不指定经办人)</td>
+// <td>第三方子企业B员工</td>
 //
 // </tr>
 //
@@ -1812,18 +1816,6 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // <td>第三方子企业A员工</td>
 //
-// <td>第三方子企业B员工</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景四</td>
-//
-// <td>第三方子企业A员工</td>
-//
 // <td>个人/自然人</td>
 //
 // </tr>
@@ -1832,7 +1824,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // <tr>
 //
-// <td>场景五</td>
+// <td>场景四</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -1846,21 +1838,29 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// **注**: 
+// ### 3. 签署方参数差异
 //
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
-//
-// 
-//
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// ### 4. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
+// ### 5. 静默（自动）签署的限制
+//
+// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+//
+// 
+//
+// ### 6.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1954,25 +1954,35 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+// - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 //
 // 
 //
-// **注**: 
-//
-// <ul>
-//
-// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-//
-// <li>合同组暂不支持抄送功能</li>
-//
-// </ul>
+// 
 //
 // 
+//
+// ### 1. 适用场景
+//
+// 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// ### 2. 发起方要求和签署方实名要求
+//
+// - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
+//
+// - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
 // **可以作为发起方和签署方的角色列表**
 //
@@ -2006,23 +2016,9 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // </tr>
 //
-// 
-//
 // <tr>
 //
 // <td>场景二</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B(不指定经办人)</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景三</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -2034,7 +2030,7 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // <tr>
 //
-// <td>场景四</td>
+// <td>场景三</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -2046,7 +2042,7 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // <tr>
 //
-// <td>场景五</td>
+// <td>场景四</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -2060,21 +2056,29 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// **注**: 
+// ### 3. 签署方参数差异
 //
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
-//
-// 
-//
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// ### 4. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
+// ### 5. 静默（自动）签署的限制
+//
+// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+//
+// 
+//
+// ### 6.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2116,25 +2120,35 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// 合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+// - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 //
 // 
 //
-// **注**: 
-//
-// <ul>
-//
-// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-//
-// <li>合同组暂不支持抄送功能</li>
-//
-// </ul>
+// 
 //
 // 
+//
+// ### 1. 适用场景
+//
+// 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// ### 2. 发起方要求和签署方实名要求
+//
+// - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
+//
+// - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 //
 // **可以作为发起方和签署方的角色列表**
 //
@@ -2168,23 +2182,9 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // </tr>
 //
-// 
-//
 // <tr>
 //
 // <td>场景二</td>
-//
-// <td>第三方子企业A员工</td>
-//
-// <td>第三方子企业B(不指定经办人)</td>
-//
-// </tr>
-//
-// 
-//
-// <tr>
-//
-// <td>场景三</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -2196,7 +2196,7 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // <tr>
 //
-// <td>场景四</td>
+// <td>场景三</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -2208,7 +2208,7 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // <tr>
 //
-// <td>场景五</td>
+// <td>场景四</td>
 //
 // <td>第三方子企业A员工</td>
 //
@@ -2222,21 +2222,29 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// **注**: 
+// ### 3. 签署方参数差异
 //
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
-//
-// 
-//
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// ### 4. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
+// ### 5. 静默（自动）签署的限制
+//
+// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+//
+// 
+//
+// ### 6.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8140,6 +8148,8 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //
 // **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
 //
+// 
+//
 // **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo)接口来主动检查合同的签署状态。请仅在确认合同状态为“全部签署完成”后，进行文件的下载操作。
 //
 // 
@@ -8163,6 +8173,8 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 // 注: 
 //
 // 1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能开关，那么渠道方开通了此功能也无法下载子客的合同文件`
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
@@ -8214,6 +8226,8 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 //
 // **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
 //
+// 
+//
 // **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo)接口来主动检查合同的签署状态。请仅在确认合同状态为“全部签署完成”后，进行文件的下载操作。
 //
 // 
@@ -8237,6 +8251,8 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 // 注: 
 //
 // 1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能开关，那么渠道方开通了此功能也无法下载子客的合同文件`
+//
+// 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 //
@@ -8750,8 +8766,6 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //
 //   - **DOWNLOAD_FLOW（授权渠道下载合同）**
 //
-//   - **OVERSEA_SIGN（企业与港澳台居民签署合同）**
-//
 // 
 //
 // 注意： `在调用此接口以管理企业扩展服务时，操作者（ Agent.ProxyOperator.OpenId）必须是企业的超级管理员（超管）或法人`
@@ -8791,8 +8805,6 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 //   - **AUTO_SIGN（企业自动签）**
 //
 //   - **DOWNLOAD_FLOW（授权渠道下载合同）**
-//
-//   - **OVERSEA_SIGN（企业与港澳台居民签署合同）**
 //
 // 
 //

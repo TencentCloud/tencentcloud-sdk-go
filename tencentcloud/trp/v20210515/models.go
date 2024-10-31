@@ -1071,7 +1071,7 @@ type CreateMerchantRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 码包来源 0:自建, 1:第三发
+	// 码包来源 0:自建, 1:第三方
 	CodeType *int64 `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 
 	// 码包前缀地址 第三方码包时必填
@@ -1090,7 +1090,7 @@ type CreateMerchantRequest struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 码包来源 0:自建, 1:第三发
+	// 码包来源 0:自建, 1:第三方
 	CodeType *int64 `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 
 	// 码包前缀地址 第三方码包时必填
@@ -2068,7 +2068,7 @@ type DescribeCodeBatchesRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 批次状态
+	// 批次状态 0: 未激活 1: 已激活 -1: 已冻结
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -2096,7 +2096,7 @@ type DescribeCodeBatchesRequest struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 批次状态
+	// 批次状态 0: 未激活 1: 已激活 -1: 已冻结
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -3969,7 +3969,7 @@ type DescribeTraceDataListRequestParams struct {
 	// 页数
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 二维码
+	// 溯源码
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
@@ -3994,7 +3994,7 @@ type DescribeTraceDataListRequest struct {
 	// 页数
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 二维码
+	// 溯源码
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
@@ -4031,10 +4031,10 @@ func (r *DescribeTraceDataListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTraceDataListResponseParams struct {
-	// 数量
+	// 溯源阶段数量
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 无
+	// 溯源明细
 	TraceDataList []*TraceData `json:"TraceDataList,omitnil,omitempty" name:"TraceDataList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4475,7 +4475,7 @@ type ModifyMerchantRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 码包来源 0:自建, 1:第三码包，暂不支持修改
+	// 码包来源 0:自建, 1:第三方码包，暂不支持修改
 	CodeType *int64 `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 
 	// 码包前缀地址 第三方码包时必填
@@ -4497,7 +4497,7 @@ type ModifyMerchantRequest struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 码包来源 0:自建, 1:第三码包，暂不支持修改
+	// 码包来源 0:自建, 1:第三方码包，暂不支持修改
 	CodeType *int64 `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 
 	// 码包前缀地址 第三方码包时必填

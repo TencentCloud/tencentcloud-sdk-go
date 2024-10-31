@@ -878,7 +878,7 @@ type AssetMachineDetail struct {
 	// 内核版本
 	CoreVersion *string `json:"CoreVersion,omitnil,omitempty" name:"CoreVersion"`
 
-	// linux/windows
+	// Linux/Windows
 	OsType *string `json:"OsType,omitnil,omitempty" name:"OsType"`
 
 	// agent版本
@@ -20132,7 +20132,7 @@ type DescribeLogKafkaDeliverInfoResponseParams struct {
 	// 用户名
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// xx
+	// 投递类型细节
 	DeliverTypeDetails []*DeliverTypeDetails `json:"DeliverTypeDetails,omitnil,omitempty" name:"DeliverTypeDetails"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -32844,22 +32844,7 @@ type ExportAssetUserListRequestParams struct {
 	// 查询指定Quuid主机的信息
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 过滤条件。
-	// <li>Name - String - 是否必填：否 - 账户名</li>
-	// <li>Uid - uint64 - 是否必填：否 - Uid</li>
-	// <li>Guid - uint64 - 是否必填：否 - Guid</li>
-	// <li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li>
-	// <li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li>
-	// <li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li>
-	// <li>OsType - String - 是否必填：否 - windows或linux</li>
-	// <li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li>
-	// <li>Type - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li>
-	// <li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows
-	// <li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux
-	// <li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li>
-	// <li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li>
-	// <li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li>
-	// <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
+	//   过滤条件。<li>Name - String - 是否必填：否 - 账户名</li> <li>Uid - uint64 - 是否必填：否 - Uid</li><li>Guid - uint64 - 是否必填：否 - Guid</li> <li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li><li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li> <li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li> <li>OsType - String - 是否必填：否 - windows或linux</li><li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li> <li>Type - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li> <li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows</li> <li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux</li> <li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li> <li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li> <li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li> <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式，asc升序 或 desc降序
@@ -32876,22 +32861,7 @@ type ExportAssetUserListRequest struct {
 	// 查询指定Quuid主机的信息
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 过滤条件。
-	// <li>Name - String - 是否必填：否 - 账户名</li>
-	// <li>Uid - uint64 - 是否必填：否 - Uid</li>
-	// <li>Guid - uint64 - 是否必填：否 - Guid</li>
-	// <li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li>
-	// <li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li>
-	// <li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li>
-	// <li>OsType - String - 是否必填：否 - windows或linux</li>
-	// <li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li>
-	// <li>Type - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li>
-	// <li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows
-	// <li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux
-	// <li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li>
-	// <li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li>
-	// <li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li>
-	// <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
+	//   过滤条件。<li>Name - String - 是否必填：否 - 账户名</li> <li>Uid - uint64 - 是否必填：否 - Uid</li><li>Guid - uint64 - 是否必填：否 - Guid</li> <li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li><li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li> <li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li> <li>OsType - String - 是否必填：否 - windows或linux</li><li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li> <li>Type - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li> <li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows</li> <li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux</li> <li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li> <li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li> <li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li> <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式，asc升序 或 desc降序
@@ -37571,7 +37541,7 @@ type JavaMemShellDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 
-	// 实例状态：RUNNING,STOPPED,SHUTDOWN...
+	// agent状态：OFFLINE,ONLINE
 	MachineState *string `json:"MachineState,omitnil,omitempty" name:"MachineState"`
 }
 
@@ -38182,17 +38152,32 @@ type MachineLicenseDetail struct {
 	// 主机quuid
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// xx
+	// 计费模式, 0 按量计费 , 1 预付费
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// xxx
+	// 资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// xxx
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+
+	// 订单类型,0 默认计费订单 1 试用订单, 2 赠送 3 体验
+	SourceType *uint64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 废弃字段,
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 
-	// xxx
-	SourceType *uint64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+	// 自动续费标识 0 默认不自动付费, 1 自动付费 2 手动设置不续费
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 到期时间,按量付费该值为空
+	Deadline *string `json:"Deadline,omitnil,omitempty" name:"Deadline"`
+
+	// 购买时间
+	BuyTime *string `json:"BuyTime,omitnil,omitempty" name:"BuyTime"`
+
+	// 授权数量
+	LicenseCnt *uint64 `json:"LicenseCnt,omitnil,omitempty" name:"LicenseCnt"`
 }
 
 type MachineSimple struct {
@@ -38309,10 +38294,10 @@ type MalWareList struct {
 	// 路径
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
-	// 描述
+	// 病毒名称
 	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
 
-	// 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除, 14:已处理
+	// 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除, 14:已处理，13-已加白
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一ID
@@ -40465,8 +40450,11 @@ type ModifyLogStorageConfigRequestParams struct {
 	// 存储类型，string数组
 	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 日志存储天数，3640表示不限
+	// 日志存储时长，3640表示不限
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 日志存储时长单位，年year/月month/天day
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
 type ModifyLogStorageConfigRequest struct {
@@ -40478,8 +40466,11 @@ type ModifyLogStorageConfigRequest struct {
 	// 存储类型，string数组
 	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 日志存储天数，3640表示不限
+	// 日志存储时长，3640表示不限
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 日志存储时长单位，年year/月month/天day
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
 func (r *ModifyLogStorageConfigRequest) ToJsonString() string {
@@ -40497,6 +40488,7 @@ func (r *ModifyLogStorageConfigRequest) FromJsonString(s string) error {
 	delete(f, "IsModifyPeriod")
 	delete(f, "Type")
 	delete(f, "Period")
+	delete(f, "Granularity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLogStorageConfigRequest has unknown keys!", "")
 	}
@@ -41787,7 +41779,7 @@ func (r *ModifyRiskDnsPolicyStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRiskEventsStatusRequestParams struct {
-	// 操作-0:标记已处理,1:忽略,2:删除记录,3:木马隔离,4:木马恢复隔离,5:木马信任,6:木马取消信任,7:查杀异常进程
+	// 操作-0:标记已处理,1:忽略,2:删除记录,3:木马隔离,4:木马恢复隔离,5:木马信任,6:木马取消信任,7:查杀异常进程,8:加入白名单
 	Operate *uint64 `json:"Operate,omitnil,omitempty" name:"Operate"`
 
 	// 操作事件类型，文件查杀：MALWARE，异常登录：HOST_LOGIN，密码破解：BRUTE_ATTACK，恶意请求：MALICIOUS_REQUEST，高危命令：BASH_EVENT，本地提权：PRIVILEGE_EVENT，反弹shell：REVERSE_SHELL. 异常进程:PROCESS
@@ -41824,12 +41816,16 @@ type ModifyRiskEventsStatusRequestParams struct {
 	// <li>EndTime - String - 是否必填：否 - 进程启动时间-结束</li>
 	// <li>Status - String - 是否必填：否 - 状态筛选 0待处理；1查杀中;2已查杀3已退出;4已信任</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 当Operate 是木马隔离时
+	// <li> 本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用。</li>
+	DoClean *bool `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 }
 
 type ModifyRiskEventsStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作-0:标记已处理,1:忽略,2:删除记录,3:木马隔离,4:木马恢复隔离,5:木马信任,6:木马取消信任,7:查杀异常进程
+	// 操作-0:标记已处理,1:忽略,2:删除记录,3:木马隔离,4:木马恢复隔离,5:木马信任,6:木马取消信任,7:查杀异常进程,8:加入白名单
 	Operate *uint64 `json:"Operate,omitnil,omitempty" name:"Operate"`
 
 	// 操作事件类型，文件查杀：MALWARE，异常登录：HOST_LOGIN，密码破解：BRUTE_ATTACK，恶意请求：MALICIOUS_REQUEST，高危命令：BASH_EVENT，本地提权：PRIVILEGE_EVENT，反弹shell：REVERSE_SHELL. 异常进程:PROCESS
@@ -41866,6 +41862,10 @@ type ModifyRiskEventsStatusRequest struct {
 	// <li>EndTime - String - 是否必填：否 - 进程启动时间-结束</li>
 	// <li>Status - String - 是否必填：否 - 状态筛选 0待处理；1查杀中;2已查杀3已退出;4已信任</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 当Operate 是木马隔离时
+	// <li> 本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用。</li>
+	DoClean *bool `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 }
 
 func (r *ModifyRiskEventsStatusRequest) ToJsonString() string {
@@ -41888,6 +41888,7 @@ func (r *ModifyRiskEventsStatusRequest) FromJsonString(s string) error {
 	delete(f, "KillProcess")
 	delete(f, "Ip")
 	delete(f, "Filters")
+	delete(f, "DoClean")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRiskEventsStatusRequest has unknown keys!", "")
 	}
@@ -45085,7 +45086,7 @@ type ScanTaskDetails struct {
 	// 唯一Quuid
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 状态码
+	// 状态码Scanning、Ok、Fail
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 描述
@@ -47563,6 +47564,10 @@ type VulDefenceRangeDetail struct {
 
 	// 漏洞id
 	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type VulDetailInfo struct {
@@ -47815,7 +47820,7 @@ type VulInfoByCveId struct {
 	// 漏洞id
 	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
-	// 修复支持情况：0-windows/linux均不支持修复 ;1-windows/linux 均支持修复 ;2-仅linux支持修复;3-仅windows支持修复
+	// 修复支持情况：0-Windows/Linux均不支持修复 ;1-Windows/Linux 均支持修复 ;2-仅Linux支持修复;3-仅Windows支持修复
 	FixSwitch *uint64 `json:"FixSwitch,omitnil,omitempty" name:"FixSwitch"`
 }
 

@@ -7146,6 +7146,10 @@ func NewDescribeAttackLogsResponse() (response *DescribeAttackLogsResponse) {
 }
 
 // DescribeAttackLogs
+// DescribeAttackEvents 代替
+//
+// 
+//
 // 按分页形式展示网络攻击日志列表
 //
 // 可能返回的错误码:
@@ -7162,6 +7166,10 @@ func (c *Client) DescribeAttackLogs(request *DescribeAttackLogsRequest) (respons
 }
 
 // DescribeAttackLogs
+// DescribeAttackEvents 代替
+//
+// 
+//
 // 按分页形式展示网络攻击日志列表
 //
 // 可能返回的错误码:

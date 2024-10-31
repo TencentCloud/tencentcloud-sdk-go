@@ -472,7 +472,7 @@ type AlertInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Victim *RoleInfo `json:"Victim,omitnil,omitempty" name:"Victim"`
 
-	// 证据数据(例如攻击内容等)
+	// 证据数据(例如攻击内容等，base64编码)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EvidenceData *string `json:"EvidenceData,omitnil,omitempty" name:"EvidenceData"`
 
@@ -889,6 +889,10 @@ type AssetViewCFGRisk struct {
 	// 用户uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 当资产类型为LBL的时候，展示该字段，方便定位具体的LB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClbId *string `json:"ClbId,omitnil,omitempty" name:"ClbId"`
 }
 
 type AssetViewPortRisk struct {
@@ -2018,6 +2022,14 @@ type DataSearchBug struct {
 	// 0不支持，1支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CWPFix *int64 `json:"CWPFix,omitnil,omitempty" name:"CWPFix"`
+
+	// 产品支持状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSupport []*ProductSupport `json:"DataSupport,omitnil,omitempty" name:"DataSupport"`
+
+	// cveId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
 }
 
 type DbAssetInfo struct {
@@ -2550,7 +2562,7 @@ type DescribeCVMAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -2560,7 +2572,7 @@ type DescribeCVMAssetsRequest struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -2586,11 +2598,11 @@ func (r *DescribeCVMAssetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCVMAssetsResponseParams struct {
-	// -
+	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// -
+	// 机器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CVMAssetVO `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -2664,6 +2676,9 @@ func (r *DescribeCVMAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterPodAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -2671,6 +2686,9 @@ type DescribeClusterPodAssetsRequestParams struct {
 type DescribeClusterPodAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -2687,6 +2705,7 @@ func (r *DescribeClusterPodAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterPodAssetsRequest has unknown keys!", "")
@@ -2797,7 +2816,7 @@ type DescribeDbAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
@@ -2810,7 +2829,7 @@ type DescribeDbAssetsRequest struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
@@ -2893,7 +2912,7 @@ type DescribeDomainAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 安全中心自定义标签
@@ -2906,7 +2925,7 @@ type DescribeDomainAssetsRequest struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 安全中心自定义标签
@@ -2936,11 +2955,11 @@ func (r *DescribeDomainAssetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainAssetsResponseParams struct {
-	// -
+	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// -
+	// 域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*DomainAssetVO `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -3064,7 +3083,7 @@ type DescribeListenerListRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -3074,7 +3093,7 @@ type DescribeListenerListRequest struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// -
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -3296,7 +3315,7 @@ type DescribePublicIpAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// filte过滤条件
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 安全中心自定义标签
@@ -3309,7 +3328,7 @@ type DescribePublicIpAssetsRequest struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// filte过滤条件
+	// 过滤器参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 安全中心自定义标签
@@ -4307,6 +4326,9 @@ func (r *DescribeSearchBugInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubnetAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4314,6 +4336,9 @@ type DescribeSubnetAssetsRequestParams struct {
 type DescribeSubnetAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4330,6 +4355,7 @@ func (r *DescribeSubnetAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubnetAssetsRequest has unknown keys!", "")
@@ -4534,6 +4560,9 @@ func (r *DescribeTaskLogURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopAttackInfoRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 被调用的集团账号的成员id
 	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
 }
@@ -4541,6 +4570,9 @@ type DescribeTopAttackInfoRequestParams struct {
 type DescribeTopAttackInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 被调用的集团账号的成员id
 	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
 }
@@ -4557,6 +4589,7 @@ func (r *DescribeTopAttackInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "OperatedMemberId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopAttackInfoRequest has unknown keys!", "")
@@ -4765,6 +4798,9 @@ func (r *DescribeVULRiskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4772,6 +4808,9 @@ type DescribeVpcAssetsRequestParams struct {
 type DescribeVpcAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4788,6 +4827,7 @@ func (r *DescribeVpcAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcAssetsRequest has unknown keys!", "")
@@ -5371,6 +5411,9 @@ type KeyValue struct {
 type ModifyOrganizationAccountStatusRequestParams struct {
 	// 修改集团账号状态，1 开启， 2关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type ModifyOrganizationAccountStatusRequest struct {
@@ -5378,6 +5421,9 @@ type ModifyOrganizationAccountStatusRequest struct {
 	
 	// 修改集团账号状态，1 开启， 2关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 func (r *ModifyOrganizationAccountStatusRequest) ToJsonString() string {
@@ -5393,6 +5439,7 @@ func (r *ModifyOrganizationAccountStatusRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "Status")
+	delete(f, "MemberId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOrganizationAccountStatusRequest has unknown keys!", "")
 	}
@@ -5909,6 +5956,32 @@ type PortViewPortRisk struct {
 
 	// 服务
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+}
+
+type ProductSupport struct {
+	// true支持扫描。false不支持扫描
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VSSScan *bool `json:"VSSScan,omitnil,omitempty" name:"VSSScan"`
+
+	// 0不支持，1支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPScan *string `json:"CWPScan,omitnil,omitempty" name:"CWPScan"`
+
+	// 1支持虚拟补丁，0或空不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFWPatch *string `json:"CFWPatch,omitnil,omitempty" name:"CFWPatch"`
+
+	// 0不支持，1支持	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafPatch *int64 `json:"WafPatch,omitnil,omitempty" name:"WafPatch"`
+
+	// 0不支持，1支持	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPFix *int64 `json:"CWPFix,omitnil,omitempty" name:"CWPFix"`
+
+	// cveid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
 }
 
 type PublicIpDomainListKey struct {
@@ -6692,6 +6765,9 @@ type UpdateAlertStatusListRequestParams struct {
 	// 5:取消标记忽略
 	OperateType *int64 `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 被调用的集团账号的成员id
 	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
 }
@@ -6709,6 +6785,9 @@ type UpdateAlertStatusListRequest struct {
 	// 4:取消标记处置
 	// 5:取消标记忽略
 	OperateType *int64 `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 被调用的集团账号的成员id
 	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
@@ -6728,6 +6807,7 @@ func (r *UpdateAlertStatusListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ID")
 	delete(f, "OperateType")
+	delete(f, "MemberId")
 	delete(f, "OperatedMemberId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAlertStatusListRequest has unknown keys!", "")

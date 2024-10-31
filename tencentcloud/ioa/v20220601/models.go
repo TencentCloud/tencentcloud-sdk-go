@@ -20,6 +20,16 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ComplexRule struct {
+	// 简单规则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SimpleRules []*SimpleRule `json:"SimpleRules,omitnil,omitempty" name:"SimpleRules"`
+
+	// 表达式间逻辑关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
+}
+
 type Condition struct {
 	// Filters 条件过滤
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -42,12 +52,111 @@ type Condition struct {
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 }
 
+// Predefined struct for user
+type CreateDeviceVirtualGroupRequestParams struct {
+	// 终端自定义分组名
+	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
+
+	// 详情
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）(只支持32位)
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 时间设置类型（1:自动小时、2:自动每天、3:自定义、0:手动分组）(只支持32位)
+	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
+
+	// 自动划分时间（单位min）(只支持32位)
+	AutoMinute *int64 `json:"AutoMinute,omitnil,omitempty" name:"AutoMinute"`
+
+	// 自动划分规则数据
+	AutoRules *ComplexRule `json:"AutoRules,omitnil,omitempty" name:"AutoRules"`
+}
+
+type CreateDeviceVirtualGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端自定义分组名
+	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
+
+	// 详情
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）(只支持32位)
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 时间设置类型（1:自动小时、2:自动每天、3:自定义、0:手动分组）(只支持32位)
+	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
+
+	// 自动划分时间（单位min）(只支持32位)
+	AutoMinute *int64 `json:"AutoMinute,omitnil,omitempty" name:"AutoMinute"`
+
+	// 自动划分规则数据
+	AutoRules *ComplexRule `json:"AutoRules,omitnil,omitempty" name:"AutoRules"`
+}
+
+func (r *CreateDeviceVirtualGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceVirtualGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceVirtualGroupName")
+	delete(f, "Description")
+	delete(f, "OsType")
+	delete(f, "TimeType")
+	delete(f, "AutoMinute")
+	delete(f, "AutoRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceVirtualGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceVirtualGroupResponseParams struct {
+	// 响应返回的data
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateDeviceVirtualGroupRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDeviceVirtualGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeviceVirtualGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateDeviceVirtualGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceVirtualGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDeviceVirtualGroupRspData struct {
+	// 返回的自定义分组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
 type DescribeAccountGroupsData struct {
-	// 名称path
+	// 账号分组名全路径，点分格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// id patch数组(只支持32位)
+	// 账号分组ID全路径，数组格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
 
@@ -59,23 +168,23 @@ type DescribeAccountGroupsData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
-	// 父id
+	// 父分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 组织id
+	// 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// 账户组名称
+	// 分组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// id
+	// 分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 描述
+	// 分组描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
@@ -83,7 +192,7 @@ type DescribeAccountGroupsData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// id path
+	// 账号分组ID全路径，点分格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
@@ -91,7 +200,7 @@ type DescribeAccountGroupsData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 父组织id
+	// 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
@@ -103,7 +212,7 @@ type DescribeAccountGroupsData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
 
-	// 该分组下用户总数
+	// 该分组下含子组的所有用户总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 
@@ -136,34 +245,48 @@ type DescribeAccountGroupsPageResp struct {
 
 // Predefined struct for user
 type DescribeAccountGroupsRequestParams struct {
-	// 搜索范围,0-仅搜直接子组,1-深层搜索(只支持32位)
+	// 搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
 	Deepin *int64 `json:"Deepin,omitnil,omitempty" name:"Deepin"`
 
-	// 滤条件、分页参数
-	// <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按账号分组过滤。</li>
+	// 查询条件
+	// 
+	// 过滤参数
+	// 1、Name，string类型，按分组名过滤
+	// 是否必填：否
+	// 操作符: like
+	// 
 	// 排序条件
-	// <li>Itime - string - 是否必填：否 - 排序支持：是 - 按账号分组创建时间排序。</li>
-	// <li>Utime - string - 是否必填：否 - 排序支持：是 - 按账号分组更新时间排序。</li>
+	// 1、Itime，string类型，按分组创建时间排序
+	// 是否必填：否
+	// 2、Utime，string类型，按分组更新时间排序
+	// 是否必填：否
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 父分组id
+	// 父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
 type DescribeAccountGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 搜索范围,0-仅搜直接子组,1-深层搜索(只支持32位)
+	// 搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
 	Deepin *int64 `json:"Deepin,omitnil,omitempty" name:"Deepin"`
 
-	// 滤条件、分页参数
-	// <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按账号分组过滤。</li>
+	// 查询条件
+	// 
+	// 过滤参数
+	// 1、Name，string类型，按分组名过滤
+	// 是否必填：否
+	// 操作符: like
+	// 
 	// 排序条件
-	// <li>Itime - string - 是否必填：否 - 排序支持：是 - 按账号分组创建时间排序。</li>
-	// <li>Utime - string - 是否必填：否 - 排序支持：是 - 按账号分组更新时间排序。</li>
+	// 1、Itime，string类型，按分组创建时间排序
+	// 是否必填：否
+	// 2、Utime，string类型，按分组更新时间排序
+	// 是否必填：否
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 父分组id
+	// 父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
@@ -190,7 +313,7 @@ func (r *DescribeAccountGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountGroupsResponseParams struct {
-	// 账户分组详情响应数据
+	// 账号分组详情响应数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeAccountGroupsPageResp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -226,16 +349,56 @@ type DescribeDevicesPageRsp struct {
 
 // Predefined struct for user
 type DescribeDevicesRequestParams struct {
-	// 过滤条件<br>
-	// <li>Ip - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照Ip进行过滤。</li>
-	// <li>MacAddr - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照mac地址进行过滤。</li>
-	// <li>IoaUserName - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照ioa用户名进行过滤。</li>
-	// 分页参数<br>
-	// <li>PageNum 从1开始，小于等于0时使用默认参数。</li>
-	// <li>PageSize 最大值5000，最好不超过100。</li>
+	// 过滤条件参数（字段含义请参考接口返回值）
+	// 
+	// - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Name, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Itime, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - UserId, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Tags，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - LocalIpList，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - SerialNum，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Version，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - StrVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - RtpStatus，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - HostName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - GroupName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - CriticalVulListCount，**类型Int**，支持操作：【eq】，**不支持排序**
+	// - RiskCount，**类型Int**，支持操作：【eq】，**不支持排序**
+	// - VulVersion，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - Virusver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - SysRepver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - BaseBoardSn，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Os，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - ConnActiveTime，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - FirewallStatus，**类型Int**，支持操作：【eq】，**不支持排序**
+	// - ProfileName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - DomainName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - SysRepVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - VirusVer，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Cpu，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Memory，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - HardDiskSize，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - HardwareChangeCount，**类型Int**，支持操作：【eq】，支持排序
+	// - AccountName，类型String，支持操作：【like.ilike】，支持排序
+	// - AccountGroupName，类型String，支持操作：【like.ilike】，支持排序
+	// - ScreenRecordingPermission，**类型Int**，支持操作：【eq】，支持排序
+	// - DiskAccessPermission，**类型Int**，支持操作：【eq】，支持排序
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 分页参数
+	// - PageNum 从1开始，小于等于0时使用默认参数
+	// - PageSize 最大值5000，最好不超过100
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配）
+	// 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：
 	// id-名称-操作系统
 	// 1	全网终端	Win
 	// 2	未分组终端	Win
@@ -250,9 +413,12 @@ type DescribeDevicesRequestParams struct {
 	// 40000402	未分组终端	Android
 	// 40000501	全网终端	iOS
 	// 40000502	未分组终端	iOS
+	// 
+	// 
+	// SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 【必填】操作系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+	// 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
 	// 在线状态 （2表示在线，0或者1表示离线）
@@ -270,23 +436,66 @@ type DescribeDevicesRequestParams struct {
 	// 每页获取数--兼容旧接口,参数同Condition
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 授权状态 4未授权 5已授权
+	// 授权状态： 4基础授权 5高级授权
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 【和GroupId必须有一个填写】设备分组id列表（需要和OsType匹配）
+	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 type DescribeDevicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件<br>
-	// <li>Ip - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照Ip进行过滤。</li>
-	// <li>MacAddr - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照mac地址进行过滤。</li>
-	// <li>IoaUserName - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照ioa用户名进行过滤。</li>
-	// 分页参数<br>
-	// <li>PageNum 从1开始，小于等于0时使用默认参数。</li>
-	// <li>PageSize 最大值5000，最好不超过100。</li>
+	// 过滤条件参数（字段含义请参考接口返回值）
+	// 
+	// - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Name, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Itime, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - UserId, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Tags，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - LocalIpList，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - SerialNum，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Version，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - StrVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - RtpStatus，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - HostName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - GroupName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - CriticalVulListCount，**类型Int**，支持操作：【eq】，**不支持排序**
+	// - RiskCount，**类型Int**，支持操作：【eq】，**不支持排序**
+	// - VulVersion，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - Virusver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - SysRepver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - BaseBoardSn，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Os，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - ConnActiveTime，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+	// - FirewallStatus，**类型Int**，支持操作：【eq】，**不支持排序**
+	// - ProfileName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - DomainName，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - SysRepVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - VirusVer，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Cpu，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - Memory，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - HardDiskSize，类型String，支持操作：【eq，like，ilike】，支持排序
+	// - HardwareChangeCount，**类型Int**，支持操作：【eq】，支持排序
+	// - AccountName，类型String，支持操作：【like.ilike】，支持排序
+	// - AccountGroupName，类型String，支持操作：【like.ilike】，支持排序
+	// - ScreenRecordingPermission，**类型Int**，支持操作：【eq】，支持排序
+	// - DiskAccessPermission，**类型Int**，支持操作：【eq】，支持排序
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 分页参数
+	// - PageNum 从1开始，小于等于0时使用默认参数
+	// - PageSize 最大值5000，最好不超过100
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配）
+	// 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：
 	// id-名称-操作系统
 	// 1	全网终端	Win
 	// 2	未分组终端	Win
@@ -301,9 +510,12 @@ type DescribeDevicesRequest struct {
 	// 40000402	未分组终端	Android
 	// 40000501	全网终端	iOS
 	// 40000502	未分组终端	iOS
+	// 
+	// 
+	// SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 【必填】操作系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+	// 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
 	// 在线状态 （2表示在线，0或者1表示离线）
@@ -321,8 +533,11 @@ type DescribeDevicesRequest struct {
 	// 每页获取数--兼容旧接口,参数同Condition
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 授权状态 4未授权 5已授权
+	// 授权状态： 4基础授权 5高级授权
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 【和GroupId必须有一个填写】设备分组id列表（需要和OsType匹配）
+	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -346,6 +561,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "PageNum")
 	delete(f, "PageSize")
 	delete(f, "Status")
+	delete(f, "GroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
@@ -478,13 +694,22 @@ type DescribeLocalAccountsPage struct {
 
 // Predefined struct for user
 type DescribeLocalAccountsRequestParams struct {
-	// 滤条件、分页参数
-	// <li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号UserName过滤。</li>
-	// <li>UserId - string - 是否必填：否 - 操作符: eq,like  - 排序支持：否 - 按账号UserNd过滤。</li>
-	// <li>Phone - string - 是否必填：否 - 操作符: eq,like - 排序支持：否 - 按手机号过滤。</li>
+	// 查询条件：过滤或排序
+	// 1、UserName，string类型，姓名
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
+	// 2、UserId，string类型，账户
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
+	// 3、Phone，string类型，手机号
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 获取账号的分组Id，不传默认获取全部(只支持32位)
+	// 获取账号的分组ID，不传默认获取全网根账号组
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
 	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
@@ -494,13 +719,22 @@ type DescribeLocalAccountsRequestParams struct {
 type DescribeLocalAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 滤条件、分页参数
-	// <li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号UserName过滤。</li>
-	// <li>UserId - string - 是否必填：否 - 操作符: eq,like  - 排序支持：否 - 按账号UserNd过滤。</li>
-	// <li>Phone - string - 是否必填：否 - 操作符: eq,like - 排序支持：否 - 按手机号过滤。</li>
+	// 查询条件：过滤或排序
+	// 1、UserName，string类型，姓名
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
+	// 2、UserId，string类型，账户
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
+	// 3、Phone，string类型，手机号
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 获取账号的分组Id，不传默认获取全部(只支持32位)
+	// 获取账号的分组ID，不传默认获取全网根账号组
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
 	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
@@ -585,7 +819,7 @@ func (r *DescribeRootAccountGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRootAccountGroupResponseParams struct {
-	// 账户分组详情响应数据
+	// 账号根分组响应详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *GetAccountGroupData `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -662,7 +896,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalIpList *string `json:"LocalIpList,omitnil,omitempty" name:"LocalIpList"`
 
-	// 主机ID(只支持32位)
+	// 宿主机id（需要宿主机也安装iOA才能显示）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostId *int64 `json:"HostId,omitnil,omitempty" name:"HostId"`
 
@@ -750,7 +984,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NGNNewStrategyVer *string `json:"NGNNewStrategyVer,omitnil,omitempty" name:"NGNNewStrategyVer"`
 
-	// 主机名称
+	// 宿主机名称（需要宿主机也安装iOA才能显示）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
@@ -758,7 +992,7 @@ type DeviceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaseBoardSn *string `json:"BaseBoardSn,omitnil,omitempty" name:"BaseBoardSn"`
 
-	// 绑定账户只有名字
+	// 绑定账户名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountUsers *string `json:"AccountUsers,omitnil,omitempty" name:"AccountUsers"`
 
@@ -804,11 +1038,11 @@ type FilterGroup struct {
 }
 
 type GetAccountGroupData struct {
-	// 分组Namepath
+	// 分组名称全路径，点分格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// 分组Id path arr(只支持32位)
+	// 分组ID全路径，数组格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
 
@@ -820,11 +1054,11 @@ type GetAccountGroupData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
-	// 父分组id(只支持32位)
+	// 当前分组的父分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 组织id
+	// 源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
@@ -832,11 +1066,11 @@ type GetAccountGroupData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分组id(只支持32位)
+	// 分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 描述
+	// 分组描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
@@ -844,7 +1078,7 @@ type GetAccountGroupData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// Id Path
+	// 分组ID全路径，点分格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
@@ -852,7 +1086,7 @@ type GetAccountGroupData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 父组织id
+	// 父源账号组ID，该字段仅适用于第三方同步的组织架构
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
@@ -889,6 +1123,44 @@ type Paging struct {
 	// 记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type RuleExpression struct {
+	// 规则元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*RuleItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
+}
+
+type RuleItem struct {
+	// 字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 操作关系（等于、不等于、包含、不包含）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 内容，v2多值版本使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type SimpleRule struct {
+	// 规则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expressions []*RuleExpression `json:"Expressions,omitnil,omitempty" name:"Expressions"`
+
+	// 表达式间逻辑关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
 }
 
 type Sort struct {

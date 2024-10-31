@@ -10051,31 +10051,21 @@ func NewDescribeExportJobResultResponse() (response *DescribeExportJobResultResp
 }
 
 // DescribeExportJobResult
-// 查询导出任务的结果
+// 查询导出接口进度
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeExportJobResult(request *DescribeExportJobResultRequest) (response *DescribeExportJobResultResponse, err error) {
     return c.DescribeExportJobResultWithContext(context.Background(), request)
 }
 
 // DescribeExportJobResult
-// 查询导出任务的结果
+// 查询导出接口进度
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeExportJobResultWithContext(ctx context.Context, request *DescribeExportJobResultRequest) (response *DescribeExportJobResultResponse, err error) {
     if request == nil {
         request = NewDescribeExportJobResultRequest()

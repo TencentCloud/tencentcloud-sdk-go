@@ -57,6 +57,64 @@ type AcListsData struct {
 	// 告警规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+
+	// 规则开关状态 1打开 0关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 规则源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcType *int64 `json:"SrcType,omitnil,omitempty" name:"SrcType"`
+
+	// 规则目的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstType *int64 `json:"DstType,omitnil,omitempty" name:"DstType"`
+
+	// 规则唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 规则有效性
+	// 1 有效
+	// 0 无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Invalid *int64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
+
+	// 是否地域规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRegion *int64 `json:"IsRegion,omitnil,omitempty" name:"IsRegion"`
+
+	// 云厂商代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudCode *string `json:"CloudCode,omitnil,omitempty" name:"CloudCode"`
+
+	// 自动化助手信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoTask *string `json:"AutoTask,omitnil,omitempty" name:"AutoTask"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 地域码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 国家代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *int64 `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 城市代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *int64 `json:"City,omitnil,omitempty" name:"City"`
+
+	// 国家名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegName1 *string `json:"RegName1,omitnil,omitempty" name:"RegName1"`
+
+	// 城市名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegName2 *string `json:"RegName2,omitnil,omitempty" name:"RegName2"`
 }
 
 // Predefined struct for user
@@ -5776,115 +5834,6 @@ func (r *DescribeNatFwVpcDnsLstResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeNatSwitchListRequestParams struct {
-	// 偏移量，分页用
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 条数，分页用
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 搜索值
-	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
-
-	// 开关，1打开，0关闭
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 筛选NAT防火墙子网开关所属VPC
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 筛选NAT防火墙子网开关所属NAT网关
-	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
-
-	// 筛选NAT防火墙子网开关所属NAT防火墙实例
-	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
-
-	// 筛选NAT防火墙子网开关所属地域
-	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
-}
-
-type DescribeNatSwitchListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 偏移量，分页用
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 条数，分页用
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 搜索值
-	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
-
-	// 开关，1打开，0关闭
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 筛选NAT防火墙子网开关所属VPC
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 筛选NAT防火墙子网开关所属NAT网关
-	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
-
-	// 筛选NAT防火墙子网开关所属NAT防火墙实例
-	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
-
-	// 筛选NAT防火墙子网开关所属地域
-	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
-}
-
-func (r *DescribeNatSwitchListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeNatSwitchListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "SearchValue")
-	delete(f, "Status")
-	delete(f, "VpcId")
-	delete(f, "NatId")
-	delete(f, "NatInsId")
-	delete(f, "Area")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatSwitchListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeNatSwitchListResponseParams struct {
-	// 总数
-	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
-
-	// NAT边界防火墙开关列表数据
-	Data []*NatSwitchListData `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeNatSwitchListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeNatSwitchListResponseParams `json:"Response"`
-}
-
-func (r *DescribeNatSwitchListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeNatSwitchListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeResourceGroupNewRequestParams struct {
 	// 查询类型 网络结构-vpc，业务识别-resource ，资源标签-tag
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
@@ -10271,87 +10220,6 @@ type NatInstanceInfo struct {
 	// 0 不是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
-}
-
-type NatSwitchListData struct {
-	// 列表ID
-	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// 子网名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
-
-	// IPv4 CIDR
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetCidr *string `json:"SubnetCidr,omitnil,omitempty" name:"SubnetCidr"`
-
-	// 关联路由ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RouteId *string `json:"RouteId,omitnil,omitempty" name:"RouteId"`
-
-	// 关联路由名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
-
-	// 云服务器个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CvmNum *uint64 `json:"CvmNum,omitnil,omitempty" name:"CvmNum"`
-
-	// 所属VPC ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 所属VPC名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
-
-	// 是否生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
-
-	// 开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// NAT网关ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
-
-	// NAT网关名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NatName *string `json:"NatName,omitnil,omitempty" name:"NatName"`
-
-	// NAT防火墙实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
-
-	// NAT防火墙实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NatInsName *string `json:"NatInsName,omitnil,omitempty" name:"NatInsName"`
-
-	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
-
-	// 开关是否异常,0:正常,1:异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Abnormal *int64 `json:"Abnormal,omitnil,omitempty" name:"Abnormal"`
-
-	// nat防火墙出口路由表id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ORTableId *string `json:"ORTableId,omitnil,omitempty" name:"ORTableId"`
-
-	// nat防火墙出口路由表名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ORTableName *string `json:"ORTableName,omitnil,omitempty" name:"ORTableName"`
-
-	// 出口Snat Ip列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ohavips []*string `json:"Ohavips,omitnil,omitempty" name:"Ohavips"`
 }
 
 type NetInstancesInfo struct {

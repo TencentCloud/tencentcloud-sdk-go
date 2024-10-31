@@ -3823,6 +3823,8 @@ func NewMLIDPassportOCRResponse() (response *MLIDPassportOCRResponse) {
 // MLIDPassportOCR
 // 本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍、国家地区代码，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
 //
+// 本接口支持地区范围：可机读护照国家。
+//
 // 
 //
 // 默认接口请求频率限制：5次/秒。
@@ -3846,6 +3848,8 @@ func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLI
 
 // MLIDPassportOCR
 // 本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍、国家地区代码，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
+//
+// 本接口支持地区范围：可机读护照国家。
 //
 // 
 //

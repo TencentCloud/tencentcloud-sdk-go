@@ -744,13 +744,13 @@ type BizLicenseOCRResponseParams struct {
 	// 
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 是否有国徽。0为没有，1为有。
+	// 是否有国徽。false为没有，true为有。
 	NationalEmblem *bool `json:"NationalEmblem,omitnil,omitempty" name:"NationalEmblem"`
 
-	// 是否有二维码。0为没有，1为有。
+	// 是否有二维码。false为没有，true为有。
 	QRCode *bool `json:"QRCode,omitnil,omitempty" name:"QRCode"`
 
-	// 是否有印章。0为没有，1为有。
+	// 是否有印章。false为没有，true为有。
 	Seal *bool `json:"Seal,omitnil,omitempty" name:"Seal"`
 
 	// 标题
@@ -762,7 +762,7 @@ type BizLicenseOCRResponseParams struct {
 	// 登记机关
 	RegistrationAuthority *string `json:"RegistrationAuthority,omitnil,omitempty" name:"RegistrationAuthority"`
 
-	// 是否是电子营业执照。0为不是，1为是。
+	// 是否是电子营业执照。false为没有，true为有。
 	Electronic *bool `json:"Electronic,omitnil,omitempty" name:"Electronic"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7130,7 +7130,7 @@ type RecognizeEncryptedIDCardOCRRequestParams struct {
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
@@ -7180,7 +7180,7 @@ type RecognizeEncryptedIDCardOCRRequest struct {
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 

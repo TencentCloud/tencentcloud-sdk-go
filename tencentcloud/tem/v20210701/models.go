@@ -115,11 +115,11 @@ type CreateApplicationAutoscalerRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略
 	Autoscaler *Autoscaler `json:"Autoscaler,omitnil,omitempty" name:"Autoscaler"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type CreateApplicationAutoscalerRequest struct {
@@ -131,11 +131,11 @@ type CreateApplicationAutoscalerRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略
 	Autoscaler *Autoscaler `json:"Autoscaler,omitnil,omitempty" name:"Autoscaler"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *CreateApplicationAutoscalerRequest) ToJsonString() string {
@@ -152,8 +152,8 @@ func (r *CreateApplicationAutoscalerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
-	delete(f, "SourceChannel")
 	delete(f, "Autoscaler")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationAutoscalerRequest has unknown keys!", "")
 	}
@@ -352,11 +352,11 @@ type CreateApplicationServiceRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 访问方式详情
 	Service *ServicePortMapping `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type CreateApplicationServiceRequest struct {
@@ -368,11 +368,11 @@ type CreateApplicationServiceRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 访问方式详情
 	Service *ServicePortMapping `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *CreateApplicationServiceRequest) ToJsonString() string {
@@ -389,8 +389,8 @@ func (r *CreateApplicationServiceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
-	delete(f, "SourceChannel")
 	delete(f, "Service")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationServiceRequest has unknown keys!", "")
 	}
@@ -431,11 +431,11 @@ type CreateConfigDataRequestParams struct {
 	// 配置名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 配置信息
 	Data []*Pair `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type CreateConfigDataRequest struct {
@@ -447,11 +447,11 @@ type CreateConfigDataRequest struct {
 	// 配置名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 配置信息
 	Data []*Pair `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *CreateConfigDataRequest) ToJsonString() string {
@@ -468,8 +468,8 @@ func (r *CreateConfigDataRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvironmentId")
 	delete(f, "Name")
-	delete(f, "SourceChannel")
 	delete(f, "Data")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigDataRequest has unknown keys!", "")
 	}
@@ -997,11 +997,11 @@ type DeleteApplicationAutoscalerRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type DeleteApplicationAutoscalerRequest struct {
@@ -1013,11 +1013,11 @@ type DeleteApplicationAutoscalerRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *DeleteApplicationAutoscalerRequest) ToJsonString() string {
@@ -1034,8 +1034,8 @@ func (r *DeleteApplicationAutoscalerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
-	delete(f, "SourceChannel")
 	delete(f, "AutoscalerId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationAutoscalerRequest has unknown keys!", "")
 	}
@@ -1151,14 +1151,14 @@ type DeleteApplicationServiceRequestParams struct {
 	// 服务id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 访问方式服务名
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type DeleteApplicationServiceRequest struct {
@@ -1167,14 +1167,14 @@ type DeleteApplicationServiceRequest struct {
 	// 服务id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 访问方式服务名
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *DeleteApplicationServiceRequest) ToJsonString() string {
@@ -1190,9 +1190,9 @@ func (r *DeleteApplicationServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationId")
-	delete(f, "SourceChannel")
 	delete(f, "EnvironmentId")
 	delete(f, "ServiceName")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationServiceRequest has unknown keys!", "")
 	}
@@ -2130,10 +2130,10 @@ type DescribeApplicationsRequestParams struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 分页Limit
+	// 分页Limit，默认值：20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页offset
+	// 分页offset,默认值：0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 来源渠道
@@ -2158,10 +2158,10 @@ type DescribeApplicationsRequest struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 分页Limit
+	// 分页Limit，默认值：20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页offset
+	// 分页offset,默认值：0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 来源渠道
@@ -2233,21 +2233,21 @@ func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationsStatusRequestParams struct {
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type DescribeApplicationsStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *DescribeApplicationsStatusRequest) ToJsonString() string {
@@ -2262,8 +2262,8 @@ func (r *DescribeApplicationsStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "SourceChannel")
 	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsStatusRequest has unknown keys!", "")
 	}
@@ -2658,10 +2658,10 @@ func (r *DescribeEnvironmentStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvironmentsRequestParams struct {
-	// 分页limit
+	// 分页limit，默认：20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页下标
+	// 分页下标，默认：0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 来源source
@@ -2680,10 +2680,10 @@ type DescribeEnvironmentsRequestParams struct {
 type DescribeEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页limit
+	// 分页limit，默认：20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页下标
+	// 分页下标，默认：0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 来源source
@@ -3076,11 +3076,11 @@ type DescribeRelatedIngressesRequestParams struct {
 	// 环境 namespace
 	ClusterNamespace *string `json:"ClusterNamespace,omitnil,omitempty" name:"ClusterNamespace"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 应用 ID
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type DescribeRelatedIngressesRequest struct {
@@ -3092,11 +3092,11 @@ type DescribeRelatedIngressesRequest struct {
 	// 环境 namespace
 	ClusterNamespace *string `json:"ClusterNamespace,omitnil,omitempty" name:"ClusterNamespace"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 应用 ID
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *DescribeRelatedIngressesRequest) ToJsonString() string {
@@ -3113,8 +3113,8 @@ func (r *DescribeRelatedIngressesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvironmentId")
 	delete(f, "ClusterNamespace")
-	delete(f, "SourceChannel")
 	delete(f, "ApplicationId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelatedIngressesRequest has unknown keys!", "")
 	}
@@ -3240,7 +3240,7 @@ type DestroyEnvironmentRequestParams struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// Namespace
+	// 来源渠道 示例值：0
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
@@ -3250,7 +3250,7 @@ type DestroyEnvironmentRequest struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// Namespace
+	// 来源渠道 示例值：0
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
@@ -3378,11 +3378,11 @@ type DisableApplicationAutoscalerRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type DisableApplicationAutoscalerRequest struct {
@@ -3394,11 +3394,11 @@ type DisableApplicationAutoscalerRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *DisableApplicationAutoscalerRequest) ToJsonString() string {
@@ -3415,8 +3415,8 @@ func (r *DisableApplicationAutoscalerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
-	delete(f, "SourceChannel")
 	delete(f, "AutoscalerId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableApplicationAutoscalerRequest has unknown keys!", "")
 	}
@@ -3527,11 +3527,11 @@ type EnableApplicationAutoscalerRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type EnableApplicationAutoscalerRequest struct {
@@ -3543,11 +3543,11 @@ type EnableApplicationAutoscalerRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *EnableApplicationAutoscalerRequest) ToJsonString() string {
@@ -3564,8 +3564,8 @@ func (r *EnableApplicationAutoscalerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
-	delete(f, "SourceChannel")
 	delete(f, "AutoscalerId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableApplicationAutoscalerRequest has unknown keys!", "")
 	}
@@ -3768,9 +3768,6 @@ type IngressInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 环境namespace
-	ClusterNamespace *string `json:"ClusterNamespace,omitnil,omitempty" name:"ClusterNamespace"`
-
 	// ip version
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
@@ -3783,6 +3780,9 @@ type IngressInfo struct {
 	// clb ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClbId *string `json:"ClbId,omitnil,omitempty" name:"ClbId"`
+
+	// 环境namespace
+	ClusterNamespace *string `json:"ClusterNamespace,omitnil,omitempty" name:"ClusterNamespace"`
 
 	// tls 配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3990,14 +3990,14 @@ type ModifyApplicationAutoscalerRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
 
 	// 弹性伸缩策略
 	Autoscaler *Autoscaler `json:"Autoscaler,omitnil,omitempty" name:"Autoscaler"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type ModifyApplicationAutoscalerRequest struct {
@@ -4009,14 +4009,14 @@ type ModifyApplicationAutoscalerRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 弹性伸缩策略ID
 	AutoscalerId *string `json:"AutoscalerId,omitnil,omitempty" name:"AutoscalerId"`
 
 	// 弹性伸缩策略
 	Autoscaler *Autoscaler `json:"Autoscaler,omitnil,omitempty" name:"Autoscaler"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *ModifyApplicationAutoscalerRequest) ToJsonString() string {
@@ -4033,9 +4033,9 @@ func (r *ModifyApplicationAutoscalerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
-	delete(f, "SourceChannel")
 	delete(f, "AutoscalerId")
 	delete(f, "Autoscaler")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationAutoscalerRequest has unknown keys!", "")
 	}
@@ -4320,11 +4320,11 @@ type ModifyConfigDataRequestParams struct {
 	// 配置名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 配置信息
 	Data []*Pair `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type ModifyConfigDataRequest struct {
@@ -4336,11 +4336,11 @@ type ModifyConfigDataRequest struct {
 	// 配置名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 配置信息
 	Data []*Pair `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *ModifyConfigDataRequest) ToJsonString() string {
@@ -4357,8 +4357,8 @@ func (r *ModifyConfigDataRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvironmentId")
 	delete(f, "Name")
-	delete(f, "SourceChannel")
 	delete(f, "Data")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigDataRequest has unknown keys!", "")
 	}
@@ -4395,7 +4395,7 @@ type ModifyEnvironmentRequestParams struct {
 	// 环境id
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 环境名称
+	// 环境名称。环境名称不可修改
 	EnvironmentName *string `json:"EnvironmentName,omitnil,omitempty" name:"EnvironmentName"`
 
 	// 环境描述
@@ -4420,7 +4420,7 @@ type ModifyEnvironmentRequest struct {
 	// 环境id
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 环境名称
+	// 环境名称。环境名称不可修改
 	EnvironmentName *string `json:"EnvironmentName,omitnil,omitempty" name:"EnvironmentName"`
 
 	// 环境描述
@@ -4902,11 +4902,11 @@ type RestartApplicationRequestParams struct {
 	// 服务id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type RestartApplicationRequest struct {
@@ -4915,11 +4915,11 @@ type RestartApplicationRequest struct {
 	// 服务id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *RestartApplicationRequest) ToJsonString() string {
@@ -4935,8 +4935,8 @@ func (r *RestartApplicationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationId")
-	delete(f, "SourceChannel")
 	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartApplicationRequest has unknown keys!", "")
 	}
@@ -5456,11 +5456,11 @@ type StopApplicationRequestParams struct {
 	// 服务id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 type StopApplicationRequest struct {
@@ -5469,11 +5469,11 @@ type StopApplicationRequest struct {
 	// 服务id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 来源渠道
-	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
-
 	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
 func (r *StopApplicationRequest) ToJsonString() string {
@@ -5489,8 +5489,8 @@ func (r *StopApplicationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationId")
-	delete(f, "SourceChannel")
 	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopApplicationRequest has unknown keys!", "")
 	}

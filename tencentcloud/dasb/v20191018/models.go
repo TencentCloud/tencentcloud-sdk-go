@@ -615,6 +615,10 @@ type CmdTemplate struct {
 
 	// 命令列表，命令之间用换行符（"\n"）分隔
 	CmdList *string `json:"CmdList,omitnil,omitempty" name:"CmdList"`
+
+	// 命令模板类型 1-内置 2-自定义	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type Command struct {
@@ -2418,6 +2422,9 @@ type DescribeAclsRequestParams struct {
 
 	// 部门ID，用于过滤属于某个部门的访问权限
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 过滤数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAclsRequest struct {
@@ -2449,6 +2456,9 @@ type DescribeAclsRequest struct {
 
 	// 部门ID，用于过滤属于某个部门的访问权限
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 过滤数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAclsRequest) ToJsonString() string {
@@ -2472,6 +2482,7 @@ func (r *DescribeAclsRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "Status")
 	delete(f, "DepartmentId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAclsRequest has unknown keys!", "")
 	}
@@ -2743,6 +2754,9 @@ type DescribeCmdTemplatesRequestParams struct {
 	// 命令模板名，模糊查询，最大长度64字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 命令模板类型 1-内置模板  2-自定义模板
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -2758,6 +2772,9 @@ type DescribeCmdTemplatesRequest struct {
 
 	// 命令模板名，模糊查询，最大长度64字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 命令模板类型 1-内置模板  2-自定义模板
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -2780,6 +2797,7 @@ func (r *DescribeCmdTemplatesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "IdSet")
 	delete(f, "Name")
+	delete(f, "Type")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -4745,6 +4763,9 @@ type ModifyCmdTemplateRequestParams struct {
 	// CmdList字段前端是否base64传值。
 	// 0：否，1：是
 	Encoding *uint64 `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// 命令模板类型 1-内置模板 2-自定义模板
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ModifyCmdTemplateRequest struct {
@@ -4762,6 +4783,9 @@ type ModifyCmdTemplateRequest struct {
 	// CmdList字段前端是否base64传值。
 	// 0：否，1：是
 	Encoding *uint64 `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// 命令模板类型 1-内置模板 2-自定义模板
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *ModifyCmdTemplateRequest) ToJsonString() string {
@@ -4780,6 +4804,7 @@ func (r *ModifyCmdTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CmdList")
 	delete(f, "Id")
 	delete(f, "Encoding")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCmdTemplateRequest has unknown keys!", "")
 	}

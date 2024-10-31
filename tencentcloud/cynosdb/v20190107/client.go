@@ -2498,7 +2498,7 @@ func NewDescribeBackupDownloadUrlResponse() (response *DescribeBackupDownloadUrl
 }
 
 // DescribeBackupDownloadUrl
-// 此接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
+// 本接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -2510,7 +2510,7 @@ func (c *Client) DescribeBackupDownloadUrl(request *DescribeBackupDownloadUrlReq
 }
 
 // DescribeBackupDownloadUrl
-// 此接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
+// 本接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -2669,7 +2669,7 @@ func NewDescribeBinlogDownloadUrlResponse() (response *DescribeBinlogDownloadUrl
 }
 
 // DescribeBinlogDownloadUrl
-// 此接口（DescribeBinlogDownloadUrl）用于查询Binlog的下载地址。
+// 本接口（DescribeBinlogDownloadUrl）用于查询 Binlog 的下载地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -2682,7 +2682,7 @@ func (c *Client) DescribeBinlogDownloadUrl(request *DescribeBinlogDownloadUrlReq
 }
 
 // DescribeBinlogDownloadUrl
-// 此接口（DescribeBinlogDownloadUrl）用于查询Binlog的下载地址。
+// 本接口（DescribeBinlogDownloadUrl）用于查询 Binlog 的下载地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -2787,7 +2787,7 @@ func NewDescribeBinlogsResponse() (response *DescribeBinlogsResponse) {
 }
 
 // DescribeBinlogs
-// 此接口（DescribeBinlogs）用来查询集群Binlog日志列表。
+// 本接口（DescribeBinlogs）用来查询集群 Binlog 日志列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -2798,7 +2798,7 @@ func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *Des
 }
 
 // DescribeBinlogs
-// 此接口（DescribeBinlogs）用来查询集群Binlog日志列表。
+// 本接口（DescribeBinlogs）用来查询集群 Binlog 日志列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3479,7 +3479,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 }
 
 // DescribeClusters
-// 查询集群列表
+// 本接口（DescribeClusters）用于查询集群列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -3497,7 +3497,7 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
 }
 
 // DescribeClusters
-// 查询集群列表
+// 本接口（DescribeClusters）用于查询集群列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -5031,7 +5031,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 }
 
 // DescribeZones
-// 本接口(DescribeZones)用于查询可售卖地域可用区信息。
+// 本接口（DescribeZones）用于查询可售卖地域可用区信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5043,7 +5043,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 }
 
 // DescribeZones
-// 本接口(DescribeZones)用于查询可售卖地域可用区信息。
+// 本接口（DescribeZones）用于查询可售卖地域可用区信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5198,7 +5198,7 @@ func NewExportInstanceSlowQueriesResponse() (response *ExportInstanceSlowQueries
 }
 
 // ExportInstanceSlowQueries
-// 此接口（ExportInstanceSlowQueries）用于导出实例慢日志。
+// 本接口（ExportInstanceSlowQueries）用于导出实例慢日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -5209,7 +5209,7 @@ func (c *Client) ExportInstanceSlowQueries(request *ExportInstanceSlowQueriesReq
 }
 
 // ExportInstanceSlowQueries
-// 此接口（ExportInstanceSlowQueries）用于导出实例慢日志。
+// 本接口（ExportInstanceSlowQueries）用于导出实例慢日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"

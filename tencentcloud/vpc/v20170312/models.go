@@ -22300,6 +22300,14 @@ type Ipv6Address struct {
 	// <li>`DELETING`：删除中</li>
 	// <li>`AVAILABLE`：可用的</li>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 如果 IPv6地址是 ULA 类型，绑定的公网IP地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
+
+	// `IPv6`地址的类型: `GUA`, `OTHER`, `ULA`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 type Ipv6SubnetCidrBlock struct {

@@ -2387,7 +2387,7 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 //
 // 
 //
-// 7. 新加入的签署方<font color="red">平台不会发送短信</font>进行签署。请您生成相应的链接，并将其发送给该签署方以便完成签署过程。
+// 7.新加入的签署方<font color="red">平台不会发送短信</font>通知。请您生成相应的链接，并将该链接发送给签署方以便完成签署过程。
 //
 // 
 //
@@ -2550,7 +2550,7 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 //
 // 
 //
-// 7. 新加入的签署方<font color="red">平台不会发送短信</font>进行签署。请您生成相应的链接，并将其发送给该签署方以便完成签署过程。
+// 7.新加入的签署方<font color="red">平台不会发送短信</font>通知。请您生成相应的链接，并将该链接发送给签署方以便完成签署过程。
 //
 // 
 //
@@ -3730,11 +3730,39 @@ func NewCreateFlowGroupByTemplatesResponse() (response *CreateFlowGroupByTemplat
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 注：`合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
+//
+// 
+//
+// ### 1. 适用场景
+//
+// 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// 
+//
+// ### 2. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
+//
+// 
+//
+// ### 3.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3879,11 +3907,39 @@ func (c *Client) CreateFlowGroupByTemplates(request *CreateFlowGroupByTemplatesR
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 注：`合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
+//
+// 
+//
+// ### 1. 适用场景
+//
+// 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// 
+//
+// ### 2. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
+//
+// 
+//
+// ### 3.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8205,6 +8261,8 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 //
 // **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
 //
+// 
+//
 // **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowBriefs)接口来主动检查合同的签署状态。请仅在确认合同状态为“签署完成”后，进行文件的下载操作。
 //
 // 可能返回的错误码:
@@ -8252,6 +8310,8 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 // 
 //
 // **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
+//
+// 
 //
 // **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowBriefs)接口来主动检查合同的签署状态。请仅在确认合同状态为“签署完成”后，进行文件的下载操作。
 //
@@ -9957,8 +10017,6 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //
 //   - **OPEN_SERVER_SIGN（企业自动签）**
 //
-//   - **OVERSEA_SIGN（企业与港澳台居民签署合同）**
-//
 // 
 //
 // 注意： `在调用此接口以管理企业扩展服务时，操作者（入参中的Operator）必须是企业的超级管理员（超管）或法人`
@@ -9992,8 +10050,6 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 // - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
 //
 //   - **OPEN_SERVER_SIGN（企业自动签）**
-//
-//   - **OVERSEA_SIGN（企业与港澳台居民签署合同）**
 //
 // 
 //

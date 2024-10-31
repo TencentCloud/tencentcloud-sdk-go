@@ -45,6 +45,75 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateDeviceVirtualGroupRequest() (request *CreateDeviceVirtualGroupRequest) {
+    request = &CreateDeviceVirtualGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateDeviceVirtualGroup")
+    
+    
+    return
+}
+
+func NewCreateDeviceVirtualGroupResponse() (response *CreateDeviceVirtualGroupResponse) {
+    response = &CreateDeviceVirtualGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeviceVirtualGroup
+// 创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_AUTORULEPARAMETERERROR = "InvalidParameter.AutoRuleParameterError"
+//  INVALIDPARAMETER_DUPLICATEDEVICEVIRTUALGROUPNAME = "InvalidParameter.DuplicateDeviceVirtualGroupName"
+//  INVALIDPARAMETER_DUPLICATEIDINBLACKWHITELIST = "InvalidParameter.DuplicateIdInBlackWhiteList"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) CreateDeviceVirtualGroup(request *CreateDeviceVirtualGroupRequest) (response *CreateDeviceVirtualGroupResponse, err error) {
+    return c.CreateDeviceVirtualGroupWithContext(context.Background(), request)
+}
+
+// CreateDeviceVirtualGroup
+// 创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_AUTORULEPARAMETERERROR = "InvalidParameter.AutoRuleParameterError"
+//  INVALIDPARAMETER_DUPLICATEDEVICEVIRTUALGROUPNAME = "InvalidParameter.DuplicateDeviceVirtualGroupName"
+//  INVALIDPARAMETER_DUPLICATEIDINBLACKWHITELIST = "InvalidParameter.DuplicateIdInBlackWhiteList"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) CreateDeviceVirtualGroupWithContext(ctx context.Context, request *CreateDeviceVirtualGroupRequest) (response *CreateDeviceVirtualGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceVirtualGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeviceVirtualGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeviceVirtualGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
     request = &DescribeAccountGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -65,7 +134,7 @@ func NewDescribeAccountGroupsResponse() (response *DescribeAccountGroupsResponse
 }
 
 // DescribeAccountGroups
-// 以分页的方式查询账户目录列表,私有化调用path为：/capi/Assets/DescribeAccountGroups
+// 以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -79,7 +148,7 @@ func (c *Client) DescribeAccountGroups(request *DescribeAccountGroupsRequest) (r
 }
 
 // DescribeAccountGroups
-// 以分页的方式查询账户目录列表,私有化调用path为：/capi/Assets/DescribeAccountGroups
+// 以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -236,7 +305,9 @@ func NewDescribeRootAccountGroupResponse() (response *DescribeRootAccountGroupRe
 }
 
 // DescribeRootAccountGroup
-// 查询账户根分组详情，私有化调用path为：capi/Assets/DescribeRootAccountGroup
+// 查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
+//
+// 私有化调用path为：capi/Assets/DescribeRootAccountGroup
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -250,7 +321,9 @@ func (c *Client) DescribeRootAccountGroup(request *DescribeRootAccountGroupReque
 }
 
 // DescribeRootAccountGroup
-// 查询账户根分组详情，私有化调用path为：capi/Assets/DescribeRootAccountGroup
+// 查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
+//
+// 私有化调用path为：capi/Assets/DescribeRootAccountGroup
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"

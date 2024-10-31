@@ -3908,65 +3908,6 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeNatSwitchListRequest() (request *DescribeNatSwitchListRequest) {
-    request = &DescribeNatSwitchListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatSwitchList")
-    
-    
-    return
-}
-
-func NewDescribeNatSwitchListResponse() (response *DescribeNatSwitchListResponse) {
-    response = &DescribeNatSwitchListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeNatSwitchList
-// 旧接口，不再维护
-//
-// 
-//
-// 查询NAT边界防火墙开关列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeNatSwitchList(request *DescribeNatSwitchListRequest) (response *DescribeNatSwitchListResponse, err error) {
-    return c.DescribeNatSwitchListWithContext(context.Background(), request)
-}
-
-// DescribeNatSwitchList
-// 旧接口，不再维护
-//
-// 
-//
-// 查询NAT边界防火墙开关列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeNatSwitchListWithContext(ctx context.Context, request *DescribeNatSwitchListRequest) (response *DescribeNatSwitchListResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatSwitchListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeNatSwitchList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeNatSwitchListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeResourceGroupRequest() (request *DescribeResourceGroupRequest) {
     request = &DescribeResourceGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

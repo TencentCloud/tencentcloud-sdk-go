@@ -1304,6 +1304,27 @@ type GetServiceStatusResponseParams struct {
 	// false表示用户暂时不能使用密钥安全托管功能。
 	AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitnil,omitempty" name:"AccessKeyEscrowEnabled"`
 
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 计算性能限制
+	QPSLimit *int64 `json:"QPSLimit,omitnil,omitempty" name:"QPSLimit"`
+
+	// 凭据个数限制
+	SecretLimit *int64 `json:"SecretLimit,omitnil,omitempty" name:"SecretLimit"`
+
+	// 付费模式
+	PayModel *string `json:"PayModel,omitnil,omitempty" name:"PayModel"`
+
+	// 自动续费标识，0:手动续费 1:自动续费 2:到期不续
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 已托管凭据个数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

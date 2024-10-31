@@ -7686,6 +7686,63 @@ func (c *Client) PublishConfigFilesWithContext(ctx context.Context, request *Pub
     return
 }
 
+func NewRestartSREInstanceRequest() (request *RestartSREInstanceRequest) {
+    request = &RestartSREInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "RestartSREInstance")
+    
+    
+    return
+}
+
+func NewRestartSREInstanceResponse() (response *RestartSREInstanceResponse) {
+    response = &RestartSREInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartSREInstance
+// 重启微服务引擎实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RestartSREInstance(request *RestartSREInstanceRequest) (response *RestartSREInstanceResponse, err error) {
+    return c.RestartSREInstanceWithContext(context.Background(), request)
+}
+
+// RestartSREInstance
+// 重启微服务引擎实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RestartSREInstanceWithContext(ctx context.Context, request *RestartSREInstanceRequest) (response *RestartSREInstanceResponse, err error) {
+    if request == nil {
+        request = NewRestartSREInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartSREInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartSREInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRollbackConfigFileReleasesRequest() (request *RollbackConfigFileReleasesRequest) {
     request = &RollbackConfigFileReleasesRequest{
         BaseRequest: &tchttp.BaseRequest{},

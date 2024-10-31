@@ -8302,8 +8302,7 @@ type CreateSignUrlsRequestParams struct {
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId
-	// 注: `GenerateType为"CHANNEL"时必填`
+	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
@@ -8417,8 +8416,7 @@ type CreateSignUrlsRequest struct {
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId
-	// 注: `GenerateType为"CHANNEL"时必填`
+	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
@@ -10911,7 +10909,7 @@ type ModifyExtendedServiceResponseParams struct {
 	// 操作跳转链接
 	// <ul><li><strong>链接有效期：</strong> 跳转链接的有效期为24小时。</li>
 	// <li><strong>没有返回链接的情形：</strong> 如果在操作时没有返回跳转链接，说明此次操作无需进行跳转，服务将会直接被开通或关闭。</li>
-	// <li><strong>返回链接的情形：</strong> 当操作类型为<b>OPEN（开通服务）</b>，并且扩展服务类型为<b>AUTO_SIGN（ 企业自动签署）</b>、<b>DOWNLOAD_FLOW（授权渠道下载合同）</b>或<b>OVERSEA_SIGN（企业与港澳台居民签署合同）</b>时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。<font color="red"><b>由超管或法人点击链接</b></font>，以完成服务的开通操作。</li>
+	// <li><strong>返回链接的情形：</strong> 当操作类型为<b>OPEN（开通服务）</b>，并且扩展服务类型为<b>AUTO_SIGN（ 企业自动签署）</b>、<b>DOWNLOAD_FLOW（授权渠道下载合同）</b>时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。<font color="red"><b>由超管或法人点击链接</b></font>，以完成服务的开通操作。</li>
 	// </ul>
 	// 
 	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`

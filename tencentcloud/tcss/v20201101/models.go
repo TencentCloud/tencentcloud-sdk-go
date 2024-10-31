@@ -2330,6 +2330,9 @@ type ClusterInfoItem struct {
 	// 集群状态
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
+	// 集群运行子状态
+	ClusterSubStatus *string `json:"ClusterSubStatus,omitnil,omitempty" name:"ClusterSubStatus"`
+
 	// 集群的检测模式，为Cluster_Normal或者Cluster_Actived.
 	ClusterCheckMode *string `json:"ClusterCheckMode,omitnil,omitempty" name:"ClusterCheckMode"`
 
@@ -2400,6 +2403,13 @@ type ClusterInfoItem struct {
 
 	// 核数
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
+
+	// 集群审计开关状态：
+	// 已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+	ClusterAuditStatus *string `json:"ClusterAuditStatus,omitnil,omitempty" name:"ClusterAuditStatus"`
+
+	// 集群审计开关失败信息
+	ClusterAuditFailedInfo *string `json:"ClusterAuditFailedInfo,omitnil,omitempty" name:"ClusterAuditFailedInfo"`
 }
 
 type ClusterNodeInfo struct {
@@ -2535,7 +2545,7 @@ type ClusterPodInfo struct {
 	// 集群类型
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// abc
+	// 节点名称
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// NORMAL：普通节点 SUPER：超级节点
@@ -2613,6 +2623,15 @@ type ComplianceAffectedAsset struct {
 	// 主机实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 镜像仓库信息
+	ImageRegistryInfo *ImageRegistryInfo `json:"ImageRegistryInfo,omitnil,omitempty" name:"ImageRegistryInfo"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type ComplianceAssetDetailInfo struct {
@@ -2720,6 +2739,15 @@ type ComplianceAssetInfo struct {
 	// 主机节点的实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 镜像仓库信息
+	ImageRegistryInfo *ImageRegistryInfo `json:"ImageRegistryInfo,omitnil,omitempty" name:"ImageRegistryInfo"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type ComplianceAssetPolicyItem struct {
@@ -4346,9 +4374,6 @@ type CreateComponentExportJobRequestParams struct {
 	// 镜像ID
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
 	// 需要返回的数量，默认为10000，最大值为10000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -4364,6 +4389,9 @@ type CreateComponentExportJobRequestParams struct {
 
 	// 排序方式desc ，asc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
 }
 
 type CreateComponentExportJobRequest struct {
@@ -4372,9 +4400,6 @@ type CreateComponentExportJobRequest struct {
 	// 镜像ID
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
 	// 需要返回的数量，默认为10000，最大值为10000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -4390,6 +4415,9 @@ type CreateComponentExportJobRequest struct {
 
 	// 排序方式desc ，asc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
 }
 
 func (r *CreateComponentExportJobRequest) ToJsonString() string {
@@ -4405,12 +4433,12 @@ func (r *CreateComponentExportJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ImageID")
-	delete(f, "ExportField")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "By")
 	delete(f, "Order")
+	delete(f, "ExportField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateComponentExportJobRequest has unknown keys!", "")
 	}
@@ -4904,17 +4932,7 @@ func (r *CreateExportComplianceStatusListJobResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type CreateHostExportJobRequestParams struct {
-	// 过滤条件。
-	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
-	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
-	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
-	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
-	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
-	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
-	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
-	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
-	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
+	// 过滤条件。<li>Status-String-是否必填：否-agent状态筛选，"ALL": "全部"(或不传该字段), "UNINSTALL"："未安装", "OFFLINE"："离线", "ONLINE"："防护中"</li><li>HostName-String-是否必填：否-主机名筛选</li><li>Group-String-是否必填：否-主机群组搜索</li><li>HostIP-string-是否必填：否-主机ip搜索</li><li>HostID-string-是否必填：否-主机id搜索</li><li>DockerVersion-string-是否必填：否-docker版本搜索</li><li>MachineType-string-是否必填：否-主机来源MachineType搜索，"ALL": "全部"(或不传该字段), 主机来源：[     "CVM",     "ECM",     "LH",     "BM" ]中的之一为腾讯云服务器；[     "Other" ]之一非腾讯云服务器；</li><li>DockerStatus-string-是否必填：否-docker安装状态，"ALL": "全部"(或不传该字段), "INSTALL": "已安装", "UNINSTALL": "未安装"</li><li>ProjectID-string-是否必填：否-所属项目id搜索</li><li>Tag:(tag: key)-string-是否必填：否-标签键值搜索示例Filters":[{"Name":"tag: tke-kind","Values":["service"]}]</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -4936,17 +4954,7 @@ type CreateHostExportJobRequestParams struct {
 type CreateHostExportJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。
-	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
-	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
-	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
-	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
-	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
-	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
-	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
-	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
-	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
+	// 过滤条件。<li>Status-String-是否必填：否-agent状态筛选，"ALL": "全部"(或不传该字段), "UNINSTALL"："未安装", "OFFLINE"："离线", "ONLINE"："防护中"</li><li>HostName-String-是否必填：否-主机名筛选</li><li>Group-String-是否必填：否-主机群组搜索</li><li>HostIP-string-是否必填：否-主机ip搜索</li><li>HostID-string-是否必填：否-主机id搜索</li><li>DockerVersion-string-是否必填：否-docker版本搜索</li><li>MachineType-string-是否必填：否-主机来源MachineType搜索，"ALL": "全部"(或不传该字段), 主机来源：[     "CVM",     "ECM",     "LH",     "BM" ]中的之一为腾讯云服务器；[     "Other" ]之一非腾讯云服务器；</li><li>DockerStatus-string-是否必填：否-docker安装状态，"ALL": "全部"(或不传该字段), "INSTALL": "已安装", "UNINSTALL": "未安装"</li><li>ProjectID-string-是否必填：否-所属项目id搜索</li><li>Tag:(tag: key)-string-是否必填：否-标签键值搜索示例Filters":[{"Name":"tag: tke-kind","Values":["service"]}]</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -9379,6 +9387,12 @@ type DescribeAgentDaemonSetCmdResponseParams struct {
 	// 安装命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
+	// 文件url
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+
+	// 文件内容(base64编码)
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9418,6 +9432,9 @@ type DescribeAgentInstallCommandRequestParams struct {
 
 	// 标签ID列表，IsCloud=false时才会生效
 	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// 虚拟ip
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 }
 
 type DescribeAgentInstallCommandRequest struct {
@@ -9440,6 +9457,9 @@ type DescribeAgentInstallCommandRequest struct {
 
 	// 标签ID列表，IsCloud=false时才会生效
 	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// 虚拟ip
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 }
 
 func (r *DescribeAgentInstallCommandRequest) ToJsonString() string {
@@ -9460,6 +9480,7 @@ func (r *DescribeAgentInstallCommandRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "ExpireDate")
 	delete(f, "TagIds")
+	delete(f, "Vip")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentInstallCommandRequest has unknown keys!", "")
 	}
@@ -9482,6 +9503,9 @@ type DescribeAgentInstallCommandResponseParams struct {
 
 	// windows版agent下载链接
 	WindowsDownloadUrl *string `json:"WindowsDownloadUrl,omitnil,omitempty" name:"WindowsDownloadUrl"`
+
+	// arm架构系统安装命令
+	ARMCommand *string `json:"ARMCommand,omitnil,omitempty" name:"ARMCommand"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10273,7 +10297,7 @@ type DescribeAssetHostListRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。 <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li> <li>HostName - String - 是否必填：否 - 主机名筛选</li> <li>Group- String - 是否必填：否 - 主机群组搜索</li> <li>HostIP- string - 是否必填：否 - 主机ip搜索</li> <li>HostID- string - 是否必填：否 - 主机id搜索</li> <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li> <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li> <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li> <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li> <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
+	// 过滤条件。<li>Status-String-是否必填：否-agent状态筛选，"ALL": "全部"(或不传该字段), "UNINSTALL"："未安装", "OFFLINE"："离线", "ONLINE"："防护中"</li><li>HostName-String-是否必填：否-主机名筛选</li><li>Group-String-是否必填：否-主机群组搜索</li><li>HostIP-string-是否必填：否-主机ip搜索</li><li>HostID-string-是否必填：否-主机id搜索</li><li>DockerVersion-string-是否必填：否-docker版本搜索</li><li>MachineType-string-是否必填：否-主机来源MachineType搜索，"ALL": "全部"(或不传该字段), 主机来源：[     "CVM",     "ECM",     "LH",     "BM" ]中的之一为腾讯云服务器；[     "Other" ]之一非腾讯云服务器；</li><li>DockerStatus-string-是否必填：否-docker安装状态，"ALL": "全部"(或不传该字段), "INSTALL": "已安装", "UNINSTALL": "未安装"</li><li>ProjectID-string-是否必填：否-所属项目id搜索</li><li>Tag:(tag: key)-string-是否必填：否-标签键值搜索示例Filters":[{"Name":"tag: tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -10292,7 +10316,7 @@ type DescribeAssetHostListRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。 <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li> <li>HostName - String - 是否必填：否 - 主机名筛选</li> <li>Group- String - 是否必填：否 - 主机群组搜索</li> <li>HostIP- string - 是否必填：否 - 主机ip搜索</li> <li>HostID- string - 是否必填：否 - 主机id搜索</li> <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li> <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li> <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li> <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li> <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
+	// 过滤条件。<li>Status-String-是否必填：否-agent状态筛选，"ALL": "全部"(或不传该字段), "UNINSTALL"："未安装", "OFFLINE"："离线", "ONLINE"："防护中"</li><li>HostName-String-是否必填：否-主机名筛选</li><li>Group-String-是否必填：否-主机群组搜索</li><li>HostIP-string-是否必填：否-主机ip搜索</li><li>HostID-string-是否必填：否-主机id搜索</li><li>DockerVersion-string-是否必填：否-docker版本搜索</li><li>MachineType-string-是否必填：否-主机来源MachineType搜索，"ALL": "全部"(或不传该字段), 主机来源：[     "CVM",     "ECM",     "LH",     "BM" ]中的之一为腾讯云服务器；[     "Other" ]之一非腾讯云服务器；</li><li>DockerStatus-string-是否必填：否-docker安装状态，"ALL": "全部"(或不传该字段), "INSTALL": "已安装", "UNINSTALL": "未安装"</li><li>ProjectID-string-是否必填：否-所属项目id搜索</li><li>Tag:(tag: key)-string-是否必填：否-标签键值搜索示例Filters":[{"Name":"tag: tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -13916,6 +13940,9 @@ type DescribeClusterDetailResponseParams struct {
 	// 集群状态 (Running 运行中 Creating 创建中 Abnormal 异常 )
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
+	// 集群运行子状态
+	ClusterSubStatus *string `json:"ClusterSubStatus,omitnil,omitempty" name:"ClusterSubStatus"`
+
 	// 集群类型：为托管集群MANAGED_CLUSTER、独立集群INDEPENDENT_CLUSTER
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
@@ -14303,6 +14330,10 @@ func (r *DescribeComplianceAssetDetailInfoResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeComplianceAssetListRequestParams struct {
 	// 资产类型列表。
+	// ASSET_CONTAINER, 容器
+	// ASSET_IMAGE, 镜像
+	// ASSET_HOST, 主机
+	// ASSET_K8S, K8S资产
 	AssetTypeSet []*string `json:"AssetTypeSet,omitnil,omitempty" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
@@ -14319,6 +14350,10 @@ type DescribeComplianceAssetListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资产类型列表。
+	// ASSET_CONTAINER, 容器
+	// ASSET_IMAGE, 镜像
+	// ASSET_HOST, 主机
+	// ASSET_K8S, K8S资产
 	AssetTypeSet []*string `json:"AssetTypeSet,omitnil,omitempty" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
@@ -26152,12 +26187,13 @@ type EscapeRule struct {
 
 type EscapeRuleEnabled struct {
 	// 规则类型
-	//    ESCAPE_HOST_ACESS_FILE:宿主机文件访问逃逸
-	//    ESCAPE_MOUNT_NAMESPACE:MountNamespace逃逸
-	//    ESCAPE_PRIVILEDGE:程序提权逃逸
-	//    ESCAPE_PRIVILEDGE_CONTAINER_START:特权容器启动逃逸
-	//    ESCAPE_MOUNT_SENSITIVE_PTAH:敏感路径挂载
-	//    ESCAPE_SYSCALL:Syscall逃逸
+	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
+	//    ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+	//    ESCAPE_DOCKER_API：访问Docker API接口逃逸
+	//    ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
+	//    PRIVILEGE_CONTAINER_START：特权容器
+	//    PRIVILEGE：程序提权逃逸
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否打开：false否 ，true是
@@ -26606,6 +26642,24 @@ type ImageProgress struct {
 	VirusProgress *uint64 `json:"VirusProgress,omitnil,omitempty" name:"VirusProgress"`
 }
 
+type ImageRegistryInfo struct {
+	// 仓库名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 仓库类型
+	// aws
+	// ccr
+	// harbor
+	// jfrog
+	// other-tcr
+	// quay
+	// tcr
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 仓库地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+}
+
 type ImageRepoInfo struct {
 	// 镜像Digest
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
@@ -26902,6 +26956,9 @@ type ImageSimpleInfo struct {
 
 	// 关联容器数
 	ContainerCnt *int64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
+
+	// 关联主机数
+	HostCnt *uint64 `json:"HostCnt,omitnil,omitempty" name:"HostCnt"`
 }
 
 type ImageVirus struct {
@@ -27345,7 +27402,7 @@ type K8sApiAbnormalEventInfo struct {
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群运行状态
+	// 集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中
 	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitnil,omitempty" name:"ClusterRunningStatus"`
 
 	// 初次生成时间
@@ -29449,7 +29506,7 @@ func (r *ModifySecLogKafkaUINResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVirusAutoIsolateExampleSwitchRequestParams struct {
-	// 文件Md5值
+	// 文件MD5值
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
 	// 开关(开:true 关: false)
@@ -29459,7 +29516,7 @@ type ModifyVirusAutoIsolateExampleSwitchRequestParams struct {
 type ModifyVirusAutoIsolateExampleSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件Md5值
+	// 文件MD5值
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
 	// 开关(开:true 关: false)
@@ -30926,6 +30983,39 @@ type ReverseShellEventInfo struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// pod name
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil,omitempty" name:"NodeUniqueID"`
+
+	// 节点公网ip
+	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// uuid
+	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
+
+	// 节点内网ip
+	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
+
+	// 节点 id
+	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type ReverseShellWhiteListBaseInfo struct {
@@ -32321,6 +32411,14 @@ type SupportDefenceVul struct {
 
 	// 漏洞披露时间
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
+
+	// 漏洞id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -33478,6 +33576,10 @@ type VulAffectedContainerInfo struct {
 
 	// 超级节点名称
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 容器状态 "RUNNING":运行,"PAUSED":暂停,"STOPPED":停止,"CREATED":已经创建,"DESTROYED":已销毁,"RESTARTING":重启中,"REMOVING":迁移中,"DEAD":DEAD,"UNKNOWN":未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 }
 
 type VulAffectedImageComponentInfo struct {
@@ -33653,6 +33755,12 @@ type VulDefenceEvent struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
 }
 
 type VulDefenceEventDetail struct {

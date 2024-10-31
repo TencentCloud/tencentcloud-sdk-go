@@ -139,7 +139,7 @@ func (r *AcknowledgeMessageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AcknowledgeMessageResponseParams struct {
-	// 如果为“”，则说明没有错误返回
+	// 如果为""，则说明没有错误返回，否则返回具体的错误信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
@@ -10884,7 +10884,7 @@ type ModifyClusterRequestParams struct {
 	// 更新后的集群名称。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 说明信息。
+	// 说明信息。长度限制为 128 字节
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 开启公网访问，只能为true
@@ -10900,7 +10900,7 @@ type ModifyClusterRequest struct {
 	// 更新后的集群名称。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 说明信息。
+	// 说明信息。长度限制为 128 字节
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 开启公网访问，只能为true

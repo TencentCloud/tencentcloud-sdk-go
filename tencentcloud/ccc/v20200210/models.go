@@ -1537,7 +1537,7 @@ func (r *CreateCompanyApplyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateExtensionRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -1556,7 +1556,7 @@ type CreateExtensionRequestParams struct {
 type CreateExtensionRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -2157,7 +2157,7 @@ func (r *CreateUserSigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteExtensionRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -2167,7 +2167,7 @@ type DeleteExtensionRequestParams struct {
 type DeleteExtensionRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -3017,7 +3017,7 @@ func (r *DescribeCompanyListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExtensionRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -3027,7 +3027,7 @@ type DescribeExtensionRequestParams struct {
 type DescribeExtensionRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -3093,7 +3093,7 @@ func (r *DescribeExtensionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExtensionsRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分页页号（从0开始）
@@ -3115,7 +3115,7 @@ type DescribeExtensionsRequestParams struct {
 type DescribeExtensionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分页页号（从0开始）
@@ -4769,7 +4769,7 @@ type Filter struct {
 
 // Predefined struct for user
 type HangUpCallRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 会话ID
@@ -4779,7 +4779,7 @@ type HangUpCallRequestParams struct {
 type HangUpCallRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 会话ID
@@ -4997,7 +4997,7 @@ func (r *ModifyCompanyApplyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyExtensionRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -5016,7 +5016,7 @@ type ModifyExtensionRequestParams struct {
 type ModifyExtensionRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -5553,7 +5553,7 @@ type PhoneNumBuyInfo struct {
 
 // Predefined struct for user
 type ResetExtensionPasswordRequestParams struct {
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -5563,7 +5563,7 @@ type ResetExtensionPasswordRequestParams struct {
 type ResetExtensionPasswordRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 分机号
@@ -5969,7 +5969,7 @@ type StaffStatusMetrics struct {
 
 // Predefined struct for user
 type StopAutoCalloutTaskRequestParams struct {
-	// 呼叫中心实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 任务Id
@@ -5979,7 +5979,7 @@ type StopAutoCalloutTaskRequestParams struct {
 type StopAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 呼叫中心实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 任务Id

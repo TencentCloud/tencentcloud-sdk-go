@@ -5813,13 +5813,13 @@ func (r *DescribeInstancesDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// （过滤条件）按照实例ID过滤
+	// （查询条件）按照ckafka集群实例Id过滤
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照实例名称过滤，支持模糊查询
+	// 搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	// （查询条件）实例的状态  0：创建中，1：运行中，2：删除中，5: 隔离中,  7:升级中 不填默认返回全部
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 偏移量，不填默认为0
@@ -5831,20 +5831,20 @@ type DescribeInstancesRequestParams struct {
 	// 已废弃。匹配标签key值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 私有网络Id
+	// （查询条件）私有网络Id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// （过滤条件）按照实例ID过滤
+	// （查询条件）按照ckafka集群实例Id过滤
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照实例名称过滤，支持模糊查询
+	// 搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	// （查询条件）实例的状态  0：创建中，1：运行中，2：删除中，5: 隔离中,  7:升级中 不填默认返回全部
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 偏移量，不填默认为0
@@ -5856,7 +5856,7 @@ type DescribeInstancesRequest struct {
 	// 已废弃。匹配标签key值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 私有网络Id
+	// （查询条件）私有网络Id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
