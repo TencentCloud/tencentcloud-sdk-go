@@ -3926,6 +3926,10 @@ func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
 // DescribeTaskList
 // 本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
 //
+// 
+//
+// - 可查询近30天内任务列表数据。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
@@ -3937,6 +3941,10 @@ func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *D
 
 // DescribeTaskList
 // 本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
+//
+// 
+//
+// - 可查询近30天内任务列表数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

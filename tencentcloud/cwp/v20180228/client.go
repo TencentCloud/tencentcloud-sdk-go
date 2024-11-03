@@ -10366,6 +10366,10 @@ func NewDescribeComponentStatisticsResponse() (response *DescribeComponentStatis
 }
 
 // DescribeComponentStatistics
+// 接口已无效
+//
+// 
+//
 // 本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 //
 // 可能返回的错误码:
@@ -10381,6 +10385,10 @@ func (c *Client) DescribeComponentStatistics(request *DescribeComponentStatistic
 }
 
 // DescribeComponentStatistics
+// 接口已无效
+//
+// 
+//
 // 本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 //
 // 可能返回的错误码:

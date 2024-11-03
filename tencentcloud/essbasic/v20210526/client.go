@@ -1559,7 +1559,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// ### 1. 适用场景
+// ### 2. 适用场景
 //
 // 
 //
@@ -1567,7 +1567,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// ### 2. 发起方要求和签署方实名要求
+// ### 3. 发起方要求和签署方实名要求
 //
 // - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
 //
@@ -1651,13 +1651,13 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// ### 3. 签署方参数差异
+// ### 4. 签署方参数差异
 //
 // - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// ### 4. 合同额度的扣减与返还
+// ### 5. 合同额度的扣减与返还
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
@@ -1667,13 +1667,13 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // 
 //
-// ### 5. 静默（自动）签署的限制
+// ### 6. 静默（自动）签署的限制
 //
 // - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
-// ### 6.合同组暂不支持抄送功能
+// ### 7.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1750,7 +1750,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// ### 1. 适用场景
+// ### 2. 适用场景
 //
 // 
 //
@@ -1758,7 +1758,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// ### 2. 发起方要求和签署方实名要求
+// ### 3. 发起方要求和签署方实名要求
 //
 // - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
 //
@@ -1842,13 +1842,13 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// ### 3. 签署方参数差异
+// ### 4. 签署方参数差异
 //
 // - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// ### 4. 合同额度的扣减与返还
+// ### 5. 合同额度的扣减与返还
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
@@ -1858,13 +1858,13 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // 
 //
-// ### 5. 静默（自动）签署的限制
+// ### 6. 静默（自动）签署的限制
 //
 // - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
-// ### 6.合同组暂不支持抄送功能
+// ### 7.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1970,7 +1970,7 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// ### 1. 适用场景
+// ### 2. 适用场景
 //
 // 
 //
@@ -1978,7 +1978,7 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// ### 2. 发起方要求和签署方实名要求
+// ### 3. 发起方要求和签署方实名要求
 //
 // - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
 //
@@ -2060,13 +2060,13 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// ### 3. 签署方参数差异
+// ### 4. 签署方参数差异
 //
 // - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// ### 4. 合同额度的扣减与返还
+// ### 5. 合同额度的扣减与返还
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
@@ -2076,13 +2076,13 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // 
 //
-// ### 5. 静默（自动）签署的限制
+// ### 6. 静默（自动）签署的限制
 //
 // - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
-// ### 6.合同组暂不支持抄送功能
+// ### 7.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2136,7 +2136,7 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// ### 1. 适用场景
+// ### 2. 适用场景
 //
 // 
 //
@@ -2144,7 +2144,7 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// ### 2. 发起方要求和签署方实名要求
+// ### 3. 发起方要求和签署方实名要求
 //
 // - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
 //
@@ -2226,13 +2226,13 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// ### 3. 签署方参数差异
+// ### 4. 签署方参数差异
 //
 // - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 //
 // 
 //
-// ### 4. 合同额度的扣减与返还
+// ### 5. 合同额度的扣减与返还
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
@@ -2242,13 +2242,13 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // 
 //
-// ### 5. 静默（自动）签署的限制
+// ### 6. 静默（自动）签署的限制
 //
 // - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
-// ### 6.合同组暂不支持抄送功能
+// ### 7.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

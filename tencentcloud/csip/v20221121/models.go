@@ -695,7 +695,6 @@ type AssetClusterPod struct {
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// pod id
@@ -705,101 +704,77 @@ type AssetClusterPod struct {
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
 	// pod创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCreateTime *string `json:"InstanceCreateTime,omitnil,omitempty" name:"InstanceCreateTime"`
 
 	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 主机id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineId *string `json:"MachineId,omitnil,omitempty" name:"MachineId"`
 
 	// 主机名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
 	// pod ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodIp *string `json:"PodIp,omitnil,omitempty" name:"PodIp"`
 
 	// 关联service数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
 
 	// 关联容器数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
 
 	// 公网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 内网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// 是否核心：1:核心，2:非核心
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCore *int64 `json:"IsCore,omitnil,omitempty" name:"IsCore"`
 
 	// 是否新资产 1新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewAsset *uint64 `json:"IsNewAsset,omitnil,omitempty" name:"IsNewAsset"`
 }
 
 type AssetInfoDetail struct {
 	// 用户appid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
 
 	// CVE编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVEId *string `json:"CVEId,omitnil,omitempty" name:"CVEId"`
 
 	// 是扫描，0默认未扫描，1正在扫描，2扫描完成，3扫描出错
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsScan *int64 `json:"IsScan,omitnil,omitempty" name:"IsScan"`
 
 	// 影响资产数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InfluenceAsset *int64 `json:"InfluenceAsset,omitnil,omitempty" name:"InfluenceAsset"`
 
 	// 未修复资产数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotRepairAsset *int64 `json:"NotRepairAsset,omitnil,omitempty" name:"NotRepairAsset"`
 
 	// 未防护资产数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotProtectAsset *int64 `json:"NotProtectAsset,omitnil,omitempty" name:"NotProtectAsset"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskPercent *int64 `json:"TaskPercent,omitnil,omitempty" name:"TaskPercent"`
 
 	// 任务时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTime *int64 `json:"TaskTime,omitnil,omitempty" name:"TaskTime"`
 
 	// 扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 }
 
@@ -819,11 +794,9 @@ type AssetInstanceTypeMap struct {
 
 type AssetTag struct {
 	// 标签的key值,可以是字母、数字、下划线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签的vale值,可以是字母、数字、下划线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -883,15 +856,12 @@ type AssetViewCFGRisk struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 当资产类型为LBL的时候，展示该字段，方便定位具体的LB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClbId *string `json:"ClbId,omitnil,omitempty" name:"ClbId"`
 }
 
@@ -945,11 +915,9 @@ type AssetViewPortRisk struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 识别来源，详细看枚举返回。
@@ -997,11 +965,9 @@ type AssetViewVULRisk struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 漏洞类型
@@ -1056,7 +1022,6 @@ type AssetViewVULRisk struct {
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 
 	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EMGCVulType *int64 `json:"EMGCVulType,omitnil,omitempty" name:"EMGCVulType"`
 }
 
@@ -1240,11 +1205,9 @@ type AssetViewWeakPassRisk struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 弱口令类型
@@ -3120,11 +3083,9 @@ func (r *DescribeListenerListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeListenerListResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 监听器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ClbListenerListInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3275,11 +3236,9 @@ func (r *DescribeOrganizationUserInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOrganizationUserInfoResponseParams struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 集团用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*OrganizationUserInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 加入方式枚举
@@ -4137,11 +4096,9 @@ func (r *DescribeScanReportListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanReportListResponseParams struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 任务日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ScanTaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 主账户ID列表
@@ -4216,19 +4173,15 @@ func (r *DescribeScanTaskListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanTaskListResponseParams struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 任务日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ScanTaskInfoList `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 主账户ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UINList []*string `json:"UINList,omitnil,omitempty" name:"UINList"`
 
 	// 体检模式过滤列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskModeList []*FilterDataObject `json:"TaskModeList,omitnil,omitempty" name:"TaskModeList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4443,19 +4396,15 @@ func (r *DescribeTaskLogListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskLogListResponseParams struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 报告列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*TaskLogInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 待查看数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotViewNumber *int64 `json:"NotViewNumber,omitnil,omitempty" name:"NotViewNumber"`
 
 	// 报告模板数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTemplateNumber *int64 `json:"ReportTemplateNumber,omitnil,omitempty" name:"ReportTemplateNumber"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4669,26 +4618,21 @@ func (r *DescribeVULRiskAdvanceCFGListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVULRiskAdvanceCFGListResponseParams struct {
 	// 配置项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*VULRiskAdvanceCFGList `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 风险等级过滤列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelLists []*FilterDataObject `json:"RiskLevelLists,omitnil,omitempty" name:"RiskLevelLists"`
 
 	// 漏洞类型过滤列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VULTypeLists []*FilterDataObject `json:"VULTypeLists,omitnil,omitempty" name:"VULTypeLists"`
 
 	// 识别来源过滤列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckFromLists []*FilterDataObject `json:"CheckFromLists,omitnil,omitempty" name:"CheckFromLists"`
 
 	// 漏洞标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulTagList []*FilterDataObject `json:"VulTagList,omitnil,omitempty" name:"VulTagList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5945,11 +5889,9 @@ type PortViewPortRisk struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 服务
@@ -6124,51 +6066,39 @@ type RoleInfo struct {
 
 type ScanTaskInfo struct {
 	// 任务Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 任务状态码：1等待开始  2正在扫描  3扫描出错 4扫描完成
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 任务完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTime *string `json:"TaskTime,omitnil,omitempty" name:"TaskTime"`
 
 	// 报告ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitnil,omitempty" name:"ReportId"`
 
 	// 报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportName *string `json:"ReportName,omitnil,omitempty" name:"ReportName"`
 
 	// 扫描计划，0-周期任务,1-立即扫描,2-定时扫描,3-自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPlan *int64 `json:"ScanPlan,omitnil,omitempty" name:"ScanPlan"`
 
 	// 关联的资产数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetCount *int64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
 
 	// APP ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户主账户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UIN *string `json:"UIN,omitnil,omitempty" name:"UIN"`
 
 	// 用户名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
@@ -6434,19 +6364,15 @@ type ServerRiskSuggestion struct {
 type ServiceSupport struct {
 	// 产品名称:
 	// "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 已处理的资产总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportHandledCount *int64 `json:"SupportHandledCount,omitnil,omitempty" name:"SupportHandledCount"`
 
 	// 支持的资产总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportTotalCount *int64 `json:"SupportTotalCount,omitnil,omitempty" name:"SupportTotalCount"`
 
 	// 是否支持该产品1支持；0不支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupport *bool `json:"IsSupport,omitnil,omitempty" name:"IsSupport"`
 }
 
@@ -6595,12 +6521,10 @@ type TagCount struct {
 }
 
 type Tags struct {
-	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 主机标签key
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 主机标签value
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -6620,26 +6544,21 @@ type TaskAdvanceCFG struct {
 
 type TaskAssetObject struct {
 	// 资产名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
 	// 资产类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 资产分类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
 	// ip/域名/资产id，数据库id等
 	Asset *string `json:"Asset,omitnil,omitempty" name:"Asset"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 多云资产唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arn *string `json:"Arn,omitnil,omitempty" name:"Arn"`
 }
 
@@ -6677,76 +6596,59 @@ type TaskIdListKey struct {
 
 type TaskLogInfo struct {
 	// 报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskLogName *string `json:"TaskLogName,omitnil,omitempty" name:"TaskLogName"`
 
 	// 报告ID
 	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
 
 	// 关联资产个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsNumber *int64 `json:"AssetsNumber,omitnil,omitempty" name:"AssetsNumber"`
 
 	// 安全风险数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskNumber *int64 `json:"RiskNumber,omitnil,omitempty" name:"RiskNumber"`
 
 	// 报告生成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 关联任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 扫描开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务中心扫描任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCenterTaskId *string `json:"TaskCenterTaskId,omitnil,omitempty" name:"TaskCenterTaskId"`
 
 	// 租户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 主账户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UIN *string `json:"UIN,omitnil,omitempty" name:"UIN"`
 
 	// 用户名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 报告类型： 1安全体检 2日报 3周报 4月报
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
 	// 报告模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type TaskLogURL struct {
 	// 报告下载临时链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
 	// 任务报告id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
 	// 任务报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskLogName *string `json:"TaskLogName,omitnil,omitempty" name:"TaskLogName"`
 
 	// APP ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
@@ -6856,7 +6758,6 @@ type VULRiskAdvanceCFGList struct {
 	CheckFrom *string `json:"CheckFrom,omitnil,omitempty" name:"CheckFrom"`
 
 	// 是否启用，1-启用，0-禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 风险类型
@@ -6866,54 +6767,42 @@ type VULRiskAdvanceCFGList struct {
 	ImpactVersion *string `json:"ImpactVersion,omitnil,omitempty" name:"ImpactVersion"`
 
 	// CVE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVE *string `json:"CVE,omitnil,omitempty" name:"CVE"`
 
 	// 漏洞标签
 	VULTag []*string `json:"VULTag,omitnil,omitempty" name:"VULTag"`
 
 	// 修复方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixMethod []*string `json:"FixMethod,omitnil,omitempty" name:"FixMethod"`
 
 	// 披露时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseTime *string `json:"ReleaseTime,omitnil,omitempty" name:"ReleaseTime"`
 
 	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EMGCVulType *int64 `json:"EMGCVulType,omitnil,omitempty" name:"EMGCVulType"`
 
 	// 漏洞描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VULDescribe *string `json:"VULDescribe,omitnil,omitempty" name:"VULDescribe"`
 
 	// 影响组件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImpactComponent *string `json:"ImpactComponent,omitnil,omitempty" name:"ImpactComponent"`
 
 	// 漏洞Payload
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 
 	// 技术参考
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	References *string `json:"References,omitnil,omitempty" name:"References"`
 
 	// cvss评分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVSS *string `json:"CVSS,omitnil,omitempty" name:"CVSS"`
 
 	// 攻击热度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackHeat *string `json:"AttackHeat,omitnil,omitempty" name:"AttackHeat"`
 
 	// 安全产品支持情况
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceSupport []*ServiceSupport `json:"ServiceSupport,omitnil,omitempty" name:"ServiceSupport"`
 
 	// 最新检测时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecentScanTime *string `json:"RecentScanTime,omitnil,omitempty" name:"RecentScanTime"`
 }
 
@@ -6994,22 +6883,18 @@ type VULViewVULRisk struct {
 	VULURL *string `json:"VULURL,omitnil,omitempty" name:"VULURL"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户appid
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 修复建议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fix *string `json:"Fix,omitnil,omitempty" name:"Fix"`
 
 	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EMGCVulType *int64 `json:"EMGCVulType,omitnil,omitempty" name:"EMGCVulType"`
 }
 
@@ -7178,29 +7063,23 @@ type Vpc struct {
 
 type VulImpactComponentInfo struct {
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 
 	// 版本名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type VulTrend struct {
 	// 影响的资产数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectAssetCount *int64 `json:"AffectAssetCount,omitnil,omitempty" name:"AffectAssetCount"`
 
 	// 影响的用户数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectUserCount *int64 `json:"AffectUserCount,omitnil,omitempty" name:"AffectUserCount"`
 
 	// 攻击数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackCount *int64 `json:"AttackCount,omitnil,omitempty" name:"AttackCount"`
 
 	// 时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 }
 
@@ -7236,11 +7115,9 @@ type WebsiteRisk struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
 
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 风险链接

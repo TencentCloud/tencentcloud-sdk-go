@@ -2270,7 +2270,7 @@ type IOSResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 加固状态
+	// 加固状态：0等待，1成功，2任务中，3失败，4重试中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptState *int64 `json:"EncryptState,omitnil,omitempty" name:"EncryptState"`
 
@@ -2392,6 +2392,10 @@ type PlanDetailInfo struct {
 }
 
 type PlanInfo struct {
+	// Dex分离，0关闭，1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetFile *string `json:"SetFile,omitnil,omitempty" name:"SetFile"`
+
 	// apk大小优化，0关闭，1开启
 	ApkSizeOpt *uint64 `json:"ApkSizeOpt,omitnil,omitempty" name:"ApkSizeOpt"`
 
@@ -2407,18 +2411,8 @@ type PlanInfo struct {
 	// 防止重打包，0关闭，1开启
 	AntiRepack *uint64 `json:"AntiRepack,omitnil,omitempty" name:"AntiRepack"`
 
-	// Dex分离，0关闭，1开启
-	//
-	// Deprecated: SeperateDex is deprecated.
-	SeperateDex *uint64 `json:"SeperateDex,omitnil,omitempty" name:"SeperateDex"`
-
 	// 内存保护，0关闭，1开启
 	Db *uint64 `json:"Db,omitnil,omitempty" name:"Db"`
-
-	// Dex签名校验，0关闭，1开启
-	//
-	// Deprecated: DexSig is deprecated.
-	DexSig *uint64 `json:"DexSig,omitnil,omitempty" name:"DexSig"`
 
 	// So文件信息
 	SoInfo *SoInfo `json:"SoInfo,omitnil,omitempty" name:"SoInfo"`
@@ -2432,11 +2426,6 @@ type PlanInfo struct {
 	// 防日志泄漏，0关闭，1开启
 	AntiLogLeak *uint64 `json:"AntiLogLeak,omitnil,omitempty" name:"AntiLogLeak"`
 
-	// root检测，0关闭，1开启
-	//
-	// Deprecated: AntiQemuRoot is deprecated.
-	AntiQemuRoot *uint64 `json:"AntiQemuRoot,omitnil,omitempty" name:"AntiQemuRoot"`
-
 	// 资源防篡改，0关闭，1开启
 	AntiAssets *uint64 `json:"AntiAssets,omitnil,omitempty" name:"AntiAssets"`
 
@@ -2446,10 +2435,6 @@ type PlanInfo struct {
 	// SSL证书防窃取，0关闭，1开启
 	AntiSSL *uint64 `json:"AntiSSL,omitnil,omitempty" name:"AntiSSL"`
 
-	// Dex分离，0关闭，1开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SetFile *string `json:"SetFile,omitnil,omitempty" name:"SetFile"`
-
 	// Dex签名校验，0关闭，1开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSign *string `json:"FileSign,omitnil,omitempty" name:"FileSign"`
@@ -2457,6 +2442,21 @@ type PlanInfo struct {
 	// root检测，0关闭，1开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AntiRoot *string `json:"AntiRoot,omitnil,omitempty" name:"AntiRoot"`
+
+	// Dex分离，0关闭，1开启
+	//
+	// Deprecated: SeperateDex is deprecated.
+	SeperateDex *uint64 `json:"SeperateDex,omitnil,omitempty" name:"SeperateDex"`
+
+	// Dex签名校验，0关闭，1开启
+	//
+	// Deprecated: DexSig is deprecated.
+	DexSig *uint64 `json:"DexSig,omitnil,omitempty" name:"DexSig"`
+
+	// root检测，0关闭，1开启
+	//
+	// Deprecated: AntiQemuRoot is deprecated.
+	AntiQemuRoot *uint64 `json:"AntiQemuRoot,omitnil,omitempty" name:"AntiQemuRoot"`
 }
 
 type PluginListItem struct {
@@ -2655,10 +2655,38 @@ type ResultListItem struct {
 	// 1001表示APP md5 different between real md5, please confirm it.
 	// 
 	// 1002表示App md5 uncollect, please offer downloadlink.
+	//
+	// Deprecated: Errno is deprecated.
 	Errno *string `json:"Errno,omitnil,omitempty" name:"Errno"`
 
 	// 对应errno的错误信息描述
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 应用错误码：0、1-表示正常；                  
+	// 
+	// 2表示System Error(engine analysis error).
+	// 
+	// 3表示App analysis error, please confirm it.
+	// 
+	// 4表示App have not cert, please confirm it.
+	// 
+	// 5表示App size is zero, please confirm it.
+	// 
+	// 6表示App have not package name, please confirm it.
+	// 
+	// 7表示App build time is empty, please confirm it.
+	// 
+	// 8表示App have not valid cert, please confirm it.
+	// 
+	// 99表示Other error.
+	// 
+	// 1000表示App downloadlink download fail, please confirm it.
+	// 
+	// 1001表示APP md5 different between real md5, please confirm it.
+	// 
+	// 1002表示App md5 uncollect, please offer downloadlink.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrNo *string `json:"ErrNo,omitnil,omitempty" name:"ErrNo"`
 }
 
 type SDKPlan struct {

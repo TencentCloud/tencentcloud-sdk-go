@@ -4255,10 +4255,6 @@ func NewDescribeSwitchListsResponse() (response *DescribeSwitchListsResponse) {
 }
 
 // DescribeSwitchLists
-// 历史接口，已经废弃，产品有新的替代接口
-//
-// 
-//
 // 防火墙开关列表，已废弃，请使用DescribeFwEdgeIps
 //
 // 可能返回的错误码:
@@ -4269,10 +4265,6 @@ func (c *Client) DescribeSwitchLists(request *DescribeSwitchListsRequest) (respo
 }
 
 // DescribeSwitchLists
-// 历史接口，已经废弃，产品有新的替代接口
-//
-// 
-//
 // 防火墙开关列表，已废弃，请使用DescribeFwEdgeIps
 //
 // 可能返回的错误码:
@@ -5633,7 +5625,13 @@ func NewModifyEdgeIpSwitchResponse() (response *ModifyEdgeIpSwitchResponse) {
 // 修改边界防火墙开关(旁路、串行)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
     return c.ModifyEdgeIpSwitchWithContext(context.Background(), request)
@@ -5643,7 +5641,13 @@ func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (respons
 // 修改边界防火墙开关(旁路、串行)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeIpSwitchWithContext(ctx context.Context, request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
     if request == nil {

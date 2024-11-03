@@ -2620,10 +2620,10 @@ type DescribeInstanceBackupsRequestParams struct {
 	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 备份任务的状态：
@@ -2651,10 +2651,10 @@ type DescribeInstanceBackupsRequest struct {
 	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 备份任务的状态：
@@ -2902,16 +2902,16 @@ func (r *DescribeInstanceDealDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceEventsRequestParams struct {
-	// 配置查询事件执行计划的起始日期。
+	// 配置查询事件执行计划的起始日期，查询日期最大跨度30天。
 	ExecutionStartDate *string `json:"ExecutionStartDate,omitnil,omitempty" name:"ExecutionStartDate"`
 
-	// 配置查询事件执行计划的结束日期。
+	// 配置查询事件执行计划的结束日期，查询日期最大跨度30天。
 	ExecutionEndDate *string `json:"ExecutionEndDate,omitnil,omitempty" name:"ExecutionEndDate"`
 
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 输出每页显示事件的数量，默认：10。
+	// 输出每页显示事件的数量，默认：10，最大100。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
@@ -2938,16 +2938,16 @@ type DescribeInstanceEventsRequestParams struct {
 type DescribeInstanceEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置查询事件执行计划的起始日期。
+	// 配置查询事件执行计划的起始日期，查询日期最大跨度30天。
 	ExecutionStartDate *string `json:"ExecutionStartDate,omitnil,omitempty" name:"ExecutionStartDate"`
 
-	// 配置查询事件执行计划的结束日期。
+	// 配置查询事件执行计划的结束日期，查询日期最大跨度30天。
 	ExecutionEndDate *string `json:"ExecutionEndDate,omitnil,omitempty" name:"ExecutionEndDate"`
 
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 输出每页显示事件的数量，默认：10。
+	// 输出每页显示事件的数量，默认：10，最大100。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
@@ -4950,19 +4950,19 @@ type DescribeProxySlowLogRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 慢查询的开始时间。
+	// 慢查询的开始时间，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 慢查询的结束时间。
+	// 慢查询的结束时间，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢查询阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 分页大小。默认为 20，取值范围[20,1000]。
+	// 每页输出的任务列表大小，默认为 20，最多输出100条。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍。
+	// 分页偏移量，取Limit整数倍，计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -4972,19 +4972,19 @@ type DescribeProxySlowLogRequest struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 慢查询的开始时间。
+	// 慢查询的开始时间，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 慢查询的结束时间。
+	// 慢查询的结束时间，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢查询阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 分页大小。默认为 20，取值范围[20,1000]。
+	// 每页输出的任务列表大小，默认为 20，最多输出100条。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍。
+	// 分页偏移量，取Limit整数倍，计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5448,16 +5448,16 @@ type DescribeSlowLogRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 预查询慢日志的起始时间。
+	// 预查询慢日志的起始时间，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 预查询慢日志的结束时间。
+	// 预查询慢日志的结束时间，查询时间最大跨度30天
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢查询平均执行时间阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 每个页面展示的慢查询条数，默认值为20。取值范围：[20,1000]。
+	// 每个页面展示的慢查询条数，默认值为20，最大100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -5475,16 +5475,16 @@ type DescribeSlowLogRequest struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 预查询慢日志的起始时间。
+	// 预查询慢日志的起始时间，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 预查询慢日志的结束时间。
+	// 预查询慢日志的结束时间，查询时间最大跨度30天
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢查询平均执行时间阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 每个页面展示的慢查询条数，默认值为20。取值范围：[20,1000]。
+	// 每个页面展示的慢查询条数，默认值为20，最大100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -5702,10 +5702,10 @@ type DescribeTaskListRequestParams struct {
 	// - FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
 	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 
-	// 任务执行的起始时间。格式如：2021-12-30 00:00:00。
+	// 任务执行的起始时间，格式如：2021-12-30 00:00:00，支持查询近30天内数据。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 任务运行的终止时间。格式如：2021-12-30 20:59:35
+	// 任务运行的终止时间。格式如：2021-12-30 20:59:35，支持查询近30天内数据。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 该参数为内部使用，请忽略。
@@ -5802,10 +5802,10 @@ type DescribeTaskListRequest struct {
 	// - FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
 	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 
-	// 任务执行的起始时间。格式如：2021-12-30 00:00:00。
+	// 任务执行的起始时间，格式如：2021-12-30 00:00:00，支持查询近30天内数据。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 任务运行的终止时间。格式如：2021-12-30 20:59:35
+	// 任务运行的终止时间。格式如：2021-12-30 20:59:35，支持查询近30天内数据。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 该参数为内部使用，请忽略。

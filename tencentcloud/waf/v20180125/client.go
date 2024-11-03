@@ -1452,63 +1452,6 @@ func (c *Client) DeleteDomainWhiteRulesWithContext(ctx context.Context, request 
     return
 }
 
-func NewDeleteDownloadRecordRequest() (request *DeleteDownloadRecordRequest) {
-    request = &DeleteDownloadRecordRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("waf", APIVersion, "DeleteDownloadRecord")
-    
-    
-    return
-}
-
-func NewDeleteDownloadRecordResponse() (response *DeleteDownloadRecordResponse) {
-    response = &DeleteDownloadRecordResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteDownloadRecord
-// 废弃接口，无有效调用
-//
-// 
-//
-// 删除访问日志下载记录
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DeleteDownloadRecord(request *DeleteDownloadRecordRequest) (response *DeleteDownloadRecordResponse, err error) {
-    return c.DeleteDownloadRecordWithContext(context.Background(), request)
-}
-
-// DeleteDownloadRecord
-// 废弃接口，无有效调用
-//
-// 
-//
-// 删除访问日志下载记录
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DeleteDownloadRecordWithContext(ctx context.Context, request *DeleteDownloadRecordRequest) (response *DeleteDownloadRecordResponse, err error) {
-    if request == nil {
-        request = NewDeleteDownloadRecordRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteDownloadRecord require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteDownloadRecordResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteHostRequest() (request *DeleteHostRequest) {
     request = &DeleteHostRequest{
         BaseRequest: &tchttp.BaseRequest{},

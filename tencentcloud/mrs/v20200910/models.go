@@ -3913,7 +3913,13 @@ type NormPart struct {
 
 	// 部位详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: PartDetail is deprecated.
 	PartDetail *PartDesc `json:"PartDetail,omitnil,omitempty" name:"PartDetail"`
+
+	// 部位详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartDetailList []*PartDesc `json:"PartDetailList,omitnil,omitempty" name:"PartDetailList"`
 }
 
 type NormSize struct {

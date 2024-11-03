@@ -25,27 +25,21 @@ type AcListsData struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 访问源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIp *string `json:"SourceIp,omitnil,omitempty" name:"SourceIp"`
 
 	// 访问目的
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetIp *string `json:"TargetIp,omitnil,omitempty" name:"TargetIp"`
 
 	// 协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Strategy *uint64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 命中次数
@@ -55,65 +49,50 @@ type AcListsData struct {
 	OrderIndex *uint64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
 	// 告警规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
 	// 规则开关状态 1打开 0关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 规则源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcType *int64 `json:"SrcType,omitnil,omitempty" name:"SrcType"`
 
 	// 规则目的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstType *int64 `json:"DstType,omitnil,omitempty" name:"DstType"`
 
 	// 规则唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 规则有效性
 	// 1 有效
 	// 0 无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Invalid *int64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
 
 	// 是否地域规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRegion *int64 `json:"IsRegion,omitnil,omitempty" name:"IsRegion"`
 
 	// 云厂商代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudCode *string `json:"CloudCode,omitnil,omitempty" name:"CloudCode"`
 
 	// 自动化助手信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoTask *string `json:"AutoTask,omitnil,omitempty" name:"AutoTask"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 地域码信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
 
 	// 国家代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *int64 `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 城市代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *int64 `json:"City,omitnil,omitempty" name:"City"`
 
 	// 国家名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegName1 *string `json:"RegName1,omitnil,omitempty" name:"RegName1"`
 
 	// 城市名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegName2 *string `json:"RegName2,omitnil,omitempty" name:"RegName2"`
 }
 
@@ -438,7 +417,7 @@ type AddEnterpriseSecurityGroupRulesRequestParams struct {
 	// 来源 默认空 覆盖导入是 batch_import_cover
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 是否使用id 默认不需要
+	// 是否复用rule id，1为是，默认不需要
 	IsUseId *int64 `json:"IsUseId,omitnil,omitempty" name:"IsUseId"`
 }
 
@@ -460,7 +439,7 @@ type AddEnterpriseSecurityGroupRulesRequest struct {
 	// 来源 默认空 覆盖导入是 batch_import_cover
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 是否使用id 默认不需要
+	// 是否复用rule id，1为是，默认不需要
 	IsUseId *int64 `json:"IsUseId,omitnil,omitempty" name:"IsUseId"`
 }
 
@@ -493,8 +472,7 @@ type AddEnterpriseSecurityGroupRulesResponseParams struct {
 	// 状态值，0：添加成功，非0：添加失败
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 添加成功的规则详情
 	Rules []*SecurityGroupSimplifyRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -655,195 +633,150 @@ type AssetZone struct {
 
 type AssociatedInstanceInfo struct {
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 私有网络ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 私有网络名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
 	// 公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 关联安全组数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitnil,omitempty" name:"SecurityGroupCount"`
 
 	// 关联安全组规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupRuleCount *uint64 `json:"SecurityGroupRuleCount,omitnil,omitempty" name:"SecurityGroupRuleCount"`
 
 	// 关联数据库代理Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdbId *string `json:"CdbId,omitnil,omitempty" name:"CdbId"`
 }
 
 type BanAndAllowRule struct {
-	// 封禁和放通对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
-
-	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
-
-	// 规则截止时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
 	// 规则评论
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 自定义白名单规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
+	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
+
+	// 规则截止时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
 	// 放通的引擎: 1针对互联网边界 2针对nat防火墙 4针对vpc防火墙
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 封禁和放通对象
+	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
 }
 
 type BanAndAllowRuleDel struct {
 	// 封禁和放通对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
 
 	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的 （DeleteBlockIgnoreRuleNew接口，该字段无效）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
 
 	// 规则类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 }
 
 type BetaInfoByACL struct {
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 上次执行时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 }
 
 type BlockIgnoreRule struct {
 	// 规则类型，取值：1 封禁，2外部IP，3域名，4情报，5assets，6自定义策略，7入侵防御规则id （2-7属于白名单类型）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 规则ip或白名单内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
 
 	// 资产实例名称、自定义策略名称等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IocName *string `json:"IocName,omitnil,omitempty" name:"IocName"`
 
 	// 白名单信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IocInfo *string `json:"IocInfo,omitnil,omitempty" name:"IocInfo"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// 危险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 来源事件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 
 	// 方向：1入站，0出站
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 所有方向聚合成字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
 
 	// 协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 地理位置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 规则类型：1封禁，2放通
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 规则生效开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 规则生效结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 忽略原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreReason *string `json:"IgnoreReason,omitnil,omitempty" name:"IgnoreReason"`
 
 	// 安全事件来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
 
 	// 规则命中次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchTimes *int64 `json:"MatchTimes,omitnil,omitempty" name:"MatchTimes"`
 
 	// 国家
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 上次命中时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
 
 	// 自定义规则细节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
 	// 1 border 2 nat 4 vpc 8 border-serial
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
@@ -871,9 +804,6 @@ type CommonFilter struct {
 	// 检索的键值
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 检索的值，各检索值间为OR关系
-	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
-
 	// 枚举类型，代表Name与Values之间的匹配关系
 	// enum FilterOperatorType {
 	//     //等于
@@ -894,6 +824,9 @@ type CommonFilter struct {
 	//     FILTER_OPERATOR_TYPE_FUZZINESS = 9;
 	// }
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
+
+	// 检索的值，各检索值间为OR关系
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -983,7 +916,6 @@ type CreateAcRulesResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回多余的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2023,7 +1955,6 @@ func (r *CreateNatFwInstanceWithDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateNatFwInstanceWithDomainResponseParams struct {
 	// nat实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwInsId *string `json:"CfwInsId,omitnil,omitempty" name:"CfwInsId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2320,7 +2251,6 @@ func (r *CreateVpcFwGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVpcFwGroupResponseParams struct {
 	// 防火墙组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2344,21 +2274,17 @@ func (r *CreateVpcFwGroupResponse) FromJsonString(s string) error {
 }
 
 type CustomWhiteRule struct {
-	// 访问源
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SrcIP *string `json:"SrcIP,omitnil,omitempty" name:"SrcIP"`
-
 	// 访问目的
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstIP *string `json:"DstIP,omitnil,omitempty" name:"DstIP"`
 
+	// 规则ID
+	IdsRuleId *string `json:"IdsRuleId,omitnil,omitempty" name:"IdsRuleId"`
+
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdsRuleName *string `json:"IdsRuleName,omitnil,omitempty" name:"IdsRuleName"`
 
-	// 规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdsRuleId *string `json:"IdsRuleId,omitnil,omitempty" name:"IdsRuleId"`
+	// 访问源
+	SrcIP *string `json:"SrcIP,omitnil,omitempty" name:"SrcIP"`
 }
 
 type DatabaseWhiteListRuleData struct {
@@ -2461,7 +2387,6 @@ type DeleteAcRuleResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回多余的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2593,7 +2518,6 @@ type DeleteAllAccessControlRuleResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 删除了几条访问控制规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *int64 `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3049,7 +2973,6 @@ type DeleteSecurityGroupRuleResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回多余的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3146,27 +3069,21 @@ func (r *DeleteVpcFwGroupResponse) FromJsonString(s string) error {
 
 type DescAcItem struct {
 	// 访问源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 
 	// 访问目的
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
 
 	// 协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 命中次数
@@ -3176,146 +3093,111 @@ type DescAcItem struct {
 	OrderIndex *uint64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
 	// 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location,dnsparse
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 规则对应的唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *uint64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 规则有效性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Invalid *uint64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
 
 	// 0为正常规则,1为地域规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRegion *uint64 `json:"IsRegion,omitnil,omitempty" name:"IsRegion"`
 
 	// 国家id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CountryCode *uint64 `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
 	// 城市id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CityCode *uint64 `json:"CityCode,omitnil,omitempty" name:"CityCode"`
 
 	// 国家名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CountryName *string `json:"CountryName,omitnil,omitempty" name:"CountryName"`
 
 	// 省名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CityName *string `json:"CityName,omitnil,omitempty" name:"CityName"`
 
 	// 云厂商code
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudCode *string `json:"CloudCode,omitnil,omitempty" name:"CloudCode"`
 
 	// 0为正常规则,1为云厂商规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCloud *uint64 `json:"IsCloud,omitnil,omitempty" name:"IsCloud"`
 
 	// 规则状态，true表示启用，false表示禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 规则方向：1，入向；0，出向
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 内部使用的uuid，一般情况下不会使用到该字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalUuid *int64 `json:"InternalUuid,omitnil,omitempty" name:"InternalUuid"`
 
 	// 规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 关联任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*BetaInfoByACL `json:"BetaList,omitnil,omitempty" name:"BetaList"`
 
 	// （1）互联网边界防火墙，生效范围：serial，串行；side，旁路；all，全局；
 	// （2）NAT边界防火墙：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// 生效范围描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScopeDesc *string `json:"ScopeDesc,omitnil,omitempty" name:"ScopeDesc"`
 
 	// 互联网边界防火墙使用的内部规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetBorderUuid *string `json:"InternetBorderUuid,omitnil,omitempty" name:"InternetBorderUuid"`
 
 	// 协议端口组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateName *string `json:"ParamTemplateName,omitnil,omitempty" name:"ParamTemplateName"`
 
 	// 协议端口组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
 	// 访问源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
 	// 访问目的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
 
 	// 规则最近命中时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
 }
 
 type DescNatDnatRule struct {
 	// id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 网络协议，可选值：TCP、UDP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
 
 	// 弹性IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
 
 	// 公网端口。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicPort *int64 `json:"PublicPort,omitnil,omitempty" name:"PublicPort"`
 
 	// 内网地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
 
 	// 内网端口。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivatePort *int64 `json:"PrivatePort,omitnil,omitempty" name:"PrivatePort"`
 
 	// NAT防火墙转发规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 是否被关联引用，如被远程运维使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsReferenced *int64 `json:"IsReferenced,omitnil,omitempty" name:"IsReferenced"`
 
 	// 所属防火墙实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
 
 	// 关联的nat网关Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGwId *string `json:"NatGwId,omitnil,omitempty" name:"NatGwId"`
 }
 
@@ -3426,7 +3308,6 @@ type DescribeAcListsResponseParams struct {
 	AllTotal *uint64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
 
 	// 访问控制规则全部启用/全部停用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3469,10 +3350,10 @@ type DescribeAclRuleRequestParams struct {
 	// 检索的截止时间，可不传
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// 排序所用到的字段，默认为sequence
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -3497,10 +3378,10 @@ type DescribeAclRuleRequest struct {
 	// 检索的截止时间，可不传
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// 排序所用到的字段，默认为sequence
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -3536,7 +3417,6 @@ type DescribeAclRuleResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// nat访问控制列表数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*DescAcItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 未过滤的总条数
@@ -3839,11 +3719,9 @@ func (r *DescribeAssociatedInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssociatedInstanceListResponseParams struct {
 	// 实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*AssociatedInstanceInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3868,57 +3746,57 @@ func (r *DescribeAssociatedInstanceListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeBlockByIpTimesListRequestParams struct {
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// ip查询条件
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 地域
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 方向
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
-
-	// 来源
-	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// vpc间防火墙开关边id
 	EdgeId *string `json:"EdgeId,omitnil,omitempty" name:"EdgeId"`
 
 	// 日志来源 move：vpc间防火墙
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
+
+	// 来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 地域
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type DescribeBlockByIpTimesListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// ip查询条件
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 地域
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 方向
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
-
-	// 来源
-	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// vpc间防火墙开关边id
 	EdgeId *string `json:"EdgeId,omitnil,omitempty" name:"EdgeId"`
 
 	// 日志来源 move：vpc间防火墙
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
+
+	// 来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 地域
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 func (r *DescribeBlockByIpTimesListRequest) ToJsonString() string {
@@ -3933,14 +3811,14 @@ func (r *DescribeBlockByIpTimesListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Ip")
-	delete(f, "Zone")
+	delete(f, "StartTime")
 	delete(f, "Direction")
-	delete(f, "Source")
 	delete(f, "EdgeId")
 	delete(f, "LogSource")
+	delete(f, "Source")
+	delete(f, "Zone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockByIpTimesListRequest has unknown keys!", "")
 	}
@@ -4097,14 +3975,14 @@ func (r *DescribeBlockIgnoreListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBlockStaticListRequestParams struct {
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 列表类型，只能是下面三种之一：port、address、ip
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// top数
 	Top *int64 `json:"Top,omitnil,omitempty" name:"Top"`
@@ -4116,14 +3994,14 @@ type DescribeBlockStaticListRequestParams struct {
 type DescribeBlockStaticListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 列表类型，只能是下面三种之一：port、address、ip
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// top数
 	Top *int64 `json:"Top,omitnil,omitempty" name:"Top"`
@@ -4144,9 +4022,9 @@ func (r *DescribeBlockStaticListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "QueryType")
+	delete(f, "StartTime")
 	delete(f, "Top")
 	delete(f, "SearchValue")
 	if len(f) > 0 {
@@ -4751,19 +4629,15 @@ func (r *DescribeFwEdgeIpsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFwEdgeIpsResponseParams struct {
 	// ip 开关列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*EdgeIpInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// ip 开关列表个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 地域列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionLst []*string `json:"RegionLst,omitnil,omitempty" name:"RegionLst"`
 
 	// 实例类型列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeLst []*string `json:"InstanceTypeLst,omitnil,omitempty" name:"InstanceTypeLst"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4862,12 +4736,10 @@ func (r *DescribeFwGroupInstanceInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFwGroupInstanceInfoResponseParams struct {
-	// 防火墙(组)
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 防火墙(组)详细信息
 	VpcFwGroupLst []*VpcFwGroupInfo `json:"VpcFwGroupLst,omitnil,omitempty" name:"VpcFwGroupLst"`
 
 	// 防火墙(组)个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5248,7 +5120,6 @@ type DescribeLogsResponseParams struct {
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 七层协议，NTA日志有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppProtocolList []*string `json:"AppProtocolList,omitnil,omitempty" name:"AppProtocolList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5282,7 +5153,7 @@ type DescribeNatAcRuleRequestParams struct {
 	// 需要查询的索引，特定场景使用，可不填
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// 过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 检索的起始时间，可不传
@@ -5291,10 +5162,10 @@ type DescribeNatAcRuleRequestParams struct {
 	// 检索的截止时间，可不传
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// 排序所用到的字段，默认为sequence
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5310,7 +5181,7 @@ type DescribeNatAcRuleRequest struct {
 	// 需要查询的索引，特定场景使用，可不填
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// 过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 检索的起始时间，可不传
@@ -5319,10 +5190,10 @@ type DescribeNatAcRuleRequest struct {
 	// 检索的截止时间，可不传
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// 排序所用到的字段，默认为sequence
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5358,7 +5229,6 @@ type DescribeNatAcRuleResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// nat访问控制列表数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*DescAcItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 未过滤的总条数
@@ -5404,10 +5274,10 @@ type DescribeNatFwDnatRuleRequestParams struct {
 	// 检索的截止时间，可不传
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// 排序所用到的字段，可不传
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5432,10 +5302,10 @@ type DescribeNatFwDnatRuleRequest struct {
 	// 检索的截止时间，可不传
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// 排序所用到的字段，可不传
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5468,7 +5338,6 @@ func (r *DescribeNatFwDnatRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNatFwDnatRuleResponseParams struct {
 	// Dnat规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*DescNatDnatRule `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 列表总数
@@ -5525,20 +5394,16 @@ func (r *DescribeNatFwInfoCountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwInfoCountResponseParams struct {
-	// 返回参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 返回参数 success 成功 failed 失败
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 当前租户的nat实例个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 当前租户的nat防火墙实例个数
 	NatFwInsCount *int64 `json:"NatFwInsCount,omitnil,omitempty" name:"NatFwInsCount"`
 
-	// 当前租户接入子网个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 当前租户接入防火墙的子网个数
 	SubnetCount *int64 `json:"SubnetCount,omitnil,omitempty" name:"SubnetCount"`
 
-	// 打开开关个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 打开NAT防火墙开关个数
 	OpenSwitchCount *int64 `json:"OpenSwitchCount,omitnil,omitempty" name:"OpenSwitchCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5647,7 +5512,6 @@ func (r *DescribeNatFwInstanceWithRegionRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeNatFwInstanceWithRegionResponseParams struct {
 	// 实例数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatinsLst []*NatFwInstance `json:"NatinsLst,omitnil,omitempty" name:"NatinsLst"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5719,11 +5583,9 @@ func (r *DescribeNatFwInstancesInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNatFwInstancesInfoResponseParams struct {
 	// 实例卡片信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatinsLst []*NatInstanceInfo `json:"NatinsLst,omitnil,omitempty" name:"NatinsLst"`
 
 	// nat 防火墙个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5802,15 +5664,12 @@ func (r *DescribeNatFwVpcDnsLstRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNatFwVpcDnsLstResponseParams struct {
 	// nat防火墙vpc dns 信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcDnsSwitchLst []*VpcDnsInfo `json:"VpcDnsSwitchLst,omitnil,omitempty" name:"VpcDnsSwitchLst"`
 
-	// 返回参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 返回参数 success成功 failed 失败
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 开关总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5884,14 +5743,14 @@ type DescribeResourceGroupNewResponseParams struct {
 	// 返回树形结构
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 未分类实例数量
-	UnResourceNum *int64 `json:"UnResourceNum,omitnil,omitempty" name:"UnResourceNum"`
+	// 返回码；0为请求成功
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// 接口返回消息
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 返回码；0为请求成功
-	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+	// 未分类实例数量
+	UnResourceNum *int64 `json:"UnResourceNum,omitnil,omitempty" name:"UnResourceNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6019,23 +5878,18 @@ func (r *DescribeRuleOverviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleOverviewResponseParams struct {
 	// 规则总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllTotal *uint64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
 
 	// 阻断策略规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyNum *uint64 `json:"StrategyNum,omitnil,omitempty" name:"StrategyNum"`
 
 	// 启用规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartRuleNum *uint64 `json:"StartRuleNum,omitnil,omitempty" name:"StartRuleNum"`
 
 	// 停用规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopRuleNum *uint64 `json:"StopRuleNum,omitnil,omitempty" name:"StopRuleNum"`
 
 	// 剩余配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainingNum *int64 `json:"RemainingNum,omitnil,omitempty" name:"RemainingNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6144,7 +5998,6 @@ type DescribeSecurityGroupListResponseParams struct {
 	AllTotal *uint64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
 
 	// 访问控制规则全部启用/全部停用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6169,45 +6022,45 @@ func (r *DescribeSecurityGroupListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSourceAssetRequestParams struct {
+	// ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
+	ChooseType *string `json:"ChooseType,omitnil,omitempty" name:"ChooseType"`
+
 	// 模糊查询
 	FuzzySearch *string `json:"FuzzySearch,omitnil,omitempty" name:"FuzzySearch"`
 
 	// 资产类型 1公网 2内网
 	InsType *string `json:"InsType,omitnil,omitempty" name:"InsType"`
 
-	// ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
-	ChooseType *string `json:"ChooseType,omitnil,omitempty" name:"ChooseType"`
-
-	// 地域
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
 	// 查询单页的最大值；eg：10；则最多返回10条结果
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果的偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 地域
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type DescribeSourceAssetRequest struct {
 	*tchttp.BaseRequest
 	
+	// ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
+	ChooseType *string `json:"ChooseType,omitnil,omitempty" name:"ChooseType"`
+
 	// 模糊查询
 	FuzzySearch *string `json:"FuzzySearch,omitnil,omitempty" name:"FuzzySearch"`
 
 	// 资产类型 1公网 2内网
 	InsType *string `json:"InsType,omitnil,omitempty" name:"InsType"`
 
-	// ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
-	ChooseType *string `json:"ChooseType,omitnil,omitempty" name:"ChooseType"`
-
-	// 地域
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
 	// 查询单页的最大值；eg：10；则最多返回10条结果
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询结果的偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 地域
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 func (r *DescribeSourceAssetRequest) ToJsonString() string {
@@ -6222,12 +6075,12 @@ func (r *DescribeSourceAssetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ChooseType")
 	delete(f, "FuzzySearch")
 	delete(f, "InsType")
-	delete(f, "ChooseType")
-	delete(f, "Zone")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Zone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSourceAssetRequest has unknown keys!", "")
 	}
@@ -6236,14 +6089,14 @@ func (r *DescribeSourceAssetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSourceAssetResponseParams struct {
-	// 地域集合
-	ZoneList []*AssetZone `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
-
 	// 数据
 	Data []*InstanceInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 返回数据总数
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 地域集合
+	ZoneList []*AssetZone `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6358,11 +6211,9 @@ type DescribeSwitchListsResponseParams struct {
 	AreaLists []*string `json:"AreaLists,omitnil,omitempty" name:"AreaLists"`
 
 	// 打开个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnNum *uint64 `json:"OnNum,omitnil,omitempty" name:"OnNum"`
 
 	// 关闭个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffNum *uint64 `json:"OffNum,omitnil,omitempty" name:"OffNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6387,14 +6238,14 @@ func (r *DescribeSwitchListsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTLogInfoRequestParams struct {
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 类型 1 告警 2阻断
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询条件
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
@@ -6403,14 +6254,14 @@ type DescribeTLogInfoRequestParams struct {
 type DescribeTLogInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 类型 1 告警 2阻断
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询条件
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
@@ -6428,9 +6279,9 @@ func (r *DescribeTLogInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "QueryType")
+	delete(f, "StartTime")
 	delete(f, "SearchValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTLogInfoRequest has unknown keys!", "")
@@ -6470,14 +6321,14 @@ func (r *DescribeTLogInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTLogIpListRequestParams struct {
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 类型 1 告警 2阻断
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// top数
 	Top *int64 `json:"Top,omitnil,omitempty" name:"Top"`
@@ -6489,14 +6340,14 @@ type DescribeTLogIpListRequestParams struct {
 type DescribeTLogIpListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 类型 1 告警 2阻断
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// top数
 	Top *int64 `json:"Top,omitnil,omitempty" name:"Top"`
@@ -6517,9 +6368,9 @@ func (r *DescribeTLogIpListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "QueryType")
+	delete(f, "StartTime")
 	delete(f, "Top")
 	delete(f, "SearchValue")
 	if len(f) > 0 {
@@ -6609,7 +6460,6 @@ func (r *DescribeTableStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTableStatusResponseParams struct {
 	// 0：正常，其它：不正常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6681,7 +6531,6 @@ func (r *DescribeUnHandleEventTabListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnHandleEventTabListResponseParams struct {
 	// 租户伪攻击链未处置事件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *UnHandleEvent `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 错误码，0成功 非0错误
@@ -6896,11 +6745,9 @@ func (r *DescribeVpcFwGroupSwitchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVpcFwGroupSwitchResponseParams struct {
 	// 开关列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchList []*FwGroupSwitchShow `json:"SwitchList,omitnil,omitempty" name:"SwitchList"`
 
 	// 开关总个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6936,71 +6783,55 @@ type EdgeIpInfo struct {
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 公网 IP 类型 1 公网,2 弹性,3 弹性ipv6,4 anycastIP, 6 HighQualityEIP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpType *int64 `json:"PublicIpType,omitnil,omitempty" name:"PublicIpType"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetIp *string `json:"IntranetIp,omitnil,omitempty" name:"IntranetIp"`
 
 	// 资产类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 风险端口数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortRiskCount *int64 `json:"PortRiskCount,omitnil,omitempty" name:"PortRiskCount"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 是否为region eip
 	// 0 不为region eip，不能选择串行
 	// 1 为region eip 可以选择串行
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRegionEip *int64 `json:"IsRegionEip,omitnil,omitempty" name:"IsRegionEip"`
 
 	// EIP 所关联的VPC
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 0: 该地域暂未支持串行
 	// 1: 该用户未在该地域配置串行带宽
 	// 2: 该用户已在该地域配置串行带宽，可以开启串行开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSerialRegion *int64 `json:"IsSerialRegion,omitnil,omitempty" name:"IsSerialRegion"`
 
 	// 0: 不是公网CLB 可以开启串行开关
 	// 1: 是公网CLB 不可以开启串行开关
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPublicClb *int64 `json:"IsPublicClb,omitnil,omitempty" name:"IsPublicClb"`
 
 	// 0: 开启开关时提示要创建私有连接。
 	// 1: 关闭该开关是提示删除私有连接。
 	// 如果大于 1: 关闭开关 、开启开关不需提示创建删除私有连接。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndpointBindEipNum *int64 `json:"EndpointBindEipNum,omitnil,omitempty" name:"EndpointBindEipNum"`
 
 	// 扫描深度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanMode *string `json:"ScanMode,omitnil,omitempty" name:"ScanMode"`
 
 	// 扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *int64 `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 开关状态
@@ -7009,15 +6840,12 @@ type EdgeIpInfo struct {
 	// 2 : 开启中
 	// 3 : 关闭中
 	// 4 : 异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 私有连接ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
 
 	// 私有连接IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndpointIp *string `json:"EndpointIp,omitnil,omitempty" name:"EndpointIp"`
 
 	// 0 : 旁路
@@ -7026,15 +6854,12 @@ type EdgeIpInfo struct {
 	SwitchMode *uint64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 
 	// 开关权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchWeight *int64 `json:"SwitchWeight,omitnil,omitempty" name:"SwitchWeight"`
 
 	// 域名化CLB的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// IP超量状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverUsedStatus *int64 `json:"OverUsedStatus,omitnil,omitempty" name:"OverUsedStatus"`
 }
 
@@ -7054,33 +6879,26 @@ type EdgeIpSwitch struct {
 
 type EnterpriseSecurityGroupRuleBetaInfo struct {
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 }
 
 type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 排序
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
 	// 主键id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleUuid *uint64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 规则uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 源规则内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
 	// 源规则类型 
@@ -7096,11 +6914,9 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 8表示标签(tag)
 	// 9表示地域(region)
 	// 100表示资产分组(resourcegroup)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 目的规则内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 目的规则类型 
@@ -7116,113 +6932,88 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 8表示标签(tag)
 	// 9表示地域(region)
 	// 100表示资产分组(resourcegroup)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *int64 `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 协议名称
 	// 取值范围:TCP/ANY/ICMP/UDP
 	// ANY:表示所有
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 规则策略
 	// 取值范围:1/2
 	// 1:阻断
 	// 2:放行
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
 	// 规则启用状态 
 	// 取值范围： 0/1
 	// 0:未开启
 	// 1:开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclTags *string `json:"AclTags,omitnil,omitempty" name:"AclTags"`
 
 	// 规则最新一次是否有改动
 	// 取值范围：0/1
 	// 0:否
 	// 1:是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNew *int64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 是否延迟下发规则 
 	// 取值范围：0/1
 	// 0:立即下发 1:延迟下发
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDelay *int64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
 	// 服务模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
 	// 源资产名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouInstanceName *string `json:"SouInstanceName,omitnil,omitempty" name:"SouInstanceName"`
 
 	// 源资产公网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouPublicIp *string `json:"SouPublicIp,omitnil,omitempty" name:"SouPublicIp"`
 
 	// 源资产内网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouPrivateIp *string `json:"SouPrivateIp,omitnil,omitempty" name:"SouPrivateIp"`
 
 	// 源资产网段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouCidr *string `json:"SouCidr,omitnil,omitempty" name:"SouCidr"`
 
 	// 源模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SouParameterName *string `json:"SouParameterName,omitnil,omitempty" name:"SouParameterName"`
 
 	// 目的资产名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 目的资产公网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 目的资产内网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// 目的资产网段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
 	// 目的模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
 	// 端口模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolPortName *string `json:"ProtocolPortName,omitnil,omitempty" name:"ProtocolPortName"`
 
 	// 自动化任务信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*EnterpriseSecurityGroupRuleBetaInfo `json:"BetaList,omitnil,omitempty" name:"BetaList"`
 
 	// 规则id  等同RuleUuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -7351,11 +7142,9 @@ type FwGateway struct {
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关所属vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 网关ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpAddress *string `json:"IpAddress,omitnil,omitempty" name:"IpAddress"`
 }
 
@@ -7376,73 +7165,60 @@ type FwGroupSwitchShow struct {
 	SwitchId *string `json:"SwitchId,omitnil,omitempty" name:"SwitchId"`
 
 	// 防火墙开关NAME
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchName *string `json:"SwitchName,omitnil,omitempty" name:"SwitchName"`
 
 	// 互通模式
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 
 	// 开关边连接类型 0：对等连接， 1：云连网
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectType *int64 `json:"ConnectType,omitnil,omitempty" name:"ConnectType"`
 
 	// 连接ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectId *string `json:"ConnectId,omitnil,omitempty" name:"ConnectId"`
 
 	// 连接名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectName *string `json:"ConnectName,omitnil,omitempty" name:"ConnectName"`
 
 	// 源实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInstancesInfo []*NetInstancesInfo `json:"SrcInstancesInfo,omitnil,omitempty" name:"SrcInstancesInfo"`
 
 	// 目的实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInstancesInfo []*NetInstancesInfo `json:"DstInstancesInfo,omitnil,omitempty" name:"DstInstancesInfo"`
 
 	// 防火墙(组)数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
 	// 防火墙(组)名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
 
 	// 开关状态 0：关 ， 1：开
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 开关的状态 0：正常， 1：转换中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 0-非sase实例，忽略，1-未绑定状态，2-已绑定
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachWithEdge *int64 `json:"AttachWithEdge,omitnil,omitempty" name:"AttachWithEdge"`
 
 	// 对等防火墙和开关状态 0：正常， 1：对等未创建防火墙，2：对等已创建防火墙，未打开开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossEdgeStatus *int64 `json:"CrossEdgeStatus,omitnil,omitempty" name:"CrossEdgeStatus"`
 
 	// 网络经过VPC防火墙CVM所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsRegion []*string `json:"FwInsRegion,omitnil,omitempty" name:"FwInsRegion"`
 
 	// 0 观察 1 拦截 2 严格 3 关闭 4 不支持ips 前端展示tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpsAction *int64 `json:"IpsAction,omitnil,omitempty" name:"IpsAction"`
 
 	// 开关关联的防火墙实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsLst []*VpcFwInstanceShow `json:"FwInsLst,omitnil,omitempty" name:"FwInsLst"`
 
 	// 开关是否处于bypass状态
 	// 0：正常状态
 	// 1：bypass状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BypassStatus *int64 `json:"BypassStatus,omitnil,omitempty" name:"BypassStatus"`
+
+	// 0: ipv4 , 1:ipv6
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type FwVpcCidr struct {
@@ -7463,27 +7239,21 @@ type IPDefendStatus struct {
 
 type IdsWhiteInfo struct {
 	// 白名单唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 源IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
 	// 目的IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
 
 	// 规则类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteRuleType *string `json:"WhiteRuleType,omitnil,omitempty" name:"WhiteRuleType"`
 
 	// 白名单生效防火墙范围： 1 边界防火墙 2 nat防火墙 4 vpc防火墙 7 = 1+2+4 所有防火墙
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 
 	// 入侵防御规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -7491,17 +7261,13 @@ type InstanceInfo struct {
 	// appid信息
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 地域
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+	// 资产来源
+	// 1公网 2内网
+	InsSource *string `json:"InsSource,omitnil,omitempty" name:"InsSource"`
 
-	// vpcid信息
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// vpc名称
-	VPCName *string `json:"VPCName,omitnil,omitempty" name:"VPCName"`
-
-	// 子网id
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+	// 资产类型
+	//  3是cvm实例,4是clb实例,5是eni实例,6是mysql,7是redis,8是NAT,9是VPN,10是ES,11是MARIADB,12是KAFKA 13 NATFW
+	InsType *int64 `json:"InsType,omitnil,omitempty" name:"InsType"`
 
 	// 资产id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7509,36 +7275,38 @@ type InstanceInfo struct {
 	// 资产名
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 资产类型
-	//  3是cvm实例,4是clb实例,5是eni实例,6是mysql,7是redis,8是NAT,9是VPN,10是ES,11是MARIADB,12是KAFKA 13 NATFW
-	InsType *int64 `json:"InsType,omitnil,omitempty" name:"InsType"`
-
-	// 公网ip
-	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
-
-	// 内网ip
-	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+	// 漏洞数
+	LeakNum *string `json:"LeakNum,omitnil,omitempty" name:"LeakNum"`
 
 	// 端口数
 	PortNum *string `json:"PortNum,omitnil,omitempty" name:"PortNum"`
 
-	// 漏洞数
-	LeakNum *string `json:"LeakNum,omitnil,omitempty" name:"LeakNum"`
+	// 内网ip
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
-	// 1，公网 2内网
-	InsSource *string `json:"InsSource,omitnil,omitempty" name:"InsSource"`
+	// 公网ip
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// [a,b]
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 地域
+	RegionKey *string `json:"RegionKey,omitnil,omitempty" name:"RegionKey"`
+
+	// 资产路径
 	ResourcePath []*string `json:"ResourcePath,omitnil,omitempty" name:"ResourcePath"`
 
 	// 扫描结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Server []*string `json:"Server,omitnil,omitempty" name:"Server"`
 
-	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegionKey *string `json:"RegionKey,omitnil,omitempty" name:"RegionKey"`
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// vpc名称
+	VPCName *string `json:"VPCName,omitnil,omitempty" name:"VPCName"`
+
+	// vpcid信息
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 type IntrusionDefenseRule struct {
@@ -7563,15 +7331,12 @@ type IntrusionDefenseRule struct {
 
 type IocListData struct {
 	// 待处置IP地址，IP/Domain字段二选一
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// 只能为0或者1   0代表出站 1代表入站
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 待处置域名，IP/Domain字段二选一
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -7642,7 +7407,6 @@ type ModifyAcRuleResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回多余的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7863,11 +7627,9 @@ func (r *ModifyAllPublicIPSwitchStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAllPublicIPSwitchStatusResponseParams struct {
 	// 接口返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 接口返回错误码，0请求成功  非0失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7946,7 +7708,6 @@ func (r *ModifyAllRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAllRuleStatusResponseParams struct {
 	// 0: 修改成功, 其他: 修改失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8100,11 +7861,9 @@ func (r *ModifyAssetScanRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAssetScanResponseParams struct {
 	// 接口返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 接口返回错误码，0请求成功  非0失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// 状态值 0：成功，1 执行扫描中,其他：失败
@@ -8407,21 +8166,21 @@ func (r *ModifyBlockIgnoreRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBlockTopRequestParams struct {
-	// 记录id
-	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
-
 	// 操作类型 1 置顶 0取消
 	OpeType *string `json:"OpeType,omitnil,omitempty" name:"OpeType"`
+
+	// 记录id
+	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
 }
 
 type ModifyBlockTopRequest struct {
 	*tchttp.BaseRequest
 	
-	// 记录id
-	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
-
 	// 操作类型 1 置顶 0取消
 	OpeType *string `json:"OpeType,omitnil,omitempty" name:"OpeType"`
+
+	// 记录id
+	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
 }
 
 func (r *ModifyBlockTopRequest) ToJsonString() string {
@@ -8436,8 +8195,8 @@ func (r *ModifyBlockTopRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "UniqueId")
 	delete(f, "OpeType")
+	delete(f, "UniqueId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlockTopRequest has unknown keys!", "")
 	}
@@ -8682,7 +8441,6 @@ func (r *ModifyEnterpriseSecurityDispatchStatusRequest) FromJsonString(s string)
 // Predefined struct for user
 type ModifyEnterpriseSecurityDispatchStatusResponseParams struct {
 	// 0: 修改成功, 其他: 修改失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9114,7 +8872,6 @@ func (r *ModifyNatFwVpcDnsSwitchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyNatFwVpcDnsSwitchResponseParams struct {
 	// 修改成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9724,7 +9481,6 @@ func (r *ModifySequenceRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySequenceRulesResponseParams struct {
 	// 0: 修改成功, 非0: 修改失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9854,7 +9610,6 @@ func (r *ModifyTableStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTableStatusResponseParams struct {
 	// 0：正常，-1：不正常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10068,11 +9823,9 @@ type NatFwEipsInfo struct {
 	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
 
 	// 所属的Nat网关Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
 	// Nat网关名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 }
 
@@ -10092,19 +9845,15 @@ type NatFwInstance struct {
 	NatinsName *string `json:"NatinsName,omitnil,omitempty" name:"NatinsName"`
 
 	// 实例所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 0:新增模式，1:接入模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwMode *int64 `json:"FwMode,omitnil,omitempty" name:"FwMode"`
 
 	// 0:正常状态， 1: 正在创建
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// nat公网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatIp *string `json:"NatIp,omitnil,omitempty" name:"NatIp"`
 }
 
@@ -10134,97 +9883,75 @@ type NatInstanceInfo struct {
 	RegionZh *string `json:"RegionZh,omitnil,omitempty" name:"RegionZh"`
 
 	// 公网ip数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddress []*string `json:"EipAddress,omitnil,omitempty" name:"EipAddress"`
 
 	// 内外使用ip数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcIp []*string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 
 	// 实例关联子网数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnets []*string `json:"Subnets,omitnil,omitempty" name:"Subnets"`
 
 	// 0 :正常 1：正在初始化
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域区域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionDetail *string `json:"RegionDetail,omitnil,omitempty" name:"RegionDetail"`
 
 	// 实例所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneZh *string `json:"ZoneZh,omitnil,omitempty" name:"ZoneZh"`
 
 	// 实例所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneZhBak *string `json:"ZoneZhBak,omitnil,omitempty" name:"ZoneZhBak"`
 
 	// 已使用规则数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleUsed *uint64 `json:"RuleUsed,omitnil,omitempty" name:"RuleUsed"`
 
 	// 实例的规则限制最大规格数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleMax *uint64 `json:"RuleMax,omitnil,omitempty" name:"RuleMax"`
 
 	// 实例引擎版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 引擎是否可升级：0，不可升级；1，可升级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil,omitempty" name:"UpdateEnable"`
 
 	// 是的需要升级引擎 支持 nat拨测 1需要 0不需要
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NeedProbeEngineUpdate *int64 `json:"NeedProbeEngineUpdate,omitnil,omitempty" name:"NeedProbeEngineUpdate"`
 
 	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
 
 	// 实例主所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例备所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 
 	// 引擎预约升级时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveTime *string `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
 
 	// 引擎预约升级版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveVersion *string `json:"ReserveVersion,omitnil,omitempty" name:"ReserveVersion"`
 
-	// 引擎预约升级版本状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 引擎预约升级版本状态 stable:稳定版；previewed:预览版
 	ReserveVersionState *string `json:"ReserveVersionState,omitnil,omitempty" name:"ReserveVersionState"`
 
 	// 弹性开关
 	// 1 打开
 	// 0 关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
 	// 弹性带宽，单位Mbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
 	// 是否首次开通按量付费
 	// 1 是
 	// 0 不是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
 }
 
 type NetInstancesInfo struct {
 	// 网络实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 网络实例名称
@@ -10286,11 +10013,9 @@ type RemoveAcRuleResponseParams struct {
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 0代表成功，-1代表失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// success代表成功，failed代表失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10422,7 +10147,6 @@ type RemoveEnterpriseSecurityGroupRuleResponseParams struct {
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 0代表成功，-1代表失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10513,6 +10237,9 @@ func (r *RemoveNatAcRuleResponse) FromJsonString(s string) error {
 type RemoveVpcAcRuleRequestParams struct {
 	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
+
+	// 仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则
+	IpVersion *uint64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type RemoveVpcAcRuleRequest struct {
@@ -10520,6 +10247,9 @@ type RemoveVpcAcRuleRequest struct {
 	
 	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
+
+	// 仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则
+	IpVersion *uint64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 func (r *RemoveVpcAcRuleRequest) ToJsonString() string {
@@ -10535,6 +10265,7 @@ func (r *RemoveVpcAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RuleUuids")
+	delete(f, "IpVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveVpcAcRuleRequest has unknown keys!", "")
 	}
@@ -10637,28 +10368,25 @@ type RuleInfoData struct {
 }
 
 type ScanInfo struct {
+	// 进度
+	ScanPercent *float64 `json:"ScanPercent,omitnil,omitempty" name:"ScanPercent"`
+
 	// 扫描结果信息
 	ScanResultInfo *ScanResultInfo `json:"ScanResultInfo,omitnil,omitempty" name:"ScanResultInfo"`
 
 	// 扫描状态 0扫描中 1完成  2未勾选自动扫描
 	ScanStatus *int64 `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
-	// 进度
-	ScanPercent *float64 `json:"ScanPercent,omitnil,omitempty" name:"ScanPercent"`
-
 	// 预计完成时间
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 }
 
 type ScanResultInfo struct {
-	// 暴露漏洞数量
-	LeakNum *uint64 `json:"LeakNum,omitnil,omitempty" name:"LeakNum"`
+	// 是否禁封端口
+	BanStatus *bool `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
 
 	// 防护ip数量
 	IPNum *uint64 `json:"IPNum,omitnil,omitempty" name:"IPNum"`
-
-	// 暴露端口数量
-	PortNum *uint64 `json:"PortNum,omitnil,omitempty" name:"PortNum"`
 
 	// 是否开启防护
 	IPStatus *bool `json:"IPStatus,omitnil,omitempty" name:"IPStatus"`
@@ -10666,92 +10394,75 @@ type ScanResultInfo struct {
 	// 是否拦截攻击
 	IdpStatus *bool `json:"IdpStatus,omitnil,omitempty" name:"IdpStatus"`
 
-	// 是否禁封端口
-	BanStatus *bool `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
+	// 暴露漏洞数量
+	LeakNum *uint64 `json:"LeakNum,omitnil,omitempty" name:"LeakNum"`
+
+	// 暴露端口数量
+	PortNum *uint64 `json:"PortNum,omitnil,omitempty" name:"PortNum"`
 }
 
 type SecurityGroupBothWayInfo struct {
 	// 执行顺序
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderIndex *uint64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
 	// 访问源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
 	// 访问源类型，默认为0，0: IP, 1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 7: 参数模板, 100: 资产分组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *uint64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 访问目的
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
 	// 访问目的类型，默认为0，0: IP, 1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 7: 参数模板, 100: 资产分组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *uint64 `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 目的端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 策略, 1：阻断，2：放行
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Strategy *uint64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
 	// 方向，0：出站，1：入站，默认1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 是否开关开启，0：未开启，1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否是正常规则，0：正常，1：异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNew *uint64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
 
 	// 单/双向下发，0:单向下发，1：双向下发
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BothWay *uint64 `json:"BothWay,omitnil,omitempty" name:"BothWay"`
 
 	// 私有网络ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 公网IP，多个以英文逗号分隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 内网IP，多个以英文逗号分隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// 掩码地址，多个以英文逗号分隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
 	// 端口协议类型参数模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
 	// 是否使用端口协议模板，0：否，1：是
@@ -10799,35 +10510,27 @@ type SecurityGroupListData struct {
 	IsNew *uint64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
 
 	// 私有网络ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 公网IP，多个以英文逗号分隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 内网IP，多个以英文逗号分隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// 掩码地址，多个以英文逗号分隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
 	// 端口协议类型参数模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
 	// 生成双向下发规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BothWayInfo []*SecurityGroupBothWayInfo `json:"BothWayInfo,omitnil,omitempty" name:"BothWayInfo"`
 
 	// 方向，0：出站，1：入站，默认1
@@ -10837,23 +10540,18 @@ type SecurityGroupListData struct {
 	ProtocolPortType *uint64 `json:"ProtocolPortType,omitnil,omitempty" name:"ProtocolPortType"`
 
 	// Uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 资产分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetGroupNameIn *string `json:"AssetGroupNameIn,omitnil,omitempty" name:"AssetGroupNameIn"`
 
 	// 资产分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetGroupNameOut *string `json:"AssetGroupNameOut,omitnil,omitempty" name:"AssetGroupNameOut"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
 	// 端口协议类型参数模板名称
@@ -10905,17 +10603,14 @@ type SecurityGroupRule struct {
 	OrderIndex *string `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
 	// 协议；TCP/UDP/ICMP/ANY
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 访问控制策略的端口。取值：
 	// -1/-1：全部端口
 	// 80：80端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
 	// （入参时无需填写，自动生成）规则对应的唯一id
@@ -10937,7 +10632,6 @@ type SecurityGroupSimplifyRule struct {
 	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
 	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
 	// region：地域(ap-gaungzhou)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 
 	// 访问目的示例：
@@ -10947,23 +10641,18 @@ type SecurityGroupSimplifyRule struct {
 	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
 	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
 	// region：地域(ap-gaungzhou)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
 
 	// 协议；TCP/UDP/ICMP/ANY
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 规则对应的唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 规则序号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sequence *int64 `json:"Sequence,omitnil,omitempty" name:"Sequence"`
 }
 
@@ -11136,15 +10825,6 @@ func (r *SetNatFwEipResponse) FromJsonString(s string) error {
 }
 
 type StaticInfo struct {
-	// 数
-	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
-
-	// 端口
-	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// ip信息
-	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
-
 	// 地址
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
@@ -11153,6 +10833,15 @@ type StaticInfo struct {
 
 	// 资产名称
 	InsName *string `json:"InsName,omitnil,omitempty" name:"InsName"`
+
+	// ip信息
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 数
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 端口
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 // Predefined struct for user
@@ -11190,7 +10879,6 @@ func (r *StopSecurityGroupRuleDispatchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopSecurityGroupRuleDispatchResponseParams struct {
 	// true代表成功，false代表错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11215,26 +10903,21 @@ func (r *StopSecurityGroupRuleDispatchResponse) FromJsonString(s string) error {
 
 type SwitchListsData struct {
 	// 公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetIp *string `json:"IntranetIp,omitnil,omitempty" name:"IntranetIp"`
 
 	// 实例名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 资产类型
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 防火墙开关
@@ -11244,23 +10927,18 @@ type SwitchListsData struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 公网 IP 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpType *uint64 `json:"PublicIpType,omitnil,omitempty" name:"PublicIpType"`
 
 	// 风险端口数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortTimes *uint64 `json:"PortTimes,omitnil,omitempty" name:"PortTimes"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
 	// 扫描深度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanMode *string `json:"ScanMode,omitnil,omitempty" name:"ScanMode"`
 
 	// 扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *uint64 `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 }
 
@@ -11326,23 +11004,23 @@ func (r *SyncFwOperateResponse) FromJsonString(s string) error {
 }
 
 type TLogInfo struct {
-	// 失陷主机
-	OutNum *int64 `json:"OutNum,omitnil,omitempty" name:"OutNum"`
-
-	// 待处置告警
-	HandleNum *int64 `json:"HandleNum,omitnil,omitempty" name:"HandleNum"`
-
-	// 漏洞攻击
-	VulNum *int64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
-
-	// 网络探测
-	NetworkNum *int64 `json:"NetworkNum,omitnil,omitempty" name:"NetworkNum"`
-
 	// 封禁列表
 	BanNum *int64 `json:"BanNum,omitnil,omitempty" name:"BanNum"`
 
 	// 暴力破解
 	BruteForceNum *int64 `json:"BruteForceNum,omitnil,omitempty" name:"BruteForceNum"`
+
+	// 待处置告警
+	HandleNum *int64 `json:"HandleNum,omitnil,omitempty" name:"HandleNum"`
+
+	// 网络探测
+	NetworkNum *int64 `json:"NetworkNum,omitnil,omitempty" name:"NetworkNum"`
+
+	// 失陷主机
+	OutNum *int64 `json:"OutNum,omitnil,omitempty" name:"OutNum"`
+
+	// 漏洞攻击
+	VulNum *int64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 }
 
 type TagInfo struct {
@@ -11355,51 +11033,39 @@ type TagInfo struct {
 
 type TemplateListInfo struct {
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// IP模板
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpString *string `json:"IpString,omitnil,omitempty" name:"IpString"`
 
 	// 插入时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 模板类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 关联规则条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RulesNum *int64 `json:"RulesNum,omitnil,omitempty" name:"RulesNum"`
 
 	// 模板Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 协议端口模板，协议类型，4:4层协议，7:7层协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
 	// 模板包含地址数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPNum *int64 `json:"IPNum,omitnil,omitempty" name:"IPNum"`
 
 	// IP版本,0,IPv4;1,IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
@@ -11417,7 +11083,6 @@ type UnHandleEvent struct {
 	BaseLineOutSwitch *uint64 `json:"BaseLineOutSwitch,omitnil,omitempty" name:"BaseLineOutSwitch"`
 
 	// vpc间防火墙实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcFwCount *uint64 `json:"VpcFwCount,omitnil,omitempty" name:"VpcFwCount"`
 }
 
@@ -11446,94 +11111,73 @@ type VpcDnsInfo struct {
 	DNSEip *string `json:"DNSEip,omitnil,omitempty" name:"DNSEip"`
 
 	// nat网关id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
 
 	// nat网关名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatInsName *string `json:"NatInsName,omitnil,omitempty" name:"NatInsName"`
 
 	// 0：开关关闭 ， 1: 开关打开
 	SwitchStatus *int64 `json:"SwitchStatus,omitnil,omitempty" name:"SwitchStatus"`
 
 	// 0：未防护， 1: 已防护，2：忽略此字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectedStatus *uint64 `json:"ProtectedStatus,omitnil,omitempty" name:"ProtectedStatus"`
 
 	// 是否支持DNS FW，0-不支持、1-支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDNSFW *uint64 `json:"SupportDNSFW,omitnil,omitempty" name:"SupportDNSFW"`
 }
 
 type VpcFwCvmInsInfo struct {
 	// VPC防火墙实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
 
 	// CVM所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// CVM所在地域中文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionZh *string `json:"RegionZh,omitnil,omitempty" name:"RegionZh"`
 
 	// CVM所在地域详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionDetail *string `json:"RegionDetail,omitnil,omitempty" name:"RegionDetail"`
 
 	// 主机所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneZh *string `json:"ZoneZh,omitnil,omitempty" name:"ZoneZh"`
 
 	// 备机所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneZhBack *string `json:"ZoneZhBack,omitnil,omitempty" name:"ZoneZhBack"`
 
 	// 防火墙CVM带宽值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
 	// 实例主机所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例备机所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 }
 
 type VpcFwGroupInfo struct {
 	// 防火墙(组)ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
 	// 防火墙(组)名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
 
 	// 防火墙组涉及到的开关个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwSwitchNum *int64 `json:"FwSwitchNum,omitnil,omitempty" name:"FwSwitchNum"`
 
 	// 防火墙(组)部署的地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionLst []*string `json:"RegionLst,omitnil,omitempty" name:"RegionLst"`
 
 	// 模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 防火墙实例的开关模式 1: 单点互通 2: 多点互通 3: 全互通 4: 自定义路由
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 
 	// VPC防火墙实例卡片信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInstanceLst []*VpcFwInstanceInfo `json:"FwInstanceLst,omitnil,omitempty" name:"FwInstanceLst"`
 
 	// 防火墙(状态) 0：正常 1: 初始化或操作中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// auto :自动选择
@@ -11541,23 +11185,18 @@ type VpcFwGroupInfo struct {
 	FwVpcCidr *string `json:"FwVpcCidr,omitnil,omitempty" name:"FwVpcCidr"`
 
 	// cdc专用集群场景时表示部署所属的cdc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
 	// cdc专用集群场景时表示cdc名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
 
 	// 跨租户模式 1管理员 2单边 0 非跨租户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossUserMode *string `json:"CrossUserMode,omitnil,omitempty" name:"CrossUserMode"`
 
 	// 云联网模式下，当前实例是否需要开启重叠路由开关，1：需要开启，0：不需要开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NeedSwitchCcnOverlap *int64 `json:"NeedSwitchCcnOverlap,omitnil,omitempty" name:"NeedSwitchCcnOverlap"`
 
 	// 云联网模式下，实例关联的云联网id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -11577,124 +11216,95 @@ type VpcFwInstance struct {
 
 type VpcFwInstanceInfo struct {
 	// VPC防火墙实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsName *string `json:"FwInsName,omitnil,omitempty" name:"FwInsName"`
 
 	// VPC防火墙实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
 
 	// VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwMode *int64 `json:"FwMode,omitnil,omitempty" name:"FwMode"`
 
 	// VPC防火墙接入网络实例个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinInsNum *int64 `json:"JoinInsNum,omitnil,omitempty" name:"JoinInsNum"`
 
 	// VPC防火墙开关个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwSwitchNum *int64 `json:"FwSwitchNum,omitnil,omitempty" name:"FwSwitchNum"`
 
 	// VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// VPC防火墙创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// VPC 相关云联网ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId []*string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// VPC 相关云联网名称列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnName []*string `json:"CcnName,omitnil,omitempty" name:"CcnName"`
 
 	// VPC 相关对等连接ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerConnectionId []*string `json:"PeerConnectionId,omitnil,omitempty" name:"PeerConnectionId"`
 
 	// VPC 相关对等连接名称列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerConnectionName []*string `json:"PeerConnectionName,omitnil,omitempty" name:"PeerConnectionName"`
 
 	// VPC防火墙CVM的列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwCvmLst []*VpcFwCvmInsInfo `json:"FwCvmLst,omitnil,omitempty" name:"FwCvmLst"`
 
 	// VPC防火墙接入网络实例类型列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinInsLst []*VpcFwJoinInstanceType `json:"JoinInsLst,omitnil,omitempty" name:"JoinInsLst"`
 
 	// 防火墙网关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGateway []*FwGateway `json:"FwGateway,omitnil,omitempty" name:"FwGateway"`
 
 	// 防火墙(组)ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
 	// 已使用规则数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleUsed *int64 `json:"RuleUsed,omitnil,omitempty" name:"RuleUsed"`
 
 	// 最大规则数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleMax *int64 `json:"RuleMax,omitnil,omitempty" name:"RuleMax"`
 
 	// 防火墙实例带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 用户VPC墙总带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserVpcWidth *int64 `json:"UserVpcWidth,omitnil,omitempty" name:"UserVpcWidth"`
 
 	// 接入的vpc列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinInsIdLst []*string `json:"JoinInsIdLst,omitnil,omitempty" name:"JoinInsIdLst"`
 
 	// 内网间峰值带宽 (单位 bps )
 	FlowMax *int64 `json:"FlowMax,omitnil,omitempty" name:"FlowMax"`
 
 	// 实例引擎版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 引擎是否可升级：0，不可升级；1，可升级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil,omitempty" name:"UpdateEnable"`
 
 	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
 
 	// 引擎预约升级时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveTime *string `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
 
 	// 预约引擎升级版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveVersion *string `json:"ReserveVersion,omitnil,omitempty" name:"ReserveVersion"`
 
 	// 引擎预约升级版本状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveVersionState *string `json:"ReserveVersionState,omitnil,omitempty" name:"ReserveVersionState"`
 
 	// 弹性开关 1打开 0关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
 	// 弹性带宽，单位Mbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
 	// 是否首次开通按量付费
 	// 1 是
 	// 0 不是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
 }
 
@@ -11703,21 +11313,17 @@ type VpcFwInstanceShow struct {
 	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
 
 	// VPC防火墙实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsName *string `json:"FwInsName,omitnil,omitempty" name:"FwInsName"`
 
 	// 网络经过VPC防火墙CVM所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwInsRegion *string `json:"FwInsRegion,omitnil,omitempty" name:"FwInsRegion"`
 }
 
 type VpcFwJoinInstanceType struct {
 	// 接入实例类型，VPC、DIRECTCONNECT、 VPNGW 等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinType *string `json:"JoinType,omitnil,omitempty" name:"JoinType"`
 
 	// 接入的对应网络实例类型的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 }
 
@@ -11751,7 +11357,6 @@ type VpcRuleItem struct {
 	// FTP
 	// DNS
 	// TLS/SSL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 访问控制策略中设置的流量通过云防火墙的方式。取值：
@@ -11763,7 +11368,6 @@ type VpcRuleItem struct {
 	// 访问控制策略的端口。取值：
 	// -1/-1：全部端口
 	// 80：80端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 描述
@@ -11794,36 +11398,31 @@ type VpcRuleItem struct {
 	Deleted *int64 `json:"Deleted,omitnil,omitempty" name:"Deleted"`
 
 	// 规则生效的防火墙实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
 	// 防火墙名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
 
 	// beta任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*BetaInfoByACL `json:"BetaList,omitnil,omitempty" name:"BetaList"`
 
 	// 端口协议组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
 	// 端口协议组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateName *string `json:"ParamTemplateName,omitnil,omitempty" name:"ParamTemplateName"`
 
 	// 访问目的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
 
 	// 访问源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
 	// Ip版本，0：IPv4，1：IPv6，默认为IPv4
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
+
+	// 是否是无效规则，0 表示有效规则，1 表示无效规则，出参场景返回使用
+	Invalid *int64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
 }
 
 type VpcZoneData struct {

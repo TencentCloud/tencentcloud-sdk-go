@@ -752,6 +752,9 @@ const (
 	// DNS 记录与 DNSSEC 功能冲突。
 	INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 
+	// DNS 记录与 加速域名 记录冲突。
+	INVALIDPARAMETERVALUE_CONFLICTWITHDOMAIN = "InvalidParameterValue.ConflictWithDomain"
+
 	// DNS 记录与 NS 记录冲突。
 	INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
 

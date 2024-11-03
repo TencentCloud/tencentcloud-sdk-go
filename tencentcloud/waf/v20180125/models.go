@@ -33,15 +33,12 @@ type AccessFieldValueRatioInfo struct {
 
 type AccessFullTextInfo struct {
 	// 是否大小写敏感
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
 	// 全文索引的分词符，字符串中每个字符代表一个分词符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
 
 	// 是否包含中文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
 }
@@ -61,17 +58,14 @@ type AccessHistogramItem struct {
 
 type AccessKeyValueInfo struct {
 	// 需要配置键值或者元字段索引的字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 字段的索引描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *AccessValueInfo `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type AccessLogInfo struct {
 	// 日志时间，单位ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 日志主题ID
@@ -106,17 +100,14 @@ type AccessLogInfo struct {
 
 type AccessLogItem struct {
 	// 日记Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 日志Value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type AccessLogItems struct {
 	// 分析结果返回的KV数据对
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*AccessLogItem `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -139,39 +130,31 @@ type AccessRuleInfo struct {
 
 type AccessRuleKeyValueInfo struct {
 	// 是否大小写敏感
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
 	// 需要建立索引的键值对信息；最大只能配置100个键值对
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
 }
 
 type AccessRuleTagInfo struct {
 	// 是否大小写敏感
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
 	// 标签索引配置中的字段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
 }
 
 type AccessValueInfo struct {
 	// 字段类型，目前支持的类型有：long、text、double
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
 
 	// 字段是否开启分析功能
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlFlag *bool `json:"SqlFlag,omitnil,omitempty" name:"SqlFlag"`
 
 	// 是否包含中文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
 }
@@ -346,7 +329,7 @@ type AddAreaBanAreasRequestParams struct {
 	// waf版本信息，spart-waf或者clb-waf，其他无效，请一定填写
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -365,7 +348,7 @@ type AddAreaBanAreasRequest struct {
 	// waf版本信息，spart-waf或者clb-waf，其他无效，请一定填写
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -544,7 +527,7 @@ type AddCustomRuleRequestParams struct {
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
@@ -556,7 +539,7 @@ type AddCustomRuleRequestParams struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 放行的详情
+	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。默认是"geoip,cc,owasp,ai,antileakage"
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
 	// 添加规则的来源，默认为空
@@ -596,7 +579,7 @@ type AddCustomRuleRequest struct {
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
@@ -608,7 +591,7 @@ type AddCustomRuleRequest struct {
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 放行的详情
+	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。默认是"geoip,cc,owasp,ai,antileakage"
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
 	// 添加规则的来源，默认为空
@@ -673,7 +656,6 @@ type AddCustomRuleResponseParams struct {
 	Success *ResponseCode `json:"Success,omitnil,omitempty" name:"Success"`
 
 	// 添加成功的规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -716,7 +698,7 @@ type AddCustomWhiteRuleRequestParams struct {
 	// 放行的详情
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -744,7 +726,7 @@ type AddCustomWhiteRuleRequest struct {
 	// 放行的详情
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -783,7 +765,6 @@ type AddCustomWhiteRuleResponseParams struct {
 	Success *ResponseCode `json:"Success,omitnil,omitempty" name:"Success"`
 
 	// 添加成功的规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1344,15 +1325,12 @@ type ApiAsset struct {
 	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
 
 	// 场景
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 数据标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label []*string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 过去7天是否活跃
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Active *bool `json:"Active,omitnil,omitempty" name:"Active"`
 
 	// 最近更新时间
@@ -1362,35 +1340,27 @@ type ApiAsset struct {
 	InsertTime *uint64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 资产状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 风险等级，100,200,300对应低中高
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 近30天调用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 是否鉴权，1标识是，0表示否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAuth *int64 `json:"IsAuth,omitnil,omitempty" name:"IsAuth"`
 
 	// 如果添加了api入参检测规则，则此id返回值不为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiRequestRuleId *int64 `json:"ApiRequestRuleId,omitnil,omitempty" name:"ApiRequestRuleId"`
 
 	// 如果添加了api限流规则，则此id返回值不为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiLimitRuleId *int64 `json:"ApiLimitRuleId,omitnil,omitempty" name:"ApiLimitRuleId"`
 
 	// 对象接入和泛域名接入时，展示host列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostList []*string `json:"HostList,omitnil,omitempty" name:"HostList"`
 }
 
@@ -1407,95 +1377,73 @@ type ApiDataFilter struct {
 
 type ApiDetailSampleHistory struct {
 	// 样例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleNme *string `json:"SampleNme,omitnil,omitempty" name:"SampleNme"`
 
 	// 请求样例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepLog *string `json:"RepLog,omitnil,omitempty" name:"RepLog"`
 
 	// 响应样例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RspLog *string `json:"RspLog,omitnil,omitempty" name:"RspLog"`
 }
 
 type ApiParameterType struct {
 	// 参数名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
 	// 参数类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 参数位置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// 数据标签(敏感字段)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label []*string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 来源是请求或者响应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 是否需要泛化 ，0表示不需要，1表示需要
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
 
 	// 是否鉴权，1表示是，0表示否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAuth *int64 `json:"IsAuth,omitnil,omitempty" name:"IsAuth"`
 }
 
 type ApiPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 申请数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
 
 	// 使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 
 	// api安全7天试用标识。1试用。0没试用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAPISecurityTrial *int64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
 }
 
@@ -1554,7 +1502,6 @@ type BatchIpAccessControlData struct {
 
 type BatchIpAccessControlItem struct {
 	// mongo表自增Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 黑名单42或白名单40
@@ -1579,81 +1526,62 @@ type BatchIpAccessControlItem struct {
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
 	// 55101145
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// IP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 定时任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 周期任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
 
 	// 定时任务配置详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
 	// 生效状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
 type BotPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 申请数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
 
 	// 使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
 	// 子产品code
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 续费标志	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 购买页bot6折
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotCPWaf *int64 `json:"BotCPWaf,omitnil,omitempty" name:"BotCPWaf"`
 
 	// 控制台买bot5折
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotNPWaf *int64 `json:"BotNPWaf,omitnil,omitempty" name:"BotNPWaf"`
 
 	// 7天bot试用标识 1 试用 0 没有试用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsBotTrial *int64 `json:"IsBotTrial,omitnil,omitempty" name:"IsBotTrial"`
 }
 
@@ -1674,7 +1602,6 @@ type BotQPS struct {
 	MaxBotQPS *uint64 `json:"MaxBotQPS,omitnil,omitempty" name:"MaxBotQPS"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -1701,7 +1628,7 @@ type CCRuleData struct {
 }
 
 type CCRuleItem struct {
-	// 动作
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，24表示JS校验
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 高级模式
@@ -1739,23 +1666,18 @@ type CCRuleItem struct {
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
 
 	// url长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 
 	// 规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 关联的Session规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -1781,7 +1703,7 @@ type CCRuleItems struct {
 	// 匹配类型
 	MatchFunc *uint64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
-	// 动作
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，24表示JS校验
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 优先级
@@ -1804,7 +1726,6 @@ type CCRuleItems struct {
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 关联的Session规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
 
 	// 创建时间
@@ -1861,11 +1782,9 @@ type CacheUrlItems struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -1874,7 +1793,6 @@ type CdcCluster struct {
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// cdc的集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -1913,31 +1831,24 @@ type ClbDomainsInfo struct {
 	FlowMode *uint64 `json:"FlowMode,omitnil,omitempty" name:"FlowMode"`
 
 	// 域名绑定负载均衡器状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
 	// 负载均衡类型，clb或者apisix
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
 	// IsCdn=3时，表示自定义header
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
 	// cdc-clb-waf类型WAF的CDC集群信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcClusters *string `json:"CdcClusters,omitnil,omitempty" name:"CdcClusters"`
 
 	// 云类型:public:公有云；private:私有云;hybrid:混合云
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
 	// 域名备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
 	// 域名标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
@@ -1988,53 +1899,41 @@ type ClbObject struct {
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil,omitempty" name:"PostCKafkaStatus"`
 
 	// 对象类型：CLB:负载均衡器，TSE:云原生网关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 对象地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proxy *uint64 `json:"Proxy,omitnil,omitempty" name:"Proxy"`
 
 	// 指定获取客户端IP的头部字段列表。IsCdn为3时有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
 	// bot防护开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
 
 	// api防护开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 
 	// 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectFlowMode *int64 `json:"ObjectFlowMode,omitnil,omitempty" name:"ObjectFlowMode"`
 
 	// 数值形式的私有网络 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 }
 
 type ClbWafRegionItem struct {
 	// 地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 地域中文说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 地域英文全拼
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 地域编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 }
 
@@ -2156,24 +2055,19 @@ type CreateDealsGoods struct {
 	// 旗舰版-CLB : 101201(新购),101202(续费),101203(变配)
 	// 域名包-CLB: 101207(新购),101208(续费),101209(变配)
 	// 业务扩展包-CLB: 101210(新购),101211(续费),101212(变配)
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GoodsCategoryId *int64 `json:"GoodsCategoryId,omitnil,omitempty" name:"GoodsCategoryId"`
 
 	// 购买waf实例区域ID
 	// 1 表示购买大陆资源;
 	// 9表示购买非中国大陆资源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type CreateDealsGoodsDetail struct {
 	// 时间间隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 单位，支持购买d、m、y 即（日、月、年）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
@@ -2189,8 +2083,6 @@ type CreateDealsGoodsDetail struct {
 	// 旗舰版-CLB:sp_wsm_waf_ultimate_clb
 	//  业务扩展包-CLB：sp_wsm_waf_qpsep_clb
 	// 域名扩展包-CLB：sp_wsm_waf_domain_clb
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
 	// 业务产品申请的pid（对应一个定价公式），通过pid计费查询到定价模型
@@ -2204,20 +2096,15 @@ type CreateDealsGoodsDetail struct {
 	// 旗舰版-CLB:1001154
 	// 域名包-CLB: 1001156
 	// 业务扩展包-CLB : 1001160
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
 	// waf实例名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 1:自动续费，0:不自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// waf购买的实际地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealRegion *int64 `json:"RealRegion,omitnil,omitempty" name:"RealRegion"`
 
 	// 计费细项标签数组
@@ -2238,24 +2125,18 @@ type CreateDealsGoodsDetail struct {
 	// 非中国大陆旗舰版CLB  sv_wsm_waf_package_ultimate_clb _intl
 	// 业务扩展包CLB sv_wsm_waf_qps_ep_clb
 	// 域名扩展包CLB  sv_wsm_waf_domain_clb
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelTypes []*string `json:"LabelTypes,omitnil,omitempty" name:"LabelTypes"`
 
 	// 计费细项标签数量，一般和SvLabelType一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelCounts []*int64 `json:"LabelCounts,omitnil,omitempty" name:"LabelCounts"`
 
 	// 变配使用，实例到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
 	// 对存在的实例购买bot 或api 安全
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -2294,14 +2175,12 @@ func (r *CreateDealsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDealsResponseParams struct {
 	// 计费下单响应结构体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DealData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 1:成功，0:失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回message
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMessage *string `json:"ReturnMessage,omitnil,omitempty" name:"ReturnMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2401,6 +2280,8 @@ type CreateIpAccessControlRequestParams struct {
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	//
+	// Deprecated: ValidTS is deprecated.
 	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
 
 	// 实例Id
@@ -2415,7 +2296,7 @@ type CreateIpAccessControlRequestParams struct {
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 定时配置类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时配置详情
@@ -2450,7 +2331,7 @@ type CreateIpAccessControlRequest struct {
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 定时配置类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时配置详情
@@ -2488,7 +2369,6 @@ func (r *CreateIpAccessControlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIpAccessControlResponseParams struct {
 	// 新增的规则对应的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2513,19 +2393,15 @@ func (r *CreateIpAccessControlResponse) FromJsonString(s string) error {
 
 type CronJob struct {
 	// 每个月的几号执行
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Days []*uint64 `json:"Days,omitnil,omitempty" name:"Days"`
 
 	// 每个星期的星期几执行
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WDays []*uint64 `json:"WDays,omitnil,omitempty" name:"WDays"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -3129,60 +3005,6 @@ func (r *DeleteDomainWhiteRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteDownloadRecordRequestParams struct {
-	// 记录id
-	Flow *string `json:"Flow,omitnil,omitempty" name:"Flow"`
-}
-
-type DeleteDownloadRecordRequest struct {
-	*tchttp.BaseRequest
-	
-	// 记录id
-	Flow *string `json:"Flow,omitnil,omitempty" name:"Flow"`
-}
-
-func (r *DeleteDownloadRecordRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteDownloadRecordRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Flow")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDownloadRecordRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteDownloadRecordResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteDownloadRecordResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteDownloadRecordResponseParams `json:"Response"`
-}
-
-func (r *DeleteDownloadRecordResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteDownloadRecordResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteHostRequestParams struct {
 	// 删除的域名列表
 	HostsDel []*HostDel `json:"HostsDel,omitnil,omitempty" name:"HostsDel"`
@@ -3309,11 +3131,9 @@ func (r *DeleteIpAccessControlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIpAccessControlResponseParams struct {
 	// 删除失败的条目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedItems *string `json:"FailedItems,omitnil,omitempty" name:"FailedItems"`
 
 	// 删除失败的条目数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3613,7 +3433,6 @@ type DescribeAccessExportsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 日志导出列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Exports []*ExportAccessInfo `json:"Exports,omitnil,omitempty" name:"Exports"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3968,7 +3787,6 @@ type DescribeAntiFakeRulesResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 返回值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CacheUrlItems `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4278,7 +4096,6 @@ type DescribeAntiLeakageItem struct {
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
@@ -4345,51 +4162,39 @@ func (r *DescribeApiDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiDetailResponseParams struct {
 	// 请求样例，json字符串格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
 	// 请求参数样例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterList []*ApiParameterType `json:"ParameterList,omitnil,omitempty" name:"ParameterList"`
 
 	// 当前场景标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 敏感字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFields []*string `json:"SensitiveFields,omitnil,omitempty" name:"SensitiveFields"`
 
 	// 7天内是否活跃
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
 
 	// 访问ip数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpCount *int64 `json:"IpCount,omitnil,omitempty" name:"IpCount"`
 
 	// 访问地域数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionCount *int64 `json:"RegionCount,omitnil,omitempty" name:"RegionCount"`
 
 	// 关联事件数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
 
 	// 涉敏数据条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveCount *uint64 `json:"SensitiveCount,omitnil,omitempty" name:"SensitiveCount"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 响应体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RspLog *string `json:"RspLog,omitnil,omitempty" name:"RspLog"`
 
 	// 昨日访问峰值QPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQPS *uint64 `json:"MaxQPS,omitnil,omitempty" name:"MaxQPS"`
 
 	// 历史样例
@@ -4499,11 +4304,9 @@ func (r *DescribeApiListVersionTwoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiListVersionTwoResponseParams struct {
 	// api资产列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ApiAsset `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4561,7 +4364,6 @@ func (r *DescribeAreaBanAreasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAreaBanAreasResponseParams struct {
 	// 回包内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeAreaBanAreasRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4589,14 +4391,12 @@ type DescribeAreaBanAreasRsp struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 数据来源 custom-自定义(默认)、batch-批量防护
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 字符串数据，配置的地域列表
 	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
 
 	// 定时任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务详细配置
@@ -4604,7 +4404,6 @@ type DescribeAreaBanAreasRsp struct {
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
 	// 周期任务配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
 }
 
@@ -4750,23 +4549,18 @@ type DescribeAttackOverviewResponseParams struct {
 	ApiAssetsCount *uint64 `json:"ApiAssetsCount,omitnil,omitempty" name:"ApiAssetsCount"`
 
 	// api风险事件数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiRiskEventCount *uint64 `json:"ApiRiskEventCount,omitnil,omitempty" name:"ApiRiskEventCount"`
 
 	// 黑名单总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPBlackCount *uint64 `json:"IPBlackCount,omitnil,omitempty" name:"IPBlackCount"`
 
 	// 防篡改总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TamperCount *uint64 `json:"TamperCount,omitnil,omitempty" name:"TamperCount"`
 
 	// 信息泄露总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeakCount *uint64 `json:"LeakCount,omitnil,omitempty" name:"LeakCount"`
 
 	// API风险事件周环比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiRiskEventCircleCount *int64 `json:"ApiRiskEventCircleCount,omitnil,omitempty" name:"ApiRiskEventCircleCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5113,7 +4907,7 @@ func (r *DescribeAutoDenyIPResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchIpAccessControlRequestParams struct {
-	// 筛选条件，支持 ActionType 40/42，Ip：ip地址，Domain：域名三类
+	// 筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移
@@ -5129,7 +4923,7 @@ type DescribeBatchIpAccessControlRequestParams struct {
 type DescribeBatchIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 筛选条件，支持 ActionType 40/42，Ip：ip地址，Domain：域名三类
+	// 筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移
@@ -5167,7 +4961,6 @@ func (r *DescribeBatchIpAccessControlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBatchIpAccessControlResponseParams struct {
 	// 输出
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *BatchIpAccessControlData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5553,7 +5346,6 @@ type DescribeCertificateVerifyResultResponseParams struct {
 	// 证书是否改变。
 	// 0：未变化
 	// 1：有变化
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Changed *int64 `json:"Changed,omitnil,omitempty" name:"Changed"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5608,7 +5400,6 @@ func (r *DescribeCiphersDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCiphersDetailResponseParams struct {
 	// 加密套件信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ciphers []*TLSCiphers `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5734,7 +5525,7 @@ func (r *DescribeCustomRuleListResponse) FromJsonString(s string) error {
 }
 
 type DescribeCustomRulesRspRuleListItem struct {
-	// 动作类型
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 跳过的策略
@@ -5765,43 +5556,33 @@ type DescribeCustomRulesRspRuleListItem struct {
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
 	// 事件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 生效状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
 	// 来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 定时任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
 	// 周期任务粒度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
 
 	// 自定义标签，风控规则用，用来表示是内置规则还是用户自定义的
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 拦截页面id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -6379,7 +6160,6 @@ type DescribeDomainsResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// domain列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains []*DomainInfo `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6723,7 +6503,6 @@ func (r *DescribeHostLimitRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostLimitResponseParams struct {
 	// 成功返回的状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Success *ResponseCode `json:"Success,omitnil,omitempty" name:"Success"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6883,7 +6662,6 @@ type DescribeHostsResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 防护域名的列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostList []*HostRecord `json:"HostList,omitnil,omitempty" name:"HostList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7138,11 +6916,9 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIpAccessControlResponseParams struct {
 	// 输出
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IpAccessControlData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 已经使用的IP黑白名单的IP总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedTotal *uint64 `json:"UsedTotal,omitnil,omitempty" name:"UsedTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7295,7 +7071,6 @@ func (r *DescribeIpHitItemsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIpHitItemsResponseParams struct {
 	// 结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IpHitItemsData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7395,26 +7170,14 @@ func (r *DescribeModuleStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeObjectsRequestParams struct {
-	// 支持的过滤器:
-	// 	ObjectId: clb实例ID
-	// 	VIP: clb实例的公网IP
-	// 	InstanceId: waf实例ID
-	// 	Domain: 精准域名
-	// 	Status: waf防护开关状态: 0关闭，1开启
-	// 	ClsStatus: waf日志开关: 0关闭，1开启
+	// 支持的过滤器:	ObjectId: clb实例ID	VIP: clb实例的公网IP	InstanceId: waf实例ID	Domain: 精准域名	Status: waf防护开关状态: 0关闭，1开启	ClsStatus: waf日志开关: 0关闭，1开启   
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeObjectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 支持的过滤器:
-	// 	ObjectId: clb实例ID
-	// 	VIP: clb实例的公网IP
-	// 	InstanceId: waf实例ID
-	// 	Domain: 精准域名
-	// 	Status: waf防护开关状态: 0关闭，1开启
-	// 	ClsStatus: waf日志开关: 0关闭，1开启
+	// 支持的过滤器:	ObjectId: clb实例ID	VIP: clb实例的公网IP	InstanceId: waf实例ID	Domain: 精准域名	Status: waf防护开关状态: 0关闭，1开启	ClsStatus: waf日志开关: 0关闭，1开启   
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -8197,7 +7960,7 @@ func (r *DescribeTlsVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTlsVersionResponseParams struct {
-	// TLS key value
+	// TLS信息
 	TLS []*TLSVersion `json:"TLS,omitnil,omitempty" name:"TLS"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8340,7 +8103,6 @@ func (r *DescribeUserCdcClbWafRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserCdcClbWafRegionsResponseParams struct {
 	// CdcRegion的类型描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CdcRegion `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8398,11 +8160,9 @@ func (r *DescribeUserClbWafRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserClbWafRegionsResponseParams struct {
 	// 地域（标准的ap-格式）列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 包含详细属性的地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RichDatas []*ClbWafRegionItem `json:"RichDatas,omitnil,omitempty" name:"RichDatas"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8609,7 +8369,6 @@ type DescribeUserSignatureRuleResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*UserSignatureRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9080,19 +8839,16 @@ type DomainInfo struct {
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil,omitempty" name:"PostCKafkaStatus"`
 
 	// cdc实例域名接入的集群信息,非cdc实例忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcClusters *string `json:"CdcClusters,omitnil,omitempty" name:"CdcClusters"`
 
 	// api安全开关状态。
 	// 0：关闭 
 	// 1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 
 	// 应用型负载均衡类型，默认clb。
 	// clb：七层负载均衡器类型
 	// apisix：apisix网关型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
 	// 安全组状态。
@@ -9100,72 +8856,56 @@ type DomainInfo struct {
 	// 1：非腾讯云源站
 	// 2：安全组绑定失败
 	// 3：安全组发生变更
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SgState *int64 `json:"SgState,omitnil,omitempty" name:"SgState"`
 
 	// 安全组状态的详细解释
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SgDetail *string `json:"SgDetail,omitnil,omitempty" name:"SgDetail"`
 
 	// 域名云环境。hybrid：混合云域名
 	// public：公有云域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
 	// 域名备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
 	// SAASWAF源站IP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
 	// SAASWAF源站域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamDomainList []*string `json:"UpstreamDomainList,omitnil,omitempty" name:"UpstreamDomainList"`
 
 	// 安全组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SgID *string `json:"SgID,omitnil,omitempty" name:"SgID"`
 
 	// clbwaf接入状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
 
 	// 域名标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type DomainPackageNew struct {
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTime *string `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 套餐购买个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 套餐购买地域，clb-waf暂时没有用到
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type DomainRuleId struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -9177,7 +8917,6 @@ type DomainURI struct {
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
@@ -9299,15 +9038,12 @@ type DomainsPartInfo struct {
 	// 是否开启主动健康检测。
 	// 0：不开启
 	// 1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveCheck *uint64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
 	// TLS版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TLSVersion *int64 `json:"TLSVersion,omitnil,omitempty" name:"TLSVersion"`
 
 	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
 	// 加密套件模板。
@@ -9315,15 +9051,12 @@ type DomainsPartInfo struct {
 	// 1：通用型模板 
 	// 2：安全型模板
 	// 3：自定义模板
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
 	// WAF与源站的读超时时间，默认300s。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
 	// WAF与源站的写超时时间，默认300s。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil,omitempty" name:"ProxySendTimeout"`
 
 	// WAF回源时的SNI类型。
@@ -9331,73 +9064,56 @@ type DomainsPartInfo struct {
 	// 1：开启SNI，client_hello中的server_name为防护域名
 	// 2：开启SNI，SNI为域名回源时的源站域名
 	// 3：开启SNI，SNI为自定义域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniType *int64 `json:"SniType,omitnil,omitempty" name:"SniType"`
 
 	// SniType为3时，需要填此参数，表示自定义的SNI；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniHost *string `json:"SniHost,omitnil,omitempty" name:"SniHost"`
 
 	// 回源IP权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weights []*string `json:"Weights,omitnil,omitempty" name:"Weights"`
 
 	// IsCdn=3时，表示自定义header
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
 	// 是否开启XFF重置。
 	// 0：关闭
 	// 1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
 	// 域名备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
 	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
 	// 防护规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 是否开启缓存 0-关闭 1-开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
 	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
 
 	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
 
 	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
 
 	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
 
 	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
 
 	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
 
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
 	// 域名标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
@@ -9438,30 +9154,24 @@ type DownloadAttackRecordInfo struct {
 
 type ExportAccessInfo struct {
 	// 日志导出任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 
 	// 日志导出查询语句
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 日志导出文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 日志文件大小
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 日志导出时间排序
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 日志导出格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 日志导出数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）
@@ -9520,35 +9230,27 @@ type FindAllDomainDetail struct {
 
 type FraudPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 申请数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
 
 	// 使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -9651,18 +9353,15 @@ func (r *GenerateDealsAndPayNewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GenerateDealsAndPayNewResponseParams struct {
 	// 计费下单响应结构体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DealData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 1:成功，0:失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回message
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMessage *string `json:"ReturnMessage,omitnil,omitempty" name:"ReturnMessage"`
 
 	// 购买的实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9984,14 +9683,11 @@ type GoodNews struct {
 	// 旗舰版-CLB : 101201(新购),101202(续费),101203(变配)
 	// 域名包-CLB: 101207(新购),101208(续费),101209(变配)
 	// 业务扩展包-CLB: 101210(新购),101211(续费),101212(变配)
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GoodsCategoryId *int64 `json:"GoodsCategoryId,omitnil,omitempty" name:"GoodsCategoryId"`
 
 	// 购买waf实例区域ID
 	// 1 表示购买大陆资源;
 	// 9表示购买非中国大陆资源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
@@ -10006,19 +9702,15 @@ type Goods struct {
 	GoodsDetail *GoodsDetail `json:"GoodsDetail,omitnil,omitempty" name:"GoodsDetail"`
 
 	// 默认为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 计费类目ID，对应cid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GoodsCategoryId *int64 `json:"GoodsCategoryId,omitnil,omitempty" name:"GoodsCategoryId"`
 
 	// 平台类型，默认1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 购买waf实例区域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
@@ -10039,57 +9731,44 @@ type GoodsDetail struct {
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
 	// waf产品码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductInfo []*ProductInfo `json:"ProductInfo,omitnil,omitempty" name:"ProductInfo"`
 
 	// waf实例名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// QPS数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticQps *int64 `json:"ElasticQps,omitnil,omitempty" name:"ElasticQps"`
 
 	// 弹性账单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlexBill *int64 `json:"FlexBill,omitnil,omitempty" name:"FlexBill"`
 
 	// 1:自动续费，0:不自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// waf购买的实际地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealRegion *int64 `json:"RealRegion,omitnil,omitempty" name:"RealRegion"`
 
 	// Waf实例对应的二级产品码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 计费细项标签数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelTypes []*string `json:"LabelTypes,omitnil,omitempty" name:"LabelTypes"`
 
 	// 计费细项标签数量，一般和SvLabelType一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelCounts []*int64 `json:"LabelCounts,omitnil,omitempty" name:"LabelCounts"`
 
 	// 变配使用，实例到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
 	// 对存在的实例购买bot 或api 安全
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type GoodsDetailNew struct {
 	// 时间间隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 单位，支持购买d、m、y 即（日、月、年）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
@@ -10105,8 +9784,6 @@ type GoodsDetailNew struct {
 	// 旗舰版-CLB:sp_wsm_waf_ultimate_clb
 	//  业务扩展包-CLB：sp_wsm_waf_qpsep_clb
 	// 域名扩展包-CLB：sp_wsm_waf_domain_clb
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
 	// 业务产品申请的pid（对应一个定价公式），通过pid计费查询到定价模型
@@ -10120,20 +9797,15 @@ type GoodsDetailNew struct {
 	// 旗舰版-CLB:1001154
 	// 域名包-CLB: 1001156
 	// 业务扩展包-CLB : 1001160
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
 	// waf实例名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 1:自动续费，0:不自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// waf购买的实际地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealRegion *int64 `json:"RealRegion,omitnil,omitempty" name:"RealRegion"`
 
 	// 计费细项标签数组
@@ -10154,28 +9826,21 @@ type GoodsDetailNew struct {
 	// 非中国大陆旗舰版CLB  sv_wsm_waf_package_ultimate_clb _intl
 	// 业务扩展包CLB sv_wsm_waf_qps_ep_clb
 	// 域名扩展包CLB  sv_wsm_waf_domain_clb
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelTypes []*string `json:"LabelTypes,omitnil,omitempty" name:"LabelTypes"`
 
 	// 计费细项标签数量，一般和SvLabelType一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelCounts []*int64 `json:"LabelCounts,omitnil,omitempty" name:"LabelCounts"`
 
 	// 变配使用，实例到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
 	// 对存在的实例购买bot 或api 安全
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 模式clb-waf或者saas-waf
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroVersion *string `json:"MicroVersion,omitnil,omitempty" name:"MicroVersion"`
 }
 
@@ -10252,38 +9917,33 @@ type HostRecord struct {
 	ClsStatus *uint64 `json:"ClsStatus,omitnil,omitempty" name:"ClsStatus"`
 
 	// 防护等级，可选值100,200,300
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 域名需要下发到的cdc集群列表。仅CDC场景下填充
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcClusters []*string `json:"CdcClusters,omitnil,omitempty" name:"CdcClusters"`
 
 	// 应用型负载均衡类型，默认clb。 
 	// clb：七层负载均衡器类型 
 	// apisix：apisix网关型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// tsegw：云原生API网关
+	// scf：云函数
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
 	// IsCdn=3时，需要填此参数，表示自定义header
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
 	// 规则引擎类型。
 	// 1: menshen
 	// 2: tiga
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineType *int64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
 	// 云类型。
 	// public:公有云
 	// private:私有云
 	// hybrid:混合云
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
 	// 域名备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 }
 
@@ -10303,35 +9963,27 @@ type HostStatus struct {
 
 type HybridPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 申请数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
 
 	// 使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -10481,96 +10133,74 @@ type InstanceInfo struct {
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
 	// 业务安全包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FraudPkg *FraudPkg `json:"FraudPkg,omitnil,omitempty" name:"FraudPkg"`
 
 	// Bot资源包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotPkg *BotPkg `json:"BotPkg,omitnil,omitempty" name:"BotPkg"`
 
 	// bot的qps详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotQPS *BotQPS `json:"BotQPS,omitnil,omitempty" name:"BotQPS"`
 
 	// qps弹性计费上限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBilling *uint64 `json:"ElasticBilling,omitnil,omitempty" name:"ElasticBilling"`
 
 	// 攻击日志投递开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackLogPost *int64 `json:"AttackLogPost,omitnil,omitempty" name:"AttackLogPost"`
 
 	// 带宽峰值，单位为B/s(字节每秒)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxBandwidth *uint64 `json:"MaxBandwidth,omitnil,omitempty" name:"MaxBandwidth"`
 
 	// api安全是否购买
 	APISecurity *uint64 `json:"APISecurity,omitnil,omitempty" name:"APISecurity"`
 
 	// 购买的qps规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QpsStandard *uint64 `json:"QpsStandard,omitnil,omitempty" name:"QpsStandard"`
 
 	// 购买的带宽规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthStandard *uint64 `json:"BandwidthStandard,omitnil,omitempty" name:"BandwidthStandard"`
 
 	// 实例状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例沙箱qps值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SandboxQps *uint64 `json:"SandboxQps,omitnil,omitempty" name:"SandboxQps"`
 
 	// 是否api 安全试用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
 
 	// 重保包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MajorEventsPkg *MajorEventsPkg `json:"MajorEventsPkg,omitnil,omitempty" name:"MajorEventsPkg"`
 
 	// 混合云子节点包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HybridPkg *HybridPkg `json:"HybridPkg,omitnil,omitempty" name:"HybridPkg"`
 
 	// API安全资源包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiPkg *ApiPkg `json:"ApiPkg,omitnil,omitempty" name:"ApiPkg"`
 
 	// 小程序安全加速包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniPkg *MiniPkg `json:"MiniPkg,omitnil,omitempty" name:"MiniPkg"`
 
 	// 小程序qps规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniQpsStandard *uint64 `json:"MiniQpsStandard,omitnil,omitempty" name:"MiniQpsStandard"`
 
 	// 小程序qps峰值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniMaxQPS *uint64 `json:"MiniMaxQPS,omitnil,omitempty" name:"MiniMaxQPS"`
 
 	// 最近一次超量时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastQpsExceedTime *string `json:"LastQpsExceedTime,omitnil,omitempty" name:"LastQpsExceedTime"`
 
 	// 小程序安全接入ID数量扩张包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniExtendPkg *MiniExtendPkg `json:"MiniExtendPkg,omitnil,omitempty" name:"MiniExtendPkg"`
 
 	// 计费项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 
 	// 实例延期释放标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 }
 
 type IpAccessControlData struct {
 	// ip黑白名单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Res []*IpAccessControlItem `json:"Res,omitnil,omitempty" name:"Res"`
 
 	// 计数
@@ -10579,7 +10209,6 @@ type IpAccessControlData struct {
 
 type IpAccessControlItem struct {
 	// mongo表自增Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 动作
@@ -10595,38 +10224,30 @@ type IpAccessControlItem struct {
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 更新时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TsVersion *uint64 `json:"TsVersion,omitnil,omitempty" name:"TsVersion"`
 
 	// 有效截止时间戳
 	ValidTs *uint64 `json:"ValidTs,omitnil,omitempty" name:"ValidTs"`
 
 	// 生效状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
 	// 55000001
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// IP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
 	// 规则创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 定时任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 周期任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
 
 	// 定时任务配置详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 }
 
@@ -10682,7 +10303,6 @@ type JobDateTime struct {
 	Cron []*CronJob `json:"Cron,omitnil,omitempty" name:"Cron"`
 
 	// 时区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTZone *string `json:"TimeTZone,omitnil,omitempty" name:"TimeTZone"`
 }
 
@@ -10723,37 +10343,29 @@ type LoadBalancer struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 负载均衡的VPCID，公网为-1，内网按实际填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 
-	// 负载均衡的网络类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
 	// 负载均衡的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
 }
 
 type LoadBalancerPackageNew struct {
 	// 监听id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 监听名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 负载均衡id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 负载均衡名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 地区
@@ -10785,31 +10397,24 @@ type LoadBalancerPackageNew struct {
 	//     "上海": "sh",
 	//     "新加坡": "sg",
 	//     "清远": "qy"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 接入IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 接入端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// VPCID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 
 	// CLB类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
 	// 负载均衡器的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
 }
 
@@ -10823,111 +10428,85 @@ type LogHistogramInfo struct {
 
 type MajorEventsPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 申请数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
 
 	// 使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 
 	// 护网包状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HWState *int64 `json:"HWState,omitnil,omitempty" name:"HWState"`
 }
 
 type MiniExtendPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 购买数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 type MiniPkg struct {
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 购买数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
@@ -11283,15 +10862,12 @@ func (r *ModifyApiAnalyzeStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiAnalyzeStatusResponseParams struct {
 	// 已经开启的数量,如果返回值为3（大于支持的域名开启数量），则表示开启失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 不支持开启的域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnSupportedList []*string `json:"UnSupportedList,omitnil,omitempty" name:"UnSupportedList"`
 
 	// 开启/关闭失败的域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailDomainList []*string `json:"FailDomainList,omitnil,omitempty" name:"FailDomainList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11418,7 +10994,7 @@ type ModifyAreaBanAreasRequestParams struct {
 	// 需要调整的地域信息，一个字符串数组
 	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -11434,7 +11010,7 @@ type ModifyAreaBanAreasRequest struct {
 	// 需要调整的地域信息，一个字符串数组
 	Areas []*string `json:"Areas,omitnil,omitempty" name:"Areas"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -11781,7 +11357,7 @@ type ModifyCustomRuleRequestParams struct {
 	// 编辑的规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
 	// 匹配条件数组
@@ -11805,7 +11381,7 @@ type ModifyCustomRuleRequestParams struct {
 	// 默认是0
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -11833,7 +11409,7 @@ type ModifyCustomRuleRequest struct {
 	// 编辑的规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
 	// 匹配条件数组
@@ -11857,7 +11433,7 @@ type ModifyCustomRuleRequest struct {
 	// 默认是0
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -12039,7 +11615,7 @@ type ModifyCustomWhiteRuleRequestParams struct {
 	// 匹配条件数组
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -12070,7 +11646,7 @@ type ModifyCustomWhiteRuleRequest struct {
 	// 匹配条件数组
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
-	// 定时任务类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务配置
@@ -12280,7 +11856,7 @@ func (r *ModifyDomainIpv6StatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDomainPostActionRequestParams struct {
-	// www.tx.com
+	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 0-关闭投递，1-开启投递
@@ -12293,7 +11869,7 @@ type ModifyDomainPostActionRequestParams struct {
 type ModifyDomainPostActionRequest struct {
 	*tchttp.BaseRequest
 	
-	// www.tx.com
+	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 0-关闭投递，1-开启投递
@@ -12531,14 +12107,12 @@ func (r *ModifyGenerateDealsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyGenerateDealsResponseParams struct {
 	// 计费下单响应结构体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DealData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 1:成功，0:失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 返回message
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMessage *string `json:"ReturnMessage,omitnil,omitempty" name:"ReturnMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12717,7 +12291,6 @@ func (r *ModifyHostModeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostModeResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Success *ResponseCode `json:"Success,omitnil,omitempty" name:"Success"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12930,7 +12503,7 @@ type ModifyInstanceNameRequestParams struct {
 	// 实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 版本
+	// 实例版本，支持clb-waf、sparta-waf
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 }
 
@@ -12943,7 +12516,7 @@ type ModifyInstanceNameRequest struct {
 	// 实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 版本
+	// 实例版本，支持clb-waf、sparta-waf
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 }
 
@@ -13127,11 +12700,13 @@ type ModifyIpAccessControlRequestParams struct {
 	// 42为黑名单，40为白名单
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
-	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
-
 	// 规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	//
+	// Deprecated: ValidTS is deprecated.
+	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
 
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13145,7 +12720,7 @@ type ModifyIpAccessControlRequestParams struct {
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 定时配置类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时配置详情
@@ -13165,11 +12740,11 @@ type ModifyIpAccessControlRequest struct {
 	// 42为黑名单，40为白名单
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
-	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
-
 	// 规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+	ValidTS *int64 `json:"ValidTS,omitnil,omitempty" name:"ValidTS"`
 
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13183,7 +12758,7 @@ type ModifyIpAccessControlRequest struct {
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 定时配置类型
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时配置详情
@@ -13205,8 +12780,8 @@ func (r *ModifyIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "IpList")
 	delete(f, "ActionType")
-	delete(f, "ValidTS")
 	delete(f, "RuleId")
+	delete(f, "ValidTS")
 	delete(f, "InstanceId")
 	delete(f, "Edition")
 	delete(f, "SourceType")
@@ -13516,6 +13091,9 @@ type ModifySpartaProtectionModeRequestParams struct {
 
 	// 0是修改规则引擎状态，1是修改AI的状态
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 type ModifySpartaProtectionModeRequest struct {
@@ -13534,6 +13112,9 @@ type ModifySpartaProtectionModeRequest struct {
 
 	// 0是修改规则引擎状态，1是修改AI的状态
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 func (r *ModifySpartaProtectionModeRequest) ToJsonString() string {
@@ -13552,6 +13133,7 @@ func (r *ModifySpartaProtectionModeRequest) FromJsonString(s string) error {
 	delete(f, "Mode")
 	delete(f, "Edition")
 	delete(f, "Type")
+	delete(f, "InstanceID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionModeRequest has unknown keys!", "")
 	}
@@ -14388,63 +13970,48 @@ type PeakPointsItem struct {
 	BotAccess *uint64 `json:"BotAccess,omitnil,omitempty" name:"BotAccess"`
 
 	// WAF返回给客户端状态码5xx次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusServerError *uint64 `json:"StatusServerError,omitnil,omitempty" name:"StatusServerError"`
 
 	// WAF返回给客户端状态码4xx次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusClientError *uint64 `json:"StatusClientError,omitnil,omitempty" name:"StatusClientError"`
 
 	// WAF返回给客户端状态码302次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusRedirect *uint64 `json:"StatusRedirect,omitnil,omitempty" name:"StatusRedirect"`
 
 	// WAF返回给客户端状态码202次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusOk *uint64 `json:"StatusOk,omitnil,omitempty" name:"StatusOk"`
 
 	// 源站返回给WAF状态码5xx次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamServerError *uint64 `json:"UpstreamServerError,omitnil,omitempty" name:"UpstreamServerError"`
 
 	// 源站返回给WAF状态码4xx次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamClientError *uint64 `json:"UpstreamClientError,omitnil,omitempty" name:"UpstreamClientError"`
 
 	// 源站返回给WAF状态码302次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamRedirect *uint64 `json:"UpstreamRedirect,omitnil,omitempty" name:"UpstreamRedirect"`
 
 	// 黑名单次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlackIP *uint64 `json:"BlackIP,omitnil,omitempty" name:"BlackIP"`
 
 	// 防篡改次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tamper *uint64 `json:"Tamper,omitnil,omitempty" name:"Tamper"`
 
 	// 信息防泄露次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Leak *uint64 `json:"Leak,omitnil,omitempty" name:"Leak"`
 
 	// 访问控制 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ACL *uint64 `json:"ACL,omitnil,omitempty" name:"ACL"`
 
 	// 小程序 qps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WxAccess *uint64 `json:"WxAccess,omitnil,omitempty" name:"WxAccess"`
 
 	// 小程序请求数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WxCount *uint64 `json:"WxCount,omitnil,omitempty" name:"WxCount"`
 
 	// 小程序上行带宽峰值，单位B
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WxUp *uint64 `json:"WxUp,omitnil,omitempty" name:"WxUp"`
 
 	// 小程序下行带宽峰值，单位B
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WxDown *uint64 `json:"WxDown,omitnil,omitempty" name:"WxDown"`
 }
 
@@ -14486,7 +14053,7 @@ type PortItem struct {
 	// 与Port一一对应,  表示回源协议
 	UpstreamProtocol *string `json:"UpstreamProtocol,omitnil,omitempty" name:"UpstreamProtocol"`
 
-	// Nginx的服务器ID
+	// Nginx的服务器ID,新增域名时填"0"
 	NginxServerId *string `json:"NginxServerId,omitnil,omitempty" name:"NginxServerId"`
 }
 
@@ -14591,59 +14158,46 @@ func (r *PostAttackDownloadTaskResponse) FromJsonString(s string) error {
 
 type ProductInfo struct {
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type QPSPackageNew struct {
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTime *string `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 套餐购买个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 套餐购买地域，clb-waf暂时没有用到
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 计费项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 type QpsData struct {
 	// 弹性qps默认值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBillingDefault *uint64 `json:"ElasticBillingDefault,omitnil,omitempty" name:"ElasticBillingDefault"`
 
 	// 弹性qps最小值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBillingMin *uint64 `json:"ElasticBillingMin,omitnil,omitempty" name:"ElasticBillingMin"`
 
 	// 弹性qps最大值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBillingMax *uint64 `json:"ElasticBillingMax,omitnil,omitempty" name:"ElasticBillingMax"`
 
 	// 业务扩展包最大qps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QPSExtendMax *uint64 `json:"QPSExtendMax,omitnil,omitempty" name:"QPSExtendMax"`
 
-	// 海外业务扩展包最大qps
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 境外业务扩展包最大qps
 	QPSExtendIntlMax *uint64 `json:"QPSExtendIntlMax,omitnil,omitempty" name:"QPSExtendIntlMax"`
 }
 
@@ -14778,7 +14332,6 @@ type RuleList struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -14877,16 +14430,19 @@ type SearchAccessLogResponseParams struct {
 	// 如果Analysis为True，则返回分析结果的列名，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ColNames is deprecated.
 	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
 
 	// 日志查询结果；当Analysis为True时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*AccessLogInfo `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AnalysisResults is deprecated.
 	AnalysisResults []*AccessLogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15066,24 +14622,20 @@ type SessionItem struct {
 	TsVersion *string `json:"TsVersion,omitnil,omitempty" name:"TsVersion"`
 
 	// SessionID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *int64 `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// Session名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
 
 	// Session是否正在被启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionInUsed *bool `json:"SessionInUsed,omitnil,omitempty" name:"SessionInUsed"`
 
 	// Session关联的CC规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedRuleID []*int64 `json:"RelatedRuleID,omitnil,omitempty" name:"RelatedRuleID"`
 }
 
 type SpartaProtectionPort struct {
-	// nginx Id
+	// 分配的服务器id
 	NginxServerId *uint64 `json:"NginxServerId,omitnil,omitempty" name:"NginxServerId"`
 
 	// 端口
@@ -15105,7 +14657,6 @@ type Strategy struct {
 	//     匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同
 	// 具体如下所示：
 	// <table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr></tbody></table>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
 	// 逻辑符号 
@@ -15125,16 +14676,12 @@ type Strategy struct {
 	//         ipmatch （ 属于）
 	//         ipnmatch （ 不属于）
 	//     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareFunc *string `json:"CompareFunc,omitnil,omitempty" name:"CompareFunc"`
 
 	// 匹配内容
 	// 
 	//     目前 当匹配字段为COOKIE（Cookie）时，不需要输入 匹配内容
 	// 其他都需要
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 匹配参数
@@ -15148,13 +14695,10 @@ type Strategy struct {
 	//         ARGS_COOKIE（Cookie参数值）
 	// 		
 	//         ARGS_HEADER（Header参数值）
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arg *string `json:"Arg,omitnil,omitempty" name:"Arg"`
 
 	// 0：大小写敏感
 	// 1：大小写不敏感
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaseNotSensitive *uint64 `json:"CaseNotSensitive,omitnil,omitempty" name:"CaseNotSensitive"`
 }
 
@@ -15321,25 +14865,20 @@ func (r *SwitchElasticModeResponse) FromJsonString(s string) error {
 
 type TLSCiphers struct {
 	// TLS版本ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// 加密套件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherId *int64 `json:"CipherId,omitnil,omitempty" name:"CipherId"`
 
 	// 加密套件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherName *string `json:"CipherName,omitnil,omitempty" name:"CipherName"`
 }
 
 type TLSVersion struct {
 	// TLSVERSION的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// TLSVERSION的NAME
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 }
 
@@ -15353,21 +14892,17 @@ type TargetEntity struct {
 
 type TigaMainClassMode struct {
 	// MainclassID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
 
 	// 防护模式，0表示观察，1表示拦截
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type TimedJob struct {
 	// 开始时间戳，单位为秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartDateTime *uint64 `json:"StartDateTime,omitnil,omitempty" name:"StartDateTime"`
 
 	// 结束时间戳，单位为秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndDateTime *uint64 `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
 }
 
@@ -15420,7 +14955,6 @@ func (r *UpsertCCAutoStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertCCAutoStatusResponseParams struct {
 	// 正常情况为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15469,7 +15003,7 @@ type UpsertCCRuleRequestParams struct {
 	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含
 	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
-	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 优先级
@@ -15530,7 +15064,7 @@ type UpsertCCRuleRequest struct {
 	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含
 	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
-	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 优先级
@@ -15695,15 +15229,12 @@ func (r *UpsertIpAccessControlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertIpAccessControlResponseParams struct {
 	// 添加或修改失败的条目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedItems *string `json:"FailedItems,omitnil,omitempty" name:"FailedItems"`
 
 	// 添加或修改失败的数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
 
 	// 添加或修改的IP数据Id列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15828,7 +15359,6 @@ type UpsertSessionResponseParams struct {
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// SessionID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionID *int64 `json:"SessionID,omitnil,omitempty" name:"SessionID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15871,31 +15401,24 @@ type UserDomainInfo struct {
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
 	// 版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 指定域名访问日志字段的开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteConfig *string `json:"WriteConfig,omitnil,omitempty" name:"WriteConfig"`
 
 	// 指定域名是否写cls的开关 1:写 0:不写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cls *uint64 `json:"Cls,omitnil,omitempty" name:"Cls"`
 
 	// 标记是否是混合云接入。hybrid表示混合云接入域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
 	// 标记clbwaf类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
 	// BOT开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
 
 	// API开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 }
 
@@ -15934,7 +15457,6 @@ type UserSignatureRule struct {
 	Reason *int64 `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 1: 高危 2:中危 3:低危
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 }
 
@@ -15952,7 +15474,6 @@ type UserWhiteRule struct {
 	MatchField *string `json:"MatchField,omitnil,omitempty" name:"MatchField"`
 
 	// 匹配参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchParams *string `json:"MatchParams,omitnil,omitempty" name:"MatchParams"`
 
 	// 匹配方法
@@ -15968,31 +15489,24 @@ type UserWhiteRule struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 规则ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignatureIds []*string `json:"SignatureIds,omitnil,omitempty" name:"SignatureIds"`
 
 	// 大类规则ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeIds []*string `json:"TypeIds,omitnil,omitempty" name:"TypeIds"`
 
 	// 大类规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeId *string `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
 	// 0:按照特定规则ID加白, 1:按照规则类型加白
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 规则名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 匹配规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchInfo []*UserWhiteRuleItem `json:"MatchInfo,omitnil,omitempty" name:"MatchInfo"`
 
 	// MatchInfo字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchInfoStr *string `json:"MatchInfoStr,omitnil,omitempty" name:"MatchInfoStr"`
 }
 
@@ -16007,18 +15521,33 @@ type UserWhiteRuleItem struct {
 	MatchContent *string `json:"MatchContent,omitnil,omitempty" name:"MatchContent"`
 
 	// 匹配参数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchParams *string `json:"MatchParams,omitnil,omitempty" name:"MatchParams"`
 }
 
 type VipInfo struct {
-	// Virtual IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// VIP地址
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// waf实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 创建时间
+	InstanceCreateTime *string `json:"InstanceCreateTime,omitnil,omitempty" name:"InstanceCreateTime"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 地域ID
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// ip运营商类型
+	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
+
+	// ip类型
+	VipType *string `json:"VipType,omitnil,omitempty" name:"VipType"`
+
+	// 域名信息
+	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 }
 
 type WafRuleLimit struct {

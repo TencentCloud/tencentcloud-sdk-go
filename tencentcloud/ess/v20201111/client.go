@@ -3389,19 +3389,43 @@ func NewCreateFlowGroupByFilesResponse() (response *CreateFlowGroupByFilesRespon
 }
 
 // CreateFlowGroupByFiles
-// 此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。
+// 此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// - 该接口允许通过PDF资源ID一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 注意事项：使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 //
 // 
 //
-// 注：`合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// ### 2. 适用场景
+//
+// 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// 
+//
+// ### 3. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
+//
+// 
+//
+// ### 4.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3542,19 +3566,43 @@ func (c *Client) CreateFlowGroupByFiles(request *CreateFlowGroupByFilesRequest) 
 }
 
 // CreateFlowGroupByFiles
-// 此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。
+// 此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
 //
 // 
 //
-// 适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+// - 该接口允许通过PDF资源ID一次性创建多个合同，这些合同被组织在一个合同组中。
+//
+// - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+//
+// - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 //
 // 
 //
-// 注意事项：使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
+// <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 //
 // 
 //
-// 注：`合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+// ### 2. 适用场景
+//
+// 
+//
+// 该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+//
+// 
+//
+// 
+//
+// ### 3. 合同额度的扣减与返还
+//
+// - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+//
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+//
+// - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
+//
+// 
+//
+// ### 4.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3742,7 +3790,7 @@ func NewCreateFlowGroupByTemplatesResponse() (response *CreateFlowGroupByTemplat
 //
 // 
 //
-// ### 1. 适用场景
+// ### 2. 适用场景
 //
 // 
 //
@@ -3752,7 +3800,7 @@ func NewCreateFlowGroupByTemplatesResponse() (response *CreateFlowGroupByTemplat
 //
 // 
 //
-// ### 2. 合同额度的扣减与返还
+// ### 3. 合同额度的扣减与返还
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
@@ -3762,7 +3810,7 @@ func NewCreateFlowGroupByTemplatesResponse() (response *CreateFlowGroupByTemplat
 //
 // 
 //
-// ### 3.合同组暂不支持抄送功能
+// ### 4.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3919,7 +3967,7 @@ func (c *Client) CreateFlowGroupByTemplates(request *CreateFlowGroupByTemplatesR
 //
 // 
 //
-// ### 1. 适用场景
+// ### 2. 适用场景
 //
 // 
 //
@@ -3929,7 +3977,7 @@ func (c *Client) CreateFlowGroupByTemplates(request *CreateFlowGroupByTemplatesR
 //
 // 
 //
-// ### 2. 合同额度的扣减与返还
+// ### 3. 合同额度的扣减与返还
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
@@ -3939,7 +3987,7 @@ func (c *Client) CreateFlowGroupByTemplates(request *CreateFlowGroupByTemplatesR
 //
 // 
 //
-// ### 3.合同组暂不支持抄送功能
+// ### 4.合同组暂不支持抄送功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

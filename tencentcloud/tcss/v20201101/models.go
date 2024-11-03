@@ -26963,55 +26963,42 @@ type ImageSimpleInfo struct {
 
 type ImageVirus struct {
 	// 路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 分类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 病毒名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 文件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 文件路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件md5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 
 	// 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 首次发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstScanTime *string `json:"FirstScanTime,omitnil,omitempty" name:"FirstScanTime"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
 }
 

@@ -1928,17 +1928,14 @@ type BaselineCategory struct {
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil,omitempty" name:"ParentCategoryId"`
 
 	// 子分类下检测项总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemCount *uint64 `json:"ItemCount,omitnil,omitempty" name:"ItemCount"`
 }
 
 type BaselineCustomRuleIdName struct {
 	// 自定义规则ID　
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 自定义规则名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
@@ -2042,11 +2039,9 @@ type BaselineEffectHost struct {
 
 type BaselineEventLevelInfo struct {
 	// 危害等级：1-低危；2-中危；3-高危；4-严重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventLevel *uint64 `json:"EventLevel,omitnil,omitempty" name:"EventLevel"`
 
 	// 漏洞数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventCount *uint64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
 }
 
@@ -3278,10 +3273,14 @@ type CKafkaRouteInfo struct {
 	// 虚拟ip
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 虚拟ip类型
+	// 虚拟ip类型1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(标准版) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(专业版)
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
 	// 接入类型
+	// 0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
+	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
+	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 }
 
@@ -6792,6 +6791,9 @@ func (r *DeleteMalwareWhiteListResponse) FromJsonString(s string) error {
 type DeleteMalwaresRequestParams struct {
 	// 木马记录ID数组 (最大100条)
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 是否删除全部
+	All *bool `json:"All,omitnil,omitempty" name:"All"`
 }
 
 type DeleteMalwaresRequest struct {
@@ -6799,6 +6801,9 @@ type DeleteMalwaresRequest struct {
 	
 	// 木马记录ID数组 (最大100条)
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 是否删除全部
+	All *bool `json:"All,omitnil,omitempty" name:"All"`
 }
 
 func (r *DeleteMalwaresRequest) ToJsonString() string {
@@ -6814,6 +6819,7 @@ func (r *DeleteMalwaresRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Ids")
+	delete(f, "All")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMalwaresRequest has unknown keys!", "")
 	}
@@ -6975,6 +6981,9 @@ func (r *DeleteNonlocalLoginPlacesResponse) FromJsonString(s string) error {
 type DeletePrivilegeEventsRequestParams struct {
 	// ID数组. (最大100条)
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 是否删除全部
+	All *bool `json:"All,omitnil,omitempty" name:"All"`
 }
 
 type DeletePrivilegeEventsRequest struct {
@@ -6982,6 +6991,9 @@ type DeletePrivilegeEventsRequest struct {
 	
 	// ID数组. (最大100条)
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 是否删除全部
+	All *bool `json:"All,omitnil,omitempty" name:"All"`
 }
 
 func (r *DeletePrivilegeEventsRequest) ToJsonString() string {
@@ -6997,6 +7009,7 @@ func (r *DeletePrivilegeEventsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Ids")
+	delete(f, "All")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivilegeEventsRequest has unknown keys!", "")
 	}
@@ -19711,6 +19724,9 @@ func (r *DescribeLicenseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseResponseParams struct {
+	// 支持功能
+	FunctionsEn []*string `json:"FunctionsEn,omitnil,omitempty" name:"FunctionsEn"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -36817,7 +36833,6 @@ type FileTamperRule struct {
 	// <li>read 读取文件</li>
 	// <li>write 修改文件</li>
 	// <li>read-write 读取修改文件</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileAction *string `json:"FileAction,omitnil,omitempty" name:"FileAction"`
 }
 
@@ -37134,10 +37149,10 @@ type HostDesc struct {
 }
 
 type HostInfo struct {
-	// Quuid
+	// 主机Quuid
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// Uuid
+	// Uuid主机
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
@@ -37282,51 +37297,39 @@ type HostRiskLevelCount struct {
 
 type HostTagInfo struct {
 	// 主机Quuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 主机标签名数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*string `json:"TagList,omitnil,omitempty" name:"TagList"`
 
 	// 主机内网Ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
 	// 主机名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 
 	// 主机公网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
 
 	// 主机uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 内核版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
 
 	// 主机在线状态 ONLINE，OFFLINE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
 	// 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
 	// 漏洞数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulNum *int64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 
 	// 云标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudTags []*Tags `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
 
 	// 主机instance ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
@@ -37408,31 +37411,24 @@ func (r *IgnoreImpactedHostsResponse) FromJsonString(s string) error {
 
 type IgnoreRuleEffectHostInfo struct {
 	// 主机名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 危害等级：1-低位，2-中危，3-高危，4-严重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 主机标签数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*string `json:"TagList,omitnil,omitempty" name:"TagList"`
 
 	// 状态：0-未通过，1-忽略，3-已通过，5-检测中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 最后检测时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 事件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 主机quuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
@@ -37462,11 +37458,9 @@ type Item struct {
 	ItemName *string `json:"ItemName,omitnil,omitempty" name:"ItemName"`
 
 	// 自定义阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomItemValues []*uint64 `json:"CustomItemValues,omitnil,omitempty" name:"CustomItemValues"`
 
 	// 检测项所属分类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 }
 
@@ -38057,30 +38051,24 @@ type Machine struct {
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
 	// 云标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudTags []*Tags `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
 
 	// 是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAddedOnTheFifteen *uint64 `json:"IsAddedOnTheFifteen,omitnil,omitempty" name:"IsAddedOnTheFifteen"`
 
 	// 主机ip列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList *string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
 	// 所属网络
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 附加信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -38109,27 +38097,21 @@ type MachineClearHistory struct {
 
 type MachineExtraInfo struct {
 	// 公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanIP *string `json:"WanIP,omitnil,omitempty" name:"WanIP"`
 
 	// 内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
 
 	// 网络类型，1:vpc网络 2:基础网络 3:非腾讯云网络
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *int64 `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 网络名，vpc网络情况下会返回vpc_id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkName *string `json:"NetworkName,omitnil,omitempty" name:"NetworkName"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 主机名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 }
 
@@ -43114,19 +43096,15 @@ type OsName struct {
 
 type Place struct {
 	// 城市 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CityId *uint64 `json:"CityId,omitnil,omitempty" name:"CityId"`
 
 	// 省份 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProvinceId *uint64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
 
 	// 国家ID，暂只支持国内：1。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CountryId *uint64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
 
 	// 位置名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
@@ -43461,11 +43439,9 @@ type ProtectEventLists struct {
 	FileType *uint64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 主机额外信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 
 	// 机器实例uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 }
 
@@ -45601,7 +45577,6 @@ type ScreenMachine struct {
 	CoreVersion *string `json:"CoreVersion,omitnil,omitempty" name:"CoreVersion"`
 
 	// 附加信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 }
 
@@ -47300,27 +47275,21 @@ type VertexInfo struct {
 	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 
 	// 进程名，当Type=1时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcNamePrefix *string `json:"ProcNamePrefix,omitnil,omitempty" name:"ProcNamePrefix"`
 
 	// 进程名md5，当Type=1时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcNameMd5 *string `json:"ProcNameMd5,omitnil,omitempty" name:"ProcNameMd5"`
 
 	// 命令行，当Type=1时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CmdLinePrefix *string `json:"CmdLinePrefix,omitnil,omitempty" name:"CmdLinePrefix"`
 
 	// 命令行md5，当Type=1时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CmdLineMd5 *string `json:"CmdLineMd5,omitnil,omitempty" name:"CmdLineMd5"`
 
 	// 文件路径，当Type=3时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePathPrefix *string `json:"FilePathPrefix,omitnil,omitempty" name:"FilePathPrefix"`
 
 	// 请求目的地址，当Type=2时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressPrefix *string `json:"AddressPrefix,omitnil,omitempty" name:"AddressPrefix"`
 
 	// 是否漏洞节点
@@ -47330,11 +47299,9 @@ type VertexInfo struct {
 	IsAlarm *bool `json:"IsAlarm,omitnil,omitempty" name:"IsAlarm"`
 
 	// 文件路径md5，当Type=3时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePathMd5 *string `json:"FilePathMd5,omitnil,omitempty" name:"FilePathMd5"`
 
 	// 请求目的地址md5，当Type=2时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressMd5 *string `json:"AddressMd5,omitnil,omitempty" name:"AddressMd5"`
 }
 
@@ -47730,7 +47697,6 @@ type VulFixStatusHostInfo struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 修复失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 }
 
@@ -47826,31 +47792,24 @@ type VulInfoByCveId struct {
 
 type VulInfoHostInfo struct {
 	// 主机名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 主机ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
 	// 主机标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 主机quuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 0 :漏洞不可自动修复，  1：可自动修复， 2：客户端已离线， 3：主机不是旗舰版只能手动修复， 4：机型不允许 ，5：修复中 ，6：已修复， 7：检测中, 9:修复失败, 10:已忽略 ,11:漏洞只支持linux不支持Windows, 12：漏洞只支持Windows不支持linux
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportAutoFix *uint64 `json:"IsSupportAutoFix,omitnil,omitempty" name:"IsSupportAutoFix"`
 
 	// 主机uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
 	// 主机InstanceId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -48085,11 +48044,9 @@ type WarningObject struct {
 
 type WebHookCustomField struct {
 	// key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -48153,15 +48110,12 @@ type WebHookPolicy struct {
 
 type WebHookReceiver struct {
 	// id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 接收人名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// webhook地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Addr *string `json:"Addr,omitnil,omitempty" name:"Addr"`
 }
 
