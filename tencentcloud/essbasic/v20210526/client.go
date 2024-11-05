@@ -8144,7 +8144,7 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //
 // 
 //
-// ### 1. 确保合同的PDF已经合成后，再调用本接口。
+// ### 2. 确保合同的PDF已经合成后，再调用本接口。
 //
 //  用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
 //
@@ -8158,7 +8158,13 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //
 // 
 //
-// ### 2. 有两种开通下载权限的途径。
+// ### 3.  链接具有有效期限
+//
+// <font color="red"><b>生成的链接是有时间限制的，过期后将无法访问</b></font>。您可以在接口返回的信息中查看具体的过期时间。为避免错误，请确保在链接过期之前进行下载操作。
+//
+// 
+//
+// ### 4. 有两种开通下载权限的途径。
 //
 // 
 //
@@ -8222,7 +8228,7 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 //
 // 
 //
-// ### 1. 确保合同的PDF已经合成后，再调用本接口。
+// ### 2. 确保合同的PDF已经合成后，再调用本接口。
 //
 //  用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
 //
@@ -8236,7 +8242,13 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 //
 // 
 //
-// ### 2. 有两种开通下载权限的途径。
+// ### 3.  链接具有有效期限
+//
+// <font color="red"><b>生成的链接是有时间限制的，过期后将无法访问</b></font>。您可以在接口返回的信息中查看具体的过期时间。为避免错误，请确保在链接过期之前进行下载操作。
+//
+// 
+//
+// ### 4. 有两种开通下载权限的途径。
 //
 // 
 //

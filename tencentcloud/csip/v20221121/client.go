@@ -738,7 +738,7 @@ func NewDescribeCVMAssetsResponse() (response *DescribeCVMAssetsResponse) {
 }
 
 // DescribeCVMAssets
-// cvm列表
+// 获取cvm列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -764,7 +764,7 @@ func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response 
 }
 
 // DescribeCVMAssets
-// cvm列表
+// 获取cvm列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

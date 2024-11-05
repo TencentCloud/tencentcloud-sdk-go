@@ -2158,120 +2158,6 @@ func (c *Client) DescribeAntiFakeRulesWithContext(ctx context.Context, request *
     return
 }
 
-func NewDescribeAntiFakeUrlRequest() (request *DescribeAntiFakeUrlRequest) {
-    request = &DescribeAntiFakeUrlRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("waf", APIVersion, "DescribeAntiFakeUrl")
-    
-    
-    return
-}
-
-func NewDescribeAntiFakeUrlResponse() (response *DescribeAntiFakeUrlResponse) {
-    response = &DescribeAntiFakeUrlResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAntiFakeUrl
-// 废弃接口
-//
-// 
-//
-// 获取防篡改url
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeAntiFakeUrl(request *DescribeAntiFakeUrlRequest) (response *DescribeAntiFakeUrlResponse, err error) {
-    return c.DescribeAntiFakeUrlWithContext(context.Background(), request)
-}
-
-// DescribeAntiFakeUrl
-// 废弃接口
-//
-// 
-//
-// 获取防篡改url
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeAntiFakeUrlWithContext(ctx context.Context, request *DescribeAntiFakeUrlRequest) (response *DescribeAntiFakeUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeAntiFakeUrlRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAntiFakeUrl require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAntiFakeUrlResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAntiInfoLeakRulesRequest() (request *DescribeAntiInfoLeakRulesRequest) {
-    request = &DescribeAntiInfoLeakRulesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("waf", APIVersion, "DescribeAntiInfoLeakRules")
-    
-    
-    return
-}
-
-func NewDescribeAntiInfoLeakRulesResponse() (response *DescribeAntiInfoLeakRulesResponse) {
-    response = &DescribeAntiInfoLeakRulesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAntiInfoLeakRules
-// 老接口已经不再使用。
-//
-// 
-//
-// 获取信息防泄漏规则列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeAntiInfoLeakRules(request *DescribeAntiInfoLeakRulesRequest) (response *DescribeAntiInfoLeakRulesResponse, err error) {
-    return c.DescribeAntiInfoLeakRulesWithContext(context.Background(), request)
-}
-
-// DescribeAntiInfoLeakRules
-// 老接口已经不再使用。
-//
-// 
-//
-// 获取信息防泄漏规则列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeAntiInfoLeakRulesWithContext(ctx context.Context, request *DescribeAntiInfoLeakRulesRequest) (response *DescribeAntiInfoLeakRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAntiInfoLeakRulesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAntiInfoLeakRules require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAntiInfoLeakRulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAntiInfoLeakageRulesRequest() (request *DescribeAntiInfoLeakageRulesRequest) {
     request = &DescribeAntiInfoLeakageRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4879,6 +4765,55 @@ func (c *Client) DescribeRuleLimitWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeRuleLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScanIpRequest() (request *DescribeScanIpRequest) {
+    request = &DescribeScanIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeScanIp")
+    
+    
+    return
+}
+
+func NewDescribeScanIpResponse() (response *DescribeScanIpResponse) {
+    response = &DescribeScanIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScanIp
+// 查询扫描ip
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeScanIp(request *DescribeScanIpRequest) (response *DescribeScanIpResponse, err error) {
+    return c.DescribeScanIpWithContext(context.Background(), request)
+}
+
+// DescribeScanIp
+// 查询扫描ip
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeScanIpWithContext(ctx context.Context, request *DescribeScanIpRequest) (response *DescribeScanIpResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanIpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScanIp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScanIpResponse()
     err = c.Send(request, response)
     return
 }

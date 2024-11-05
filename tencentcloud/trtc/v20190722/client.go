@@ -4109,65 +4109,6 @@ func (c *Client) StopWebRecordWithContext(ctx context.Context, request *StopWebR
     return
 }
 
-func NewSummarizeTranscriptionRequest() (request *SummarizeTranscriptionRequest) {
-    request = &SummarizeTranscriptionRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("trtc", APIVersion, "SummarizeTranscription")
-    
-    
-    return
-}
-
-func NewSummarizeTranscriptionResponse() (response *SummarizeTranscriptionResponse) {
-    response = &SummarizeTranscriptionResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// SummarizeTranscription
-// 接口不再支持
-//
-// 
-//
-// 对转录的文本进行总结。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
-//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
-func (c *Client) SummarizeTranscription(request *SummarizeTranscriptionRequest) (response *SummarizeTranscriptionResponse, err error) {
-    return c.SummarizeTranscriptionWithContext(context.Background(), request)
-}
-
-// SummarizeTranscription
-// 接口不再支持
-//
-// 
-//
-// 对转录的文本进行总结。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
-//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
-func (c *Client) SummarizeTranscriptionWithContext(ctx context.Context, request *SummarizeTranscriptionRequest) (response *SummarizeTranscriptionResponse, err error) {
-    if request == nil {
-        request = NewSummarizeTranscriptionRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("SummarizeTranscription require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewSummarizeTranscriptionResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewUpdateAIConversationRequest() (request *UpdateAIConversationRequest) {
     request = &UpdateAIConversationRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2490,7 +2490,7 @@ type GetLayerVersionResponseParams struct {
 	// 版本的创建时间
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 版本的描述
+	// 版本的描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 许可证信息

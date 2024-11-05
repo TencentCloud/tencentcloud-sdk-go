@@ -5888,19 +5888,19 @@ type DescribeTendisSlowLogRequestParams struct {
 	// 实例Id：crs-ngvou0i1
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间：2019-09-08 12:12:41
+	// 开始时间：2019-09-08 12:12:41，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间：2019-09-09 12:12:41
+	// 结束时间：2019-09-09 12:12:41，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢查询阈值（毫秒）
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 页面大小：默认20
+	// 页面大小：默认20，最大100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5910,19 +5910,19 @@ type DescribeTendisSlowLogRequest struct {
 	// 实例Id：crs-ngvou0i1
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间：2019-09-08 12:12:41
+	// 开始时间：2019-09-08 12:12:41，查询时间最大跨度30天。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间：2019-09-09 12:12:41
+	// 结束时间：2019-09-09 12:12:41，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢查询阈值（毫秒）
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 页面大小：默认20
+	// 页面大小：默认20，最大100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 

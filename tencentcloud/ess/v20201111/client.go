@@ -8303,7 +8303,11 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 //
 // 
 //
-// **注**：用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
+// ### 2. 确保合同的PDF已经合成后，再调用本接口。
+//
+// 
+//
+// 用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
 //
 // 
 //
@@ -8312,6 +8316,12 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 // 
 //
 // **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowBriefs)接口来主动检查合同的签署状态。请仅在确认合同状态为“签署完成”后，进行文件的下载操作。
+//
+// 
+//
+// ### 3.  链接具有有效期限
+//
+// <font color="red"><b>生成的链接是有时间限制的，过期后将无法访问</b></font>。您可以在接口返回的信息中查看具体的过期时间。为避免错误，请确保在链接过期之前进行下载操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8353,7 +8363,11 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 //
 // 
 //
-// **注**：用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
+// ### 2. 确保合同的PDF已经合成后，再调用本接口。
+//
+// 
+//
+// 用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
 //
 // 
 //
@@ -8362,6 +8376,12 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 // 
 //
 // **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowBriefs)接口来主动检查合同的签署状态。请仅在确认合同状态为“签署完成”后，进行文件的下载操作。
+//
+// 
+//
+// ### 3.  链接具有有效期限
+//
+// <font color="red"><b>生成的链接是有时间限制的，过期后将无法访问</b></font>。您可以在接口返回的信息中查看具体的过期时间。为避免错误，请确保在链接过期之前进行下载操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

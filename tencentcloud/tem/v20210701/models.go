@@ -3240,7 +3240,7 @@ type DestroyEnvironmentRequestParams struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道 示例值：0
+	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 
@@ -3250,7 +3250,7 @@ type DestroyEnvironmentRequest struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道 示例值：0
+	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitnil,omitempty" name:"SourceChannel"`
 }
 

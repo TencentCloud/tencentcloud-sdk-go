@@ -7372,6 +7372,81 @@ func (c *Client) SmartStructuralOCRV2WithContext(ctx context.Context, request *S
     return
 }
 
+func NewSmartStructuralProRequest() (request *SmartStructuralProRequest) {
+    request = &SmartStructuralProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "SmartStructuralPro")
+    
+    
+    return
+}
+
+func NewSmartStructuralProResponse() (response *SmartStructuralProResponse) {
+    response = &SmartStructuralProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SmartStructuralPro
+// 本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
+//
+// 
+//
+// 默认接口请求频率限制：1次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SmartStructuralPro(request *SmartStructuralProRequest) (response *SmartStructuralProResponse, err error) {
+    return c.SmartStructuralProWithContext(context.Background(), request)
+}
+
+// SmartStructuralPro
+// 本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
+//
+// 
+//
+// 默认接口请求频率限制：1次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SmartStructuralProWithContext(ctx context.Context, request *SmartStructuralProRequest) (response *SmartStructuralProResponse, err error) {
+    if request == nil {
+        request = NewSmartStructuralProRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SmartStructuralPro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSmartStructuralProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTableOCRRequest() (request *TableOCRRequest) {
     request = &TableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

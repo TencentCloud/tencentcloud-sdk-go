@@ -54,44 +54,44 @@ type Condition struct {
 
 // Predefined struct for user
 type CreateDeviceVirtualGroupRequestParams struct {
-	// 终端自定义分组名
+	// 必填，终端自定义分组名
 	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
 
 	// 详情
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）(只支持32位)
+	// 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 时间设置类型（1:自动小时、2:自动每天、3:自定义、0:手动分组）(只支持32位)
+	// 必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
 	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 
-	// 自动划分时间（单位min）(只支持32位)
+	// 选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
 	AutoMinute *int64 `json:"AutoMinute,omitnil,omitempty" name:"AutoMinute"`
 
-	// 自动划分规则数据
+	// 选填，手动分组不填，自动划分分组的划分规则数据
 	AutoRules *ComplexRule `json:"AutoRules,omitnil,omitempty" name:"AutoRules"`
 }
 
 type CreateDeviceVirtualGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 终端自定义分组名
+	// 必填，终端自定义分组名
 	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
 
 	// 详情
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）(只支持32位)
+	// 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 时间设置类型（1:自动小时、2:自动每天、3:自定义、0:手动分组）(只支持32位)
+	// 必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
 	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 
-	// 自动划分时间（单位min）(只支持32位)
+	// 选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
 	AutoMinute *int64 `json:"AutoMinute,omitnil,omitempty" name:"AutoMinute"`
 
-	// 自动划分规则数据
+	// 选填，手动分组不填，自动划分分组的划分规则数据
 	AutoRules *ComplexRule `json:"AutoRules,omitnil,omitempty" name:"AutoRules"`
 }
 
@@ -122,7 +122,6 @@ func (r *CreateDeviceVirtualGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDeviceVirtualGroupResponseParams struct {
 	// 响应返回的data
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreateDeviceVirtualGroupRspData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -147,99 +146,76 @@ func (r *CreateDeviceVirtualGroupResponse) FromJsonString(s string) error {
 
 type CreateDeviceVirtualGroupRspData struct {
 	// 返回的自定义分组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeAccountGroupsData struct {
 	// 账号分组名全路径，点分格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
 	// 账号分组ID全路径，数组格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
 
 	// 扩展信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
 	// 最后更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
 	// 父分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
 	// 分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 分组描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 同步数据源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 账号分组ID全路径，点分格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
 	// 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
 	// 导入类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
 
 	// miniIAM id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
 
 	// 该分组下含子组的所有用户总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 
 	// 是否叶子节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 
 	// 是否该账户的直接权限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 最新一次同步任务的结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestSyncResult *string `json:"LatestSyncResult,omitnil,omitempty" name:"LatestSyncResult"`
 
 	// 最新一次同步任务的结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestSyncTime *string `json:"LatestSyncTime,omitnil,omitempty" name:"LatestSyncTime"`
 }
 
 type DescribeAccountGroupsPageResp struct {
 	// 账户分响应对象集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DescribeAccountGroupsData `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 分页公共对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
 }
 
@@ -314,7 +290,6 @@ func (r *DescribeAccountGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountGroupsResponseParams struct {
 	// 账号分组详情响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeAccountGroupsPageResp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -339,11 +314,9 @@ func (r *DescribeAccountGroupsResponse) FromJsonString(s string) error {
 
 type DescribeDevicesPageRsp struct {
 	// 数据分页信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paging *Paging `json:"Paging,omitnil,omitempty" name:"Paging"`
 
 	// 业务响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DeviceDetail `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
@@ -571,7 +544,6 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDevicesResponseParams struct {
 	// 分页的data数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeDevicesPageRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -596,99 +568,76 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 
 type DescribeLocalAccountAccountGroupsData struct {
 	// 组Id(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 }
 
 type DescribeLocalAccountsData struct {
 	// uid，数据库中唯一
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 账号，登录账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 账号id，同Id字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountId *int64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
 
 	// 账号所在的分组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 账号所在的分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 账号所在的分组名称路径，用英文.分割
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
 	// 账号来源,0表示本地账号(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 账号状态,0禁用，1启用(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 账号的创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
 	// 账号的最后更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
 	// 账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
 	// 用户风险等级，枚举：none, low, middle, high
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 所属组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroups []*DescribeLocalAccountAccountGroupsData `json:"AccountGroups,omitnil,omitempty" name:"AccountGroups"`
 
 	// 绑定手机端设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MobileBindNum *int64 `json:"MobileBindNum,omitnil,omitempty" name:"MobileBindNum"`
 
 	// 绑定Pc端设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PcBindNum *int64 `json:"PcBindNum,omitnil,omitempty" name:"PcBindNum"`
 
 	// 账号在线状态 1：在线 2：离线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
 	// 账号活跃状态 1：活跃 2：非活跃
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveStatus *int64 `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
 
 	// 账号登录时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
 
 	// 账号登出时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoutTime *string `json:"LogoutTime,omitnil,omitempty" name:"LogoutTime"`
 }
 
 type DescribeLocalAccountsPage struct {
 	// 公共分页对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 获取账号列表响应的单个对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DescribeLocalAccountsData `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
@@ -765,7 +714,6 @@ func (r *DescribeLocalAccountsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLocalAccountsResponseParams struct {
 	// 获取账号列表响应的分页对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeLocalAccountsPage `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -820,7 +768,6 @@ func (r *DescribeRootAccountGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRootAccountGroupResponseParams struct {
 	// 账号根分组响应详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *GetAccountGroupData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -845,175 +792,132 @@ func (r *DescribeRootAccountGroupResponse) FromJsonString(s string) error {
 
 type DeviceDetail struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 设备唯一标识码，在ioa中每个设备有唯一标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
 
 	// 终端名（设备名）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备所在分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
 	// 设备IP地址（出口IP）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 在线状态，2：在线、0或者1:离线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
 	// 客户端版本号-大整数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 客户端版本号-点分字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrVersion *string `json:"StrVersion,omitnil,omitempty" name:"StrVersion"`
 
 	// 首次在线时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
 	// 最后一次在线时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnActiveTime *string `json:"ConnActiveTime,omitnil,omitempty" name:"ConnActiveTime"`
 
 	// 设备是否加锁 ，1：锁定 0或者2：未锁定。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locked *int64 `json:"Locked,omitnil,omitempty" name:"Locked"`
 
 	// 设备本地IP列表, 包括IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalIpList *string `json:"LocalIpList,omitnil,omitempty" name:"LocalIpList"`
 
 	// 宿主机id（需要宿主机也安装iOA才能显示）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostId *int64 `json:"HostId,omitnil,omitempty" name:"HostId"`
 
 	// 设备所属分组名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 设备所属分组路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
 
 	// 未修复高危漏洞数(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CriticalVulListCount *int64 `json:"CriticalVulListCount,omitnil,omitempty" name:"CriticalVulListCount"`
 
 	// 设备名，和Name相同
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputerName *string `json:"ComputerName,omitnil,omitempty" name:"ComputerName"`
 
 	// 登录域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// MAC地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
 
 	// 漏洞数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCount *int64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
 
 	// 病毒风险数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCount *int64 `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
 	// 病毒库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusVer *string `json:"VirusVer,omitnil,omitempty" name:"VirusVer"`
 
 	// 漏洞库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulVersion *string `json:"VulVersion,omitnil,omitempty" name:"VulVersion"`
 
 	// 系统修复引擎版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SysRepVersion *string `json:"SysRepVersion,omitnil,omitempty" name:"SysRepVersion"`
 
 	// 高危补丁列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCriticalList []*string `json:"VulCriticalList,omitnil,omitempty" name:"VulCriticalList"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 终端用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 防火墙状态，不等于0表示开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirewallStatus *int64 `json:"FirewallStatus,omitnil,omitempty" name:"FirewallStatus"`
 
 	// SN序列号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialNum *string `json:"SerialNum,omitnil,omitempty" name:"SerialNum"`
 
 	// 设备管控策略版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceStrategyVer *string `json:"DeviceStrategyVer,omitnil,omitempty" name:"DeviceStrategyVer"`
 
 	// NGN策略版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NGNStrategyVer *string `json:"NGNStrategyVer,omitnil,omitempty" name:"NGNStrategyVer"`
 
 	// 最近登录账户的账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IOAUserName *string `json:"IOAUserName,omitnil,omitempty" name:"IOAUserName"`
 
 	// 设备管控新策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNewStrategyVer *string `json:"DeviceNewStrategyVer,omitnil,omitempty" name:"DeviceNewStrategyVer"`
 
 	// NGN策略新版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NGNNewStrategyVer *string `json:"NGNNewStrategyVer,omitnil,omitempty" name:"NGNNewStrategyVer"`
 
 	// 宿主机名称（需要宿主机也安装iOA才能显示）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 主板序列号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaseBoardSn *string `json:"BaseBoardSn,omitnil,omitempty" name:"BaseBoardSn"`
 
 	// 绑定账户名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountUsers *string `json:"AccountUsers,omitnil,omitempty" name:"AccountUsers"`
 
 	// 身份策略版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityStrategyVer *string `json:"IdentityStrategyVer,omitnil,omitempty" name:"IdentityStrategyVer"`
 
 	// 身份策略新版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityNewStrategyVer *string `json:"IdentityNewStrategyVer,omitnil,omitempty" name:"IdentityNewStrategyVer"`
 
 	// 最近登录账号部门
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
 
 	// 最近登录账户的姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
 	// 账号组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 }
 
@@ -1039,89 +943,68 @@ type FilterGroup struct {
 
 type GetAccountGroupData struct {
 	// 分组名称全路径，点分格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
 	// 分组ID全路径，数组格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
 
 	// 分组扩展信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
 	// 最后更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
 	// 当前分组的父分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
 	// 分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 分组描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 分组导入源(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 分组ID全路径，点分格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
 	// 父源账号组ID，该字段仅适用于第三方同步的组织架构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
 	// 导入信息,json格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Import *string `json:"Import,omitnil,omitempty" name:"Import"`
 
 	// 是否开启导入架构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportEnable *bool `json:"ImportEnable,omitnil,omitempty" name:"ImportEnable"`
 
 	// 导入类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
 
 	// miniIAMId，MiniIAM源才有
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
 }
 
 type Paging struct {
-	// 每页条数(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 每页条数
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 页码
 	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 总页数(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 总页数
 	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
 
 	// 记录总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 

@@ -151,6 +151,10 @@ func NewConvertDocumentResponse() (response *ConvertDocumentResponse) {
 }
 
 // ConvertDocument
+// 产品规划
+//
+// 
+//
 // 接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
 //
 // 可能返回的错误码:
@@ -167,6 +171,10 @@ func (c *Client) ConvertDocument(request *ConvertDocumentRequest) (response *Con
 }
 
 // ConvertDocument
+// 产品规划
+//
+// 
+//
 // 接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
 //
 // 可能返回的错误码:

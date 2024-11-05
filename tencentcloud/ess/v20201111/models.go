@@ -3014,6 +3014,10 @@ type CreateFlowByFilesRequestParams struct {
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
@@ -3150,6 +3154,10 @@ type CreateFlowByFilesRequest struct {
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
@@ -4033,6 +4041,10 @@ type CreateFlowRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
@@ -4143,6 +4155,10 @@ type CreateFlowRequest struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：

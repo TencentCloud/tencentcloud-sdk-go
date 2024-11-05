@@ -6031,6 +6031,10 @@ type ServerlessIndexOptionsField struct {
 	// 标准存储时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SinkCycleAge *string `json:"SinkCycleAge,omitnil,omitempty" name:"SinkCycleAge"`
+
+	// 标准存储时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardStorageAge *string `json:"StandardStorageAge,omitnil,omitempty" name:"StandardStorageAge"`
 }
 
 type ServerlessIndexSettingsField struct {

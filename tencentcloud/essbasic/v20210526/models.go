@@ -1937,6 +1937,10 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	SignBeanTag *int64 `json:"SignBeanTag,omitnil,omitempty" name:"SignBeanTag"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
@@ -2055,6 +2059,10 @@ type ChannelCreateFlowByFilesRequest struct {
 	SignBeanTag *int64 `json:"SignBeanTag,omitnil,omitempty" name:"SignBeanTag"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
@@ -10538,6 +10546,10 @@ type FlowInfo struct {
 	CustomShowMap *string `json:"CustomShowMap,omitnil,omitempty" name:"CustomShowMap"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// <b>注</b>
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
@@ -10817,7 +10829,6 @@ type ModifyExtendedServiceRequestParams struct {
 	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
 	// <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
-	// <li> PAGING_SEAL           骑缝章</li>
 	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>
@@ -10859,7 +10870,6 @@ type ModifyExtendedServiceRequest struct {
 	// <li>AUTO_SIGN             企业自动签（自动签署）</li>
 	// <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
-	// <li> PAGING_SEAL           骑缝章</li>
 	// <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 	// <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>

@@ -69,31 +69,24 @@ type AccessLogInfo struct {
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 日志主题ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 日志来源IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 日志文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 日志上报请求包的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// 请求包内日志的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 日志内容的Json序列化字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
 }
@@ -114,16 +107,13 @@ type AccessLogItems struct {
 type AccessRuleInfo struct {
 	// 全文索引配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullText *AccessFullTextInfo `json:"FullText,omitnil,omitempty" name:"FullText"`
 
 	// 键值索引配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyValue *AccessRuleKeyValueInfo `json:"KeyValue,omitnil,omitempty" name:"KeyValue"`
 
 	// 元字段索引配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *AccessRuleTagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
@@ -1662,7 +1652,6 @@ type CCRuleItem struct {
 	ValidTime *uint64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
 	// 高级参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
 
 	// url长度
@@ -1722,14 +1711,12 @@ type CCRuleItems struct {
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 关联的Session规则
 	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -1738,28 +1725,7 @@ type CCRuleLists struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Res []*CCRuleItems `json:"Res,omitnil,omitempty" name:"Res"`
-}
-
-type CacheUrlItem struct {
-	// Id
-	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// uri
-	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
-
-	// 协议
-	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// 状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CacheUrlItems struct {
@@ -1801,7 +1767,6 @@ type CdcRegion struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 该地域对应的集群信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Clusters []*CdcCluster `json:"Clusters,omitnil,omitempty" name:"Clusters"`
 }
 
@@ -2692,7 +2657,6 @@ func (r *DeleteAttackWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAttackWhiteRuleResponseParams struct {
 	// 删除失败的规则序号组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailIds []*uint64 `json:"FailIds,omitnil,omitempty" name:"FailIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2771,7 +2735,6 @@ func (r *DeleteCCRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCCRuleResponseParams struct {
 	// 一般为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 操作的规则Id
@@ -2981,7 +2944,6 @@ func (r *DeleteDomainWhiteRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDomainWhiteRulesResponseParams struct {
 	// 出参
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3290,7 +3252,6 @@ func (r *DeleteSessionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSessionResponseParams struct {
 	// 结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3534,7 +3495,6 @@ func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessFastAnalysisResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldValueRatioInfos []*AccessFieldValueRatioInfo `json:"FieldValueRatioInfos,omitnil,omitempty" name:"FieldValueRatioInfos"`
 
 	// 日志条数
@@ -3629,7 +3589,6 @@ type DescribeAccessHistogramResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 注意：此字段可能返回 null，表示取不到有效值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HistogramInfos []*AccessHistogramItem `json:"HistogramInfos,omitnil,omitempty" name:"HistogramInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3687,7 +3646,6 @@ type DescribeAccessIndexResponseParams struct {
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *AccessRuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
@@ -3809,167 +3767,6 @@ func (r *DescribeAntiFakeRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeAntiFakeUrlRequestParams struct {
-	// 域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// 翻页参数
-	PageInfo *PageInfo `json:"PageInfo,omitnil,omitempty" name:"PageInfo"`
-}
-
-type DescribeAntiFakeUrlRequest struct {
-	*tchttp.BaseRequest
-	
-	// 域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// 翻页参数
-	PageInfo *PageInfo `json:"PageInfo,omitnil,omitempty" name:"PageInfo"`
-}
-
-func (r *DescribeAntiFakeUrlRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAntiFakeUrlRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Domain")
-	delete(f, "PageInfo")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAntiFakeUrlRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAntiFakeUrlResponseParams struct {
-	// 总数
-	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
-
-	// 信息
-	List []*CacheUrlItem `json:"List,omitnil,omitempty" name:"List"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAntiFakeUrlResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAntiFakeUrlResponseParams `json:"Response"`
-}
-
-func (r *DescribeAntiFakeUrlResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAntiFakeUrlResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAntiInfoLeakRulesRequestParams struct {
-	// 域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// 动作类型
-	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
-
-	// 翻页
-	PageInfo *PageInfo `json:"PageInfo,omitnil,omitempty" name:"PageInfo"`
-}
-
-type DescribeAntiInfoLeakRulesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// 动作类型
-	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
-
-	// 翻页
-	PageInfo *PageInfo `json:"PageInfo,omitnil,omitempty" name:"PageInfo"`
-}
-
-func (r *DescribeAntiInfoLeakRulesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAntiInfoLeakRulesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Domain")
-	delete(f, "ActionType")
-	delete(f, "PageInfo")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAntiInfoLeakRulesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAntiInfoLeakRulesResponseParams struct {
-	// 记录条数
-	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 规则列表
-	RuleList []*DescribeAntiInfoLeakRulesRuleItem `json:"RuleList,omitnil,omitempty" name:"RuleList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAntiInfoLeakRulesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAntiInfoLeakRulesResponseParams `json:"Response"`
-}
-
-func (r *DescribeAntiInfoLeakRulesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAntiInfoLeakRulesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAntiInfoLeakRulesRuleItem struct {
-	// 规则ID
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
-	// 规则名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 规则状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 规则动作类型
-	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
-
-	// 规则创建时间
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 详细的规则
-	Strategies []*DescribeAntiInfoLeakRulesStrategyItem `json:"Strategies,omitnil,omitempty" name:"Strategies"`
-}
-
 type DescribeAntiInfoLeakRulesStrategyItem struct {
 	// 字段
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
@@ -4088,11 +3885,9 @@ type DescribeAntiLeakageItem struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 匹配条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Strategies []*DescribeAntiInfoLeakRulesStrategyItem `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
 	// 匹配的URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
 	// 修改时间
@@ -4400,7 +4195,6 @@ type DescribeAreaBanAreasRsp struct {
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时任务详细配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
 	// 周期任务配置
@@ -4748,7 +4542,6 @@ type DescribeAttackWhiteRuleResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 规则白名单列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*UserWhiteRule `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5110,7 +4903,6 @@ func (r *DescribeCCRuleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCCRuleListResponseParams struct {
 	// 查询到的CC规则的列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CCRuleLists `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5203,7 +4995,6 @@ func (r *DescribeCCRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCCRuleResponseParams struct {
 	// 结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CCRuleData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6193,7 +5984,7 @@ type DescribeFindDomainListRequestParams struct {
 	// 过滤条件
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 是否接入waf
+	// 是否接入waf；传"1"返回接入域名的详情，传"0"返回未接入域名的详情，传""返回接入和未接入域名的详情
 	IsWafDomain *string `json:"IsWafDomain,omitnil,omitempty" name:"IsWafDomain"`
 
 	// 排序参数
@@ -6215,7 +6006,7 @@ type DescribeFindDomainListRequest struct {
 	// 过滤条件
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 是否接入waf
+	// 是否接入waf；传"1"返回接入域名的详情，传"0"返回未接入域名的详情，传""返回接入和未接入域名的详情
 	IsWafDomain *string `json:"IsWafDomain,omitnil,omitempty" name:"IsWafDomain"`
 
 	// 排序参数
@@ -7718,6 +7509,93 @@ func (r *DescribeRuleLimitResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeScanIpRequestParams struct {
+	// 要查询的ip地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+}
+
+type DescribeScanIpRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询的ip地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+}
+
+func (r *DescribeScanIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanIpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScanIpResponseParams struct {
+	// ip列表,当入参Ip为all时，返回该值
+	IpList []*ScanIpInfo `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 所属业务
+	Bussiness *string `json:"Bussiness,omitnil,omitempty" name:"Bussiness"`
+
+	// 业务特征
+	Characteristic *string `json:"Characteristic,omitnil,omitempty" name:"Characteristic"`
+
+	// 扫描说明
+	Descibe *string `json:"Descibe,omitnil,omitempty" name:"Descibe"`
+
+	// 官方公告
+	Referer *string `json:"Referer,omitnil,omitempty" name:"Referer"`
+
+	// 扫描示例
+	Demo *string `json:"Demo,omitnil,omitempty" name:"Demo"`
+
+	// 扫描对象
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 扫描目的
+	Purpose *string `json:"Purpose,omitnil,omitempty" name:"Purpose"`
+
+	// 产品文案
+	Announcement *string `json:"Announcement,omitnil,omitempty" name:"Announcement"`
+
+	// 更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// ipowner
+	IpOwner *string `json:"IpOwner,omitnil,omitempty" name:"IpOwner"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScanIpResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScanIpResponseParams `json:"Response"`
+}
+
+func (r *DescribeScanIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanIpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSessionRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -7759,7 +7637,6 @@ func (r *DescribeSessionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSessionResponseParams struct {
 	// 返回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *SessionData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7906,7 +7783,6 @@ type DescribeSpartaProtectionInfoResponseParams struct {
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
 	// 0：BGP 1：Anycast
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Anycast *string `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8502,8 +8378,6 @@ type DescribeWafAutoDenyRulesResponseParams struct {
 	DefenseStatus *int64 `json:"DefenseStatus,omitnil,omitempty" name:"DefenseStatus"`
 
 	// 数据来源Source字段 custom-自定义(默认)、batch-domain-批量域名
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 重保护网域名状态
@@ -10295,11 +10169,9 @@ type IpHitItemsData struct {
 
 type JobDateTime struct {
 	// 定时执行的时间参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timed []*TimedJob `json:"Timed,omitnil,omitempty" name:"Timed"`
 
 	// 周期执行的时间参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cron []*CronJob `json:"Cron,omitnil,omitempty" name:"Cron"`
 
 	// 时区
@@ -11312,15 +11184,12 @@ func (r *ModifyBotStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyBotStatusResponseParams struct {
 	// 正常情况为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 未购买BOT的域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnSupportedList []*string `json:"UnSupportedList,omitnil,omitempty" name:"UnSupportedList"`
 
 	// 已购买但操作失败的域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailDomainList []*string `json:"FailDomainList,omitnil,omitempty" name:"FailDomainList"`
 
 	// 成功数目
@@ -13939,14 +13808,6 @@ func (r *ModifyWebshellStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type PageInfo struct {
-	// 页码
-	PageNumber *string `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// 页条目数量
-	PageSize *string `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
 type PeakPointsItem struct {
 	// 秒级别时间戳
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
@@ -14287,18 +14148,15 @@ type Rule struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 规则类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 规则等级
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 规则防护的CVE编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVE *string `json:"CVE,omitnil,omitempty" name:"CVE"`
 
 	// 规则的状态
@@ -14308,7 +14166,6 @@ type Rule struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 门神规则新增/更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 }
 
@@ -14333,6 +14190,26 @@ type RuleList struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type ScanIpInfo struct {
+	// 所属业务
+	Bussiness *string `json:"Bussiness,omitnil,omitempty" name:"Bussiness"`
+
+	// 扫描对象
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// ip列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 扫描说明
+	Descibe *string `json:"Descibe,omitnil,omitempty" name:"Descibe"`
+
+	// 官方公告
+	Referer *string `json:"Referer,omitnil,omitempty" name:"Referer"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 // Predefined struct for user
@@ -14429,7 +14306,6 @@ type SearchAccessLogResponseParams struct {
 
 	// 如果Analysis为True，则返回分析结果的列名，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ColNames is deprecated.
 	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
@@ -14440,7 +14316,6 @@ type SearchAccessLogResponseParams struct {
 
 	// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: AnalysisResults is deprecated.
 	AnalysisResults []*AccessLogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
@@ -15138,7 +15013,6 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertCCRuleResponseParams struct {
 	// 一般为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 操作的RuleId
@@ -15355,7 +15229,6 @@ func (r *UpsertSessionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertSessionResponseParams struct {
 	// 结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// SessionID
@@ -15593,7 +15466,6 @@ type WafRuleLimit struct {
 
 type WafThreatenIntelligenceDetails struct {
 	// 封禁属性标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 封禁模组启用状态

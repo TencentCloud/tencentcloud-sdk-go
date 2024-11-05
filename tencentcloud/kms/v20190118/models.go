@@ -481,7 +481,6 @@ type CreateKeyResponseParams struct {
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// CMK的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// CMK的状态
@@ -491,15 +490,12 @@ type CreateKeyResponseParams struct {
 	KeyUsage *string `json:"KeyUsage,omitnil,omitempty" name:"KeyUsage"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagCode *uint64 `json:"TagCode,omitnil,omitempty" name:"TagCode"`
 
 	// 标签操作的返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
 	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -587,11 +583,9 @@ type CreateWhiteBoxKeyResponseParams struct {
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagCode *uint64 `json:"TagCode,omitnil,omitempty" name:"TagCode"`
 
 	// 标签操作的返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -839,7 +833,6 @@ func (r *DescribeKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeyResponseParams struct {
 	// 密钥属性信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyMetadata *KeyMetadata `json:"KeyMetadata,omitnil,omitempty" name:"KeyMetadata"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -897,7 +890,6 @@ func (r *DescribeKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeysResponseParams struct {
 	// 返回的属性信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitnil,omitempty" name:"KeyMetadatas"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1093,7 +1085,6 @@ type DescribeWhiteBoxKeyDetailsResponseParams struct {
 	KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitnil,omitempty" name:"KeyInfos"`
 
 	// 白盒密钥总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1232,7 +1223,6 @@ type DeviceFingerprint struct {
 	Identity *string `json:"Identity,omitnil,omitempty" name:"Identity"`
 
 	// 描述信息，如：IP，设备名称等，最大1024字节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -2319,7 +2309,6 @@ func (r *GetRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRegionsResponseParams struct {
 	// 可用region列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2377,34 +2366,27 @@ type GetServiceStatusResponseParams struct {
 	ServiceEnabled *bool `json:"ServiceEnabled,omitnil,omitempty" name:"ServiceEnabled"`
 
 	// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvalidType *int64 `json:"InvalidType,omitnil,omitempty" name:"InvalidType"`
 
 	// 0-普通版，1-旗舰版
 	UserLevel *uint64 `json:"UserLevel,omitnil,omitempty" name:"UserLevel"`
 
 	// 旗舰版到期时间（Epoch Unix Timestamp）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProExpireTime *uint64 `json:"ProExpireTime,omitnil,omitempty" name:"ProExpireTime"`
 
 	// 旗舰版是否自动续费：0-不自动续费，1-自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProRenewFlag *uint64 `json:"ProRenewFlag,omitnil,omitempty" name:"ProRenewFlag"`
 
 	// 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProResourceId *string `json:"ProResourceId,omitnil,omitempty" name:"ProResourceId"`
 
 	// 是否开通 KMS 托管版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusiveVSMEnabled *bool `json:"ExclusiveVSMEnabled,omitnil,omitempty" name:"ExclusiveVSMEnabled"`
 
 	// 是否开通 KMS 独享版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusiveHSMEnabled *bool `json:"ExclusiveHSMEnabled,omitnil,omitempty" name:"ExclusiveHSMEnabled"`
 
 	// KMS 订阅信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionInfo *string `json:"SubscriptionInfo,omitnil,omitempty" name:"SubscriptionInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2542,22 +2524,18 @@ type KeyMetadata struct {
 	NextRotateTime *uint64 `json:"NextRotateTime,omitnil,omitempty" name:"NextRotateTime"`
 
 	// 计划删除的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletionDate *uint64 `json:"DeletionDate,omitnil,omitempty" name:"DeletionDate"`
 
 	// CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
 
 	// 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 
 	// 资源ID，格式：creatorUin/$creatorUin/$keyId
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
@@ -2722,7 +2700,6 @@ type ListKeyDetailResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 返回的属性信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitnil,omitempty" name:"KeyMetadatas"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2801,7 +2778,6 @@ func (r *ListKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListKeysResponseParams struct {
 	// CMK列表数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*Key `json:"Keys,omitnil,omitempty" name:"Keys"`
 
 	// CMK的总数量
@@ -3723,6 +3699,5 @@ type WhiteboxKeyInfo struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 是否有设备指纹与当前密钥绑定
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceFingerprintBind *bool `json:"DeviceFingerprintBind,omitnil,omitempty" name:"DeviceFingerprintBind"`
 }

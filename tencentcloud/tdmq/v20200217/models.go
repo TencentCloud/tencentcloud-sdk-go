@@ -732,7 +732,7 @@ type ConsumerLog struct {
 	// 消费组。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 消费组名称。
+	// 消费者名称。
 	ConsumerName *string `json:"ConsumerName,omitnil,omitempty" name:"ConsumerName"`
 
 	// 消费时间。

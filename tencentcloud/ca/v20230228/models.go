@@ -20,6 +20,28 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type CertificateIdentityUser struct {
+	// 姓名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 唯一身份id
+	IdentityUniqueId *string `json:"IdentityUniqueId,omitnil,omitempty" name:"IdentityUniqueId"`
+
+	// 身份证号
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 身份鉴别类型
+	// 1：授权金融机构身份鉴别
+	IdentificationType *string `json:"IdentificationType,omitnil,omitempty" name:"IdentificationType"`
+
+	// 身份鉴别措施
+	// 1、身份证鉴别
+	// 2、银行卡鉴别
+	// 3、支付账户密码验证
+	// 4、人脸识别验证
+	IdentificationMeasures []*string `json:"IdentificationMeasures,omitnil,omitempty" name:"IdentificationMeasures"`
+}
+
 // Predefined struct for user
 type CreateVerifyReportRequestParams struct {
 	// 申请者类型 1:个人，2:企业
@@ -39,6 +61,9 @@ type CreateVerifyReportRequestParams struct {
 
 	// 验签申请经办人邮箱
 	ApplyEmail *string `json:"ApplyEmail,omitnil,omitempty" name:"ApplyEmail"`
+
+	// 证书用户身份及身份鉴别信息
+	CertificateIdentityUsers []*CertificateIdentityUser `json:"CertificateIdentityUsers,omitnil,omitempty" name:"CertificateIdentityUsers"`
 }
 
 type CreateVerifyReportRequest struct {
@@ -61,6 +86,9 @@ type CreateVerifyReportRequest struct {
 
 	// 验签申请经办人邮箱
 	ApplyEmail *string `json:"ApplyEmail,omitnil,omitempty" name:"ApplyEmail"`
+
+	// 证书用户身份及身份鉴别信息
+	CertificateIdentityUsers []*CertificateIdentityUser `json:"CertificateIdentityUsers,omitnil,omitempty" name:"CertificateIdentityUsers"`
 }
 
 func (r *CreateVerifyReportRequest) ToJsonString() string {
@@ -81,6 +109,7 @@ func (r *CreateVerifyReportRequest) FromJsonString(s string) error {
 	delete(f, "ApplyMobile")
 	delete(f, "FileId")
 	delete(f, "ApplyEmail")
+	delete(f, "CertificateIdentityUsers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVerifyReportRequest has unknown keys!", "")
 	}

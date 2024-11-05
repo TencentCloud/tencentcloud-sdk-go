@@ -404,6 +404,10 @@ type ClusterSession struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 
+	// 引用资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRefs []*SessionClusterRefItem `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
+
 	// JobManager的规格
 	JobManagerCuSpec *float64 `json:"JobManagerCuSpec,omitnil,omitempty" name:"JobManagerCuSpec"`
 
@@ -418,6 +422,18 @@ type ClusterSession struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// JobManagerCpu
+	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
+
+	// JobManagerMem
+	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
+
+	// TaskManagerCpu
+	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
+
+	// TaskManagerMem
+	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 }
 
 type ClusterVersion struct {
@@ -3804,6 +3820,19 @@ type JobV1 struct {
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingType *int64 `json:"ScalingType,omitnil,omitempty" name:"ScalingType"`
+
+	// 使用CPU数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
+
+	// 使用内存数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
 }
 
 type LogContent struct {
@@ -4606,6 +4635,24 @@ type Savepoint struct {
 	// 快照路径状态 1：可用；2：不可用；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathStatus *int64 `json:"PathStatus,omitnil,omitempty" name:"PathStatus"`
+}
+
+type SessionClusterRefItem struct {
+	// 空间唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 资源唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 引用类型，0:用户资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type SlotSharingGroup struct {

@@ -182,7 +182,7 @@ const (
 	// 参数 Offset 校验失败。
 	INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = "InvalidParameterValue.OffsetVerifyFail"
 
-	// 禁止在模板变量中使用 URL。
+	// 禁止在模板变量中使用 URL。您可以参考正文模板审核标准下关于 [变量规范](https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)) 的描述
 	INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
 
 	// SdkAppId 不存在。

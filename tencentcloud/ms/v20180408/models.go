@@ -1449,19 +1449,15 @@ type DescribeEncryptPlanResponseParams struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 上次加固策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitnil,omitempty" name:"AndroidPlan"`
 
 	// 上次小程序加固策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppletPlan *AppletPlan `json:"AppletPlan,omitnil,omitempty" name:"AppletPlan"`
 
 	// 上次ios源码混淆加固配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IOSPlan *IOSPlan `json:"IOSPlan,omitnil,omitempty" name:"IOSPlan"`
 
 	// 上次sdk加固配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SDKPlan *SDKPlan `json:"SDKPlan,omitnil,omitempty" name:"SDKPlan"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2210,19 +2206,15 @@ type EncryptResults struct {
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 对应PlatformType平台类型值   1-android加固结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidResult *AndroidResult `json:"AndroidResult,omitnil,omitempty" name:"AndroidResult"`
 
 	// 对应PlatformType平台类型值   2-ios源码混淆加固结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IOSResult *IOSResult `json:"IOSResult,omitnil,omitempty" name:"IOSResult"`
 
 	// 对应PlatformType平台类型值   3-sdk加固结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SDKResult *SDKResult `json:"SDKResult,omitnil,omitempty" name:"SDKResult"`
 
 	// 对应PlatformType平台类型值   4-applet小程序加固结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppletResult *AppletResult `json:"AppletResult,omitnil,omitempty" name:"AppletResult"`
 }
 
@@ -2255,51 +2247,39 @@ type IOSPlan struct {
 
 type IOSResult struct {
 	// 加固任务结果Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *string `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
 	// 用户uid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpUin *int64 `json:"OpUin,omitnil,omitempty" name:"OpUin"`
 
 	// 加固类型，这里为ios
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptType *string `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 加固状态：0等待，1成功，2任务中，3失败，4重试中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptState *int64 `json:"EncryptState,omitnil,omitempty" name:"EncryptState"`
 
 	// 业务错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptErrno *int64 `json:"EncryptErrno,omitnil,omitempty" name:"EncryptErrno"`
 
 	// 业务错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptErrDesc *string `json:"EncryptErrDesc,omitnil,omitempty" name:"EncryptErrDesc"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatTime *string `json:"CreatTime,omitnil,omitempty" name:"CreatTime"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 消耗时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *int64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
 	// 加固（混淆）包结果url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptPkgUrl *string `json:"EncryptPkgUrl,omitnil,omitempty" name:"EncryptPkgUrl"`
 }
 
@@ -2393,7 +2373,6 @@ type PlanDetailInfo struct {
 
 type PlanInfo struct {
 	// Dex分离，0关闭，1开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetFile *string `json:"SetFile,omitnil,omitempty" name:"SetFile"`
 
 	// apk大小优化，0关闭，1开启
@@ -2436,11 +2415,9 @@ type PlanInfo struct {
 	AntiSSL *uint64 `json:"AntiSSL,omitnil,omitempty" name:"AntiSSL"`
 
 	// Dex签名校验，0关闭，1开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSign *string `json:"FileSign,omitnil,omitempty" name:"FileSign"`
 
 	// root检测，0关闭，1开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AntiRoot *string `json:"AntiRoot,omitnil,omitempty" name:"AntiRoot"`
 
 	// Dex分离，0关闭，1开启
@@ -2685,7 +2662,6 @@ type ResultListItem struct {
 	// 1001表示APP md5 different between real md5, please confirm it.
 	// 
 	// 1002表示App md5 uncollect, please offer downloadlink.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrNo *string `json:"ErrNo,omitnil,omitempty" name:"ErrNo"`
 }
 

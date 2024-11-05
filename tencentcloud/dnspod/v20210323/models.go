@@ -1263,6 +1263,126 @@ func (r *CreateSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTXTRecordRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
+	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
+
+	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 主机记录，如 www，如果不传，默认为 @。
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
+
+	// TTL，范围1-604800，不同套餐域名最小值不同。
+	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+type CreateTXTRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
+	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
+
+	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 主机记录，如 www，如果不传，默认为 @。
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
+
+	// TTL，范围1-604800，不同套餐域名最小值不同。
+	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+func (r *CreateTXTRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTXTRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RecordLine")
+	delete(f, "Value")
+	delete(f, "DomainId")
+	delete(f, "SubDomain")
+	delete(f, "RecordLineId")
+	delete(f, "TTL")
+	delete(f, "Status")
+	delete(f, "Remark")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTXTRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTXTRecordResponseParams struct {
+	// 记录ID
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTXTRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTXTRecordResponseParams `json:"Response"`
+}
+
+func (r *CreateTXTRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTXTRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CustomLineInfo struct {
 	// 域名ID
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
@@ -6457,6 +6577,126 @@ func (r *ModifySubdomainStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySubdomainStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTXTRecordRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
+	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
+
+	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 主机记录，如 www，如果不传，默认为 @。
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
+
+	// TTL，范围1-604800，不同等级域名最小值不同。
+	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 记录的备注信息。传空删除备注。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyTXTRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
+	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
+
+	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 主机记录，如 www，如果不传，默认为 @。
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
+
+	// TTL，范围1-604800，不同等级域名最小值不同。
+	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 记录的备注信息。传空删除备注。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyTXTRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTXTRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RecordLine")
+	delete(f, "Value")
+	delete(f, "RecordId")
+	delete(f, "DomainId")
+	delete(f, "SubDomain")
+	delete(f, "RecordLineId")
+	delete(f, "TTL")
+	delete(f, "Status")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTXTRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTXTRecordResponseParams struct {
+	// 记录ID
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTXTRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTXTRecordResponseParams `json:"Response"`
+}
+
+func (r *ModifyTXTRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTXTRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
