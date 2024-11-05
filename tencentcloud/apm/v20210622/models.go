@@ -1368,6 +1368,12 @@ type ModifyApmInstanceRequestParams struct {
 
 	// 响应时间满意阈值
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// 是否关联dashboard： 0 关 1 开
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// dashboard ID
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1431,6 +1437,12 @@ type ModifyApmInstanceRequest struct {
 
 	// 响应时间满意阈值
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// 是否关联dashboard： 0 关 1 开
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// dashboard ID
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1464,6 +1476,8 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CustomShowTags")
 	delete(f, "PayMode")
 	delete(f, "ResponseDurationWarningThreshold")
+	delete(f, "IsRelatedDashboard")
+	delete(f, "DashboardTopicID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

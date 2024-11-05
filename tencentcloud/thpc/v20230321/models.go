@@ -353,7 +353,7 @@ type AttachNodesRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+	// 节点的实例id列表
 	ResourceSet []*string `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
 
 	// 队列名称。不指定则为默认队列：
@@ -374,7 +374,7 @@ type AttachNodesRequest struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+	// 节点的实例id列表
 	ResourceSet []*string `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
 
 	// 队列名称。不指定则为默认队列：
@@ -558,7 +558,7 @@ type ClusterOverview struct {
 	// 登录节点数量。
 	LoginNodeCount *int64 `json:"LoginNodeCount,omitnil,omitempty" name:"LoginNodeCount"`
 
-	// 弹性伸缩类型。取值范围：<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
+	// 弹性伸缩类型。
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 
 	// 集群所属私有网络ID。
@@ -668,7 +668,7 @@ type CreateClusterRequestParams struct {
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性伸缩类型。默认值：THPC_AS<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
+	// 弹性伸缩类型。默认值：THPC_AS
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 
 	// 节点初始化脚本信息列表。
@@ -746,7 +746,7 @@ type CreateClusterRequest struct {
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性伸缩类型。默认值：THPC_AS<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
+	// 弹性伸缩类型。默认值：THPC_AS
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 
 	// 节点初始化脚本信息列表。

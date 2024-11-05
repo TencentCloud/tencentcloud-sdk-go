@@ -191,6 +191,9 @@ const (
 	// 您操作过于频繁，请稍后重试。
 	INVALIDPARAMETER_COMMON = "InvalidParameter.Common"
 
+	// 您复制的线路已存在，无需重复复制。
+	INVALIDPARAMETER_COPIEDLINEGROUPDUPLICATED = "InvalidParameter.CopiedLineGroupDuplicated"
+
 	// 自定义错误信息。
 	INVALIDPARAMETER_CUSTOMMESSAGE = "InvalidParameter.CustomMessage"
 
@@ -202,6 +205,9 @@ const (
 
 	// 订单类型无效。
 	INVALIDPARAMETER_DEALTYPEINVALID = "InvalidParameter.DealTypeInvalid"
+
+	// 默认线路无法进行自定义线路分组。
+	INVALIDPARAMETER_DEFAULTLINENOTSELFDEFINED = "InvalidParameter.DefaultLineNotSelfdefined"
 
 	// 域名已升级至付费套餐，无法完成下单。
 	INVALIDPARAMETER_DNSDEALDOMAINUPGRADED = "InvalidParameter.DnsDealDomainUpgraded"
@@ -302,11 +308,17 @@ const (
 	// 分组编号不正确。
 	INVALIDPARAMETER_GROUPIDINVALID = "InvalidParameter.GroupIdInvalid"
 
+	// 分组名为空。
+	INVALIDPARAMETER_GROUPNAMEEMPTY = "InvalidParameter.GroupNameEmpty"
+
 	// 同名分组已经存在。
 	INVALIDPARAMETER_GROUPNAMEEXISTS = "InvalidParameter.GroupNameExists"
 
 	// 分组名为1-17个字符。
 	INVALIDPARAMETER_GROUPNAMEINVALID = "InvalidParameter.GroupNameInvalid"
+
+	// 指定的分组名已存在，或为系统内置线路或自定义线路，无法用于分组名称。
+	INVALIDPARAMETER_GROUPNAMEOCCUPIED = "InvalidParameter.GroupNameOccupied"
 
 	// 您已经提交过申请并且正在审核中，请耐心等候。
 	INVALIDPARAMETER_HASPENDINGAPPLY = "InvalidParameter.HasPendingApply"
@@ -332,6 +344,9 @@ const (
 	// 无效签名。
 	INVALIDPARAMETER_INVALIDSIGNATURE = "InvalidParameter.InvalidSignature"
 
+	// 源域名ID格式不正确。
+	INVALIDPARAMETER_INVALIDSRCDOMAINID = "InvalidParameter.InvalidSrcDomainId"
+
 	// 无效的时间。
 	INVALIDPARAMETER_INVALIDTIME = "InvalidParameter.InvalidTime"
 
@@ -350,8 +365,26 @@ const (
 	// 单次任务数量超过上限。
 	INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
 
+	// 线路格式不正确。
+	INVALIDPARAMETER_LINEFORMATINVALID = "InvalidParameter.LineFormatInvalid"
+
+	// 线路不存在，或者线路不支持自定义分组。
+	INVALIDPARAMETER_LINEGROUPNOTSUPPORTED = "InvalidParameter.LineGroupNotSupported"
+
+	// 当前套餐的线路分组已达到数量上限。
+	INVALIDPARAMETER_LINEGROUPOVERCOUNTED = "InvalidParameter.LineGroupOverCounted"
+
+	// 线路分组更新失败，原因：内部错误。
+	INVALIDPARAMETER_LINEGROUPUPDATEFAILED = "InvalidParameter.LineGroupUpdateFailed"
+
+	// 线路已存在于其他分组中。
+	INVALIDPARAMETER_LINEINANOTHERGROUP = "InvalidParameter.LineInAnotherGroup"
+
 	// 线路正在使用当中，无法修改名称。
 	INVALIDPARAMETER_LINEINUSE = "InvalidParameter.LineInUse"
+
+	// 线路正在使用当中，无法删除名称。
+	INVALIDPARAMETER_LINEINUSENOTDELETE = "InvalidParameter.LineInUseNotDelete"
 
 	// 线路名称的长度不能超过17个字符。
 	INVALIDPARAMETER_LINENAMEINVALID = "InvalidParameter.LineNameInvalid"
@@ -361,6 +394,15 @@ const (
 
 	// 线路名是系统内置线路或用户自定义分组线路，无法使用该名称。
 	INVALIDPARAMETER_LINENAMEOCCUPIED = "InvalidParameter.LineNameOccupied"
+
+	// 分组不存在，请确认是否已经被删除了。
+	INVALIDPARAMETER_LINENOTEXIST = "InvalidParameter.LineNotExist"
+
+	// 您至少需要选择一个线路。
+	INVALIDPARAMETER_LINENOTSELECTED = "InvalidParameter.LineNotSelected"
+
+	// 最多只能选择120个线路。
+	INVALIDPARAMETER_LINEOVERCOUNTED = "InvalidParameter.LineOverCounted"
 
 	// 锁定天数不正确。
 	INVALIDPARAMETER_LOCKDAYSINVALID = "InvalidParameter.LockDaysInvalid"
@@ -382,6 +424,12 @@ const (
 
 	// 新套餐类型无效。
 	INVALIDPARAMETER_NEWPACKAGETYPEINVALID = "InvalidParameter.NewPackageTypeInvalid"
+
+	// 您不是源域名所有者，无法复制线路。
+	INVALIDPARAMETER_NOAUTHORITYTOSRCDOMAIN = "InvalidParameter.NoAuthorityToSrcDomain"
+
+	// 分组不属于当前域名，请确认您是否有权限修改分组。
+	INVALIDPARAMETER_NOAUTHORITYTOTHEGROUP = "InvalidParameter.NoAuthorityToTheGroup"
 
 	// 分页起始数量错误。
 	INVALIDPARAMETER_OFFSETINVALID = "InvalidParameter.OffsetInvalid"

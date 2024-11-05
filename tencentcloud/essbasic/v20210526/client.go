@@ -7034,7 +7034,7 @@ func NewCreatePersonAuthCertificateImageResponse() (response *CreatePersonAuthCe
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/d568bc0f101bef582f7af2cb5ab7a715.png)
 //
 // 
 //
@@ -7065,7 +7065,7 @@ func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCerti
 //
 // 
 //
-// ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/d568bc0f101bef582f7af2cb5ab7a715.png)
 //
 // 
 //

@@ -2537,6 +2537,12 @@ type KeyMetadata struct {
 
 	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 密钥轮转周期（天）
+	RotateDays *uint64 `json:"RotateDays,omitnil,omitempty" name:"RotateDays"`
+
+	// 上次乱转时间（Unix timestamp）
+	LastRotateTime *uint64 `json:"LastRotateTime,omitnil,omitempty" name:"LastRotateTime"`
 }
 
 // Predefined struct for user

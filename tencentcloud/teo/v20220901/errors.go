@@ -65,6 +65,9 @@ const (
 	// 创建自定义推送任务认证失败, 请检查推送地址是否正确。
 	FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = "FailedOperation.CreateLogTopicTaskAuthFailure"
 
+	// 边缘客户端证书已过期，暂不支持下发过期证书。
+	FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = "FailedOperation.EdgeClientCertificateHasExpired"
+
 	// 有其他任务正在部署中，请稍后重试。
 	FAILEDOPERATION_FUNCTIONDEPLOYING = "FailedOperation.FunctionDeploying"
 
@@ -91,6 +94,9 @@ const (
 
 	// 未知的配置组类型。
 	FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = "FailedOperation.UnknownConfigGroupType"
+
+	// 回源客户端证书已过期，暂不支持下发过期证书。
+	FAILEDOPERATION_UPSTREAMCLIENTCERTIFICATEHASEXPIRED = "FailedOperation.UpstreamClientCertificateHasExpired"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -196,6 +202,9 @@ const (
 
 	// 重复规则。
 	INVALIDPARAMETER_DUPLICATERULE = "InvalidParameter.DuplicateRule"
+
+	// 无效的边缘客户端证书配置。
+	INVALIDPARAMETER_EDGECLIENTCERTCHECKERROR = "InvalidParameter.EdgeClientCertCheckError"
 
 	// 操作不支持条件。
 	INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = "InvalidParameter.ErrActionUnsupportTarget"
@@ -716,6 +725,9 @@ const (
 	// 文件上传链接存在问题。
 	INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
 
+	// 无效的回源客户端证书配置。
+	INVALIDPARAMETER_UPSTREAMCLIENTCERTCHECKERROR = "InvalidParameter.UpstreamClientCertCheckError"
+
 	// 站点已被绑定。
 	INVALIDPARAMETER_ZONEHASBEENBOUND = "InvalidParameter.ZoneHasBeenBound"
 
@@ -737,11 +749,26 @@ const (
 	// 该站点域名已被禁用。
 	INVALIDPARAMETERVALUE_ACCESSBLACKLIST = "InvalidParameterValue.AccessBlacklist"
 
+	// 别称域名暂不支持配置边缘双向认证。
+	INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTEDGEMTLS = "InvalidParameterValue.AliasDomainNotSupportEdgeMTLS"
+
+	// 别称域名暂不支持配置回源双向认证。
+	INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMMTLS = "InvalidParameterValue.AliasDomainNotSupportUpstreamMTLS"
+
 	// 边缘双向认证配置中的客户端证书必须是CA证书。
 	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = "InvalidParameterValue.CertificateVerifyClientMustCa"
 
 	// 边缘双向认证配置至少需要配置一本证书。
 	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTNEEDCERT = "InvalidParameterValue.CertificateVerifyClientNeedCert"
+
+	// 当前回源双向认证的证书仅支持 RSA或 ECC 算法证书，暂不支持国密 SM2 算法证书。
+	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTRSAORECC = "InvalidParameterValue.CertificateVerifyUpstreamClientMustRSAorECC"
+
+	// 回源双向认证的证书类型不正确，不支持配置为 CA 证书。
+	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTSVR = "InvalidParameterValue.CertificateVerifyUpstreamClientMustSVR"
+
+	// 回源双向认证配置至少需要配置一本证书。
+	INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTNEEDCERT = "InvalidParameterValue.CertificateVerifyUpstreamClientNeedCert"
 
 	// 边缘双向认证配置中的客户端 CA 证书最多允许配置20本。
 	INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = "InvalidParameterValue.ClientCertInfoQuotaLimit"
@@ -838,6 +865,9 @@ const (
 
 	// 配置项错误。
 	INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = "InvalidParameterValue.UnrecognizableValue"
+
+	// 回源双向认证配置中的客户端证书最多允许配置1本。
+	INVALIDPARAMETERVALUE_UPSTREAMCLIENTCERTINFOQUOTALIMIT = "InvalidParameterValue.UpstreamClientCertInfoQuotaLimit"
 
 	// 站点名称格式不正确，请输入正确的域名格式。
 	INVALIDPARAMETERVALUE_ZONENAMEINVALID = "InvalidParameterValue.ZoneNameInvalid"
@@ -959,8 +989,14 @@ const (
 	// 站点处于停用状态，请开启后重试。
 	OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
 
+	// 待变更域名边缘双向认证证书不一致，请确认变更域名证书一致后重试。
+	OPERATIONDENIED_HOSTSCLIENTCERTIFICATEINCONSISTENCY = "OperationDenied.HostsClientCertificateInconsistency"
+
 	// 待变更域名 keyless 服务端不一致，请确认变更域名 keyless 服务端一致后重试。
 	OPERATIONDENIED_HOSTSKEYLESSSERVERINCONSISTENCY = "OperationDenied.HostsKeylessServerInconsistency"
+
+	// 待变更域名回源双向认证证书不一致，请确认变更域名证书一致后重试。
+	OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEINCONSISTENCY = "OperationDenied.HostsUpstreamCertificateInconsistency"
 
 	// 开启高防时必须保证安全是开启状态。
 	OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = "OperationDenied.InvalidAdvancedDefenseSecurityType"
@@ -1031,6 +1067,9 @@ const (
 	// 当前无私钥证书功能仅针对白名单用户开放。
 	OPERATIONDENIED_NOTINKEYLESSWHITELIST = "OperationDenied.NotInKeylessWhiteList"
 
+	// 当前回源双向认证功能仅针对白名单用户开放。
+	OPERATIONDENIED_NOTINUPSTREAMMTLSWHITELIST = "OperationDenied.NotInUpstreamMTLSWhiteList"
+
 	// 用户不在版本管理的白名单内。
 	OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = "OperationDenied.NotInVersionControlWhiteList"
 
@@ -1087,6 +1126,12 @@ const (
 
 	// 该实例地域无法开启固定IP。
 	OPERATIONDENIED_STATICIPAREACONFLICT = "OperationDenied.StaticIpAreaConflict"
+
+	// 当前并不支持关闭回源双向认证，如需关闭，请通过将边缘 HTTPS 证书更改为不配置来关闭。
+	OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = "OperationDenied.UnSupportToCloseUpstreamMTLS"
+
+	// 如需启用回源双向认证，请先配置边缘 HTTPS 证书。
+	OPERATIONDENIED_USEUPSTREAMMTLSNEEDOPENHTTPS = "OperationDenied.UseUpstreamMTLSNeedOpenHttps"
 
 	// 存在使用中的测试版本，请将测试版本发布现网或者回滚测试版本再重试。
 	OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"

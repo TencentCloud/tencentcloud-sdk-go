@@ -5027,10 +5027,10 @@ type DeleteClusterVirtualNodePoolRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 虚拟节点池ID列表
+	// 超级节点池ID列表
 	NodePoolIds []*string `json:"NodePoolIds,omitnil,omitempty" name:"NodePoolIds"`
 
-	// 是否强制删除，在虚拟节点上有pod的情况下，如果选择非强制删除，则删除会失败
+	// 是否强制删除，在超级节点上有pod的情况下，如果选择非强制删除，则删除会失败
 	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
@@ -5040,10 +5040,10 @@ type DeleteClusterVirtualNodePoolRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 虚拟节点池ID列表
+	// 超级节点池ID列表
 	NodePoolIds []*string `json:"NodePoolIds,omitnil,omitempty" name:"NodePoolIds"`
 
-	// 是否强制删除，在虚拟节点上有pod的情况下，如果选择非强制删除，则删除会失败
+	// 是否强制删除，在超级节点上有pod的情况下，如果选择非强制删除，则删除会失败
 	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 

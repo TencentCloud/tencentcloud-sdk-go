@@ -1648,7 +1648,7 @@ func (r *CreateRabbitMQBindingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQBindingResponseParams struct {
-	// 队列名称
+	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -6830,7 +6830,7 @@ func (r *DescribeRabbitMQQueueDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQQueueDetailResponseParams struct {
-	// 队列名称
+	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -13115,7 +13115,6 @@ type RabbitMQClusterAccessInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrometheusEndpointInfo *PrometheusEndpointInfo `json:"PrometheusEndpointInfo,omitnil,omitempty" name:"PrometheusEndpointInfo"`
 
-	// http://amqp-k3eb47gm.dashboard.rabbitmq.cq.public.tencenttdmq.com:15672/
 	// 公网域名接入点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebConsoleDomainEndpoint *string `json:"WebConsoleDomainEndpoint,omitnil,omitempty" name:"WebConsoleDomainEndpoint"`

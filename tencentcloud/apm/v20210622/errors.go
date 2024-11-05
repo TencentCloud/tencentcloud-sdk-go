@@ -65,6 +65,9 @@ const (
 	// 非法实例id。
 	FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
 
+	// 不合法入参
+	FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+
 	// 非法的正则表达式。
 	FAILEDOPERATION_INVALIDREGEX = "FailedOperation.InvalidRegex"
 

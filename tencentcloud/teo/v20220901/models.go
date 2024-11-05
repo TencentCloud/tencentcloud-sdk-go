@@ -101,12 +101,15 @@ type AccelerationDomainCertificate struct {
 	// 配置证书的模式，取值有： <li>disable：不配置证书；</li> <li>eofreecert：配置 EdgeOne 免费证书；</li> <li>sslcert：配置 SSL 证书。</li>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 服务端证书列表。
+	// 服务端证书列表，相关证书部署在 EO 的入口侧。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*CertificateInfo `json:"List,omitnil,omitempty" name:"List"`
 
-	// 边缘双向认证配置。
+	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 节点内，用于 EO 节点认证客户端证书。
 	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
+
+	// 用于 EO 节点回源时携带的证书，源站启用双向认证握手时使用，用于源站认证客户端证书是否有效，确保请求来源于受信任的 EO 节点。
+	UpstreamCertInfo *UpstreamCertInfo `json:"UpstreamCertInfo,omitnil,omitempty" name:"UpstreamCertInfo"`
 }
 
 type AclCondition struct {
@@ -11488,7 +11491,7 @@ type ModifyHostsCertificateRequestParams struct {
 	// Deprecated: ApplyType is deprecated.
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 
-	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 的入口侧，用于客户端对 EO 节点进行认证。不填写表示保持原有配置。
+	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 节点内，用于客户端对 EO 节点进行认证。默认关闭，不填写表示保持原有配置。
 	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
@@ -11517,7 +11520,7 @@ type ModifyHostsCertificateRequest struct {
 	// 不填，默认取值为none。
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 
-	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 的入口侧，用于客户端对 EO 节点进行认证。不填写表示保持原有配置。
+	// 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 节点内，用于客户端对 EO 节点进行认证。默认关闭，不填写表示保持原有配置。
 	ClientCertInfo *MutualTLS `json:"ClientCertInfo,omitnil,omitempty" name:"ClientCertInfo"`
 }
 
@@ -14488,6 +14491,11 @@ func (r *UpgradePlanResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradePlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpstreamCertInfo struct {
+	// 在回源双向认证场景下，该字段为 EO 节点回源时携带的证书（包含公钥、私钥即可），部署在 EO 节点，用于源站对 EO 节点进行认证。在作为入参使用时，不填写表示保持原有配置。
+	UpstreamMutualTLS *MutualTLS `json:"UpstreamMutualTLS,omitnil,omitempty" name:"UpstreamMutualTLS"`
 }
 
 type UpstreamHttp2 struct {

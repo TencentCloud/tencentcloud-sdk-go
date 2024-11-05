@@ -273,19 +273,22 @@ type CancelFailureFlow struct {
 }
 
 type CcInfo struct {
-	// 被抄送人手机号，大陆11位手机号
+	// 被抄送方手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+	// 请确认手机号所有方为此业务通知方。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 被抄送人姓名
+	// 被抄送方姓名。
+	// 抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 被抄送人类型
-	// 0--个人. 1--员工
+	// 被抄送方类型, 可设置以下类型:
+	// <ul><li> **0** :个人抄送方</li>
+	// <li> **1** :企业员工抄送方</li></ul>
 	CcType *int64 `json:"CcType,omitnil,omitempty" name:"CcType"`
 
-	// 被抄送人权限
-	// 0--可查看
-	// 1--可查看也可下载
+	// 被抄送方权限, 可设置如下权限:
+	// <ul><li> **0** :可查看合同内容</li>
+	// <li> **1** :可查看合同内容也可下载原文</li></ul>
 	CcPermission *int64 `json:"CcPermission,omitnil,omitempty" name:"CcPermission"`
 }
 
@@ -8019,7 +8022,7 @@ type CreatePersonAuthCertificateImageResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCertId *string `json:"ImageCertId,omitnil,omitempty" name:"ImageCertId"`
 
-	// CA供应商下发给用户的证书编号，在证书到期后自动续期后此证书编号会发生变动，且不会合成到个人用户证书证明图片中。注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下。`
+	// 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
@@ -11348,9 +11351,7 @@ type PdfVerifyResult struct {
 	// 证书签名算法,  如SHA1withRSA等算法
 	SignAlgorithm *string `json:"SignAlgorithm,omitnil,omitempty" name:"SignAlgorithm"`
 
-	// CA供应商下发给用户的证书编号
-	// 
-	// 注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下`。
+	// 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
 	CertSn *string `json:"CertSn,omitnil,omitempty" name:"CertSn"`
 
 	// 证书起始时间的Unix时间戳，单位毫秒

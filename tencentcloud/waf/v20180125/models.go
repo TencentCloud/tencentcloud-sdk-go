@@ -7542,7 +7542,7 @@ func (r *DescribeScanIpRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanIpResponseParams struct {
-	// ip列表,当入参Ip为all时，返回该值
+	// ip列表,当入参Ip为all时，返回所有已知ip列表
 	IpList []*ScanIpInfo `json:"IpList,omitnil,omitempty" name:"IpList"`
 
 	// 所属业务

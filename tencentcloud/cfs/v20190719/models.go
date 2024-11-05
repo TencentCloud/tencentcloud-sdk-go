@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AutoScaleUpRule struct {
+	// 自动扩容策略开启，关闭
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集群用量占比，到达这个值后开始扩容,范围[10-90]
+	ScaleThreshold *uint64 `json:"ScaleThreshold,omitnil,omitempty" name:"ScaleThreshold"`
+
+	// 扩容后使用量跟集群总量比例,范围[1-90]
+	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
+}
+
 type AutoSnapshotPolicyInfo struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
@@ -2539,6 +2550,12 @@ type FileSystemInfo struct {
 	// 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
 	BandwidthLimit *float64 `json:"BandwidthLimit,omitnil,omitempty" name:"BandwidthLimit"`
 
+	// 文件系统关联的快照策略
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 文件系统处理快照状态
+	SnapStatus *string `json:"SnapStatus,omitnil,omitempty" name:"SnapStatus"`
+
 	// 文件系统容量规格上限
 	// 单位:GiB
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
@@ -2554,6 +2571,14 @@ type FileSystemInfo struct {
 	// 分层存储详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TieringDetail *TieringDetailInfo `json:"TieringDetail,omitnil,omitempty" name:"TieringDetail"`
+
+	// 文件系统自动扩容策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoScaleUpRule *AutoScaleUpRule `json:"AutoScaleUpRule,omitnil,omitempty" name:"AutoScaleUpRule"`
+
+	// 文件系统版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type Filter struct {

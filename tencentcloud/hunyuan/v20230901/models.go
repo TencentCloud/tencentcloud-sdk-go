@@ -401,6 +401,70 @@ type Content struct {
 	ImageUrl *ImageUrl `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
+// Predefined struct for user
+type CreateThreadRequestParams struct {
+
+}
+
+type CreateThreadRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateThreadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateThreadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateThreadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateThreadResponseParams struct {
+	// 会话 ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 创建时间，Unix 时间戳，单位为秒。
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 提供给工具的资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToolResources *ThreadToolResources `json:"ToolResources,omitnil,omitempty" name:"ToolResources"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateThreadResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *CreateThreadResponseParams `json:"Response"`
+}
+
+func (r *CreateThreadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateThreadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Delta struct {
 	// 角色名称。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
@@ -446,6 +510,238 @@ type ErrorMsg struct {
 	// 4000 服务内部异常。
 	// 4001 请求模型超时。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+}
+
+type FileObject struct {
+	// 文件标识符，可在各个API中引用。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型，始终为 file。
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 文件大小，单位为字节。
+	Bytes *uint64 `json:"Bytes,omitnil,omitempty" name:"Bytes"`
+
+	// 文件创建时的 Unix 时间戳（秒）。
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 文件名。
+	Filename *string `json:"Filename,omitnil,omitempty" name:"Filename"`
+
+	// 上传文件的用途。
+	Purpose *string `json:"Purpose,omitnil,omitempty" name:"Purpose"`
+}
+
+// Predefined struct for user
+type FilesDeletionsRequestParams struct {
+	// 文件标识符。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type FilesDeletionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件标识符。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *FilesDeletionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FilesDeletionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FilesDeletionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FilesDeletionsResponseParams struct {
+	// 文件标识符。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型，始终为 file。
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 是否删除成功。
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FilesDeletionsResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *FilesDeletionsResponseParams `json:"Response"`
+}
+
+func (r *FilesDeletionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FilesDeletionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FilesListRequestParams struct {
+	// 分页偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，最大 100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type FilesListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，最大 100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *FilesListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FilesListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FilesListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FilesListResponseParams struct {
+	// 文件数量。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 对象类型，始终为 list。
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// FileObject 列表。
+	Data []*FileObject `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FilesListResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *FilesListResponseParams `json:"Response"`
+}
+
+func (r *FilesListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FilesListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FilesUploadsRequestParams struct {
+	// 文件名。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+}
+
+type FilesUploadsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件名。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+}
+
+func (r *FilesUploadsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FilesUploadsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "URL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FilesUploadsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FilesUploadsResponseParams struct {
+	// 文件标识符，可在各个API中引用。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型，始终为 file。
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 文件大小，单位为字节。
+	Bytes *int64 `json:"Bytes,omitnil,omitempty" name:"Bytes"`
+
+	// 文件创建时的 Unix 时间戳（秒）。
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 文件名。
+	Filename *string `json:"Filename,omitnil,omitempty" name:"Filename"`
+
+	// 上传文件的用途。
+	Purpose *string `json:"Purpose,omitnil,omitempty" name:"Purpose"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FilesUploadsResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *FilesUploadsResponseParams `json:"Response"`
+}
+
+func (r *FilesUploadsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FilesUploadsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -505,6 +801,264 @@ func (r *GetEmbeddingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetEmbeddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetThreadMessageListRequestParams struct {
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 返回的消息条数，1 - 100 条
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type GetThreadMessageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 返回的消息条数，1 - 100 条
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *GetThreadMessageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetThreadMessageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ThreadID")
+	delete(f, "Limit")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetThreadMessageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetThreadMessageListResponseParams struct {
+	// 消息列表
+	Data []*ThreadMessage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 第一条消息 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstID *string `json:"FirstID,omitnil,omitempty" name:"FirstID"`
+
+	// 最后一条消息 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastID *int64 `json:"LastID,omitnil,omitempty" name:"LastID"`
+
+	// 是否还有更多消息
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
+	// 对象类型
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetThreadMessageListResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *GetThreadMessageListResponseParams `json:"Response"`
+}
+
+func (r *GetThreadMessageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetThreadMessageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetThreadMessageRequestParams struct {
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 消息 ID
+	MessageID *string `json:"MessageID,omitnil,omitempty" name:"MessageID"`
+}
+
+type GetThreadMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 消息 ID
+	MessageID *string `json:"MessageID,omitnil,omitempty" name:"MessageID"`
+}
+
+func (r *GetThreadMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetThreadMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ThreadID")
+	delete(f, "MessageID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetThreadMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetThreadMessageResponseParams struct {
+	// 消息 ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 创建时间
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 未完成原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCompleteDetails *ThreadMessageInCompleteDetailsObject `json:"InCompleteDetails,omitnil,omitempty" name:"InCompleteDetails"`
+
+	// 完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompletedAt *int64 `json:"CompletedAt,omitnil,omitempty" name:"CompletedAt"`
+
+	// 未完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCompleteAt *int64 `json:"InCompleteAt,omitnil,omitempty" name:"InCompleteAt"`
+
+	// 角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 助手 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssistantID *string `json:"AssistantID,omitnil,omitempty" name:"AssistantID"`
+
+	// 运行 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunID *string `json:"RunID,omitnil,omitempty" name:"RunID"`
+
+	// 附件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attachments []*ThreadMessageAttachmentObject `json:"Attachments,omitnil,omitempty" name:"Attachments"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetThreadMessageResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *GetThreadMessageResponseParams `json:"Response"`
+}
+
+func (r *GetThreadMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetThreadMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetThreadRequestParams struct {
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+}
+
+type GetThreadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+}
+
+func (r *GetThreadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetThreadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ThreadID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetThreadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetThreadResponseParams struct {
+	// 会话 ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 创建时间，Unix 时间戳，单位为秒。
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 提供给工具的资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToolResources *ThreadToolResources `json:"ToolResources,omitnil,omitempty" name:"ToolResources"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetThreadResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *GetThreadResponseParams `json:"Response"`
+}
+
+func (r *GetThreadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetThreadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -638,6 +1192,16 @@ type Message struct {
 	// 模型生成的工具调用，仅 hunyuan-pro 或者 hunyuan-functioncall 模型支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+}
+
+type Mindmap struct {
+	// 脑图缩略图链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThumbUrl *string `json:"ThumbUrl,omitnil,omitempty" name:"ThumbUrl"`
+
+	// 脑图图片链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type Multimedia struct {
@@ -838,6 +1402,38 @@ func (r *QueryHunyuanImageJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RelevantEntity struct {
+	// 相关组织及人物名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 相关组织及人物内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 相关事件引用文章标号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reference []*int64 `json:"Reference,omitnil,omitempty" name:"Reference"`
+}
+
+type RelevantEvent struct {
+	// 相关事件标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 相关事件内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 相关事件时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datetime *string `json:"Datetime,omitnil,omitempty" name:"Datetime"`
+
+	// 相关事件引用文章标号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reference []*int64 `json:"Reference,omitnil,omitempty" name:"Reference"`
+}
+
 type Replace struct {
 	// 占位符序号
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -846,10 +1442,158 @@ type Replace struct {
 	Multimedia []*Multimedia `json:"Multimedia,omitnil,omitempty" name:"Multimedia"`
 }
 
+// Predefined struct for user
+type RunThreadRequestParams struct {
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 助手 ID
+	AssistantID *string `json:"AssistantID,omitnil,omitempty" name:"AssistantID"`
+
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 附加消息
+	AdditionalMessages []*ThreadAdditionalMessage `json:"AdditionalMessages,omitnil,omitempty" name:"AdditionalMessages"`
+
+	// 说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 是否流式输出，当前只允许 true
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// 运行过程中可使用的 token 最大数量。
+	MaxPromptTokens *int64 `json:"MaxPromptTokens,omitnil,omitempty" name:"MaxPromptTokens"`
+
+	// 运行过程中可使用的完成 token 的最大数量。
+	MaxCompletionTokens *int64 `json:"MaxCompletionTokens,omitnil,omitempty" name:"MaxCompletionTokens"`
+
+	// 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
+}
+
+type RunThreadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 助手 ID
+	AssistantID *string `json:"AssistantID,omitnil,omitempty" name:"AssistantID"`
+
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 附加消息
+	AdditionalMessages []*ThreadAdditionalMessage `json:"AdditionalMessages,omitnil,omitempty" name:"AdditionalMessages"`
+
+	// 说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 是否流式输出，当前只允许 true
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// 运行过程中可使用的 token 最大数量。
+	MaxPromptTokens *int64 `json:"MaxPromptTokens,omitnil,omitempty" name:"MaxPromptTokens"`
+
+	// 运行过程中可使用的完成 token 的最大数量。
+	MaxCompletionTokens *int64 `json:"MaxCompletionTokens,omitnil,omitempty" name:"MaxCompletionTokens"`
+
+	// 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
+}
+
+func (r *RunThreadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunThreadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ThreadID")
+	delete(f, "AssistantID")
+	delete(f, "Model")
+	delete(f, "AdditionalMessages")
+	delete(f, "Temperature")
+	delete(f, "TopP")
+	delete(f, "Stream")
+	delete(f, "MaxPromptTokens")
+	delete(f, "MaxCompletionTokens")
+	delete(f, "Tools")
+	delete(f, "ToolChoice")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunThreadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunThreadResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunThreadResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *RunThreadResponseParams `json:"Response"`
+}
+
+func (r *RunThreadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunThreadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SearchInfo struct {
 	// 搜索引文信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchResults []*SearchResult `json:"SearchResults,omitnil,omitempty" name:"SearchResults"`
+
+	// 脑图（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mindmap *Mindmap `json:"Mindmap,omitnil,omitempty" name:"Mindmap"`
+
+	// 相关事件（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelevantEvents []*RelevantEvent `json:"RelevantEvents,omitnil,omitempty" name:"RelevantEvents"`
+
+	// 相关组织及人物（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelevantEntities []*RelevantEntity `json:"RelevantEntities,omitnil,omitempty" name:"RelevantEntities"`
+
+	// 时间线（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeline []*Timeline `json:"Timeline,omitnil,omitempty" name:"Timeline"`
+
+	// 是否命中搜索深度模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportDeepSearch *bool `json:"SupportDeepSearch,omitnil,omitempty" name:"SupportDeepSearch"`
+
+	// 搜索回复大纲（深度模式下返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Outline []*string `json:"Outline,omitnil,omitempty" name:"Outline"`
 }
 
 type SearchResult struct {
@@ -1294,6 +2038,98 @@ func (r *TextToImageLiteResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TextToImageLiteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ThreadAdditionalMessage struct {
+	// 角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 附件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attachments []*ThreadMessageAttachmentObject `json:"Attachments,omitnil,omitempty" name:"Attachments"`
+}
+
+type ThreadMessage struct {
+	// 消息 ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 对象类型
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// 创建时间
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 会话 ID
+	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
+
+	// 状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 未完成原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCompleteDetails *ThreadMessageInCompleteDetailsObject `json:"InCompleteDetails,omitnil,omitempty" name:"InCompleteDetails"`
+
+	// 完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompletedAt *int64 `json:"CompletedAt,omitnil,omitempty" name:"CompletedAt"`
+
+	// 未完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCompleteAt *int64 `json:"InCompleteAt,omitnil,omitempty" name:"InCompleteAt"`
+
+	// 角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 助手 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssistantID *string `json:"AssistantID,omitnil,omitempty" name:"AssistantID"`
+
+	// 运行 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunID *string `json:"RunID,omitnil,omitempty" name:"RunID"`
+
+	// 附件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attachments []*ThreadMessageAttachmentObject `json:"Attachments,omitnil,omitempty" name:"Attachments"`
+}
+
+type ThreadMessageAttachmentObject struct {
+	// 文件 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileID *string `json:"FileID,omitnil,omitempty" name:"FileID"`
+}
+
+type ThreadMessageInCompleteDetailsObject struct {
+	// 会话消息未完成原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type ThreadToolResources struct {
+	// 文件 ID 列表
+	CodeInterpreter []*string `json:"CodeInterpreter,omitnil,omitempty" name:"CodeInterpreter"`
+
+	// 向量存储 ID 列表
+	VectorStoreIDs []*string `json:"VectorStoreIDs,omitnil,omitempty" name:"VectorStoreIDs"`
+}
+
+type Timeline struct {
+	// 标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datetime *string `json:"Datetime,omitnil,omitempty" name:"Datetime"`
+
+	// 相关网页链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type Tool struct {

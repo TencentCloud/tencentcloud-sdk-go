@@ -3188,26 +3188,26 @@ func (r *CreateMachineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNoticeContentRequestParams struct {
-	// 模版名称。
+	// 模板名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模版内容语言。0：中文1：英文
+	// 模板内容语言。0：中文1：英文
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 模版详细配置。
+	// 模板详细配置。
 	NoticeContents []*NoticeContent `json:"NoticeContents,omitnil,omitempty" name:"NoticeContents"`
 }
 
 type CreateNoticeContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版名称。
+	// 模板名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模版内容语言。0：中文1：英文
+	// 模板内容语言。0：中文1：英文
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 模版详细配置。
+	// 模板详细配置。
 	NoticeContents []*NoticeContent `json:"NoticeContents,omitnil,omitempty" name:"NoticeContents"`
 }
 
@@ -4792,14 +4792,14 @@ func (r *DeleteMachineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNoticeContentRequestParams struct {
-	// 通知内容模版ID
+	// 通知内容模板ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 }
 
 type DeleteNoticeContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知内容模版ID
+	// 通知内容模板ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 }
 
@@ -7212,12 +7212,12 @@ func (r *DescribeMachinesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNoticeContentsRequestParams struct {
 	// <li> name
-	// 按照【通知内容模版名称】进行过滤。
+	// 按照【通知内容模板名称】进行过滤。
 	// 类型：String
 	// 必选：否
 	// </li>
 	// <li> noticeContentId
-	// 按照【通知内容模版ID】进行过滤。
+	// 按照【通知内容模板ID】进行过滤。
 	// 类型：String
 	// 必选：否
 	// </li>
@@ -7235,12 +7235,12 @@ type DescribeNoticeContentsRequest struct {
 	*tchttp.BaseRequest
 	
 	// <li> name
-	// 按照【通知内容模版名称】进行过滤。
+	// 按照【通知内容模板名称】进行过滤。
 	// 类型：String
 	// 必选：否
 	// </li>
 	// <li> noticeContentId
-	// 按照【通知内容模版ID】进行过滤。
+	// 按照【通知内容模板ID】进行过滤。
 	// 类型：String
 	// 必选：否
 	// </li>
@@ -7277,11 +7277,11 @@ func (r *DescribeNoticeContentsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNoticeContentsResponseParams struct {
-	// 通知内容模版列表。
+	// 通知内容模板列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeContents []*NoticeContentTemplate `json:"NoticeContents,omitnil,omitempty" name:"NoticeContents"`
 
-	// 符合条件的通知内容模版总数。
+	// 符合条件的通知内容模板总数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10402,10 +10402,10 @@ func (r *ModifyMachineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNoticeContentRequestParams struct {
-	// 通知内容模版ID。
+	// 通知内容模板ID。
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 
-	// 通知内容模版名称。
+	// 通知内容模板名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知内容语言。
@@ -10413,17 +10413,17 @@ type ModifyNoticeContentRequestParams struct {
 	// 0：中文 1：英文
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 通知内容模版详细信息。
+	// 通知内容模板详细信息。
 	NoticeContents []*NoticeContent `json:"NoticeContents,omitnil,omitempty" name:"NoticeContents"`
 }
 
 type ModifyNoticeContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知内容模版ID。
+	// 通知内容模板ID。
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 
-	// 通知内容模版名称。
+	// 通知内容模板名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 通知内容语言。
@@ -10431,7 +10431,7 @@ type ModifyNoticeContentRequest struct {
 	// 0：中文 1：英文
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 通知内容模版详细信息。
+	// 通知内容模板详细信息。
 	NoticeContents []*NoticeContent `json:"NoticeContents,omitnil,omitempty" name:"NoticeContents"`
 }
 
@@ -10948,11 +10948,11 @@ type NoticeContent struct {
 	// Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 告警触发通知内容模版。
+	// 告警触发通知内容模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerContent *NoticeContentInfo `json:"TriggerContent,omitnil,omitempty" name:"TriggerContent"`
 
-	// 告警恢复通知内容模版。
+	// 告警恢复通知内容模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecoveryContent *NoticeContentInfo `json:"RecoveryContent,omitnil,omitempty" name:"RecoveryContent"`
 }

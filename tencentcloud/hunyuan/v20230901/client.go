@@ -193,6 +193,314 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     return
 }
 
+func NewCreateThreadRequest() (request *CreateThreadRequest) {
+    request = &CreateThreadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "CreateThread")
+    
+    
+    return
+}
+
+func NewCreateThreadResponse() (response *CreateThreadResponse) {
+    response = &CreateThreadResponse{} 
+    return
+
+}
+
+// CreateThread
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateThread(request *CreateThreadRequest) (response *CreateThreadResponse, err error) {
+    return c.CreateThreadWithContext(context.Background(), request)
+}
+
+// CreateThread
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThreadRequest) (response *CreateThreadResponse, err error) {
+    if request == nil {
+        request = NewCreateThreadRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateThread require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateThreadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFilesDeletionsRequest() (request *FilesDeletionsRequest) {
+    request = &FilesDeletionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "FilesDeletions")
+    
+    
+    return
+}
+
+func NewFilesDeletionsResponse() (response *FilesDeletionsResponse) {
+    response = &FilesDeletionsResponse{} 
+    return
+
+}
+
+// FilesDeletions
+// 删除文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) FilesDeletions(request *FilesDeletionsRequest) (response *FilesDeletionsResponse, err error) {
+    return c.FilesDeletionsWithContext(context.Background(), request)
+}
+
+// FilesDeletions
+// 删除文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) FilesDeletionsWithContext(ctx context.Context, request *FilesDeletionsRequest) (response *FilesDeletionsResponse, err error) {
+    if request == nil {
+        request = NewFilesDeletionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FilesDeletions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFilesDeletionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFilesListRequest() (request *FilesListRequest) {
+    request = &FilesListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "FilesList")
+    
+    
+    return
+}
+
+func NewFilesListResponse() (response *FilesListResponse) {
+    response = &FilesListResponse{} 
+    return
+
+}
+
+// FilesList
+// 文件列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) FilesList(request *FilesListRequest) (response *FilesListResponse, err error) {
+    return c.FilesListWithContext(context.Background(), request)
+}
+
+// FilesList
+// 文件列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) FilesListWithContext(ctx context.Context, request *FilesListRequest) (response *FilesListResponse, err error) {
+    if request == nil {
+        request = NewFilesListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FilesList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFilesListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFilesUploadsRequest() (request *FilesUploadsRequest) {
+    request = &FilesUploadsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "FilesUploads")
+    
+    
+    return
+}
+
+func NewFilesUploadsResponse() (response *FilesUploadsResponse) {
+    response = &FilesUploadsResponse{} 
+    return
+
+}
+
+// FilesUploads
+// 上传用于不同用途的的文件。
+//
+// 当前用途仅支持 hunyuan 等模型的文档理解。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) FilesUploads(request *FilesUploadsRequest) (response *FilesUploadsResponse, err error) {
+    return c.FilesUploadsWithContext(context.Background(), request)
+}
+
+// FilesUploads
+// 上传用于不同用途的的文件。
+//
+// 当前用途仅支持 hunyuan 等模型的文档理解。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) FilesUploadsWithContext(ctx context.Context, request *FilesUploadsRequest) (response *FilesUploadsResponse, err error) {
+    if request == nil {
+        request = NewFilesUploadsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FilesUploads require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFilesUploadsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetEmbeddingRequest() (request *GetEmbeddingRequest) {
     request = &GetEmbeddingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -244,6 +552,279 @@ func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbedd
     request.SetContext(ctx)
     
     response = NewGetEmbeddingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetThreadRequest() (request *GetThreadRequest) {
+    request = &GetThreadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "GetThread")
+    
+    
+    return
+}
+
+func NewGetThreadResponse() (response *GetThreadResponse) {
+    response = &GetThreadResponse{} 
+    return
+
+}
+
+// GetThread
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetThread(request *GetThreadRequest) (response *GetThreadResponse, err error) {
+    return c.GetThreadWithContext(context.Background(), request)
+}
+
+// GetThread
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetThreadWithContext(ctx context.Context, request *GetThreadRequest) (response *GetThreadResponse, err error) {
+    if request == nil {
+        request = NewGetThreadRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetThread require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetThreadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetThreadMessageRequest() (request *GetThreadMessageRequest) {
+    request = &GetThreadMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "GetThreadMessage")
+    
+    
+    return
+}
+
+func NewGetThreadMessageResponse() (response *GetThreadMessageResponse) {
+    response = &GetThreadMessageResponse{} 
+    return
+
+}
+
+// GetThreadMessage
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetThreadMessage(request *GetThreadMessageRequest) (response *GetThreadMessageResponse, err error) {
+    return c.GetThreadMessageWithContext(context.Background(), request)
+}
+
+// GetThreadMessage
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetThreadMessageWithContext(ctx context.Context, request *GetThreadMessageRequest) (response *GetThreadMessageResponse, err error) {
+    if request == nil {
+        request = NewGetThreadMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetThreadMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetThreadMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetThreadMessageListRequest() (request *GetThreadMessageListRequest) {
+    request = &GetThreadMessageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "GetThreadMessageList")
+    
+    
+    return
+}
+
+func NewGetThreadMessageListResponse() (response *GetThreadMessageListResponse) {
+    response = &GetThreadMessageListResponse{} 
+    return
+
+}
+
+// GetThreadMessageList
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetThreadMessageList(request *GetThreadMessageListRequest) (response *GetThreadMessageListResponse, err error) {
+    return c.GetThreadMessageListWithContext(context.Background(), request)
+}
+
+// GetThreadMessageList
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetThreadMessageListWithContext(ctx context.Context, request *GetThreadMessageListRequest) (response *GetThreadMessageListResponse, err error) {
+    if request == nil {
+        request = NewGetThreadMessageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetThreadMessageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetThreadMessageListResponse()
     err = c.Send(request, response)
     return
 }
@@ -419,6 +1000,97 @@ func (c *Client) QueryHunyuanImageJobWithContext(ctx context.Context, request *Q
     request.SetContext(ctx)
     
     response = NewQueryHunyuanImageJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunThreadRequest() (request *RunThreadRequest) {
+    request = &RunThreadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "RunThread")
+    
+    
+    return
+}
+
+func NewRunThreadResponse() (response *RunThreadResponse) {
+    response = &RunThreadResponse{} 
+    return
+
+}
+
+// RunThread
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) RunThread(request *RunThreadRequest) (response *RunThreadResponse, err error) {
+    return c.RunThreadWithContext(context.Background(), request)
+}
+
+// RunThread
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) RunThreadWithContext(ctx context.Context, request *RunThreadRequest) (response *RunThreadResponse, err error) {
+    if request == nil {
+        request = NewRunThreadRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunThread require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunThreadResponse()
     err = c.Send(request, response)
     return
 }

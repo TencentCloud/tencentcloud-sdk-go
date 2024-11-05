@@ -65,6 +65,10 @@ func NewAddAcRuleResponse() (response *AddAcRuleResponse) {
 }
 
 // AddAcRule
+// 接口不再使用，已有新接口AddAclRule
+//
+// 
+//
 // 添加互联网边界规则
 //
 // 可能返回的错误码:
@@ -91,6 +95,10 @@ func (c *Client) AddAcRule(request *AddAcRuleRequest) (response *AddAcRuleRespon
 }
 
 // AddAcRule
+// 接口不再使用，已有新接口AddAclRule
+//
+// 
+//
 // 添加互联网边界规则
 //
 // 可能返回的错误码:

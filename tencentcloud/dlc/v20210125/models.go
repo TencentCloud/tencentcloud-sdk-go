@@ -15065,6 +15065,10 @@ type WorkGroupDetailInfo struct {
 	// 行过滤信息集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RowFilterInfo *Policys `json:"RowFilterInfo,omitnil,omitempty" name:"RowFilterInfo"`
+
+	// 数据目录权限集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogPolicyInfo *Policy `json:"CatalogPolicyInfo,omitnil,omitempty" name:"CatalogPolicyInfo"`
 }
 
 type WorkGroupIdSetOfUserId struct {

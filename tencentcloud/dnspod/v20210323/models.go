@@ -838,6 +838,152 @@ func (r *CreateDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLineGroupCopyRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要复制的域名ID。要从多个域名复制线路分组时，用英文逗号分隔，例如1002,1005
+	DomainIds *string `json:"DomainIds,omitnil,omitempty" name:"DomainIds"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type CreateLineGroupCopyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要复制的域名ID。要从多个域名复制线路分组时，用英文逗号分隔，例如1002,1005
+	DomainIds *string `json:"DomainIds,omitnil,omitempty" name:"DomainIds"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *CreateLineGroupCopyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLineGroupCopyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainIds")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLineGroupCopyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLineGroupCopyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLineGroupCopyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLineGroupCopyResponseParams `json:"Response"`
+}
+
+func (r *CreateLineGroupCopyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLineGroupCopyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLineGroupRequestParams struct {
+	// 自定义线路分组的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义线路分组包含的线路列表，包含多个线路时用英文逗号分隔。例如，铁通,奇虎
+	Lines *string `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type CreateLineGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自定义线路分组的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义线路分组包含的线路列表，包含多个线路时用英文逗号分隔。例如，铁通,奇虎
+	Lines *string `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *CreateLineGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLineGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Lines")
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLineGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLineGroupResponseParams struct {
+	// 自定义线路分组详情
+	Data *LineGroupDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLineGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLineGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateLineGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLineGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRecordBatchDetail struct {
 	// 见RecordInfoBatch
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1680,6 +1826,74 @@ func (r *DeleteDomainResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLineGroupRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 自定义线路分组ID
+	LineGroupId *uint64 `json:"LineGroupId,omitnil,omitempty" name:"LineGroupId"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type DeleteLineGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 自定义线路分组ID
+	LineGroupId *uint64 `json:"LineGroupId,omitnil,omitempty" name:"LineGroupId"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *DeleteLineGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLineGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "LineGroupId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLineGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLineGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLineGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLineGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteLineGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLineGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3165,6 +3379,94 @@ func (r *DescribeDomainWhoisResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainWhoisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLineGroupListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量，传0或不传会返回所有。
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 按自定义线路分组名称排序的方向。升序传asc，降序传desc。
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type DescribeLineGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量，传0或不传会返回所有。
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 按自定义线路分组名称排序的方向。升序传asc，降序传desc。
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeLineGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLineGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Length")
+	delete(f, "SortType")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLineGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLineGroupListResponseParams struct {
+	// 自定义线路分组列表
+	LineGroups []*LineGroupItem `json:"LineGroups,omitnil,omitempty" name:"LineGroups"`
+
+	// 自定义线路分组数量信息
+	Info *LineGroupSum `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLineGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLineGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLineGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLineGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5060,6 +5362,17 @@ type KeyValue struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type LineGroupDetail struct {
+	// 自定义线路分组ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 自定线路分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义线路分组包含的线路列表
+	Lines []*string `json:"Lines,omitnil,omitempty" name:"Lines"`
+}
+
 type LineGroupInfo struct {
 	// 线路分组ID
 	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
@@ -5072,6 +5385,37 @@ type LineGroupInfo struct {
 
 	// 线路分组包含的线路列表
 	LineList []*string `json:"LineList,omitnil,omitempty" name:"LineList"`
+}
+
+type LineGroupItem struct {
+	// 域名ID
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 自定义线路分组ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 自定义线路分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义线路分组包含的线路
+	Lines []*string `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// 创建时间
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 更新时间
+	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
+}
+
+type LineGroupSum struct {
+	// 本次请求返回自定义线路分组个数
+	NowTotal *uint64 `json:"NowTotal,omitnil,omitempty" name:"NowTotal"`
+
+	// 自定义线路分组总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 还可允许添加的自定义线路分组个数
+	AvailableCount *uint64 `json:"AvailableCount,omitnil,omitempty" name:"AvailableCount"`
 }
 
 type LineInfo struct {
@@ -5713,6 +6057,88 @@ func (r *ModifyDynamicDNSResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDynamicDNSResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLineGroupRequestParams struct {
+	// 自定义线路分组的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义线路分组包含的线路列表，包含多个线路时用英文逗号分隔。例如，铁通,奇虎
+	Lines *string `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 自定义线路分组ID
+	LineGroupId *uint64 `json:"LineGroupId,omitnil,omitempty" name:"LineGroupId"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type ModifyLineGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自定义线路分组的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义线路分组包含的线路列表，包含多个线路时用英文逗号分隔。例如，铁通,奇虎
+	Lines *string `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 自定义线路分组ID
+	LineGroupId *uint64 `json:"LineGroupId,omitnil,omitempty" name:"LineGroupId"`
+
+	// 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *ModifyLineGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLineGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Lines")
+	delete(f, "Domain")
+	delete(f, "LineGroupId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLineGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLineGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLineGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLineGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyLineGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLineGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
