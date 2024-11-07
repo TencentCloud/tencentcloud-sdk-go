@@ -5262,6 +5262,61 @@ func (c *Client) DescribeGovernanceServicesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeInstanceTagInfosRequest() (request *DescribeInstanceTagInfosRequest) {
+    request = &DescribeInstanceTagInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeInstanceTagInfos")
+    
+    
+    return
+}
+
+func NewDescribeInstanceTagInfosResponse() (response *DescribeInstanceTagInfosResponse) {
+    response = &DescribeInstanceTagInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceTagInfos
+// 查看实例的标签信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInstanceTagInfos(request *DescribeInstanceTagInfosRequest) (response *DescribeInstanceTagInfosResponse, err error) {
+    return c.DescribeInstanceTagInfosWithContext(context.Background(), request)
+}
+
+// DescribeInstanceTagInfos
+// 查看实例的标签信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInstanceTagInfosWithContext(ctx context.Context, request *DescribeInstanceTagInfosRequest) (response *DescribeInstanceTagInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceTagInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceTagInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceTagInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNacosReplicasRequest() (request *DescribeNacosReplicasRequest) {
     request = &DescribeNacosReplicasRequest{
         BaseRequest: &tchttp.BaseRequest{},

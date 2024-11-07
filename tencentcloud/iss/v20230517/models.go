@@ -4955,7 +4955,7 @@ type ListDevicesRequestParams struct {
 	// 页码，默认为1。
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量，默认为20。
+	// 每页数量，默认为20，单页最大10000条
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -4992,7 +4992,7 @@ type ListDevicesRequest struct {
 	// 页码，默认为1。
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量，默认为20。
+	// 每页数量，默认为20，单页最大10000条
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 

@@ -249,6 +249,10 @@ type BaseFlowInfo struct {
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// 注
+	// 1. 抄送人名单中可以包括自然人以及本企业的员工（本企业员工必须已经完成认证并加入企业）。
+	// 2. 请确保抄送人列表中的成员不与任何签署人重复。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。

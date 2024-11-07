@@ -3029,13 +3029,13 @@ type DescribeAccountBalanceResponseParams struct {
 	// 是否限制信用额度
 	IsCreditLimited *bool `json:"IsCreditLimited,omitnil,omitempty" name:"IsCreditLimited"`
 
-	// 信用额度
+	// 信用额度,单位 分
 	CreditAmount *float64 `json:"CreditAmount,omitnil,omitempty" name:"CreditAmount"`
 
-	// 可用信用额度
+	// 可用信用额度,单位 分
 	CreditBalance *float64 `json:"CreditBalance,omitnil,omitempty" name:"CreditBalance"`
 
-	// 真实可用信用额度
+	// 真实可用信用额度,单位 分
 	RealCreditBalance *float64 `json:"RealCreditBalance,omitnil,omitempty" name:"RealCreditBalance"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

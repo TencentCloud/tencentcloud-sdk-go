@@ -2959,6 +2959,22 @@ type ComplexAdaptiveDynamicStreamingTask struct {
 	ComplexAdaptiveDynamicStreamingTaskResultSet []*ComplexAdaptiveDynamicStreamingTaskResult `json:"ComplexAdaptiveDynamicStreamingTaskResultSet,omitnil,omitempty" name:"ComplexAdaptiveDynamicStreamingTaskResultSet"`
 }
 
+type ComplexAdaptiveDynamicStreamingTaskAudioInput struct {
+	// 音频源的媒体 ID。固定取该媒体中的首个音频流，视频流和其它音频流（如有）将被忽略。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 输出的自适应码流中的音频流名称，长度限制为16个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 输出的自适应码流中的音频流语言，长度限制为16个字符。要求符合 RFC5646 规范。
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 是否设置为自适应码流的默认音频。取值：
+	// <li>YES：设置为默认音频；</li>
+	// <li>NO：不设置为默认音频（默认值）。</li>
+	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+}
+
 type ComplexAdaptiveDynamicStreamingTaskInput struct {
 	// 自适应码流参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3012,6 +3028,16 @@ type ComplexAdaptiveDynamicStreamingTaskResult struct {
 type ComplexAdaptiveDynamicStreamingTaskStreamPara struct {
 	// 自适应码流模版 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type ComplexAdaptiveDynamicStreamingTaskSubtitleInput struct {
+	// 字幕 ID。该字幕必须归属于自适应码流任务的输入主媒体。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 是否设置为自适应码流的默认字幕。取值：
+	// <li>YES：设置为默认字幕；</li>
+	// <li>NO：不设置为默认字幕（默认值）。</li>
+	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
 }
 
 type ComposeMediaOutput struct {
@@ -4208,6 +4234,110 @@ func (r *CreateClassResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateClassResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateComplexAdaptiveDynamicStreamingTaskRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 主媒体文件的媒体 ID。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 自适应码流参数，最大支持8个。
+	StreamParaSet []*ComplexAdaptiveDynamicStreamingTaskStreamPara `json:"StreamParaSet,omitnil,omitempty" name:"StreamParaSet"`
+
+	// 片头片尾列表，支持多片头片尾，最大可支持 4 个。
+	// 如果填写了该字段，AudioSet 和 SubtitleSet 中指定的媒体的起始时间将会自动调整，和主媒体保持同步。
+	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitnil,omitempty" name:"HeadTailSet"`
+
+	// 多语言音频流参数，最大支持16个。
+	// 每个数组元素对应自适应码流中的一条音频流。如果要将主媒体文件中的音频流添加到输出的自适应码流中，那么也需要在此处指定。
+	// 数组中元素的顺序将决定自适应码流中的音频流顺序。
+	// 如果输入的媒体文件同时带有视频流和音频流，那么视频流将被忽略。
+	AudioSet []*ComplexAdaptiveDynamicStreamingTaskAudioInput `json:"AudioSet,omitnil,omitempty" name:"AudioSet"`
+
+	// 多语言字幕参数，最大可支持16个。
+	// 每个数组元素对应自适应码流中的一条字幕流。
+	// 数组中元素的顺序将决定自适应码流中的字幕流顺序。
+	SubtitleSet []*ComplexAdaptiveDynamicStreamingTaskSubtitleInput `json:"SubtitleSet,omitnil,omitempty" name:"SubtitleSet"`
+}
+
+type CreateComplexAdaptiveDynamicStreamingTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 主媒体文件的媒体 ID。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 自适应码流参数，最大支持8个。
+	StreamParaSet []*ComplexAdaptiveDynamicStreamingTaskStreamPara `json:"StreamParaSet,omitnil,omitempty" name:"StreamParaSet"`
+
+	// 片头片尾列表，支持多片头片尾，最大可支持 4 个。
+	// 如果填写了该字段，AudioSet 和 SubtitleSet 中指定的媒体的起始时间将会自动调整，和主媒体保持同步。
+	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitnil,omitempty" name:"HeadTailSet"`
+
+	// 多语言音频流参数，最大支持16个。
+	// 每个数组元素对应自适应码流中的一条音频流。如果要将主媒体文件中的音频流添加到输出的自适应码流中，那么也需要在此处指定。
+	// 数组中元素的顺序将决定自适应码流中的音频流顺序。
+	// 如果输入的媒体文件同时带有视频流和音频流，那么视频流将被忽略。
+	AudioSet []*ComplexAdaptiveDynamicStreamingTaskAudioInput `json:"AudioSet,omitnil,omitempty" name:"AudioSet"`
+
+	// 多语言字幕参数，最大可支持16个。
+	// 每个数组元素对应自适应码流中的一条字幕流。
+	// 数组中元素的顺序将决定自适应码流中的字幕流顺序。
+	SubtitleSet []*ComplexAdaptiveDynamicStreamingTaskSubtitleInput `json:"SubtitleSet,omitnil,omitempty" name:"SubtitleSet"`
+}
+
+func (r *CreateComplexAdaptiveDynamicStreamingTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateComplexAdaptiveDynamicStreamingTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "FileId")
+	delete(f, "StreamParaSet")
+	delete(f, "HeadTailSet")
+	delete(f, "AudioSet")
+	delete(f, "SubtitleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateComplexAdaptiveDynamicStreamingTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateComplexAdaptiveDynamicStreamingTaskResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateComplexAdaptiveDynamicStreamingTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateComplexAdaptiveDynamicStreamingTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateComplexAdaptiveDynamicStreamingTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateComplexAdaptiveDynamicStreamingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

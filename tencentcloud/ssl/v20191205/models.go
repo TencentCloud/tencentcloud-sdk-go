@@ -6933,7 +6933,7 @@ type UploadCertificateRequestParams struct {
 	// 标签列表
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 相同的证书是否允许重复上传
+	// 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 }
 
@@ -6961,7 +6961,7 @@ type UploadCertificateRequest struct {
 	// 标签列表
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 相同的证书是否允许重复上传
+	// 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 }
 

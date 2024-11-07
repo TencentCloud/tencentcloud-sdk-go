@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 请求头中的 Uin 无效
+	AUTHFAILURE_INVALIDHEADERUIN = "AuthFailure.InvalidHeaderUin"
+
 	// 该地域尚未开放，请选择其他地域。
 	AUTHFAILURE_INVALIDREGION = "AuthFailure.InvalidRegion"
 

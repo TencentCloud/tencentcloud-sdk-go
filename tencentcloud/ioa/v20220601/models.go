@@ -22,33 +22,26 @@ import (
 
 type ComplexRule struct {
 	// 简单规则表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SimpleRules []*SimpleRule `json:"SimpleRules,omitnil,omitempty" name:"SimpleRules"`
 
 	// 表达式间逻辑关系
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
 }
 
 type Condition struct {
 	// Filters 条件过滤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// FilterGroups 条件过滤组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterGroups []*FilterGroup `json:"FilterGroups,omitnil,omitempty" name:"FilterGroups"`
 
 	// Sort 排序字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sort *Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// PageSize 每页获取数(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// PageNum 获取第几页(只支持32位)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 }
 
@@ -661,7 +654,7 @@ type DescribeLocalAccountsRequestParams struct {
 	// 获取账号的分组ID，不传默认获取全网根账号组
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
+	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
 	ShowFlag *int64 `json:"ShowFlag,omitnil,omitempty" name:"ShowFlag"`
 }
 
@@ -686,7 +679,7 @@ type DescribeLocalAccountsRequest struct {
 	// 获取账号的分组ID，不传默认获取全网根账号组
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
+	// 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
 	ShowFlag *int64 `json:"ShowFlag,omitnil,omitempty" name:"ShowFlag"`
 }
 
@@ -923,21 +916,17 @@ type DeviceDetail struct {
 
 type Filter struct {
 	// 过滤字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 过滤方式 eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 过滤方式： eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于。具体支持哪些过滤方式，结合具体接口字段描述来定
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 过滤条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type FilterGroup struct {
 	// Filters 条件过滤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1048,10 +1037,8 @@ type SimpleRule struct {
 
 type Sort struct {
 	// 排序字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
 	// 排序方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }

@@ -4209,6 +4209,10 @@ type Job struct {
 	// 付费类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// job VUM用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Usage *int64 `json:"Usage,omitnil,omitempty" name:"Usage"`
 }
 
 type Label struct {

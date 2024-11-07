@@ -6308,6 +6308,10 @@ type Instance struct {
 
 	// 创建实例后自动执行TAT命令的调用ID。
 	InitInvocationId *string `json:"InitInvocationId,omitnil,omitempty" name:"InitInvocationId"`
+
+	// 实例违规详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceViolationDetail *InstanceViolationDetail `json:"InstanceViolationDetail,omitnil,omitempty" name:"InstanceViolationDetail"`
 }
 
 type InstanceChargePrepaid struct {
@@ -6387,6 +6391,24 @@ type InstanceTrafficPackage struct {
 
 	// 流量包详情列表。
 	TrafficPackageSet []*TrafficPackage `json:"TrafficPackageSet,omitnil,omitempty" name:"TrafficPackageSet"`
+}
+
+type InstanceViolationDetail struct {
+	//  来源：RESTRICT：封禁、FREEZW：冻结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 是否允许自助解封：1是，2否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 违规类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 违规内容（URL、关联域名）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type InternetAccessible struct {

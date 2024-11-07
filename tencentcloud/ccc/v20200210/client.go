@@ -220,7 +220,11 @@ func NewCreateAICallResponse() (response *CreateAICallResponse) {
 }
 
 // CreateAICall
-// 创建ai外呼会话(仅支持高级版座席)
+// 用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+//
+// 
+//
+// 发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
@@ -241,7 +245,11 @@ func (c *Client) CreateAICall(request *CreateAICallRequest) (response *CreateAIC
 }
 
 // CreateAICall
-// 创建ai外呼会话(仅支持高级版座席)
+// 用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+//
+// 
+//
+// 发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"

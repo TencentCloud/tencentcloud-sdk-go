@@ -584,13 +584,13 @@ const (
 	// 同一站点下的负载均衡名称不可以重复。
 	INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
 
-	// 负载均衡器在L4代理中使用。
+	// 负载均衡实例存在被四层实例引用，不允许删除。
 	INVALIDPARAMETER_LOADBALANCERUSEDINL4PROXY = "InvalidParameter.LoadBalancerUsedInL4Proxy"
 
-	// 负载均衡器在L7域名中使用。
+	// 负载均衡实例存在被七层域名引用，不允许删除。
 	INVALIDPARAMETER_LOADBALANCERUSEDINL7DOMAIN = "InvalidParameter.LoadBalancerUsedInL7Domain"
 
-	// 负载均衡器在规则引擎中使用。
+	// 负载均衡实例存在被规则引擎引用，不允许删除。
 	INVALIDPARAMETER_LOADBALANCERUSEDINRULEENGINE = "InvalidParameter.LoadBalancerUsedInRuleEngine"
 
 	// 修改参数缺失。

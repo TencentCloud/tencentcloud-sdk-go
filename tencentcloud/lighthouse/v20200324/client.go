@@ -3698,6 +3698,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // * 支持查询实例的最新操作（LatestOperation）以及最新操作状态（LatestOperationState）。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDHEADERUIN = "AuthFailure.InvalidHeaderUin"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -3740,6 +3741,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // * 支持查询实例的最新操作（LatestOperation）以及最新操作状态（LatestOperationState）。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDHEADERUIN = "AuthFailure.InvalidHeaderUin"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
