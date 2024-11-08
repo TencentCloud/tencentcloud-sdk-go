@@ -461,7 +461,12 @@ func NewDescribeAllocationMonthOverviewResponse() (response *DescribeAllocationM
 // 查询分账账单月概览
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationMonthOverview(request *DescribeAllocationMonthOverviewRequest) (response *DescribeAllocationMonthOverviewResponse, err error) {
     return c.DescribeAllocationMonthOverviewWithContext(context.Background(), request)
 }
@@ -470,7 +475,12 @@ func (c *Client) DescribeAllocationMonthOverview(request *DescribeAllocationMont
 // 查询分账账单月概览
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationMonthOverviewWithContext(ctx context.Context, request *DescribeAllocationMonthOverviewRequest) (response *DescribeAllocationMonthOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationMonthOverviewRequest()
@@ -510,7 +520,12 @@ func NewDescribeAllocationOverviewResponse() (response *DescribeAllocationOvervi
 // 查询分账账单日概览
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationOverview(request *DescribeAllocationOverviewRequest) (response *DescribeAllocationOverviewResponse, err error) {
     return c.DescribeAllocationOverviewWithContext(context.Background(), request)
 }
@@ -519,7 +534,12 @@ func (c *Client) DescribeAllocationOverview(request *DescribeAllocationOverviewR
 // 查询分账账单日概览
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationOverviewWithContext(ctx context.Context, request *DescribeAllocationOverviewRequest) (response *DescribeAllocationOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationOverviewRequest()
@@ -559,7 +579,12 @@ func NewDescribeAllocationSummaryByBusinessResponse() (response *DescribeAllocat
 // 查询分账账单按产品汇总
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationSummaryByBusiness(request *DescribeAllocationSummaryByBusinessRequest) (response *DescribeAllocationSummaryByBusinessResponse, err error) {
     return c.DescribeAllocationSummaryByBusinessWithContext(context.Background(), request)
 }
@@ -568,7 +593,12 @@ func (c *Client) DescribeAllocationSummaryByBusiness(request *DescribeAllocation
 // 查询分账账单按产品汇总
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationSummaryByBusinessWithContext(ctx context.Context, request *DescribeAllocationSummaryByBusinessRequest) (response *DescribeAllocationSummaryByBusinessResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationSummaryByBusinessRequest()
@@ -608,7 +638,12 @@ func NewDescribeAllocationSummaryByItemResponse() (response *DescribeAllocationS
 // 查询分账账单按组件汇总
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationSummaryByItem(request *DescribeAllocationSummaryByItemRequest) (response *DescribeAllocationSummaryByItemResponse, err error) {
     return c.DescribeAllocationSummaryByItemWithContext(context.Background(), request)
 }
@@ -617,7 +652,12 @@ func (c *Client) DescribeAllocationSummaryByItem(request *DescribeAllocationSumm
 // 查询分账账单按组件汇总
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationSummaryByItemWithContext(ctx context.Context, request *DescribeAllocationSummaryByItemRequest) (response *DescribeAllocationSummaryByItemResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationSummaryByItemRequest()
@@ -657,7 +697,12 @@ func NewDescribeAllocationSummaryByResourceResponse() (response *DescribeAllocat
 // 查询分账账单按资源汇总
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationSummaryByResource(request *DescribeAllocationSummaryByResourceRequest) (response *DescribeAllocationSummaryByResourceResponse, err error) {
     return c.DescribeAllocationSummaryByResourceWithContext(context.Background(), request)
 }
@@ -666,7 +711,12 @@ func (c *Client) DescribeAllocationSummaryByResource(request *DescribeAllocation
 // 查询分账账单按资源汇总
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationSummaryByResourceWithContext(ctx context.Context, request *DescribeAllocationSummaryByResourceRequest) (response *DescribeAllocationSummaryByResourceResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationSummaryByResourceRequest()
@@ -706,7 +756,12 @@ func NewDescribeAllocationTrendByMonthResponse() (response *DescribeAllocationTr
 // 查询分账账单费用趋势
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationTrendByMonth(request *DescribeAllocationTrendByMonthRequest) (response *DescribeAllocationTrendByMonthResponse, err error) {
     return c.DescribeAllocationTrendByMonthWithContext(context.Background(), request)
 }
@@ -715,7 +770,12 @@ func (c *Client) DescribeAllocationTrendByMonth(request *DescribeAllocationTrend
 // 查询分账账单费用趋势
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationTrendByMonthWithContext(ctx context.Context, request *DescribeAllocationTrendByMonthRequest) (response *DescribeAllocationTrendByMonthResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationTrendByMonthRequest()

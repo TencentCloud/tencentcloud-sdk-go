@@ -5656,8 +5656,10 @@ type UsageQuota struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainCnt *int64 `json:"ChainCnt,omitnil,omitempty" name:"ChainCnt"`
 
-	// 营销风控次数
+	// 风险检测次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RiskCnt is deprecated.
 	RiskCnt *int64 `json:"RiskCnt,omitnil,omitempty" name:"RiskCnt"`
 
 	// 时间

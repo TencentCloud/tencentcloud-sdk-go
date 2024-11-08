@@ -668,6 +668,12 @@ type CreateEmbedTokenRequestParams struct {
 	// -eq  等于=操作符
 	// -is     in操作符
 	GlobalParam *string `json:"GlobalParam,omitnil,omitempty" name:"GlobalParam"`
+
+	// 100 不绑定用户  200 单用户单token  300 单用户多token
+	TokenType *int64 `json:"TokenType,omitnil,omitempty" name:"TokenType"`
+
+	// 一次创建的token数
+	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
 }
 
 type CreateEmbedTokenRequest struct {
@@ -740,6 +746,12 @@ type CreateEmbedTokenRequest struct {
 	// -eq  等于=操作符
 	// -is     in操作符
 	GlobalParam *string `json:"GlobalParam,omitnil,omitempty" name:"GlobalParam"`
+
+	// 100 不绑定用户  200 单用户单token  300 单用户多token
+	TokenType *int64 `json:"TokenType,omitnil,omitempty" name:"TokenType"`
+
+	// 一次创建的token数
+	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
 }
 
 func (r *CreateEmbedTokenRequest) ToJsonString() string {
@@ -764,6 +776,8 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "TicketNum")
 	delete(f, "GlobalParam")
+	delete(f, "TokenType")
+	delete(f, "TokenNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmbedTokenRequest has unknown keys!", "")
 	}
@@ -2201,6 +2215,20 @@ type EmbedTokenInfo struct {
 	// embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Intention *string `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// 100 无绑定用户
+	// 200 单用户单token
+	// 300 单用户 多token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenType *int64 `json:"TokenType,omitnil,omitempty" name:"TokenType"`
+
+	// token 数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
+
+	// 是否单用户多token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SingleUserMultiToken *bool `json:"SingleUserMultiToken,omitnil,omitempty" name:"SingleUserMultiToken"`
 }
 
 type ErrorInfo struct {

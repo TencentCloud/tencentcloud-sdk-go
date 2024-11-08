@@ -1388,6 +1388,133 @@ func (r *CreateHourDCDBInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOnlineDDLJobRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要执行的 DDL 语句。常用的在线DDL参考此API文档示例部分
+	Alter *string `json:"Alter,omitnil,omitempty" name:"Alter"`
+
+	// 要修改的数据库	
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 要修改的表
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 指定账号执行DDL，需确保账号有 ALTER, CREATE, INSERT, UPDATE, DROP, DELETE, INDEX, CREATE TEMPORARY TABLES, LOCK TABLES, TRIGGER, REPLICATION CLIENT, REPLICATION SLAVE 等相关权限 （若不填写将默认使用系统账号）
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 指定账号的密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 运行线程数大于此值时，将终止DDL。不填则默认58
+	CriticalLoad *int64 `json:"CriticalLoad,omitnil,omitempty" name:"CriticalLoad"`
+
+	// 是否检查自增字段。为1则不允许修改自增字段，0或不填写则不检查
+	CheckAutoInc *int64 `json:"CheckAutoInc,omitnil,omitempty" name:"CheckAutoInc"`
+
+	// 允许的主备延迟时间(单位s)，0或不填写则不检查延迟
+	MaxDelay *int64 `json:"MaxDelay,omitnil,omitempty" name:"MaxDelay"`
+
+	// 是否使用pt-osc工具做DDL
+	UsePt *int64 `json:"UsePt,omitnil,omitempty" name:"UsePt"`
+
+	// 开始执行时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
+type CreateOnlineDDLJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要执行的 DDL 语句。常用的在线DDL参考此API文档示例部分
+	Alter *string `json:"Alter,omitnil,omitempty" name:"Alter"`
+
+	// 要修改的数据库	
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 要修改的表
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 指定账号执行DDL，需确保账号有 ALTER, CREATE, INSERT, UPDATE, DROP, DELETE, INDEX, CREATE TEMPORARY TABLES, LOCK TABLES, TRIGGER, REPLICATION CLIENT, REPLICATION SLAVE 等相关权限 （若不填写将默认使用系统账号）
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 指定账号的密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 运行线程数大于此值时，将终止DDL。不填则默认58
+	CriticalLoad *int64 `json:"CriticalLoad,omitnil,omitempty" name:"CriticalLoad"`
+
+	// 是否检查自增字段。为1则不允许修改自增字段，0或不填写则不检查
+	CheckAutoInc *int64 `json:"CheckAutoInc,omitnil,omitempty" name:"CheckAutoInc"`
+
+	// 允许的主备延迟时间(单位s)，0或不填写则不检查延迟
+	MaxDelay *int64 `json:"MaxDelay,omitnil,omitempty" name:"MaxDelay"`
+
+	// 是否使用pt-osc工具做DDL
+	UsePt *int64 `json:"UsePt,omitnil,omitempty" name:"UsePt"`
+
+	// 开始执行时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
+func (r *CreateOnlineDDLJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOnlineDDLJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Alter")
+	delete(f, "DbName")
+	delete(f, "Table")
+	delete(f, "User")
+	delete(f, "Password")
+	delete(f, "CriticalLoad")
+	delete(f, "CheckAutoInc")
+	delete(f, "MaxDelay")
+	delete(f, "UsePt")
+	delete(f, "StartTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOnlineDDLJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOnlineDDLJobResponseParams struct {
+	// 在线DDL任务Id
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOnlineDDLJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOnlineDDLJobResponseParams `json:"Response"`
+}
+
+func (r *CreateOnlineDDLJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOnlineDDLJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTmpDCDBInstanceRequestParams struct {
 	// 回档实例的ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

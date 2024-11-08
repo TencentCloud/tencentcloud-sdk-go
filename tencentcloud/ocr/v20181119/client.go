@@ -6772,6 +6772,99 @@ func (c *Client) RecognizeTravelCardOCRWithContext(ctx context.Context, request 
     return
 }
 
+func NewRecognizeValidIDCardOCRRequest() (request *RecognizeValidIDCardOCRRequest) {
+    request = &RecognizeValidIDCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeValidIDCardOCR")
+    
+    
+    return
+}
+
+func NewRecognizeValidIDCardOCRResponse() (response *RecognizeValidIDCardOCRResponse) {
+    response = &RecognizeValidIDCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeValidIDCardOCR
+// 本接口支持二代身份证、临时身份证、港澳台居住证、外国人永久居留证，字段内容识别功能，包括姓名、性别、民族、出生、出生日期、住址、公民身份号码、签发机关、有效期限、国籍、通行证号码、持证人持有号码；支持返回证件类型；支持翻拍、复印、边框不完整、遮挡、字段级反光和字段级完整性告警；支持卡片主体框裁剪和头像裁剪。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
+//  FAILEDOPERATION_IDCARDTOOSMALL = "FailedOperation.IdCardTooSmall"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOIDCARD = "FailedOperation.ImageNoIdCard"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_MULTICARDERROR = "FailedOperation.MultiCardError"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_CONFIGFORMATERROR = "InvalidParameter.ConfigFormatError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeValidIDCardOCR(request *RecognizeValidIDCardOCRRequest) (response *RecognizeValidIDCardOCRResponse, err error) {
+    return c.RecognizeValidIDCardOCRWithContext(context.Background(), request)
+}
+
+// RecognizeValidIDCardOCR
+// 本接口支持二代身份证、临时身份证、港澳台居住证、外国人永久居留证，字段内容识别功能，包括姓名、性别、民族、出生、出生日期、住址、公民身份号码、签发机关、有效期限、国籍、通行证号码、持证人持有号码；支持返回证件类型；支持翻拍、复印、边框不完整、遮挡、字段级反光和字段级完整性告警；支持卡片主体框裁剪和头像裁剪。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
+//  FAILEDOPERATION_IDCARDTOOSMALL = "FailedOperation.IdCardTooSmall"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOIDCARD = "FailedOperation.ImageNoIdCard"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_MULTICARDERROR = "FailedOperation.MultiCardError"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_CONFIGFORMATERROR = "InvalidParameter.ConfigFormatError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeValidIDCardOCRWithContext(ctx context.Context, request *RecognizeValidIDCardOCRRequest) (response *RecognizeValidIDCardOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeValidIDCardOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeValidIDCardOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeValidIDCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReconstructDocumentRequest() (request *ReconstructDocumentRequest) {
     request = &ReconstructDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},

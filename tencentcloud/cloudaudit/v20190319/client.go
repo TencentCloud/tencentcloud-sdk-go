@@ -435,9 +435,12 @@ func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MEMBERNOTAUDITROLE = "FailedOperation.MemberNotAuditRole"
+//  FAILEDOPERATION_MEMBERNOTINORGANIZATION = "FailedOperation.MemberNotInOrganization"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
     return c.DescribeEventsWithContext(context.Background(), request)
 }
@@ -447,9 +450,12 @@ func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MEMBERNOTAUDITROLE = "FailedOperation.MemberNotAuditRole"
+//  FAILEDOPERATION_MEMBERNOTINORGANIZATION = "FailedOperation.MemberNotInOrganization"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
     if request == nil {
         request = NewDescribeEventsRequest()
@@ -633,7 +639,7 @@ func NewListCmqEnableRegionResponse() (response *ListCmqEnableRegionResponse) {
 }
 
 // ListCmqEnableRegion
-// 查询云审计支持的cmq的可用区
+// 查询操作审计支持的cmq的可用区
 //
 // 可能返回的错误码:
 //  INTERNALERROR_LISTCMQENABLEREGIONERROR = "InternalError.ListCmqEnableRegionError"
@@ -642,7 +648,7 @@ func (c *Client) ListCmqEnableRegion(request *ListCmqEnableRegionRequest) (respo
 }
 
 // ListCmqEnableRegion
-// 查询云审计支持的cmq的可用区
+// 查询操作审计支持的cmq的可用区
 //
 // 可能返回的错误码:
 //  INTERNALERROR_LISTCMQENABLEREGIONERROR = "InternalError.ListCmqEnableRegionError"
@@ -682,7 +688,7 @@ func NewListCosEnableRegionResponse() (response *ListCosEnableRegionResponse) {
 }
 
 // ListCosEnableRegion
-// 查询云审计支持的cos可用区
+// 查询操作审计支持的cos可用区
 //
 // 可能返回的错误码:
 //  INTERNALERROR_LISTCOSENABLEREGIONERROR = "InternalError.ListCosEnableRegionError"
@@ -691,7 +697,7 @@ func (c *Client) ListCosEnableRegion(request *ListCosEnableRegionRequest) (respo
 }
 
 // ListCosEnableRegion
-// 查询云审计支持的cos可用区
+// 查询操作审计支持的cos可用区
 //
 // 可能返回的错误码:
 //  INTERNALERROR_LISTCOSENABLEREGIONERROR = "InternalError.ListCosEnableRegionError"
@@ -792,7 +798,6 @@ func NewLookUpEventsResponse() (response *LookUpEventsResponse) {
 //  INVALIDPARAMETERVALUE_MAXRESULT = "InvalidParameterValue.MaxResult"
 //  INVALIDPARAMETERVALUE_TIME = "InvalidParameterValue.Time"
 //  INVALIDPARAMETERVALUE_ATTRIBUTEKEY = "InvalidParameterValue.attributeKey"
-//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEventsResponse, err error) {
     return c.LookUpEventsWithContext(context.Background(), request)
@@ -807,7 +812,6 @@ func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEve
 //  INVALIDPARAMETERVALUE_MAXRESULT = "InvalidParameterValue.MaxResult"
 //  INVALIDPARAMETERVALUE_TIME = "InvalidParameterValue.Time"
 //  INVALIDPARAMETERVALUE_ATTRIBUTEKEY = "InvalidParameterValue.attributeKey"
-//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 func (c *Client) LookUpEventsWithContext(ctx context.Context, request *LookUpEventsRequest) (response *LookUpEventsResponse, err error) {
     if request == nil {

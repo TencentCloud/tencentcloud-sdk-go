@@ -791,6 +791,65 @@ func (c *Client) CreateHourDCDBInstanceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateOnlineDDLJobRequest() (request *CreateOnlineDDLJobRequest) {
+    request = &CreateOnlineDDLJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "CreateOnlineDDLJob")
+    
+    
+    return
+}
+
+func NewCreateOnlineDDLJobResponse() (response *CreateOnlineDDLJobResponse) {
+    response = &CreateOnlineDDLJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOnlineDDLJob
+// 创建在线DDL任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) CreateOnlineDDLJob(request *CreateOnlineDDLJobRequest) (response *CreateOnlineDDLJobResponse, err error) {
+    return c.CreateOnlineDDLJobWithContext(context.Background(), request)
+}
+
+// CreateOnlineDDLJob
+// 创建在线DDL任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) CreateOnlineDDLJobWithContext(ctx context.Context, request *CreateOnlineDDLJobRequest) (response *CreateOnlineDDLJobResponse, err error) {
+    if request == nil {
+        request = NewCreateOnlineDDLJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOnlineDDLJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOnlineDDLJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTmpDCDBInstanceRequest() (request *CreateTmpDCDBInstanceRequest) {
     request = &CreateTmpDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

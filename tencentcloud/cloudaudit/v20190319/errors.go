@@ -32,6 +32,12 @@ const (
 	// 拉取cos存储桶列表失败。
 	FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
 
+	// 当前查询的用户还未开通操作审计权限，如需查询该用户审计记录，请联系其开通！
+	FAILEDOPERATION_MEMBERNOTAUDITROLE = "FailedOperation.MemberNotAuditRole"
+
+	// 成员不在集团组织中。
+	FAILEDOPERATION_MEMBERNOTINORGANIZATION = "FailedOperation.MemberNotInOrganization"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -133,4 +139,7 @@ const (
 
 	// 角色不存在。
 	RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
+
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 )

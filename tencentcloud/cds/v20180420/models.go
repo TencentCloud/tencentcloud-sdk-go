@@ -55,22 +55,18 @@ type CdsAuditInstance struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 实例私网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// 实例类型（版本）
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pdomain *string `json:"Pdomain,omitnil,omitempty" name:"Pdomain"`
 }
 

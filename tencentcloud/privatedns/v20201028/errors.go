@@ -101,6 +101,9 @@ const (
 	// 终端节点服务不存在。
 	INVALIDPARAMETER_ENDPOINTSERVICENOTEXIST = "InvalidParameter.EndPointServiceNotExist"
 
+	// 转发规则不存在。
+	INVALIDPARAMETER_FORWARDRULENOTEXIST = "InvalidParameter.ForwardRuleNotExist"
+
 	// 私有域已经绑定过转发规则。
 	INVALIDPARAMETER_FORWARDRULEZONEREPEATBIND = "InvalidParameter.ForwardRuleZoneRepeatBind"
 

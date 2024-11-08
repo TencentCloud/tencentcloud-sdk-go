@@ -3992,6 +3992,9 @@ type DescribeRecordPlaybackUrlRequestParams struct {
 
 	// 是否获取内网地址
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
+
+	// 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+	CorrectTimestamp *bool `json:"CorrectTimestamp,omitnil,omitempty" name:"CorrectTimestamp"`
 }
 
 type DescribeRecordPlaybackUrlRequest struct {
@@ -4008,6 +4011,9 @@ type DescribeRecordPlaybackUrlRequest struct {
 
 	// 是否获取内网地址
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
+
+	// 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+	CorrectTimestamp *bool `json:"CorrectTimestamp,omitnil,omitempty" name:"CorrectTimestamp"`
 }
 
 func (r *DescribeRecordPlaybackUrlRequest) ToJsonString() string {
@@ -4026,6 +4032,7 @@ func (r *DescribeRecordPlaybackUrlRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "IsInternal")
+	delete(f, "CorrectTimestamp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordPlaybackUrlRequest has unknown keys!", "")
 	}

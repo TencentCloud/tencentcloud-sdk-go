@@ -22,15 +22,12 @@ import (
 
 type ACTemplate struct {
 	// 模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 模板描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -116,23 +113,18 @@ type Acl struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 所属部门的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 是否允许使用访问串，默认允许
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
 
 	// 关联的数据库高危命令列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ACTemplateSet []*ACTemplate `json:"ACTemplateSet,omitnil,omitempty" name:"ACTemplateSet"`
 
 	// 关联的白命令命令
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteCmds []*string `json:"WhiteCmds,omitnil,omitempty" name:"WhiteCmds"`
 
 	// 是否允许记录键盘
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 }
 
@@ -503,106 +495,82 @@ func (r *BindDeviceResourceResponse) FromJsonString(s string) error {
 
 type ChangePwdTaskDetail struct {
 	// 资产信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
 	// 资产账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 上次改密结果。0-未改密  1-改密成功 2-改密失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastChangeStatus *uint64 `json:"LastChangeStatus,omitnil,omitempty" name:"LastChangeStatus"`
 }
 
 type ChangePwdTaskInfo struct {
 	// id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 任务id
 	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
 
 	// 任务名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 所属部门信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 改密方式。1：使用执行账号。2：修改自身密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChangeMethod *uint64 `json:"ChangeMethod,omitnil,omitempty" name:"ChangeMethod"`
 
 	// 执行账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunAccount *string `json:"RunAccount,omitnil,omitempty" name:"RunAccount"`
 
 	// 密码生成策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthGenerationStrategy *uint64 `json:"AuthGenerationStrategy,omitnil,omitempty" name:"AuthGenerationStrategy"`
 
 	// 密码长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PasswordLength *uint64 `json:"PasswordLength,omitnil,omitempty" name:"PasswordLength"`
 
 	// 包含小写字母
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmallLetter *uint64 `json:"SmallLetter,omitnil,omitempty" name:"SmallLetter"`
 
 	// 包含大写字母
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigLetter *uint64 `json:"BigLetter,omitnil,omitempty" name:"BigLetter"`
 
 	// 包含数字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Digit *uint64 `json:"Digit,omitnil,omitempty" name:"Digit"`
 
 	// 包含的特殊字符，base64
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
 
 	// 改密完成通知。0-通知，1-不通知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompleteNotify *uint64 `json:"CompleteNotify,omitnil,omitempty" name:"CompleteNotify"`
 
 	// 通知人邮箱
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyEmails []*string `json:"NotifyEmails,omitnil,omitempty" name:"NotifyEmails"`
 
 	// 加密附件密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePassword *string `json:"FilePassword,omitnil,omitempty" name:"FilePassword"`
 
 	// 需要改密的账户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
 
 	// 需要改密的主机
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceSet []*Device `json:"DeviceSet,omitnil,omitempty" name:"DeviceSet"`
 
 	// 任务类型：4手动，5自动
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 首次执行时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
 
 	// 下次执行时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextTime *string `json:"NextTime,omitnil,omitempty" name:"NextTime"`
 }
 
 type Clb struct {
 	// 负载均衡IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClbIp *string `json:"ClbIp,omitnil,omitempty" name:"ClbIp"`
 }
 
@@ -617,7 +585,6 @@ type CmdTemplate struct {
 	CmdList *string `json:"CmdList,omitnil,omitempty" name:"CmdList"`
 
 	// 命令模板类型 1-内置 2-自定义	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -635,27 +602,21 @@ type Command struct {
 	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 会话id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sid *string `json:"Sid,omitnil,omitempty" name:"Sid"`
 
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 设备account
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 设备ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// source ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FromIp *string `json:"FromIp,omitnil,omitempty" name:"FromIp"`
 
 	// 该命令所属会话的会话开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionTime *string `json:"SessionTime,omitnil,omitempty" name:"SessionTime"`
 
 	// 该命令所属会话的会话开始时间
@@ -665,27 +626,21 @@ type Command struct {
 	SessTime *string `json:"SessTime,omitnil,omitempty" name:"SessTime"`
 
 	// 复核时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfirmTime *string `json:"ConfirmTime,omitnil,omitempty" name:"ConfirmTime"`
 
 	// 用户部门id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDepartmentId *string `json:"UserDepartmentId,omitnil,omitempty" name:"UserDepartmentId"`
 
 	// 用户部门name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDepartmentName *string `json:"UserDepartmentName,omitnil,omitempty" name:"UserDepartmentName"`
 
 	// 设备部门id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceDepartmentId *string `json:"DeviceDepartmentId,omitnil,omitempty" name:"DeviceDepartmentId"`
 
 	// 设备部门name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitnil,omitempty" name:"DeviceDepartmentName"`
 
 	// 会话大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 }
 
@@ -1486,7 +1441,6 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateResourceResponseParams struct {
 	// 实例Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2259,21 +2213,17 @@ type Department struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 部门管理员账号ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Managers []*string `json:"Managers,omitnil,omitempty" name:"Managers"`
 
 	// 管理员用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagerUsers []*DepartmentManagerUser `json:"ManagerUsers,omitnil,omitempty" name:"ManagerUsers"`
 }
 
 type DepartmentManagerUser struct {
 	// 管理员Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagerId *string `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 管理员姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagerName *string `json:"ManagerName,omitnil,omitempty" name:"ManagerName"`
 }
 
@@ -2640,7 +2590,6 @@ type DescribeChangePwdTaskDetailResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*ChangePwdTaskDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2719,11 +2668,9 @@ func (r *DescribeChangePwdTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeChangePwdTaskResponseParams struct {
 	// 任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*ChangePwdTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 任务总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3197,7 +3144,7 @@ type DescribeDevicesRequestParams struct {
 	// 地域码集合
 	ApCodeSet []*string `json:"ApCodeSet,omitnil,omitempty" name:"ApCodeSet"`
 
-	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer, 5 - TDSQL MySQL, 6 - TDSQL-C MySQL, 7 - MariaDB, 8 - PostgreSQL, 9 - MongoDB副本集群, 10 - MongoDB分片集群, 11 - Redis
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 分页偏移位置，默认值为0
@@ -3212,7 +3159,7 @@ type DescribeDevicesRequestParams struct {
 	// 过滤条件，资产绑定的堡垒机服务ID集合
 	ResourceIdSet []*string `json:"ResourceIdSet,omitnil,omitempty" name:"ResourceIdSet"`
 
-	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// 可提供按照多种类型过滤, 取值范围与Kind一致
 	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
 
 	// 资产是否包含托管账号。1，包含；0，不包含
@@ -3244,7 +3191,7 @@ type DescribeDevicesRequest struct {
 	// 地域码集合
 	ApCodeSet []*string `json:"ApCodeSet,omitnil,omitempty" name:"ApCodeSet"`
 
-	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer, 5 - TDSQL MySQL, 6 - TDSQL-C MySQL, 7 - MariaDB, 8 - PostgreSQL, 9 - MongoDB副本集群, 10 - MongoDB分片集群, 11 - Redis
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 分页偏移位置，默认值为0
@@ -3259,7 +3206,7 @@ type DescribeDevicesRequest struct {
 	// 过滤条件，资产绑定的堡垒机服务ID集合
 	ResourceIdSet []*string `json:"ResourceIdSet,omitnil,omitempty" name:"ResourceIdSet"`
 
-	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// 可提供按照多种类型过滤, 取值范围与Kind一致
 	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
 
 	// 资产是否包含托管账号。1，包含；0，不包含
@@ -3708,7 +3655,6 @@ type DescribeResourcesResponseParams struct {
 	ResourceSet []*Resource `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
 
 	// 堡垒机资源数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4087,31 +4033,24 @@ type Device struct {
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 堡垒机服务信息，注意没有绑定服务时为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 资产所属部门
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 数据库资产的多节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpPortSet []*string `json:"IpPortSet,omitnil,omitempty" name:"IpPortSet"`
 
 	// 网络域Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 网络域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 是否启用SSL，仅支持Redis资产。0：禁用 1：启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableSSL *int64 `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
 
 	// 已上传的SSL证书名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
 }
 
@@ -4144,27 +4083,21 @@ type Domain struct {
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 堡垒机id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// ip，网段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteIpSet []*string `json:"WhiteIpSet,omitnil,omitempty" name:"WhiteIpSet"`
 
 	// 是否启用  默认 1启用 0禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 状态 0-已断开  1-已连接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 网络域创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 是否资源默认网络域 1-资源默认网络域 0-用户添加网络域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *uint64 `json:"Default,omitnil,omitempty" name:"Default"`
 }
 
@@ -4215,11 +4148,9 @@ type Group struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 所属部门信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
@@ -4258,7 +4189,6 @@ func (r *ImportExternalDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ImportExternalDeviceResponseParams struct {
 	// 资产ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5656,31 +5586,24 @@ type Resource struct {
 	PackageNode *uint64 `json:"PackageNode,omitnil,omitempty" name:"PackageNode"`
 
 	// 日志投递规格信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogDeliveryArgs *string `json:"LogDeliveryArgs,omitnil,omitempty" name:"LogDeliveryArgs"`
 
 	// 堡垒机资源LB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClbSet []*Clb `json:"ClbSet,omitnil,omitempty" name:"ClbSet"`
 
 	// 网络域个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainCount *int64 `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
 
 	// 已使用网络域个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedDomainCount *uint64 `json:"UsedDomainCount,omitnil,omitempty" name:"UsedDomainCount"`
 
 	// 0 非试用版，1 试用版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 
 	// cdc集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 
 	// 日志投递规格信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogDelivery *string `json:"LogDelivery,omitnil,omitempty" name:"LogDelivery"`
 
 	// 部署模式
@@ -6123,15 +6046,12 @@ type SearchCommandResult struct {
 	TimeOffset *uint64 `json:"TimeOffset,omitnil,omitempty" name:"TimeOffset"`
 
 	// 账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// source ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FromIp *string `json:"FromIp,omitnil,omitempty" name:"FromIp"`
 
 	// 该命令所属会话的会话开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionTime *string `json:"SessionTime,omitnil,omitempty" name:"SessionTime"`
 
 	// 该命令所属会话的会话开始时间（废弃，使用SessionTime）
@@ -6141,27 +6061,21 @@ type SearchCommandResult struct {
 	SessTime *string `json:"SessTime,omitnil,omitempty" name:"SessTime"`
 
 	// 复核时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfirmTime *string `json:"ConfirmTime,omitnil,omitempty" name:"ConfirmTime"`
 
 	// 部门id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDepartmentId *string `json:"UserDepartmentId,omitnil,omitempty" name:"UserDepartmentId"`
 
 	// 用户部门名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDepartmentName *string `json:"UserDepartmentName,omitnil,omitempty" name:"UserDepartmentName"`
 
 	// 设备部门id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceDepartmentId *string `json:"DeviceDepartmentId,omitnil,omitempty" name:"DeviceDepartmentId"`
 
 	// 设备部门名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitnil,omitempty" name:"DeviceDepartmentName"`
 
 	// 会话大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 }
 
@@ -6245,7 +6159,6 @@ type SearchFileBySidResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 某会话的文件操作列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchFileBySidResult []*SearchFileBySidResult `json:"SearchFileBySidResult,omitnil,omitempty" name:"SearchFileBySidResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6282,11 +6195,9 @@ type SearchFileBySidResult struct {
 	FileCurr *string `json:"FileCurr,omitnil,omitempty" name:"FileCurr"`
 
 	// method为重命名、移动文件时代表移动后的新位置.其他情况为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileNew *string `json:"FileNew,omitnil,omitempty" name:"FileNew"`
 
 	// method为上传文件、下载文件、删除文件时显示文件大小。其他情况为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 堡垒机拦截情况, 1-已执行，  2-被阻断
@@ -6415,7 +6326,6 @@ type SearchFileResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 文件操作列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Files []*SearchFileResult `json:"Files,omitnil,omitempty" name:"Files"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6865,26 +6775,20 @@ type User struct {
 	ValidateTime *string `json:"ValidateTime,omitnil,omitempty" name:"ValidateTime"`
 
 	// 用户所属部门（用于出参）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 用户所属部门（用于入参）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
 	// 激活状态 0 - 未激活 1 - 激活
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveStatus *uint64 `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
 
 	// 锁定状态 0 - 未锁定 1 - 锁定
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockStatus *uint64 `json:"LockStatus,omitnil,omitempty" name:"LockStatus"`
 
 	// 状态 与Filter中一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 权限版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclVersion *uint64 `json:"AclVersion,omitnil,omitempty" name:"AclVersion"`
 }

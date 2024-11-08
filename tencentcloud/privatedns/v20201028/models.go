@@ -792,6 +792,60 @@ func (r *DeleteEndPointResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteForwardRuleRequestParams struct {
+	// 转发规则ID数组
+	RuleIdSet []*string `json:"RuleIdSet,omitnil,omitempty" name:"RuleIdSet"`
+}
+
+type DeleteForwardRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 转发规则ID数组
+	RuleIdSet []*string `json:"RuleIdSet,omitnil,omitempty" name:"RuleIdSet"`
+}
+
+func (r *DeleteForwardRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteForwardRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteForwardRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteForwardRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteForwardRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteForwardRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteForwardRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteForwardRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeletePrivateDNSAccountRequestParams struct {
 	// 私有域解析账号
 	Account *PrivateDNSAccount `json:"Account,omitnil,omitempty" name:"Account"`
@@ -1367,6 +1421,60 @@ func (r *DescribeEndPointListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEndPointRegionRequestParams struct {
+
+}
+
+type DescribeEndPointRegionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeEndPointRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEndPointRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEndPointRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEndPointRegionResponseParams struct {
+	// 地域数组
+	RegionSet []*RegionInfo `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEndPointRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEndPointRegionResponseParams `json:"Response"`
+}
+
+func (r *DescribeEndPointRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEndPointRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeForwardRuleListRequestParams struct {
 	// 分页偏移量，从0开始
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -1437,6 +1545,63 @@ func (r *DescribeForwardRuleListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeForwardRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeForwardRuleRequestParams struct {
+	// 转发规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type DescribeForwardRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 转发规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *DescribeForwardRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeForwardRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeForwardRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeForwardRuleResponseParams struct {
+	// 转发规则详情
+	ForwardRule *ForwardRule `json:"ForwardRule,omitnil,omitempty" name:"ForwardRule"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeForwardRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeForwardRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeForwardRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeForwardRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2005,6 +2170,74 @@ type MetricData struct {
 }
 
 // Predefined struct for user
+type ModifyForwardRuleRequestParams struct {
+	// 转发规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+}
+
+type ModifyForwardRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 转发规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+}
+
+func (r *ModifyForwardRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyForwardRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "RuleName")
+	delete(f, "EndPointId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyForwardRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyForwardRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyForwardRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyForwardRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyForwardRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyForwardRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPrivateZoneRecordRequestParams struct {
 	// 私有域ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -2520,6 +2753,26 @@ func (r *QueryAsyncBindVpcStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryAsyncBindVpcStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegionInfo struct {
+	// 地域编码
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 地域中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CnName *string `json:"CnName,omitnil,omitempty" name:"CnName"`
+
+	// 地域英文名
+	EnName *string `json:"EnName,omitnil,omitempty" name:"EnName"`
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 可用区数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableZoneNum *uint64 `json:"AvailableZoneNum,omitnil,omitempty" name:"AvailableZoneNum"`
 }
 
 // Predefined struct for user

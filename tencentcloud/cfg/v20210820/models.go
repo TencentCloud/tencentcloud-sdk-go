@@ -1805,6 +1805,9 @@ type TaskGroupAction struct {
 	// 动作运行时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionExecuteTime *int64 `json:"TaskGroupActionExecuteTime,omitnil,omitempty" name:"TaskGroupActionExecuteTime"`
+
+	// 动作开始执行时间
+	TaskGroupActionStartTime *string `json:"TaskGroupActionStartTime,omitnil,omitempty" name:"TaskGroupActionStartTime"`
 }
 
 type TaskGroupActionConfig struct {

@@ -1864,7 +1864,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
-	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo" target="_blank">FlowApproverInfo结构体</a>。
+	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。
 	// 
 	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
@@ -1988,7 +1988,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
-	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo" target="_blank">FlowApproverInfo结构体</a>。
+	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。
 	// 
 	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
@@ -6175,7 +6175,8 @@ type Component struct {
 	// 
 	// * 个人方
 	// <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
-	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li></ul>
+	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
+	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li></ul>
 	//  
 	// 注：` 表单域的控件不能作为印章和签名控件`
 	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
@@ -10504,7 +10505,7 @@ type FlowInfo struct {
 	// [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 合同流程的参与方列表，最多可支持50个参与方
+	// 合同流程的参与方列表，最多可支持50个参与方。对应不同签署人的传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)
 	// 
 	// 注:  
 	// <font color="red" > <b> 在发起流程时，需要保证 FlowApprovers中的顺序与模板定义顺序一致，否则会发起失败。

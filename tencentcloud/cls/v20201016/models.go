@@ -3894,6 +3894,14 @@ type DataTransformTaskInfo struct {
 	// 数据加工类型。0：标准加工任务；1：前置加工任务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
+
+	// 保留失败日志状态。 1:不保留，2:保留
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeepFailureLog *uint64 `json:"KeepFailureLog,omitnil,omitempty" name:"KeepFailureLog"`
+
+	// 失败日志的字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
 }
 
 // Predefined struct for user
@@ -7541,11 +7549,21 @@ func (r *DescribeShipperTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeShippersRequestParams struct {
-	// - shipperName：按照【投递规则名称】进行过滤。类型：String。必选：否
-	// - shipperId：按照【投递规则ID】进行过滤。类型：String。必选：否
-	// - topicId：按照【日志主题】进行过滤。类型：String。必选：否
+	// - shipperName：按照【投递规则名称】进行过滤。
+	//     类型：String。
+	//     必选：否
+	// - shipperId：按照【投递规则ID】进行过滤。
+	//     类型：String。
+	//     必选：否
+	// - topicId：按照【日志主题】进行过滤。
+	//     类型：String。
+	//     必选：否
+	// - taskStatus
+	// 按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+	// 类型：String
+	// 必选：否
 	// 
-	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
@@ -7561,11 +7579,21 @@ type DescribeShippersRequestParams struct {
 type DescribeShippersRequest struct {
 	*tchttp.BaseRequest
 	
-	// - shipperName：按照【投递规则名称】进行过滤。类型：String。必选：否
-	// - shipperId：按照【投递规则ID】进行过滤。类型：String。必选：否
-	// - topicId：按照【日志主题】进行过滤。类型：String。必选：否
+	// - shipperName：按照【投递规则名称】进行过滤。
+	//     类型：String。
+	//     必选：否
+	// - shipperId：按照【投递规则ID】进行过滤。
+	//     类型：String。
+	//     必选：否
+	// - topicId：按照【日志主题】进行过滤。
+	//     类型：String。
+	//     必选：否
+	// - taskStatus
+	// 按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+	// 类型：String
+	// 必选：否
 	// 
-	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0

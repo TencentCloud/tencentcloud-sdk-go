@@ -5671,6 +5671,30 @@ type DatabaseMeta struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 总表数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableCount *int64 `json:"TableCount,omitnil,omitempty" name:"TableCount"`
+
+	// 数据源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceList []*GovDatasourceInfo `json:"DatasourceList,omitnil,omitempty" name:"DatasourceList"`
+
+	// 采集任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectJobId *string `json:"CollectJobId,omitnil,omitempty" name:"CollectJobId"`
+
+	// 采集任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectJobName *string `json:"CollectJobName,omitnil,omitempty" name:"CollectJobName"`
+
+	// 引擎id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type DatasourceBaseInfo struct {
@@ -10628,6 +10652,15 @@ type DescribeInstanceLogDetailRequestParams struct {
 	// 数据时间
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
+	// 日志级别，Info/Debug/Warn/Error/All
+	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
+
+	// 文件类型,Log/Code
+	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
+
+	// 统一执行平台执行id
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
 	// 服务器Ip
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
@@ -10639,6 +10672,12 @@ type DescribeInstanceLogDetailRequestParams struct {
 
 	// 每次查询行数
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
+
+	// 查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 }
 
 type DescribeInstanceLogDetailRequest struct {
@@ -10653,6 +10692,15 @@ type DescribeInstanceLogDetailRequest struct {
 	// 数据时间
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
+	// 日志级别，Info/Debug/Warn/Error/All
+	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
+
+	// 文件类型,Log/Code
+	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
+
+	// 统一执行平台执行id
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
 	// 服务器Ip
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
@@ -10664,6 +10712,12 @@ type DescribeInstanceLogDetailRequest struct {
 
 	// 每次查询行数
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
+
+	// 查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 }
 
 func (r *DescribeInstanceLogDetailRequest) ToJsonString() string {
@@ -10681,10 +10735,15 @@ func (r *DescribeInstanceLogDetailRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "TaskId")
 	delete(f, "CurRunDate")
+	delete(f, "LogLevelType")
+	delete(f, "ExecutionFileType")
+	delete(f, "ExecutionJobId")
 	delete(f, "BrokerIp")
 	delete(f, "OriginFileName")
 	delete(f, "StartCount")
 	delete(f, "LineCount")
+	delete(f, "ExtInfo")
+	delete(f, "RequestFromSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogDetailRequest has unknown keys!", "")
 	}
@@ -10728,11 +10787,23 @@ type DescribeInstanceLogFileRequestParams struct {
 	// 实例数据时间
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
 	// 执行机IP
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
 	// 日志文件名
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// 执行平台下发执行id
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// 日志级别，Info/Debug/Warn/Error/All
+	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
+
+	// 文件类型,Log/Code
+	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 }
 
 type DescribeInstanceLogFileRequest struct {
@@ -10747,11 +10818,23 @@ type DescribeInstanceLogFileRequest struct {
 	// 实例数据时间
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
 	// 执行机IP
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
 	// 日志文件名
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// 执行平台下发执行id
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// 日志级别，Info/Debug/Warn/Error/All
+	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
+
+	// 文件类型,Log/Code
+	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 }
 
 func (r *DescribeInstanceLogFileRequest) ToJsonString() string {
@@ -10769,8 +10852,12 @@ func (r *DescribeInstanceLogFileRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "TaskId")
 	delete(f, "CurRunDate")
+	delete(f, "RequestFromSource")
 	delete(f, "BrokerIp")
 	delete(f, "OriginFileName")
+	delete(f, "ExecutionJobId")
+	delete(f, "LogLevelType")
+	delete(f, "ExecutionFileType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogFileRequest has unknown keys!", "")
 	}
@@ -12545,10 +12632,10 @@ type DescribeOrganizationalFunctionsRequestParams struct {
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 过滤条件
-	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序条件
-	OrderFields *OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 }
 
 type DescribeOrganizationalFunctionsRequest struct {
@@ -12572,10 +12659,10 @@ type DescribeOrganizationalFunctionsRequest struct {
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 过滤条件
-	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序条件
-	OrderFields *OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 }
 
 func (r *DescribeOrganizationalFunctionsRequest) ToJsonString() string {
@@ -14630,6 +14717,9 @@ func (r *DescribeRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScheduleInstancesRequestParams struct {
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
 	// 实例列表
 	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
 
@@ -14683,11 +14773,17 @@ type DescribeScheduleInstancesRequestParams struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 项目ID列表，用于多项目实例列表筛选，请注意，该字段传入时 ProjectId 字段也必须传，且传入的 ProjectIds 中的项目ID必须是当前用户有权限的项目ID，否则会由于权限校验失败报错
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeScheduleInstancesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
 	// 实例列表
 	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
 
@@ -14741,6 +14837,9 @@ type DescribeScheduleInstancesRequest struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 项目ID列表，用于多项目实例列表筛选，请注意，该字段传入时 ProjectId 字段也必须传，且传入的 ProjectIds 中的项目ID必须是当前用户有权限的项目ID，否则会由于权限校验失败报错
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 func (r *DescribeScheduleInstancesRequest) ToJsonString() string {
@@ -14755,6 +14854,7 @@ func (r *DescribeScheduleInstancesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "RequestFromSource")
 	delete(f, "Instances")
 	delete(f, "CheckFather")
 	delete(f, "RerunType")
@@ -14773,6 +14873,7 @@ func (r *DescribeScheduleInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "RequestBaseInfo")
 	delete(f, "IsCount")
+	delete(f, "ProjectIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduleInstancesRequest has unknown keys!", "")
 	}
@@ -14781,6 +14882,10 @@ func (r *DescribeScheduleInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScheduleInstancesResponseParams struct {
+	// 请求来源，WEB 前端；CLIENT 客户端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
 	// 实例结果集
 	Data *CollectionInstanceOpsDto `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -19320,6 +19425,9 @@ type GetCosTokenRequestParams struct {
 
 	// 远程地址
 	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
+
+	// 地域
+	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
 }
 
 type GetCosTokenRequest struct {
@@ -19339,6 +19447,9 @@ type GetCosTokenRequest struct {
 
 	// 远程地址
 	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
+
+	// 地域
+	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
 }
 
 func (r *GetCosTokenRequest) ToJsonString() string {
@@ -19358,6 +19469,7 @@ func (r *GetCosTokenRequest) FromJsonString(s string) error {
 	delete(f, "CrossFlag")
 	delete(f, "BucketName")
 	delete(f, "RemotePath")
+	delete(f, "RemoteRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCosTokenRequest has unknown keys!", "")
 	}
@@ -19696,6 +19808,28 @@ func (r *GetOfflineInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GovDatasourceInfo struct {
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据源集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceClusterId *string `json:"DatasourceClusterId,omitnil,omitempty" name:"DatasourceClusterId"`
+
+	// 数据源urn
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceUrn *string `json:"DatasourceUrn,omitnil,omitempty" name:"DatasourceUrn"`
+
+	// 数据源环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceEnv *string `json:"DatasourceEnv,omitnil,omitempty" name:"DatasourceEnv"`
+}
+
 type InstanceApiOpsRequest struct {
 	// 单个查询条件
 	Instance *InstanceOpsDto `json:"Instance,omitnil,omitempty" name:"Instance"`
@@ -19789,6 +19923,9 @@ type InstanceApiOpsRequest struct {
 
 	// 资源组id,多个资源组id用英文逗号分隔
 	ExecutorGroupIdList []*string `json:"ExecutorGroupIdList,omitnil,omitempty" name:"ExecutorGroupIdList"`
+
+	// true 只过滤重跑过的实例，false 忽略此过滤条件，结果集过滤条件中不包括是否重跑
+	OnlyRerun *bool `json:"OnlyRerun,omitnil,omitempty" name:"OnlyRerun"`
 }
 
 type InstanceCondition struct {
@@ -19853,6 +19990,18 @@ type InstanceLifeCycleOpsDto struct {
 	// 实例状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// 调度运行方式, 0: 周期调度, 1: 空跑调度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
+
+	// 统一执行平台，下发执行Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// 实例运行类型: 0: 普通运行, 1: 空跑运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRunType *uint64 `json:"InstanceRunType,omitnil,omitempty" name:"InstanceRunType"`
 }
 
 type InstanceLifeDetailDto struct {
@@ -19979,6 +20128,10 @@ type InstanceLogInfo struct {
 	// 扩展属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtensionInfo []*AttributeItemDTO `json:"ExtensionInfo,omitnil,omitempty" name:"ExtensionInfo"`
+
+	// 统一执行平台，下发执行Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 }
 
 type InstanceLogInfoOpsDto struct {
@@ -20005,6 +20158,18 @@ type InstanceLogInfoOpsDto struct {
 	// 日志行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
+
+	// 统一执行平台日志分页查询参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 日志分页查询，是否最后一页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEnd *bool `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
 type InstanceLogList struct {
@@ -20315,6 +20480,14 @@ type InstanceOpsDto struct {
 	// 循环依赖关联的实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CirculateInstanceList []*InstanceOpsDto `json:"CirculateInstanceList,omitnil,omitempty" name:"CirculateInstanceList"`
+
+	// 并发策略, 0: 等待并发, 1: kill自身
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConcurrentStrategy *uint64 `json:"ConcurrentStrategy,omitnil,omitempty" name:"ConcurrentStrategy"`
+
+	// 调度运行方式, 0: 周期调度, 1: 空跑调度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -24183,6 +24356,10 @@ type OrganizationalFunction struct {
 	// 数据库环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 函数资源文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionResourceFileType *string `json:"FunctionResourceFileType,omitnil,omitempty" name:"FunctionResourceFileType"`
 }
 
 type Pair struct {
@@ -24377,6 +24554,22 @@ type ProjectUserRole struct {
 	// 是否项目管理员
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsProjectAdmin *bool `json:"IsProjectAdmin,omitnil,omitempty" name:"IsProjectAdmin"`
+
+	// 手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
+
+	// 邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 主账号id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 租户iD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type ProjectUsersPage struct {
@@ -24829,6 +25022,19 @@ type RenewWorkflowSchedulerInfoDsRequestParams struct {
 
 	// CrontabExpression
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
+
+	// 0：不修改
+	// 1：将任务的上游依赖配置改为默认值 
+	ModifyCycleValue *string `json:"ModifyCycleValue,omitnil,omitempty" name:"ModifyCycleValue"`
+
+	// 是否开启日历调度 1 开启 0关闭
+	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
+
+	// 日历名称
+	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
+
+	// 日历id
+	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 }
 
 type RenewWorkflowSchedulerInfoDsRequest struct {
@@ -24878,6 +25084,19 @@ type RenewWorkflowSchedulerInfoDsRequest struct {
 
 	// CrontabExpression
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
+
+	// 0：不修改
+	// 1：将任务的上游依赖配置改为默认值 
+	ModifyCycleValue *string `json:"ModifyCycleValue,omitnil,omitempty" name:"ModifyCycleValue"`
+
+	// 是否开启日历调度 1 开启 0关闭
+	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
+
+	// 日历名称
+	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
+
+	// 日历id
+	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 }
 
 func (r *RenewWorkflowSchedulerInfoDsRequest) ToJsonString() string {
@@ -24907,6 +25126,10 @@ func (r *RenewWorkflowSchedulerInfoDsRequest) FromJsonString(s string) error {
 	delete(f, "InstanceInitStrategy")
 	delete(f, "DependencyWorkflow")
 	delete(f, "CrontabExpression")
+	delete(f, "ModifyCycleValue")
+	delete(f, "CalendarOpen")
+	delete(f, "CalendarName")
+	delete(f, "CalendarId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewWorkflowSchedulerInfoDsRequest has unknown keys!", "")
 	}
@@ -25391,6 +25614,14 @@ type Rule struct {
 	// 目标模式名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetSchemaName *string `json:"TargetSchemaName,omitnil,omitempty" name:"TargetSchemaName"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 }
 
 type RuleConfig struct {
@@ -25550,6 +25781,10 @@ type RuleExecResult struct {
 	// 1/2/3:低/中/高
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerCondition *string `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 type RuleExecResultDetail struct {
@@ -25857,6 +26092,24 @@ type RuleGroupExecResult struct {
 	// 数据库所属环境，0.未定义，1.生产 2.开发
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DsEnvType *string `json:"DsEnvType,omitnil,omitempty" name:"DsEnvType"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 实例运行的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 实例运行的结束时间
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type RuleGroupExecResultPage struct {
@@ -28798,6 +29051,26 @@ type TableMeta struct {
 	// 数据库模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 关联数据眼信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectDatasourceList []*GovDatasourceInfo `json:"CollectDatasourceList,omitnil,omitempty" name:"CollectDatasourceList"`
+
+	// 采集任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectJobId *string `json:"CollectJobId,omitnil,omitempty" name:"CollectJobId"`
+
+	// 采集任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectJobName *string `json:"CollectJobName,omitnil,omitempty" name:"CollectJobName"`
+
+	// 数据源urn
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Urn *string `json:"Urn,omitnil,omitempty" name:"Urn"`
+
+	// 是否有修改业务权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasBizPermission *bool `json:"HasBizPermission,omitnil,omitempty" name:"HasBizPermission"`
 }
 
 type TableMetaProperty struct {
@@ -30778,6 +31051,18 @@ type WorkflowScheduleDtoDs struct {
 	// 工作流最近提交时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestSubmitTime *string `json:"LatestSubmitTime,omitnil,omitempty" name:"LatestSubmitTime"`
+
+	// 日历调度是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
+
+	// 日历调度名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
+
+	// 日历调度id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 }
 
 type WorkflowSchedulerOpsDto struct {

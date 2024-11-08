@@ -5667,48 +5667,7 @@ func (r *DescribeMqMsgTraceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMqMsgTraceResponseParams struct {
-	// [
-	//     {
-	//         "Stage": "produce",
-	//         "Data": {
-	//             "ProducerName": "生产者名",
-	//             "ProduceTime": "消息生产时间",
-	//             "ProducerAddr": "客户端地址",
-	//             "Duration": "耗时ms",
-	//             "Status": "状态（0：成功，1：失败）"
-	//         }
-	//     },
-	//     {
-	//         "Stage": "persist",
-	//         "Data": {
-	//             "PersistTime": "存储时间",
-	//             "Duration": "耗时ms",
-	//             "Status": "状态（0：成功，1：失败）"
-	//         }
-	//     },
-	//     {
-	//         "Stage": "consume",
-	//         "Data": {
-	//             "TotalCount": 2,
-	//             "RocketMqConsumeLogs": [
-	//                 {
-	//                     "ConsumerGroup": "消费组",
-	//                     "ConsumeModel": "消费模式",
-	//                     "ConsumerAddr": "消费者地址",
-	//                     "ConsumeTime": "推送时间",
-	//                     "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
-	//                 },
-	//                 {
-	//                     "ConsumerGroup": "消费组",
-	//                     "ConsumeModel": "消费模式",
-	//                     "ConsumerAddr": "消费者地址",
-	//                     "ConsumeTime": "推送时间",
-	//                     "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
-	//                 }
-	//             ]    
-	//         }
-	//     }
-	// ]
+	// 消息内容
 	Result []*TraceResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 消息轨迹页展示的topic名称
@@ -10695,6 +10654,9 @@ type InstanceNodeDistribution struct {
 
 	// 节点数
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// 有调度任务且没有切回的可用区，此标识为true
+	NodePermWipeFlag *bool `json:"NodePermWipeFlag,omitnil,omitempty" name:"NodePermWipeFlag"`
 }
 
 type InternalTenant struct {
@@ -12892,6 +12854,21 @@ type PulsarNetworkAccessPointInfo struct {
 	// 接入点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointsType *string `json:"AccessPointsType,omitnil,omitempty" name:"AccessPointsType"`
+
+	// 带宽，目前只有公网会有这个值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityPolicy []*SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+
+	// 是否是标准的接入点 true是标准的 false不是标准的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardAccessPoint *bool `json:"StandardAccessPoint,omitnil,omitempty" name:"StandardAccessPoint"`
+
+	// 可用区信息
+	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 }
 
 type PulsarProClusterInfo struct {
@@ -12931,6 +12908,15 @@ type PulsarProClusterInfo struct {
 	// 实例到期时间戳，毫秒级精度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 是否开启自动创建主题
+	// true就是开启了，false是关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoCreateTopicStatus *bool `json:"AutoCreateTopicStatus,omitnil,omitempty" name:"AutoCreateTopicStatus"`
+
+	// 自动创建主题的默认分区数，如果没开启就是0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultPartitionNumber *int64 `json:"DefaultPartitionNumber,omitnil,omitempty" name:"DefaultPartitionNumber"`
 }
 
 type PulsarProClusterSpecInfo struct {
@@ -14692,6 +14678,21 @@ type Role struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SecurityPolicy struct {
+	// ip或者网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Route *string `json:"Route,omitnil,omitempty" name:"Route"`
+
+	// 策略 true就是允许，白名单或者 false 拒绝 黑名单
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policy *bool `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user

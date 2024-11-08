@@ -827,7 +827,6 @@ type DescribeSecretResponseParams struct {
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitnil,omitempty" name:"AssociatedInstanceIDs"`
 
 	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
@@ -1812,7 +1811,6 @@ type SecretMetadata struct {
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitnil,omitempty" name:"AssociatedInstanceIDs"`
 
 	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。

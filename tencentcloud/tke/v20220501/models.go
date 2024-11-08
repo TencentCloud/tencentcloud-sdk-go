@@ -180,6 +180,9 @@ type CreateNativeNodePoolParam struct {
 
 	// 节点池ssh公钥id数组
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// 节点池类型
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 // Predefined struct for user
@@ -1551,6 +1554,10 @@ type NativeNodePoolInfo struct {
 	// 原生节点池数据盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// 原生节点机型 Native, NativeCVM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type NodeCountSummary struct {

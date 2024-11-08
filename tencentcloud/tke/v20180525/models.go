@@ -20365,11 +20365,14 @@ type UpdateAddonRequestParams struct {
 	// addon名称
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 
-	// addon版本（不传默认不更新）
+	// addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传））
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
+
+	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
+	UpdateStrategy *string `json:"UpdateStrategy,omitnil,omitempty" name:"UpdateStrategy"`
 }
 
 type UpdateAddonRequest struct {
@@ -20381,11 +20384,14 @@ type UpdateAddonRequest struct {
 	// addon名称
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 
-	// addon版本（不传默认不更新）
+	// addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传））
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
+
+	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
+	UpdateStrategy *string `json:"UpdateStrategy,omitnil,omitempty" name:"UpdateStrategy"`
 }
 
 func (r *UpdateAddonRequest) ToJsonString() string {
@@ -20404,6 +20410,7 @@ func (r *UpdateAddonRequest) FromJsonString(s string) error {
 	delete(f, "AddonName")
 	delete(f, "AddonVersion")
 	delete(f, "RawValues")
+	delete(f, "UpdateStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAddonRequest has unknown keys!", "")
 	}

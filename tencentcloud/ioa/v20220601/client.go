@@ -307,8 +307,6 @@ func NewDescribeRootAccountGroupResponse() (response *DescribeRootAccountGroupRe
 // DescribeRootAccountGroup
 // 查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
 //
-// 私有化调用path为：capi/Assets/DescribeRootAccountGroup
-//
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -322,8 +320,6 @@ func (c *Client) DescribeRootAccountGroup(request *DescribeRootAccountGroupReque
 
 // DescribeRootAccountGroup
 // 查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
-//
-// 私有化调用path为：capi/Assets/DescribeRootAccountGroup
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"

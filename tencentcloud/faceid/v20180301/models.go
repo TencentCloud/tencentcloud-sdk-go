@@ -35,26 +35,28 @@ type AttackRiskDetail struct {
 
 // Predefined struct for user
 type BankCard2EVerificationRequestParams struct {
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 银行卡
+	// 银行卡。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 敏感数据加密信息。对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type BankCard2EVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 银行卡
+	// 银行卡。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 敏感数据加密信息。对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -81,27 +83,28 @@ func (r *BankCard2EVerificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BankCard2EVerificationResponseParams struct {
-	// 认证结果码
-	// 计费结果码：
-	//   '0': '认证通过'
-	//   '-1': '认证未通过'
-	//  '-4': '持卡人信息有误'
-	//   '-5': '未开通无卡支付'
-	//   '-6': '此卡被没收'
-	//   '-7': '无效卡号'
-	//   '-8': '此卡无对应发卡行'
-	//   '-9': '该卡未初始化或睡眠卡'
-	//   '-10': '作弊卡、吞卡'
-	//   '-11': '此卡已挂失'
-	//   '-12': '该卡已过期'
-	//   '-13': '受限制的卡'
-	//   '-14': '密码错误次数超限'
-	//   '-15': '发卡行不支持此交易'
-	// 不计费结果码：
-	//   '-2': '姓名校验不通过'
-	//   '-3': '银行卡号码有误'
-	//   '-16': '验证中心服务繁忙'
-	//   '-17': '验证次数超限，请次日重试'
+	// 认证结果码。
+	// - 计费结果码：
+	//   '0': '认证通过'。
+	//   '-1': '认证未通过'。
+	//  '-4': '持卡人信息有误'。
+	//   '-5': '未开通无卡支付'。
+	//   '-6': '此卡被没收'。
+	//   '-7': '无效卡号'。
+	//   '-8': '此卡无对应发卡行'。
+	//   '-9': '该卡未初始化或睡眠卡'。
+	//   '-10': '作弊卡、吞卡'。
+	//   '-11': '此卡已挂失'。
+	//   '-12': '该卡已过期'。
+	//   '-13': '受限制的卡'。
+	//   '-14': '密码错误次数超限'。
+	//   '-15': '发卡行不支持此交易'。
+	// 
+	// - 不计费结果码：
+	//   '-2': '姓名校验不通过'。
+	//   '-3': '银行卡号码有误'。
+	//   '-16': '验证中心服务繁忙'。
+	//   '-17': '验证次数超限，请次日重试'。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -129,46 +132,52 @@ func (r *BankCard2EVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BankCard4EVerificationRequestParams struct {
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 银行卡
+	// 银行卡。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 手机号码
+	// 手机号码。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
+	// 开户证件号。
+	// - 与CertType参数的证件类型一致，如：身份证，则传入身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-	// 目前默认为0：身份证，其他证件类型暂不支持。
+	// 证件类型。
+	// - 请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
+	// - 目前默认为0：身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type BankCard4EVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 银行卡
+	// 银行卡。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 手机号码
+	// 手机号码。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
+	// 开户证件号。
+	// - 与CertType参数的证件类型一致，如：身份证，则传入身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-	// 目前默认为0：身份证，其他证件类型暂不支持。
+	// 证件类型。
+	// - 请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
+	// - 目前默认为0：身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -198,30 +207,31 @@ func (r *BankCard4EVerificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BankCard4EVerificationResponseParams struct {
-	// 认证结果码
-	// 收费结果码：
-	// '0': '认证通过'
-	// '-1': '认证未通过'
-	// '-6': '持卡人信息有误'
-	// '-7': '未开通无卡支付'
-	// '-8': '此卡被没收'
-	// '-9': '无效卡号'
-	// '-10': '此卡无对应发卡行'
-	// '-11': '该卡未初始化或睡眠卡'
-	// '-12': '作弊卡、吞卡'
-	// '-13': '此卡已挂失'
-	// '-14': '该卡已过期'
-	// '-15': '受限制的卡'
-	// '-16': '密码错误次数超限'
-	// '-17': '发卡行不支持此交易'
-	// 不收费结果码：
-	// '-2': '姓名校验不通过'
-	// '-3': '身份证号码有误'
-	// '-4': '银行卡号码有误'
-	// '-5': '手机号码不合法'
-	// '-18': '验证中心服务繁忙'
-	// '-19': '验证次数超限，请次日重试'
-	// '-20': '该证件号暂不支持核验，当前仅支持二代身份证'
+	// 认证结果码。
+	// - 收费结果码：
+	// '0': '认证通过'。
+	// '-1': '认证未通过'。
+	// '-6': '持卡人信息有误'。
+	// '-7': '未开通无卡支付'。
+	// '-8': '此卡被没收'。
+	// '-9': '无效卡号'。
+	// '-10': '此卡无对应发卡行'。
+	// '-11': '该卡未初始化或睡眠卡'。
+	// '-12': '作弊卡、吞卡'。
+	// '-13': '此卡已挂失'。
+	// '-14': '该卡已过期'。
+	// '-15': '受限制的卡'。
+	// '-16': '密码错误次数超限'。
+	// '-17': '发卡行不支持此交易'。
+	// 
+	// - 不收费结果码：
+	// '-2': '姓名校验不通过'。
+	// '-3': '身份证号码有误'。
+	// '-4': '银行卡号码有误'。
+	// '-5': '手机号码不合法'。
+	// '-18': '验证中心服务繁忙'。
+	// '-19': '验证次数超限，请次日重试'。
+	// '-20': '该证件号暂不支持核验，当前仅支持二代身份证'。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -249,40 +259,46 @@ func (r *BankCard4EVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BankCardVerificationRequestParams struct {
-	// 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
+	// 开户证件号。
+	// - 与CertType参数的证件类型一致，如：身份证，则传入身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 银行卡
+	// 银行卡。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-	// 目前默认：0 身份证，其他证件类型暂不支持。
+	// 证件类型。
+	// - 请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
+	// - 目前默认：0 身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type BankCardVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
+	// 开户证件号。
+	// - 与CertType参数的证件类型一致，如：身份证，则传入身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 银行卡
+	// 银行卡。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-	// 目前默认：0 身份证，其他证件类型暂不支持。
+	// 证件类型。
+	// - 请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
+	// - 目前默认：0 身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -311,29 +327,30 @@ func (r *BankCardVerificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BankCardVerificationResponseParams struct {
-	// 认证结果码
-	// 收费结果码：
-	// '0': '认证通过'
-	// '-1': '认证未通过'
-	// '-5': '持卡人信息有误'
-	// '-6': '未开通无卡支付'
-	// '-7': '此卡被没收'
-	// '-8': '无效卡号'
-	// '-9': '此卡无对应发卡行'
-	// '-10': '该卡未初始化或睡眠卡'
-	// '-11': '作弊卡、吞卡'
-	// '-12': '此卡已挂失'
-	// '-13': '该卡已过期'
-	// '-14': '受限制的卡'
-	// '-15': '密码错误次数超限'
-	// '-16': '发卡行不支持此交易'
-	// 不收费结果码：
-	// '-2': '姓名校验不通过'
-	// '-3': '身份证号码有误'
-	// '-4': '银行卡号码有误'
-	// '-17': '验证中心服务繁忙'
-	// '-18': '验证次数超限，请次日重试'
-	// '-19': '该证件号暂不支持核验，当前仅支持二代身份证'	
+	// 认证结果码。
+	// - 收费结果码：
+	// '0': '认证通过'。
+	// '-1': '认证未通过'。
+	// '-5': '持卡人信息有误'。
+	// '-6': '未开通无卡支付'。
+	// '-7': '此卡被没收'。
+	// '-8': '无效卡号'。
+	// '-9': '此卡无对应发卡行'。
+	// '-10': '该卡未初始化或睡眠卡'。
+	// '-11': '作弊卡、吞卡'。
+	// '-12': '此卡已挂失'。
+	// '-13': '该卡已过期'。
+	// '-14': '受限制的卡'。
+	// '-15': '密码错误次数超限'。
+	// '-16': '发卡行不支持此交易'。
+	// 
+	// - 不收费结果码：
+	// '-2': '姓名校验不通过'。
+	// '-3': '身份证号码有误'。
+	// '-4': '银行卡号码有误'。
+	// '-17': '验证中心服务繁忙'。
+	// '-18': '验证次数超限，请次日重试'。
+	// '-19': '该证件号暂不支持核验，当前仅支持二代身份证'。	
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -398,7 +415,8 @@ type CheckBankCardInformationRequestParams struct {
 	// 银行卡号。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 敏感数据加密信息。对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -408,7 +426,8 @@ type CheckBankCardInformationRequest struct {
 	// 银行卡号。
 	BankCard *string `json:"BankCard,omitnil,omitempty" name:"BankCard"`
 
-	// 敏感数据加密信息。对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -435,22 +454,28 @@ func (r *CheckBankCardInformationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckBankCardInformationResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
+	// - 收费结果码：
 	// 0: 查询成功
 	// -1: 未查到信息
-	// 不收费结果码：
+	// 
+	// - 不收费结果码：
 	// -2：验证中心服务繁忙
 	// -3：银行卡不存在
 	// -4：认证次数超过当日限制，请次日重试
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 业务结果描述
+	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 开户行
+	// 开户行。
 	AccountBank *string `json:"AccountBank,omitnil,omitempty" name:"AccountBank"`
 
-	// 卡性质：1. 借记卡；2. 贷记卡；3. 预付费卡；4. 准贷记卡
+	// 卡性质。
+	// - 取值范围：
+	// 1：借记卡。
+	// 2：贷记卡。
+	// 3：预付费卡。
+	// 4：准贷记卡
 	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -507,11 +532,11 @@ func (r *CheckEidTokenStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckEidTokenStatusResponseParams struct {
-	// 枚举：
-	// init：token未验证
-	// doing: 验证中
-	// finished: 验证完成
-	// timeout: token已超时
+	// 状态。
+	// - init：EidToken未验证。
+	// - doing: EidToken验证中。
+	// - finished: EidToken验证完成。
+	// - timeout: EidToken已超时。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -536,39 +561,42 @@ func (r *CheckEidTokenStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckIdCardInformationRequestParams struct {
-	// 身份证人像面的 Base64 值
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
+	// 身份证人像面的 Base64 值。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经Base64编码后不超过 7M。
+	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// - ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 身份证人像面的 Url 地址
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// - 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 以下可选字段均为bool 类型，默认false：
-	// CopyWarn，复印件告警
-	// BorderCheckWarn，边框和框内遮挡告警
-	// ReshootWarn，翻拍告警
-	// DetectPsWarn，PS检测告警（疑似存在PS痕迹）
-	// TempIdWarn，临时身份证告警
-	// Quality，图片质量告警（评价图片模糊程度）
+	// 配置。
+	// - 以下可选字段均为bool 类型，默认false。
+	// CopyWarn，复印件告警。
+	// BorderCheckWarn，边框和框内遮挡告警。
+	// ReshootWarn，翻拍告警。
+	// DetectPsWarn，PS检测告警（疑似存在PS痕迹）。
+	// TempIdWarn，临时身份证告警。
+	// Quality，图片质量告警（评价图片模糊程度）。
 	// 
-	// SDK 设置方式参考：
-	// Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
-	// API 3.0 Explorer 设置方式参考：
-	// Config = {"CopyWarn":true,"ReshootWarn":true}
+	// - SDK 设置方式参考：
+	// Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})。
+	// 
+	// - API 3.0 Explorer 设置方式参考：
+	// Config = {"CopyWarn":true,"ReshootWarn":true}。
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 是否需要对返回中的敏感信息进行加密。默认false。
-	// 其中敏感信息包括：Response.IdNum、Response.Name
+	// 是否需要对返回中的敏感信息进行加密。
+	// - 默认false。
+	// - 敏感信息包括：Response.IdNum、Response.Name。
 	IsEncrypt *bool `json:"IsEncrypt,omitnil,omitempty" name:"IsEncrypt"`
 
-	// 是否需要对响应体加密
+	// 是否需要对响应体加密。
 	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
 
 	// 是否需要对返回中的敏感信息进行加密,需指定加密算法Algorithm、CBC加密的初始向量、加密后的对称密钥。
@@ -578,39 +606,42 @@ type CheckIdCardInformationRequestParams struct {
 type CheckIdCardInformationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证人像面的 Base64 值
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
+	// 身份证人像面的 Base64 值。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经Base64编码后不超过 7M。
+	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// - ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 身份证人像面的 Url 地址
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// - 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 以下可选字段均为bool 类型，默认false：
-	// CopyWarn，复印件告警
-	// BorderCheckWarn，边框和框内遮挡告警
-	// ReshootWarn，翻拍告警
-	// DetectPsWarn，PS检测告警（疑似存在PS痕迹）
-	// TempIdWarn，临时身份证告警
-	// Quality，图片质量告警（评价图片模糊程度）
+	// 配置。
+	// - 以下可选字段均为bool 类型，默认false。
+	// CopyWarn，复印件告警。
+	// BorderCheckWarn，边框和框内遮挡告警。
+	// ReshootWarn，翻拍告警。
+	// DetectPsWarn，PS检测告警（疑似存在PS痕迹）。
+	// TempIdWarn，临时身份证告警。
+	// Quality，图片质量告警（评价图片模糊程度）。
 	// 
-	// SDK 设置方式参考：
-	// Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
-	// API 3.0 Explorer 设置方式参考：
-	// Config = {"CopyWarn":true,"ReshootWarn":true}
+	// - SDK 设置方式参考：
+	// Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})。
+	// 
+	// - API 3.0 Explorer 设置方式参考：
+	// Config = {"CopyWarn":true,"ReshootWarn":true}。
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 是否需要对返回中的敏感信息进行加密。默认false。
-	// 其中敏感信息包括：Response.IdNum、Response.Name
+	// 是否需要对返回中的敏感信息进行加密。
+	// - 默认false。
+	// - 敏感信息包括：Response.IdNum、Response.Name。
 	IsEncrypt *bool `json:"IsEncrypt,omitnil,omitempty" name:"IsEncrypt"`
 
-	// 是否需要对响应体加密
+	// 是否需要对响应体加密。
 	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
 
 	// 是否需要对返回中的敏感信息进行加密,需指定加密算法Algorithm、CBC加密的初始向量、加密后的对称密钥。
@@ -643,56 +674,64 @@ func (r *CheckIdCardInformationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckIdCardInformationResponseParams struct {
-	// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+	// 相似度。
+	// - 取值范围 [0.00, 100.00]。
+	// - 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
-	// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+	// 业务错误码。
+	// - 成功情况返回Success,。
+	// - 错误情况请参考下方错误码 列表中FailedOperation部分
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 性别
+	// 性别。
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 民族
+	// 民族。
 	Nation *string `json:"Nation,omitnil,omitempty" name:"Nation"`
 
-	// 出生日期
+	// 出生日期。
 	Birth *string `json:"Birth,omitnil,omitempty" name:"Birth"`
 
-	// 地址
+	// 地址。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 身份证号
+	// 身份证号。
 	IdNum *string `json:"IdNum,omitnil,omitempty" name:"IdNum"`
 
 	// 身份证头像照片的base64编码，如果抠图失败会拿整张身份证做比对并返回空。
 	Portrait *string `json:"Portrait,omitnil,omitempty" name:"Portrait"`
 
-	// 告警信息，当在Config中配置了告警信息会停止人像比对，Result返回错误（FailedOperation.OcrWarningOccurred）并有此告警信息，Code 告警码列表和释义：
+	// 告警信息。
+	// - 当在Config中配置了告警信息会停止人像比对，Result返回错误（FailedOperation.OcrWarningOccurred）并有此告警信息。
+	// - Code 告警码列表和释义：
+	// '-9101'：身份证边框不完整告警。
+	// '-9102'：身份证复印件告警。
+	// '-9103'：身份证翻拍告警。
+	// '-9105'：身份证框内遮挡告警。
+	// '-9104'：临时身份证告警。
+	// '-9106'：身份证 PS 告警（疑似存在PS痕迹）。
+	// '-8001'：图片模糊告警。
 	// 
-	// -9101 身份证边框不完整告警，
-	// -9102 身份证复印件告警，
-	// -9103 身份证翻拍告警，
-	// -9105 身份证框内遮挡告警，
-	// -9104 临时身份证告警，
-	// -9106 身份证 PS 告警（疑似存在PS痕迹）。
-	// -8001 图片模糊告警
-	// 多个会 |  隔开如 "-9101|-9106|-9104"
+	// - 多个会用“|” 隔开，如 "-9101|-9106|-9104"。
 	Warnings *string `json:"Warnings,omitnil,omitempty" name:"Warnings"`
 
-	// 图片质量分数，当请求Config中配置图片模糊告警该参数才有意义，取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
+	// 图片质量分数。
+	// - 当请求Config中配置图片模糊告警该参数才有意义。
+	// - 取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
 	Quality *float64 `json:"Quality,omitnil,omitempty" name:"Quality"`
 
 	// 敏感数据加密信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 加密后的数据
+	// 加密后的数据。
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -717,38 +756,44 @@ func (r *CheckIdCardInformationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckIdNameDateRequestParams struct {
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 身份证有效期开始时间，格式：YYYYMMDD。如：20210701
+	// 身份证有效期开始时间。
+	// - 格式：YYYYMMDD，如：20210701。
 	ValidityBegin *string `json:"ValidityBegin,omitnil,omitempty" name:"ValidityBegin"`
 
-	// 身份证有效期到期时间，格式：YYYYMMDD，长期用“00000000”代替；如：20210701
+	// 身份证有效期到期时间。
+	// 格式：YYYYMMDD，长期用“00000000”代替，如：20210701。
 	ValidityEnd *string `json:"ValidityEnd,omitnil,omitempty" name:"ValidityEnd"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type CheckIdNameDateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 身份证有效期开始时间，格式：YYYYMMDD。如：20210701
+	// 身份证有效期开始时间。
+	// - 格式：YYYYMMDD，如：20210701。
 	ValidityBegin *string `json:"ValidityBegin,omitnil,omitempty" name:"ValidityBegin"`
 
-	// 身份证有效期到期时间，格式：YYYYMMDD，长期用“00000000”代替；如：20210701
+	// 身份证有效期到期时间。
+	// 格式：YYYYMMDD，长期用“00000000”代替，如：20210701。
 	ValidityEnd *string `json:"ValidityEnd,omitnil,omitempty" name:"ValidityEnd"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -778,17 +823,19 @@ func (r *CheckIdNameDateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckIdNameDateResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 一致
-	// -1: 不一致
-	// 不收费结果码：
-	// -2: 非法身份证号（长度、校验位等不正确）
-	// -3: 非法姓名（长度、格式等不正确）
-	// -4: 非法有效期（长度、格式等不正确）
-	// -5: 身份信息无效
-	// -6: 证件库服务异常
-	// -7: 证件库中无此身份证记录
-	// -8: 认证次数超过当日限制，请次日重试
+	// 
+	// - 收费结果码：
+	// 0: 一致。
+	// -1: 不一致。
+	// 
+	// - 不收费结果码：
+	// -2: 非法身份证号（长度、校验位等不正确）。
+	// -3: 非法姓名（长度、格式等不正确）。
+	// -4: 非法有效期（长度、格式等不正确）。
+	// -5: 身份信息无效。
+	// -6: 证件库服务异常。
+	// -7: 证件库中无此身份证记录。
+	// -8: 认证次数超过当日限制，请次日重试。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -816,26 +863,28 @@ func (r *CheckIdNameDateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckPhoneAndNameRequestParams struct {
-	// ⼿机号
+	// ⼿机号。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 敏感数据加密信息。对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type CheckPhoneAndNameRequest struct {
 	*tchttp.BaseRequest
 	
-	// ⼿机号
+	// ⼿机号。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 敏感数据加密信息。对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -863,19 +912,20 @@ func (r *CheckPhoneAndNameRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckPhoneAndNameResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 验证结果一致
-	// 1: 验证结果不一致
-	// 不收费结果码：
-	// -1:查无记录
-	// -2:引擎未知错误
-	// -3:引擎服务异常
-	// -4:姓名校验不通过
-	// -5:手机号码不合法
-	// -6: 认证次数超过当日限制，请次日重试
+	// - 收费结果码：
+	// 0: 验证结果一致。
+	// 1: 验证结果不一致。
+	// 
+	// - 不收费结果码：
+	// -1:查无记录。
+	// -2:引擎未知错误。
+	// -3:引擎服务异常。
+	// -4:姓名校验不通过。
+	// -5:手机号码不合法。
+	// -6: 认证次数超过当日限制，请次日重试。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 业务结果描述
+	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -901,28 +951,32 @@ func (r *CheckPhoneAndNameResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectAIFakeFacesRequestParams struct {
 	// 传入需要进行检测的带有人脸的图片或视频，使用base64编码的形式。
+	// - 图片的Base64值：
+	// 建议整体图像480x640的分辨率，脸部 大小 100X100 以上。
+	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	// 
-	// 图片的Base64值：
-	// 建议整体图像480x640的分辨率，脸部 大小 100X100 以上；
-	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 视频的Base64值：
+	// - 视频的Base64值：
 	// Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
 	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	// 视频时长最大支持20s，建议时长2～5s。
 	// 建议视频分辨率为480x640，帧率在25fps~30fps之间。
 	FaceInput *string `json:"FaceInput,omitnil,omitempty" name:"FaceInput"`
 
-	// 传入的类型
-	// 1- 传入的是图片类型
-	// 2- 传入的是视频类型
-	// 其他 - 返回错误码InvalidParameter
+	// 传入的类型。
+	// - 取值范围：
+	// 1：传入的是图片类型。
+	// 2：传入的是视频类型。
+	// 其他：返回错误码InvalidParameter。
 	FaceInputType *int64 `json:"FaceInputType,omitnil,omitempty" name:"FaceInputType"`
 
-	// 是否需要对请求信息进行全包体加密； 支持的加密算法:AES-256-CBC、SM4-GCM； 有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 是否需要对请求信息进行全包体加密。
+	// - 支持的加密算法:AES-256-CBC、SM4-GCM。
+	// - 有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 加密后的密文； 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}
+	// 加密后的密文。
+	// - 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}。
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
@@ -930,28 +984,32 @@ type DetectAIFakeFacesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 传入需要进行检测的带有人脸的图片或视频，使用base64编码的形式。
+	// - 图片的Base64值：
+	// 建议整体图像480x640的分辨率，脸部 大小 100X100 以上。
+	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	// 
-	// 图片的Base64值：
-	// 建议整体图像480x640的分辨率，脸部 大小 100X100 以上；
-	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 视频的Base64值：
+	// - 视频的Base64值：
 	// Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
 	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	// 视频时长最大支持20s，建议时长2～5s。
 	// 建议视频分辨率为480x640，帧率在25fps~30fps之间。
 	FaceInput *string `json:"FaceInput,omitnil,omitempty" name:"FaceInput"`
 
-	// 传入的类型
-	// 1- 传入的是图片类型
-	// 2- 传入的是视频类型
-	// 其他 - 返回错误码InvalidParameter
+	// 传入的类型。
+	// - 取值范围：
+	// 1：传入的是图片类型。
+	// 2：传入的是视频类型。
+	// 其他：返回错误码InvalidParameter。
 	FaceInputType *int64 `json:"FaceInputType,omitnil,omitempty" name:"FaceInputType"`
 
-	// 是否需要对请求信息进行全包体加密； 支持的加密算法:AES-256-CBC、SM4-GCM； 有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 是否需要对请求信息进行全包体加密。
+	// - 支持的加密算法:AES-256-CBC、SM4-GCM。
+	// - 有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 加密后的密文； 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}
+	// 加密后的密文。
+	// - 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}。
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
@@ -979,18 +1037,18 @@ func (r *DetectAIFakeFacesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetectAIFakeFacesResponseParams struct {
-	// 检测到的图片是否存在攻击：
-	// Low：无攻击风险
-	// Mid：中度疑似攻击
-	// High：高度疑似攻击
+	// 检测到的图片是否存在攻击。
+	// - Low：无攻击风险。
+	// - Mid：中度疑似攻击。
+	// - High：高度疑似攻击。
 	AttackRiskLevel *string `json:"AttackRiskLevel,omitnil,omitempty" name:"AttackRiskLevel"`
 
-	// 检测到疑似的攻击痕迹列表
-	// 说明：未检测到攻击痕迹时，返回空数组
-	// 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
+	// 检测到疑似的攻击痕迹列表。
+	// - 说明：未检测到攻击痕迹时，返回空数组。
+	// - 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
 	AttackRiskDetailList []*AttackRiskDetail `json:"AttackRiskDetailList,omitnil,omitempty" name:"AttackRiskDetailList"`
 
-	// 额外信息
+	// 额外信息。
 	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1583,14 +1641,14 @@ type ExtraInfo struct {
 
 // Predefined struct for user
 type GetActionSequenceRequestParams struct {
-	// 默认不需要使用
+	// 默认不需要使用。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 }
 
 type GetActionSequenceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 默认不需要使用
+	// 默认不需要使用。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 }
 
@@ -1615,7 +1673,8 @@ func (r *GetActionSequenceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetActionSequenceResponseParams struct {
-	// 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
+	// 动作顺序，例如：2,1 or 1,2。
+	// - 1代表张嘴，2代表闭眼。
 	ActionSequence *string `json:"ActionSequence,omitnil,omitempty" name:"ActionSequence"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2586,7 +2645,7 @@ func (r *GetLiveCodeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetLiveCodeResponseParams struct {
-	// 数字验证码，如：1234
+	// 数字验证码。
 	LiveCode *string `json:"LiveCode,omitnil,omitempty" name:"LiveCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2688,52 +2747,56 @@ func (r *GetWeChatBillDetailsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type IdCardOCRVerificationRequestParams struct {
-	// 身份证号
-	// 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
+	// 身份证号。
+	// - 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。
+	// - 若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 身份证人像面的 Base64 值
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// 身份证人像面的 Base64 值。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经Base64编码后不超过 3M。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 身份证人像面的 Url 地址
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 身份证人像面的 Url 地址。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// - 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type IdCardOCRVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
-	// 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
+	// 身份证号。
+	// - 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。
+	// - 若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 身份证人像面的 Base64 值
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// 身份证人像面的 Base64 值。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经Base64编码后不超过 3M。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 身份证人像面的 Url 地址
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 身份证人像面的 Url 地址。
+	// - 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// - 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// - 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -2763,40 +2826,40 @@ func (r *IdCardOCRVerificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type IdCardOCRVerificationResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 姓名和身份证号一致
-	// -1: 姓名和身份证号不一致
-	// 不收费结果码：
-	// -2: 非法身份证号（长度、校验位等不正确）
-	// -3: 非法姓名（长度、格式等不正确）
-	// -4: 证件库服务异常
-	// -5: 证件库中无此身份证记录
-	// -6: 权威比对系统升级中，请稍后再试
-	// -7: 认证次数超过当日限制
+	// - 收费结果码：
+	// 0: 姓名和身份证号一致。
+	// -1: 姓名和身份证号不一致。
+	// - 不收费结果码：
+	// -2: 非法身份证号（长度、校验位等不正确）。
+	// -3: 非法姓名（长度、格式等不正确）。
+	// -4: 证件库服务异常。
+	// -5: 证件库中无此身份证记录。
+	// -6: 权威比对系统升级中，请稍后再试。
+	// -7: 认证次数超过当日限制。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用于验证的姓名
+	// 用于验证的姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用于验证的身份证号
+	// 用于验证的身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// OCR得到的性别
+	// OCR得到的性别。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// OCR得到的民族
+	// OCR得到的民族。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nation *string `json:"Nation,omitnil,omitempty" name:"Nation"`
 
-	// OCR得到的生日
+	// OCR得到的生日。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Birth *string `json:"Birth,omitnil,omitempty" name:"Birth"`
 
-	// OCR得到的地址
+	// OCR得到的地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
@@ -2822,26 +2885,28 @@ func (r *IdCardOCRVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type IdCardVerificationRequestParams struct {
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type IdCardVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -2869,7 +2934,7 @@ func (r *IdCardVerificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type IdCardVerificationResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
+	// - 收费结果码：
 	// 0: 姓名和身份证号一致
 	// -1: 姓名和身份证号不一致
 	// 不收费结果码：
@@ -3238,94 +3303,98 @@ type IntentionVerifyData struct {
 
 // Predefined struct for user
 type LivenessCompareRequestParams struct {
-	// 活体检测类型，取值：LIP/ACTION/SILENT。
-	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+	// 活体检测类型。
+	// - 取值：LIP/ACTION/SILENT。
+	// - LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
 	LivenessType *string `json:"LivenessType,omitnil,omitempty" name:"LivenessType"`
 
-	// 用于人脸比对的照片的Base64值；
-	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
+	// 用于人脸比对的照片的Base64值。
+	// - Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// - 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 用于人脸比对照片的URL地址；图片下载后经Base64编码后的数据大小不超过3M，仅支持jpg、png格式。
-	// 
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
-	// 
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 用于人脸比对照片的URL地址。
+	// - 图片下载后经Base64编码后的数据大小不超过3M，仅支持jpg、png格式。
+	// - 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
+	// - 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
-	// 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
-	// 静默模式传参：空。
+	// 验证数据。
+	// - 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
+	// - 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
+	// - 静默模式传参：空。
 	ValidateData *string `json:"ValidateData,omitnil,omitempty" name:"ValidateData"`
 
 	// 额外配置，传入JSON字符串。
+	// 
+	// - 格式如下：
 	// {
 	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 	// }
 	Optional *string `json:"Optional,omitnil,omitempty" name:"Optional"`
 
-	// 用于活体检测的视频，视频的Base64值；
-	// Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
+	// 用于活体检测的视频，视频的Base64值。
+	// - Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
+	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// - 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
 	VideoBase64 *string `json:"VideoBase64,omitnil,omitempty" name:"VideoBase64"`
 
-	// 用于活体检测的视频Url 地址。视频下载后经Base64编码后不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
-	// 
-	// 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
-	// 
-	// 建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 用于活体检测的视频Url 地址。
+	// - 视频下载后经Base64编码后不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
+	// - 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
+	// - 建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 }
 
 type LivenessCompareRequest struct {
 	*tchttp.BaseRequest
 	
-	// 活体检测类型，取值：LIP/ACTION/SILENT。
-	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+	// 活体检测类型。
+	// - 取值：LIP/ACTION/SILENT。
+	// - LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
 	LivenessType *string `json:"LivenessType,omitnil,omitempty" name:"LivenessType"`
 
-	// 用于人脸比对的照片的Base64值；
-	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
+	// 用于人脸比对的照片的Base64值。
+	// - Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// - 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 用于人脸比对照片的URL地址；图片下载后经Base64编码后的数据大小不超过3M，仅支持jpg、png格式。
-	// 
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
-	// 
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 用于人脸比对照片的URL地址。
+	// - 图片下载后经Base64编码后的数据大小不超过3M，仅支持jpg、png格式。
+	// - 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageBase64。
+	// - 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
-	// 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
-	// 静默模式传参：空。
+	// 验证数据。
+	// - 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
+	// - 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
+	// - 静默模式传参：空。
 	ValidateData *string `json:"ValidateData,omitnil,omitempty" name:"ValidateData"`
 
 	// 额外配置，传入JSON字符串。
+	// 
+	// - 格式如下：
 	// {
 	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 	// }
 	Optional *string `json:"Optional,omitnil,omitempty" name:"Optional"`
 
-	// 用于活体检测的视频，视频的Base64值；
-	// Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
+	// 用于活体检测的视频，视频的Base64值。
+	// - Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
+	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// - 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
 	VideoBase64 *string `json:"VideoBase64,omitnil,omitempty" name:"VideoBase64"`
 
-	// 用于活体检测的视频Url 地址。视频下载后经Base64编码后不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
-	// 
-	// 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
-	// 
-	// 建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 用于活体检测的视频Url 地址。
+	// - 视频下载后经Base64编码后不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
+	// - 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
+	// - 建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。
+	// - 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 }
 
@@ -3356,20 +3425,26 @@ func (r *LivenessCompareRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type LivenessCompareResponseParams struct {
-	// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+	// 验证通过后的视频最佳截图照片。
+	// - 照片为BASE64编码后的值，jpg格式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameBase64 *string `json:"BestFrameBase64,omitnil,omitempty" name:"BestFrameBase64"`
 
-	// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+	// 相似度。
+	// - 取值范围 [0.00, 100.00]。
+	// - 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
-	// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+	// 业务错误码。
+	// - 成功情况返回Success。
+	// - 错误情况请参考下方错误码，列表中FailedOperation部分。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 最佳截图列表，仅在配置了返回多张最佳截图时返回。
+	// 最佳截图列表。
+	// - 仅在配置了返回多张最佳截图时返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameList []*string `json:"BestFrameList,omitnil,omitempty" name:"BestFrameList"`
 
@@ -3755,20 +3830,22 @@ func (r *MinorsVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileNetworkTimeVerificationRequestParams struct {
-	// 手机号码
+	// 手机号码。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type MobileNetworkTimeVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 手机号码
+	// 手机号码。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -3795,21 +3872,23 @@ func (r *MobileNetworkTimeVerificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type MobileNetworkTimeVerificationResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 成功
-	// -2: 手机号不存在
-	// -3: 手机号存在，但无法查询到在网时长
-	// 不收费结果码：
-	// -1: 手机号格式不正确
-	// -4: 验证中心服务繁忙
-	// -5：认证次数超过当日限制，请次日重试
+	// - 收费结果码：
+	// 0: 成功。
+	// -2: 手机号不存在。
+	// -3: 手机号存在，但无法查询到在网时长。
+	// 
+	// - 不收费结果码：
+	// -1: 手机号格式不正确。
+	// -4: 验证中心服务繁忙。
+	// -5：认证次数超过当日限制，请次日重试。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 在网时长区间。
-	// 格式为(a,b]，表示在网时长在a个月以上，b个月以下。若b为+时表示没有上限。
+	// - 格式为(a,b]，表示在网时长在a个月以上，b个月以下。
+	// - 若b为+时表示没有上限。
 	Range *string `json:"Range,omitnil,omitempty" name:"Range"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3834,20 +3913,22 @@ func (r *MobileNetworkTimeVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileStatusRequestParams struct {
-	// 手机号码
+	// 手机号码。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type MobileStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 手机号码
+	// 手机号码。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -3874,25 +3955,27 @@ func (r *MobileStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type MobileStatusResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0：成功
-	// 不收费结果码：
-	// -1：未查询到结果
-	// -2：手机号格式不正确
-	// -3：验证中心服务繁忙
-	// -4：认证次数超过当日限制，请次日重试
+	// - 收费结果码：
+	// 0：成功。
+	// 
+	// - 不收费结果码：
+	// -1：未查询到结果。
+	// -2：手机号格式不正确。
+	// -3：验证中心服务繁忙。
+	// -4：认证次数超过当日限制，请次日重试。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 状态码：
-	// 0：正常
-	// 1：停机
-	// 2：销号
-	// 3：空号
-	// 4：不在网
-	// 99：未知状态
+	// 状态码。
+	// - 取值范围：
+	// 0：正常。
+	// 1：停机。
+	// 2：销号。
+	// 3：空号。
+	// 4：不在网。
+	// 99：未知状态。
 	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4053,32 +4136,34 @@ func (r *ParseNfcDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCMCCRequestParams struct {
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type PhoneVerificationCMCCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4107,19 +4192,20 @@ func (r *PhoneVerificationCMCCRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PhoneVerificationCMCCResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 认证通过
-	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
-	// 不收费结果码：
-	// -6: 手机号码不合法
-	// -7: 身份证号码有误
-	// -8: 姓名校验不通过
-	// -9: 没有记录
-	// -11: 验证中心服务繁忙
+	// - 收费结果码：
+	// 0: 认证通过。
+	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
+	// 
+	// - 不收费结果码：
+	// -6: 手机号码不合法。
+	// -7: 身份证号码有误。
+	// -8: 姓名校验不通过。
+	// -9: 没有记录。
+	// -11: 验证中心服务繁忙。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 运营商名称。
-	// 取值范围为["移动","联通","电信",""]
+	// - 取值范围为["移动","联通","电信",""]。
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
 	// 业务结果描述。
@@ -4147,32 +4233,34 @@ func (r *PhoneVerificationCMCCResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCTCCRequestParams struct {
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type PhoneVerificationCTCCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4201,19 +4289,20 @@ func (r *PhoneVerificationCTCCRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PhoneVerificationCTCCResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 认证通过
-	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
-	// 不收费结果码：
-	// -6: 手机号码不合法
-	// -7: 身份证号码有误
-	// -8: 姓名校验不通过
-	// -9: 没有记录
-	// -11: 验证中心服务繁忙
+	// - 收费结果码：
+	// 0: 认证通过。
+	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
+	// 
+	// - 不收费结果码：
+	// -6: 手机号码不合法。
+	// -7: 身份证号码有误。
+	// -8: 姓名校验不通过。
+	// -9: 没有记录。
+	// -11: 验证中心服务繁忙。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 运营商名称。
-	// 取值范围为["移动","联通","电信",""]
+	// - 取值范围为["移动","联通","电信",""]。
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
 	// 业务结果描述。
@@ -4241,32 +4330,34 @@ func (r *PhoneVerificationCTCCResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCUCCRequestParams struct {
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type PhoneVerificationCUCCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// 敏感数据加密信息。
+	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4295,19 +4386,20 @@ func (r *PhoneVerificationCUCCRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PhoneVerificationCUCCResponseParams struct {
 	// 认证结果码，收费情况如下。
-	// 收费结果码：
-	// 0: 认证通过
-	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
-	// 不收费结果码：
-	// -6: 手机号码不合法
-	// -7: 身份证号码有误
-	// -8: 姓名校验不通过
-	// -9: 没有记录
-	// -11: 验证中心服务繁忙
+	// - 收费结果码：
+	// 0: 认证通过。
+	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
+	// 
+	// - 不收费结果码：
+	// -6: 手机号码不合法。
+	// -7: 身份证号码有误。
+	// -8: 姓名校验不通过。
+	// -9: 没有记录。
+	// -11: 验证中心服务繁忙。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 运营商名称。
-	// 取值范围为["移动","联通","电信",""]
+	// - 取值范围为["移动","联通","电信",""]。
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
 	// 业务结果描述。
@@ -4335,24 +4427,26 @@ func (r *PhoneVerificationCUCCResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationRequestParams struct {
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 验证模式（详版/简版）。简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
-	// 
-	// 枚举值：0（简版），1（详版）。默认值为0。
+	// 验证模式（详版/简版）。
+	// - 简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
+	// - 枚举值：0（简版）；1（详版）。
+	// - 默认值为0。
 	VerifyMode *string `json:"VerifyMode,omitnil,omitempty" name:"VerifyMode"`
 
-	// 有加密需求的用户，传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+	// 有加密需求的用户，传入kms的CiphertextBlob。关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
 
-	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个。
+	// 在使用加密服务时，填入要被加密的字段。
+	// - 本接口中可填入加密后的IdCard，Name，Phone中的一个或多个。
 	EncryptList []*string `json:"EncryptList,omitnil,omitempty" name:"EncryptList"`
 
 	// 有加密需求的用户，传入CBC加密的初始向量。
@@ -4362,24 +4456,26 @@ type PhoneVerificationRequestParams struct {
 type PhoneVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
+	// 身份证号。
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名
+	// 姓名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号
+	// 手机号。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 验证模式（详版/简版）。简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
-	// 
-	// 枚举值：0（简版），1（详版）。默认值为0。
+	// 验证模式（详版/简版）。
+	// - 简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
+	// - 枚举值：0（简版）；1（详版）。
+	// - 默认值为0。
 	VerifyMode *string `json:"VerifyMode,omitnil,omitempty" name:"VerifyMode"`
 
-	// 有加密需求的用户，传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+	// 有加密需求的用户，传入kms的CiphertextBlob。关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
 
-	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个。
+	// 在使用加密服务时，填入要被加密的字段。
+	// - 本接口中可填入加密后的IdCard，Name，Phone中的一个或多个。
 	EncryptList []*string `json:"EncryptList,omitnil,omitempty" name:"EncryptList"`
 
 	// 有加密需求的用户，传入CBC加密的初始向量。
@@ -4413,33 +4509,35 @@ func (r *PhoneVerificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationResponseParams struct {
-	// 认证结果码:
-	// 收费结果码
-	// 0: 三要素信息一致
-	// -4: 三要素信息不一致
-	// 不收费结果码
-	// -6: 手机号码不合法
-	// -7: 身份证号码有误
-	// -8: 姓名校验不通过
-	// -9: 没有记录
-	// -11: 验证中心服务繁忙
-	// -12: 认证次数超过当日限制，请次日重试
+	// 认证结果码。
+	// - 收费结果码
+	// 0: 三要素信息一致。
+	// -4: 三要素信息不一致。
+	// 
+	// - 不收费结果码
+	// -6: 手机号码不合法。
+	// -7: 身份证号码有误。
+	// -8: 姓名校验不通过。
+	// -9: 没有记录。
+	// -11: 验证中心服务繁忙。
+	// -12: 认证次数超过当日限制，请次日重试。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 运营商名称。
-	// 取值范围为["","移动","电信","联通"]
+	// - 取值范围为["","移动","电信","联通"]
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 业务结果详细信息。（当VerifyMode配置"详版"，且Result为"-4: 三要素信息不一致"时返回）
-	// 枚举值：
-	// PhoneIdCardMismatch：手机号码与姓名一致，与身份证号不一致；
-	// PhoneNameMismatch：手机号码身份证号一致，与姓名不一致；
-	// PhoneNameIdCardMismatch：手机号码与姓名和身份证号均不一致；
-	// NameIdCardMismatch：姓名和身份证号不一致；
-	// OtherMismatch：其他不一致；
+	// 业务结果详细信息。
+	// - 当VerifyMode配置"详版"，且Result为"-4: 三要素信息不一致"时返回。
+	// - 枚举值：
+	// PhoneIdCardMismatch：手机号码与姓名一致，与身份证号不一致。
+	// PhoneNameMismatch：手机号码身份证号一致，与姓名不一致。
+	// PhoneNameIdCardMismatch：手机号码与姓名和身份证号均不一致。
+	// NameIdCardMismatch：姓名和身份证号不一致。
+	// OtherMismatch：其他不一致。
 	ResultDetail *string `json:"ResultDetail,omitnil,omitempty" name:"ResultDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

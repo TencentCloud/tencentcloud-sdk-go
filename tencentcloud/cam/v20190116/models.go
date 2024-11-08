@@ -4420,20 +4420,20 @@ func (r *ListAttachedUserPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListCollaboratorsRequestParams struct {
-	// 分页条数，缺省为20
+	// 分页的条数，默认是20条。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页起始值，缺省为0
+	// 分页的起始值，默认从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListCollaboratorsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页条数，缺省为20
+	// 分页的条数，默认是20条。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页起始值，缺省为0
+	// 分页的起始值，默认从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5314,25 +5314,25 @@ func (r *ListWeChatWorkSubAccountsResponse) FromJsonString(s string) error {
 }
 
 type LoginActionFlag struct {
-	// 手机
+	// 0: 非安全手机校验 1: 安全手机校验。
 	Phone *uint64 `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 硬token
+	// 0: 非硬token校验 1: 硬token校验。
 	Token *uint64 `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 软token
+	// 0: 非软token校验 1: 软token校验
 	Stoken *uint64 `json:"Stoken,omitnil,omitempty" name:"Stoken"`
 
-	// 微信
+	// 0: 非微信校验 1: 微信校验
 	Wechat *uint64 `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 
-	// 自定义
+	// 0: 非自定义校验 1: 自定义校验
 	Custom *uint64 `json:"Custom,omitnil,omitempty" name:"Custom"`
 
-	// 邮箱
+	// 0: 非邮箱校验 1: 邮箱校验
 	Mail *uint64 `json:"Mail,omitnil,omitempty" name:"Mail"`
 
-	// u2f硬件token
+	// 0: 非u2f硬件token 1: u2f硬件token
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	U2FToken *uint64 `json:"U2FToken,omitnil,omitempty" name:"U2FToken"`
 }

@@ -999,39 +999,31 @@ type Paging struct {
 
 type RuleExpression struct {
 	// 规则元数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RuleItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 关系
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
 }
 
 type RuleItem struct {
 	// 字段名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 操作关系（等于、不等于、包含、不包含）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
 
 	// 内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 内容，v2多值版本使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type SimpleRule struct {
 	// 规则表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expressions []*RuleExpression `json:"Expressions,omitnil,omitempty" name:"Expressions"`
 
 	// 表达式间逻辑关系
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
 }
 

@@ -1190,6 +1190,33 @@ func (r *CarInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CardWarnInfo struct {
+	// 证件边缘是否完整
+	// 0：正常
+	// 1：边缘不完整
+	BorderCheck *int64 `json:"BorderCheck,omitnil,omitempty" name:"BorderCheck"`
+
+	// 证件是否被遮挡
+	// 0：正常
+	// 1：有遮挡
+	OcclusionCheck *int64 `json:"OcclusionCheck,omitnil,omitempty" name:"OcclusionCheck"`
+
+	// 是否复印
+	// 0:正常
+	// 1:复印件
+	CopyCheck *int64 `json:"CopyCheck,omitnil,omitempty" name:"CopyCheck"`
+
+	// 是否屏幕翻拍
+	// 0:正常
+	// 1:翻拍
+	ReshootCheck *int64 `json:"ReshootCheck,omitnil,omitempty" name:"ReshootCheck"`
+
+	// 证件是否有PS
+	// 0：正常
+	// 1：有PS
+	PSCheck *int64 `json:"PSCheck,omitnil,omitempty" name:"PSCheck"`
+}
+
 type CellContent struct {
 	// 段落编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1407,6 +1434,24 @@ func (r *ClassifyStoreNameResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ClassifyStoreNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContentInfo struct {
+	// 字段内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 结果置信度
+	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// 字段是否不完整
+	// 0 字段正常
+	// 1 字段不完整
+	IsInComplete *int64 `json:"IsInComplete,omitnil,omitempty" name:"IsInComplete"`
+
+	// 字段反光
+	// 0 字段正常
+	// 1 字段有反光
+	IsReflect *int64 `json:"IsReflect,omitnil,omitempty" name:"IsReflect"`
 }
 
 type Coord struct {
@@ -4065,6 +4110,9 @@ type HmtResidentPermitOCRRequestParams struct {
 	// BACK：无照片的一面（国徽面），
 	// 该参数如果不填或填错，将为您自动判断正反面。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
+
+	// 是否返回头像和位置坐标
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type HmtResidentPermitOCRRequest struct {
@@ -4087,6 +4135,9 @@ type HmtResidentPermitOCRRequest struct {
 	// BACK：无照片的一面（国徽面），
 	// 该参数如果不填或填错，将为您自动判断正反面。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
+
+	// 是否返回头像和位置坐标
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 func (r *HmtResidentPermitOCRRequest) ToJsonString() string {
@@ -4104,6 +4155,7 @@ func (r *HmtResidentPermitOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "CardSide")
+	delete(f, "CropPortrait")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HmtResidentPermitOCRRequest has unknown keys!", "")
 	}
@@ -4143,6 +4195,9 @@ type HmtResidentPermitOCRResponseParams struct {
 	// 通行证号码
 	PassNo *string `json:"PassNo,omitnil,omitempty" name:"PassNo"`
 
+	// 头像和坐标信息
+	PortraitImageInfo *PortraitImageInfo `json:"PortraitImageInfo,omitnil,omitempty" name:"PortraitImageInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4161,6 +4216,41 @@ func (r *HmtResidentPermitOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *HmtResidentPermitOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IDCardInfo struct {
+	// 姓名（人像面）
+	Name *ContentInfo `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 性别（人像面）
+	Sex *ContentInfo `json:"Sex,omitnil,omitempty" name:"Sex"`
+
+	// 民族（人像面）
+	Nation *ContentInfo `json:"Nation,omitnil,omitempty" name:"Nation"`
+
+	// 出生日期（人像面）
+	Birth *ContentInfo `json:"Birth,omitnil,omitempty" name:"Birth"`
+
+	// 地址（人像面）
+	Address *ContentInfo `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 公民身份号码（人像面）
+	IdNum *ContentInfo `json:"IdNum,omitnil,omitempty" name:"IdNum"`
+
+	// 发证机关（国徽面）
+	Authority *ContentInfo `json:"Authority,omitnil,omitempty" name:"Authority"`
+
+	// 证件有效期（国徽面）
+	ValidDate *ContentInfo `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
+
+	// WarnInfos，告警信息
+	WarnInfos *CardWarnInfo `json:"WarnInfos,omitnil,omitempty" name:"WarnInfos"`
+
+	// IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+	CardImage *ContentInfo `json:"CardImage,omitnil,omitempty" name:"CardImage"`
+
+	// Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+	PortraitImage *ContentInfo `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 }
 
 // Predefined struct for user
@@ -4342,6 +4432,24 @@ func (r *IDCardOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IDCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ImageCoordinates struct {
+	// 头像左上角横坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 头像左上角纵坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// 头像框宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 头像框高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 // Predefined struct for user
@@ -6268,6 +6376,9 @@ type PassportOCRRequestParams struct {
 	// 默认填写CN
 	// 支持中国大陆地区护照。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否返回头像和位置坐标
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type PassportOCRRequest struct {
@@ -6284,6 +6395,9 @@ type PassportOCRRequest struct {
 	// 默认填写CN
 	// 支持中国大陆地区护照。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否返回头像和位置坐标
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 func (r *PassportOCRRequest) ToJsonString() string {
@@ -6301,6 +6415,7 @@ func (r *PassportOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "Type")
+	delete(f, "CropPortrait")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PassportOCRRequest has unknown keys!", "")
 	}
@@ -6353,6 +6468,9 @@ type PassportOCRResponseParams struct {
 
 	// 名
 	FirstName *string `json:"FirstName,omitnil,omitempty" name:"FirstName"`
+
+	// 头像和坐标信息
+	PortraitImageInfo *PortraitImageInfo `json:"PortraitImageInfo,omitnil,omitempty" name:"PortraitImageInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6422,6 +6540,47 @@ type PassportRecognizeInfos struct {
 	// 
 	// 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
 	IssuingAuthority *string `json:"IssuingAuthority,omitnil,omitempty" name:"IssuingAuthority"`
+}
+
+type PermanentResidencePermitInfo struct {
+	// 姓名（人像面）
+	Name *ContentInfo `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 性别（人像面）
+	Sex *ContentInfo `json:"Sex,omitnil,omitempty" name:"Sex"`
+
+	// 民族（人像面）
+	Nation *ContentInfo `json:"Nation,omitnil,omitempty" name:"Nation"`
+
+	// 出生日期（人像面）
+	Birth *ContentInfo `json:"Birth,omitnil,omitempty" name:"Birth"`
+
+	// 地址（人像面）
+	Address *ContentInfo `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 公民身份号码（人像面）
+	IdNum *ContentInfo `json:"IdNum,omitnil,omitempty" name:"IdNum"`
+
+	// 发证机关（国徽面）
+	Authority *ContentInfo `json:"Authority,omitnil,omitempty" name:"Authority"`
+
+	// 证件有效期（国徽面）
+	ValidDate *ContentInfo `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
+
+	// WarnInfos，告警信息
+	WarnInfos *CardWarnInfo `json:"WarnInfos,omitnil,omitempty" name:"WarnInfos"`
+
+	// IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+	CardImage *ContentInfo `json:"CardImage,omitnil,omitempty" name:"CardImage"`
+
+	// Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+	PortraitImage *ContentInfo `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
+
+	// 持证人持有号码，外国人永久居留证 返回该字段
+	HolderNum *ContentInfo `json:"HolderNum,omitnil,omitempty" name:"HolderNum"`
+
+	// 国籍，外国人永久居留证 返回该字段
+	Nationality *ContentInfo `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 }
 
 // Predefined struct for user
@@ -6548,6 +6707,16 @@ type Polygon struct {
 
 	// 左下顶点坐标
 	LeftBottom *Coord `json:"LeftBottom,omitnil,omitempty" name:"LeftBottom"`
+}
+
+type PortraitImageInfo struct {
+	// 头像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
+
+	// 头像坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageCoordinates *ImageCoordinates `json:"ImageCoordinates,omitnil,omitempty" name:"ImageCoordinates"`
 }
 
 // Predefined struct for user
@@ -7343,6 +7512,9 @@ type RecognizeForeignPermanentResidentIdCardRequestParams struct {
 	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
 	// 示例值：1
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 是否返回头像和位置坐标
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type RecognizeForeignPermanentResidentIdCardRequest struct {
@@ -7370,6 +7542,9 @@ type RecognizeForeignPermanentResidentIdCardRequest struct {
 	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
 	// 示例值：1
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 是否返回头像和位置坐标
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 func (r *RecognizeForeignPermanentResidentIdCardRequest) ToJsonString() string {
@@ -7388,6 +7563,7 @@ func (r *RecognizeForeignPermanentResidentIdCardRequest) FromJsonString(s string
 	delete(f, "ImageBase64")
 	delete(f, "EnablePdf")
 	delete(f, "PdfPageNumber")
+	delete(f, "CropPortrait")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeForeignPermanentResidentIdCardRequest has unknown keys!", "")
 	}
@@ -7422,6 +7598,9 @@ type RecognizeForeignPermanentResidentIdCardResponseParams struct {
 
 	// 签发机关。
 	IssuedAuthority *string `json:"IssuedAuthority,omitnil,omitempty" name:"IssuedAuthority"`
+
+	// 头像和坐标信息。
+	PortraitImageInfo *PortraitImageInfo `json:"PortraitImageInfo,omitnil,omitempty" name:"PortraitImageInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9206,6 +9385,190 @@ func (r *RecognizeTravelCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeValidIDCardOCRRequestParams struct {
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 0 自动，自动判断输入证件的类型
+	// 1 身份证人像面，指定输入证件类型为二代身份证人像面
+	// 2 身份证国徽面，指定输入证件类型为二代身份证国徽面
+	// 3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面
+	// 4 临时身份证人像面，指定输入证件类型为临时身份证人像面
+	// 5 临时身份证国徽面，指定输入证件类型为临时身份证国徽面
+	// 6 临时身份证人像国徽面，指定输入证件类型为临时身份证人像面或者国徽面
+	// 7 港澳台居住证人像面，指定输入证件类型为港澳台居住证人像面
+	// 8 港澳台居住证国徽面，指定输入证件类型为港澳台居住证国徽面
+	// 9 港澳台居住证人像国徽面，指定输入证件类型为港澳台居住证人像面或者国徽面
+	// 10 外国人永久居留身份证人像面，指定输入证件类型为外国人永久居留证人像面
+	// 11 外国人永久居留身份证国徽面，指定输入证件类型为外国人永久居留证国徽面
+	// 12 外国人永久居留身份证人像国徽面，指定输入证件类型为外国人永久居留证人像或者国徽面
+	// 该参数如果不填，将为您自动判断卡证类型。
+	CardType *int64 `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// 默认值为false，打开返回证件头像切图。
+	EnablePortrait *bool `json:"EnablePortrait,omitnil,omitempty" name:"EnablePortrait"`
+
+	// 默认值为false，打开返回证件主体切图。
+	EnableCropImage *bool `json:"EnableCropImage,omitnil,omitempty" name:"EnableCropImage"`
+
+	// 默认值为false，打开返回边缘完整性判断。
+	EnableBorderCheck *bool `json:"EnableBorderCheck,omitnil,omitempty" name:"EnableBorderCheck"`
+
+	// 默认值为false，打开返回证件是否被遮挡。
+	EnableOcclusionCheck *bool `json:"EnableOcclusionCheck,omitnil,omitempty" name:"EnableOcclusionCheck"`
+
+	// 默认值为false，打开返回证件是否存在复印。
+	EnableCopyCheck *bool `json:"EnableCopyCheck,omitnil,omitempty" name:"EnableCopyCheck"`
+
+	// 默认值为false，打开返回证件是否存在屏幕翻拍。
+	EnableReshootCheck *bool `json:"EnableReshootCheck,omitnil,omitempty" name:"EnableReshootCheck"`
+
+	// 默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效
+	EnablePSCheck *bool `json:"EnablePSCheck,omitnil,omitempty" name:"EnablePSCheck"`
+
+	// 默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
+	EnableWordCheck *bool `json:"EnableWordCheck,omitnil,omitempty" name:"EnableWordCheck"`
+}
+
+type RecognizeValidIDCardOCRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 0 自动，自动判断输入证件的类型
+	// 1 身份证人像面，指定输入证件类型为二代身份证人像面
+	// 2 身份证国徽面，指定输入证件类型为二代身份证国徽面
+	// 3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面
+	// 4 临时身份证人像面，指定输入证件类型为临时身份证人像面
+	// 5 临时身份证国徽面，指定输入证件类型为临时身份证国徽面
+	// 6 临时身份证人像国徽面，指定输入证件类型为临时身份证人像面或者国徽面
+	// 7 港澳台居住证人像面，指定输入证件类型为港澳台居住证人像面
+	// 8 港澳台居住证国徽面，指定输入证件类型为港澳台居住证国徽面
+	// 9 港澳台居住证人像国徽面，指定输入证件类型为港澳台居住证人像面或者国徽面
+	// 10 外国人永久居留身份证人像面，指定输入证件类型为外国人永久居留证人像面
+	// 11 外国人永久居留身份证国徽面，指定输入证件类型为外国人永久居留证国徽面
+	// 12 外国人永久居留身份证人像国徽面，指定输入证件类型为外国人永久居留证人像或者国徽面
+	// 该参数如果不填，将为您自动判断卡证类型。
+	CardType *int64 `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// 默认值为false，打开返回证件头像切图。
+	EnablePortrait *bool `json:"EnablePortrait,omitnil,omitempty" name:"EnablePortrait"`
+
+	// 默认值为false，打开返回证件主体切图。
+	EnableCropImage *bool `json:"EnableCropImage,omitnil,omitempty" name:"EnableCropImage"`
+
+	// 默认值为false，打开返回边缘完整性判断。
+	EnableBorderCheck *bool `json:"EnableBorderCheck,omitnil,omitempty" name:"EnableBorderCheck"`
+
+	// 默认值为false，打开返回证件是否被遮挡。
+	EnableOcclusionCheck *bool `json:"EnableOcclusionCheck,omitnil,omitempty" name:"EnableOcclusionCheck"`
+
+	// 默认值为false，打开返回证件是否存在复印。
+	EnableCopyCheck *bool `json:"EnableCopyCheck,omitnil,omitempty" name:"EnableCopyCheck"`
+
+	// 默认值为false，打开返回证件是否存在屏幕翻拍。
+	EnableReshootCheck *bool `json:"EnableReshootCheck,omitnil,omitempty" name:"EnableReshootCheck"`
+
+	// 默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效
+	EnablePSCheck *bool `json:"EnablePSCheck,omitnil,omitempty" name:"EnablePSCheck"`
+
+	// 默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
+	EnableWordCheck *bool `json:"EnableWordCheck,omitnil,omitempty" name:"EnableWordCheck"`
+}
+
+func (r *RecognizeValidIDCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeValidIDCardOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardType")
+	delete(f, "EnablePortrait")
+	delete(f, "EnableCropImage")
+	delete(f, "EnableBorderCheck")
+	delete(f, "EnableOcclusionCheck")
+	delete(f, "EnableCopyCheck")
+	delete(f, "EnableReshootCheck")
+	delete(f, "EnablePSCheck")
+	delete(f, "EnableWordCheck")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeValidIDCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeValidIDCardOCRResponseParams struct {
+	// 卡证类型
+	// 身份证人像面
+	// 身份证国徽面
+	// 
+	// 临时身份证人像面
+	// 临时身份证人像面
+	// 
+	// 港澳台居住证人像面
+	// 港澳台居住证国徽面
+	// 
+	// 外国人永久居留证人像面
+	// 外国人永久居留证国徽面
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 身份证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IDCardInfo *IDCardInfo `json:"IDCardInfo,omitnil,omitempty" name:"IDCardInfo"`
+
+	// 临时身份证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemporaryIDCardInfo *TemporaryIDCardInfo `json:"TemporaryIDCardInfo,omitnil,omitempty" name:"TemporaryIDCardInfo"`
+
+	// 港澳台居住证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResidencePermitInfo *ResidencePermitInfo `json:"ResidencePermitInfo,omitnil,omitempty" name:"ResidencePermitInfo"`
+
+	// 外国人永久居留证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermanentResidencePermitInfo *PermanentResidencePermitInfo `json:"PermanentResidencePermitInfo,omitnil,omitempty" name:"PermanentResidencePermitInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeValidIDCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeValidIDCardOCRResponseParams `json:"Response"`
+}
+
+func (r *RecognizeValidIDCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeValidIDCardOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ReconstructDocumentConfig struct {
 	// 生成的Markdown中是否嵌入图片
 	EnableInsetImage *bool `json:"EnableInsetImage,omitnil,omitempty" name:"EnableInsetImage"`
@@ -9493,6 +9856,47 @@ func (r *ResidenceBookletOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResidenceBookletOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResidencePermitInfo struct {
+	// 姓名（人像面）
+	Name *ContentInfo `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 性别（人像面）
+	Sex *ContentInfo `json:"Sex,omitnil,omitempty" name:"Sex"`
+
+	// 民族（人像面）
+	Nation *ContentInfo `json:"Nation,omitnil,omitempty" name:"Nation"`
+
+	// 出生日期（人像面）
+	Birth *ContentInfo `json:"Birth,omitnil,omitempty" name:"Birth"`
+
+	// 地址（人像面）
+	Address *ContentInfo `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 公民身份号码（人像面）
+	IdNum *ContentInfo `json:"IdNum,omitnil,omitempty" name:"IdNum"`
+
+	// 发证机关（国徽面）
+	Authority *ContentInfo `json:"Authority,omitnil,omitempty" name:"Authority"`
+
+	// 证件有效期（国徽面）
+	ValidDate *ContentInfo `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
+
+	// WarnInfos，告警信息
+	WarnInfos *CardWarnInfo `json:"WarnInfos,omitnil,omitempty" name:"WarnInfos"`
+
+	// IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+	CardImage *ContentInfo `json:"CardImage,omitnil,omitempty" name:"CardImage"`
+
+	// Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+	PortraitImage *ContentInfo `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
+
+	// 通行证号码，港澳台居住证国徽面 返回该字段
+	PassNum *ContentInfo `json:"PassNum,omitnil,omitempty" name:"PassNum"`
+
+	// 签发次数，港澳台居住证国徽面 返回该字段
+	IssueNum *ContentInfo `json:"IssueNum,omitnil,omitempty" name:"IssueNum"`
 }
 
 // Predefined struct for user
@@ -10806,6 +11210,41 @@ type TaxiTicket struct {
 
 	// 是否有公司印章（0：没有，1：有）
 	CompanySealMark *int64 `json:"CompanySealMark,omitnil,omitempty" name:"CompanySealMark"`
+}
+
+type TemporaryIDCardInfo struct {
+	// 姓名（人像面）
+	Name *ContentInfo `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 性别（人像面）
+	Sex *ContentInfo `json:"Sex,omitnil,omitempty" name:"Sex"`
+
+	// 民族（人像面）
+	Nation *ContentInfo `json:"Nation,omitnil,omitempty" name:"Nation"`
+
+	// 出生日期（人像面）
+	Birth *ContentInfo `json:"Birth,omitnil,omitempty" name:"Birth"`
+
+	// 地址（人像面）
+	Address *ContentInfo `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 公民身份号码（人像面）
+	IdNum *ContentInfo `json:"IdNum,omitnil,omitempty" name:"IdNum"`
+
+	// 发证机关（国徽面）
+	Authority *ContentInfo `json:"Authority,omitnil,omitempty" name:"Authority"`
+
+	// 证件有效期（国徽面）
+	ValidDate *ContentInfo `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
+
+	// WarnInfos，告警信息
+	WarnInfos *CardWarnInfo `json:"WarnInfos,omitnil,omitempty" name:"WarnInfos"`
+
+	// IdCard，裁剪后身份证照片的base64编码，请求 EnableCropImage 时返回；
+	CardImage *ContentInfo `json:"CardImage,omitnil,omitempty" name:"CardImage"`
+
+	// Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
+	PortraitImage *ContentInfo `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 }
 
 type TextArithmetic struct {
