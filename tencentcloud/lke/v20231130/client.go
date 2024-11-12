@@ -2182,6 +2182,7 @@ func NewGetAnswerTypeDataCountResponse() (response *GetAnswerTypeDataCountRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetAnswerTypeDataCount(request *GetAnswerTypeDataCountRequest) (response *GetAnswerTypeDataCountResponse, err error) {
     return c.GetAnswerTypeDataCountWithContext(context.Background(), request)
 }
@@ -2191,6 +2192,7 @@ func (c *Client) GetAnswerTypeDataCount(request *GetAnswerTypeDataCountRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetAnswerTypeDataCountWithContext(ctx context.Context, request *GetAnswerTypeDataCountRequest) (response *GetAnswerTypeDataCountResponse, err error) {
     if request == nil {
         request = NewGetAnswerTypeDataCountRequest()
@@ -2431,6 +2433,7 @@ func NewGetLikeDataCountResponse() (response *GetLikeDataCountResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetLikeDataCount(request *GetLikeDataCountRequest) (response *GetLikeDataCountResponse, err error) {
     return c.GetLikeDataCountWithContext(context.Background(), request)
 }
@@ -2440,6 +2443,7 @@ func (c *Client) GetLikeDataCount(request *GetLikeDataCountRequest) (response *G
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetLikeDataCountWithContext(ctx context.Context, request *GetLikeDataCountRequest) (response *GetLikeDataCountResponse, err error) {
     if request == nil {
         request = NewGetLikeDataCountRequest()
@@ -2480,6 +2484,7 @@ func NewGetMsgRecordResponse() (response *GetMsgRecordResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetMsgRecord(request *GetMsgRecordRequest) (response *GetMsgRecordResponse, err error) {
     return c.GetMsgRecordWithContext(context.Background(), request)
 }
@@ -2489,6 +2494,7 @@ func (c *Client) GetMsgRecord(request *GetMsgRecordRequest) (response *GetMsgRec
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetMsgRecordWithContext(ctx context.Context, request *GetMsgRecordRequest) (response *GetMsgRecordResponse, err error) {
     if request == nil {
         request = NewGetMsgRecordRequest()

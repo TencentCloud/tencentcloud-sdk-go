@@ -437,7 +437,7 @@ type SentenceInfo struct {
 	// 发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
 	PronCompletion *float64 `json:"PronCompletion,omitnil,omitempty" name:"PronCompletion"`
 
-	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 	SuggestedScore *float64 `json:"SuggestedScore,omitnil,omitempty" name:"SuggestedScore"`
 
 	// 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号

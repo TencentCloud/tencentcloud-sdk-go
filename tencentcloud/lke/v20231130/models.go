@@ -3040,7 +3040,7 @@ type DescribeStorageCredentialRequestParams struct {
 	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
+	// IsPublic用于上传文件时选择场景，当上传为对话端文件时IsPublic为true，上传文档库文件时场景IsPublic为false
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
 	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
@@ -3056,7 +3056,7 @@ type DescribeStorageCredentialRequest struct {
 	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
+	// IsPublic用于上传文件时选择场景，当上传为对话端文件时IsPublic为true，上传文档库文件时场景IsPublic为false
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
 	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
@@ -4140,7 +4140,7 @@ func (r *GetAppSecretResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetDocPreviewRequestParams struct {
-	// 文档业务ID
+	// 文档BizID
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
 	// 应用ID
@@ -4153,7 +4153,7 @@ type GetDocPreviewRequestParams struct {
 type GetDocPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文档业务ID
+	// 文档BizID
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
 	// 应用ID
@@ -4503,14 +4503,14 @@ func (r *GetMsgRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetReconstructDocumentResultRequestParams struct {
-	// 任务唯一id
+	// 任务唯一Id。[CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506) 返回的TaskId。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type GetReconstructDocumentResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一id
+	// 任务唯一Id。[CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506) 返回的TaskId。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -4535,13 +4535,13 @@ func (r *GetReconstructDocumentResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetReconstructDocumentResultResponseParams struct {
-	// 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行；
+	// 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
+	// 本次文档解析的结果文件，存储在腾讯云COS的下载URL，下载URL的有效期为10分钟。
 	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
 
-	// 文档解析失败的页码
+	// 本次文档解析失败的页码信息。
 	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4748,7 +4748,7 @@ type GroupQARequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// QA业务ID列表
+	// QaBizID列表
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
 	// 分组 ID
@@ -4761,7 +4761,7 @@ type GroupQARequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// QA业务ID列表
+	// QaBizID列表
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
 	// 分组 ID
@@ -6238,7 +6238,7 @@ type ListReleaseDocPreviewRequestParams struct {
 	// 查询内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布业务ID
+	// 发布单ID
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
 	// 开始时间
@@ -6266,7 +6266,7 @@ type ListReleaseDocPreviewRequest struct {
 	// 查询内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布业务ID
+	// 发布单ID
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
 	// 开始时间

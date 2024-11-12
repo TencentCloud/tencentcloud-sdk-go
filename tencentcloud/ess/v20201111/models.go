@@ -6505,12 +6505,13 @@ type CreateReleaseFlowRequestParams struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
+	// 替换解除协议的签署人， 如不指定新的签署人，将继续使用原流程的签署人作为本解除协议的参与方。 <br/>
 	// 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
 	// 
-	// 注意：
-	// `只能更换自己企业的签署人,  不支持更换个人类型。`
-	// `可以不指定替换签署人, 使用原流程的签署人 `
+	// 注：
+	// 1. 支持更换企业的签署人，不支持更换个人类型的签署人。
+	// 2. 己方企业支持自动签署，他方企业不支持自动签署。
+	// 3. <b>仅将需要替换的签署人添加至此列表</b>，无需替换的签署人无需添加进来。
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil,omitempty" name:"ReleasedApprovers"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
@@ -6542,12 +6543,13 @@ type CreateReleaseFlowRequest struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
+	// 替换解除协议的签署人， 如不指定新的签署人，将继续使用原流程的签署人作为本解除协议的参与方。 <br/>
 	// 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
 	// 
-	// 注意：
-	// `只能更换自己企业的签署人,  不支持更换个人类型。`
-	// `可以不指定替换签署人, 使用原流程的签署人 `
+	// 注：
+	// 1. 支持更换企业的签署人，不支持更换个人类型的签署人。
+	// 2. 己方企业支持自动签署，他方企业不支持自动签署。
+	// 3. <b>仅将需要替换的签署人添加至此列表</b>，无需替换的签署人无需添加进来。
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil,omitempty" name:"ReleasedApprovers"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。

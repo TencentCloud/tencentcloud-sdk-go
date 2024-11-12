@@ -59,6 +59,9 @@ const (
 	// 文件内容太大。
 	LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 

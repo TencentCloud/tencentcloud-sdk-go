@@ -585,6 +585,77 @@ func (c *Client) CreateAlarmShieldWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateCloudProductLogTaskRequest() (request *CreateCloudProductLogTaskRequest) {
+    request = &CreateCloudProductLogTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateCloudProductLogTask")
+    
+    
+    return
+}
+
+func NewCreateCloudProductLogTaskResponse() (response *CreateCloudProductLogTaskResponse) {
+    response = &CreateCloudProductLogTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudProductLogTask
+// 内部云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudProductLogTask(request *CreateCloudProductLogTaskRequest) (response *CreateCloudProductLogTaskResponse, err error) {
+    return c.CreateCloudProductLogTaskWithContext(context.Background(), request)
+}
+
+// CreateCloudProductLogTask
+// 内部云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudProductLogTaskWithContext(ctx context.Context, request *CreateCloudProductLogTaskRequest) (response *CreateCloudProductLogTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudProductLogTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudProductLogTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudProductLogTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConfigRequest() (request *CreateConfigRequest) {
     request = &CreateConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1969,6 +2040,73 @@ func (c *Client) DeleteAlarmShieldWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteAlarmShieldResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudProductLogTaskRequest() (request *DeleteCloudProductLogTaskRequest) {
+    request = &DeleteCloudProductLogTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteCloudProductLogTask")
+    
+    
+    return
+}
+
+func NewDeleteCloudProductLogTaskResponse() (response *DeleteCloudProductLogTaskResponse) {
+    response = &DeleteCloudProductLogTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudProductLogTask
+// 内部云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCloudProductLogTask(request *DeleteCloudProductLogTaskRequest) (response *DeleteCloudProductLogTaskResponse, err error) {
+    return c.DeleteCloudProductLogTaskWithContext(context.Background(), request)
+}
+
+// DeleteCloudProductLogTask
+// 内部云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCloudProductLogTaskWithContext(ctx context.Context, request *DeleteCloudProductLogTaskRequest) (response *DeleteCloudProductLogTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudProductLogTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudProductLogTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudProductLogTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -3378,6 +3516,55 @@ func (c *Client) DescribeAlertRecordHistoryWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeAlertRecordHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudProductLogTasksRequest() (request *DescribeCloudProductLogTasksRequest) {
+    request = &DescribeCloudProductLogTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeCloudProductLogTasks")
+    
+    
+    return
+}
+
+func NewDescribeCloudProductLogTasksResponse() (response *DescribeCloudProductLogTasksResponse) {
+    response = &DescribeCloudProductLogTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudProductLogTasks
+// 云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCloudProductLogTasks(request *DescribeCloudProductLogTasksRequest) (response *DescribeCloudProductLogTasksResponse, err error) {
+    return c.DescribeCloudProductLogTasksWithContext(context.Background(), request)
+}
+
+// DescribeCloudProductLogTasks
+// 云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCloudProductLogTasksWithContext(ctx context.Context, request *DescribeCloudProductLogTasksRequest) (response *DescribeCloudProductLogTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudProductLogTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudProductLogTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudProductLogTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -5518,6 +5705,73 @@ func (c *Client) ModifyAlarmShieldWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyAlarmShieldResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudProductLogTaskRequest() (request *ModifyCloudProductLogTaskRequest) {
+    request = &ModifyCloudProductLogTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyCloudProductLogTask")
+    
+    
+    return
+}
+
+func NewModifyCloudProductLogTaskResponse() (response *ModifyCloudProductLogTaskResponse) {
+    response = &ModifyCloudProductLogTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudProductLogTask
+// 内部云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudProductLogTask(request *ModifyCloudProductLogTaskRequest) (response *ModifyCloudProductLogTaskResponse, err error) {
+    return c.ModifyCloudProductLogTaskWithContext(context.Background(), request)
+}
+
+// ModifyCloudProductLogTask
+// 内部云产品接入使用相关接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudProductLogTaskWithContext(ctx context.Context, request *ModifyCloudProductLogTaskRequest) (response *ModifyCloudProductLogTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudProductLogTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudProductLogTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudProductLogTaskResponse()
     err = c.Send(request, response)
     return
 }

@@ -64,7 +64,7 @@ type CreateDedicatedClusterOrderRequestParams struct {
 	// 购买来源，默认为cloudApi
 	PurchaseSource *string `json:"PurchaseSource,omitnil,omitempty" name:"PurchaseSource"`
 
-	// 当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+	// 当调用API接口提交订单时，需要提交DedicatedClusterOrderId，此处DedicatedClusterOrderId是之前创建的订单，可通过DescribeDedicatedClusterOrders接口查询，这里传入DedicatedClusterOrderId用于调整订单和支付。
 	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitnil,omitempty" name:"DedicatedClusterOrderId"`
 }
 
@@ -86,7 +86,7 @@ type CreateDedicatedClusterOrderRequest struct {
 	// 购买来源，默认为cloudApi
 	PurchaseSource *string `json:"PurchaseSource,omitnil,omitempty" name:"PurchaseSource"`
 
-	// 当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+	// 当调用API接口提交订单时，需要提交DedicatedClusterOrderId，此处DedicatedClusterOrderId是之前创建的订单，可通过DescribeDedicatedClusterOrders接口查询，这里传入DedicatedClusterOrderId用于调整订单和支付。
 	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitnil,omitempty" name:"DedicatedClusterOrderId"`
 }
 
@@ -241,7 +241,7 @@ type CreateSiteRequestParams struct {
 	// 注意事项
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
 	FiberType *string `json:"FiberType,omitnil,omitempty" name:"FiberType"`
 
 	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
@@ -250,7 +250,7 @@ type CreateSiteRequestParams struct {
 	// 电源连接器类型
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。
+	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
 	// 最大承重(KG)
@@ -259,7 +259,7 @@ type CreateSiteRequestParams struct {
 	// 功耗(KW)
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度
+	// 网络到腾讯云Region区域的上行链路速度(Gbps)
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
 	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
@@ -322,7 +322,7 @@ type CreateSiteRequest struct {
 	// 注意事项
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
 	FiberType *string `json:"FiberType,omitnil,omitempty" name:"FiberType"`
 
 	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
@@ -331,7 +331,7 @@ type CreateSiteRequest struct {
 	// 电源连接器类型
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。
+	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
 	// 最大承重(KG)
@@ -340,7 +340,7 @@ type CreateSiteRequest struct {
 	// 功耗(KW)
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度
+	// 网络到腾讯云Region区域的上行链路速度(Gbps)
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
 	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
@@ -1001,7 +1001,7 @@ type DescribeDedicatedClusterHostStatisticsRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 时间范围精度，1分钟/5分钟
+	// 时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
@@ -1020,7 +1020,7 @@ type DescribeDedicatedClusterHostStatisticsRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 时间范围精度，1分钟/5分钟
+	// 时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
@@ -2031,10 +2031,10 @@ type ModifyOrderStatusRequestParams struct {
 	// 要更新成的状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 大订单ID
+	// 大订单ID，可以在本地专用集群的基础信息页获取大订单ID
 	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitnil,omitempty" name:"DedicatedClusterOrderId"`
 
-	// 小订单ID
+	// 小订单ID，进入大订单的详情页，可以看到小订单ID
 	SubOrderIds []*string `json:"SubOrderIds,omitnil,omitempty" name:"SubOrderIds"`
 }
 
@@ -2044,10 +2044,10 @@ type ModifyOrderStatusRequest struct {
 	// 要更新成的状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 大订单ID
+	// 大订单ID，可以在本地专用集群的基础信息页获取大订单ID
 	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitnil,omitempty" name:"DedicatedClusterOrderId"`
 
-	// 小订单ID
+	// 小订单ID，进入大订单的详情页，可以看到小订单ID
 	SubOrderIds []*string `json:"SubOrderIds,omitnil,omitempty" name:"SubOrderIds"`
 }
 
@@ -2108,7 +2108,7 @@ type ModifySiteDeviceInfoRequestParams struct {
 	// 电源连接器类型
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。
+	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
 	// 最大承重(KG)
@@ -2165,7 +2165,7 @@ type ModifySiteDeviceInfoRequest struct {
 	// 电源连接器类型
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。
+	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
 	// 最大承重(KG)

@@ -3436,14 +3436,13 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil,omitempty" name:"ReliveInfo"`
 
-	// 指定解除协议的签署人，如不指定，则默认使用原流程的签署人。 <br/>
+	// 替换解除协议的签署人， 如不指定新的签署人，将继续使用原流程的签署人作为本解除协议的参与方。 <br/>
 	// 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
 	// 
-	// 注意：
-	// <ul>
-	// <li>只能更换自己企业的签署人，不支持更换个人类型签署人</li>
-	// <li>可以不指定替换签署人，使用原流程的签署人</li>
-	// </ul>
+	// 注：
+	// 1. 支持更换企业的签署人，不支持更换个人类型的签署人。
+	// 2. 己方企业支持自动签署，他方企业不支持自动签署。
+	// 3. <b>仅将需要替换的签署人添加至此列表</b>，无需替换的签署人无需添加进来。
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil,omitempty" name:"ReleasedApprovers"`
 
 	// 签署完回调url，最大长度1000个字符
@@ -3496,14 +3495,13 @@ type ChannelCreateReleaseFlowRequest struct {
 	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil,omitempty" name:"ReliveInfo"`
 
-	// 指定解除协议的签署人，如不指定，则默认使用原流程的签署人。 <br/>
+	// 替换解除协议的签署人， 如不指定新的签署人，将继续使用原流程的签署人作为本解除协议的参与方。 <br/>
 	// 如需更换原合同中的企业端签署人，可通过指定该签署人在原合同列表中的ApproverNumber编号来更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo/">DescribeFlowDetailInfo</a>查询签署人的ApproverNumber编号，默认从0开始，顺序递增)<br/>
 	// 
-	// 注意：
-	// <ul>
-	// <li>只能更换自己企业的签署人，不支持更换个人类型签署人</li>
-	// <li>可以不指定替换签署人，使用原流程的签署人</li>
-	// </ul>
+	// 注：
+	// 1. 支持更换企业的签署人，不支持更换个人类型的签署人。
+	// 2. 己方企业支持自动签署，他方企业不支持自动签署。
+	// 3. <b>仅将需要替换的签署人添加至此列表</b>，无需替换的签署人无需添加进来。
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil,omitempty" name:"ReleasedApprovers"`
 
 	// 签署完回调url，最大长度1000个字符

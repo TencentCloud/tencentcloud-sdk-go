@@ -2531,6 +2531,9 @@ type ImageMaskAsyncRequestParams struct {
 
 	// 图片脱敏选项, 不传默认都脱敏
 	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil,omitempty" name:"MaskFlag"`
+
+	// 是否自动矫正图片方向
+	AutoFixImageDirection *bool `json:"AutoFixImageDirection,omitnil,omitempty" name:"AutoFixImageDirection"`
 }
 
 type ImageMaskAsyncRequest struct {
@@ -2541,6 +2544,9 @@ type ImageMaskAsyncRequest struct {
 
 	// 图片脱敏选项, 不传默认都脱敏
 	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil,omitempty" name:"MaskFlag"`
+
+	// 是否自动矫正图片方向
+	AutoFixImageDirection *bool `json:"AutoFixImageDirection,omitnil,omitempty" name:"AutoFixImageDirection"`
 }
 
 func (r *ImageMaskAsyncRequest) ToJsonString() string {
@@ -2557,6 +2563,7 @@ func (r *ImageMaskAsyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "MaskFlag")
+	delete(f, "AutoFixImageDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageMaskAsyncRequest has unknown keys!", "")
 	}
@@ -2609,6 +2616,9 @@ type ImageMaskRequestParams struct {
 
 	// 图片脱敏选项, 不传默认都脱敏
 	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil,omitempty" name:"MaskFlag"`
+
+	// 是否自动矫正图片方向
+	AutoFixImageDirection *bool `json:"AutoFixImageDirection,omitnil,omitempty" name:"AutoFixImageDirection"`
 }
 
 type ImageMaskRequest struct {
@@ -2619,6 +2629,9 @@ type ImageMaskRequest struct {
 
 	// 图片脱敏选项, 不传默认都脱敏
 	MaskFlag *ImageMaskFlags `json:"MaskFlag,omitnil,omitempty" name:"MaskFlag"`
+
+	// 是否自动矫正图片方向
+	AutoFixImageDirection *bool `json:"AutoFixImageDirection,omitnil,omitempty" name:"AutoFixImageDirection"`
 }
 
 func (r *ImageMaskRequest) ToJsonString() string {
@@ -2635,6 +2648,7 @@ func (r *ImageMaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "MaskFlag")
+	delete(f, "AutoFixImageDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageMaskRequest has unknown keys!", "")
 	}

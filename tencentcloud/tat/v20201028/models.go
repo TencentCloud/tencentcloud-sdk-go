@@ -141,11 +141,9 @@ type Command struct {
 	DefaultParameters *string `json:"DefaultParameters,omitnil,omitempty" name:"DefaultParameters"`
 
 	// 自定义参数的默认取值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultParameterConfs []*DefaultParameterConf `json:"DefaultParameterConfs,omitnil,omitempty" name:"DefaultParameterConfs"`
 
 	// 命令关联的场景
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 
 	// 命令的结构化描述。公共命令有值，用户命令为空字符串。
@@ -544,15 +542,12 @@ func (r *CreateRegisterCodeResponse) FromJsonString(s string) error {
 
 type DefaultParameterConf struct {
 	// 参数名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
 	// 参数默认值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterValue *string `json:"ParameterValue,omitnil,omitempty" name:"ParameterValue"`
 
 	// 参数描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterDescription *string `json:"ParameterDescription,omitnil,omitempty" name:"ParameterDescription"`
 }
 
@@ -1276,11 +1271,7 @@ type DescribeInvokersRequestParams struct {
 	// 执行器ID列表。
 	InvokerIds []*string `json:"InvokerIds,omitnil,omitempty" name:"InvokerIds"`
 
-	// 过滤条件：
-	// 
-	// <li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
-	// <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
-	// <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+	// 过滤条件：<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。</li> <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。</li> <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -1296,11 +1287,7 @@ type DescribeInvokersRequest struct {
 	// 执行器ID列表。
 	InvokerIds []*string `json:"InvokerIds,omitnil,omitempty" name:"InvokerIds"`
 
-	// 过滤条件：
-	// 
-	// <li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
-	// <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
-	// <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+	// 过滤条件：<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。</li> <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。</li> <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。
