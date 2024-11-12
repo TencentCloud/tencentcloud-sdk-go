@@ -3362,6 +3362,98 @@ func (r *CreateCustomFunctionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDataModelRequestParams struct {
+	// 云应用的实例id
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// 用户的子账号id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// Wedata数据建模购买参数，包年包月类型单位，年：y，月：m，默认m
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// Wedata数据建模购买参数，购买时长，默认1
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// Wedata数据建模购买参数，是否自动续费，是：1，否：0，默认0
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// Wedata数据建模购买参数，标准版：DATA_MODEL_STANDARD，企业版：DATA_MODEL_PRO，默认DATA_MODEL_STANDARD
+	DataModelVersion *string `json:"DataModelVersion,omitnil,omitempty" name:"DataModelVersion"`
+}
+
+type CreateDataModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云应用的实例id
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// 用户的子账号id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// Wedata数据建模购买参数，包年包月类型单位，年：y，月：m，默认m
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// Wedata数据建模购买参数，购买时长，默认1
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// Wedata数据建模购买参数，是否自动续费，是：1，否：0，默认0
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// Wedata数据建模购买参数，标准版：DATA_MODEL_STANDARD，企业版：DATA_MODEL_PRO，默认DATA_MODEL_STANDARD
+	DataModelVersion *string `json:"DataModelVersion,omitnil,omitempty" name:"DataModelVersion"`
+}
+
+func (r *CreateDataModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CloudappId")
+	delete(f, "UserId")
+	delete(f, "TimeUnit")
+	delete(f, "TimeSpan")
+	delete(f, "AutoRenewFlag")
+	delete(f, "DataModelVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataModelResponseParams struct {
+	// “Wedata数据建模”的实例id
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDataModelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDataModelResponseParams `json:"Response"`
+}
+
+func (r *CreateDataModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDataSourceRequestParams struct {
 	// 数据源名称，在相同SpaceName下，数据源名称不能为空
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -5849,6 +5941,77 @@ func (r *DeleteCustomFunctionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCustomFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataModelRequestParams struct {
+	// 云应用的实例id
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// 数据建模的实例id
+	DataModelId *string `json:"DataModelId,omitnil,omitempty" name:"DataModelId"`
+
+	// 用户的子账号id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type DeleteDataModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云应用的实例id
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// 数据建模的实例id
+	DataModelId *string `json:"DataModelId,omitnil,omitempty" name:"DataModelId"`
+
+	// 用户的子账号id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *DeleteDataModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CloudappId")
+	delete(f, "DataModelId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataModelResponseParams struct {
+	// 是否销毁成功
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDataModelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDataModelResponseParams `json:"Response"`
+}
+
+func (r *DeleteDataModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -30325,6 +30488,112 @@ func (r *UnlockIntegrationTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnlockIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataModelRegistryInfoRequestParams struct {
+	// 云应用的实例id
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// 数语的CAM角色
+	AppCamRole *string `json:"AppCamRole,omitnil,omitempty" name:"AppCamRole"`
+
+	// 数语的ip
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 数语的端口
+	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// 数语的CAM角色id
+	AppCamRoleId *string `json:"AppCamRoleId,omitnil,omitempty" name:"AppCamRoleId"`
+
+	// 服务提供方
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// 租户id
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 主账号id
+	OwnId *string `json:"OwnId,omitnil,omitempty" name:"OwnId"`
+}
+
+type UpdateDataModelRegistryInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云应用的实例id
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// 数语的CAM角色
+	AppCamRole *string `json:"AppCamRole,omitnil,omitempty" name:"AppCamRole"`
+
+	// 数语的ip
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 数语的端口
+	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// 数语的CAM角色id
+	AppCamRoleId *string `json:"AppCamRoleId,omitnil,omitempty" name:"AppCamRoleId"`
+
+	// 服务提供方
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// 租户id
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 主账号id
+	OwnId *string `json:"OwnId,omitnil,omitempty" name:"OwnId"`
+}
+
+func (r *UpdateDataModelRegistryInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataModelRegistryInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CloudappId")
+	delete(f, "AppCamRole")
+	delete(f, "Vip")
+	delete(f, "Vport")
+	delete(f, "AppCamRoleId")
+	delete(f, "Provider")
+	delete(f, "TenantId")
+	delete(f, "OwnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataModelRegistryInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataModelRegistryInfoResponseParams struct {
+	// 数语向wedata注册成功
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateDataModelRegistryInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDataModelRegistryInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateDataModelRegistryInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataModelRegistryInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

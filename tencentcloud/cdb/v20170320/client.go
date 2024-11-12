@@ -65,7 +65,7 @@ func NewAddTimeWindowResponse() (response *AddTimeWindowResponse) {
 }
 
 // AddTimeWindow
-// 本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
+// 本接口（AddTimeWindow）用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -77,7 +77,7 @@ func (c *Client) AddTimeWindow(request *AddTimeWindowRequest) (response *AddTime
 }
 
 // AddTimeWindow
-// 本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
+// 本接口（AddTimeWindow）用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -417,7 +417,7 @@ func NewCheckMigrateClusterResponse() (response *CheckMigrateClusterResponse) {
 }
 
 // CheckMigrateCluster
-// 高可用实例一键迁移到集群版校验
+// 本接口（CheckMigrateCluster）用于高可用实例一键迁移到集群版校验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -432,7 +432,7 @@ func (c *Client) CheckMigrateCluster(request *CheckMigrateClusterRequest) (respo
 }
 
 // CheckMigrateCluster
-// 高可用实例一键迁移到集群版校验
+// 本接口（CheckMigrateCluster）用于高可用实例一键迁移到集群版校验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -4372,7 +4372,7 @@ func NewDescribeClusterInfoResponse() (response *DescribeClusterInfoResponse) {
 }
 
 // DescribeClusterInfo
-// 本接口(DescribeClusterInfo)用于查询集群版实例信息。
+// 本接口（DescribeClusterInfo）用于查询集群版实例信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
@@ -4383,7 +4383,7 @@ func (c *Client) DescribeClusterInfo(request *DescribeClusterInfoRequest) (respo
 }
 
 // DescribeClusterInfo
-// 本接口(DescribeClusterInfo)用于查询集群版实例信息。
+// 本接口（DescribeClusterInfo）用于查询集群版实例信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
@@ -4482,7 +4482,7 @@ func NewDescribeDBFeaturesResponse() (response *DescribeDBFeaturesResponse) {
 }
 
 // DescribeDBFeatures
-// 本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
+// 本接口（DescribeDBFeatures）用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4499,7 +4499,7 @@ func (c *Client) DescribeDBFeatures(request *DescribeDBFeaturesRequest) (respons
 }
 
 // DescribeDBFeatures
-// 本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
+// 本接口（DescribeDBFeatures）用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4807,7 +4807,7 @@ func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoRespon
 }
 
 // DescribeDBInstanceInfo
-// 查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
+// 本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4823,7 +4823,7 @@ func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) 
 }
 
 // DescribeDBInstanceInfo
-// 查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
+// 本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4933,7 +4933,7 @@ func NewDescribeDBInstanceRebootTimeResponse() (response *DescribeDBInstanceRebo
 }
 
 // DescribeDBInstanceRebootTime
-// 本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
+// 本接口（DescribeDBInstanceRebootTime）用于查询云数据库实例重启预计所需的时间。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4944,7 +4944,7 @@ func (c *Client) DescribeDBInstanceRebootTime(request *DescribeDBInstanceRebootT
 }
 
 // DescribeDBInstanceRebootTime
-// 本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
+// 本接口（DescribeDBInstanceRebootTime）用于查询云数据库实例重启预计所需的时间。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5069,7 +5069,7 @@ func NewDescribeDBPriceResponse() (response *DescribeDBPriceResponse) {
 }
 
 // DescribeDBPrice
-// 本接口(DescribeDBPrice)用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
+// 本接口（DescribeDBPrice）用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
 //
 // 
 //
@@ -5087,7 +5087,7 @@ func (c *Client) DescribeDBPrice(request *DescribeDBPriceRequest) (response *Des
 }
 
 // DescribeDBPrice
-// 本接口(DescribeDBPrice)用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
+// 本接口（DescribeDBPrice）用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
 //
 // 
 //
@@ -5678,7 +5678,7 @@ func NewDescribeInstanceAlarmEventsResponse() (response *DescribeInstanceAlarmEv
 }
 
 // DescribeInstanceAlarmEvents
-// 查询实例发生的事件信息
+// 本接口（DescribeInstanceAlarmEvents）用于查询实例发生的事件信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
@@ -5700,7 +5700,7 @@ func (c *Client) DescribeInstanceAlarmEvents(request *DescribeInstanceAlarmEvent
 }
 
 // DescribeInstanceAlarmEvents
-// 查询实例发生的事件信息
+// 本接口（DescribeInstanceAlarmEvents）用于查询实例发生的事件信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
@@ -5938,7 +5938,7 @@ func NewDescribeInstanceUpgradeTypeResponse() (response *DescribeInstanceUpgrade
 }
 
 // DescribeInstanceUpgradeType
-// 本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
+// 本接口（DescribeInstanceUpgradeType）用于查询数据库实例升级类型。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
@@ -5950,7 +5950,7 @@ func (c *Client) DescribeInstanceUpgradeType(request *DescribeInstanceUpgradeTyp
 }
 
 // DescribeInstanceUpgradeType
-// 本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
+// 本接口（DescribeInstanceUpgradeType）用于查询数据库实例升级类型。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
@@ -6384,7 +6384,7 @@ func NewDescribeRoGroupsResponse() (response *DescribeRoGroupsResponse) {
 }
 
 // DescribeRoGroups
-// 本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
+// 本接口（DescribeRoGroups）用于查询云数据库实例的所有的 RO 组的信息。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -6402,7 +6402,7 @@ func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *D
 }
 
 // DescribeRoGroups
-// 本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
+// 本接口（DescribeRoGroups）用于查询云数据库实例的所有的 RO 组的信息。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -8213,7 +8213,7 @@ func NewModifyAutoRenewFlagResponse() (response *ModifyAutoRenewFlagResponse) {
 }
 
 // ModifyAutoRenewFlag
-// 本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
+// 本接口（ModifyAutoRenewFlag）用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8230,7 +8230,7 @@ func (c *Client) ModifyAutoRenewFlag(request *ModifyAutoRenewFlagRequest) (respo
 }
 
 // ModifyAutoRenewFlag
-// 本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
+// 本接口（ModifyAutoRenewFlag）用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8785,6 +8785,67 @@ func (c *Client) ModifyDBInstanceProjectWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyDBInstanceProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceReadOnlyStatusRequest() (request *ModifyDBInstanceReadOnlyStatusRequest) {
+    request = &ModifyDBInstanceReadOnlyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceReadOnlyStatus")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceReadOnlyStatusResponse() (response *ModifyDBInstanceReadOnlyStatusResponse) {
+    response = &ModifyDBInstanceReadOnlyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceReadOnlyStatus
+// 本接口（ModifyDBInstanceReadOnlyStatus）用户设置MySQL云数据库实例为只读
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyDBInstanceReadOnlyStatus(request *ModifyDBInstanceReadOnlyStatusRequest) (response *ModifyDBInstanceReadOnlyStatusResponse, err error) {
+    return c.ModifyDBInstanceReadOnlyStatusWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceReadOnlyStatus
+// 本接口（ModifyDBInstanceReadOnlyStatus）用户设置MySQL云数据库实例为只读
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyDBInstanceReadOnlyStatusWithContext(ctx context.Context, request *ModifyDBInstanceReadOnlyStatusRequest) (response *ModifyDBInstanceReadOnlyStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceReadOnlyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceReadOnlyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceReadOnlyStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -9696,7 +9757,7 @@ func NewOpenDBInstanceEncryptionResponse() (response *OpenDBInstanceEncryptionRe
 }
 
 // OpenDBInstanceEncryption
-// 本接口(OpenDBInstanceEncryption)用于启用实例数据存储加密功能，支持用户指定自定义密钥。
+// 本接口（OpenDBInstanceEncryption）用于启用实例数据存储加密功能，支持用户指定自定义密钥。
 //
 // 
 //
@@ -9732,7 +9793,7 @@ func (c *Client) OpenDBInstanceEncryption(request *OpenDBInstanceEncryptionReque
 }
 
 // OpenDBInstanceEncryption
-// 本接口(OpenDBInstanceEncryption)用于启用实例数据存储加密功能，支持用户指定自定义密钥。
+// 本接口（OpenDBInstanceEncryption）用于启用实例数据存储加密功能，支持用户指定自定义密钥。
 //
 // 
 //
@@ -10283,13 +10344,13 @@ func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
 }
 
 // RestartDBInstances
-// 本接口(RestartDBInstances)用于重启云数据库实例。
+// 本接口（RestartDBInstances）用于重启云数据库实例。
 //
 // 
 //
 // 注意：
 //
-// 1、本接口只支持主实例进行重启操作；
+// 1、本接口支持主实例、只读实例、灾备实例进行重启操作。
 //
 // 2、实例状态必须为正常，并且没有其他异步任务在执行中。
 //
@@ -10308,13 +10369,13 @@ func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (respons
 }
 
 // RestartDBInstances
-// 本接口(RestartDBInstances)用于重启云数据库实例。
+// 本接口（RestartDBInstances）用于重启云数据库实例。
 //
 // 
 //
 // 注意：
 //
-// 1、本接口只支持主实例进行重启操作；
+// 1、本接口支持主实例、只读实例、灾备实例进行重启操作。
 //
 // 2、实例状态必须为正常，并且没有其他异步任务在执行中。
 //
@@ -10492,7 +10553,7 @@ func NewStartReplicationResponse() (response *StartReplicationResponse) {
 }
 
 // StartReplication
-// 开启 RO 复制，从主实例同步数据。
+// 本接口（StartReplication）用于开启 RO 复制，从主实例同步数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10506,7 +10567,7 @@ func (c *Client) StartReplication(request *StartReplicationRequest) (response *S
 }
 
 // StartReplication
-// 开启 RO 复制，从主实例同步数据。
+// 本接口（StartReplication）用于开启 RO 复制，从主实例同步数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10667,7 +10728,7 @@ func NewStopReplicationResponse() (response *StopReplicationResponse) {
 }
 
 // StopReplication
-// 停止 RO 复制，中断从主实例同步数据。
+// 本接口（StopReplication）用于停止 RO 复制，中断从主实例同步数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10682,7 +10743,7 @@ func (c *Client) StopReplication(request *StopReplicationRequest) (response *Sto
 }
 
 // StopReplication
-// 停止 RO 复制，中断从主实例同步数据。
+// 本接口（StopReplication）用于停止 RO 复制，中断从主实例同步数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10968,7 +11029,7 @@ func NewSwitchDrInstanceToMasterResponse() (response *SwitchDrInstanceToMasterRe
 }
 
 // SwitchDrInstanceToMaster
-// 本接口(SwitchDrInstanceToMaster)用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
+// 本接口（SwitchDrInstanceToMaster）用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -10981,7 +11042,7 @@ func (c *Client) SwitchDrInstanceToMaster(request *SwitchDrInstanceToMasterReque
 }
 
 // SwitchDrInstanceToMaster
-// 本接口(SwitchDrInstanceToMaster)用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
+// 本接口（SwitchDrInstanceToMaster）用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"

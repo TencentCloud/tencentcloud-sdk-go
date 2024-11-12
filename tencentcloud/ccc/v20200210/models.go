@@ -515,41 +515,7 @@ type CreateAICallRequestParams struct {
 	// 被叫号码
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
 
-	// 用于设定AI人设、说话规则、任务等的全局提示词。
-	// 
-	// 示例：
-	// 
-	// ## 人设
-	// 你是人民医院友善、和蔼的的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。你需要按照任务流程对小明家长进行电话随访调查。
-	// 
-	// ## 要求
-	// 简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。
-	// 富有变化：尽量使表达富有变化，表达机械重复。
-	// 自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。
-	// 积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。
-	// 询问清楚：如果对方部分回答了你的问题，或者回答很模糊，请通过追问来确保回答的完整明确。
-	// 遵循任务：当对方的回答偏离了你的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的的地方继续询问。
-	// 诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。
-	// 其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。
-	// 不要问患者已经直接或间接回答过的问题，比如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。
-	// 
-	// ##任务： 
-	// 1.自我介绍你是人民医院负责随访的李医生，并说明致电的目的。
-	// 2.询问被叫方是否是小明家长。 
-	// - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。
-	// - 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。
-	// 3.询问小明出院后水肿情况如何，较出院时是否有变化。
-	// - 如果水肿变严重，直接跳转步骤7。
-	// 4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。
-	// - 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。
-	// - 如果出现过发烧，请直接跳转步骤7。
-	// 5.询问出院后是否给小朋友按时服药。
-	// - 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。
-	// 6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。
-	// - 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。
-	// 7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。
-	// 8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
-	// 
+	// 用于设定AI人设、说话规则、任务等的全局提示词。示例：## 人设您是人民医院友善、和蔼的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。您需要按照任务流程对小明家长进行电话随访调查。## 要求简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。富有变化：尽量使表达富有变化，表达机械重复。自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。询问清楚：如果对方部分回答了您的问题，或者回答很模糊，请通过追问来确保回答的完整明确。遵循任务：当对方的回答偏离了您的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的地方继续询问。诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。不要问患者已经直接或间接回答过的问题，例如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。##任务： 1.自我介绍您是人民医院负责随访的李医生，并说明致电的目的。2.询问被叫方是否是小明家长。 - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。3.询问小明出院后水肿情况如何，较出院时是否有变化。- 如果水肿变严重，直接跳转步骤7。4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。- 如果出现过发烧，请直接跳转步骤7。5.询问出院后是否给小朋友按时服药。- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
 	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
 
 	// 模型接口协议类型，目前兼容三种协议类型：
@@ -687,93 +653,85 @@ type CreateAICallRequestParams struct {
 	// 用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
 	NotifyMessage *string `json:"NotifyMessage,omitnil,omitempty" name:"NotifyMessage"`
 
-	// 和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色
-	// 
-	// - Tencent TTS
-	// 配置请参考[腾讯云TTS文档链接](https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823)
-	// ```
-	// { 
-	//        "TTSType": "tencent", // String TTS类型, 目前支持"tencent" 和 “minixmax”， 其他的厂商支持中
-	//        "AppId": "您的应用ID", // String 必填
-	//        "SecretId": "您的密钥ID", // String 必填
-	//        "SecretKey":  "您的密钥Key", // String 必填
-	//        "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见语音合成计费概述。完整的音色 ID 列表请参见语音合成音色列表。
-	//        "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 语速转换
-	//        "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。
-	//        "PrimaryLanguage": 1, // Integer 可选 主要语言 1-中文（默认） 2-英文 3-日文
-	//        "FastVoiceType": "xxxx"   //  可选参数， 快速声音复刻的参数 
+	// <p>和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色</p>
+	// <ul>
+	// <li>Tencent TTS<br>
+	// 配置请参考<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">腾讯云TTS文档链接</a></li>
+	// </ul>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
+	//        &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS类型, 目前支持&quot;tencent&quot; 和 “minixmax”， 其他的厂商支持中
+	//        &quot;AppId&quot;: &quot;您的应用ID&quot;, // String 必填
+	//        &quot;SecretId&quot;: &quot;您的密钥ID&quot;, // String 必填
+	//        &quot;SecretKey&quot;:  &quot;您的密钥Key&quot;, // String 必填
+	//        &quot;VoiceType&quot;: 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见语音合成计费概述。完整的音色 ID 列表请参见语音合成音色列表。
+	//        &quot;Speed&quot;: 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 语速转换
+	//        &quot;Volume&quot;: 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。
+	//        &quot;PrimaryLanguage&quot;: 1, // Integer 可选 主要语言 1-中文（默认） 2-英文 3-日文
+	//        &quot;FastVoiceType&quot;: &quot;xxxx&quot;   //  可选参数， 快速声音复刻的参数 
 	//   }
-	// ```
+	// </code></pre>
 	// 
-	// 
-	// - Minimax TTS
-	// 配置请参考[Minimax TTS文档链接](https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643 )。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，[Minimax TTS频率限制相关文档链接](https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572)。
-	// ```
-	// {
-	//         "TTSType": "minimax",  // String TTS类型, 
-	//         "Model": "speech-01-turbo",
-	//         "APIUrl": "https://api.minimax.chat/v1/t2a_v2",
-	//         "APIKey": "eyxxxx",
-	//         "GroupId": "181000000000000",
-	//         "VoiceType":"female-tianmei-jingpin",
-	//         "Speed": 1.2
+	//   </div></div><ul>
+	// <li>Minimax TTS<br>
+	// 配置请参考<a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS文档链接</a>。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，<a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS频率限制相关文档链接</a>。</li>
+	// </ul>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//         &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS类型, 
+	//         &quot;Model&quot;: &quot;speech-01-turbo&quot;,
+	//         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
+	//         &quot;APIKey&quot;: &quot;eyxxxx&quot;,
+	//         &quot;GroupId&quot;: &quot;181000000000000&quot;,
+	//         &quot;VoiceType&quot;:&quot;female-tianmei-jingpin&quot;,
+	//         &quot;Speed&quot;: 1.2
 	// }
-	// ```
-	// 
-	// 
-	// 
-	// 
-	// 
-	// - 火山 TTS
-	// 
-	// 配置音色类型参考[火山TTS文档链接](https://www.volcengine.com/docs/6561/162929 )
-	// 语音合成音色列表--语音技术-火山引擎
-	// 大模型语音合成音色列表--语音技术-火山引擎
-	// ```
-	// {
-	//     "TTSType": "volcengine",  // 必填：String TTS类型
-	//     "AppId" : "xxxxxxxx",   // 必填：String 火山引擎分配的Appid
-	//     "Token" : "TY9d4sQXHxxxxxxx", // 必填： String类型 火山引擎的访问token
-	//     "Speed" : 1.0,            // 可选参数 语速，默认为1.0
-	//     "Volume": 1.0,            // 可选参数， 音量大小， 默认为1.0
-	//     "Cluster" : "volcano_tts", // 可选参数，业务集群, 默认是 volcano_tts
-	//     "VoiceType" : "zh_male_aojiaobazong_moon_bigtts"   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
+	// </code></pre>
+	// </div></div><ul>
+	// <li>火山 TTS</li>
+	// </ul>
+	// <p>配置音色类型参考<a href="https://www.volcengine.com/docs/6561/162929" target="_blank">火山TTS文档链接</a><br>
+	// 语音合成音色列表–语音技术-火山引擎<br>
+	// 大模型语音合成音色列表–语音技术-火山引擎</p>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//     &quot;TTSType&quot;: &quot;volcengine&quot;,  // 必填：String TTS类型
+	//     &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // 必填：String 火山引擎分配的Appid
+	//     &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // 必填： String类型 火山引擎的访问token
+	//     &quot;Speed&quot; : 1.0,            // 可选参数 语速，默认为1.0
+	//     &quot;Volume&quot;: 1.0,            // 可选参数， 音量大小， 默认为1.0
+	//     &quot;Cluster&quot; : &quot;volcano_tts&quot;, // 可选参数，业务集群, 默认是 volcano_tts
+	//     &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
 	// }
-	// ```
+	// </code></pre>
 	// 
-	// 
-	// 
-	// - Azure TTS
-	// 配置请参考[AzureTTS文档链接](https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice) 
-	// ```
-	// {
-	//     "TTSType": "azure", // 必填：String TTS类型
-	//     "SubscriptionKey": "xxxxxxxx", // 必填：String 订阅的Key
-	//     "Region": "chinanorth3",  // 必填：String 订阅的地区
-	//     "VoiceName": "zh-CN-XiaoxiaoNeural", // 必填：String 音色名必填
-	//     "Language": "zh-CN", // 必填：String 合成的语言  
-	//     "Rate": 1 // 选填：float 语速  0.5～2 默认为 1
+	// </div></div><ul>
+	// <li>Azure TTS<br>
+	// 配置请参考<a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS文档链接</a></li>
+	// </ul>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//     &quot;TTSType&quot;: &quot;azure&quot;, // 必填：String TTS类型
+	//     &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // 必填：String 订阅的Key
+	//     &quot;Region&quot;: &quot;chinanorth3&quot;,  // 必填：String 订阅的地区
+	//     &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // 必填：String 音色名必填
+	//     &quot;Language&quot;: &quot;zh-CN&quot;, // 必填：String 合成的语言  
+	//     &quot;Rate&quot;: 1 // 选填：float 语速  0.5～2 默认为 1
 	// }
-	// ```
+	// </code></pre>
 	// 
-	// 
-	// 
-	// 
-	// - 自定义
-	// 
-	//  TTS 
-	// 具体协议规范请参考[腾讯文档](https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw )
-	// ```
-	// {
-	//   "TTSType": "custom", // String 必填
-	//   "APIKey": "ApiKey", // String 必填 用来鉴权
-	//   "APIUrl": "http://0.0.0.0:8080/stream-audio" // String，必填，TTS API URL
-	//   "AudioFormat": "wav", // String, 非必填，期望输出的音频格式，如mp3， ogg_opus，pcm，wav，默认为 wav，目前只支持pcm和wav，
-	//   "SampleRate": 16000,  // Integer，非必填，音频采样率，默认为16000(16k)，推荐值为16000
-	//   "AudioChannel": 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
+	// </div></div><ul>
+	// <li>自定义</li>
+	// </ul>
+	// <p>TTS<br>
+	// 具体协议规范请参考<a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">腾讯文档</a></p>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//   &quot;TTSType&quot;: &quot;custom&quot;, // String 必填
+	//   &quot;APIKey&quot;: &quot;ApiKey&quot;, // String 必填 用来鉴权
+	//   &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // String，必填，TTS API URL
+	//   &quot;AudioFormat&quot;: &quot;wav&quot;, // String, 非必填，期望输出的音频格式，如mp3， ogg_opus，pcm，wav，默认为 wav，目前只支持pcm和wav，
+	//   &quot;SampleRate&quot;: 16000,  // Integer，非必填，音频采样率，默认为16000(16k)，推荐值为16000
+	//   &quot;AudioChannel&quot;: 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
 	// }
-	// ```
+	// </code></pre>
 	// 
+	// </div></div>
 	CustomTTSConfig *string `json:"CustomTTSConfig,omitnil,omitempty" name:"CustomTTSConfig"`
 }
 
@@ -786,41 +744,7 @@ type CreateAICallRequest struct {
 	// 被叫号码
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
 
-	// 用于设定AI人设、说话规则、任务等的全局提示词。
-	// 
-	// 示例：
-	// 
-	// ## 人设
-	// 你是人民医院友善、和蔼的的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。你需要按照任务流程对小明家长进行电话随访调查。
-	// 
-	// ## 要求
-	// 简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。
-	// 富有变化：尽量使表达富有变化，表达机械重复。
-	// 自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。
-	// 积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。
-	// 询问清楚：如果对方部分回答了你的问题，或者回答很模糊，请通过追问来确保回答的完整明确。
-	// 遵循任务：当对方的回答偏离了你的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的的地方继续询问。
-	// 诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。
-	// 其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。
-	// 不要问患者已经直接或间接回答过的问题，比如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。
-	// 
-	// ##任务： 
-	// 1.自我介绍你是人民医院负责随访的李医生，并说明致电的目的。
-	// 2.询问被叫方是否是小明家长。 
-	// - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。
-	// - 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。
-	// 3.询问小明出院后水肿情况如何，较出院时是否有变化。
-	// - 如果水肿变严重，直接跳转步骤7。
-	// 4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。
-	// - 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。
-	// - 如果出现过发烧，请直接跳转步骤7。
-	// 5.询问出院后是否给小朋友按时服药。
-	// - 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。
-	// 6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。
-	// - 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。
-	// 7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。
-	// 8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
-	// 
+	// 用于设定AI人设、说话规则、任务等的全局提示词。示例：## 人设您是人民医院友善、和蔼的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。您需要按照任务流程对小明家长进行电话随访调查。## 要求简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。富有变化：尽量使表达富有变化，表达机械重复。自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。询问清楚：如果对方部分回答了您的问题，或者回答很模糊，请通过追问来确保回答的完整明确。遵循任务：当对方的回答偏离了您的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的地方继续询问。诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。不要问患者已经直接或间接回答过的问题，例如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。##任务： 1.自我介绍您是人民医院负责随访的李医生，并说明致电的目的。2.询问被叫方是否是小明家长。 - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。3.询问小明出院后水肿情况如何，较出院时是否有变化。- 如果水肿变严重，直接跳转步骤7。4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。- 如果出现过发烧，请直接跳转步骤7。5.询问出院后是否给小朋友按时服药。- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
 	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
 
 	// 模型接口协议类型，目前兼容三种协议类型：
@@ -958,93 +882,85 @@ type CreateAICallRequest struct {
 	// 用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
 	NotifyMessage *string `json:"NotifyMessage,omitnil,omitempty" name:"NotifyMessage"`
 
-	// 和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色
-	// 
-	// - Tencent TTS
-	// 配置请参考[腾讯云TTS文档链接](https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823)
-	// ```
-	// { 
-	//        "TTSType": "tencent", // String TTS类型, 目前支持"tencent" 和 “minixmax”， 其他的厂商支持中
-	//        "AppId": "您的应用ID", // String 必填
-	//        "SecretId": "您的密钥ID", // String 必填
-	//        "SecretKey":  "您的密钥Key", // String 必填
-	//        "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见语音合成计费概述。完整的音色 ID 列表请参见语音合成音色列表。
-	//        "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 语速转换
-	//        "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。
-	//        "PrimaryLanguage": 1, // Integer 可选 主要语言 1-中文（默认） 2-英文 3-日文
-	//        "FastVoiceType": "xxxx"   //  可选参数， 快速声音复刻的参数 
+	// <p>和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色</p>
+	// <ul>
+	// <li>Tencent TTS<br>
+	// 配置请参考<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">腾讯云TTS文档链接</a></li>
+	// </ul>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{ 
+	//        &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS类型, 目前支持&quot;tencent&quot; 和 “minixmax”， 其他的厂商支持中
+	//        &quot;AppId&quot;: &quot;您的应用ID&quot;, // String 必填
+	//        &quot;SecretId&quot;: &quot;您的密钥ID&quot;, // String 必填
+	//        &quot;SecretKey&quot;:  &quot;您的密钥Key&quot;, // String 必填
+	//        &quot;VoiceType&quot;: 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见语音合成计费概述。完整的音色 ID 列表请参见语音合成音色列表。
+	//        &quot;Speed&quot;: 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 语速转换
+	//        &quot;Volume&quot;: 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。
+	//        &quot;PrimaryLanguage&quot;: 1, // Integer 可选 主要语言 1-中文（默认） 2-英文 3-日文
+	//        &quot;FastVoiceType&quot;: &quot;xxxx&quot;   //  可选参数， 快速声音复刻的参数 
 	//   }
-	// ```
+	// </code></pre>
 	// 
-	// 
-	// - Minimax TTS
-	// 配置请参考[Minimax TTS文档链接](https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643 )。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，[Minimax TTS频率限制相关文档链接](https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572)。
-	// ```
-	// {
-	//         "TTSType": "minimax",  // String TTS类型, 
-	//         "Model": "speech-01-turbo",
-	//         "APIUrl": "https://api.minimax.chat/v1/t2a_v2",
-	//         "APIKey": "eyxxxx",
-	//         "GroupId": "181000000000000",
-	//         "VoiceType":"female-tianmei-jingpin",
-	//         "Speed": 1.2
+	//   </div></div><ul>
+	// <li>Minimax TTS<br>
+	// 配置请参考<a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS文档链接</a>。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，<a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS频率限制相关文档链接</a>。</li>
+	// </ul>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//         &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS类型, 
+	//         &quot;Model&quot;: &quot;speech-01-turbo&quot;,
+	//         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
+	//         &quot;APIKey&quot;: &quot;eyxxxx&quot;,
+	//         &quot;GroupId&quot;: &quot;181000000000000&quot;,
+	//         &quot;VoiceType&quot;:&quot;female-tianmei-jingpin&quot;,
+	//         &quot;Speed&quot;: 1.2
 	// }
-	// ```
-	// 
-	// 
-	// 
-	// 
-	// 
-	// - 火山 TTS
-	// 
-	// 配置音色类型参考[火山TTS文档链接](https://www.volcengine.com/docs/6561/162929 )
-	// 语音合成音色列表--语音技术-火山引擎
-	// 大模型语音合成音色列表--语音技术-火山引擎
-	// ```
-	// {
-	//     "TTSType": "volcengine",  // 必填：String TTS类型
-	//     "AppId" : "xxxxxxxx",   // 必填：String 火山引擎分配的Appid
-	//     "Token" : "TY9d4sQXHxxxxxxx", // 必填： String类型 火山引擎的访问token
-	//     "Speed" : 1.0,            // 可选参数 语速，默认为1.0
-	//     "Volume": 1.0,            // 可选参数， 音量大小， 默认为1.0
-	//     "Cluster" : "volcano_tts", // 可选参数，业务集群, 默认是 volcano_tts
-	//     "VoiceType" : "zh_male_aojiaobazong_moon_bigtts"   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
+	// </code></pre>
+	// </div></div><ul>
+	// <li>火山 TTS</li>
+	// </ul>
+	// <p>配置音色类型参考<a href="https://www.volcengine.com/docs/6561/162929" target="_blank">火山TTS文档链接</a><br>
+	// 语音合成音色列表–语音技术-火山引擎<br>
+	// 大模型语音合成音色列表–语音技术-火山引擎</p>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//     &quot;TTSType&quot;: &quot;volcengine&quot;,  // 必填：String TTS类型
+	//     &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // 必填：String 火山引擎分配的Appid
+	//     &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // 必填： String类型 火山引擎的访问token
+	//     &quot;Speed&quot; : 1.0,            // 可选参数 语速，默认为1.0
+	//     &quot;Volume&quot;: 1.0,            // 可选参数， 音量大小， 默认为1.0
+	//     &quot;Cluster&quot; : &quot;volcano_tts&quot;, // 可选参数，业务集群, 默认是 volcano_tts
+	//     &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
 	// }
-	// ```
+	// </code></pre>
 	// 
-	// 
-	// 
-	// - Azure TTS
-	// 配置请参考[AzureTTS文档链接](https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice) 
-	// ```
-	// {
-	//     "TTSType": "azure", // 必填：String TTS类型
-	//     "SubscriptionKey": "xxxxxxxx", // 必填：String 订阅的Key
-	//     "Region": "chinanorth3",  // 必填：String 订阅的地区
-	//     "VoiceName": "zh-CN-XiaoxiaoNeural", // 必填：String 音色名必填
-	//     "Language": "zh-CN", // 必填：String 合成的语言  
-	//     "Rate": 1 // 选填：float 语速  0.5～2 默认为 1
+	// </div></div><ul>
+	// <li>Azure TTS<br>
+	// 配置请参考<a href="https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice" target="_blank">AzureTTS文档链接</a></li>
+	// </ul>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//     &quot;TTSType&quot;: &quot;azure&quot;, // 必填：String TTS类型
+	//     &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // 必填：String 订阅的Key
+	//     &quot;Region&quot;: &quot;chinanorth3&quot;,  // 必填：String 订阅的地区
+	//     &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // 必填：String 音色名必填
+	//     &quot;Language&quot;: &quot;zh-CN&quot;, // 必填：String 合成的语言  
+	//     &quot;Rate&quot;: 1 // 选填：float 语速  0.5～2 默认为 1
 	// }
-	// ```
+	// </code></pre>
 	// 
-	// 
-	// 
-	// 
-	// - 自定义
-	// 
-	//  TTS 
-	// 具体协议规范请参考[腾讯文档](https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw )
-	// ```
-	// {
-	//   "TTSType": "custom", // String 必填
-	//   "APIKey": "ApiKey", // String 必填 用来鉴权
-	//   "APIUrl": "http://0.0.0.0:8080/stream-audio" // String，必填，TTS API URL
-	//   "AudioFormat": "wav", // String, 非必填，期望输出的音频格式，如mp3， ogg_opus，pcm，wav，默认为 wav，目前只支持pcm和wav，
-	//   "SampleRate": 16000,  // Integer，非必填，音频采样率，默认为16000(16k)，推荐值为16000
-	//   "AudioChannel": 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
+	// </div></div><ul>
+	// <li>自定义</li>
+	// </ul>
+	// <p>TTS<br>
+	// 具体协议规范请参考<a href="https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw" target="_blank">腾讯文档</a></p>
+	// <div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
+	//   &quot;TTSType&quot;: &quot;custom&quot;, // String 必填
+	//   &quot;APIKey&quot;: &quot;ApiKey&quot;, // String 必填 用来鉴权
+	//   &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // String，必填，TTS API URL
+	//   &quot;AudioFormat&quot;: &quot;wav&quot;, // String, 非必填，期望输出的音频格式，如mp3， ogg_opus，pcm，wav，默认为 wav，目前只支持pcm和wav，
+	//   &quot;SampleRate&quot;: 16000,  // Integer，非必填，音频采样率，默认为16000(16k)，推荐值为16000
+	//   &quot;AudioChannel&quot;: 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
 	// }
-	// ```
+	// </code></pre>
 	// 
+	// </div></div>
 	CustomTTSConfig *string `json:"CustomTTSConfig,omitnil,omitempty" name:"CustomTTSConfig"`
 }
 

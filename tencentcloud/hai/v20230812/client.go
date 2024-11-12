@@ -406,6 +406,8 @@ func NewInquirePriceRunInstancesResponse() (response *InquirePriceRunInstancesRe
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPEANDTIMEUNIT = "InvalidParameterValue.InvalidChargeTypeAndTimeUnit"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
@@ -423,6 +425,8 @@ func (c *Client) InquirePriceRunInstances(request *InquirePriceRunInstancesReque
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPEANDTIMEUNIT = "InvalidParameterValue.InvalidChargeTypeAndTimeUnit"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
@@ -469,8 +473,11 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
+//  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPEANDTIMEUNIT = "InvalidParameterValue.InvalidChargeTypeAndTimeUnit"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 //  LIMITEXCEEDED_SECURITYGROUPLIMITEXCEEDED = "LimitExceeded.SecurityGroupLimitExceeded"
 //  LIMITEXCEEDED_VPCLIMITEXCEEDED = "LimitExceeded.VpcLimitExceeded"
@@ -490,8 +497,11 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
+//  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPEANDTIMEUNIT = "InvalidParameterValue.InvalidChargeTypeAndTimeUnit"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 //  LIMITEXCEEDED_SECURITYGROUPLIMITEXCEEDED = "LimitExceeded.SecurityGroupLimitExceeded"
 //  LIMITEXCEEDED_VPCLIMITEXCEEDED = "LimitExceeded.VpcLimitExceeded"
@@ -678,11 +688,15 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 // 本接口 (TerminateInstances) 用于主动退还实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CANNOTRETURN = "FailedOperation.CannotReturn"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_CANNOTTERMINATEEXPIREDANDNOTEXPIREDINSTANCES = "UnsupportedOperation.CannotTerminateExpiredAndNotExpiredInstances"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTTERMINATEPREPAIDANDPOSTPAID = "UnsupportedOperation.NotSupportTerminatePrePaidAndPostPaid"
 func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
     return c.TerminateInstancesWithContext(context.Background(), request)
 }
@@ -691,11 +705,15 @@ func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (respons
 // 本接口 (TerminateInstances) 用于主动退还实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CANNOTRETURN = "FailedOperation.CannotReturn"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_CANNOTTERMINATEEXPIREDANDNOTEXPIREDINSTANCES = "UnsupportedOperation.CannotTerminateExpiredAndNotExpiredInstances"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTTERMINATEPREPAIDANDPOSTPAID = "UnsupportedOperation.NotSupportTerminatePrePaidAndPostPaid"
 func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
     if request == nil {
         request = NewTerminateInstancesRequest()

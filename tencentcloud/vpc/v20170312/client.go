@@ -19079,6 +19079,71 @@ func (c *Client) ModifyBandwidthPackageAttributeWithContext(ctx context.Context,
     return
 }
 
+func NewModifyBandwidthPackageBandwidthRequest() (request *ModifyBandwidthPackageBandwidthRequest) {
+    request = &ModifyBandwidthPackageBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyBandwidthPackageBandwidth")
+    
+    
+    return
+}
+
+func NewModifyBandwidthPackageBandwidthResponse() (response *ModifyBandwidthPackageBandwidthResponse) {
+    response = &ModifyBandwidthPackageBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBandwidthPackageBandwidth
+// 接口用于调整[共享带宽包](https://cloud.tencent.com/document/product/684/15245)(BWP)带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = "InvalidParameterValue.InvalidOldBandwidth"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) ModifyBandwidthPackageBandwidth(request *ModifyBandwidthPackageBandwidthRequest) (response *ModifyBandwidthPackageBandwidthResponse, err error) {
+    return c.ModifyBandwidthPackageBandwidthWithContext(context.Background(), request)
+}
+
+// ModifyBandwidthPackageBandwidth
+// 接口用于调整[共享带宽包](https://cloud.tencent.com/document/product/684/15245)(BWP)带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = "InvalidParameterValue.InvalidOldBandwidth"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) ModifyBandwidthPackageBandwidthWithContext(ctx context.Context, request *ModifyBandwidthPackageBandwidthRequest) (response *ModifyBandwidthPackageBandwidthResponse, err error) {
+    if request == nil {
+        request = NewModifyBandwidthPackageBandwidthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBandwidthPackageBandwidth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBandwidthPackageBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCcnAttachedInstancesAttributeRequest() (request *ModifyCcnAttachedInstancesAttributeRequest) {
     request = &ModifyCcnAttachedInstancesAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

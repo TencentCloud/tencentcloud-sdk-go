@@ -1326,6 +1326,57 @@ func (c *Client) CreateCustomFunctionWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateDataModelRequest() (request *CreateDataModelRequest) {
+    request = &CreateDataModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateDataModel")
+    
+    
+    return
+}
+
+func NewCreateDataModelResponse() (response *CreateDataModelResponse) {
+    response = &CreateDataModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDataModel
+// 创建数据建模，提供给云应用使用，实现“Wedata数据建模”的下单发货
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_REPEATPURCHASEERROR = "InvalidParameterValue.RepeatPurchaseError"
+func (c *Client) CreateDataModel(request *CreateDataModelRequest) (response *CreateDataModelResponse, err error) {
+    return c.CreateDataModelWithContext(context.Background(), request)
+}
+
+// CreateDataModel
+// 创建数据建模，提供给云应用使用，实现“Wedata数据建模”的下单发货
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_REPEATPURCHASEERROR = "InvalidParameterValue.RepeatPurchaseError"
+func (c *Client) CreateDataModelWithContext(ctx context.Context, request *CreateDataModelRequest) (response *CreateDataModelResponse, err error) {
+    if request == nil {
+        request = NewCreateDataModelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataSourceRequest() (request *CreateDataSourceRequest) {
     request = &CreateDataSourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2241,6 +2292,57 @@ func (c *Client) DeleteCustomFunctionWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteCustomFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDataModelRequest() (request *DeleteDataModelRequest) {
+    request = &DeleteDataModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteDataModel")
+    
+    
+    return
+}
+
+func NewDeleteDataModelResponse() (response *DeleteDataModelResponse) {
+    response = &DeleteDataModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDataModel
+// 销毁数据建模，提供给云应用使用，实现“Wedata数据建模”的销毁
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAMODELDESTROYED = "InvalidParameterValue.DataModelDestroyed"
+func (c *Client) DeleteDataModel(request *DeleteDataModelRequest) (response *DeleteDataModelResponse, err error) {
+    return c.DeleteDataModelWithContext(context.Background(), request)
+}
+
+// DeleteDataModel
+// 销毁数据建模，提供给云应用使用，实现“Wedata数据建模”的销毁
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAMODELDESTROYED = "InvalidParameterValue.DataModelDestroyed"
+func (c *Client) DeleteDataModelWithContext(ctx context.Context, request *DeleteDataModelRequest) (response *DeleteDataModelResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataModelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataModelResponse()
     err = c.Send(request, response)
     return
 }
@@ -12764,6 +12866,57 @@ func (c *Client) UnlockIntegrationTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUnlockIntegrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDataModelRegistryInfoRequest() (request *UpdateDataModelRegistryInfoRequest) {
+    request = &UpdateDataModelRegistryInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UpdateDataModelRegistryInfo")
+    
+    
+    return
+}
+
+func NewUpdateDataModelRegistryInfoResponse() (response *UpdateDataModelRegistryInfoResponse) {
+    response = &UpdateDataModelRegistryInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDataModelRegistryInfo
+// 数语向wedata注册，提供自身cam角色信息，跳转域名、ip、端口信息等
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDPROVIDER = "InvalidParameterValue.UnsupportedProvider"
+func (c *Client) UpdateDataModelRegistryInfo(request *UpdateDataModelRegistryInfoRequest) (response *UpdateDataModelRegistryInfoResponse, err error) {
+    return c.UpdateDataModelRegistryInfoWithContext(context.Background(), request)
+}
+
+// UpdateDataModelRegistryInfo
+// 数语向wedata注册，提供自身cam角色信息，跳转域名、ip、端口信息等
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDPROVIDER = "InvalidParameterValue.UnsupportedProvider"
+func (c *Client) UpdateDataModelRegistryInfoWithContext(ctx context.Context, request *UpdateDataModelRegistryInfoRequest) (response *UpdateDataModelRegistryInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateDataModelRegistryInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDataModelRegistryInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDataModelRegistryInfoResponse()
     err = c.Send(request, response)
     return
 }

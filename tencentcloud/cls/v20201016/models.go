@@ -8721,6 +8721,9 @@ type ModifyAlarmNoticeRequestParams struct {
 	// 通知渠道组ID。
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 通知渠道组名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -8733,7 +8736,7 @@ type ModifyAlarmNoticeRequestParams struct {
 	// 通知接收对象。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
-	// 接口回调信息（包括企业微信）。
+	// 接口回调信息（包括企业微信等）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
@@ -8743,6 +8746,27 @@ type ModifyAlarmNoticeRequestParams struct {
 	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 	// - 传其中一组数据，则另一组数据置空。
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
+
+	// 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
+
+	// 投递日志开关。
+	// 
+	// 参数值：
+	// 1：关闭；
+	// 
+	// 2：开启 
+	DeliverStatus *uint64 `json:"DeliverStatus,omitnil,omitempty" name:"DeliverStatus"`
+
+	// 投递日志配置。
+	DeliverConfig *DeliverConfig `json:"DeliverConfig,omitnil,omitempty" name:"DeliverConfig"`
+
+	// 免登录操作告警开关。
+	// 
+	// 参数值： 
+	//         1：关闭
+	//         2：开启（默认开启）
+	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
 }
 
 type ModifyAlarmNoticeRequest struct {
@@ -8751,6 +8775,9 @@ type ModifyAlarmNoticeRequest struct {
 	// 通知渠道组ID。
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 通知渠道组名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -8763,7 +8790,7 @@ type ModifyAlarmNoticeRequest struct {
 	// 通知接收对象。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
-	// 接口回调信息（包括企业微信）。
+	// 接口回调信息（包括企业微信等）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 通知规则。
@@ -8773,6 +8800,27 @@ type ModifyAlarmNoticeRequest struct {
 	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 	// - 传其中一组数据，则另一组数据置空。
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
+
+	// 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
+
+	// 投递日志开关。
+	// 
+	// 参数值：
+	// 1：关闭；
+	// 
+	// 2：开启 
+	DeliverStatus *uint64 `json:"DeliverStatus,omitnil,omitempty" name:"DeliverStatus"`
+
+	// 投递日志配置。
+	DeliverConfig *DeliverConfig `json:"DeliverConfig,omitnil,omitempty" name:"DeliverConfig"`
+
+	// 免登录操作告警开关。
+	// 
+	// 参数值： 
+	//         1：关闭
+	//         2：开启（默认开启）
+	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -8788,11 +8836,16 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AlarmNoticeId")
+	delete(f, "Tags")
 	delete(f, "Name")
 	delete(f, "Type")
 	delete(f, "NoticeReceivers")
 	delete(f, "WebCallbacks")
 	delete(f, "NoticeRules")
+	delete(f, "JumpDomain")
+	delete(f, "DeliverStatus")
+	delete(f, "DeliverConfig")
+	delete(f, "AlarmShieldStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}

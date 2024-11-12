@@ -169,7 +169,7 @@ type ChatCompletionsRequestParams struct {
 	// 5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
 	EnableMultimedia *bool `json:"EnableMultimedia,omitnil,omitempty" name:"EnableMultimedia"`
 
-	// 是否开启搜索深度模式，默认是false，在值为true且命中搜索时，会请求深度搜索。
+	// 是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
 	EnableDeepSearch *bool `json:"EnableDeepSearch,omitnil,omitempty" name:"EnableDeepSearch"`
 
 	// 说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
@@ -272,7 +272,7 @@ type ChatCompletionsRequest struct {
 	// 5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
 	EnableMultimedia *bool `json:"EnableMultimedia,omitnil,omitempty" name:"EnableMultimedia"`
 
-	// 是否开启搜索深度模式，默认是false，在值为true且命中搜索时，会请求深度搜索。
+	// 是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
 	EnableDeepSearch *bool `json:"EnableDeepSearch,omitnil,omitempty" name:"EnableDeepSearch"`
 
 	// 说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
@@ -748,6 +748,9 @@ func (r *FilesUploadsResponse) FromJsonString(s string) error {
 type GetEmbeddingRequestParams struct {
 	// 输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 输入文本数组。输入数组总长度不超过 200 。
+	InputList []*string `json:"InputList,omitnil,omitempty" name:"InputList"`
 }
 
 type GetEmbeddingRequest struct {
@@ -755,6 +758,9 @@ type GetEmbeddingRequest struct {
 	
 	// 输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 输入文本数组。输入数组总长度不超过 200 。
+	InputList []*string `json:"InputList,omitnil,omitempty" name:"InputList"`
 }
 
 func (r *GetEmbeddingRequest) ToJsonString() string {
@@ -770,6 +776,7 @@ func (r *GetEmbeddingRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Input")
+	delete(f, "InputList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEmbeddingRequest has unknown keys!", "")
 	}
@@ -778,7 +785,7 @@ func (r *GetEmbeddingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEmbeddingResponseParams struct {
-	// 返回的 Embedding 信息。当前不支持批量，所以数组元素数目为 1。
+	// 返回的 Embedding 信息。
 	Data []*EmbeddingData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// Token 使用计数，按照总 Token 数量收费。

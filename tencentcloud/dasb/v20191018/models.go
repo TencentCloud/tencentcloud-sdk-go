@@ -620,7 +620,6 @@ type Command struct {
 	SessionTime *string `json:"SessionTime,omitnil,omitempty" name:"SessionTime"`
 
 	// 该命令所属会话的会话开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: SessTime is deprecated.
 	SessTime *string `json:"SessTime,omitnil,omitempty" name:"SessTime"`
@@ -4079,7 +4078,6 @@ type Domain struct {
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 网络域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 堡垒机id
@@ -5607,7 +5605,6 @@ type Resource struct {
 	LogDelivery *string `json:"LogDelivery,omitnil,omitempty" name:"LogDelivery"`
 
 	// 部署模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployModel *int64 `json:"DeployModel,omitnil,omitempty" name:"DeployModel"`
 }
 
@@ -6055,7 +6052,6 @@ type SearchCommandResult struct {
 	SessionTime *string `json:"SessionTime,omitnil,omitempty" name:"SessionTime"`
 
 	// 该命令所属会话的会话开始时间（废弃，使用SessionTime）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: SessTime is deprecated.
 	SessTime *string `json:"SessTime,omitnil,omitempty" name:"SessTime"`

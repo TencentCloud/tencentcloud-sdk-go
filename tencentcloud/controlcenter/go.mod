@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1038
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1039

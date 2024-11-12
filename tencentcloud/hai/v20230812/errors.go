@@ -20,6 +20,9 @@ const (
 	// 欠费账户不能创建实例
 	FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 
+	// 资源不允许退还
+	FAILEDOPERATION_CANNOTRETURN = "FailedOperation.CannotReturn"
+
 	// 并发操作实例失败
 	FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 
@@ -38,6 +41,9 @@ const (
 	// 算力套餐类型不存在
 	INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 
+	// 云盘大小需要大于应用所需云盘最小大小
+	INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"
+
 	// 列表入参中存在重复值
 	INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 
@@ -52,6 +58,12 @@ const (
 
 	// 应用类型application-type仅可以选择PUBLIC_APPLICATION或PRIVATE_APPLICATION。
 	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
+
+	// 付费方式字段不符合规范
+	INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+
+	// 付费方式与时间单位不匹配
+	INVALIDPARAMETERVALUE_INVALIDCHARGETYPEANDTIMEUNIT = "InvalidParameterValue.InvalidChargeTypeAndTimeUnit"
 
 	// 每次购买的实例数目不在合理范围内
 	INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
@@ -92,6 +104,9 @@ const (
 	// 客户未授权使用本产品
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 
+	// 不允许同时操作预付费过期实例和未过期实例
+	UNSUPPORTEDOPERATION_CANNOTTERMINATEEXPIREDANDNOTEXPIREDINSTANCES = "UnsupportedOperation.CannotTerminateExpiredAndNotExpiredInstances"
+
 	// 不支持对处于`Arrears`状态的实例执行当前操作。
 	UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"
 
@@ -109,4 +124,7 @@ const (
 
 	// 不支持对处于`Terminated`状态的实例执行当前操作。
 	UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+
+	// 不支持同时操作预付费和后付费实例
+	UNSUPPORTEDOPERATION_NOTSUPPORTTERMINATEPREPAIDANDPOSTPAID = "UnsupportedOperation.NotSupportTerminatePrePaidAndPostPaid"
 )

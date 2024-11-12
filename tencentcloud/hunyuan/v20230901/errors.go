@@ -23,7 +23,7 @@ const (
 	// 控制台服务异常。
 	FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
 
-	// LogoUrl或LogoImage有误，水印图下载失败。
+	// LogoUrl 或 LogoImage 有误，水印图下载失败。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
 
 	// 引擎层请求超时；请稍后重试。
@@ -44,7 +44,7 @@ const (
 	// 水印图解码失败
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 
-	// LogoUrl或LogoImage有误，水印图下载失败。
+	// LogoUrl 或 LogoImage 有误，水印图下载失败。
 	FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 
 	// 合作伙伴账号不允许开通，请更换账号。

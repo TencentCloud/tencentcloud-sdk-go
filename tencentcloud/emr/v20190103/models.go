@@ -2541,7 +2541,7 @@ type DescribeEmrOverviewMetricsRequestParams struct {
 	// 结束时间
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 
-	// 指标名
+	// 指标名，NODE.CPU：节点平均CPU利用率和总核数；NODE.CPU.SLHBASE：Serverless实例平均CPU利用率和总核数；HDFS.NN.CAPACITY：存储使用率和总量
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
 	// 集群id
@@ -2566,7 +2566,7 @@ type DescribeEmrOverviewMetricsRequest struct {
 	// 结束时间
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 
-	// 指标名
+	// 指标名，NODE.CPU：节点平均CPU利用率和总核数；NODE.CPU.SLHBASE：Serverless实例平均CPU利用率和总核数；HDFS.NN.CAPACITY：存储使用率和总量
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
 	// 集群id
@@ -8447,6 +8447,18 @@ type RenewInstancesInfo struct {
 
 	// 磁盘类型
 	StorageType *int64 `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 系统盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootSize *int64 `json:"RootSize,omitnil,omitempty" name:"RootSize"`
+
+	// 系统盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootStorageType *int64 `json:"RootStorageType,omitnil,omitempty" name:"RootStorageType"`
+
+	// 数据盘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MCMultiDisk []*MultiDiskMC `json:"MCMultiDisk,omitnil,omitempty" name:"MCMultiDisk"`
 }
 
 type RepeatStrategy struct {

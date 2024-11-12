@@ -844,65 +844,6 @@ func (c *Client) CallISAPIWithContext(ctx context.Context, request *CallISAPIReq
     return
 }
 
-func NewCheckDomainRequest() (request *CheckDomainRequest) {
-    request = &CheckDomainRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("iss", APIVersion, "CheckDomain")
-    
-    
-    return
-}
-
-func NewCheckDomainResponse() (response *CheckDomainResponse) {
-    response = &CheckDomainResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CheckDomain
-// 用于检测域名是否备案。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_NOMATCHEDCNAME = "FailedOperation.NoMatchedCname"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDDOMAIN = "InvalidParameterValue.InvalidDomain"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_DOMAINNOTRECORD = "ResourceUnavailable.DomainNotRecord"
-func (c *Client) CheckDomain(request *CheckDomainRequest) (response *CheckDomainResponse, err error) {
-    return c.CheckDomainWithContext(context.Background(), request)
-}
-
-// CheckDomain
-// 用于检测域名是否备案。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_NOMATCHEDCNAME = "FailedOperation.NoMatchedCname"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDDOMAIN = "InvalidParameterValue.InvalidDomain"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_DOMAINNOTRECORD = "ResourceUnavailable.DomainNotRecord"
-func (c *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomainRequest) (response *CheckDomainResponse, err error) {
-    if request == nil {
-        request = NewCheckDomainRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CheckDomain require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCheckDomainResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewControlDevicePTZRequest() (request *ControlDevicePTZRequest) {
     request = &ControlDevicePTZRequest{
         BaseRequest: &tchttp.BaseRequest{},

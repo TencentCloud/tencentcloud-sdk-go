@@ -80,6 +80,15 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 数据建模实例已经被销毁
+	INVALIDPARAMETERVALUE_DATAMODELDESTROYED = "InvalidParameterValue.DataModelDestroyed"
+
+	// 重复购买错误，一个主账号在一个地域只允许购买一套数据建模
+	INVALIDPARAMETERVALUE_REPEATPURCHASEERROR = "InvalidParameterValue.RepeatPurchaseError"
+
+	// 不支持的数据建模服务提供方
+	INVALIDPARAMETERVALUE_UNSUPPORTEDPROVIDER = "InvalidParameterValue.UnsupportedProvider"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 

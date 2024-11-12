@@ -1040,7 +1040,7 @@ type CreateInstanceAccountRequestParams struct {
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
 	// 设置自定义账号的密码。密码复杂度要求如下：
-	// - 字符个数为[8,32]。
+	// - 字符个数为[8,64]。
 	// - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
 	// - 不能以"/"开头。
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
@@ -1071,7 +1071,7 @@ type CreateInstanceAccountRequest struct {
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
 	// 设置自定义账号的密码。密码复杂度要求如下：
-	// - 字符个数为[8,32]。
+	// - 字符个数为[8,64]。
 	// - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
 	// - 不能以"/"开头。
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
@@ -6406,12 +6406,10 @@ type InquiryPriceCreateInstanceRequestParams struct {
 	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例分片数量。
-	// Redis2.8标准架构、CKV标准架构、Redis4.0标准架构无需填写。
+	// 实例分片数量。2.8 标准架构无需配置分片，其余版本标准架构需要配置分片数量为1。集群架构需指定需购买的分片数量。
 	RedisShardNum *int64 `json:"RedisShardNum,omitnil,omitempty" name:"RedisShardNum"`
 
-	// 实例副本数量。
-	// Redis2.8标准架构、CKV标准架构无需填写。
+	// 实例副本数量。2.8 标准架构无需配置副本数量。
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitnil,omitempty" name:"RedisReplicasNum"`
 
 	// 是否支持副本只读。Redis2.8标准架构、CKV标准架构无需填写。
@@ -6462,12 +6460,10 @@ type InquiryPriceCreateInstanceRequest struct {
 	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例分片数量。
-	// Redis2.8标准架构、CKV标准架构、Redis4.0标准架构无需填写。
+	// 实例分片数量。2.8 标准架构无需配置分片，其余版本标准架构需要配置分片数量为1。集群架构需指定需购买的分片数量。
 	RedisShardNum *int64 `json:"RedisShardNum,omitnil,omitempty" name:"RedisShardNum"`
 
-	// 实例副本数量。
-	// Redis2.8标准架构、CKV标准架构无需填写。
+	// 实例副本数量。2.8 标准架构无需配置副本数量。
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitnil,omitempty" name:"RedisReplicasNum"`
 
 	// 是否支持副本只读。Redis2.8标准架构、CKV标准架构无需填写。

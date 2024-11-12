@@ -23203,6 +23203,67 @@ func (r *ModifyBandwidthPackageAttributeResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ModifyBandwidthPackageBandwidthRequestParams struct {
+	// 带宽包限速大小。单位：Mbps。
+	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
+
+	// 共享带宽包ID
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+}
+
+type ModifyBandwidthPackageBandwidthRequest struct {
+	*tchttp.BaseRequest
+	
+	// 带宽包限速大小。单位：Mbps。
+	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
+
+	// 共享带宽包ID
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+}
+
+func (r *ModifyBandwidthPackageBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBandwidthPackageBandwidthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InternetMaxBandwidth")
+	delete(f, "BandwidthPackageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBandwidthPackageBandwidthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBandwidthPackageBandwidthResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBandwidthPackageBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBandwidthPackageBandwidthResponseParams `json:"Response"`
+}
+
+func (r *ModifyBandwidthPackageBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBandwidthPackageBandwidthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCcnAttachedInstancesAttributeRequestParams struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`

@@ -840,7 +840,7 @@ type DescribeDedicatedClusterCbsStatisticsRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 时间范围精度，1分钟/5分钟
+	// 时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 偏移量，默认为0。
@@ -865,7 +865,7 @@ type DescribeDedicatedClusterCbsStatisticsRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 时间范围精度，1分钟/5分钟
+	// 时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 偏移量，默认为0。
@@ -2117,7 +2117,7 @@ type ModifySiteDeviceInfoRequestParams struct {
 	// 功耗(KW)
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度
+	// 网络到腾讯云Region区域的上行链路速度(Gbps)
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
 	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
@@ -2174,7 +2174,7 @@ type ModifySiteDeviceInfoRequest struct {
 	// 功耗(KW)
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度
+	// 网络到腾讯云Region区域的上行链路速度(Gbps)
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
 	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。

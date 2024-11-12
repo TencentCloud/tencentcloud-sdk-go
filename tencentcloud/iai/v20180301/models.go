@@ -2838,10 +2838,10 @@ type PersonInfo struct {
 }
 
 type Point struct {
-	// x坐标
+	// x坐标。
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// Y坐标
+	// Y坐标。
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 

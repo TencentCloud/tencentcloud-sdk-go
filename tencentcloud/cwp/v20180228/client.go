@@ -792,67 +792,6 @@ func (c *Client) CreateBuyBindTaskWithContext(ctx context.Context, request *Crea
     return
 }
 
-func NewCreateCloudProtectServiceOrderRecordRequest() (request *CreateCloudProtectServiceOrderRecordRequest) {
-    request = &CreateCloudProtectServiceOrderRecordRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "CreateCloudProtectServiceOrderRecord")
-    
-    
-    return
-}
-
-func NewCreateCloudProtectServiceOrderRecordResponse() (response *CreateCloudProtectServiceOrderRecordResponse) {
-    response = &CreateCloudProtectServiceOrderRecordResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateCloudProtectServiceOrderRecord
-// 云护航计费产品已下线
-//
-// 
-//
-// 云护航服务使用完成后，该接口可以确认收货
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) CreateCloudProtectServiceOrderRecord(request *CreateCloudProtectServiceOrderRecordRequest) (response *CreateCloudProtectServiceOrderRecordResponse, err error) {
-    return c.CreateCloudProtectServiceOrderRecordWithContext(context.Background(), request)
-}
-
-// CreateCloudProtectServiceOrderRecord
-// 云护航计费产品已下线
-//
-// 
-//
-// 云护航服务使用完成后，该接口可以确认收货
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) CreateCloudProtectServiceOrderRecordWithContext(ctx context.Context, request *CreateCloudProtectServiceOrderRecordRequest) (response *CreateCloudProtectServiceOrderRecordResponse, err error) {
-    if request == nil {
-        request = NewCreateCloudProtectServiceOrderRecordRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateCloudProtectServiceOrderRecord require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateCloudProtectServiceOrderRecordResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateEmergencyVulScanRequest() (request *CreateEmergencyVulScanRequest) {
     request = &CreateEmergencyVulScanRequest{
         BaseRequest: &tchttp.BaseRequest{},

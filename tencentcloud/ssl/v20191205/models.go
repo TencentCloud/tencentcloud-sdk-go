@@ -399,6 +399,23 @@ type CdnInstanceList struct {
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
+type CertBasicInfo struct {
+	// 颁发者
+	Issuer *string `json:"Issuer,omitnil,omitempty" name:"Issuer"`
+
+	// 颁发给
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// 证书指纹
+	Fingerprint *string `json:"Fingerprint,omitnil,omitempty" name:"Fingerprint"`
+
+	// 证书有效期开始时间
+	ValidFrom *string `json:"ValidFrom,omitnil,omitempty" name:"ValidFrom"`
+
+	// 证书有效期结束时间
+	ValidTo *string `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
+}
+
 type CertTaskId struct {
 	// 证书ID
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
@@ -2366,6 +2383,10 @@ type DescribeCertificateDetailResponseParams struct {
 	// DV证书吊销验证值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitnil,omitempty" name:"DvRevokeAuthDetail"`
+
+	// 证书链信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertChainInfo []*CertBasicInfo `json:"CertChainInfo,omitnil,omitempty" name:"CertChainInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5093,6 +5114,12 @@ type HostingConfig struct {
 	// 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTypes []*int64 `json:"MessageTypes,omitnil,omitempty" name:"MessageTypes"`
+
+	// 资源替换开始时间
+	ReplaceStartTime *string `json:"ReplaceStartTime,omitnil,omitempty" name:"ReplaceStartTime"`
+
+	// 资源替换结束时间
+	ReplaceEndTime *string `json:"ReplaceEndTime,omitnil,omitempty" name:"ReplaceEndTime"`
 }
 
 type LighthouseInstanceDetail struct {

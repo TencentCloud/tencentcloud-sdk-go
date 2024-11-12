@@ -236,7 +236,7 @@ type DescribeInstancesRequestParams struct {
 	// 实例元组
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
+	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -252,7 +252,7 @@ type DescribeInstancesRequest struct {
 	// 实例元组
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
+	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -524,6 +524,12 @@ type InquirePriceRunInstancesRequestParams struct {
 
 	// DryRun为True就是只验接口连通性，默认为False
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 付费方式，POSTPAID_BY_HOUR按量后付费，PREPAID_BY_MONTH预付费按月，PREPAID_BY_DAY预付费按天
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 预付费参数
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 }
 
 type InquirePriceRunInstancesRequest struct {
@@ -549,6 +555,12 @@ type InquirePriceRunInstancesRequest struct {
 
 	// DryRun为True就是只验接口连通性，默认为False
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 付费方式，POSTPAID_BY_HOUR按量后付费，PREPAID_BY_MONTH预付费按月，PREPAID_BY_DAY预付费按天
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 预付费参数
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 }
 
 func (r *InquirePriceRunInstancesRequest) ToJsonString() string {
@@ -570,6 +582,8 @@ func (r *InquirePriceRunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceName")
 	delete(f, "ClientToken")
 	delete(f, "DryRun")
+	delete(f, "InstanceChargeType")
+	delete(f, "InstanceChargePrepaid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRunInstancesRequest has unknown keys!", "")
 	}
@@ -707,6 +721,21 @@ type Instance struct {
 	OSType *string `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
+type InstanceChargePrepaid struct {
+	// 时长，默认值：1
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 续费标志可选参数：
+	// NOTIFY_AND_MANUAL_RENEW：表示默认状态(用户未设置，即初始状态：若用户有预付费不停服特权，也会对该值进行自动续费)
+	// NOTIFY_AND_AUTO_RENEW：表示自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
+	// 默认值：NOTIFY_AND_MANUAL_RENEW
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 时长单位，默认值MONTH
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+}
+
 type ItemPrice struct {
 	// 原单价
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -720,7 +749,7 @@ type ItemPrice struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 单位：时
+	// 单位：时/月
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
@@ -728,6 +757,24 @@ type ItemPrice struct {
 	// 商品数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
+}
+
+type ItemPriceDetail struct {
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例价格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePrice *ItemPrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
+
+	// 磁盘价格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudDiskPrice *ItemPrice `json:"CloudDiskPrice,omitnil,omitempty" name:"CloudDiskPrice"`
+
+	// 该实例的总价钱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTotalPrice *ItemPrice `json:"InstanceTotalPrice,omitnil,omitempty" name:"InstanceTotalPrice"`
 }
 
 type LoginService struct {
@@ -776,6 +823,10 @@ type Price struct {
 	// 云盘价格信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudDiskPrice *ItemPrice `json:"CloudDiskPrice,omitnil,omitempty" name:"CloudDiskPrice"`
+
+	// 分实例价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceDetailSet []*ItemPriceDetail `json:"PriceDetailSet,omitnil,omitempty" name:"PriceDetailSet"`
 }
 
 type RegionInfo struct {
