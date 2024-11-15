@@ -504,7 +504,7 @@ func NewSwapGenderPicResponse() (response *SwapGenderPicResponse) {
 }
 
 // SwapGenderPic
-// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。 
+// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"
@@ -540,7 +540,7 @@ func (c *Client) SwapGenderPic(request *SwapGenderPicRequest) (response *SwapGen
 }
 
 // SwapGenderPic
-// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。 
+// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"

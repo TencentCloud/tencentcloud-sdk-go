@@ -5740,12 +5740,53 @@ func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudProductLogTasksRequestParams struct {
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// 分页单页限制数目，默认值为100，最大值100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// - assumerName
+	//   - 按照【云产品标识】进行过滤。
+	//   - 类型：String
+	//   - 必选：否
+	//   - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// - logType
+	//   - 按照【日志类型】进行过滤。
+	//   - 类型：String
+	//   - 必选：否
+	//   - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// - instanceId
+	//   - 按照【实例ID】进行过滤。
+	//   - 类型：String
+	//   - 必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeCloudProductLogTasksRequest struct {
 	*tchttp.BaseRequest
 	
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为100，最大值100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// - assumerName
+	//   - 按照【云产品标识】进行过滤。
+	//   - 类型：String
+	//   - 必选：否
+	//   - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// - logType
+	//   - 按照【日志类型】进行过滤。
+	//   - 类型：String
+	//   - 必选：否
+	//   - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// - instanceId
+	//   - 按照【实例ID】进行过滤。
+	//   - 类型：String
+	//   - 必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeCloudProductLogTasksRequest) ToJsonString() string {
@@ -5760,7 +5801,9 @@ func (r *DescribeCloudProductLogTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudProductLogTasksRequest has unknown keys!", "")
 	}

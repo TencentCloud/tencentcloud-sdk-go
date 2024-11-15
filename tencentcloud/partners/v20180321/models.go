@@ -61,19 +61,15 @@ type AgentAuditedClient struct {
 	ProjectType *string `json:"ProjectType,omitnil,omitempty" name:"ProjectType"`
 
 	// 业务员ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesUin *string `json:"SalesUin,omitnil,omitempty" name:"SalesUin"`
 
 	// 业务员姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesName *string `json:"SalesName,omitnil,omitempty" name:"SalesName"`
 
 	// 代客邮箱
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// 交易类型:交易类型 1-原类型 2-代理型  3-代采型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransactionType *string `json:"TransactionType,omitnil,omitempty" name:"TransactionType"`
 }
 
@@ -109,15 +105,12 @@ type AgentBillElem struct {
 	PayerMode *string `json:"PayerMode,omitnil,omitempty" name:"PayerMode"`
 
 	// 客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientType *string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectType *string `json:"ProjectType,omitnil,omitempty" name:"ProjectType"`
 
 	// 活动ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *string `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 }
 
@@ -131,7 +124,7 @@ type AgentClientElem struct {
 	// 代客申请时间戳
 	ApplyTime *uint64 `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
-	// 代客类型，可能值为a/b/c
+	// 代客类型，可能值为a/b/c/other
 	ClientFlag *string `json:"ClientFlag,omitnil,omitempty" name:"ClientFlag"`
 
 	// 代客邮箱，打码显示
@@ -147,15 +140,12 @@ type AgentClientElem struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 业务员ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesUin *string `json:"SalesUin,omitnil,omitempty" name:"SalesUin"`
 
 	// 业务员姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesName *string `json:"SalesName,omitnil,omitempty" name:"SalesName"`
 
 	// 客户名称，此字段和控制台返回一致。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientName *string `json:"ClientName,omitnil,omitempty" name:"ClientName"`
 }
 
@@ -173,111 +163,84 @@ type AgentDealNewElem struct {
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 订单所有者对应 appId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 商品数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GoodsNum *string `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// 价格详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GoodsPrice *DealGoodsPriceNewElem `json:"GoodsPrice,omitnil,omitempty" name:"GoodsPrice"`
 
 	// 下单人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creater *string `json:"Creater,omitnil,omitempty" name:"Creater"`
 
 	// 下单时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatTime *string `json:"CreatTime,omitnil,omitempty" name:"CreatTime"`
 
 	// 支付结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
 
 	// 扣费流水号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
 	// 支付人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Payer *string `json:"Payer,omitnil,omitempty" name:"Payer"`
 
 	// 订单状态，中文描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealStatus *string `json:"DealStatus,omitnil,omitempty" name:"DealStatus"`
 
 	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GoodsName *string `json:"GoodsName,omitnil,omitempty" name:"GoodsName"`
 
 	// 客户备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientRemark *string `json:"ClientRemark,omitnil,omitempty" name:"ClientRemark"`
 
 	// 订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 代金券抵扣金额，单位分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherDecline *string `json:"VoucherDecline,omitnil,omitempty" name:"VoucherDecline"`
 
 	// 大订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 
 	// 客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientType *string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
 
 	// 项目类型（self：自拓；repeat：直销；platform：官网合作）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectType *string `json:"ProjectType,omitnil,omitempty" name:"ProjectType"`
 
 	// 业务员账号ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesUin *string `json:"SalesUin,omitnil,omitempty" name:"SalesUin"`
 
 	// 支付方式，0：自付；1：代付
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerMode *string `json:"PayerMode,omitnil,omitempty" name:"PayerMode"`
 
 	// 活动ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *string `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
 	// 订单过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverdueTime *string `json:"OverdueTime,omitnil,omitempty" name:"OverdueTime"`
 
 	// 产品详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitnil,omitempty" name:"ProductInfo"`
 
 	// 付款方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentMethod *string `json:"PaymentMethod,omitnil,omitempty" name:"PaymentMethod"`
 
 	// 订单更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefundMap []*RefundMap `json:"RefundMap,omitnil,omitempty" name:"RefundMap"`
 
 	// 子产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubGoodsName *string `json:"SubGoodsName,omitnil,omitempty" name:"SubGoodsName"`
 }
 
@@ -480,11 +443,9 @@ func (r *AssignClientsToSalesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AssignClientsToSalesResponseParams struct {
 	// 处理成功的代客uin列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SucceedUins []*string `json:"SucceedUins,omitnil,omitempty" name:"SucceedUins"`
 
 	// 处理失败的代客uin列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedUins []*string `json:"FailedUins,omitnil,omitempty" name:"FailedUins"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -565,7 +526,6 @@ type AuditApplyClientResponseParams struct {
 	AuditResult *string `json:"AuditResult,omitnil,omitempty" name:"AuditResult"`
 
 	// 关联时间对应的时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentTime *uint64 `json:"AgentTime,omitnil,omitempty" name:"AgentTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1345,7 +1305,6 @@ func (r *DescribeAgentRelateBigDealIdsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAgentRelateBigDealIdsResponseParams struct {
 	// 申请合并支付的关联大订单号列表（不包含请求的订单号）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealIdList []*string `json:"BigDealIdList,omitnil,omitempty" name:"BigDealIdList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1953,21 +1912,27 @@ type ProductInfoElem struct {
 
 type RebateInfoElem struct {
 	// 代理商账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 返佣月份，如2018-02
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`
 
 	// 返佣金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amt *uint64 `json:"Amt,omitnil,omitempty" name:"Amt"`
 
 	// 月度业绩，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonthSales *uint64 `json:"MonthSales,omitnil,omitempty" name:"MonthSales"`
 
 	// 季度业绩，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuarterSales *uint64 `json:"QuarterSales,omitnil,omitempty" name:"QuarterSales"`
 
 	// NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionFlag *string `json:"ExceptionFlag,omitnil,omitempty" name:"ExceptionFlag"`
 }
 
@@ -1993,11 +1958,9 @@ type RebateInfoElemNew struct {
 
 type RefundMap struct {
 	// 退款单关联的原始子订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 退款金额，单位分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefundAmount *int64 `json:"RefundAmount,omitnil,omitempty" name:"RefundAmount"`
 }
 
@@ -2066,10 +2029,8 @@ type UnbindClientElem struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 申请时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
 	// 解绑/撤销时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionTime *string `json:"ActionTime,omitnil,omitempty" name:"ActionTime"`
 }

@@ -416,6 +416,10 @@ func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResp
 }
 
 // CreateResourceInstances
+// 不再使用
+//
+// 
+//
 // 用户可以使用该接口自建资源，只支持白名单用户
 //
 // 可能返回的错误码:
@@ -432,6 +436,10 @@ func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest
 }
 
 // CreateResourceInstances
+// 不再使用
+//
+// 
+//
 // 用户可以使用该接口自建资源，只支持白名单用户
 //
 // 可能返回的错误码:

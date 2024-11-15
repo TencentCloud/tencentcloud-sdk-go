@@ -505,6 +505,9 @@ type CompanyStateInfo struct {
 
 	// 修改时间
 	ModifyTime *int64 `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 合同编号
+	ContractNo *string `json:"ContractNo,omitnil,omitempty" name:"ContractNo"`
 }
 
 // Predefined struct for user

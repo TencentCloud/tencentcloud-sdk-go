@@ -6280,6 +6280,10 @@ type Component struct {
 	// <li> <b>RotateRelation</b>：旋转关联控件，用于指定关联旋转的控件。例如：让印章控件和签署日期控件按照印章控件为中心旋转（此时，设置印章控件的RotateRelation为日期控件的ComponentId，设置日期签署控件的RotateRelation为印章控件的ComponentId）。</li></ul>
 	// <b>参数样例</b>：`{"Rotate":-30,"RotateRelation":"Component_Id1"}`
 	// 
+	// <font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
+	// <ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+	// <b>参数样例</b>：`{"Opacity":0.7}`
+	// 
 	// <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 	// <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
 	// 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
@@ -7834,29 +7838,43 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
+	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
+	// 
 	// 注：`被授权企业必须和当前企业在同一应用号下`
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
-	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
-	// 注：`被授权企业必须和当前企业在同一应用号下`
+	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+	// 
+	// 注: 
+	// 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 2. 被授权企业必须和当前企业在同一应用号下
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 
-	// 是否给平台应用授权:
-	// - true: 是（无需设置AuthorizedOrganizationId和AuthorizedOrganizationName）
-	// - false: 否（默认）
-	//  注：该参数需要开通“基于子客授权第三方应用可文件发起子客自动签署”，请联系运营经理开通
+	// 是否给平台应用授权
+	// 
+	// <ul>
+	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+	// <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
+	// </ul>
+	// 
+	//  注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。
 	PlatformAppAuthorization *bool `json:"PlatformAppAuthorization,omitnil,omitempty" name:"PlatformAppAuthorization"`
 
-	// 指定印章类型，指定后只能选择该类型的印章进行授权
-	// 支持以下印章类型：
-	// - OFFICIAL : 企业公章
-	// - CONTRACT : 合同专用章
-	// - FINANCE : 财务专用章
-	// - PERSONNEL : 人事专用章
+	// 在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
+	// 
+	// <ul>
+	// <li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
+	// <li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
+	// <li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
+	// <li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
+	// </ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// 他方授权给我方：- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+	// 在处理授权关系时，授权的方向
+	// <ul>
+	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+	// </ul>
 	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
 }
 
@@ -7874,29 +7892,43 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
+	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
+	// 
 	// 注：`被授权企业必须和当前企业在同一应用号下`
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
-	// 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
-	// 注：`被授权企业必须和当前企业在同一应用号下`
+	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+	// 
+	// 注: 
+	// 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 2. 被授权企业必须和当前企业在同一应用号下
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 
-	// 是否给平台应用授权:
-	// - true: 是（无需设置AuthorizedOrganizationId和AuthorizedOrganizationName）
-	// - false: 否（默认）
-	//  注：该参数需要开通“基于子客授权第三方应用可文件发起子客自动签署”，请联系运营经理开通
+	// 是否给平台应用授权
+	// 
+	// <ul>
+	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+	// <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
+	// </ul>
+	// 
+	//  注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。
 	PlatformAppAuthorization *bool `json:"PlatformAppAuthorization,omitnil,omitempty" name:"PlatformAppAuthorization"`
 
-	// 指定印章类型，指定后只能选择该类型的印章进行授权
-	// 支持以下印章类型：
-	// - OFFICIAL : 企业公章
-	// - CONTRACT : 合同专用章
-	// - FINANCE : 财务专用章
-	// - PERSONNEL : 人事专用章
+	// 在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
+	// 
+	// <ul>
+	// <li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
+	// <li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
+	// <li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
+	// <li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
+	// </ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// 他方授权给我方：- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+	// 在处理授权关系时，授权的方向
+	// <ul>
+	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+	// </ul>
 	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
 }
 

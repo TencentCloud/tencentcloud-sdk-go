@@ -970,7 +970,6 @@ type DescribeCloudRecordingResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 录制文件信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageFileList []*StorageFile `json:"StorageFileList,omitnil,omitempty" name:"StorageFileList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2991,6 +2990,20 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EmulateMobileParams struct {
+	// 移动设备类型，
+	// 0: 手机
+	// 1: 平板
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MobileDeviceType *uint64 `json:"MobileDeviceType,omitnil,omitempty" name:"MobileDeviceType"`
+
+	// 屏幕方向，
+	// 0: 竖屏，
+	// 1: 横屏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScreenOrientation *uint64 `json:"ScreenOrientation,omitnil,omitempty" name:"ScreenOrientation"`
+}
+
 type EncodeParams struct {
 	// 混流-输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。混流任务发起过程中，为了保持CDN链接的稳定，不要修改音频参数（codec、采样率、码率、声道数）。
 	AudioSampleRate *uint64 `json:"AudioSampleRate,omitnil,omitempty" name:"AudioSampleRate"`
@@ -4143,6 +4156,9 @@ type STTConfig struct {
 	// 注：Language指定为"zh-dialect" # 中国方言 时，不支持模糊识别，该字段无效
 	AlternativeLanguage []*string `json:"AlternativeLanguage,omitnil,omitempty" name:"AlternativeLanguage"`
 
+	// 自定义参数，联系后台使用
+	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
+
 	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
 	VadSilenceTime *uint64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
 }
@@ -4962,6 +4978,9 @@ type StartWebRecordRequestParams struct {
 
 	// 录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
 	ReadyTimeout *uint64 `json:"ReadyTimeout,omitnil,omitempty" name:"ReadyTimeout"`
+
+	// 渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。
+	EmulateMobileParams *EmulateMobileParams `json:"EmulateMobileParams,omitnil,omitempty" name:"EmulateMobileParams"`
 }
 
 type StartWebRecordRequest struct {
@@ -4991,6 +5010,9 @@ type StartWebRecordRequest struct {
 
 	// 录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
 	ReadyTimeout *uint64 `json:"ReadyTimeout,omitnil,omitempty" name:"ReadyTimeout"`
+
+	// 渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。
+	EmulateMobileParams *EmulateMobileParams `json:"EmulateMobileParams,omitnil,omitempty" name:"EmulateMobileParams"`
 }
 
 func (r *StartWebRecordRequest) ToJsonString() string {
@@ -5013,6 +5035,7 @@ func (r *StartWebRecordRequest) FromJsonString(s string) error {
 	delete(f, "RecordId")
 	delete(f, "PublishCdnParams")
 	delete(f, "ReadyTimeout")
+	delete(f, "EmulateMobileParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWebRecordRequest has unknown keys!", "")
 	}

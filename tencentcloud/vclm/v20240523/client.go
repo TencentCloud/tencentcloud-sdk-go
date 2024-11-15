@@ -659,109 +659,109 @@ func NewSubmitVideoTranslateJobResponse() (response *SubmitVideoTranslateJobResp
 // SubmitVideoTranslateJob
 // ###### 支持音色种别列表
 //
-// | 音色名称                 | 性别 | 目标语言         | 音色ID |
+// | 音色名称                 | 性别 | 音色ID |音色试听ID |
 //
-// | ------------------------ | ---- | ---------------- | ------ |
+// | ------------------------ | ---- | ------ |------ |
 //
-// | Florian Multilingual     | 男 | 德语(德国)       | 701001 |
+// | Florian Multilingual     | 男   | 701001 |
 //
-// | Seraphina                | 女  | 德语(德国)       | 701002 |
+// | Seraphina                | 女   | 701002 |
 //
-// | Ada Multilingual         | 女 | 英语(英国)       | 701003 |
+// | Ada Multilingual         | 女   | 701003 |
 //
-// | Ollie Multilingual       | 男  | 英语(英国)       | 701004 |
+// | Ollie Multilingual       | 男   | 701004 |
 //
-// | Ava Multilingual         | 女 | 英语(美国)       | 701005 |
+// | Ava Multilingual         | 女   | 701005 |
 //
-// | Andrew Multilingual      | 男  | 英语(美国)       | 701006 |
+// | Andrew Multilingual      | 男   | 701006 |
 //
-// | Emma Multilingual        | 女  | 英语(美国)       | 701007 |
+// | Emma Multilingual        | 女   | 701007 |
 //
-// | Brian Multilingual       | 男  | 英语(美国)       | 701008 |
+// | Brian Multilingual       | 男   | 701008 |
 //
-// | Jenny Multilingual       | 女  | 英语(美国)       | 701009 |
+// | Jenny Multilingual       | 女   | 701009 |
 //
-// | Ryan Multilingual        | 男  | 英语(美国)       | 701010 |
+// | Ryan Multilingual        | 男   | 701010 |
 //
-// | Adam Multilingual        | 男  | 英语(美国)       | 701011 |
+// | Adam Multilingual        | 男   | 701011 |
 //
-// | AlloyTurbo Multilingual  | 男  | 英语(美国)       | 701012 |
+// | AlloyTurbo Multilingual  | 男   | 701012 |
 //
-// | Amanda Multilingual      | 女  | 英语(美国)       | 701013 |
+// | Amanda Multilingual      | 女   | 701013 |
 //
-// | Brandon Multilingual     | 男  | 英语(美国)       | 701014 |
+// | Brandon Multilingual     | 男   | 701014 |
 //
-// | Christopher Multilingual | 男  | 英语(美国)       | 701015 |
+// | Christopher Multilingual | 男   | 701015 |
 //
-// | Cora Multilingual        | 女  | 英语(美国)       | 701016 |
+// | Cora Multilingual        | 女   | 701016 |
 //
-// | Davis Multilingual       | 男  | 英语(美国)       | 701017 |
+// | Davis Multilingual       | 男   | 701017 |
 //
-// | Derek Multilingual       | 男  | 英语(美国)       | 701018 |
+// | Derek Multilingual       | 男   | 701018 |
 //
-// | Dustin Multilingual      | 男  | 英语(美国)       | 701019 |
+// | Dustin Multilingual      | 男   | 701019 |
 //
-// | Evelyn Multilingual      | 女  | 英语(美国)       | 701020 |
+// | Evelyn Multilingual      | 女   | 701020 |
 //
-// | Lewis Multilingual       | 男  | 英语(美国)       | 701021 |
+// | Lewis Multilingual       | 男   | 701021 |
 //
-// | Lola Multilingual        | 女  | 英语(美国)       | 701022 |
+// | Lola Multilingual        | 女   | 701022 |
 //
-// | Nancy Multilingual       | 女  | 英语(美国)       | 701023 |
+// | Nancy Multilingual       | 女   | 701023 |
 //
-// | NovaTurbo Multilingual   | 女   | 英语(美国)       | 701024 |
+// | NovaTurbo Multilingual   | 女   | 701024 |
 //
-// | Phoebe Multilingual      | 女  | 英语(美国)       | 701025 |
+// | Phoebe Multilingual      | 女   | 701025 |
 //
-// | Samuel Multilingual      | 男  | 英语(美国)       | 701026 |
+// | Samuel Multilingual      | 男   | 701026 |
 //
-// | Serena Multilingual      | 女  | 英语(美国)       | 701027 |
+// | Serena Multilingual      | 女   | 701027 |
 //
-// | Steffan Multilingual     | 男  | 英语(美国)       | 701028 |
+// | Steffan Multilingual     | 男   | 701028 |
 //
-// | Arabella Multilingual    | 女  | 西班牙语(西班牙) | 701029 |
+// | Arabella Multilingual    | 女   | 701029 |
 //
-// | Isidora Multilingual     | 女  | 西班牙语(西班牙) | 701030 |
+// | Isidora Multilingual     | 女   | 701030 |
 //
-// | Tristan Multilingual     | 男  | 西班牙语(西班牙) | 701031 |
+// | Tristan Multilingual     | 男   | 701031 |
 //
-// | Ximena Multilingual      | 女  | 西班牙语(西班牙) | 701032 |
+// | Ximena Multilingual      | 女   | 701032 |
 //
-// | Remy Multilingual        | 男  | 法语(法国)       | 701033 |
+// | Remy Multilingual        | 男   | 701033 |
 //
-// | Vivienne Multilingual    | 女  | 法语(法国)       | 701034 |
+// | Vivienne Multilingual    | 女   | 701034 |
 //
-// | Lucien Multilingual      | 男  | 法语(法国)       | 701035 |
+// | Lucien Multilingual      | 男   | 701035 |
 //
-// | Alessio Multilingual     | 男  | 意大利语(意大利) | 701036 |
+// | Alessio Multilingual     | 男   | 701036 |
 //
-// | Giuseppe Multilingual    | 男  | 意大利语(意大利) | 701037 |
+// | Giuseppe Multilingual    | 男   | 701037 |
 //
-// | Isabella Multilingual    | 女  | 意大利语(意大利) | 701038 |
+// | Isabella Multilingual    | 女   | 701038 |
 //
-// | Marcello Multilingual    | 男  | 意大利语(意大利) | 701039 |
+// | Marcello Multilingual    | 男   | 701039 |
 //
-// | Masaru Multilingual      | 男  | 日语(日本)       | 701040 |
+// | Masaru Multilingual      | 男   | 701040 |
 //
-// | Hyunsu Multilingual      | 男  | 韩语(韩国)       | 701041 |
+// | Hyunsu Multilingual      | 男   | 701041 |
 //
-// | Macerio Multilingual     | 男  | 葡萄牙语(巴西)   | 701042 |
+// | Macerio Multilingual     | 男   | 701042 |
 //
-// | Thalita Multilingual     | 女  | 葡萄牙语(巴西)   | 701043 |
+// | Thalita Multilingual     | 女   | 701043 |
 //
-// | 晓辰 多语言              | 女  | 中文(普通话)     | 701044 |
+// | 晓辰 多语言              | 女   | 701044 |
 //
-// | 晓晓 多语言              | 女  | 中文(普通话)     | 701045 |
+// | 晓晓 多语言              | 女   | 701045 |
 //
-// | 晓宇 多语言              | 女  | 中文(普通话)     | 701046 |
+// | 晓宇 多语言              | 女   | 701046 |
 //
-// | 云逸 多语言              | 男 | 中文(普通话)     | 701047 |
+// | 云逸 多语言              | 男   | 701047 |
 //
-// | Yunfan Multilingual      | 男  | 中文(普通话)     | 701048 |
+// | Yunfan Multilingual      | 男   | 701048 |
 //
-// | Yunxiao Multilingual     | 男  | 中文(普通话)     | 701049 |
+// | Yunxiao Multilingual     | 男   | 701049 |
 //
-// | 晓晓 方言                | 女  | 中文(普通话)     | 701050 |
+// | 晓晓 方言                | 女   | 701050 |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
@@ -788,109 +788,109 @@ func (c *Client) SubmitVideoTranslateJob(request *SubmitVideoTranslateJobRequest
 // SubmitVideoTranslateJob
 // ###### 支持音色种别列表
 //
-// | 音色名称                 | 性别 | 目标语言         | 音色ID |
+// | 音色名称                 | 性别 | 音色ID |音色试听ID |
 //
-// | ------------------------ | ---- | ---------------- | ------ |
+// | ------------------------ | ---- | ------ |------ |
 //
-// | Florian Multilingual     | 男 | 德语(德国)       | 701001 |
+// | Florian Multilingual     | 男   | 701001 |
 //
-// | Seraphina                | 女  | 德语(德国)       | 701002 |
+// | Seraphina                | 女   | 701002 |
 //
-// | Ada Multilingual         | 女 | 英语(英国)       | 701003 |
+// | Ada Multilingual         | 女   | 701003 |
 //
-// | Ollie Multilingual       | 男  | 英语(英国)       | 701004 |
+// | Ollie Multilingual       | 男   | 701004 |
 //
-// | Ava Multilingual         | 女 | 英语(美国)       | 701005 |
+// | Ava Multilingual         | 女   | 701005 |
 //
-// | Andrew Multilingual      | 男  | 英语(美国)       | 701006 |
+// | Andrew Multilingual      | 男   | 701006 |
 //
-// | Emma Multilingual        | 女  | 英语(美国)       | 701007 |
+// | Emma Multilingual        | 女   | 701007 |
 //
-// | Brian Multilingual       | 男  | 英语(美国)       | 701008 |
+// | Brian Multilingual       | 男   | 701008 |
 //
-// | Jenny Multilingual       | 女  | 英语(美国)       | 701009 |
+// | Jenny Multilingual       | 女   | 701009 |
 //
-// | Ryan Multilingual        | 男  | 英语(美国)       | 701010 |
+// | Ryan Multilingual        | 男   | 701010 |
 //
-// | Adam Multilingual        | 男  | 英语(美国)       | 701011 |
+// | Adam Multilingual        | 男   | 701011 |
 //
-// | AlloyTurbo Multilingual  | 男  | 英语(美国)       | 701012 |
+// | AlloyTurbo Multilingual  | 男   | 701012 |
 //
-// | Amanda Multilingual      | 女  | 英语(美国)       | 701013 |
+// | Amanda Multilingual      | 女   | 701013 |
 //
-// | Brandon Multilingual     | 男  | 英语(美国)       | 701014 |
+// | Brandon Multilingual     | 男   | 701014 |
 //
-// | Christopher Multilingual | 男  | 英语(美国)       | 701015 |
+// | Christopher Multilingual | 男   | 701015 |
 //
-// | Cora Multilingual        | 女  | 英语(美国)       | 701016 |
+// | Cora Multilingual        | 女   | 701016 |
 //
-// | Davis Multilingual       | 男  | 英语(美国)       | 701017 |
+// | Davis Multilingual       | 男   | 701017 |
 //
-// | Derek Multilingual       | 男  | 英语(美国)       | 701018 |
+// | Derek Multilingual       | 男   | 701018 |
 //
-// | Dustin Multilingual      | 男  | 英语(美国)       | 701019 |
+// | Dustin Multilingual      | 男   | 701019 |
 //
-// | Evelyn Multilingual      | 女  | 英语(美国)       | 701020 |
+// | Evelyn Multilingual      | 女   | 701020 |
 //
-// | Lewis Multilingual       | 男  | 英语(美国)       | 701021 |
+// | Lewis Multilingual       | 男   | 701021 |
 //
-// | Lola Multilingual        | 女  | 英语(美国)       | 701022 |
+// | Lola Multilingual        | 女   | 701022 |
 //
-// | Nancy Multilingual       | 女  | 英语(美国)       | 701023 |
+// | Nancy Multilingual       | 女   | 701023 |
 //
-// | NovaTurbo Multilingual   | 女   | 英语(美国)       | 701024 |
+// | NovaTurbo Multilingual   | 女   | 701024 |
 //
-// | Phoebe Multilingual      | 女  | 英语(美国)       | 701025 |
+// | Phoebe Multilingual      | 女   | 701025 |
 //
-// | Samuel Multilingual      | 男  | 英语(美国)       | 701026 |
+// | Samuel Multilingual      | 男   | 701026 |
 //
-// | Serena Multilingual      | 女  | 英语(美国)       | 701027 |
+// | Serena Multilingual      | 女   | 701027 |
 //
-// | Steffan Multilingual     | 男  | 英语(美国)       | 701028 |
+// | Steffan Multilingual     | 男   | 701028 |
 //
-// | Arabella Multilingual    | 女  | 西班牙语(西班牙) | 701029 |
+// | Arabella Multilingual    | 女   | 701029 |
 //
-// | Isidora Multilingual     | 女  | 西班牙语(西班牙) | 701030 |
+// | Isidora Multilingual     | 女   | 701030 |
 //
-// | Tristan Multilingual     | 男  | 西班牙语(西班牙) | 701031 |
+// | Tristan Multilingual     | 男   | 701031 |
 //
-// | Ximena Multilingual      | 女  | 西班牙语(西班牙) | 701032 |
+// | Ximena Multilingual      | 女   | 701032 |
 //
-// | Remy Multilingual        | 男  | 法语(法国)       | 701033 |
+// | Remy Multilingual        | 男   | 701033 |
 //
-// | Vivienne Multilingual    | 女  | 法语(法国)       | 701034 |
+// | Vivienne Multilingual    | 女   | 701034 |
 //
-// | Lucien Multilingual      | 男  | 法语(法国)       | 701035 |
+// | Lucien Multilingual      | 男   | 701035 |
 //
-// | Alessio Multilingual     | 男  | 意大利语(意大利) | 701036 |
+// | Alessio Multilingual     | 男   | 701036 |
 //
-// | Giuseppe Multilingual    | 男  | 意大利语(意大利) | 701037 |
+// | Giuseppe Multilingual    | 男   | 701037 |
 //
-// | Isabella Multilingual    | 女  | 意大利语(意大利) | 701038 |
+// | Isabella Multilingual    | 女   | 701038 |
 //
-// | Marcello Multilingual    | 男  | 意大利语(意大利) | 701039 |
+// | Marcello Multilingual    | 男   | 701039 |
 //
-// | Masaru Multilingual      | 男  | 日语(日本)       | 701040 |
+// | Masaru Multilingual      | 男   | 701040 |
 //
-// | Hyunsu Multilingual      | 男  | 韩语(韩国)       | 701041 |
+// | Hyunsu Multilingual      | 男   | 701041 |
 //
-// | Macerio Multilingual     | 男  | 葡萄牙语(巴西)   | 701042 |
+// | Macerio Multilingual     | 男   | 701042 |
 //
-// | Thalita Multilingual     | 女  | 葡萄牙语(巴西)   | 701043 |
+// | Thalita Multilingual     | 女   | 701043 |
 //
-// | 晓辰 多语言              | 女  | 中文(普通话)     | 701044 |
+// | 晓辰 多语言              | 女   | 701044 |
 //
-// | 晓晓 多语言              | 女  | 中文(普通话)     | 701045 |
+// | 晓晓 多语言              | 女   | 701045 |
 //
-// | 晓宇 多语言              | 女  | 中文(普通话)     | 701046 |
+// | 晓宇 多语言              | 女   | 701046 |
 //
-// | 云逸 多语言              | 男 | 中文(普通话)     | 701047 |
+// | 云逸 多语言              | 男   | 701047 |
 //
-// | Yunfan Multilingual      | 男  | 中文(普通话)     | 701048 |
+// | Yunfan Multilingual      | 男   | 701048 |
 //
-// | Yunxiao Multilingual     | 男  | 中文(普通话)     | 701049 |
+// | Yunxiao Multilingual     | 男   | 701049 |
 //
-// | 晓晓 方言                | 女  | 中文(普通话)     | 701050 |
+// | 晓晓 方言                | 女   | 701050 |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"

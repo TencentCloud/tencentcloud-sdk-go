@@ -1512,6 +1512,9 @@ type UpdateProbeTaskConfigurationListRequestParams struct {
 
 	// 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
+
+	// 批量任务名-地址
+	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitnil,omitempty" name:"BatchTasks"`
 }
 
 type UpdateProbeTaskConfigurationListRequest struct {
@@ -1538,6 +1541,9 @@ type UpdateProbeTaskConfigurationListRequest struct {
 
 	// 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
+
+	// 批量任务名-地址
+	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitnil,omitempty" name:"BatchTasks"`
 }
 
 func (r *UpdateProbeTaskConfigurationListRequest) ToJsonString() string {
@@ -1559,6 +1565,7 @@ func (r *UpdateProbeTaskConfigurationListRequest) FromJsonString(s string) error
 	delete(f, "Cron")
 	delete(f, "ResourceIDs")
 	delete(f, "NodeIpType")
+	delete(f, "BatchTasks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProbeTaskConfigurationListRequest has unknown keys!", "")
 	}

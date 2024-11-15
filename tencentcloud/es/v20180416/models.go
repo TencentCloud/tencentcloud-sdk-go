@@ -4334,6 +4334,12 @@ type InstallInstanceModelRequestParams struct {
 
 	// 客户上传到cos的模型地址，单次请求限制一个。cos文件为压缩文件，格式包括：zip、tgz和tar.gz
 	UsrCosModelUrlList []*string `json:"UsrCosModelUrlList,omitnil,omitempty" name:"UsrCosModelUrlList"`
+
+	// 客户指定安装的模型名称，可为空，默认为模型文件名
+	ModelNames []*string `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
+
+	// 模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
+	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 }
 
 type InstallInstanceModelRequest struct {
@@ -4344,6 +4350,12 @@ type InstallInstanceModelRequest struct {
 
 	// 客户上传到cos的模型地址，单次请求限制一个。cos文件为压缩文件，格式包括：zip、tgz和tar.gz
 	UsrCosModelUrlList []*string `json:"UsrCosModelUrlList,omitnil,omitempty" name:"UsrCosModelUrlList"`
+
+	// 客户指定安装的模型名称，可为空，默认为模型文件名
+	ModelNames []*string `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
+
+	// 模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
+	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 }
 
 func (r *InstallInstanceModelRequest) ToJsonString() string {
@@ -4360,6 +4372,8 @@ func (r *InstallInstanceModelRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "UsrCosModelUrlList")
+	delete(f, "ModelNames")
+	delete(f, "TaskTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallInstanceModelRequest has unknown keys!", "")
 	}

@@ -3751,23 +3751,6 @@ type CloudFromCnt struct {
 	MachineCnt *int64 `json:"MachineCnt,omitnil,omitempty" name:"MachineCnt"`
 }
 
-type CloudProtectService struct {
-	// 资源ID
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
-	// 类型： 这里为新购
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 配置：购买的配置信息
-	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
-
-	// 服务名称
-	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
-
-	// 购买时间
-	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
-}
-
 type CommandLine struct {
 	// 路径,需要base64加密
 	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
@@ -16451,72 +16434,6 @@ func (r *DescribeClientExceptionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClientExceptionResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCloudProtectServiceOrderListRequestParams struct {
-	// 排序字段,当前支持: BeginTime
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序方式,当前支持:
-	// ASC 正序,DESC 倒序
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-type DescribeCloudProtectServiceOrderListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 排序字段,当前支持: BeginTime
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序方式,当前支持:
-	// ASC 正序,DESC 倒序
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-func (r *DescribeCloudProtectServiceOrderListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCloudProtectServiceOrderListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Order")
-	delete(f, "By")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudProtectServiceOrderListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCloudProtectServiceOrderListResponseParams struct {
-	// 云护航订单列表信息
-	Data []*CloudProtectService `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeCloudProtectServiceOrderListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCloudProtectServiceOrderListResponseParams `json:"Response"`
-}
-
-func (r *DescribeCloudProtectServiceOrderListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCloudProtectServiceOrderListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

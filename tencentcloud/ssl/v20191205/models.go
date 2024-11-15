@@ -3059,7 +3059,7 @@ type DescribeDownloadCertificateUrlRequestParams struct {
 	// 证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 下载的服务类型: nginx tomcat apache iis jks other root
+	// 必填选项，下载的服务类型: nginx tomcat apache iis jks other root
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -3069,7 +3069,7 @@ type DescribeDownloadCertificateUrlRequest struct {
 	// 证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 下载的服务类型: nginx tomcat apache iis jks other root
+	// 必填选项，下载的服务类型: nginx tomcat apache iis jks other root
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 

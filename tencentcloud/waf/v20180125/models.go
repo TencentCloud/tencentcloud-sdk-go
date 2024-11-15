@@ -8989,6 +8989,9 @@ type DomainsPartInfo struct {
 
 	// 域名标签
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 拨测状态。 0: 禁用拨测, 1: 启用拨测
+	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 }
 
 type DownloadAttackRecordInfo struct {

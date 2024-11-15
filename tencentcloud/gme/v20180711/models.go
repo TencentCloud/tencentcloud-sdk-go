@@ -631,8 +631,11 @@ type DeleteRoomMemberRequestParams struct {
 	// 应用id
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 要剔除的用户列表
+	// 要剔除的用户列表（整型）
 	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
+
+	// 要剔除的用户列表（字符串类型）
+	StrUids []*string `json:"StrUids,omitnil,omitempty" name:"StrUids"`
 }
 
 type DeleteRoomMemberRequest struct {
@@ -647,8 +650,11 @@ type DeleteRoomMemberRequest struct {
 	// 应用id
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 要剔除的用户列表
+	// 要剔除的用户列表（整型）
 	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
+
+	// 要剔除的用户列表（字符串类型）
+	StrUids []*string `json:"StrUids,omitnil,omitempty" name:"StrUids"`
 }
 
 func (r *DeleteRoomMemberRequest) ToJsonString() string {
@@ -667,6 +673,7 @@ func (r *DeleteRoomMemberRequest) FromJsonString(s string) error {
 	delete(f, "DeleteType")
 	delete(f, "BizId")
 	delete(f, "Uids")
+	delete(f, "StrUids")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoomMemberRequest has unknown keys!", "")
 	}

@@ -226,14 +226,13 @@ type DescribePortraitSingJobResponseParams struct {
 	// 任务状态信息
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
-	// 错误码
+	// 任务执行错误码。当任务状态不为FAIL时，该值为""。
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 错误信息
+	// 任务执行错误信息。当任务状态不为FAIL时，该值为""。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 生成视频的URL地址
-	// 有效期24小时
+	// 生成视频的URL地址。有效期24小时。
 	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -422,33 +421,26 @@ func (r *DescribeVideoTranslateJobResponse) FromJsonString(s string) error {
 
 type LogoParam struct {
 	// 水印 Url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
 
 	// 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoImage *string `json:"LogoImage,omitnil,omitempty" name:"LogoImage"`
 
-	// 水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
 	LogoRect *LogoRect `json:"LogoRect,omitnil,omitempty" name:"LogoRect"`
 }
 
 type LogoRect struct {
-	// 左上角X坐标
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 左上角Y坐标
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 方框宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 水印图框宽度。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 方框高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 水印图框高度。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
@@ -586,7 +578,7 @@ type SubmitPortraitSingJobRequestParams struct {
 	// - 图片分辨率：192～4096
 	// - 图片大小：不超过10M
 	// - 图片宽高比：图片【宽：高】在1:2到2:1范围内
-	// - 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
+	// - 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 传入图片Base64编码，编码后请求体大小不超过10M。
@@ -597,6 +589,23 @@ type SubmitPortraitSingJobRequestParams struct {
 	// Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
 	// Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 生成视频尺寸。可选取值："512:512"。
+	// 
+	// 人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
+	// 
+	// 宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成视频添加标识的开关，默认为0。 
+	// 1：添加标识；
+	//  0：不添加标识；
+	// 其他数值：默认按1处理。 
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 type SubmitPortraitSingJobRequest struct {
@@ -612,7 +621,7 @@ type SubmitPortraitSingJobRequest struct {
 	// - 图片分辨率：192～4096
 	// - 图片大小：不超过10M
 	// - 图片宽高比：图片【宽：高】在1:2到2:1范围内
-	// - 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
+	// - 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 传入图片Base64编码，编码后请求体大小不超过10M。
@@ -623,6 +632,23 @@ type SubmitPortraitSingJobRequest struct {
 	// Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
 	// Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 生成视频尺寸。可选取值："512:512"。
+	// 
+	// 人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
+	// 
+	// 宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 为生成视频添加标识的开关，默认为0。 
+	// 1：添加标识；
+	//  0：不添加标识；
+	// 其他数值：默认按1处理。 
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 func (r *SubmitPortraitSingJobRequest) ToJsonString() string {
@@ -641,6 +667,9 @@ func (r *SubmitPortraitSingJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	delete(f, "Mode")
+	delete(f, "Resolution")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitPortraitSingJobRequest has unknown keys!", "")
 	}
@@ -649,7 +678,7 @@ func (r *SubmitPortraitSingJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitPortraitSingJobResponseParams struct {
-	// 任务ID
+	// 任务ID。任务有效期为48小时。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -761,39 +790,44 @@ func (r *SubmitVideoStylizationJobResponse) FromJsonString(s string) error {
 type SubmitVideoTranslateJobRequestParams struct {
 	// 视频地址URL。
 	// 格式要求：支持 mp4、mov 。
-	// 时长要求：【10-300】秒。
+	// 时长要求：【5-600】秒。
 	// fps 要求：【15-60】fps
-	// 分辨率要求：单边像素要求在 【540~1920】 之间。
+	// 分辨率要求：单边像素要求在 【360~4096】 之间。
+	// 大小要求：不超过500Mb
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 源语言：zh(中文), en(英文)
+	// 输入视频中音频语种
+	// 目前支持语种范围：zh(中文), en(英文)
 	SrcLang *string `json:"SrcLang,omitnil,omitempty" name:"SrcLang"`
 
-	// 目标语种：
-	// zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+	// 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
+	// 格式要求：支持 mp3、m4a、acc、wav 格式。
+	// 时长要求：【5~600】秒，音频时长要匹配视频时长。
+	// 大小要求：不超过 100Mb。
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 输出视频中翻译语种
+	// 目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
 	DstLang *string `json:"DstLang,omitnil,omitempty" name:"DstLang"`
 
-	// 当音频 URL 不为空时，默认以音频驱动视频任务口型。
-	// 格式要求：支持 mp3、m4a、acc、wav 格式。
-	// 时长要求：【10~300】秒
-	// 大小要求：不超过 100M。
-	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+	// 翻译语种匹配音色种别，其他说明如下：
+	// 1）默认不填代表克隆输入视频中音频音色；
+	// 2）翻译语种非中英（即zh、en），该项必填；
+	// 
+	// 具体音色种别详见说明“支持音色种别列表”，每个音色都支持 15 个目标语种。
+	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// 是否需要纠正视频中音频识别与翻译内容，取值范围：0-不需要，1-需要，默认0。
+	Confirm *int64 `json:"Confirm,omitnil,omitempty" name:"Confirm"`
 
 	// 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
 	RemoveVocal *int64 `json:"RemoveVocal,omitnil,omitempty" name:"RemoveVocal"`
 
-	// 是否需要确认翻译结果0：不需要，1：需要
-	Confirm *int64 `json:"Confirm,omitnil,omitempty" name:"Confirm"`
-
-	// 是否开启口型驱动，0：不开启，1：开启。默认开启。
+	// 是否开启口型驱动，0-不开启，1-开启。默认0。
 	LipSync *int64 `json:"LipSync,omitnil,omitempty" name:"LipSync"`
 
-	// 音色种别：一种音色种别对应一种不同区域的音色
-	// 1）目标语种为小语种(非zh,en)时，该项为必填
-	// 2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
-	// 
-	// 具体音色包含请见“支持音色种别列表”
-	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+	// 当 AudioUrl 字段有输入音频时，如果输入音频时长大于输入视频时长，会拼接视频（ 0-正向拼接、1-反向拼接 ）对齐音频时长。默认 0。
+	VideoLoop *int64 `json:"VideoLoop,omitnil,omitempty" name:"VideoLoop"`
 }
 
 type SubmitVideoTranslateJobRequest struct {
@@ -801,39 +835,44 @@ type SubmitVideoTranslateJobRequest struct {
 	
 	// 视频地址URL。
 	// 格式要求：支持 mp4、mov 。
-	// 时长要求：【10-300】秒。
+	// 时长要求：【5-600】秒。
 	// fps 要求：【15-60】fps
-	// 分辨率要求：单边像素要求在 【540~1920】 之间。
+	// 分辨率要求：单边像素要求在 【360~4096】 之间。
+	// 大小要求：不超过500Mb
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 源语言：zh(中文), en(英文)
+	// 输入视频中音频语种
+	// 目前支持语种范围：zh(中文), en(英文)
 	SrcLang *string `json:"SrcLang,omitnil,omitempty" name:"SrcLang"`
 
-	// 目标语种：
-	// zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+	// 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
+	// 格式要求：支持 mp3、m4a、acc、wav 格式。
+	// 时长要求：【5~600】秒，音频时长要匹配视频时长。
+	// 大小要求：不超过 100Mb。
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 输出视频中翻译语种
+	// 目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
 	DstLang *string `json:"DstLang,omitnil,omitempty" name:"DstLang"`
 
-	// 当音频 URL 不为空时，默认以音频驱动视频任务口型。
-	// 格式要求：支持 mp3、m4a、acc、wav 格式。
-	// 时长要求：【10~300】秒
-	// 大小要求：不超过 100M。
-	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+	// 翻译语种匹配音色种别，其他说明如下：
+	// 1）默认不填代表克隆输入视频中音频音色；
+	// 2）翻译语种非中英（即zh、en），该项必填；
+	// 
+	// 具体音色种别详见说明“支持音色种别列表”，每个音色都支持 15 个目标语种。
+	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// 是否需要纠正视频中音频识别与翻译内容，取值范围：0-不需要，1-需要，默认0。
+	Confirm *int64 `json:"Confirm,omitnil,omitempty" name:"Confirm"`
 
 	// 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
 	RemoveVocal *int64 `json:"RemoveVocal,omitnil,omitempty" name:"RemoveVocal"`
 
-	// 是否需要确认翻译结果0：不需要，1：需要
-	Confirm *int64 `json:"Confirm,omitnil,omitempty" name:"Confirm"`
-
-	// 是否开启口型驱动，0：不开启，1：开启。默认开启。
+	// 是否开启口型驱动，0-不开启，1-开启。默认0。
 	LipSync *int64 `json:"LipSync,omitnil,omitempty" name:"LipSync"`
 
-	// 音色种别：一种音色种别对应一种不同区域的音色
-	// 1）目标语种为小语种(非zh,en)时，该项为必填
-	// 2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
-	// 
-	// 具体音色包含请见“支持音色种别列表”
-	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+	// 当 AudioUrl 字段有输入音频时，如果输入音频时长大于输入视频时长，会拼接视频（ 0-正向拼接、1-反向拼接 ）对齐音频时长。默认 0。
+	VideoLoop *int64 `json:"VideoLoop,omitnil,omitempty" name:"VideoLoop"`
 }
 
 func (r *SubmitVideoTranslateJobRequest) ToJsonString() string {
@@ -850,12 +889,13 @@ func (r *SubmitVideoTranslateJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VideoUrl")
 	delete(f, "SrcLang")
-	delete(f, "DstLang")
 	delete(f, "AudioUrl")
-	delete(f, "RemoveVocal")
-	delete(f, "Confirm")
-	delete(f, "LipSync")
+	delete(f, "DstLang")
 	delete(f, "VoiceType")
+	delete(f, "Confirm")
+	delete(f, "RemoveVocal")
+	delete(f, "LipSync")
+	delete(f, "VideoLoop")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitVideoTranslateJobRequest has unknown keys!", "")
 	}
@@ -864,7 +904,7 @@ func (r *SubmitVideoTranslateJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitVideoTranslateJobResponseParams struct {
-	// 视频转译任务的Job id
+	// 视频转译任务的ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

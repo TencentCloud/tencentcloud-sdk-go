@@ -3083,6 +3083,9 @@ type CreateDBInstanceHourRequestParams struct {
 
 	// 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type CreateDBInstanceHourRequest struct {
@@ -3213,6 +3216,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -3267,6 +3273,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "DataProtectVolume")
 	delete(f, "ClusterTopology")
 	delete(f, "DiskType")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
 	}
@@ -3334,7 +3341,7 @@ type CreateDBInstanceRequestParams struct {
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+	// 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
 	// MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
@@ -3468,7 +3475,7 @@ type CreateDBInstanceRequest struct {
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+	// 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
 	// MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
@@ -14547,11 +14554,9 @@ type ProxyInst struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstNodeId *string `json:"InstNodeId,omitnil,omitempty" name:"InstNodeId"`
 
 	// 节点角色
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstNodeRole *string `json:"InstNodeRole,omitnil,omitempty" name:"InstNodeRole"`
 }
 

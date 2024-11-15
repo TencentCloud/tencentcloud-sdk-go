@@ -5606,6 +5606,18 @@ type Resource struct {
 
 	// 部署模式
 	DeployModel *int64 `json:"DeployModel,omitnil,omitempty" name:"DeployModel"`
+
+	// 0 默认值，非内网访问，1 内网访问
+	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+
+	// 内网访问的ip
+	IntranetPrivateIpSet []*string `json:"IntranetPrivateIpSet,omitnil,omitempty" name:"IntranetPrivateIpSet"`
+
+	// 开通内网访问的vpc
+	IntranetVpcId *string `json:"IntranetVpcId,omitnil,omitempty" name:"IntranetVpcId"`
+
+	// 开通内网访问vpc的网段
+	IntranetVpcCidr *string `json:"IntranetVpcCidr,omitnil,omitempty" name:"IntranetVpcCidr"`
 }
 
 type RunChangePwdTaskDetail struct {

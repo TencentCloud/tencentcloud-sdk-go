@@ -5890,6 +5890,136 @@ func (c *Client) RecognizeIndonesiaIDCardOCRWithContext(ctx context.Context, req
     return
 }
 
+func NewRecognizeKoreanDrivingLicenseOCRRequest() (request *RecognizeKoreanDrivingLicenseOCRRequest) {
+    request = &RecognizeKoreanDrivingLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeKoreanDrivingLicenseOCR")
+    
+    
+    return
+}
+
+func NewRecognizeKoreanDrivingLicenseOCRResponse() (response *RecognizeKoreanDrivingLicenseOCRResponse) {
+    response = &RecognizeKoreanDrivingLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeKoreanDrivingLicenseOCR
+// 韩国驾驶证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeKoreanDrivingLicenseOCR(request *RecognizeKoreanDrivingLicenseOCRRequest) (response *RecognizeKoreanDrivingLicenseOCRResponse, err error) {
+    return c.RecognizeKoreanDrivingLicenseOCRWithContext(context.Background(), request)
+}
+
+// RecognizeKoreanDrivingLicenseOCR
+// 韩国驾驶证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeKoreanDrivingLicenseOCRWithContext(ctx context.Context, request *RecognizeKoreanDrivingLicenseOCRRequest) (response *RecognizeKoreanDrivingLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeKoreanDrivingLicenseOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeKoreanDrivingLicenseOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeKoreanDrivingLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecognizeKoreanIDCardOCRRequest() (request *RecognizeKoreanIDCardOCRRequest) {
+    request = &RecognizeKoreanIDCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeKoreanIDCardOCR")
+    
+    
+    return
+}
+
+func NewRecognizeKoreanIDCardOCRResponse() (response *RecognizeKoreanIDCardOCRResponse) {
+    response = &RecognizeKoreanIDCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeKoreanIDCardOCR
+// 韩国身份证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeKoreanIDCardOCR(request *RecognizeKoreanIDCardOCRRequest) (response *RecognizeKoreanIDCardOCRResponse, err error) {
+    return c.RecognizeKoreanIDCardOCRWithContext(context.Background(), request)
+}
+
+// RecognizeKoreanIDCardOCR
+// 韩国身份证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeKoreanIDCardOCRWithContext(ctx context.Context, request *RecognizeKoreanIDCardOCRRequest) (response *RecognizeKoreanIDCardOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeKoreanIDCardOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeKoreanIDCardOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeKoreanIDCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeMedicalInvoiceOCRRequest() (request *RecognizeMedicalInvoiceOCRRequest) {
     request = &RecognizeMedicalInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6066,6 +6196,10 @@ func NewRecognizePhilippinesDrivingLicenseOCRResponse() (response *RecognizePhil
 // RecognizePhilippinesDrivingLicenseOCR
 // 菲律宾驾驶证识别
 //
+// 
+//
+// 默认接口请求频率限制：20次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -6082,6 +6216,10 @@ func (c *Client) RecognizePhilippinesDrivingLicenseOCR(request *RecognizePhilipp
 
 // RecognizePhilippinesDrivingLicenseOCR
 // 菲律宾驾驶证识别
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

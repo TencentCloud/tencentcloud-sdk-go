@@ -1483,6 +1483,9 @@ type CreateSLInstanceRequestParams struct {
 
 	// 实例要绑定的标签列表。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 预付费参数
+	PrePaySetting *PrePaySetting `json:"PrePaySetting,omitnil,omitempty" name:"PrePaySetting"`
 }
 
 type CreateSLInstanceRequest struct {
@@ -1508,6 +1511,9 @@ type CreateSLInstanceRequest struct {
 
 	// 实例要绑定的标签列表。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 预付费参数
+	PrePaySetting *PrePaySetting `json:"PrePaySetting,omitnil,omitempty" name:"PrePaySetting"`
 }
 
 func (r *CreateSLInstanceRequest) ToJsonString() string {
@@ -1529,6 +1535,7 @@ func (r *CreateSLInstanceRequest) FromJsonString(s string) error {
 	delete(f, "NodeType")
 	delete(f, "ZoneSettings")
 	delete(f, "Tags")
+	delete(f, "PrePaySetting")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSLInstanceRequest has unknown keys!", "")
 	}
@@ -3899,6 +3906,9 @@ func (r *DescribeSLInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSLInstanceResponseParams struct {
+	// 实例字符串标识。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
@@ -3920,6 +3930,33 @@ type DescribeSLInstanceResponseParams struct {
 	// 实例绑定的标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 实例数字标识。
+	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 实例区域ID。
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 实例主可用区。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例过期时间，后付费返回0000-00-00 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 实例隔离时间，未隔离返回0000-00-00 00:00:00。
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// 实例创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 实例状态码，-2:  "TERMINATED", 2:   "RUNNING", 14:  "TERMINATING", 19:  "ISOLATING", 22:  "ADJUSTING", 201: "ISOLATED"。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 自动续费标记， 0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费，若业务无续费概念为0
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 实例节点总数。
+	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7877,6 +7914,16 @@ type PartDetailPriceItem struct {
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 }
 
+type Period struct {
+	// 时间跨度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 时间单位，"m"代表月。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+}
+
 type PersistentVolumeContext struct {
 	// 磁盘大小，单位为GB。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8321,6 +8368,16 @@ type PreExecuteFileSettings struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type PrePaySetting struct {
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *Period `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
 type PriceDetail struct {
@@ -8877,6 +8934,15 @@ type SLInstanceInfo struct {
 	// 实例标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 自动续费标记， 0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费，若业务无续费概念，设置为0
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 隔离时间，未隔离返回0000-00-00 00:00:00。
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// 过期时间，后付费返回0000-00-00 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 // Predefined struct for user

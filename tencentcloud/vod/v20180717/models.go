@@ -11314,6 +11314,7 @@ type DescribeMediaProcessUsageDataRequestParams struct {
 	// <li> VideoProduce: 视频制作</li>
 	// <li> MediaCast: 媒体转推</li>
 	// <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+	// <li>VoiceTranslation: 语音翻译</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -11350,6 +11351,7 @@ type DescribeMediaProcessUsageDataRequest struct {
 	// <li> VideoProduce: 视频制作</li>
 	// <li> MediaCast: 媒体转推</li>
 	// <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+	// <li>VoiceTranslation: 语音翻译</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -13479,6 +13481,10 @@ type DomainDetailInfo struct {
 	// 域名 QUIC 配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitnil,omitempty" name:"QUICConfig"`
+
+	// IP 访问限制配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPFilterPolicy *IPFilterPolicy `json:"IPFilterPolicy,omitnil,omitempty" name:"IPFilterPolicy"`
 }
 
 type DomainHTTPSConfig struct {
@@ -15078,6 +15084,20 @@ type HighlightsConfigureInfoForUpdate struct {
 	// <li>ON：开启智能精彩片段任务；</li>
 	// <li>OFF：关闭智能精彩片段任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type IPFilterPolicy struct {
+	// IP 访问限制状态，可选值：
+	// <li>Enabled：启用；</li>
+	// <li>Disabled：禁用。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// IP 访问限制类型：  <li>Black：黑名单方式校验。只有来自 IPList 列表中的 IP 请求会被拦截。</li>
+	// <li>White：白名单方式校验。只有来自 IPList 列表中的 IP 请求会被放行。</li>当 Status 取值为 Enabled 时，FilterType  必须赋值。
+	FilterType *string `json:"FilterType,omitnil,omitempty" name:"FilterType"`
+
+	// IP 列表，支持 X.X.X.X 格式 IPV4 地址，或 X:X:X:X:X:X:X:X 格式 IPV6 地址，或网段格式 /N（IPV4:1≤N≤32；IPV6:1≤N≤128）；最多可填充 200 个 IP 或网段。当 Status 取值为 Enabled 时，IPList 必须赋值。
+	IPList []*string `json:"IPList,omitnil,omitempty" name:"IPList"`
 }
 
 type ImageBlur struct {
@@ -20062,6 +20082,9 @@ type ModifyVodDomainConfigRequestParams struct {
 
 	// QUIC 配置。
 	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitnil,omitempty" name:"QUICConfig"`
+
+	// IP 访问限制规则。
+	IPFilterPolicy *IPFilterPolicy `json:"IPFilterPolicy,omitnil,omitempty" name:"IPFilterPolicy"`
 }
 
 type ModifyVodDomainConfigRequest struct {
@@ -20081,6 +20104,9 @@ type ModifyVodDomainConfigRequest struct {
 
 	// QUIC 配置。
 	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitnil,omitempty" name:"QUICConfig"`
+
+	// IP 访问限制规则。
+	IPFilterPolicy *IPFilterPolicy `json:"IPFilterPolicy,omitnil,omitempty" name:"IPFilterPolicy"`
 }
 
 func (r *ModifyVodDomainConfigRequest) ToJsonString() string {
@@ -20100,6 +20126,7 @@ func (r *ModifyVodDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "RefererAuthPolicy")
 	delete(f, "UrlSignatureAuthPolicy")
 	delete(f, "QUICConfig")
+	delete(f, "IPFilterPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVodDomainConfigRequest has unknown keys!", "")
 	}
@@ -25618,6 +25645,7 @@ type TaskStatData struct {
 	// <li> RebuildMedia: 音画质重生</li>
 	// <li> QualityInspect: 音画质检测</li>
 	// <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+	// <li>VoiceTranslation: 语音翻译</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务数统计数据概览，用量单位为秒。

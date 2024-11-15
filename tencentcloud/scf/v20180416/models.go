@@ -1593,7 +1593,7 @@ type FunctionLog struct {
 	// 函数开始执行时的时间点
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 函数执行结果，如果是 0 表示执行成功，其他值表示失败
+	// 函数执行结果，如果是 0 表示执行成功，2表示函数运行中，3表示函数执行中断，其他值表示失败
 	RetCode *int64 `json:"RetCode,omitnil,omitempty" name:"RetCode"`
 
 	// 函数调用是否结束，如果是 1 表示执行结束，其他值表示调用异常

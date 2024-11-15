@@ -267,7 +267,6 @@ func (r *CreateVolumeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVolumeResponseParams struct {
 	// 缓存卷ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -970,11 +969,9 @@ func (r *DescribeVolumesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVolumesResponseParams struct {
 	// 缓存卷。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Volumes []*Volume `json:"Volumes,omitnil,omitempty" name:"Volumes"`
 
 	// 符合条件的数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1040,11 +1037,9 @@ type Environment struct {
 	ResourceIds *ResourceIds `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 上个工作流UUID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastWorkflowUuid *string `json:"LastWorkflowUuid,omitnil,omitempty" name:"LastWorkflowUuid"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 }
 
@@ -1458,11 +1453,9 @@ func (r *ImportTableFileResponse) FromJsonString(s string) error {
 
 type LimitRange struct {
 	// 最大CPU设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxCPU *string `json:"MaxCPU,omitnil,omitempty" name:"MaxCPU"`
 
 	// 最大内存设置（单位：Mi，Gi，Ti，M，G，T）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMemory *string `json:"MaxMemory,omitnil,omitempty" name:"MaxMemory"`
 }
 
@@ -1564,23 +1557,18 @@ type NFOption struct {
 
 type ResourceIds struct {
 	// 私有网络ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VPCId *string `json:"VPCId,omitnil,omitempty" name:"VPCId"`
 
 	// 子网ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 安全组ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// TDSQL-C Mysql版数据库ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TDSQLCId *string `json:"TDSQLCId,omitnil,omitempty" name:"TDSQLCId"`
 
 	// 文件存储ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CFSId *string `json:"CFSId,omitnil,omitempty" name:"CFSId"`
 
 	// 文件存储类型：取值范围：
@@ -1588,29 +1576,23 @@ type ResourceIds struct {
 	// - HP：通用性能型
 	// - TB：turbo标准型
 	// - TP：turbo性能型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CFSStorageType *string `json:"CFSStorageType,omitnil,omitempty" name:"CFSStorageType"`
 
 	// 云服务器ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVMId *string `json:"CVMId,omitnil,omitempty" name:"CVMId"`
 
 	// 弹性容器集群ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EKSId *string `json:"EKSId,omitnil,omitempty" name:"EKSId"`
 }
 
 type ResourceQuota struct {
 	// CPU Limit设置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CPULimit *string `json:"CPULimit,omitnil,omitempty" name:"CPULimit"`
 
 	// 内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemoryLimit *string `json:"MemoryLimit,omitnil,omitempty" name:"MemoryLimit"`
 
 	// Pods数量设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pods *string `json:"Pods,omitnil,omitempty" name:"Pods"`
 }
 
@@ -2463,24 +2445,19 @@ type VPCOption struct {
 
 type Volume struct {
 	// 缓存卷ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
 
 	// 名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 环境ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 缓存卷类型，取值范围：
 	// * SHARED：多点挂载共享存储
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 缓存卷规格，取值范围：
@@ -2489,31 +2466,24 @@ type Volume struct {
 	// - HP：通用性能型
 	// - TB：turbo标准型
 	// - TP：turbo性能型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
 
 	// 缓存卷大小（GB）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
 	// 缓存卷使用量（Byte）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 缓存卷吞吐上限（MiB/s）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthLimit *float64 `json:"BandwidthLimit,omitnil,omitempty" name:"BandwidthLimit"`
 
 	// 默认挂载路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultMountPath *string `json:"DefaultMountPath,omitnil,omitempty" name:"DefaultMountPath"`
 
 	// 是否为默认缓存卷。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
 	// 状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

@@ -292,6 +292,8 @@ type BiologicalProductInfoName struct {
 
 	// 品牌名
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: BarndName is deprecated.
 	BarndName *string `json:"BarndName,omitnil,omitempty" name:"BarndName"`
 
 	// 英文名
@@ -892,6 +894,8 @@ type ChemicalProductInfoName struct {
 
 	// 品牌名
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: BarndName is deprecated.
 	BarndName *string `json:"BarndName,omitnil,omitempty" name:"BarndName"`
 
 	// 英文名
@@ -901,6 +905,9 @@ type ChemicalProductInfoName struct {
 	// 拼音
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pinyin *string `json:"Pinyin,omitnil,omitempty" name:"Pinyin"`
+
+	// 品牌名
+	BrandName *string `json:"BrandName,omitnil,omitempty" name:"BrandName"`
 }
 
 type ChemicalProductInfoOverdose struct {

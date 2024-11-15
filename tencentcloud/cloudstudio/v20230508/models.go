@@ -273,7 +273,6 @@ func (r *DescribeConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigResponseParams struct {
 	// 配置值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -731,34 +730,26 @@ type WorkspaceStatusInfo struct {
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 工作空间图标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
 	// 工作空间状态, 异常原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
 
 	// 工作空间描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 工作空间类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceType *string `json:"WorkspaceType,omitnil,omitempty" name:"WorkspaceType"`
 
 	// Git 仓库 HTTPS 地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionControlUrl *string `json:"VersionControlUrl,omitnil,omitempty" name:"VersionControlUrl"`
 
 	// Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionControlRef *string `json:"VersionControlRef,omitnil,omitempty" name:"VersionControlRef"`
 
 	// 最后操作时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastOpsDate *string `json:"LastOpsDate,omitnil,omitempty" name:"LastOpsDate"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateDate *string `json:"CreateDate,omitnil,omitempty" name:"CreateDate"`
 }

@@ -395,8 +395,11 @@ func NewDeleteRoomMemberResponse() (response *DeleteRoomMemberResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
+//  INVALIDPARAMETERVALUE_INVALIDSTRUIN = "InvalidParameterValue.InvalidStrUin"
+//  INVALIDPARAMETERVALUE_INVALIDUINORSTRUIN = "InvalidParameterValue.InvalidUinOrStrUin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LIMITDELETEEXCEEDED = "UnsupportedOperation.LimitDeleteExceeded"
 func (c *Client) DeleteRoomMember(request *DeleteRoomMemberRequest) (response *DeleteRoomMemberResponse, err error) {
     return c.DeleteRoomMemberWithContext(context.Background(), request)
 }
@@ -409,8 +412,11 @@ func (c *Client) DeleteRoomMember(request *DeleteRoomMemberRequest) (response *D
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
+//  INVALIDPARAMETERVALUE_INVALIDSTRUIN = "InvalidParameterValue.InvalidStrUin"
+//  INVALIDPARAMETERVALUE_INVALIDUINORSTRUIN = "InvalidParameterValue.InvalidUinOrStrUin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LIMITDELETEEXCEEDED = "UnsupportedOperation.LimitDeleteExceeded"
 func (c *Client) DeleteRoomMemberWithContext(ctx context.Context, request *DeleteRoomMemberRequest) (response *DeleteRoomMemberResponse, err error) {
     if request == nil {
         request = NewDeleteRoomMemberRequest()
@@ -454,8 +460,11 @@ func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
+//  INVALIDPARAMETERVALUE_INVALIDSTRUIN = "InvalidParameterValue.InvalidStrUin"
+//  INVALIDPARAMETERVALUE_INVALIDUINORSTRUIN = "InvalidParameterValue.InvalidUinOrStrUin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LIMITDELETEEXCEEDED = "UnsupportedOperation.LimitDeleteExceeded"
 func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
     return c.DeleteScanUserWithContext(context.Background(), request)
 }
@@ -468,8 +477,11 @@ func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *Delet
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
+//  INVALIDPARAMETERVALUE_INVALIDSTRUIN = "InvalidParameterValue.InvalidStrUin"
+//  INVALIDPARAMETERVALUE_INVALIDUINORSTRUIN = "InvalidParameterValue.InvalidUinOrStrUin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LIMITDELETEEXCEEDED = "UnsupportedOperation.LimitDeleteExceeded"
 func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
     if request == nil {
         request = NewDeleteScanUserRequest()

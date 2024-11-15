@@ -62,7 +62,6 @@ func (r *BatchDeleteDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDeleteDevicesResponseParams struct {
 	// 删除失败的设备ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedDeviceIds []*string `json:"FailedDeviceIds,omitnil,omitempty" name:"FailedDeviceIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1631,27 +1630,21 @@ func (r *GetLicensesResponse) FromJsonString(s string) error {
 
 type License struct {
 	// 该类型的license个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 到期时间戳：s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 服务时长：s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 剩余天数：天
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainDay *int64 `json:"RemainDay,omitnil,omitempty" name:"RemainDay"`
 
 	// 该类型的licenseId列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseIds []*string `json:"LicenseIds,omitnil,omitempty" name:"LicenseIds"`
 }
 
@@ -1793,11 +1786,9 @@ func (r *ModifyPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPolicyResponseParams struct {
 	// 添加关联失败的现场设备ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedInsertIds []*string `json:"FailedInsertIds,omitnil,omitempty" name:"FailedInsertIds"`
 
 	// 解除关联失败的现场设备ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedDeleteIds []*string `json:"FailedDeleteIds,omitnil,omitempty" name:"FailedDeleteIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1897,27 +1888,21 @@ func (r *ModifyProjectResponse) FromJsonString(s string) error {
 
 type MultiNet struct {
 	// 网卡序号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetId *int64 `json:"NetId,omitnil,omitempty" name:"NetId"`
 
 	// 网卡IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetIp *string `json:"NetIp,omitnil,omitempty" name:"NetIp"`
 
 	// 时延，单位ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rtt []*int64 `json:"Rtt,omitnil,omitempty" name:"Rtt"`
 
 	// 丢包率，单位%
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lost []*int64 `json:"Lost,omitnil,omitempty" name:"Lost"`
 
 	// 发送bps，单位kbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendBps []*int64 `json:"SendBps,omitnil,omitempty" name:"SendBps"`
 
 	// 接收bps，单位kbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecvBps []*int64 `json:"RecvBps,omitnil,omitempty" name:"RecvBps"`
 }
 

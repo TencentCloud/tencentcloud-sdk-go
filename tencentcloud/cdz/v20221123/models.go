@@ -196,6 +196,10 @@ type DescribeCloudDedicatedZoneResourceSummaryResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceSummarySet []*CloudDedicatedZoneResourceSummaryInfo `json:"ResourceSummarySet,omitnil,omitempty" name:"ResourceSummarySet"`
 
+	// 资源水位扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -214,4 +218,14 @@ func (r *DescribeCloudDedicatedZoneResourceSummaryResponse) ToJsonString() strin
 // because it has no param check, nor strict type check
 func (r *DescribeCloudDedicatedZoneResourceSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtraInfo struct {
+	// 专属可用区当地时间本周一日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThisMondayLocalDate *string `json:"ThisMondayLocalDate,omitnil,omitempty" name:"ThisMondayLocalDate"`
+
+	// 专属可用区当地时间上周一日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastMondayLocalDate *string `json:"LastMondayLocalDate,omitnil,omitempty" name:"LastMondayLocalDate"`
 }

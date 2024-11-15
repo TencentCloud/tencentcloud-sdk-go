@@ -541,7 +541,7 @@ type AddressTemplateGroup struct {
 }
 
 type AddressTemplateItem struct {
-	// ipm-xxxxxxxx
+	// IP地址模板ID
 	AddressTemplateId *string `json:"AddressTemplateId,omitnil,omitempty" name:"AddressTemplateId"`
 
 	// IP模板名称
@@ -674,6 +674,9 @@ type AllocateAddressesRequestParams struct {
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
+	// 指定IP地址申请EIP，每个账户每个月只有三次配额
+	VipCluster []*string `json:"VipCluster,omitnil,omitempty" name:"VipCluster"`
+
 	// <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
 	// AnycastEIP是否用于绑定负载均衡。
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
@@ -743,6 +746,9 @@ type AllocateAddressesRequest struct {
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
+	// 指定IP地址申请EIP，每个账户每个月只有三次配额
+	VipCluster []*string `json:"VipCluster,omitnil,omitempty" name:"VipCluster"`
+
 	// <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
 	// AnycastEIP是否用于绑定负载均衡。
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
@@ -790,6 +796,7 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "AddressChargePrepaid")
 	delete(f, "AddressType")
 	delete(f, "AnycastZone")
+	delete(f, "VipCluster")
 	delete(f, "ApplicableForCLB")
 	delete(f, "Tags")
 	delete(f, "BandwidthPackageId")
@@ -3070,11 +3077,14 @@ func (r *CloneSecurityGroupResponse) FromJsonString(s string) error {
 }
 
 type ConflictItem struct {
-	// 冲突资源的ID
+	// 冲突资源的ID。已废弃
 	ConfilctId *string `json:"ConfilctId,omitnil,omitempty" name:"ConfilctId"`
 
 	// 冲突目的资源
 	DestinationItem *string `json:"DestinationItem,omitnil,omitempty" name:"DestinationItem"`
+
+	// 冲突资源的ID
+	ConflictId *string `json:"ConflictId,omitnil,omitempty" name:"ConflictId"`
 }
 
 type ConflictSource struct {
@@ -4404,6 +4414,9 @@ type CreateHaVipRequestParams struct {
 
 	// 是否开启`HAVIP`漂移时子机或网卡范围的校验。默认不开启。
 	CheckAssociate *bool `json:"CheckAssociate,omitnil,omitempty" name:"CheckAssociate"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateHaVipRequest struct {
@@ -4426,6 +4439,9 @@ type CreateHaVipRequest struct {
 
 	// 是否开启`HAVIP`漂移时子机或网卡范围的校验。默认不开启。
 	CheckAssociate *bool `json:"CheckAssociate,omitnil,omitempty" name:"CheckAssociate"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateHaVipRequest) ToJsonString() string {
@@ -4446,6 +4462,7 @@ func (r *CreateHaVipRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "NetworkInterfaceId")
 	delete(f, "CheckAssociate")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHaVipRequest has unknown keys!", "")
 	}
@@ -22320,15 +22337,19 @@ type Ipv6SubnetCidrBlock struct {
 
 type ItemPrice struct {
 	// 按量计费后付费单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 预付费商品的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
 	// 预付费商品的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
@@ -30292,7 +30313,7 @@ type SourceIpTranslationNatRule struct {
 	// 弹性IP地址池
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
-	// 描述
+	// 规则描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// Snat规则ID

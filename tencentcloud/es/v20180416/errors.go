@@ -536,6 +536,9 @@ const (
 	// 该版本不支持cos备份。集群需要重启来允许cos备份。
 	UNSUPPORTEDOPERATION_COSBACKUP = "UnsupportedOperation.CosBackUp"
 
+	// 有关机的cvm
+	UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = "UnsupportedOperation.CvmStatusStopped"
+
 	// 不支持该智能诊断任务。
 	UNSUPPORTEDOPERATION_DIAGNOSEJOB = "UnsupportedOperation.DiagnoseJob"
 

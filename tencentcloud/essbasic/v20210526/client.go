@@ -6935,11 +6935,11 @@ func NewCreatePartnerAutoSignAuthUrlResponse() (response *CreatePartnerAutoSignA
 }
 
 // CreatePartnerAutoSignAuthUrl
-// 创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
-//
-// 该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+// 创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
 //
 // 
+//
+// 如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
 //
 // 
 //
@@ -6950,6 +6950,16 @@ func NewCreatePartnerAutoSignAuthUrlResponse() (response *CreatePartnerAutoSignA
 // 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
 //
 // 2. 已经在授权中或者授权成功的企业，无法重复授权
+//
+// 3. 授权企业和被授权企业必须都是已认证企业
+//
+// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+//
+// 
+//
+// **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/091823fd4f02af7dda416fa10ca65f2d.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6965,11 +6975,11 @@ func (c *Client) CreatePartnerAutoSignAuthUrl(request *CreatePartnerAutoSignAuth
 }
 
 // CreatePartnerAutoSignAuthUrl
-// 创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
-//
-// 该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+// 创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
 //
 // 
+//
+// 如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
 //
 // 
 //
@@ -6980,6 +6990,16 @@ func (c *Client) CreatePartnerAutoSignAuthUrl(request *CreatePartnerAutoSignAuth
 // 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
 //
 // 2. 已经在授权中或者授权成功的企业，无法重复授权
+//
+// 3. 授权企业和被授权企业必须都是已认证企业
+//
+// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+//
+// 
+//
+// **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/091823fd4f02af7dda416fa10ca65f2d.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8548,7 +8568,9 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 // DescribeUsage
 // 此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
 //
-// <font color="red">此接口即将下线， 请使用新接口[查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)</font>
+// 
+//
+// <font color="red">此接口即将下线， 请使用新接口</font>  [查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)
 //
 // 
 //
@@ -8580,7 +8602,9 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
 // DescribeUsage
 // 此接口（DescribeUsage）用于获取此应用下子客企业的合同消耗数量。
 //
-// <font color="red">此接口即将下线， 请使用新接口[查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)</font>
+// 
+//
+// <font color="red">此接口即将下线， 请使用新接口</font>  [查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)
 //
 // 
 //

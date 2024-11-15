@@ -69,6 +69,8 @@ func NewCreateApmInstanceResponse() (response *CreateApmInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
 //  FAILEDOPERATION_REGIONNOTSUPPORT = "FailedOperation.RegionNotSupport"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {
@@ -80,6 +82,8 @@ func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
 //  FAILEDOPERATION_REGIONNOTSUPPORT = "FailedOperation.RegionNotSupport"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) CreateApmInstanceWithContext(ctx context.Context, request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {

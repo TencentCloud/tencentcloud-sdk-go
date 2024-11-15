@@ -512,7 +512,7 @@ type DedicatedClusterInstanceType struct {
 	// 机型描述
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
+	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -587,31 +587,24 @@ type DedicatedClusterOrder struct {
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
 	// 验收状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
 	// 交付预期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeliverExpectTime *string `json:"DeliverExpectTime,omitnil,omitempty" name:"DeliverExpectTime"`
 
 	// 交付实际完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeliverFinishTime *string `json:"DeliverFinishTime,omitnil,omitempty" name:"DeliverFinishTime"`
 
 	// 验收预期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckExpectTime *string `json:"CheckExpectTime,omitnil,omitempty" name:"CheckExpectTime"`
 
 	// 验收实际完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckFinishTime *string `json:"CheckFinishTime,omitnil,omitempty" name:"CheckFinishTime"`
 
 	// 订单SLA
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderSLA *string `json:"OrderSLA,omitnil,omitempty" name:"OrderSLA"`
 
 	// 订单支付计划
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderPayPlan *string `json:"OrderPayPlan,omitnil,omitempty" name:"OrderPayPlan"`
 }
 
@@ -903,11 +896,9 @@ func (r *DescribeDedicatedClusterCbsStatisticsRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDedicatedClusterCbsStatisticsResponseParams struct {
 	// 云硬盘仓库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetList []*SetInfo `json:"SetList,omitnil,omitempty" name:"SetList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1363,15 +1354,12 @@ type DescribeDedicatedClusterOverviewResponseParams struct {
 	VpnConnectionBandwidthData []*VpngwBandwidthData `json:"VpnConnectionBandwidthData,omitnil,omitempty" name:"VpnConnectionBandwidthData"`
 
 	// 宿主机资源概览信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostDetailInfo []*HostDetailInfo `json:"HostDetailInfo,omitnil,omitempty" name:"HostDetailInfo"`
 
 	// 热备宿主机数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostStandbyCount *uint64 `json:"HostStandbyCount,omitnil,omitempty" name:"HostStandbyCount"`
 
 	// 普通宿主机数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostNormalCount *uint64 `json:"HostNormalCount,omitnil,omitempty" name:"HostNormalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1805,33 +1793,26 @@ func (r *DescribeSitesResponse) FromJsonString(s string) error {
 
 type DetailData struct {
 	// 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamps []*float64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
 
 	// 对应的具体值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type HostDetailInfo struct {
 	// 类型族
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostTypeFamily *string `json:"HostTypeFamily,omitnil,omitempty" name:"HostTypeFamily"`
 
 	// 总CPU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuTotal *float64 `json:"CpuTotal,omitnil,omitempty" name:"CpuTotal"`
 
 	// 可用CPU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuAvailable *float64 `json:"CpuAvailable,omitnil,omitempty" name:"CpuAvailable"`
 
 	// 总内存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemTotal *float64 `json:"MemTotal,omitnil,omitempty" name:"MemTotal"`
 
 	// 可用内存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemAvailable *float64 `json:"MemAvailable,omitnil,omitempty" name:"MemAvailable"`
 }
 
@@ -1888,31 +1869,24 @@ type HostStatistic struct {
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 平均cpu负载百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuAverage *float64 `json:"CpuAverage,omitnil,omitempty" name:"CpuAverage"`
 
 	// 平均内存使用率百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemAverage *float64 `json:"MemAverage,omitnil,omitempty" name:"MemAverage"`
 
 	// 平均网络流量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetAverage *float64 `json:"NetAverage,omitnil,omitempty" name:"NetAverage"`
 
 	// cpu详细监控数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuDetailData *DetailData `json:"CpuDetailData,omitnil,omitempty" name:"CpuDetailData"`
 
 	// 内存详细数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemDetailData *DetailData `json:"MemDetailData,omitnil,omitempty" name:"MemDetailData"`
 
 	// 网络速率详细数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetRateDetailData *DetailData `json:"NetRateDetailData,omitnil,omitempty" name:"NetRateDetailData"`
 
 	// 网速包详细数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetPacketDetailData *DetailData `json:"NetPacketDetailData,omitnil,omitempty" name:"NetPacketDetailData"`
 }
 

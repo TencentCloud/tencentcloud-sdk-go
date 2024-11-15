@@ -474,9 +474,9 @@ func (r *DescribeTrustedIDResponse) FromJsonString(s string) error {
 }
 
 type RiskInfo struct {
-	// 风险类型
+	// 风险类型。更多详情请参见：[Android](https://cloud.tencent.com/document/product/1628/85898)、[iOS](https://cloud.tencent.com/document/product/1628/85896)、[H5](https://cloud.tencent.com/document/product/1628/85897)、[小程序](https://cloud.tencent.com/document/product/1628/85895)、[场景风险](https://cloud.tencent.com/document/product/1628/88912)
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 风险等级
+	// [风险等级](https://cloud.tencent.com/document/product/1628/85308)
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 }

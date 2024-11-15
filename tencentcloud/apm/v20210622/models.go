@@ -281,6 +281,22 @@ type ApmInstanceDetail struct {
 	// 是否tsf默认业务系统（0=否，1-是）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultTSF *int64 `json:"DefaultTSF,omitnil,omitempty" name:"DefaultTSF"`
+
+	// 是否关联dashboard： 0 关 1 开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// dashboard ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// 是否开启组件漏洞检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// 是否开启SQL注入分析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 }
 
 type ApmMetricRecord struct {
@@ -318,6 +334,9 @@ type CreateApmInstanceRequestParams struct {
 
 	// 实例的计费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// （0=付费版；1=tsf受限免费版；2=免费版）
+	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 }
 
 type CreateApmInstanceRequest struct {
@@ -340,6 +359,9 @@ type CreateApmInstanceRequest struct {
 
 	// 实例的计费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// （0=付费版；1=tsf受限免费版；2=免费版）
+	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 }
 
 func (r *CreateApmInstanceRequest) ToJsonString() string {
@@ -360,6 +382,7 @@ func (r *CreateApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "SpanDailyCounters")
 	delete(f, "PayMode")
+	delete(f, "Free")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApmInstanceRequest has unknown keys!", "")
 	}
@@ -1369,11 +1392,20 @@ type ModifyApmInstanceRequestParams struct {
 	// 响应时间满意阈值
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
+	// （0=付费版；1=tsf受限免费版；2=免费版）
+	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
+
 	// 是否关联dashboard： 0 关 1 开
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
 	// dashboard ID
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// 是否开启SQL注入检测
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// 是否开启组件漏洞检测
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1438,11 +1470,20 @@ type ModifyApmInstanceRequest struct {
 	// 响应时间满意阈值
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
+	// （0=付费版；1=tsf受限免费版；2=免费版）
+	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
+
 	// 是否关联dashboard： 0 关 1 开
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
 	// dashboard ID
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// 是否开启SQL注入检测
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// 是否开启组件漏洞检测
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1476,8 +1517,11 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CustomShowTags")
 	delete(f, "PayMode")
 	delete(f, "ResponseDurationWarningThreshold")
+	delete(f, "Free")
 	delete(f, "IsRelatedDashboard")
 	delete(f, "DashboardTopicID")
+	delete(f, "IsSqlInjectionAnalysis")
+	delete(f, "IsInstrumentationVulnerabilityScan")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

@@ -627,7 +627,7 @@ type CreateClusterRequestParams struct {
 	// <li>SGE：     8.1.9</li>
 	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818)
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。
@@ -705,7 +705,7 @@ type CreateClusterRequest struct {
 	// <li>SGE：     8.1.9</li>
 	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818)
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。
