@@ -2077,14 +2077,13 @@ func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeBackupUrlRequestParams struct {
-	// 实例 ID。
+	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备份 ID，可通过 [DescribeInstanceBackups ](https://cloud.tencent.com/document/product/239/20011)接口返回的参数 RedisBackupSet 获取。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
 	// 下载备份文件的网络限制类型，如果不配置该参数，则使用用户自定义的配置。
-	// 
 	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
 	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
 	// - Customize：指用户自定义的私有网络可下载备份文件。
@@ -2094,7 +2093,6 @@ type DescribeBackupUrlRequestParams struct {
 	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
 
 	// 标识自定义的 LimitIp 地址是否可下载备份文件。
-	// 
 	// - In: 自定义的 IP 地址可以下载。默认为 In。
 	// - NotIn: 自定义的 IP 不可以下载。
 	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
@@ -2109,14 +2107,13 @@ type DescribeBackupUrlRequestParams struct {
 type DescribeBackupUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备份 ID，可通过 [DescribeInstanceBackups ](https://cloud.tencent.com/document/product/239/20011)接口返回的参数 RedisBackupSet 获取。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
 	// 下载备份文件的网络限制类型，如果不配置该参数，则使用用户自定义的配置。
-	// 
 	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
 	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
 	// - Customize：指用户自定义的私有网络可下载备份文件。
@@ -2126,7 +2123,6 @@ type DescribeBackupUrlRequest struct {
 	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
 
 	// 标识自定义的 LimitIp 地址是否可下载备份文件。
-	// 
 	// - In: 自定义的 IP 地址可以下载。默认为 In。
 	// - NotIn: 自定义的 IP 不可以下载。
 	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`

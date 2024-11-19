@@ -194,7 +194,12 @@ type GetFileTranslateData struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 状态
+	// 任务状态
+	// 
+	// - init：任务已初始化
+	// - wait：任务等待执行
+	// - success：任务执行成功
+	// - fail：任务执行失败
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 文件数据，目标文件必须小于50M，否则请通过回调方式请求文件翻译接口
@@ -205,8 +210,11 @@ type GetFileTranslateData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 翻译进度
+	// 任务进度
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 本次翻译消耗的字符数	
+	UsedAmount *int64 `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
 }
 
 // Predefined struct for user
@@ -789,6 +797,9 @@ type TextTranslateBatchResponseParams struct {
 	// 翻译后的文本列表
 	TargetTextList []*string `json:"TargetTextList,omitnil,omitempty" name:"TargetTextList"`
 
+	// 本次翻译消耗的字符数
+	UsedAmount *int64 `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -969,6 +980,9 @@ type TextTranslateResponseParams struct {
 
 	// 目标语言，详见入参Target
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 本次翻译消耗的字符数
+	UsedAmount *int64 `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

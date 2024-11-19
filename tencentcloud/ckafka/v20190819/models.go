@@ -1851,10 +1851,10 @@ type CreateInstancePostData struct {
 
 // Predefined struct for user
 type CreateInstancePostRequestParams struct {
-	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+	// 私有网络Id 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
@@ -1907,15 +1907,18 @@ type CreateInstancePostRequestParams struct {
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 弹性带宽开关 0不开启  1开启（0默认）
+	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 }
 
 type CreateInstancePostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+	// 私有网络Id 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
@@ -1968,6 +1971,9 @@ type CreateInstancePostRequest struct {
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 弹性带宽开关 0不开启  1开启（0默认）
+	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 }
 
 func (r *CreateInstancePostRequest) ToJsonString() string {
@@ -2001,6 +2007,7 @@ func (r *CreateInstancePostRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNum")
 	delete(f, "PublicNetworkMonthly")
 	delete(f, "Tags")
+	delete(f, "ElasticBandwidthSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePostRequest has unknown keys!", "")
 	}
@@ -2053,7 +2060,7 @@ type CreateInstancePreData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+	// ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -2064,7 +2071,7 @@ type CreateInstancePreData struct {
 
 // Predefined struct for user
 type CreateInstancePreRequestParams struct {
-	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 可用区。当购买多可用区实例时，当前参数为主可用区。需要保证传入的参数和 SubnetId 所在子网属于同一个可用区
@@ -2076,7 +2083,7 @@ type CreateInstancePreRequestParams struct {
 	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// vpcId，必填
+	// 私有网络Id，必填
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id，必填
@@ -2100,7 +2107,7 @@ type CreateInstancePreRequestParams struct {
 	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 带宽，如果跟控制台规格配比不相符，则无法创建成功
+	// 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
 	// 分区大小，如果跟控制台规格配比不相符，则无法创建成功
@@ -2126,12 +2133,15 @@ type CreateInstancePreRequestParams struct {
 
 	// 是否自动选择代金券:1-是;0否。默认为0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 弹性带宽开关 0不开启  1开启（0默认）
+	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 }
 
 type CreateInstancePreRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 可用区。当购买多可用区实例时，当前参数为主可用区。需要保证传入的参数和 SubnetId 所在子网属于同一个可用区
@@ -2143,7 +2153,7 @@ type CreateInstancePreRequest struct {
 	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// vpcId，必填
+	// 私有网络Id，必填
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id，必填
@@ -2167,7 +2177,7 @@ type CreateInstancePreRequest struct {
 	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 带宽，如果跟控制台规格配比不相符，则无法创建成功
+	// 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
 	// 分区大小，如果跟控制台规格配比不相符，则无法创建成功
@@ -2193,6 +2203,9 @@ type CreateInstancePreRequest struct {
 
 	// 是否自动选择代金券:1-是;0否。默认为0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 弹性带宽开关 0不开启  1开启（0默认）
+	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -2228,6 +2241,7 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "PublicNetworkMonthly")
 	delete(f, "InstanceNum")
 	delete(f, "AutoVoucher")
+	delete(f, "ElasticBandwidthSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}
@@ -10156,7 +10170,7 @@ type MySQLParam struct {
 }
 
 type OperateResponseData struct {
-	// FlowId11
+	// 流程Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
@@ -10570,7 +10584,7 @@ type Route struct {
 }
 
 type RouteDTO struct {
-	// RouteId11
+	// 路由Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 }

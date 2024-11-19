@@ -1008,6 +1008,10 @@ type Condition struct {
 	// 告警分级阈值配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HierarchicalValue *AlarmHierarchicalValue `json:"HierarchicalValue,omitnil,omitempty" name:"HierarchicalValue"`
+
+	// 指标类型，用于区分动态指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 }
 
 type ConditionsTemp struct {

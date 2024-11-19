@@ -6063,6 +6063,7 @@ func NewModifyFirewallTemplateResponse() (response *ModifyFirewallTemplateRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 func (c *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequest) (response *ModifyFirewallTemplateResponse, err error) {
     return c.ModifyFirewallTemplateWithContext(context.Background(), request)
 }
@@ -6072,6 +6073,7 @@ func (c *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 func (c *Client) ModifyFirewallTemplateWithContext(ctx context.Context, request *ModifyFirewallTemplateRequest) (response *ModifyFirewallTemplateResponse, err error) {
     if request == nil {
         request = NewModifyFirewallTemplateRequest()
@@ -6946,6 +6948,7 @@ func NewReplaceFirewallTemplateRuleResponse() (response *ReplaceFirewallTemplate
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ReplaceFirewallTemplateRule(request *ReplaceFirewallTemplateRuleRequest) (response *ReplaceFirewallTemplateRuleResponse, err error) {
@@ -6959,6 +6962,7 @@ func (c *Client) ReplaceFirewallTemplateRule(request *ReplaceFirewallTemplateRul
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ReplaceFirewallTemplateRuleWithContext(ctx context.Context, request *ReplaceFirewallTemplateRuleRequest) (response *ReplaceFirewallTemplateRuleResponse, err error) {
@@ -7131,6 +7135,7 @@ func NewResetFirewallTemplateRulesResponse() (response *ResetFirewallTemplateRul
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
@@ -7146,6 +7151,7 @@ func (c *Client) ResetFirewallTemplateRules(request *ResetFirewallTemplateRulesR
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"

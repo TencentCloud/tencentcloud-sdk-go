@@ -1843,6 +1843,15 @@ type CreatePredictiveDialingCampaignRequestParams struct {
 
 	// 呼叫重试次数，0 - 2
 	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 自定义变量
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// UUI
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 被叫属性
+	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
 }
 
 type CreatePredictiveDialingCampaignRequest struct {
@@ -1886,6 +1895,15 @@ type CreatePredictiveDialingCampaignRequest struct {
 
 	// 呼叫重试次数，0 - 2
 	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 自定义变量
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// UUI
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 被叫属性
+	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
 }
 
 func (r *CreatePredictiveDialingCampaignRequest) ToJsonString() string {
@@ -1913,6 +1931,9 @@ func (r *CreatePredictiveDialingCampaignRequest) FromJsonString(s string) error 
 	delete(f, "EndTime")
 	delete(f, "IVRId")
 	delete(f, "RetryTimes")
+	delete(f, "Variables")
+	delete(f, "UUI")
+	delete(f, "CalleeAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePredictiveDialingCampaignRequest has unknown keys!", "")
 	}
@@ -6466,6 +6487,15 @@ type UpdatePredictiveDialingCampaignRequestParams struct {
 
 	// 呼叫重试次数，0 - 2
 	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 自定义变量
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 	UUI
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 被叫属性
+	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
 }
 
 type UpdatePredictiveDialingCampaignRequest struct {
@@ -6512,6 +6542,15 @@ type UpdatePredictiveDialingCampaignRequest struct {
 
 	// 呼叫重试次数，0 - 2
 	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 自定义变量
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 	UUI
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 被叫属性
+	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
 }
 
 func (r *UpdatePredictiveDialingCampaignRequest) ToJsonString() string {
@@ -6540,6 +6579,9 @@ func (r *UpdatePredictiveDialingCampaignRequest) FromJsonString(s string) error 
 	delete(f, "EndTime")
 	delete(f, "IVRId")
 	delete(f, "RetryTimes")
+	delete(f, "Variables")
+	delete(f, "UUI")
+	delete(f, "CalleeAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePredictiveDialingCampaignRequest has unknown keys!", "")
 	}

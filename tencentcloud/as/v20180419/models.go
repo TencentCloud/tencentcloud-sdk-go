@@ -1055,6 +1055,7 @@ type CreateLaunchConfigurationRequestParams struct {
 	// <li>POSTPAID_BY_HOUR：按小时后付费</li>
 	// <li>SPOTPAID：竞价付费</li>
 	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>CDCPAID：专用集群付费</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
@@ -1108,6 +1109,9 @@ type CreateLaunchConfigurationRequestParams struct {
 
 	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 本地专用集群ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type CreateLaunchConfigurationRequest struct {
@@ -1152,6 +1156,7 @@ type CreateLaunchConfigurationRequest struct {
 	// <li>POSTPAID_BY_HOUR：按小时后付费</li>
 	// <li>SPOTPAID：竞价付费</li>
 	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>CDCPAID：专用集群付费</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
@@ -1205,6 +1210,9 @@ type CreateLaunchConfigurationRequest struct {
 
 	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 本地专用集群ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1245,6 +1253,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "IPv6InternetAccessible")
 	delete(f, "DisasterRecoverGroupIds")
 	delete(f, "ImageFamily")
+	delete(f, "DedicatedClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
@@ -3916,6 +3925,9 @@ type LaunchConfiguration struct {
 	// 镜像族名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 本地专用集群 ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type LifecycleActionResultInfo struct {
@@ -4416,6 +4428,7 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 	// <li>POSTPAID_BY_HOUR：按小时后付费</li>
 	// <li>SPOTPAID：竞价付费</li>
 	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>CDCPAID：专用集群付费</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
@@ -4478,6 +4491,9 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 
 	// 镜像族名称。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 本地专用集群ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type ModifyLaunchConfigurationAttributesRequest struct {
@@ -4518,6 +4534,7 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// <li>POSTPAID_BY_HOUR：按小时后付费</li>
 	// <li>SPOTPAID：竞价付费</li>
 	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>CDCPAID：专用集群付费</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
@@ -4580,6 +4597,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// 镜像族名称。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
+
+	// 本地专用集群ID。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -4618,6 +4638,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "LoginSettings")
 	delete(f, "InstanceTags")
 	delete(f, "ImageFamily")
+	delete(f, "DedicatedClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

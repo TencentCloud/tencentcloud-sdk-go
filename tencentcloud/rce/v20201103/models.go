@@ -454,6 +454,60 @@ func (r *DescribeNameListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserUsageCntRequestParams struct {
+
+}
+
+type DescribeUserUsageCntRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeUserUsageCntRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserUsageCntRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserUsageCntRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserUsageCntResponseParams struct {
+	// 业务出参
+	Data *OutputDescribeUserUsageCntData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserUsageCntResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserUsageCntResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserUsageCntResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserUsageCntResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ImportNameListDataRequestParams struct {
 	// 业务入参
 	BusinessSecurityData *InputImportNameListDataFront `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
@@ -1174,6 +1228,48 @@ type OutputDescribeNameListInfo struct {
 	// 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*OutputDescribeNameListFrontFix `json:"List,omitnil,omitempty" name:"List"`
+}
+
+type OutputDescribeUserUsageCnt struct {
+	// 当前付费模式，0 后付费 1 预付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 后付费本月使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AfterPayModeThisMonthUsedCnt *int64 `json:"AfterPayModeThisMonthUsedCnt,omitnil,omitempty" name:"AfterPayModeThisMonthUsedCnt"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 超出时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 后付费上月使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AfterPayModeLastMonthUsedCnt *int64 `json:"AfterPayModeLastMonthUsedCnt,omitnil,omitempty" name:"AfterPayModeLastMonthUsedCnt"`
+
+	// 预付费总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeforePayModeTotalUsedCnt *int64 `json:"BeforePayModeTotalUsedCnt,omitnil,omitempty" name:"BeforePayModeTotalUsedCnt"`
+
+	// 预付费剩余用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeforePayModeRemainUsedCnt *int64 `json:"BeforePayModeRemainUsedCnt,omitnil,omitempty" name:"BeforePayModeRemainUsedCnt"`
+}
+
+type OutputDescribeUserUsageCntData struct {
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 4300：未开通服务
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 业务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputDescribeUserUsageCnt `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OutputImportNameListDataFront struct {

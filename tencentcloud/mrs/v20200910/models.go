@@ -2851,11 +2851,9 @@ func (r *ImageToObjectRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ImageToObjectResponseParams struct {
 	// 报告结构化结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
 	// 多级分类结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTypeList []*TextType `json:"TextTypeList,omitnil,omitempty" name:"TextTypeList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3437,11 +3435,11 @@ type LymphTotal struct {
 
 	// 转移数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransferNum *string `json:"TransferNum,omitnil,omitempty" name:"TransferNum"`
+	TransferNum *int64 `json:"TransferNum,omitnil,omitempty" name:"TransferNum"`
 
 	// 总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。

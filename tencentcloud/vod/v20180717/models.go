@@ -3026,7 +3026,7 @@ type ComplexAdaptiveDynamicStreamingTaskResult struct {
 }
 
 type ComplexAdaptiveDynamicStreamingTaskStreamPara struct {
-	// 自适应码流模版 ID。
+	// 自适应码流模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 

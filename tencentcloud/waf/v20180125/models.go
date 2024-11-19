@@ -1537,6 +1537,98 @@ type BatchIpAccessControlItem struct {
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
+// Predefined struct for user
+type BatchOperateUserSignatureRulesRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 0:关闭，1:开启，2:仅观察
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 如果SelectedAll为true，则表示反选的规则，否则表示手动选择的规则ID
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// 仅观察原因
+	Reason *int64 `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 是否全选
+	SelectedAll *bool `json:"SelectedAll,omitnil,omitempty" name:"SelectedAll"`
+
+	// 过滤
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type BatchOperateUserSignatureRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 0:关闭，1:开启，2:仅观察
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 如果SelectedAll为true，则表示反选的规则，否则表示手动选择的规则ID
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// 仅观察原因
+	Reason *int64 `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 是否全选
+	SelectedAll *bool `json:"SelectedAll,omitnil,omitempty" name:"SelectedAll"`
+
+	// 过滤
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *BatchOperateUserSignatureRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchOperateUserSignatureRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Status")
+	delete(f, "RuleIds")
+	delete(f, "Reason")
+	delete(f, "SelectedAll")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchOperateUserSignatureRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchOperateUserSignatureRulesResponseParams struct {
+	// 操作结果
+	CommonRsp *CommonRspData `json:"CommonRsp,omitnil,omitempty" name:"CommonRsp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchOperateUserSignatureRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchOperateUserSignatureRulesResponseParams `json:"Response"`
+}
+
+func (r *BatchOperateUserSignatureRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchOperateUserSignatureRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BotPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -1900,6 +1992,14 @@ type ClbWafRegionItem struct {
 
 	// 地域编码
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+}
+
+type CommonRspData struct {
+	// 操作结果
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 输出信息
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 }
 
 // Predefined struct for user
@@ -8173,6 +8273,66 @@ func (r *DescribeUserLevelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserSignatureClassRequestParams struct {
+	// 查询域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DescribeUserSignatureClassRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DescribeUserSignatureClassRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserSignatureClassRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserSignatureClassRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserSignatureClassResponseParams struct {
+	// 规则类型数量
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 规则类型列表及信息
+	RuleTypeList []*RuleType `json:"RuleTypeList,omitnil,omitempty" name:"RuleTypeList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserSignatureClassResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserSignatureClassResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserSignatureClassResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserSignatureClassResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserSignatureRuleRequestParams struct {
 	// 需要查询的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -8264,6 +8424,101 @@ func (r *DescribeUserSignatureRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserSignatureRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserSignatureRuleV2RequestParams struct {
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页容量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段，支持 signature_id, modify_time
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 筛选条件，支持 MainClassName，SubClassID ,CveID, Status, ID;  ID为规则id
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeUserSignatureRuleV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页容量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段，支持 signature_id, modify_time
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 筛选条件，支持 MainClassName，SubClassID ,CveID, Status, ID;  ID为规则id
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeUserSignatureRuleV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserSignatureRuleV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserSignatureRuleV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserSignatureRuleV2ResponseParams struct {
+	// 规则总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 规则列表
+	Rules []*UserSignatureRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserSignatureRuleV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserSignatureRuleV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserSignatureRuleV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserSignatureRuleV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14193,6 +14448,26 @@ type RuleList struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type RuleType struct {
+	// 规则ID
+	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则类型描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 规则类型状态，即类型生效开关，0：关闭，1：开启
+	RuleTypeStatus *int64 `json:"RuleTypeStatus,omitnil,omitempty" name:"RuleTypeStatus"`
+
+	// 类型下生效的规则数量
+	ActiveRuleCount *int64 `json:"ActiveRuleCount,omitnil,omitempty" name:"ActiveRuleCount"`
+
+	// 类型下的规则总数量
+	TotalRuleCount *int64 `json:"TotalRuleCount,omitnil,omitempty" name:"TotalRuleCount"`
 }
 
 type ScanIpInfo struct {

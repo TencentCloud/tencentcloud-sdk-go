@@ -1642,7 +1642,7 @@ type CreateClusterEndpointRequestParams struct {
 	// 设置域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 使用的安全组，只有外网访问需要传递（开启外网访问时必传）
+	// 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。
@@ -1669,7 +1669,7 @@ type CreateClusterEndpointRequest struct {
 	// 设置域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 使用的安全组，只有外网访问需要传递（开启外网访问时必传）
+	// 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。

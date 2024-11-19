@@ -595,6 +595,103 @@ func (c *Client) AddSpartaProtectionWithContext(ctx context.Context, request *Ad
     return
 }
 
+func NewBatchOperateUserSignatureRulesRequest() (request *BatchOperateUserSignatureRulesRequest) {
+    request = &BatchOperateUserSignatureRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "BatchOperateUserSignatureRules")
+    
+    
+    return
+}
+
+func NewBatchOperateUserSignatureRulesResponse() (response *BatchOperateUserSignatureRulesResponse) {
+    response = &BatchOperateUserSignatureRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchOperateUserSignatureRules
+// 批量操作tiga子规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+//  INVALIDPARAMETER_DOMAINEXCEEDSLIMITERR = "InvalidParameter.DomainExceedsLimitErr"
+//  INVALIDPARAMETER_DOMAINNOTRECORD = "InvalidParameter.DomainNotRecord"
+//  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
+//  INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
+//  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+//  INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
+//  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
+//  INVALIDPARAMETER_XFFRESETPARAMETERERR = "InvalidParameter.XFFResetParameterErr"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_EMPTYERR = "ResourceInUse.EmptyErr"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchOperateUserSignatureRules(request *BatchOperateUserSignatureRulesRequest) (response *BatchOperateUserSignatureRulesResponse, err error) {
+    return c.BatchOperateUserSignatureRulesWithContext(context.Background(), request)
+}
+
+// BatchOperateUserSignatureRules
+// 批量操作tiga子规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+//  INVALIDPARAMETER_DOMAINEXCEEDSLIMITERR = "InvalidParameter.DomainExceedsLimitErr"
+//  INVALIDPARAMETER_DOMAINNOTRECORD = "InvalidParameter.DomainNotRecord"
+//  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
+//  INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
+//  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+//  INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
+//  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
+//  INVALIDPARAMETER_XFFRESETPARAMETERERR = "InvalidParameter.XFFResetParameterErr"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_EMPTYERR = "ResourceInUse.EmptyErr"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchOperateUserSignatureRulesWithContext(ctx context.Context, request *BatchOperateUserSignatureRulesRequest) (response *BatchOperateUserSignatureRulesResponse, err error) {
+    if request == nil {
+        request = NewBatchOperateUserSignatureRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchOperateUserSignatureRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchOperateUserSignatureRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
     request = &CreateAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5336,6 +5433,69 @@ func (c *Client) DescribeUserLevelWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeUserSignatureClassRequest() (request *DescribeUserSignatureClassRequest) {
+    request = &DescribeUserSignatureClassRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeUserSignatureClass")
+    
+    
+    return
+}
+
+func NewDescribeUserSignatureClassResponse() (response *DescribeUserSignatureClassResponse) {
+    response = &DescribeUserSignatureClassResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserSignatureClass
+// 查询Tiga引擎规则类型及状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeUserSignatureClass(request *DescribeUserSignatureClassRequest) (response *DescribeUserSignatureClassResponse, err error) {
+    return c.DescribeUserSignatureClassWithContext(context.Background(), request)
+}
+
+// DescribeUserSignatureClass
+// 查询Tiga引擎规则类型及状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeUserSignatureClassWithContext(ctx context.Context, request *DescribeUserSignatureClassRequest) (response *DescribeUserSignatureClassResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserSignatureClassRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserSignatureClass require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserSignatureClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserSignatureRuleRequest() (request *DescribeUserSignatureRuleRequest) {
     request = &DescribeUserSignatureRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5419,6 +5579,93 @@ func (c *Client) DescribeUserSignatureRuleWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeUserSignatureRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserSignatureRuleV2Request() (request *DescribeUserSignatureRuleV2Request) {
+    request = &DescribeUserSignatureRuleV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeUserSignatureRuleV2")
+    
+    
+    return
+}
+
+func NewDescribeUserSignatureRuleV2Response() (response *DescribeUserSignatureRuleV2Response) {
+    response = &DescribeUserSignatureRuleV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserSignatureRuleV2
+// 获取用户特征规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSignatureRuleV2(request *DescribeUserSignatureRuleV2Request) (response *DescribeUserSignatureRuleV2Response, err error) {
+    return c.DescribeUserSignatureRuleV2WithContext(context.Background(), request)
+}
+
+// DescribeUserSignatureRuleV2
+// 获取用户特征规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSignatureRuleV2WithContext(ctx context.Context, request *DescribeUserSignatureRuleV2Request) (response *DescribeUserSignatureRuleV2Response, err error) {
+    if request == nil {
+        request = NewDescribeUserSignatureRuleV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserSignatureRuleV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserSignatureRuleV2Response()
     err = c.Send(request, response)
     return
 }

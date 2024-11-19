@@ -569,7 +569,7 @@ const (
 	// 未找到数据库实例，请确认您的实例状态是否正常。
 	RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 
-	// 高可用版实例不存在。
+	// 该实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 
 	// 该实例不存在。

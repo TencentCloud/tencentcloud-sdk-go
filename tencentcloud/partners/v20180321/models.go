@@ -1912,27 +1912,21 @@ type ProductInfoElem struct {
 
 type RebateInfoElem struct {
 	// 代理商账号ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 返佣月份，如2018-02
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`
 
 	// 返佣金额，单位分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amt *uint64 `json:"Amt,omitnil,omitempty" name:"Amt"`
 
 	// 月度业绩，单位分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonthSales *uint64 `json:"MonthSales,omitnil,omitempty" name:"MonthSales"`
 
 	// 季度业绩，单位分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuarterSales *uint64 `json:"QuarterSales,omitnil,omitempty" name:"QuarterSales"`
 
 	// NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionFlag *string `json:"ExceptionFlag,omitnil,omitempty" name:"ExceptionFlag"`
 }
 

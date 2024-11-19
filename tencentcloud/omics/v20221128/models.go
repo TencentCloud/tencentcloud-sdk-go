@@ -22,46 +22,39 @@ import (
 
 type ApplicationVersion struct {
 	// 版本类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 版本ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
 
 	// 发布名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 发布描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 入口文件。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 创建者名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
 
 	// 创建者ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 
 	// Git信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: GitInfo is deprecated.
 	GitInfo *string `json:"GitInfo,omitnil,omitempty" name:"GitInfo"`
 
 	// Git信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GitSource *GitInfo `json:"GitSource,omitnil,omitempty" name:"GitSource"`
+
+	// COS信息。
+	CosSource *CosFileInfo `json:"CosSource,omitnil,omitempty" name:"CosSource"`
 }
 
 type CVMOption struct {
@@ -74,15 +67,12 @@ type CVMOption struct {
 
 type CacheInfo struct {
 	// 缓存清理时间(小时)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheClearDelay *uint64 `json:"CacheClearDelay,omitnil,omitempty" name:"CacheClearDelay"`
 
 	// 缓存清理计划时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheClearTime *string `json:"CacheClearTime,omitnil,omitempty" name:"CacheClearTime"`
 
 	// 缓存是否已被清理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheCleared *bool `json:"CacheCleared,omitnil,omitempty" name:"CacheCleared"`
 }
 
@@ -102,6 +92,17 @@ type ClusterOption struct {
 
 	// 限制范围。
 	LimitRange *LimitRange `json:"LimitRange,omitnil,omitempty" name:"LimitRange"`
+}
+
+type CosFileInfo struct {
+	// 存储桶。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// COS文件地址。
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// 地域。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 // Predefined struct for user
@@ -356,7 +357,7 @@ type DeleteVolumeDataRequestParams struct {
 	// 缓存卷ID。
 	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
 
-	// 需要删除的路径
+	// 需要删除的路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
@@ -366,7 +367,7 @@ type DeleteVolumeDataRequest struct {
 	// 缓存卷ID。
 	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
 
-	// 需要删除的路径
+	// 需要删除的路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
@@ -1065,15 +1066,12 @@ type EnvironmentConfig struct {
 
 type ExecutionTime struct {
 	// 提交时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
 	// 开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -1255,7 +1253,6 @@ type GetRunMetadataFileResponseParams struct {
 	CosSignedUrl *string `json:"CosSignedUrl,omitnil,omitempty" name:"CosSignedUrl"`
 
 	// 批量文件预签名链接，一分钟内有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosSignedUrls []*string `json:"CosSignedUrls,omitnil,omitempty" name:"CosSignedUrls"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1346,23 +1343,18 @@ func (r *GetRunStatusResponse) FromJsonString(s string) error {
 
 type GitInfo struct {
 	// Git地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GitHttpPath *string `json:"GitHttpPath,omitnil,omitempty" name:"GitHttpPath"`
 
 	// Git用户名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GitUserName *string `json:"GitUserName,omitnil,omitempty" name:"GitUserName"`
 
 	// Git密码或者Token。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GitTokenOrPassword *string `json:"GitTokenOrPassword,omitnil,omitempty" name:"GitTokenOrPassword"`
 
 	// 分支。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 
 	// 标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
@@ -1529,29 +1521,23 @@ func (r *ModifyVolumeResponse) FromJsonString(s string) error {
 
 type NFOption struct {
 	// Config。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// Profile。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
 
 	// Report。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Report *bool `json:"Report,omitnil,omitempty" name:"Report"`
 
 	// Resume。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resume *bool `json:"Resume,omitnil,omitempty" name:"Resume"`
 
 	// Nextflow引擎版本，取值范围：
 	// - 22.10.7
 	// - 23.10.1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NFVersion *string `json:"NFVersion,omitnil,omitempty" name:"NFVersion"`
 
 	// 启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaunchDir *string `json:"LaunchDir,omitnil,omitempty" name:"LaunchDir"`
 }
 
@@ -1659,7 +1645,6 @@ func (r *RetryRunsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RetryRunsResponseParams struct {
 	// 新的任务批次ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunGroupId *string `json:"RunGroupId,omitnil,omitempty" name:"RunGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1699,15 +1684,12 @@ type Run struct {
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 用户定义ID，单例运行为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefinedId *string `json:"UserDefinedId,omitnil,omitempty" name:"UserDefinedId"`
 
 	// 表格ID，单例运行为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 
 	// 表格行UUID，单例运行为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableRowUuid *string `json:"TableRowUuid,omitnil,omitempty" name:"TableRowUuid"`
 
 	// 任务状态。
@@ -1725,7 +1707,6 @@ type Run struct {
 	ExecutionTime *ExecutionTime `json:"ExecutionTime,omitnil,omitempty" name:"ExecutionTime"`
 
 	// 缓存信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cache *CacheInfo `json:"Cache,omitnil,omitempty" name:"Cache"`
 
 	// 错误信息。
@@ -1924,13 +1905,11 @@ type RunGroup struct {
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 应用版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationVersion *ApplicationVersion `json:"ApplicationVersion,omitnil,omitempty" name:"ApplicationVersion"`
 
 	// 应用访问类型：
 	// - PRIVATE 私有应用
 	// - PUBLIC 公共应用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
 	// 环境ID。
@@ -1940,7 +1919,6 @@ type RunGroup struct {
 	EnvironmentName *string `json:"EnvironmentName,omitnil,omitempty" name:"EnvironmentName"`
 
 	// 表格ID，单例运行为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 
 	// 任务名称。
@@ -1955,11 +1933,9 @@ type RunGroup struct {
 	// 任务批次类型 ：
 	// - WDL
 	// - NEXTFLOW
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 工作目录。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 
 	// 任务输入。
@@ -1969,26 +1945,21 @@ type RunGroup struct {
 	// - JSON: 导入JSON
 	// - MANUAL: 手动输入
 	// - COS: COS文件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 
 	// 输入COS地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputCosUri *string `json:"InputCosUri,omitnil,omitempty" name:"InputCosUri"`
 
 	// 输入模版ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputTemplateId *string `json:"InputTemplateId,omitnil,omitempty" name:"InputTemplateId"`
 
 	// WDL运行选项。
 	Option *RunOption `json:"Option,omitnil,omitempty" name:"Option"`
 
 	// Nextflow运行选项。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NFOption *NFOption `json:"NFOption,omitnil,omitempty" name:"NFOption"`
 
 	// 使用的缓存卷。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Volumes []*VolumeInfo `json:"Volumes,omitnil,omitempty" name:"Volumes"`
 
 	// 任务总数量。
@@ -2004,7 +1975,6 @@ type RunGroup struct {
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// 运行结果通知方式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultNotify *string `json:"ResultNotify,omitnil,omitempty" name:"ResultNotify"`
 
 	// 创建时间。
@@ -2014,101 +1984,77 @@ type RunGroup struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 创建者。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
 	// 创建者ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 }
 
 type RunMetadata struct {
 	// 任务类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunType *string `json:"RunType,omitnil,omitempty" name:"RunType"`
 
 	// 任务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
 
 	// 父层ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 作业ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 作业名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallName *string `json:"CallName,omitnil,omitempty" name:"CallName"`
 
 	// Scatter索引。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScatterIndex *string `json:"ScatterIndex,omitnil,omitempty" name:"ScatterIndex"`
 
 	// 输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 提交时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
 	// 结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 命令行。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 运行时。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 预处理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Preprocess *bool `json:"Preprocess,omitnil,omitempty" name:"Preprocess"`
 
 	// 后处理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostProcess *bool `json:"PostProcess,omitnil,omitempty" name:"PostProcess"`
 
 	// Cache命中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallCached *bool `json:"CallCached,omitnil,omitempty" name:"CallCached"`
 
 	// 工作目录。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 
 	// 标准输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stdout *string `json:"Stdout,omitnil,omitempty" name:"Stdout"`
 
 	// 错误输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stderr *string `json:"Stderr,omitnil,omitempty" name:"Stderr"`
 
 	// 其他信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 }
 
@@ -2125,15 +2071,12 @@ type RunOption struct {
 	UseErrorOnHold *bool `json:"UseErrorOnHold,omitnil,omitempty" name:"UseErrorOnHold"`
 
 	// 输出归档COS路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinalWorkflowOutputsDir *string `json:"FinalWorkflowOutputsDir,omitnil,omitempty" name:"FinalWorkflowOutputsDir"`
 
 	// 是否使用相对目录归档输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseRelativeOutputPaths *bool `json:"UseRelativeOutputPaths,omitnil,omitempty" name:"UseRelativeOutputPaths"`
 
 	// 是否添加运行信息到输出目录中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddRunInfoToOutputDir *bool `json:"AddRunInfoToOutputDir,omitnil,omitempty" name:"AddRunInfoToOutputDir"`
 }
 
@@ -2315,51 +2258,43 @@ type StorageOption struct {
 
 type Table struct {
 	// 表格ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 
 	// 关联项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 表格描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 表格列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*TableColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 创建人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建人ID
+	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 }
 
 type TableColumn struct {
 	// 列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Header *string `json:"Header,omitnil,omitempty" name:"Header"`
 
 	// 列数据类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 }
 
 type TableRow struct {
 	// 表格行UUID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableRowUuid *string `json:"TableRowUuid,omitnil,omitempty" name:"TableRowUuid"`
 
 	// 表格行内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -2489,14 +2424,11 @@ type Volume struct {
 
 type VolumeInfo struct {
 	// 缓存卷ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
 
 	// 名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 挂载路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
 }

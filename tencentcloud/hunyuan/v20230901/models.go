@@ -382,6 +382,9 @@ type Choice struct {
 	// 返回值，非流式调用时使用该字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *Message `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 索引值，流式调用时使用该字段。
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 type Content struct {
@@ -1793,6 +1796,9 @@ type SubmitHunyuanImageJobRequestParams struct {
 	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
+	// 反向提示词。 推荐使用中文。最多可传1024个 utf-8 字符。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
 	// 绘画风格。
 	// 请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
 	// 不传默认不指定风格。
@@ -1836,6 +1842,9 @@ type SubmitHunyuanImageJobRequest struct {
 	// 算法将根据输入的文本智能生成与之相关的图像。 
 	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 反向提示词。 推荐使用中文。最多可传1024个 utf-8 字符。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。
 	// 请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
@@ -1886,6 +1895,7 @@ func (r *SubmitHunyuanImageJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Prompt")
+	delete(f, "NegativePrompt")
 	delete(f, "Style")
 	delete(f, "Resolution")
 	delete(f, "Num")

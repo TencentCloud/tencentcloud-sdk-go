@@ -189,7 +189,7 @@ func (r *AutoRewriteResponse) FromJsonString(s string) error {
 }
 
 type Backend struct {
-	// 后端服务的类型，可取：CVM、ENI、CCN
+	// 后端服务的类型，可取：CVM、ENI、CCN、EVM、GLOBALROUTE、NAT、SRV等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 后端服务的唯一 ID，如 ins-abcd1234
@@ -1402,11 +1402,11 @@ type CreateLoadBalancerRequestParams struct {
 	// 创建负载均衡的个数，默认值 1。
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
-	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。目前仅广州、上海、南京、北京、成都、深圳金融、中国香港、首尔、法兰克福、新加坡地域的 IPv4 版本的 CLB 支持主备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。目前仅广州、上海、南京、北京、成都、深圳金融、中国香港、首尔、法兰克福、新加坡地域的 IPv4 版本的 CLB 支持主备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
-	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。
@@ -1447,8 +1447,8 @@ type CreateLoadBalancerRequestParams struct {
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
-	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
 	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
@@ -1502,11 +1502,11 @@ type CreateLoadBalancerRequest struct {
 	// 创建负载均衡的个数，默认值 1。
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
-	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。目前仅广州、上海、南京、北京、成都、深圳金融、中国香港、首尔、法兰克福、新加坡地域的 IPv4 版本的 CLB 支持主备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。目前仅广州、上海、南京、北京、成都、深圳金融、中国香港、首尔、法兰克福、新加坡地域的 IPv4 版本的 CLB 支持主备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
-	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。
@@ -1547,8 +1547,8 @@ type CreateLoadBalancerRequest struct {
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
-	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
 	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
@@ -4979,6 +4979,10 @@ type DescribeTaskStatusResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
+	// 辅助描述信息，如失败原因等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5774,7 +5778,7 @@ type LoadBalancer struct {
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡实例的网络类型：
-	// OPEN：公网属性， INTERNAL：内网属性。
+	// OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
 	// 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
@@ -5999,7 +6003,7 @@ type LoadBalancerDetail struct {
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡实例的网络类型：
-	// OPEN：公网属性，INTERNAL：内网属性。
+	// OPEN：公网属性，INTERNAL：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
@@ -8837,7 +8841,7 @@ type Target struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。表示绑定主网卡主IP。
+	// 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。表示绑定主网卡主IPv4地址；以下场景都不支持指定InstanceId：绑定非CVM，绑定CVM上的辅助网卡IP，通过跨域2.0绑定CVM，以及绑定CVM的IPv6地址等。
 	// 注意：参数 InstanceId、EniIp 有且只能传入其中一个参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8965,13 +8969,17 @@ type TargetHealth struct {
 	// Target的实例ID，如 ins-12345678
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
-	// 当前健康状态的详细信息。如：Alive、Dead、Unknown。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知。
+	// 当前健康状态的详细信息。如：Alive、Dead、Unknown、Close。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知，Close表示健康检查关闭或监听器状态停止。
 	HealthStatusDetail *string `json:"HealthStatusDetail,omitnil,omitempty" name:"HealthStatusDetail"`
 
 	// (**该参数对象即将下线，不推荐使用，请使用HealthStatusDetail获取健康详情**) 当前健康状态的详细信息。如：Alive、Dead、Unknown。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知。
 	//
 	// Deprecated: HealthStatusDetial is deprecated.
 	HealthStatusDetial *string `json:"HealthStatusDetial,omitnil,omitempty" name:"HealthStatusDetial"`
+
+	// 目标组唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 }
 
 type TargetRegionInfo struct {

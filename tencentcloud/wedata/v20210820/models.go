@@ -30500,10 +30500,10 @@ type UpdateDataModelRegistryInfoRequestParams struct {
 	AppCamRole *string `json:"AppCamRole,omitnil,omitempty" name:"AppCamRole"`
 
 	// 数语的ip
-	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 数语的端口
-	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 数语的CAM角色id
 	AppCamRoleId *string `json:"AppCamRoleId,omitnil,omitempty" name:"AppCamRoleId"`
@@ -30528,10 +30528,10 @@ type UpdateDataModelRegistryInfoRequest struct {
 	AppCamRole *string `json:"AppCamRole,omitnil,omitempty" name:"AppCamRole"`
 
 	// 数语的ip
-	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 数语的端口
-	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 数语的CAM角色id
 	AppCamRoleId *string `json:"AppCamRoleId,omitnil,omitempty" name:"AppCamRoleId"`
@@ -30560,8 +30560,8 @@ func (r *UpdateDataModelRegistryInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CloudappId")
 	delete(f, "AppCamRole")
-	delete(f, "Vip")
-	delete(f, "Vport")
+	delete(f, "Ip")
+	delete(f, "Port")
 	delete(f, "AppCamRoleId")
 	delete(f, "Provider")
 	delete(f, "TenantId")

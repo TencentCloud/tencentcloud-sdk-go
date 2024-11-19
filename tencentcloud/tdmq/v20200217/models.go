@@ -1584,7 +1584,7 @@ type CreateRabbitMQBindingRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// Vhost名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 源exchange
@@ -1596,7 +1596,7 @@ type CreateRabbitMQBindingRequestParams struct {
 	// 目标
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
-	// 绑定key
+	// 路由键
 	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
 }
 
@@ -1606,7 +1606,7 @@ type CreateRabbitMQBindingRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// Vhost名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 源exchange
@@ -1618,7 +1618,7 @@ type CreateRabbitMQBindingRequest struct {
 	// 目标
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
-	// 绑定key
+	// 路由键
 	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
 }
 
@@ -1652,7 +1652,7 @@ type CreateRabbitMQBindingResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost参数
+	// vhost名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
@@ -3451,7 +3451,7 @@ func (r *DeleteRabbitMQBindingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQBindingResponseParams struct {
-	// 队列名称
+	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -6391,7 +6391,7 @@ type DescribeRabbitMQBindingsRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// Vhost名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 分页offset
@@ -6419,7 +6419,7 @@ type DescribeRabbitMQBindingsRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// Vhost名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 分页offset
@@ -13183,6 +13183,9 @@ type RabbitMQClusterInfo struct {
 	// 计费模式，0-后付费，1-预付费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 实例类型，0 专享版、1 Serverless 版
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -13502,6 +13505,9 @@ type RabbitMQVipInstance struct {
 	// 创建时间，毫秒为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 实例类型，0 专享版、1 Serverless 版
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type RabbitMQVirtualHostInfo struct {

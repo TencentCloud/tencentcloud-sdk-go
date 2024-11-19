@@ -464,6 +464,9 @@ const (
 	// 指定的流量包不支持此操作
 	INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTSUPPORTED = "InvalidParameterValue.TrafficPackageNotSupported"
 
+	// 指定的流量包资源ID不合法
+	INVALIDPARAMETERVALUE_TRAFFICPACKAGERESOURCEIDMALFORMED = "InvalidParameterValue.TrafficPackageResourceIdMalformed"
+
 	// 该可用区不可用。
 	INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
 

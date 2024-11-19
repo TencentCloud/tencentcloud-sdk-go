@@ -1932,7 +1932,7 @@ type DeliverStorageServiceResponseParams struct {
 	// 4：等待服务生效。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 新增的云存定单列表
+	// 新增的云存订单列表
 	Data []*StorageOrder `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3378,7 +3378,7 @@ type DescribeStorageServiceResponseParams struct {
 	// 4：等待服务生效。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 云存定单列表
+	// 云存订单列表
 	Data []*StorageOrder `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -4572,7 +4572,7 @@ func NewCreateNetworkInterfaceResponse() (response *CreateNetworkInterfaceRespon
 //
 // * 创建弹性网卡同时可以绑定已有安全组。
 //
-// * 创建弹性网卡同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
+// * 创建弹性网卡同时可以绑定标签, 响应里的标签列表代表添加成功的标签。
 //
 // >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
 //
@@ -4637,7 +4637,7 @@ func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) 
 //
 // * 创建弹性网卡同时可以绑定已有安全组。
 //
-// * 创建弹性网卡同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
+// * 创建弹性网卡同时可以绑定标签, 响应里的标签列表代表添加成功的标签。
 //
 // >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
 //
@@ -14631,6 +14631,7 @@ func NewDescribeSpecificTrafficPackageUsedDetailsResponse() (response *DescribeS
 //  INVALIDPARAMETERVALUE_TRAFFICPACKAGEID = "InvalidParameterValue.TrafficPackageId"
 //  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTFOUND = "InvalidParameterValue.TrafficPackageNotFound"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGERESOURCEIDMALFORMED = "InvalidParameterValue.TrafficPackageResourceIdMalformed"
 func (c *Client) DescribeSpecificTrafficPackageUsedDetails(request *DescribeSpecificTrafficPackageUsedDetailsRequest) (response *DescribeSpecificTrafficPackageUsedDetailsResponse, err error) {
     return c.DescribeSpecificTrafficPackageUsedDetailsWithContext(context.Background(), request)
 }
@@ -14645,6 +14646,7 @@ func (c *Client) DescribeSpecificTrafficPackageUsedDetails(request *DescribeSpec
 //  INVALIDPARAMETERVALUE_TRAFFICPACKAGEID = "InvalidParameterValue.TrafficPackageId"
 //  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTFOUND = "InvalidParameterValue.TrafficPackageNotFound"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGERESOURCEIDMALFORMED = "InvalidParameterValue.TrafficPackageResourceIdMalformed"
 func (c *Client) DescribeSpecificTrafficPackageUsedDetailsWithContext(ctx context.Context, request *DescribeSpecificTrafficPackageUsedDetailsRequest) (response *DescribeSpecificTrafficPackageUsedDetailsResponse, err error) {
     if request == nil {
         request = NewDescribeSpecificTrafficPackageUsedDetailsRequest()
@@ -15100,6 +15102,7 @@ func NewDescribeVpcEndPointResponse() (response *DescribeVpcEndPointResponse) {
 //  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SVCNOTEXIST = "ResourceNotFound.SvcNotExist"
@@ -15116,6 +15119,7 @@ func (c *Client) DescribeVpcEndPoint(request *DescribeVpcEndPointRequest) (respo
 //  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SVCNOTEXIST = "ResourceNotFound.SvcNotExist"
@@ -15459,6 +15463,18 @@ func NewDescribeVpcLimitsResponse() (response *DescribeVpcLimitsResponse) {
 //
 // * appid-max-end-point-service-white-lists （每个开发商每个地域可创建的终端节点服务白名单个数）。
 //
+// * vpc-max-cmcc-ipv6-cidrs （每个VPC可创建的移动IPv6 CIDR个数）。
+//
+// * vpc-max-ctcc-ipv6-cidrs （每个VPC可创建的电信IPv6 CIDR个数）。
+//
+// * vpc-max-cucc-ipv6-cidrs （每个VPC可创建的联调IPv6 CIDR个数）。
+//
+// * vpc-max-bgp-ipv6-cidrs （每个VPC可创建的默认IPv6 CIDR个数）。
+//
+// * vpc-max-custom-ipv6-cidrs （每个VPC可创建的自定义IPv6 CIDR个数）。
+//
+// * vpc-max-ula-ipv6-cidrs （每个VPC可创建的ULA IPv6 CIDR个数）。
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -15530,6 +15546,18 @@ func (c *Client) DescribeVpcLimits(request *DescribeVpcLimitsRequest) (response 
 // * appid-max-end-point-services （每个开发商每个地域可创建的终端节点服务个数）。
 //
 // * appid-max-end-point-service-white-lists （每个开发商每个地域可创建的终端节点服务白名单个数）。
+//
+// * vpc-max-cmcc-ipv6-cidrs （每个VPC可创建的移动IPv6 CIDR个数）。
+//
+// * vpc-max-ctcc-ipv6-cidrs （每个VPC可创建的电信IPv6 CIDR个数）。
+//
+// * vpc-max-cucc-ipv6-cidrs （每个VPC可创建的联调IPv6 CIDR个数）。
+//
+// * vpc-max-bgp-ipv6-cidrs （每个VPC可创建的默认IPv6 CIDR个数）。
+//
+// * vpc-max-custom-ipv6-cidrs （每个VPC可创建的自定义IPv6 CIDR个数）。
+//
+// * vpc-max-ula-ipv6-cidrs （每个VPC可创建的ULA IPv6 CIDR个数）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -21979,8 +22007,6 @@ func NewModifyVpcEndPointServiceAttributeResponse() (response *ModifyVpcEndPoint
 // ModifyVpcEndPointServiceAttribute
 // 本接口（ModifyVpcEndPointServiceAttribute）用于修改终端节点服务属性。
 //
-// 
-//
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -21996,8 +22022,6 @@ func (c *Client) ModifyVpcEndPointServiceAttribute(request *ModifyVpcEndPointSer
 
 // ModifyVpcEndPointServiceAttribute
 // 本接口（ModifyVpcEndPointServiceAttribute）用于修改终端节点服务属性。
-//
-// 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"

@@ -641,6 +641,9 @@ type Command struct {
 
 	// 会话大小
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
 }
 
 // Predefined struct for user
@@ -5334,6 +5337,9 @@ type OperationEvent struct {
 
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
 }
 
 // Predefined struct for user
@@ -5607,7 +5613,7 @@ type Resource struct {
 	// 部署模式
 	DeployModel *int64 `json:"DeployModel,omitnil,omitempty" name:"DeployModel"`
 
-	// 0 默认值，非内网访问，1 内网访问
+	// 0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中
 	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
 
 	// 内网访问的ip
@@ -6085,6 +6091,9 @@ type SearchCommandResult struct {
 
 	// 会话大小
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
 }
 
 // Predefined struct for user
@@ -6210,6 +6219,9 @@ type SearchFileBySidResult struct {
 
 	// 堡垒机拦截情况, 1-已执行，  2-被阻断
 	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
 }
 
 // Predefined struct for user
@@ -6389,6 +6401,9 @@ type SearchFileResult struct {
 
 	// 上传或新建文件（夹）路径及名称
 	FileNew *string `json:"FileNew,omitnil,omitempty" name:"FileNew"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
 }
 
 type SearchFileTypeFilter struct {
@@ -6793,6 +6808,9 @@ type User struct {
 
 	// 锁定状态 0 - 未锁定 1 - 锁定
 	LockStatus *uint64 `json:"LockStatus,omitnil,omitempty" name:"LockStatus"`
+
+	// ukey绑定状态 0 - 未绑定 1 - 已绑定
+	UKeyStatus *int64 `json:"UKeyStatus,omitnil,omitempty" name:"UKeyStatus"`
 
 	// 状态 与Filter中一致
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`

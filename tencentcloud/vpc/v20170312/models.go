@@ -4033,6 +4033,9 @@ type CreateDhcpIpRequestParams struct {
 
 	// 新申请的内网IP地址个数。总数不能超过64个，为了兼容性，当前参数必填。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateDhcpIpRequest struct {
@@ -4049,6 +4052,9 @@ type CreateDhcpIpRequest struct {
 
 	// 新申请的内网IP地址个数。总数不能超过64个，为了兼容性，当前参数必填。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateDhcpIpRequest) ToJsonString() string {
@@ -4067,6 +4073,7 @@ func (r *CreateDhcpIpRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "DhcpIpName")
 	delete(f, "SecondaryPrivateIpAddressCount")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDhcpIpRequest has unknown keys!", "")
 	}
@@ -4710,6 +4717,9 @@ type CreateLocalGatewayRequestParams struct {
 
 	// CDC实例ID。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateLocalGatewayRequest struct {
@@ -4723,6 +4733,9 @@ type CreateLocalGatewayRequest struct {
 
 	// CDC实例ID。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateLocalGatewayRequest) ToJsonString() string {
@@ -4740,6 +4753,7 @@ func (r *CreateLocalGatewayRequest) FromJsonString(s string) error {
 	delete(f, "LocalGatewayName")
 	delete(f, "VpcId")
 	delete(f, "CdcId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLocalGatewayRequest has unknown keys!", "")
 	}
@@ -5075,6 +5089,9 @@ type CreateNetDetectRequestParams struct {
 
 	// 网络探测描述。
 	NetDetectDescription *string `json:"NetDetectDescription,omitnil,omitempty" name:"NetDetectDescription"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateNetDetectRequest struct {
@@ -5114,6 +5131,9 @@ type CreateNetDetectRequest struct {
 
 	// 网络探测描述。
 	NetDetectDescription *string `json:"NetDetectDescription,omitnil,omitempty" name:"NetDetectDescription"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateNetDetectRequest) ToJsonString() string {
@@ -5135,6 +5155,7 @@ func (r *CreateNetDetectRequest) FromJsonString(s string) error {
 	delete(f, "NextHopType")
 	delete(f, "NextHopDestination")
 	delete(f, "NetDetectDescription")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetDetectRequest has unknown keys!", "")
 	}
@@ -5381,6 +5402,7 @@ type CreateNetworkInterfaceRequestParams struct {
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitnil,omitempty" name:"NetworkInterfaceDescription"`
 
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+	// 配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
@@ -5418,6 +5440,7 @@ type CreateNetworkInterfaceRequest struct {
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitnil,omitempty" name:"NetworkInterfaceDescription"`
 
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+	// 配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
@@ -12461,6 +12484,9 @@ type DescribeCrossBorderComplianceRequestParams struct {
 	// （模糊查询）法定代表人。
 	LegalPerson *string `json:"LegalPerson,omitnil,omitempty" name:"LegalPerson"`
 
+	// （精确查询）法人身份证号。
+	LegalPersonId *string `json:"LegalPersonId,omitnil,omitempty" name:"LegalPersonId"`
+
 	// （模糊查询）发证机关。
 	IssuingAuthority *string `json:"IssuingAuthority,omitnil,omitempty" name:"IssuingAuthority"`
 
@@ -12519,6 +12545,9 @@ type DescribeCrossBorderComplianceRequest struct {
 	// （模糊查询）法定代表人。
 	LegalPerson *string `json:"LegalPerson,omitnil,omitempty" name:"LegalPerson"`
 
+	// （精确查询）法人身份证号。
+	LegalPersonId *string `json:"LegalPersonId,omitnil,omitempty" name:"LegalPersonId"`
+
 	// （模糊查询）发证机关。
 	IssuingAuthority *string `json:"IssuingAuthority,omitnil,omitempty" name:"IssuingAuthority"`
 
@@ -12576,6 +12605,7 @@ func (r *DescribeCrossBorderComplianceRequest) FromJsonString(s string) error {
 	delete(f, "Company")
 	delete(f, "UniformSocialCreditCode")
 	delete(f, "LegalPerson")
+	delete(f, "LegalPersonId")
 	delete(f, "IssuingAuthority")
 	delete(f, "BusinessAddress")
 	delete(f, "PostCode")
@@ -14001,7 +14031,7 @@ type DescribeIp6TranslatorsRequestParams struct {
 	// <li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
 	// <li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
 	// <li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
-	// <li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
+	// <li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
@@ -14021,7 +14051,7 @@ type DescribeIp6TranslatorsRequest struct {
 	// <li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
 	// <li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
 	// <li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
-	// <li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
+	// <li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
@@ -19580,6 +19610,10 @@ type DhcpIp struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 标签键值对。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type DirectConnectGateway struct {
@@ -26376,7 +26410,7 @@ type ModifyVpcEndPointServiceAttributeRequestParams struct {
 	// 终端节点服务名称。
 	EndPointServiceName *string `json:"EndPointServiceName,omitnil,omitempty" name:"EndPointServiceName"`
 
-	// 是否自动接受终端节点的连接请求。<ui><li>true：自动接受<li>false：不自动接受</ul>
+	// 是否自动接受终端节点的连接请求。<ul><li>true：自动接受</li><li>false：不自动接受</li></ul>
 	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitnil,omitempty" name:"AutoAcceptFlag"`
 
 	// 后端服务的ID，比如lb-xxx。
@@ -26395,7 +26429,7 @@ type ModifyVpcEndPointServiceAttributeRequest struct {
 	// 终端节点服务名称。
 	EndPointServiceName *string `json:"EndPointServiceName,omitnil,omitempty" name:"EndPointServiceName"`
 
-	// 是否自动接受终端节点的连接请求。<ui><li>true：自动接受<li>false：不自动接受</ul>
+	// 是否自动接受终端节点的连接请求。<ul><li>true：自动接受</li><li>false：不自动接受</li></ul>
 	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitnil,omitempty" name:"AutoAcceptFlag"`
 
 	// 后端服务的ID，比如lb-xxx。

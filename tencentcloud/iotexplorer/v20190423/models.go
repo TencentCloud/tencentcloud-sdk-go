@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type ActivateTWeCallLicenseRequestParams struct {
-	// TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+	// TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
 	// appId
@@ -35,7 +35,7 @@ type ActivateTWeCallLicenseRequestParams struct {
 type ActivateTWeCallLicenseRequest struct {
 	*tchttp.BaseRequest
 	
-	// TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+	// TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
 	// appId
@@ -6841,7 +6841,7 @@ func (r *DescribeTopicRuleResponse) FromJsonString(s string) error {
 }
 
 type DeviceActiveResult struct {
-	// 模版ID
+	// 模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
@@ -10792,7 +10792,7 @@ type ProductEntry struct {
 	// 产品分组模板ID
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 加密类型。1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+	// 加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
 	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
 	// 连接类型。如：
@@ -12620,7 +12620,7 @@ type WXIoTDeviceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SNTicket *string `json:"SNTicket,omitnil,omitempty" name:"SNTicket"`
 
-	// 模版ID
+	// 模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }

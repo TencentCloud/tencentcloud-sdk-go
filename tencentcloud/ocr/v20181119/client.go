@@ -1361,8 +1361,6 @@ func NewEstateCertOCRResponse() (response *EstateCertOCRResponse) {
 //
 // 默认接口请求频率限制：5次/秒。
 //
-// 
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -1384,8 +1382,6 @@ func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateC
 // 
 //
 // 默认接口请求频率限制：5次/秒。
-//
-// 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -7627,7 +7623,7 @@ func NewSmartStructuralProResponse() (response *SmartStructuralProResponse) {
 //
 // 
 //
-// 默认接口请求频率限制：1次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -7649,7 +7645,7 @@ func (c *Client) SmartStructuralPro(request *SmartStructuralProRequest) (respons
 //
 // 
 //
-// 默认接口请求频率限制：1次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
