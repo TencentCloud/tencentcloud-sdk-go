@@ -663,3 +663,206 @@ func (c *Client) ModifyNodePoolWithContext(ctx context.Context, request *ModifyN
     err = c.Send(request, response)
     return
 }
+
+func NewRebootMachinesRequest() (request *RebootMachinesRequest) {
+    request = &RebootMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "RebootMachines")
+    
+    
+    return
+}
+
+func NewRebootMachinesResponse() (response *RebootMachinesResponse) {
+    response = &RebootMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RebootMachines
+// 重启原生节点实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RebootMachines(request *RebootMachinesRequest) (response *RebootMachinesResponse, err error) {
+    return c.RebootMachinesWithContext(context.Background(), request)
+}
+
+// RebootMachines
+// 重启原生节点实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RebootMachinesWithContext(ctx context.Context, request *RebootMachinesRequest) (response *RebootMachinesResponse, err error) {
+    if request == nil {
+        request = NewRebootMachinesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootMachines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRebootMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartMachinesRequest() (request *StartMachinesRequest) {
+    request = &StartMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "StartMachines")
+    
+    
+    return
+}
+
+func NewStartMachinesResponse() (response *StartMachinesResponse) {
+    response = &StartMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartMachines
+// 本接口 (StartMachines) 用于启动一个或多个原生节点实例。
+//
+// 
+//
+// 只有状态为 Stopped 的实例才可以进行此操作。
+//
+// 接口调用成功后，等待一分钟左右，实例会进入 Running 状态。
+//
+// 支持批量操作。每次请求批量实例的上限为100。
+//
+// 本接口为同步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状态为 Running，则代表启动实例操作成功。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartMachines(request *StartMachinesRequest) (response *StartMachinesResponse, err error) {
+    return c.StartMachinesWithContext(context.Background(), request)
+}
+
+// StartMachines
+// 本接口 (StartMachines) 用于启动一个或多个原生节点实例。
+//
+// 
+//
+// 只有状态为 Stopped 的实例才可以进行此操作。
+//
+// 接口调用成功后，等待一分钟左右，实例会进入 Running 状态。
+//
+// 支持批量操作。每次请求批量实例的上限为100。
+//
+// 本接口为同步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状态为 Running，则代表启动实例操作成功。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartMachinesWithContext(ctx context.Context, request *StartMachinesRequest) (response *StartMachinesResponse, err error) {
+    if request == nil {
+        request = NewStartMachinesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartMachines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopMachinesRequest() (request *StopMachinesRequest) {
+    request = &StopMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "StopMachines")
+    
+    
+    return
+}
+
+func NewStopMachinesResponse() (response *StopMachinesResponse) {
+    response = &StopMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopMachines
+// 本接口 (StopMachines) 用于关闭一个或多个原生节点实例。
+//
+// 
+//
+// 只有状态为 Running 的实例才可以进行此操作。
+//
+// 接口调用成功时，实例会进入 Stopping 状态；关闭实例成功时，实例会进入 Stopped 状态。
+//
+// 支持强制关闭。强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+//
+// 支持批量操作。每次请求批量实例的上限为 100。
+//
+// 本接口为同步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状stopped_with_charging，则代表关闭实例操作成功。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopMachines(request *StopMachinesRequest) (response *StopMachinesResponse, err error) {
+    return c.StopMachinesWithContext(context.Background(), request)
+}
+
+// StopMachines
+// 本接口 (StopMachines) 用于关闭一个或多个原生节点实例。
+//
+// 
+//
+// 只有状态为 Running 的实例才可以进行此操作。
+//
+// 接口调用成功时，实例会进入 Stopping 状态；关闭实例成功时，实例会进入 Stopped 状态。
+//
+// 支持强制关闭。强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+//
+// 支持批量操作。每次请求批量实例的上限为 100。
+//
+// 本接口为同步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状stopped_with_charging，则代表关闭实例操作成功。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopMachinesWithContext(ctx context.Context, request *StopMachinesRequest) (response *StopMachinesResponse, err error) {
+    if request == nil {
+        request = NewStopMachinesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopMachines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopMachinesResponse()
+    err = c.Send(request, response)
+    return
+}

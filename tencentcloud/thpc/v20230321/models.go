@@ -25,7 +25,7 @@ type AddClusterStorageOptionRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群存储选项。
+	// 集群存储选项；集群已存在的节点和新增节点都会挂载此存储。
 	StorageOption *StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
 }
 
@@ -35,7 +35,7 @@ type AddClusterStorageOptionRequest struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群存储选项。
+	// 集群存储选项；集群已存在的节点和新增节点都会挂载此存储。
 	StorageOption *StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
 }
 

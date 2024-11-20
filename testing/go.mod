@@ -26,6 +26,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ba v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/batch v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bda v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bh v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bi v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive v0.0.0
@@ -71,7 +72,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1042
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1043
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -287,6 +288,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ba => ../tencentcloud/ba
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/batch => ../tencentcloud/batch
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bda => ../tencentcloud/bda
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bh => ../tencentcloud/bh
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bi => ../tencentcloud/bi
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing => ../tencentcloud/billing
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive => ../tencentcloud/bizlive

@@ -4845,11 +4845,14 @@ type CreateTaskFolderRequestParams struct {
 	// 文件夹名称
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 工作量ID
+	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
 	// 父文件夹ID
 	ParentFolderId *string `json:"ParentFolderId,omitnil,omitempty" name:"ParentFolderId"`
+
+	// 目录分类
+	TaskNodeType *string `json:"TaskNodeType,omitnil,omitempty" name:"TaskNodeType"`
 }
 
 type CreateTaskFolderRequest struct {
@@ -4861,11 +4864,14 @@ type CreateTaskFolderRequest struct {
 	// 文件夹名称
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 工作量ID
+	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
 	// 父文件夹ID
 	ParentFolderId *string `json:"ParentFolderId,omitnil,omitempty" name:"ParentFolderId"`
+
+	// 目录分类
+	TaskNodeType *string `json:"TaskNodeType,omitnil,omitempty" name:"TaskNodeType"`
 }
 
 func (r *CreateTaskFolderRequest) ToJsonString() string {
@@ -4884,6 +4890,7 @@ func (r *CreateTaskFolderRequest) FromJsonString(s string) error {
 	delete(f, "FolderName")
 	delete(f, "WorkflowId")
 	delete(f, "ParentFolderId")
+	delete(f, "TaskNodeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFolderRequest has unknown keys!", "")
 	}

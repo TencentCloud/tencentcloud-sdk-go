@@ -5716,7 +5716,7 @@ func NewModifyReplicationGroupResponse() (response *ModifyReplicationGroupRespon
 }
 
 // ModifyReplicationGroup
-// 修改复制组信息
+// 本接口（ModifyReplicationGroup）用于修改复制组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5730,7 +5730,7 @@ func (c *Client) ModifyReplicationGroup(request *ModifyReplicationGroupRequest) 
 }
 
 // ModifyReplicationGroup
-// 修改复制组信息
+// 本接口（ModifyReplicationGroup）用于修改复制组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -2930,9 +2930,11 @@ type CidrForCcn struct {
 
 type ClassicLinkInstance struct {
 	// VPC实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 云服务器实例唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3901,14 +3903,14 @@ func (r *CreateCustomerGatewayResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDefaultSecurityGroupRequestParams struct {
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type CreateDefaultSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -16143,6 +16145,9 @@ type DescribeRouteTablesRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+	NeedRouterInfo *bool `json:"NeedRouterInfo,omitnil,omitempty" name:"NeedRouterInfo"`
 }
 
 type DescribeRouteTablesRequest struct {
@@ -16179,6 +16184,9 @@ type DescribeRouteTablesRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+	NeedRouterInfo *bool `json:"NeedRouterInfo,omitnil,omitempty" name:"NeedRouterInfo"`
 }
 
 func (r *DescribeRouteTablesRequest) ToJsonString() string {
@@ -16197,6 +16205,7 @@ func (r *DescribeRouteTablesRequest) FromJsonString(s string) error {
 	delete(f, "RouteTableIds")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "NeedRouterInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRouteTablesRequest has unknown keys!", "")
 	}
@@ -17675,10 +17684,7 @@ type DescribeTrafficPackagesRequestParams struct {
 	// 共享流量包ID，支持批量
 	TrafficPackageIds []*string `json:"TrafficPackageIds,omitnil,omitempty" name:"TrafficPackageIds"`
 
-	// 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：
-	// <li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li>
-	// <li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li>
-	// <li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
+	// 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：<li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li><li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li><li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页参数
@@ -17694,10 +17700,7 @@ type DescribeTrafficPackagesRequest struct {
 	// 共享流量包ID，支持批量
 	TrafficPackageIds []*string `json:"TrafficPackageIds,omitnil,omitempty" name:"TrafficPackageIds"`
 
-	// 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：
-	// <li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li>
-	// <li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li>
-	// <li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
+	// 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：<li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li><li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li><li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页参数
@@ -18646,7 +18649,7 @@ type DescribeVpcsRequestParams struct {
 	// <li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
 	//   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
 	// <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调。</li>
+	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -18672,7 +18675,7 @@ type DescribeVpcsRequest struct {
 	// <li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
 	//   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
 	// <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调。</li>
+	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -25917,7 +25920,7 @@ type ModifyServiceTemplateAttributeRequestParams struct {
 	// 协议端口模板名称。
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitnil,omitempty" name:"ServiceTemplateName"`
 
-	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。协议后面的端口部分长度不能超过128个字符。
 	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
 
 	// 支持添加备注的协议端口信息，支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
@@ -25933,7 +25936,7 @@ type ModifyServiceTemplateAttributeRequest struct {
 	// 协议端口模板名称。
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitnil,omitempty" name:"ServiceTemplateName"`
 
-	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。协议后面的端口部分长度不能超过128个字符。
 	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
 
 	// 支持添加备注的协议端口信息，支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
@@ -29903,9 +29906,11 @@ type RouteTable struct {
 
 type RouteTableAssociation struct {
 	// 子网实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 路由表实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 }
 

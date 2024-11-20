@@ -1962,6 +1962,7 @@ func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
 // 删除成员账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERACCOUNTDEREGISTERPENDING = "FailedOperation.MemberAccountDeregisterPending"
 //  FAILEDOPERATION_MEMBERSHARERESOURCE = "FailedOperation.MemberShareResource"
 //  FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
 //  INTERNALERROR = "InternalError"
@@ -1980,6 +1981,7 @@ func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteA
 // 删除成员账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERACCOUNTDEREGISTERPENDING = "FailedOperation.MemberAccountDeregisterPending"
 //  FAILEDOPERATION_MEMBERSHARERESOURCE = "FailedOperation.MemberShareResource"
 //  FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
 //  INTERNALERROR = "InternalError"

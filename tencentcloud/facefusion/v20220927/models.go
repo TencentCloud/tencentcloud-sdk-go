@@ -410,28 +410,24 @@ type FusionUltraParam struct {
 	// 取值范围：0-1之间。默认取值0.7。
 	// 
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarpRadio *float64 `json:"WarpRadio,omitnil,omitempty" name:"WarpRadio"`
 
 	// 人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
 	// 取值范围：0-1之间。默认取值1。
 	// 
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceRadio *float64 `json:"EnhanceRadio,omitnil,omitempty" name:"EnhanceRadio"`
 
 	// 磨皮强度。当生成脸的图像面部显脏时，可进行设置。
 	// 取值范围：0-1之间。默认取值1。
 	// 
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MpRadio *float64 `json:"MpRadio,omitnil,omitempty" name:"MpRadio"`
 
 	// 人脸模糊开关（暂不支持）
 	// 当生成人脸比较清晰时，将人脸模糊到接近模板的清晰度的程度
 	// 
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlurRadio *float64 `json:"BlurRadio,omitnil,omitempty" name:"BlurRadio"`
 
 	// 牙齿增强开关，默认取值为1
@@ -439,7 +435,6 @@ type FusionUltraParam struct {
 	// 0：牙齿增强关闭
 	// 1：牙齿增强打开
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TeethEnhanceRadio *float64 `json:"TeethEnhanceRadio,omitnil,omitempty" name:"TeethEnhanceRadio"`
 }
 
@@ -544,6 +539,5 @@ type PublicMaterialInfos struct {
 	MaterialName *string `json:"MaterialName,omitnil,omitempty" name:"MaterialName"`
 
 	// 审核原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditResult *string `json:"AuditResult,omitnil,omitempty" name:"AuditResult"`
 }

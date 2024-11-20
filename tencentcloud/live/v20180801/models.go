@@ -683,6 +683,49 @@ func (r *CancelCommonMixStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CasterBriefInfo struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 导播台名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 导播台的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 开始计费时间，值为unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartBillingTime *uint64 `json:"StartBillingTime,omitnil,omitempty" name:"StartBillingTime"`
+
+	// 结束计费时间，值为unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopBillingTime *uint64 `json:"StopBillingTime,omitnil,omitempty" name:"StopBillingTime"`
+
+	// 创建时间，值为unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 导播台状态
+	// 0：停止状态，无预监，无输出
+	// 1：无预监，有输出状态（非法状态）
+	// 2：有预监，无输出状态
+	// 3：有预监，有输出状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 导播台的过期时间，值为-1或unix时间戳。
+	// 当值为-1时，代表永不过期。
+	// 当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 计费字段，该字段暂无作用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+}
+
 type CdnPlayStatData struct {
 	// 时间点，
 	// 使用UTC格式时间，
@@ -5365,6 +5408,176 @@ func (r *DescribeCallbackRecordsListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCallbackRecordsListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterListRequestParams struct {
+
+}
+
+type DescribeCasterListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCasterListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterListResponseParams struct {
+	// 用户对应的导播台简要信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CasterList []*CasterBriefInfo `json:"CasterList,omitnil,omitempty" name:"CasterList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterListResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterTransitionTypesRequestParams struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type DescribeCasterTransitionTypesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *DescribeCasterTransitionTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterTransitionTypesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterTransitionTypesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterTransitionTypesResponseParams struct {
+	// 转场信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransitionTypes []*TransitionTypeInfo `json:"TransitionTypes,omitnil,omitempty" name:"TransitionTypes"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterTransitionTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterTransitionTypesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterTransitionTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterTransitionTypesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterUserStatusRequestParams struct {
+
+}
+
+type DescribeCasterUserStatusRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCasterUserStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterUserStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterUserStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterUserStatusResponseParams struct {
+	// 0: 未开通导播台
+	// 1:开通了导播台，且处于正常状态
+	// 2:开通了导播台，但处于欠费状态
+	// 3:开通了导播台，但处于封禁状态
+	UserStatus *int64 `json:"UserStatus,omitnil,omitempty" name:"UserStatus"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterUserStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterUserStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterUserStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterUserStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16091,6 +16304,20 @@ type TranscodeTotalInfo struct {
 	// 分辨率，
 	// 示例：540*480。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+type TransitionTypeInfo struct {
+	// 转场名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// 素材url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceUrl *string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
+
+	// 转场的下标，可用来排序，从1开始递增
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 // Predefined struct for user

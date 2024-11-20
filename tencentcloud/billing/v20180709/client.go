@@ -118,6 +118,10 @@ func NewCreateSavingPlanOrderResponse() (response *CreateSavingPlanOrderResponse
 }
 
 // CreateSavingPlanOrder
+// 接口迁移到其他业务
+//
+// 
+//
 // 创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
 //
 // 可能返回的错误码:
@@ -128,6 +132,10 @@ func (c *Client) CreateSavingPlanOrder(request *CreateSavingPlanOrderRequest) (r
 }
 
 // CreateSavingPlanOrder
+// 接口迁移到其他业务
+//
+// 
+//
 // 创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
 //
 // 可能返回的错误码:
@@ -2242,6 +2250,10 @@ func NewDescribeSavingPlanOverviewResponse() (response *DescribeSavingPlanOvervi
 }
 
 // DescribeSavingPlanOverview
+// 接口迁移到其他业务
+//
+// 
+//
 // 查用当前用户明细节省计划总览查询时段内的使用情况
 //
 // 可能返回的错误码:
@@ -2251,6 +2263,10 @@ func (c *Client) DescribeSavingPlanOverview(request *DescribeSavingPlanOverviewR
 }
 
 // DescribeSavingPlanOverview
+// 接口迁移到其他业务
+//
+// 
+//
 // 查用当前用户明细节省计划总览查询时段内的使用情况
 //
 // 可能返回的错误码:
@@ -2340,6 +2356,10 @@ func NewDescribeSavingPlanUsageResponse() (response *DescribeSavingPlanUsageResp
 }
 
 // DescribeSavingPlanUsage
+// 接口迁移到其他业务
+//
+// 
+//
 // 查用当前用户明细节省计划查询时段内的使用情况
 //
 // 可能返回的错误码:
@@ -2349,6 +2369,10 @@ func (c *Client) DescribeSavingPlanUsage(request *DescribeSavingPlanUsageRequest
 }
 
 // DescribeSavingPlanUsage
+// 接口迁移到其他业务
+//
+// 
+//
 // 查用当前用户明细节省计划查询时段内的使用情况
 //
 // 可能返回的错误码:

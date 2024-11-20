@@ -68,6 +68,7 @@ func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) 
 // 通常通过腾讯云人脸融合的控制台可以查看到素材相关的参数数据，可以满足使用。本接口返回活动的素材数据，包括素材状态等。用于用户通过Api查看素材相关数据，方便使用。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
@@ -85,6 +86,7 @@ func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (res
 // 通常通过腾讯云人脸融合的控制台可以查看到素材相关的参数数据，可以满足使用。本接口返回活动的素材数据，包括素材状态等。用于用户通过Api查看素材相关数据，方便使用。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"

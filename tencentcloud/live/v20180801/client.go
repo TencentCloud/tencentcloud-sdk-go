@@ -4344,6 +4344,209 @@ func (c *Client) DescribeCallbackRecordsListWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeCasterListRequest() (request *DescribeCasterListRequest) {
+    request = &DescribeCasterListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterList")
+    
+    
+    return
+}
+
+func NewDescribeCasterListResponse() (response *DescribeCasterListResponse) {
+    response = &DescribeCasterListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterList
+// 该接口用来查询账号下所有的导播台列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterList(request *DescribeCasterListRequest) (response *DescribeCasterListResponse, err error) {
+    return c.DescribeCasterListWithContext(context.Background(), request)
+}
+
+// DescribeCasterList
+// 该接口用来查询账号下所有的导播台列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterListWithContext(ctx context.Context, request *DescribeCasterListRequest) (response *DescribeCasterListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCasterTransitionTypesRequest() (request *DescribeCasterTransitionTypesRequest) {
+    request = &DescribeCasterTransitionTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterTransitionTypes")
+    
+    
+    return
+}
+
+func NewDescribeCasterTransitionTypesResponse() (response *DescribeCasterTransitionTypesResponse) {
+    response = &DescribeCasterTransitionTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterTransitionTypes
+// 该接口用来获取所有的转场名称及其对应的素材url。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeCasterTransitionTypes(request *DescribeCasterTransitionTypesRequest) (response *DescribeCasterTransitionTypesResponse, err error) {
+    return c.DescribeCasterTransitionTypesWithContext(context.Background(), request)
+}
+
+// DescribeCasterTransitionTypes
+// 该接口用来获取所有的转场名称及其对应的素材url。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeCasterTransitionTypesWithContext(ctx context.Context, request *DescribeCasterTransitionTypesRequest) (response *DescribeCasterTransitionTypesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterTransitionTypesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterTransitionTypes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterTransitionTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCasterUserStatusRequest() (request *DescribeCasterUserStatusRequest) {
+    request = &DescribeCasterUserStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterUserStatus")
+    
+    
+    return
+}
+
+func NewDescribeCasterUserStatusResponse() (response *DescribeCasterUserStatusResponse) {
+    response = &DescribeCasterUserStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterUserStatus
+// 本接口用来查询当前APPID导播台业务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterUserStatus(request *DescribeCasterUserStatusRequest) (response *DescribeCasterUserStatusResponse, err error) {
+    return c.DescribeCasterUserStatusWithContext(context.Background(), request)
+}
+
+// DescribeCasterUserStatus
+// 本接口用来查询当前APPID导播台业务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterUserStatusWithContext(ctx context.Context, request *DescribeCasterUserStatusRequest) (response *DescribeCasterUserStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterUserStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterUserStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterUserStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConcurrentRecordStreamNumRequest() (request *DescribeConcurrentRecordStreamNumRequest) {
     request = &DescribeConcurrentRecordStreamNumRequest{
         BaseRequest: &tchttp.BaseRequest{},

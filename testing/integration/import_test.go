@@ -43,6 +43,7 @@ import (
 	bav20200720 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ba/v20200720"
 	batchv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/batch/v20170312"
 	bdav20200324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bda/v20200324"
+	bhv20230418 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bh/v20230418"
 	biv20220105 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bi/v20220105"
 	billingv20180709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing/v20180709"
 	bizlivev20190313 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive/v20190313"
@@ -607,6 +608,19 @@ func TestBdav20200324Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init bda_v20200324 client: %v", err)
+    }
+}
+
+func TestBhv20230418Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := bhv20230418.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init bh_v20230418 client: %v", err)
     }
 }
 

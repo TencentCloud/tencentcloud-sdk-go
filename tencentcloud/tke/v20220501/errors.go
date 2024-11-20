@@ -56,6 +56,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
