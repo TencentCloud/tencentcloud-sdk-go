@@ -36,7 +36,7 @@ type AsrTimestamps struct {
 
 // Predefined struct for user
 type ConfirmVideoTranslateJobRequestParams struct {
-	// 视频翻译任务 ID
+	// 视频转译任务 ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 待确认文本
@@ -46,7 +46,7 @@ type ConfirmVideoTranslateJobRequestParams struct {
 type ConfirmVideoTranslateJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频翻译任务 ID
+	// 视频转译任务 ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 待确认文本
@@ -75,19 +75,19 @@ func (r *ConfirmVideoTranslateJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ConfirmVideoTranslateJobResponseParams struct {
-	// 视频翻译任务 ID
+	// 视频转译任务 ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 音频转换任务 ID
+	// 音频转译任务 ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 音频翻译结果确认 session	
+	// 音频转译结果确认 session。	
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 视频转译任务状态	
+	// 该字段与 DescribeVideoTranslateJob 接口的 Status 功能相同，均表示任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 视频转译任务信息	
+	// 视频转译任务信息。	
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -292,15 +292,20 @@ type DescribeVideoStylizationJobResponseParams struct {
 	// 任务ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 任务状态码：
-	// JobInit:  "初始化中"
-	// JobModerationFailed: "审核失败",
-	// JobRunning: "处理中",
-	// JobFailed: "处理失败",
+	// 任务状态码。取值说明：
+	// JobInit:  "初始化中"；
+	// JobModerationFailed: "审核失败"；
+	// JobRunning: "处理中"；
+	// JobFailed: "处理失败"；
 	// JobSuccess: "处理完成"。
 	StatusCode *string `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
 
-	// 任务状态描述。
+	// 任务状态描述。取值说明：
+	// JobInit:  "初始化中"；
+	// JobModerationFailed: "审核失败"；
+	// JobRunning: "处理中"；
+	// JobFailed: "处理失败"；
+	// JobSuccess: "处理完成"。
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
 	// 处理结果视频Url。URL有效期为24小时。
@@ -360,43 +365,44 @@ func (r *DescribeVideoTranslateJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVideoTranslateJobResponseParams struct {
-	// 任务状态。 1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。	
+	// 任务状态。0: 任务初始化。 1：音频转译中。 2：音频转译失败。 3：音频转译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频转译中。 7：视频转译失败。 8：视频转译成功。	
 	JobStatus *int64 `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
-	// 任务错误码。	
+	// 本次任务出错的错误码，用来定位问题原因。
 	JobErrorCode *string `json:"JobErrorCode,omitnil,omitempty" name:"JobErrorCode"`
 
-	// 任务错误信息。	
+	// 任务错误信息，错误码出现的原因。
 	JobErrorMsg *string `json:"JobErrorMsg,omitnil,omitempty" name:"JobErrorMsg"`
 
-	// 视频翻译结果。	
+	// 视频转译生成结果视频url，有效期1天。当JobStatus为8时，该字段返回视频Url。
 	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
 
-	// 音频翻译结果。	
+	// 音频转译后分句翻译内容，包含分句起始时间、源识别文本以及翻译后文本。
+	// 当JobStatus为3、4时，该字段返回分句翻译数据。
 	TranslateResults []*TranslateResult `json:"TranslateResults,omitnil,omitempty" name:"TranslateResults"`
 
-	// 是否需要确认翻译结果。0：不需要，1：需要	
+	// 是否需要确认翻译结果。0：不需要，1：需要。	
 	JobConfirm *int64 `json:"JobConfirm,omitnil,omitempty" name:"JobConfirm"`
 
-	// 音频任务 ID	
+	// 音频任务 ID。	
 	JobAudioTaskId *string `json:"JobAudioTaskId,omitnil,omitempty" name:"JobAudioTaskId"`
 
-	// 视频审核任务ID	
+	// 视频审核任务ID。
 	JobVideoModerationId *string `json:"JobVideoModerationId,omitnil,omitempty" name:"JobVideoModerationId"`
 
-	// 音频审核任务 ID	
+	// 音频审核任务 ID。
 	JobAudioModerationId *string `json:"JobAudioModerationId,omitnil,omitempty" name:"JobAudioModerationId"`
 
-	// 口型驱动任务 ID	
+	// 口型驱动任务 ID。
 	JobVideoId *string `json:"JobVideoId,omitnil,omitempty" name:"JobVideoId"`
 
-	// 视频素材原始 URL	
+	// 视频素材原始 URL。
 	OriginalVideoUrl *string `json:"OriginalVideoUrl,omitnil,omitempty" name:"OriginalVideoUrl"`
 
-	// 文本片段及其时间戳	
+	// 文本片段及其时间戳。
 	AsrTimestamps []*AsrTimestamps `json:"AsrTimestamps,omitnil,omitempty" name:"AsrTimestamps"`
 
-	// 提交视频翻译任务时的 requestId	
+	// 提交视频转译任务时的 requestId。
 	JobSubmitReqId *string `json:"JobSubmitReqId,omitnil,omitempty" name:"JobSubmitReqId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -703,7 +709,11 @@ func (r *SubmitPortraitSingJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitVideoStylizationJobRequestParams struct {
-	// 风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
+	// 风格ID。取值说明：
+	// 2d_anime：2D动漫；
+	// 3d_cartoon：3D卡通；
+	// 3d_china：3D国潮；
+	// pixel_art：像素风。
 	StyleId *string `json:"StyleId,omitnil,omitempty" name:"StyleId"`
 
 	// 输入视频URL。视频要求：
@@ -714,16 +724,22 @@ type SubmitVideoStylizationJobRequestParams struct {
 	// - 视频FPS：15～60fps。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 风格化强度 可选参数["low","medium","high"] 
-	// "low":风格化强度弱,"medium":"风格化强度中等","high":"风格化强度强" 
-	// 默认为medium
+	// 风格化强度。取值说明：
+	// low：风格化强度弱；
+	// medium：风格化强度中等；
+	// high：风格化强度强。
+	// 默认值为medium。
 	StyleStrength *string `json:"StyleStrength,omitnil,omitempty" name:"StyleStrength"`
 }
 
 type SubmitVideoStylizationJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
+	// 风格ID。取值说明：
+	// 2d_anime：2D动漫；
+	// 3d_cartoon：3D卡通；
+	// 3d_china：3D国潮；
+	// pixel_art：像素风。
 	StyleId *string `json:"StyleId,omitnil,omitempty" name:"StyleId"`
 
 	// 输入视频URL。视频要求：
@@ -734,9 +750,11 @@ type SubmitVideoStylizationJobRequest struct {
 	// - 视频FPS：15～60fps。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 风格化强度 可选参数["low","medium","high"] 
-	// "low":风格化强度弱,"medium":"风格化强度中等","high":"风格化强度强" 
-	// 默认为medium
+	// 风格化强度。取值说明：
+	// low：风格化强度弱；
+	// medium：风格化强度中等；
+	// high：风格化强度强。
+	// 默认值为medium。
 	StyleStrength *string `json:"StyleStrength,omitnil,omitempty" name:"StyleStrength"`
 }
 
@@ -763,7 +781,7 @@ func (r *SubmitVideoStylizationJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitVideoStylizationJobResponseParams struct {
-	// 任务ID
+	// 任务ID。任务有效期为48小时。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -801,7 +819,7 @@ type SubmitVideoTranslateJobRequestParams struct {
 	SrcLang *string `json:"SrcLang,omitnil,omitempty" name:"SrcLang"`
 
 	// 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
-	// 格式要求：支持 mp3、m4a、acc、wav 格式。
+	// 格式要求：支持 mp3、m4a、aac、wav 格式。
 	// 时长要求：【5~600】秒，音频时长要匹配视频时长。
 	// 大小要求：不超过 100Mb。
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
@@ -846,7 +864,7 @@ type SubmitVideoTranslateJobRequest struct {
 	SrcLang *string `json:"SrcLang,omitnil,omitempty" name:"SrcLang"`
 
 	// 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
-	// 格式要求：支持 mp3、m4a、acc、wav 格式。
+	// 格式要求：支持 mp3、m4a、aac、wav 格式。
 	// 时长要求：【5~600】秒，音频时长要匹配视频时长。
 	// 大小要求：不超过 100Mb。
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`

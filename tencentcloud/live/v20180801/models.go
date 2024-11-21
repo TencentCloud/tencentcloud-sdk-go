@@ -708,10 +708,10 @@ type CasterBriefInfo struct {
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 导播台状态
-	// 0：停止状态，无预监，无输出
-	// 1：无预监，有输出状态（非法状态）
-	// 2：有预监，无输出状态
-	// 3：有预监，有输出状态
+	// 0：停止状态，无预监，无主监
+	// 1：无预监，有主监
+	// 2：有预监，无主监
+	// 3：有预监，有主监
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 

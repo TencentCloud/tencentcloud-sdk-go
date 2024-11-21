@@ -3781,7 +3781,7 @@ type CreateInput struct {
 	// 输入名称，可填大小写、数字和下划线，长度为[1, 32]。
 	InputName *string `json:"InputName,omitnil,omitempty" name:"InputName"`
 
-	// 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+	// 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 输入描述，长度为[0, 255]。
@@ -3816,11 +3816,28 @@ type CreateInput struct {
 
 	// 可用区，非必填，如果开启容灾必须输入两个不同的可用区，否则最多只允许输入一个可用区。	
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 输入的RIST配置信息。
+	RISTSettings *CreateInputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
+
+	// 输入节点的地区
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 }
 
 type CreateInputHLSPullSettings struct {
 	// HLS源站的源站地址，有且只能有一个。
 	SourceAddresses []*HLSPullSourceAddress `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
+}
+
+type CreateInputRISTSettings struct {
+	// RIST模式，可选[LISTENER]，默认为LISTENER。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+	Buffer *int64 `json:"Buffer,omitnil,omitempty" name:"Buffer"`
 }
 
 type CreateInputRTMPPullSettings struct {
@@ -3877,7 +3894,7 @@ type CreateOutputInfo struct {
 	// 输出描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 输出协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+	// 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 输出地区。
@@ -3904,6 +3921,12 @@ type CreateOutputInfo struct {
 
 	// 可用区，output最多只支持输入一个可用区。	
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 输出类型：Internet/TencentCSS/StreamLive
+	OutputType *string `json:"OutputType,omitnil,omitempty" name:"OutputType"`
+
+	// 输出的RIST的配置。
+	RISTSettings *CreateOutputRistSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 }
 
 type CreateOutputInfoRTPSettings struct {
@@ -3931,6 +3954,17 @@ type CreateOutputRTPSettingsDestinations struct {
 
 	// 转推的目标端口。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+}
+
+type CreateOutputRistSettings struct {
+	// RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+	Buffer *int64 `json:"Buffer,omitnil,omitempty" name:"Buffer"`
 }
 
 type CreateOutputRtmpSettingsDestinations struct {
@@ -7079,11 +7113,26 @@ type DescribeInput struct {
 
 	// 可用区配置，开启容灾情况下最多有两个，顺序和pipeline 0、1对应，否则最多只有一个可用区。	
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 输入的RIST配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RISTSettings *DescribeInputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 }
 
 type DescribeInputHLSPullSettings struct {
 	// HLS源站地址信息。
 	SourceAddresses []*DescribeHLSPullSourceAddress `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
+}
+
+type DescribeInputRISTSettings struct {
+	// RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+	Buffer *int64 `json:"Buffer,omitnil,omitempty" name:"Buffer"`
 }
 
 type DescribeInputRTMPPullSettings struct {
@@ -7264,6 +7313,10 @@ type DescribeOutput struct {
 
 	// 可用区，output目前最多只支持一个。	
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 输出的RIST配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RISTSettings *DescribeOutputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 }
 
 type DescribeOutputHLSPullServerUrl struct {
@@ -7275,6 +7328,21 @@ type DescribeOutputHLSPullSettings struct {
 	// HLS拉流地址列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerUrls []*DescribeOutputHLSPullServerUrl `json:"ServerUrls,omitnil,omitempty" name:"ServerUrls"`
+}
+
+type DescribeOutputRISTSettings struct {
+	// RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+	Buffer *int64 `json:"Buffer,omitnil,omitempty" name:"Buffer"`
+
+	// 服务器监听地址，RIST模式为LISTENER时使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceAddresses []*OutputRISTSourceAddressResp `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
 }
 
 type DescribeOutputRTMPPullServerUrl struct {
@@ -12876,7 +12944,7 @@ type ModifyInput struct {
 	// RTP的配置信息。
 	RTPSettings *CreateInputRTPSettings `json:"RTPSettings,omitnil,omitempty" name:"RTPSettings"`
 
-	// 输入的协议，可选[SRT|RTP|RTMP]。
+	// 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
 	// 当输出包含RTP时，输入只能是RTP。
 	// 当输出包含RTMP时，输入可以是SRT/RTMP。
 	// 当输出包含SRT时，输入只能是SRT。
@@ -12902,6 +12970,12 @@ type ModifyInput struct {
 
 	// 可用区，非必填，最多支持输入两个可用区，对于需改接口，只要第二个可用区会参与到资源分配。如果input开启容灾或者涉及RTSP_PULL协议切换时有效(会重新分配地址)。	
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// RIST的配置信息。
+	RISTSettings *CreateInputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
+
+	// 输入节点的地区
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 }
 
 type ModifyOutputInfo struct {
@@ -12914,7 +12988,7 @@ type ModifyOutputInfo struct {
 	// 输出的描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 输出的转推协议，支持SRT|RTP|RTMP。
+	// 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 转推SRT的配置。
@@ -12938,6 +13012,9 @@ type ModifyOutputInfo struct {
 
 	// 可用区
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 转推RIST的配置。
+	RISTSettings *CreateOutputRistSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 }
 
 // Predefined struct for user
@@ -14215,6 +14292,16 @@ type OcrWordsConfigureInfoForUpdate struct {
 type OutputAddress struct {
 	// 出口IP。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+}
+
+type OutputRISTSourceAddressResp struct {
+	// 监听IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 监听端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type OutputSRTSourceAddressResp struct {

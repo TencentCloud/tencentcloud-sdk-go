@@ -18077,6 +18077,10 @@ func NewDescribeSecurityProtectionStatResponse() (response *DescribeSecurityProt
 }
 
 // DescribeSecurityProtectionStat
+// 接口已无效
+//
+// 
+//
 // 获取安全防护状态汇总
 //
 // 可能返回的错误码:
@@ -18089,6 +18093,10 @@ func (c *Client) DescribeSecurityProtectionStat(request *DescribeSecurityProtect
 }
 
 // DescribeSecurityProtectionStat
+// 接口已无效
+//
+// 
+//
 // 获取安全防护状态汇总
 //
 // 可能返回的错误码:

@@ -3219,6 +3219,9 @@ type TieringDetailInfo struct {
 	// 低频存储容量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TieringSizeInBytes *int64 `json:"TieringSizeInBytes,omitnil,omitempty" name:"TieringSizeInBytes"`
+
+	// 冷存储容量
+	SecondaryTieringSizeInBytes *int64 `json:"SecondaryTieringSizeInBytes,omitnil,omitempty" name:"SecondaryTieringSizeInBytes"`
 }
 
 // Predefined struct for user

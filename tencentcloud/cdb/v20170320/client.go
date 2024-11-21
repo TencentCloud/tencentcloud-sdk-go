@@ -1569,9 +1569,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 //
 // 4. 支持创建主实例、只读实例、灾备实例；
 //
-// 5. 当入参指定 Port 和 ParamTemplateType 参数模板，相关参数才会自动初始化（不支持基础版实例）；
-//
-// 6. 当入参指定 ParamTemplateId 或 AlarmPolicyList 时，需将SDK提升至最新版本方可支持；
+// 5. 当入参指定 ParamTemplateId 或 AlarmPolicyList 时，需将SDK提升至最新版本方可支持；
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -1612,9 +1610,7 @@ func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *C
 //
 // 4. 支持创建主实例、只读实例、灾备实例；
 //
-// 5. 当入参指定 Port 和 ParamTemplateType 参数模板，相关参数才会自动初始化（不支持基础版实例）；
-//
-// 6. 当入参指定 ParamTemplateId 或 AlarmPolicyList 时，需将SDK提升至最新版本方可支持；
+// 5. 当入参指定 ParamTemplateId 或 AlarmPolicyList 时，需将SDK提升至最新版本方可支持；
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -1686,8 +1682,6 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 //
 // 4. 支持创建主实例、灾备实例和只读实例；
 //
-// 5. 当入参指定 Port，ParamTemplateType 或 Password 时，该实例会进行初始化操作；
-//
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -1724,8 +1718,6 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
 // 3. 支持创建 MySQL 5.5、MySQL 5.6 、MySQL 5.7 和 MySQL 8.0 版本；
 //
 // 4. 支持创建主实例、灾备实例和只读实例；
-//
-// 5. 当入参指定 Port，ParamTemplateType 或 Password 时，该实例会进行初始化操作；
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -10046,7 +10038,7 @@ func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstanc
 // 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。仅用于按量计费实例的解隔离，包年包月实例的解隔离请使用 RenewDBInstance 。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
+//  FAILEDOPERATION_OPERATIONINCONFLICTERROR = "FailedOperation.OperationInConflictError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -10066,7 +10058,7 @@ func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesR
 // 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。仅用于按量计费实例的解隔离，包年包月实例的解隔离请使用 RenewDBInstance 。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
+//  FAILEDOPERATION_OPERATIONINCONFLICTERROR = "FailedOperation.OperationInConflictError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

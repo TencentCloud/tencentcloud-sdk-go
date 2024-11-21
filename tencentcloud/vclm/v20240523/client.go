@@ -331,7 +331,7 @@ func NewDescribeVideoTranslateJobResponse() (response *DescribeVideoTranslateJob
 }
 
 // DescribeVideoTranslateJob
-// 查询视频翻译任务
+// 查询视频转译任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIOPROCESSFAILED = "FailedOperation.AudioProcessFailed"
@@ -352,7 +352,7 @@ func (c *Client) DescribeVideoTranslateJob(request *DescribeVideoTranslateJobReq
 }
 
 // DescribeVideoTranslateJob
-// 查询视频翻译任务
+// 查询视频转译任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIOPROCESSFAILED = "FailedOperation.AudioProcessFailed"

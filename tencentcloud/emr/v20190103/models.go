@@ -2218,10 +2218,10 @@ type DescribeClusterNodesRequestParams struct {
 	// 支持搜索的字段
 	SearchFields []*SearchItem `json:"SearchFields,omitnil,omitempty" name:"SearchFields"`
 
-	// 无
+	// 排序字段
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 无
+	// 是否升序，1:升序，0:降序
 	Asc *int64 `json:"Asc,omitnil,omitempty" name:"Asc"`
 }
 
@@ -2260,10 +2260,10 @@ type DescribeClusterNodesRequest struct {
 	// 支持搜索的字段
 	SearchFields []*SearchItem `json:"SearchFields,omitnil,omitempty" name:"SearchFields"`
 
-	// 无
+	// 排序字段
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 无
+	// 是否升序，1:升序，0:降序
 	Asc *int64 `json:"Asc,omitnil,omitempty" name:"Asc"`
 }
 
@@ -4019,12 +4019,7 @@ type DescribeServiceNodeInfosRequestParams struct {
 	// 服务组件名称，都是大写例如YARN
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 节点名称
-	// master
-	// core
-	// task
-	// common
-	// router
+	// 节点名称master,core,task,common,router
 	NodeTypeName *string `json:"NodeTypeName,omitnil,omitempty" name:"NodeTypeName"`
 
 	// 过滤条件：dn是否处于维护状态
@@ -4078,12 +4073,7 @@ type DescribeServiceNodeInfosRequest struct {
 	// 服务组件名称，都是大写例如YARN
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 节点名称
-	// master
-	// core
-	// task
-	// common
-	// router
+	// 节点名称master,core,task,common,router
 	NodeTypeName *string `json:"NodeTypeName,omitnil,omitempty" name:"NodeTypeName"`
 
 	// 过滤条件：dn是否处于维护状态
@@ -5666,11 +5656,7 @@ type InquiryPriceCreateInstanceRequestParams struct {
 	// 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li>
 	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 场景化取值：
-	// Hadoop-Kudu
-	// Hadoop-Zookeeper
-	// Hadoop-Presto
-	// Hadoop-Hbase
+	// 场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 
 	// 共用组件信息
@@ -5737,11 +5723,7 @@ type InquiryPriceCreateInstanceRequest struct {
 	// 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li>
 	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 场景化取值：
-	// Hadoop-Kudu
-	// Hadoop-Zookeeper
-	// Hadoop-Presto
-	// Hadoop-Hbase
+	// 场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 
 	// 共用组件信息

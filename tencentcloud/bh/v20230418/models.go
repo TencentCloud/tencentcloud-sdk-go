@@ -327,7 +327,7 @@ type BindDeviceAccountPrivateKeyRequestParams struct {
 	// 主机账号ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 主机账号私钥，最新长度128字节，最大长度8192字节
+	// 主机账号私钥，最小长度128字节，最大长度8192字节
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
 	// 主机账号私钥口令，最大长度256字节
@@ -340,7 +340,7 @@ type BindDeviceAccountPrivateKeyRequest struct {
 	// 主机账号ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 主机账号私钥，最新长度128字节，最大长度8192字节
+	// 主机账号私钥，最小长度128字节，最大长度8192字节
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
 	// 主机账号私钥口令，最大长度256字节

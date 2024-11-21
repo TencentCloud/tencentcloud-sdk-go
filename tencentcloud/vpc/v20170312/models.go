@@ -14912,7 +14912,7 @@ type DescribeNetworkAclQuintupleEntriesRequestParams struct {
 	// 返回数量，默认为20，最小值为1，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+	// 过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
 	// <li>protocol - String - 协议，形如：`TCP`。</li>
 	// <li>description - String - 描述。</li>
 	// <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
@@ -14935,7 +14935,7 @@ type DescribeNetworkAclQuintupleEntriesRequest struct {
 	// 返回数量，默认为20，最小值为1，最大值为100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+	// 过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
 	// <li>protocol - String - 协议，形如：`TCP`。</li>
 	// <li>description - String - 描述。</li>
 	// <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
@@ -18125,7 +18125,6 @@ func (r *DescribeVpcEndPointServiceWhiteListResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeVpcInstancesRequestParams struct {
-	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	// <li>instance-id - String - （过滤条件）云主机实例ID。</li>
 	// <li>instance-name - String - （过滤条件）云主机名称。</li>
@@ -18141,7 +18140,6 @@ type DescribeVpcInstancesRequestParams struct {
 type DescribeVpcInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	// <li>instance-id - String - （过滤条件）云主机实例ID。</li>
 	// <li>instance-name - String - （过滤条件）云主机名称。</li>

@@ -13149,23 +13149,26 @@ type PrometheusClusterAgentBasic struct {
 	// 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群ID
+	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 是否开启公网CLB
+	// 是否开启公网 CLB
 	EnableExternal *bool `json:"EnableExternal,omitnil,omitempty" name:"EnableExternal"`
 
-	// 集群内部署组件的pod配置
+	// 集群内部署组件的pod 配置
 	InClusterPodConfig *PrometheusClusterAgentPodConfig `json:"InClusterPodConfig,omitnil,omitempty" name:"InClusterPodConfig"`
 
 	// 该集群采集的所有指标都会带上这些labels
 	ExternalLabels []*Label `json:"ExternalLabels,omitnil,omitempty" name:"ExternalLabels"`
 
-	// 是否安装默认采集配置
+	// 是否安装默认采集 exporter 和采集配置
 	NotInstallBasicScrape *bool `json:"NotInstallBasicScrape,omitnil,omitempty" name:"NotInstallBasicScrape"`
 
-	// 是否采集指标，true代表drop所有指标，false代表采集默认指标
+	// 是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置
 	NotScrape *bool `json:"NotScrape,omitnil,omitempty" name:"NotScrape"`
+
+	// 是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标
+	DropAll *bool `json:"DropAll,omitnil,omitempty" name:"DropAll"`
 
 	// 是否开启默认预聚合规则
 	OpenDefaultRecord *bool `json:"OpenDefaultRecord,omitnil,omitempty" name:"OpenDefaultRecord"`

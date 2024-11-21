@@ -2869,6 +2869,7 @@ func NewCreateCcnRouteTablesResponse() (response *CreateCcnRouteTablesResponse) 
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNIPV6NOTSUPPORTMULTIPLEROUTETABLE = "UnsupportedOperation.CcnIpv6NotSupportMultipleRouteTable"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
 //  UNSUPPORTEDOPERATION_ROUTETABLEEXCEEDPERVBCLIMIT = "UnsupportedOperation.RouteTableExceedPerVbcLimit"
 func (c *Client) CreateCcnRouteTables(request *CreateCcnRouteTablesRequest) (response *CreateCcnRouteTablesResponse, err error) {
@@ -2885,6 +2886,7 @@ func (c *Client) CreateCcnRouteTables(request *CreateCcnRouteTablesRequest) (res
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNIPV6NOTSUPPORTMULTIPLEROUTETABLE = "UnsupportedOperation.CcnIpv6NotSupportMultipleRouteTable"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = "UnsupportedOperation.NotSupportCreateCcnRouteTable"
 //  UNSUPPORTEDOPERATION_ROUTETABLEEXCEEDPERVBCLIMIT = "UnsupportedOperation.RouteTableExceedPerVbcLimit"
 func (c *Client) CreateCcnRouteTablesWithContext(ctx context.Context, request *CreateCcnRouteTablesRequest) (response *CreateCcnRouteTablesResponse, err error) {
@@ -12909,6 +12911,7 @@ func NewDescribeNetDetectsResponse() (response *DescribeNetDetectsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetDetects(request *DescribeNetDetectsRequest) (response *DescribeNetDetectsResponse, err error) {
@@ -12924,6 +12927,7 @@ func (c *Client) DescribeNetDetects(request *DescribeNetDetectsRequest) (respons
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetDetectsWithContext(ctx context.Context, request *DescribeNetDetectsRequest) (response *DescribeNetDetectsResponse, err error) {
@@ -12970,6 +12974,7 @@ func NewDescribeNetworkAccountTypeResponse() (response *DescribeNetworkAccountTy
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetworkAccountType(request *DescribeNetworkAccountTypeRequest) (response *DescribeNetworkAccountTypeResponse, err error) {
@@ -12985,6 +12990,7 @@ func (c *Client) DescribeNetworkAccountType(request *DescribeNetworkAccountTypeR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetworkAccountTypeWithContext(ctx context.Context, request *DescribeNetworkAccountTypeRequest) (response *DescribeNetworkAccountTypeResponse, err error) {
@@ -13031,6 +13037,7 @@ func NewDescribeNetworkAclQuintupleEntriesResponse() (response *DescribeNetworkA
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -13048,6 +13055,7 @@ func (c *Client) DescribeNetworkAclQuintupleEntries(request *DescribeNetworkAclQ
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -13096,6 +13104,7 @@ func NewDescribeNetworkAclsResponse() (response *DescribeNetworkAclsResponse) {
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -13113,6 +13122,7 @@ func (c *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (respo
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -22504,6 +22514,7 @@ func NewModifyVpnGatewaySslServerResponse() (response *ModifyVpnGatewaySslServer
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED_SSLVPNCLIENTLIMITEXCEEDED = "LimitExceeded.SslVpnClientLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyVpnGatewaySslServer(request *ModifyVpnGatewaySslServerRequest) (response *ModifyVpnGatewaySslServerResponse, err error) {
@@ -22516,6 +22527,7 @@ func (c *Client) ModifyVpnGatewaySslServer(request *ModifyVpnGatewaySslServerReq
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED_SSLVPNCLIENTLIMITEXCEEDED = "LimitExceeded.SslVpnClientLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyVpnGatewaySslServerWithContext(ctx context.Context, request *ModifyVpnGatewaySslServerRequest) (response *ModifyVpnGatewaySslServerResponse, err error) {

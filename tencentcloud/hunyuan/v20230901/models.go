@@ -1796,7 +1796,8 @@ type SubmitHunyuanImageJobRequestParams struct {
 	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 反向提示词。 推荐使用中文。最多可传1024个 utf-8 字符。
+	// 反向提示词。 
+	// 推荐使用中文。最多可传1024个 utf-8 字符。
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。
@@ -1843,7 +1844,8 @@ type SubmitHunyuanImageJobRequest struct {
 	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 反向提示词。 推荐使用中文。最多可传1024个 utf-8 字符。
+	// 反向提示词。 
+	// 推荐使用中文。最多可传1024个 utf-8 字符。
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 绘画风格。

@@ -2378,6 +2378,57 @@ func (c *Client) DescribeQuestionListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeRecordRequest() (request *DescribeRecordRequest) {
+    request = &DescribeRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeRecord")
+    
+    
+    return
+}
+
+func NewDescribeRecordResponse() (response *DescribeRecordResponse) {
+    response = &DescribeRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecord
+// 查询录制信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRecord(request *DescribeRecordRequest) (response *DescribeRecordResponse, err error) {
+    return c.DescribeRecordWithContext(context.Background(), request)
+}
+
+// DescribeRecord
+// 查询录制信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRecordWithContext(ctx context.Context, request *DescribeRecordRequest) (response *DescribeRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordStreamRequest() (request *DescribeRecordStreamRequest) {
     request = &DescribeRecordStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2401,14 +2452,8 @@ func NewDescribeRecordStreamResponse() (response *DescribeRecordStreamResponse) 
 // 录制流查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
     return c.DescribeRecordStreamWithContext(context.Background(), request)
 }
@@ -2417,14 +2462,8 @@ func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (res
 // 录制流查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRecordStreamWithContext(ctx context.Context, request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
     if request == nil {
         request = NewDescribeRecordStreamRequest()
@@ -4090,6 +4129,59 @@ func (c *Client) SetWatermarkWithContext(ctx context.Context, request *SetWaterm
     return
 }
 
+func NewStartRecordRequest() (request *StartRecordRequest) {
+    request = &StartRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "StartRecord")
+    
+    
+    return
+}
+
+func NewStartRecordResponse() (response *StartRecordResponse) {
+    response = &StartRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartRecord
+// 开始录制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) StartRecord(request *StartRecordRequest) (response *StartRecordResponse, err error) {
+    return c.StartRecordWithContext(context.Background(), request)
+}
+
+// StartRecord
+// 开始录制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) StartRecordWithContext(ctx context.Context, request *StartRecordRequest) (response *StartRecordResponse, err error) {
+    if request == nil {
+        request = NewStartRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartRoomRequest() (request *StartRoomRequest) {
     request = &StartRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4161,6 +4253,57 @@ func (c *Client) StartRoomWithContext(ctx context.Context, request *StartRoomReq
     request.SetContext(ctx)
     
     response = NewStartRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopRecordRequest() (request *StopRecordRequest) {
+    request = &StopRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "StopRecord")
+    
+    
+    return
+}
+
+func NewStopRecordResponse() (response *StopRecordResponse) {
+    response = &StopRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopRecord
+// 停止录制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopRecord(request *StopRecordRequest) (response *StopRecordResponse, err error) {
+    return c.StopRecordWithContext(context.Background(), request)
+}
+
+// StopRecord
+// 停止录制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopRecordWithContext(ctx context.Context, request *StopRecordRequest) (response *StopRecordResponse, err error) {
+    if request == nil {
+        request = NewStopRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopRecordResponse()
     err = c.Send(request, response)
     return
 }

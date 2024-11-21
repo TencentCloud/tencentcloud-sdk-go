@@ -608,6 +608,9 @@ const (
 	// 安全组规则数量超过上限。
 	LIMITEXCEEDED_SECURITYGROUPPOLICYSET = "LimitExceeded.SecurityGroupPolicySet"
 
+	// SSL-VPN客户端个数大于SSL-VPN-SERVER客户端地址池能够分配的个数。
+	LIMITEXCEEDED_SSLVPNCLIENTLIMITEXCEEDED = "LimitExceeded.SslVpnClientLimitExceeded"
+
 	// 子网分配子网段数量达到上限。
 	LIMITEXCEEDED_SUBNETCIDRBLOCK = "LimitExceeded.SubnetCidrBlock"
 
@@ -775,6 +778,9 @@ const (
 
 	// CCN实例所属账号未通过联通审批。
 	UNSUPPORTEDOPERATION_CCNINSTANCEACCOUNTNOTAPPROVEDBYUNICOM = "UnsupportedOperation.CcnInstanceAccountNotApprovedByUnicom"
+
+	// 云联网开启ipv6不支持创建多路由表
+	UNSUPPORTEDOPERATION_CCNIPV6NOTSUPPORTMULTIPLEROUTETABLE = "UnsupportedOperation.CcnIpv6NotSupportMultipleRouteTable"
 
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"

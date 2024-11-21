@@ -1453,6 +1453,32 @@ type CustomMsgContent struct {
 	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
 }
 
+type CustomRecordInfo struct {
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
+
+	// 总时长
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 文件格式
+	FileFormat *string `json:"FileFormat,omitnil,omitempty" name:"FileFormat"`
+
+	// 流url
+	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
+
+	// 流大小
+	RecordSize *uint64 `json:"RecordSize,omitnil,omitempty" name:"RecordSize"`
+
+	// 流ID
+	VideoId *string `json:"VideoId,omitnil,omitempty" name:"VideoId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
 // Predefined struct for user
 type DeleteAppCustomContentRequestParams struct {
 	// 应用ID。
@@ -2843,6 +2869,76 @@ func (r *DescribeQuestionListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeQuestionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordRequestParams struct {
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordResponseParams struct {
+	// 学校ID
+	SchoolId *uint64 `json:"SchoolId,omitnil,omitempty" name:"SchoolId"`
+
+	// 课堂ID
+	ClassId *uint64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// 录制信息
+	RecordInfo []*CustomRecordInfo `json:"RecordInfo,omitnil,omitempty" name:"RecordInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5808,6 +5904,70 @@ type SingleStreamInfo struct {
 }
 
 // Predefined struct for user
+type StartRecordRequestParams struct {
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type StartRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *StartRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartRecordResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *StartRecordResponseParams `json:"Response"`
+}
+
+func (r *StartRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StartRoomRequestParams struct {
 	// 房间ID。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
@@ -5858,6 +6018,74 @@ func (r *StartRoomResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopRecordRequestParams struct {
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type StopRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *StopRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopRecordResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *StopRecordResponseParams `json:"Response"`
+}
+
+func (r *StopRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

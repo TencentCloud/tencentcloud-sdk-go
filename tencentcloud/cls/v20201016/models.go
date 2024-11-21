@@ -746,23 +746,23 @@ func (r *CheckRechargeKafkaServerResponse) FromJsonString(s string) error {
 }
 
 type Ckafka struct {
+	// Ckafka 的 InstanceId
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Ckafka 的 TopicName
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
 	// Ckafka 的 Vip
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// Ckafka 的 Vport
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// Ckafka 的 InstanceId
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
 	// Ckafka 的 InstanceName
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// Ckafka 的 TopicId
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
-	// Ckafka 的 TopicName
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 // Predefined struct for user

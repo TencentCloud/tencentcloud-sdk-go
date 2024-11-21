@@ -4842,6 +4842,9 @@ type StartStreamIngestRequestParams struct {
 
 	// 循环播放最大时长,仅支持RepeatNum设置-1时生效，取值范围[1, 10080]，单位分钟。
 	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
+
+	// 音量，取值范围[0, 100]，默认100，表示原音量。
+	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 type StartStreamIngestRequest struct {
@@ -4893,6 +4896,9 @@ type StartStreamIngestRequest struct {
 
 	// 循环播放最大时长,仅支持RepeatNum设置-1时生效，取值范围[1, 10080]，单位分钟。
 	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
+
+	// 音量，取值范围[0, 100]，默认100，表示原音量。
+	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 func (r *StartStreamIngestRequest) ToJsonString() string {
@@ -4921,6 +4927,7 @@ func (r *StartStreamIngestRequest) FromJsonString(s string) error {
 	delete(f, "AutoPush")
 	delete(f, "RepeatNum")
 	delete(f, "MaxDuration")
+	delete(f, "Volume")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStreamIngestRequest has unknown keys!", "")
 	}
@@ -5854,8 +5861,11 @@ type UpdateStreamIngestRequestParams struct {
 	// 任务的唯一Id，在启动任务成功后会返回。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 源流URL【必填】。
+	// 源流URL。
 	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
+
+	// 音量，取值范围[0, 100]，默认100，表示原音量。
+	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 type UpdateStreamIngestRequest struct {
@@ -5867,8 +5877,11 @@ type UpdateStreamIngestRequest struct {
 	// 任务的唯一Id，在启动任务成功后会返回。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 源流URL【必填】。
+	// 源流URL。
 	StreamUrl *string `json:"StreamUrl,omitnil,omitempty" name:"StreamUrl"`
+
+	// 音量，取值范围[0, 100]，默认100，表示原音量。
+	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 func (r *UpdateStreamIngestRequest) ToJsonString() string {
@@ -5886,6 +5899,7 @@ func (r *UpdateStreamIngestRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	delete(f, "StreamUrl")
+	delete(f, "Volume")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStreamIngestRequest has unknown keys!", "")
 	}

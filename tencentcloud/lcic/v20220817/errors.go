@@ -35,7 +35,7 @@ const (
 	// 课堂状态错误，课堂已开始。
 	FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 
-	// 课堂时长不能超过5小时。
+	// 预约课堂的时长不能超过72小时（不影响实际上课）。
 	FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
 
 	// 图片参数错误。
