@@ -1070,6 +1070,9 @@ const (
 	// 记录不存在。
 	UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
 
+	// 此安全组存在嵌套安全组规则，不支持跨地域克隆。
+	UNSUPPORTEDOPERATION_REMOTEREGIONSGHASREFERENCEDSG = "UnsupportedOperation.RemoteRegionSgHasReferencedSg"
+
 	// 资源处于不可用状态，禁止操作。
 	UNSUPPORTEDOPERATION_RESOURCEISINVALIDSTATE = "UnsupportedOperation.ResourceIsInvalidState"
 

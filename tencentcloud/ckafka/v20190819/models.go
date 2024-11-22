@@ -9324,7 +9324,7 @@ func (r *ModifyInstanceAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstancePreRequestParams struct {
-	// 实例名称
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 预计磁盘，根据磁盘步长，规格向上调整。
@@ -9340,7 +9340,7 @@ type ModifyInstancePreRequestParams struct {
 type ModifyInstancePreRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 预计磁盘，根据磁盘步长，规格向上调整。

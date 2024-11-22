@@ -1090,7 +1090,7 @@ type CreateRoomRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分辨率。可以有如下取值：
+	// 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
@@ -1207,7 +1207,7 @@ type CreateRoomRequest struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分辨率。可以有如下取值：
+	// 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
@@ -3139,7 +3139,7 @@ type DescribeRoomResponseParams struct {
 	// 观看类型。互动观看 （默认）	
 	AudienceType *uint64 `json:"AudienceType,omitnil,omitempty" name:"AudienceType"`
 
-	// 分辨率。可以有如下取值：
+	// 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
@@ -5297,7 +5297,10 @@ type RoomInfo struct {
 	// 预定的房间结束时间，unix时间戳。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 分辨率。可以有如下取值： 1 标清 2 高清 3 全高清
+	// 头像区域，摄像头视频画面的分辨率。可以有如下取值：
+	// 1 标清
+	// 2 高清
+	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。

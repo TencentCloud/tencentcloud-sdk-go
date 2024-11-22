@@ -47065,6 +47065,14 @@ type VulInfoList struct {
 	CvssScore *float64 `json:"CvssScore,omitnil,omitempty" name:"CvssScore"`
 
 	// 漏洞标签 多个逗号分割
+	// 
+	// 存在EXP:EXP
+	// 在野攻击:KNOWN_EXPLOITED
+	// 本地利用:LOCAL
+	// 必修漏洞:NEED_FIX
+	// 远程利用:NETWORK
+	// 存在POC:POC
+	// 系统重启:RESTART
 	Labels *string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 是否能自动修复且包含能自动修复的主机， 0=否  1=是

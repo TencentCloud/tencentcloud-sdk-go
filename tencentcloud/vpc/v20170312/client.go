@@ -2259,7 +2259,7 @@ func NewCloneSecurityGroupResponse() (response *CloneSecurityGroupResponse) {
 }
 
 // CloneSecurityGroup
-// 本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。仅克隆安全组及其规则信息，不会克隆安全组标签信息。
+// 本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。默认仅克隆安全组及其规则信息，可通过入参开启克隆安全组标签信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2267,12 +2267,13 @@ func NewCloneSecurityGroupResponse() (response *CloneSecurityGroupResponse) {
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_REMOTEREGIONSGHASREFERENCEDSG = "UnsupportedOperation.RemoteRegionSgHasReferencedSg"
 func (c *Client) CloneSecurityGroup(request *CloneSecurityGroupRequest) (response *CloneSecurityGroupResponse, err error) {
     return c.CloneSecurityGroupWithContext(context.Background(), request)
 }
 
 // CloneSecurityGroup
-// 本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。仅克隆安全组及其规则信息，不会克隆安全组标签信息。
+// 本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。默认仅克隆安全组及其规则信息，可通过入参开启克隆安全组标签信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2280,6 +2281,7 @@ func (c *Client) CloneSecurityGroup(request *CloneSecurityGroupRequest) (respons
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_REMOTEREGIONSGHASREFERENCEDSG = "UnsupportedOperation.RemoteRegionSgHasReferencedSg"
 func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *CloneSecurityGroupRequest) (response *CloneSecurityGroupResponse, err error) {
     if request == nil {
         request = NewCloneSecurityGroupRequest()
@@ -4997,6 +4999,61 @@ func (c *Client) CreatePrivateNatGatewayTranslationNatRuleWithContext(ctx contex
     request.SetContext(ctx)
     
     response = NewCreatePrivateNatGatewayTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateReserveIpAddressesRequest() (request *CreateReserveIpAddressesRequest) {
+    request = &CreateReserveIpAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateReserveIpAddresses")
+    
+    
+    return
+}
+
+func NewCreateReserveIpAddressesResponse() (response *CreateReserveIpAddressesResponse) {
+    response = &CreateReserveIpAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateReserveIpAddresses
+// 创建内网保留IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) CreateReserveIpAddresses(request *CreateReserveIpAddressesRequest) (response *CreateReserveIpAddressesResponse, err error) {
+    return c.CreateReserveIpAddressesWithContext(context.Background(), request)
+}
+
+// CreateReserveIpAddresses
+// 创建内网保留IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) CreateReserveIpAddressesWithContext(ctx context.Context, request *CreateReserveIpAddressesRequest) (response *CreateReserveIpAddressesResponse, err error) {
+    if request == nil {
+        request = NewCreateReserveIpAddressesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReserveIpAddresses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateReserveIpAddressesResponse()
     err = c.Send(request, response)
     return
 }
@@ -8860,6 +8917,67 @@ func (c *Client) DeletePrivateNatGatewayTranslationNatRuleWithContext(ctx contex
     return
 }
 
+func NewDeleteReserveIpAddressesRequest() (request *DeleteReserveIpAddressesRequest) {
+    request = &DeleteReserveIpAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteReserveIpAddresses")
+    
+    
+    return
+}
+
+func NewDeleteReserveIpAddressesResponse() (response *DeleteReserveIpAddressesResponse) {
+    response = &DeleteReserveIpAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteReserveIpAddresses
+// 删除内网保留IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteReserveIpAddresses(request *DeleteReserveIpAddressesRequest) (response *DeleteReserveIpAddressesResponse, err error) {
+    return c.DeleteReserveIpAddressesWithContext(context.Background(), request)
+}
+
+// DeleteReserveIpAddresses
+// 删除内网保留IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteReserveIpAddressesWithContext(ctx context.Context, request *DeleteReserveIpAddressesRequest) (response *DeleteReserveIpAddressesResponse, err error) {
+    if request == nil {
+        request = NewDeleteReserveIpAddressesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReserveIpAddresses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteReserveIpAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRouteTableRequest() (request *DeleteRouteTableRequest) {
     request = &DeleteRouteTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11628,6 +11746,7 @@ func NewDescribeDhcpIpsResponse() (response *DescribeDhcpIpsResponse) {
 //  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -11644,6 +11763,7 @@ func (c *Client) DescribeDhcpIps(request *DescribeDhcpIpsRequest) (response *Des
 //  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -13712,6 +13832,69 @@ func (c *Client) DescribeProductQuotaWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeProductQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReserveIpAddressesRequest() (request *DescribeReserveIpAddressesRequest) {
+    request = &DescribeReserveIpAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeReserveIpAddresses")
+    
+    
+    return
+}
+
+func NewDescribeReserveIpAddressesResponse() (response *DescribeReserveIpAddressesResponse) {
+    response = &DescribeReserveIpAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReserveIpAddresses
+// 查询内网保留 IP
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReserveIpAddresses(request *DescribeReserveIpAddressesRequest) (response *DescribeReserveIpAddressesResponse, err error) {
+    return c.DescribeReserveIpAddressesWithContext(context.Background(), request)
+}
+
+// DescribeReserveIpAddresses
+// 查询内网保留 IP
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReserveIpAddressesWithContext(ctx context.Context, request *DescribeReserveIpAddressesRequest) (response *DescribeReserveIpAddressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReserveIpAddressesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReserveIpAddresses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReserveIpAddressesResponse()
     err = c.Send(request, response)
     return
 }
@@ -21250,6 +21433,61 @@ func (c *Client) ModifyPrivateNatGatewayTranslationNatRuleWithContext(ctx contex
     request.SetContext(ctx)
     
     response = NewModifyPrivateNatGatewayTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReserveIpAddressRequest() (request *ModifyReserveIpAddressRequest) {
+    request = &ModifyReserveIpAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyReserveIpAddress")
+    
+    
+    return
+}
+
+func NewModifyReserveIpAddressResponse() (response *ModifyReserveIpAddressResponse) {
+    response = &ModifyReserveIpAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReserveIpAddress
+// 修改内网保留 IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyReserveIpAddress(request *ModifyReserveIpAddressRequest) (response *ModifyReserveIpAddressResponse, err error) {
+    return c.ModifyReserveIpAddressWithContext(context.Background(), request)
+}
+
+// ModifyReserveIpAddress
+// 修改内网保留 IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyReserveIpAddressWithContext(ctx context.Context, request *ModifyReserveIpAddressRequest) (response *ModifyReserveIpAddressResponse, err error) {
+    if request == nil {
+        request = NewModifyReserveIpAddressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReserveIpAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReserveIpAddressResponse()
     err = c.Send(request, response)
     return
 }

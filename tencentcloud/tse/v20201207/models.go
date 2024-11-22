@@ -1011,6 +1011,10 @@ type ConfigFileRelease struct {
 	// 格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 配置文件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
 }
 
 type ConfigFileReleaseDeletion struct {
@@ -1029,6 +1033,10 @@ type ConfigFileReleaseDeletion struct {
 	// 发布版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseVersion *string `json:"ReleaseVersion,omitnil,omitempty" name:"ReleaseVersion"`
+
+	// 配置发布ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type ConfigFileReleaseHistory struct {
@@ -2243,6 +2251,10 @@ type CreateConfigFileResponseParams struct {
 	// 是否创建成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
+	// 创建的配置文件Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2980,6 +2992,9 @@ type CreateOrUpdateConfigFileAndReleaseRequestParams struct {
 
 	// 配置文件列表详情	
 	ConfigFilePublishInfo *ConfigFilePublishInfo `json:"ConfigFilePublishInfo,omitnil,omitempty" name:"ConfigFilePublishInfo"`
+
+	// 控制开启校验配置版本是否已经存在
+	StrictEnable *bool `json:"StrictEnable,omitnil,omitempty" name:"StrictEnable"`
 }
 
 type CreateOrUpdateConfigFileAndReleaseRequest struct {
@@ -2990,6 +3005,9 @@ type CreateOrUpdateConfigFileAndReleaseRequest struct {
 
 	// 配置文件列表详情	
 	ConfigFilePublishInfo *ConfigFilePublishInfo `json:"ConfigFilePublishInfo,omitnil,omitempty" name:"ConfigFilePublishInfo"`
+
+	// 控制开启校验配置版本是否已经存在
+	StrictEnable *bool `json:"StrictEnable,omitnil,omitempty" name:"StrictEnable"`
 }
 
 func (r *CreateOrUpdateConfigFileAndReleaseRequest) ToJsonString() string {
@@ -3006,6 +3024,7 @@ func (r *CreateOrUpdateConfigFileAndReleaseRequest) FromJsonString(s string) err
 	}
 	delete(f, "InstanceId")
 	delete(f, "ConfigFilePublishInfo")
+	delete(f, "StrictEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrUpdateConfigFileAndReleaseRequest has unknown keys!", "")
 	}
@@ -3016,6 +3035,14 @@ func (r *CreateOrUpdateConfigFileAndReleaseRequest) FromJsonString(s string) err
 type CreateOrUpdateConfigFileAndReleaseResponseParams struct {
 	// 操作是否成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 配置发布Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileReleaseId *string `json:"ConfigFileReleaseId,omitnil,omitempty" name:"ConfigFileReleaseId"`
+
+	// 配置文件Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3850,6 +3877,9 @@ type DeleteConfigFilesRequestParams struct {
 
 	// 配置文件名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 配置文件Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DeleteConfigFilesRequest struct {
@@ -3866,6 +3896,9 @@ type DeleteConfigFilesRequest struct {
 
 	// 配置文件名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 配置文件Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DeleteConfigFilesRequest) ToJsonString() string {
@@ -3884,6 +3917,7 @@ func (r *DeleteConfigFilesRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "Group")
 	delete(f, "Name")
+	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConfigFilesRequest has unknown keys!", "")
 	}
@@ -5791,6 +5825,9 @@ type DescribeConfigFileReleaseHistoriesRequestParams struct {
 	// 发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续
 	EndId *uint64 `json:"EndId,omitnil,omitempty" name:"EndId"`
 
+	// 配置文件ID
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
+
 	// 返回数量，默认为20，最大值为100。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -5816,6 +5853,9 @@ type DescribeConfigFileReleaseHistoriesRequest struct {
 	// 发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续
 	EndId *uint64 `json:"EndId,omitnil,omitempty" name:"EndId"`
 
+	// 配置文件ID
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
+
 	// 返回数量，默认为20，最大值为100。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -5840,6 +5880,7 @@ func (r *DescribeConfigFileReleaseHistoriesRequest) FromJsonString(s string) err
 	delete(f, "Group")
 	delete(f, "Name")
 	delete(f, "EndId")
+	delete(f, "ConfigFileId")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
@@ -5892,6 +5933,9 @@ type DescribeConfigFileReleaseRequestParams struct {
 
 	// 配置文件发布名称
 	ReleaseName *string `json:"ReleaseName,omitnil,omitempty" name:"ReleaseName"`
+
+	// 配置文件发布Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeConfigFileReleaseRequest struct {
@@ -5911,6 +5955,9 @@ type DescribeConfigFileReleaseRequest struct {
 
 	// 配置文件发布名称
 	ReleaseName *string `json:"ReleaseName,omitnil,omitempty" name:"ReleaseName"`
+
+	// 配置文件发布Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DescribeConfigFileReleaseRequest) ToJsonString() string {
@@ -5930,6 +5977,7 @@ func (r *DescribeConfigFileReleaseRequest) FromJsonString(s string) error {
 	delete(f, "Group")
 	delete(f, "Name")
 	delete(f, "ReleaseName")
+	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigFileReleaseRequest has unknown keys!", "")
 	}
@@ -5974,6 +6022,9 @@ type DescribeConfigFileReleaseVersionsRequestParams struct {
 
 	// 文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 配置文件ID
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
 }
 
 type DescribeConfigFileReleaseVersionsRequest struct {
@@ -5990,6 +6041,9 @@ type DescribeConfigFileReleaseVersionsRequest struct {
 
 	// 文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 配置文件ID
+	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
 }
 
 func (r *DescribeConfigFileReleaseVersionsRequest) ToJsonString() string {
@@ -6008,6 +6062,7 @@ func (r *DescribeConfigFileReleaseVersionsRequest) FromJsonString(s string) erro
 	delete(f, "Namespace")
 	delete(f, "Group")
 	delete(f, "FileName")
+	delete(f, "ConfigFileId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigFileReleaseVersionsRequest has unknown keys!", "")
 	}
@@ -6071,6 +6126,9 @@ type DescribeConfigFileReleasesRequestParams struct {
 
 	// 排序，asc/desc，默认 desc
 	OrderDesc *string `json:"OrderDesc,omitnil,omitempty" name:"OrderDesc"`
+
+	// 配置发布ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeConfigFileReleasesRequest struct {
@@ -6106,6 +6164,9 @@ type DescribeConfigFileReleasesRequest struct {
 
 	// 排序，asc/desc，默认 desc
 	OrderDesc *string `json:"OrderDesc,omitnil,omitempty" name:"OrderDesc"`
+
+	// 配置发布ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DescribeConfigFileReleasesRequest) ToJsonString() string {
@@ -6130,6 +6191,7 @@ func (r *DescribeConfigFileReleasesRequest) FromJsonString(s string) error {
 	delete(f, "ReleaseName")
 	delete(f, "OrderField")
 	delete(f, "OrderDesc")
+	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigFileReleasesRequest has unknown keys!", "")
 	}
@@ -6175,8 +6237,11 @@ type DescribeConfigFileRequestParams struct {
 	// 组
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 名称
+	// 配置文件名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 配置文件Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeConfigFileRequest struct {
@@ -6191,8 +6256,11 @@ type DescribeConfigFileRequest struct {
 	// 组
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 名称
+	// 配置文件名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 配置文件Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DescribeConfigFileRequest) ToJsonString() string {
@@ -6211,6 +6279,7 @@ func (r *DescribeConfigFileRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "Group")
 	delete(f, "Name")
+	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigFileRequest has unknown keys!", "")
 	}
@@ -6342,7 +6411,7 @@ type DescribeConfigFilesRequestParams struct {
 	// 组名
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 名称
+	// 配置文件名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签列表
@@ -6353,6 +6422,9 @@ type DescribeConfigFilesRequestParams struct {
 
 	// 偏移量，默认为0。	
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 配置文件ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DescribeConfigFilesRequest struct {
@@ -6367,7 +6439,7 @@ type DescribeConfigFilesRequest struct {
 	// 组名
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 名称
+	// 配置文件名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签列表
@@ -6378,6 +6450,9 @@ type DescribeConfigFilesRequest struct {
 
 	// 偏移量，默认为0。	
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 配置文件ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 func (r *DescribeConfigFilesRequest) ToJsonString() string {
@@ -6399,6 +6474,7 @@ func (r *DescribeConfigFilesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigFilesRequest has unknown keys!", "")
 	}
@@ -11282,6 +11358,9 @@ type PublishConfigFilesRequestParams struct {
 
 	// 配置文件发布
 	ConfigFileReleases *ConfigFileRelease `json:"ConfigFileReleases,omitnil,omitempty" name:"ConfigFileReleases"`
+
+	// 控制开启校验配置版本是否已经存在
+	StrictEnable *bool `json:"StrictEnable,omitnil,omitempty" name:"StrictEnable"`
 }
 
 type PublishConfigFilesRequest struct {
@@ -11292,6 +11371,9 @@ type PublishConfigFilesRequest struct {
 
 	// 配置文件发布
 	ConfigFileReleases *ConfigFileRelease `json:"ConfigFileReleases,omitnil,omitempty" name:"ConfigFileReleases"`
+
+	// 控制开启校验配置版本是否已经存在
+	StrictEnable *bool `json:"StrictEnable,omitnil,omitempty" name:"StrictEnable"`
 }
 
 func (r *PublishConfigFilesRequest) ToJsonString() string {
@@ -11308,6 +11390,7 @@ func (r *PublishConfigFilesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ConfigFileReleases")
+	delete(f, "StrictEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishConfigFilesRequest has unknown keys!", "")
 	}
@@ -11318,6 +11401,10 @@ func (r *PublishConfigFilesRequest) FromJsonString(s string) error {
 type PublishConfigFilesResponseParams struct {
 	// 配置文件发布是否成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 配置文件发布Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileReleaseId *string `json:"ConfigFileReleaseId,omitnil,omitempty" name:"ConfigFileReleaseId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11362,13 +11449,29 @@ type RateLimitResponse struct {
 }
 
 type ReleaseVersion struct {
-	// 名称
+	// 配置发布的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Active *bool `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// 配置发布的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 配置发布的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 配置发布的分组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 配置发布的文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 
 // Predefined struct for user

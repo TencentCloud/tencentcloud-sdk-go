@@ -726,6 +726,115 @@ type CasterBriefInfo struct {
 	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 }
 
+type CasterDisplayInfo struct {
+	// 布局Index。
+	// 如果使用自定义布局，为自定义布局下标。
+	// 如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LayoutIndex *uint64 `json:"LayoutIndex,omitnil,omitempty" name:"LayoutIndex"`
+
+	// 使用的水印Index列表。
+	// 注：当作为入参使用时，列表中的水印Index需要已经存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkPicIndexList []*uint64 `json:"MarkPicIndexList,omitnil,omitempty" name:"MarkPicIndexList"`
+
+	// 使用的文字水印Index列表。
+	// 注：作为入参使用时，列表中的Index需要已经存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordIndexList []*uint64 `json:"MarkWordIndexList,omitnil,omitempty" name:"MarkWordIndexList"`
+
+	// 使用的转场类型。
+	// 注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// 使用的音频输入Index列表。
+	// 注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioIndexList []*uint64 `json:"AudioIndexList,omitnil,omitempty" name:"AudioIndexList"`
+
+	// 作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
+	// 默认为0。
+	// 有效值，0,1。
+	// 0代表不从头播放
+	// 1代表从头播放
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputStartType *int64 `json:"InputStartType,omitnil,omitempty" name:"InputStartType"`
+
+	// LayoutIndex类型，
+	// 默认值:0
+	// 可选值[0,1]
+	// 0:默认类型，代表普通布局
+	// 1:单输入类型，代表单输入布局
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LayoutIndexType *int64 `json:"LayoutIndexType,omitnil,omitempty" name:"LayoutIndexType"`
+}
+
+type CasterInfo struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 导播台上一次启动pgm的时间，值为unix时间戳。
+	StartLiveTime *uint64 `json:"StartLiveTime,omitnil,omitempty" name:"StartLiveTime"`
+
+	// 导播台的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 导播台创建时间，值为unix时间戳。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 导播台状态 
+	// 0：停止状态，无预监，无主监
+	// 1：无预监，有主监
+	// 2：有预监，无主监
+	// 3：有预监，有主监
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 导播台的过期时间戳。值为-1或unix时间戳。 
+	// 默认值为-1。 当值为-1时，表示该导播台永不过期。 
+	// 当值为正常unix时间戳时，导播台将在该时间过期。 
+	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 导播台延时播放时间，单位为秒。 
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 导播台主监输出的宽度，单位为像素。
+	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
+
+	// 导播台主监输出的高度，单位为像素。
+	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
+
+	// 导播台主监输出的帧率。
+	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
+
+	// 导播台主监输出的码率，单位为kbps
+	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
+
+	// 导播台主监输出的音频码率，单位为kbps。
+	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+
+	// 导播台的计费类型。 
+	// 0 通用型 1 播单型。
+	// 注： 本参数暂无作用。
+	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 录制模板id。
+	RecordTemplateId *uint64 `json:"RecordTemplateId,omitnil,omitempty" name:"RecordTemplateId"`
+
+	// 录制状态。 
+	// 0：未录制 
+	// 1：录制中
+	RecordStatus *uint64 `json:"RecordStatus,omitnil,omitempty" name:"RecordStatus"`
+
+	// 录制接口返回的taskid
+	RecordTaskId *string `json:"RecordTaskId,omitnil,omitempty" name:"RecordTaskId"`
+}
+
 type CdnPlayStatData struct {
 	// 时间点，
 	// 使用UTC格式时间，
@@ -950,6 +1059,246 @@ type ConcurrentRecordStreamNum struct {
 
 	// 路数。
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+}
+
+// Predefined struct for user
+type CopyCasterRequestParams struct {
+	// 源导播台的ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 复制产生的新导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 复制产生的导播台推送到云直播的流id
+	// 注意：该流id不能与云直播中的流id重复
+	OutputStreamId *string `json:"OutputStreamId,omitnil,omitempty" name:"OutputStreamId"`
+}
+
+type CopyCasterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源导播台的ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 复制产生的新导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 复制产生的导播台推送到云直播的流id
+	// 注意：该流id不能与云直播中的流id重复
+	OutputStreamId *string `json:"OutputStreamId,omitnil,omitempty" name:"OutputStreamId"`
+}
+
+func (r *CopyCasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyCasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "CasterName")
+	delete(f, "OutputStreamId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyCasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CopyCasterResponseParams struct {
+	// 复制生成的导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CopyCasterResponse struct {
+	*tchttp.BaseResponse
+	Response *CopyCasterResponseParams `json:"Response"`
+}
+
+func (r *CopyCasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyCasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterRequestParams struct {
+	// 导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 导播台的描述
+	// 最大允许长度256
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 导播台的过期时间戳。值为-1或unix时间戳。
+	// 默认值为-1。
+	// 当值为-1时，表示该导播台永不过期。
+	// 当值为正常unix时间戳时，导播台将在该时间过期。
+	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。
+	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 导播台延时播放时间，单位为秒。
+	// 默认为0，最大支持300秒
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 导播台转场类型。
+	// 默认为空。
+	// 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// 导播台主监输出的宽度，单位为像素。
+	// 默认为1280，最大允许4096。
+	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
+
+	// 导播台主监输出的高度，单位为像素。
+	// 默认为720，最大允许2160。
+	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
+
+	// 导播台主监输出的帧率。
+	// 默认为0，表示随源输出。
+	// 最大支持60。
+	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
+
+	// 导播台主监输出的码率，单位为kbps。
+	// 默认为0，表示随源的码率输出。
+	// 最大允许10000kbps。
+	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
+
+	// 导播台的计费类型。
+	// 0 通用型 
+	// 1 播单型。
+	// 注： 本参数暂无作用。
+	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 导播台主监输出的音频码率，单位为kbps。
+	// 可选项：[0, 128, 192, 256]
+	// 默认值为0，表示随源的音频码率输出。
+	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+}
+
+type CreateCasterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 导播台的描述
+	// 最大允许长度256
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 导播台的过期时间戳。值为-1或unix时间戳。
+	// 默认值为-1。
+	// 当值为-1时，表示该导播台永不过期。
+	// 当值为正常unix时间戳时，导播台将在该时间过期。
+	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。
+	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 导播台延时播放时间，单位为秒。
+	// 默认为0，最大支持300秒
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 导播台转场类型。
+	// 默认为空。
+	// 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// 导播台主监输出的宽度，单位为像素。
+	// 默认为1280，最大允许4096。
+	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
+
+	// 导播台主监输出的高度，单位为像素。
+	// 默认为720，最大允许2160。
+	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
+
+	// 导播台主监输出的帧率。
+	// 默认为0，表示随源输出。
+	// 最大支持60。
+	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
+
+	// 导播台主监输出的码率，单位为kbps。
+	// 默认为0，表示随源的码率输出。
+	// 最大允许10000kbps。
+	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
+
+	// 导播台的计费类型。
+	// 0 通用型 
+	// 1 播单型。
+	// 注： 本参数暂无作用。
+	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 导播台主监输出的音频码率，单位为kbps。
+	// 可选项：[0, 128, 192, 256]
+	// 默认值为0，表示随源的音频码率输出。
+	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+}
+
+func (r *CreateCasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterName")
+	delete(f, "Description")
+	delete(f, "ExpireTime")
+	delete(f, "DelayTime")
+	delete(f, "TransitionType")
+	delete(f, "PgmWidth")
+	delete(f, "PgmHeight")
+	delete(f, "PgmFps")
+	delete(f, "PgmBitRate")
+	delete(f, "FeeType")
+	delete(f, "PgmAudioBitRate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterResponseParams struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCasterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCasterResponseParams `json:"Response"`
+}
+
+func (r *CreateCasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3617,6 +3966,60 @@ type DelayInfo struct {
 }
 
 // Predefined struct for user
+type DeleteCasterRequestParams struct {
+	// 待删除的导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type DeleteCasterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *DeleteCasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCasterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCasterResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCasterResponseParams `json:"Response"`
+}
+
+func (r *DeleteCasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLiveCallbackRuleRequestParams struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
@@ -5412,6 +5815,80 @@ func (r *DescribeCallbackRecordsListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCasterDisplayInfoRequestParams struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type DescribeCasterDisplayInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *DescribeCasterDisplayInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterDisplayInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterDisplayInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterDisplayInfoResponseParams struct {
+	// 导播台状态
+	// 0：停止状态，无预监，无主监 
+	// 1：无预监，有主监 
+	// 2：有预监，无主监 
+	// 3：有预监，有主监
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 预监使用的展示参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PvwDisplayInfo *CasterDisplayInfo `json:"PvwDisplayInfo,omitnil,omitempty" name:"PvwDisplayInfo"`
+
+	// 主监使用的展示参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PgmDisplayInfo *CasterDisplayInfo `json:"PgmDisplayInfo,omitnil,omitempty" name:"PgmDisplayInfo"`
+
+	// 启动直播的时间，值为unix时间戳。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartLiveTime *uint64 `json:"StartLiveTime,omitnil,omitempty" name:"StartLiveTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterDisplayInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterDisplayInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterDisplayInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterDisplayInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCasterListRequestParams struct {
 
 }
@@ -5463,6 +5940,152 @@ func (r *DescribeCasterListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCasterListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterPlayUrlRequestParams struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 请求播放url的类型。
+	// 取值范围[1，2，3]
+	// 1：获取输入源的播放url
+	// 2：获取pvw的播放url
+	// 3：获取pgm的播放url
+	PlayUrlType *int64 `json:"PlayUrlType,omitnil,omitempty" name:"PlayUrlType"`
+
+	// 仅在PlayUrlType为1时生效，此时该参数表示请求的输入源Index。
+	// 注：对应的输入源必须存在。
+	PlayUrlIndex *int64 `json:"PlayUrlIndex,omitnil,omitempty" name:"PlayUrlIndex"`
+}
+
+type DescribeCasterPlayUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 请求播放url的类型。
+	// 取值范围[1，2，3]
+	// 1：获取输入源的播放url
+	// 2：获取pvw的播放url
+	// 3：获取pgm的播放url
+	PlayUrlType *int64 `json:"PlayUrlType,omitnil,omitempty" name:"PlayUrlType"`
+
+	// 仅在PlayUrlType为1时生效，此时该参数表示请求的输入源Index。
+	// 注：对应的输入源必须存在。
+	PlayUrlIndex *int64 `json:"PlayUrlIndex,omitnil,omitempty" name:"PlayUrlIndex"`
+}
+
+func (r *DescribeCasterPlayUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterPlayUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "PlayUrlType")
+	delete(f, "PlayUrlIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterPlayUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterPlayUrlResponseParams struct {
+	// 播放url。
+	// 当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlayUrl *string `json:"PlayUrl,omitnil,omitempty" name:"PlayUrl"`
+
+	// webrtc协议播放地址。
+	// 当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
+	// 注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebRTCPlayUrl *string `json:"WebRTCPlayUrl,omitnil,omitempty" name:"WebRTCPlayUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterPlayUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterPlayUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterPlayUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterPlayUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterRequestParams struct {
+	// 需查询的导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type DescribeCasterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需查询的导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *DescribeCasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterResponseParams struct {
+	// 导播台信息
+	CasterInfo *CasterInfo `json:"CasterInfo,omitnil,omitempty" name:"CasterInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7370,6 +7993,10 @@ type DescribeLivePullStreamTasksRequestParams struct {
 	// 分页大小，默认值：10。
 	// 取值范围：1~20 之前的任意整数。
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 使用指定任务 ID 查询任务信息。
+	// 注意：仅供使用指定 ID 创建的任务查询。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil,omitempty" name:"SpecifyTaskId"`
 }
 
 type DescribeLivePullStreamTasksRequest struct {
@@ -7386,6 +8013,10 @@ type DescribeLivePullStreamTasksRequest struct {
 	// 分页大小，默认值：10。
 	// 取值范围：1~20 之前的任意整数。
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 使用指定任务 ID 查询任务信息。
+	// 注意：仅供使用指定 ID 创建的任务查询。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil,omitempty" name:"SpecifyTaskId"`
 }
 
 func (r *DescribeLivePullStreamTasksRequest) ToJsonString() string {
@@ -7403,6 +8034,7 @@ func (r *DescribeLivePullStreamTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "PageNum")
 	delete(f, "PageSize")
+	delete(f, "SpecifyTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePullStreamTasksRequest has unknown keys!", "")
 	}
@@ -8718,6 +9350,123 @@ func (r *DescribeLiveTimeShiftTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLiveTimeShiftTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveTimeShiftWriteSizeInfoListRequestParams struct {
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 域名。
+	DomainNames []*string `json:"DomainNames,omitnil,omitempty" name:"DomainNames"`
+
+	// 维度
+	// Area地区、Domain 域名、StorageDays 时移天数
+	Dimensions []*string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// 时移天数。
+	StorageDays []*int64 `json:"StorageDays,omitnil,omitempty" name:"StorageDays"`
+
+	// 时间跨度（分钟）
+	// 默认5，可选 5、60或者1440。
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 区域
+	// 可选Mainland、Oversea。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
+}
+
+type DescribeLiveTimeShiftWriteSizeInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 域名。
+	DomainNames []*string `json:"DomainNames,omitnil,omitempty" name:"DomainNames"`
+
+	// 维度
+	// Area地区、Domain 域名、StorageDays 时移天数
+	Dimensions []*string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// 时移天数。
+	StorageDays []*int64 `json:"StorageDays,omitnil,omitempty" name:"StorageDays"`
+
+	// 时间跨度（分钟）
+	// 默认5，可选 5、60或者1440。
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 区域
+	// 可选Mainland、Oversea。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
+}
+
+func (r *DescribeLiveTimeShiftWriteSizeInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftWriteSizeInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DomainNames")
+	delete(f, "Dimensions")
+	delete(f, "StorageDays")
+	delete(f, "Granularity")
+	delete(f, "MainlandOrOversea")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTimeShiftWriteSizeInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveTimeShiftWriteSizeInfoListResponseParams struct {
+	// 直播时移写入量数据明细。
+	DataInfoList []*TimeShiftWriteSizeData `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveTimeShiftWriteSizeInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveTimeShiftWriteSizeInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveTimeShiftWriteSizeInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftWriteSizeInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12493,6 +13242,210 @@ type MixPortraitSegmentParams struct {
 }
 
 // Predefined struct for user
+type ModifyCasterRequestParams struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 导播台的描述
+	// 最大允许长度256
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 录制模板id。
+	// 默认为0。
+	// 当使用直播录制功能时，可将使用的录制模版填入。
+	// 该接口仅保存字段，不涉及任何录制功能。
+	RecordTemplateId *uint64 `json:"RecordTemplateId,omitnil,omitempty" name:"RecordTemplateId"`
+
+	// 录制状态，当调用录制接口后，可通过该字段保存录制状态。
+	// 0：未录制 
+	// 1：录制中
+	// 该接口仅保存字段，不涉及任何录制处理。
+	RecordStatus *uint64 `json:"RecordStatus,omitnil,omitempty" name:"RecordStatus"`
+
+	// 导播台的过期时间戳。值为-1或unix时间戳。
+	// 默认值为-1。 
+	// 当值为-1时，表示该导播台永不过期。 
+	// 当值为正常unix时间戳时，导播台将在该时间过期。
+	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 导播台延时播放时间，单位为秒。 
+	// 默认为0，最大支持300秒
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 导播台转场类型。 
+	// 默认为空。 
+	// 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// 导播台主监输出的宽度，单位为像素。 
+	// 默认为1280，最大允许4096。
+	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
+
+	// 导播台主监输出的高度，单位为像素。 
+	// 默认为720，最大允许2160。
+	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
+
+	// 导播台主监输出的帧率。 
+	// 默认为0，表示随源输出。 最大支持60。
+	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
+
+	// 导播台主监输出的码率，单位为kbps。 
+	// 默认为0，表示随源的码率输出。 
+	// 最大允许10000kbps。
+	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
+
+	// 导播台的计费类型。 
+	// 0 通用型 
+	// 1 播单型。 
+	// 注： 本参数暂无作用。
+	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 录制接口返回的taskid
+	// 注：该接口只做字段保存，不涉及录制操作。
+	RecordTaskId *string `json:"RecordTaskId,omitnil,omitempty" name:"RecordTaskId"`
+
+	// 导播台主监输出的音频码率，单位为kbps。 
+	// 可选项：[0, 128, 192, 256] 
+	// 默认值为0，表示随源的音频码率输出。
+	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+}
+
+type ModifyCasterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 导播台名称
+	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
+
+	// 导播台的描述
+	// 最大允许长度256
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 录制模板id。
+	// 默认为0。
+	// 当使用直播录制功能时，可将使用的录制模版填入。
+	// 该接口仅保存字段，不涉及任何录制功能。
+	RecordTemplateId *uint64 `json:"RecordTemplateId,omitnil,omitempty" name:"RecordTemplateId"`
+
+	// 录制状态，当调用录制接口后，可通过该字段保存录制状态。
+	// 0：未录制 
+	// 1：录制中
+	// 该接口仅保存字段，不涉及任何录制处理。
+	RecordStatus *uint64 `json:"RecordStatus,omitnil,omitempty" name:"RecordStatus"`
+
+	// 导播台的过期时间戳。值为-1或unix时间戳。
+	// 默认值为-1。 
+	// 当值为-1时，表示该导播台永不过期。 
+	// 当值为正常unix时间戳时，导播台将在该时间过期。
+	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 导播台延时播放时间，单位为秒。 
+	// 默认为0，最大支持300秒
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 导播台转场类型。 
+	// 默认为空。 
+	// 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// 导播台主监输出的宽度，单位为像素。 
+	// 默认为1280，最大允许4096。
+	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
+
+	// 导播台主监输出的高度，单位为像素。 
+	// 默认为720，最大允许2160。
+	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
+
+	// 导播台主监输出的帧率。 
+	// 默认为0，表示随源输出。 最大支持60。
+	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
+
+	// 导播台主监输出的码率，单位为kbps。 
+	// 默认为0，表示随源的码率输出。 
+	// 最大允许10000kbps。
+	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
+
+	// 导播台的计费类型。 
+	// 0 通用型 
+	// 1 播单型。 
+	// 注： 本参数暂无作用。
+	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 录制接口返回的taskid
+	// 注：该接口只做字段保存，不涉及录制操作。
+	RecordTaskId *string `json:"RecordTaskId,omitnil,omitempty" name:"RecordTaskId"`
+
+	// 导播台主监输出的音频码率，单位为kbps。 
+	// 可选项：[0, 128, 192, 256] 
+	// 默认值为0，表示随源的音频码率输出。
+	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+}
+
+func (r *ModifyCasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "CasterName")
+	delete(f, "Description")
+	delete(f, "RecordTemplateId")
+	delete(f, "RecordStatus")
+	delete(f, "ExpireTime")
+	delete(f, "DelayTime")
+	delete(f, "TransitionType")
+	delete(f, "PgmWidth")
+	delete(f, "PgmHeight")
+	delete(f, "PgmFps")
+	delete(f, "PgmBitRate")
+	delete(f, "FeeType")
+	delete(f, "RecordTaskId")
+	delete(f, "PgmAudioBitRate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCasterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCasterResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCasterResponseParams `json:"Response"`
+}
+
+func (r *ModifyCasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyLiveCallbackTemplateRequestParams struct {
 	// DescribeLiveCallbackTemplates接口返回的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -16221,6 +17174,23 @@ type TimeShiftTemplate struct {
 	// 转码流id列表。
 	// 此参数仅在 RemoveWatermark为false时生效。
 	TranscodeTemplateIds []*uint64 `json:"TranscodeTemplateIds,omitnil,omitempty" name:"TranscodeTemplateIds"`
+}
+
+type TimeShiftWriteSizeData struct {
+	// 区域。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 时间，格式为：yyyy-mm-ddTHH:MM:SSZ。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 写入量（单位：字节）
+	WriteSize *float64 `json:"WriteSize,omitnil,omitempty" name:"WriteSize"`
+
+	// 域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 时移天数。
+	StorageDays *int64 `json:"StorageDays,omitnil,omitempty" name:"StorageDays"`
 }
 
 type TimeValue struct {

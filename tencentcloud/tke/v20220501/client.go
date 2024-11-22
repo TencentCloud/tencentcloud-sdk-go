@@ -747,7 +747,7 @@ func NewStartMachinesResponse() (response *StartMachinesResponse) {
 //
 // 支持批量操作。每次请求批量实例的上限为100。
 //
-// 本接口为同步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状态为 Running，则代表启动实例操作成功。
+// 本接口为同步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的状态为 Running，则代表启动实例操作成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -768,7 +768,7 @@ func (c *Client) StartMachines(request *StartMachinesRequest) (response *StartMa
 //
 // 支持批量操作。每次请求批量实例的上限为100。
 //
-// 本接口为同步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状态为 Running，则代表启动实例操作成功。
+// 本接口为同步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的状态为 Running，则代表启动实例操作成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -822,7 +822,7 @@ func NewStopMachinesResponse() (response *StopMachinesResponse) {
 //
 // 支持批量操作。每次请求批量实例的上限为 100。
 //
-// 本接口为同步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状stopped_with_charging，则代表关闭实例操作成功。
+// 本接口为同步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的状态为stopped_with_charging，则代表关闭实例操作成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -845,7 +845,7 @@ func (c *Client) StopMachines(request *StopMachinesRequest) (response *StopMachi
 //
 // 支持批量操作。每次请求批量实例的上限为 100。
 //
-// 本接口为同步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的最新状stopped_with_charging，则代表关闭实例操作成功。
+// 本接口为同步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeClusterInstances 接口查询，如果实例的状态为stopped_with_charging，则代表关闭实例操作成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

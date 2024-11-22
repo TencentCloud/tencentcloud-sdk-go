@@ -3008,6 +3008,10 @@ type CloneSecurityGroupRequestParams struct {
 
 	// 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
 	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	// 若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
+	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CloneSecurityGroupRequest struct {
@@ -3027,6 +3031,10 @@ type CloneSecurityGroupRequest struct {
 
 	// 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
 	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	// 若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
+	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CloneSecurityGroupRequest) ToJsonString() string {
@@ -3046,6 +3054,7 @@ func (r *CloneSecurityGroupRequest) FromJsonString(s string) error {
 	delete(f, "GroupDescription")
 	delete(f, "ProjectId")
 	delete(f, "RemoteRegion")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneSecurityGroupRequest has unknown keys!", "")
 	}
@@ -3055,7 +3064,6 @@ func (r *CloneSecurityGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CloneSecurityGroupResponseParams struct {
 	// 安全组对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroup *SecurityGroup `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3411,7 +3419,6 @@ func (r *CreateAssistantCidrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssistantCidrResponseParams struct {
 	// 辅助CIDR数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitnil,omitempty" name:"AssistantCidrSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5831,6 +5838,112 @@ func (r *CreatePrivateNatGatewayTranslationNatRuleResponse) ToJsonString() strin
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePrivateNatGatewayTranslationNatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReserveIpAddressesRequestParams struct {
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 指定IP申请的内网保留IP地址。
+	IpAddresses []*string `json:"IpAddresses,omitnil,omitempty" name:"IpAddresses"`
+
+	// 不指定IP地址，指定个数自动分配保留内网IP。
+	IpAddressCount *uint64 `json:"IpAddressCount,omitnil,omitempty" name:"IpAddressCount"`
+
+	// 子网唯一 ID。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 内网保留 IP名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 内网保留 IP描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+type CreateReserveIpAddressesRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 指定IP申请的内网保留IP地址。
+	IpAddresses []*string `json:"IpAddresses,omitnil,omitempty" name:"IpAddresses"`
+
+	// 不指定IP地址，指定个数自动分配保留内网IP。
+	IpAddressCount *uint64 `json:"IpAddressCount,omitnil,omitempty" name:"IpAddressCount"`
+
+	// 子网唯一 ID。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 内网保留 IP名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 内网保留 IP描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+func (r *CreateReserveIpAddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReserveIpAddressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "IpAddresses")
+	delete(f, "IpAddressCount")
+	delete(f, "SubnetId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "Tags")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReserveIpAddressesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReserveIpAddressesResponseParams struct {
+	// 内网保留 IP返回信息
+	ReserveIpAddressSet []*ReserveIpAddressInfo `json:"ReserveIpAddressSet,omitnil,omitempty" name:"ReserveIpAddressSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateReserveIpAddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateReserveIpAddressesResponseParams `json:"Response"`
+}
+
+func (r *CreateReserveIpAddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReserveIpAddressesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9658,6 +9771,67 @@ func (r *DeletePrivateNatGatewayTranslationNatRuleResponse) FromJsonString(s str
 }
 
 // Predefined struct for user
+type DeleteReserveIpAddressesRequestParams struct {
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 内网保留IP地址列表。
+	ReserveIpIds []*string `json:"ReserveIpIds,omitnil,omitempty" name:"ReserveIpIds"`
+}
+
+type DeleteReserveIpAddressesRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 内网保留IP地址列表。
+	ReserveIpIds []*string `json:"ReserveIpIds,omitnil,omitempty" name:"ReserveIpIds"`
+}
+
+func (r *DeleteReserveIpAddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReserveIpAddressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "ReserveIpIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReserveIpAddressesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteReserveIpAddressesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteReserveIpAddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteReserveIpAddressesResponseParams `json:"Response"`
+}
+
+func (r *DeleteReserveIpAddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReserveIpAddressesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRouteTableRequestParams struct {
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
@@ -11242,7 +11416,6 @@ func (r *DescribeAssistantCidrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssistantCidrResponseParams struct {
 	// 符合条件的辅助CIDR数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitnil,omitempty" name:"AssistantCidrSet"`
 
 	// 符合条件的实例数量。
@@ -13264,10 +13437,10 @@ type DescribeFlowLogsRequestParams struct {
 	// 流日志存储ID状态。
 	CloudLogState *string `json:"CloudLogState,omitnil,omitempty" name:"CloudLogState"`
 
-	// 按某个字段排序,支持字段：flowLogName,createTime，默认按createTime。
+	// 按某个字段排序,支持字段：flowLogName,createTime，默认按CreatedTime。
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 升序（asc）还是降序（desc）,默认：desc。
+	// 升序（ASC）还是降序（DESC）,默认：DESC。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
 	// 偏移量，默认为0。
@@ -13312,10 +13485,10 @@ type DescribeFlowLogsRequest struct {
 	// 流日志存储ID状态。
 	CloudLogState *string `json:"CloudLogState,omitnil,omitempty" name:"CloudLogState"`
 
-	// 按某个字段排序,支持字段：flowLogName,createTime，默认按createTime。
+	// 按某个字段排序,支持字段：flowLogName,createTime，默认按CreatedTime。
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 升序（asc）还是降序（desc）,默认：desc。
+	// 升序（ASC）还是降序（DESC）,默认：DESC。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
 	// 偏移量，默认为0。
@@ -14729,11 +14902,9 @@ func (r *DescribeNetDetectStatesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNetDetectStatesResponseParams struct {
 	// 符合条件的网络探测验证结果对象数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetDetectStateSet []*NetDetectState `json:"NetDetectStateSet,omitnil,omitempty" name:"NetDetectStateSet"`
 
 	// 符合条件的网络探测验证结果对象数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14820,11 +14991,9 @@ func (r *DescribeNetDetectsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNetDetectsResponseParams struct {
 	// 符合条件的网络探测对象数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetDetectSet []*NetDetect `json:"NetDetectSet,omitnil,omitempty" name:"NetDetectSet"`
 
 	// 符合条件的网络探测对象数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15138,19 +15307,15 @@ type DescribeNetworkInterfaceLimitResponseParams struct {
 	EniPrivateIpAddressQuantity *int64 `json:"EniPrivateIpAddressQuantity,omitnil,omitempty" name:"EniPrivateIpAddressQuantity"`
 
 	// 扩展型网卡配额。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendEniQuantity *int64 `json:"ExtendEniQuantity,omitnil,omitempty" name:"ExtendEniQuantity"`
 
 	// 每个扩展型弹性网卡可以分配的IP配额。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendEniPrivateIpAddressQuantity *int64 `json:"ExtendEniPrivateIpAddressQuantity,omitnil,omitempty" name:"ExtendEniPrivateIpAddressQuantity"`
 
 	// 中继网卡配额。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubEniQuantity *int64 `json:"SubEniQuantity,omitnil,omitempty" name:"SubEniQuantity"`
 
 	// 每个中继网卡可以分配的IP配额。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubEniPrivateIpAddressQuantity *int64 `json:"SubEniPrivateIpAddressQuantity,omitnil,omitempty" name:"SubEniPrivateIpAddressQuantity"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15851,6 +16016,109 @@ func (r *DescribeProductQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProductQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReserveIpAddressesRequestParams struct {
+	// 内网保留IP唯一ID 列表
+	ReserveIpIds []*string `json:"ReserveIpIds,omitnil,omitempty" name:"ReserveIpIds"`
+
+	// 过滤条件，参数不支持同时指定ReserveIpIds和Filters。
+	// 
+	// reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
+	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+	// subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
+	// address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
+	// ip-type - String - （过滤条件）业务类型 ipType，0。
+	// name - String - （过滤条件）名称。
+	// state - String - （过滤条件）状态，可选值：Bind， UnBind。
+	// resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
+	// tag-key - String -（过滤条件）按照标签键进行过滤。
+	// tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeReserveIpAddressesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 内网保留IP唯一ID 列表
+	ReserveIpIds []*string `json:"ReserveIpIds,omitnil,omitempty" name:"ReserveIpIds"`
+
+	// 过滤条件，参数不支持同时指定ReserveIpIds和Filters。
+	// 
+	// reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
+	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+	// subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
+	// address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
+	// ip-type - String - （过滤条件）业务类型 ipType，0。
+	// name - String - （过滤条件）名称。
+	// state - String - （过滤条件）状态，可选值：Bind， UnBind。
+	// resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
+	// tag-key - String -（过滤条件）按照标签键进行过滤。
+	// tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeReserveIpAddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReserveIpAddressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReserveIpIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReserveIpAddressesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReserveIpAddressesResponseParams struct {
+	// 内网保留 IP返回信息。
+	ReserveIpAddressSet []*ReserveIpAddressInfo `json:"ReserveIpAddressSet,omitnil,omitempty" name:"ReserveIpAddressSet"`
+
+	// 返回内网保留IP的个数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReserveIpAddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReserveIpAddressesResponseParams `json:"Response"`
+}
+
+func (r *DescribeReserveIpAddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReserveIpAddressesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16652,7 +16920,6 @@ func (r *DescribeSecurityGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecurityGroupsResponseParams struct {
 	// 安全组对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitnil,omitempty" name:"SecurityGroupSet"`
 
 	// 符合条件的实例数量。
@@ -17830,11 +18097,9 @@ func (r *DescribeUsedIpAddressRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsedIpAddressResponseParams struct {
 	// 占用ip地址的资源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpAddressStates []*IpAddressStates `json:"IpAddressStates,omitnil,omitempty" name:"IpAddressStates"`
 
 	// 返回占用资源的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25642,6 +25907,81 @@ func (r *ModifyPrivateNatGatewayTranslationNatRuleResponse) FromJsonString(s str
 }
 
 // Predefined struct for user
+type ModifyReserveIpAddressRequestParams struct {
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 内网保留IP唯一ID。
+	ReserveIpId *string `json:"ReserveIpId,omitnil,omitempty" name:"ReserveIpId"`
+
+	// 内网保留 IP名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 内网保留 IP描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyReserveIpAddressRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 内网保留IP唯一ID。
+	ReserveIpId *string `json:"ReserveIpId,omitnil,omitempty" name:"ReserveIpId"`
+
+	// 内网保留 IP名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 内网保留 IP描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyReserveIpAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReserveIpAddressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "ReserveIpId")
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReserveIpAddressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReserveIpAddressResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyReserveIpAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReserveIpAddressResponseParams `json:"Response"`
+}
+
+func (r *ModifyReserveIpAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReserveIpAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRouteTableAttributeRequestParams struct {
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
@@ -29083,6 +29423,41 @@ func (r *ReplaceSecurityGroupPolicyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReplaceSecurityGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReserveIpAddressInfo struct {
+	// 内网保留IP唯一 ID。
+	ReserveIpId *string `json:"ReserveIpId,omitnil,omitempty" name:"ReserveIpId"`
+
+	// VPC唯一 ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网唯一 ID。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 内网保留IP地址。
+	ReserveIpAddress *string `json:"ReserveIpAddress,omitnil,omitempty" name:"ReserveIpAddress"`
+
+	// 内网保留 IP绑定的资源实例 ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 产品申请的IpType。
+	IpType *uint64 `json:"IpType,omitnil,omitempty" name:"IpType"`
+
+	// 绑定状态，UnBind-未绑定， Bind-绑定。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 保留 IP名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 保留 IP描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 // Predefined struct for user

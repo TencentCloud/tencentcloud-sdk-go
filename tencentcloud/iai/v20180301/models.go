@@ -1901,19 +1901,19 @@ type FaceQualityInfo struct {
 
 type FaceRect struct {
 	// 人脸框左上角横坐标。 
-	// 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-	// 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+	// - 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+	// - 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
 	// 人脸框左上角纵坐标。 
-	// 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-	// 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+	// - 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+	// - 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 人脸宽度
+	// 人脸宽度。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 人脸高度
+	// 人脸高度。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 

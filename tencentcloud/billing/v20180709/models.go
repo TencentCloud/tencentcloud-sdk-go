@@ -6686,7 +6686,7 @@ type DescribeCostSummaryByProductResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ConsumptionBusinessSummaryDataItem `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 记录数量，NeedRecordNum为0是返回null
+	// 记录数量，NeedRecordNum为0时返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 

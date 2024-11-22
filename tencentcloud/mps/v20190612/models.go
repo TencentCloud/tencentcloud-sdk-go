@@ -16039,6 +16039,10 @@ type SegmentRecognitionItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentUrl *string `json:"SegmentUrl,omitnil,omitempty" name:"SegmentUrl"`
 
+	// 拆条片段封面。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CovImgUrl *string `json:"CovImgUrl,omitnil,omitempty" name:"CovImgUrl"`
+
 	// 分段标题。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -16046,6 +16050,9 @@ type SegmentRecognitionItem struct {
 	// 分段概要。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 分段关键词。
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 直播切片对应直播起始时间点，采用 ISO 日期格式。
 	// 注意：此字段可能返回 null，表示取不到有效值。

@@ -65,7 +65,7 @@ func NewAddReplicationInstanceResponse() (response *AddReplicationInstanceRespon
 }
 
 // AddReplicationInstance
-// 添加复制组成员
+// 本接口（AddReplicationInstance）用于为全球复制组添加实例成员。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -88,7 +88,7 @@ func (c *Client) AddReplicationInstance(request *AddReplicationInstanceRequest) 
 }
 
 // AddReplicationInstance
-// 添加复制组成员
+// 本接口（AddReplicationInstance）用于为全球复制组添加实例成员。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -142,7 +142,7 @@ func NewAllocateWanAddressResponse() (response *AllocateWanAddressResponse) {
 }
 
 // AllocateWanAddress
-// 开通外网
+// 本接口（AllocateWanAddress）用于开通实例外网访问。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -156,7 +156,7 @@ func (c *Client) AllocateWanAddress(request *AllocateWanAddressRequest) (respons
 }
 
 // AllocateWanAddress
-// 开通外网
+// 本接口（AllocateWanAddress）用于开通实例外网访问。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -201,7 +201,7 @@ func NewApplyParamsTemplateResponse() (response *ApplyParamsTemplateResponse) {
 }
 
 // ApplyParamsTemplate
-// 应用参数模板到实例
+// 本接口（ApplyParamsTemplate）用于应用参数模板到实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -223,7 +223,7 @@ func (c *Client) ApplyParamsTemplate(request *ApplyParamsTemplateRequest) (respo
 }
 
 // ApplyParamsTemplate
-// 应用参数模板到实例
+// 本接口（ApplyParamsTemplate）用于应用参数模板到实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -343,7 +343,7 @@ func NewChangeInstanceRoleResponse() (response *ChangeInstanceRoleResponse) {
 }
 
 // ChangeInstanceRole
-// 复制组实例更换角色
+// 本接口（ChangeInstanceRole）用于更换复制组内实例的角色。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -361,7 +361,7 @@ func (c *Client) ChangeInstanceRole(request *ChangeInstanceRoleRequest) (respons
 }
 
 // ChangeInstanceRole
-// 复制组实例更换角色
+// 本接口（ChangeInstanceRole）用于更换复制组内实例的角色。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -546,7 +546,7 @@ func NewCleanUpInstanceResponse() (response *CleanUpInstanceResponse) {
 }
 
 // CleanUpInstance
-// 回收站实例立即下线
+// 本接口（CleanUpInstance）用于立即下线回收站的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -559,7 +559,7 @@ func (c *Client) CleanUpInstance(request *CleanUpInstanceRequest) (response *Cle
 }
 
 // CleanUpInstance
-// 回收站实例立即下线
+// 本接口（CleanUpInstance）用于立即下线回收站的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -603,7 +603,7 @@ func NewClearInstanceResponse() (response *ClearInstanceResponse) {
 }
 
 // ClearInstance
-// 清空Redis实例的实例数据。
+// 本接口（ClearInstance）用于清空实例数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -617,7 +617,7 @@ func (c *Client) ClearInstance(request *ClearInstanceRequest) (response *ClearIn
 }
 
 // ClearInstance
-// 清空Redis实例的实例数据。
+// 本接口（ClearInstance）用于清空实例数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -773,7 +773,7 @@ func NewCloseSSLResponse() (response *CloseSSLResponse) {
 }
 
 // CloseSSL
-// 关闭SSL
+// 本接口（CloseSSL）用于关闭SSL加密认证。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -790,7 +790,7 @@ func (c *Client) CloseSSL(request *CloseSSLRequest) (response *CloseSSLResponse,
 }
 
 // CloseSSL
-// 关闭SSL
+// 本接口（CloseSSL）用于关闭SSL加密认证。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -838,7 +838,7 @@ func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse
 }
 
 // CreateInstanceAccount
-// 该接口（CreateInstanceAccount）用于自定义访问实例的账号。
+// 本接口（CreateInstanceAccount）用于自定义访问实例的账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -852,7 +852,7 @@ func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (r
 }
 
 // CreateInstanceAccount
-// 该接口（CreateInstanceAccount）用于自定义访问实例的账号。
+// 本接口（CreateInstanceAccount）用于自定义访问实例的账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1063,7 +1063,7 @@ func NewCreateReplicationGroupResponse() (response *CreateReplicationGroupRespon
 }
 
 // CreateReplicationGroup
-// 该接口（CreateReplicationGroup）用于创建复制组。
+// 本接口（CreateReplicationGroup）用于创建复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1085,7 +1085,7 @@ func (c *Client) CreateReplicationGroup(request *CreateReplicationGroupRequest) 
 }
 
 // CreateReplicationGroup
-// 该接口（CreateReplicationGroup）用于创建复制组。
+// 本接口（CreateReplicationGroup）用于创建复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1138,7 +1138,7 @@ func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse
 }
 
 // DeleteInstanceAccount
-// 删除实例子账号
+// 本接口（DeleteInstanceAccount）用于删除实例子账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1152,7 +1152,7 @@ func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) (r
 }
 
 // DeleteInstanceAccount
-// 删除实例子账号
+// 本接口（DeleteInstanceAccount）用于删除实例子账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1254,7 +1254,7 @@ func NewDeleteReplicationInstanceResponse() (response *DeleteReplicationInstance
 }
 
 // DeleteReplicationInstance
-// 移除复制组成员。注：该接口下线中，请使用 [RemoveReplicationInstance](https://cloud.tencent.com/document/product/239/90099)。
+// 本接口（DeleteReplicationInstance）移除复制组成员。注：该接口下线中，请使用 [RemoveReplicationInstance](https://cloud.tencent.com/document/product/239/90099)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1271,7 +1271,7 @@ func (c *Client) DeleteReplicationInstance(request *DeleteReplicationInstanceReq
 }
 
 // DeleteReplicationInstance
-// 移除复制组成员。注：该接口下线中，请使用 [RemoveReplicationInstance](https://cloud.tencent.com/document/product/239/90099)。
+// 本接口（DeleteReplicationInstance）移除复制组成员。注：该接口下线中，请使用 [RemoveReplicationInstance](https://cloud.tencent.com/document/product/239/90099)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1634,7 +1634,7 @@ func NewDescribeCommonDBInstancesResponse() (response *DescribeCommonDBInstances
 }
 
 // DescribeCommonDBInstances
-// 查询Redis实例列表信息。该接口已废弃。
+// 本接口（DescribeCommonDBInstances）用于查询Redis实例列表信息。当前该接口已废弃。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1649,7 +1649,7 @@ func (c *Client) DescribeCommonDBInstances(request *DescribeCommonDBInstancesReq
 }
 
 // DescribeCommonDBInstances
-// 查询Redis实例列表信息。该接口已废弃。
+// 本接口（DescribeCommonDBInstances）用于查询Redis实例列表信息。当前该接口已废弃。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1945,7 +1945,7 @@ func NewDescribeInstanceDTSInfoResponse() (response *DescribeInstanceDTSInfoResp
 }
 
 // DescribeInstanceDTSInfo
-// 查询实例DTS信息
+// 本接口（DescribeInstanceDTSInfo）用于查询实例 DTS 信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1956,7 +1956,7 @@ func (c *Client) DescribeInstanceDTSInfo(request *DescribeInstanceDTSInfoRequest
 }
 
 // DescribeInstanceDTSInfo
-// 查询实例DTS信息
+// 本接口（DescribeInstanceDTSInfo）用于查询实例 DTS 信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2408,7 +2408,7 @@ func NewDescribeInstanceMonitorTookDistResponse() (response *DescribeInstanceMon
 }
 
 // DescribeInstanceMonitorTookDist
-// 查询实例访问的耗时分布
+// 本接口（DescribeInstanceMonitorTookDist）用于查询实例访问的耗时分布。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2417,7 +2417,7 @@ func (c *Client) DescribeInstanceMonitorTookDist(request *DescribeInstanceMonito
 }
 
 // DescribeInstanceMonitorTookDist
-// 查询实例访问的耗时分布
+// 本接口（DescribeInstanceMonitorTookDist）用于查询实例访问的耗时分布。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2506,7 +2506,7 @@ func NewDescribeInstanceMonitorTopNCmdTookResponse() (response *DescribeInstance
 }
 
 // DescribeInstanceMonitorTopNCmdTook
-// 查询实例CPU耗时
+// 本接口（DescribeInstanceMonitorTopNCmdTook）用于查询实例 CPU 耗时。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2515,7 +2515,7 @@ func (c *Client) DescribeInstanceMonitorTopNCmdTook(request *DescribeInstanceMon
 }
 
 // DescribeInstanceMonitorTopNCmdTook
-// 查询实例CPU耗时
+// 本接口（DescribeInstanceMonitorTopNCmdTook）用于查询实例 CPU 耗时。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -3336,7 +3336,7 @@ func NewDescribeProjectSecurityGroupResponse() (response *DescribeProjectSecurit
 }
 
 // DescribeProjectSecurityGroup
-// 查询项目安全组信息
+// 本接口（DescribeProjectSecurityGroup）用于查询项目安全组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3354,7 +3354,7 @@ func (c *Client) DescribeProjectSecurityGroup(request *DescribeProjectSecurityGr
 }
 
 // DescribeProjectSecurityGroup
-// 查询项目安全组信息
+// 本接口（DescribeProjectSecurityGroup）用于查询项目安全组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3403,7 +3403,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 }
 
 // DescribeProjectSecurityGroups
-// 本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
+// 本接口（DescribeProjectSecurityGroups）用于查询项目的安全组详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -3422,7 +3422,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
 }
 
 // DescribeProjectSecurityGroups
-// 本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
+// 本接口（DescribeProjectSecurityGroups）用于查询项目的安全组详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -3535,7 +3535,7 @@ func NewDescribeRedisClusterOverviewResponse() (response *DescribeRedisClusterOv
 }
 
 // DescribeRedisClusterOverview
-// 查询Redis独享集群概览信息
+// 本接口（DescribeRedisClusterOverview）用于查询 Redis 独享集群概览信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3544,7 +3544,7 @@ func (c *Client) DescribeRedisClusterOverview(request *DescribeRedisClusterOverv
 }
 
 // DescribeRedisClusterOverview
-// 查询Redis独享集群概览信息
+// 本接口（DescribeRedisClusterOverview）用于查询 Redis 独享集群概览信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3584,7 +3584,7 @@ func NewDescribeRedisClustersResponse() (response *DescribeRedisClustersResponse
 }
 
 // DescribeRedisClusters
-// 查询Redis独享集群列表
+// 本接口（DescribeRedisClusters）用于查询Redis独享集群列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3595,7 +3595,7 @@ func (c *Client) DescribeRedisClusters(request *DescribeRedisClustersRequest) (r
 }
 
 // DescribeRedisClusters
-// 查询Redis独享集群列表
+// 本接口（DescribeRedisClusters）用于查询Redis独享集群列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3688,7 +3688,7 @@ func NewDescribeReplicationGroupInstanceResponse() (response *DescribeReplicatio
 }
 
 // DescribeReplicationGroupInstance
-// 查询复制组信息
+// 本接口（DescribeReplicationGroupInstance）用于查询复制组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3702,7 +3702,7 @@ func (c *Client) DescribeReplicationGroupInstance(request *DescribeReplicationGr
 }
 
 // DescribeReplicationGroupInstance
-// 查询复制组信息
+// 本接口（DescribeReplicationGroupInstance）用于查询复制组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3987,7 +3987,7 @@ func NewDescribeTendisSlowLogResponse() (response *DescribeTendisSlowLogResponse
 }
 
 // DescribeTendisSlowLog
-// 查询Tendis慢查询
+// 本接口（DescribeTendisSlowLog）用于查询 Tendis 实例慢查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -4000,7 +4000,7 @@ func (c *Client) DescribeTendisSlowLog(request *DescribeTendisSlowLogRequest) (r
 }
 
 // DescribeTendisSlowLog
-// 查询Tendis慢查询
+// 本接口（DescribeTendisSlowLog）用于查询 Tendis 实例慢查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -4044,7 +4044,7 @@ func NewDestroyPostpaidInstanceResponse() (response *DestroyPostpaidInstanceResp
 }
 
 // DestroyPostpaidInstance
-// 按量计费实例销毁
+// 本接口（DestroyPostpaidInstance）用于销毁按量计费实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4063,7 +4063,7 @@ func (c *Client) DestroyPostpaidInstance(request *DestroyPostpaidInstanceRequest
 }
 
 // DestroyPostpaidInstance
-// 按量计费实例销毁
+// 本接口（DestroyPostpaidInstance）用于销毁按量计费实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4113,7 +4113,7 @@ func NewDestroyPrepaidInstanceResponse() (response *DestroyPrepaidInstanceRespon
 }
 
 // DestroyPrepaidInstance
-// 包年包月实例退还
+// 本接口（DestroyPrepaidInstance）用于退还包年包月计费的 Redis 实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4134,7 +4134,7 @@ func (c *Client) DestroyPrepaidInstance(request *DestroyPrepaidInstanceRequest) 
 }
 
 // DestroyPrepaidInstance
-// 包年包月实例退还
+// 本接口（DestroyPrepaidInstance）用于退还包年包月计费的 Redis 实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4186,7 +4186,7 @@ func NewDisableReplicaReadonlyResponse() (response *DisableReplicaReadonlyRespon
 }
 
 // DisableReplicaReadonly
-// 禁用读写分离
+// 本接口（DisableReplicaReadonly）用于禁用读写分离功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4200,7 +4200,7 @@ func (c *Client) DisableReplicaReadonly(request *DisableReplicaReadonlyRequest) 
 }
 
 // DisableReplicaReadonly
-// 禁用读写分离
+// 本接口（DisableReplicaReadonly）用于禁用读写分离功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4245,7 +4245,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 }
 
 // DisassociateSecurityGroups
-// 本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+// 本接口（DisassociateSecurityGroups）用于安全组批量解绑实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -4262,7 +4262,7 @@ func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsR
 }
 
 // DisassociateSecurityGroups
-// 本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+// 本接口（DisassociateSecurityGroups）用于安全组批量解绑实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -4310,7 +4310,7 @@ func NewEnableReplicaReadonlyResponse() (response *EnableReplicaReadonlyResponse
 }
 
 // EnableReplicaReadonly
-// 启用读写分离
+// 本接口（EnableReplicaReadonly）用于启用读写分离功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4325,7 +4325,7 @@ func (c *Client) EnableReplicaReadonly(request *EnableReplicaReadonlyRequest) (r
 }
 
 // EnableReplicaReadonly
-// 启用读写分离
+// 本接口（EnableReplicaReadonly）用于启用读写分离功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4371,7 +4371,7 @@ func NewInquiryPriceCreateInstanceResponse() (response *InquiryPriceCreateInstan
 }
 
 // InquiryPriceCreateInstance
-// 查询新购实例价格
+// 本接口（InquiryPriceCreateInstance）用于查询新购实例价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4385,7 +4385,7 @@ func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceR
 }
 
 // InquiryPriceCreateInstance
-// 查询新购实例价格
+// 本接口（InquiryPriceCreateInstance）用于查询新购实例价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4493,7 +4493,7 @@ func NewInquiryPriceUpgradeInstanceResponse() (response *InquiryPriceUpgradeInst
 }
 
 // InquiryPriceUpgradeInstance
-// 查询实例扩容价格
+// 本接口（InquiryPriceUpgradeInstance）用于查询实例扩容价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4509,7 +4509,7 @@ func (c *Client) InquiryPriceUpgradeInstance(request *InquiryPriceUpgradeInstanc
 }
 
 // InquiryPriceUpgradeInstance
-// 查询实例扩容价格
+// 本接口（InquiryPriceUpgradeInstance）用于查询实例扩容价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4556,7 +4556,7 @@ func NewKillMasterGroupResponse() (response *KillMasterGroupResponse) {
 }
 
 // KillMasterGroup
-// 本接口（KillMasterGroup）模拟故障。
+// 本接口（KillMasterGroup）用于模拟故障。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4578,7 +4578,7 @@ func (c *Client) KillMasterGroup(request *KillMasterGroupRequest) (response *Kil
 }
 
 // KillMasterGroup
-// 本接口（KillMasterGroup）模拟故障。
+// 本接口（KillMasterGroup）用于模拟故障。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4887,7 +4887,7 @@ func NewModifyConnectionConfigResponse() (response *ModifyConnectionConfigRespon
 }
 
 // ModifyConnectionConfig
-// 修改实例的连接配置，包括带宽和最大连接数。
+// 本接口（ModifyConnectionConfig）用于修改实例的连接配置，包括带宽和最大连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4897,7 +4897,7 @@ func (c *Client) ModifyConnectionConfig(request *ModifyConnectionConfigRequest) 
 }
 
 // ModifyConnectionConfig
-// 修改实例的连接配置，包括带宽和最大连接数。
+// 本接口（ModifyConnectionConfig）用于修改实例的连接配置，包括带宽和最大连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5011,7 +5011,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 }
 
 // ModifyInstance
-// 修改实例相关信息
+// 本接口（ModifyInstance）用于修改实例相关信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5027,7 +5027,7 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
 }
 
 // ModifyInstance
-// 修改实例相关信息
+// 本接口（ModifyInstance）用于修改实例相关信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5074,7 +5074,7 @@ func NewModifyInstanceAccountResponse() (response *ModifyInstanceAccountResponse
 }
 
 // ModifyInstanceAccount
-// 修改实例子账号
+// 本接口（ModifyInstanceAccount）用于修改实例子账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5090,7 +5090,7 @@ func (c *Client) ModifyInstanceAccount(request *ModifyInstanceAccountRequest) (r
 }
 
 // ModifyInstanceAccount
-// 修改实例子账号
+// 本接口（ModifyInstanceAccount）用于修改实例子账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5322,7 +5322,7 @@ func NewModifyInstanceParamsResponse() (response *ModifyInstanceParamsResponse) 
 }
 
 // ModifyInstanceParams
-// 本接口(ModifyInstanceParams)用于修改Redis实例的参数配置。
+// 本接口（ModifyInstanceParams）用于修改 Redis 实例的参数配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
@@ -5344,7 +5344,7 @@ func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (res
 }
 
 // ModifyInstanceParams
-// 本接口(ModifyInstanceParams)用于修改Redis实例的参数配置。
+// 本接口（ModifyInstanceParams）用于修改 Redis 实例的参数配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
@@ -5464,7 +5464,7 @@ func NewModifyInstanceReadOnlyResponse() (response *ModifyInstanceReadOnlyRespon
 }
 
 // ModifyInstanceReadOnly
-// 设置实例输入模式
+// 本接口（ModifyInstanceReadOnly）用于设置实例输入模式。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5478,7 +5478,7 @@ func (c *Client) ModifyInstanceReadOnly(request *ModifyInstanceReadOnlyRequest) 
 }
 
 // ModifyInstanceReadOnly
-// 设置实例输入模式
+// 本接口（ModifyInstanceReadOnly）用于设置实例输入模式。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5523,7 +5523,7 @@ func NewModifyMaintenanceWindowResponse() (response *ModifyMaintenanceWindowResp
 }
 
 // ModifyMaintenanceWindow
-// 修改实例维护时间窗时间，需要进行版本升级或者架构升级的实例，会在维护时间窗内进行时间切换。注意：已经发起版本升级或者架构升级的实例，无法修改维护时间窗。
+// 本接口（ModifyMaintenanceWindow）用于修改实例维护时间窗时间，需要进行版本升级或者架构升级的实例，会在维护时间窗内进行时间切换。注意：已经发起版本升级或者架构升级的实例，无法修改维护时间窗。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5537,7 +5537,7 @@ func (c *Client) ModifyMaintenanceWindow(request *ModifyMaintenanceWindowRequest
 }
 
 // ModifyMaintenanceWindow
-// 修改实例维护时间窗时间，需要进行版本升级或者架构升级的实例，会在维护时间窗内进行时间切换。注意：已经发起版本升级或者架构升级的实例，无法修改维护时间窗。
+// 本接口（ModifyMaintenanceWindow）用于修改实例维护时间窗时间，需要进行版本升级或者架构升级的实例，会在维护时间窗内进行时间切换。注意：已经发起版本升级或者架构升级的实例，无法修改维护时间窗。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5659,7 +5659,7 @@ func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
 }
 
 // ModifyParamTemplate
-// 修改参数模板
+// 本接口（ModifyParamTemplate）用于修改参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5672,7 +5672,7 @@ func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (respo
 }
 
 // ModifyParamTemplate
-// 修改参数模板
+// 本接口（ModifyParamTemplate）用于修改参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5775,7 +5775,7 @@ func NewOpenSSLResponse() (response *OpenSSLResponse) {
 }
 
 // OpenSSL
-// 开启SSL
+// 本接口（OpenSSL）用于开启 SSL 加密认证功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5793,7 +5793,7 @@ func (c *Client) OpenSSL(request *OpenSSLRequest) (response *OpenSSLResponse, er
 }
 
 // OpenSSL
-// 开启SSL
+// 本接口（OpenSSL）用于开启 SSL 加密认证功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5842,7 +5842,7 @@ func NewReleaseWanAddressResponse() (response *ReleaseWanAddressResponse) {
 }
 
 // ReleaseWanAddress
-// 关闭外网
+// 本接口（ReleaseWanAddress）用于关闭外网访问。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5853,7 +5853,7 @@ func (c *Client) ReleaseWanAddress(request *ReleaseWanAddressRequest) (response 
 }
 
 // ReleaseWanAddress
-// 关闭外网
+// 本接口（ReleaseWanAddress）用于关闭外网访问。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5895,7 +5895,7 @@ func NewRemoveReplicationInstanceResponse() (response *RemoveReplicationInstance
 }
 
 // RemoveReplicationInstance
-// 移除复制组成员
+// 本接口（RemoveReplicationInstance）用于移除复制组中的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5912,7 +5912,7 @@ func (c *Client) RemoveReplicationInstance(request *RemoveReplicationInstanceReq
 }
 
 // RemoveReplicationInstance
-// 移除复制组成员
+// 本接口（RemoveReplicationInstance）用于移除复制组中的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6027,7 +6027,7 @@ func NewResetPasswordResponse() (response *ResetPasswordResponse) {
 }
 
 // ResetPassword
-// 重置密码
+// 本接口（ResetPassword）用于重置实例访问密码。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6045,7 +6045,7 @@ func (c *Client) ResetPassword(request *ResetPasswordRequest) (response *ResetPa
 }
 
 // ResetPassword
-// 重置密码
+// 本接口（ResetPassword）用于重置实例访问密码。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6169,7 +6169,7 @@ func NewStartupInstanceResponse() (response *StartupInstanceResponse) {
 }
 
 // StartupInstance
-// 实例解隔离
+// 本接口（StartupInstance）用于实例解隔离。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
@@ -6187,7 +6187,7 @@ func (c *Client) StartupInstance(request *StartupInstanceRequest) (response *Sta
 }
 
 // StartupInstance
-// 实例解隔离
+// 本接口（StartupInstance）用于实例解隔离。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
@@ -6293,7 +6293,7 @@ func NewSwitchInstanceVipResponse() (response *SwitchInstanceVipResponse) {
 }
 
 // SwitchInstanceVip
-// 在通过DTS支持跨可用区灾备的场景中，通过该接口交换实例VIP完成实例灾备切换。交换VIP后目标实例可写，源和目标实例VIP互换，同时源与目标实例间DTS同步任务断开
+// 在通过 DTS 支持跨可用区灾备的场景中，通过该接口（SwitchInstanceVip）交换实例 VIP 完成实例灾备切换。交换 VIP 后目标实例可写，源和目标实例VIP互换，同时源与目标实例间 DTS 同步任务断开。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DTSSTATUSABNORMAL = "FailedOperation.DtsStatusAbnormal"
@@ -6309,7 +6309,7 @@ func (c *Client) SwitchInstanceVip(request *SwitchInstanceVipRequest) (response 
 }
 
 // SwitchInstanceVip
-// 在通过DTS支持跨可用区灾备的场景中，通过该接口交换实例VIP完成实例灾备切换。交换VIP后目标实例可写，源和目标实例VIP互换，同时源与目标实例间DTS同步任务断开
+// 在通过 DTS 支持跨可用区灾备的场景中，通过该接口（SwitchInstanceVip）交换实例 VIP 完成实例灾备切换。交换 VIP 后目标实例可写，源和目标实例VIP互换，同时源与目标实例间 DTS 同步任务断开。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DTSSTATUSABNORMAL = "FailedOperation.DtsStatusAbnormal"
@@ -6356,7 +6356,7 @@ func NewSwitchProxyResponse() (response *SwitchProxyResponse) {
 }
 
 // SwitchProxy
-// Proxy模拟故障接口
+// 本接口（SwitchProxy）为 Proxy 模拟故障接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6370,7 +6370,7 @@ func (c *Client) SwitchProxy(request *SwitchProxyRequest) (response *SwitchProxy
 }
 
 // SwitchProxy
-// Proxy模拟故障接口
+// 本接口（SwitchProxy）为 Proxy 模拟故障接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6496,7 +6496,7 @@ func NewUpgradeInstanceVersionResponse() (response *UpgradeInstanceVersionRespon
 }
 
 // UpgradeInstanceVersion
-// 将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
+// 本接口（UpgradeInstanceVersion）用于将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6509,7 +6509,7 @@ func (c *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) 
 }
 
 // UpgradeInstanceVersion
-// 将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
+// 本接口（UpgradeInstanceVersion）用于将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6553,7 +6553,7 @@ func NewUpgradeProxyVersionResponse() (response *UpgradeProxyVersionResponse) {
 }
 
 // UpgradeProxyVersion
-// 实例proxy版本升级
+// 本接口（UpgradeProxyVersion）用于升级实例 Proxy 版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6564,7 +6564,7 @@ func (c *Client) UpgradeProxyVersion(request *UpgradeProxyVersionRequest) (respo
 }
 
 // UpgradeProxyVersion
-// 实例proxy版本升级
+// 本接口（UpgradeProxyVersion）用于升级实例 Proxy 版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6606,7 +6606,7 @@ func NewUpgradeSmallVersionResponse() (response *UpgradeSmallVersionResponse) {
 }
 
 // UpgradeSmallVersion
-// 实例小版本升级
+// 本接口（UpgradeSmallVersion）用于实例小版本升级。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6618,7 +6618,7 @@ func (c *Client) UpgradeSmallVersion(request *UpgradeSmallVersionRequest) (respo
 }
 
 // UpgradeSmallVersion
-// 实例小版本升级
+// 本接口（UpgradeSmallVersion）用于实例小版本升级。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6661,7 +6661,7 @@ func NewUpgradeVersionToMultiAvailabilityZonesResponse() (response *UpgradeVersi
 }
 
 // UpgradeVersionToMultiAvailabilityZones
-// 升级实例支持多AZ
+// 本接口（UpgradeVersionToMultiAvailabilityZones）用于升级实例支持多AZ。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6675,7 +6675,7 @@ func (c *Client) UpgradeVersionToMultiAvailabilityZones(request *UpgradeVersionT
 }
 
 // UpgradeVersionToMultiAvailabilityZones
-// 升级实例支持多AZ
+// 本接口（UpgradeVersionToMultiAvailabilityZones）用于升级实例支持多AZ。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

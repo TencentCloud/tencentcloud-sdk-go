@@ -452,6 +452,142 @@ func (c *Client) CancelCommonMixStreamWithContext(ctx context.Context, request *
     return
 }
 
+func NewCopyCasterRequest() (request *CopyCasterRequest) {
+    request = &CopyCasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CopyCaster")
+    
+    
+    return
+}
+
+func NewCopyCasterResponse() (response *CopyCasterResponse) {
+    response = &CopyCasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CopyCaster
+// 该接口用来复制导播台配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CopyCaster(request *CopyCasterRequest) (response *CopyCasterResponse, err error) {
+    return c.CopyCasterWithContext(context.Background(), request)
+}
+
+// CopyCaster
+// 该接口用来复制导播台配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CopyCasterWithContext(ctx context.Context, request *CopyCasterRequest) (response *CopyCasterResponse, err error) {
+    if request == nil {
+        request = NewCopyCasterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyCaster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCopyCasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCasterRequest() (request *CreateCasterRequest) {
+    request = &CreateCasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateCaster")
+    
+    
+    return
+}
+
+func NewCreateCasterResponse() (response *CreateCasterResponse) {
+    response = &CreateCasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCaster
+// 该接口用来创建新的导播台
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCaster(request *CreateCasterRequest) (response *CreateCasterResponse, err error) {
+    return c.CreateCasterWithContext(context.Background(), request)
+}
+
+// CreateCaster
+// 该接口用来创建新的导播台
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterWithContext(ctx context.Context, request *CreateCasterRequest) (response *CreateCasterResponse, err error) {
+    if request == nil {
+        request = NewCreateCasterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCaster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCommonMixStreamRequest() (request *CreateCommonMixStreamRequest) {
     request = &CreateCommonMixStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2332,6 +2468,83 @@ func (c *Client) CreateScreenshotTaskWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateScreenshotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCasterRequest() (request *DeleteCasterRequest) {
+    request = &DeleteCasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteCaster")
+    
+    
+    return
+}
+
+func NewDeleteCasterResponse() (response *DeleteCasterResponse) {
+    response = &DeleteCasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCaster
+// 该接口用来删除一个导播台的所有信息。
+//
+// 注意，调用该接口后，所有的导播台信息将被清除，包括正在直播的内容也将直接中断。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERBINDED = "FailedOperation.CasterBinded"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCaster(request *DeleteCasterRequest) (response *DeleteCasterResponse, err error) {
+    return c.DeleteCasterWithContext(context.Background(), request)
+}
+
+// DeleteCaster
+// 该接口用来删除一个导播台的所有信息。
+//
+// 注意，调用该接口后，所有的导播台信息将被清除，包括正在直播的内容也将直接中断。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERBINDED = "FailedOperation.CasterBinded"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCasterWithContext(ctx context.Context, request *DeleteCasterRequest) (response *DeleteCasterResponse, err error) {
+    if request == nil {
+        request = NewDeleteCasterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCaster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCasterResponse()
     err = c.Send(request, response)
     return
 }
@@ -4344,6 +4557,142 @@ func (c *Client) DescribeCallbackRecordsListWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeCasterRequest() (request *DescribeCasterRequest) {
+    request = &DescribeCasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCaster")
+    
+    
+    return
+}
+
+func NewDescribeCasterResponse() (response *DescribeCasterResponse) {
+    response = &DescribeCasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCaster
+// 查询导播台信息接口，用来查询导播台状态、描述、输出长、宽等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_OUTOFSERVICE = "FailedOperation.OutOfService"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCaster(request *DescribeCasterRequest) (response *DescribeCasterResponse, err error) {
+    return c.DescribeCasterWithContext(context.Background(), request)
+}
+
+// DescribeCaster
+// 查询导播台信息接口，用来查询导播台状态、描述、输出长、宽等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_OUTOFSERVICE = "FailedOperation.OutOfService"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterWithContext(ctx context.Context, request *DescribeCasterRequest) (response *DescribeCasterResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCasterDisplayInfoRequest() (request *DescribeCasterDisplayInfoRequest) {
+    request = &DescribeCasterDisplayInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterDisplayInfo")
+    
+    
+    return
+}
+
+func NewDescribeCasterDisplayInfoResponse() (response *DescribeCasterDisplayInfoResponse) {
+    response = &DescribeCasterDisplayInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterDisplayInfo
+// 查询导播台PVW任务和PGM任务的展示信息，包括使用的布局、水印、字幕等信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CASTERNOTEXISTS = "ResourceNotFound.CasterNotExists"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterDisplayInfo(request *DescribeCasterDisplayInfoRequest) (response *DescribeCasterDisplayInfoResponse, err error) {
+    return c.DescribeCasterDisplayInfoWithContext(context.Background(), request)
+}
+
+// DescribeCasterDisplayInfo
+// 查询导播台PVW任务和PGM任务的展示信息，包括使用的布局、水印、字幕等信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CASTERNOTEXISTS = "ResourceNotFound.CasterNotExists"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterDisplayInfoWithContext(ctx context.Context, request *DescribeCasterDisplayInfoRequest) (response *DescribeCasterDisplayInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterDisplayInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterDisplayInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterDisplayInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCasterListRequest() (request *DescribeCasterListRequest) {
     request = &DescribeCasterListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4407,6 +4756,77 @@ func (c *Client) DescribeCasterListWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeCasterListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCasterPlayUrlRequest() (request *DescribeCasterPlayUrlRequest) {
+    request = &DescribeCasterPlayUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterPlayUrl")
+    
+    
+    return
+}
+
+func NewDescribeCasterPlayUrlResponse() (response *DescribeCasterPlayUrlResponse) {
+    response = &DescribeCasterPlayUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterPlayUrl
+// 该接口用来获取导播台视频流的播放url，用来在页面上拉流展示。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_INPUTISNOTACTIVE = "FailedOperation.InputIsNotActive"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterPlayUrl(request *DescribeCasterPlayUrlRequest) (response *DescribeCasterPlayUrlResponse, err error) {
+    return c.DescribeCasterPlayUrlWithContext(context.Background(), request)
+}
+
+// DescribeCasterPlayUrl
+// 该接口用来获取导播台视频流的播放url，用来在页面上拉流展示。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_INPUTISNOTACTIVE = "FailedOperation.InputIsNotActive"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterPlayUrlWithContext(ctx context.Context, request *DescribeCasterPlayUrlRequest) (response *DescribeCasterPlayUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterPlayUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterPlayUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterPlayUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -7790,6 +8210,65 @@ func (c *Client) DescribeLiveTimeShiftTemplatesWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeLiveTimeShiftWriteSizeInfoListRequest() (request *DescribeLiveTimeShiftWriteSizeInfoListRequest) {
+    request = &DescribeLiveTimeShiftWriteSizeInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveTimeShiftWriteSizeInfoList")
+    
+    
+    return
+}
+
+func NewDescribeLiveTimeShiftWriteSizeInfoListResponse() (response *DescribeLiveTimeShiftWriteSizeInfoListResponse) {
+    response = &DescribeLiveTimeShiftWriteSizeInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveTimeShiftWriteSizeInfoList
+// 支持直播时移写入量数据查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveTimeShiftWriteSizeInfoList(request *DescribeLiveTimeShiftWriteSizeInfoListRequest) (response *DescribeLiveTimeShiftWriteSizeInfoListResponse, err error) {
+    return c.DescribeLiveTimeShiftWriteSizeInfoListWithContext(context.Background(), request)
+}
+
+// DescribeLiveTimeShiftWriteSizeInfoList
+// 支持直播时移写入量数据查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveTimeShiftWriteSizeInfoListWithContext(ctx context.Context, request *DescribeLiveTimeShiftWriteSizeInfoListRequest) (response *DescribeLiveTimeShiftWriteSizeInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTimeShiftWriteSizeInfoListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTimeShiftWriteSizeInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveTimeShiftWriteSizeInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveTranscodeDetailInfoRequest() (request *DescribeLiveTranscodeDetailInfoRequest) {
     request = &DescribeLiveTranscodeDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10259,6 +10738,75 @@ func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *Forbi
     request.SetContext(ctx)
     
     response = NewForbidLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCasterRequest() (request *ModifyCasterRequest) {
+    request = &ModifyCasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyCaster")
+    
+    
+    return
+}
+
+func NewModifyCasterResponse() (response *ModifyCasterResponse) {
+    response = &ModifyCasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCaster
+// 该接口用来设置导播台的描述、名称、录制模板id等参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCaster(request *ModifyCasterRequest) (response *ModifyCasterResponse, err error) {
+    return c.ModifyCasterWithContext(context.Background(), request)
+}
+
+// ModifyCaster
+// 该接口用来设置导播台的描述、名称、录制模板id等参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCasterWithContext(ctx context.Context, request *ModifyCasterRequest) (response *ModifyCasterResponse, err error) {
+    if request == nil {
+        request = NewModifyCasterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCaster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCasterResponse()
     err = c.Send(request, response)
     return
 }
