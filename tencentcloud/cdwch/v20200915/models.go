@@ -2642,6 +2642,100 @@ type ResourceSpec struct {
 }
 
 // Predefined struct for user
+type ScaleCNOutUpInstanceRequestParams struct {
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// warehouse名称
+	VirtualCluster *string `json:"VirtualCluster,omitnil,omitempty" name:"VirtualCluster"`
+
+	// 子网id
+	UserSubnetID *string `json:"UserSubnetID,omitnil,omitempty" name:"UserSubnetID"`
+
+	// 新的warehouse的个数
+	NewCount *int64 `json:"NewCount,omitnil,omitempty" name:"NewCount"`
+
+	// 集群的规格2X-Small、X-Small、Small
+	NewSpecName *string `json:"NewSpecName,omitnil,omitempty" name:"NewSpecName"`
+}
+
+type ScaleCNOutUpInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// warehouse名称
+	VirtualCluster *string `json:"VirtualCluster,omitnil,omitempty" name:"VirtualCluster"`
+
+	// 子网id
+	UserSubnetID *string `json:"UserSubnetID,omitnil,omitempty" name:"UserSubnetID"`
+
+	// 新的warehouse的个数
+	NewCount *int64 `json:"NewCount,omitnil,omitempty" name:"NewCount"`
+
+	// 集群的规格2X-Small、X-Small、Small
+	NewSpecName *string `json:"NewSpecName,omitnil,omitempty" name:"NewSpecName"`
+}
+
+func (r *ScaleCNOutUpInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleCNOutUpInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VirtualCluster")
+	delete(f, "UserSubnetID")
+	delete(f, "NewCount")
+	delete(f, "NewSpecName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleCNOutUpInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleCNOutUpInstanceResponseParams struct {
+	// 流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ScaleCNOutUpInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleCNOutUpInstanceResponseParams `json:"Response"`
+}
+
+func (r *ScaleCNOutUpInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleCNOutUpInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ScaleOutInstanceRequestParams struct {
 	// 实例唯一ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

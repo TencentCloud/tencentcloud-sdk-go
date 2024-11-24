@@ -30506,10 +30506,10 @@ type UpdateDataModelRegistryInfoRequestParams struct {
 	// 数语的CAM角色
 	AppCamRole *string `json:"AppCamRole,omitnil,omitempty" name:"AppCamRole"`
 
-	// 数语的ip
+	// 数语的公网访问ip
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 数语的端口
+	// 数语的公网访问端口
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 数语的CAM角色id
@@ -30523,6 +30523,21 @@ type UpdateDataModelRegistryInfoRequestParams struct {
 
 	// 主账号id
 	OwnId *string `json:"OwnId,omitnil,omitempty" name:"OwnId"`
+
+	// VpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// Vpc地域
+	VpcRegion *string `json:"VpcRegion,omitnil,omitempty" name:"VpcRegion"`
+
+	// 数语的内网访问ip
+	Pip *string `json:"Pip,omitnil,omitempty" name:"Pip"`
+
+	// 数语的内网访问端口
+	Pport *uint64 `json:"Pport,omitnil,omitempty" name:"Pport"`
+
+	// 是否开放公网访问数语, 1:是，0:否，默认1开放
+	IsPublic *uint64 `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 }
 
 type UpdateDataModelRegistryInfoRequest struct {
@@ -30534,10 +30549,10 @@ type UpdateDataModelRegistryInfoRequest struct {
 	// 数语的CAM角色
 	AppCamRole *string `json:"AppCamRole,omitnil,omitempty" name:"AppCamRole"`
 
-	// 数语的ip
+	// 数语的公网访问ip
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 数语的端口
+	// 数语的公网访问端口
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 数语的CAM角色id
@@ -30551,6 +30566,21 @@ type UpdateDataModelRegistryInfoRequest struct {
 
 	// 主账号id
 	OwnId *string `json:"OwnId,omitnil,omitempty" name:"OwnId"`
+
+	// VpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// Vpc地域
+	VpcRegion *string `json:"VpcRegion,omitnil,omitempty" name:"VpcRegion"`
+
+	// 数语的内网访问ip
+	Pip *string `json:"Pip,omitnil,omitempty" name:"Pip"`
+
+	// 数语的内网访问端口
+	Pport *uint64 `json:"Pport,omitnil,omitempty" name:"Pport"`
+
+	// 是否开放公网访问数语, 1:是，0:否，默认1开放
+	IsPublic *uint64 `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 }
 
 func (r *UpdateDataModelRegistryInfoRequest) ToJsonString() string {
@@ -30573,6 +30603,11 @@ func (r *UpdateDataModelRegistryInfoRequest) FromJsonString(s string) error {
 	delete(f, "Provider")
 	delete(f, "TenantId")
 	delete(f, "OwnId")
+	delete(f, "VpcId")
+	delete(f, "VpcRegion")
+	delete(f, "Pip")
+	delete(f, "Pport")
+	delete(f, "IsPublic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataModelRegistryInfoRequest has unknown keys!", "")
 	}

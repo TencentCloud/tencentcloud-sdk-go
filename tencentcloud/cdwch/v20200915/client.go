@@ -1270,6 +1270,55 @@ func (c *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskR
     return
 }
 
+func NewScaleCNOutUpInstanceRequest() (request *ScaleCNOutUpInstanceRequest) {
+    request = &ScaleCNOutUpInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "ScaleCNOutUpInstance")
+    
+    
+    return
+}
+
+func NewScaleCNOutUpInstanceResponse() (response *ScaleCNOutUpInstanceResponse) {
+    response = &ScaleCNOutUpInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScaleCNOutUpInstance
+// open-api接口提供弹性伸缩云原生集群能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleCNOutUpInstance(request *ScaleCNOutUpInstanceRequest) (response *ScaleCNOutUpInstanceResponse, err error) {
+    return c.ScaleCNOutUpInstanceWithContext(context.Background(), request)
+}
+
+// ScaleCNOutUpInstance
+// open-api接口提供弹性伸缩云原生集群能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleCNOutUpInstanceWithContext(ctx context.Context, request *ScaleCNOutUpInstanceRequest) (response *ScaleCNOutUpInstanceResponse, err error) {
+    if request == nil {
+        request = NewScaleCNOutUpInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleCNOutUpInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleCNOutUpInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
     request = &ScaleOutInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

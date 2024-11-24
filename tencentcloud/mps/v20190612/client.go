@@ -6484,6 +6484,73 @@ func (c *Client) ParseNotificationWithContext(ctx context.Context, request *Pars
     return
 }
 
+func NewProcessImageRequest() (request *ProcessImageRequest) {
+    request = &ProcessImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ProcessImage")
+    
+    
+    return
+}
+
+func NewProcessImageResponse() (response *ProcessImageResponse) {
+    response = &ProcessImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ProcessImage
+// 发起图片处理，功能包括：
+//
+// 1. 格式转换；
+//
+// 2. 图像增强；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) ProcessImage(request *ProcessImageRequest) (response *ProcessImageResponse, err error) {
+    return c.ProcessImageWithContext(context.Background(), request)
+}
+
+// ProcessImage
+// 发起图片处理，功能包括：
+//
+// 1. 格式转换；
+//
+// 2. 图像增强；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) ProcessImageWithContext(ctx context.Context, request *ProcessImageRequest) (response *ProcessImageResponse, err error) {
+    if request == nil {
+        request = NewProcessImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ProcessImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewProcessImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessLiveStreamRequest() (request *ProcessLiveStreamRequest) {
     request = &ProcessLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},

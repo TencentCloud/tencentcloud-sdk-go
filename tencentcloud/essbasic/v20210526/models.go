@@ -6452,12 +6452,24 @@ type CreateBatchInitOrganizationUrlRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 初始化操作类型
-	// <ul><li>CREATE_SEAL : 创建印章</li>
-	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+	// <ul>
+	// <li>CREATE_SEAL : 创建印章</li>
+	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+	// <li>PARTNER_AUTO_SIGN_AUTH :合作方企业或应用平台方授权自动签</li>
+	// </ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
 	// 批量操作的企业列表在第三方平台的企业Id列表，即ProxyOrganizationOpenId列表,最大支持50个
 	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
+
+	// 当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且是给应用平台方授权自动签时传true。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f9aba7c999a6d79ada20b4384520e120.png)
+	IsAuthorizePlatformApplication *bool `json:"IsAuthorizePlatformApplication,omitnil,omitempty" name:"IsAuthorizePlatformApplication"`
+
+	// 被授权的合作方企业在第三方平台子客企业标识，即ProxyOrganizationOpenId，当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且要进行合作方企业授权自动签时必传。
+	// 
+	// 
+	AuthorizedProxyOrganizationOpenId *string `json:"AuthorizedProxyOrganizationOpenId,omitnil,omitempty" name:"AuthorizedProxyOrganizationOpenId"`
 }
 
 type CreateBatchInitOrganizationUrlRequest struct {
@@ -6467,12 +6479,24 @@ type CreateBatchInitOrganizationUrlRequest struct {
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 初始化操作类型
-	// <ul><li>CREATE_SEAL : 创建印章</li>
-	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+	// <ul>
+	// <li>CREATE_SEAL : 创建印章</li>
+	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+	// <li>PARTNER_AUTO_SIGN_AUTH :合作方企业或应用平台方授权自动签</li>
+	// </ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
 	// 批量操作的企业列表在第三方平台的企业Id列表，即ProxyOrganizationOpenId列表,最大支持50个
 	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
+
+	// 当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且是给应用平台方授权自动签时传true。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/f9aba7c999a6d79ada20b4384520e120.png)
+	IsAuthorizePlatformApplication *bool `json:"IsAuthorizePlatformApplication,omitnil,omitempty" name:"IsAuthorizePlatformApplication"`
+
+	// 被授权的合作方企业在第三方平台子客企业标识，即ProxyOrganizationOpenId，当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且要进行合作方企业授权自动签时必传。
+	// 
+	// 
+	AuthorizedProxyOrganizationOpenId *string `json:"AuthorizedProxyOrganizationOpenId,omitnil,omitempty" name:"AuthorizedProxyOrganizationOpenId"`
 }
 
 func (r *CreateBatchInitOrganizationUrlRequest) ToJsonString() string {
@@ -6490,6 +6514,8 @@ func (r *CreateBatchInitOrganizationUrlRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "OperateTypes")
 	delete(f, "ProxyOrganizationOpenIds")
+	delete(f, "IsAuthorizePlatformApplication")
+	delete(f, "AuthorizedProxyOrganizationOpenId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchInitOrganizationUrlRequest has unknown keys!", "")
 	}

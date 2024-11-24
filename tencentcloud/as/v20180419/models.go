@@ -6039,7 +6039,9 @@ type StartInstanceRefreshRequestParams struct {
 	// 刷新设置。
 	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil,omitempty" name:"RefreshSettings"`
 
-	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+	// 刷新模式。取值范围：
+	// <li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
+	// <li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
 	RefreshMode *string `json:"RefreshMode,omitnil,omitempty" name:"RefreshMode"`
 }
 
@@ -6052,7 +6054,9 @@ type StartInstanceRefreshRequest struct {
 	// 刷新设置。
 	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil,omitempty" name:"RefreshSettings"`
 
-	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+	// 刷新模式。取值范围：
+	// <li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
+	// <li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
 	RefreshMode *string `json:"RefreshMode,omitnil,omitempty" name:"RefreshMode"`
 }
 

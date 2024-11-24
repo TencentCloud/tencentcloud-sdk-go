@@ -1340,9 +1340,12 @@ type CreateBatchInitOrganizationUrlRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 初始化操作类型
-	// <ul><li>CREATE_SEAL : 创建印章</li>
+	// <ul>
+	// <li>CREATE_SEAL : 创建印章</li>
 	// <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
-	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+	// <li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+	// </ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
 	// 批量操作的企业Id列表，最大支持50个
@@ -1350,6 +1353,13 @@ type CreateBatchInitOrganizationUrlRequestParams struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 被授权的合作方企业在电子签的企业电子签账号，当操作类型包含 PARTNER_AUTO_SIGN_AUTH （合作方企业授权自动签）时必传。
+	// 
+	// 企业电子签账号可在[电子签的网页端](https://qian.tencent.com/console/company-settings/company-center) ，于企业设置-企业信息菜单栏下复制获取。
+	// 
+	// ![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 }
 
 type CreateBatchInitOrganizationUrlRequest struct {
@@ -1360,9 +1370,12 @@ type CreateBatchInitOrganizationUrlRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 初始化操作类型
-	// <ul><li>CREATE_SEAL : 创建印章</li>
+	// <ul>
+	// <li>CREATE_SEAL : 创建印章</li>
 	// <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
-	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+	// <li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+	// </ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
 	// 批量操作的企业Id列表，最大支持50个
@@ -1370,6 +1383,13 @@ type CreateBatchInitOrganizationUrlRequest struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 被授权的合作方企业在电子签的企业电子签账号，当操作类型包含 PARTNER_AUTO_SIGN_AUTH （合作方企业授权自动签）时必传。
+	// 
+	// 企业电子签账号可在[电子签的网页端](https://qian.tencent.com/console/company-settings/company-center) ，于企业设置-企业信息菜单栏下复制获取。
+	// 
+	// ![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 }
 
 func (r *CreateBatchInitOrganizationUrlRequest) ToJsonString() string {
@@ -1388,6 +1408,7 @@ func (r *CreateBatchInitOrganizationUrlRequest) FromJsonString(s string) error {
 	delete(f, "OperateTypes")
 	delete(f, "OrganizationIds")
 	delete(f, "Agent")
+	delete(f, "AuthorizedOrganizationId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchInitOrganizationUrlRequest has unknown keys!", "")
 	}

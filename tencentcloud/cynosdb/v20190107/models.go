@@ -1349,6 +1349,9 @@ type ClusterInstanceDetail struct {
 	// 实例存储类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
+
+	// 数据库类型
+	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 }
 
 type ClusterParamModifyLog struct {
@@ -3181,7 +3184,7 @@ type CynosdbClusterDetail struct {
 	// 数据库类型
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库类型，normal，serverless
+	// Db类型：<li>NORMAL</li><li>SERVERLESS</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
