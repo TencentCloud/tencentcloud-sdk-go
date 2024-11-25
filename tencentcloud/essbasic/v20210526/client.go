@@ -4162,7 +4162,7 @@ func NewChannelDescribeFlowComponentsResponse() (response *ChannelDescribeFlowCo
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/08f6ea50d3ae88b51c280c2b17c2a126.png)
 //
-// ### 2.  那些控件会出现在结果里边？ 
+// ### 2.  哪些控件会出现在结果里边？ 
 //
 // **A.不返回的控件类型：**
 //
@@ -4244,7 +4244,7 @@ func (c *Client) ChannelDescribeFlowComponents(request *ChannelDescribeFlowCompo
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/08f6ea50d3ae88b51c280c2b17c2a126.png)
 //
-// ### 2.  那些控件会出现在结果里边？ 
+// ### 2.  哪些控件会出现在结果里边？ 
 //
 // **A.不返回的控件类型：**
 //

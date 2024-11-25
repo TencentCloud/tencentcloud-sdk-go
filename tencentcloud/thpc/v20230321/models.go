@@ -95,7 +95,7 @@ type AddNodesRequestParams struct {
 	// 添加节点数量。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
@@ -168,7 +168,7 @@ type AddNodesRequest struct {
 	// 添加节点数量。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
@@ -627,7 +627,7 @@ type CreateClusterRequestParams struct {
 	// <li>SGE：     8.1.9</li>
 	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818)
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。
@@ -705,7 +705,7 @@ type CreateClusterRequest struct {
 	// <li>SGE：     8.1.9</li>
 	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818)
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。

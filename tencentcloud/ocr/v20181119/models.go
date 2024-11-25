@@ -9498,6 +9498,17 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// -9109 告警能力未开通
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
+	// 字段置信度：
+	// {
+	//     "ID": {
+	//         "Confidence": 0.9999
+	//     },
+	//     "ThaiName": {
+	//         "Confidence": 0.9996
+	//     }
+	// }
+	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

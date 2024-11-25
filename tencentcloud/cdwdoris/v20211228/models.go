@@ -1603,6 +1603,18 @@ type DescribeBackUpTablesResponseParams struct {
 	// 可备份表列表
 	AvailableTables []*BackupTableContent `json:"AvailableTables,omitnil,omitempty" name:"AvailableTables"`
 
+	// msg
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 未知version
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUnknownVersion *bool `json:"IsUnknownVersion,omitnil,omitempty" name:"IsUnknownVersion"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2352,6 +2364,10 @@ type DescribeDatabaseAuditRecordsResponseParams struct {
 
 	// 记录列表
 	SlowQueryRecords *DataBaseAuditRecord `json:"SlowQueryRecords,omitnil,omitempty" name:"SlowQueryRecords"`
+
+	// 记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*DataBaseAuditRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。

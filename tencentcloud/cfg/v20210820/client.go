@@ -88,6 +88,49 @@ func (c *Client) CreateTaskFromActionWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateTaskFromMultiActionRequest() (request *CreateTaskFromMultiActionRequest) {
+    request = &CreateTaskFromMultiActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "CreateTaskFromMultiAction")
+    
+    
+    return
+}
+
+func NewCreateTaskFromMultiActionResponse() (response *CreateTaskFromMultiActionResponse) {
+    response = &CreateTaskFromMultiActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTaskFromMultiAction
+// 以多个动作创建演练
+func (c *Client) CreateTaskFromMultiAction(request *CreateTaskFromMultiActionRequest) (response *CreateTaskFromMultiActionResponse, err error) {
+    return c.CreateTaskFromMultiActionWithContext(context.Background(), request)
+}
+
+// CreateTaskFromMultiAction
+// 以多个动作创建演练
+func (c *Client) CreateTaskFromMultiActionWithContext(ctx context.Context, request *CreateTaskFromMultiActionRequest) (response *CreateTaskFromMultiActionResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFromMultiActionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskFromMultiAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskFromMultiActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskFromTemplateRequest() (request *CreateTaskFromTemplateRequest) {
     request = &CreateTaskFromTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -293,6 +293,91 @@ func (r *CreateTaskFromActionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTaskFromMultiActionRequestParams struct {
+	// 参与演练的实例ID
+	TaskInstances []*string `json:"TaskInstances,omitnil,omitempty" name:"TaskInstances"`
+
+	// 演练名称，不填则默认取动作名称
+	TaskTitle *string `json:"TaskTitle,omitnil,omitempty" name:"TaskTitle"`
+
+	// 演练描述，不填则默认取动作描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 演练自动暂停时间，单位分钟, 不填则默认为60
+	TaskPauseDuration *uint64 `json:"TaskPauseDuration,omitnil,omitempty" name:"TaskPauseDuration"`
+
+	// 演练动作组配置
+	TaskAction []*TaskGroupForAction `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
+}
+
+type CreateTaskFromMultiActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参与演练的实例ID
+	TaskInstances []*string `json:"TaskInstances,omitnil,omitempty" name:"TaskInstances"`
+
+	// 演练名称，不填则默认取动作名称
+	TaskTitle *string `json:"TaskTitle,omitnil,omitempty" name:"TaskTitle"`
+
+	// 演练描述，不填则默认取动作描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 演练自动暂停时间，单位分钟, 不填则默认为60
+	TaskPauseDuration *uint64 `json:"TaskPauseDuration,omitnil,omitempty" name:"TaskPauseDuration"`
+
+	// 演练动作组配置
+	TaskAction []*TaskGroupForAction `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
+}
+
+func (r *CreateTaskFromMultiActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFromMultiActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskInstances")
+	delete(f, "TaskTitle")
+	delete(f, "TaskDescription")
+	delete(f, "TaskPauseDuration")
+	delete(f, "TaskAction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFromMultiActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskFromMultiActionResponseParams struct {
+	// 创建成功的演练ID
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTaskFromMultiActionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTaskFromMultiActionResponseParams `json:"Response"`
+}
+
+func (r *CreateTaskFromMultiActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFromMultiActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTaskFromTemplateRequestParams struct {
 	// 从经验库中查询到的经验模板ID
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -1836,6 +1921,17 @@ type TaskGroupConfig struct {
 
 	// 动作组中的动作参数，不填默认使用经验中的动作参数，配置时可以只指定想要修改参数的动作
 	TaskGroupActionsConfig []*TaskGroupActionConfig `json:"TaskGroupActionsConfig,omitnil,omitempty" name:"TaskGroupActionsConfig"`
+}
+
+type TaskGroupForAction struct {
+	// 动作ID
+	TaskActionId *int64 `json:"TaskActionId,omitnil,omitempty" name:"TaskActionId"`
+
+	// {"ActionTimeout":1800}
+	TaskActionGeneralConfiguration *string `json:"TaskActionGeneralConfiguration,omitnil,omitempty" name:"TaskActionGeneralConfiguration"`
+
+	// {"ip": "0.0.0.0"}
+	TaskActionCustomConfiguration *string `json:"TaskActionCustomConfiguration,omitnil,omitempty" name:"TaskActionCustomConfiguration"`
 }
 
 type TaskGroupInstance struct {

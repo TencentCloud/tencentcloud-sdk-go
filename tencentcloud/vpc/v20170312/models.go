@@ -2617,11 +2617,9 @@ type CcnRouteTableInputPolicy struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// as-path操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateAsPath *string `json:"OperateAsPath,omitnil,omitempty" name:"OperateAsPath"`
 
 	// as-path操作模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsPathOperateMode *string `json:"AsPathOperateMode,omitnil,omitempty" name:"AsPathOperateMode"`
 }
 
@@ -23430,7 +23428,6 @@ func (r *ModifyAssistantCidrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAssistantCidrResponseParams struct {
 	// 辅助CIDR数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitnil,omitempty" name:"AssistantCidrSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -8119,6 +8119,14 @@ func (r *RateMsgRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReRankDataObject struct {
+	// 第一段内容
+	PromptA *string `json:"PromptA,omitnil,omitempty" name:"PromptA"`
+
+	// 第二段内容
+	PromptB *string `json:"PromptB,omitnil,omitempty" name:"PromptB"`
+}
+
 type ReconstructDocumentConfig struct {
 	// 生成的Markdown中是否嵌入图片
 	EnableInsetImage *bool `json:"EnableInsetImage,omitnil,omitempty" name:"EnableInsetImage"`
@@ -8691,6 +8699,98 @@ type RunNodeInfo struct {
 	// 当前节点的所有槽位的值，key：SlotID。没有值的时候也要返回空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlotValues []*ValueInfo `json:"SlotValues,omitnil,omitempty" name:"SlotValues"`
+}
+
+// Predefined struct for user
+type RunReRankRequestParams struct {
+	// 模型名称, 必填，默认: lke-reranker-base
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 文档列表，必填，最多20个
+	Docs []*string `json:"Docs,omitnil,omitempty" name:"Docs"`
+
+	// 模型名称, 非必填，默认: lke-reranker-base
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 需要计算关联性的2段内容
+	//
+	// Deprecated: DataList is deprecated.
+	DataList []*ReRankDataObject `json:"DataList,omitnil,omitempty" name:"DataList"`
+
+	// 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
+	//
+	// Deprecated: Online is deprecated.
+	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
+}
+
+type RunReRankRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型名称, 必填，默认: lke-reranker-base
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 文档列表，必填，最多20个
+	Docs []*string `json:"Docs,omitnil,omitempty" name:"Docs"`
+
+	// 模型名称, 非必填，默认: lke-reranker-base
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 需要计算关联性的2段内容
+	DataList []*ReRankDataObject `json:"DataList,omitnil,omitempty" name:"DataList"`
+
+	// 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
+	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
+}
+
+func (r *RunReRankRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunReRankRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	delete(f, "Docs")
+	delete(f, "Model")
+	delete(f, "DataList")
+	delete(f, "Online")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunReRankRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunReRankResponseParams struct {
+	// 相关性, 数值越大越相关
+	ScoreList []*float64 `json:"ScoreList,omitnil,omitempty" name:"ScoreList"`
+
+	// 消耗量，仅返回TotalToken
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunReRankResponse struct {
+	*tchttp.BaseResponse
+	Response *RunReRankResponseParams `json:"Response"`
+}
+
+func (r *RunReRankResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunReRankResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -176,7 +176,7 @@ const (
 	// 批量替换记录任务失败，原因：内部错误。
 	INVALIDPARAMETER_BATCHRECORDREPLACEACTIONERROR = "InvalidParameter.BatchRecordReplaceActionError"
 
-	// 超过批量任务数上限。
+	// 超过单个账号的批量任务数并发上限4个。
 	INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
 
 	// 任务不存在，无法获取任务详情。
@@ -362,7 +362,7 @@ const (
 	// ips 过长。
 	INVALIDPARAMETER_IPSEXCEEDLIMIT = "InvalidParameter.IpsExceedLimit"
 
-	// 单次任务数量超过上限。
+	// 单次任务记录数量超过上限5000条。
 	INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
 
 	// 线路格式不正确。
@@ -695,7 +695,7 @@ const (
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
-	// 您的IP添加了过多任务，请稍后重试。
+	// 您的IP添加了过多任务。每个小时内，一个IP最多可提交80个任务，请稍后重试。
 	REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
 
 	// 您的账号在短时间内添加了大量的域名，请控制添加频率。

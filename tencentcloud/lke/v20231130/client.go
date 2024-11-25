@@ -4461,6 +4461,55 @@ func (c *Client) RetryReleaseWithContext(ctx context.Context, request *RetryRele
     return
 }
 
+func NewRunReRankRequest() (request *RunReRankRequest) {
+    request = &RunReRankRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "RunReRank")
+    
+    
+    return
+}
+
+func NewRunReRankResponse() (response *RunReRankResponse) {
+    response = &RunReRankResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RunReRank
+// 重排序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RunReRank(request *RunReRankRequest) (response *RunReRankResponse, err error) {
+    return c.RunReRankWithContext(context.Background(), request)
+}
+
+// RunReRank
+// 重排序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RunReRankWithContext(ctx context.Context, request *RunReRankRequest) (response *RunReRankResponse, err error) {
+    if request == nil {
+        request = NewRunReRankRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunReRank require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunReRankResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSaveDocRequest() (request *SaveDocRequest) {
     request = &SaveDocRequest{
         BaseRequest: &tchttp.BaseRequest{},

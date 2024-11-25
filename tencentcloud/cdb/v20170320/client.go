@@ -1279,25 +1279,25 @@ func NewCreateCdbProxyResponse() (response *CreateCdbProxyResponse) {
 }
 
 // CreateCdbProxy
-// 主实例创建数据库代理
+// 本接口（CreateCdbProxy）用于主实例创建数据库代理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) CreateCdbProxy(request *CreateCdbProxyRequest) (response *CreateCdbProxyResponse, err error) {
     return c.CreateCdbProxyWithContext(context.Background(), request)
 }
 
 // CreateCdbProxy
-// 主实例创建数据库代理
+// 本接口（CreateCdbProxy）用于主实例创建数据库代理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) CreateCdbProxyWithContext(ctx context.Context, request *CreateCdbProxyRequest) (response *CreateCdbProxyResponse, err error) {
     if request == nil {
         request = NewCreateCdbProxyRequest()

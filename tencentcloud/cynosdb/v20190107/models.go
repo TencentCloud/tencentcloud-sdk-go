@@ -3598,6 +3598,10 @@ type CynosdbInstanceDetail struct {
 
 	// serverless实例cpu上限
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// Db类型:<li>NORMAL</li><li>SERVERLESS</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 }
 
 type CynosdbInstanceGroup struct {

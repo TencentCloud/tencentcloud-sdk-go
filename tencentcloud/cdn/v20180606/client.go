@@ -3716,8 +3716,6 @@ func NewDescribeTopDataResponse() (response *DescribeTopDataResponse) {
 //
 // + 仅支持 90 天内数据查询，且从2021年09月20日开始有数据
 //
-// + 本接口为beta版，尚未正式全量发布
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
@@ -3772,8 +3770,6 @@ func (c *Client) DescribeTopData(request *DescribeTopDataRequest) (response *Des
 // 注意：
 //
 // + 仅支持 90 天内数据查询，且从2021年09月20日开始有数据
-//
-// + 本接口为beta版，尚未正式全量发布
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
