@@ -11901,13 +11901,13 @@ type TWeCallCategoryPkgInfo struct {
 }
 
 type TWeCallInfo struct {
-	// 小程序ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
-
 	// Sn信息，SN格式：产品ID_设备名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
+
+	// 小程序ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 激活数
 	// 注意：此字段可能返回 null，表示取不到有效值。

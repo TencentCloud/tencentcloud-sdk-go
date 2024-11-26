@@ -10828,13 +10828,13 @@ type DescribeInstanceLogDetailRequestParams struct {
 	// 文件类型,Log/Code
 	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 
-	// 统一执行平台执行id
+	// 统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
 	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 
-	// 服务器Ip
+	// 服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 文件Name
+	// 文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
 
 	// 起始行
@@ -10868,13 +10868,13 @@ type DescribeInstanceLogDetailRequest struct {
 	// 文件类型,Log/Code
 	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 
-	// 统一执行平台执行id
+	// 统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
 	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 
-	// 服务器Ip
+	// 服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 文件Name
+	// 文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
 
 	// 起始行

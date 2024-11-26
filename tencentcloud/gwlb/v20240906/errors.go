@@ -41,6 +41,9 @@ const (
 	// 存在相同的值。
 	INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 
+	// Filter参数输入错误。
+	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+
 	// InvalidParameterValue.Length
 	INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 

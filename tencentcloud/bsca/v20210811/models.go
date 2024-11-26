@@ -440,8 +440,11 @@ type DescribeKBComponentVulnerabilityResponseParams struct {
 	// 组件purl
 	PURL *PURL `json:"PURL,omitnil,omitempty" name:"PURL"`
 
-	// 推荐版本，当前版本中的所有漏洞都修复了的版本
+	// 推荐版本，最小无高危/严重漏洞的版本。无法升级到安全版本时的备选方案。
 	RecommendedVersion *string `json:"RecommendedVersion,omitnil,omitempty" name:"RecommendedVersion"`
+
+	// 安全版本（首选），最小无漏洞的版本。当无法升级到安全版本时可考虑使用推荐版本。
+	SecureVersion *string `json:"SecureVersion,omitnil,omitempty" name:"SecureVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

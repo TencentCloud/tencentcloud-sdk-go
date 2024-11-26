@@ -20,6 +20,16 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ApiVarAttrInfo struct {
+	// 自定义变量id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiVarId *string `json:"ApiVarId,omitnil,omitempty" name:"ApiVarId"`
+
+	// 标签id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttrBizId *string `json:"AttrBizId,omitnil,omitempty" name:"AttrBizId"`
+}
+
 type AppConfig struct {
 	// 知识问答管理应用配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -575,6 +585,10 @@ type CreateAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
+	// 判断账户应用列表权限是否是自定义的，用户交互提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCustomList *bool `json:"IsCustomList,omitnil,omitempty" name:"IsCustomList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -600,14 +614,14 @@ type CreateAttributeLabelRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性标识
-	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
-
-	// 属性名称
+	// 标签名
 	AttrName *string `json:"AttrName,omitnil,omitempty" name:"AttrName"`
 
-	// 属性标签
+	// 标签值
 	Labels []*AttributeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 标签标识（不生效，无需填写） 已作废
+	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
 	// 登录用户主账号(集成商模式必填)
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -622,14 +636,14 @@ type CreateAttributeLabelRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性标识
-	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
-
-	// 属性名称
+	// 标签名
 	AttrName *string `json:"AttrName,omitnil,omitempty" name:"AttrName"`
 
-	// 属性标签
+	// 标签值
 	Labels []*AttributeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 标签标识（不生效，无需填写） 已作废
+	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
 	// 登录用户主账号(集成商模式必填)
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -651,9 +665,9 @@ func (r *CreateAttributeLabelRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BotBizId")
-	delete(f, "AttrKey")
 	delete(f, "AttrName")
 	delete(f, "Labels")
+	delete(f, "AttrKey")
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
@@ -664,6 +678,9 @@ func (r *CreateAttributeLabelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAttributeLabelResponseParams struct {
+	// 标签ID
+	AttrBizId *string `json:"AttrBizId,omitnil,omitempty" name:"AttrBizId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -853,13 +870,13 @@ type CreateQARequestParams struct {
 	// 答案
 	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
 
-	// 属性标签适用范围 1：全部，2：按条件
+	// 标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 自定义参数
 	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
 
-	// 属性标签引用
+	// 标签引用
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 文档ID
@@ -876,6 +893,9 @@ type CreateQARequestParams struct {
 
 	// 相似问内容
 	SimilarQuestions []*string `json:"SimilarQuestions,omitnil,omitempty" name:"SimilarQuestions"`
+
+	// 问题描述
+	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 }
 
 type CreateQARequest struct {
@@ -890,13 +910,13 @@ type CreateQARequest struct {
 	// 答案
 	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
 
-	// 属性标签适用范围 1：全部，2：按条件
+	// 标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 自定义参数
 	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
 
-	// 属性标签引用
+	// 标签引用
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 文档ID
@@ -913,6 +933,9 @@ type CreateQARequest struct {
 
 	// 相似问内容
 	SimilarQuestions []*string `json:"SimilarQuestions,omitnil,omitempty" name:"SimilarQuestions"`
+
+	// 问题描述
+	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 }
 
 func (r *CreateQARequest) ToJsonString() string {
@@ -938,6 +961,7 @@ func (r *CreateQARequest) FromJsonString(s string) error {
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
 	delete(f, "SimilarQuestions")
+	delete(f, "QuestionDesc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQARequest has unknown keys!", "")
 	}
@@ -1304,7 +1328,7 @@ type DeleteAttributeLabelRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizIds []*string `json:"AttributeBizIds,omitnil,omitempty" name:"AttributeBizIds"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -1320,7 +1344,7 @@ type DeleteAttributeLabelRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizIds []*string `json:"AttributeBizIds,omitnil,omitempty" name:"AttributeBizIds"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -1857,14 +1881,17 @@ type DescribeCallStatsGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 筛选子场景(文档解析场景使用)
+	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 }
 
 type DescribeCallStatsGraphRequest struct {
@@ -1885,14 +1912,17 @@ type DescribeCallStatsGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 筛选子场景(文档解析场景使用)
+	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 }
 
 func (r *DescribeCallStatsGraphRequest) ToJsonString() string {
@@ -1915,6 +1945,7 @@ func (r *DescribeCallStatsGraphRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
+	delete(f, "SubScenes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallStatsGraphRequest has unknown keys!", "")
 	}
@@ -1923,7 +1954,7 @@ func (r *DescribeCallStatsGraphRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCallStatsGraphResponseParams struct {
-	// 统计信息
+	// 接口调用次数统计信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*Stat `json:"List,omitnil,omitempty" name:"List"`
 
@@ -1952,10 +1983,10 @@ type DescribeConcurrencyUsageGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// uin
@@ -1980,10 +2011,10 @@ type DescribeConcurrencyUsageGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// uin
@@ -2030,7 +2061,7 @@ func (r *DescribeConcurrencyUsageGraphRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConcurrencyUsageGraphResponseParams struct {
-	// 统计信息
+	// X轴: 时间区域；根据查询条件的粒度返回“分/小时/日”两种区间范围
 	X []*string `json:"X,omitnil,omitempty" name:"X"`
 
 	// 可用并发y轴坐标
@@ -2064,10 +2095,10 @@ type DescribeConcurrencyUsageRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -2080,10 +2111,10 @@ type DescribeConcurrencyUsageRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -2114,13 +2145,13 @@ func (r *DescribeConcurrencyUsageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConcurrencyUsageResponseParams struct {
-	// 可用并发数
+	// 可用并发数上限
 	AvailableConcurrency *uint64 `json:"AvailableConcurrency,omitnil,omitempty" name:"AvailableConcurrency"`
 
 	// 并发峰值
 	ConcurrencyPeak *uint64 `json:"ConcurrencyPeak,omitnil,omitempty" name:"ConcurrencyPeak"`
 
-	// 调用超可用次数
+	// 超出可用并发数上限的次数
 	ExceedUsageTime *uint64 `json:"ExceedUsageTime,omitnil,omitempty" name:"ExceedUsageTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2307,11 +2338,14 @@ type DescribeDocResponseParams struct {
 	// 是否允许编辑
 	IsAllowEdit *bool `json:"IsAllowEdit,omitnil,omitempty" name:"IsAllowEdit"`
 
-	// 属性标签适用范围 1：全部，2：按条件范围
+	// 标签适用范围 1：全部，2：按条件范围
 	AttrRange *int64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 属性标签
+	// 标签
 	AttrLabels []*AttrLabel `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2424,10 +2458,10 @@ func (r *DescribeKnowledgeUsageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeKnowledgeUsageResponseParams struct {
-	// 可用字符数
+	// 可用字符数上限
 	AvailableCharSize *string `json:"AvailableCharSize,omitnil,omitempty" name:"AvailableCharSize"`
 
-	// 超量字符数
+	// 超过可用字符数上限的字符数
 	ExceedCharSize *string `json:"ExceedCharSize,omitnil,omitempty" name:"ExceedCharSize"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2551,10 +2585,10 @@ type DescribeQAResponseParams struct {
 	// 分片内容
 	OrgData *string `json:"OrgData,omitnil,omitempty" name:"OrgData"`
 
-	// 属性标签适用范围
+	// 标签适用范围
 	AttrRange *int64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 属性标签
+	// 标签
 	AttrLabels []*AttrLabel `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 有效开始时间，unix时间戳
@@ -2565,6 +2599,18 @@ type DescribeQAResponseParams struct {
 
 	// 相似问列表信息
 	SimilarQuestions []*SimilarQuestion `json:"SimilarQuestions,omitnil,omitempty" name:"SimilarQuestions"`
+
+	// 问题和答案文本审核状态 1审核失败
+	QaAuditStatus *uint64 `json:"QaAuditStatus,omitnil,omitempty" name:"QaAuditStatus"`
+
+	// 答案中的图片审核状态 1审核失败
+	PicAuditStatus *uint64 `json:"PicAuditStatus,omitnil,omitempty" name:"PicAuditStatus"`
+
+	// 答案中的视频审核状态 1审核失败
+	VideoAuditStatus *uint64 `json:"VideoAuditStatus,omitnil,omitempty" name:"VideoAuditStatus"`
+
+	// 问题描述
+	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2877,10 +2923,10 @@ type DescribeSearchStatsGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -2905,10 +2951,10 @@ type DescribeSearchStatsGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -2972,7 +3018,7 @@ type DescribeSegmentsRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文档ID
+	// 文档片段ID
 	SegBizId []*string `json:"SegBizId,omitnil,omitempty" name:"SegBizId"`
 }
 
@@ -2982,7 +3028,7 @@ type DescribeSegmentsRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文档ID
+	// 文档片段ID
 	SegBizId []*string `json:"SegBizId,omitnil,omitempty" name:"SegBizId"`
 }
 
@@ -3148,10 +3194,10 @@ type DescribeTokenUsageGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3170,10 +3216,10 @@ type DescribeTokenUsageGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3206,13 +3252,13 @@ func (r *DescribeTokenUsageGraphRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTokenUsageGraphResponseParams struct {
-	// 总消耗
+	// Token消耗总量
 	Total []*Stat `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 输入消耗
+	// 输入Token消耗量
 	Input []*Stat `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 输出消耗
+	// 输出Token消耗量
 	Output []*Stat `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3252,14 +3298,17 @@ type DescribeTokenUsageRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 筛选子场景(文档解析场景使用)
+	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 }
 
 type DescribeTokenUsageRequest struct {
@@ -3280,14 +3329,17 @@ type DescribeTokenUsageRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
+	// 开始时间戳, 单位为秒
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳, 单位为秒
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 筛选子场景(文档解析场景使用)
+	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 }
 
 func (r *DescribeTokenUsageRequest) ToJsonString() string {
@@ -3310,6 +3362,7 @@ func (r *DescribeTokenUsageRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
+	delete(f, "SubScenes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageRequest has unknown keys!", "")
 	}
@@ -3332,6 +3385,9 @@ type DescribeTokenUsageResponseParams struct {
 
 	// 搜索服务调用次数
 	SearchUsage *float64 `json:"SearchUsage,omitnil,omitempty" name:"SearchUsage"`
+
+	// 文档解析消耗页数
+	PageUsage *uint64 `json:"PageUsage,omitnil,omitempty" name:"PageUsage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5012,15 +5068,15 @@ func (r *IsTransferIntentResponse) FromJsonString(s string) error {
 }
 
 type KnowledgeCapacityPieGraphDetail struct {
-	// 应用名称
+	// 当前应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 应用使用的字符数
+	// 当前应用使用的字符数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedCharSize *string `json:"UsedCharSize,omitnil,omitempty" name:"UsedCharSize"`
 
-	// 应用占比
+	// 当前应用对于总用量的占比
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proportion *float64 `json:"Proportion,omitnil,omitempty" name:"Proportion"`
 }
@@ -5045,6 +5101,14 @@ type KnowledgeQaConfig struct {
 	// 知识管理输出配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *KnowledgeQaOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 工作流程配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Workflow *KnowledgeWorkflow `json:"Workflow,omitnil,omitempty" name:"Workflow"`
+
+	// 检索范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchRange *SearchRange `json:"SearchRange,omitnil,omitempty" name:"SearchRange"`
 }
 
 type KnowledgeQaOutput struct {
@@ -5123,6 +5187,12 @@ type KnowledgeSummary struct {
 	// 知识内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type KnowledgeWorkflow struct {
+	// 是否启用工作流
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEnabled *bool `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 }
 
 type Label struct {
@@ -5518,6 +5588,12 @@ type ListDocRequestParams struct {
 
 	// 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询类型 filename 文档、 attribute 标签
+	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 type ListDocRequest struct {
@@ -5537,6 +5613,12 @@ type ListDocRequest struct {
 
 	// 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询类型 filename 文档、 attribute 标签
+	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 func (r *ListDocRequest) ToJsonString() string {
@@ -5556,6 +5638,8 @@ func (r *ListDocRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "Query")
 	delete(f, "Status")
+	delete(f, "QueryType")
+	delete(f, "CateBizId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocRequest has unknown keys!", "")
 	}
@@ -5749,6 +5833,9 @@ type ListQARequestParams struct {
 
 	// QA业务ID列表
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
+
+	// 查询类型 filename 名称、 attribute 标签
+	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 }
 
 type ListQARequest struct {
@@ -5783,6 +5870,9 @@ type ListQARequest struct {
 
 	// QA业务ID列表
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
+
+	// 查询类型 filename 名称、 attribute 标签
+	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 }
 
 func (r *ListQARequest) ToJsonString() string {
@@ -5807,6 +5897,7 @@ func (r *ListQARequest) FromJsonString(s string) error {
 	delete(f, "Source")
 	delete(f, "QueryAnswer")
 	delete(f, "QaBizIds")
+	delete(f, "QueryType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQARequest has unknown keys!", "")
 	}
@@ -6757,6 +6848,32 @@ type ModelInfo struct {
 	// 提示词内容字符限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PromptWordsLimit *string `json:"PromptWordsLimit,omitnil,omitempty" name:"PromptWordsLimit"`
+
+	// 通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopP *ModelParameter `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 温度控制随机性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Temperature *ModelParameter `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 最多能生成的token数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxTokens *ModelParameter `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+}
+
+type ModelParameter struct {
+	// 默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Default *float64 `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// 最小值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Min *float64 `json:"Min,omitnil,omitempty" name:"Min"`
+
+	// 最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *float64 `json:"Max,omitnil,omitempty" name:"Max"`
 }
 
 // Predefined struct for user
@@ -6770,11 +6887,11 @@ type ModifyAppRequestParams struct {
 	// 应用基础配置
 	BaseConfig *BaseConfig `json:"BaseConfig,omitnil,omitempty" name:"BaseConfig"`
 
-	// 登录用户子账号(集成商模式必填)	
-	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
-
 	// 应用配置
 	AppConfig *AppConfig `json:"AppConfig,omitnil,omitempty" name:"AppConfig"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 type ModifyAppRequest struct {
@@ -6789,11 +6906,11 @@ type ModifyAppRequest struct {
 	// 应用基础配置
 	BaseConfig *BaseConfig `json:"BaseConfig,omitnil,omitempty" name:"BaseConfig"`
 
-	// 登录用户子账号(集成商模式必填)	
-	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
-
 	// 应用配置
 	AppConfig *AppConfig `json:"AppConfig,omitnil,omitempty" name:"AppConfig"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 func (r *ModifyAppRequest) ToJsonString() string {
@@ -6811,8 +6928,8 @@ func (r *ModifyAppRequest) FromJsonString(s string) error {
 	delete(f, "AppBizId")
 	delete(f, "AppType")
 	delete(f, "BaseConfig")
-	delete(f, "LoginSubAccountUin")
 	delete(f, "AppConfig")
+	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAppRequest has unknown keys!", "")
 	}
@@ -6853,14 +6970,14 @@ type ModifyAttributeLabelRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
-	// 属性标识
-	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
-
-	// 属性名称
+	// 标签名称
 	AttrName *string `json:"AttrName,omitnil,omitempty" name:"AttrName"`
+
+	// 标签标识 （已作废）
+	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
 	// 登录用户主账号(集成商模式必填)
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -6868,10 +6985,10 @@ type ModifyAttributeLabelRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 删除的属性标签
+	// 删除的标签值
 	DeleteLabelBizIds []*string `json:"DeleteLabelBizIds,omitnil,omitempty" name:"DeleteLabelBizIds"`
 
-	// 新增或编辑的属性标签
+	// 新增或编辑的标签
 	Labels []*AttributeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
@@ -6881,14 +6998,14 @@ type ModifyAttributeLabelRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
-	// 属性标识
-	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
-
-	// 属性名称
+	// 标签名称
 	AttrName *string `json:"AttrName,omitnil,omitempty" name:"AttrName"`
+
+	// 标签标识 （已作废）
+	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
 	// 登录用户主账号(集成商模式必填)
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -6896,10 +7013,10 @@ type ModifyAttributeLabelRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 删除的属性标签
+	// 删除的标签值
 	DeleteLabelBizIds []*string `json:"DeleteLabelBizIds,omitnil,omitempty" name:"DeleteLabelBizIds"`
 
-	// 新增或编辑的属性标签
+	// 新增或编辑的标签
 	Labels []*AttributeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
@@ -6917,8 +7034,8 @@ func (r *ModifyAttributeLabelRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BotBizId")
 	delete(f, "AttributeBizId")
-	delete(f, "AttrKey")
 	delete(f, "AttrName")
+	delete(f, "AttrKey")
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
 	delete(f, "DeleteLabelBizIds")
@@ -7040,7 +7157,7 @@ type ModifyDocRequestParams struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 属性标签适用范围 1：全部，2：按条件
+	// 标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -7049,7 +7166,7 @@ type ModifyDocRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 适用范围，关联的属性标签
+	// 关联的标签
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 网页(或自定义链接)地址
@@ -7064,6 +7181,9 @@ type ModifyDocRequestParams struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 type ModifyDocRequest struct {
@@ -7078,7 +7198,7 @@ type ModifyDocRequest struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 属性标签适用范围 1：全部，2：按条件
+	// 标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -7087,7 +7207,7 @@ type ModifyDocRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 适用范围，关联的属性标签
+	// 关联的标签
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 网页(或自定义链接)地址
@@ -7102,6 +7222,9 @@ type ModifyDocRequest struct {
 
 	// 有效结束时间，unix时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 func (r *ModifyDocRequest) ToJsonString() string {
@@ -7127,6 +7250,7 @@ func (r *ModifyDocRequest) FromJsonString(s string) error {
 	delete(f, "ReferUrlType")
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
+	delete(f, "CateBizId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDocRequest has unknown keys!", "")
 	}
@@ -7315,10 +7439,10 @@ type ModifyQARequestParams struct {
 	// 自定义参数
 	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
 
-	// 属性标签适用范围 1：全部，2：按条件
+	// 标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 属性标签引用
+	// 标签引用
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 文档ID
@@ -7335,6 +7459,9 @@ type ModifyQARequestParams struct {
 
 	// 相似问修改信息(相似问没有修改则不传)
 	SimilarQuestionModify *SimilarQuestionModify `json:"SimilarQuestionModify,omitnil,omitempty" name:"SimilarQuestionModify"`
+
+	// 问题描述
+	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 }
 
 type ModifyQARequest struct {
@@ -7355,10 +7482,10 @@ type ModifyQARequest struct {
 	// 自定义参数
 	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
 
-	// 属性标签适用范围 1：全部，2：按条件
+	// 标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 属性标签引用
+	// 标签引用
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 文档ID
@@ -7375,6 +7502,9 @@ type ModifyQARequest struct {
 
 	// 相似问修改信息(相似问没有修改则不传)
 	SimilarQuestionModify *SimilarQuestionModify `json:"SimilarQuestionModify,omitnil,omitempty" name:"SimilarQuestionModify"`
+
+	// 问题描述
+	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 }
 
 func (r *ModifyQARequest) ToJsonString() string {
@@ -7401,6 +7531,7 @@ func (r *ModifyQARequest) FromJsonString(s string) error {
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
 	delete(f, "SimilarQuestionModify")
+	delete(f, "QuestionDesc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQARequest has unknown keys!", "")
 	}
@@ -7801,6 +7932,10 @@ type ProcedureDebugging struct {
 	// 任务流程
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskFlow *TaskFlowSummary `json:"TaskFlow,omitnil,omitempty" name:"TaskFlow"`
+
+	// 工作流调试信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlow *WorkFlowSummary `json:"WorkFlow,omitnil,omitempty" name:"WorkFlow"`
 }
 
 type QACate struct {
@@ -8816,7 +8951,7 @@ type SaveDocRequestParams struct {
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 属性标签适用范围 1：全部，2：按条件范围
+	// 标签适用范围 1：全部，2：按条件范围
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源(0 源文件导入 1 网页导入)
@@ -8825,7 +8960,7 @@ type SaveDocRequestParams struct {
 	// 网页(或自定义链接)地址
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
-	// 属性标签引用
+	// 标签引用
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 外部引用链接类型 0：系统链接 1：自定义链接
@@ -8843,6 +8978,9 @@ type SaveDocRequestParams struct {
 
 	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 type SaveDocRequest struct {
@@ -8869,7 +9007,7 @@ type SaveDocRequest struct {
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 属性标签适用范围 1：全部，2：按条件范围
+	// 标签适用范围 1：全部，2：按条件范围
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源(0 源文件导入 1 网页导入)
@@ -8878,7 +9016,7 @@ type SaveDocRequest struct {
 	// 网页(或自定义链接)地址
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
-	// 属性标签引用
+	// 标签引用
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
 	// 外部引用链接类型 0：系统链接 1：自定义链接
@@ -8896,6 +9034,9 @@ type SaveDocRequest struct {
 
 	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
+
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -8926,6 +9067,7 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "ExpireEnd")
 	delete(f, "IsRefer")
 	delete(f, "Opt")
+	delete(f, "CateBizId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}
@@ -8966,6 +9108,16 @@ func (r *SaveDocResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SearchRange struct {
+	// 检索条件and/or
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 自定义变量和标签关系数据	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiVarAttrInfos []*ApiVarAttrInfo `json:"ApiVarAttrInfos,omitnil,omitempty" name:"ApiVarAttrInfos"`
+}
+
 type SimilarQuestion struct {
 	// 相似问ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8974,6 +9126,10 @@ type SimilarQuestion struct {
 	// 相似问内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 相似问审核状态，1审核失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditStatus *uint64 `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 }
 
 type SimilarQuestionModify struct {
@@ -8988,13 +9144,39 @@ type SimilarQuestionModify struct {
 }
 
 type Stat struct {
-	// x轴时间戳
+	// X轴: 时间区域；根据查询条件的粒度返回“分/小时/日”三种区间范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *string `json:"X,omitnil,omitempty" name:"X"`
 
-	// y轴统计值
+	// Y轴: 该时间区域内的统计值，如token消耗量，调用次数或使用量等信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
+}
+
+type StatisticInfo struct {
+	// 模型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 首Token耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTokenCost *uint64 `json:"FirstTokenCost,omitnil,omitempty" name:"FirstTokenCost"`
+
+	// 总耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *uint64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
+
+	// 输入Token数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputTokens *uint64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// 输出Token数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputTokens *uint64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
+
+	// 总Token数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
 // Predefined struct for user
@@ -9454,4 +9636,64 @@ type WordRecognizeInfo struct {
 	// word的base64
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WordBase64 *string `json:"WordBase64,omitnil,omitempty" name:"WordBase64"`
+}
+
+type WorkFlowSummary struct {
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 工作流运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunNodes []*WorkflowRunNodeInfo `json:"RunNodes,omitnil,omitempty" name:"RunNodes"`
+}
+
+type WorkflowRunNodeInfo struct {
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *uint64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskOutput *string `json:"TaskOutput,omitnil,omitempty" name:"TaskOutput"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
+
+	// 花费时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostMilliSeconds *uint64 `json:"CostMilliSeconds,omitnil,omitempty" name:"CostMilliSeconds"`
+
+	// 大模型输出信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticInfos []*StatisticInfo `json:"StatisticInfos,omitnil,omitempty" name:"StatisticInfos"`
 }

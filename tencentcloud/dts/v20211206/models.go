@@ -2323,7 +2323,7 @@ func (r *DescribeConsumerGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrateDBInstancesRequestParams struct {
-	// 数据库类型，如mysql
+	// 数据库类型，如mysql,redis等
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
 	// 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
@@ -2357,7 +2357,7 @@ type DescribeMigrateDBInstancesRequestParams struct {
 type DescribeMigrateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库类型，如mysql
+	// 数据库类型，如mysql,redis等
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
 	// 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)

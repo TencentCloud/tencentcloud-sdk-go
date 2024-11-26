@@ -427,6 +427,7 @@ func NewDescribeGatewayLoadBalancersResponse() (response *DescribeGatewayLoadBal
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 func (c *Client) DescribeGatewayLoadBalancers(request *DescribeGatewayLoadBalancersRequest) (response *DescribeGatewayLoadBalancersResponse, err error) {
     return c.DescribeGatewayLoadBalancersWithContext(context.Background(), request)
@@ -437,6 +438,7 @@ func (c *Client) DescribeGatewayLoadBalancers(request *DescribeGatewayLoadBalanc
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 func (c *Client) DescribeGatewayLoadBalancersWithContext(ctx context.Context, request *DescribeGatewayLoadBalancersRequest) (response *DescribeGatewayLoadBalancersResponse, err error) {
     if request == nil {
@@ -478,6 +480,7 @@ func NewDescribeTargetGroupInstanceStatusResponse() (response *DescribeTargetGro
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 func (c *Client) DescribeTargetGroupInstanceStatus(request *DescribeTargetGroupInstanceStatusRequest) (response *DescribeTargetGroupInstanceStatusResponse, err error) {
     return c.DescribeTargetGroupInstanceStatusWithContext(context.Background(), request)
@@ -488,6 +491,7 @@ func (c *Client) DescribeTargetGroupInstanceStatus(request *DescribeTargetGroupI
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 func (c *Client) DescribeTargetGroupInstanceStatusWithContext(ctx context.Context, request *DescribeTargetGroupInstanceStatusRequest) (response *DescribeTargetGroupInstanceStatusResponse, err error) {
     if request == nil {

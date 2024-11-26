@@ -8374,7 +8374,6 @@ type DescribeVoucherInfoResponseParams struct {
 	TotalBalance *int64 `json:"TotalBalance,omitnil,omitempty" name:"TotalBalance"`
 
 	// 代金券相关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherInfos []*VoucherInfos `json:"VoucherInfos,omitnil,omitempty" name:"VoucherInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9263,10 +9262,8 @@ type VoucherInfos struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 适用商品信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicableProducts *ApplicableProducts `json:"ApplicableProducts,omitnil,omitempty" name:"ApplicableProducts"`
 
 	// 不适用商品信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludedProducts []*ExcludedProducts `json:"ExcludedProducts,omitnil,omitempty" name:"ExcludedProducts"`
 }

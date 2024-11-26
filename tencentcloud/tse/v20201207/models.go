@@ -7415,13 +7415,13 @@ type DescribeNativeGatewayServerGroupsRequestParams struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 翻页从第几个开始获取
+	// 偏移量，默认为 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 翻页获取多少个
+	// 返回数量，默认为 20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤参数
+	// 过滤参数，支持按照分组名称、分组ID（Name、GroupId）筛选
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -7431,13 +7431,13 @@ type DescribeNativeGatewayServerGroupsRequest struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 翻页从第几个开始获取
+	// 偏移量，默认为 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 翻页获取多少个
+	// 返回数量，默认为 20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤参数
+	// 过滤参数，支持按照分组名称、分组ID（Name、GroupId）筛选
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
