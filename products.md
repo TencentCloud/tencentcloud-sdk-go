@@ -76,7 +76,7 @@
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2024-11-15 01:22:53 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2024-11-22 11:36:06 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
-| cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-11-26 01:14:21 |
+| cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | 2024-11-26 17:13:23 |
 | dasb | [运维安全中心（堡垒机）](https://cloud.tencent.com/document/product/1025) | 2024-11-19 01:26:13 |
 | dataintegration | [数据接入平台](https://cloud.tencent.com/document/product/1591) | 2022-07-26 15:32:15 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2023-05-18 01:20:11 |
