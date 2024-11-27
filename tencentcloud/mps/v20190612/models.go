@@ -723,6 +723,10 @@ type AiAnalysisTaskSegmentInput struct {
 type AiAnalysisTaskSegmentOutput struct {
 	// 智能拆条子片段列表。
 	SegmentSet []*SegmentRecognitionItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
+
+	// 视频摘要，离线场景用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Abstract *string `json:"Abstract,omitnil,omitempty" name:"Abstract"`
 }
 
 type AiAnalysisTaskSegmentResult struct {

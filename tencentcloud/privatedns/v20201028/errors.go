@@ -35,12 +35,6 @@ const (
 	// 记录创建失败。
 	FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
 
-	// 创建终端节点异常。
-	FAILEDOPERATION_CREATEVPCENDPOINTERROR = "FailedOperation.CreateVpcEndPointError"
-
-	// 创建终端节点失败。
-	FAILEDOPERATION_CREATEVPCENDPOINTFAILED = "FailedOperation.CreateVpcEndPointFailed"
-
 	// 私有域创建失败。
 	FAILEDOPERATION_CREATEZONEFAILED = "FailedOperation.CreateZoneFailed"
 
@@ -53,23 +47,8 @@ const (
 	// 记录删除失败。
 	FAILEDOPERATION_DELETERECORDFAILED = "FailedOperation.DeleteRecordFailed"
 
-	// 删除终端节点失败。
-	FAILEDOPERATION_DELETEVPCENDPOINTFAILED = "FailedOperation.DeleteVpcEndPointFailed"
-
 	// 解析域删除失败。
 	FAILEDOPERATION_DELETEZONEFAILED = "FailedOperation.DeleteZoneFailed"
-
-	// 终端节点服务创建失败
-	FAILEDOPERATION_ENDPOINTSERVICECREATEFAILED = "FailedOperation.EndPointServiceCreateFailed"
-
-	// 终端节点服务删除失败
-	FAILEDOPERATION_ENDPOINTSERVICEDELETEFAILED = "FailedOperation.EndPointServiceDeleteFailed"
-
-	// 终端节点服务白名单操作失败。
-	FAILEDOPERATION_ENDPOINTSERVICEWHITELISTFAILED = "FailedOperation.EndPointServiceWhiteListFailed"
-
-	// 获取临时凭证失败
-	FAILEDOPERATION_GETTMPCREDFAILED = "FailedOperation.GetTmpCredFailed"
 
 	// 记录修改失败。
 	FAILEDOPERATION_MODIFYRECORDFAILED = "FailedOperation.ModifyRecordFailed"
@@ -91,21 +70,6 @@ const (
 
 	// 已经存在绑定的账号。
 	INVALIDPARAMETER_ACCOUNTEXIST = "InvalidParameter.AccountExist"
-
-	// 终端节点已经绑定了转发规则。
-	INVALIDPARAMETER_ENDPOINTBINDFORWARDRULE = "InvalidParameter.EndPointBindForwardRule"
-
-	// 终端节点不存在。
-	INVALIDPARAMETER_ENDPOINTNOTEXISTS = "InvalidParameter.EndPointNotExists"
-
-	// 终端节点服务不存在。
-	INVALIDPARAMETER_ENDPOINTSERVICENOTEXIST = "InvalidParameter.EndPointServiceNotExist"
-
-	// 转发规则不存在。
-	INVALIDPARAMETER_FORWARDRULENOTEXIST = "InvalidParameter.ForwardRuleNotExist"
-
-	// 私有域已经绑定过转发规则。
-	INVALIDPARAMETER_FORWARDRULEZONEREPEATBIND = "InvalidParameter.ForwardRuleZoneRepeatBind"
 
 	// 非法CIDR。
 	INVALIDPARAMETER_ILLEGALCIDR = "InvalidParameter.IllegalCidr"
@@ -194,9 +158,6 @@ const (
 	// 内部保留域名，不支持创建。
 	INVALIDPARAMETERVALUE_RESERVEDDOMAIN = "InvalidParameterValue.ReservedDomain"
 
-	// uin没有录入白名单，无权限访问
-	INVALIDPARAMETERVALUE_UINNOTINWHITELIST = "InvalidParameterValue.UinNotInWhiteList"
-
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -235,9 +196,6 @@ const (
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
-
-	// 未添加平台账号到当前终端节点服务的白名单内。
-	RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = "ResourceUnavailable.ServiceWhiteListNotAdded"
 
 	// TLD增值包已过期。
 	RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"

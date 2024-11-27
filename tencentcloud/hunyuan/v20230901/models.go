@@ -1202,6 +1202,10 @@ type Message struct {
 	// 模型生成的工具调用，仅 hunyuan-pro 或者 hunyuan-functioncall 模型支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+
+	// 文件标识符。单次最大 50 个文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileIDs []*string `json:"FileIDs,omitnil,omitempty" name:"FileIDs"`
 }
 
 type Mindmap struct {

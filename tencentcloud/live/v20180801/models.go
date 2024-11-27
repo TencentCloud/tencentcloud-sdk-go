@@ -1566,6 +1566,229 @@ func (r *CreateCasterInputPushUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCasterPgmFromPvwRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type CreateCasterPgmFromPvwRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *CreateCasterPgmFromPvwRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterPgmFromPvwRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCasterPgmFromPvwRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterPgmFromPvwResponseParams struct {
+	// 主监任务的rtmp协议预览地址。 
+	// 注：该地址仅供预览，不可分发。
+	PgmPlayUrl *string `json:"PgmPlayUrl,omitnil,omitempty" name:"PgmPlayUrl"`
+
+	// 注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdnPlayUrl *string `json:"CdnPlayUrl,omitnil,omitempty" name:"CdnPlayUrl"`
+
+	// 主监任务在腾讯云直播侧的流ID。
+	CdnStreamId *string `json:"CdnStreamId,omitnil,omitempty" name:"CdnStreamId"`
+
+	// 主监任务的webrtc协议播放地址。 
+	// 注：
+	// 1.该预览地址仅作为预览，不可分发。
+	// 2.webrtc播放地址需配合腾讯云快直播播放sdk使用。
+	PgmWebRTCPlayUrl *string `json:"PgmWebRTCPlayUrl,omitnil,omitempty" name:"PgmWebRTCPlayUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCasterPgmFromPvwResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCasterPgmFromPvwResponseParams `json:"Response"`
+}
+
+func (r *CreateCasterPgmFromPvwResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterPgmFromPvwResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterPgmRequestParams struct {
+	// 导播台展示信息参数。
+	PgmDisplayInfo *CasterDisplayInfo `json:"PgmDisplayInfo,omitnil,omitempty" name:"PgmDisplayInfo"`
+
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type CreateCasterPgmRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台展示信息参数。
+	PgmDisplayInfo *CasterDisplayInfo `json:"PgmDisplayInfo,omitnil,omitempty" name:"PgmDisplayInfo"`
+
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *CreateCasterPgmRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterPgmRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PgmDisplayInfo")
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCasterPgmRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterPgmResponseParams struct {
+	// 主监任务的rtmp协议预览地址。
+	// 注：该地址仅供预览，不可分发。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PgmPlayUrl *string `json:"PgmPlayUrl,omitnil,omitempty" name:"PgmPlayUrl"`
+
+	// 注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdnPlayUrl *string `json:"CdnPlayUrl,omitnil,omitempty" name:"CdnPlayUrl"`
+
+	// 主监任务在腾讯云直播侧的流ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdnStreamId *string `json:"CdnStreamId,omitnil,omitempty" name:"CdnStreamId"`
+
+	// 主监任务的webrtc协议播放地址。
+	// 注：
+	// 1. 该预览地址仅作为预览，不可分发。
+	// 2. webrtc播放地址需配合腾讯云快直播播放sdk使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PgmWebRTCPlayUrl *string `json:"PgmWebRTCPlayUrl,omitnil,omitempty" name:"PgmWebRTCPlayUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCasterPgmResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCasterPgmResponseParams `json:"Response"`
+}
+
+func (r *CreateCasterPgmResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterPgmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterPvwRequestParams struct {
+	// 导播台预监展示信息参数
+	PvwDisplayInfo *CasterDisplayInfo `json:"PvwDisplayInfo,omitnil,omitempty" name:"PvwDisplayInfo"`
+
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type CreateCasterPvwRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台预监展示信息参数
+	PvwDisplayInfo *CasterDisplayInfo `json:"PvwDisplayInfo,omitnil,omitempty" name:"PvwDisplayInfo"`
+
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *CreateCasterPvwRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterPvwRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PvwDisplayInfo")
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCasterPvwRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCasterPvwResponseParams struct {
+	// 预监任务的画面rtmp协议预览地址。
+	// 注：该预览地址仅供画面预览，不可分发。
+	PvwPlayUrl *string `json:"PvwPlayUrl,omitnil,omitempty" name:"PvwPlayUrl"`
+
+	// 预监任务的webrtc协议预览画面。
+	// 注：
+	// 1. 该预览地址仅供预览，不可分发。
+	// 2. webrtc播放地址，需配合腾讯云快直播播放sdk使用
+	PvwWebRTCPlayUrl *string `json:"PvwWebRTCPlayUrl,omitnil,omitempty" name:"PvwWebRTCPlayUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCasterPvwResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCasterPvwResponseParams `json:"Response"`
+}
+
+func (r *CreateCasterPvwResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCasterPvwResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCasterRequestParams struct {
 	// 导播台名称
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
@@ -4963,6 +5186,9 @@ type DeleteLivePullStreamTaskRequestParams struct {
 
 	// 操作人姓名。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 指定任务 ID。注意：用于删除使用自定义任务 ID 创建的任务。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil,omitempty" name:"SpecifyTaskId"`
 }
 
 type DeleteLivePullStreamTaskRequest struct {
@@ -4973,6 +5199,9 @@ type DeleteLivePullStreamTaskRequest struct {
 
 	// 操作人姓名。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 指定任务 ID。注意：用于删除使用自定义任务 ID 创建的任务。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil,omitempty" name:"SpecifyTaskId"`
 }
 
 func (r *DeleteLivePullStreamTaskRequest) ToJsonString() string {
@@ -4989,6 +5218,7 @@ func (r *DeleteLivePullStreamTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "Operator")
+	delete(f, "SpecifyTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLivePullStreamTaskRequest has unknown keys!", "")
 	}
@@ -17113,6 +17343,60 @@ type RefererAuthConfig struct {
 }
 
 // Predefined struct for user
+type ReleaseCasterRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type ReleaseCasterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *ReleaseCasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseCasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReleaseCasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseCasterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReleaseCasterResponse struct {
+	*tchttp.BaseResponse
+	Response *ReleaseCasterResponseParams `json:"Response"`
+}
+
+func (r *ReleaseCasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseCasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RestartLivePullStreamTaskRequestParams struct {
 	// 任务 Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -17461,6 +17745,114 @@ func (r *StartLiveStreamMonitorResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartLiveStreamMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopCasterPgmRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type StopCasterPgmRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *StopCasterPgmRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopCasterPgmRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopCasterPgmRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopCasterPgmResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopCasterPgmResponse struct {
+	*tchttp.BaseResponse
+	Response *StopCasterPgmResponseParams `json:"Response"`
+}
+
+func (r *StopCasterPgmResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopCasterPgmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopCasterPvwRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type StopCasterPvwRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *StopCasterPvwRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopCasterPvwRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopCasterPvwRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopCasterPvwResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopCasterPvwResponse struct {
+	*tchttp.BaseResponse
+	Response *StopCasterPvwResponseParams `json:"Response"`
+}
+
+func (r *StopCasterPvwResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopCasterPvwResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

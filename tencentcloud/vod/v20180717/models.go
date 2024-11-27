@@ -6590,6 +6590,9 @@ type CreateVodDomainRequestParams struct {
 	// <li>Global: 全球范围。</li>
 	// 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
 	AccelerateArea *string `json:"AccelerateArea,omitnil,omitempty" name:"AccelerateArea"`
+
+	// 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>不填默认取值为 VOD 。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CreateVodDomainRequest struct {
@@ -6607,6 +6610,9 @@ type CreateVodDomainRequest struct {
 	// <li>Global: 全球范围。</li>
 	// 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
 	AccelerateArea *string `json:"AccelerateArea,omitnil,omitempty" name:"AccelerateArea"`
+
+	// 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>不填默认取值为 VOD 。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *CreateVodDomainRequest) ToJsonString() string {
@@ -6624,6 +6630,7 @@ func (r *CreateVodDomainRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "SubAppId")
 	delete(f, "AccelerateArea")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVodDomainRequest has unknown keys!", "")
 	}
@@ -13485,6 +13492,9 @@ type DomainDetailInfo struct {
 	// IP 访问限制配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPFilterPolicy *IPFilterPolicy `json:"IPFilterPolicy,omitnil,omitempty" name:"IPFilterPolicy"`
+
+	// 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DomainHTTPSConfig struct {

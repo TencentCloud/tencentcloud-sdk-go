@@ -490,6 +490,9 @@ type CreateFileSystemRequestParams struct {
 
 	// 客户端集群所属的安全组
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+
+	// 集群ssh通信端口，默认是22
+	ClusterPort *uint64 `json:"ClusterPort,omitnil,omitempty" name:"ClusterPort"`
 }
 
 type CreateFileSystemRequest struct {
@@ -521,6 +524,9 @@ type CreateFileSystemRequest struct {
 
 	// 客户端集群所属的安全组
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+
+	// 集群ssh通信端口，默认是22
+	ClusterPort *uint64 `json:"ClusterPort,omitnil,omitempty" name:"ClusterPort"`
 }
 
 func (r *CreateFileSystemRequest) ToJsonString() string {
@@ -544,6 +550,7 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "Tag")
 	delete(f, "GooseFSxBuildElements")
 	delete(f, "SecurityGroupId")
+	delete(f, "ClusterPort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileSystemRequest has unknown keys!", "")
 	}

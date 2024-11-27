@@ -84,29 +84,23 @@ type AdjustInfoDetail struct {
 
 type AllocationAverageData struct {
 	// 起始月份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginMonth *string `json:"BeginMonth,omitnil,omitempty" name:"BeginMonth"`
 
 	// 结束月份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndMonth *string `json:"EndMonth,omitnil,omitempty" name:"EndMonth"`
 
 	// 合计费用(折后总额)平均值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 }
 
 type AllocationBillTrendDetail struct {
 	// 账单月份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
 	// 账单月份展示名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 }
 
@@ -1196,31 +1190,25 @@ type AllocationTreeNode struct {
 
 type AnalyseActionTypeDetail struct {
 	// 交易类型code
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 交易类型Name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 }
 
 type AnalyseAmountDetail struct {
 	// 费用类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 是否展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Display *int64 `json:"Display,omitnil,omitempty" name:"Display"`
 }
 
 type AnalyseBusinessDetail struct {
 	// 产品码code
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
 }
 
@@ -1260,39 +1248,30 @@ type AnalyseConditionDetail struct {
 
 type AnalyseConditions struct {
 	// 产品名称代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCodes *string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
 	// 子产品名称代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCodes *string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
 	// 组件类型代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCode *string `json:"ComponentCode,omitnil,omitempty" name:"ComponentCode"`
 
 	// 可用区ID：资源所属可用区ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIds *string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 地域ID:资源所属地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionIds *string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
 	// 项目ID:资源所属项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIds *string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
 	// 计费模式 prePay(表示包年包月)/postPay(表示按量计费)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayModes *string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
 	// 交易类型，查询交易类型（请使用交易类型code入参）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionTypes *string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
 	// 分账标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
@@ -1301,19 +1280,15 @@ type AnalyseConditions struct {
 	// voucherPayAmount:优惠券 
 	// tax:税金 
 	// costBeforeTax:税前价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
 	// 查询成本分析数据的用户UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerUins *string `json:"PayerUins,omitnil,omitempty" name:"PayerUins"`
 
 	// 使用资源的用户UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUins *string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
 	// 消耗类型，查询消耗类型（请使用消耗类型code入参）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumptionTypes *string `json:"ConsumptionTypes,omitnil,omitempty" name:"ConsumptionTypes"`
 }
 
@@ -1331,77 +1306,62 @@ type AnalyseDetail struct {
 
 type AnalyseHeaderDetail struct {
 	// 表头日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadDetail []*AnalyseHeaderTimeDetail `json:"HeadDetail,omitnil,omitempty" name:"HeadDetail"`
 
 	// 时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 总计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
 type AnalyseHeaderTimeDetail struct {
 	// 日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type AnalyseOwnerUinDetail struct {
 	// 使用者uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 }
 
 type AnalysePayModeDetail struct {
 	// 计费模式code
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 计费模式Name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayModeName *string `json:"PayModeName,omitnil,omitempty" name:"PayModeName"`
 }
 
 type AnalyseProjectDetail struct {
 	// 项目id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 默认项目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 }
 
 type AnalyseRegionDetail struct {
 	// 地域id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 }
 
 type AnalyseTimeDetail struct {
 	// 日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Money *string `json:"Money,omitnil,omitempty" name:"Money"`
 }
 
 type AnalyseZoneDetail struct {
 	// 可用区id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 可用区Name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 }
 

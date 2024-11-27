@@ -300,6 +300,9 @@ type Cluster struct {
 	// Cu比例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemRatio *int64 `json:"MemRatio,omitnil,omitempty" name:"MemRatio"`
+
+	// 是否开启跨租户弹性网卡
+	CrossTenantEniMode *int64 `json:"CrossTenantEniMode,omitnil,omitempty" name:"CrossTenantEniMode"`
 }
 
 type ClusterGroupSetItem struct {

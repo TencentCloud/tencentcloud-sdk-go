@@ -1467,6 +1467,59 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
     return
 }
 
+func NewCreateSubdomainValidateTXTValueRequest() (request *CreateSubdomainValidateTXTValueRequest) {
+    request = &CreateSubdomainValidateTXTValueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CreateSubdomainValidateTXTValue")
+    
+    
+    return
+}
+
+func NewCreateSubdomainValidateTXTValueResponse() (response *CreateSubdomainValidateTXTValueResponse) {
+    response = &CreateSubdomainValidateTXTValueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSubdomainValidateTXTValue
+// 创建添加子域名 Zone 域解析时所需要的 TXT 记录值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
+//  INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+func (c *Client) CreateSubdomainValidateTXTValue(request *CreateSubdomainValidateTXTValueRequest) (response *CreateSubdomainValidateTXTValueResponse, err error) {
+    return c.CreateSubdomainValidateTXTValueWithContext(context.Background(), request)
+}
+
+// CreateSubdomainValidateTXTValue
+// 创建添加子域名 Zone 域解析时所需要的 TXT 记录值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
+//  INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+func (c *Client) CreateSubdomainValidateTXTValueWithContext(ctx context.Context, request *CreateSubdomainValidateTXTValueRequest) (response *CreateSubdomainValidateTXTValueResponse, err error) {
+    if request == nil {
+        request = NewCreateSubdomainValidateTXTValueRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubdomainValidateTXTValue require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSubdomainValidateTXTValueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTXTRecordRequest() (request *CreateTXTRecordRequest) {
     request = &CreateTXTRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4706,6 +4759,63 @@ func (c *Client) DescribeSubdomainAnalyticsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeSubdomainAnalyticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubdomainValidateStatusRequest() (request *DescribeSubdomainValidateStatusRequest) {
+    request = &DescribeSubdomainValidateStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSubdomainValidateStatus")
+    
+    
+    return
+}
+
+func NewDescribeSubdomainValidateStatusResponse() (response *DescribeSubdomainValidateStatusResponse) {
+    response = &DescribeSubdomainValidateStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSubdomainValidateStatus
+// 查看添加子域名 Zone 域解析 TXT 记录值验证状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
+//  INVALIDPARAMETER_QUHUITXTNOTMATCH = "InvalidParameter.QuhuiTxtNotMatch"
+//  INVALIDPARAMETER_QUHUITXTRECORDWAIT = "InvalidParameter.QuhuiTxtRecordWait"
+//  INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+func (c *Client) DescribeSubdomainValidateStatus(request *DescribeSubdomainValidateStatusRequest) (response *DescribeSubdomainValidateStatusResponse, err error) {
+    return c.DescribeSubdomainValidateStatusWithContext(context.Background(), request)
+}
+
+// DescribeSubdomainValidateStatus
+// 查看添加子域名 Zone 域解析 TXT 记录值验证状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
+//  INVALIDPARAMETER_QUHUITXTNOTMATCH = "InvalidParameter.QuhuiTxtNotMatch"
+//  INVALIDPARAMETER_QUHUITXTRECORDWAIT = "InvalidParameter.QuhuiTxtRecordWait"
+//  INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+func (c *Client) DescribeSubdomainValidateStatusWithContext(ctx context.Context, request *DescribeSubdomainValidateStatusRequest) (response *DescribeSubdomainValidateStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubdomainValidateStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubdomainValidateStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubdomainValidateStatusResponse()
     err = c.Send(request, response)
     return
 }

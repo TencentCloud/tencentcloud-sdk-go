@@ -170,6 +170,14 @@ type AttrLabelDetail struct {
 	// 属性标签是否在更新中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdating *bool `json:"IsUpdating,omitnil,omitempty" name:"IsUpdating"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 }
 
 type AttrLabelRefer struct {

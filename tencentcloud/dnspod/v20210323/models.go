@@ -1410,6 +1410,72 @@ func (r *CreateSnapshotResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSubdomainValidateTXTValueRequestParams struct {
+	// 要添加的子域名 Zone 域。
+	DomainZone *string `json:"DomainZone,omitnil,omitempty" name:"DomainZone"`
+}
+
+type CreateSubdomainValidateTXTValueRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要添加的子域名 Zone 域。
+	DomainZone *string `json:"DomainZone,omitnil,omitempty" name:"DomainZone"`
+}
+
+func (r *CreateSubdomainValidateTXTValueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubdomainValidateTXTValueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubdomainValidateTXTValueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubdomainValidateTXTValueResponseParams struct {
+	// 需要添加 TXT 记录的域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要添加 TXT 记录的主机记录。
+	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
+
+	// 需要添加记录类型。
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 需要添加 TXT 记录的记录值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSubdomainValidateTXTValueResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubdomainValidateTXTValueResponseParams `json:"Response"`
+}
+
+func (r *CreateSubdomainValidateTXTValueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubdomainValidateTXTValueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTXTRecordRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -4834,6 +4900,60 @@ func (r *DescribeSubdomainAnalyticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSubdomainAnalyticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubdomainValidateStatusRequestParams struct {
+	// 要查看 TXT 记录校验状态的子域名 Zone 域。
+	DomainZone *string `json:"DomainZone,omitnil,omitempty" name:"DomainZone"`
+}
+
+type DescribeSubdomainValidateStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查看 TXT 记录校验状态的子域名 Zone 域。
+	DomainZone *string `json:"DomainZone,omitnil,omitempty" name:"DomainZone"`
+}
+
+func (r *DescribeSubdomainValidateStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubdomainValidateStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubdomainValidateStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubdomainValidateStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSubdomainValidateStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubdomainValidateStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubdomainValidateStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubdomainValidateStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

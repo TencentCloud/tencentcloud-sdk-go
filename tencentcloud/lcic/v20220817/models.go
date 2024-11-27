@@ -3584,6 +3584,9 @@ func (r *DescribeSupervisorsResponse) FromJsonString(s string) error {
 type DescribeUserRequestParams struct {
 	// 用户Id。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 客户端用户 id,如果未指定则为用户 id。
+	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 }
 
 type DescribeUserRequest struct {
@@ -3591,6 +3594,9 @@ type DescribeUserRequest struct {
 	
 	// 用户Id。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 客户端用户 id,如果未指定则为用户 id。
+	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 }
 
 func (r *DescribeUserRequest) ToJsonString() string {
@@ -3606,6 +3612,7 @@ func (r *DescribeUserRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "UserId")
+	delete(f, "OriginId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRequest has unknown keys!", "")
 	}

@@ -15685,6 +15685,9 @@ type DescribePrivateNatGatewayTranslationAclRulesRequestParams struct {
 
 	// 返回数目，默认值为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// ACL规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type DescribePrivateNatGatewayTranslationAclRulesRequest struct {
@@ -15710,6 +15713,9 @@ type DescribePrivateNatGatewayTranslationAclRulesRequest struct {
 
 	// 返回数目，默认值为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// ACL规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *DescribePrivateNatGatewayTranslationAclRulesRequest) ToJsonString() string {
@@ -15731,6 +15737,7 @@ func (r *DescribePrivateNatGatewayTranslationAclRulesRequest) FromJsonString(s s
 	delete(f, "OriginalIp")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayTranslationAclRulesRequest has unknown keys!", "")
 	}
@@ -31100,6 +31107,9 @@ type TranslationAclRule struct {
 
 	// 是否匹配。
 	Action *uint64 `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// ACL规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type TranslationNatRule struct {

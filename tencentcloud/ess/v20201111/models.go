@@ -196,14 +196,16 @@ type ApproverInfo struct {
 	// 4. <font color='red'>设备指纹识别</font>和<font color='red'>设备面容识别</font>只支持小程序使用，其他端暂不支持。
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil,omitempty" name:"ApproverSignTypes"`
 
-	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// 此签署人（员工或者个人）签署前，是否需要发起方企业审批，取值如下：
 	// <ul><li>**false**：（默认）不需要审批，直接签署。</li>
 	// <li>**true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
 	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
 	// <ul><li>如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
 	// <li>如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 
-	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+	// 注：`此功能可用于与发起方企业内部的审批流程进行关联，支持手动、静默签署合同`
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/b14d5188ed0229d1401e74a9a49cab6d.png)
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil,omitempty" name:"ApproverNeedSignReview"`
 
 	// [用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID或者印章类型）或签名方式。
@@ -225,7 +227,7 @@ type ApproverInfo struct {
 	// <li>勾选框控件</li>
 	// <li>数字控件</li>
 	// <li>图片控件</li>
-	// <li>数据表格等填写控件</li></ul>
+	// </ul>
 	// 
 	// 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/company/createFlowByFiles/#指定签署方填写控件)
 	// 
@@ -11630,14 +11632,16 @@ type FlowCreateApprover struct {
 	// </ul>
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
-	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// 此签署人(员工或者个人)签署时，是否需要发起方企业审批，取值如下：
 	// <ul><li>**false**：（默认）不需要审批，直接签署。</li>
 	// <li>**true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
 	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
 	// <ul><li>如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
 	// <li>如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 	// 
-	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+	// 注：`此功能可用于与发起方企业内部的审批流程进行关联，支持手动、静默签署合同`
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/b14d5188ed0229d1401e74a9a49cab6d.png)
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil,omitempty" name:"ApproverNeedSignReview"`
 
 	// 签署人签署控件， 此参数仅针对文件发起（CreateFlowByFiles）生效

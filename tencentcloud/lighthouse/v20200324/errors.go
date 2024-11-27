@@ -755,6 +755,9 @@ const (
 	// 共享镜像不支持此操作。
 	UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = "UnsupportedOperation.NotSupportSharedBlueprint"
 
+	// 操作不支持自动生成密码。
+	UNSUPPORTEDOPERATION_OPERATIONNOTSUPPORTAUTOGENERATEPASSWORD = "UnsupportedOperation.OperationNotSupportAutoGeneratePassword"
+
 	// 国际站不支持该操作。
 	UNSUPPORTEDOPERATION_OPERATIONNOTSUPPORTEDININTLSITE = "UnsupportedOperation.OperationNotSupportedInIntlSite"
 

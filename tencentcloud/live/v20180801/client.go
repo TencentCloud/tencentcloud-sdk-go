@@ -878,6 +878,231 @@ func (c *Client) CreateCasterInputPushUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateCasterPgmRequest() (request *CreateCasterPgmRequest) {
+    request = &CreateCasterPgmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateCasterPgm")
+    
+    
+    return
+}
+
+func NewCreateCasterPgmResponse() (response *CreateCasterPgmResponse) {
+    response = &CreateCasterPgmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCasterPgm
+// 该接口用来启动主监任务，并将获取主监画面的播放地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterPgm(request *CreateCasterPgmRequest) (response *CreateCasterPgmResponse, err error) {
+    return c.CreateCasterPgmWithContext(context.Background(), request)
+}
+
+// CreateCasterPgm
+// 该接口用来启动主监任务，并将获取主监画面的播放地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterPgmWithContext(ctx context.Context, request *CreateCasterPgmRequest) (response *CreateCasterPgmResponse, err error) {
+    if request == nil {
+        request = NewCreateCasterPgmRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCasterPgm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCasterPgmResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCasterPgmFromPvwRequest() (request *CreateCasterPgmFromPvwRequest) {
+    request = &CreateCasterPgmFromPvwRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateCasterPgmFromPvw")
+    
+    
+    return
+}
+
+func NewCreateCasterPgmFromPvwResponse() (response *CreateCasterPgmFromPvwResponse) {
+    response = &CreateCasterPgmFromPvwResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCasterPgmFromPvw
+// 该接口用来将预监画面的布局、水印、字幕等配置，复制到主监画面中。
+//
+// 该接口使用时，预监任务需处于运行状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterPgmFromPvw(request *CreateCasterPgmFromPvwRequest) (response *CreateCasterPgmFromPvwResponse, err error) {
+    return c.CreateCasterPgmFromPvwWithContext(context.Background(), request)
+}
+
+// CreateCasterPgmFromPvw
+// 该接口用来将预监画面的布局、水印、字幕等配置，复制到主监画面中。
+//
+// 该接口使用时，预监任务需处于运行状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterPgmFromPvwWithContext(ctx context.Context, request *CreateCasterPgmFromPvwRequest) (response *CreateCasterPgmFromPvwResponse, err error) {
+    if request == nil {
+        request = NewCreateCasterPgmFromPvwRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCasterPgmFromPvw require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCasterPgmFromPvwResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCasterPvwRequest() (request *CreateCasterPvwRequest) {
+    request = &CreateCasterPvwRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateCasterPvw")
+    
+    
+    return
+}
+
+func NewCreateCasterPvwResponse() (response *CreateCasterPvwResponse) {
+    response = &CreateCasterPvwResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCasterPvw
+// 该接口用来启动预监任务，并将获取预监画面的播放地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterPvw(request *CreateCasterPvwRequest) (response *CreateCasterPvwResponse, err error) {
+    return c.CreateCasterPvwWithContext(context.Background(), request)
+}
+
+// CreateCasterPvw
+// 该接口用来启动预监任务，并将获取预监画面的播放地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCasterPvwWithContext(ctx context.Context, request *CreateCasterPvwRequest) (response *CreateCasterPvwResponse, err error) {
+    if request == nil {
+        request = NewCreateCasterPvwRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCasterPvw require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCasterPvwResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCommonMixStreamRequest() (request *CreateCommonMixStreamRequest) {
     request = &CreateCommonMixStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13045,6 +13270,85 @@ func (c *Client) ModifyPullStreamStatusWithContext(ctx context.Context, request 
     return
 }
 
+func NewReleaseCasterRequest() (request *ReleaseCasterRequest) {
+    request = &ReleaseCasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ReleaseCaster")
+    
+    
+    return
+}
+
+func NewReleaseCasterResponse() (response *ReleaseCasterResponse) {
+    response = &ReleaseCasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReleaseCaster
+// 调用该接口，释放导播台实例，但保留所有的配置。
+//
+// 执行该接口，预监与主监画面停止，第三方推流停止。
+//
+// 点播文件与直播地址将停止展示，客户自行推到导播台的流需要手动停止。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RELEASECASTERFAILED = "FailedOperation.ReleaseCasterFailed"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReleaseCaster(request *ReleaseCasterRequest) (response *ReleaseCasterResponse, err error) {
+    return c.ReleaseCasterWithContext(context.Background(), request)
+}
+
+// ReleaseCaster
+// 调用该接口，释放导播台实例，但保留所有的配置。
+//
+// 执行该接口，预监与主监画面停止，第三方推流停止。
+//
+// 点播文件与直播地址将停止展示，客户自行推到导播台的流需要手动停止。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RELEASECASTERFAILED = "FailedOperation.ReleaseCasterFailed"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReleaseCasterWithContext(ctx context.Context, request *ReleaseCasterRequest) (response *ReleaseCasterResponse, err error) {
+    if request == nil {
+        request = NewReleaseCasterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseCaster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseCasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartLivePullStreamTaskRequest() (request *RestartLivePullStreamTaskRequest) {
     request = &RestartLivePullStreamTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13383,6 +13687,148 @@ func (c *Client) StartLiveStreamMonitorWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewStartLiveStreamMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopCasterPgmRequest() (request *StopCasterPgmRequest) {
+    request = &StopCasterPgmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StopCasterPgm")
+    
+    
+    return
+}
+
+func NewStopCasterPgmResponse() (response *StopCasterPgmResponse) {
+    response = &StopCasterPgmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopCasterPgm
+// 该接口用来停止导播台的主监输出。
+//
+// 停止主监后，对应的推流到腾讯云直播源站和推流到其他第三方平台均将会停止。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopCasterPgm(request *StopCasterPgmRequest) (response *StopCasterPgmResponse, err error) {
+    return c.StopCasterPgmWithContext(context.Background(), request)
+}
+
+// StopCasterPgm
+// 该接口用来停止导播台的主监输出。
+//
+// 停止主监后，对应的推流到腾讯云直播源站和推流到其他第三方平台均将会停止。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopCasterPgmWithContext(ctx context.Context, request *StopCasterPgmRequest) (response *StopCasterPgmResponse, err error) {
+    if request == nil {
+        request = NewStopCasterPgmRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopCasterPgm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopCasterPgmResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopCasterPvwRequest() (request *StopCasterPvwRequest) {
+    request = &StopCasterPvwRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StopCasterPvw")
+    
+    
+    return
+}
+
+func NewStopCasterPvwResponse() (response *StopCasterPvwResponse) {
+    response = &StopCasterPvwResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopCasterPvw
+// 该接口用来停止导播台的预监任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopCasterPvw(request *StopCasterPvwRequest) (response *StopCasterPvwResponse, err error) {
+    return c.StopCasterPvwWithContext(context.Background(), request)
+}
+
+// StopCasterPvw
+// 该接口用来停止导播台的预监任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopCasterPvwWithContext(ctx context.Context, request *StopCasterPvwRequest) (response *StopCasterPvwResponse, err error) {
+    if request == nil {
+        request = NewStopCasterPvwRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopCasterPvw require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopCasterPvwResponse()
     err = c.Send(request, response)
     return
 }
