@@ -1127,7 +1127,7 @@ type Component struct {
 	// <b>参数样例</b>：` "{"PageRanges":[{"BeginPage":1,"EndPage":-1}]}"`
 	// 
 	// <font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
-	// <ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+	// <ul><li> <b>Opacity</b>：印章透明度，支持范围：0.6-1，0.7表示70%的透明度，1表示无透明度</li></ul>
 	// <b>参数样例</b>：`{"Opacity":0.7}`
 	// 
 	// <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>

@@ -1683,6 +1683,83 @@ func (r *DescribeDatasourceListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePageWidgetListRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+}
+
+type DescribePageWidgetListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+}
+
+func (r *DescribePageWidgetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePageWidgetListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePageWidgetListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePageWidgetListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 扩展参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 返回数据结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *WidgetListVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePageWidgetListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePageWidgetListResponseParams `json:"Response"`
+}
+
+func (r *DescribePageWidgetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePageWidgetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProjectInfoRequestParams struct {
 	// 项目Id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2258,6 +2335,118 @@ type ErrorInfo struct {
 	// 预留字段1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedField *string `json:"ReservedField,omitnil,omitempty" name:"ReservedField"`
+}
+
+// Predefined struct for user
+type ExportScreenPageRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 画布类型。栅格画布：GRID；自由画布：FREE
+	CanvasType *string `json:"CanvasType,omitnil,omitempty" name:"CanvasType"`
+
+	// 图片导出类型。base64；url（有效期：1天）
+	PicType *string `json:"PicType,omitnil,omitempty" name:"PicType"`
+
+	// 组件Ids。为空时，导出整个页面
+	WidgetIds []*string `json:"WidgetIds,omitnil,omitempty" name:"WidgetIds"`
+
+	// 是否是异步请求
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+}
+
+type ExportScreenPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页面id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 画布类型。栅格画布：GRID；自由画布：FREE
+	CanvasType *string `json:"CanvasType,omitnil,omitempty" name:"CanvasType"`
+
+	// 图片导出类型。base64；url（有效期：1天）
+	PicType *string `json:"PicType,omitnil,omitempty" name:"PicType"`
+
+	// 组件Ids。为空时，导出整个页面
+	WidgetIds []*string `json:"WidgetIds,omitnil,omitempty" name:"WidgetIds"`
+
+	// 是否是异步请求
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+}
+
+func (r *ExportScreenPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportScreenPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageId")
+	delete(f, "CanvasType")
+	delete(f, "PicType")
+	delete(f, "WidgetIds")
+	delete(f, "AsyncRequest")
+	delete(f, "TranId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportScreenPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportScreenPageResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 扩展参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 返回数据结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *PageScreenListVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportScreenPageResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportScreenPageResponseParams `json:"Response"`
+}
+
+func (r *ExportScreenPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportScreenPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IdDTO struct {
@@ -3052,6 +3241,35 @@ func (r *ModifyUserRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PageScreenListVO struct {
+	// 图片导出类型。base64；url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PicType *string `json:"PicType,omitnil,omitempty" name:"PicType"`
+
+	// 图片列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*PageScreenVO `json:"List,omitnil,omitempty" name:"List"`
+
+	// 异步事务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 事务状态
+	// 1: 处理中; 2: 处理成功; 3 处理失败(错误内容见外层Msg)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+}
+
+type PageScreenVO struct {
+	// 截图base64或 url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 组件Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+}
+
 type PermissionComponent struct {
 	// 权限值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3439,4 +3657,32 @@ type UserRoleListDataUserRoleInfo struct {
 	// 用户openid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppOpenUserId *string `json:"AppOpenUserId,omitnil,omitempty" name:"AppOpenUserId"`
+}
+
+type WidgetListVO struct {
+	// uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *string `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页面id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 组件数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetList []*WidgetVO `json:"WidgetList,omitnil,omitempty" name:"WidgetList"`
+}
+
+type WidgetVO struct {
+	// 组件Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+
+	// 组件name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetName *string `json:"WidgetName,omitnil,omitempty" name:"WidgetName"`
 }

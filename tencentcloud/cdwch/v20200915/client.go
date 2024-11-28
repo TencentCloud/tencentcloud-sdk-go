@@ -509,7 +509,9 @@ func NewDescribeClusterConfigsResponse() (response *DescribeClusterConfigsRespon
 // 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeClusterConfigs(request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
     return c.DescribeClusterConfigsWithContext(context.Background(), request)
 }
@@ -518,7 +520,9 @@ func (c *Client) DescribeClusterConfigs(request *DescribeClusterConfigsRequest) 
 // 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeClusterConfigsWithContext(ctx context.Context, request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterConfigsRequest()
@@ -558,7 +562,9 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 // 根据实例ID查询某个实例的具体信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     return c.DescribeInstanceWithContext(context.Background(), request)
 }
@@ -567,7 +573,9 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 // 根据实例ID查询某个实例的具体信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceRequest()
@@ -607,7 +615,9 @@ func NewDescribeInstanceClustersResponse() (response *DescribeInstanceClustersRe
 // 集群vcluster列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceClusters(request *DescribeInstanceClustersRequest) (response *DescribeInstanceClustersResponse, err error) {
     return c.DescribeInstanceClustersWithContext(context.Background(), request)
 }
@@ -616,7 +626,9 @@ func (c *Client) DescribeInstanceClusters(request *DescribeInstanceClustersReque
 // 集群vcluster列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceClustersWithContext(ctx context.Context, request *DescribeInstanceClustersRequest) (response *DescribeInstanceClustersResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceClustersRequest()
@@ -656,7 +668,9 @@ func NewDescribeInstanceKeyValConfigsResponse() (response *DescribeInstanceKeyVa
 // 在集群详情页面获取所有参数列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceKeyValConfigs(request *DescribeInstanceKeyValConfigsRequest) (response *DescribeInstanceKeyValConfigsResponse, err error) {
     return c.DescribeInstanceKeyValConfigsWithContext(context.Background(), request)
 }
@@ -665,7 +679,9 @@ func (c *Client) DescribeInstanceKeyValConfigs(request *DescribeInstanceKeyValCo
 // 在集群详情页面获取所有参数列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceKeyValConfigsWithContext(ctx context.Context, request *DescribeInstanceKeyValConfigsRequest) (response *DescribeInstanceKeyValConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceKeyValConfigsRequest()
@@ -705,7 +721,9 @@ func NewDescribeInstanceNodesResponse() (response *DescribeInstanceNodesResponse
 // 获取实例节点信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     return c.DescribeInstanceNodesWithContext(context.Background(), request)
 }
@@ -714,7 +732,9 @@ func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (r
 // 获取实例节点信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceNodesRequest()
@@ -754,7 +774,9 @@ func NewDescribeInstanceShardsResponse() (response *DescribeInstanceShardsRespon
 // 获取实例shard信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceShards(request *DescribeInstanceShardsRequest) (response *DescribeInstanceShardsResponse, err error) {
     return c.DescribeInstanceShardsWithContext(context.Background(), request)
 }
@@ -763,7 +785,9 @@ func (c *Client) DescribeInstanceShards(request *DescribeInstanceShardsRequest) 
 // 获取实例shard信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request *DescribeInstanceShardsRequest) (response *DescribeInstanceShardsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceShardsRequest()
@@ -803,7 +827,9 @@ func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse
 // 集群详情页中显示集群状态、流程进度等
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
     return c.DescribeInstanceStateWithContext(context.Background(), request)
 }
@@ -812,7 +838,9 @@ func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (r
 // 集群详情页中显示集群状态、流程进度等
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceStateRequest()

@@ -35,6 +35,9 @@ const (
 	// 云端录制方法不支持。
 	FAILEDOPERATION_CRUNSUPPORTMETHOD = "FailedOperation.CRUnsupportMethod"
 
+	// 云端切片方法不支持。
+	FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+
 	// 房间中没有设置混流模板。
 	FAILEDOPERATION_MIXSESSIONNOTEXIST = "FailedOperation.MixSessionNotExist"
 
@@ -79,6 +82,9 @@ const (
 
 	// 云端录制内部服务错误。
 	INTERNALERROR_CRINTERNALERROR = "InternalError.CRInternalError"
+
+	// 云端切片内部服务错误
+	INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
 
 	// 数据库查询异常。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -304,6 +310,15 @@ const (
 
 	// 缺少SecretKey参数。
 	MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+
+	// 缺少SliceParams参数。
+	MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+
+	// 缺少SliceStorageParams参数。
+	MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+
+	// 缺少SliceType参数。
+	MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
 
 	// 缺少startTS_s参数。
 	MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"

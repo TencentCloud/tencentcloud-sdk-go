@@ -2060,6 +2060,146 @@ type CreateApiRspSet struct {
 }
 
 // Predefined struct for user
+type CreateExclusiveInstancesRequestParams struct {
+	// 可用区
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 实例类型：     
+	// basic：            基础版
+	// professional： 专业版
+	// enterprise：     企业版
+	// platium：         铂金版
+	// diamond：       钻石版
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 网络配置
+	NetworkConfig *InstanceNetworkConfig `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// VPC配置
+	VpcConfig *VpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// 付费类型：
+	// POSTPAID：后付费
+	// PREPAID： 预付费
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例描述
+	InstanceDescription *string `json:"InstanceDescription,omitnil,omitempty" name:"InstanceDescription"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 预付费付费时长：单位是月
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 预付费续费标志：
+	// NOTIFY_AND_MANUAL_RENEW 手动续费
+	// NOTIFY_AND_AUTO_RENEW 自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW 不续费
+	AutoRenewFlag *string `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+}
+
+type CreateExclusiveInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 实例类型：     
+	// basic：            基础版
+	// professional： 专业版
+	// enterprise：     企业版
+	// platium：         铂金版
+	// diamond：       钻石版
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 网络配置
+	NetworkConfig *InstanceNetworkConfig `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// VPC配置
+	VpcConfig *VpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// 付费类型：
+	// POSTPAID：后付费
+	// PREPAID： 预付费
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例描述
+	InstanceDescription *string `json:"InstanceDescription,omitnil,omitempty" name:"InstanceDescription"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 预付费付费时长：单位是月
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 预付费续费标志：
+	// NOTIFY_AND_MANUAL_RENEW 手动续费
+	// NOTIFY_AND_AUTO_RENEW 自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW 不续费
+	AutoRenewFlag *string `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+}
+
+func (r *CreateExclusiveInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExclusiveInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zones")
+	delete(f, "InstanceType")
+	delete(f, "NetworkConfig")
+	delete(f, "VpcConfig")
+	delete(f, "PayMode")
+	delete(f, "InstanceName")
+	delete(f, "InstanceDescription")
+	delete(f, "Tags")
+	delete(f, "Period")
+	delete(f, "AutoRenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExclusiveInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExclusiveInstancesResponseParams struct {
+	// 实例ID
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateExclusiveInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExclusiveInstancesResponseParams `json:"Response"`
+}
+
+func (r *CreateExclusiveInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExclusiveInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIPStrategyRequestParams struct {
 	// 服务的唯一ID。
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
@@ -4968,6 +5108,67 @@ func (r *DescribeIPStrategysStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstancesNetworkConfigRequestParams struct {
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeInstancesNetworkConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInstancesNetworkConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesNetworkConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesNetworkConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesNetworkConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstancesNetworkConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancesNetworkConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancesNetworkConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesNetworkConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogSearchRequestParams struct {
 	// 日志开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -7324,6 +7525,11 @@ type InstanceInfo struct {
 	// 所属vpc
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+}
+
+type InstanceNetworkConfig struct {
+	// 公网带宽
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 type InstanceParameterInput struct {

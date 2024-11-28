@@ -96,6 +96,105 @@ func (c *Client) ControlAIConversationWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateBasicModerationRequest() (request *CreateBasicModerationRequest) {
+    request = &CreateBasicModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateBasicModeration")
+    
+    
+    return
+}
+
+func NewCreateBasicModerationResponse() (response *CreateBasicModerationResponse) {
+    response = &CreateBasicModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBasicModeration
+// 接口说明：
+//
+// 启动终端审核功能，完成房间内的音频审核。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBasicModeration(request *CreateBasicModerationRequest) (response *CreateBasicModerationResponse, err error) {
+    return c.CreateBasicModerationWithContext(context.Background(), request)
+}
+
+// CreateBasicModeration
+// 接口说明：
+//
+// 启动终端审核功能，完成房间内的音频审核。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBasicModerationWithContext(ctx context.Context, request *CreateBasicModerationRequest) (response *CreateBasicModerationResponse, err error) {
+    if request == nil {
+        request = NewCreateBasicModerationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBasicModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBasicModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
     request = &CreateCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -296,6 +395,79 @@ func (c *Client) CreatePictureWithContext(ctx context.Context, request *CreatePi
     request.SetContext(ctx)
     
     response = NewCreatePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBasicModerationRequest() (request *DeleteBasicModerationRequest) {
+    request = &DeleteBasicModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteBasicModeration")
+    
+    
+    return
+}
+
+func NewDeleteBasicModerationResponse() (response *DeleteBasicModerationResponse) {
+    response = &DeleteBasicModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBasicModeration
+// 成功开启审核任务后，可以使用此接口来停止任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBasicModeration(request *DeleteBasicModerationRequest) (response *DeleteBasicModerationResponse, err error) {
+    return c.DeleteBasicModerationWithContext(context.Background(), request)
+}
+
+// DeleteBasicModeration
+// 成功开启审核任务后，可以使用此接口来停止任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBasicModerationWithContext(ctx context.Context, request *DeleteBasicModerationRequest) (response *DeleteBasicModerationResponse, err error) {
+    if request == nil {
+        request = NewDeleteBasicModerationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBasicModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBasicModerationResponse()
     err = c.Send(request, response)
     return
 }

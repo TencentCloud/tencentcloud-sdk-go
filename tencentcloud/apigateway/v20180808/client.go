@@ -968,6 +968,67 @@ func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApi
     return
 }
 
+func NewCreateExclusiveInstancesRequest() (request *CreateExclusiveInstancesRequest) {
+    request = &CreateExclusiveInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apigateway", APIVersion, "CreateExclusiveInstances")
+    
+    
+    return
+}
+
+func NewCreateExclusiveInstancesResponse() (response *CreateExclusiveInstancesResponse) {
+    response = &CreateExclusiveInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExclusiveInstances
+// 创建专享实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSKEYEXIST = "FailedOperation.AccessKeyExist"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  LIMITEXCEEDED_APIKEYCOUNTLIMITEXCEEDED = "LimitExceeded.ApiKeyCountLimitExceeded"
+//  UNAUTHORIZEDOPERATION_UNCERTIFIEDUSER = "UnauthorizedOperation.UncertifiedUser"
+//  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
+func (c *Client) CreateExclusiveInstances(request *CreateExclusiveInstancesRequest) (response *CreateExclusiveInstancesResponse, err error) {
+    return c.CreateExclusiveInstancesWithContext(context.Background(), request)
+}
+
+// CreateExclusiveInstances
+// 创建专享实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSKEYEXIST = "FailedOperation.AccessKeyExist"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  LIMITEXCEEDED_APIKEYCOUNTLIMITEXCEEDED = "LimitExceeded.ApiKeyCountLimitExceeded"
+//  UNAUTHORIZEDOPERATION_UNCERTIFIEDUSER = "UnauthorizedOperation.UncertifiedUser"
+//  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
+func (c *Client) CreateExclusiveInstancesWithContext(ctx context.Context, request *CreateExclusiveInstancesRequest) (response *CreateExclusiveInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateExclusiveInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExclusiveInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExclusiveInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIPStrategyRequest() (request *CreateIPStrategyRequest) {
     request = &CreateIPStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3389,6 +3450,59 @@ func (c *Client) DescribeIPStrategysStatusWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeIPStrategysStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesNetworkConfigRequest() (request *DescribeInstancesNetworkConfigRequest) {
+    request = &DescribeInstancesNetworkConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeInstancesNetworkConfig")
+    
+    
+    return
+}
+
+func NewDescribeInstancesNetworkConfigResponse() (response *DescribeInstancesNetworkConfigResponse) {
+    response = &DescribeInstancesNetworkConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancesNetworkConfig
+// 获取专享实例网络配置列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+func (c *Client) DescribeInstancesNetworkConfig(request *DescribeInstancesNetworkConfigRequest) (response *DescribeInstancesNetworkConfigResponse, err error) {
+    return c.DescribeInstancesNetworkConfigWithContext(context.Background(), request)
+}
+
+// DescribeInstancesNetworkConfig
+// 获取专享实例网络配置列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+func (c *Client) DescribeInstancesNetworkConfigWithContext(ctx context.Context, request *DescribeInstancesNetworkConfigRequest) (response *DescribeInstancesNetworkConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesNetworkConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesNetworkConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesNetworkConfigResponse()
     err = c.Send(request, response)
     return
 }

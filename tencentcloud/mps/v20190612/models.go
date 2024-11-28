@@ -15297,7 +15297,6 @@ type QualityControlItemConfig struct {
 	// <li>LowEvaluation：无参考打分</li>
 	// <li>Mosaic：马赛克检测</li>
 	// <li>CrashScreen：花屏检测</li>
-	// <li>VideoFreezedFrame：视频冻结</li>
 	// <li>Blur：模糊检测</li>
 	// <li>BlackWhiteEdge：黑白边检测</li>
 	// <li>SolidColorScreen：纯色屏检测</li>

@@ -2576,7 +2576,7 @@ type DescribeSafeAuthFlagResponseParams struct {
 	// 异地登录保护设置
 	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitnil,omitempty" name:"OffsiteFlag"`
 
-	// 1: 提示7天信任设备 0: 不提示
+	// 是否提示信任设备：1: 提示  0: 不提示
 	PromptTrust *uint64 `json:"PromptTrust,omitnil,omitempty" name:"PromptTrust"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

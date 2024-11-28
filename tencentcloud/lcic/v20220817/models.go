@@ -2798,6 +2798,100 @@ func (r *DescribeGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMarqueeRequestParams struct {
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间号
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeMarqueeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间号
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeMarqueeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMarqueeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMarqueeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMarqueeResponseParams struct {
+	//  跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+	MarqueeType *uint64 `json:"MarqueeType,omitnil,omitempty" name:"MarqueeType"`
+
+	// 固定值内容（当MarqueeType=1或5，则展示固定值内容）
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 字体大小（数字，像素单位，范围：10到24）
+	FontSize *uint64 `json:"FontSize,omitnil,omitempty" name:"FontSize"`
+
+	// 字体粗细：1为粗体，0为细体
+	FontWeight *uint64 `json:"FontWeight,omitnil,omitempty" name:"FontWeight"`
+
+	// 字体颜色（十六进制颜色值）
+	FontColor *string `json:"FontColor,omitnil,omitempty" name:"FontColor"`
+
+	// 字体透明度（数字，范围 0.0 到 1.0）
+	FontOpacity *float64 `json:"FontOpacity,omitnil,omitempty" name:"FontOpacity"`
+
+	// 背景颜色（十六进制颜色值）
+	BackgroundColor *string `json:"BackgroundColor,omitnil,omitempty" name:"BackgroundColor"`
+
+	// 背景透明度（数字，范围 0.0 到 1.0）
+	BackgroundOpacity *float64 `json:"BackgroundOpacity,omitnil,omitempty" name:"BackgroundOpacity"`
+
+	// 显示方式：1为滚动，2为闪烁
+	DisplayMode *uint64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// 停留时长（秒，整数，范围 1～10）
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+	MarqueeCount *uint64 `json:"MarqueeCount,omitnil,omitempty" name:"MarqueeCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMarqueeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMarqueeResponseParams `json:"Response"`
+}
+
+func (r *DescribeMarqueeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMarqueeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQuestionListRequestParams struct {
 	// 房间ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
@@ -3582,20 +3676,20 @@ func (r *DescribeSupervisorsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserRequestParams struct {
-	// 用户Id。
+	// 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 客户端用户 id,如果未指定则为用户 id。
+	// 用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 }
 
 type DescribeUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户Id。
+	// 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 客户端用户 id,如果未指定则为用户 id。
+	// 用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 }
 
@@ -5727,6 +5821,144 @@ func (r *SetAppCustomContentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetAppCustomContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetMarqueeRequestParams struct {
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间号
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	//  跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+	MarqueeType *uint64 `json:"MarqueeType,omitnil,omitempty" name:"MarqueeType"`
+
+	// 显示方式：1为滚动，2为闪烁
+	DisplayMode *uint64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// 固定值内容（当MarqueeType=1或5，则展示固定值内容）
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 字体大小（数字，像素单位，范围：10到24）。
+	FontSize *uint64 `json:"FontSize,omitnil,omitempty" name:"FontSize"`
+
+	// 字体粗细：1为粗体，0为细体
+	FontWeight *uint64 `json:"FontWeight,omitnil,omitempty" name:"FontWeight"`
+
+	// 字体颜色（十六进制颜色值，例如：#00FF00（绿色））
+	FontColor *string `json:"FontColor,omitnil,omitempty" name:"FontColor"`
+
+	// 字体透明度（数字，范围 0.0 到 1.0）
+	FontOpacity *float64 `json:"FontOpacity,omitnil,omitempty" name:"FontOpacity"`
+
+	// 背景颜色（十六进制颜色值，例如：#FFFF00（黄色））
+	BackgroundColor *string `json:"BackgroundColor,omitnil,omitempty" name:"BackgroundColor"`
+
+	// 背景透明度（数字，范围 0.0 到 1.0）
+	BackgroundOpacity *float64 `json:"BackgroundOpacity,omitnil,omitempty" name:"BackgroundOpacity"`
+
+	// 跑马灯文字移动/闪烁指定像素所需时间，范围：1-10；数值越小，跑马灯滚动/闪烁速度越快
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+	MarqueeCount *uint64 `json:"MarqueeCount,omitnil,omitempty" name:"MarqueeCount"`
+}
+
+type SetMarqueeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校ID
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 房间号
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	//  跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+	MarqueeType *uint64 `json:"MarqueeType,omitnil,omitempty" name:"MarqueeType"`
+
+	// 显示方式：1为滚动，2为闪烁
+	DisplayMode *uint64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// 固定值内容（当MarqueeType=1或5，则展示固定值内容）
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 字体大小（数字，像素单位，范围：10到24）。
+	FontSize *uint64 `json:"FontSize,omitnil,omitempty" name:"FontSize"`
+
+	// 字体粗细：1为粗体，0为细体
+	FontWeight *uint64 `json:"FontWeight,omitnil,omitempty" name:"FontWeight"`
+
+	// 字体颜色（十六进制颜色值，例如：#00FF00（绿色））
+	FontColor *string `json:"FontColor,omitnil,omitempty" name:"FontColor"`
+
+	// 字体透明度（数字，范围 0.0 到 1.0）
+	FontOpacity *float64 `json:"FontOpacity,omitnil,omitempty" name:"FontOpacity"`
+
+	// 背景颜色（十六进制颜色值，例如：#FFFF00（黄色））
+	BackgroundColor *string `json:"BackgroundColor,omitnil,omitempty" name:"BackgroundColor"`
+
+	// 背景透明度（数字，范围 0.0 到 1.0）
+	BackgroundOpacity *float64 `json:"BackgroundOpacity,omitnil,omitempty" name:"BackgroundOpacity"`
+
+	// 跑马灯文字移动/闪烁指定像素所需时间，范围：1-10；数值越小，跑马灯滚动/闪烁速度越快
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+	MarqueeCount *uint64 `json:"MarqueeCount,omitnil,omitempty" name:"MarqueeCount"`
+}
+
+func (r *SetMarqueeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetMarqueeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "MarqueeType")
+	delete(f, "DisplayMode")
+	delete(f, "Content")
+	delete(f, "FontSize")
+	delete(f, "FontWeight")
+	delete(f, "FontColor")
+	delete(f, "FontOpacity")
+	delete(f, "BackgroundColor")
+	delete(f, "BackgroundOpacity")
+	delete(f, "Duration")
+	delete(f, "MarqueeCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetMarqueeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetMarqueeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetMarqueeResponse struct {
+	*tchttp.BaseResponse
+	Response *SetMarqueeResponseParams `json:"Response"`
+}
+
+func (r *SetMarqueeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetMarqueeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2315,6 +2315,65 @@ func (c *Client) DescribeGroupMemberListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeMarqueeRequest() (request *DescribeMarqueeRequest) {
+    request = &DescribeMarqueeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeMarquee")
+    
+    
+    return
+}
+
+func NewDescribeMarqueeResponse() (response *DescribeMarqueeResponse) {
+    response = &DescribeMarqueeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMarquee
+// 查询跑马灯配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeMarquee(request *DescribeMarqueeRequest) (response *DescribeMarqueeResponse, err error) {
+    return c.DescribeMarqueeWithContext(context.Background(), request)
+}
+
+// DescribeMarquee
+// 查询跑马灯配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeMarqueeWithContext(ctx context.Context, request *DescribeMarqueeRequest) (response *DescribeMarqueeResponse, err error) {
+    if request == nil {
+        request = NewDescribeMarqueeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMarquee require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMarqueeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuestionListRequest() (request *DescribeQuestionListRequest) {
     request = &DescribeQuestionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4064,6 +4123,67 @@ func (c *Client) SetAppCustomContentWithContext(ctx context.Context, request *Se
     request.SetContext(ctx)
     
     response = NewSetAppCustomContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetMarqueeRequest() (request *SetMarqueeRequest) {
+    request = &SetMarqueeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "SetMarquee")
+    
+    
+    return
+}
+
+func NewSetMarqueeResponse() (response *SetMarqueeResponse) {
+    response = &SetMarqueeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetMarquee
+// 设置跑马灯参数设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SetMarquee(request *SetMarqueeRequest) (response *SetMarqueeResponse, err error) {
+    return c.SetMarqueeWithContext(context.Background(), request)
+}
+
+// SetMarquee
+// 设置跑马灯参数设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SetMarqueeWithContext(ctx context.Context, request *SetMarqueeRequest) (response *SetMarqueeResponse, err error) {
+    if request == nil {
+        request = NewSetMarqueeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetMarquee require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetMarqueeResponse()
     err = c.Send(request, response)
     return
 }

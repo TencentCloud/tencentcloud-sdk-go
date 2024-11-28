@@ -863,6 +863,73 @@ func (c *Client) DescribeDatasourceListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribePageWidgetListRequest() (request *DescribePageWidgetListRequest) {
+    request = &DescribePageWidgetListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribePageWidgetList")
+    
+    
+    return
+}
+
+func NewDescribePageWidgetListResponse() (response *DescribePageWidgetListResponse) {
+    response = &DescribePageWidgetListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePageWidgetList
+// 查询页面组件信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePageWidgetList(request *DescribePageWidgetListRequest) (response *DescribePageWidgetListResponse, err error) {
+    return c.DescribePageWidgetListWithContext(context.Background(), request)
+}
+
+// DescribePageWidgetList
+// 查询页面组件信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePageWidgetListWithContext(ctx context.Context, request *DescribePageWidgetListRequest) (response *DescribePageWidgetListResponse, err error) {
+    if request == nil {
+        request = NewDescribePageWidgetListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePageWidgetList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePageWidgetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectInfoRequest() (request *DescribeProjectInfoRequest) {
     request = &DescribeProjectInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1140,6 +1207,73 @@ func (c *Client) DescribeUserRoleProjectListWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeUserRoleProjectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportScreenPageRequest() (request *ExportScreenPageRequest) {
+    request = &ExportScreenPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ExportScreenPage")
+    
+    
+    return
+}
+
+func NewExportScreenPageResponse() (response *ExportScreenPageResponse) {
+    response = &ExportScreenPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportScreenPage
+// 页面截图导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ExportScreenPage(request *ExportScreenPageRequest) (response *ExportScreenPageResponse, err error) {
+    return c.ExportScreenPageWithContext(context.Background(), request)
+}
+
+// ExportScreenPage
+// 页面截图导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ExportScreenPageWithContext(ctx context.Context, request *ExportScreenPageRequest) (response *ExportScreenPageResponse, err error) {
+    if request == nil {
+        request = NewExportScreenPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportScreenPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportScreenPageResponse()
     err = c.Send(request, response)
     return
 }

@@ -757,25 +757,20 @@ func (r *AttachPolicyResponse) FromJsonString(s string) error {
 
 type AuthNode struct {
 	// 互信主体关系ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelationId *int64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`
 
 	// 互信主体名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthName *string `json:"AuthName,omitnil,omitempty" name:"AuthName"`
 
 	// 主体管理员
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Manager *MemberMainInfo `json:"Manager,omitnil,omitempty" name:"Manager"`
 }
 
 type AuthRelationFile struct {
 	// 文件名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 文件路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -1238,7 +1233,6 @@ func (r *CreateOrganizationIdentityRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOrganizationIdentityResponseParams struct {
 	// 身份ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1378,7 +1372,6 @@ func (r *CreateOrganizationMemberPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOrganizationMemberPolicyResponseParams struct {
 	// 策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1506,7 +1499,6 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOrganizationMemberResponseParams struct {
 	// 成员Uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1585,7 +1577,6 @@ func (r *CreateOrganizationMembersPolicyRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateOrganizationMembersPolicyResponseParams struct {
 	// 策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3289,7 +3280,6 @@ func (r *DescribeEffectivePolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEffectivePolicyResponseParams struct {
 	// 有效策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EffectivePolicy *EffectivePolicy `json:"EffectivePolicy,omitnil,omitempty" name:"EffectivePolicy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3430,11 +3420,9 @@ func (r *DescribeOrganizationAuthNodeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOrganizationAuthNodeResponseParams struct {
 	// 总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 条目详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*AuthNode `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3527,15 +3515,12 @@ func (r *DescribeOrganizationFinancialByMemberRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeOrganizationFinancialByMemberResponseParams struct {
 	// 当月总消耗。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *float64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 成员消耗详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgMemberFinancial `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3614,7 +3599,6 @@ func (r *DescribeOrganizationFinancialByMonthRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeOrganizationFinancialByMonthResponseParams struct {
 	// 产品消耗详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgFinancialByMonth `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3707,15 +3691,12 @@ func (r *DescribeOrganizationFinancialByProductRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeOrganizationFinancialByProductResponseParams struct {
 	// 当月总消耗。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *float64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 产品消耗详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgProductFinancial `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3794,11 +3775,9 @@ func (r *DescribeOrganizationMemberAuthAccountsRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeOrganizationMemberAuthAccountsResponseParams struct {
 	// 列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgMemberAuthAccount `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 总数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3877,11 +3856,9 @@ func (r *DescribeOrganizationMemberAuthIdentitiesRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeOrganizationMemberAuthIdentitiesResponseParams struct {
 	// 授权身份列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgMemberAuthIdentity `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3939,39 +3916,30 @@ func (r *DescribeOrganizationMemberEmailBindRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeOrganizationMemberEmailBindResponseParams struct {
 	// 绑定ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindId *uint64 `json:"BindId,omitnil,omitempty" name:"BindId"`
 
 	// 申请时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
 	// 邮箱地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 安全手机号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
 	// 绑定状态。    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindStatus *string `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
 	// 绑定时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindTime *string `json:"BindTime,omitnil,omitempty" name:"BindTime"`
 
 	// 失败说明。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 安全手机绑定状态 。 未绑定：0，已绑定：1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneBind *uint64 `json:"PhoneBind,omitnil,omitempty" name:"PhoneBind"`
 
 	// 国际区号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4050,11 +4018,9 @@ func (r *DescribeOrganizationMemberPoliciesRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeOrganizationMemberPoliciesResponseParams struct {
 	// 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgMemberPolicy `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4228,11 +4194,9 @@ func (r *DescribeOrganizationNodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOrganizationNodesResponseParams struct {
 	// 总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 列表详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgNode `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4297,67 +4261,51 @@ func (r *DescribeOrganizationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOrganizationResponseParams struct {
 	// 企业组织ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgId *int64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
 	// 创建者UIN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostUin *int64 `json:"HostUin,omitnil,omitempty" name:"HostUin"`
 
 	// 创建者昵称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
 	// 企业组织类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgType *int64 `json:"OrgType,omitnil,omitempty" name:"OrgType"`
 
 	// 是否组织管理员。是：true ，否：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsManager *bool `json:"IsManager,omitnil,omitempty" name:"IsManager"`
 
 	// 策略类型。财务管理：Financial
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPolicyType *string `json:"OrgPolicyType,omitnil,omitempty" name:"OrgPolicyType"`
 
 	// 策略名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPolicyName *string `json:"OrgPolicyName,omitnil,omitempty" name:"OrgPolicyName"`
 
 	// 成员财务权限列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPermission []*OrgPermission `json:"OrgPermission,omitnil,omitempty" name:"OrgPermission"`
 
 	// 组织根节点ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RootNodeId *int64 `json:"RootNodeId,omitnil,omitempty" name:"RootNodeId"`
 
 	// 组织创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 成员加入时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinTime *string `json:"JoinTime,omitnil,omitempty" name:"JoinTime"`
 
 	// 成员是否允许退出。允许：Allow，不允许：Denied
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllowQuit *string `json:"IsAllowQuit,omitnil,omitempty" name:"IsAllowQuit"`
 
 	// 代付者Uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
 
 	// 代付者名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayName *string `json:"PayName,omitnil,omitempty" name:"PayName"`
 
 	// 是否可信服务管理员。是：true，否：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAssignManager *bool `json:"IsAssignManager,omitnil,omitempty" name:"IsAssignManager"`
 
 	// 是否实名主体管理员。是：true，否：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAuthManager *bool `json:"IsAuthManager,omitnil,omitempty" name:"IsAuthManager"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4569,7 +4517,6 @@ func (r *DescribeShareAreasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShareAreasResponseParams struct {
 	// 详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ShareArea `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4655,11 +4602,9 @@ func (r *DescribeShareUnitMembersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShareUnitMembersResponseParams struct {
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 共享单元成员列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ShareUnitMember `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4752,11 +4697,9 @@ func (r *DescribeShareUnitResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShareUnitResourcesResponseParams struct {
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 共享单元资源列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ShareUnitResource `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4835,11 +4778,9 @@ func (r *DescribeShareUnitsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShareUnitsResponseParams struct {
 	// 总数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 共享单元列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ManagerShareUnit `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7937,21 +7878,17 @@ type ManagerShareUnit struct {
 
 type MemberIdentity struct {
 	// 身份ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityAliasName *string `json:"IdentityAliasName,omitnil,omitempty" name:"IdentityAliasName"`
 }
 
 type MemberMainInfo struct {
 	// 成员uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 成员名称j
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 成员名称
 	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
 }
 
@@ -8028,39 +7965,30 @@ type NodeMainInfo struct {
 
 type NotAllowReason struct {
 	// 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCreateMember *bool `json:"IsCreateMember,omitnil,omitempty" name:"IsCreateMember"`
 
 	// 成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletionPermission *bool `json:"DeletionPermission,omitnil,omitempty" name:"DeletionPermission"`
 
 	// 是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAssignManager *bool `json:"IsAssignManager,omitnil,omitempty" name:"IsAssignManager"`
 
 	// 是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAuthManager *bool `json:"IsAuthManager,omitnil,omitempty" name:"IsAuthManager"`
 
 	// 是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsShareManager *bool `json:"IsShareManager,omitnil,omitempty" name:"IsShareManager"`
 
 	// 成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateProcess *bool `json:"OperateProcess,omitnil,omitempty" name:"OperateProcess"`
 
 	// 是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingPermission *bool `json:"BillingPermission,omitnil,omitempty" name:"BillingPermission"`
 
 	// 存在的资源列表。账号存在资源时不允许删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExistResources []*string `json:"ExistResources,omitnil,omitempty" name:"ExistResources"`
 
 	// 检测失败的资源列表。账号有资源检测失败时不允许删除。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectFailedResources []*string `json:"DetectFailedResources,omitnil,omitempty" name:"DetectFailedResources"`
 }
 
@@ -8141,263 +8069,201 @@ type OrgFinancialByMonth struct {
 
 type OrgIdentity struct {
 	// 身份ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityAliasName *string `json:"IdentityAliasName,omitnil,omitempty" name:"IdentityAliasName"`
 
 	// 描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 身份策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityPolicy []*IdentityPolicy `json:"IdentityPolicy,omitnil,omitempty" name:"IdentityPolicy"`
 
 	// 身份类型。 1-预设、 2-自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityType *uint64 `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 
 	// 更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type OrgMember struct {
 	// 成员Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
 	// 成员名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 成员类型，邀请：Invite， 创建：Create
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberType *string `json:"MemberType,omitnil,omitempty" name:"MemberType"`
 
 	// 关系策略类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPolicyType *string `json:"OrgPolicyType,omitnil,omitempty" name:"OrgPolicyType"`
 
 	// 关系策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPolicyName *string `json:"OrgPolicyName,omitnil,omitempty" name:"OrgPolicyName"`
 
 	// 关系策略权限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPermission []*OrgPermission `json:"OrgPermission,omitnil,omitempty" name:"OrgPermission"`
 
 	// 所属节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 所属节点名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 是否允许成员退出。允许：Allow，不允许：Denied。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllowQuit *string `json:"IsAllowQuit,omitnil,omitempty" name:"IsAllowQuit"`
 
 	// 代付者Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
 
 	// 代付者名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayName *string `json:"PayName,omitnil,omitempty" name:"PayName"`
 
 	// 管理身份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgIdentity []*MemberIdentity `json:"OrgIdentity,omitnil,omitempty" name:"OrgIdentity"`
 
 	// 安全信息绑定状态  未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindStatus *string `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
 	// 成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PermissionStatus *string `json:"PermissionStatus,omitnil,omitempty" name:"PermissionStatus"`
 
 	// 成员标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type OrgMemberAuthAccount struct {
 	// 组织子账号Uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitnil,omitempty" name:"OrgSubAccountUin"`
 
 	// 策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 身份ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份角色名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleName *string `json:"IdentityRoleName,omitnil,omitempty" name:"IdentityRoleName"`
 
 	// 身份角色别名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitnil,omitempty" name:"IdentityRoleAliasName"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 子账号名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgSubAccountName *string `json:"OrgSubAccountName,omitnil,omitempty" name:"OrgSubAccountName"`
 }
 
 type OrgMemberAuthIdentity struct {
 	// 身份ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份的角色名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleName *string `json:"IdentityRoleName,omitnil,omitempty" name:"IdentityRoleName"`
 
 	// 身份的角色别名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitnil,omitempty" name:"IdentityRoleAliasName"`
 
 	// 身份描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 首次配置成功的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最后一次配置成功的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 身份类型。取值： 1-预设身份  2-自定义身份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityType *uint64 `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 
 	// 配置状态。取值：1-配置完成 2-需重新配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 成员Uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
 	// 成员名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
 }
 
 type OrgMemberFinancial struct {
 	// 成员Uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
 	// 成员名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
 
 	// 消耗金额，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *float64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 占比%。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
 }
 
 type OrgMemberPolicy struct {
 	// 策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 身份ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
 
 	// 身份角色名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleName *string `json:"IdentityRoleName,omitnil,omitempty" name:"IdentityRoleName"`
 
 	// 身份角色别名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitnil,omitempty" name:"IdentityRoleAliasName"`
 
 	// 描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type OrgNode struct {
 	// 组织节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 父节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentNodeId *int64 `json:"ParentNodeId,omitnil,omitempty" name:"ParentNodeId"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 成员标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -8429,94 +8295,72 @@ type OrgProductFinancial struct {
 
 type OrganizationServiceAssign struct {
 	// 集团服务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 集团服务产品名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 是否支持委派。取值: 1-是  2-否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAssign *uint64 `json:"IsAssign,omitnil,omitempty" name:"IsAssign"`
 
 	// 集团服务描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 当前委派管理员数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberNum *string `json:"MemberNum,omitnil,omitempty" name:"MemberNum"`
 
 	// 帮助文档。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Document *string `json:"Document,omitnil,omitempty" name:"Document"`
 
 	// 集团服务产品控制台路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsoleUrl *string `json:"ConsoleUrl,omitnil,omitempty" name:"ConsoleUrl"`
 
 	// 是否接入使用状态。取值: 1-是 
 	//  2-否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUsageStatus *uint64 `json:"IsUsageStatus,omitnil,omitempty" name:"IsUsageStatus"`
 
 	// 委派管理员数量限制。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanAssignCount *uint64 `json:"CanAssignCount,omitnil,omitempty" name:"CanAssignCount"`
 
 	// 集团服务产品标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 是否支持集团服务授权。取值 1-是、2-否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceGrant *uint64 `json:"ServiceGrant,omitnil,omitempty" name:"ServiceGrant"`
 
 	// 集团服务授权启用状态。ServiceGrant值为1时该字段有效 ，取值：Enabled-开启  Disabled-关闭 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrantStatus *string `json:"GrantStatus,omitnil,omitempty" name:"GrantStatus"`
 
 	// 是否支持设置委派管理范围。取值: 1-是  2-否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSetManagementScope *uint64 `json:"IsSetManagementScope,omitnil,omitempty" name:"IsSetManagementScope"`
 }
 
 type OrganizationServiceAssignMember struct {
 	// 集团服务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 集团服务产品名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 委派管理员Uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
 	// 委派管理员名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
 
 	// 启用状态 。取值：0-服务无启用状态  1-已启用  2-未启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsageStatus *uint64 `json:"UsageStatus,omitnil,omitempty" name:"UsageStatus"`
 
 	// 委派时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 委派管理员管理范围。取值: 1-全部成员  2-部分成员
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagementScope *uint64 `json:"ManagementScope,omitnil,omitempty" name:"ManagementScope"`
 
 	// 管理的成员Uin列表。ManagementScope值为2时该参数有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagementScopeMembers []*MemberMainInfo `json:"ManagementScopeMembers,omitnil,omitempty" name:"ManagementScopeMembers"`
 
 	// 管理的部门ID列表。ManagementScope值为2时该参数有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagementScopeNodes []*NodeMainInfo `json:"ManagementScopeNodes,omitnil,omitempty" name:"ManagementScopeNodes"`
 }
 
@@ -8939,15 +8783,12 @@ func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
 type ResourceTagMapping struct {
 	// 资源六段式。腾讯云使用资源六段式描述一个资源。
 	// 例如：qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 合规详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceDetails *TagComplianceDetails `json:"ComplianceDetails,omitnil,omitempty" name:"ComplianceDetails"`
 
 	// 资源标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -9416,25 +9257,20 @@ type Tag struct {
 
 type TagComplianceDetails struct {
 	// 合规状态。true-合规，false-不合规
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceStatus *bool `json:"ComplianceStatus,omitnil,omitempty" name:"ComplianceStatus"`
 
 	// 值不合规的标签键列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeysWithNonCompliantValues []*string `json:"KeysWithNonCompliantValues,omitnil,omitempty" name:"KeysWithNonCompliantValues"`
 
 	// 键不合规的标签键列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NonCompliantKeys []*string `json:"NonCompliantKeys,omitnil,omitempty" name:"NonCompliantKeys"`
 }
 
 type Tags struct {
 	// 标签键。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

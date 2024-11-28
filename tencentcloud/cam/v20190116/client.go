@@ -2419,7 +2419,11 @@ func NewDescribeUserSAMLConfigResponse() (response *DescribeUserSAMLConfigRespon
 // 查询用户SAML配置
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) DescribeUserSAMLConfig(request *DescribeUserSAMLConfigRequest) (response *DescribeUserSAMLConfigResponse, err error) {
     return c.DescribeUserSAMLConfigWithContext(context.Background(), request)
 }
@@ -2428,7 +2432,11 @@ func (c *Client) DescribeUserSAMLConfig(request *DescribeUserSAMLConfigRequest) 
 // 查询用户SAML配置
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) DescribeUserSAMLConfigWithContext(ctx context.Context, request *DescribeUserSAMLConfigRequest) (response *DescribeUserSAMLConfigResponse, err error) {
     if request == nil {
         request = NewDescribeUserSAMLConfigRequest()

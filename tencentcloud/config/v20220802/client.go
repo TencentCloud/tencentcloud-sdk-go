@@ -45,6 +45,57 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeDiscoveredResourceRequest() (request *DescribeDiscoveredResourceRequest) {
+    request = &DescribeDiscoveredResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "DescribeDiscoveredResource")
+    
+    
+    return
+}
+
+func NewDescribeDiscoveredResourceResponse() (response *DescribeDiscoveredResourceResponse) {
+    response = &DescribeDiscoveredResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDiscoveredResource
+// 资源详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeDiscoveredResource(request *DescribeDiscoveredResourceRequest) (response *DescribeDiscoveredResourceResponse, err error) {
+    return c.DescribeDiscoveredResourceWithContext(context.Background(), request)
+}
+
+// DescribeDiscoveredResource
+// 资源详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeDiscoveredResourceWithContext(ctx context.Context, request *DescribeDiscoveredResourceRequest) (response *DescribeDiscoveredResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiscoveredResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDiscoveredResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDiscoveredResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAggregateConfigRulesRequest() (request *ListAggregateConfigRulesRequest) {
     request = &ListAggregateConfigRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -141,6 +192,55 @@ func (c *Client) ListConfigRulesWithContext(ctx context.Context, request *ListCo
     request.SetContext(ctx)
     
     response = NewListConfigRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDiscoveredResourcesRequest() (request *ListDiscoveredResourcesRequest) {
+    request = &ListDiscoveredResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "ListDiscoveredResources")
+    
+    
+    return
+}
+
+func NewListDiscoveredResourcesResponse() (response *ListDiscoveredResourcesResponse) {
+    response = &ListDiscoveredResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDiscoveredResources
+// 获取资源列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRequest) (response *ListDiscoveredResourcesResponse, err error) {
+    return c.ListDiscoveredResourcesWithContext(context.Background(), request)
+}
+
+// ListDiscoveredResources
+// 获取资源列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, request *ListDiscoveredResourcesRequest) (response *ListDiscoveredResourcesResponse, err error) {
+    if request == nil {
+        request = NewListDiscoveredResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDiscoveredResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDiscoveredResourcesResponse()
     err = c.Send(request, response)
     return
 }

@@ -1392,6 +1392,12 @@ type BillBusiness struct {
 }
 
 type BillBusinessLink struct {
+	// 产品编码
+	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
+
+	// 产品名称
+	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
+
 	// 子产品
 	Children []*BillProductLink `json:"Children,omitnil,omitempty" name:"Children"`
 }
@@ -1843,7 +1849,17 @@ type BillProduct struct {
 }
 
 type BillProductLink struct {
+	// 子产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
+	// 子产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
+
+	// 组件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*BillItem `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
 type BillProject struct {
@@ -6748,7 +6764,7 @@ type DescribeCostSummaryByProjectResponseParams struct {
 	// 消耗按业务汇总详情
 	Data []*ConsumptionProjectSummaryDataItem `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 记录数量，NeedRecordNum为0是返回null
+	// 记录数量，NeedRecordNum为0时返回null
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6849,7 +6865,7 @@ type DescribeCostSummaryByRegionResponseParams struct {
 	// 消耗按地域汇总详情
 	Data []*ConsumptionRegionSummaryDataItem `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 记录数量，NeedRecordNum为0是返回null
+	// 记录数量，NeedRecordNum为0时返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
@@ -8418,7 +8434,6 @@ type DescribeVoucherUsageDetailsResponseParams struct {
 	TotalUsedAmount *int64 `json:"TotalUsedAmount,omitnil,omitempty" name:"TotalUsedAmount"`
 
 	// 代金券使用记录细节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsageRecords []*UsageRecords `json:"UsageRecords,omitnil,omitempty" name:"UsageRecords"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9126,43 +9141,33 @@ type TagSummaryOverviewItem struct {
 
 type UsageDetails struct {
 	// 商品名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 商品细节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductName *string `json:"SubProductName,omitnil,omitempty" name:"SubProductName"`
 
 	// 产品码	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 子产品码	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
 	// 计费项码	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItemCode *string `json:"BillingItemCode,omitnil,omitempty" name:"BillingItemCode"`
 
 	// 计费细项码	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubBillingItemCode *string `json:"SubBillingItemCode,omitnil,omitempty" name:"SubBillingItemCode"`
 
 	// 产品英文名	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductEnName *string `json:"ProductEnName,omitnil,omitempty" name:"ProductEnName"`
 
 	// 子产品英文名	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductEnName *string `json:"SubProductEnName,omitnil,omitempty" name:"SubProductEnName"`
 
 	// 结算周期	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalcUnit *string `json:"CalcUnit,omitnil,omitempty" name:"CalcUnit"`
 
 	// payMode为prepay 且 payScene为common的情况下存在
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 }
 
@@ -9174,22 +9179,18 @@ type UsageRecords struct {
 	UsedTime *string `json:"UsedTime,omitnil,omitempty" name:"UsedTime"`
 
 	// 使用记录细节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsageDetails []*UsageDetails `json:"UsageDetails,omitnil,omitempty" name:"UsageDetails"`
 
 	// 付费模式
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 查询的券id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherId *string `json:"VoucherId,omitnil,omitempty" name:"VoucherId"`
 
 	// 交易场景：（adjust：调账、common：正常交易场景）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayScene *string `json:"PayScene,omitnil,omitempty" name:"PayScene"`
 
 	// 唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SeqId *string `json:"SeqId,omitnil,omitempty" name:"SeqId"`
 }
 
