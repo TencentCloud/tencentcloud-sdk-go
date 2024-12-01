@@ -1535,6 +1535,15 @@ type BillDetail struct {
 	// 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveDetail *string `json:"ReserveDetail,omitnil,omitempty" name:"ReserveDetail"`
+
+	// 优惠对象
+	DiscountObject *string `json:"DiscountObject,omitnil,omitempty" name:"DiscountObject"`
+
+	// 优惠类型
+	DiscountType *string `json:"DiscountType,omitnil,omitempty" name:"DiscountType"`
+
+	// 优惠内容
+	DiscountContent *string `json:"DiscountContent,omitnil,omitempty" name:"DiscountContent"`
 }
 
 type BillDetailAssociatedOrder struct {

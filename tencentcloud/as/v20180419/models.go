@@ -5864,6 +5864,9 @@ type ServiceSettings struct {
 	// 默认取值：RECREATE
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplaceMode *string `json:"ReplaceMode,omitnil,omitempty" name:"ReplaceMode"`
+
+	// 自动更新实例标签。默认取值为 false，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
+	AutoUpdateInstanceTags *bool `json:"AutoUpdateInstanceTags,omitnil,omitempty" name:"AutoUpdateInstanceTags"`
 }
 
 // Predefined struct for user

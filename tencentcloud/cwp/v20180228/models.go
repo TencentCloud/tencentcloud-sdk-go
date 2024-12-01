@@ -14538,7 +14538,7 @@ type DescribeBaselineListRequestParams struct {
 	// 过滤条件。
 	// <li>StrategyId- Uint64 - 基线策略id</li>
 	// <li>Status - Uint64 - 处理状态1已通过 0未通过</li>
-	// <li>Level - Uint64[] - 处理状态1已通过 0未通过</li>BaselineName 
+	// <li>Level - Uint64[] - 威胁等级</li>
 	// <li>BaselineName  - String - 基线名称</li>
 	// <li>Quuid- String - 主机quuid</li>
 	// <li>Uuid- String - 主机uuid</li>
@@ -14557,7 +14557,7 @@ type DescribeBaselineListRequest struct {
 	// 过滤条件。
 	// <li>StrategyId- Uint64 - 基线策略id</li>
 	// <li>Status - Uint64 - 处理状态1已通过 0未通过</li>
-	// <li>Level - Uint64[] - 处理状态1已通过 0未通过</li>BaselineName 
+	// <li>Level - Uint64[] - 威胁等级</li>
 	// <li>BaselineName  - String - 基线名称</li>
 	// <li>Quuid- String - 主机quuid</li>
 	// <li>Uuid- String - 主机uuid</li>

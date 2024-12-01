@@ -153,6 +153,128 @@ func (r *AddCasterLayoutInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddCasterMarkPicInfoRequestParams struct {
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 图片水印详细参数。
+	MarkPicInfo *CasterMarkPicInfo `json:"MarkPicInfo,omitnil,omitempty" name:"MarkPicInfo"`
+}
+
+type AddCasterMarkPicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 图片水印详细参数。
+	MarkPicInfo *CasterMarkPicInfo `json:"MarkPicInfo,omitnil,omitempty" name:"MarkPicInfo"`
+}
+
+func (r *AddCasterMarkPicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCasterMarkPicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "MarkPicInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCasterMarkPicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCasterMarkPicInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddCasterMarkPicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCasterMarkPicInfoResponseParams `json:"Response"`
+}
+
+func (r *AddCasterMarkPicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCasterMarkPicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCasterMarkWordInfoRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 文本的详细配置。
+	MarkWordInfo *CasterMarkWordInfo `json:"MarkWordInfo,omitnil,omitempty" name:"MarkWordInfo"`
+}
+
+type AddCasterMarkWordInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 文本的详细配置。
+	MarkWordInfo *CasterMarkWordInfo `json:"MarkWordInfo,omitnil,omitempty" name:"MarkWordInfo"`
+}
+
+func (r *AddCasterMarkWordInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCasterMarkWordInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "MarkWordInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCasterMarkWordInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCasterMarkWordInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddCasterMarkWordInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCasterMarkWordInfoResponseParams `json:"Response"`
+}
+
+func (r *AddCasterMarkWordInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCasterMarkWordInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddCasterOutputInfoRequestParams struct {
 	// 导播台ID
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
@@ -1142,6 +1264,116 @@ type CasterLayoutParam struct {
 	// 是否启用抠图。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsePortraitSegment *bool `json:"UsePortraitSegment,omitnil,omitempty" name:"UsePortraitSegment"`
+}
+
+type CasterMarkPicInfo struct {
+	// 水印图片Index。
+	MarkPicIndex *int64 `json:"MarkPicIndex,omitnil,omitempty" name:"MarkPicIndex"`
+
+	// 注：该字段已废弃。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkPicId *int64 `json:"MarkPicId,omitnil,omitempty" name:"MarkPicId"`
+
+	// 水印图片在输出时的宽度。
+	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
+	// 当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上所占的比例值。
+	MarkPicWidth *float64 `json:"MarkPicWidth,omitnil,omitempty" name:"MarkPicWidth"`
+
+	// 水印图片在输出时的高度。
+	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
+	// 当该值为小于1大于0的小数时，单位为百分比，表示水印在输出上所占的比例值。
+	MarkPicHeight *float64 `json:"MarkPicHeight,omitnil,omitempty" name:"MarkPicHeight"`
+
+	// 水印图片在输出时的X轴坐标。
+	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
+	// 当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上x坐标所占的比例值。
+	MarkPicLocationX *float64 `json:"MarkPicLocationX,omitnil,omitempty" name:"MarkPicLocationX"`
+
+	// 水印图片在输出时的Y坐标。
+	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
+	// 当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面Y坐标上所占的比例值。
+	MarkPicLocationY *float64 `json:"MarkPicLocationY,omitnil,omitempty" name:"MarkPicLocationY"`
+
+	// 水印地址。
+	// 最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkPicUrl *string `json:"MarkPicUrl,omitnil,omitempty" name:"MarkPicUrl"`
+
+	// 水印描述。
+	// 最大允许长度为256。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 是否启用了等比例缩放。
+	// 注：该字段仅做状态保存，无实际效果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEqualProportion *bool `json:"IsEqualProportion,omitnil,omitempty" name:"IsEqualProportion"`
+}
+
+type CasterMarkWordInfo struct {
+	// 文字水印Index。
+	MarkWordIndex *int64 `json:"MarkWordIndex,omitnil,omitempty" name:"MarkWordIndex"`
+
+	// 文字水印内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordText *string `json:"MarkWordText,omitnil,omitempty" name:"MarkWordText"`
+
+	// 文字水印的字号。
+	// 范围[16, 60]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordFontSize *uint64 `json:"MarkWordFontSize,omitnil,omitempty" name:"MarkWordFontSize"`
+
+	// 文字水印的颜色，值为HEX颜色代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordFontColor *string `json:"MarkWordFontColor,omitnil,omitempty" name:"MarkWordFontColor"`
+
+	// 文字水印的字体类型。
+	// 范围[1,2]。
+	// 1. 宋体
+	// 2. 黑体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordFontType *uint64 `json:"MarkWordFontType,omitnil,omitempty" name:"MarkWordFontType"`
+
+	// 文字水印的x坐标位置，单位百分比。
+	// 范围[0.0, 1.0]
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordLocationX *float64 `json:"MarkWordLocationX,omitnil,omitempty" name:"MarkWordLocationX"`
+
+	// 文字水印的Y坐标位置，单位百分比。
+	// 范围[0.0, 1.0]
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordLocationY *float64 `json:"MarkWordLocationY,omitnil,omitempty" name:"MarkWordLocationY"`
+
+	// 是否开启文字跑马灯功能。
+	// 默认为false。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordRollEnable *bool `json:"MarkWordRollEnable,omitnil,omitempty" name:"MarkWordRollEnable"`
+
+	// 跑马灯文字显示一遍的时间，单位为秒。
+	// 默认为5s。
+	// 范围[5, 600]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordRollOnceTime *uint64 `json:"MarkWordRollOnceTime,omitnil,omitempty" name:"MarkWordRollOnceTime"`
+
+	// 跑马灯文字的方向。
+	// 默认值为0。
+	// 范围[0,1]。
+	// 0 从左到右
+	// 1 从右到左
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordRollDirection *int64 `json:"MarkWordRollDirection,omitnil,omitempty" name:"MarkWordRollDirection"`
+
+	// 跑马灯文字显示的起始x坐标，单位百分比。
+	// 范围[0.0, 1.0]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordRollStartLocationX *float64 `json:"MarkWordRollStartLocationX,omitnil,omitempty" name:"MarkWordRollStartLocationX"`
+
+	// 跑马灯文字显示的截止x坐标，单位百分比。
+	// 范围[0.0, 1.0]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordRollEndLocationX *float64 `json:"MarkWordRollEndLocationX,omitnil,omitempty" name:"MarkWordRollEndLocationX"`
 }
 
 type CasterOutputInfo struct {
@@ -4748,6 +4980,128 @@ func (r *DeleteCasterLayoutInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCasterMarkPicInfoRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 需要删除的水印Index。
+	MarkPicIndex *int64 `json:"MarkPicIndex,omitnil,omitempty" name:"MarkPicIndex"`
+}
+
+type DeleteCasterMarkPicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 需要删除的水印Index。
+	MarkPicIndex *int64 `json:"MarkPicIndex,omitnil,omitempty" name:"MarkPicIndex"`
+}
+
+func (r *DeleteCasterMarkPicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCasterMarkPicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "MarkPicIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCasterMarkPicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCasterMarkPicInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCasterMarkPicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCasterMarkPicInfoResponseParams `json:"Response"`
+}
+
+func (r *DeleteCasterMarkPicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCasterMarkPicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCasterMarkWordInfoRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 需要删除的文字水印Index。
+	MarkWordIndex *int64 `json:"MarkWordIndex,omitnil,omitempty" name:"MarkWordIndex"`
+}
+
+type DeleteCasterMarkWordInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 需要删除的文字水印Index。
+	MarkWordIndex *int64 `json:"MarkWordIndex,omitnil,omitempty" name:"MarkWordIndex"`
+}
+
+func (r *DeleteCasterMarkWordInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCasterMarkWordInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "MarkWordIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCasterMarkWordInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCasterMarkWordInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCasterMarkWordInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCasterMarkWordInfoResponseParams `json:"Response"`
+}
+
+func (r *DeleteCasterMarkWordInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCasterMarkWordInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCasterOutputInfoRequestParams struct {
 	// 导播台ID。
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
@@ -6906,6 +7260,122 @@ func (r *DescribeCasterListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCasterListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterMarkPicInfosRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type DescribeCasterMarkPicInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *DescribeCasterMarkPicInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterMarkPicInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterMarkPicInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterMarkPicInfosResponseParams struct {
+	// 导播台的水印信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkPicInfos []*CasterMarkPicInfo `json:"MarkPicInfos,omitnil,omitempty" name:"MarkPicInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterMarkPicInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterMarkPicInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterMarkPicInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterMarkPicInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterMarkWordInfosRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+type DescribeCasterMarkWordInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+}
+
+func (r *DescribeCasterMarkWordInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterMarkWordInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCasterMarkWordInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCasterMarkWordInfosResponseParams struct {
+	// 导播台的文本信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkWordInfos []*CasterMarkWordInfo `json:"MarkWordInfos,omitnil,omitempty" name:"MarkWordInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCasterMarkWordInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCasterMarkWordInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeCasterMarkWordInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCasterMarkWordInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14393,6 +14863,128 @@ func (r *ModifyCasterLayoutInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCasterLayoutInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCasterMarkPicInfoRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 新的水印信息。
+	MarkPicInfo *CasterMarkPicInfo `json:"MarkPicInfo,omitnil,omitempty" name:"MarkPicInfo"`
+}
+
+type ModifyCasterMarkPicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 新的水印信息。
+	MarkPicInfo *CasterMarkPicInfo `json:"MarkPicInfo,omitnil,omitempty" name:"MarkPicInfo"`
+}
+
+func (r *ModifyCasterMarkPicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCasterMarkPicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "MarkPicInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCasterMarkPicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCasterMarkPicInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCasterMarkPicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCasterMarkPicInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyCasterMarkPicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCasterMarkPicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCasterMarkWordInfoRequestParams struct {
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 修改的文本配置。
+	MarkWordInfo *CasterMarkWordInfo `json:"MarkWordInfo,omitnil,omitempty" name:"MarkWordInfo"`
+}
+
+type ModifyCasterMarkWordInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导播台ID。
+	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 修改的文本配置。
+	MarkWordInfo *CasterMarkWordInfo `json:"MarkWordInfo,omitnil,omitempty" name:"MarkWordInfo"`
+}
+
+func (r *ModifyCasterMarkWordInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCasterMarkWordInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CasterId")
+	delete(f, "MarkWordInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCasterMarkWordInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCasterMarkWordInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCasterMarkWordInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCasterMarkWordInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyCasterMarkWordInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCasterMarkWordInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

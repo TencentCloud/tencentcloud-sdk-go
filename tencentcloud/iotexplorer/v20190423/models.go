@@ -25,7 +25,9 @@ type ActivateTWeCallLicenseRequestParams struct {
 	// TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
-	// appId
+	// 参数已弃用，不用传参
+	//
+	// Deprecated: MiniProgramAppId is deprecated.
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
 	// 设备列表
@@ -38,7 +40,7 @@ type ActivateTWeCallLicenseRequest struct {
 	// TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
-	// appId
+	// 参数已弃用，不用传参
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
 	// 设备列表
@@ -6843,6 +6845,8 @@ func (r *DescribeTopicRuleResponse) FromJsonString(s string) error {
 type DeviceActiveResult struct {
 	// 模板ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ModelId is deprecated.
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// SN信息
@@ -8638,7 +8642,9 @@ func (r *GetStudioProductListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTWeCallActiveStatusRequestParams struct {
-	// appId
+	// 参数已弃用，不用传参
+	//
+	// Deprecated: MiniProgramAppId is deprecated.
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
 	// 设备列表
@@ -8648,7 +8654,7 @@ type GetTWeCallActiveStatusRequestParams struct {
 type GetTWeCallActiveStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// appId
+	// 参数已弃用，不用传参
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
 	// 设备列表
@@ -8703,6 +8709,8 @@ func (r *GetTWeCallActiveStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTWeCallPkgListRequestParams struct {
 	// appId
+	//
+	// Deprecated: MiniProgramAppId is deprecated.
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
 	// 类型
@@ -11875,6 +11883,8 @@ type TRTCParams struct {
 type TWeCallActiveInfo struct {
 	// 小程序ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ModelId is deprecated.
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// Sn信息
@@ -11905,12 +11915,16 @@ type TWeCallInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
 
-	// 小程序ID
+	// 小程序ID，参数已弃用，不用传参
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ModelId is deprecated.
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// 激活数
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ActiveNum is deprecated.
 	ActiveNum *int64 `json:"ActiveNum,omitnil,omitempty" name:"ActiveNum"`
 }
 

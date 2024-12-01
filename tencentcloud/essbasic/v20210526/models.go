@@ -6215,12 +6215,20 @@ type Component struct {
 	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
 	// <li> <b>SIGN_PAGING_SEAL</b> : 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight</li>
 	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
+	// <li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部最多组合4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
+	// <li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
+	// <li> <b>SIGN_SELECTOR</b> : 选择器，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作审批意见的选择</li>
 	// <li> <b>SIGN_LEGAL_PERSON_SEAL</b> : 企业法定代表人控件。</li></ul>
+	// 
 	// 
 	// * 个人方
 	// <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
 	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
-	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li></ul>
+	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
+	// <li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部包含最多4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
+	// <li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
+	// <li> <b>SIGN_SELECTOR</b> : 选择器，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作审批意见的选择</li>
+	// </ul>
 	//  
 	// 注：` 表单域的控件不能作为印章和签名控件`
 	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
@@ -6327,13 +6335,113 @@ type Component struct {
 	// <b>参数样例</b>：`{"Rotate":-30,"RotateRelation":"Component_Id1"}`
 	// 
 	// <font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
-	// <ul><li> <b>Opacity</b>：印章透明度，支持范围：0.6-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+	// <ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
 	// <b>参数样例</b>：`{"Opacity":0.7}`
 	// 
 	// <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 	// <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
 	// 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
 	// <b>参数样例</b>：` "{"IgnoreKeywordError":1}"`
+	// 
+	// 
+	// <font color="red">ComponentType为SIGN_VIRTUAL_COMBINATION时</font>，支持以下参数：
+	// <ul>
+	// <li><b>Children:</b> 绝对定位模式下，用来指定此签批控件的组合子控件 </li>
+	// <b>参数样例</b>：<br>`{"Children":["ComponentId_29","ComponentId_27","ComponentId_28","ComponentId_30"]}`
+	// <li><b>ChildrenComponents:</b> 关键字定位模式下，用来指定此签批控件的组合子控件 </li>
+	// ChildrenComponent结构体定义:
+	// <table border="1">
+	//     <thead>
+	//         <tr>
+	//             <th>字段名称</th>
+	//             <th>类型</th>
+	//             <th>描述</th>
+	//         </tr>
+	//     </thead>
+	//     <tbody>
+	//         <tr>
+	//             <td>ComponentType</td>
+	//             <td>string</td>
+	//             <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>
+	//         </tr>
+	//         <tr>
+	//             <td>ComponentName</td>
+	//             <td>string</td>
+	//             <td>子控件名称</td>
+	//         </tr>
+	//         <tr>
+	//             <td>Placeholder</td>
+	//             <td>string</td>
+	//             <td>子控件提示语</td>
+	//         </tr>
+	//         <tr>
+	//             <td>ComponentOffsetX</td>
+	//             <td>float</td>
+	//             <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>
+	//         </tr>
+	//         <tr>
+	//             <td>ComponentOffsetY</td>
+	//             <td>float</td>
+	//             <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>
+	//         </tr>
+	//         <tr>
+	//             <td>ComponentWidth</td>
+	//             <td>float</td>
+	//             <td>控件宽</td>
+	//         </tr>
+	//         <tr>
+	//             <td>ComponentHeight</td>
+	//             <td>float</td>
+	//             <td>控件高</td>
+	//         </tr>
+	//         <tr>
+	//             <td>ComponentExtra</td>
+	//             <td>string</td>
+	//             <td>控件的附属信息，根据ComponentType设置</td>
+	//         </tr>
+	//     </tbody>
+	// </table>
+	// <b>参数样例</b>：
+	// ```json
+	// {
+	//     "ChildrenComponents": [
+	//         {
+	//             "ComponentType": "SIGN_SIGNATURE",
+	//             "ComponentName": "个人签名",
+	//             "Placeholder": "请签名",
+	//             "ComponentOffsetX": 10,
+	//             "ComponentOffsetY": 30,
+	//             "ComponentWidth": 119,
+	//             "ComponentHeight": 43,
+	//             "ComponentExtra": "{\"ComponentTypeLimit\":[\"SYSTEM_ESIGN\"]}"
+	//         },
+	//         {
+	//             "ComponentType": "SIGN_SELECTOR",
+	//             "ComponentName": "是否同意此协议",
+	//             "Placeholder": "",
+	//             "ComponentOffsetX": 50,
+	//             "ComponentOffsetY": 130,
+	//             "ComponentWidth": 120,
+	//             "ComponentHeight": 43,
+	//             "ComponentExtra": "{\"Values\":[\"同意\",\"不同意\",\"再想想\"],\"FontSize\":12,\"FontAlign\":\"Left\",\"Font\":\"黑体\",\"MultiSelect\":false}"
+	//         },
+	//         {
+	//             "ComponentType": "SIGN_MULTI_LINE_TEXT",
+	//             "ComponentName": "批注附言",
+	//             "Placeholder": "",
+	//             "ComponentOffsetX": 150,
+	//             "ComponentOffsetY": 300,
+	//             "ComponentWidth": 200,
+	//             "ComponentHeight": 86,
+	//             "ComponentExtra": ""
+	//         }
+	//     ]
+	// }
+	// ```
+	// </ul>
+	// 
+	// 
+	// 
 	ComponentExtra *string `json:"ComponentExtra,omitnil,omitempty" name:"ComponentExtra"`
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：

@@ -185,6 +185,24 @@ const (
 	// 布局正在预监 (pvw) 中使用。
 	FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
 
+	// 新增的水印已经存在。
+	FAILEDOPERATION_MARKPICALREADYEXIST = "FailedOperation.MarkPicAlreadyExist"
+
+	// 修改的水印不存在。
+	FAILEDOPERATION_MARKPICNOTEXIST = "FailedOperation.MarkPicNotExist"
+
+	// 水印在自动导播中被使用，不允许删除。
+	FAILEDOPERATION_MARKPICUSEDINAUTOCAST = "FailedOperation.MarkPicUsedInAutoCast"
+
+	// 新增水印下标已存在。
+	FAILEDOPERATION_MARKWORDALREADYEXIST = "FailedOperation.MarkWordAlreadyExist"
+
+	// 修改的字幕不存在。
+	FAILEDOPERATION_MARKWORDNOTEXIST = "FailedOperation.MarkWordNotExist"
+
+	// 文本字幕在自动导播中被使用，不允许删除。
+	FAILEDOPERATION_MARKWORDUSEDINAUTOCAST = "FailedOperation.MarkWordUsedInAutoCast"
+
 	// 监播任务处于启动状态。
 	FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
 

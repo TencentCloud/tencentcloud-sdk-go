@@ -197,6 +197,150 @@ func (c *Client) AddCasterLayoutInfoWithContext(ctx context.Context, request *Ad
     return
 }
 
+func NewAddCasterMarkPicInfoRequest() (request *AddCasterMarkPicInfoRequest) {
+    request = &AddCasterMarkPicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "AddCasterMarkPicInfo")
+    
+    
+    return
+}
+
+func NewAddCasterMarkPicInfoResponse() (response *AddCasterMarkPicInfoResponse) {
+    response = &AddCasterMarkPicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddCasterMarkPicInfo
+// 该接口用来新增图片水印。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_MARKPICALREADYEXIST = "FailedOperation.MarkPicAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddCasterMarkPicInfo(request *AddCasterMarkPicInfoRequest) (response *AddCasterMarkPicInfoResponse, err error) {
+    return c.AddCasterMarkPicInfoWithContext(context.Background(), request)
+}
+
+// AddCasterMarkPicInfo
+// 该接口用来新增图片水印。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_MARKPICALREADYEXIST = "FailedOperation.MarkPicAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddCasterMarkPicInfoWithContext(ctx context.Context, request *AddCasterMarkPicInfoRequest) (response *AddCasterMarkPicInfoResponse, err error) {
+    if request == nil {
+        request = NewAddCasterMarkPicInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCasterMarkPicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddCasterMarkPicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddCasterMarkWordInfoRequest() (request *AddCasterMarkWordInfoRequest) {
+    request = &AddCasterMarkWordInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "AddCasterMarkWordInfo")
+    
+    
+    return
+}
+
+func NewAddCasterMarkWordInfoResponse() (response *AddCasterMarkWordInfoResponse) {
+    response = &AddCasterMarkWordInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddCasterMarkWordInfo
+// 为导播台添加文本配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_MARKWORDALREADYEXIST = "FailedOperation.MarkWordAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddCasterMarkWordInfo(request *AddCasterMarkWordInfoRequest) (response *AddCasterMarkWordInfoResponse, err error) {
+    return c.AddCasterMarkWordInfoWithContext(context.Background(), request)
+}
+
+// AddCasterMarkWordInfo
+// 为导播台添加文本配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_MARKWORDALREADYEXIST = "FailedOperation.MarkWordAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddCasterMarkWordInfoWithContext(ctx context.Context, request *AddCasterMarkWordInfoRequest) (response *AddCasterMarkWordInfoResponse, err error) {
+    if request == nil {
+        request = NewAddCasterMarkWordInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCasterMarkWordInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddCasterMarkWordInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddCasterOutputInfoRequest() (request *AddCasterOutputInfoRequest) {
     request = &AddCasterOutputInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3218,6 +3362,156 @@ func (c *Client) DeleteCasterLayoutInfoWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteCasterMarkPicInfoRequest() (request *DeleteCasterMarkPicInfoRequest) {
+    request = &DeleteCasterMarkPicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteCasterMarkPicInfo")
+    
+    
+    return
+}
+
+func NewDeleteCasterMarkPicInfoResponse() (response *DeleteCasterMarkPicInfoResponse) {
+    response = &DeleteCasterMarkPicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCasterMarkPicInfo
+// 该接口用来删除导播台某个Index对应的水印。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_LAYOUTUSEDINPGM = "FailedOperation.LayoutUsedInPgm"
+//  FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
+//  FAILEDOPERATION_MARKPICUSEDINAUTOCAST = "FailedOperation.MarkPicUsedInAutoCast"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCasterMarkPicInfo(request *DeleteCasterMarkPicInfoRequest) (response *DeleteCasterMarkPicInfoResponse, err error) {
+    return c.DeleteCasterMarkPicInfoWithContext(context.Background(), request)
+}
+
+// DeleteCasterMarkPicInfo
+// 该接口用来删除导播台某个Index对应的水印。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_LAYOUTUSEDINPGM = "FailedOperation.LayoutUsedInPgm"
+//  FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
+//  FAILEDOPERATION_MARKPICUSEDINAUTOCAST = "FailedOperation.MarkPicUsedInAutoCast"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCasterMarkPicInfoWithContext(ctx context.Context, request *DeleteCasterMarkPicInfoRequest) (response *DeleteCasterMarkPicInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteCasterMarkPicInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCasterMarkPicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCasterMarkPicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCasterMarkWordInfoRequest() (request *DeleteCasterMarkWordInfoRequest) {
+    request = &DeleteCasterMarkWordInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteCasterMarkWordInfo")
+    
+    
+    return
+}
+
+func NewDeleteCasterMarkWordInfoResponse() (response *DeleteCasterMarkWordInfoResponse) {
+    response = &DeleteCasterMarkWordInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCasterMarkWordInfo
+// 该接口用来删除导播台的文本配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_LAYOUTUSEDINPGM = "FailedOperation.LayoutUsedInPgm"
+//  FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
+//  FAILEDOPERATION_MARKWORDUSEDINAUTOCAST = "FailedOperation.MarkWordUsedInAutoCast"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCasterMarkWordInfo(request *DeleteCasterMarkWordInfoRequest) (response *DeleteCasterMarkWordInfoResponse, err error) {
+    return c.DeleteCasterMarkWordInfoWithContext(context.Background(), request)
+}
+
+// DeleteCasterMarkWordInfo
+// 该接口用来删除导播台的文本配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_LAYOUTUSEDINPGM = "FailedOperation.LayoutUsedInPgm"
+//  FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
+//  FAILEDOPERATION_MARKWORDUSEDINAUTOCAST = "FailedOperation.MarkWordUsedInAutoCast"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCasterMarkWordInfoWithContext(ctx context.Context, request *DeleteCasterMarkWordInfoRequest) (response *DeleteCasterMarkWordInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteCasterMarkWordInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCasterMarkWordInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCasterMarkWordInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCasterOutputInfoRequest() (request *DeleteCasterOutputInfoRequest) {
     request = &DeleteCasterOutputInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5636,6 +5930,140 @@ func (c *Client) DescribeCasterListWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeCasterListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCasterMarkPicInfosRequest() (request *DescribeCasterMarkPicInfosRequest) {
+    request = &DescribeCasterMarkPicInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterMarkPicInfos")
+    
+    
+    return
+}
+
+func NewDescribeCasterMarkPicInfosResponse() (response *DescribeCasterMarkPicInfosResponse) {
+    response = &DescribeCasterMarkPicInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterMarkPicInfos
+// 该接口用来查询某个导播台的水印列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterMarkPicInfos(request *DescribeCasterMarkPicInfosRequest) (response *DescribeCasterMarkPicInfosResponse, err error) {
+    return c.DescribeCasterMarkPicInfosWithContext(context.Background(), request)
+}
+
+// DescribeCasterMarkPicInfos
+// 该接口用来查询某个导播台的水印列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterMarkPicInfosWithContext(ctx context.Context, request *DescribeCasterMarkPicInfosRequest) (response *DescribeCasterMarkPicInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterMarkPicInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterMarkPicInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterMarkPicInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCasterMarkWordInfosRequest() (request *DescribeCasterMarkWordInfosRequest) {
+    request = &DescribeCasterMarkWordInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterMarkWordInfos")
+    
+    
+    return
+}
+
+func NewDescribeCasterMarkWordInfosResponse() (response *DescribeCasterMarkWordInfosResponse) {
+    response = &DescribeCasterMarkWordInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterMarkWordInfos
+// 该接口用来查询某个导播台的文本列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterMarkWordInfos(request *DescribeCasterMarkWordInfosRequest) (response *DescribeCasterMarkWordInfosResponse, err error) {
+    return c.DescribeCasterMarkWordInfosWithContext(context.Background(), request)
+}
+
+// DescribeCasterMarkWordInfos
+// 该接口用来查询某个导播台的文本列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterMarkWordInfosWithContext(ctx context.Context, request *DescribeCasterMarkWordInfosRequest) (response *DescribeCasterMarkWordInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterMarkWordInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterMarkWordInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterMarkWordInfosResponse()
     err = c.Send(request, response)
     return
 }
@@ -11926,6 +12354,154 @@ func (c *Client) ModifyCasterLayoutInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyCasterLayoutInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCasterMarkPicInfoRequest() (request *ModifyCasterMarkPicInfoRequest) {
+    request = &ModifyCasterMarkPicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyCasterMarkPicInfo")
+    
+    
+    return
+}
+
+func NewModifyCasterMarkPicInfoResponse() (response *ModifyCasterMarkPicInfoResponse) {
+    response = &ModifyCasterMarkPicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCasterMarkPicInfo
+// 该接口用来修改导播台水印信息。
+//
+// 注意，修改的Index对应的水印需已存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_MARKPICNOTEXIST = "FailedOperation.MarkPicNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCasterMarkPicInfo(request *ModifyCasterMarkPicInfoRequest) (response *ModifyCasterMarkPicInfoResponse, err error) {
+    return c.ModifyCasterMarkPicInfoWithContext(context.Background(), request)
+}
+
+// ModifyCasterMarkPicInfo
+// 该接口用来修改导播台水印信息。
+//
+// 注意，修改的Index对应的水印需已存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_MARKPICNOTEXIST = "FailedOperation.MarkPicNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCasterMarkPicInfoWithContext(ctx context.Context, request *ModifyCasterMarkPicInfoRequest) (response *ModifyCasterMarkPicInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyCasterMarkPicInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCasterMarkPicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCasterMarkPicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCasterMarkWordInfoRequest() (request *ModifyCasterMarkWordInfoRequest) {
+    request = &ModifyCasterMarkWordInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyCasterMarkWordInfo")
+    
+    
+    return
+}
+
+func NewModifyCasterMarkWordInfoResponse() (response *ModifyCasterMarkWordInfoResponse) {
+    response = &ModifyCasterMarkWordInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCasterMarkWordInfo
+// 该接口用来修改导播台文本配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
+//  FAILEDOPERATION_MARKWORDNOTEXIST = "FailedOperation.MarkWordNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCasterMarkWordInfo(request *ModifyCasterMarkWordInfoRequest) (response *ModifyCasterMarkWordInfoResponse, err error) {
+    return c.ModifyCasterMarkWordInfoWithContext(context.Background(), request)
+}
+
+// ModifyCasterMarkWordInfo
+// 该接口用来修改导播台文本配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_LAYOUTUSEDINPVW = "FailedOperation.LayoutUsedInPvw"
+//  FAILEDOPERATION_MARKWORDNOTEXIST = "FailedOperation.MarkWordNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCasterMarkWordInfoWithContext(ctx context.Context, request *ModifyCasterMarkWordInfoRequest) (response *ModifyCasterMarkWordInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyCasterMarkWordInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCasterMarkWordInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCasterMarkWordInfoResponse()
     err = c.Send(request, response)
     return
 }
