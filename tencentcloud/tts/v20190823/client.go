@@ -407,7 +407,7 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 大模型音色：10次/秒
 //
-// 一句话复刻音色：5次/秒
+// 一句话复刻音色：暂不支持
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -464,7 +464,7 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 //
 // 大模型音色：10次/秒
 //
-// 一句话复刻音色：5次/秒
+// 一句话复刻音色：暂不支持
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

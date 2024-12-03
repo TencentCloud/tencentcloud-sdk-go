@@ -35,6 +35,98 @@ type AsrTimestamps struct {
 }
 
 // Predefined struct for user
+type CheckAnimateImageJobRequestParams struct {
+	// 动作模板ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
+	// 图片大小：不超过10M；
+	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片base64数据。
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
+	// 图片大小：不超过10M；
+	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
+}
+
+type CheckAnimateImageJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 动作模板ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
+	// 图片大小：不超过10M；
+	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片base64数据。
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
+	// 图片大小：不超过10M；
+	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
+}
+
+func (r *CheckAnimateImageJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAnimateImageJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "EnableBodyJoins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAnimateImageJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckAnimateImageJobResponseParams struct {
+	// 输入图是否通过校验。
+	CheckPass *bool `json:"CheckPass,omitnil,omitempty" name:"CheckPass"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckAnimateImageJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckAnimateImageJobResponseParams `json:"Response"`
+}
+
+func (r *CheckAnimateImageJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAnimateImageJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ConfirmVideoTranslateJobRequestParams struct {
 	// 视频转译任务 ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -452,13 +544,17 @@ type LogoRect struct {
 
 // Predefined struct for user
 type SubmitImageAnimateJobRequestParams struct {
-	// 图片格式：支持PNG、JPG、JPEG格式；
-	// 图片分辨率：长边分辨率不超过2056；
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
 	// 图片大小：不超过10M；
 	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 图片base64数据。图片格式：支持PNG、JPG、JPEG格式；图片分辨率：长边分辨率不超过2056；图片大小：不超过10M；图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+	// 图片base64数据。
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
+	// 图片大小：不超过10M；
+	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 动作模板ID。取值说明：ke3 科目三；tuziwu 兔子舞；huajiangwu 划桨舞。
@@ -470,7 +566,7 @@ type SubmitImageAnimateJobRequestParams struct {
 	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
 
-	// 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+	// 最终视频是否保留原图的背景，默认不保留。
 	EnableSegment *bool `json:"EnableSegment,omitnil,omitempty" name:"EnableSegment"`
 
 	// 为生成视频添加标识的开关，默认为0。
@@ -488,13 +584,17 @@ type SubmitImageAnimateJobRequestParams struct {
 type SubmitImageAnimateJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片格式：支持PNG、JPG、JPEG格式；
-	// 图片分辨率：长边分辨率不超过2056；
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
 	// 图片大小：不超过10M；
 	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 图片base64数据。图片格式：支持PNG、JPG、JPEG格式；图片分辨率：长边分辨率不超过2056；图片大小：不超过10M；图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+	// 图片base64数据。
+	// 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+	// 图片分辨率：长边分辨率范围【192，4096】；
+	// 图片大小：不超过10M；
+	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 动作模板ID。取值说明：ke3 科目三；tuziwu 兔子舞；huajiangwu 划桨舞。
@@ -506,7 +606,7 @@ type SubmitImageAnimateJobRequest struct {
 	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
 
-	// 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+	// 最终视频是否保留原图的背景，默认不保留。
 	EnableSegment *bool `json:"EnableSegment,omitnil,omitempty" name:"EnableSegment"`
 
 	// 为生成视频添加标识的开关，默认为0。
@@ -549,7 +649,7 @@ func (r *SubmitImageAnimateJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitImageAnimateJobResponseParams struct {
-	// 任务ID。
+	// 图片跳舞任务ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

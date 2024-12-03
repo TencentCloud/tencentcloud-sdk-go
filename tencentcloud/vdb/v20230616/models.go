@@ -644,6 +644,12 @@ type Network struct {
 	// 内网访问Port。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 旧 ip 保留时长，单位天
+	PreserveDuration *int64 `json:"PreserveDuration,omitnil,omitempty" name:"PreserveDuration"`
+
+	// 旧 ip 到期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 type NodeInfo struct {

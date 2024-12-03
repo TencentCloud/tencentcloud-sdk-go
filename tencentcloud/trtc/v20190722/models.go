@@ -67,6 +67,11 @@ type AgentConfig struct {
 
 	// InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
 	InterruptSpeechDuration *uint64 `json:"InterruptSpeechDuration,omitnil,omitempty" name:"InterruptSpeechDuration"`
+
+	// 控制新一轮对话的触发方式，默认为0。
+	// - 0表示当服务端语音识别检测出的完整一句话后，自动触发一轮新的对话。
+	// - 1表示客户端在收到字幕消息后，自行决定是否手动发送聊天信令触发一轮新的对话。
+	TurnDetectionMode *uint64 `json:"TurnDetectionMode,omitnil,omitempty" name:"TurnDetectionMode"`
 }
 
 type AgentParams struct {
@@ -4400,6 +4405,11 @@ type ServerPushText struct {
 
 	// 播报完文本后，是否自动关闭对话任务
 	StopAfterPlay *bool `json:"StopAfterPlay,omitnil,omitempty" name:"StopAfterPlay"`
+
+	// 服务端推送播报音频
+	//     格式说明：音频以16KHz采样率的单声道格式提供，编码为Base64字符串。
+	//     输入规则：当提供Audio字段时，将不接受Text字段的输入。系统将直接播放Audio字段中的音频内容。
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
 }
 
 type SingleSubscribeParams struct {

@@ -245,7 +245,7 @@ type BackupTableContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupErrorMsg *string `json:"BackupErrorMsg,omitnil,omitempty" name:"BackupErrorMsg"`
 
-	// 改库表是否绑定降冷策略
+	// 该库表是否绑定降冷策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsOpenCoolDown *bool `json:"IsOpenCoolDown,omitnil,omitempty" name:"IsOpenCoolDown"`
 }

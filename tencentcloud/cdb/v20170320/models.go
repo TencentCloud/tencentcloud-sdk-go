@@ -1320,12 +1320,57 @@ type CdbZoneSellConf struct {
 
 // Predefined struct for user
 type CheckMigrateClusterRequestParams struct {
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 实例CPU核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 实例内存大小，单位：MB
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 集群版节点拓扑配置。
+	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
+
+	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 只读实例信息
+	RoInfo []*MigrateClusterRoInfo `json:"RoInfo,omitnil,omitempty" name:"RoInfo"`
 }
 
 type CheckMigrateClusterRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例CPU核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 实例内存大小，单位：MB
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 集群版节点拓扑配置。
+	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
+
+	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 只读实例信息
+	RoInfo []*MigrateClusterRoInfo `json:"RoInfo,omitnil,omitempty" name:"RoInfo"`
 }
 
 func (r *CheckMigrateClusterRequest) ToJsonString() string {
@@ -1340,7 +1385,14 @@ func (r *CheckMigrateClusterRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "Volume")
+	delete(f, "DiskType")
+	delete(f, "ClusterTopology")
+	delete(f, "DeviceType")
+	delete(f, "RoInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckMigrateClusterRequest has unknown keys!", "")
 	}
@@ -1349,6 +1401,12 @@ func (r *CheckMigrateClusterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckMigrateClusterResponseParams struct {
+	// 校验是否通过，通过为pass，失败为fail
+	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
+
+	// 校验项
+	Items []*CheckMigrateResult `json:"Items,omitnil,omitempty" name:"Items"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1367,6 +1425,17 @@ func (r *CheckMigrateClusterResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CheckMigrateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckMigrateResult struct {
+	// 校验名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 校验结果，通过为pass，失败为fail
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 校验结果描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
 type CloneItem struct {
@@ -11296,6 +11365,35 @@ type MasterInfo struct {
 
 	// 独享集群名称
 	ExClusterName *string `json:"ExClusterName,omitnil,omitempty" name:"ExClusterName"`
+}
+
+type MigrateClusterRoInfo struct {
+	// 只读实例名称
+	RoInstanceId *string `json:"RoInstanceId,omitnil,omitempty" name:"RoInstanceId"`
+
+	// 只读实例CPU核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 只读实例内存大小，单位：MB
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 只读实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 只读实例所在ro组，例：cdbrg-xxx
+	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
+
+	// 实例当前告警策略id数组
+	SrcAlarmPolicyList []*int64 `json:"SrcAlarmPolicyList,omitnil,omitempty" name:"SrcAlarmPolicyList"`
 }
 
 // Predefined struct for user

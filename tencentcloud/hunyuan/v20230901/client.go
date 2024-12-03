@@ -142,10 +142,8 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     return c.ChatCompletionsWithContext(context.Background(), request)
 }
@@ -173,10 +171,8 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     if request == nil {
         request = NewChatCompletionsRequest()
@@ -189,6 +185,97 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     request.SetContext(ctx)
     
     response = NewChatCompletionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChatTranslationsRequest() (request *ChatTranslationsRequest) {
+    request = &ChatTranslationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "ChatTranslations")
+    
+    
+    return
+}
+
+func NewChatTranslationsResponse() (response *ChatTranslationsResponse) {
+    response = &ChatTranslationsResponse{} 
+    return
+
+}
+
+// ChatTranslations
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) ChatTranslations(request *ChatTranslationsRequest) (response *ChatTranslationsResponse, err error) {
+    return c.ChatTranslationsWithContext(context.Background(), request)
+}
+
+// ChatTranslations
+// 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+//
+// 
+//
+//  1. 本接口暂不支持返回图片内容。
+//
+//  2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+//
+//  3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+//
+//  4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) ChatTranslationsWithContext(ctx context.Context, request *ChatTranslationsRequest) (response *ChatTranslationsResponse, err error) {
+    if request == nil {
+        request = NewChatTranslationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChatTranslations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChatTranslationsResponse()
     err = c.Send(request, response)
     return
 }
@@ -233,10 +320,8 @@ func NewCreateThreadResponse() (response *CreateThreadResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateThread(request *CreateThreadRequest) (response *CreateThreadResponse, err error) {
     return c.CreateThreadWithContext(context.Background(), request)
 }
@@ -264,10 +349,8 @@ func (c *Client) CreateThread(request *CreateThreadRequest) (response *CreateThr
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThreadRequest) (response *CreateThreadResponse, err error) {
     if request == nil {
         request = NewCreateThreadRequest()
@@ -314,10 +397,8 @@ func NewFilesDeletionsResponse() (response *FilesDeletionsResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) FilesDeletions(request *FilesDeletionsRequest) (response *FilesDeletionsResponse, err error) {
     return c.FilesDeletionsWithContext(context.Background(), request)
 }
@@ -335,10 +416,8 @@ func (c *Client) FilesDeletions(request *FilesDeletionsRequest) (response *Files
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) FilesDeletionsWithContext(ctx context.Context, request *FilesDeletionsRequest) (response *FilesDeletionsResponse, err error) {
     if request == nil {
         request = NewFilesDeletionsRequest()
@@ -385,10 +464,8 @@ func NewFilesListResponse() (response *FilesListResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) FilesList(request *FilesListRequest) (response *FilesListResponse, err error) {
     return c.FilesListWithContext(context.Background(), request)
 }
@@ -406,10 +483,8 @@ func (c *Client) FilesList(request *FilesListRequest) (response *FilesListRespon
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) FilesListWithContext(ctx context.Context, request *FilesListRequest) (response *FilesListResponse, err error) {
     if request == nil {
         request = NewFilesListRequest()
@@ -458,10 +533,8 @@ func NewFilesUploadsResponse() (response *FilesUploadsResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) FilesUploads(request *FilesUploadsRequest) (response *FilesUploadsResponse, err error) {
     return c.FilesUploadsWithContext(context.Background(), request)
 }
@@ -481,10 +554,8 @@ func (c *Client) FilesUploads(request *FilesUploadsRequest) (response *FilesUplo
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) FilesUploadsWithContext(ctx context.Context, request *FilesUploadsRequest) (response *FilesUploadsResponse, err error) {
     if request == nil {
         request = NewFilesUploadsRequest()
@@ -526,7 +597,6 @@ func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
 //  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
     return c.GetEmbeddingWithContext(context.Background(), request)
@@ -538,7 +608,6 @@ func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbedd
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
 //  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
     if request == nil {
@@ -596,10 +665,8 @@ func NewGetThreadResponse() (response *GetThreadResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) GetThread(request *GetThreadRequest) (response *GetThreadResponse, err error) {
     return c.GetThreadWithContext(context.Background(), request)
 }
@@ -627,10 +694,8 @@ func (c *Client) GetThread(request *GetThreadRequest) (response *GetThreadRespon
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) GetThreadWithContext(ctx context.Context, request *GetThreadRequest) (response *GetThreadResponse, err error) {
     if request == nil {
         request = NewGetThreadRequest()
@@ -687,10 +752,8 @@ func NewGetThreadMessageResponse() (response *GetThreadMessageResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) GetThreadMessage(request *GetThreadMessageRequest) (response *GetThreadMessageResponse, err error) {
     return c.GetThreadMessageWithContext(context.Background(), request)
 }
@@ -718,10 +781,8 @@ func (c *Client) GetThreadMessage(request *GetThreadMessageRequest) (response *G
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) GetThreadMessageWithContext(ctx context.Context, request *GetThreadMessageRequest) (response *GetThreadMessageResponse, err error) {
     if request == nil {
         request = NewGetThreadMessageRequest()
@@ -778,10 +839,8 @@ func NewGetThreadMessageListResponse() (response *GetThreadMessageListResponse) 
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) GetThreadMessageList(request *GetThreadMessageListRequest) (response *GetThreadMessageListResponse, err error) {
     return c.GetThreadMessageListWithContext(context.Background(), request)
 }
@@ -809,10 +868,8 @@ func (c *Client) GetThreadMessageList(request *GetThreadMessageListRequest) (res
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) GetThreadMessageListWithContext(ctx context.Context, request *GetThreadMessageListRequest) (response *GetThreadMessageListResponse, err error) {
     if request == nil {
         request = NewGetThreadMessageListRequest()
@@ -1044,10 +1101,8 @@ func NewRunThreadResponse() (response *RunThreadResponse) {
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) RunThread(request *RunThreadRequest) (response *RunThreadResponse, err error) {
     return c.RunThreadWithContext(context.Background(), request)
 }
@@ -1075,10 +1130,8 @@ func (c *Client) RunThread(request *RunThreadRequest) (response *RunThreadRespon
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
-//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) RunThreadWithContext(ctx context.Context, request *RunThreadRequest) (response *RunThreadResponse, err error) {
     if request == nil {
         request = NewRunThreadRequest()

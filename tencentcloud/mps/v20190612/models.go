@@ -976,6 +976,9 @@ type AiRecognitionTaskAsrFullTextSegmentItem struct {
 
 	// 识别文本。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 字词时间戳信息。
+	Wordlist []*WordResult `json:"Wordlist,omitnil,omitempty" name:"Wordlist"`
 }
 
 type AiRecognitionTaskAsrWordsResult struct {
@@ -1134,6 +1137,9 @@ type AiRecognitionTaskFaceSegmentItem struct {
 type AiRecognitionTaskInput struct {
 	// 视频智能识别模板 ID 。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 用户扩展字段，一般场景不用填。
+	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
 }
 
 type AiRecognitionTaskObjectResult struct {
@@ -1345,6 +1351,9 @@ type AiRecognitionTaskTransTextSegmentItem struct {
 
 	// 翻译文本。
 	Trans *string `json:"Trans,omitnil,omitempty" name:"Trans"`
+
+	// 字词时间戳信息。
+	Wordlist []*WordResult `json:"Wordlist,omitnil,omitempty" name:"Wordlist"`
 }
 
 type AiReviewPoliticalAsrTaskInput struct {
@@ -9117,6 +9126,24 @@ type DescribeTranscodeTemplatesRequestParams struct {
 
 	// 转码模板标识过滤条件，长度限制：64 个字符。	
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 视频场景化，可选值： 
+	// normal：通用转码场景：通用转码压缩场景。 
+	// pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+	// materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+	// ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+	// e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+	// educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+	// no_config：未配置。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// 转码策略，可选值： 
+	// ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+	// standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+	// high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+	// low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+	// no_config：未配置。
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 type DescribeTranscodeTemplatesRequest struct {
@@ -9157,6 +9184,24 @@ type DescribeTranscodeTemplatesRequest struct {
 
 	// 转码模板标识过滤条件，长度限制：64 个字符。	
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 视频场景化，可选值： 
+	// normal：通用转码场景：通用转码压缩场景。 
+	// pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+	// materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+	// ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+	// e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+	// educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+	// no_config：未配置。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// 转码策略，可选值： 
+	// ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+	// standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+	// high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+	// low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+	// no_config：未配置。
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
@@ -9179,6 +9224,8 @@ func (r *DescribeTranscodeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "TranscodeType")
 	delete(f, "Name")
+	delete(f, "SceneType")
+	delete(f, "CompressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTemplatesRequest has unknown keys!", "")
 	}
@@ -16880,6 +16927,10 @@ type TranscodeTemplate struct {
 	// 音视频增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// 转码模板别名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 }
 
 type TranslateConfigureInfo struct {
@@ -17283,6 +17334,34 @@ type VideoTemplateInfo struct {
 	// 切片特殊配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSpecificInfo *SegmentSpecificInfo `json:"SegmentSpecificInfo,omitnil,omitempty" name:"SegmentSpecificInfo"`
+
+	// 模版是否开启场景化 
+	// 0：不开启 
+	// 1：开启 
+	// 默认值：0	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScenarioBased *int64 `json:"ScenarioBased,omitnil,omitempty" name:"ScenarioBased"`
+
+	// 视频场景化，可选值： 
+	// normal：通用转码场景：通用转码压缩场景。
+	// pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+	// materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+	// ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+	// e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+	// educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+	// 默认值：normal
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// 转码策略，可选值： 
+	// ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+	// standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+	// high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+	// low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+	// 默认值：standard_compress 
+	// 注：若需要在电视上观看视频，不建议使用ultra_compress策略。ultra_compress策略计费标准为极速高清转码 + 音视频增强-去毛刺。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -17464,6 +17543,33 @@ type VideoTemplateInfoForUpdate struct {
 	// 切片特殊配置	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSpecificInfo *SegmentSpecificInfo `json:"SegmentSpecificInfo,omitnil,omitempty" name:"SegmentSpecificInfo"`
+
+	// 模版是否开启场景化 
+	// 0：不开启 
+	// 1：开启 
+	// 默认值：0	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScenarioBased *int64 `json:"ScenarioBased,omitnil,omitempty" name:"ScenarioBased"`
+
+	// 视频场景化，可选值： 
+	// normal：通用转码场景：通用转码压缩场景 pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+	// materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+	// ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+	// e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+	// educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。
+	// 默认值：normal
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// 转码策略，可选值： 
+	// ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+	// standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+	// high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+	// low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+	// 默认值：standard_compress 
+	// 注：若需要在电视上观看视频，不建议使用ultra_compress策略。ultra_compress策略计费标准为极速高清转码 + 音视频增强-去毛刺。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 type VolumeBalanceConfig struct {
@@ -17633,6 +17739,17 @@ func (r *WithdrawsWatermarkResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *WithdrawsWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WordResult struct {
+	// 字词文本。
+	Word *string `json:"Word,omitnil,omitempty" name:"Word"`
+
+	// 字词起始时间戳，单位秒。
+	Start *float64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 字词结束时间戳，单位秒。
+	End *float64 `json:"End,omitnil,omitempty" name:"End"`
 }
 
 type WorkflowInfo struct {

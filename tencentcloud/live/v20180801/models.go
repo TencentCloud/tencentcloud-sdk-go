@@ -8906,6 +8906,117 @@ func (r *DescribeLiveDomainsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLiveEnhanceInfoListRequestParams struct {
+	// 起始时间点，使用ISO格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，使用ISO格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询粒度，支持5，60分钟。
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 查询域名，如果不填则默认查全部的数据。
+	DomainNames []*string `json:"DomainNames,omitnil,omitempty" name:"DomainNames"`
+
+	// 增强服务类型，如果不填则默认查全部的数据。
+	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分辨率，如果不填则默认查全部的数据。
+	Resolution []*string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 帧率，如果不填则默认查全部的数据。
+	Fps []*string `json:"Fps,omitnil,omitempty" name:"Fps"`
+}
+
+type DescribeLiveEnhanceInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间点，使用ISO格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，使用ISO格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询粒度，支持5，60分钟。
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 查询域名，如果不填则默认查全部的数据。
+	DomainNames []*string `json:"DomainNames,omitnil,omitempty" name:"DomainNames"`
+
+	// 增强服务类型，如果不填则默认查全部的数据。
+	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分辨率，如果不填则默认查全部的数据。
+	Resolution []*string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 帧率，如果不填则默认查全部的数据。
+	Fps []*string `json:"Fps,omitnil,omitempty" name:"Fps"`
+}
+
+func (r *DescribeLiveEnhanceInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveEnhanceInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Granularity")
+	delete(f, "DomainNames")
+	delete(f, "Type")
+	delete(f, "Resolution")
+	delete(f, "Fps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveEnhanceInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveEnhanceInfoListResponseParams struct {
+	// 直播增强统计信息列表。
+	DataInfoList []*LiveEnhanceInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveEnhanceInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveEnhanceInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveEnhanceInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveEnhanceInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLiveForbidStreamListRequestParams struct {
 	// 取得第几页，默认1。
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
@@ -14493,6 +14604,26 @@ type LiveDomainCertBindings struct {
 	// 注：此字段为北京时间（UTC+8时区）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type LiveEnhanceInfo struct {
+	// 域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 时间。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 计费时长，单位分钟。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 帧率。
+	Fps *string `json:"Fps,omitnil,omitempty" name:"Fps"`
+
+	// 分辨率。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 增强服务类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type LivePackageInfo struct {

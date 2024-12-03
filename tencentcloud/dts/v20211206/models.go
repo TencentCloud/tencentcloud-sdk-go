@@ -7104,6 +7104,12 @@ func (r *StopSyncJobResponse) FromJsonString(s string) error {
 type SubsErr struct {
 	// 报错信息
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 报错原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 建议的修复方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 }
 
 type SubscribeCheckStepInfo struct {

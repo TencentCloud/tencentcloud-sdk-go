@@ -7535,6 +7535,67 @@ func (c *Client) DescribeLiveDomainsWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeLiveEnhanceInfoListRequest() (request *DescribeLiveEnhanceInfoListRequest) {
+    request = &DescribeLiveEnhanceInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveEnhanceInfoList")
+    
+    
+    return
+}
+
+func NewDescribeLiveEnhanceInfoListResponse() (response *DescribeLiveEnhanceInfoListResponse) {
+    response = &DescribeLiveEnhanceInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveEnhanceInfoList
+// 查询直播增强用量明细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveEnhanceInfoList(request *DescribeLiveEnhanceInfoListRequest) (response *DescribeLiveEnhanceInfoListResponse, err error) {
+    return c.DescribeLiveEnhanceInfoListWithContext(context.Background(), request)
+}
+
+// DescribeLiveEnhanceInfoList
+// 查询直播增强用量明细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveEnhanceInfoListWithContext(ctx context.Context, request *DescribeLiveEnhanceInfoListRequest) (response *DescribeLiveEnhanceInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveEnhanceInfoListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveEnhanceInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveEnhanceInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveForbidStreamListRequest() (request *DescribeLiveForbidStreamListRequest) {
     request = &DescribeLiveForbidStreamListRequest{
         BaseRequest: &tchttp.BaseRequest{},

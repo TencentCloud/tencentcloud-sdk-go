@@ -4994,7 +4994,7 @@ type UpdateCustomDomainRequestParams struct {
 	// web 应用防火墙配置
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
 
-	// 	路由配置
+	// 路由配置
 	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
 }
 
@@ -5013,7 +5013,7 @@ type UpdateCustomDomainRequest struct {
 	// web 应用防火墙配置
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
 
-	// 	路由配置
+	// 路由配置
 	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
 }
 

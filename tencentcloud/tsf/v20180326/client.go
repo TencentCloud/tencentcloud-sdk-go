@@ -5789,6 +5789,12 @@ func NewDescribeContainerEventsResponse() (response *DescribeContainerEventsResp
 // DescribeContainerEvents
 // 获取容器事件列表
 //
+// 参数限制
+//
+// 
+//
+// - 当类型是 instance 时，GroupId是必填项
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
@@ -5809,6 +5815,12 @@ func (c *Client) DescribeContainerEvents(request *DescribeContainerEventsRequest
 
 // DescribeContainerEvents
 // 获取容器事件列表
+//
+// 参数限制
+//
+// 
+//
+// - 当类型是 instance 时，GroupId是必填项
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"

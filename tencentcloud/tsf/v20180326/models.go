@@ -292,6 +292,20 @@ type AdvanceSettings struct {
 	SubTaskConcurrency *int64 `json:"SubTaskConcurrency,omitnil,omitempty" name:"SubTaskConcurrency"`
 }
 
+type Affinity struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *string `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paths []*CommonOption `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
 type AgentProfile struct {
 	// Agent类型
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
@@ -720,6 +734,42 @@ type ApplicationForPage struct {
 	// IgnoreCreateImageRepository
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitnil,omitempty" name:"IgnoreCreateImageRepository"`
+
+	// Apm业务系统id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
+
+	// Apm业务系统Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmInstanceName *string `json:"ApmInstanceName,omitnil,omitempty" name:"ApmInstanceName"`
+
+	// 同步删除镜像仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncDeleteImageRepository *bool `json:"SyncDeleteImageRepository,omitnil,omitempty" name:"SyncDeleteImageRepository"`
+
+	// 应用微服务子类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MicroserviceSubType *string `json:"MicroserviceSubType,omitnil,omitempty" name:"MicroserviceSubType"`
+
+	// 应用编程语言类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
+
+	// 开发框架类型[SpringCloud，Dubbo，Go-GRPC，Other]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
+
+	// 注册配置治理信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// 微服务类型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MicroserviceTypeList []*string `json:"MicroserviceTypeList,omitnil,omitempty" name:"MicroserviceTypeList"`
+
+	// 是否同时创建镜像仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateSameNameImageRepository *bool `json:"CreateSameNameImageRepository,omitnil,omitempty" name:"CreateSameNameImageRepository"`
 }
 
 // Predefined struct for user
@@ -878,6 +928,20 @@ func (r *AssociateConfigWithGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AssociateConfigWithGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AvailableZoneScatterScheduleRule struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScatterDimension *string `json:"ScatterDimension,omitnil,omitempty" name:"ScatterDimension"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxUnbalanceQuantity *int64 `json:"MaxUnbalanceQuantity,omitnil,omitempty" name:"MaxUnbalanceQuantity"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsForceSchedule *bool `json:"IsForceSchedule,omitnil,omitempty" name:"IsForceSchedule"`
 }
 
 // Predefined struct for user
@@ -1511,6 +1575,30 @@ type ClusterV2 struct {
 	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
 }
 
+type CommonOption struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+}
+
+type CommonRef struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Key值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
 type Config struct {
 	// 配置项ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1559,6 +1647,20 @@ type Config struct {
 	// 配置项版本数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigVersionCount *int64 `json:"ConfigVersionCount,omitnil,omitempty" name:"ConfigVersionCount"`
+}
+
+type ConfigMapOption struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type ConfigRelease struct {
@@ -2710,6 +2812,21 @@ type CreateApplicationRequestParams struct {
 
 	// 无
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
+
+	// apm业务系统id
+	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
+
+	// 编程语言
+	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
+
+	// 开发框架
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
+
+	// 注册配置治理
+	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// 是否创建并关联同名镜像仓库
+	CreateSameNameImageRepository *bool `json:"CreateSameNameImageRepository,omitnil,omitempty" name:"CreateSameNameImageRepository"`
 }
 
 type CreateApplicationRequest struct {
@@ -2747,6 +2864,21 @@ type CreateApplicationRequest struct {
 
 	// 无
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
+
+	// apm业务系统id
+	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
+
+	// 编程语言
+	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
+
+	// 开发框架
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
+
+	// 注册配置治理
+	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// 是否创建并关联同名镜像仓库
+	CreateSameNameImageRepository *bool `json:"CreateSameNameImageRepository,omitnil,omitempty" name:"CreateSameNameImageRepository"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -2772,6 +2904,11 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ServiceConfigList")
 	delete(f, "IgnoreCreateImageRepository")
 	delete(f, "ProgramIdList")
+	delete(f, "ApmInstanceId")
+	delete(f, "ProgramLanguage")
+	delete(f, "FrameworkType")
+	delete(f, "ServiceGovernanceConfig")
+	delete(f, "CreateSameNameImageRepository")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationRequest has unknown keys!", "")
 	}
@@ -3926,6 +4063,9 @@ type CreateGroupRequestParams struct {
 
 	// 部署组备注
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateGroupRequest struct {
@@ -3951,6 +4091,9 @@ type CreateGroupRequest struct {
 
 	// 部署组备注
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateGroupRequest) ToJsonString() string {
@@ -3972,6 +4115,7 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 	delete(f, "GroupDesc")
 	delete(f, "GroupResourceType")
 	delete(f, "Alias")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupRequest has unknown keys!", "")
 	}
@@ -5394,6 +5538,38 @@ type CurvePoint struct {
 
 	// 该坐标点时间戳
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+}
+
+type CustomPodSchedule struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForceSchedule *ForceSchedule `json:"ForceSchedule,omitnil,omitempty" name:"ForceSchedule"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrySchedule *TrySchedule `json:"TrySchedule,omitnil,omitempty" name:"TrySchedule"`
+}
+
+type CustomTolerateSchedule struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TolerationSeconds *int64 `json:"TolerationSeconds,omitnil,omitempty" name:"TolerationSeconds"`
 }
 
 // Predefined struct for user
@@ -8009,6 +8185,9 @@ type DescribeApplicationsRequestParams struct {
 
 	// IdList
 	ApplicationIdList []*string `json:"ApplicationIdList,omitnil,omitempty" name:"ApplicationIdList"`
+
+	// 查询多种微服务类型的应用
+	MicroserviceTypeList []*string `json:"MicroserviceTypeList,omitnil,omitempty" name:"MicroserviceTypeList"`
 }
 
 type DescribeApplicationsRequest struct {
@@ -8040,6 +8219,9 @@ type DescribeApplicationsRequest struct {
 
 	// IdList
 	ApplicationIdList []*string `json:"ApplicationIdList,omitnil,omitempty" name:"ApplicationIdList"`
+
+	// 查询多种微服务类型的应用
+	MicroserviceTypeList []*string `json:"MicroserviceTypeList,omitnil,omitempty" name:"MicroserviceTypeList"`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -8063,6 +8245,7 @@ func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "MicroserviceType")
 	delete(f, "ApplicationResourceTypeList")
 	delete(f, "ApplicationIdList")
+	delete(f, "MicroserviceTypeList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsRequest has unknown keys!", "")
 	}
@@ -9035,6 +9218,18 @@ type DescribeContainerEventsRequestParams struct {
 
 	// 当类型是 instance 时需要
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// event的资源kind
+	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// event 的type
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 关键词查询
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 }
 
 type DescribeContainerEventsRequest struct {
@@ -9054,6 +9249,18 @@ type DescribeContainerEventsRequest struct {
 
 	// 当类型是 instance 时需要
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// event的资源kind
+	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// event 的type
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 关键词查询
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 }
 
 func (r *DescribeContainerEventsRequest) ToJsonString() string {
@@ -9073,6 +9280,10 @@ func (r *DescribeContainerEventsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "GroupId")
+	delete(f, "Kind")
+	delete(f, "Type")
+	delete(f, "ResourceName")
+	delete(f, "SearchWord")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerEventsRequest has unknown keys!", "")
 	}
@@ -11066,7 +11277,7 @@ type DescribeImageRepositoryRequestParams struct {
 	// TcrRepoInfo值
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
 
-	// 镜像仓库
+	// 镜像仓库名称
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 }
 
@@ -11091,7 +11302,7 @@ type DescribeImageRepositoryRequest struct {
 	// TcrRepoInfo值
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
 
-	// 镜像仓库
+	// 镜像仓库名称
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 }
 
@@ -12832,6 +13043,12 @@ type DescribePodInstancesRequestParams struct {
 
 	// 过滤字段
 	PodNameList []*string `json:"PodNameList,omitnil,omitempty" name:"PodNameList"`
+
+	// 新老版本pod批次标识
+	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribePodInstancesRequest struct {
@@ -12848,6 +13065,12 @@ type DescribePodInstancesRequest struct {
 
 	// 过滤字段
 	PodNameList []*string `json:"PodNameList,omitnil,omitempty" name:"PodNameList"`
+
+	// 新老版本pod批次标识
+	DeployVersion *string `json:"DeployVersion,omitnil,omitempty" name:"DeployVersion"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribePodInstancesRequest) ToJsonString() string {
@@ -12866,6 +13089,8 @@ func (r *DescribePodInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "PodNameList")
+	delete(f, "DeployVersion")
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePodInstancesRequest has unknown keys!", "")
 	}
@@ -13660,6 +13885,9 @@ type DescribeSimpleApplicationsRequestParams struct {
 
 	// 无
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
+
+	// 查询指定微服务类型的应用列表
+	MicroserviceTypeList []*string `json:"MicroserviceTypeList,omitnil,omitempty" name:"MicroserviceTypeList"`
 }
 
 type DescribeSimpleApplicationsRequest struct {
@@ -13688,6 +13916,9 @@ type DescribeSimpleApplicationsRequest struct {
 
 	// 无
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
+
+	// 查询指定微服务类型的应用列表
+	MicroserviceTypeList []*string `json:"MicroserviceTypeList,omitnil,omitempty" name:"MicroserviceTypeList"`
 }
 
 func (r *DescribeSimpleApplicationsRequest) ToJsonString() string {
@@ -13710,6 +13941,7 @@ func (r *DescribeSimpleApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationResourceTypeList")
 	delete(f, "SearchWord")
 	delete(f, "DisableProgramAuthCheck")
+	delete(f, "MicroserviceTypeList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSimpleApplicationsRequest has unknown keys!", "")
 	}
@@ -15536,6 +15768,24 @@ func (r *DraftApiGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EmptyDirOption struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableMemory *bool `json:"EnableMemory,omitnil,omitempty" name:"EnableMemory"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageCapacity *int64 `json:"StorageCapacity,omitnil,omitempty" name:"StorageCapacity"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageUnit *string `json:"StorageUnit,omitnil,omitempty" name:"StorageUnit"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SizeLimit *string `json:"SizeLimit,omitnil,omitempty" name:"SizeLimit"`
+}
+
 // Predefined struct for user
 type EnableLaneRuleRequestParams struct {
 	// 泳道规则ID
@@ -15834,6 +16084,32 @@ type Env struct {
 	// k8s ValueFrom
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueFrom *ValueFrom `json:"ValueFrom,omitnil,omitempty" name:"ValueFrom"`
+}
+
+type ExclusiveInstance struct {
+	// 配置中心类型[Registration、Configuration]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CenterType *string `json:"CenterType,omitnil,omitempty" name:"CenterType"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例类型[Polaris]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例地域id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 实例命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNamespaceId *string `json:"InstanceNamespaceId,omitnil,omitempty" name:"InstanceNamespaceId"`
 }
 
 // Predefined struct for user
@@ -16149,6 +16425,16 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type ForceSchedule struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffinityList []*Affinity `json:"AffinityList,omitnil,omitempty" name:"AffinityList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AntiAffinityList []*Affinity `json:"AntiAffinityList,omitnil,omitempty" name:"AntiAffinityList"`
+}
+
 type GatewayApiGroupVo struct {
 	// 分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16176,7 +16462,9 @@ type GatewayApiGroupVo struct {
 }
 
 type GatewayConfig struct {
-
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type GatewayDeployGroup struct {
@@ -16474,6 +16762,10 @@ type GroupPod struct {
 	// 节点实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeInstanceId *string `json:"NodeInstanceId,omitnil,omitempty" name:"NodeInstanceId"`
+
+	// 预期副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecTotalCount *string `json:"SpecTotalCount,omitnil,omitempty" name:"SpecTotalCount"`
 }
 
 type GroupPodResult struct {
@@ -16705,6 +16997,14 @@ type ImageRepository struct {
 	// 是否公共,1:公有,0:私有
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Public *int64 `json:"Public,omitnil,omitempty" name:"Public"`
+
+	// 创建方式：manual | automatic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateMode *string `json:"CreateMode,omitnil,omitempty" name:"CreateMode"`
+
+	// 仓库名，等同reponame字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 }
 
 type ImageRepositoryResult struct {
@@ -17521,6 +17821,15 @@ type ModifyApplicationRequestParams struct {
 
 	// 服务配置信息列表
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
+
+	// 应用的微服务类型
+	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
+
+	// 注册配置治理信息
+	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// 应用开发框架
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 }
 
 type ModifyApplicationRequest struct {
@@ -17540,6 +17849,15 @@ type ModifyApplicationRequest struct {
 
 	// 服务配置信息列表
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
+
+	// 应用的微服务类型
+	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
+
+	// 注册配置治理信息
+	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// 应用开发框架
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 }
 
 func (r *ModifyApplicationRequest) ToJsonString() string {
@@ -17559,6 +17877,9 @@ func (r *ModifyApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationDesc")
 	delete(f, "ApplicationRemarkName")
 	delete(f, "ServiceConfigList")
+	delete(f, "MicroserviceType")
+	delete(f, "ServiceGovernanceConfig")
+	delete(f, "FrameworkType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationRequest has unknown keys!", "")
 	}
@@ -19252,6 +19573,10 @@ type ProtocolPort struct {
 	// 主机端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePort *int64 `json:"NodePort,omitnil,omitempty" name:"NodePort"`
+
+	// 端口名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type QuantileEntity struct {
@@ -20404,6 +20729,50 @@ type SchedulingStrategy struct {
 	// NONE：不使用调度策略；CROSS_AZ：跨可用区部署
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeScheduleStrategyType *string `json:"NodeScheduleStrategyType,omitnil,omitempty" name:"NodeScheduleStrategyType"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeScheduleOptions []*CommonOption `json:"NodeScheduleOptions,omitnil,omitempty" name:"NodeScheduleOptions"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrongAffinityList []*CommonOption `json:"StrongAffinityList,omitnil,omitempty" name:"StrongAffinityList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeakAffinityList []*CommonOption `json:"WeakAffinityList,omitnil,omitempty" name:"WeakAffinityList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeakAffinityWeight *int64 `json:"WeakAffinityWeight,omitnil,omitempty" name:"WeakAffinityWeight"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableZoneScatterScheduleType *string `json:"AvailableZoneScatterScheduleType,omitnil,omitempty" name:"AvailableZoneScatterScheduleType"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableZoneScatterScheduleRules []*AvailableZoneScatterScheduleRule `json:"AvailableZoneScatterScheduleRules,omitnil,omitempty" name:"AvailableZoneScatterScheduleRules"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodScheduleStrategyType *string `json:"PodScheduleStrategyType,omitnil,omitempty" name:"PodScheduleStrategyType"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomPodSchedule *CustomPodSchedule `json:"CustomPodSchedule,omitnil,omitempty" name:"CustomPodSchedule"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TolerateScheduleType *string `json:"TolerateScheduleType,omitnil,omitempty" name:"TolerateScheduleType"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomTolerateSchedules []*CustomTolerateSchedule `json:"CustomTolerateSchedules,omitnil,omitempty" name:"CustomTolerateSchedules"`
 }
 
 // Predefined struct for user
@@ -20703,6 +21072,20 @@ type ServiceConfig struct {
 	HealthCheck *HealthCheckConfig `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 }
 
+type ServiceGovernanceConfig struct {
+	// 是否开启服务注册治理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableGovernance *bool `json:"EnableGovernance,omitnil,omitempty" name:"EnableGovernance"`
+
+	// 服务治理类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernanceType *string `json:"GovernanceType,omitnil,omitempty" name:"GovernanceType"`
+
+	// 独享实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusiveInstances []*ExclusiveInstance `json:"ExclusiveInstances,omitnil,omitempty" name:"ExclusiveInstances"`
+}
+
 type ServiceSetting struct {
 	// 0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -20735,6 +21118,58 @@ type ServiceSetting struct {
 	// SessionAffinity会话时间，默认10800
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionAffinityTimeoutSeconds *int64 `json:"SessionAffinityTimeoutSeconds,omitnil,omitempty" name:"SessionAffinityTimeoutSeconds"`
+
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 外部流量策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalTrafficStrategy *string `json:"ExternalTrafficStrategy,omitnil,omitempty" name:"ExternalTrafficStrategy"`
+
+	// 外部流量策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitnil,omitempty" name:"ExternalTrafficPolicy"`
+
+	// 负载均衡提供者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerProvisioner *string `json:"LoadBalancerProvisioner,omitnil,omitempty" name:"LoadBalancerProvisioner"`
+
+	// 负载均衡类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancingType *string `json:"LoadBalancingType,omitnil,omitempty" name:"LoadBalancingType"`
+
+	// k8s负载均衡内网vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIp *string `json:"ClusterIp,omitnil,omitempty" name:"ClusterIp"`
+
+	// 禁用服务Int记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableServiceInt *uint64 `json:"DisableServiceInt,omitnil,omitempty" name:"DisableServiceInt"`
+
+	// 开启SessionAffinity Int记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenSessionAffinityInt *uint64 `json:"OpenSessionAffinityInt,omitnil,omitempty" name:"OpenSessionAffinityInt"`
+
+	// 开启HeadlessService int记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadlessServiceInt *uint64 `json:"HeadlessServiceInt,omitnil,omitempty" name:"HeadlessServiceInt"`
+
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// VPC网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 负载均衡VIP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancingIp *string `json:"LoadBalancingIp,omitnil,omitempty" name:"LoadBalancingIp"`
+
+	// 负载均衡id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 }
 
 type ServiceStatisticsResult struct {
@@ -21038,6 +21473,14 @@ type SimpleApplication struct {
 	// ApplicationRuntimeType
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitnil,omitempty" name:"ApplicationRuntimeType"`
+
+	// Apm业务系统id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AmpInstanceId *string `json:"AmpInstanceId,omitnil,omitempty" name:"AmpInstanceId"`
+
+	// Apm业务系统Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmInstanceName *string `json:"ApmInstanceName,omitnil,omitempty" name:"ApmInstanceName"`
 }
 
 type SimpleGroup struct {
@@ -21491,6 +21934,16 @@ func (r *StopTaskExecuteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Tag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
 type TaskFlowEdge struct {
 	// 节点 ID
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
@@ -21757,6 +22210,16 @@ type ThreadPicture struct {
 	DeamonThreadCount []*CurvePoint `json:"DeamonThreadCount,omitnil,omitempty" name:"DeamonThreadCount"`
 }
 
+type TrySchedule struct {
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffinityList []*Affinity `json:"AffinityList,omitnil,omitempty" name:"AffinityList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AntiAffinityList []*Affinity `json:"AntiAffinityList,omitnil,omitempty" name:"AntiAffinityList"`
+}
+
 type TsfApiListResponse struct {
 	// 数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -21821,6 +22284,10 @@ type TsfPageApplication struct {
 	// 应用信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*ApplicationForPage `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 获取部署组实例列表返回的原始批次个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecTotalCount *int64 `json:"SpecTotalCount,omitnil,omitempty" name:"SpecTotalCount"`
 }
 
 type TsfPageBusinessLogConfig struct {
@@ -22979,6 +23446,14 @@ type ValueFrom struct {
 	// k8s env 的 ResourceFieldRef
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceFieldRef *ResourceFieldRef `json:"ResourceFieldRef,omitnil,omitempty" name:"ResourceFieldRef"`
+
+	// k8s env的configMapKeyRef
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigMapKeyRef *CommonRef `json:"ConfigMapKeyRef,omitnil,omitempty" name:"ConfigMapKeyRef"`
+
+	// k8s env 的 secretKeyRef
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKeyRef *CommonRef `json:"SecretKeyRef,omitnil,omitempty" name:"SecretKeyRef"`
 }
 
 type VmGroup struct {
@@ -23264,6 +23739,14 @@ type VolumeInfo struct {
 
 	// 数据卷配置
 	VolumeConfig *string `json:"VolumeConfig,omitnil,omitempty" name:"VolumeConfig"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigMapOptions []*ConfigMapOption `json:"ConfigMapOptions,omitnil,omitempty" name:"ConfigMapOptions"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyDirOption *EmptyDirOption `json:"EmptyDirOption,omitnil,omitempty" name:"EmptyDirOption"`
 }
 
 type VolumeMountInfo struct {

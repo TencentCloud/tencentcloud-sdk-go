@@ -52,15 +52,15 @@ type AclResponse struct {
 }
 
 type AclRule struct {
-	// Acl规则名称
+	// ACL规则名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 实例ID
+	// ckafka集群实例Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
+	// ACL规则匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PatternType *string `json:"PatternType,omitnil,omitempty" name:"PatternType"`
 
@@ -526,7 +526,7 @@ type BrokerTopicData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题ID
+	// 主题Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
@@ -536,11 +536,11 @@ type BrokerTopicData struct {
 }
 
 type BrokerTopicFlowData struct {
-	// Topic 名称
+	// 主题名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// Topic Id
+	// 主题Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
@@ -945,13 +945,13 @@ type ConnectResourceResourceIdResp struct {
 }
 
 type Connection struct {
-	// Topic名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 消费组ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// Topic的Id
+	// 主题Id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
@@ -3259,7 +3259,7 @@ type DatahubTaskIdRes struct {
 }
 
 type DatahubTaskInfo struct {
-	// 任务ID
+	// 任务Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务名称
@@ -5413,7 +5413,7 @@ func (r *DescribeDatahubTopicsResponse) FromJsonString(s string) error {
 }
 
 type DescribeGroup struct {
-	// groupId
+	// 消费分组名称
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 该 group 使用的协议。
@@ -6339,10 +6339,10 @@ func (r *DescribeTopicDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicFlowRankingRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 排行类别(PRO-Topic生产流量/CON-Topic消费流量)
+	// 排行类别，PRO：Topic生产流量；CON：Topic消费流量
 	RankingType *string `json:"RankingType,omitnil,omitempty" name:"RankingType"`
 
 	// 排行起始日期
@@ -6358,10 +6358,10 @@ type DescribeTopicFlowRankingRequestParams struct {
 type DescribeTopicFlowRankingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 排行类别(PRO-Topic生产流量/CON-Topic消费流量)
+	// 排行类别，PRO：Topic生产流量；CON：Topic消费流量
 	RankingType *string `json:"RankingType,omitnil,omitempty" name:"RankingType"`
 
 	// 排行起始日期
@@ -6399,7 +6399,7 @@ func (r *DescribeTopicFlowRankingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicFlowRankingResponseParams struct {
-	// 流量排行
+	// 流量排行返回结果
 	Result *TopicFlowRankingResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7103,7 +7103,7 @@ type EsModifyConnectParam struct {
 }
 
 type EsParam struct {
-	// 实例资源
+	// Es实例资源Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
@@ -7195,7 +7195,7 @@ type EsRecordMapping struct {
 }
 
 type EventBusParam struct {
-	// 资源类型。EB_COS/EB_ES/EB_CLS
+	// 资源类型。COS/ES/CLS
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否为自建集群
@@ -7689,7 +7689,7 @@ type FilterMapParam struct {
 }
 
 type Group struct {
-	// 组名称
+	// 消费分组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
@@ -8080,13 +8080,13 @@ type InquiryPublicNetworkParam struct {
 }
 
 type Instance struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// ckafka集群实例Name
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例的状态。0：创建中，1：运行中，2：删除中 ， 5 隔离中，-1 创建失败
+	// 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否开源实例。开源：true，不开源：false
@@ -8095,10 +8095,10 @@ type Instance struct {
 }
 
 type InstanceAttributesResponse struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// ckafka集群实例Name
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 接入点 VIP 列表信息
@@ -8110,7 +8110,7 @@ type InstanceAttributesResponse struct {
 	// 虚拟端口
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 实例的状态。0：创建中，1：运行中，2：删除中
+	// 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例带宽，单位：Mbps
@@ -8163,11 +8163,11 @@ type InstanceAttributesResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 跨可用区
+	// 可用区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// kafka版本信息
+	// ckafka集群实例版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
@@ -8218,6 +8218,17 @@ type InstanceAttributesResponse struct {
 	// 实例计费类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 免费分区数量
+	FreePartitionNumber *int64 `json:"FreePartitionNumber,omitnil,omitempty" name:"FreePartitionNumber"`
+
+	// 弹性带宽上浮值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticFloatBandwidth *int64 `json:"ElasticFloatBandwidth,omitnil,omitempty" name:"ElasticFloatBandwidth"`
 }
 
 type InstanceChargeParam struct {
@@ -8246,10 +8257,10 @@ type InstanceDeleteResponse struct {
 }
 
 type InstanceDetail struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// ckafka集群实例名称
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 访问实例的vip 信息
@@ -8261,13 +8272,13 @@ type InstanceDetail struct {
 	// 虚拟IP列表
 	VipList []*VipEntity `json:"VipList,omitnil,omitempty" name:"VipList"`
 
-	// 实例的状态。0：创建中，1：运行中，2：删除中：5隔离中， -1 创建失败
+	// 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例带宽，单位Mbps
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 实例的存储大小，单位GB
+	// ckafka集群实例磁盘大小，单位G
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 可用区域ID
@@ -8315,11 +8326,11 @@ type InstanceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cvm *int64 `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// ckafka实例类型
+	// ckafka集群实例类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 磁盘类型
+	// ckafka集群实例磁盘类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
@@ -8339,15 +8350,15 @@ type InstanceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionNumber *uint64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
 
-	// 公网带宽类型
+	// ckafka集群实例公网带宽类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetworkChargeType *string `json:"PublicNetworkChargeType,omitnil,omitempty" name:"PublicNetworkChargeType"`
 
-	// 公网带宽值
+	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// 实例类型
+	// ckafka集群实例底层集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
@@ -8530,10 +8541,10 @@ type KafkaParam struct {
 	// 是否为自建集群
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
-	// 实例资源
+	// ckafka集群实例Id
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// Topic名称，多个以“,”分隔
+	// 主题名，多个以“,”分隔
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
@@ -8548,11 +8559,11 @@ type KafkaParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// Zone ID
+	// 可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// Topic的Id
+	// 主题Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
@@ -8685,7 +8696,7 @@ type MariaDBParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 复制存量信息(schema_only不复制, initial全量)，默认位initial
+	// 复制存量信息(schema_only不复制, initial全量)，默认值initial
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotMode *string `json:"SnapshotMode,omitnil,omitempty" name:"SnapshotMode"`
 
@@ -10068,7 +10079,7 @@ type MySQLParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 复制存量信息(schema_only不复制, initial全量)，默认位initial
+	// 复制存量信息(schema_only不复制, initial全量)，默认值initial
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotMode *string `json:"SnapshotMode,omitnil,omitempty" name:"SnapshotMode"`
 
@@ -10185,11 +10196,11 @@ type Partition struct {
 }
 
 type PartitionOffset struct {
-	// Partition,例如"0"或"1"
+	// 分区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// Offset,例如100
+	// 位点偏移量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
@@ -10446,7 +10457,7 @@ type Region struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionCodeV3 *string `json:"RegionCodeV3,omitnil,omitempty" name:"RegionCodeV3"`
 
-	// NONE:默认值不支持任何特殊机型\nCVM:支持CVM类型
+	// NONE:默认值不支持任何特殊类型 实例类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Support *string `json:"Support,omitnil,omitempty" name:"Support"`
 
@@ -10549,7 +10560,7 @@ type Route struct {
 	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 路由ID
+	// 路由Id
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 
 	// vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
@@ -10570,7 +10581,7 @@ type Route struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTimestamp *string `json:"DeleteTimestamp,omitnil,omitempty" name:"DeleteTimestamp"`
 
-	// 子网信息
+	// 子网Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnet *string `json:"Subnet,omitnil,omitempty" name:"Subnet"`
 
@@ -10578,7 +10589,7 @@ type Route struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerVipList []*VipEntity `json:"BrokerVipList,omitnil,omitempty" name:"BrokerVipList"`
 
-	// vpc信息
+	// 私有网络Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
@@ -11044,7 +11055,7 @@ type TopicFlowRanking struct {
 	// 副本数
 	ReplicaNum *uint64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
-	// Topic 流量
+	// Topic 流量,单位MB(设置date时以sum方式聚合)
 	TopicTraffic *string `json:"TopicTraffic,omitnil,omitempty" name:"TopicTraffic"`
 
 	// Topic 消息堆积
@@ -11168,7 +11179,7 @@ type TopicParam struct {
 }
 
 type TopicPartitionDO struct {
-	// Partition ID
+	// Partition 分区ID
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
 	// Leader 运行状态
@@ -11382,22 +11393,22 @@ type VipEntity struct {
 }
 
 type ZoneInfo struct {
-	// zone的id
+	// 可用区
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 是否内部APP
 	IsInternalApp *int64 `json:"IsInternalApp,omitnil,omitempty" name:"IsInternalApp"`
 
-	// app id
+	// 应用标识
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 标识
 	Flag *bool `json:"Flag,omitnil,omitempty" name:"Flag"`
 
-	// zone名称
+	// 可用区名称
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// zone状态
+	// 可用区状态
 	ZoneStatus *int64 `json:"ZoneStatus,omitnil,omitempty" name:"ZoneStatus"`
 
 	// 额外标识
@@ -11405,7 +11416,7 @@ type ZoneInfo struct {
 	// Deprecated: Exflag is deprecated.
 	Exflag *string `json:"Exflag,omitnil,omitempty" name:"Exflag"`
 
-	// json对象，key为机型，value true为售罄，false为未售罄
+	// true为售罄，false为未售罄
 	SoldOut *string `json:"SoldOut,omitnil,omitempty" name:"SoldOut"`
 
 	// 标准版售罄信息
@@ -11452,7 +11463,7 @@ type ZoneResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Physical *string `json:"Physical,omitnil,omitempty" name:"Physical"`
 
-	// 公网带宽
+	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetwork *string `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
@@ -11460,7 +11471,7 @@ type ZoneResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetworkLimit *string `json:"PublicNetworkLimit,omitnil,omitempty" name:"PublicNetworkLimit"`
 
-	// 请求ID
+	// 请求Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 
