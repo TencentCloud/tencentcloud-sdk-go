@@ -966,6 +966,42 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type GPUConfig struct {
+	// 机型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUParams *GPUParams `json:"GPUParams,omitnil,omitempty" name:"GPUParams"`
+}
+
+type GPUParams struct {
+	// GPU驱动版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Driver *string `json:"Driver,omitnil,omitempty" name:"Driver"`
+
+	// CUDA版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CUDA *string `json:"CUDA,omitnil,omitempty" name:"CUDA"`
+
+	// CUDNN版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CUDNN *string `json:"CUDNN,omitnil,omitempty" name:"CUDNN"`
+
+	// 是否启用MIG特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MIGEnable *bool `json:"MIGEnable,omitnil,omitempty" name:"MIGEnable"`
+
+	// 是否启用Fabric特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fabric *bool `json:"Fabric,omitnil,omitempty" name:"Fabric"`
+
+	// 自定义驱动下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomGPUDriver *string `json:"CustomGPUDriver,omitnil,omitempty" name:"CustomGPUDriver"`
+}
+
 type HealthCheckPolicy struct {
 	// 健康检测策略名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2071,4 +2107,7 @@ type UpdateNativeNodePoolParam struct {
 
 	// ssh公钥id数组
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// 节点池 GPU 配置
+	GPUConfigs []*GPUConfig `json:"GPUConfigs,omitnil,omitempty" name:"GPUConfigs"`
 }

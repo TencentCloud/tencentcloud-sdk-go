@@ -146,7 +146,7 @@ type DataAuthorizationInfo struct {
 	// 示例值：https://www.*****.com/*
 	PrivacyPolicyLink *string `json:"PrivacyPolicyLink,omitnil,omitempty" name:"PrivacyPolicyLink"`
 
-	// 是否是用户个人敏感数据。
+	// 是否是用户个人敏感数据（不推荐使用）。
 	// 
 	// 固定填：1。
 	// 

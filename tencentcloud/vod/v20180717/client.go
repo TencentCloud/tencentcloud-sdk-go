@@ -428,7 +428,7 @@ func NewCreateAIAnalysisTemplateResponse() (response *CreateAIAnalysisTemplateRe
 }
 
 // CreateAIAnalysisTemplate
-// 创建用户自定义音视频内容分析模板，数量上限：50。
+// 创建用户自定义音视频内容分析模板，数量上限：50。暂时不支持 HLS 格式。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -448,7 +448,7 @@ func (c *Client) CreateAIAnalysisTemplate(request *CreateAIAnalysisTemplateReque
 }
 
 // CreateAIAnalysisTemplate
-// 创建用户自定义音视频内容分析模板，数量上限：50。
+// 创建用户自定义音视频内容分析模板，数量上限：50。暂时不支持 HLS 格式。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -10682,7 +10682,7 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 8. 内容审核（令人反感的信息、不安全的信息、不适宜的信息），<font color=red>不建议</font> 使用该接口发起，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)；
 //
-// 9. 内容分析（标签、分类、封面、按帧标签）；
+// 9. 内容分析（标签、分类、封面、按帧标签），暂时不支持 HLS 格式；
 //
 // 10. 内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 //
@@ -10730,7 +10730,7 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 //
 // 8. 内容审核（令人反感的信息、不安全的信息、不适宜的信息），<font color=red>不建议</font> 使用该接口发起，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)；
 //
-// 9. 内容分析（标签、分类、封面、按帧标签）；
+// 9. 内容分析（标签、分类、封面、按帧标签），暂时不支持 HLS 格式；
 //
 // 10. 内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 //

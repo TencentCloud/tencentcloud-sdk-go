@@ -4397,7 +4397,7 @@ func (r *DescribePolicyConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePolicyRequestParams struct {
-	// 策略Id。
+	// 策略Id。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
@@ -4407,7 +4407,7 @@ type DescribePolicyRequestParams struct {
 type DescribePolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略Id。
+	// 策略Id。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
@@ -6343,11 +6343,9 @@ func (r *ListNonCompliantResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListNonCompliantResourceResponseParams struct {
 	// 资源及标签合规信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ResourceTagMapping `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 获取的下一页的Token值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6419,11 +6417,9 @@ func (r *ListOrgServiceAssignMemberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListOrgServiceAssignMemberResponseParams struct {
 	// 总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 委派管理员列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrganizationServiceAssignMember `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6509,11 +6505,9 @@ func (r *ListOrganizationIdentityRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListOrganizationIdentityResponseParams struct {
 	// 总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 条目详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgIdentity `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6585,11 +6579,9 @@ func (r *ListOrganizationServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListOrganizationServiceResponseParams struct {
 	// 总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 集团服务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrganizationServiceAssign `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6793,7 +6785,6 @@ type ListPoliciesForTargetResponseParams struct {
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 目标关联的策略列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ListPoliciesForTarget `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6882,7 +6873,6 @@ type ListPoliciesResponseParams struct {
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 策略列表数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ListPolicyNode `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7434,7 +7424,6 @@ type ListTargetsForPolicyResponseParams struct {
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 指定SCP策略关联目标列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ListTargetsForPolicyNode `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -241,6 +241,9 @@ type DescribeInstancesRequestParams struct {
 	// 按照版本筛选实例。
 	EngineVersions []*string `json:"EngineVersions,omitnil,omitempty" name:"EngineVersions"`
 
+	// 按照api版本筛选实例
+	ApiVersions []*string `json:"ApiVersions,omitnil,omitempty" name:"ApiVersions"`
+
 	// 按照创建时间筛选实例。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
@@ -284,6 +287,9 @@ type DescribeInstancesRequest struct {
 	// 按照版本筛选实例。
 	EngineVersions []*string `json:"EngineVersions,omitnil,omitempty" name:"EngineVersions"`
 
+	// 按照api版本筛选实例
+	ApiVersions []*string `json:"ApiVersions,omitnil,omitempty" name:"ApiVersions"`
+
 	// 按照创建时间筛选实例。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
@@ -324,6 +330,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "EngineNames")
 	delete(f, "EngineVersions")
+	delete(f, "ApiVersions")
 	delete(f, "CreateAt")
 	delete(f, "Zones")
 	delete(f, "OrderBy")

@@ -9112,6 +9112,138 @@ type InstanceDetail struct {
 }
 
 // Predefined struct for user
+type InvokeCloudStorageAIServiceTaskRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 待分析云存的起始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 待分析云存的结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+type InvokeCloudStorageAIServiceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 待分析云存的起始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 待分析云存的结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+func (r *InvokeCloudStorageAIServiceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeCloudStorageAIServiceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelId")
+	delete(f, "Config")
+	delete(f, "ROI")
+	delete(f, "VideoURLs")
+	delete(f, "CustomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeCloudStorageAIServiceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeCloudStorageAIServiceTaskResponseParams struct {
+	// 任务是否执行完成
+	Completed *bool `json:"Completed,omitnil,omitempty" name:"Completed"`
+
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务信息
+	TaskInfo *CloudStorageAIServiceTask `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InvokeCloudStorageAIServiceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *InvokeCloudStorageAIServiceTaskResponseParams `json:"Response"`
+}
+
+func (r *InvokeCloudStorageAIServiceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeCloudStorageAIServiceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InvokeExternalSourceAIServiceTaskRequestParams struct {
 	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`

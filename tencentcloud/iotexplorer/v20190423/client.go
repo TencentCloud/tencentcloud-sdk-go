@@ -6691,6 +6691,65 @@ func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request
     return
 }
 
+func NewInvokeCloudStorageAIServiceTaskRequest() (request *InvokeCloudStorageAIServiceTaskRequest) {
+    request = &InvokeCloudStorageAIServiceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeCloudStorageAIServiceTask")
+    
+    
+    return
+}
+
+func NewInvokeCloudStorageAIServiceTaskResponse() (response *InvokeCloudStorageAIServiceTaskResponse) {
+    response = &InvokeCloudStorageAIServiceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeCloudStorageAIServiceTask
+// 同步执行设备云存 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) InvokeCloudStorageAIServiceTask(request *InvokeCloudStorageAIServiceTaskRequest) (response *InvokeCloudStorageAIServiceTaskResponse, err error) {
+    return c.InvokeCloudStorageAIServiceTaskWithContext(context.Background(), request)
+}
+
+// InvokeCloudStorageAIServiceTask
+// 同步执行设备云存 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) InvokeCloudStorageAIServiceTaskWithContext(ctx context.Context, request *InvokeCloudStorageAIServiceTaskRequest) (response *InvokeCloudStorageAIServiceTaskResponse, err error) {
+    if request == nil {
+        request = NewInvokeCloudStorageAIServiceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeCloudStorageAIServiceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeCloudStorageAIServiceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInvokeExternalSourceAIServiceTaskRequest() (request *InvokeExternalSourceAIServiceTaskRequest) {
     request = &InvokeExternalSourceAIServiceTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

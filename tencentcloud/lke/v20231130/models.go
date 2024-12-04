@@ -129,45 +129,45 @@ type AppModel struct {
 }
 
 type AttrLabel struct {
-	// 属性标签来源
+	// 标签来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 属性ID
+	// 标签ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrBizId *string `json:"AttrBizId,omitnil,omitempty" name:"AttrBizId"`
 
-	// 属性标识
+	// 标签标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
-	// 属性名称
+	// 标签名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrName *string `json:"AttrName,omitnil,omitempty" name:"AttrName"`
 
-	// 标签ID
+	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type AttrLabelDetail struct {
-	// 属性ID
+	// 标签ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrBizId *string `json:"AttrBizId,omitnil,omitempty" name:"AttrBizId"`
 
-	// 属性标识
+	// 标签标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
-	// 属性名称
+	// 标签名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrName *string `json:"AttrName,omitnil,omitempty" name:"AttrName"`
 
-	// 标签名称
+	// 标签值名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelNames []*string `json:"LabelNames,omitnil,omitempty" name:"LabelNames"`
 
-	// 属性标签是否在更新中
+	// 标签是否在更新中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdating *bool `json:"IsUpdating,omitnil,omitempty" name:"IsUpdating"`
 
@@ -181,13 +181,13 @@ type AttrLabelDetail struct {
 }
 
 type AttrLabelRefer struct {
-	// 属性标签来源，1：属性标签
+	// 标签来源，1：标签
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
-	// 标签ID
+	// 标签值ID
 	LabelBizIds []*string `json:"LabelBizIds,omitnil,omitempty" name:"LabelBizIds"`
 }
 
@@ -197,15 +197,15 @@ type AttributeFilters struct {
 }
 
 type AttributeLabel struct {
-	// 标签ID
+	// 标准词ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelBizId *string `json:"LabelBizId,omitnil,omitempty" name:"LabelBizId"`
 
-	// 标签名称
+	// 标准词名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
 
-	// 相似标签名称
+	// 同义词名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SimilarLabels []*string `json:"SimilarLabels,omitnil,omitempty" name:"SimilarLabels"`
 }

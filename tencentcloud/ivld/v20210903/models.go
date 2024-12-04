@@ -134,6 +134,10 @@ type AudioData struct {
 
 	// 音频识别标签数据
 	TextTagSet *MultiLevelTag `json:"TextTagSet,omitnil,omitempty" name:"TextTagSet"`
+
+	// 音频下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebMediaURL *string `json:"WebMediaURL,omitnil,omitempty" name:"WebMediaURL"`
 }
 
 type AudioInfo struct {
@@ -174,6 +178,14 @@ type AudioMetadata struct {
 	// 媒资音频文件格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// Audio Bit Depth: 16/24 bit .etc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitDepth *int64 `json:"BitDepth,omitnil,omitempty" name:"BitDepth"`
+
+	// 封装格式短后缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShortFormat *string `json:"ShortFormat,omitnil,omitempty" name:"ShortFormat"`
 }
 
 type ClassifiedPersonInfo struct {
@@ -445,7 +457,7 @@ func (r *CreateDefaultCategoriesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTaskRequestParams struct {
-	// 媒资文件ID，最长32B
+	// 媒资文件ID
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
 	// 媒资素材先验知识，相关限制参考MediaPreknownInfo
@@ -467,7 +479,7 @@ type CreateTaskRequestParams struct {
 type CreateTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒资文件ID，最长32B
+	// 媒资文件ID
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
 	// 媒资素材先验知识，相关限制参考MediaPreknownInfo
@@ -757,7 +769,7 @@ func (r *DeleteCustomCategoryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCustomCategoryResponseParams struct {
-	// 123
+	// 自定义分类ID
 	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1267,14 +1279,14 @@ func (r *DescribeCustomPersonsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMediaRequestParams struct {
-	// 导入媒资返回的媒资ID，最长32B
+	// 导入媒资返回的媒资ID
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 }
 
 type DescribeMediaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入媒资返回的媒资ID，最长32B
+	// 导入媒资返回的媒资ID
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 }
 
@@ -1481,14 +1493,14 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskRequestParams struct {
-	// CreateTask返回的任务ID，最长32B
+	// CreateTask返回的任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// CreateTask返回的任务ID，最长32B
+	// CreateTask返回的任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -1830,13 +1842,13 @@ type ImageOcr struct {
 
 // Predefined struct for user
 type ImportMediaRequestParams struct {
-	// 待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+	// 待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
-	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
+	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 待分析视频的名称，指定后可支持筛选，最多64B
+	// 待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
@@ -1857,13 +1869,13 @@ type ImportMediaRequestParams struct {
 type ImportMediaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+	// 待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
-	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
+	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 待分析视频的名称，指定后可支持筛选，最多64B
+	// 待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
@@ -2211,6 +2223,10 @@ type PersonInfo struct {
 	// 人脸在图片中的位置，仅在图片标签任务有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppearRect *Rectf `json:"AppearRect,omitnil,omitempty" name:"AppearRect"`
+
+	// 人物的personId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 }
 
 // Predefined struct for user
@@ -2521,6 +2537,10 @@ type TextData struct {
 	// 文本标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTagSet *MultiLevelTag `json:"TextTagSet,omitnil,omitempty" name:"TextTagSet"`
+
+	// 文档下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebMediaURL *string `json:"WebMediaURL,omitnil,omitempty" name:"WebMediaURL"`
 }
 
 type TextInfo struct {
@@ -2553,6 +2573,10 @@ type TextMetadata struct {
 	// 媒资文本文件格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 封装格式短后缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShortFormat *string `json:"ShortFormat,omitnil,omitempty" name:"ShortFormat"`
 }
 
 type TextSegMatchShotScore struct {
@@ -2569,6 +2593,10 @@ type UnknownPerson struct {
 	// 未知人物是否可以入库(只有当未知人物人脸小图质量分符合要求时才可入库)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PutLibraryAllowed *bool `json:"PutLibraryAllowed,omitnil,omitempty" name:"PutLibraryAllowed"`
+
+	// 内容审核结果: 0-正常;1-涉政;其他待确定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditClass *int64 `json:"AuditClass,omitnil,omitempty" name:"AuditClass"`
 }
 
 // Predefined struct for user

@@ -1122,7 +1122,7 @@ type CreateRoomRequestParams struct {
 	// 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// 录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 示例值：1
+	// 录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
@@ -1236,7 +1236,7 @@ type CreateRoomRequest struct {
 	// 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// 录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 示例值：1
+	// 录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。 
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。

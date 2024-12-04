@@ -15218,6 +15218,55 @@ func (c *Client) DescribeTrafficPackagesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeTrafficQosPolicyRequest() (request *DescribeTrafficQosPolicyRequest) {
+    request = &DescribeTrafficQosPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeTrafficQosPolicy")
+    
+    
+    return
+}
+
+func NewDescribeTrafficQosPolicyResponse() (response *DescribeTrafficQosPolicyResponse) {
+    response = &DescribeTrafficQosPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrafficQosPolicy
+// 查询流量调度规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrafficQosPolicy(request *DescribeTrafficQosPolicyRequest) (response *DescribeTrafficQosPolicyResponse, err error) {
+    return c.DescribeTrafficQosPolicyWithContext(context.Background(), request)
+}
+
+// DescribeTrafficQosPolicy
+// 查询流量调度规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrafficQosPolicyWithContext(ctx context.Context, request *DescribeTrafficQosPolicyRequest) (response *DescribeTrafficQosPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrafficQosPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficQosPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrafficQosPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsedIpAddressRequest() (request *DescribeUsedIpAddressRequest) {
     request = &DescribeUsedIpAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},

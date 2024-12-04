@@ -1631,8 +1631,6 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 //
 // 请注意，**此接口仅返回任务执行状态信息，不返回任务执行结果**
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
@@ -1652,8 +1650,6 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
 // 
 //
 // 请注意，**此接口仅返回任务执行状态信息，不返回任务执行结果**
-//
-// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"

@@ -165,7 +165,7 @@ type Assignment struct {
 
 // Predefined struct for user
 type AuthorizeTokenRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户
@@ -178,7 +178,7 @@ type AuthorizeTokenRequestParams struct {
 type AuthorizeTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户
@@ -251,7 +251,7 @@ type BatchContent struct {
 
 // Predefined struct for user
 type BatchCreateAclRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC）
@@ -267,7 +267,7 @@ type BatchCreateAclRequestParams struct {
 type BatchCreateAclRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC）
@@ -332,7 +332,7 @@ type BatchModifyGroupOffsetsRequestParams struct {
 	// 消费分组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 实例名称
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// partition信息
@@ -348,7 +348,7 @@ type BatchModifyGroupOffsetsRequest struct {
 	// 消费分组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 实例名称
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// partition信息
@@ -407,7 +407,7 @@ func (r *BatchModifyGroupOffsetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchModifyTopicAttributesRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题属性列表 (同一个批次最多支持10个)
@@ -417,7 +417,7 @@ type BatchModifyTopicAttributesRequestParams struct {
 type BatchModifyTopicAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题属性列表 (同一个批次最多支持10个)
@@ -470,7 +470,7 @@ func (r *BatchModifyTopicAttributesResponse) FromJsonString(s string) error {
 }
 
 type BatchModifyTopicInfo struct {
-	// topic名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 分区数
@@ -502,22 +502,25 @@ type BatchModifyTopicInfo struct {
 
 	// 批次的消息大小，范围1 KB到12 MB
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
+
+	// 消息保存的时间类型：CreateTime/LogAppendTime
+	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 type BatchModifyTopicResultDTO struct {
-	// 实例id
+	// ckafka集群实例Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// topic名称
+	// 主题名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 状态码
+	// 操作返回码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *string `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// 状态消息
+	// 操作返回信息
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -551,7 +554,7 @@ type BrokerTopicFlowData struct {
 
 // Predefined struct for user
 type CancelAuthorizationTokenRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户
@@ -564,7 +567,7 @@ type CancelAuthorizationTokenRequestParams struct {
 type CancelAuthorizationTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户
@@ -597,7 +600,7 @@ func (r *CancelAuthorizationTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelAuthorizationTokenResponseParams struct {
-	// 0 成功
+	// 0 成功 非0 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -936,6 +939,10 @@ type Config struct {
 	// 消息保留文件大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
+
+	// 消息保存的时间类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 type ConnectResourceResourceIdResp struct {
@@ -1075,7 +1082,7 @@ type CosParam struct {
 
 // Predefined struct for user
 type CreateAclRequestParams struct {
-	// 实例id信息
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
@@ -1103,7 +1110,7 @@ type CreateAclRequestParams struct {
 type CreateAclRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id信息
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
@@ -1181,13 +1188,13 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAclRuleRequestParams struct {
-	// 实例id信息
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型,目前只支持Topic,枚举值列表：Topic
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+	// ACL规则匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
 	PatternType *string `json:"PatternType,omitnil,omitempty" name:"PatternType"`
 
 	// 规则名称
@@ -1209,13 +1216,13 @@ type CreateAclRuleRequestParams struct {
 type CreateAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id信息
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型,目前只支持Topic,枚举值列表：Topic
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+	// ACL规则匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
 	PatternType *string `json:"PatternType,omitnil,omitempty" name:"PatternType"`
 
 	// 规则名称
@@ -1299,13 +1306,13 @@ type CreateCdcClusterRequestParams struct {
 	// 所在可用区ID
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// cdc集群的总带宽
+	// 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// cdc集群的总磁盘
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 数据盘类型
+	// ckafka集群实例磁盘类型
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 系统盘类型
@@ -1327,13 +1334,13 @@ type CreateCdcClusterRequest struct {
 	// 所在可用区ID
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// cdc集群的总带宽
+	// 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// cdc集群的总磁盘
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 数据盘类型
+	// ckafka集群实例磁盘类型
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 系统盘类型
@@ -1541,32 +1548,32 @@ func (r *CreateConnectResourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConsumerRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// group名称
+	// 消费分组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
+	// 主题名，TopicName、TopicNameList 需要显示指定一个存在的主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// topic名称数组
+	// 主题名列表
 	TopicNameList []*string `json:"TopicNameList,omitnil,omitempty" name:"TopicNameList"`
 }
 
 type CreateConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// group名称
+	// 消费分组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
+	// 主题名，TopicName、TopicNameList 需要显示指定一个存在的主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// topic名称数组
+	// 主题名列表
 	TopicNameList []*string `json:"TopicNameList,omitnil,omitempty" name:"TopicNameList"`
 }
 
@@ -1594,7 +1601,7 @@ func (r *CreateConsumerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConsumerResponseParams struct {
-	// 创建group描述
+	// 创建消费者组返回结果
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1643,7 +1650,7 @@ type CreateDatahubTaskRequestParams struct {
 	// 数据处理规则
 	TransformsParam *TransformsParam `json:"TransformsParam,omitnil,omitempty" name:"TransformsParam"`
 
-	// 任务ID
+	// 任务Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 标签列表
@@ -1677,7 +1684,7 @@ type CreateDatahubTaskRequest struct {
 	// 数据处理规则
 	TransformsParam *TransformsParam `json:"TransformsParam,omitnil,omitempty" name:"TransformsParam"`
 
-	// 任务ID
+	// 任务Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 标签列表
@@ -1723,7 +1730,7 @@ type CreateDatahubTaskRes struct {
 
 // Predefined struct for user
 type CreateDatahubTaskResponseParams struct {
-	// 任务id
+	// 返回结果
 	Result *CreateDatahubTaskRes `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2293,7 +2300,7 @@ func (r *CreateInstancePreResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePartitionRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名称
@@ -2306,7 +2313,7 @@ type CreatePartitionRequestParams struct {
 type CreatePartitionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名称
@@ -2421,7 +2428,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性带宽开关 0不开启  1开启（0默认
+	// 弹性带宽开关 0不开启  1开启（0默认)
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 }
 
@@ -2485,7 +2492,7 @@ type CreatePostPaidInstanceRequest struct {
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性带宽开关 0不开启  1开启（0默认
+	// 弹性带宽开关 0不开启  1开启（0默认)
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 }
 
@@ -2554,26 +2561,26 @@ func (r *CreatePostPaidInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrometheusRequestParams struct {
-	// ckafka实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vpc地址
+	// 私有网络Id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网地址
+	// 子网Id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 type CreatePrometheusRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vpc地址
+	// 私有网络Id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网地址
+	// 子网Id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
@@ -2738,7 +2745,7 @@ func (r *CreateRouteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTokenRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
@@ -2748,7 +2755,7 @@ type CreateTokenRequestParams struct {
 type CreateTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
@@ -2803,7 +2810,7 @@ func (r *CreateTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicIpWhiteListRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名称
@@ -2816,7 +2823,7 @@ type CreateTopicIpWhiteListRequestParams struct {
 type CreateTopicIpWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名称
@@ -3048,7 +3055,7 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名称
@@ -3061,7 +3068,7 @@ type CreateUserRequestParams struct {
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名称
@@ -3094,7 +3101,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserResponseParams struct {
-	// 返回的结果
+	// 返回结果
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3328,10 +3335,10 @@ type DatahubTopicDTO struct {
 }
 
 type DatahubTopicResp struct {
-	// Topic名称
+	// 主题名称
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// TopicId
+	// 主题Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
@@ -3361,7 +3368,7 @@ type DealInstanceDTO struct {
 
 // Predefined struct for user
 type DeleteAclRequestParams struct {
-	// 实例id信息
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
@@ -3386,7 +3393,7 @@ type DeleteAclRequestParams struct {
 type DeleteAclRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id信息
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
@@ -3613,7 +3620,7 @@ func (r *DeleteDatahubTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDatahubTaskResponseParams struct {
-	// 任务id
+	// 操作结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DatahubTaskIdRes `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -3696,7 +3703,7 @@ func (r *DeleteDatahubTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGroupRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费分组
@@ -3706,7 +3713,7 @@ type DeleteGroupRequestParams struct {
 type DeleteGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 消费分组
@@ -3760,14 +3767,14 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstancePostRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteInstancePostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3792,7 +3799,7 @@ func (r *DeleteInstancePostRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstancePostResponseParams struct {
-	// 返回的结果集
+	// 返回结果
 	Result *InstanceDeleteResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3817,14 +3824,14 @@ func (r *DeleteInstancePostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstancePreRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteInstancePreRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3874,7 +3881,7 @@ func (r *DeleteInstancePreResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRouteRequestParams struct {
-	// 实例唯一id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 路由id
@@ -3883,14 +3890,14 @@ type DeleteRouteRequestParams struct {
 	// 调用方appId
 	CallerAppid *int64 `json:"CallerAppid,omitnil,omitempty" name:"CallerAppid"`
 
-	// 删除路由时间
+	// 设置定时删除路由时间,若DeleteRouteTime < now ,设置时间小于当前接口提交时间则立即执行;DeleteRouteTime > now,设置时间大于当前接口提交时间,则按照设置的时间,定时执行删除;  该参数设置提交后,无法撤销!!!
 	DeleteRouteTime *string `json:"DeleteRouteTime,omitnil,omitempty" name:"DeleteRouteTime"`
 }
 
 type DeleteRouteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例唯一id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 路由id
@@ -3899,7 +3906,7 @@ type DeleteRouteRequest struct {
 	// 调用方appId
 	CallerAppid *int64 `json:"CallerAppid,omitnil,omitempty" name:"CallerAppid"`
 
-	// 删除路由时间
+	// 设置定时删除路由时间,若DeleteRouteTime < now ,设置时间小于当前接口提交时间则立即执行;DeleteRouteTime > now,设置时间大于当前接口提交时间,则按照设置的时间,定时执行删除;  该参数设置提交后,无法撤销!!!
 	DeleteRouteTime *string `json:"DeleteRouteTime,omitnil,omitempty" name:"DeleteRouteTime"`
 }
 
@@ -3952,20 +3959,20 @@ func (r *DeleteRouteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRouteTriggerTimeRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 修改时间
+	// 修改删除路由的定时时间
 	DelayTime *string `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 }
 
 type DeleteRouteTriggerTimeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 修改时间
+	// 修改删除路由的定时时间
 	DelayTime *string `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 }
 
@@ -4013,10 +4020,10 @@ func (r *DeleteRouteTriggerTimeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTopicIpWhiteListRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// ip白名单列表
@@ -4026,10 +4033,10 @@ type DeleteTopicIpWhiteListRequestParams struct {
 type DeleteTopicIpWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// ip白名单列表
@@ -4148,7 +4155,7 @@ func (r *DeleteTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名称
@@ -4158,7 +4165,7 @@ type DeleteUserRequestParams struct {
 type DeleteUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名称
@@ -4212,7 +4219,7 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeACLRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
@@ -4234,7 +4241,7 @@ type DescribeACLRequestParams struct {
 type DescribeACLRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
@@ -4304,7 +4311,7 @@ func (r *DescribeACLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAclRuleRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// ACL规则名
@@ -4320,7 +4327,7 @@ type DescribeAclRuleRequestParams struct {
 type DescribeAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// ACL规则名
@@ -4446,14 +4453,14 @@ func (r *DescribeAppInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCkafkaZoneRequestParams struct {
-	// cdc专业集群业务参数
+	// cdc集群Id
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 type DescribeCkafkaZoneRequest struct {
 	*tchttp.BaseRequest
 	
-	// cdc专业集群业务参数
+	// cdc集群Id
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
@@ -4849,7 +4856,7 @@ func (r *DescribeConnectResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupRequestParams struct {
-	// ckafka实例id。
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 可选，用户需要查询的group名称。
@@ -4868,7 +4875,7 @@ type DescribeConsumerGroupRequestParams struct {
 type DescribeConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka实例id。
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 可选，用户需要查询的group名称。
@@ -5242,14 +5249,14 @@ func (r *DescribeDatahubTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatahubTopicRequestParams struct {
-	// 名称
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeDatahubTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 名称
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -5333,7 +5340,7 @@ func (r *DescribeDatahubTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatahubTopicsRequestParams struct {
-	// 查询值
+	// 搜索词
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 本次查询的偏移位置，默认为0
@@ -5346,7 +5353,7 @@ type DescribeDatahubTopicsRequestParams struct {
 type DescribeDatahubTopicsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询值
+	// 搜索词
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 本次查询的偏移位置，默认为0
@@ -5422,20 +5429,20 @@ type DescribeGroup struct {
 
 // Predefined struct for user
 type DescribeGroupInfoRequestParams struct {
-	// （过滤条件）按照实例 ID 过滤。
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
+	// Kafka 消费分组列表
 	GroupList []*string `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 }
 
 type DescribeGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// （过滤条件）按照实例 ID 过滤。
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
+	// Kafka 消费分组列表
 	GroupList []*string `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 }
 
@@ -5487,7 +5494,7 @@ func (r *DescribeGroupInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupOffsetsRequestParams struct {
-	// （过滤条件）按照实例 ID 过滤
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Kafka 消费分组
@@ -5509,7 +5516,7 @@ type DescribeGroupOffsetsRequestParams struct {
 type DescribeGroupOffsetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// （过滤条件）按照实例 ID 过滤
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Kafka 消费分组
@@ -5554,7 +5561,7 @@ func (r *DescribeGroupOffsetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupOffsetsResponseParams struct {
-	// 返回的结果对象
+	// 返回结果
 	Result *GroupOffsetResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5579,7 +5586,7 @@ func (r *DescribeGroupOffsetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupRequestParams struct {
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 搜索关键字
@@ -5590,12 +5597,15 @@ type DescribeGroupRequestParams struct {
 
 	// 最大返回数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 搜索关键字
@@ -5606,6 +5616,9 @@ type DescribeGroupRequest struct {
 
 	// 最大返回数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeGroupRequest) ToJsonString() string {
@@ -5624,6 +5637,7 @@ func (r *DescribeGroupRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupRequest has unknown keys!", "")
 	}
@@ -5632,7 +5646,7 @@ func (r *DescribeGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupResponseParams struct {
-	// 返回结果集列表
+	// 返回结果
 	Result *GroupResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5657,14 +5671,14 @@ func (r *DescribeGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAttributesRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -5933,14 +5947,14 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusRequestParams struct {
-	// ckafka实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribePrometheusRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6069,20 +6083,20 @@ func (r *DescribeRegionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRouteRequestParams struct {
-	// 实例唯一id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由id
+	// 路由Id
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 }
 
 type DescribeRouteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例唯一id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由id
+	// 路由Id
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 }
 
@@ -6133,14 +6147,14 @@ func (r *DescribeRouteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskStatusRequestParams struct {
-	// 任务唯一标记
+	// 流程Id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一标记
+	// 流程Id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
@@ -6190,7 +6204,7 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicAttributesRequestParams struct {
-	// 实例 ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名称
@@ -6200,7 +6214,7 @@ type DescribeTopicAttributesRequestParams struct {
 type DescribeTopicAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名称
@@ -6254,7 +6268,7 @@ func (r *DescribeTopicAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicDetailRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// （过滤条件）按照topicName过滤，支持模糊查询
@@ -6268,12 +6282,21 @@ type DescribeTopicDetailRequestParams struct {
 
 	// Acl预设策略名称
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
+
+	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 0-顺序、1-倒序
+	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 目前支持 ReplicaNum （副本数）筛选
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeTopicDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// （过滤条件）按照topicName过滤，支持模糊查询
@@ -6287,6 +6310,15 @@ type DescribeTopicDetailRequest struct {
 
 	// Acl预设策略名称
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
+
+	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 0-顺序、1-倒序
+	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 目前支持 ReplicaNum （副本数）筛选
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTopicDetailRequest) ToJsonString() string {
@@ -6306,6 +6338,9 @@ func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "AclRuleName")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicDetailRequest has unknown keys!", "")
 	}
@@ -6424,20 +6459,20 @@ func (r *DescribeTopicFlowRankingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicProduceConnectionRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// topic名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type DescribeTopicProduceConnectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// topic名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -6488,7 +6523,7 @@ func (r *DescribeTopicProduceConnectionResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeTopicRequestParams struct {
-	// 实例 ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 过滤条件，按照 topicName 过滤，支持模糊查询
@@ -6507,7 +6542,7 @@ type DescribeTopicRequestParams struct {
 type DescribeTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 过滤条件，按照 topicName 过滤，支持模糊查询
@@ -6574,10 +6609,10 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicSubscribeGroupRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 分页时的起始位置
@@ -6590,10 +6625,10 @@ type DescribeTopicSubscribeGroupRequestParams struct {
 type DescribeTopicSubscribeGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 分页时的起始位置
@@ -6737,32 +6772,32 @@ func (r *DescribeTopicSyncReplicaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 按照名称过滤
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移
+	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 本次返回个数
+	// 返回数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 按照名称过滤
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移
+	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 本次返回个数
+	// 返回数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -6790,7 +6825,7 @@ func (r *DescribeUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserResponseParams struct {
-	// 返回结果列表
+	// 返回结果
 	Result *UserResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7238,7 +7273,7 @@ type FailureParam struct {
 
 // Predefined struct for user
 type FetchDatahubMessageByOffsetRequestParams struct {
-	// 主题名
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分区id
@@ -7251,7 +7286,7 @@ type FetchDatahubMessageByOffsetRequestParams struct {
 type FetchDatahubMessageByOffsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分区id
@@ -7309,7 +7344,7 @@ func (r *FetchDatahubMessageByOffsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchLatestDatahubMessageListRequestParams struct {
-	// 主题名
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分区id
@@ -7325,7 +7360,7 @@ type FetchLatestDatahubMessageListRequestParams struct {
 type FetchLatestDatahubMessageListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分区id
@@ -7387,7 +7422,7 @@ func (r *FetchLatestDatahubMessageListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageByOffsetRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名
@@ -7403,7 +7438,7 @@ type FetchMessageByOffsetRequestParams struct {
 type FetchMessageByOffsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名
@@ -7465,7 +7500,7 @@ func (r *FetchMessageByOffsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageListByOffsetRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名
@@ -7484,7 +7519,7 @@ type FetchMessageListByOffsetRequestParams struct {
 type FetchMessageListByOffsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名
@@ -7550,7 +7585,7 @@ func (r *FetchMessageListByOffsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageListByTimestampRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名
@@ -7562,14 +7597,14 @@ type FetchMessageListByTimestampRequestParams struct {
 	// 查询开始时间，13位时间戳
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最大查询条数，默认20，最大20
+	// 最大查询条数，默认20，最大20, 最小1
 	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitnil,omitempty" name:"SinglePartitionRecordNumber"`
 }
 
 type FetchMessageListByTimestampRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 主题名
@@ -7581,7 +7616,7 @@ type FetchMessageListByTimestampRequest struct {
 	// 查询开始时间，13位时间戳
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最大查询条数，默认20，最大20
+	// 最大查询条数，默认20，最大20, 最小1
 	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitnil,omitempty" name:"SinglePartitionRecordNumber"`
 }
 
@@ -7728,7 +7763,7 @@ type GroupInfoResponse struct {
 	// 仅当 state 为 Stable 且 protocol_type 为 consumer 时， 该数组才包含信息
 	Members []*GroupInfoMember `json:"Members,omitnil,omitempty" name:"Members"`
 
-	// Kafka 消费分组
+	// 消费分组名称
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 }
 
@@ -7922,7 +7957,7 @@ type InquireCkafkaPriceResp struct {
 
 // Predefined struct for user
 type InquireCkafkaPriceResponseParams struct {
-	// 出参
+	// 返回结果
 	Result *InquireCkafkaPriceResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8229,6 +8264,9 @@ type InstanceAttributesResponse struct {
 	// 弹性带宽上浮值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticFloatBandwidth *int64 `json:"ElasticFloatBandwidth,omitnil,omitempty" name:"ElasticFloatBandwidth"`
+
+	// ssl自定义证书id
+	CustomCertId *string `json:"CustomCertId,omitnil,omitempty" name:"CustomCertId"`
 }
 
 type InstanceChargeParam struct {
@@ -8397,7 +8435,7 @@ type InstanceResponse struct {
 
 // Predefined struct for user
 type InstanceScalingDownRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 缩容模式  1:稳定变配 
@@ -8417,7 +8455,7 @@ type InstanceScalingDownRequestParams struct {
 type InstanceScalingDownRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 缩容模式  1:稳定变配 
@@ -8459,7 +8497,7 @@ func (r *InstanceScalingDownRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InstanceScalingDownResponseParams struct {
-	// 缩容应答
+	// 返回结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ScalingDownResp `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -8727,10 +8765,10 @@ type MariaDBParam struct {
 
 // Predefined struct for user
 type ModifyAclRuleRequestParams struct {
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ACL策略名
+	// ACL规则名
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 修改预设规则时传入,是否应用到新增的Topic
@@ -8740,10 +8778,10 @@ type ModifyAclRuleRequestParams struct {
 type ModifyAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ACL策略名
+	// ACL规则名
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 修改预设规则时传入,是否应用到新增的Topic
@@ -9025,7 +9063,7 @@ func (r *ModifyDatahubTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDatahubTopicRequestParams struct {
-	// 名称
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 消息保留时间，单位：ms，当前最小值为60000ms。
@@ -9041,7 +9079,7 @@ type ModifyDatahubTopicRequestParams struct {
 type ModifyDatahubTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 名称
+	// 弹性topic名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 消息保留时间，单位：ms，当前最小值为60000ms。
@@ -9103,16 +9141,16 @@ func (r *ModifyDatahubTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGroupOffsetsRequestParams struct {
-	// kafka实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// kafka 消费分组
+	// 消费分组名称
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 表示需要重置的topics， 不填表示全部
+	// 需要重置的主题名列表， 不填表示全部
 	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
@@ -9131,16 +9169,16 @@ type ModifyGroupOffsetsRequestParams struct {
 type ModifyGroupOffsetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// kafka实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// kafka 消费分组
+	// 消费分组名称
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 表示需要重置的topics， 不填表示全部
+	// 需要重置的主题名列表， 不填表示全部
 	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
@@ -9220,13 +9258,13 @@ type ModifyInstanceAttributesConfig struct {
 
 // Predefined struct for user
 type ModifyInstanceAttributesRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例日志的最长保留时间，单位分钟，最大30天，0代表不开启日志保留时间回收策略
+	// 实例日志的最长保留时间，单位分钟，最大90天，0代表不开启日志保留时间回收策略
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// ckafka集群实例Name
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例配置
@@ -9235,10 +9273,10 @@ type ModifyInstanceAttributesRequestParams struct {
 	// 动态消息保留策略配置
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitnil,omitempty" name:"DynamicRetentionConfig"`
 
-	// 升配Rebalance时间
+	// 升配Rebalance时间 参数已废弃,忽略不填!!!
 	RebalanceTime *int64 `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
-	// 公网带宽
+	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
 	// 动态硬盘扩容策略配置
@@ -9246,20 +9284,20 @@ type ModifyInstanceAttributesRequestParams struct {
 	// Deprecated: DynamicDiskConfig is deprecated.
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
-	// 实例级别单条消息大小（单位byte)
+	// 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
 }
 
 type ModifyInstanceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例日志的最长保留时间，单位分钟，最大30天，0代表不开启日志保留时间回收策略
+	// 实例日志的最长保留时间，单位分钟，最大90天，0代表不开启日志保留时间回收策略
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// ckafka集群实例Name
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例配置
@@ -9268,16 +9306,16 @@ type ModifyInstanceAttributesRequest struct {
 	// 动态消息保留策略配置
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitnil,omitempty" name:"DynamicRetentionConfig"`
 
-	// 升配Rebalance时间
+	// 升配Rebalance时间 参数已废弃,忽略不填!!!
 	RebalanceTime *int64 `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
-	// 公网带宽
+	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
 	// 动态硬盘扩容策略配置
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
-	// 实例级别单条消息大小（单位byte)
+	// 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
 }
 
@@ -9500,7 +9538,7 @@ type ModifyRoutineMaintenanceTaskRequestParams struct {
 	// INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
 	MaintenanceSubtype *string `json:"MaintenanceSubtype,omitnil,omitempty" name:"MaintenanceSubtype"`
 
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 任务触发阈值
@@ -9537,7 +9575,7 @@ type ModifyRoutineMaintenanceTaskRequest struct {
 	// INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
 	MaintenanceSubtype *string `json:"MaintenanceSubtype,omitnil,omitempty" name:"MaintenanceSubtype"`
 
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 任务触发阈值
@@ -9618,10 +9656,10 @@ func (r *ModifyRoutineMaintenanceTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicAttributesRequestParams struct {
-	// 实例 ID。
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称。
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
@@ -9654,7 +9692,7 @@ type ModifyTopicAttributesRequestParams struct {
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开
 	EnableAclRule *int64 `json:"EnableAclRule,omitnil,omitempty" name:"EnableAclRule"`
 
-	// 预设ACL规则的名称
+	// ACL规则名
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
 	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
@@ -9669,17 +9707,17 @@ type ModifyTopicAttributesRequestParams struct {
 	// 消费限流，单位 MB/s
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitnil,omitempty" name:"QuotaConsumerByteRate"`
 
-	// 调整topic副本数
+	// topic副本数  最小值 1,最大值 3
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 }
 
 type ModifyTopicAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称。
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
@@ -9712,7 +9750,7 @@ type ModifyTopicAttributesRequest struct {
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开
 	EnableAclRule *int64 `json:"EnableAclRule,omitnil,omitempty" name:"EnableAclRule"`
 
-	// 预设ACL规则的名称
+	// ACL规则名
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
 	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
@@ -9727,7 +9765,7 @@ type ModifyTopicAttributesRequest struct {
 	// 消费限流，单位 MB/s
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitnil,omitempty" name:"QuotaConsumerByteRate"`
 
-	// 调整topic副本数
+	// topic副本数  最小值 1,最大值 3
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 }
 
@@ -9769,7 +9807,7 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicAttributesResponseParams struct {
-	// 返回结果集
+	// 返回结果
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10472,7 +10510,7 @@ type Region struct {
 
 // Predefined struct for user
 type RenewCkafkaInstanceRequestParams struct {
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 续费时长, 默认为1, 单位是月
@@ -10482,7 +10520,7 @@ type RenewCkafkaInstanceRequestParams struct {
 type RenewCkafkaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 续费时长, 默认为1, 单位是月
@@ -10743,7 +10781,7 @@ type SaleInfo struct {
 }
 
 type ScalingDownResp struct {
-	// 订单号
+	// 订单号列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 }
@@ -10981,16 +11019,16 @@ type TopicAttributesResponse struct {
 }
 
 type TopicDetail struct {
-	// 主题名称
+	// 主题名
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题ID
+	// 主题Id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 分区数
 	PartitionNum *int64 `json:"PartitionNum,omitnil,omitempty" name:"PartitionNum"`
 
-	// 副本数
+	// topic副本数  最小值 1,最大值 3
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
 	// 备注

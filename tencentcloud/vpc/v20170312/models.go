@@ -18033,6 +18033,77 @@ func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTrafficQosPolicyRequestParams struct {
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 本端地域。
+	LocalRegion *string `json:"LocalRegion,omitnil,omitempty" name:"LocalRegion"`
+
+	// 远端地域。
+	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
+}
+
+type DescribeTrafficQosPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 本端地域。
+	LocalRegion *string `json:"LocalRegion,omitnil,omitempty" name:"LocalRegion"`
+
+	// 远端地域。
+	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
+}
+
+func (r *DescribeTrafficQosPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficQosPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "LocalRegion")
+	delete(f, "RemoteRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficQosPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrafficQosPolicyResponseParams struct {
+	// 流量调度规则。
+	TrafficQosPolicySet []*TrafficQosPolicySet `json:"TrafficQosPolicySet,omitnil,omitempty" name:"TrafficQosPolicySet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTrafficQosPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrafficQosPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrafficQosPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficQosPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUsedIpAddressRequestParams struct {
 	// VPC实例ID。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -31024,6 +31095,32 @@ type TrafficPackage struct {
 
 	// 区分闲时流量包与全时流量包
 	DeductType *string `json:"DeductType,omitnil,omitempty" name:"DeductType"`
+}
+
+type TrafficQosPolicySet struct {
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// qos id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QosId *uint64 `json:"QosId,omitnil,omitempty" name:"QosId"`
+
+	// 描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QosPolicyDescription *string `json:"QosPolicyDescription,omitnil,omitempty" name:"QosPolicyDescription"`
+
+	// 名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QosPolicyName *string `json:"QosPolicyName,omitnil,omitempty" name:"QosPolicyName"`
+
+	// 带宽。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 流量调度策略ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QosPolicyId *string `json:"QosPolicyId,omitnil,omitempty" name:"QosPolicyId"`
 }
 
 // Predefined struct for user
