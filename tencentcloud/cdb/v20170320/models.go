@@ -8575,12 +8575,63 @@ func (r *DescribeErrorLogDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAlarmEventsRequestParams struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 事件查询范围开始时间，闭区间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 事件查询范围截止时间，闭区间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 事件名称。 Outofmemory - 内存OOM（有状态事件）; Switch - 主从切换（有状态事件）; Roremove - 只读实例剔除（有状态事件）; MemoryUsedHigh - 内存使用率过高（有状态事件）; CPUExpansion - CPU性能扩容（无状态事件）; CPUExpansionFailed - CPU性能扩容失败（无状态事件）; CPUContraction - CPU性能回缩（无状态事件）; Restart - 实例重启（有状态事件）; ServerFailureNodeMigration - ServerFailureNodeMigration（有状态事件）; PlannedSwitch - 计划内主备切换（无状态事件）; OverusedReadonlySet - 实例将被锁定（无状态事件）; OverusedReadWriteSet - 实例解除锁定（无状态事件）。
+	EventName []*string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// 事件状态。"1" - 发生事件；"0" - 恢复事件；"-" - 无状态事件。
+	EventStatus *string `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
+
+	// 排序方式。按事件发生事件进行排序，"DESC"-倒排；”ASC“-正序，默认倒排。
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 事件展示数量。
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量。
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 节点 ID。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 type DescribeInstanceAlarmEventsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 事件查询范围开始时间，闭区间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 事件查询范围截止时间，闭区间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 事件名称。 Outofmemory - 内存OOM（有状态事件）; Switch - 主从切换（有状态事件）; Roremove - 只读实例剔除（有状态事件）; MemoryUsedHigh - 内存使用率过高（有状态事件）; CPUExpansion - CPU性能扩容（无状态事件）; CPUExpansionFailed - CPU性能扩容失败（无状态事件）; CPUContraction - CPU性能回缩（无状态事件）; Restart - 实例重启（有状态事件）; ServerFailureNodeMigration - ServerFailureNodeMigration（有状态事件）; PlannedSwitch - 计划内主备切换（无状态事件）; OverusedReadonlySet - 实例将被锁定（无状态事件）; OverusedReadWriteSet - 实例解除锁定（无状态事件）。
+	EventName []*string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// 事件状态。"1" - 发生事件；"0" - 恢复事件；"-" - 无状态事件。
+	EventStatus *string `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
+
+	// 排序方式。按事件发生事件进行排序，"DESC"-倒排；”ASC“-正序，默认倒排。
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 事件展示数量。
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量。
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 节点 ID。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 func (r *DescribeInstanceAlarmEventsRequest) ToJsonString() string {
@@ -8595,7 +8646,15 @@ func (r *DescribeInstanceAlarmEventsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "EventName")
+	delete(f, "EventStatus")
+	delete(f, "Order")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "NodeId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceAlarmEventsRequest has unknown keys!", "")
 	}
@@ -8604,6 +8663,13 @@ func (r *DescribeInstanceAlarmEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAlarmEventsResponseParams struct {
+	// 事件数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 事件信息。查询不到信息时，Items为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*InstEventInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10915,6 +10981,24 @@ func (r *InquiryPriceUpgradeInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *InquiryPriceUpgradeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstEventInfo struct {
+	// 事件名称。
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// 事件状态。
+	EventStatus *string `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
+
+	// 事件发生时间。
+	OccurTime *string `json:"OccurTime,omitnil,omitempty" name:"OccurTime"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 type InstanceAuditLogFilters struct {

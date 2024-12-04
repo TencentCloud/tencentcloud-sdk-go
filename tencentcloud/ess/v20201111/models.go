@@ -233,6 +233,10 @@ type ApproverInfo struct {
 	// 
 	// 注：`此参数仅在通过文件发起合同或者合同组时生效`
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
+
+	// 进入签署流程的限制，目前支持以下选项：
+	// <ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
+	SignEndpoints []*string `json:"SignEndpoints,omitnil,omitempty" name:"SignEndpoints"`
 }
 
 type ApproverItem struct {
@@ -11834,6 +11838,10 @@ type FlowCreateApprover struct {
 	// 2. 使用视频认证时，<b>生成H5签署链接必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
 	// 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
 	Intention *Intention `json:"Intention,omitnil,omitempty" name:"Intention"`
+
+	// 进入签署流程的限制，目前支持以下选项：
+	// <ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
+	SignEndpoints []*string `json:"SignEndpoints,omitnil,omitempty" name:"SignEndpoints"`
 }
 
 type FlowDetailInfo struct {

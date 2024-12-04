@@ -291,6 +291,7 @@ import (
 	umpv20200918 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump/v20200918"
 	vcgv20240404 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcg/v20240404"
 	vclmv20240523 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vclm/v20240523"
+	vcubev20220410 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vcube/v20220410"
 	vdbv20230616 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vdb/v20230616"
 	vmv20200709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20200709"
 	vmv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20201229"
@@ -3833,6 +3834,19 @@ func TestVclmv20240523Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init vclm_v20240523 client: %v", err)
+    }
+}
+
+func TestVcubev20220410Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := vcubev20220410.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init vcube_v20220410 client: %v", err)
     }
 }
 

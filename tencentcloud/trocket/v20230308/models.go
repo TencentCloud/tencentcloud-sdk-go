@@ -1110,20 +1110,20 @@ func (r *DeleteMQTTInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMQTTTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type DeleteMQTTTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
@@ -2402,10 +2402,10 @@ func (r *DescribeMQTTInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTMessageListRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 开始时间
@@ -2427,10 +2427,10 @@ type DescribeMQTTMessageListRequestParams struct {
 type DescribeMQTTMessageListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 开始时间
@@ -2655,7 +2655,7 @@ func (r *DescribeMQTTProductSKUListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTTopicListRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表
@@ -2671,7 +2671,7 @@ type DescribeMQTTTopicListRequestParams struct {
 type DescribeMQTTTopicListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表
@@ -2737,20 +2737,20 @@ func (r *DescribeMQTTTopicListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMQTTTopicRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type DescribeMQTTTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
@@ -3268,7 +3268,7 @@ type Endpoint struct {
 }
 
 type Filter struct {
-	// 过滤条件名
+	// 过滤条件参数名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤条件的值
@@ -3596,15 +3596,15 @@ type InstanceItemExtraInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxStorage *int64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 专享集群最大保留时间
+	// 专享集群最大保留时间，单位：小时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetention *int64 `json:"MaxRetention,omitnil,omitempty" name:"MaxRetention"`
 
-	// 专项集群最大保留时间
+	// 专项集群最大保留时间，单位：小时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinRetention *int64 `json:"MinRetention,omitnil,omitempty" name:"MinRetention"`
 
-	// 4.0共享集群
+	// 4.0共享集群状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 }
@@ -4110,7 +4110,7 @@ func (r *ModifyMQTTInsPublicEndpointResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMQTTInstanceCertBindingRequestParams struct {
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 服务端证书id
@@ -4123,7 +4123,7 @@ type ModifyMQTTInstanceCertBindingRequestParams struct {
 type ModifyMQTTInstanceCertBindingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 服务端证书id

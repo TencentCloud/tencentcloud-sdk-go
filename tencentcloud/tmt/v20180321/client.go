@@ -591,7 +591,7 @@ func NewTextTranslateBatchResponse() (response *TextTranslateBatchResponse) {
 }
 
 // TextTranslateBatch
-// 文本翻译的批量接口
+// 批量翻译文本的接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
@@ -624,7 +624,7 @@ func (c *Client) TextTranslateBatch(request *TextTranslateBatchRequest) (respons
 }
 
 // TextTranslateBatch
-// 文本翻译的批量接口
+// 批量翻译文本的接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"

@@ -251,6 +251,9 @@ type CreatePrivateZoneRecordRequestParams struct {
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
 	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type CreatePrivateZoneRecordRequest struct {
@@ -276,6 +279,9 @@ type CreatePrivateZoneRecordRequest struct {
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
 	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 func (r *CreatePrivateZoneRecordRequest) ToJsonString() string {
@@ -297,6 +303,7 @@ func (r *CreatePrivateZoneRecordRequest) FromJsonString(s string) error {
 	delete(f, "Weight")
 	delete(f, "MX")
 	delete(f, "TTL")
+	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneRecordRequest has unknown keys!", "")
 	}
@@ -1472,6 +1479,9 @@ type ModifyPrivateZoneRecordRequestParams struct {
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
 	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyPrivateZoneRecordRequest struct {
@@ -1500,6 +1510,9 @@ type ModifyPrivateZoneRecordRequest struct {
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
 	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 func (r *ModifyPrivateZoneRecordRequest) ToJsonString() string {
@@ -1522,6 +1535,7 @@ func (r *ModifyPrivateZoneRecordRequest) FromJsonString(s string) error {
 	delete(f, "Weight")
 	delete(f, "MX")
 	delete(f, "TTL")
+	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateZoneRecordRequest has unknown keys!", "")
 	}
@@ -1901,6 +1915,10 @@ type PrivateZoneRecord struct {
 	// 0暂停，1启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user

@@ -1795,7 +1795,10 @@ func NewCreateRoundPlayResponse() (response *CreateRoundPlayResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EXPIREDTIME = "InvalidParameterValue.ExpiredTime"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYALREADYEXISTS = "InvalidParameterValue.RoundPlayAlreadyExists"
 //  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 //  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
 //  LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
 //  LIMITEXCEEDED_RUNNINGROUNDPLAYS = "LimitExceeded.RunningRoundPlays"
@@ -1813,7 +1816,10 @@ func (c *Client) CreateRoundPlay(request *CreateRoundPlayRequest) (response *Cre
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EXPIREDTIME = "InvalidParameterValue.ExpiredTime"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYALREADYEXISTS = "InvalidParameterValue.RoundPlayAlreadyExists"
 //  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 //  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
 //  LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
 //  LIMITEXCEEDED_RUNNINGROUNDPLAYS = "LimitExceeded.RunningRoundPlays"

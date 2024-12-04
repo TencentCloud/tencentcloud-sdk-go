@@ -122,59 +122,23 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// AAC帧时间戳间隔不合理配置错误
-	INVALIDPARAMETERVALUE_AACDURATIONDEVIATION = "InvalidParameterValue.AACDurationDeviation"
-
-	// 音视频交织不合理配置错误
-	INVALIDPARAMETERVALUE_AVTIMESTAMPINTERLEAVE = "InvalidParameterValue.AVTimestampInterleave"
-
 	// 参数错误：音频流码率。
 	INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
-
-	// 音频流码率超出范围配置错误
-	INVALIDPARAMETERVALUE_AUDIOBITRATEOUTOFRANGE = "InvalidParameterValue.AudioBitrateOutofRange"
 
 	// 参数值错误：AudioChannel。
 	INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
 
-	// 音频声道变化配置错误
-	INVALIDPARAMETERVALUE_AUDIOCHANNELSCHANGED = "InvalidParameterValue.AudioChannelsChanged"
-
 	// 参数错误：音频流编码格式。
 	INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
-
-	// 音频解码错误配置错误
-	INVALIDPARAMETERVALUE_AUDIODECODEFAILED = "InvalidParameterValue.AudioDecodeFailed"
-
-	// 音频丢帧配置错误
-	INVALIDPARAMETERVALUE_AUDIODROPPINGFRAMES = "InvalidParameterValue.AudioDroppingFrames"
-
-	// 音频流中存在重复帧配置错误
-	INVALIDPARAMETERVALUE_AUDIODUPLICATEDFRAME = "InvalidParameterValue.AudioDuplicatedFrame"
-
-	// 双通道音频相位相反配置错误
-	INVALIDPARAMETERVALUE_AUDIOOUTOFPHASE = "InvalidParameterValue.AudioOutOfPhase"
 
 	// 参数错误：音频流采样率。
 	INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
 
-	// 音频采样率变化配置错误
-	INVALIDPARAMETERVALUE_AUDIOSAMPLERATECHANGED = "InvalidParameterValue.AudioSampleRateChanged"
-
-	// 无音频流配置错误
-	INVALIDPARAMETERVALUE_AUDIOSTREAMLACK = "InvalidParameterValue.AudioStreamLack"
-
 	// 无效的音频/视频码率。
 	INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
 
-	// 黑白边检测配置错误
-	INVALIDPARAMETERVALUE_BLACKWHITEEDGE = "InvalidParameterValue.BlackWhiteEdge"
-
 	// 参数值错误：BlockConfidence 参数取值非法。
 	INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
-
-	// 模糊检测配置错误
-	INVALIDPARAMETERVALUE_BLUR = "InvalidParameterValue.Blur"
 
 	// 参数值错误：智能分类控制字段参数错误。
 	INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = "InvalidParameterValue.ClassifcationConfigure"
@@ -200,12 +164,6 @@ const (
 	// 参数值错误：智能封面控制字段参数错误。
 	INVALIDPARAMETERVALUE_COVERCONFIGURE = "InvalidParameterValue.CoverConfigure"
 
-	// 花屏检测配置错误
-	INVALIDPARAMETERVALUE_CRASHSCREEN = "InvalidParameterValue.CrashScreen"
-
-	// 视频的宽高比异常配置错误
-	INVALIDPARAMETERVALUE_DARORSARINVALID = "InvalidParameterValue.DarOrSarInvalid"
-
 	// 参数值错误：人脸默认库过滤标签非法。
 	INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = "InvalidParameterValue.DefaultLibraryLabelSet"
 
@@ -226,9 +184,6 @@ const (
 
 	// 无效的禁止分辨率低转高开关值。
 	INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-
-	// DTS抖动过大配置错误
-	INVALIDPARAMETERVALUE_DTSJITTER = "InvalidParameterValue.DtsJitter"
 
 	// 模板开启的检测项为空。
 	INVALIDPARAMETERVALUE_EMPTYDETECTITEM = "InvalidParameterValue.EmptyDetectItem"
@@ -257,9 +212,6 @@ const (
 	// 参数错误：视频帧率。
 	INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
 
-	// 通过PTS计算得到的流帧率抖动过大配置错误
-	INVALIDPARAMETERVALUE_FPSJITTER = "InvalidParameterValue.FpsJitter"
-
 	// 参数值错误：智能按帧标签控制字段参数错误。
 	INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = "InvalidParameterValue.FrameTagConfigure"
 
@@ -272,41 +224,8 @@ const (
 	// 无效的Gop值。
 	INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
 
-	// 无效的m3u8文件配置错误
-	INVALIDPARAMETERVALUE_HLSBADM3U8FORMAT = "InvalidParameterValue.HLSBadM3u8Format"
-
-	// 无效的master m3u8文件配置错误
-	INVALIDPARAMETERVALUE_HLSINVALIDMASTERM3U8 = "InvalidParameterValue.HLSInvalidMasterM3u8"
-
-	// 无效的media m3u8文件配置错误
-	INVALIDPARAMETERVALUE_HLSINVALIDMEDIAM3U8 = "InvalidParameterValue.HLSInvalidMediaM3u8"
-
-	// master m3u8缺少标准推荐的参数配置错误
-	INVALIDPARAMETERVALUE_HLSMASTERM3U8RECOMMENDED = "InvalidParameterValue.HLSMasterM3u8Recommended"
-
-	// media m3u8存在EXT-X-DISCONTINUITY配置错误
-	INVALIDPARAMETERVALUE_HLSMEDIAM3U8DISCONTINUITYEXIST = "InvalidParameterValue.HLSMediaM3u8DiscontinuityExist"
-
-	// media m3u8缺少标准推荐的参数配置错误
-	INVALIDPARAMETERVALUE_HLSMEDIAM3U8RECOMMENDED = "InvalidParameterValue.HLSMediaM3u8Recommended"
-
-	// 切片间DTS跳变且没有EXT-X-DISCONTINUITY配置错误
-	INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSDTSJITTERDEVIATION = "InvalidParameterValue.HLSMediaSegmentsDTSJitterDeviation"
-
-	// 切片间PTS跳变且没有EXT-X-DISCONTINUITY配置错误
-	INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSPTSJITTERDEVIATION = "InvalidParameterValue.HLSMediaSegmentsPTSJitterDeviation"
-
-	// 切片的流数目发生变化配置错误
-	INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSSTREAMNUMCHANGE = "InvalidParameterValue.HLSMediaSegmentsStreamNumChange"
-
 	// 参数错误：高度。
 	INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-
-	// 亮度异常：过曝配置错误
-	INVALIDPARAMETERVALUE_HIGHLIGHTING = "InvalidParameterValue.HighLighting"
-
-	// 爆音检测配置错误
-	INVALIDPARAMETERVALUE_HIGHVOICE = "InvalidParameterValue.HighVoice"
 
 	// ImageContent参数值无效。
 	INVALIDPARAMETERVALUE_IMAGECONTENT = "InvalidParameterValue.ImageContent"
@@ -323,38 +242,14 @@ const (
 	// 参数值错误：LabelSet 参数取值非法。
 	INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
 
-	// 缺失音频流恢复配置错误
-	INVALIDPARAMETERVALUE_LACKAUDIORECOVER = "InvalidParameterValue.LackAudioRecover"
-
-	// 缺失视频流恢复配置错误
-	INVALIDPARAMETERVALUE_LACKVIDEORECOVER = "InvalidParameterValue.LackVideoRecover"
-
 	// 参数错误：Limit。
 	INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
-
-	// 无参考打分配置错误
-	INVALIDPARAMETERVALUE_LOWEVALUATION = "InvalidParameterValue.LowEvaluation"
-
-	// 亮度异常：低光照配置错误
-	INVALIDPARAMETERVALUE_LOWLIGHTING = "InvalidParameterValue.LowLighting"
-
-	// 低音检测配置错误
-	INVALIDPARAMETERVALUE_LOWVOICE = "InvalidParameterValue.LowVoice"
 
 	// 参数值错误：不允许修改默认模板。
 	INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = "InvalidParameterValue.ModifyDefaultTemplate"
 
-	// 马赛克检测配置错误
-	INVALIDPARAMETERVALUE_MOSAIC = "InvalidParameterValue.Mosaic"
-
-	// MP4中codec fourcc不符合Apple HLS要求配置错误
-	INVALIDPARAMETERVALUE_MP4INVALIDCODECFOURCC = "InvalidParameterValue.Mp4InvalidCodecFourcc"
-
 	// 参数值错误：Name 超过长度限制。
 	INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-
-	// 静音检测配置错误
-	INVALIDPARAMETERVALUE_NOVOICE = "InvalidParameterValue.NoVoice"
 
 	// 不支持状态不为处理中的任务。
 	INVALIDPARAMETERVALUE_NOTPROCESSINGTASK = "InvalidParameterValue.NotProcessingTask"
@@ -362,26 +257,11 @@ const (
 	// 参数值错误：物体库参数非法。
 	INVALIDPARAMETERVALUE_OBJECTLIBRARY = "InvalidParameterValue.ObjectLibrary"
 
-	// 流参数集信息发生变化配置错误
-	INVALIDPARAMETERVALUE_PARAMETERSETSCHANGED = "InvalidParameterValue.ParameterSetsChanged"
-
 	// 参数值错误：人脸图片格式错误。
 	INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
 
-	// PTS抖动过大配置错误
-	INVALIDPARAMETERVALUE_PTSJITTER = "InvalidParameterValue.PtsJitter"
-
-	// 媒体流的 pts 小于 dts配置错误
-	INVALIDPARAMETERVALUE_PTSLESSTHANDTS = "InvalidParameterValue.PtsLessThanDts"
-
 	// 参数值错误：Quality。
 	INVALIDPARAMETERVALUE_QUALITY = "InvalidParameterValue.Quality"
-
-	// 网络接收帧率抖动过大配置错误
-	INVALIDPARAMETERVALUE_RECEIVEFPSJITTER = "InvalidParameterValue.ReceiveFpsJitter"
-
-	// 网络接收视频帧率过小配置错误
-	INVALIDPARAMETERVALUE_RECEIVEFPSTOOSMALL = "InvalidParameterValue.ReceiveFpsTooSmall"
 
 	// 参数值错误：RemoveAudio。
 	INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
@@ -431,18 +311,6 @@ const (
 	// 源文件错误。
 	INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 
-	// 流结束配置错误
-	INVALIDPARAMETERVALUE_STREAMEND = "InvalidParameterValue.StreamEnd"
-
-	// NALU起始码错误配置错误
-	INVALIDPARAMETERVALUE_STREAMNALUERROR = "InvalidParameterValue.StreamNALUError"
-
-	// 流打开失败配置错误
-	INVALIDPARAMETERVALUE_STREAMOPENFAILED = "InvalidParameterValue.StreamOpenFailed"
-
-	// 流解析失败配置错误
-	INVALIDPARAMETERVALUE_STREAMPARSEFAILED = "InvalidParameterValue.StreamParseFailed"
-
 	// 参数值错误：SubtitleFormat 参数非法。
 	INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
 
@@ -473,18 +341,6 @@ const (
 	// 参数错误：文字模板。
 	INVALIDPARAMETERVALUE_TEXTTEMPLATE = "InvalidParameterValue.TextTemplate"
 
-	// MP4存在tmcd轨道配置错误
-	INVALIDPARAMETERVALUE_TIMECODETRACKEXIST = "InvalidParameterValue.TimecodeTrackExist"
-
-	// DTS时间戳回退配置错误
-	INVALIDPARAMETERVALUE_TIMESTAMPFALLBACK = "InvalidParameterValue.TimestampFallback"
-
-	// MPEG2-TS流有多个program配置错误
-	INVALIDPARAMETERVALUE_TSMULTIPROGRAMS = "InvalidParameterValue.TsMultiPrograms"
-
-	// mpegts的H26x流缺失 AUD NALU配置错误
-	INVALIDPARAMETERVALUE_TSSTREAMNOAUD = "InvalidParameterValue.TsStreamNoAud"
-
 	// 参数错误：Type 参数值错误。
 	INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 
@@ -497,35 +353,8 @@ const (
 	// 参数错误：视频流码率。
 	INVALIDPARAMETERVALUE_VIDEOBITRATE = "InvalidParameterValue.VideoBitrate"
 
-	// 视频流码率超出范围配置错误
-	INVALIDPARAMETERVALUE_VIDEOBITRATEOUTOFRANGE = "InvalidParameterValue.VideoBitrateOutofRange"
-
 	// 参数错误：视频流的编码格式。
 	INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
-
-	// 视频解码错误配置错误
-	INVALIDPARAMETERVALUE_VIDEODECODEFAILED = "InvalidParameterValue.VideoDecodeFailed"
-
-	// 视频丢帧配置错误
-	INVALIDPARAMETERVALUE_VIDEODROPPINGFRAMES = "InvalidParameterValue.VideoDroppingFrames"
-
-	// 视频流中存在重复帧配置错误
-	INVALIDPARAMETERVALUE_VIDEODUPLICATEDFRAME = "InvalidParameterValue.VideoDuplicatedFrame"
-
-	// 首帧不是IDR帧配置错误
-	INVALIDPARAMETERVALUE_VIDEOFIRSTFRAMENOTIDR = "InvalidParameterValue.VideoFirstFrameNotIdr"
-
-	// 视频冻结配置错误
-	INVALIDPARAMETERVALUE_VIDEOFREEZEDFRAME = "InvalidParameterValue.VideoFreezedFrame"
-
-	// 视频分辨率变化配置错误
-	INVALIDPARAMETERVALUE_VIDEORESOLUTIONCHANGED = "InvalidParameterValue.VideoResolutionChanged"
-
-	// 视频画面旋转配置错误
-	INVALIDPARAMETERVALUE_VIDEOROTATION = "InvalidParameterValue.VideoRotation"
-
-	// 无视频流配置错误
-	INVALIDPARAMETERVALUE_VIDEOSTREAMLACK = "InvalidParameterValue.VideoStreamLack"
 
 	// 参数错误：宽度。
 	INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"

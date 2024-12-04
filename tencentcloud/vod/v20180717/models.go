@@ -5750,6 +5750,12 @@ type CreateRoundPlayRequestParams struct {
 	// <li>Linear：单次播放，播单播放完停止播放。</li>
 	// 默认值：Loop。
 	PlayBackMode *string `json:"PlayBackMode,omitnil,omitempty" name:"PlayBackMode"`
+
+	// 播单唯一标识 ID，长度限制为64个字符，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）和连字符（-）。如果存在相同 RoundPlayId 的播单，返回 InvalidParameterValue.RoundPlayAlreadyExists 错误。默认取值为空，表示由系统分配。
+	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
+
+	// 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。过期后的播单将停止播放，“9999-12-31T23:59:59+08:00“表示不过期。默认值：9999-12-31T23:59:59+08:00。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type CreateRoundPlayRequest struct {
@@ -5776,6 +5782,12 @@ type CreateRoundPlayRequest struct {
 	// <li>Linear：单次播放，播单播放完停止播放。</li>
 	// 默认值：Loop。
 	PlayBackMode *string `json:"PlayBackMode,omitnil,omitempty" name:"PlayBackMode"`
+
+	// 播单唯一标识 ID，长度限制为64个字符，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）和连字符（-）。如果存在相同 RoundPlayId 的播单，返回 InvalidParameterValue.RoundPlayAlreadyExists 错误。默认取值为空，表示由系统分配。
+	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
+
+	// 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。过期后的播单将停止播放，“9999-12-31T23:59:59+08:00“表示不过期。默认值：9999-12-31T23:59:59+08:00。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 func (r *CreateRoundPlayRequest) ToJsonString() string {
@@ -5796,6 +5808,8 @@ func (r *CreateRoundPlayRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Desc")
 	delete(f, "PlayBackMode")
+	delete(f, "RoundPlayId")
+	delete(f, "ExpiredTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoundPlayRequest has unknown keys!", "")
 	}
@@ -19174,6 +19188,9 @@ type ModifyRoundPlayRequestParams struct {
 	// <li>Loop：循环播放播单；</li>
 	// <li>Linear：单次播放，播单播放完停止播放。</li>
 	PlayBackMode *string `json:"PlayBackMode,omitnil,omitempty" name:"PlayBackMode"`
+
+	// 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播放。“9999-12-31T23:59:59+08:00”表示不过期。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type ModifyRoundPlayRequest struct {
@@ -19205,6 +19222,9 @@ type ModifyRoundPlayRequest struct {
 	// <li>Loop：循环播放播单；</li>
 	// <li>Linear：单次播放，播单播放完停止播放。</li>
 	PlayBackMode *string `json:"PlayBackMode,omitnil,omitempty" name:"PlayBackMode"`
+
+	// 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播放。“9999-12-31T23:59:59+08:00”表示不过期。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 func (r *ModifyRoundPlayRequest) ToJsonString() string {
@@ -19227,6 +19247,7 @@ func (r *ModifyRoundPlayRequest) FromJsonString(s string) error {
 	delete(f, "Desc")
 	delete(f, "Status")
 	delete(f, "PlayBackMode")
+	delete(f, "ExpiredTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoundPlayRequest has unknown keys!", "")
 	}
@@ -24125,6 +24146,9 @@ type RoundPlayInfo struct {
 	// 更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播单的播放。“9999-12-31T23:59:59+08:00”表示永不过期。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type RoundPlayListItemInfo struct {
@@ -24140,7 +24164,7 @@ type RoundPlayListItemInfo struct {
 	// 播放节目的 ID，由系统分配。
 	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
 
-	// 指定播放的转码模版，当 AudioVideoType 为 Transcode 时必须指定。
+	// 指定播放的转码模板，当 AudioVideoType 为 Transcode 时必须指定。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 

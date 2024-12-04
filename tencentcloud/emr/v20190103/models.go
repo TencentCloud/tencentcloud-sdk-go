@@ -688,6 +688,10 @@ type ClusterInstancesInfo struct {
 	// 集群产品配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigDetail *EmrProductConfigDetail `json:"ConfigDetail,omitnil,omitempty" name:"ConfigDetail"`
+
+	// 集群绑定的文件系统数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindFileSystemNum *int64 `json:"BindFileSystemNum,omitnil,omitempty" name:"BindFileSystemNum"`
 }
 
 type ClusterSetting struct {
@@ -5257,14 +5261,14 @@ type ExternalService struct {
 	// 共用组件类型，EMR/CUSTOM
 	ShareType *string `json:"ShareType,omitnil,omitempty" name:"ShareType"`
 
-	// 自定义参数集合
-	CustomServiceDefineList []*CustomServiceDefine `json:"CustomServiceDefineList,omitnil,omitempty" name:"CustomServiceDefineList"`
-
 	// 共用组件名
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
 	// 共用组件集群
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自定义参数集合
+	CustomServiceDefineList []*CustomServiceDefine `json:"CustomServiceDefineList,omitnil,omitempty" name:"CustomServiceDefineList"`
 }
 
 type FairGlobalConfig struct {

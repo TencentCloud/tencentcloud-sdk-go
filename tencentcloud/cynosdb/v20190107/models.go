@@ -6227,6 +6227,66 @@ func (r *DescribeClusterPasswordComplexityResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeClusterTransparentEncryptInfoRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterTransparentEncryptInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterTransparentEncryptInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterTransparentEncryptInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterTransparentEncryptInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterTransparentEncryptInfoResponseParams struct {
+	// 加密秘钥id
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 加密秘钥地域
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterTransparentEncryptInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterTransparentEncryptInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterTransparentEncryptInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterTransparentEncryptInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClustersRequestParams struct {
 	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
@@ -12870,6 +12930,84 @@ func (r *OpenClusterReadOnlyInstanceGroupAccessResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OpenClusterReadOnlyInstanceGroupAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenClusterTransparentEncryptRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 秘钥类型(cloud,custom)
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 秘钥Id
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 秘钥地域
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+}
+
+type OpenClusterTransparentEncryptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 秘钥类型(cloud,custom)
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 秘钥Id
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 秘钥地域
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+}
+
+func (r *OpenClusterTransparentEncryptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenClusterTransparentEncryptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "KeyType")
+	delete(f, "KeyId")
+	delete(f, "KeyRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenClusterTransparentEncryptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenClusterTransparentEncryptResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenClusterTransparentEncryptResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenClusterTransparentEncryptResponseParams `json:"Response"`
+}
+
+func (r *OpenClusterTransparentEncryptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenClusterTransparentEncryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

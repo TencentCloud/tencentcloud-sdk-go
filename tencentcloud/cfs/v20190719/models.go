@@ -792,6 +792,9 @@ type CreateMigrationTaskRequestParams struct {
 
 	// 源桶路径，默认为/
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
+
+	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type CreateMigrationTaskRequest struct {
@@ -841,6 +844,9 @@ type CreateMigrationTaskRequest struct {
 
 	// 源桶路径，默认为/
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
+
+	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 func (r *CreateMigrationTaskRequest) ToJsonString() string {
@@ -870,6 +876,7 @@ func (r *CreateMigrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "ListAddress")
 	delete(f, "FsName")
 	delete(f, "BucketPath")
+	delete(f, "Direction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrationTaskRequest has unknown keys!", "")
 	}
@@ -2680,6 +2687,9 @@ type MigrationTaskInfo struct {
 	// 源桶路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
+
+	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 // Predefined struct for user

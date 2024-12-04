@@ -363,6 +363,55 @@ func (c *Client) CreateCorpWithContext(ctx context.Context, request *CreateCorpR
     return
 }
 
+func NewCreateDocCateRequest() (request *CreateDocCateRequest) {
+    request = &CreateDocCateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "CreateDocCate")
+    
+    
+    return
+}
+
+func NewCreateDocCateResponse() (response *CreateDocCateResponse) {
+    response = &CreateDocCateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDocCate
+// 创建Doc分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDocCate(request *CreateDocCateRequest) (response *CreateDocCateResponse, err error) {
+    return c.CreateDocCateWithContext(context.Background(), request)
+}
+
+// CreateDocCate
+// 创建Doc分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDocCateWithContext(ctx context.Context, request *CreateDocCateRequest) (response *CreateDocCateResponse, err error) {
+    if request == nil {
+        request = NewCreateDocCateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDocCate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDocCateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQARequest() (request *CreateQARequest) {
     request = &CreateQARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -803,6 +852,55 @@ func (c *Client) DeleteDocWithContext(ctx context.Context, request *DeleteDocReq
     request.SetContext(ctx)
     
     response = NewDeleteDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDocCateRequest() (request *DeleteDocCateRequest) {
+    request = &DeleteDocCateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DeleteDocCate")
+    
+    
+    return
+}
+
+func NewDeleteDocCateResponse() (response *DeleteDocCateResponse) {
+    response = &DeleteDocCateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDocCate
+// Doc分类删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDocCate(request *DeleteDocCateRequest) (response *DeleteDocCateResponse, err error) {
+    return c.DeleteDocCateWithContext(context.Background(), request)
+}
+
+// DeleteDocCate
+// Doc分类删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDocCateWithContext(ctx context.Context, request *DeleteDocCateRequest) (response *DeleteDocCateResponse, err error) {
+    if request == nil {
+        request = NewDeleteDocCateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDocCate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDocCateResponse()
     err = c.Send(request, response)
     return
 }
@@ -2650,6 +2748,55 @@ func (c *Client) GetWsTokenWithContext(ctx context.Context, request *GetWsTokenR
     return
 }
 
+func NewGroupDocRequest() (request *GroupDocRequest) {
+    request = &GroupDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "GroupDoc")
+    
+    
+    return
+}
+
+func NewGroupDocResponse() (response *GroupDocResponse) {
+    response = &GroupDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GroupDoc
+// Doc分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GroupDoc(request *GroupDocRequest) (response *GroupDocResponse, err error) {
+    return c.GroupDocWithContext(context.Background(), request)
+}
+
+// GroupDoc
+// Doc分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GroupDocWithContext(ctx context.Context, request *GroupDocRequest) (response *GroupDocResponse, err error) {
+    if request == nil {
+        request = NewGroupDocRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GroupDoc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGroupDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGroupQARequest() (request *GroupQARequest) {
     request = &GroupQARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2895,6 +3042,55 @@ func (c *Client) ListAppCategoryWithContext(ctx context.Context, request *ListAp
     return
 }
 
+func NewListAppKnowledgeDetailRequest() (request *ListAppKnowledgeDetailRequest) {
+    request = &ListAppKnowledgeDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListAppKnowledgeDetail")
+    
+    
+    return
+}
+
+func NewListAppKnowledgeDetailResponse() (response *ListAppKnowledgeDetailResponse) {
+    response = &ListAppKnowledgeDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAppKnowledgeDetail
+// 列表查询知识库容量详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListAppKnowledgeDetail(request *ListAppKnowledgeDetailRequest) (response *ListAppKnowledgeDetailResponse, err error) {
+    return c.ListAppKnowledgeDetailWithContext(context.Background(), request)
+}
+
+// ListAppKnowledgeDetail
+// 列表查询知识库容量详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListAppKnowledgeDetailWithContext(ctx context.Context, request *ListAppKnowledgeDetailRequest) (response *ListAppKnowledgeDetailResponse, err error) {
+    if request == nil {
+        request = NewListAppKnowledgeDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAppKnowledgeDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAppKnowledgeDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAttributeLabelRequest() (request *ListAttributeLabelRequest) {
     request = &ListAttributeLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2989,6 +3185,55 @@ func (c *Client) ListDocWithContext(ctx context.Context, request *ListDocRequest
     request.SetContext(ctx)
     
     response = NewListDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDocCateRequest() (request *ListDocCateRequest) {
+    request = &ListDocCateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListDocCate")
+    
+    
+    return
+}
+
+func NewListDocCateResponse() (response *ListDocCateResponse) {
+    response = &ListDocCateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDocCate
+// 获取Doc分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListDocCate(request *ListDocCateRequest) (response *ListDocCateResponse, err error) {
+    return c.ListDocCateWithContext(context.Background(), request)
+}
+
+// ListDocCate
+// 获取Doc分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListDocCateWithContext(ctx context.Context, request *ListDocCateRequest) (response *ListDocCateResponse, err error) {
+    if request == nil {
+        request = NewListDocCateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDocCate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDocCateResponse()
     err = c.Send(request, response)
     return
 }
@@ -3532,6 +3777,55 @@ func (c *Client) ListUnsatisfiedReplyWithContext(ctx context.Context, request *L
     return
 }
 
+func NewListUsageCallDetailRequest() (request *ListUsageCallDetailRequest) {
+    request = &ListUsageCallDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListUsageCallDetail")
+    
+    
+    return
+}
+
+func NewListUsageCallDetailResponse() (response *ListUsageCallDetailResponse) {
+    response = &ListUsageCallDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListUsageCallDetail
+// 列表查询单次调用明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListUsageCallDetail(request *ListUsageCallDetailRequest) (response *ListUsageCallDetailResponse, err error) {
+    return c.ListUsageCallDetailWithContext(context.Background(), request)
+}
+
+// ListUsageCallDetail
+// 列表查询单次调用明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListUsageCallDetailWithContext(ctx context.Context, request *ListUsageCallDetailRequest) (response *ListUsageCallDetailResponse, err error) {
+    if request == nil {
+        request = NewListUsageCallDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUsageCallDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListUsageCallDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAppRequest() (request *ModifyAppRequest) {
     request = &ModifyAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3724,6 +4018,55 @@ func (c *Client) ModifyDocAttrRangeWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyDocAttrRangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDocCateRequest() (request *ModifyDocCateRequest) {
+    request = &ModifyDocCateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ModifyDocCate")
+    
+    
+    return
+}
+
+func NewModifyDocCateResponse() (response *ModifyDocCateResponse) {
+    response = &ModifyDocCateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDocCate
+// 修改Doc分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDocCate(request *ModifyDocCateRequest) (response *ModifyDocCateResponse, err error) {
+    return c.ModifyDocCateWithContext(context.Background(), request)
+}
+
+// ModifyDocCate
+// 修改Doc分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDocCateWithContext(ctx context.Context, request *ModifyDocCateRequest) (response *ModifyDocCateResponse, err error) {
+    if request == nil {
+        request = NewModifyDocCateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDocCate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDocCateResponse()
     err = c.Send(request, response)
     return
 }
