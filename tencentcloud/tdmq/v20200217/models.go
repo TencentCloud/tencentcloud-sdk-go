@@ -4820,87 +4820,6 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeCmqDeadLetterSourceQueuesRequestParams struct {
-	// 死信队列名称
-	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitnil,omitempty" name:"DeadLetterQueueName"`
-
-	// 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 根据SourceQueueName过滤
-	SourceQueueName *string `json:"SourceQueueName,omitnil,omitempty" name:"SourceQueueName"`
-}
-
-type DescribeCmqDeadLetterSourceQueuesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 死信队列名称
-	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitnil,omitempty" name:"DeadLetterQueueName"`
-
-	// 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 根据SourceQueueName过滤
-	SourceQueueName *string `json:"SourceQueueName,omitnil,omitempty" name:"SourceQueueName"`
-}
-
-func (r *DescribeCmqDeadLetterSourceQueuesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCmqDeadLetterSourceQueuesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DeadLetterQueueName")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "SourceQueueName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmqDeadLetterSourceQueuesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCmqDeadLetterSourceQueuesResponseParams struct {
-	// 满足本次条件的队列个数
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 死信队列源队列
-	QueueSet []*CmqDeadLetterSource `json:"QueueSet,omitnil,omitempty" name:"QueueSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeCmqDeadLetterSourceQueuesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCmqDeadLetterSourceQueuesResponseParams `json:"Response"`
-}
-
-func (r *DescribeCmqDeadLetterSourceQueuesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCmqDeadLetterSourceQueuesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeCmqQueueDetailRequestParams struct {
 	// 精确匹配QueueName
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
@@ -13945,7 +13864,9 @@ func (r *RewindCmqQueueResponse) FromJsonString(s string) error {
 }
 
 type RocketMQClusterConfig struct {
-	// 单命名空间TPS上线
+	// 单命名空间TPS上限
+	//
+	// Deprecated: MaxTpsPerNamespace is deprecated.
 	MaxTpsPerNamespace *uint64 `json:"MaxTpsPerNamespace,omitnil,omitempty" name:"MaxTpsPerNamespace"`
 
 	// 最大命名空间数量
@@ -14234,7 +14155,7 @@ type RocketMQGroupConfigOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 导入状态
+	// 是否已导入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Imported *bool `json:"Imported,omitnil,omitempty" name:"Imported"`
 

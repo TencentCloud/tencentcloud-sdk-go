@@ -125,7 +125,7 @@ type ConfigRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManageInputParameter []*InputParameterForManage `json:"ManageInputParameter,omitnil,omitempty" name:"ManageInputParameter"`
 
-	// 规则名称
+	// 合规包名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
@@ -451,25 +451,33 @@ func (r *ListAggregateConfigRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListConfigRulesRequestParams struct {
-	// 每页限制
+	// 每页数量。
+	// 取值范围：1~200
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量。
+	// 取值范围：最小值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// 排序类型(规则名称)。
+	// 倒序：desc，
+	// 顺序：asc
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
+	// 风险等级。
+	// 1：高风险，
+	// 2：中风险，
 	// 3：低风险。
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 规则状态
+	// 规则状态。
+	// ACTIVE：启用
+	// UN_ACTIVE：停用
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 评估结果
+	// 评估结果。
+	// COMPLIANT：合规
+	// NON_COMPLIANT：不合规
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
 	// 规则名
@@ -479,25 +487,33 @@ type ListConfigRulesRequestParams struct {
 type ListConfigRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页限制
+	// 每页数量。
+	// 取值范围：1~200
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量。
+	// 取值范围：最小值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// 排序类型(规则名称)。
+	// 倒序：desc，
+	// 顺序：asc
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
+	// 风险等级。
+	// 1：高风险，
+	// 2：中风险，
 	// 3：低风险。
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 规则状态
+	// 规则状态。
+	// ACTIVE：启用
+	// UN_ACTIVE：停用
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 评估结果
+	// 评估结果。
+	// COMPLIANT：合规
+	// NON_COMPLIANT：不合规
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
 	// 规则名
@@ -648,7 +664,8 @@ func (r *ListDiscoveredResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PutEvaluationsRequestParams struct {
-	// 回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+	// 回调令牌。从自定义规则所选的scf云函数入参中取参数ResultToken值
+	// <a href="https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E" target="_blank">云函数入参说明</a>
 	ResultToken *string `json:"ResultToken,omitnil,omitempty" name:"ResultToken"`
 
 	// 自定义规则评估结果信息。
@@ -658,7 +675,8 @@ type PutEvaluationsRequestParams struct {
 type PutEvaluationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+	// 回调令牌。从自定义规则所选的scf云函数入参中取参数ResultToken值
+	// <a href="https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E" target="_blank">云函数入参说明</a>
 	ResultToken *string `json:"ResultToken,omitnil,omitempty" name:"ResultToken"`
 
 	// 自定义规则评估结果信息。

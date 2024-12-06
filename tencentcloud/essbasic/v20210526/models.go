@@ -10324,6 +10324,10 @@ type FlowApproverDetail struct {
 	// 自定义签署人的角色名, 如: 收款人、开具人、见证人等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
+
+	// 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 }
 
 type FlowApproverInfo struct {

@@ -626,7 +626,13 @@ func NewAllocateIp6AddressesBandwidthResponse() (response *AllocateIp6AddressesB
 }
 
 // AllocateIp6AddressesBandwidth
-// 该接口用于给IPv6地址初次分配公网带宽
+// 本接口（AllocateIp6AddressesBandwidth）用于为传统弹性公网 IPv6 实例开通 IPv6 公网带宽。
+//
+// 
+//
+// - 传统弹性公网 IPv6 实例默认仅具备 IPv6 内网通信能力，需为 IPv6 地址分配公网带宽后，才具备 IPv6 公网通信能力。
+//
+// - 支持为一个或多个传统弹性公网 IPv6 实例开通公网带宽。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -651,7 +657,13 @@ func (c *Client) AllocateIp6AddressesBandwidth(request *AllocateIp6AddressesBand
 }
 
 // AllocateIp6AddressesBandwidth
-// 该接口用于给IPv6地址初次分配公网带宽
+// 本接口（AllocateIp6AddressesBandwidth）用于为传统弹性公网 IPv6 实例开通 IPv6 公网带宽。
+//
+// 
+//
+// - 传统弹性公网 IPv6 实例默认仅具备 IPv6 内网通信能力，需为 IPv6 地址分配公网带宽后，才具备 IPv6 公网通信能力。
+//
+// - 支持为一个或多个传统弹性公网 IPv6 实例开通公网带宽。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -12344,7 +12356,7 @@ func NewDescribeIp6AddressesResponse() (response *DescribeIp6AddressesResponse) 
 }
 
 // DescribeIp6Addresses
-// 该接口用于查询IPV6地址信息
+// 本接口（DescribeIp6Addresses）用于查询一个或多个传统弹性公网 IPv6 实例的详细信息。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -12362,7 +12374,7 @@ func (c *Client) DescribeIp6Addresses(request *DescribeIp6AddressesRequest) (res
 }
 
 // DescribeIp6Addresses
-// 该接口用于查询IPV6地址信息
+// 本接口（DescribeIp6Addresses）用于查询一个或多个传统弹性公网 IPv6 实例的详细信息。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -18586,8 +18598,6 @@ func NewLockCcnsResponse() (response *LockCcnsResponse) {
 //
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
 //
-// 
-//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -18607,8 +18617,6 @@ func (c *Client) LockCcns(request *LockCcnsRequest) (response *LockCcnsResponse,
 // 
 //
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
-//
-// 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -20305,7 +20313,13 @@ func NewModifyIp6AddressesBandwidthResponse() (response *ModifyIp6AddressesBandw
 }
 
 // ModifyIp6AddressesBandwidth
-// 该接口用于修改IPV6地址访问internet的带宽
+// 本接口（ModifyIp6AddressesBandwidt）用于调整传统弹性公网 IPv6 实例的带宽上限。
+//
+// 
+//
+// - 仅支持对传统弹性公网 IPv6 实例的带宽上限进行调整。
+//
+// - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 ModifyIPv6AddressesBandwidth 接口。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -20330,7 +20344,13 @@ func (c *Client) ModifyIp6AddressesBandwidth(request *ModifyIp6AddressesBandwidt
 }
 
 // ModifyIp6AddressesBandwidth
-// 该接口用于修改IPV6地址访问internet的带宽
+// 本接口（ModifyIp6AddressesBandwidt）用于调整传统弹性公网 IPv6 实例的带宽上限。
+//
+// 
+//
+// - 仅支持对传统弹性公网 IPv6 实例的带宽上限进行调整。
+//
+// - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 ModifyIPv6AddressesBandwidth 接口。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -23178,7 +23198,13 @@ func NewReleaseIp6AddressesBandwidthResponse() (response *ReleaseIp6AddressesBan
 }
 
 // ReleaseIp6AddressesBandwidth
-// 该接口用于给弹性公网IPv6地址释放带宽。
+// 本接口（ReleaseIp6AddressesBandwidth）用于为传统弹性公网 IPv6 实例关闭 IPv6 公网带宽。
+//
+// 
+//
+// - 传统弹性公网 IPv6 实例关闭公网带宽后，仍具备 IPv6 内网通信能力。
+//
+// - 如需再次开通 IPv6 公网带宽，请使用 AllocateIp6AddressesBandwidth 接口进行开通。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
@@ -23197,7 +23223,13 @@ func (c *Client) ReleaseIp6AddressesBandwidth(request *ReleaseIp6AddressesBandwi
 }
 
 // ReleaseIp6AddressesBandwidth
-// 该接口用于给弹性公网IPv6地址释放带宽。
+// 本接口（ReleaseIp6AddressesBandwidth）用于为传统弹性公网 IPv6 实例关闭 IPv6 公网带宽。
+//
+// 
+//
+// - 传统弹性公网 IPv6 实例关闭公网带宽后，仍具备 IPv6 内网通信能力。
+//
+// - 如需再次开通 IPv6 公网带宽，请使用 AllocateIp6AddressesBandwidth 接口进行开通。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"

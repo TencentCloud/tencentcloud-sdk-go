@@ -2882,6 +2882,10 @@ func NewDescribeAMQPClustersResponse() (response *DescribeAMQPClustersResponse) 
 }
 
 // DescribeAMQPClusters
+// 历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是DescribeRabbitMQVipInstances。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+//
+// 
+//
 // 获取amqp集群列表
 //
 // 可能返回的错误码:
@@ -2895,6 +2899,10 @@ func (c *Client) DescribeAMQPClusters(request *DescribeAMQPClustersRequest) (res
 }
 
 // DescribeAMQPClusters
+// 历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是DescribeRabbitMQVipInstances。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+//
+// 
+//
 // 获取amqp集群列表
 //
 // 可能返回的错误码:
@@ -3192,63 +3200,6 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeCmqDeadLetterSourceQueuesRequest() (request *DescribeCmqDeadLetterSourceQueuesRequest) {
-    request = &DescribeCmqDeadLetterSourceQueuesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqDeadLetterSourceQueues")
-    
-    
-    return
-}
-
-func NewDescribeCmqDeadLetterSourceQueuesResponse() (response *DescribeCmqDeadLetterSourceQueuesResponse) {
-    response = &DescribeCmqDeadLetterSourceQueuesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeCmqDeadLetterSourceQueues
-// 接口很久之前已删除，需下线
-//
-// 
-//
-// 枚举cmq死信队列源队列
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-func (c *Client) DescribeCmqDeadLetterSourceQueues(request *DescribeCmqDeadLetterSourceQueuesRequest) (response *DescribeCmqDeadLetterSourceQueuesResponse, err error) {
-    return c.DescribeCmqDeadLetterSourceQueuesWithContext(context.Background(), request)
-}
-
-// DescribeCmqDeadLetterSourceQueues
-// 接口很久之前已删除，需下线
-//
-// 
-//
-// 枚举cmq死信队列源队列
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-func (c *Client) DescribeCmqDeadLetterSourceQueuesWithContext(ctx context.Context, request *DescribeCmqDeadLetterSourceQueuesRequest) (response *DescribeCmqDeadLetterSourceQueuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqDeadLetterSourceQueuesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCmqDeadLetterSourceQueues require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCmqDeadLetterSourceQueuesResponse()
     err = c.Send(request, response)
     return
 }
@@ -6544,6 +6495,10 @@ func NewModifyAMQPClusterResponse() (response *ModifyAMQPClusterResponse) {
 }
 
 // ModifyAMQPCluster
+// 历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是ModifyRabbitMQVipInstance。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+//
+// 
+//
 // 更新Amqp集群信息
 //
 // 可能返回的错误码:
@@ -6559,6 +6514,10 @@ func (c *Client) ModifyAMQPCluster(request *ModifyAMQPClusterRequest) (response 
 }
 
 // ModifyAMQPCluster
+// 历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是ModifyRabbitMQVipInstance。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+//
+// 
+//
 // 更新Amqp集群信息
 //
 // 可能返回的错误码:

@@ -173,8 +173,9 @@ type Filter struct {
 
 // Predefined struct for user
 type GenerateAvatarRequestParams struct {
-	// 头像风格。
-	// 请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，必须传入风格编号。
+	// 头像风格，仅在人像模式下生效。
+	// 请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
+	// 若使用萌宠贴纸模式，无需选择风格，该参数不生效。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 输入图 Base64 数据。
@@ -187,7 +188,12 @@ type GenerateAvatarRequestParams struct {
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
-	// 输入图像质量检测开关，默认开启。
+	// 图像类型，默认为人像。
+	// human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
+	// pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 输入人像图的质量检测开关，默认开启，仅在人像模式下生效。
 	// 1：开启
 	// 0：关闭
 	// 建议开启检测，可提升生成效果，关闭检测可能因输入图像质量较差导致生成效果受损。
@@ -213,8 +219,9 @@ type GenerateAvatarRequestParams struct {
 type GenerateAvatarRequest struct {
 	*tchttp.BaseRequest
 	
-	// 头像风格。
-	// 请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，必须传入风格编号。
+	// 头像风格，仅在人像模式下生效。
+	// 请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
+	// 若使用萌宠贴纸模式，无需选择风格，该参数不生效。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 输入图 Base64 数据。
@@ -227,7 +234,12 @@ type GenerateAvatarRequest struct {
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
-	// 输入图像质量检测开关，默认开启。
+	// 图像类型，默认为人像。
+	// human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
+	// pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 输入人像图的质量检测开关，默认开启，仅在人像模式下生效。
 	// 1：开启
 	// 0：关闭
 	// 建议开启检测，可提升生成效果，关闭检测可能因输入图像质量较差导致生成效果受损。
@@ -265,6 +277,7 @@ func (r *GenerateAvatarRequest) FromJsonString(s string) error {
 	delete(f, "Style")
 	delete(f, "InputImage")
 	delete(f, "InputUrl")
+	delete(f, "Type")
 	delete(f, "Filter")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")

@@ -4463,6 +4463,9 @@ type RequestSummary struct {
 
 	// 响应详情
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 平均rps, 单位req/s
+	RPS *float64 `json:"RPS,omitnil,omitempty" name:"RPS"`
 }
 
 type RequestsPerSecond struct {

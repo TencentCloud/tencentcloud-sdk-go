@@ -1074,6 +1074,10 @@ func NewCreateAuditRuleResponse() (response *CreateAuditRuleResponse) {
 }
 
 // CreateAuditRule
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(CreateAuditRule)用于创建用户在当前地域的审计规则。
 //
 // 可能返回的错误码:
@@ -1094,6 +1098,10 @@ func (c *Client) CreateAuditRule(request *CreateAuditRuleRequest) (response *Cre
 }
 
 // CreateAuditRule
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(CreateAuditRule)用于创建用户在当前地域的审计规则。
 //
 // 可能返回的错误码:
@@ -2375,6 +2383,10 @@ func NewDeleteAuditRuleResponse() (response *DeleteAuditRuleResponse) {
 }
 
 // DeleteAuditRule
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(DeleteAuditRule)用于删除用户的审计规则。
 //
 // 可能返回的错误码:
@@ -2394,6 +2406,10 @@ func (c *Client) DeleteAuditRule(request *DeleteAuditRuleRequest) (response *Del
 }
 
 // DeleteAuditRule
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(DeleteAuditRule)用于删除用户的审计规则。
 //
 // 可能返回的错误码:
@@ -3585,6 +3601,10 @@ func NewDescribeAuditRulesResponse() (response *DescribeAuditRulesResponse) {
 }
 
 // DescribeAuditRules
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(DescribeAuditRules)用于查询用户在当前地域的审计规则。
 //
 // 可能返回的错误码:
@@ -3599,6 +3619,10 @@ func (c *Client) DescribeAuditRules(request *DescribeAuditRulesRequest) (respons
 }
 
 // DescribeAuditRules
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(DescribeAuditRules)用于查询用户在当前地域的审计规则。
 //
 // 可能返回的错误码:
@@ -8018,6 +8042,10 @@ func NewModifyAuditRuleResponse() (response *ModifyAuditRuleResponse) {
 }
 
 // ModifyAuditRule
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(ModifyAuditRule)用于修改用户的审计规则。
 //
 // 可能返回的错误码:
@@ -8038,6 +8066,10 @@ func (c *Client) ModifyAuditRule(request *ModifyAuditRuleRequest) (response *Mod
 }
 
 // ModifyAuditRule
+// 不再支持审计规则创建
+//
+// 
+//
 // 本接口(ModifyAuditRule)用于修改用户的审计规则。
 //
 // 可能返回的错误码:
@@ -10553,7 +10585,7 @@ func NewStartReplicationResponse() (response *StartReplicationResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) StartReplication(request *StartReplicationRequest) (response *StartReplicationResponse, err error) {
     return c.StartReplicationWithContext(context.Background(), request)
 }
@@ -10567,7 +10599,7 @@ func (c *Client) StartReplication(request *StartReplicationRequest) (response *S
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) StartReplicationWithContext(ctx context.Context, request *StartReplicationRequest) (response *StartReplicationResponse, err error) {
     if request == nil {
         request = NewStartReplicationRequest()

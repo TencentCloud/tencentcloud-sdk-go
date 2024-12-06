@@ -852,6 +852,9 @@ type AllocateIp6AddressesBandwidthRequestParams struct {
 
 	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+
+	// 需要关联的标签列表。	
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type AllocateIp6AddressesBandwidthRequest struct {
@@ -868,6 +871,9 @@ type AllocateIp6AddressesBandwidthRequest struct {
 
 	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+
+	// 需要关联的标签列表。	
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *AllocateIp6AddressesBandwidthRequest) ToJsonString() string {
@@ -886,6 +892,7 @@ func (r *AllocateIp6AddressesBandwidthRequest) FromJsonString(s string) error {
 	delete(f, "InternetMaxBandwidthOut")
 	delete(f, "InternetChargeType")
 	delete(f, "BandwidthPackageId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateIp6AddressesBandwidthRequest has unknown keys!", "")
 	}
@@ -2295,11 +2302,9 @@ type CcnAttachedInstance struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 路由表ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
 	// 路由表名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 }
 
@@ -6328,6 +6333,9 @@ type CreateServiceTemplateGroupRequestParams struct {
 
 	// 协议端口模板实例ID，例如：ppm-4dw6agho。
 	ServiceTemplateIds []*string `json:"ServiceTemplateIds,omitnil,omitempty" name:"ServiceTemplateIds"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateServiceTemplateGroupRequest struct {
@@ -6338,6 +6346,9 @@ type CreateServiceTemplateGroupRequest struct {
 
 	// 协议端口模板实例ID，例如：ppm-4dw6agho。
 	ServiceTemplateIds []*string `json:"ServiceTemplateIds,omitnil,omitempty" name:"ServiceTemplateIds"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateServiceTemplateGroupRequest) ToJsonString() string {
@@ -6354,6 +6365,7 @@ func (r *CreateServiceTemplateGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ServiceTemplateGroupName")
 	delete(f, "ServiceTemplateIds")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceTemplateGroupRequest has unknown keys!", "")
 	}
@@ -22132,57 +22144,44 @@ type HighPriorityRouteTable struct {
 
 type IKEOptionsSpecification struct {
 	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropoEncryAlgorithm *string `json:"PropoEncryAlgorithm,omitnil,omitempty" name:"PropoEncryAlgorithm"`
 
 	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropoAuthenAlgorithm *string `json:"PropoAuthenAlgorithm,omitnil,omitempty" name:"PropoAuthenAlgorithm"`
 
 	// 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeMode *string `json:"ExchangeMode,omitnil,omitempty" name:"ExchangeMode"`
 
 	// 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalIdentity *string `json:"LocalIdentity,omitnil,omitempty" name:"LocalIdentity"`
 
 	// 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteIdentity *string `json:"RemoteIdentity,omitnil,omitempty" name:"RemoteIdentity"`
 
 	// 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalAddress *string `json:"LocalAddress,omitnil,omitempty" name:"LocalAddress"`
 
 	// 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteAddress *string `json:"RemoteAddress,omitnil,omitempty" name:"RemoteAddress"`
 
 	// 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalFqdnName *string `json:"LocalFqdnName,omitnil,omitempty" name:"LocalFqdnName"`
 
 	// 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteFqdnName *string `json:"RemoteFqdnName,omitnil,omitempty" name:"RemoteFqdnName"`
 
 	// DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DhGroupName *string `json:"DhGroupName,omitnil,omitempty" name:"DhGroupName"`
 
 	// IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IKESaLifetimeSeconds *uint64 `json:"IKESaLifetimeSeconds,omitnil,omitempty" name:"IKESaLifetimeSeconds"`
 
 	// IKE版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IKEVersion *string `json:"IKEVersion,omitnil,omitempty" name:"IKEVersion"`
 }
 
 type IPSECOptionsSpecification struct {
 	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
@@ -22192,19 +22191,15 @@ type IPSECOptionsSpecification struct {
 	IntegrityAlgorith *string `json:"IntegrityAlgorith,omitnil,omitempty" name:"IntegrityAlgorith"`
 
 	// IPsec SA lifetime(s)：单位秒，取值范围：180-604800
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPSECSaLifetimeSeconds *uint64 `json:"IPSECSaLifetimeSeconds,omitnil,omitempty" name:"IPSECSaLifetimeSeconds"`
 
 	// PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PfsDhGroup *string `json:"PfsDhGroup,omitnil,omitempty" name:"PfsDhGroup"`
 
 	// IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPSECSaLifetimeTraffic *uint64 `json:"IPSECSaLifetimeTraffic,omitnil,omitempty" name:"IPSECSaLifetimeTraffic"`
 
 	// 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 }
 

@@ -3462,7 +3462,8 @@ type McuPassThrough struct {
 	// 透传SEI的payload内容。
 	PayloadContent *string `json:"PayloadContent,omitnil,omitempty" name:"PayloadContent"`
 
-	// SEI消息的payload_type，取值范围5、100-254（244除外，244为我们内部自定义的时间戳SEI）。
+	// SEI消息的PayloadType，取值范围5、100-254（244除外，244为我们内部自定义的时间戳SEI）。
+	// 注：部分播放器可能不支持PayloadType为5带PayloadUuid的标准类型，建议优先使用其他PayloadType。
 	PayloadType *uint64 `json:"PayloadType,omitnil,omitempty" name:"PayloadType"`
 
 	// PayloadType为5，PayloadUuid必须填写。PayloadType不是5时，不需要填写，填写会被后台忽略。该值必须是32长度的十六进制。

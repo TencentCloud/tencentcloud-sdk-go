@@ -4037,6 +4037,9 @@ type NamespaceResourceEnv struct {
 	// 基于TKE集群的资源池
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TKE *NamespaceResourceEnvTKE `json:"TKE,omitnil,omitempty" name:"TKE"`
+
+	// 近离线计算类型的命名空间
+	OFFLINE *bool `json:"OFFLINE,omitnil,omitempty" name:"OFFLINE"`
 }
 
 type NamespaceResourceEnvTKE struct {

@@ -900,7 +900,7 @@ type CommitCertificateInformationRequestParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 域名验证方式
+	// 域名验证方式，如 DNS,DNS_AUTO,FILE
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
@@ -910,7 +910,7 @@ type CommitCertificateInformationRequest struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 域名验证方式
+	// 域名验证方式，如 DNS,DNS_AUTO,FILE
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
@@ -1663,7 +1663,7 @@ type DeployCertificateInstanceRequestParams struct {
 	// 需要部署实例列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 
-	// 部署的云资源类型
+	// 部署的云资源类型,如clb，cos
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署云资源状态：
@@ -1686,7 +1686,7 @@ type DeployCertificateInstanceRequest struct {
 	// 需要部署实例列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 
-	// 部署的云资源类型
+	// 部署的云资源类型,如clb，cos
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署云资源状态：
@@ -1754,20 +1754,20 @@ func (r *DeployCertificateInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployCertificateRecordRetryRequestParams struct {
-	// 待重试部署记录ID
+	// 待重试部署记录ID，通过DeployCertificateInstance获得
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 待重试部署记录详情ID
+	// 待重试部署记录详情ID，通过DescribeHostDeployRecordDetail获得
 	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 type DeployCertificateRecordRetryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID
+	// 待重试部署记录ID，通过DeployCertificateInstance获得
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 待重试部署记录详情ID
+	// 待重试部署记录详情ID，通过DescribeHostDeployRecordDetail获得
 	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
@@ -1815,14 +1815,14 @@ func (r *DeployCertificateRecordRetryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployCertificateRecordRollbackRequestParams struct {
-	// 待重试部署记录ID
+	// 待重试部署记录ID,就是通过DeployCertificateInstance返回的DeployRecordId
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 type DeployCertificateRecordRollbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID
+	// 待重试部署记录ID,就是通过DeployCertificateInstance返回的DeployRecordId
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
@@ -2130,14 +2130,14 @@ func (r *DescribeCertificateBindResourceTaskDetailResponse) FromJsonString(s str
 
 // Predefined struct for user
 type DescribeCertificateBindResourceTaskResultRequestParams struct {
-	// 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+	// 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果， 最大支持100个
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
 type DescribeCertificateBindResourceTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+	// 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果， 最大支持100个
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
@@ -2696,7 +2696,7 @@ type DescribeCertificatesRequestParams struct {
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。最大1000
+	// 每页数量，默认10。最大值1000，如超过1000按1000处理
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
@@ -2738,7 +2738,7 @@ type DescribeCertificatesRequestParams struct {
 	// 筛选指定标签的证书
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// //是否筛选等待签发的证书，传1是筛选，0和null不筛选
+	// 是否筛选等待签发的证书，传1是筛选，0和null不筛选
 	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil,omitempty" name:"IsPendingIssue"`
 }
 
@@ -2748,7 +2748,7 @@ type DescribeCertificatesRequest struct {
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。最大1000
+	// 每页数量，默认10。最大值1000，如超过1000按1000处理
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
@@ -2790,7 +2790,7 @@ type DescribeCertificatesRequest struct {
 	// 筛选指定标签的证书
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// //是否筛选等待签发的证书，传1是筛选，0和null不筛选
+	// 是否筛选等待签发的证书，传1是筛选，0和null不筛选
 	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil,omitempty" name:"IsPendingIssue"`
 }
 
@@ -3126,17 +3126,23 @@ type DescribeHostApiGatewayInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// 部署资源类型apigateway
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始。	
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeHostApiGatewayInstanceListRequest struct {
@@ -3145,17 +3151,23 @@ type DescribeHostApiGatewayInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// 部署资源类型apigateway
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始。	
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeHostApiGatewayInstanceListRequest) ToJsonString() string {
@@ -3171,10 +3183,12 @@ func (r *DescribeHostApiGatewayInstanceListRequest) FromJsonString(s string) err
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	delete(f, "OldCertificateId")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostApiGatewayInstanceListRequest has unknown keys!", "")
 	}
@@ -3183,11 +3197,11 @@ func (r *DescribeHostApiGatewayInstanceListRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeHostApiGatewayInstanceListResponseParams struct {
-	// apiGateway实例列表
+	// apiGateway实例列表,如取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
-	// 总数
+	// 总数，如取不到值返回0
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3215,14 +3229,14 @@ type DescribeHostCdnInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型cdn
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -3233,7 +3247,7 @@ type DescribeHostCdnInstanceListRequestParams struct {
 	// 每页数量，默认10。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否异步
+	// 是否异步,0表示否，1表示是，默认为0
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
@@ -3243,14 +3257,14 @@ type DescribeHostCdnInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型cdn
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -3261,7 +3275,7 @@ type DescribeHostCdnInstanceListRequest struct {
 	// 每页数量，默认10。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否异步
+	// 是否异步,0表示否，1表示是，默认为0
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
@@ -3278,9 +3292,9 @@ func (r *DescribeHostCdnInstanceListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	delete(f, "OldCertificateId")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -3293,19 +3307,19 @@ func (r *DescribeHostCdnInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostCdnInstanceListResponseParams struct {
-	// CDN实例列表
+	// CDN实例列表，如取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
-	// CDN域名总数
+	// CDN域名总数，如取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 异步刷新总数	
+	// 异步刷新总数，如取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
-	// 异步刷新当前执行数	
+	// 异步刷新当前执行数，如取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
@@ -3335,14 +3349,14 @@ func (r *DescribeHostCdnInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostClbInstanceListRequestParams struct {
-	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
-
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
@@ -3350,7 +3364,7 @@ type DescribeHostClbInstanceListRequestParams struct {
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否异步缓存
+	// 是否异步缓存,0表示否,1表示是
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
@@ -3360,14 +3374,14 @@ type DescribeHostClbInstanceListRequestParams struct {
 type DescribeHostClbInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
-
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
@@ -3375,7 +3389,7 @@ type DescribeHostClbInstanceListRequest struct {
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否异步缓存
+	// 是否异步缓存,0表示否,1表示是
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
@@ -3394,9 +3408,9 @@ func (r *DescribeHostClbInstanceListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "CertificateId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "CertificateId")
 	delete(f, "IsCache")
 	delete(f, "Filters")
 	delete(f, "AsyncCache")
@@ -3409,23 +3423,23 @@ func (r *DescribeHostClbInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostClbInstanceListResponseParams struct {
-	// 总数
+	// 总数，取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// CLB实例监听器列表
+	// CLB实例监听器列表，取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
-	// 异步刷新总数
+	// 异步刷新总数，取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
-	// 异步刷新当前执行数
+	// 异步刷新当前执行数，取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
-	// 当前缓存读取时间	
+	// 当前缓存读取时间，去不到值返回空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
@@ -3472,7 +3486,7 @@ type DescribeHostCosInstanceListRequestParams struct {
 	// 每页数量，默认10。	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否异步	
+	// 是否异步，0表示否，1表示是
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
@@ -3500,7 +3514,7 @@ type DescribeHostCosInstanceListRequest struct {
 	// 每页数量，默认10。	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否异步	
+	// 是否异步，0表示否，1表示是
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
@@ -3577,17 +3591,23 @@ type DescribeHostDdosInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// 部署资源类型ddos
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeHostDdosInstanceListRequest struct {
@@ -3596,17 +3616,23 @@ type DescribeHostDdosInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// 部署资源类型ddos
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeHostDdosInstanceListRequest) ToJsonString() string {
@@ -3622,10 +3648,12 @@ func (r *DescribeHostDdosInstanceListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	delete(f, "OldCertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostDdosInstanceListRequest has unknown keys!", "")
 	}
@@ -3634,9 +3662,13 @@ func (r *DescribeHostDdosInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostDdosInstanceListResponseParams struct {
-	// DDOS实例列表
+	// DDOS实例列表,取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3757,7 +3789,7 @@ type DescribeHostDeployRecordRequestParams struct {
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源类型
+	// 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -3773,7 +3805,7 @@ type DescribeHostDeployRecordRequest struct {
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源类型
+	// 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -3834,14 +3866,14 @@ type DescribeHostLighthouseInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型 lighthouse
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型 lighthouse
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type DescribeHostLighthouseInstanceListRequest struct {
@@ -3850,14 +3882,14 @@ type DescribeHostLighthouseInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型 lighthouse
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型 lighthouse
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *DescribeHostLighthouseInstanceListRequest) ToJsonString() string {
@@ -3873,9 +3905,9 @@ func (r *DescribeHostLighthouseInstanceListRequest) FromJsonString(s string) err
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostLighthouseInstanceListRequest has unknown keys!", "")
 	}
@@ -3884,11 +3916,11 @@ func (r *DescribeHostLighthouseInstanceListRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeHostLighthouseInstanceListResponseParams struct {
-	// Lighthouse实例列表
+	// Lighthouse实例列表,如取不到返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*LighthouseInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
-	// 总数
+	// 总数，如取不到返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
@@ -3917,14 +3949,16 @@ type DescribeHostLiveInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型
+	//
+	// Deprecated: ResourceType is deprecated.
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -3936,14 +3970,14 @@ type DescribeHostLiveInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -3962,9 +3996,9 @@ func (r *DescribeHostLiveInstanceListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	delete(f, "OldCertificateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostLiveInstanceListRequest has unknown keys!", "")
@@ -3974,7 +4008,7 @@ func (r *DescribeHostLiveInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostLiveInstanceListResponseParams struct {
-	// live实例列表
+	// live实例列表,如取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
@@ -4110,14 +4144,14 @@ func (r *DescribeHostTeoInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostTkeInstanceListRequestParams struct {
-	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
-
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
@@ -4125,7 +4159,7 @@ type DescribeHostTkeInstanceListRequestParams struct {
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否异步缓存
+	// 是否异步缓存，0表示否，1表示是，默认为0
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
@@ -4135,14 +4169,14 @@ type DescribeHostTkeInstanceListRequestParams struct {
 type DescribeHostTkeInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待部署的证书ID
-	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
-
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
@@ -4150,7 +4184,7 @@ type DescribeHostTkeInstanceListRequest struct {
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否异步缓存
+	// 是否异步缓存，0表示否，1表示是，默认为0
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 
 	// 原证书ID
@@ -4169,9 +4203,9 @@ func (r *DescribeHostTkeInstanceListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "CertificateId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "CertificateId")
 	delete(f, "IsCache")
 	delete(f, "Filters")
 	delete(f, "AsyncCache")
@@ -4184,19 +4218,19 @@ func (r *DescribeHostTkeInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostTkeInstanceListResponseParams struct {
-	// 总数
+	// 总数，取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// CLB实例监听器列表
+	// tke实例列表，取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
-	// 异步刷新总数
+	// 异步刷新总数，取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
-	// 异步刷新当前执行数
+	// 异步刷新当前执行数，取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
@@ -4226,7 +4260,7 @@ func (r *DescribeHostTkeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostUpdateRecordDetailRequestParams struct {
-	// 一键更新记录ID
+	// 一键更新记录ID,从接口UpdateCertificateInstance获得
 	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 每页数量，默认10。
@@ -4239,7 +4273,7 @@ type DescribeHostUpdateRecordDetailRequestParams struct {
 type DescribeHostUpdateRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一键更新记录ID
+	// 一键更新记录ID,从接口UpdateCertificateInstance获得
 	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 每页数量，默认10。
@@ -4272,23 +4306,23 @@ func (r *DescribeHostUpdateRecordDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostUpdateRecordDetailResponseParams struct {
-	// 总数
+	// 总数,如果取不到返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 证书部署记录列表
+	// 证书部署记录列表，如果取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordDetailList []*UpdateRecordDetails `json:"RecordDetailList,omitnil,omitempty" name:"RecordDetailList"`
 
-	// 成功总数
+	// 成功总数,如果取不到返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil,omitempty" name:"SuccessTotalCount"`
 
-	// 失败总数
+	// 失败总数,如果取不到返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil,omitempty" name:"FailedTotalCount"`
 
-	// 部署中总数
+	// 部署中总数,如果取不到返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
@@ -4400,14 +4434,16 @@ type DescribeHostVodInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型 vod
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型 vod
+	//
+	// Deprecated: ResourceType is deprecated.
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -4419,14 +4455,14 @@ type DescribeHostVodInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型 vod
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型 vod
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -4445,9 +4481,9 @@ func (r *DescribeHostVodInstanceListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	delete(f, "OldCertificateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostVodInstanceListRequest has unknown keys!", "")
@@ -4457,11 +4493,11 @@ func (r *DescribeHostVodInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostVodInstanceListResponseParams struct {
-	// Vod实例列表
+	// Vod实例列表，如果取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
-	// 总数
+	// 总数,如果取不到值返回0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
@@ -4490,14 +4526,16 @@ type DescribeHostWafInstanceListRequestParams struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型，如waf
+	//
+	// Deprecated: ResourceType is deprecated.
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -4509,14 +4547,14 @@ type DescribeHostWafInstanceListRequest struct {
 	// 待部署的证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 部署资源类型
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
 	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 部署资源类型，如waf
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
@@ -4535,9 +4573,9 @@ func (r *DescribeHostWafInstanceListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
-	delete(f, "ResourceType")
 	delete(f, "IsCache")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	delete(f, "OldCertificateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostWafInstanceListRequest has unknown keys!", "")
@@ -4547,7 +4585,7 @@ func (r *DescribeHostWafInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostWafInstanceListResponseParams struct {
-	// WAF实例列表
+	// WAF实例列表，如果没有取到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
@@ -4573,7 +4611,7 @@ func (r *DescribeHostWafInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeManagerDetailRequestParams struct {
-	// 管理人ID
+	// 管理人ID,可以从describeManagers接口获得
 	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 分页每页数量
@@ -4590,7 +4628,7 @@ type DescribeManagerDetailRequestParams struct {
 type DescribeManagerDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 管理人ID
+	// 管理人ID,可以从describeManagers接口获得
 	ManagerId *int64 `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
 	// 分页每页数量
@@ -4704,7 +4742,7 @@ func (r *DescribeManagerDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeManagersRequestParams struct {
-	// 公司ID
+	// 公司ID,可以从DescribeCompanies接口获取
 	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 分页偏移量
@@ -4736,7 +4774,7 @@ type DescribeManagersRequestParams struct {
 type DescribeManagersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 公司ID
+	// 公司ID,可以从DescribeCompanies接口获取
 	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
 	// 分页偏移量
@@ -6664,20 +6702,20 @@ func (r *UpdateCertificateInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCertificateRecordRetryRequestParams struct {
-	// 待重试部署记录ID
+	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 待重试部署记录详情ID
+	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得
 	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 type UpdateCertificateRecordRetryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID
+	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 待重试部署记录详情ID
+	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得
 	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
@@ -6725,14 +6763,14 @@ func (r *UpdateCertificateRecordRetryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCertificateRecordRollbackRequestParams struct {
-	// 待重试部署记录ID
+	// 待重试部署记录ID,通过UpdateCertificateInstance获得
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 type UpdateCertificateRecordRollbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID
+	// 待重试部署记录ID,通过UpdateCertificateInstance获得
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 

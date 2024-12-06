@@ -20,6 +20,67 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type ActivateDeviceCertificateRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备证书序列号
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+}
+
+type ActivateDeviceCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备证书序列号
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+}
+
+func (r *ActivateDeviceCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateDeviceCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DeviceCertificateSn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateDeviceCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateDeviceCertificateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateDeviceCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateDeviceCertificateResponseParams `json:"Response"`
+}
+
+func (r *ActivateDeviceCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateDeviceCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AuthorizationPolicyItem struct {
 	// 规则ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -803,8 +864,105 @@ func (r *DescribeAuthorizationPoliciesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceCertificatesRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 过滤器支持ClientId、CaSn、DeviceCertificateSn、Status搜索
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// CREATE_TIME_DESC, 创建时间降序
+	//     CREATE_TIME_ASC,创建时间升序
+	//     UPDATE_TIME_DESC,更新时间降序
+	//     UPDATE_TIME_ASC,更新时间升序
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+}
+
+type DescribeDeviceCertificatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 过滤器支持ClientId、CaSn、DeviceCertificateSn、Status搜索
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// CREATE_TIME_DESC, 创建时间降序
+	//     CREATE_TIME_ASC,创建时间升序
+	//     UPDATE_TIME_DESC,更新时间降序
+	//     UPDATE_TIME_ASC,更新时间升序
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+}
+
+func (r *DescribeDeviceCertificatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCertificatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceCertificatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceCertificatesResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 设备证书
+	Data []*DeviceCertificateItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceCertificatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceCertificatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceCertificatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCertificatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceListRequestParams struct {
-	// 查询条件列表
+	// 查询条件列表,支持以下子弹
+	// InstanceName：集群名模糊搜索
+	// InstanceId：集群id精确搜索
+	// InstanceStatus：集群状态搜索
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询起始位置
@@ -820,7 +978,10 @@ type DescribeInstanceListRequestParams struct {
 type DescribeInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件列表
+	// 查询条件列表,支持以下子弹
+	// InstanceName：集群名模糊搜索
+	// InstanceId：集群id精确搜索
+	// InstanceStatus：集群状态搜索
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询起始位置
@@ -1018,7 +1179,8 @@ type DescribeTopicListRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询条件列表
+	// 查询条件列表:
+	// 支持TopicName模糊查询
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询起始位置
@@ -1034,7 +1196,8 @@ type DescribeTopicListRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询条件列表
+	// 查询条件列表:
+	// 支持TopicName模糊查询
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询起始位置
@@ -1166,6 +1329,63 @@ func (r *DescribeTopicResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceCertificateItem struct {
+	// 客户端id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 设备证书
+	DeviceCertificate *string `json:"DeviceCertificate,omitnil,omitempty" name:"DeviceCertificate"`
+
+	// 设备证书Sn
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+
+	// 设备证书Cn
+	DeviceCertificateCn *string `json:"DeviceCertificateCn,omitnil,omitempty" name:"DeviceCertificateCn"`
+
+	// 签发ca的序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// 证书格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 证书状态
+	//     ACTIVE,//激活
+	//     INACTIVE,//未激活
+	//     REVOKED,//吊销
+	//     PENDING_ACTIVATION,//注册待激活
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 上次激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
+
+	// 上次取消激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
+
+	// 创建时间
+	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 预销毁时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 证书来源：
+	// API, 手动注册   
+	// JITP 自动注册
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateSource *string `json:"CertificateSource,omitnil,omitempty" name:"CertificateSource"`
+
+	// 证书失效日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
+
+	// 证书生效开始日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 }
 
 type Filter struct {
@@ -1547,7 +1767,9 @@ type ModifyJWTAuthenticatorRequestParams struct {
 	// 算法：hmac-based，public-key
 	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
 
-	// 设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+	// 设备连接时传递jwt的key；
+	// username-使用用户名字段传递；
+	// password-使用密码字段传递
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 密码
@@ -1572,7 +1794,9 @@ type ModifyJWTAuthenticatorRequest struct {
 	// 算法：hmac-based，public-key
 	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
 
-	// 设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+	// 设备连接时传递jwt的key；
+	// username-使用用户名字段传递；
+	// password-使用密码字段传递
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 密码

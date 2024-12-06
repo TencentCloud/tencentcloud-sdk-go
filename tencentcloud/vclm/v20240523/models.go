@@ -171,16 +171,27 @@ type ConfirmVideoTranslateJobResponseParams struct {
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 音频转译任务 ID。
+	//
+	// Deprecated: TaskId is deprecated.
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 音频转译结果确认 session。	
+	//
+	// Deprecated: SessionId is deprecated.
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 该字段与 DescribeVideoTranslateJob 接口的 Status 功能相同，均表示任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+	// 任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+	//
+	// Deprecated: Status is deprecated.
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 视频转译任务信息。	
+	//
+	// Deprecated: Message is deprecated.
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+	JobStatus *int64 `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -474,27 +485,41 @@ type DescribeVideoTranslateJobResponseParams struct {
 	TranslateResults []*TranslateResult `json:"TranslateResults,omitnil,omitempty" name:"TranslateResults"`
 
 	// 是否需要确认翻译结果。0：不需要，1：需要。	
+	//
+	// Deprecated: JobConfirm is deprecated.
 	JobConfirm *int64 `json:"JobConfirm,omitnil,omitempty" name:"JobConfirm"`
 
 	// 音频任务 ID。	
+	//
+	// Deprecated: JobAudioTaskId is deprecated.
 	JobAudioTaskId *string `json:"JobAudioTaskId,omitnil,omitempty" name:"JobAudioTaskId"`
 
 	// 视频审核任务ID。
+	//
+	// Deprecated: JobVideoModerationId is deprecated.
 	JobVideoModerationId *string `json:"JobVideoModerationId,omitnil,omitempty" name:"JobVideoModerationId"`
 
 	// 音频审核任务 ID。
+	//
+	// Deprecated: JobAudioModerationId is deprecated.
 	JobAudioModerationId *string `json:"JobAudioModerationId,omitnil,omitempty" name:"JobAudioModerationId"`
 
 	// 口型驱动任务 ID。
+	//
+	// Deprecated: JobVideoId is deprecated.
 	JobVideoId *string `json:"JobVideoId,omitnil,omitempty" name:"JobVideoId"`
 
 	// 视频素材原始 URL。
+	//
+	// Deprecated: OriginalVideoUrl is deprecated.
 	OriginalVideoUrl *string `json:"OriginalVideoUrl,omitnil,omitempty" name:"OriginalVideoUrl"`
 
 	// 文本片段及其时间戳。
 	AsrTimestamps []*AsrTimestamps `json:"AsrTimestamps,omitnil,omitempty" name:"AsrTimestamps"`
 
 	// 提交视频转译任务时的 requestId。
+	//
+	// Deprecated: JobSubmitReqId is deprecated.
 	JobSubmitReqId *string `json:"JobSubmitReqId,omitnil,omitempty" name:"JobSubmitReqId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

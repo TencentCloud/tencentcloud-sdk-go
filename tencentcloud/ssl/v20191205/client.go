@@ -382,7 +382,7 @@ func NewCommitCertificateInformationResponse() (response *CommitCertificateInfor
 }
 
 // CommitCertificateInformation
-// 提交证书订单。
+// 提交证书订单到CA机构。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
@@ -400,7 +400,7 @@ func (c *Client) CommitCertificateInformation(request *CommitCertificateInformat
 }
 
 // CommitCertificateInformation
-// 提交证书订单。
+// 提交证书订单到CA机构。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
@@ -449,7 +449,7 @@ func NewCompleteCertificateResponse() (response *CompleteCertificateResponse) {
 }
 
 // CompleteCertificate
-// 本接口（CompleteCertificate）用于主动触发证书验证。仅非DNSPod和Wotrus品牌证书支持使用此接口。
+// 本接口（CompleteCertificate）用于主动触发证书验证。DNSPod和Wotrus品牌的证书不支持使用此接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -460,7 +460,7 @@ func (c *Client) CompleteCertificate(request *CompleteCertificateRequest) (respo
 }
 
 // CompleteCertificate
-// 本接口（CompleteCertificate）用于主动触发证书验证。仅非DNSPod和Wotrus品牌证书支持使用此接口。
+// 本接口（CompleteCertificate）用于主动触发证书验证。DNSPod和Wotrus品牌的证书不支持使用此接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3562,6 +3562,7 @@ func NewUpdateCertificateInstanceResponse() (response *UpdateCertificateInstance
 //  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+//  INVALIDPARAMETERVALUE_INTERMEDIATECERTNOTSAME = "InvalidParameterValue.IntermediateCertNotSame"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceRequest) (response *UpdateCertificateInstanceResponse, err error) {
     return c.UpdateCertificateInstanceWithContext(context.Background(), request)
@@ -3592,6 +3593,7 @@ func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceReq
 //  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+//  INVALIDPARAMETERVALUE_INTERMEDIATECERTNOTSAME = "InvalidParameterValue.IntermediateCertNotSame"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) UpdateCertificateInstanceWithContext(ctx context.Context, request *UpdateCertificateInstanceRequest) (response *UpdateCertificateInstanceResponse, err error) {
     if request == nil {
