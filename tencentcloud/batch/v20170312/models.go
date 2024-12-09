@@ -2089,14 +2089,14 @@ func (r *DetachInstancesResponse) FromJsonString(s string) error {
 }
 
 type Docker struct {
-	// Docker Hub 用户名或 Tencent Registry 用户名
-	User *string `json:"User,omitnil,omitempty" name:"User"`
-
-	// Docker Hub 密码或 Tencent Registry 密码
-	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
-
 	// Docker Hub填写“[user/repo]:[tag]”，Tencent Registry填写“ccr.ccs.tencentyun.com/[namespace/repo]:[tag]”
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// Docker Hub 用户名或 Tencent Registry 用户名；公共镜像可不填写此参数。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// Docker Hub 密码或 Tencent Registry 密码；公共镜像可不填写此参数。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`

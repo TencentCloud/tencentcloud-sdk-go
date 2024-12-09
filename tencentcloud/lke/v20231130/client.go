@@ -4287,6 +4287,10 @@ func NewParseDocResponse() (response *ParseDocResponse) {
 }
 
 // ParseDoc
+// 接口已迁移到新接口了，无调用量
+//
+// 
+//
 // 接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
 //
 // 可能返回的错误码:
@@ -4300,6 +4304,10 @@ func (c *Client) ParseDoc(request *ParseDocRequest) (response *ParseDocResponse,
 }
 
 // ParseDoc
+// 接口已迁移到新接口了，无调用量
+//
+// 
+//
 // 接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
 //
 // 可能返回的错误码:
@@ -4344,6 +4352,10 @@ func NewQueryParseDocResultResponse() (response *QueryParseDocResultResponse) {
 }
 
 // QueryParseDocResult
+// 接口已迁移到新接口了，无调用量
+//
+// 
+//
 // 查询文档解析结果。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或[联系客服](https://cloud.tencent.com/act/event/Online_service) 。
 //
 // 可能返回的错误码:
@@ -4357,6 +4369,10 @@ func (c *Client) QueryParseDocResult(request *QueryParseDocResultRequest) (respo
 }
 
 // QueryParseDocResult
+// 接口已迁移到新接口了，无调用量
+//
+// 
+//
 // 查询文档解析结果。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或[联系客服](https://cloud.tencent.com/act/event/Online_service) 。
 //
 // 可能返回的错误码:

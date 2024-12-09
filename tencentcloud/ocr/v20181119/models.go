@@ -259,6 +259,27 @@ type AirTransport struct {
 
 	// 条目
 	FlightItems []*FlightItem `json:"FlightItems,omitnil,omitempty" name:"FlightItems"`
+
+	// 提示信息
+	PromptInformation *string `json:"PromptInformation,omitnil,omitempty" name:"PromptInformation"`
+
+	// 统一社会信用代码/纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitnil,omitempty" name:"BuyerTaxID"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitnil,omitempty" name:"Buyer"`
+
+	// 发票号码
+	ReceiptNumber *string `json:"ReceiptNumber,omitnil,omitempty" name:"ReceiptNumber"`
+
+	// 开票状态
+	InvoiceStatus *string `json:"InvoiceStatus,omitnil,omitempty" name:"InvoiceStatus"`
+
+	// 增值税税率
+	TaxRate *string `json:"TaxRate,omitnil,omitempty" name:"TaxRate"`
+
+	// 增值税税额
+	TaxAmount *string `json:"TaxAmount,omitnil,omitempty" name:"TaxAmount"`
 }
 
 // Predefined struct for user
@@ -2371,6 +2392,9 @@ type ElectronicTrainTicketFull struct {
 
 	// 原发票号码
 	OriginalNumber *string `json:"OriginalNumber,omitnil,omitempty" name:"OriginalNumber"`
+
+	// 标识信息
+	IDInfo *string `json:"IDInfo,omitnil,omitempty" name:"IDInfo"`
 }
 
 type Encryption struct {
@@ -10283,8 +10307,9 @@ type TableInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cells []*TableCellInfo `json:"Cells,omitnil,omitempty" name:"Cells"`
 
-	// 图像中的文本块类型，0 为非表格文本，
-	// 1 为有线表格，2 为无线表格
+	// 图像中的文本块类型：0为非表格文本、1为有线表格、2为无线表格，
+	// 有线表格：在表格内部，有横线/竖线纵跨整个表格的宽/高；
+	// 无线表格：在表格内部，无横线/竖线纵跨整个表格的宽/高。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 

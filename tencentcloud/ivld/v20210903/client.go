@@ -1362,8 +1362,6 @@ func NewDescribeCustomPersonsResponse() (response *DescribeCustomPersonsResponse
 // DescribeCustomPersons
 // 批量描述自定义人物
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
@@ -1386,8 +1384,6 @@ func (c *Client) DescribeCustomPersons(request *DescribeCustomPersonsRequest) (r
 
 // DescribeCustomPersons
 // 批量描述自定义人物
-//
-// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"

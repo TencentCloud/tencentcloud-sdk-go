@@ -363,6 +363,16 @@ type BootstrapAction struct {
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
 }
 
+type CLBSetting struct {
+	// CLB类型，PUBLIC_IP表示支持公网CLB和INTERNAL_IP表示支持内网CLB字段 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBType *string `json:"CLBType,omitnil,omitempty" name:"CLBType"`
+
+	// Vpc和子网信息设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VPCSettings *VPCSettings `json:"VPCSettings,omitnil,omitempty" name:"VPCSettings"`
+}
+
 type COSSettings struct {
 	// COS SecretId
 	CosSecretId *string `json:"CosSecretId,omitnil,omitempty" name:"CosSecretId"`
@@ -451,6 +461,40 @@ type CdbInfo struct {
 	// RegionId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+}
+
+type CloudResource struct {
+	// 组件角色名
+	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
+
+	// pod请求数量
+	PodNumber *int64 `json:"PodNumber,omitnil,omitempty" name:"PodNumber"`
+
+	// Cpu请求数量最大值
+	LimitCpu *int64 `json:"LimitCpu,omitnil,omitempty" name:"LimitCpu"`
+
+	// 内存请求数量最大值
+	LimitMemory *int64 `json:"LimitMemory,omitnil,omitempty" name:"LimitMemory"`
+
+	// 服务名称，如HIVE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 数据卷目录设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeDir *VolumeSetting `json:"VolumeDir,omitnil,omitempty" name:"VolumeDir"`
+
+	// 组件外部访问设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalAccess *ExternalAccess `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
+
+	// 节点亲和性设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Affinity *NodeAffinity `json:"Affinity,omitnil,omitempty" name:"Affinity"`
+
+	// 所选数据盘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Disks []*Disk `json:"Disks,omitnil,omitempty" name:"Disks"`
 }
 
 type ClusterExternalServiceInfo struct {
@@ -867,6 +911,191 @@ type Configuration struct {
 
 	// 配置参数通过KV的形式传入，部分文件支持自定义，可以通过特殊的键"content"传入所有内容。
 	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+// Predefined struct for user
+type CreateCloudInstanceRequestParams struct {
+	// 实例名称。
+	// <li>长度限制为6-36个字符。</li>
+	// <li>只允许包含中文、字母、数字、-、_。</li>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 容器集群类型，取值范围
+	// <li>EMR容器集群实例: EMR-TKE</li>
+	ClusterClass *string `json:"ClusterClass,omitnil,omitempty" name:"ClusterClass"`
+
+	// 部署的组件列表，不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+	Software []*string `json:"Software,omitnil,omitempty" name:"Software"`
+
+	// 容器平台类型，取值范围
+	// <li>EMR容器集群实例: tke</li>
+	PlatFormType *string `json:"PlatFormType,omitnil,omitempty" name:"PlatFormType"`
+
+	// cos存储桶
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 容器集群id
+	EksClusterId *string `json:"EksClusterId,omitnil,omitempty" name:"EksClusterId"`
+
+	// 产品Id，不同产品ID表示不同的EMR产品版本。取值范围：
+	// <li>60:表示EMR-TKE-V1.1.0</li>
+	// <li>55:表示EMR-TKE-V1.0.1</li>
+	// <li>52:表示EMR-TKE-V1.0.0</li>
+	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6----fae36063280
+	// 示例值：a9a90aa6----fae36063280
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+	VPCSettings *VPCSettings `json:"VPCSettings,omitnil,omitempty" name:"VPCSettings"`
+
+	// 所有组件角色及其对应的Pod资源请求信息
+	CloudResources []*CloudResource `json:"CloudResources,omitnil,omitempty" name:"CloudResources"`
+
+	// 安全组Id，为空默认创建新的安全组
+	SgId *string `json:"SgId,omitnil,omitempty" name:"SgId"`
+
+	// 元数据库信息
+	// MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser MetaDataPass UnifyMetaInstanceId不用填
+	// 当MetaType选择EMR_EXIT_META时，填写UnifyMetaInstanceId
+	// 当MetaType选择USER_CUSTOM_META时，填写MetaDataJdbcUrl MetaDataUser MetaDataPass
+	MetaDBInfo *CustomMetaDBInfo `json:"MetaDBInfo,omitnil,omitempty" name:"MetaDBInfo"`
+
+	// 标签信息
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 登陆密码，LoginSettings中的Password字段
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// 共享服务信息
+	ExternalService []*ExternalService `json:"ExternalService,omitnil,omitempty" name:"ExternalService"`
+
+	// 可用区id
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type CreateCloudInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称。
+	// <li>长度限制为6-36个字符。</li>
+	// <li>只允许包含中文、字母、数字、-、_。</li>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 容器集群类型，取值范围
+	// <li>EMR容器集群实例: EMR-TKE</li>
+	ClusterClass *string `json:"ClusterClass,omitnil,omitempty" name:"ClusterClass"`
+
+	// 部署的组件列表，不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+	Software []*string `json:"Software,omitnil,omitempty" name:"Software"`
+
+	// 容器平台类型，取值范围
+	// <li>EMR容器集群实例: tke</li>
+	PlatFormType *string `json:"PlatFormType,omitnil,omitempty" name:"PlatFormType"`
+
+	// cos存储桶
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 容器集群id
+	EksClusterId *string `json:"EksClusterId,omitnil,omitempty" name:"EksClusterId"`
+
+	// 产品Id，不同产品ID表示不同的EMR产品版本。取值范围：
+	// <li>60:表示EMR-TKE-V1.1.0</li>
+	// <li>55:表示EMR-TKE-V1.0.1</li>
+	// <li>52:表示EMR-TKE-V1.0.0</li>
+	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6----fae36063280
+	// 示例值：a9a90aa6----fae36063280
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+	VPCSettings *VPCSettings `json:"VPCSettings,omitnil,omitempty" name:"VPCSettings"`
+
+	// 所有组件角色及其对应的Pod资源请求信息
+	CloudResources []*CloudResource `json:"CloudResources,omitnil,omitempty" name:"CloudResources"`
+
+	// 安全组Id，为空默认创建新的安全组
+	SgId *string `json:"SgId,omitnil,omitempty" name:"SgId"`
+
+	// 元数据库信息
+	// MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser MetaDataPass UnifyMetaInstanceId不用填
+	// 当MetaType选择EMR_EXIT_META时，填写UnifyMetaInstanceId
+	// 当MetaType选择USER_CUSTOM_META时，填写MetaDataJdbcUrl MetaDataUser MetaDataPass
+	MetaDBInfo *CustomMetaDBInfo `json:"MetaDBInfo,omitnil,omitempty" name:"MetaDBInfo"`
+
+	// 标签信息
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 登陆密码，LoginSettings中的Password字段
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// 共享服务信息
+	ExternalService []*ExternalService `json:"ExternalService,omitnil,omitempty" name:"ExternalService"`
+
+	// 可用区id
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *CreateCloudInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "ClusterClass")
+	delete(f, "Software")
+	delete(f, "PlatFormType")
+	delete(f, "CosBucket")
+	delete(f, "EksClusterId")
+	delete(f, "ProductId")
+	delete(f, "ClientToken")
+	delete(f, "VPCSettings")
+	delete(f, "CloudResources")
+	delete(f, "SgId")
+	delete(f, "MetaDBInfo")
+	delete(f, "Tags")
+	delete(f, "LoginSettings")
+	delete(f, "ExternalService")
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudInstanceResponseParams struct {
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4873,6 +5102,22 @@ type DiffHeader struct {
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
+type Disk struct {
+	// 数据盘类型，创建EMR容器集群实例可选
+	// <li> SSD云盘: CLOUD_SSD</li>
+	// <li>高效云盘: CLOUD_PREMIUM</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 单块大小GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskCapacity *int64 `json:"DiskCapacity,omitnil,omitempty" name:"DiskCapacity"`
+
+	// 数据盘数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskNumber *int64 `json:"DiskNumber,omitnil,omitempty" name:"DiskNumber"`
+}
+
 type DiskGroup struct {
 	// 磁盘规格。
 	Spec *DiskSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
@@ -5257,6 +5502,16 @@ type Execution struct {
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
 }
 
+type ExternalAccess struct {
+	// 外部访问类型，当前仅支持CLB字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// CLB设置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBServer *CLBSetting `json:"CLBServer,omitnil,omitempty" name:"CLBServer"`
+}
+
 type ExternalService struct {
 	// 共用组件类型，EMR/CUSTOM
 	ShareType *string `json:"ShareType,omitnil,omitempty" name:"ShareType"`
@@ -5379,6 +5634,16 @@ type HiveQuery struct {
 	// 查询ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type HostPathVolumeSource struct {
+	// 主机路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 主机路径类型，当前默认DirectoryOrCreate
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type HostVolumeContext struct {
@@ -6835,6 +7100,89 @@ func (r *ModifyGlobalConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPodNumRequestParams struct {
+	// 集群Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务编号
+	ServiceGroup *int64 `json:"ServiceGroup,omitnil,omitempty" name:"ServiceGroup"`
+
+	// 角色编号
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 期望Pod数量
+	PodNum *int64 `json:"PodNum,omitnil,omitempty" name:"PodNum"`
+}
+
+type ModifyPodNumRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务编号
+	ServiceGroup *int64 `json:"ServiceGroup,omitnil,omitempty" name:"ServiceGroup"`
+
+	// 角色编号
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 期望Pod数量
+	PodNum *int64 `json:"PodNum,omitnil,omitempty" name:"PodNum"`
+}
+
+func (r *ModifyPodNumRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPodNumRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceGroup")
+	delete(f, "ServiceType")
+	delete(f, "PodNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPodNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPodNumResponseParams struct {
+	// 集群Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 流程Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPodNumResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPodNumResponseParams `json:"Response"`
+}
+
+func (r *ModifyPodNumResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPodNumResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyResourcePoolsRequestParams struct {
 	// emr集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7528,6 +7876,16 @@ type NewResourceSpec struct {
 	CommonCount *int64 `json:"CommonCount,omitnil,omitempty" name:"CommonCount"`
 }
 
+type NodeAffinity struct {
+	// 节点亲和性-强制调度设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequiredDuringSchedulingIgnoredDuringExecution *NodeSelector `json:"RequiredDuringSchedulingIgnoredDuringExecution,omitnil,omitempty" name:"RequiredDuringSchedulingIgnoredDuringExecution"`
+
+	// 节点亲和性-容忍调度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreferredDuringSchedulingIgnoredDuringExecution []*PreferredSchedulingTerm `json:"PreferredDuringSchedulingIgnoredDuringExecution,omitnil,omitempty" name:"PreferredDuringSchedulingIgnoredDuringExecution"`
+}
+
 type NodeDetailPriceResult struct {
 	// 节点类型 master core task common router mysql
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7776,6 +8134,32 @@ type NodeResourceSpec struct {
 	// 本地数据盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDataDisk []*DiskSpecInfo `json:"LocalDataDisk,omitnil,omitempty" name:"LocalDataDisk"`
+}
+
+type NodeSelector struct {
+	// Pod强制调度节点选择条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeSelectorTerms []*NodeSelectorTerm `json:"NodeSelectorTerms,omitnil,omitempty" name:"NodeSelectorTerms"`
+}
+
+type NodeSelectorRequirement struct {
+	// 节点选择项Key值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 节点选择项Operator值，支持In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 节点选择项Values值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type NodeSelectorTerm struct {
+	// 节点选择项表达式集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchExpressions []*NodeSelectorRequirement `json:"MatchExpressions,omitnil,omitempty" name:"MatchExpressions"`
 }
 
 type NotRepeatStrategy struct {
@@ -8364,6 +8748,16 @@ type PrePaySetting struct {
 	// 自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+}
+
+type PreferredSchedulingTerm struct {
+	// 权重，范围1-100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 节点选择表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Preference *NodeSelectorTerm `json:"Preference,omitnil,omitempty" name:"Preference"`
 }
 
 type PriceDetail struct {
@@ -10684,6 +11078,19 @@ type VirtualPrivateCloud struct {
 
 	// Subnet ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type VolumeSetting struct {
+	// 数据卷类型
+	// <li>HOST_PATH表示支持本机路径</li>
+	// <li>NEW_PVC表示新建PVC</li>
+	// 组件角色支持的数据卷类型可参考 EMR on TKE 集群部署说明：[部署说明](https://cloud.tencent.com/document/product/589/94254)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeType *string `json:"VolumeType,omitnil,omitempty" name:"VolumeType"`
+
+	// 主机路径信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostPath *HostPathVolumeSource `json:"HostPath,omitnil,omitempty" name:"HostPath"`
 }
 
 type WeekRepeatStrategy struct {

@@ -344,6 +344,9 @@ const (
 	// 网络接口ID不正确。
 	INVALIDPARAMETERVALUE_NETWORKINTERFACEIDMALFORMED = "InvalidParameterValue.NetworkInterfaceIdMalformed"
 
+	// 网卡所绑定实例不支持绑定弹性公网IPv6
+	INVALIDPARAMETERVALUE_NETWORKINTERFACEINSTANCENOTSUPPORT = "InvalidParameterValue.NetworkInterfaceInstanceNotSupport"
+
 	// 未找到网络接口ID，或私有IP地址未在网络接口配置。
 	INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = "InvalidParameterValue.NetworkInterfaceNotFound"
 

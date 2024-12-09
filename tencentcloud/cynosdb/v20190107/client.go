@@ -5023,6 +5023,65 @@ func (c *Client) DescribeRollbackTimeRangeWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeServerlessInstanceSpecsRequest() (request *DescribeServerlessInstanceSpecsRequest) {
+    request = &DescribeServerlessInstanceSpecsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeServerlessInstanceSpecs")
+    
+    
+    return
+}
+
+func NewDescribeServerlessInstanceSpecsResponse() (response *DescribeServerlessInstanceSpecsResponse) {
+    response = &DescribeServerlessInstanceSpecsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServerlessInstanceSpecs
+// 查询Serverless实例可选规格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeServerlessInstanceSpecs(request *DescribeServerlessInstanceSpecsRequest) (response *DescribeServerlessInstanceSpecsResponse, err error) {
+    return c.DescribeServerlessInstanceSpecsWithContext(context.Background(), request)
+}
+
+// DescribeServerlessInstanceSpecs
+// 查询Serverless实例可选规格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeServerlessInstanceSpecsWithContext(ctx context.Context, request *DescribeServerlessInstanceSpecsRequest) (response *DescribeServerlessInstanceSpecsResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessInstanceSpecsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerlessInstanceSpecs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerlessInstanceSpecsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServerlessStrategyRequest() (request *DescribeServerlessStrategyRequest) {
     request = &DescribeServerlessStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -932,11 +932,11 @@ func (r *SubmitVideoStylizationJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SubmitVideoTranslateJobRequestParams struct {
 	// 视频地址URL。
-	// 格式要求：支持 mp4、mov 。
+	// 格式要求：支持 mp4、mov、avi 。
 	// 时长要求：【5-600】秒。
 	// fps 要求：【15-60】fps
 	// 分辨率要求：单边像素要求在 【360~4096】 之间。
-	// 大小要求：不超过500Mb
+	// 大小要求：不超过500MB
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// 输入视频中音频语种
@@ -946,7 +946,7 @@ type SubmitVideoTranslateJobRequestParams struct {
 	// 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
 	// 格式要求：支持 mp3、m4a、aac、wav 格式。
 	// 时长要求：【5~600】秒，音频时长要匹配视频时长。
-	// 大小要求：不超过 100Mb。
+	// 大小要求：不超过 100MB。
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
 	// 输出视频中翻译语种
@@ -977,11 +977,11 @@ type SubmitVideoTranslateJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 视频地址URL。
-	// 格式要求：支持 mp4、mov 。
+	// 格式要求：支持 mp4、mov、avi 。
 	// 时长要求：【5-600】秒。
 	// fps 要求：【15-60】fps
 	// 分辨率要求：单边像素要求在 【360~4096】 之间。
-	// 大小要求：不超过500Mb
+	// 大小要求：不超过500MB
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// 输入视频中音频语种
@@ -991,7 +991,7 @@ type SubmitVideoTranslateJobRequest struct {
 	// 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
 	// 格式要求：支持 mp3、m4a、aac、wav 格式。
 	// 时长要求：【5~600】秒，音频时长要匹配视频时长。
-	// 大小要求：不超过 100Mb。
+	// 大小要求：不超过 100MB。
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 
 	// 输出视频中翻译语种

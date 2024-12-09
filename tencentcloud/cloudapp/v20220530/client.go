@@ -66,12 +66,20 @@ func NewVerifyLicenseResponse() (response *VerifyLicenseResponse) {
 
 // VerifyLicense
 // 通过运行时roleId查询对应的软件 LICENSE
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
 func (c *Client) VerifyLicense(request *VerifyLicenseRequest) (response *VerifyLicenseResponse, err error) {
     return c.VerifyLicenseWithContext(context.Background(), request)
 }
 
 // VerifyLicense
 // 通过运行时roleId查询对应的软件 LICENSE
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
 func (c *Client) VerifyLicenseWithContext(ctx context.Context, request *VerifyLicenseRequest) (response *VerifyLicenseResponse, err error) {
     if request == nil {
         request = NewVerifyLicenseRequest()

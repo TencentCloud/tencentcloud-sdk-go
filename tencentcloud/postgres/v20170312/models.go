@@ -9146,7 +9146,7 @@ type RestoreDBInstanceObjectsRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 需要恢复的对象列表。假设需要恢复的对象名为test，则恢复后的名称为test_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
+	// 需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
 	RestoreObjects []*string `json:"RestoreObjects,omitnil,omitempty" name:"RestoreObjects"`
 
 	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
@@ -9162,7 +9162,7 @@ type RestoreDBInstanceObjectsRequest struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 需要恢复的对象列表。假设需要恢复的对象名为test，则恢复后的名称为test_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
+	// 需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
 	RestoreObjects []*string `json:"RestoreObjects,omitnil,omitempty" name:"RestoreObjects"`
 
 	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。

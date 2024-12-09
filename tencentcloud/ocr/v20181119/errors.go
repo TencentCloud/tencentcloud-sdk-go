@@ -119,8 +119,14 @@ const (
 	// OCR识别失败。
 	FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 
+	// PDF解析失败。
+	FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+
 	// 未知错误。
 	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+
+	// 未知的文件类型。
+	FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
 
 	// 服务未开通。
 	FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"

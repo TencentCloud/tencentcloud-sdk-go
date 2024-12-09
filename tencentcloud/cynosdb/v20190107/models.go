@@ -8474,6 +8474,63 @@ func (r *DescribeRollbackTimeRangeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServerlessInstanceSpecsRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type DescribeServerlessInstanceSpecsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+func (r *DescribeServerlessInstanceSpecsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessInstanceSpecsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessInstanceSpecsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerlessInstanceSpecsResponseParams struct {
+	// Serverless实例可选规格
+	Specs []*ServerlessSpec `json:"Specs,omitnil,omitempty" name:"Specs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServerlessInstanceSpecsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerlessInstanceSpecsResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerlessInstanceSpecsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerlessInstanceSpecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeServerlessStrategyRequestParams struct {
 	// serverless集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -12368,12 +12425,6 @@ type ModifyServerlessStrategyRequestParams struct {
 
 	// 只读节点最大个数
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
-
-	// 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
-	AutoScaleUp *string `json:"AutoScaleUp,omitnil,omitempty" name:"AutoScaleUp"`
-
-	// 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
-	AutoScaleDown *string `json:"AutoScaleDown,omitnil,omitempty" name:"AutoScaleDown"`
 }
 
 type ModifyServerlessStrategyRequest struct {
@@ -12413,12 +12464,6 @@ type ModifyServerlessStrategyRequest struct {
 
 	// 只读节点最大个数
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
-
-	// 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
-	AutoScaleUp *string `json:"AutoScaleUp,omitnil,omitempty" name:"AutoScaleUp"`
-
-	// 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
-	AutoScaleDown *string `json:"AutoScaleDown,omitnil,omitempty" name:"AutoScaleDown"`
 }
 
 func (r *ModifyServerlessStrategyRequest) ToJsonString() string {
@@ -12444,8 +12489,6 @@ func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
 	delete(f, "MaxRoCpu")
 	delete(f, "MinRoCount")
 	delete(f, "MaxRoCount")
-	delete(f, "AutoScaleUp")
-	delete(f, "AutoScaleDown")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServerlessStrategyRequest has unknown keys!", "")
 	}
@@ -15345,6 +15388,48 @@ type SecurityGroup struct {
 
 	// 安全组备注
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitnil,omitempty" name:"SecurityGroupRemark"`
+}
+
+type ServerlessSpec struct {
+	// cpu最小值
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// cpu最大值
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// 最大存储空间
+	MaxStorageSize *int64 `json:"MaxStorageSize,omitnil,omitempty" name:"MaxStorageSize"`
+
+	// 是否为默认规格
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否有库存
+	HasStock *bool `json:"HasStock,omitnil,omitempty" name:"HasStock"`
+
+	// 库存数量
+	StockCount *int64 `json:"StockCount,omitnil,omitempty" name:"StockCount"`
+
+	// 可用区库存信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneStockInfos []*ServerlessZoneStockInfo `json:"ZoneStockInfos,omitnil,omitempty" name:"ZoneStockInfos"`
+}
+
+type ServerlessZoneStockInfo struct {
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 存储量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StockCount *int64 `json:"StockCount,omitnil,omitempty" name:"StockCount"`
+
+	// 是否包含库存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasStock *bool `json:"HasStock,omitnil,omitempty" name:"HasStock"`
+
+	// 从可用区库存信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZoneStockInfos []*SlaveZoneStockInfo `json:"SlaveZoneStockInfos,omitnil,omitempty" name:"SlaveZoneStockInfos"`
 }
 
 // Predefined struct for user

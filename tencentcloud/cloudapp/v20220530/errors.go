@@ -16,4 +16,10 @@ package v20220530
 
 const (
 	// 此产品的特有错误码
+
+	// DBError
+	INTERNALERROR_DBERROR = "InternalError.DBError"
+
+	// 找不到该License
+	RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
 )

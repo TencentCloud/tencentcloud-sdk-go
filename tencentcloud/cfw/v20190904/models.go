@@ -4035,7 +4035,7 @@ func (r *DescribeBlockStaticListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBlockStaticListResponseParams struct {
-	// 无
+	// 查询结果
 	Data []*StaticInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 异步查询状态，1查询执行中，0查询已结束

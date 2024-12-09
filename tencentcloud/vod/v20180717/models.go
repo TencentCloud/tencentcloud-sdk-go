@@ -92,6 +92,7 @@ type AIRecognitionTemplateItem struct {
 	OcrWordsConfigure *OcrWordsConfigureInfo `json:"OcrWordsConfigure,omitnil,omitempty" name:"OcrWordsConfigure"`
 
 	// 语音全文识别控制参数。
+	// <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrFullTextConfigure *AsrFullTextConfigureInfo `json:"AsrFullTextConfigure,omitnil,omitempty" name:"AsrFullTextConfigure"`
 
@@ -99,7 +100,7 @@ type AIRecognitionTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
-	// 语音翻译控制参数。
+	// 语音翻译识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
@@ -806,13 +807,13 @@ type AiRecognitionTaskAsrTranslateResultOutput struct {
 }
 
 type AiRecognitionTaskAsrTranslateSegmentItem struct {
-	// 语音翻译片段置信度。取值：0~100。
+	// 语音翻译识别片段置信度。取值：0~100。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 语音翻译片段起始的偏移时间，单位：秒。
+	// 语音翻译识别片段起始的偏移时间，单位：秒。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 语音翻译片段终止的偏移时间，单位：秒。
+	// 语音翻译识别片段终止的偏移时间，单位：秒。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
 	// 识别文本。
@@ -2244,9 +2245,9 @@ type AsrFullTextConfigureInfoForUpdate struct {
 }
 
 type AsrTranslateConfigureInfo struct {
-	// 语音翻译任务开关，可选值：
+	// 语音翻译识别任务开关，可选值：
 	// <li>ON：开启；</li>
-	// <li>OFF：关闭。</li><font color=red>注意：</font>语音翻译任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译和 ASR 全文识别功能项。
+	// <li>OFF：关闭。</li><font color=red>注意：</font>语音翻译识别任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译识别和 ASR 全文识别功能项。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 媒体源语言，当 Switch 为 ON 时，此参数必填。取值范围：
@@ -2265,7 +2266,9 @@ type AsrTranslateConfigureInfo struct {
 	// <li>fr：法语。</li>
 	SrcLanguage *string `json:"SrcLanguage,omitnil,omitempty" name:"SrcLanguage"`
 
-	// 翻译目标语言，当 Switch 为 ON 时，此参数必填。
+	// 翻译目标语言，当 Switch 为 ON 时，此参数有效。
+	// 若此参数不填或者填写空字符串，则表示只进行语音全文识别，不进行翻译（计费项与 AsrFullTextConfigure 语音全文识别一致）；
+	// 否则，此参数的取值范围分为如下几种情况：
 	// 当 SrcLanguage 为 zh（中文）时，取值范围：
 	// <li>en：英文；</li>
 	// <li>ja：日文；</li>
@@ -2360,9 +2363,9 @@ type AsrTranslateConfigureInfo struct {
 }
 
 type AsrTranslateConfigureInfoForUpdate struct {
-	// 语音翻译任务开关，可选值：
+	// 语音翻译识别任务开关，可选值：
 	// <li>ON：开启；</li>
-	// <li>OFF：关闭。</li>
+	// <li>OFF：关闭。</li><font color=red>注意：</font>语音翻译识别任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译识别和 ASR 全文识别功能项。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 媒体源语言，取值范围：
@@ -2382,6 +2385,8 @@ type AsrTranslateConfigureInfoForUpdate struct {
 	SrcLanguage *string `json:"SrcLanguage,omitnil,omitempty" name:"SrcLanguage"`
 
 	// 翻译目标语言。
+	// 若此参数填写空字符串，则表示只进行语音全文识别，不进行翻译（计费项与 AsrFullTextConfigure 语音全文识别一致）；
+	// 否则，此参数的取值范围分为如下几种情况：
 	// 当 SrcLanguage 为 zh（中文）时，取值范围：
 	// <li>en：英文；</li>
 	// <li>ja：日文；</li>
@@ -3627,12 +3632,13 @@ type CreateAIRecognitionTemplateRequestParams struct {
 	OcrWordsConfigure *OcrWordsConfigureInfo `json:"OcrWordsConfigure,omitnil,omitempty" name:"OcrWordsConfigure"`
 
 	// 语音全文识别控制参数。
+	// <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
 	AsrFullTextConfigure *AsrFullTextConfigureInfo `json:"AsrFullTextConfigure,omitnil,omitempty" name:"AsrFullTextConfigure"`
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
-	// 语音翻译控制参数。
+	// 语音翻译识别控制参数。
 	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
 	// 物体识别控制参数。
@@ -3670,12 +3676,13 @@ type CreateAIRecognitionTemplateRequest struct {
 	OcrWordsConfigure *OcrWordsConfigureInfo `json:"OcrWordsConfigure,omitnil,omitempty" name:"OcrWordsConfigure"`
 
 	// 语音全文识别控制参数。
+	// <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
 	AsrFullTextConfigure *AsrFullTextConfigureInfo `json:"AsrFullTextConfigure,omitnil,omitempty" name:"AsrFullTextConfigure"`
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
-	// 语音翻译控制参数。
+	// 语音翻译识别控制参数。
 	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
 	// 物体识别控制参数。
@@ -17093,12 +17100,13 @@ type ModifyAIRecognitionTemplateRequestParams struct {
 	OcrWordsConfigure *OcrWordsConfigureInfoForUpdate `json:"OcrWordsConfigure,omitnil,omitempty" name:"OcrWordsConfigure"`
 
 	// 语音全文识别控制参数。
+	// <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font>
 	AsrFullTextConfigure *AsrFullTextConfigureInfoForUpdate `json:"AsrFullTextConfigure,omitnil,omitempty" name:"AsrFullTextConfigure"`
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
-	// 语音翻译控制参数。
+	// 语音翻译识别控制参数。
 	AsrTranslateConfigure *AsrTranslateConfigureInfoForUpdate `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
 	// 物体识别控制参数。
@@ -17139,12 +17147,13 @@ type ModifyAIRecognitionTemplateRequest struct {
 	OcrWordsConfigure *OcrWordsConfigureInfoForUpdate `json:"OcrWordsConfigure,omitnil,omitempty" name:"OcrWordsConfigure"`
 
 	// 语音全文识别控制参数。
+	// <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font>
 	AsrFullTextConfigure *AsrFullTextConfigureInfoForUpdate `json:"AsrFullTextConfigure,omitnil,omitempty" name:"AsrFullTextConfigure"`
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
-	// 语音翻译控制参数。
+	// 语音翻译识别控制参数。
 	AsrTranslateConfigure *AsrTranslateConfigureInfoForUpdate `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
 	// 物体识别控制参数。
