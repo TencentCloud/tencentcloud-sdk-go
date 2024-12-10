@@ -3872,6 +3872,7 @@ func NewListPoliciesResponse() (response *ListPoliciesResponse) {
 // 本接口（ListPolicies）可用于查询策略列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETUSERAREAERROR = "FailedOperation.GetUserAreaError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_GROUPIDERROR = "InvalidParameter.GroupIdError"
 //  INVALIDPARAMETER_KEYWORDERROR = "InvalidParameter.KeywordError"
@@ -3888,6 +3889,7 @@ func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPolic
 // 本接口（ListPolicies）可用于查询策略列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETUSERAREAERROR = "FailedOperation.GetUserAreaError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_GROUPIDERROR = "InvalidParameter.GroupIdError"
 //  INVALIDPARAMETER_KEYWORDERROR = "InvalidParameter.KeywordError"
@@ -5283,6 +5285,59 @@ func (c *Client) UpdateRoleDescriptionWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUpdateRoleDescriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRoleSessionDurationRequest() (request *UpdateRoleSessionDurationRequest) {
+    request = &UpdateRoleSessionDurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateRoleSessionDuration")
+    
+    
+    return
+}
+
+func NewUpdateRoleSessionDurationResponse() (response *UpdateRoleSessionDurationResponse) {
+    response = &UpdateRoleSessionDurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateRoleSessionDuration
+// 修改角色会话时长 
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+func (c *Client) UpdateRoleSessionDuration(request *UpdateRoleSessionDurationRequest) (response *UpdateRoleSessionDurationResponse, err error) {
+    return c.UpdateRoleSessionDurationWithContext(context.Background(), request)
+}
+
+// UpdateRoleSessionDuration
+// 修改角色会话时长 
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+func (c *Client) UpdateRoleSessionDurationWithContext(ctx context.Context, request *UpdateRoleSessionDurationRequest) (response *UpdateRoleSessionDurationResponse, err error) {
+    if request == nil {
+        request = NewUpdateRoleSessionDurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRoleSessionDuration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateRoleSessionDurationResponse()
     err = c.Send(request, response)
     return
 }

@@ -318,6 +318,57 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     return
 }
 
+func NewDeactivateDeviceCertificateRequest() (request *DeactivateDeviceCertificateRequest) {
+    request = &DeactivateDeviceCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeactivateDeviceCertificate")
+    
+    
+    return
+}
+
+func NewDeactivateDeviceCertificateResponse() (response *DeactivateDeviceCertificateResponse) {
+    response = &DeactivateDeviceCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeactivateDeviceCertificate
+// 失效Ca证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeactivateDeviceCertificate(request *DeactivateDeviceCertificateRequest) (response *DeactivateDeviceCertificateResponse, err error) {
+    return c.DeactivateDeviceCertificateWithContext(context.Background(), request)
+}
+
+// DeactivateDeviceCertificate
+// 失效Ca证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeactivateDeviceCertificateWithContext(ctx context.Context, request *DeactivateDeviceCertificateRequest) (response *DeactivateDeviceCertificateResponse, err error) {
+    if request == nil {
+        request = NewDeactivateDeviceCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeactivateDeviceCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeactivateDeviceCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAuthenticatorRequest() (request *DeleteAuthenticatorRequest) {
     request = &DeleteAuthenticatorRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -420,6 +471,57 @@ func (c *Client) DeleteAuthorizationPolicyWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteAuthorizationPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceCertificateRequest() (request *DeleteDeviceCertificateRequest) {
+    request = &DeleteDeviceCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteDeviceCertificate")
+    
+    
+    return
+}
+
+func NewDeleteDeviceCertificateResponse() (response *DeleteDeviceCertificateResponse) {
+    response = &DeleteDeviceCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeviceCertificate
+// 删除设备证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteDeviceCertificate(request *DeleteDeviceCertificateRequest) (response *DeleteDeviceCertificateResponse, err error) {
+    return c.DeleteDeviceCertificateWithContext(context.Background(), request)
+}
+
+// DeleteDeviceCertificate
+// 删除设备证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteDeviceCertificateWithContext(ctx context.Context, request *DeleteDeviceCertificateRequest) (response *DeleteDeviceCertificateResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceCertificateResponse()
     err = c.Send(request, response)
     return
 }
@@ -569,6 +671,55 @@ func (c *Client) DescribeAuthorizationPoliciesWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeAuthorizationPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceCertificateRequest() (request *DescribeDeviceCertificateRequest) {
+    request = &DescribeDeviceCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeDeviceCertificate")
+    
+    
+    return
+}
+
+func NewDescribeDeviceCertificateResponse() (response *DescribeDeviceCertificateResponse) {
+    response = &DescribeDeviceCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceCertificate
+// 查询设备证书详情接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeDeviceCertificate(request *DescribeDeviceCertificateRequest) (response *DescribeDeviceCertificateResponse, err error) {
+    return c.DescribeDeviceCertificateWithContext(context.Background(), request)
+}
+
+// DescribeDeviceCertificate
+// 查询设备证书详情接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeDeviceCertificateWithContext(ctx context.Context, request *DescribeDeviceCertificateRequest) (response *DescribeDeviceCertificateResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceCertificateResponse()
     err = c.Send(request, response)
     return
 }
@@ -1097,6 +1248,57 @@ func (c *Client) RegisterDeviceCertificateWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewRegisterDeviceCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevokedDeviceCertificateRequest() (request *RevokedDeviceCertificateRequest) {
+    request = &RevokedDeviceCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "RevokedDeviceCertificate")
+    
+    
+    return
+}
+
+func NewRevokedDeviceCertificateResponse() (response *RevokedDeviceCertificateResponse) {
+    response = &RevokedDeviceCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RevokedDeviceCertificate
+// 吊销设备证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) RevokedDeviceCertificate(request *RevokedDeviceCertificateRequest) (response *RevokedDeviceCertificateResponse, err error) {
+    return c.RevokedDeviceCertificateWithContext(context.Background(), request)
+}
+
+// RevokedDeviceCertificate
+// 吊销设备证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) RevokedDeviceCertificateWithContext(ctx context.Context, request *RevokedDeviceCertificateRequest) (response *RevokedDeviceCertificateResponse, err error) {
+    if request == nil {
+        request = NewRevokedDeviceCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokedDeviceCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRevokedDeviceCertificateResponse()
     err = c.Send(request, response)
     return
 }

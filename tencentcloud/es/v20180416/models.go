@@ -3971,6 +3971,22 @@ type EsDictionaryInfo struct {
 
 	// 更新词典类型
 	UpdateType *string `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
+
+	// ansj启用词词典列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnsjMain []*DictInfo `json:"AnsjMain,omitnil,omitempty" name:"AnsjMain"`
+
+	// ansj停用词词典列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnsjStop []*DictInfo `json:"AnsjStop,omitnil,omitempty" name:"AnsjStop"`
+
+	// ansj歧义词库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnsjAmbiguity []*DictInfo `json:"AnsjAmbiguity,omitnil,omitempty" name:"AnsjAmbiguity"`
+
+	// ansj同义词词典列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnsjSynonyms []*DictInfo `json:"AnsjSynonyms,omitnil,omitempty" name:"AnsjSynonyms"`
 }
 
 type EsPublicAcl struct {
@@ -4741,6 +4757,18 @@ type InstanceInfo struct {
 	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+
+	// 是否有置放群组异步调度任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
+
+	// 异步调度任务的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 开启集群保护：OPEN-开启，CLOSE-关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
 }
 
 type InstanceLog struct {
@@ -5312,6 +5340,9 @@ type Operation struct {
 
 	// 操作进度
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 回滚标记， 0未回滚 ，1回滚中，2已回滚
+	RollbackTag *int64 `json:"RollbackTag,omitnil,omitempty" name:"RollbackTag"`
 
 	// 操作者Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6825,6 +6856,9 @@ type UpdateInstanceRequestParams struct {
 
 	// 置放群组异步任务可维护时间段
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 开启集群保护：OPEN-开启，CLOSE-关闭
+	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
 }
 
 type UpdateInstanceRequest struct {
@@ -6978,6 +7012,9 @@ type UpdateInstanceRequest struct {
 
 	// 置放群组异步任务可维护时间段
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 开启集群保护：OPEN-开启，CLOSE-关闭
+	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -7035,6 +7072,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ReadWriteMode")
 	delete(f, "EnableScheduleRecoverGroup")
 	delete(f, "EnableScheduleOperationDuration")
+	delete(f, "EnableDestroyProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

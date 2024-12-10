@@ -62,6 +62,9 @@ const (
 	// 调用比对引擎接口出错。
 	FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
 
+	// The video compression failed. Please try again or reduce the size of the input video.
+	FAILEDOPERATION_COMPRESSVIDEOERROR = "FailedOperation.CompressVideoError"
+
 	// 图中人脸存在遮挡，请传入无遮挡人脸图片
 	FAILEDOPERATION_COVEREDFACE = "FailedOperation.CoveredFace"
 

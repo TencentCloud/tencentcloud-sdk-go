@@ -316,6 +316,135 @@ func (r *GenerateAvatarResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ImageInpaintingRemovalRequestParams struct {
+	// 输入图 Base64 数据。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 输入图 Url。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 消除区域 Mask 图 Base64 数据。
+	// Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分呈黑色区域。
+	// Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
+	Mask *string `json:"Mask,omitnil,omitempty" name:"Mask"`
+
+	// 消除区域 Mask 图 Url。
+	// Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分呈黑色区域。
+	// Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
+	MaskUrl *string `json:"MaskUrl,omitnil,omitempty" name:"MaskUrl"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type ImageInpaintingRemovalRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输入图 Base64 数据。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 输入图 Url。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 消除区域 Mask 图 Base64 数据。
+	// Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分呈黑色区域。
+	// Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
+	Mask *string `json:"Mask,omitnil,omitempty" name:"Mask"`
+
+	// 消除区域 Mask 图 Url。
+	// Mask 为单通道灰度图，待消除部分呈白色区域，原图保持部分呈黑色区域。
+	// Mask 的 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
+	MaskUrl *string `json:"MaskUrl,omitnil,omitempty" name:"MaskUrl"`
+
+	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *ImageInpaintingRemovalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageInpaintingRemovalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputImage")
+	delete(f, "InputUrl")
+	delete(f, "Mask")
+	delete(f, "MaskUrl")
+	delete(f, "RspImgType")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageInpaintingRemovalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageInpaintingRemovalResponseParams struct {
+	// 根据入参 RspImgType 填入不同，返回不同的内容。 如果传入 base64 则返回生成图 Base64 编码。 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImageInpaintingRemovalResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageInpaintingRemovalResponseParams `json:"Response"`
+}
+
+func (r *ImageInpaintingRemovalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageInpaintingRemovalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ImageOutpaintingRequestParams struct {
 	// 扩展后的比例（宽:高），需要不等于原图比例。
 	// 支持：1:1、4:3、3:4、16:9、9:16

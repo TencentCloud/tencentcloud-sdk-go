@@ -1520,6 +1520,65 @@ func (c *Client) CreateNativeGatewayServerGroupWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateNativeGatewayServiceSourceRequest() (request *CreateNativeGatewayServiceSourceRequest) {
+    request = &CreateNativeGatewayServiceSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateNativeGatewayServiceSource")
+    
+    
+    return
+}
+
+func NewCreateNativeGatewayServiceSourceResponse() (response *CreateNativeGatewayServiceSourceResponse) {
+    response = &CreateNativeGatewayServiceSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNativeGatewayServiceSource
+// 创建网关服务来源
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) CreateNativeGatewayServiceSource(request *CreateNativeGatewayServiceSourceRequest) (response *CreateNativeGatewayServiceSourceResponse, err error) {
+    return c.CreateNativeGatewayServiceSourceWithContext(context.Background(), request)
+}
+
+// CreateNativeGatewayServiceSource
+// 创建网关服务来源
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) CreateNativeGatewayServiceSourceWithContext(ctx context.Context, request *CreateNativeGatewayServiceSourceRequest) (response *CreateNativeGatewayServiceSourceResponse, err error) {
+    if request == nil {
+        request = NewCreateNativeGatewayServiceSourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNativeGatewayServiceSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNativeGatewayServiceSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrUpdateConfigFileAndReleaseRequest() (request *CreateOrUpdateConfigFileAndReleaseRequest) {
     request = &CreateOrUpdateConfigFileAndReleaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3017,6 +3076,71 @@ func (c *Client) DeleteNativeGatewayServerGroupWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDeleteNativeGatewayServerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNativeGatewayServiceSourceRequest() (request *DeleteNativeGatewayServiceSourceRequest) {
+    request = &DeleteNativeGatewayServiceSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteNativeGatewayServiceSource")
+    
+    
+    return
+}
+
+func NewDeleteNativeGatewayServiceSourceResponse() (response *DeleteNativeGatewayServiceSourceResponse) {
+    response = &DeleteNativeGatewayServiceSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNativeGatewayServiceSource
+// 删除网关服务来源实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+//  INTERNALERROR_DECODEERROR = "InternalError.DecodeError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCEINUSE_GATEWAYSERVICESOURCEEXISTSERVICE = "ResourceInUse.GatewayServiceSourceExistService"
+func (c *Client) DeleteNativeGatewayServiceSource(request *DeleteNativeGatewayServiceSourceRequest) (response *DeleteNativeGatewayServiceSourceResponse, err error) {
+    return c.DeleteNativeGatewayServiceSourceWithContext(context.Background(), request)
+}
+
+// DeleteNativeGatewayServiceSource
+// 删除网关服务来源实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+//  INTERNALERROR_DECODEERROR = "InternalError.DecodeError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCEINUSE_GATEWAYSERVICESOURCEEXISTSERVICE = "ResourceInUse.GatewayServiceSourceExistService"
+func (c *Client) DeleteNativeGatewayServiceSourceWithContext(ctx context.Context, request *DeleteNativeGatewayServiceSourceRequest) (response *DeleteNativeGatewayServiceSourceResponse, err error) {
+    if request == nil {
+        request = NewDeleteNativeGatewayServiceSourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNativeGatewayServiceSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNativeGatewayServiceSourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -5482,6 +5606,61 @@ func (c *Client) DescribeNativeGatewayServerGroupsWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeNativeGatewayServiceSourcesRequest() (request *DescribeNativeGatewayServiceSourcesRequest) {
+    request = &DescribeNativeGatewayServiceSourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeNativeGatewayServiceSources")
+    
+    
+    return
+}
+
+func NewDescribeNativeGatewayServiceSourcesResponse() (response *DescribeNativeGatewayServiceSourcesResponse) {
+    response = &DescribeNativeGatewayServiceSourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNativeGatewayServiceSources
+// 查询网关服务来源实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeNativeGatewayServiceSources(request *DescribeNativeGatewayServiceSourcesRequest) (response *DescribeNativeGatewayServiceSourcesResponse, err error) {
+    return c.DescribeNativeGatewayServiceSourcesWithContext(context.Background(), request)
+}
+
+// DescribeNativeGatewayServiceSources
+// 查询网关服务来源实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeNativeGatewayServiceSourcesWithContext(ctx context.Context, request *DescribeNativeGatewayServiceSourcesRequest) (response *DescribeNativeGatewayServiceSourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNativeGatewayServiceSourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNativeGatewayServiceSources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNativeGatewayServiceSourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOneCloudNativeAPIGatewayServiceRequest() (request *DescribeOneCloudNativeAPIGatewayServiceRequest) {
     request = &DescribeOneCloudNativeAPIGatewayServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7374,6 +7553,65 @@ func (c *Client) ModifyNativeGatewayServerGroupWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewModifyNativeGatewayServerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNativeGatewayServiceSourceRequest() (request *ModifyNativeGatewayServiceSourceRequest) {
+    request = &ModifyNativeGatewayServiceSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyNativeGatewayServiceSource")
+    
+    
+    return
+}
+
+func NewModifyNativeGatewayServiceSourceResponse() (response *ModifyNativeGatewayServiceSourceResponse) {
+    response = &ModifyNativeGatewayServiceSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNativeGatewayServiceSource
+// 修改网关服务来源
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) ModifyNativeGatewayServiceSource(request *ModifyNativeGatewayServiceSourceRequest) (response *ModifyNativeGatewayServiceSourceResponse, err error) {
+    return c.ModifyNativeGatewayServiceSourceWithContext(context.Background(), request)
+}
+
+// ModifyNativeGatewayServiceSource
+// 修改网关服务来源
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) ModifyNativeGatewayServiceSourceWithContext(ctx context.Context, request *ModifyNativeGatewayServiceSourceRequest) (response *ModifyNativeGatewayServiceSourceResponse, err error) {
+    if request == nil {
+        request = NewModifyNativeGatewayServiceSourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNativeGatewayServiceSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNativeGatewayServiceSourceResponse()
     err = c.Send(request, response)
     return
 }

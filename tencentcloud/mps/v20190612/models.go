@@ -381,6 +381,10 @@ type AddOnSubtitle struct {
 	// 字幕文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subtitle *MediaInputInfo `json:"Subtitle,omitnil,omitempty" name:"Subtitle"`
+
+	// 字幕名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
 }
 
 type AiAnalysisResult struct {

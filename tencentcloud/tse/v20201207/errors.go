@@ -170,6 +170,9 @@ const (
 	// 不允许的操作。
 	OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 
+	// 服务来源与服务关联。
+	RESOURCEINUSE_GATEWAYSERVICESOURCEEXISTSERVICE = "ResourceInUse.GatewayServiceSourceExistService"
+
 	// 服务下存在实例，无法删除。
 	RESOURCEINUSE_INSTANCESEXISTEDINSERVICE = "ResourceInUse.InstancesExistedInService"
 

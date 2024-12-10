@@ -2986,6 +2986,113 @@ func (r *CreateNativeGatewayServerGroupResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type CreateNativeGatewayServiceSourceRequestParams struct {
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源类型，参考值：
+	// - TSE-Nacos 
+	// - TSE-Consul 
+	// - TSE-PolarisMesh
+	// - Customer-Nacos
+	// - Customer-Consul
+	// - Customer-PolarisMesh
+	// - TSF
+	// - TKE
+	// - EKS
+	// - PrivateDNS
+	// - Customer-DNS
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 服务来源实例ID，当SourceType的值不为PrivateDNS或Customer-DNS时，必填
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
+	// 服务来源实例名称，当SourceType的值不为PrivateDNS时，必填
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 服务来源实例额外信息
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+type CreateNativeGatewayServiceSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源类型，参考值：
+	// - TSE-Nacos 
+	// - TSE-Consul 
+	// - TSE-PolarisMesh
+	// - Customer-Nacos
+	// - Customer-Consul
+	// - Customer-PolarisMesh
+	// - TSF
+	// - TKE
+	// - EKS
+	// - PrivateDNS
+	// - Customer-DNS
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 服务来源实例ID，当SourceType的值不为PrivateDNS或Customer-DNS时，必填
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
+	// 服务来源实例名称，当SourceType的值不为PrivateDNS时，必填
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 服务来源实例额外信息
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+func (r *CreateNativeGatewayServiceSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNativeGatewayServiceSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayID")
+	delete(f, "SourceType")
+	delete(f, "SourceID")
+	delete(f, "SourceName")
+	delete(f, "SourceInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNativeGatewayServiceSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNativeGatewayServiceSourceResponseParams struct {
+	// 创建是否成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateNativeGatewayServiceSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNativeGatewayServiceSourceResponseParams `json:"Response"`
+}
+
+func (r *CreateNativeGatewayServiceSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNativeGatewayServiceSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrUpdateConfigFileAndReleaseRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4402,6 +4509,70 @@ type DeleteNativeGatewayServerGroupResult struct {
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type DeleteNativeGatewayServiceSourceRequestParams struct {
+	// 网关实例 ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源实例 ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+}
+
+type DeleteNativeGatewayServiceSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例 ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源实例 ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+}
+
+func (r *DeleteNativeGatewayServiceSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNativeGatewayServiceSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayID")
+	delete(f, "SourceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNativeGatewayServiceSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNativeGatewayServiceSourceResponseParams struct {
+	// 结果
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNativeGatewayServiceSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNativeGatewayServiceSourceResponseParams `json:"Response"`
+}
+
+func (r *DeleteNativeGatewayServiceSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNativeGatewayServiceSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7485,6 +7656,108 @@ func (r *DescribeNativeGatewayServerGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNativeGatewayServerGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNativeGatewayServiceSourcesRequestParams struct {
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 单页条数，最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 服务来源实例名称，模糊搜索
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 微服务引擎类型：TSE-Nacos｜TSE-Consul｜TSE-PolarisMesh｜Customer-Nacos｜Customer-Consul｜Customer-PolarisMesh
+	SourceTypes []*string `json:"SourceTypes,omitnil,omitempty" name:"SourceTypes"`
+
+	// 排序字段类型，当前仅支持SourceName
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序类型，AES/DESC
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+}
+
+type DescribeNativeGatewayServiceSourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 单页条数，最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 服务来源实例名称，模糊搜索
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 微服务引擎类型：TSE-Nacos｜TSE-Consul｜TSE-PolarisMesh｜Customer-Nacos｜Customer-Consul｜Customer-PolarisMesh
+	SourceTypes []*string `json:"SourceTypes,omitnil,omitempty" name:"SourceTypes"`
+
+	// 排序字段类型，当前仅支持SourceName
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序类型，AES/DESC
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+}
+
+func (r *DescribeNativeGatewayServiceSourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNativeGatewayServiceSourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayID")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SourceName")
+	delete(f, "SourceTypes")
+	delete(f, "OrderField")
+	delete(f, "OrderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNativeGatewayServiceSourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNativeGatewayServiceSourcesResponseParams struct {
+	// 总实例数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 服务来源实例列表
+	List []*NativeGatewayServiceSourceItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNativeGatewayServiceSourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNativeGatewayServiceSourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNativeGatewayServiceSourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNativeGatewayServiceSourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10858,6 +11131,81 @@ func (r *ModifyNativeGatewayServerGroupResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type ModifyNativeGatewayServiceSourceRequestParams struct {
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源实例ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
+	// 服务来源名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 服务来源实例额外信息
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+type ModifyNativeGatewayServiceSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源实例ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
+	// 服务来源名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 服务来源实例额外信息
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+func (r *ModifyNativeGatewayServiceSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNativeGatewayServiceSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayID")
+	delete(f, "SourceID")
+	delete(f, "SourceName")
+	delete(f, "SourceInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNativeGatewayServiceSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNativeGatewayServiceSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNativeGatewayServiceSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNativeGatewayServiceSourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyNativeGatewayServiceSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNativeGatewayServiceSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNetworkAccessStrategyRequestParams struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -11212,6 +11560,29 @@ type NativeGatewayServerGroups struct {
 
 	// 分组信息数组。
 	GatewayGroupList []*NativeGatewayServerGroup `json:"GatewayGroupList,omitnil,omitempty" name:"GatewayGroupList"`
+}
+
+type NativeGatewayServiceSourceItem struct {
+	// 网关实例ID
+	GatewayID *string `json:"GatewayID,omitnil,omitempty" name:"GatewayID"`
+
+	// 服务来源ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
+	// 服务来源名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 服务来源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 服务来源额外信息
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type NetworkAccessControl struct {
@@ -11845,6 +12216,43 @@ type ServiceWafStatus struct {
 	//  服务是否开启 WAF 防护
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type SourceInfo struct {
+	// 微服务引擎接入IP地址信息
+	Addresses []*string `json:"Addresses,omitnil,omitempty" name:"Addresses"`
+
+	// 微服务引擎VPC信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcInfo *SourceInstanceVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 微服务引擎鉴权信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Auth *SourceInstanceAuth `json:"Auth,omitnil,omitempty" name:"Auth"`
+}
+
+type SourceInstanceAuth struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 账户密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 访问凭据 token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessToken *string `json:"AccessToken,omitnil,omitempty" name:"AccessToken"`
+}
+
+type SourceInstanceVpcInfo struct {
+	// 微服务引擎VPC信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcID *string `json:"VpcID,omitnil,omitempty" name:"VpcID"`
+
+	// 微服务引擎子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetID *string `json:"SubnetID,omitnil,omitempty" name:"SubnetID"`
 }
 
 type StorageOption struct {

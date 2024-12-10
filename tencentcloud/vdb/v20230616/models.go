@@ -511,14 +511,20 @@ type InstanceInfo struct {
 
 	// 健康得分。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: HealthScore is deprecated.
 	HealthScore *float64 `json:"HealthScore,omitnil,omitempty" name:"HealthScore"`
 
 	// 异常告警。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Warning is deprecated.
 	Warning *int64 `json:"Warning,omitnil,omitempty" name:"Warning"`
 
 	// 所属项目。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Project is deprecated.
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
 	// 所属标签。

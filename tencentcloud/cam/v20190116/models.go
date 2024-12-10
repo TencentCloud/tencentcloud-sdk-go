@@ -4013,6 +4013,10 @@ type GroupMemberInfo struct {
 
 	// 是否为主消息接收人。0-否 1-是
 	IsReceiverOwner *uint64 `json:"IsReceiverOwner,omitnil,omitempty" name:"IsReceiverOwner"`
+
+	// 昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user
@@ -6606,6 +6610,74 @@ func (r *UpdateRoleDescriptionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateRoleDescriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateRoleSessionDurationRequestParams struct {
+	// 时长(秒)
+	SessionDuration *uint64 `json:"SessionDuration,omitnil,omitempty" name:"SessionDuration"`
+
+	// 角色名(与角色ID必填一个)
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// 角色ID(与角色名必填一个)
+	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+}
+
+type UpdateRoleSessionDurationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 时长(秒)
+	SessionDuration *uint64 `json:"SessionDuration,omitnil,omitempty" name:"SessionDuration"`
+
+	// 角色名(与角色ID必填一个)
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// 角色ID(与角色名必填一个)
+	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+}
+
+func (r *UpdateRoleSessionDurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateRoleSessionDurationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionDuration")
+	delete(f, "RoleName")
+	delete(f, "RoleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRoleSessionDurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateRoleSessionDurationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateRoleSessionDurationResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateRoleSessionDurationResponseParams `json:"Response"`
+}
+
+func (r *UpdateRoleSessionDurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateRoleSessionDurationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

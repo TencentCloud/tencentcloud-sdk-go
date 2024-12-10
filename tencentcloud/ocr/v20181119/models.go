@@ -5160,12 +5160,18 @@ type MLIDCardOCRRequestParams struct {
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
+	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	BackImageBase64 *string `json:"BackImageBase64,omitnil,omitempty" name:"BackImageBase64"`
+
 	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	BackImageUrl *string `json:"BackImageUrl,omitnil,omitempty" name:"BackImageUrl"`
 
 	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitnil,omitempty" name:"RetImage"`
@@ -5179,12 +5185,18 @@ type MLIDCardOCRRequest struct {
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
+	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	BackImageBase64 *string `json:"BackImageBase64,omitnil,omitempty" name:"BackImageBase64"`
+
 	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	BackImageUrl *string `json:"BackImageUrl,omitnil,omitempty" name:"BackImageUrl"`
 
 	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitnil,omitempty" name:"RetImage"`
@@ -5203,7 +5215,9 @@ func (r *MLIDCardOCRRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ImageBase64")
+	delete(f, "BackImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "BackImageUrl")
 	delete(f, "RetImage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MLIDCardOCRRequest has unknown keys!", "")
@@ -5258,6 +5272,9 @@ type MLIDCardOCRResponseParams struct {
 
 	// 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
+
+	// 马来身份证背面号码
+	MyKadNumber *string `json:"MyKadNumber,omitnil,omitempty" name:"MyKadNumber"`
 
 	// 告警码
 	// -9101 证件边框不完整告警
@@ -10854,6 +10871,44 @@ type TextTable struct {
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 }
 
+type TextTractorVehicleBack struct {
+	// 号牌号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateNo *string `json:"PlateNo,omitnil,omitempty" name:"PlateNo"`
+
+	// 准乘人数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowNum *string `json:"AllowNum,omitnil,omitempty" name:"AllowNum"`
+
+	// 联合收割机质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CombineHarvesterQuality *string `json:"CombineHarvesterQuality,omitnil,omitempty" name:"CombineHarvesterQuality"`
+
+	// 拖拉机最小使用质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TractorMinUsageWeight *string `json:"TractorMinUsageWeight,omitnil,omitempty" name:"TractorMinUsageWeight"`
+
+	// 拖拉机最大允许载质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TractorMaxAllowLoadCapacity *string `json:"TractorMaxAllowLoadCapacity,omitnil,omitempty" name:"TractorMaxAllowLoadCapacity"`
+
+	// 外廓尺寸
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalSize *string `json:"ExternalSize,omitnil,omitempty" name:"ExternalSize"`
+
+	// 检验记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Record *string `json:"Record,omitnil,omitempty" name:"Record"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VehicleType *string `json:"VehicleType,omitnil,omitempty" name:"VehicleType"`
+
+	// 住址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+}
+
 type TextVatInvoice struct {
 	// 识别出的字段名称（关键字）。支持以下字段的识别：
 	// 发票代码、 发票号码、 打印发票代码、 打印发票号码、 开票日期、 购买方识别号、 小写金额、 价税合计(大写)、 销售方识别号、 校验码、 购买方名称、 销售方名称、 税额、 复核、 联次名称、 备注、 联次、 密码区、 开票人、 收款人、 （货物或应税劳务、服务名称）、省、 市、 服务类型、 通行费标志、 是否代开、 是否收购、 合计金额、 是否有公司印章、 发票消费类型、 车船税、 机器编号、 成品油标志、 税率、 合计税额、 （购买方地址、电话）、 （销售方地址、电话）、 单价、 金额、 销售方开户行及账号、 购买方开户行及账号、 规格型号、 发票名称、 单位、 数量、 校验码备选、 校验码后六位备选、发票号码备选、车牌号、类型、通行日期起、通行日期止、发票类型。
@@ -12697,6 +12752,9 @@ type VehicleLicenseOCRRequestParams struct {
 	// DOUBLE 为行驶证主页正面和副页正面。
 	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
+
+	// FRONT为行驶证主页正面（有红色印章的一面），BACK 为拖拉机行驶证副页正面识别
+	TractorCardSide *string `json:"TractorCardSide,omitnil,omitempty" name:"TractorCardSide"`
 }
 
 type VehicleLicenseOCRRequest struct {
@@ -12715,6 +12773,9 @@ type VehicleLicenseOCRRequest struct {
 	// DOUBLE 为行驶证主页正面和副页正面。
 	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
+
+	// FRONT为行驶证主页正面（有红色印章的一面），BACK 为拖拉机行驶证副页正面识别
+	TractorCardSide *string `json:"TractorCardSide,omitnil,omitempty" name:"TractorCardSide"`
 }
 
 func (r *VehicleLicenseOCRRequest) ToJsonString() string {
@@ -12732,6 +12793,7 @@ func (r *VehicleLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "CardSide")
+	delete(f, "TractorCardSide")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VehicleLicenseOCRRequest has unknown keys!", "")
 	}
@@ -12768,6 +12830,10 @@ type VehicleLicenseOCRResponseParams struct {
 
 	// 行驶证类型 电子行驶证：Electronic 普通行驶证：Normal
 	VehicleLicenseType *string `json:"VehicleLicenseType,omitnil,omitempty" name:"VehicleLicenseType"`
+
+	// 拖拉机行驶证副页正面的识别结果，CardSide 为 BACK。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TractorBackInfo *TextTractorVehicleBack `json:"TractorBackInfo,omitnil,omitempty" name:"TractorBackInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

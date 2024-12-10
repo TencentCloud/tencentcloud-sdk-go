@@ -7174,6 +7174,9 @@ type CreateVpcEndPointServiceRequestParams struct {
 
 	// 挂载的PAAS服务类型，CLB,CDB,CRS，不填默认挂载为CLB。
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateVpcEndPointServiceRequest struct {
@@ -7196,6 +7199,9 @@ type CreateVpcEndPointServiceRequest struct {
 
 	// 挂载的PAAS服务类型，CLB,CDB,CRS，不填默认挂载为CLB。
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpcEndPointServiceRequest) ToJsonString() string {
@@ -7216,6 +7222,7 @@ func (r *CreateVpcEndPointServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceInstanceId")
 	delete(f, "IsPassService")
 	delete(f, "ServiceType")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcEndPointServiceRequest has unknown keys!", "")
 	}
