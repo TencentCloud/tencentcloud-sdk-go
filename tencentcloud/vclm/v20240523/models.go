@@ -131,7 +131,8 @@ type ConfirmVideoTranslateJobRequestParams struct {
 	// 视频转译任务 ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 待确认文本
+	// 待确认文本。
+	// 如果文本中含有数字，支持将数字配置为SSML语言
 	TranslateResults []*TranslateResult `json:"TranslateResults,omitnil,omitempty" name:"TranslateResults"`
 }
 
@@ -141,7 +142,8 @@ type ConfirmVideoTranslateJobRequest struct {
 	// 视频转译任务 ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 待确认文本
+	// 待确认文本。
+	// 如果文本中含有数字，支持将数字配置为SSML语言
 	TranslateResults []*TranslateResult `json:"TranslateResults,omitnil,omitempty" name:"TranslateResults"`
 }
 

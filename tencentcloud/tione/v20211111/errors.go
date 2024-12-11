@@ -152,11 +152,17 @@ const (
 	// 查询计费项详情失败。
 	FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
 
+	// 查询计费项失败。
+	FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
+
 	// 查询标签服务失败。
 	FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
 
 	// 记录不存在。
 	FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+
+	// 释放SSH端口失败
+	FAILEDOPERATION_RELEASESSHPORTFAILED = "FailedOperation.ReleaseSSHPortFailed"
 
 	// 存储库有绑定的实例，请先删除绑定的实例。
 	FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
@@ -190,6 +196,21 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 创建自定义密钥失败
+	INTERNALERROR_CREATECUSTOMSECRETFAILED = "InternalError.CreateCustomSecretFailed"
+
+	// 删除自定义密钥失败
+	INTERNALERROR_DELETECUSTOMSECRETFAILED = "InternalError.DeleteCustomSecretFailed"
+
+	// 查询自定义密钥失败
+	INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+
+	// 获取用户依赖权限失败
+	INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+
+	// 修改自定义密钥失败
+	INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
 
 	// 没有权限。
 	INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
@@ -242,6 +263,9 @@ const (
 	// 名称不合法。
 	INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
 
+	// 云联网未被关联VPC
+	INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
+
 	// 请设置日志集、日志主题ID。
 	INVALIDPARAMETERVALUE_CLSCONFIGREQUIRED = "InvalidParameterValue.ClsConfigRequired"
 
@@ -293,8 +317,17 @@ const (
 	// 所选的GooseFS实例不存在
 	INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
 
+	// 镜像地址不合法，请重新填写
+	INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+
 	// 无效的过滤器。
 	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+
+	// 非法镜像
+	INVALIDPARAMETERVALUE_INVALIDIMAGENAME = "InvalidParameterValue.InvalidImageName"
+
+	// 非法资源规格
+	INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
 
 	// 生命周期脚本无效。
 	INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
@@ -344,6 +377,9 @@ const (
 	// 余额不足，创建/更新失败。
 	OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 
+	// 资源类型不支持，请检查白名单配置
+	OPERATIONDENIED_BILLINGSTATUSNOTSUPPORTWHITELISTGPUTYPE = "OperationDenied.BillingStatusNotSupportWhitelistGPUType"
+
 	// 按量计费资源售罄。
 	OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 
@@ -359,8 +395,14 @@ const (
 	// 操作不允许
 	OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 
+	// 当前资源组已开启资源按GPU比例预设，仅支持提交含GPU资源的任务
+	OPERATIONDENIED_NOTSUPPORTCUSTOMRESOURCE = "OperationDenied.NotSupportCustomResource"
+
 	// 预付费资源组余量不足。
 	OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+
+	// 无访问权限
+	OPERATIONDENIED_UNAUTHORIZEDOPERATION = "OperationDenied.UnauthorizedOperation"
 
 	// 白名单免费配额不足。
 	OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"

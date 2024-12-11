@@ -55,19 +55,19 @@ type CFSTurbo struct {
 // Predefined struct for user
 type ChatCompletionRequestParams struct {
 	// 对话的目标模型ID。
-	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
+	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
+	// 仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
@@ -75,19 +75,19 @@ type ChatCompletionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 对话的目标模型ID。
-	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
+	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
+	// 仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
@@ -116,18 +116,16 @@ func (r *ChatCompletionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChatCompletionResponseParams struct {
-	// 部署好的服务Id
+	// 对话的模型服务组ID
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 本次问答的答案。
 	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
 
 	// 会话Id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// token统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -152,7 +150,6 @@ func (r *ChatCompletionResponse) FromJsonString(s string) error {
 
 type Choice struct {
 	// 对话结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *Message `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 结束理由: stop, length, content_filter, null
@@ -247,6 +244,8 @@ type CreateDatasetRequestParams struct {
 	// ANNOTATION_TYPE_DETECTION，目标检测
 	// ANNOTATION_TYPE_SEGMENTATION，图片分割
 	// ANNOTATION_TYPE_TRACKING，目标跟踪
+	// ANNOTATION_TYPE_OCR，OCR
+	// ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
 	AnnotationType *string `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
 
 	// 标注格式:
@@ -254,6 +253,10 @@ type CreateDatasetRequestParams struct {
 	// ANNOTATION_FORMAT_PASCAL，Pascal Voc
 	// ANNOTATION_FORMAT_COCO，COCO
 	// ANNOTATION_FORMAT_FILE，文件目录结构
+	// ANNOTATION_FORMAT_TEXT_TI，文本类型TI平台格式
+	// ANNOTATION_FORMAT_TXT，文本类型TXT格式
+	// ANNOTATION_FORMAT_CSV，文本类型CSV格式
+	// ANNOTATION_FORMAT_JSON，文本类型JSON格式
 	AnnotationFormat *string `json:"AnnotationFormat,omitnil,omitempty" name:"AnnotationFormat"`
 
 	// 表头信息
@@ -262,8 +265,19 @@ type CreateDatasetRequestParams struct {
 	// 数据是否存在表头
 	IsSchemaExisted *bool `json:"IsSchemaExisted,omitnil,omitempty" name:"IsSchemaExisted"`
 
-	// 导入文件粒度，按行或者按文件
+	// 导入文件粒度
+	// TYPE_TEXT_LINE，按行
+	// TYPE_TEXT_FILE，按文件
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 数据集建模一级类别。LLM,CV,STRUCTURE,OTHER
+	DatasetScene *string `json:"DatasetScene,omitnil,omitempty" name:"DatasetScene"`
+
+	// 数据集标签。
+	SceneTags []*string `json:"SceneTags,omitnil,omitempty" name:"SceneTags"`
+
+	// 数据集CFS配置。仅支持LLM场景
+	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
 }
 
 type CreateDatasetRequest struct {
@@ -298,6 +312,8 @@ type CreateDatasetRequest struct {
 	// ANNOTATION_TYPE_DETECTION，目标检测
 	// ANNOTATION_TYPE_SEGMENTATION，图片分割
 	// ANNOTATION_TYPE_TRACKING，目标跟踪
+	// ANNOTATION_TYPE_OCR，OCR
+	// ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
 	AnnotationType *string `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
 
 	// 标注格式:
@@ -305,6 +321,10 @@ type CreateDatasetRequest struct {
 	// ANNOTATION_FORMAT_PASCAL，Pascal Voc
 	// ANNOTATION_FORMAT_COCO，COCO
 	// ANNOTATION_FORMAT_FILE，文件目录结构
+	// ANNOTATION_FORMAT_TEXT_TI，文本类型TI平台格式
+	// ANNOTATION_FORMAT_TXT，文本类型TXT格式
+	// ANNOTATION_FORMAT_CSV，文本类型CSV格式
+	// ANNOTATION_FORMAT_JSON，文本类型JSON格式
 	AnnotationFormat *string `json:"AnnotationFormat,omitnil,omitempty" name:"AnnotationFormat"`
 
 	// 表头信息
@@ -313,8 +333,19 @@ type CreateDatasetRequest struct {
 	// 数据是否存在表头
 	IsSchemaExisted *bool `json:"IsSchemaExisted,omitnil,omitempty" name:"IsSchemaExisted"`
 
-	// 导入文件粒度，按行或者按文件
+	// 导入文件粒度
+	// TYPE_TEXT_LINE，按行
+	// TYPE_TEXT_FILE，按文件
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 数据集建模一级类别。LLM,CV,STRUCTURE,OTHER
+	DatasetScene *string `json:"DatasetScene,omitnil,omitempty" name:"DatasetScene"`
+
+	// 数据集标签。
+	SceneTags []*string `json:"SceneTags,omitnil,omitempty" name:"SceneTags"`
+
+	// 数据集CFS配置。仅支持LLM场景
+	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
 }
 
 func (r *CreateDatasetRequest) ToJsonString() string {
@@ -340,6 +371,9 @@ func (r *CreateDatasetRequest) FromJsonString(s string) error {
 	delete(f, "SchemaInfos")
 	delete(f, "IsSchemaExisted")
 	delete(f, "ContentType")
+	delete(f, "DatasetScene")
+	delete(f, "SceneTags")
+	delete(f, "CFSConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasetRequest has unknown keys!", "")
 	}
@@ -495,6 +529,12 @@ type CreateModelServiceRequestParams struct {
 
 	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 }
 
 type CreateModelServiceRequest struct {
@@ -621,6 +661,12 @@ type CreateModelServiceRequest struct {
 
 	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -668,6 +714,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceEIP")
 	delete(f, "CommandBase64")
 	delete(f, "ServicePort")
+	delete(f, "DeployType")
+	delete(f, "InstancePerReplicas")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -677,7 +725,6 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateModelServiceResponseParams struct {
 	// 生成的模型服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Service *Service `json:"Service,omitnil,omitempty" name:"Service"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1275,6 +1322,11 @@ type DataConfig struct {
 	// 映射路径
 	MappingPath *string `json:"MappingPath,omitnil,omitempty" name:"MappingPath"`
 
+	// 存储用途
+	// 可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceUsage *string `json:"DataSourceUsage,omitnil,omitempty" name:"DataSourceUsage"`
+
 	// DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
@@ -1429,6 +1481,30 @@ type DatasetGroup struct {
 	// 文本数据集导入方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 数据集建模类别。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasetScene *string `json:"DatasetScene,omitnil,omitempty" name:"DatasetScene"`
+
+	// CFS配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
+
+	// 数据集标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneTags []*string `json:"SceneTags,omitnil,omitempty" name:"SceneTags"`
+
+	// 已标注数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumAnnotated *uint64 `json:"NumAnnotated,omitnil,omitempty" name:"NumAnnotated"`
+
+	// 标注规范
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnnotationSpecification *string `json:"AnnotationSpecification,omitnil,omitempty" name:"AnnotationSpecification"`
+
+	// 标注Schema是否配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnnotationSchemaConfigured *bool `json:"AnnotationSchemaConfigured,omitnil,omitempty" name:"AnnotationSchemaConfigured"`
 }
 
 type DatasetInfo struct {
@@ -1527,6 +1603,34 @@ type DatasetInfo struct {
 	// 数据集字典修改状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnnotationKeyStatus *string `json:"AnnotationKeyStatus,omitnil,omitempty" name:"AnnotationKeyStatus"`
+
+	// 内容类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 数据集建模类别。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasetScene *string `json:"DatasetScene,omitnil,omitempty" name:"DatasetScene"`
+
+	// CFS配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
+
+	// 数据集标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneTags []*string `json:"SceneTags,omitnil,omitempty" name:"SceneTags"`
+
+	// 已标注数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumAnnotated *uint64 `json:"NumAnnotated,omitnil,omitempty" name:"NumAnnotated"`
+
+	// 标注规范
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnnotationSpecification *string `json:"AnnotationSpecification,omitnil,omitempty" name:"AnnotationSpecification"`
+
+	// 标注Schema是否配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnnotationSchemaConfigured *bool `json:"AnnotationSchemaConfigured,omitnil,omitempty" name:"AnnotationSchemaConfigured"`
 }
 
 type DefaultInnerCallInfo struct {
@@ -2026,10 +2130,7 @@ type DescribeBillingResourceGroupsRequestParams struct {
 	// 空: 通用, TRAIN: 训练, INFERENCE: 推理
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
-	//                     ResourceGroupName (资源组名称列表)
-	// Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-	// 每次请求的Filters的上限为5，Filter.Values的上限为100
+	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量）Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签过滤
@@ -2058,10 +2159,7 @@ type DescribeBillingResourceGroupsRequest struct {
 	// 空: 通用, TRAIN: 训练, INFERENCE: 推理
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
-	//                     ResourceGroupName (资源组名称列表)
-	// Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-	// 每次请求的Filters的上限为5，Filter.Values的上限为100
+	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量）Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签过滤
@@ -2202,6 +2300,134 @@ func (r *DescribeBillingResourceInstanceRunningJobsResponse) FromJsonString(s st
 }
 
 // Predefined struct for user
+type DescribeBillingSpecsPriceRequestParams struct {
+	// 询价参数，支持批量询价
+	SpecsParam []*SpecUnit `json:"SpecsParam,omitnil,omitempty" name:"SpecsParam"`
+}
+
+type DescribeBillingSpecsPriceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 询价参数，支持批量询价
+	SpecsParam []*SpecUnit `json:"SpecsParam,omitnil,omitempty" name:"SpecsParam"`
+}
+
+func (r *DescribeBillingSpecsPriceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingSpecsPriceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpecsParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingSpecsPriceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingSpecsPriceResponseParams struct {
+	// 计费项价格，支持批量返回
+	SpecsPrice []*SpecPrice `json:"SpecsPrice,omitnil,omitempty" name:"SpecsPrice"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBillingSpecsPriceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingSpecsPriceResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingSpecsPriceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingSpecsPriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingSpecsRequestParams struct {
+	// 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 资源类型：["", "CALC", "CPU", "GPU", "GPU-SW"]
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+type DescribeBillingSpecsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 资源类型：["", "CALC", "CPU", "GPU", "GPU-SW"]
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeBillingSpecsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingSpecsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChargeType")
+	delete(f, "TaskType")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingSpecsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingSpecsResponseParams struct {
+	// 计费项列表
+	Specs []*Spec `json:"Specs,omitnil,omitempty" name:"Specs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBillingSpecsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingSpecsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingSpecsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingSpecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBuildInImagesRequestParams struct {
 	// 镜像过滤器
 	ImageFilters []*ImageFIlter `json:"ImageFilters,omitnil,omitempty" name:"ImageFilters"`
@@ -2282,6 +2508,12 @@ type DescribeDatasetsRequestParams struct {
 
 	// 返回数据个数，默认20，最大支持200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+	CFSChecking *bool `json:"CFSChecking,omitnil,omitempty" name:"CFSChecking"`
+
+	// 是否返回CFS详情。
+	CFSDetail *bool `json:"CFSDetail,omitnil,omitempty" name:"CFSDetail"`
 }
 
 type DescribeDatasetsRequest struct {
@@ -2309,6 +2541,12 @@ type DescribeDatasetsRequest struct {
 
 	// 返回数据个数，默认20，最大支持200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+	CFSChecking *bool `json:"CFSChecking,omitnil,omitempty" name:"CFSChecking"`
+
+	// 是否返回CFS详情。
+	CFSDetail *bool `json:"CFSDetail,omitnil,omitempty" name:"CFSDetail"`
 }
 
 func (r *DescribeDatasetsRequest) ToJsonString() string {
@@ -2330,6 +2568,8 @@ func (r *DescribeDatasetsRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "CFSChecking")
+	delete(f, "CFSDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatasetsRequest has unknown keys!", "")
 	}
@@ -2349,6 +2589,9 @@ type DescribeDatasetsResponseParams struct {
 	// 数据集ID总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasetIdNums *uint64 `json:"DatasetIdNums,omitnil,omitempty" name:"DatasetIdNums"`
+
+	// 若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。
+	CFSNotReady *bool `json:"CFSNotReady,omitnil,omitempty" name:"CFSNotReady"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3139,11 +3382,9 @@ func (r *DescribeNotebooksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNotebooksResponseParams struct {
 	// 详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotebookSet []*NotebookSetItem `json:"NotebookSet,omitnil,omitempty" name:"NotebookSet"`
 
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3703,24 +3944,11 @@ type ImageInfo struct {
 	// 是否支持数据构建
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataPipeline *bool `json:"SupportDataPipeline,omitnil,omitempty" name:"SupportDataPipeline"`
-
-	// 镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageSecret *ImageSecret `json:"ImageSecret,omitnil,omitempty" name:"ImageSecret"`
 }
 
-type ImageSecret struct {
-	// 用于加密密码的KMS公钥ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
-
-	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
-
-	// 密码,base64编码； 当keyId不为空时，密码是加密后的
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+type ImageUrl struct {
+	// 图片url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type InferCodeInfo struct {
@@ -3911,12 +4139,13 @@ type LogConfig struct {
 
 type Message struct {
 	// 角色名。支持三个角色：system、user、assistant，其中system仅开头可出现一次，也可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 对话输入内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 多模态对话输入内容，Content与MultiModalContents两者只需要填写其中一个即可，当对话中包含多模态对话信息时，则填写本参数
+	MultiModalContents []*MultiModalContent `json:"MultiModalContents,omitnil,omitempty" name:"MultiModalContents"`
 }
 
 type MetricData struct {
@@ -4064,6 +4293,18 @@ type ModelAccelerateTask struct {
 	// 加速引擎对应的框架版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
+
+	// 模型版本ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelVersionId *string `json:"ModelVersionId,omitnil,omitempty" name:"ModelVersionId"`
+
+	// 资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type ModelAccelerateVersion struct {
@@ -4163,6 +4404,9 @@ type ModelInfo struct {
 	// 是否为私有化大模型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPrivateModel *bool `json:"IsPrivateModel,omitnil,omitempty" name:"IsPrivateModel"`
+
+	// 模型的类别 多模态MultiModal, 文本大模型 LLM
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 }
 
 type ModelInputInfo struct {
@@ -4322,6 +4566,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -4424,6 +4671,9 @@ type ModifyModelServiceRequest struct {
 
 	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -4463,6 +4713,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceEIP")
 	delete(f, "CommandBase64")
 	delete(f, "ServicePort")
+	delete(f, "InstancePerReplicas")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -4493,6 +4744,17 @@ func (r *ModifyModelServiceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyModelServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MultiModalContent struct {
+	// 对话类型，text表示文本对话内容，image_url表示图片对话内容
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文本对话内容，当Type为text时需要填写该值
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 图片对话内容，当Type为image_url时需要填写该值
+	ImageUrl *ImageUrl `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type NotebookDetail struct {
@@ -4643,6 +4905,18 @@ type NotebookDetail struct {
 	// GooseFS存储配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
+
+	// 子用户ID
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 调度节点ID
+	ResourceGroupInstanceId *string `json:"ResourceGroupInstanceId,omitnil,omitempty" name:"ResourceGroupInstanceId"`
+
+	// 子用户名称
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// 任务实例创建时间
+	JobCreateTime *string `json:"JobCreateTime,omitnil,omitempty" name:"JobCreateTime"`
 }
 
 type NotebookSetItem struct {
@@ -4749,6 +5023,9 @@ type NotebookSetItem struct {
 	// GooseFS存储配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
+
+	// 子用户名称
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 }
 
 type Option struct {
@@ -5100,6 +5377,10 @@ type SSHConfig struct {
 	// 登录命令
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginCommand *string `json:"LoginCommand,omitnil,omitempty" name:"LoginCommand"`
+
+	// 登录地址是否改变
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAddressChanged *bool `json:"IsAddressChanged,omitnil,omitempty" name:"IsAddressChanged"`
 }
 
 type ScheduledAction struct {
@@ -5116,108 +5397,6 @@ type SchemaInfo struct {
 
 	// 数据类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-// Predefined struct for user
-type SendChatMessageRequestParams struct {
-	// 会话id，标识一组对话的唯一id，id变更则重置会话
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 问题描述
-	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
-
-	// 会话模型版本。
-	// 金融大模型：填写sn-finllm-13b-chat-v1。
-	// 默认为sn-finllm-13b-chat-v1，即金融大模型。
-	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
-
-	// 使用模式。
-	// 通用问答：填写General。
-	// 搜索增强问答：填写WithSearchPlugin。
-	// 默认为General，即通用问答。
-	// 当前可体验模型仅支持General。
-	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
-
-	// 搜索来源。仅当Mode为WithSearchPlugin时生效。
-	// 预置文稿库：填写Preset。自定义：填写Custom。
-	SearchSource *string `json:"SearchSource,omitnil,omitempty" name:"SearchSource"`
-}
-
-type SendChatMessageRequest struct {
-	*tchttp.BaseRequest
-	
-	// 会话id，标识一组对话的唯一id，id变更则重置会话
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 问题描述
-	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
-
-	// 会话模型版本。
-	// 金融大模型：填写sn-finllm-13b-chat-v1。
-	// 默认为sn-finllm-13b-chat-v1，即金融大模型。
-	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
-
-	// 使用模式。
-	// 通用问答：填写General。
-	// 搜索增强问答：填写WithSearchPlugin。
-	// 默认为General，即通用问答。
-	// 当前可体验模型仅支持General。
-	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
-
-	// 搜索来源。仅当Mode为WithSearchPlugin时生效。
-	// 预置文稿库：填写Preset。自定义：填写Custom。
-	SearchSource *string `json:"SearchSource,omitnil,omitempty" name:"SearchSource"`
-}
-
-func (r *SendChatMessageRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SendChatMessageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SessionId")
-	delete(f, "Question")
-	delete(f, "ModelVersion")
-	delete(f, "Mode")
-	delete(f, "SearchSource")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendChatMessageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type SendChatMessageResponseParams struct {
-	// 答案
-	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
-
-	// 会话id,返回请求的会话id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type SendChatMessageResponse struct {
-	*tchttp.BaseResponse
-	Response *SendChatMessageResponseParams `json:"Response"`
-}
-
-func (r *SendChatMessageResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SendChatMessageResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type Service struct {
@@ -5351,6 +5530,18 @@ type Service struct {
 	// 资源组类别 托管 NORMAL，纳管 SW
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupSWType *string `json:"ResourceGroupSWType,omitnil,omitempty" name:"ResourceGroupSWType"`
+
+	// 服务的归档状态  Waiting 等待归档中，Archived 已归档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchiveStatus *string `json:"ArchiveStatus,omitnil,omitempty" name:"ArchiveStatus"`
+
+	// 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePerReplicas *string `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 }
 
 type ServiceCallInfo struct {
@@ -5594,6 +5785,9 @@ type ServiceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitnil,omitempty" name:"ModelHotUpdateEnable"`
 
+	// 服务的规格别名
+	InstanceAlias *string `json:"InstanceAlias,omitnil,omitempty" name:"InstanceAlias"`
+
 	// 实例数量调节方式,默认为手动
 	// 支持：自动 - "AUTO", 手动 - "MANUAL"
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5668,6 +5862,61 @@ type ServiceLimit struct {
 
 	// 每个服务实例的最大并发
 	InstanceReqLimit *int64 `json:"InstanceReqLimit,omitnil,omitempty" name:"InstanceReqLimit"`
+}
+
+type Spec struct {
+	// 计费项标签
+	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
+
+	// 计费项名称
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 计费项显示名称
+	SpecAlias *string `json:"SpecAlias,omitnil,omitempty" name:"SpecAlias"`
+
+	// 是否售罄
+	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
+
+	// 当前资源售罄时，可用的区域有哪些
+	AvailableRegion []*string `json:"AvailableRegion,omitnil,omitempty" name:"AvailableRegion"`
+
+	// 当前计费项支持的特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecFeatures []*string `json:"SpecFeatures,omitnil,omitempty" name:"SpecFeatures"`
+
+	// 计费项类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecType *string `json:"SpecType,omitnil,omitempty" name:"SpecType"`
+
+	// GPU类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
+
+	// 计费项CategoryId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+}
+
+type SpecPrice struct {
+	// 计费项名称
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 原价，单位：分。最大值42亿，超过则返回0
+	TotalCost *uint64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
+
+	// 优惠后的价格，单位：分
+	RealTotalCost *uint64 `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
+
+	// 计费项数量
+	SpecCount *uint64 `json:"SpecCount,omitnil,omitempty" name:"SpecCount"`
+}
+
+type SpecUnit struct {
+	// 计费项名称
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 计费项数量,建议不超过100万
+	SpecCount *uint64 `json:"SpecCount,omitnil,omitempty" name:"SpecCount"`
 }
 
 type StartCmdInfo struct {
@@ -6033,6 +6282,10 @@ type TrainingTaskDetail struct {
 	// 子账号uin
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
+	// 创建者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
 	// 地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
@@ -6253,15 +6506,12 @@ type TrainingTaskSetItem struct {
 
 type Usage struct {
 	// 生成的token数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompletionTokens *int64 `json:"CompletionTokens,omitnil,omitempty" name:"CompletionTokens"`
 
 	// 输入的token数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
 
 	// 总共token数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 

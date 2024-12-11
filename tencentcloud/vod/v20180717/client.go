@@ -4327,6 +4327,8 @@ func NewDescribeCDNStatDetailsResponse() (response *DescribeCDNStatDetailsRespon
 //
 // * 中国境内的数据支持查询指定地区、运营商的统计数据。
 //
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -4352,6 +4354,8 @@ func (c *Client) DescribeCDNStatDetails(request *DescribeCDNStatDetailsRequest) 
 // * 可以查询不同服务区域的数据。
 //
 // * 中国境内的数据支持查询指定地区、运营商的统计数据。
+//
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4406,11 +4410,13 @@ func NewDescribeCDNUsageDataResponse() (response *DescribeCDNUsageDataResponse) 
 //
 //    1. 可以查询最近365天内的 CDN 用量数据。
 //
-//    2.  查询时间跨度不超过90天。
+//    2. 查询时间跨度不超过90天。
 //
 //    3. 可以指定用量数据的时间粒度，支持5分钟、1小时、1天的时间粒度。
 //
-//    4.  流量为查询时间粒度内的总流量，带宽为查询时间粒度内的峰值带宽。
+//    4. 流量为查询时间粒度内的总流量，带宽为查询时间粒度内的峰值带宽。
+//
+//    5. 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4434,11 +4440,13 @@ func (c *Client) DescribeCDNUsageData(request *DescribeCDNUsageDataRequest) (res
 //
 //    1. 可以查询最近365天内的 CDN 用量数据。
 //
-//    2.  查询时间跨度不超过90天。
+//    2. 查询时间跨度不超过90天。
 //
 //    3. 可以指定用量数据的时间粒度，支持5分钟、1小时、1天的时间粒度。
 //
-//    4.  流量为查询时间粒度内的总流量，带宽为查询时间粒度内的峰值带宽。
+//    4. 流量为查询时间粒度内的总流量，带宽为查询时间粒度内的峰值带宽。
+//
+//    5. 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4942,6 +4950,8 @@ func NewDescribeDailyMediaPlayStatResponse() (response *DescribeDailyMediaPlaySt
 //
 // * 结束日期和起始日期的时间跨度最大为90天。
 //
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_ENDDATE = "InvalidParameterValue.EndDate"
@@ -4957,6 +4967,8 @@ func (c *Client) DescribeDailyMediaPlayStat(request *DescribeDailyMediaPlayStatR
 // * 可以查询最近一年的播放统计数据。
 //
 // * 结束日期和起始日期的时间跨度最大为90天。
+//
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5011,6 +5023,8 @@ func NewDescribeDailyMostPlayedStatResponse() (response *DescribeDailyMostPlayed
 //
 //     2. 其它文件（如 MP4 文件）：播放请求带有 range 参数且 range 的 start 参数不等于0时不统计播放次数，其它情况统计播放次数。
 //
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
@@ -5033,6 +5047,8 @@ func (c *Client) DescribeDailyMostPlayedStat(request *DescribeDailyMostPlayedSta
 //     1. HLS 文件：访问 M3U8 文件时统计播放次数；访问 TS 文件不统计播放次数。
 //
 //     2. 其它文件（如 MP4 文件）：播放请求带有 range 参数且 range 的 start 参数不等于0时不统计播放次数，其它情况统计播放次数。
+//
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5092,6 +5108,8 @@ func NewDescribeDailyPlayStatFileListResponse() (response *DescribeDailyPlayStat
 //
 // * 播放设备的统计：播放请求带了 UserAgent 参数，并且 UserAgent 包含 Android 或者 iPhone 等标识，会统计为移动端播放次数，否则统计为 PC 端播放次数。
 //
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -5117,6 +5135,8 @@ func (c *Client) DescribeDailyPlayStatFileList(request *DescribeDailyPlayStatFil
 //     2. 其它文件（如 MP4 文件）：播放请求带有 range 参数且 range 的 start 参数不等于0时不统计播放次数，其它情况统计播放次数。
 //
 // * 播放设备的统计：播放请求带了 UserAgent 参数，并且 UserAgent 包含 Android 或者 iPhone 等标识，会统计为移动端播放次数，否则统计为 PC 端播放次数。
+//
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6089,6 +6109,8 @@ func NewDescribeMediaPlayStatDetailsResponse() (response *DescribeMediaPlayStatD
 //
 // * 时间粒度为天，结束时间和起始时间的跨度最大为90天。
 //
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -6108,6 +6130,8 @@ func (c *Client) DescribeMediaPlayStatDetails(request *DescribeMediaPlayStatDeta
 // * 时间粒度为小时，结束时间和起始时间的跨度最大为7天。
 //
 // * 时间粒度为天，结束时间和起始时间的跨度最大为90天。
+//
+// * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -332,12 +332,18 @@ func NewCreateNotebookResponse() (response *CreateNotebookResponse) {
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 //  FAILEDOPERATION_UNAUTHORIZEDOPERATION = "FailedOperation.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATECUSTOMSECRETFAILED = "InternalError.CreateCustomSecretFailed"
+//  INTERNALERROR_DELETECUSTOMSECRETFAILED = "InternalError.DeleteCustomSecretFailed"
+//  INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+//  INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+//  INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDMULTILOCALDISK = "InvalidParameter.UnsupportedMultiLocalDisk"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
 //  INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
 //  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
 //  INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
@@ -346,6 +352,9 @@ func NewCreateNotebookResponse() (response *CreateNotebookResponse) {
 //  INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
 //  INVALIDPARAMETERVALUE_GOOSEFSCONFIGCANNOTEMPTY = "InvalidParameterValue.GooseFSConfigCannotEmpty"
 //  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGENAME = "InvalidParameterValue.InvalidImageName"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
 //  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHSWRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithSWResourceGroup"
@@ -357,12 +366,15 @@ func NewCreateNotebookResponse() (response *CreateNotebookResponse) {
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDGOOSEFSCONFIG = "InvalidParameterValue.UnsupportedGooseFSConfig"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSNOTSUPPORTWHITELISTGPUTYPE = "OperationDenied.BillingStatusNotSupportWhitelistGPUType"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 //  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_NOTSUPPORTCUSTOMRESOURCE = "OperationDenied.NotSupportCustomResource"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_UNAUTHORIZEDOPERATION = "OperationDenied.UnauthorizedOperation"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCEINSUFFICIENT_SSHPORTISCONSUMEDUP = "ResourceInsufficient.SSHPortIsConsumedUp"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -386,12 +398,18 @@ func (c *Client) CreateNotebook(request *CreateNotebookRequest) (response *Creat
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 //  FAILEDOPERATION_UNAUTHORIZEDOPERATION = "FailedOperation.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATECUSTOMSECRETFAILED = "InternalError.CreateCustomSecretFailed"
+//  INTERNALERROR_DELETECUSTOMSECRETFAILED = "InternalError.DeleteCustomSecretFailed"
+//  INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+//  INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+//  INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDMULTILOCALDISK = "InvalidParameter.UnsupportedMultiLocalDisk"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
 //  INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
 //  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
 //  INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
@@ -400,6 +418,9 @@ func (c *Client) CreateNotebook(request *CreateNotebookRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
 //  INVALIDPARAMETERVALUE_GOOSEFSCONFIGCANNOTEMPTY = "InvalidParameterValue.GooseFSConfigCannotEmpty"
 //  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGENAME = "InvalidParameterValue.InvalidImageName"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
 //  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHSWRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithSWResourceGroup"
@@ -411,12 +432,15 @@ func (c *Client) CreateNotebook(request *CreateNotebookRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDGOOSEFSCONFIG = "InvalidParameterValue.UnsupportedGooseFSConfig"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSNOTSUPPORTWHITELISTGPUTYPE = "OperationDenied.BillingStatusNotSupportWhitelistGPUType"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 //  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_NOTSUPPORTCUSTOMRESOURCE = "OperationDenied.NotSupportCustomResource"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_UNAUTHORIZEDOPERATION = "OperationDenied.UnauthorizedOperation"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCEINSUFFICIENT_SSHPORTISCONSUMEDUP = "ResourceInsufficient.SSHPortIsConsumedUp"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -901,6 +925,7 @@ func NewDeleteNotebookResponse() (response *DeleteNotebookResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_RELEASESSHPORTFAILED = "FailedOperation.ReleaseSSHPortFailed"
 //  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
 //  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
 //  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
@@ -923,6 +948,7 @@ func (c *Client) DeleteNotebook(request *DeleteNotebookRequest) (response *Delet
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_RELEASESSHPORTFAILED = "FailedOperation.ReleaseSSHPortFailed"
 //  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
 //  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
 //  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
@@ -1302,6 +1328,122 @@ func (c *Client) DescribeBillingResourceInstanceRunningJobsWithContext(ctx conte
     return
 }
 
+func NewDescribeBillingSpecsRequest() (request *DescribeBillingSpecsRequest) {
+    request = &DescribeBillingSpecsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingSpecs")
+    
+    
+    return
+}
+
+func NewDescribeBillingSpecsResponse() (response *DescribeBillingSpecsResponse) {
+    response = &DescribeBillingSpecsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillingSpecs
+// 本接口(DescribeBillingSpecs) 提供查询计费项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingSpecs(request *DescribeBillingSpecsRequest) (response *DescribeBillingSpecsResponse, err error) {
+    return c.DescribeBillingSpecsWithContext(context.Background(), request)
+}
+
+// DescribeBillingSpecs
+// 本接口(DescribeBillingSpecs) 提供查询计费项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingSpecsWithContext(ctx context.Context, request *DescribeBillingSpecsRequest) (response *DescribeBillingSpecsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingSpecsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingSpecs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingSpecsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillingSpecsPriceRequest() (request *DescribeBillingSpecsPriceRequest) {
+    request = &DescribeBillingSpecsPriceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingSpecsPrice")
+    
+    
+    return
+}
+
+func NewDescribeBillingSpecsPriceResponse() (response *DescribeBillingSpecsPriceResponse) {
+    response = &DescribeBillingSpecsPriceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillingSpecsPrice
+// 本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBillingSpecsPrice(request *DescribeBillingSpecsPriceRequest) (response *DescribeBillingSpecsPriceResponse, err error) {
+    return c.DescribeBillingSpecsPriceWithContext(context.Background(), request)
+}
+
+// DescribeBillingSpecsPrice
+// 本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBillingSpecsPriceWithContext(ctx context.Context, request *DescribeBillingSpecsPriceRequest) (response *DescribeBillingSpecsPriceResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingSpecsPriceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingSpecsPrice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingSpecsPriceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBuildInImagesRequest() (request *DescribeBuildInImagesRequest) {
     request = &DescribeBuildInImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1388,6 +1530,7 @@ func NewDescribeDatasetsResponse() (response *DescribeDatasetsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
 //  FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
 //  FAILEDOPERATION_DCCREATEASYNCTASKERROR = "FailedOperation.DCCreateAsyncTaskError"
 //  FAILEDOPERATION_DCCREATEUSERCOSCLIENTERR = "FailedOperation.DCCreateUserCosClientErr"
@@ -1422,6 +1565,7 @@ func (c *Client) DescribeDatasets(request *DescribeDatasetsRequest) (response *D
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
 //  FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
 //  FAILEDOPERATION_DCCREATEASYNCTASKERROR = "FailedOperation.DCCreateAsyncTaskError"
 //  FAILEDOPERATION_DCCREATEUSERCOSCLIENTERR = "FailedOperation.DCCreateUserCosClientErr"
@@ -2775,61 +2919,6 @@ func (c *Client) PushTrainingMetricsWithContext(ctx context.Context, request *Pu
     return
 }
 
-func NewSendChatMessageRequest() (request *SendChatMessageRequest) {
-    request = &SendChatMessageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tione", APIVersion, "SendChatMessage")
-    
-    
-    return
-}
-
-func NewSendChatMessageResponse() (response *SendChatMessageResponse) {
-    response = &SendChatMessageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// SendChatMessage
-// 这是一个供您体验大模型聊天的接口。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
-func (c *Client) SendChatMessage(request *SendChatMessageRequest) (response *SendChatMessageResponse, err error) {
-    return c.SendChatMessageWithContext(context.Background(), request)
-}
-
-// SendChatMessage
-// 这是一个供您体验大模型聊天的接口。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
-func (c *Client) SendChatMessageWithContext(ctx context.Context, request *SendChatMessageRequest) (response *SendChatMessageResponse, err error) {
-    if request == nil {
-        request = NewSendChatMessageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("SendChatMessage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewSendChatMessageResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewStartNotebookRequest() (request *StartNotebookRequest) {
     request = &StartNotebookRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2859,14 +2948,20 @@ func NewStartNotebookResponse() (response *StartNotebookResponse) {
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 //  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+//  INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+//  INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDMULTILOCALDISK = "InvalidParameter.UnsupportedMultiLocalDisk"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
 //  INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
 //  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHSWRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithSWResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
@@ -2874,10 +2969,12 @@ func NewStartNotebookResponse() (response *StartNotebookResponse) {
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSNOTSUPPORTWHITELISTGPUTYPE = "OperationDenied.BillingStatusNotSupportWhitelistGPUType"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 //  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_NOTSUPPORTCUSTOMRESOURCE = "OperationDenied.NotSupportCustomResource"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCEINSUFFICIENT_SSHPORTISCONSUMEDUP = "ResourceInsufficient.SSHPortIsConsumedUp"
@@ -2900,14 +2997,20 @@ func (c *Client) StartNotebook(request *StartNotebookRequest) (response *StartNo
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 //  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+//  INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+//  INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDMULTILOCALDISK = "InvalidParameter.UnsupportedMultiLocalDisk"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
 //  INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
 //  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHSWRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithSWResourceGroup"
 //  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
@@ -2915,10 +3018,12 @@ func (c *Client) StartNotebook(request *StartNotebookRequest) (response *StartNo
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSNOTSUPPORTWHITELISTGPUTYPE = "OperationDenied.BillingStatusNotSupportWhitelistGPUType"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 //  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_NOTSUPPORTCUSTOMRESOURCE = "OperationDenied.NotSupportCustomResource"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCEINSUFFICIENT_SSHPORTISCONSUMEDUP = "ResourceInsufficient.SSHPortIsConsumedUp"
