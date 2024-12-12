@@ -313,7 +313,9 @@ type CreateJWKSAuthenticatorRequestParams struct {
 	// 说明
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+	// 设备连接时传递jwt的key；
+	// username-使用用户名字段传递；
+	// password-使用密码字段传递
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
@@ -338,7 +340,9 @@ type CreateJWKSAuthenticatorRequest struct {
 	// 说明
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+	// 设备连接时传递jwt的key；
+	// username-使用用户名字段传递；
+	// password-使用密码字段传递
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
@@ -625,7 +629,10 @@ type DeleteAuthenticatorRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 认证器类型
+	// 认证器类型:
+	// JWT：JWT认证器
+	// JWKS：JWKS认证器
+	// BYOC：一端一证认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -635,7 +642,10 @@ type DeleteAuthenticatorRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 认证器类型
+	// 认证器类型:
+	// JWT：JWT认证器
+	// JWKS：JWKS认证器
+	// BYOC：一端一证认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -869,7 +879,7 @@ type DescribeAuthenticatorRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 认证器类型
+	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 HTTP:HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -879,7 +889,7 @@ type DescribeAuthenticatorRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 认证器类型
+	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 HTTP:HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -1044,16 +1054,16 @@ type DescribeDeviceCertificateResponseParams struct {
 	// 证书状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 证书序列号
+	// Ca证书序列号
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 设备证书sn
+	// 设备证书序列号
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 
-	// 证书内容
+	// 设备证书内容
 	DeviceCertificate *string `json:"DeviceCertificate,omitnil,omitempty" name:"DeviceCertificate"`
 
-	// 设备证书cn
+	// 设备证书common name
 	DeviceCertificateCn *string `json:"DeviceCertificateCn,omitnil,omitempty" name:"DeviceCertificateCn"`
 
 	// 证书格式
@@ -1306,11 +1316,9 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceResponseParams struct {
-	// 实例类型，
-	// EXPERIMENT 体验版
+	// 实例类型
 	// BASIC 基础版
 	// PRO  专业版
-	// PLATINUM 铂金版
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例ID
@@ -1349,7 +1357,9 @@ type DescribeInstanceResponseParams struct {
 	// 客户端数量上限
 	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil,omitempty" name:"ClientNumLimit"`
 
-	// 客户端证书注册方式：JITP，API
+	// 客户端证书注册方式：
+	// JITP：自动注册
+	// API：通过API手动注册
 	DeviceCertificateProvisionType *string `json:"DeviceCertificateProvisionType,omitnil,omitempty" name:"DeviceCertificateProvisionType"`
 
 	// 自动注册设备证书时是否自动激活
@@ -1367,9 +1377,7 @@ type DescribeInstanceResponseParams struct {
 	// 预销毁时间
 	DestroyTime *int64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
 
-	//     TLS,单向认证
-	//     mTLS,双向认证
-	//     BYOC;一机一证
+	// TLS,单向认证    mTLS,双向认证    BYOC;一机一证
 	X509Mode *string `json:"X509Mode,omitnil,omitempty" name:"X509Mode"`
 
 	// 最大Ca配额

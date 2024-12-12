@@ -6741,6 +6741,9 @@ func (r *CreateServiceTemplateResponse) FromJsonString(s string) error {
 type CreateSnapshotPoliciesRequestParams struct {
 	// 快照策略详情。
 	SnapshotPolicies []*SnapshotPolicy `json:"SnapshotPolicies,omitnil,omitempty" name:"SnapshotPolicies"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateSnapshotPoliciesRequest struct {
@@ -6748,6 +6751,9 @@ type CreateSnapshotPoliciesRequest struct {
 	
 	// 快照策略详情。
 	SnapshotPolicies []*SnapshotPolicy `json:"SnapshotPolicies,omitnil,omitempty" name:"SnapshotPolicies"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateSnapshotPoliciesRequest) ToJsonString() string {
@@ -6763,6 +6769,7 @@ func (r *CreateSnapshotPoliciesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SnapshotPolicies")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotPoliciesRequest has unknown keys!", "")
 	}

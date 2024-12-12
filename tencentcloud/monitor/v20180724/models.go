@@ -1321,6 +1321,189 @@ func (r *CreateAlarmPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAlarmShieldRequestParams struct {
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 屏蔽对象
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 屏蔽指标 为空则为全部指标
+	ShieldMetric []*string `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
+
+	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01 缺省:0
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05 缺省:0
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// 需要屏蔽的策略ID
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 需要屏蔽的告警等级，取值范围Warn,Remind,Serious
+	ShieldAlarmLevel []*string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 屏蔽类型，为OBJNAME是老版本实例名屏蔽，为POLICY是新版本维度匹配
+	VersionTag *string `json:"VersionTag,omitnil,omitempty" name:"VersionTag"`
+
+	// 屏蔽规则的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	//  时区，东八区+8，西八区减8，以此类推
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 屏蔽事件 为空则为全部指标
+	ShieldEvent []*string `json:"ShieldEvent,omitnil,omitempty" name:"ShieldEvent"`
+
+	// 是否对指标屏蔽 1=是 0=否
+	ShieldMetricFlag *int64 `json:"ShieldMetricFlag,omitnil,omitempty" name:"ShieldMetricFlag"`
+
+	// 是否对事件屏蔽 1=是 0=否
+	ShieldEventFlag *int64 `json:"ShieldEventFlag,omitnil,omitempty" name:"ShieldEventFlag"`
+}
+
+type CreateAlarmShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 屏蔽对象
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 屏蔽指标 为空则为全部指标
+	ShieldMetric []*string `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
+
+	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01 缺省:0
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05 缺省:0
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// 需要屏蔽的策略ID
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 需要屏蔽的告警等级，取值范围Warn,Remind,Serious
+	ShieldAlarmLevel []*string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 屏蔽类型，为OBJNAME是老版本实例名屏蔽，为POLICY是新版本维度匹配
+	VersionTag *string `json:"VersionTag,omitnil,omitempty" name:"VersionTag"`
+
+	// 屏蔽规则的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	//  时区，东八区+8，西八区减8，以此类推
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 屏蔽事件 为空则为全部指标
+	ShieldEvent []*string `json:"ShieldEvent,omitnil,omitempty" name:"ShieldEvent"`
+
+	// 是否对指标屏蔽 1=是 0=否
+	ShieldMetricFlag *int64 `json:"ShieldMetricFlag,omitnil,omitempty" name:"ShieldMetricFlag"`
+
+	// 是否对事件屏蔽 1=是 0=否
+	ShieldEventFlag *int64 `json:"ShieldEventFlag,omitnil,omitempty" name:"ShieldEventFlag"`
+}
+
+func (r *CreateAlarmShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlarmShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Name")
+	delete(f, "MonitorType")
+	delete(f, "NameSpace")
+	delete(f, "ShieldTimeType")
+	delete(f, "ShieldObject")
+	delete(f, "ShieldMetric")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "LoopStartDate")
+	delete(f, "LoopEndDate")
+	delete(f, "ShieldPolicyId")
+	delete(f, "ShieldAlarmLevel")
+	delete(f, "VersionTag")
+	delete(f, "Description")
+	delete(f, "TimeZone")
+	delete(f, "ShieldEvent")
+	delete(f, "ShieldMetricFlag")
+	delete(f, "ShieldEventFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlarmShieldResponseParams struct {
+	// 屏蔽规则的Id
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAlarmShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlarmShieldResponseParams `json:"Response"`
+}
+
+func (r *CreateAlarmShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlarmShieldResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAlertRuleRequestParams struct {
 	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
