@@ -24538,6 +24538,10 @@ type Pair struct {
 
 	// 值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	//  唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type PairDto struct {

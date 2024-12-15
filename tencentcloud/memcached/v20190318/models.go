@@ -170,7 +170,6 @@ type InstanceListInfo struct {
 	CmemId *int64 `json:"CmemId,omitnil,omitempty" name:"CmemId"`
 
 	// 实例关联的标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 实例ID
@@ -227,10 +226,8 @@ type InstanceListInfo struct {
 
 type TagInfo struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }

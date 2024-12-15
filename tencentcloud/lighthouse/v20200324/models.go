@@ -5712,6 +5712,9 @@ type FirewallTemplateApplyRecord struct {
 	TemplateRuleSet []*FirewallTemplateRule `json:"TemplateRuleSet,omitnil,omitempty" name:"TemplateRuleSet"`
 
 	// 应用模板的执行状态。
+	// 
+	// - SUCCESS：成功
+	// - FAILED：失败
 	ApplyState *string `json:"ApplyState,omitnil,omitempty" name:"ApplyState"`
 
 	// 应用成功的实例数量。
@@ -5732,6 +5735,9 @@ type FirewallTemplateApplyRecordDetail struct {
 	Instance *InstanceIdentifier `json:"Instance,omitnil,omitempty" name:"Instance"`
 
 	// 防火墙模板应用状态。
+	// 
+	// - SUCCESS：成功
+	// - FAILED：失败
 	ApplyState *string `json:"ApplyState,omitnil,omitempty" name:"ApplyState"`
 
 	// 防火墙模板应用错误信息。

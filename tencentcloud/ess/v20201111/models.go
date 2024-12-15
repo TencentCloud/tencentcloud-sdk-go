@@ -13834,8 +13834,10 @@ type TemplateInfo struct {
 	// 模板创建人用户ID
 	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 
-	// 模板的H5预览链接,有效期5分钟。
-	// 可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+	// 模板的 H5 预览链接，有效期为 5 分钟。
+	// 您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
+	// 
+	// 注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 

@@ -695,6 +695,13 @@ type AllocateAddressesRequestParams struct {
 	// CDC唯一ID
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
+	// 是否使用独占资源池，默认值：True
+	// - True：表示使用独占资源池
+	// - False：表示使用共享资源池
+	// 
+	// 说明：如需使用独占资源池，请 提交工单(https://console.cloud.tencent.com/workorder/category) 咨询，具体费用请咨询商务经理。
+	IsDedicatedAddressPool *bool `json:"IsDedicatedAddressPool,omitnil,omitempty" name:"IsDedicatedAddressPool"`
+
 	// 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
@@ -767,6 +774,13 @@ type AllocateAddressesRequest struct {
 	// CDC唯一ID
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
+	// 是否使用独占资源池，默认值：True
+	// - True：表示使用独占资源池
+	// - False：表示使用共享资源池
+	// 
+	// 说明：如需使用独占资源池，请 提交工单(https://console.cloud.tencent.com/workorder/category) 咨询，具体费用请咨询商务经理。
+	IsDedicatedAddressPool *bool `json:"IsDedicatedAddressPool,omitnil,omitempty" name:"IsDedicatedAddressPool"`
+
 	// 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
@@ -802,6 +816,7 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "BandwidthPackageId")
 	delete(f, "AddressName")
 	delete(f, "DedicatedClusterId")
+	delete(f, "IsDedicatedAddressPool")
 	delete(f, "Egress")
 	delete(f, "AntiDDoSPackageId")
 	delete(f, "ClientToken")

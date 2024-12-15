@@ -6652,16 +6652,16 @@ func (r *CreateBatchInitOrganizationUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBatchInitOrganizationUrlResponseParams struct {
-	// 小程序路径
+	// 小程序路径，有效时间为7天
 	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
 
-	// 操作长链
+	// 操作长链，有效时间为7天
 	OperateLongUrl *string `json:"OperateLongUrl,omitnil,omitempty" name:"OperateLongUrl"`
 
-	// 操作短链
+	// 操作短链，有效时间为7天
 	OperateShortUrl *string `json:"OperateShortUrl,omitnil,omitempty" name:"OperateShortUrl"`
 
-	// 操作二维码
+	// 操作二维码，有效时间为7天
 	QRCodeUrl *string `json:"QRCodeUrl,omitnil,omitempty" name:"QRCodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12462,15 +12462,25 @@ type TemplateInfo struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 模板的填充控件列表
+	// 
+	// [点击查看在模板中配置的填充控件的样子](https://qcloudimg.tencent-cloud.cn/raw/cb2f58529fca8d909258f9d45a56f7f4.png)
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
+	// 
+	// [点击查看在模板中配置的签署参与方角色列表的样子](https://qcloudimg.tencent-cloud.cn/raw/e082bbcc0d923f8cb723d98382410aa2.png)
+	// 
 	Recipients []*Recipient `json:"Recipients,omitnil,omitempty" name:"Recipients"`
 
 	// 此模板中的签署控件列表
+	// 
+	// [点击查看在模板中配置的签署控件的样子](https://qcloudimg.tencent-cloud.cn/raw/29bc6ed753a5a0fce4a3ab02e2c0d955.png)
 	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
-	// 模板类型：1-静默签；3-普通模板
+	// 模板类型可以分为以下两种：
+	// 
+	// <b>1</b>：带有<b>本企业自动签署</b>的模板，即签署过程无需签署人手动操作，系统自动完成签署。
+	// <b>3</b>：普通模板，即签署人需要手动进行签署操作。
 	TemplateType *int64 `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 是否是发起人 ,已弃用
@@ -12484,8 +12494,10 @@ type TemplateInfo struct {
 	// 模板创建的时间戳，格式为Unix标准时间戳（秒）
 	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
-	// 模板的H5预览链接,有效期5分钟。
-	// 可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+	// 模板的 H5 预览链接，有效期为 5 分钟。
+	// 您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
+	// 
+	// 注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 

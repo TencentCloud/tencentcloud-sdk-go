@@ -3531,10 +3531,10 @@ type DescribeTokenUsageRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(默认值0)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3562,10 +3562,10 @@ type DescribeTokenUsageRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(默认值0)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表

@@ -118,6 +118,10 @@ func NewAssignTWeCallLicenseResponse() (response *AssignTWeCallLicenseResponse) 
 }
 
 // AssignTWeCallLicense
+// 微信VOIP功能调整下线
+//
+// 
+//
 // 分配License
 //
 // 可能返回的错误码:
@@ -129,6 +133,10 @@ func (c *Client) AssignTWeCallLicense(request *AssignTWeCallLicenseRequest) (res
 }
 
 // AssignTWeCallLicense
+// 微信VOIP功能调整下线
+//
+// 
+//
 // 分配License
 //
 // 可能返回的错误码:
@@ -6495,6 +6503,10 @@ func NewGetTWeCallPkgListResponse() (response *GetTWeCallPkgListResponse) {
 }
 
 // GetTWeCallPkgList
+// 微信VOIP功能调整下线
+//
+// 
+//
 // 查询TWeCall包列表
 //
 // 可能返回的错误码:
@@ -6506,6 +6518,10 @@ func (c *Client) GetTWeCallPkgList(request *GetTWeCallPkgListRequest) (response 
 }
 
 // GetTWeCallPkgList
+// 微信VOIP功能调整下线
+//
+// 
+//
 // 查询TWeCall包列表
 //
 // 可能返回的错误码:
