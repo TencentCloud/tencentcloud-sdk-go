@@ -4459,6 +4459,8 @@ func NewDeployGroupResponse() (response *DeployGroupResponse) {
 // 部署虚拟机部署组应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAPMBINDREQUIRED = "FailedOperation.TapmBindRequired"
+//  FAILEDOPERATION_TAPMEXPIREDOTEL = "FailedOperation.TapmExpiredOtel"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CVMCAEMASTERINTERNALERROR = "InternalError.CvmCaeMasterInternalError"
 //  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
@@ -4481,6 +4483,8 @@ func (c *Client) DeployGroup(request *DeployGroupRequest) (response *DeployGroup
 // 部署虚拟机部署组应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAPMBINDREQUIRED = "FailedOperation.TapmBindRequired"
+//  FAILEDOPERATION_TAPMEXPIREDOTEL = "FailedOperation.TapmExpiredOtel"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CVMCAEMASTERINTERNALERROR = "InternalError.CvmCaeMasterInternalError"
 //  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
@@ -5947,10 +5951,14 @@ func NewDescribeContainerGroupDeployInfoResponse() (response *DescribeContainerG
 }
 
 // DescribeContainerGroupDeployInfo
-//  获取部署组详情
+// 获取部署组详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APMGETCONFIGSFAILED = "FailedOperation.ApmGetConfigsFailed"
+//  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
+//  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CDISTATUSDATAINVALID = "InternalError.CdiStatusDataInvalid"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
@@ -5965,10 +5973,14 @@ func (c *Client) DescribeContainerGroupDeployInfo(request *DescribeContainerGrou
 }
 
 // DescribeContainerGroupDeployInfo
-//  获取部署组详情
+// 获取部署组详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APMGETCONFIGSFAILED = "FailedOperation.ApmGetConfigsFailed"
+//  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
+//  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CDISTATUSDATAINVALID = "InternalError.CdiStatusDataInvalid"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
@@ -6014,7 +6026,7 @@ func NewDescribeContainerGroupDetailResponse() (response *DescribeContainerGroup
 }
 
 // DescribeContainerGroupDetail
-//  容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+// 容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
@@ -6037,7 +6049,7 @@ func (c *Client) DescribeContainerGroupDetail(request *DescribeContainerGroupDet
 }
 
 // DescribeContainerGroupDetail
-//  容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+// 容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"

@@ -6014,6 +6014,9 @@ type SubmitCertificateInformationRequestParams struct {
 
 	// 联系人职位。
 	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
+
+	// 是否DV证书。默认false
+	IsDV *bool `json:"IsDV,omitnil,omitempty" name:"IsDV"`
 }
 
 type SubmitCertificateInformationRequest struct {
@@ -6096,6 +6099,9 @@ type SubmitCertificateInformationRequest struct {
 
 	// 联系人职位。
 	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
+
+	// 是否DV证书。默认false
+	IsDV *bool `json:"IsDV,omitnil,omitempty" name:"IsDV"`
 }
 
 func (r *SubmitCertificateInformationRequest) ToJsonString() string {
@@ -6136,6 +6142,7 @@ func (r *SubmitCertificateInformationRequest) FromJsonString(s string) error {
 	delete(f, "ContactEmail")
 	delete(f, "ContactNumber")
 	delete(f, "ContactPosition")
+	delete(f, "IsDV")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCertificateInformationRequest has unknown keys!", "")
 	}

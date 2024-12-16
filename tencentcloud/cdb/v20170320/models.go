@@ -3157,7 +3157,8 @@ type CreateDBInstanceHourRequestParams struct {
 	// 说明：若购买的是集群版实例，此参数为必填，需设置集群版实例的 RW 和 RO 节点拓扑，RO 节点范围是1 - 5个，请至少设置1个 RO 节点。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
-	// 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 硬盘类型，单节点（云盘版）或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 说明：单节点（云盘版）、集群版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 [地域和可用区](https://cloud.tencent.com/document/product/236/8458)。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群
@@ -3293,7 +3294,8 @@ type CreateDBInstanceHourRequest struct {
 	// 说明：若购买的是集群版实例，此参数为必填，需设置集群版实例的 RW 和 RO 节点拓扑，RO 节点范围是1 - 5个，请至少设置1个 RO 节点。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
-	// 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 硬盘类型，单节点（云盘版）或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 说明：单节点（云盘版）、集群版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 [地域和可用区](https://cloud.tencent.com/document/product/236/8458)。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群
@@ -3519,7 +3521,8 @@ type CreateDBInstanceRequestParams struct {
 	// 说明：若购买的是集群版实例，此参数为必填，需设置集群版实例的 RW 和 RO 节点拓扑，RO 节点范围是1 - 5个，请至少设置1个 RO 节点。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
-	// 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 磁盘类型，单节点（云盘版）或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 说明：单节点（云盘版）、集群版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 [地域和可用区](https://cloud.tencent.com/document/product/236/8458)。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 }
 
@@ -3656,7 +3659,8 @@ type CreateDBInstanceRequest struct {
 	// 说明：若购买的是集群版实例，此参数为必填，需设置集群版实例的 RW 和 RO 节点拓扑，RO 节点范围是1 - 5个，请至少设置1个 RO 节点。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
-	// 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 磁盘类型，单节点（云盘版）或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+	// 说明：单节点（云盘版）、集群版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 [地域和可用区](https://cloud.tencent.com/document/product/236/8458)。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 }
 

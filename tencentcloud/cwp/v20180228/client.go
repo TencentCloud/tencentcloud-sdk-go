@@ -3378,6 +3378,79 @@ func (c *Client) DeleteProtectDirWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteRaspRulesRequest() (request *DeleteRaspRulesRequest) {
+    request = &DeleteRaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteRaspRules")
+    
+    
+    return
+}
+
+func NewDeleteRaspRulesResponse() (response *DeleteRaspRulesResponse) {
+    response = &DeleteRaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRaspRules
+// 删除漏洞防御白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRaspRules(request *DeleteRaspRulesRequest) (response *DeleteRaspRulesResponse, err error) {
+    return c.DeleteRaspRulesWithContext(context.Background(), request)
+}
+
+// DeleteRaspRules
+// 删除漏洞防御白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRaspRulesWithContext(ctx context.Context, request *DeleteRaspRulesRequest) (response *DeleteRaspRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRaspRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRaspRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequest) {
     request = &DeleteReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15878,6 +15951,209 @@ func (c *Client) DescribeRansomDefenseTrendWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRaspMaxCpuRequest() (request *DescribeRaspMaxCpuRequest) {
+    request = &DescribeRaspMaxCpuRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspMaxCpu")
+    
+    
+    return
+}
+
+func NewDescribeRaspMaxCpuResponse() (response *DescribeRaspMaxCpuResponse) {
+    response = &DescribeRaspMaxCpuResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspMaxCpu
+// 查看漏洞防御最大cpu限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspMaxCpu(request *DescribeRaspMaxCpuRequest) (response *DescribeRaspMaxCpuResponse, err error) {
+    return c.DescribeRaspMaxCpuWithContext(context.Background(), request)
+}
+
+// DescribeRaspMaxCpu
+// 查看漏洞防御最大cpu限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspMaxCpuWithContext(ctx context.Context, request *DescribeRaspMaxCpuRequest) (response *DescribeRaspMaxCpuResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspMaxCpuRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspMaxCpu require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspMaxCpuResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspRuleVulsRequest() (request *DescribeRaspRuleVulsRequest) {
+    request = &DescribeRaspRuleVulsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspRuleVuls")
+    
+    
+    return
+}
+
+func NewDescribeRaspRuleVulsResponse() (response *DescribeRaspRuleVulsResponse) {
+    response = &DescribeRaspRuleVulsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspRuleVuls
+// 获取漏洞防御白名单漏洞列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspRuleVuls(request *DescribeRaspRuleVulsRequest) (response *DescribeRaspRuleVulsResponse, err error) {
+    return c.DescribeRaspRuleVulsWithContext(context.Background(), request)
+}
+
+// DescribeRaspRuleVuls
+// 获取漏洞防御白名单漏洞列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspRuleVulsWithContext(ctx context.Context, request *DescribeRaspRuleVulsRequest) (response *DescribeRaspRuleVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspRuleVulsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspRuleVuls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspRuleVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspRulesRequest() (request *DescribeRaspRulesRequest) {
+    request = &DescribeRaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspRules")
+    
+    
+    return
+}
+
+func NewDescribeRaspRulesResponse() (response *DescribeRaspRulesResponse) {
+    response = &DescribeRaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspRules
+// 查询漏洞防御白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspRules(request *DescribeRaspRulesRequest) (response *DescribeRaspRulesResponse, err error) {
+    return c.DescribeRaspRulesWithContext(context.Background(), request)
+}
+
+// DescribeRaspRules
+// 查询漏洞防御白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspRulesWithContext(ctx context.Context, request *DescribeRaspRulesRequest) (response *DescribeRaspRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecommendedProtectCpuRequest() (request *DescribeRecommendedProtectCpuRequest) {
     request = &DescribeRecommendedProtectCpuRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15902,6 +16178,16 @@ func NewDescribeRecommendedProtectCpuResponse() (response *DescribeRecommendedPr
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRecommendedProtectCpu(request *DescribeRecommendedProtectCpuRequest) (response *DescribeRecommendedProtectCpuResponse, err error) {
     return c.DescribeRecommendedProtectCpuWithContext(context.Background(), request)
@@ -15912,6 +16198,16 @@ func (c *Client) DescribeRecommendedProtectCpu(request *DescribeRecommendedProte
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRecommendedProtectCpuWithContext(ctx context.Context, request *DescribeRecommendedProtectCpuRequest) (response *DescribeRecommendedProtectCpuResponse, err error) {
     if request == nil {
@@ -27238,6 +27534,144 @@ func (c *Client) ModifyRansomDefenseStrategyStatusWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyRansomDefenseStrategyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRaspMaxCpuRequest() (request *ModifyRaspMaxCpuRequest) {
+    request = &ModifyRaspMaxCpuRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyRaspMaxCpu")
+    
+    
+    return
+}
+
+func NewModifyRaspMaxCpuResponse() (response *ModifyRaspMaxCpuResponse) {
+    response = &ModifyRaspMaxCpuResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRaspMaxCpu
+// 编辑漏洞防御最大cpu配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyRaspMaxCpu(request *ModifyRaspMaxCpuRequest) (response *ModifyRaspMaxCpuResponse, err error) {
+    return c.ModifyRaspMaxCpuWithContext(context.Background(), request)
+}
+
+// ModifyRaspMaxCpu
+// 编辑漏洞防御最大cpu配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyRaspMaxCpuWithContext(ctx context.Context, request *ModifyRaspMaxCpuRequest) (response *ModifyRaspMaxCpuResponse, err error) {
+    if request == nil {
+        request = NewModifyRaspMaxCpuRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRaspMaxCpu require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRaspMaxCpuResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRaspRulesRequest() (request *ModifyRaspRulesRequest) {
+    request = &ModifyRaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyRaspRules")
+    
+    
+    return
+}
+
+func NewModifyRaspRulesResponse() (response *ModifyRaspRulesResponse) {
+    response = &ModifyRaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRaspRules
+// 添加漏洞防御白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRaspRules(request *ModifyRaspRulesRequest) (response *ModifyRaspRulesResponse, err error) {
+    return c.ModifyRaspRulesWithContext(context.Background(), request)
+}
+
+// ModifyRaspRules
+// 添加漏洞防御白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRaspRulesWithContext(ctx context.Context, request *ModifyRaspRulesRequest) (response *ModifyRaspRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyRaspRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRaspRulesResponse()
     err = c.Send(request, response)
     return
 }

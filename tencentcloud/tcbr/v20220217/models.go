@@ -410,15 +410,12 @@ func (r *DescribeCloudRunServerDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudRunServerDetailResponseParams struct {
 	// 服务基本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaseInfo *ServerBaseInfo `json:"BaseInfo,omitnil,omitempty" name:"BaseInfo"`
 
 	// 服务配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
 	// 在线版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineVersionInfos []*OnlineVersionInfo `json:"OnlineVersionInfos,omitnil,omitempty" name:"OnlineVersionInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -710,29 +707,23 @@ type EnvInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否到期自动降为免费版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAutoDegrade *bool `json:"IsAutoDegrade,omitnil,omitempty" name:"IsAutoDegrade"`
 
 	// 环境渠道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvChannel *string `json:"EnvChannel,omitnil,omitempty" name:"EnvChannel"`
 
 	// 支付方式。包含以下取值：
 	// <li> prepayment：预付费</li>
 	// <li> postpaid：后付费</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 是否为默认环境
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
 	// 环境所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 环境类型：baas, run, hosting, weda,tcbr
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 数据库列表
@@ -745,27 +736,21 @@ type EnvInfo struct {
 	Functions []*FunctionInfo `json:"Functions,omitnil,omitempty" name:"Functions"`
 
 	// 云日志服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogServices []*LogServiceInfo `json:"LogServices,omitnil,omitempty" name:"LogServices"`
 
 	// 静态资源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitnil,omitempty" name:"StaticStorages"`
 
 	// 环境标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 自定义日志服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitnil,omitempty" name:"CustomLogServices"`
 
 	// tcb产品套餐ID，参考DescribePackages接口的返回值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 套餐中文名称，参考DescribePackages接口的返回值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
@@ -780,11 +765,9 @@ type FunctionInfo struct {
 
 type HpaPolicy struct {
 	// 扩缩容类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
 	// 扩缩容阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyThreshold *uint64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 }
 
@@ -815,15 +798,12 @@ type ObjectKV struct {
 
 type OnlineVersionInfo struct {
 	// 版本名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 镜像url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 流量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowRatio *string `json:"FlowRatio,omitnil,omitempty" name:"FlowRatio"`
 }
 
@@ -1078,7 +1058,6 @@ type ServerBaseConfig struct {
 	LogParseType *string `json:"LogParseType,omitnil,omitempty" name:"LogParseType"`
 
 	// 服务标签, function: 函数托管
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 

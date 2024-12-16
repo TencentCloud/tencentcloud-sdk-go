@@ -204,6 +204,9 @@ type CreateInstanceRequestParams struct {
 
 	// 最大可创建主题数
 	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
+
+	// 部署可用区列表
+	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 type CreateInstanceRequest struct {
@@ -257,6 +260,9 @@ type CreateInstanceRequest struct {
 
 	// 最大可创建主题数
 	MaxTopicNum *int64 `json:"MaxTopicNum,omitnil,omitempty" name:"MaxTopicNum"`
+
+	// 部署可用区列表
+	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -286,6 +292,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RenewFlag")
 	delete(f, "TimeSpan")
 	delete(f, "MaxTopicNum")
+	delete(f, "ZoneIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -1909,6 +1916,9 @@ type DescribeInstanceResponseParams struct {
 	// 最大可设置的topic个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNumUpperLimit *int64 `json:"TopicNumUpperLimit,omitnil,omitempty" name:"TopicNumUpperLimit"`
+
+	// 可用区列表
+	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

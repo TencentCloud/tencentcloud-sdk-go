@@ -180,6 +180,9 @@ type ChatCompletionsRequestParams struct {
 	// 1. 未传值时默认关闭。
 	// 2. 开启后，将强制走AI搜索，当AI搜索结果为空时，由大模型回复兜底话术。
 	ForceSearchEnhancement *bool `json:"ForceSearchEnhancement,omitnil,omitempty" name:"ForceSearchEnhancement"`
+
+	// 自定义结束生成字符串
+	Stop []*string `json:"Stop,omitnil,omitempty" name:"Stop"`
 }
 
 type ChatCompletionsRequest struct {
@@ -289,6 +292,9 @@ type ChatCompletionsRequest struct {
 	// 1. 未传值时默认关闭。
 	// 2. 开启后，将强制走AI搜索，当AI搜索结果为空时，由大模型回复兜底话术。
 	ForceSearchEnhancement *bool `json:"ForceSearchEnhancement,omitnil,omitempty" name:"ForceSearchEnhancement"`
+
+	// 自定义结束生成字符串
+	Stop []*string `json:"Stop,omitnil,omitempty" name:"Stop"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -320,6 +326,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "EnableDeepSearch")
 	delete(f, "Seed")
 	delete(f, "ForceSearchEnhancement")
+	delete(f, "Stop")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}

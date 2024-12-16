@@ -1414,6 +1414,74 @@ func (r *CreateDataForwardResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDeviceChannelRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type CreateDeviceChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *CreateDeviceChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDeviceChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeviceChannelResponseParams `json:"Response"`
+}
+
+func (r *CreateDeviceChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateForwardRuleRequestParams struct {
 	// 产品ID
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
@@ -1563,6 +1631,121 @@ func (r *CreateForwardRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateForwardRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFreeCloudStorageRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存套餐ID：
+	// lye1w3d：低功耗事件3天周套餐。
+	// ye1w3d：事件3天周套餐
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
+	Override *uint64 `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// 套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
+	PackageQueue *string `json:"PackageQueue,omitnil,omitempty" name:"PackageQueue"`
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 云存视频存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+}
+
+type CreateFreeCloudStorageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存套餐ID：
+	// lye1w3d：低功耗事件3天周套餐。
+	// ye1w3d：事件3天周套餐
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
+	Override *uint64 `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// 套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
+	PackageQueue *string `json:"PackageQueue,omitnil,omitempty" name:"PackageQueue"`
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 云存视频存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+}
+
+func (r *CreateFreeCloudStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFreeCloudStorageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "PackageId")
+	delete(f, "Override")
+	delete(f, "PackageQueue")
+	delete(f, "OrderId")
+	delete(f, "ChannelId")
+	delete(f, "StorageRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFreeCloudStorageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFreeCloudStorageResponseParams struct {
+	// 订单金额，单位为分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *uint64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 支付金额，单位为分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFreeCloudStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFreeCloudStorageResponseParams `json:"Response"`
+}
+
+func (r *CreateFreeCloudStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFreeCloudStorageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

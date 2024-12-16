@@ -2550,8 +2550,11 @@ type BashEventNew struct {
 	// 规则类别  0=系统规则，1=用户规则
 	RuleCategory *uint64 `json:"RuleCategory,omitnil,omitempty" name:"RuleCategory"`
 
-	// 自动生成的正则表达式
+	// 转义后的正则表达式
 	RegexBashCmd *string `json:"RegexBashCmd,omitnil,omitempty" name:"RegexBashCmd"`
+
+	// 转义后的正则表达式
+	RegexExe *string `json:"RegexExe,omitnil,omitempty" name:"RegexExe"`
 
 	// 0:普通 1:专业版 2:旗舰版
 	MachineType *int64 `json:"MachineType,omitnil,omitempty" name:"MachineType"`
@@ -6858,6 +6861,60 @@ func (r *DeleteProtectDirResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProtectDirResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRaspRulesRequestParams struct {
+	// 待删除的规则ID数组 (最大100条)
+	IDs []*uint64 `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+type DeleteRaspRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的规则ID数组 (最大100条)
+	IDs []*uint64 `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+func (r *DeleteRaspRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRaspRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRaspRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRaspRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRaspRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRaspRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteRaspRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRaspRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24189,6 +24246,224 @@ func (r *DescribeRansomDefenseTrendResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRaspMaxCpuRequestParams struct {
+
+}
+
+type DescribeRaspMaxCpuRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeRaspMaxCpuRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspMaxCpuRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRaspMaxCpuRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspMaxCpuResponseParams struct {
+	// rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+	RaspMaxCpu *uint64 `json:"RaspMaxCpu,omitnil,omitempty" name:"RaspMaxCpu"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRaspMaxCpuResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRaspMaxCpuResponseParams `json:"Response"`
+}
+
+func (r *DescribeRaspMaxCpuResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspMaxCpuResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRuleVulsRequestParams struct {
+	// 过滤条件。Name=WhiteType的必选，0：表示自定义范围的漏洞列表，1：表示全部请求范围的列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 返回数量，默认为10，最大值为1000。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeRaspRuleVulsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。Name=WhiteType的必选，0：表示自定义范围的漏洞列表，1：表示全部请求范围的列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 返回数量，默认为10，最大值为1000。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRaspRuleVulsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRuleVulsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRaspRuleVulsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRuleVulsResponseParams struct {
+	// 列表内容
+	List []*RaspRuleVul `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRaspRuleVulsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRaspRuleVulsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRaspRuleVulsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRuleVulsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRulesRequestParams struct {
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序升序还是倒序，DESC有ASC、
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeRaspRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序升序还是倒序，DESC有ASC、
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeRaspRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRaspRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRulesResponseParams struct {
+	// 列表内容
+	List []*RaspRule `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRaspRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRaspRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRaspRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRecommendedProtectCpuRequestParams struct {
 
 }
@@ -40889,6 +41164,135 @@ func (r *ModifyRansomDefenseStrategyStatusResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type ModifyRaspMaxCpuRequestParams struct {
+	// rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+	RaspMaxCpu *uint64 `json:"RaspMaxCpu,omitnil,omitempty" name:"RaspMaxCpu"`
+}
+
+type ModifyRaspMaxCpuRequest struct {
+	*tchttp.BaseRequest
+	
+	// rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+	RaspMaxCpu *uint64 `json:"RaspMaxCpu,omitnil,omitempty" name:"RaspMaxCpu"`
+}
+
+func (r *ModifyRaspMaxCpuRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRaspMaxCpuRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RaspMaxCpu")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRaspMaxCpuRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRaspMaxCpuResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRaspMaxCpuResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRaspMaxCpuResponseParams `json:"Response"`
+}
+
+func (r *ModifyRaspMaxCpuResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRaspMaxCpuResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRaspRulesRequestParams struct {
+	// 规则ID(新增时请留空，编辑时候必传)
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 漏洞id数组
+	VulVulsIDs []*uint64 `json:"VulVulsIDs,omitnil,omitempty" name:"VulVulsIDs"`
+
+	// 自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+	URLRegexp *string `json:"URLRegexp,omitnil,omitempty" name:"URLRegexp"`
+
+	// 加白方式，0：自定义请求范围加白。1：全部请求加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+}
+
+type ModifyRaspRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID(新增时请留空，编辑时候必传)
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 漏洞id数组
+	VulVulsIDs []*uint64 `json:"VulVulsIDs,omitnil,omitempty" name:"VulVulsIDs"`
+
+	// 自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+	URLRegexp *string `json:"URLRegexp,omitnil,omitempty" name:"URLRegexp"`
+
+	// 加白方式，0：自定义请求范围加白。1：全部请求加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+}
+
+func (r *ModifyRaspRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRaspRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "VulVulsIDs")
+	delete(f, "URLRegexp")
+	delete(f, "WhiteType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRaspRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRaspRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRaspRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRaspRulesResponseParams `json:"Response"`
+}
+
+func (r *ModifyRaspRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRaspRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyReverseShellRulesAggregationRequestParams struct {
 	// 规则ID(新增时请留空)
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -43264,6 +43668,52 @@ type RansomDefenseStrategyMachineInfo struct {
 
 	// 指定硬盘列表，为空时表示所有硬盘：disk_id1|disk_name1;disk_id2|disk_name2
 	DiskInfo *string `json:"DiskInfo,omitnil,omitempty" name:"DiskInfo"`
+}
+
+type RaspRule struct {
+	// 规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 自定义请求url范围正则表达式，为空则保存不成功
+	URLRegexp *string `json:"URLRegexp,omitnil,omitempty" name:"URLRegexp"`
+
+	// 漏洞id
+	VulVulsID *uint64 `json:"VulVulsID,omitnil,omitempty" name:"VulVulsID"`
+
+	// 漏洞名称
+	VulVulsName *string `json:"VulVulsName,omitnil,omitempty" name:"VulVulsName"`
+
+	// cve_id
+	CveID *string `json:"CveID,omitnil,omitempty" name:"CveID"`
+
+	// 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+	SupportDefense *uint64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
+
+	// 加白范围，0:全部请求加白，1:自定义请求范围加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+
+	// 状态 0: 有效
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+type RaspRuleVul struct {
+	// 漏洞id
+	VulVulsID *uint64 `json:"VulVulsID,omitnil,omitempty" name:"VulVulsID"`
+
+	// 漏洞名称
+	VulVulsName *string `json:"VulVulsName,omitnil,omitempty" name:"VulVulsName"`
+
+	// cve_id
+	CveID *string `json:"CveID,omitnil,omitempty" name:"CveID"`
+
+	// 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+	SupportDefense *uint64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
 }
 
 type RecordInfo struct {

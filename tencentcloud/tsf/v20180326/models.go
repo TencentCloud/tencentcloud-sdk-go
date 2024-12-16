@@ -289,15 +289,16 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
 
 type AdvanceSettings struct {
 	// 子任务单机并发数限制，默认值为2
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubTaskConcurrency *int64 `json:"SubTaskConcurrency,omitnil,omitempty" name:"SubTaskConcurrency"`
 }
 
 type Affinity struct {
-	// -
+	// 亲和性范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// -
+	// 亲和规则的权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *string `json:"Weight,omitnil,omitempty" name:"Weight"`
 
@@ -676,6 +677,14 @@ type ApplicationAttribute struct {
 	// 应用下部署组个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupCount *int64 `json:"GroupCount,omitnil,omitempty" name:"GroupCount"`
+
+	// 运行中部署组个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningGroupCount *string `json:"RunningGroupCount,omitnil,omitempty" name:"RunningGroupCount"`
+
+	// 异常部署组个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AbnormalCount *string `json:"AbnormalCount,omitnil,omitempty" name:"AbnormalCount"`
 }
 
 type ApplicationForPage struct {
@@ -2111,6 +2120,10 @@ type ContainerGroupDeploy struct {
 	// 内部容器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalContainerList []*GroupContainerInfo `json:"InternalContainerList,omitnil,omitempty" name:"InternalContainerList"`
+
+	// service列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceSettingList []*ServiceSetting `json:"ServiceSettingList,omitnil,omitempty" name:"ServiceSettingList"`
 }
 
 type ContainerGroupDetail struct {
@@ -2810,16 +2823,21 @@ type CreateApplicationRequestParams struct {
 	// 忽略创建镜像仓库
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitnil,omitempty" name:"IgnoreCreateImageRepository"`
 
-	// 无
+	// 数据集id列表
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 
 	// apm业务系统id
 	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
 
-	// 编程语言
+	// 编程语言;
+	// J - JAVA；
+	// C - C/C++；
+	// P - Python；
+	// G - Go；
+	// O - Other；
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
-	// 开发框架
+	// 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
 	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 
 	// 注册配置治理
@@ -2862,16 +2880,21 @@ type CreateApplicationRequest struct {
 	// 忽略创建镜像仓库
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitnil,omitempty" name:"IgnoreCreateImageRepository"`
 
-	// 无
+	// 数据集id列表
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 
 	// apm业务系统id
 	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
 
-	// 编程语言
+	// 编程语言;
+	// J - JAVA；
+	// C - C/C++；
+	// P - Python；
+	// G - Go；
+	// O - Other；
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
-	// 开发框架
+	// 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
 	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 
 	// 注册配置治理
@@ -3540,7 +3563,9 @@ type CreateContainGroupRequestParams struct {
 	// 初始分配的内存 MiB 数，对应 K8S request
 	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
 
-	// 部署组资源类型
+	// 部署组资源类型；
+	// DEF — 默认资源类型；
+	// GW — 网关资源类型；
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// 子网ID
@@ -3616,7 +3641,9 @@ type CreateContainGroupRequest struct {
 	// 初始分配的内存 MiB 数，对应 K8S request
 	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
 
-	// 部署组资源类型
+	// 部署组资源类型；
+	// DEF — 默认资源类型；
+	// GW — 网关资源类型；
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// 子网ID
@@ -4058,7 +4085,7 @@ type CreateGroupRequestParams struct {
 	// 部署组描述
 	GroupDesc *string `json:"GroupDesc,omitnil,omitempty" name:"GroupDesc"`
 
-	// 部署组资源类型
+	// 部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// 部署组备注
@@ -4086,7 +4113,7 @@ type CreateGroupRequest struct {
 	// 部署组描述
 	GroupDesc *string `json:"GroupDesc,omitnil,omitempty" name:"GroupDesc"`
 
-	// 部署组资源类型
+	// 部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// 部署组备注
@@ -4484,13 +4511,13 @@ type CreateNamespaceRequestParams struct {
 	// 命名空间ID
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 是否开启高可用
+	// 是否开启高可用，1 表示开启，0 表示不开启
 	IsHaEnable *string `json:"IsHaEnable,omitnil,omitempty" name:"IsHaEnable"`
 
 	// 需要绑定的数据集ID
 	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
 
-	// 无
+	// 需要绑定的数据集ID
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -4515,13 +4542,13 @@ type CreateNamespaceRequest struct {
 	// 命名空间ID
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 是否开启高可用
+	// 是否开启高可用，1 表示开启，0 表示不开启
 	IsHaEnable *string `json:"IsHaEnable,omitnil,omitempty" name:"IsHaEnable"`
 
 	// 需要绑定的数据集ID
 	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
 
-	// 无
+	// 需要绑定的数据集ID
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -7082,6 +7109,8 @@ type DeployContainerGroupRequestParams struct {
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
 	// 旧版镜像名，如/tsf/nginx
+	//
+	// Deprecated: Reponame is deprecated.
 	Reponame *string `json:"Reponame,omitnil,omitempty" name:"Reponame"`
 
 	// 业务容器最大的 CPU 核数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
@@ -11680,10 +11709,10 @@ type DescribeInvocationMetricDataCurveRequestParams struct {
 	// 查询时间粒度，单位秒可选值：60、3600、86400
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 查询指标维度
+	// 查询指标维度，不能为空，支持 ServiceName, OperationName, PeerServiceName, PeerOperationName
 	MetricDimensions []*MetricDimension `json:"MetricDimensions,omitnil,omitempty" name:"MetricDimensions"`
 
-	// 查询指标名
+	// 查询指标名，不能为空.
 	Metrics []*Metric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 视图视角。可选值：SERVER, CLIENT。默认为SERVER
@@ -11705,10 +11734,10 @@ type DescribeInvocationMetricDataCurveRequest struct {
 	// 查询时间粒度，单位秒可选值：60、3600、86400
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 查询指标维度
+	// 查询指标维度，不能为空，支持 ServiceName, OperationName, PeerServiceName, PeerOperationName
 	MetricDimensions []*MetricDimension `json:"MetricDimensions,omitnil,omitempty" name:"MetricDimensions"`
 
-	// 查询指标名
+	// 查询指标名，不能为空.
 	Metrics []*Metric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 视图视角。可选值：SERVER, CLIENT。默认为SERVER
@@ -11876,10 +11905,10 @@ type DescribeInvocationMetricDataPointRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 维度
+	// 维度，并且 维度 key value 不能为空
 	MetricDimensionValues []*MetricDimensionValue `json:"MetricDimensionValues,omitnil,omitempty" name:"MetricDimensionValues"`
 
-	// 指标
+	// 指标，并且 key, value 不能为空
 	Metrics []*Metric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 调用视角。可选值：SERVER, CLIENT。默认为SERVER
@@ -11895,10 +11924,10 @@ type DescribeInvocationMetricDataPointRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 维度
+	// 维度，并且 维度 key value 不能为空
 	MetricDimensionValues []*MetricDimensionValue `json:"MetricDimensionValues,omitnil,omitempty" name:"MetricDimensionValues"`
 
-	// 指标
+	// 指标，并且 key, value 不能为空
 	Metrics []*Metric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 调用视角。可选值：SERVER, CLIENT。默认为SERVER
@@ -13991,7 +14020,7 @@ type DescribeSimpleClustersRequestParams struct {
 	// 对id和name进行关键词过滤
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 无
+	// 是否关闭鉴权
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 }
 
@@ -14013,7 +14042,7 @@ type DescribeSimpleClustersRequest struct {
 	// 对id和name进行关键词过滤
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 无
+	// 是否关闭鉴权
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 }
 
@@ -14213,7 +14242,7 @@ type DescribeSimpleNamespacesRequestParams struct {
 	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
 	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 无
+	// 是否关闭鉴权查询
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 }
 
@@ -14250,7 +14279,7 @@ type DescribeSimpleNamespacesRequest struct {
 	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
 	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 无
+	// 是否关闭鉴权查询
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 }
 

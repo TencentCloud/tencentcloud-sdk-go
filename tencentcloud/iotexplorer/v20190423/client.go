@@ -938,6 +938,59 @@ func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDev
     return
 }
 
+func NewCreateDeviceChannelRequest() (request *CreateDeviceChannelRequest) {
+    request = &CreateDeviceChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDeviceChannel")
+    
+    
+    return
+}
+
+func NewCreateDeviceChannelResponse() (response *CreateDeviceChannelResponse) {
+    response = &CreateDeviceChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeviceChannel
+// 创建设备通道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeviceChannel(request *CreateDeviceChannelRequest) (response *CreateDeviceChannelResponse, err error) {
+    return c.CreateDeviceChannelWithContext(context.Background(), request)
+}
+
+// CreateDeviceChannel
+// 创建设备通道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeviceChannelWithContext(ctx context.Context, request *CreateDeviceChannelRequest) (response *CreateDeviceChannelResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceChannelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeviceChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeviceChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExternalSourceAIServiceTaskRequest() (request *CreateExternalSourceAIServiceTaskRequest) {
     request = &CreateExternalSourceAIServiceTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1052,6 +1105,59 @@ func (c *Client) CreateFenceBindWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateFenceBindResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFreeCloudStorageRequest() (request *CreateFreeCloudStorageRequest) {
+    request = &CreateFreeCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateFreeCloudStorage")
+    
+    
+    return
+}
+
+func NewCreateFreeCloudStorageResponse() (response *CreateFreeCloudStorageResponse) {
+    response = &CreateFreeCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFreeCloudStorage
+// 开通免费云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFreeCloudStorage(request *CreateFreeCloudStorageRequest) (response *CreateFreeCloudStorageResponse, err error) {
+    return c.CreateFreeCloudStorageWithContext(context.Background(), request)
+}
+
+// CreateFreeCloudStorage
+// 开通免费云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFreeCloudStorageWithContext(ctx context.Context, request *CreateFreeCloudStorageRequest) (response *CreateFreeCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewCreateFreeCloudStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFreeCloudStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFreeCloudStorageResponse()
     err = c.Send(request, response)
     return
 }

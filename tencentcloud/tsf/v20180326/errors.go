@@ -20,6 +20,9 @@ const (
 	// API元数据解析失败。
 	FAILEDOPERATION_APIMETAPARSEFAILED = "FailedOperation.ApiMetaParseFailed"
 
+	// 调用TSF-APM服务获取配置列表失败
+	FAILEDOPERATION_APMGETCONFIGSFAILED = "FailedOperation.ApmGetConfigsFailed"
+
 	// 创建应用，获取ES鉴权信息失败。
 	FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = "FailedOperation.ApplicationCreateEsAtuhError"
 
@@ -28,6 +31,12 @@ const (
 
 	// TSF应用性能管理调用tsf-dcfg模块失败
 	FAILEDOPERATION_CALLTSFDCFGFAILED = "FailedOperation.CallTsfDcfgFailed"
+
+	// 调用CDI状态接口失败
+	FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
+
+	// 调用CDI状态返回数据异常
+	FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
 
 	// TSF云API请求调用失败。
 	FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
@@ -188,6 +197,12 @@ const (
 	// 服务查询失败。
 	FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
 
+	// 可观测性支持依赖TAPM业务系统绑定
+	FAILEDOPERATION_TAPMBINDREQUIRED = "FailedOperation.TapmBindRequired"
+
+	// 请使用TAPM提供的Otel探针
+	FAILEDOPERATION_TAPMEXPIREDOTEL = "FailedOperation.TapmExpiredOtel"
+
 	// 任务创建异常。
 	FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
 
@@ -316,6 +331,9 @@ const (
 
 	// 配置发布失败：无法连接配置中心服务器。
 	INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
+
+	// 调用CDI状态接口返回数据异常
+	INTERNALERROR_CDISTATUSDATAINVALID = "InternalError.CdiStatusDataInvalid"
 
 	// TSF云API请求调用失败。
 	INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"

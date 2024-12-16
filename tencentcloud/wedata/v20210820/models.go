@@ -5488,6 +5488,26 @@ type DataServiceResponseParam struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type DataSourceConnectStatus struct {
+	// id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 连接结果
+	ConnectResult *int64 `json:"ConnectResult,omitnil,omitempty" name:"ConnectResult"`
+
+	// 错误信息
+	ConnectError *string `json:"ConnectError,omitnil,omitempty" name:"ConnectError"`
+
+	// 时间戳
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+}
+
 type DataSourceInfo struct {
 	// 若数据源列表为绑定数据库，则为db名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5624,6 +5644,10 @@ type DataSourceInfo struct {
 	// 同params 内容为开发数据源的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevelopmentParams *string `json:"DevelopmentParams,omitnil,omitempty" name:"DevelopmentParams"`
+
+	// 数据源连接状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectStatus *DataSourceConnectStatus `json:"ConnectStatus,omitnil,omitempty" name:"ConnectStatus"`
 }
 
 type DataSourceInfoPage struct {

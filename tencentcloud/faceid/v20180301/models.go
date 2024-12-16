@@ -3318,6 +3318,11 @@ type ImageRecognitionV2RequestParams struct {
 	// 敏感数据加密信息。
 	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 自定义描述字段。
+	// - 用于描述调用业务信息，出参中将返回此描述字段。 
+	// - 每个自定义描述字段支持[1,10]个字符。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type ImageRecognitionV2Request struct {
@@ -3341,6 +3346,11 @@ type ImageRecognitionV2Request struct {
 	// 敏感数据加密信息。
 	// - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 自定义描述字段。
+	// - 用于描述调用业务信息，出参中将返回此描述字段。 
+	// - 每个自定义描述字段支持[1,10]个字符。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 func (r *ImageRecognitionV2Request) ToJsonString() string {
@@ -3360,6 +3370,7 @@ func (r *ImageRecognitionV2Request) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "Optional")
 	delete(f, "Encryption")
+	delete(f, "Extra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageRecognitionV2Request has unknown keys!", "")
 	}
@@ -3380,6 +3391,9 @@ type ImageRecognitionV2ResponseParams struct {
 
 	// 业务结果描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 调用接口中自定义的描述字段。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
