@@ -35,7 +35,7 @@ type AddNodeList struct {
 
 // Predefined struct for user
 type AssignProjectRequestParams struct {
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 项目ID，用户已创建项目的唯一ID,非自定义
@@ -45,7 +45,7 @@ type AssignProjectRequestParams struct {
 type AssignProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 项目ID，用户已创建项目的唯一ID,非自定义
@@ -1149,39 +1149,43 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 }
 
 type CurrentOp struct {
-	// 操作序号
+	// 操作序号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpId *int64 `json:"OpId,omitnil,omitempty" name:"OpId"`
 
-	// 操作所在的命名空间，形式如db.collection
+	// 操作所在的命名空间，形式如db.collection。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ns *string `json:"Ns,omitnil,omitempty" name:"Ns"`
 
-	// 操作执行语句
+	// 操作执行语句。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command
+	// 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
-	// 操作所在的分片名称
+	// 操作所在的分片名称。
 	ReplicaSetName *string `json:"ReplicaSetName,omitnil,omitempty" name:"ReplicaSetName"`
 
-	// 筛选条件，节点状态，可能的取值为：Primary、Secondary
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	State *string `json:"State,omitnil,omitempty" name:"State"`
+	// 操作所在的节点名称。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 操作详细信息
+	// 操作详细信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 操作所在的节点名称
-	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+	// 筛选条件，节点状态，可能的取值为：Primary、Secondary。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 操作已执行时间（ms）
+	// 操作已执行时间（ms）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicrosecsRunning *uint64 `json:"MicrosecsRunning,omitnil,omitempty" name:"MicrosecsRunning"`
+
+	// 当前操作所在节点信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecNode *string `json:"ExecNode,omitnil,omitempty" name:"ExecNode"`
 }
 
 type DBInstanceInfo struct {
@@ -1646,23 +1650,26 @@ func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCurrentOpRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 筛选条件，操作所属的命名空间namespace，格式为db.collection
+	// 操作所属的命名空间 namespace，格式为 db.collection。
 	Ns *string `json:"Ns,omitnil,omitempty" name:"Ns"`
 
-	// 筛选条件，操作已经执行的时间（单位：毫秒），结果将返回超过设置时间的操作，默认值为0，取值范围为[0, 3600000]
+	// 设置查询筛选条件为操作任务已经执行的时间。
+	// - 默认值为0，取值范围为[0, 3600000]，单位：毫秒。
+	// - 结果将返回超过设置时间的操作。
 	MillisecondRunning *uint64 `json:"MillisecondRunning,omitnil,omitempty" name:"MillisecondRunning"`
 
-	// 筛选条件，操作类型，可能的取值：none，update，insert，query，command，getmore，remove和killcursors
+	// 设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
-	// 筛选条件，分片名称
+	// 筛选条件，分片名称。
 	ReplicaSetName *string `json:"ReplicaSetName,omitnil,omitempty" name:"ReplicaSetName"`
 
-	// 筛选条件，节点状态，可能的取值为：primary
-	// secondary
+	// 设置查询筛选条件为节点角色。
+	// - primary：主节点。
+	// - secondary：从节点。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 单次请求返回的数量，默认值为100，取值范围为[0,100]
@@ -1681,23 +1688,26 @@ type DescribeCurrentOpRequestParams struct {
 type DescribeCurrentOpRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 筛选条件，操作所属的命名空间namespace，格式为db.collection
+	// 操作所属的命名空间 namespace，格式为 db.collection。
 	Ns *string `json:"Ns,omitnil,omitempty" name:"Ns"`
 
-	// 筛选条件，操作已经执行的时间（单位：毫秒），结果将返回超过设置时间的操作，默认值为0，取值范围为[0, 3600000]
+	// 设置查询筛选条件为操作任务已经执行的时间。
+	// - 默认值为0，取值范围为[0, 3600000]，单位：毫秒。
+	// - 结果将返回超过设置时间的操作。
 	MillisecondRunning *uint64 `json:"MillisecondRunning,omitnil,omitempty" name:"MillisecondRunning"`
 
-	// 筛选条件，操作类型，可能的取值：none，update，insert，query，command，getmore，remove和killcursors
+	// 设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
-	// 筛选条件，分片名称
+	// 筛选条件，分片名称。
 	ReplicaSetName *string `json:"ReplicaSetName,omitnil,omitempty" name:"ReplicaSetName"`
 
-	// 筛选条件，节点状态，可能的取值为：primary
-	// secondary
+	// 设置查询筛选条件为节点角色。
+	// - primary：主节点。
+	// - secondary：从节点。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 单次请求返回的数量，默认值为100，取值范围为[0,100]
@@ -1743,10 +1753,10 @@ func (r *DescribeCurrentOpRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCurrentOpResponseParams struct {
-	// 符合查询条件的操作总数
+	// 符合查询条件的操作总数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 当前操作列表
+	// 当前操作列表。
 	CurrentOps []*CurrentOp `json:"CurrentOps,omitnil,omitempty" name:"CurrentOps"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3398,7 +3408,7 @@ func (r *InquirePriceModifyDBInstanceSpecResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type InquirePriceRenewDBInstancesRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+	// 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
@@ -3408,7 +3418,7 @@ type InquirePriceRenewDBInstancesRequestParams struct {
 type InquirePriceRenewDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+	// 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。

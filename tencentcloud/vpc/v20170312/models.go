@@ -7788,6 +7788,9 @@ type CreateVpnGatewayRequestParams struct {
 
 	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
+
+	// BGP ASN。
+	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
 }
 
 type CreateVpnGatewayRequest struct {
@@ -7822,6 +7825,9 @@ type CreateVpnGatewayRequest struct {
 
 	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
+
+	// BGP ASN。
+	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
 }
 
 func (r *CreateVpnGatewayRequest) ToJsonString() string {
@@ -7846,6 +7852,7 @@ func (r *CreateVpnGatewayRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "CdcId")
 	delete(f, "MaxConnection")
+	delete(f, "BgpAsn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewayRequest has unknown keys!", "")
 	}
@@ -32585,6 +32592,9 @@ type VpnGateway struct {
 
 	// SSL-VPN 客户端连接数。
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
+
+	// Bgp ASN
+	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
 }
 
 type VpnGatewayQuota struct {

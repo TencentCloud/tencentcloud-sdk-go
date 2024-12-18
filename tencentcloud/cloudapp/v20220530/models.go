@@ -70,6 +70,9 @@ type License struct {
 
 	// 授权时长单位，枚举值有Y年/M月/D日三种
 	LifeSpanUnit *string `json:"LifeSpanUnit,omitnil,omitempty" name:"LifeSpanUnit"`
+
+	// 授权的类型：Standard正式版/Development开发版/Trial体验版
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 }
 
 type SaleParam struct {

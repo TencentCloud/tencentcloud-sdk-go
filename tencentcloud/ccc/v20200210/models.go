@@ -656,6 +656,9 @@ type CreateAICallRequestParams struct {
 	// 用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
 	NotifyMessage *string `json:"NotifyMessage,omitnil,omitempty" name:"NotifyMessage"`
 
+	// 最大触发AI提示音次数，默认为不限制
+	NotifyMaxCount *uint64 `json:"NotifyMaxCount,omitnil,omitempty" name:"NotifyMaxCount"`
+
 	// <p>和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色</p>
 	// <ul>
 	// <li>Tencent TTS<br>
@@ -885,6 +888,9 @@ type CreateAICallRequest struct {
 	// 用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
 	NotifyMessage *string `json:"NotifyMessage,omitnil,omitempty" name:"NotifyMessage"`
 
+	// 最大触发AI提示音次数，默认为不限制
+	NotifyMaxCount *uint64 `json:"NotifyMaxCount,omitnil,omitempty" name:"NotifyMaxCount"`
+
 	// <p>和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色</p>
 	// <ul>
 	// <li>Tencent TTS<br>
@@ -998,6 +1004,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "EndFunctionDesc")
 	delete(f, "NotifyDuration")
 	delete(f, "NotifyMessage")
+	delete(f, "NotifyMaxCount")
 	delete(f, "CustomTTSConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")

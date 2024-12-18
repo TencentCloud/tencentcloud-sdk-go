@@ -9416,6 +9416,61 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyProtectModeRequest() (request *ModifyProtectModeRequest) {
+    request = &ModifyProtectModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyProtectMode")
+    
+    
+    return
+}
+
+func NewModifyProtectModeResponse() (response *ModifyProtectModeResponse) {
+    response = &ModifyProtectModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProtectMode
+// 该接口（ModifyProtectMode）用于修改实例的同步方式。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) ModifyProtectMode(request *ModifyProtectModeRequest) (response *ModifyProtectModeResponse, err error) {
+    return c.ModifyProtectModeWithContext(context.Background(), request)
+}
+
+// ModifyProtectMode
+// 该接口（ModifyProtectMode）用于修改实例的同步方式。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) ModifyProtectModeWithContext(ctx context.Context, request *ModifyProtectModeRequest) (response *ModifyProtectModeResponse, err error) {
+    if request == nil {
+        request = NewModifyProtectModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProtectMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProtectModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRemoteBackupConfigRequest() (request *ModifyRemoteBackupConfigRequest) {
     request = &ModifyRemoteBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

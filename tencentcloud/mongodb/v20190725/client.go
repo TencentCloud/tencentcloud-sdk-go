@@ -682,7 +682,7 @@ func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoRe
 }
 
 // DescribeAsyncRequestInfo
-// 查询异步任务状态接口
+// 本接口（DescribeAsyncRequestInfo）用于查询异步任务状态接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -693,7 +693,7 @@ func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoReque
 }
 
 // DescribeAsyncRequestInfo
-// 查询异步任务状态接口
+// 本接口（DescribeAsyncRequestInfo）用于查询异步任务状态接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -900,7 +900,7 @@ func NewDescribeCurrentOpResponse() (response *DescribeCurrentOpResponse) {
 }
 
 // DescribeCurrentOp
-// 本接口(DescribeCurrentOp)用于查询MongoDB云数据库实例的当前正在执行的操作。
+// 本接口（DescribeCurrentOp）用于查询云数据库实例的当前正在执行的操作。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -913,7 +913,7 @@ func (c *Client) DescribeCurrentOp(request *DescribeCurrentOpRequest) (response 
 }
 
 // DescribeCurrentOp
-// 本接口(DescribeCurrentOp)用于查询MongoDB云数据库实例的当前正在执行的操作。
+// 本接口（DescribeCurrentOp）用于查询云数据库实例的当前正在执行的操作。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -1990,6 +1990,7 @@ func NewInquirePriceRenewDBInstancesResponse() (response *InquirePriceRenewDBIns
 //  INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
 //  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 func (c *Client) InquirePriceRenewDBInstances(request *InquirePriceRenewDBInstancesRequest) (response *InquirePriceRenewDBInstancesResponse, err error) {
     return c.InquirePriceRenewDBInstancesWithContext(context.Background(), request)
@@ -2003,6 +2004,7 @@ func (c *Client) InquirePriceRenewDBInstances(request *InquirePriceRenewDBInstan
 //  INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
 //  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 func (c *Client) InquirePriceRenewDBInstancesWithContext(ctx context.Context, request *InquirePriceRenewDBInstancesRequest) (response *InquirePriceRenewDBInstancesResponse, err error) {
     if request == nil {

@@ -5701,6 +5701,102 @@ func (r *DescribeChangedParamsAfterUpgradeResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeClusterDatabaseTablesRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据库名
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// 偏移
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 个数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据表类型。
+	// "view"表示只返回 view，"base_table" 表示只返回基本表，"all" 表示返回 view 和表。默认为 all。
+	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
+}
+
+type DescribeClusterDatabaseTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据库名
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// 偏移
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 个数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据表类型。
+	// "view"表示只返回 view，"base_table" 表示只返回基本表，"all" 表示返回 view 和表。默认为 all。
+	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
+}
+
+func (r *DescribeClusterDatabaseTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDatabaseTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Db")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TableType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterDatabaseTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterDatabaseTablesResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据库表列表
+	Tables []*string `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterDatabaseTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterDatabaseTablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterDatabaseTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDatabaseTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterDatabasesRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`

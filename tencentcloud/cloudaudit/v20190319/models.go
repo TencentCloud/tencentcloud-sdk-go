@@ -22,18 +22,23 @@ import (
 
 type AttributeKeyDetail struct {
 	// 输入框类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelType *string `json:"LabelType,omitnil,omitempty" name:"LabelType"`
 
 	// 初始化展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Starter *string `json:"Starter,omitnil,omitempty" name:"Starter"`
 
 	// 展示排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// AttributeKey值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 中文标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
@@ -829,9 +834,11 @@ func (r *InquireAuditCreditResponse) FromJsonString(s string) error {
 
 type KeyMetadata struct {
 	// 作为密钥更容易辨识，更容易被人看懂的别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// CMK的全局唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 }
 

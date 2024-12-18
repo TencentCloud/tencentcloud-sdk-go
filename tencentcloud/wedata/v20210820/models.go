@@ -1327,6 +1327,10 @@ type BatchOperateResultOpsDto struct {
 	// 错误说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorDesc *string `json:"ErrorDesc,omitnil,omitempty" name:"ErrorDesc"`
+
+	// 异步操作id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncActionId *string `json:"AsyncActionId,omitnil,omitempty" name:"AsyncActionId"`
 }
 
 type BatchOperationOpsDto struct {
@@ -1341,6 +1345,10 @@ type BatchOperationOpsDto struct {
 	// 批量操作的总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 异步操作记录的唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncActionId *string `json:"AsyncActionId,omitnil,omitempty" name:"AsyncActionId"`
 }
 
 type BatchOpsDTO struct {
@@ -1804,6 +1812,9 @@ type BatchStopOpsTasksRequestParams struct {
 
 	// 是否终止已生成的实例
 	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 type BatchStopOpsTasksRequest struct {
@@ -1817,6 +1828,9 @@ type BatchStopOpsTasksRequest struct {
 
 	// 是否终止已生成的实例
 	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 func (r *BatchStopOpsTasksRequest) ToJsonString() string {
@@ -1834,6 +1848,7 @@ func (r *BatchStopOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskIdList")
 	delete(f, "ProjectId")
 	delete(f, "KillInstance")
+	delete(f, "AsyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStopOpsTasksRequest has unknown keys!", "")
 	}
@@ -1875,6 +1890,9 @@ type BatchStopWorkflowsByIdsRequestParams struct {
 
 	// 是否终止已生成的实例
 	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 type BatchStopWorkflowsByIdsRequest struct {
@@ -1888,6 +1906,9 @@ type BatchStopWorkflowsByIdsRequest struct {
 
 	// 是否终止已生成的实例
 	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 func (r *BatchStopWorkflowsByIdsRequest) ToJsonString() string {
@@ -1905,6 +1926,7 @@ func (r *BatchStopWorkflowsByIdsRequest) FromJsonString(s string) error {
 	delete(f, "WorkflowIds")
 	delete(f, "ProjectId")
 	delete(f, "KillInstance")
+	delete(f, "AsyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStopWorkflowsByIdsRequest has unknown keys!", "")
 	}
@@ -3283,6 +3305,9 @@ type CreateCustomFunctionRequestParams struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 函数资源文件类型
+	FunctionResourceFileType *string `json:"FunctionResourceFileType,omitnil,omitempty" name:"FunctionResourceFileType"`
 }
 
 type CreateCustomFunctionRequest struct {
@@ -3305,6 +3330,9 @@ type CreateCustomFunctionRequest struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 函数资源文件类型
+	FunctionResourceFileType *string `json:"FunctionResourceFileType,omitnil,omitempty" name:"FunctionResourceFileType"`
 }
 
 func (r *CreateCustomFunctionRequest) ToJsonString() string {
@@ -3325,6 +3353,7 @@ func (r *CreateCustomFunctionRequest) FromJsonString(s string) error {
 	delete(f, "ClusterIdentifier")
 	delete(f, "DbName")
 	delete(f, "ProjectId")
+	delete(f, "FunctionResourceFileType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomFunctionRequest has unknown keys!", "")
 	}
@@ -3741,6 +3770,9 @@ type CreateHiveTableByDDLRequestParams struct {
 
 	// schema名称
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 是否异步建表
+	Async *bool `json:"Async,omitnil,omitempty" name:"Async"`
 }
 
 type CreateHiveTableByDDLRequest struct {
@@ -3769,6 +3801,9 @@ type CreateHiveTableByDDLRequest struct {
 
 	// schema名称
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 是否异步建表
+	Async *bool `json:"Async,omitnil,omitempty" name:"Async"`
 }
 
 func (r *CreateHiveTableByDDLRequest) ToJsonString() string {
@@ -3791,6 +3826,7 @@ func (r *CreateHiveTableByDDLRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Incharge")
 	delete(f, "SchemaName")
+	delete(f, "Async")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableByDDLRequest has unknown keys!", "")
 	}
@@ -3799,8 +3835,11 @@ func (r *CreateHiveTableByDDLRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHiveTableByDDLResponseParams struct {
-	// 表名称
+	// 返回表名称，无论是否异步都有值
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 异步任务轮询 id，只有异步才有值
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4102,6 +4141,9 @@ type CreateOfflineTaskRequestParams struct {
 
 	// 区分画布和表单
 	TaskMode *string `json:"TaskMode,omitnil,omitempty" name:"TaskMode"`
+
+	// 导入编排空间配置
+	TaskImportInfo *TaskImportInfo `json:"TaskImportInfo,omitnil,omitempty" name:"TaskImportInfo"`
 }
 
 type CreateOfflineTaskRequest struct {
@@ -4136,6 +4178,9 @@ type CreateOfflineTaskRequest struct {
 
 	// 区分画布和表单
 	TaskMode *string `json:"TaskMode,omitnil,omitempty" name:"TaskMode"`
+
+	// 导入编排空间配置
+	TaskImportInfo *TaskImportInfo `json:"TaskImportInfo,omitnil,omitempty" name:"TaskImportInfo"`
 }
 
 func (r *CreateOfflineTaskRequest) ToJsonString() string {
@@ -4160,6 +4205,7 @@ func (r *CreateOfflineTaskRequest) FromJsonString(s string) error {
 	delete(f, "TypeId")
 	delete(f, "TaskAction")
 	delete(f, "TaskMode")
+	delete(f, "TaskImportInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOfflineTaskRequest has unknown keys!", "")
 	}
@@ -4171,6 +4217,10 @@ type CreateOfflineTaskResponseParams struct {
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 导入到编排空间的任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArrangeSpaceTaskId *string `json:"ArrangeSpaceTaskId,omitnil,omitempty" name:"ArrangeSpaceTaskId"`
 
 	// 结果
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
@@ -9529,6 +9579,12 @@ type DescribeDsFolderTreeRequestParams struct {
 	// 是否包含任务目录 true 是 
 	// false 否
 	IncludeTaskFolder *bool `json:"IncludeTaskFolder,omitnil,omitempty" name:"IncludeTaskFolder"`
+
+	// 是否使用最新模式展示目录树
+	NewFolderTreeMode *bool `json:"NewFolderTreeMode,omitnil,omitempty" name:"NewFolderTreeMode"`
+
+	// 节点分类ID
+	TaskNodeId *string `json:"TaskNodeId,omitnil,omitempty" name:"TaskNodeId"`
 }
 
 type DescribeDsFolderTreeRequest struct {
@@ -9570,6 +9626,12 @@ type DescribeDsFolderTreeRequest struct {
 	// 是否包含任务目录 true 是 
 	// false 否
 	IncludeTaskFolder *bool `json:"IncludeTaskFolder,omitnil,omitempty" name:"IncludeTaskFolder"`
+
+	// 是否使用最新模式展示目录树
+	NewFolderTreeMode *bool `json:"NewFolderTreeMode,omitnil,omitempty" name:"NewFolderTreeMode"`
+
+	// 节点分类ID
+	TaskNodeId *string `json:"TaskNodeId,omitnil,omitempty" name:"TaskNodeId"`
 }
 
 func (r *DescribeDsFolderTreeRequest) ToJsonString() string {
@@ -9595,6 +9657,8 @@ func (r *DescribeDsFolderTreeRequest) FromJsonString(s string) error {
 	delete(f, "TaskFolderId")
 	delete(f, "DisplayType")
 	delete(f, "IncludeTaskFolder")
+	delete(f, "NewFolderTreeMode")
+	delete(f, "TaskNodeId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDsFolderTreeRequest has unknown keys!", "")
 	}
@@ -9644,6 +9708,9 @@ type DescribeDsParentFolderTreeRequestParams struct {
 	// -    classification:分类展示
 	// -    catalog:目录展示
 	DisplayType *string `json:"DisplayType,omitnil,omitempty" name:"DisplayType"`
+
+	// 是否新模式展示目录树
+	NewFolderTreeMode *bool `json:"NewFolderTreeMode,omitnil,omitempty" name:"NewFolderTreeMode"`
 }
 
 type DescribeDsParentFolderTreeRequest struct {
@@ -9665,6 +9732,9 @@ type DescribeDsParentFolderTreeRequest struct {
 	// -    classification:分类展示
 	// -    catalog:目录展示
 	DisplayType *string `json:"DisplayType,omitnil,omitempty" name:"DisplayType"`
+
+	// 是否新模式展示目录树
+	NewFolderTreeMode *bool `json:"NewFolderTreeMode,omitnil,omitempty" name:"NewFolderTreeMode"`
 }
 
 func (r *DescribeDsParentFolderTreeRequest) ToJsonString() string {
@@ -9684,6 +9754,7 @@ func (r *DescribeDsParentFolderTreeRequest) FromJsonString(s string) error {
 	delete(f, "WorkflowId")
 	delete(f, "TaskId")
 	delete(f, "DisplayType")
+	delete(f, "NewFolderTreeMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDsParentFolderTreeRequest has unknown keys!", "")
 	}
@@ -12157,6 +12228,9 @@ type DescribeOperateOpsTasksRequestParams struct {
 
 	// 额外请求的资源类型
 	RequestResourceTypes []*string `json:"RequestResourceTypes,omitnil,omitempty" name:"RequestResourceTypes"`
+
+	// 项目ID列表
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeOperateOpsTasksRequest struct {
@@ -12236,6 +12310,9 @@ type DescribeOperateOpsTasksRequest struct {
 
 	// 额外请求的资源类型
 	RequestResourceTypes []*string `json:"RequestResourceTypes,omitnil,omitempty" name:"RequestResourceTypes"`
+
+	// 项目ID列表
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 func (r *DescribeOperateOpsTasksRequest) ToJsonString() string {
@@ -12275,6 +12352,7 @@ func (r *DescribeOperateOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "KeyWord")
 	delete(f, "InitStrategy")
 	delete(f, "RequestResourceTypes")
+	delete(f, "ProjectIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateOpsTasksRequest has unknown keys!", "")
 	}
@@ -12472,6 +12550,9 @@ type DescribeOpsMakePlanTasksRequestParams struct {
 	// 补录计划ID
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
+	// 实例状态过滤条件
+	StateList []*int64 `json:"StateList,omitnil,omitempty" name:"StateList"`
+
 	// 分页页码，默认值1
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
@@ -12487,6 +12568,9 @@ type DescribeOpsMakePlanTasksRequest struct {
 
 	// 补录计划ID
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 实例状态过滤条件
+	StateList []*int64 `json:"StateList,omitnil,omitempty" name:"StateList"`
 
 	// 分页页码，默认值1
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
@@ -12509,6 +12593,7 @@ func (r *DescribeOpsMakePlanTasksRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "PlanId")
+	delete(f, "StateList")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	if len(f) > 0 {
@@ -12574,6 +12659,12 @@ type DescribeOpsMakePlansRequestParams struct {
 
 	// 补录计划最大创建时间
 	MaxCreateTime *string `json:"MaxCreateTime,omitnil,omitempty" name:"MaxCreateTime"`
+
+	// 实例状态过滤条件
+	StateList []*int64 `json:"StateList,omitnil,omitempty" name:"StateList"`
+
+	// 模糊查询关键字
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 type DescribeOpsMakePlansRequest struct {
@@ -12608,6 +12699,12 @@ type DescribeOpsMakePlansRequest struct {
 
 	// 补录计划最大创建时间
 	MaxCreateTime *string `json:"MaxCreateTime,omitnil,omitempty" name:"MaxCreateTime"`
+
+	// 实例状态过滤条件
+	StateList []*int64 `json:"StateList,omitnil,omitempty" name:"StateList"`
+
+	// 模糊查询关键字
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 func (r *DescribeOpsMakePlansRequest) ToJsonString() string {
@@ -12632,6 +12729,8 @@ func (r *DescribeOpsMakePlansRequest) FromJsonString(s string) error {
 	delete(f, "Creator")
 	delete(f, "MinCreateTime")
 	delete(f, "MaxCreateTime")
+	delete(f, "StateList")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOpsMakePlansRequest has unknown keys!", "")
 	}
@@ -12704,6 +12803,9 @@ type DescribeOpsWorkflowsRequestParams struct {
 
 	// 排序方式，DESC或ASC
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 项目ID列表，用于多项目工作流筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeOpsWorkflowsRequest struct {
@@ -12747,6 +12849,9 @@ type DescribeOpsWorkflowsRequest struct {
 
 	// 排序方式，DESC或ASC
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 项目ID列表，用于多项目工作流筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 func (r *DescribeOpsWorkflowsRequest) ToJsonString() string {
@@ -12774,6 +12879,7 @@ func (r *DescribeOpsWorkflowsRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "SortItem")
 	delete(f, "SortType")
+	delete(f, "ProjectIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOpsWorkflowsRequest has unknown keys!", "")
 	}
@@ -15128,6 +15234,9 @@ type DescribeSchedulerInstanceStatusRequestParams struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务ID列表
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeSchedulerInstanceStatusRequest struct {
@@ -15156,6 +15265,9 @@ type DescribeSchedulerInstanceStatusRequest struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务ID列表
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 func (r *DescribeSchedulerInstanceStatusRequest) ToJsonString() string {
@@ -15178,6 +15290,7 @@ func (r *DescribeSchedulerInstanceStatusRequest) FromJsonString(s string) error 
 	delete(f, "EndTime")
 	delete(f, "InCharge")
 	delete(f, "WorkflowId")
+	delete(f, "ProjectIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerInstanceStatusRequest has unknown keys!", "")
 	}
@@ -15241,6 +15354,9 @@ type DescribeSchedulerRunTimeInstanceCntByStatusRequestParams struct {
 
 	// 升序降序
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 项目ID列表，如果传了 ProjectIds，则 ProjectId 不会生效，用于多项目筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeSchedulerRunTimeInstanceCntByStatusRequest struct {
@@ -15275,6 +15391,9 @@ type DescribeSchedulerRunTimeInstanceCntByStatusRequest struct {
 
 	// 升序降序
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 项目ID列表，如果传了 ProjectIds，则 ProjectId 不会生效，用于多项目筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 func (r *DescribeSchedulerRunTimeInstanceCntByStatusRequest) ToJsonString() string {
@@ -15299,6 +15418,7 @@ func (r *DescribeSchedulerRunTimeInstanceCntByStatusRequest) FromJsonString(s st
 	delete(f, "WorkflowId")
 	delete(f, "SortItem")
 	delete(f, "SortType")
+	delete(f, "ProjectIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerRunTimeInstanceCntByStatusRequest has unknown keys!", "")
 	}
@@ -15347,6 +15467,12 @@ type DescribeSchedulerTaskCntByStatusRequestParams struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表，如果传了 ProjectIds ，ProjectId 不会生效
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 资源组ID筛选
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitnil,omitempty" name:"ResourceGroupIds"`
 }
 
 type DescribeSchedulerTaskCntByStatusRequest struct {
@@ -15366,6 +15492,12 @@ type DescribeSchedulerTaskCntByStatusRequest struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表，如果传了 ProjectIds ，ProjectId 不会生效
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 资源组ID筛选
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitnil,omitempty" name:"ResourceGroupIds"`
 }
 
 func (r *DescribeSchedulerTaskCntByStatusRequest) ToJsonString() string {
@@ -15385,6 +15517,8 @@ func (r *DescribeSchedulerTaskCntByStatusRequest) FromJsonString(s string) error
 	delete(f, "ProjectId")
 	delete(f, "InCharge")
 	delete(f, "WorkflowId")
+	delete(f, "ProjectIds")
+	delete(f, "ResourceGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerTaskCntByStatusRequest has unknown keys!", "")
 	}
@@ -15525,6 +15659,12 @@ type DescribeStatisticInstanceStatusTrendOpsRequestParams struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 指定时间点，当统计时常为整天的时候使用，必须小于 24
+	TimePoint *uint64 `json:"TimePoint,omitnil,omitempty" name:"TimePoint"`
 }
 
 type DescribeStatisticInstanceStatusTrendOpsRequest struct {
@@ -15571,6 +15711,12 @@ type DescribeStatisticInstanceStatusTrendOpsRequest struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 指定时间点，当统计时常为整天的时候使用，必须小于 24
+	TimePoint *uint64 `json:"TimePoint,omitnil,omitempty" name:"TimePoint"`
 }
 
 func (r *DescribeStatisticInstanceStatusTrendOpsRequest) ToJsonString() string {
@@ -15599,6 +15745,8 @@ func (r *DescribeStatisticInstanceStatusTrendOpsRequest) FromJsonString(s string
 	delete(f, "AggregationUnit")
 	delete(f, "AverageWindowSize")
 	delete(f, "WorkflowId")
+	delete(f, "ProjectIds")
+	delete(f, "TimePoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticInstanceStatusTrendOpsRequest has unknown keys!", "")
 	}
@@ -16941,6 +17089,15 @@ type DescribeTaskByCycleRequestParams struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 资源组ID列表筛选
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitnil,omitempty" name:"ResourceGroupIds"`
+
+	// 任务类型ID筛选
+	TaskTypeIdList []*string `json:"TaskTypeIdList,omitnil,omitempty" name:"TaskTypeIdList"`
 }
 
 type DescribeTaskByCycleRequest struct {
@@ -16954,6 +17111,15 @@ type DescribeTaskByCycleRequest struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 资源组ID列表筛选
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitnil,omitempty" name:"ResourceGroupIds"`
+
+	// 任务类型ID筛选
+	TaskTypeIdList []*string `json:"TaskTypeIdList,omitnil,omitempty" name:"TaskTypeIdList"`
 }
 
 func (r *DescribeTaskByCycleRequest) ToJsonString() string {
@@ -16971,6 +17137,9 @@ func (r *DescribeTaskByCycleRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "InCharge")
 	delete(f, "WorkflowId")
+	delete(f, "ProjectIds")
+	delete(f, "ResourceGroupIds")
+	delete(f, "TaskTypeIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskByCycleRequest has unknown keys!", "")
 	}
@@ -17036,6 +17205,9 @@ type DescribeTaskByStatusReportRequestParams struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeTaskByStatusReportRequest struct {
@@ -17073,6 +17245,9 @@ type DescribeTaskByStatusReportRequest struct {
 
 	// 工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 func (r *DescribeTaskByStatusReportRequest) ToJsonString() string {
@@ -17098,6 +17273,7 @@ func (r *DescribeTaskByStatusReportRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "InCharge")
 	delete(f, "WorkflowId")
+	delete(f, "ProjectIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskByStatusReportRequest has unknown keys!", "")
 	}
@@ -19253,6 +19429,9 @@ type FreezeTasksByWorkflowIdsRequestParams struct {
 
 	// 是否终止已生成的实例
 	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 type FreezeTasksByWorkflowIdsRequest struct {
@@ -19266,6 +19445,9 @@ type FreezeTasksByWorkflowIdsRequest struct {
 
 	// 是否终止已生成的实例
 	KillInstance *bool `json:"KillInstance,omitnil,omitempty" name:"KillInstance"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 func (r *FreezeTasksByWorkflowIdsRequest) ToJsonString() string {
@@ -19283,6 +19465,7 @@ func (r *FreezeTasksByWorkflowIdsRequest) FromJsonString(s string) error {
 	delete(f, "WorkflowIds")
 	delete(f, "ProjectId")
 	delete(f, "KillInstance")
+	delete(f, "AsyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreezeTasksByWorkflowIdsRequest has unknown keys!", "")
 	}
@@ -21125,6 +21308,18 @@ type IntegrationTaskInfo struct {
 	// 离线任务状态区分1.未提交2.已提交3.已导出
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTaskStatus *int64 `json:"OfflineTaskStatus,omitnil,omitempty" name:"OfflineTaskStatus"`
+
+	// 导入到编排空间配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskImportInfo *TaskImportInfo `json:"TaskImportInfo,omitnil,omitempty" name:"TaskImportInfo"`
+
+	// 业务延迟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLatency *int64 `json:"BusinessLatency,omitnil,omitempty" name:"BusinessLatency"`
+
+	// 当前同步位点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentSyncPosition *int64 `json:"CurrentSyncPosition,omitnil,omitempty" name:"CurrentSyncPosition"`
 }
 
 // Predefined struct for user
@@ -21198,6 +21393,12 @@ type KillOpsMakePlanInstancesRequestParams struct {
 
 	// 补录计划ID
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
+
+	// 补录计划名
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 }
 
 type KillOpsMakePlanInstancesRequest struct {
@@ -21208,6 +21409,12 @@ type KillOpsMakePlanInstancesRequest struct {
 
 	// 补录计划ID
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
+
+	// 补录计划名
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 }
 
 func (r *KillOpsMakePlanInstancesRequest) ToJsonString() string {
@@ -21224,6 +21431,8 @@ func (r *KillOpsMakePlanInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "PlanId")
+	delete(f, "AsyncMode")
+	delete(f, "PlanName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillOpsMakePlanInstancesRequest has unknown keys!", "")
 	}
@@ -21310,6 +21519,9 @@ type KillScheduleInstancesRequestParams struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 type KillScheduleInstancesRequest struct {
@@ -21368,6 +21580,9 @@ type KillScheduleInstancesRequest struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 func (r *KillScheduleInstancesRequest) ToJsonString() string {
@@ -21400,6 +21615,7 @@ func (r *KillScheduleInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "RequestBaseInfo")
 	delete(f, "IsCount")
+	delete(f, "AsyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillScheduleInstancesRequest has unknown keys!", "")
 	}
@@ -21720,6 +21936,14 @@ type MakePlanOpsDto struct {
 	// <li> MAKE_SCOPE: 只在（当前补录计划）选中任务中检查 </li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckParentType *string `json:"CheckParentType,omitnil,omitempty" name:"CheckParentType"`
+
+	// 是否和原任务保持相同工作流自依赖属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SameSelfWorkflowDependType *bool `json:"SameSelfWorkflowDependType,omitnil,omitempty" name:"SameSelfWorkflowDependType"`
+
+	// 工作流自依赖类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfWorkflowDependency *string `json:"SelfWorkflowDependency,omitnil,omitempty" name:"SelfWorkflowDependency"`
 }
 
 type MakePlanOpsDtoCollection struct {
@@ -24194,6 +24418,9 @@ type OperationOpsDto struct {
 	// 操作失败描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorDesc *string `json:"ErrorDesc,omitnil,omitempty" name:"ErrorDesc"`
+
+	// 异步操作记录id
+	AsyncActionId *string `json:"AsyncActionId,omitnil,omitempty" name:"AsyncActionId"`
 }
 
 type OpsTaskCanvasDto struct {
@@ -26685,6 +26912,9 @@ type RunForceSucScheduleInstancesRequestParams struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 type RunForceSucScheduleInstancesRequest struct {
@@ -26743,6 +26973,9 @@ type RunForceSucScheduleInstancesRequest struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 func (r *RunForceSucScheduleInstancesRequest) ToJsonString() string {
@@ -26775,6 +27008,7 @@ func (r *RunForceSucScheduleInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "RequestBaseInfo")
 	delete(f, "IsCount")
+	delete(f, "AsyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunForceSucScheduleInstancesRequest has unknown keys!", "")
 	}
@@ -26861,6 +27095,9 @@ type RunRerunScheduleInstancesRequestParams struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 type RunRerunScheduleInstancesRequest struct {
@@ -26919,6 +27156,9 @@ type RunRerunScheduleInstancesRequest struct {
 
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
+
+	// 是否异步模式
+	AsyncMode *bool `json:"AsyncMode,omitnil,omitempty" name:"AsyncMode"`
 }
 
 func (r *RunRerunScheduleInstancesRequest) ToJsonString() string {
@@ -26951,6 +27191,7 @@ func (r *RunRerunScheduleInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "RequestBaseInfo")
 	delete(f, "IsCount")
+	delete(f, "AsyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunRerunScheduleInstancesRequest has unknown keys!", "")
 	}
@@ -27086,6 +27327,14 @@ type RuntimeInstanceCntTop struct {
 	// 等待调度耗时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaitScheduleTime *uint64 `json:"WaitScheduleTime,omitnil,omitempty" name:"WaitScheduleTime"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 }
 
 // Predefined struct for user
@@ -27296,6 +27545,9 @@ type ScreenInstanceInfo struct {
 	// 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedNum *uint64 `json:"FailedNum,omitnil,omitempty" name:"FailedNum"`
+
+	// 跳过运行总数
+	SkipRunningNum *int64 `json:"SkipRunningNum,omitnil,omitempty" name:"SkipRunningNum"`
 }
 
 type ScreenTaskInfo struct {
@@ -27321,6 +27573,10 @@ type ScreenTaskInfo struct {
 	// 暂停
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenNum *uint64 `json:"FrozenNum,omitnil,omitempty" name:"FrozenNum"`
+
+	// 无效任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvalidNum *uint64 `json:"InvalidNum,omitnil,omitempty" name:"InvalidNum"`
 
 	// 年任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -29610,6 +29866,36 @@ type TaskExtInfo struct {
 
 	// 值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TaskImportInfo struct {
+	// 是否导入编排空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsImport *bool `json:"IsImport,omitnil,omitempty" name:"IsImport"`
+
+	// 是否新建工作流
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNewWorkFlow *bool `json:"IsNewWorkFlow,omitnil,omitempty" name:"IsNewWorkFlow"`
+
+	// 工作流所属目录id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlowFolderId *string `json:"WorkFlowFolderId,omitnil,omitempty" name:"WorkFlowFolderId"`
+
+	// 工作流所属目录名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlowFolderName *string `json:"WorkFlowFolderName,omitnil,omitempty" name:"WorkFlowFolderName"`
+
+	// 工作流id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlowId *string `json:"WorkFlowId,omitnil,omitempty" name:"WorkFlowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlowName *string `json:"WorkFlowName,omitnil,omitempty" name:"WorkFlowName"`
+
+	// 重名任务处理策略, 0:跳过,不导入; 1: 重命名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskNameExistMode *uint64 `json:"TaskNameExistMode,omitnil,omitempty" name:"TaskNameExistMode"`
 }
 
 type TaskInnerInfo struct {

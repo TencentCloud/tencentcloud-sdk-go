@@ -550,6 +550,7 @@ func NewCreateExporterIntegrationResponse() (response *CreateExporterIntegration
 //  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
 //  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateExporterIntegration(request *CreateExporterIntegrationRequest) (response *CreateExporterIntegrationResponse, err error) {
     return c.CreateExporterIntegrationWithContext(context.Background(), request)
 }
@@ -570,6 +571,7 @@ func (c *Client) CreateExporterIntegration(request *CreateExporterIntegrationReq
 //  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
 //  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateExporterIntegrationWithContext(ctx context.Context, request *CreateExporterIntegrationRequest) (response *CreateExporterIntegrationResponse, err error) {
     if request == nil {
         request = NewCreateExporterIntegrationRequest()

@@ -9345,6 +9345,55 @@ func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeOrganizationVerifyStatusRequest() (request *DescribeOrganizationVerifyStatusRequest) {
+    request = &DescribeOrganizationVerifyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeOrganizationVerifyStatus")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationVerifyStatusResponse() (response *DescribeOrganizationVerifyStatusResponse) {
+    response = &DescribeOrganizationVerifyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOrganizationVerifyStatus
+// 仅且仅能查询企业本身在电子签的认证状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+func (c *Client) DescribeOrganizationVerifyStatus(request *DescribeOrganizationVerifyStatusRequest) (response *DescribeOrganizationVerifyStatusResponse, err error) {
+    return c.DescribeOrganizationVerifyStatusWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationVerifyStatus
+// 仅且仅能查询企业本身在电子签的认证状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+func (c *Client) DescribeOrganizationVerifyStatusWithContext(ctx context.Context, request *DescribeOrganizationVerifyStatusRequest) (response *DescribeOrganizationVerifyStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationVerifyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationVerifyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationVerifyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonCertificateRequest() (request *DescribePersonCertificateRequest) {
     request = &DescribePersonCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},

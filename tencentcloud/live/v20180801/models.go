@@ -1152,7 +1152,7 @@ type CasterInfo struct {
 
 type CasterInputInfo struct {
 	// 输入源Index。
-	// 范围[1, 20]
+	// 范围[1, 24]
 	InputIndex *int64 `json:"InputIndex,omitnil,omitempty" name:"InputIndex"`
 
 	// 输入源类型。
@@ -1726,7 +1726,7 @@ type CreateCasterInputPushUrlRequestParams struct {
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
 
 	// 请求生成推流地址的输入Index。
-	// 允许范围[1,20]。
+	// 允许范围[1,24]。
 	InputIndex *uint64 `json:"InputIndex,omitnil,omitempty" name:"InputIndex"`
 
 	// 生成推流地址协议。
@@ -1742,7 +1742,7 @@ type CreateCasterInputPushUrlRequest struct {
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
 
 	// 请求生成推流地址的输入Index。
-	// 允许范围[1,20]。
+	// 允许范围[1,24]。
 	InputIndex *uint64 `json:"InputIndex,omitnil,omitempty" name:"InputIndex"`
 
 	// 生成推流地址协议。
@@ -12598,13 +12598,13 @@ func (r *DescribePullTransformPushInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePushBandwidthAndFluxListRequestParams struct {
 	// 查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	// 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	// 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
@@ -12646,13 +12646,13 @@ type DescribePushBandwidthAndFluxListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	// 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	// 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`

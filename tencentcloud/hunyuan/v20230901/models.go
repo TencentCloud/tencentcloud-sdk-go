@@ -1640,7 +1640,7 @@ type RunThreadRequestParams struct {
 	// 会话 ID
 	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
 
-	// 助手 ID
+	// 助手 ID（目前未使用，留空）
 	AssistantID *string `json:"AssistantID,omitnil,omitempty" name:"AssistantID"`
 
 	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
@@ -1677,7 +1677,7 @@ type RunThreadRequest struct {
 	// 会话 ID
 	ThreadID *string `json:"ThreadID,omitnil,omitempty" name:"ThreadID"`
 
-	// 助手 ID
+	// 助手 ID（目前未使用，留空）
 	AssistantID *string `json:"AssistantID,omitnil,omitempty" name:"AssistantID"`
 
 	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。

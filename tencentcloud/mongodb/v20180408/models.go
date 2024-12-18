@@ -261,10 +261,10 @@ type CreateDBInstanceRequestParams struct {
 	// 实例硬盘大小，单位：GB
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
+	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。 - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 机器类型，GIO：高IO版；TGIO：高IO万兆
+	// 机器类型，HIO10G：高IO万兆。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为10
@@ -290,6 +290,9 @@ type CreateDBInstanceRequestParams struct {
 
 	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+
+	// 实例类型，REPLSET-副本集，SHARD-分片集群，默认为REPLSET
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type CreateDBInstanceRequest struct {
@@ -304,10 +307,10 @@ type CreateDBInstanceRequest struct {
 	// 实例硬盘大小，单位：GB
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
+	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。 - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。 - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 机器类型，GIO：高IO版；TGIO：高IO万兆
+	// 机器类型，HIO10G：高IO万兆。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为10
@@ -333,6 +336,9 @@ type CreateDBInstanceRequest struct {
 
 	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+
+	// 实例类型，REPLSET-副本集，SHARD-分片集群，默认为REPLSET
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -360,6 +366,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroup")
 	delete(f, "UniqVpcId")
 	delete(f, "UniqSubnetId")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}
@@ -458,7 +465,7 @@ func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例类型，取值范围：
@@ -501,7 +508,7 @@ type DescribeDBInstancesRequestParams struct {
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例类型，取值范围：
@@ -1035,26 +1042,26 @@ func (r *SetAutoRenewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetPasswordRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例账户名。初始化实例密码，本参数传mongouser。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
+	// 指定账户的新密码， 密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type SetPasswordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例账户名。初始化实例密码，本参数传mongouser。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
+	// 指定账户的新密码， 密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
@@ -1325,7 +1332,7 @@ func (r *UpgradeDBInstanceHourResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeDBInstanceRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-iga0****。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 升级后的内存大小，单位：GB
@@ -1341,7 +1348,7 @@ type UpgradeDBInstanceRequestParams struct {
 type UpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-iga0****。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 升级后的内存大小，单位：GB

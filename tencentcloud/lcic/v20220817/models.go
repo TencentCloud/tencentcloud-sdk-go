@@ -1136,7 +1136,7 @@ type CreateRoomRequestParams struct {
 	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitnil,omitempty" name:"AudienceType"`
 
-	// 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// 录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
@@ -1177,7 +1177,8 @@ type CreateRoomRequestParams struct {
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+	// 录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。
+	// 数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
@@ -1248,7 +1249,7 @@ type CreateRoomRequest struct {
 	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitnil,omitempty" name:"AudienceType"`
 
-	// 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// 录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
@@ -1289,7 +1290,8 @@ type CreateRoomRequest struct {
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+	// 录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。
+	// 数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效

@@ -3264,14 +3264,14 @@ func (r *DescribeTemplateListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTemplateRequestParams struct {
-	// 模板ID
+	// 模板ID(模板列表接口可获取)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DescribeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板ID
+	// 模板ID(模板列表接口可获取)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 

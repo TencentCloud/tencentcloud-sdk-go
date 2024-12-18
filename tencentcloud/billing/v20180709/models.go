@@ -3009,9 +3009,13 @@ type DescribeAccountBalanceResponseParams struct {
 	OweAmount *float64 `json:"OweAmount,omitnil,omitempty" name:"OweAmount"`
 
 	// 是否允许欠费消费
+	//
+	// Deprecated: IsAllowArrears is deprecated.
 	IsAllowArrears *bool `json:"IsAllowArrears,omitnil,omitempty" name:"IsAllowArrears"`
 
 	// 是否限制信用额度
+	//
+	// Deprecated: IsCreditLimited is deprecated.
 	IsCreditLimited *bool `json:"IsCreditLimited,omitnil,omitempty" name:"IsCreditLimited"`
 
 	// 信用额度,单位 分

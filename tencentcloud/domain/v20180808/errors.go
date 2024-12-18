@@ -74,6 +74,9 @@ const (
 	// 域名过户失败。
 	FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
 
+	// 当前域名正在注册中无法进行账号间转移,请等待注册完成后再操作
+	FAILEDOPERATION_MODIFYDOMAINOWNERREGISTERDOING = "FailedOperation.ModifyDomainOwnerRegisterDoing"
+
 	// 权限不足。
 	FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 

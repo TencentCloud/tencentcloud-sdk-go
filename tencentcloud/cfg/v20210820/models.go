@@ -1534,6 +1534,9 @@ type ObjectType struct {
 	// 1：平台支持的对象 2：应用支持的部分对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectSupportType *int64 `json:"ObjectSupportType,omitnil,omitempty" name:"ObjectSupportType"`
+
+	// 1.接入层 2.逻辑层 3. 数据层
+	ArchLayer *int64 `json:"ArchLayer,omitnil,omitempty" name:"ArchLayer"`
 }
 
 type ObjectTypeConfig struct {
@@ -2268,6 +2271,9 @@ type TemplateGroupAction struct {
 	// 动作风险等级，1:低风险 2:中风险 3:高风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionRisk *string `json:"ActionRisk,omitnil,omitempty" name:"ActionRisk"`
+
+	// 故障表现
+	FailurePerformance *string `json:"FailurePerformance,omitnil,omitempty" name:"FailurePerformance"`
 }
 
 type TemplateListItem struct {

@@ -2702,6 +2702,7 @@ func NewModifyDomainOwnerBatchResponse() (response *ModifyDomainOwnerBatchRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
+//  FAILEDOPERATION_MODIFYDOMAINOWNERREGISTERDOING = "FailedOperation.ModifyDomainOwnerRegisterDoing"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
@@ -2717,6 +2718,7 @@ func (c *Client) ModifyDomainOwnerBatch(request *ModifyDomainOwnerBatchRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
+//  FAILEDOPERATION_MODIFYDOMAINOWNERREGISTERDOING = "FailedOperation.ModifyDomainOwnerRegisterDoing"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"

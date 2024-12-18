@@ -29,6 +29,9 @@ const (
 	// 当前子账号无权执行该操作。
 	INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 
+	// 可用区已关闭售卖。
+	INVALIDPARAMETER_ZONECLOSED = "InvalidParameter.ZoneClosed"
+
 	// 非法的实例名。
 	INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = "InvalidParameterValue.IllegalInstanceName"
 
@@ -46,6 +49,12 @@ const (
 
 	// 实例锁定失败。
 	INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+
+	// 错误的机型。
+	INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+
+	// 实例版本错误。
+	INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
 
 	// 实例版本不支持查询客户端信息。
 	INVALIDPARAMETERVALUE_MONGOVERSIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.MongoVersionNotSupportQueryClient"
@@ -80,8 +89,14 @@ const (
 	// 地域尚不支持查询客户端信息。
 	INVALIDPARAMETERVALUE_REGIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.RegionNotSupportQueryClient"
 
+	// 从节点数错误。
+	INVALIDPARAMETERVALUE_SECONDARYNUMERROR = "InvalidParameterValue.SecondaryNumError"
+
 	// slowMS参数取值范围[100,65536]。
 	INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
+
+	// 购买规格错误。
+	INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
 
 	// 起始时间晚于结束时间。
 	INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
