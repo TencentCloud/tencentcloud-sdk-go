@@ -851,6 +851,65 @@ func (c *Client) CreateCloudStorageAIServiceWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateCloudStorageAIServiceTaskRequest() (request *CreateCloudStorageAIServiceTaskRequest) {
+    request = &CreateCloudStorageAIServiceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateCloudStorageAIServiceTask")
+    
+    
+    return
+}
+
+func NewCreateCloudStorageAIServiceTaskResponse() (response *CreateCloudStorageAIServiceTaskResponse) {
+    response = &CreateCloudStorageAIServiceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudStorageAIServiceTask
+// 创建设备云存 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) CreateCloudStorageAIServiceTask(request *CreateCloudStorageAIServiceTaskRequest) (response *CreateCloudStorageAIServiceTaskResponse, err error) {
+    return c.CreateCloudStorageAIServiceTaskWithContext(context.Background(), request)
+}
+
+// CreateCloudStorageAIServiceTask
+// 创建设备云存 AI 分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+func (c *Client) CreateCloudStorageAIServiceTaskWithContext(ctx context.Context, request *CreateCloudStorageAIServiceTaskRequest) (response *CreateCloudStorageAIServiceTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudStorageAIServiceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudStorageAIServiceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudStorageAIServiceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     request = &CreateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8118,6 +8177,10 @@ func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResp
 }
 
 // PublishBroadcastMessage
+// 发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+//
+// 
+//
 // 发布广播消息
 //
 // 可能返回的错误码:
@@ -8132,6 +8195,10 @@ func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest
 }
 
 // PublishBroadcastMessage
+// 发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+//
+// 
+//
 // 发布广播消息
 //
 // 可能返回的错误码:
@@ -8323,6 +8390,10 @@ func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
 }
 
 // PublishRRPCMessage
+// 发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+//
+// 
+//
 // 下发RRPC消息
 //
 // 可能返回的错误码:
@@ -8342,6 +8413,10 @@ func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (respons
 }
 
 // PublishRRPCMessage
+// 发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+//
+// 
+//
 // 下发RRPC消息
 //
 // 可能返回的错误码:

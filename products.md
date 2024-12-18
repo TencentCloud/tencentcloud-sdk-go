@@ -101,7 +101,7 @@
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-12-10 01:32:35 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-12-11 01:33:45 |
 | ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-12-16 01:33:51 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-12-16 01:34:38 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-12-17 14:33:46 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-12-11 01:36:12 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-12-17 01:30:37 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2024-11-15 01:37:24 |
@@ -130,7 +130,7 @@
 | ioa | [iOA 零信任安全管理系统](https://cloud.tencent.com/document/product/1092) | 2024-11-11 01:39:45 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2023-07-17 01:22:28 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2024-06-05 01:47:50 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2024-12-17 01:33:48 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2024-12-18 16:59:09 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2023-05-18 01:33:02 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2024-12-17 01:35:29 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2024-03-20 01:18:54 |
@@ -182,7 +182,7 @@
 | smh | [智能媒资托管](https://cloud.tencent.com/document/product/1339) | 2024-12-17 01:50:10 |
 | smop | [腾讯安心用户运营平台](https://cloud.tencent.com/document/product/1310) | 2024-10-31 02:02:47 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2024-07-09 01:21:06 |
-| sms | [短信](https://cloud.tencent.com/document/product/382) | 2024-10-21 17:47:13 |
+| sms | [短信](https://cloud.tencent.com/document/product/382) | 2024-12-17 10:58:36 |
 | soe | [智聆口语评测](https://cloud.tencent.com/document/product/884) | 2024-11-13 02:01:41 |
 | solar | [智汇零售](https://cloud.tencent.com/document/product) | 2020-03-19 08:01:59 |
 | sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2024-11-15 01:59:49 |
@@ -248,7 +248,7 @@
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2024-03-20 01:30:13 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2024-11-18 02:09:13 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2024-12-16 02:10:23 |
-| vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2024-09-06 02:27:27 |
+| vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2024-12-18 10:53:30 |
 | vtc | [视频转译](https://cloud.tencent.com/document/product/1769) | 2024-10-16 01:32:39 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2024-11-19 02:12:25 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2024-11-20 02:21:21 |

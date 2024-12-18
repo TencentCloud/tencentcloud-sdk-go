@@ -615,6 +615,77 @@ func (r *GetTrainingTextResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetVRSVoiceTypeInfoRequestParams struct {
+	// 音色id。
+	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// 0 - 除快速声音复刻外其他复刻类型（默认）； 5 - 快速声音复刻。 默认为0。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 快速复刻音色id。
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
+}
+
+type GetVRSVoiceTypeInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音色id。
+	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// 0 - 除快速声音复刻外其他复刻类型（默认）； 5 - 快速声音复刻。 默认为0。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 快速复刻音色id。
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
+}
+
+func (r *GetVRSVoiceTypeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVRSVoiceTypeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceType")
+	delete(f, "TaskType")
+	delete(f, "FastVoiceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVRSVoiceTypeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVRSVoiceTypeInfoResponseParams struct {
+	// 音色信息
+	Data *VoiceTypeInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetVRSVoiceTypeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVRSVoiceTypeInfoResponseParams `json:"Response"`
+}
+
+func (r *GetVRSVoiceTypeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVRSVoiceTypeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetVRSVoiceTypesRequestParams struct {
 	// 复刻类型。
 	// 0 - 除快速声音复刻外其他复刻类型（默认）；
@@ -731,11 +802,11 @@ type VoiceTypeListData struct {
 }
 
 type Words struct {
-	// 准确度 (<75则认为不合格)
+	// 准确度 (小于75则认为不合格)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PronAccuracy *float64 `json:"PronAccuracy,omitnil,omitempty" name:"PronAccuracy"`
 
-	// 流畅度 (<0.95则认为不合格)
+	// 流畅度 (小于0.95则认为不合格)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PronFluency *float64 `json:"PronFluency,omitnil,omitempty" name:"PronFluency"`
 

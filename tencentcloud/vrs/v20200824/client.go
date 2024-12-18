@@ -427,6 +427,61 @@ func (c *Client) GetTrainingTextWithContext(ctx context.Context, request *GetTra
     return
 }
 
+func NewGetVRSVoiceTypeInfoRequest() (request *GetVRSVoiceTypeInfoRequest) {
+    request = &GetVRSVoiceTypeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "GetVRSVoiceTypeInfo")
+    
+    
+    return
+}
+
+func NewGetVRSVoiceTypeInfoResponse() (response *GetVRSVoiceTypeInfoResponse) {
+    response = &GetVRSVoiceTypeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVRSVoiceTypeInfo
+// 该接口用于查询复刻音色详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
+func (c *Client) GetVRSVoiceTypeInfo(request *GetVRSVoiceTypeInfoRequest) (response *GetVRSVoiceTypeInfoResponse, err error) {
+    return c.GetVRSVoiceTypeInfoWithContext(context.Background(), request)
+}
+
+// GetVRSVoiceTypeInfo
+// 该接口用于查询复刻音色详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
+func (c *Client) GetVRSVoiceTypeInfoWithContext(ctx context.Context, request *GetVRSVoiceTypeInfoRequest) (response *GetVRSVoiceTypeInfoResponse, err error) {
+    if request == nil {
+        request = NewGetVRSVoiceTypeInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVRSVoiceTypeInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVRSVoiceTypeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetVRSVoiceTypesRequest() (request *GetVRSVoiceTypesRequest) {
     request = &GetVRSVoiceTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},

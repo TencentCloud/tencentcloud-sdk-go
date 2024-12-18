@@ -1195,6 +1195,132 @@ func (r *CreateCloudStorageAIServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCloudStorageAIServiceTaskRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 待分析云存的起始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 待分析云存的结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+type CreateCloudStorageAIServiceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 云存 AI 服务类型。可选值：
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 待分析云存的起始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 待分析云存的结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 视频分析配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频分析识别区域
+	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
+
+	// 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+	VideoURLs []*string `json:"VideoURLs,omitnil,omitempty" name:"VideoURLs"`
+
+	// 自定义任务 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+func (r *CreateCloudStorageAIServiceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudStorageAIServiceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelId")
+	delete(f, "Config")
+	delete(f, "ROI")
+	delete(f, "VideoURLs")
+	delete(f, "CustomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudStorageAIServiceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudStorageAIServiceTaskResponseParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudStorageAIServiceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudStorageAIServiceTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudStorageAIServiceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudStorageAIServiceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDeviceChannelRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
