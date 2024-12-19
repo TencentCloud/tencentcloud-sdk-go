@@ -44,7 +44,7 @@ const (
 	// appid和业务系统信息不匹配。
 	FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 
-	// 未命中白名单且实例id为官方demo实例id时，不允许修改接口。
+	// 未命中白名单且业务系统id为官方demo业务系统id时，不允许修改接口。
 	FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
 
 	// 请勿填写重复的应用名
@@ -53,16 +53,16 @@ const (
 	// 请勿填写重复的标签名
 	FAILEDOPERATION_DUPLICATETAGFIELD = "FailedOperation.DuplicateTagField"
 
-	// 该实例不允许修改
+	// 该业务系统不允许修改
 	FAILEDOPERATION_INSTANCECANNOTMODIFY = "FailedOperation.InstanceCannotModify"
 
-	// 实例ID为空。
+	// 业务系统ID为空。
 	FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 
 	// apm业务系统不存在。
 	FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 
-	// 非法实例id。
+	// 非法业务系统id。
 	FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
 
 	// 不合法入参

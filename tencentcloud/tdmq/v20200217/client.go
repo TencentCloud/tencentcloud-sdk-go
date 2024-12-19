@@ -6961,6 +6961,55 @@ func (c *Client) ModifyPublicNetworkAccessPointWithContext(ctx context.Context, 
     return
 }
 
+func NewModifyPublicNetworkSecurityPolicyRequest() (request *ModifyPublicNetworkSecurityPolicyRequest) {
+    request = &ModifyPublicNetworkSecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyPublicNetworkSecurityPolicy")
+    
+    
+    return
+}
+
+func NewModifyPublicNetworkSecurityPolicyResponse() (response *ModifyPublicNetworkSecurityPolicyResponse) {
+    response = &ModifyPublicNetworkSecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPublicNetworkSecurityPolicy
+// 修改pulsar专业版公网安全策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyPublicNetworkSecurityPolicy(request *ModifyPublicNetworkSecurityPolicyRequest) (response *ModifyPublicNetworkSecurityPolicyResponse, err error) {
+    return c.ModifyPublicNetworkSecurityPolicyWithContext(context.Background(), request)
+}
+
+// ModifyPublicNetworkSecurityPolicy
+// 修改pulsar专业版公网安全策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyPublicNetworkSecurityPolicyWithContext(ctx context.Context, request *ModifyPublicNetworkSecurityPolicyRequest) (response *ModifyPublicNetworkSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyPublicNetworkSecurityPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPublicNetworkSecurityPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPublicNetworkSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRabbitMQUserRequest() (request *ModifyRabbitMQUserRequest) {
     request = &ModifyRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

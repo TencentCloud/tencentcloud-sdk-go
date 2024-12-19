@@ -187,7 +187,8 @@ type ApproverInfo struct {
 	// <li>**6**：设备面容识别，需要对比手机机主预留的人脸信息，校验一致才能成功进行合同签署。（Android系统暂不支持该校验方式）</li></ul>
 	// 
 	// 
-	// 默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
+	// 默认为：
+	// 1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
 	// 
 	// 注：
 	// 1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
@@ -5414,6 +5415,90 @@ func (r *CreateMultiFlowSignQRCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationAuthFileRequestParams struct {
+	// 企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
+	OrganizationCommonInfo *OrganizationCommonInfo `json:"OrganizationCommonInfo,omitnil,omitempty" name:"OrganizationCommonInfo"`
+
+	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 授权书类型：
+	// - 0: 企业认证超管授权书
+	// - 1: 超管变更授权书
+	// - 2: 企业注销授权书
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type CreateOrganizationAuthFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
+	OrganizationCommonInfo *OrganizationCommonInfo `json:"OrganizationCommonInfo,omitnil,omitempty" name:"OrganizationCommonInfo"`
+
+	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 授权书类型：
+	// - 0: 企业认证超管授权书
+	// - 1: 超管变更授权书
+	// - 2: 企业注销授权书
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *CreateOrganizationAuthFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationAuthFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrganizationCommonInfo")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationAuthFileResponseParams struct {
+	// 授权书链接，有效期5分钟。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOrganizationAuthFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrganizationAuthFileResponseParams `json:"Response"`
+}
+
+func (r *CreateOrganizationAuthFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationAuthFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13057,6 +13142,66 @@ type OrganizationAuthUrl struct {
 	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
 }
 
+type OrganizationCommonInfo struct {
+	// 组织机构名称。
+	// 请确认该名称与企业营业执照中注册的名称一致。
+	// 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 组织机构企业统一社会信用代码。
+	// 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
+
+	// 组织机构法人的姓名。
+	// 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+
+	// 组织机构法人的证件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalIdCardType *string `json:"LegalIdCardType,omitnil,omitempty" name:"LegalIdCardType"`
+
+	// 组织机构法人的证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalIdCardNumber *string `json:"LegalIdCardNumber,omitnil,omitempty" name:"LegalIdCardNumber"`
+
+	// 组织机构超管姓名。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 组织机构超管手机号。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
+
+	// 组织机构超管证件类型
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
+
+	// 组织机构超管证件号码
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
+
+	// 原超管姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldAdminName *string `json:"OldAdminName,omitnil,omitempty" name:"OldAdminName"`
+
+	// 原超管手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldAdminMobile *string `json:"OldAdminMobile,omitnil,omitempty" name:"OldAdminMobile"`
+
+	// 原超管证件类型
+	OldAdminIdCardType *string `json:"OldAdminIdCardType,omitnil,omitempty" name:"OldAdminIdCardType"`
+
+	// 原超管证件号码
+	OldAdminIdCardNumber *string `json:"OldAdminIdCardNumber,omitnil,omitempty" name:"OldAdminIdCardNumber"`
+}
+
 type OrganizationInfo struct {
 	// 机构在平台的编号，内部字段，暂未开放
 	//
@@ -13415,7 +13560,7 @@ type RelieveInfo struct {
 	// 原合同事项处理-其他事项，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitnil,omitempty" name:"OriginalOtherSettlement"`
 
-	// 其他约定，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+	// 其他约定（如约定的与解除协议存在冲突的，以【其他约定】为准），最大支持200个字，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	OtherDeals *string `json:"OtherDeals,omitnil,omitempty" name:"OtherDeals"`
 }
 
@@ -13553,6 +13698,9 @@ type SignQrCode struct {
 	// 二维码的有截止时间，格式为Unix标准时间戳（秒）。
 	// 一旦超过二维码的有效期限，该二维码将自动失效。
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 微信小程序二维码
+	WeixinQrCodeUrl *string `json:"WeixinQrCodeUrl,omitnil,omitempty" name:"WeixinQrCodeUrl"`
 }
 
 type SignUrl struct {

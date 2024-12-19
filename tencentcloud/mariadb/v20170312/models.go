@@ -418,9 +418,11 @@ type ColumnPrivilege struct {
 
 type ConstraintRange struct {
 	// 约束类型为section时的最小值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Min *string `json:"Min,omitnil,omitempty" name:"Min"`
 
 	// 约束类型为section时的最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *string `json:"Max,omitnil,omitempty" name:"Max"`
 }
 
@@ -889,7 +891,7 @@ type CreateDedicatedClusterDBInstanceRequestParams struct {
 	// 子网Id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// db类型，不传默认0
+	// db类型，不传默认8.0
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
 	// （废弃）是否手动指定一组服务器分配, 运维使用
@@ -971,7 +973,7 @@ type CreateDedicatedClusterDBInstanceRequest struct {
 	// 子网Id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// db类型，不传默认0
+	// db类型，不传默认8.0
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
 	// （废弃）是否手动指定一组服务器分配, 运维使用
@@ -2717,10 +2719,10 @@ type DescribeDBInstancesRequestParams struct {
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitnil,omitempty" name:"FilterInstanceType"`
 
-	// 按照实例状态进行筛选
+	// 按照实例状态进行筛选。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排除实例状态
+	// 排除实例状态。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
 	ExcludeStatus []*int64 `json:"ExcludeStatus,omitnil,omitempty" name:"ExcludeStatus"`
 }
 
@@ -2781,10 +2783,10 @@ type DescribeDBInstancesRequest struct {
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitnil,omitempty" name:"FilterInstanceType"`
 
-	// 按照实例状态进行筛选
+	// 按照实例状态进行筛选。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排除实例状态
+	// 排除实例状态。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
 	ExcludeStatus []*int64 `json:"ExcludeStatus,omitnil,omitempty" name:"ExcludeStatus"`
 }
 
@@ -3471,14 +3473,14 @@ func (r *DescribeDatabaseTableResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatabasesRequestParams struct {
-	// 实例 ID，形如：dcdbt-ow7t8lmc。
+	// 实例 ID，形如：tdsql-e9tklsgz。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDatabasesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，形如：dcdbt-ow7t8lmc。
+	// 实例 ID，形如：tdsql-e9tklsgz。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 

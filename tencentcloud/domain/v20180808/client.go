@@ -2619,7 +2619,7 @@ func NewModifyDomainDNSBatchResponse() (response *ModifyDomainDNSBatchResponse) 
 }
 
 // ModifyDomainDNSBatch
-// 本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
+// 本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2629,13 +2629,12 @@ func NewModifyDomainDNSBatchResponse() (response *ModifyDomainDNSBatchResponse) 
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
-//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
-//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 //  UNSUPPORTEDOPERATION_MODIFYDOMAININFOUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoUnsupported"
 //  UNSUPPORTEDOPERATION_MODIFYDOMAINUNSUPPORTED = "UnsupportedOperation.ModifyDomainUnsupported"
 func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (response *ModifyDomainDNSBatchResponse, err error) {
@@ -2643,7 +2642,7 @@ func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (res
 }
 
 // ModifyDomainDNSBatch
-// 本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
+// 本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2653,13 +2652,12 @@ func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (res
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
-//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
-//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 //  UNSUPPORTEDOPERATION_MODIFYDOMAININFOUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoUnsupported"
 //  UNSUPPORTEDOPERATION_MODIFYDOMAINUNSUPPORTED = "UnsupportedOperation.ModifyDomainUnsupported"
 func (c *Client) ModifyDomainDNSBatchWithContext(ctx context.Context, request *ModifyDomainDNSBatchRequest) (response *ModifyDomainDNSBatchResponse, err error) {

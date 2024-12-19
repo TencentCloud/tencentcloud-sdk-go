@@ -164,12 +164,15 @@ func (r *AttachInstancesResponse) FromJsonString(s string) error {
 
 type Authentication struct {
 	// 授权场景，例如COS
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// SecretId
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
 
 	// SecretKey
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
@@ -2240,9 +2243,11 @@ type EnvDataCpm struct {
 
 type EnvVar struct {
 	// 环境变量名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 环境变量取值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -2256,9 +2261,11 @@ type EventConfig struct {
 
 type EventVar struct {
 	// 自定义键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 自定义值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -2286,12 +2293,15 @@ type Filter struct {
 
 type InputMapping struct {
 	// 源端路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourcePath *string `json:"SourcePath,omitnil,omitempty" name:"SourcePath"`
 
 	// 目的端路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationPath *string `json:"DestinationPath,omitnil,omitempty" name:"DestinationPath"`
 
 	// 挂载配置项参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountOptionParameter *string `json:"MountOptionParameter,omitnil,omitempty" name:"MountOptionParameter"`
 }
 
@@ -2616,13 +2626,14 @@ type LocalDiskType struct {
 }
 
 type LoginSettings struct {
-	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? \/ ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? \/]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? \/ ]中的特殊符号。</li> 
+	// <li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? \/]中的特殊符号。</li><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
-	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<li>TRUE：表示保持镜像的登录设置</li><li>FALSE：表示不保持镜像的登录设置</li>默认取值：FALSE。
 	KeepImageLogin *string `json:"KeepImageLogin,omitnil,omitempty" name:"KeepImageLogin"`
 }
 
@@ -2785,9 +2796,11 @@ func (r *ModifyTaskTemplateResponse) FromJsonString(s string) error {
 
 type MountDataDisk struct {
 	// 挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
 
 	// 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSystemType *string `json:"FileSystemType,omitnil,omitempty" name:"FileSystemType"`
 }
 
@@ -2881,9 +2894,11 @@ type NamedCpmComputeEnv struct {
 
 type Notification struct {
 	// CMQ主题名字，要求主题名有效且关联订阅
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 事件配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventConfigs []*EventConfig `json:"EventConfigs,omitnil,omitempty" name:"EventConfigs"`
 }
 
@@ -2956,30 +2971,38 @@ type Placement struct {
 }
 
 type RedirectInfo struct {
-	// 标准输出重定向路径
+	// 标准输出重定向路径; 
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutRedirectPath *string `json:"StdoutRedirectPath,omitnil,omitempty" name:"StdoutRedirectPath"`
 
 	// 标准错误重定向路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrRedirectPath *string `json:"StderrRedirectPath,omitnil,omitempty" name:"StderrRedirectPath"`
 
 	// 标准输出重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutRedirectFileName *string `json:"StdoutRedirectFileName,omitnil,omitempty" name:"StdoutRedirectFileName"`
 
 	// 标准错误重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrRedirectFileName *string `json:"StderrRedirectFileName,omitnil,omitempty" name:"StderrRedirectFileName"`
 }
 
 type RedirectLocalInfo struct {
 	// 标准输出重定向本地路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutLocalPath *string `json:"StdoutLocalPath,omitnil,omitempty" name:"StdoutLocalPath"`
 
 	// 标准错误重定向本地路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrLocalPath *string `json:"StderrLocalPath,omitnil,omitempty" name:"StderrLocalPath"`
 
 	// 标准输出重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutLocalFileName *string `json:"StdoutLocalFileName,omitnil,omitempty" name:"StdoutLocalFileName"`
 
 	// 标准错误重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrLocalFileName *string `json:"StderrLocalFileName,omitnil,omitempty" name:"StderrLocalFileName"`
 }
 
@@ -3283,27 +3306,35 @@ type TaskInstanceLog struct {
 
 type TaskInstanceMetrics struct {
 	// Submitted个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmittedCount *int64 `json:"SubmittedCount,omitnil,omitempty" name:"SubmittedCount"`
 
 	// Pending个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PendingCount *int64 `json:"PendingCount,omitnil,omitempty" name:"PendingCount"`
 
 	// Runnable个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunnableCount *int64 `json:"RunnableCount,omitnil,omitempty" name:"RunnableCount"`
 
 	// Starting个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartingCount *int64 `json:"StartingCount,omitnil,omitempty" name:"StartingCount"`
 
 	// Running个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCount *int64 `json:"RunningCount,omitnil,omitempty" name:"RunningCount"`
 
 	// Succeed个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SucceedCount *int64 `json:"SucceedCount,omitnil,omitempty" name:"SucceedCount"`
 
 	// FailedInterrupted个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedInterruptedCount *int64 `json:"FailedInterruptedCount,omitnil,omitempty" name:"FailedInterruptedCount"`
 
 	// Failed个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
 }
 
@@ -3349,27 +3380,35 @@ type TaskInstanceView struct {
 
 type TaskMetrics struct {
 	// Submitted个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmittedCount *int64 `json:"SubmittedCount,omitnil,omitempty" name:"SubmittedCount"`
 
 	// Pending个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PendingCount *int64 `json:"PendingCount,omitnil,omitempty" name:"PendingCount"`
 
 	// Runnable个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunnableCount *int64 `json:"RunnableCount,omitnil,omitempty" name:"RunnableCount"`
 
 	// Starting个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartingCount *int64 `json:"StartingCount,omitnil,omitempty" name:"StartingCount"`
 
 	// Running个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCount *int64 `json:"RunningCount,omitnil,omitempty" name:"RunningCount"`
 
 	// Succeed个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SucceedCount *int64 `json:"SucceedCount,omitnil,omitempty" name:"SucceedCount"`
 
 	// FailedInterrupted个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedInterruptedCount *int64 `json:"FailedInterruptedCount,omitnil,omitempty" name:"FailedInterruptedCount"`
 
 	// Failed个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
 }
 

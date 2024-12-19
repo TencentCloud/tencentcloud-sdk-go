@@ -551,7 +551,7 @@ const (
 	// 无效的流ID参数。
 	INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
 
-	// 参数值错误：子应用 ID。
+	// 参数值错误：应用 ID。
 	INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
 
 	// 参数值错误：SubtitleFormat 参数非法。

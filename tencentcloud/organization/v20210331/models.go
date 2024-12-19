@@ -1104,11 +1104,14 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrgServiceAssignRequestParams struct {
-	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
 	// 委派管理员Uin列表。 最大长度20个
 	MemberUins []*int64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+
+	// 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
 	ManagementScope *uint64 `json:"ManagementScope,omitnil,omitempty" name:"ManagementScope"`
@@ -1123,11 +1126,14 @@ type CreateOrgServiceAssignRequestParams struct {
 type CreateOrgServiceAssignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
 	// 委派管理员Uin列表。 最大长度20个
 	MemberUins []*int64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+
+	// 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
 	ManagementScope *uint64 `json:"ManagementScope,omitnil,omitempty" name:"ManagementScope"`
@@ -1151,8 +1157,9 @@ func (r *CreateOrgServiceAssignRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ServiceId")
 	delete(f, "MemberUins")
+	delete(f, "ServiceId")
+	delete(f, "Product")
 	delete(f, "ManagementScope")
 	delete(f, "ManagementScopeUins")
 	delete(f, "ManagementScopeNodeIds")
@@ -2254,21 +2261,27 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOrgServiceAssignRequestParams struct {
-	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
 	// 委派管理员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DeleteOrgServiceAssignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
 	// 委派管理员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 func (r *DeleteOrgServiceAssignRequest) ToJsonString() string {
@@ -2283,8 +2296,9 @@ func (r *DeleteOrgServiceAssignRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ServiceId")
 	delete(f, "MemberUin")
+	delete(f, "ServiceId")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrgServiceAssignRequest has unknown keys!", "")
 	}
@@ -6376,8 +6390,11 @@ type ListOrgServiceAssignMemberRequestParams struct {
 	// 限制数目。取值范围：1~50，默认值：10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	// 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
 	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type ListOrgServiceAssignMemberRequest struct {
@@ -6389,8 +6406,11 @@ type ListOrgServiceAssignMemberRequest struct {
 	// 限制数目。取值范围：1~50，默认值：10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	// 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
 	ServiceId *uint64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 func (r *ListOrgServiceAssignMemberRequest) ToJsonString() string {
@@ -6408,6 +6428,7 @@ func (r *ListOrgServiceAssignMemberRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ServiceId")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrgServiceAssignMemberRequest has unknown keys!", "")
 	}

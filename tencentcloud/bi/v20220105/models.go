@@ -1852,6 +1852,9 @@ type DescribeProjectListRequestParams struct {
 
 	// 角色信息
 	ModuleCollection *string `json:"ModuleCollection,omitnil,omitempty" name:"ModuleCollection"`
+
+	// moduleId集合
+	ModuleIdList []*string `json:"ModuleIdList,omitnil,omitempty" name:"ModuleIdList"`
 }
 
 type DescribeProjectListRequest struct {
@@ -1871,6 +1874,9 @@ type DescribeProjectListRequest struct {
 
 	// 角色信息
 	ModuleCollection *string `json:"ModuleCollection,omitnil,omitempty" name:"ModuleCollection"`
+
+	// moduleId集合
+	ModuleIdList []*string `json:"ModuleIdList,omitnil,omitempty" name:"ModuleIdList"`
 }
 
 func (r *DescribeProjectListRequest) ToJsonString() string {
@@ -1890,6 +1896,7 @@ func (r *DescribeProjectListRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "AllPage")
 	delete(f, "ModuleCollection")
+	delete(f, "ModuleIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectListRequest has unknown keys!", "")
 	}

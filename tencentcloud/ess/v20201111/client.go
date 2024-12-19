@@ -5510,6 +5510,81 @@ func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateOrganizationAuthFileRequest() (request *CreateOrganizationAuthFileRequest) {
+    request = &CreateOrganizationAuthFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateOrganizationAuthFile")
+    
+    
+    return
+}
+
+func NewCreateOrganizationAuthFileResponse() (response *CreateOrganizationAuthFileResponse) {
+    response = &CreateOrganizationAuthFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOrganizationAuthFile
+// 生成合成后的各类企业授权书，包括：
+//
+// - 企业认证超管授权书
+//
+// - 超管变更授权书
+//
+// - 企业注销授权书
+//
+// 
+//
+// 注: 需自行保证传入真实的企业/法人/超管信息，否则后续的审核将会拒绝。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateOrganizationAuthFile(request *CreateOrganizationAuthFileRequest) (response *CreateOrganizationAuthFileResponse, err error) {
+    return c.CreateOrganizationAuthFileWithContext(context.Background(), request)
+}
+
+// CreateOrganizationAuthFile
+// 生成合成后的各类企业授权书，包括：
+//
+// - 企业认证超管授权书
+//
+// - 超管变更授权书
+//
+// - 企业注销授权书
+//
+// 
+//
+// 注: 需自行保证传入真实的企业/法人/超管信息，否则后续的审核将会拒绝。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateOrganizationAuthFileWithContext(ctx context.Context, request *CreateOrganizationAuthFileRequest) (response *CreateOrganizationAuthFileResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationAuthFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationAuthFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationAuthFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationAuthUrlRequest() (request *CreateOrganizationAuthUrlRequest) {
     request = &CreateOrganizationAuthUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

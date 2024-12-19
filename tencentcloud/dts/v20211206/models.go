@@ -5666,6 +5666,10 @@ type Options struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
+	// 同步到kafka链路指定位点。目前只支持时间格式：yyyy-mm-dd hh:mm:ss。如果没有指定位点，为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartPosition *string `json:"StartPosition,omitnil,omitempty" name:"StartPosition"`
+
 	// 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterBeginCommit *bool `json:"FilterBeginCommit,omitnil,omitempty" name:"FilterBeginCommit"`

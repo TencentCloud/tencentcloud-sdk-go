@@ -5263,6 +5263,9 @@ type ModifyStaffRequestParams struct {
 
 	// 手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
 	UseMobileAccept *int64 `json:"UseMobileAccept,omitnil,omitempty" name:"UseMobileAccept"`
+
+	// 座席分机号（1 到 8 打头，4 - 6 位）
+	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
 }
 
 type ModifyStaffRequest struct {
@@ -5294,6 +5297,9 @@ type ModifyStaffRequest struct {
 
 	// 手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
 	UseMobileAccept *int64 `json:"UseMobileAccept,omitnil,omitempty" name:"UseMobileAccept"`
+
+	// 座席分机号（1 到 8 打头，4 - 6 位）
+	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
 }
 
 func (r *ModifyStaffRequest) ToJsonString() string {
@@ -5317,6 +5323,7 @@ func (r *ModifyStaffRequest) FromJsonString(s string) error {
 	delete(f, "SkillGroupIds")
 	delete(f, "UseMobileCallOut")
 	delete(f, "UseMobileAccept")
+	delete(f, "ExtensionNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStaffRequest has unknown keys!", "")
 	}
@@ -5738,6 +5745,9 @@ type SeatUserInfo struct {
 	// 3:普通座席
 	// else:自定义角色ID
 	Role *int64 `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 座席分机号（1 到 8 打头，4 - 6 位）
+	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
 }
 
 type ServeParticipant struct {
@@ -5877,6 +5887,9 @@ type StaffInfo struct {
 
 	// 最后修改时间
 	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitnil,omitempty" name:"LastModifyTimestamp"`
+
+	// 座席分机号（1 到 8 打头，4 - 6 位）
+	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
 }
 
 type StaffSkillGroupList struct {
