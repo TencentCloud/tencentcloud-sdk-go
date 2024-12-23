@@ -8736,13 +8736,13 @@ type Software struct {
 }
 
 type SoftwareDetail struct {
-	// 详情唯一键。
+	// 软件的属性标识
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 详情标题。
+	// 软件的属性标识描述
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 详情值。
+	// 软件的属性值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

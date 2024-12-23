@@ -853,6 +853,125 @@ func (c *Client) CreateConfigGroupVersionWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateContentIdentifierRequest() (request *CreateContentIdentifierRequest) {
+    request = &CreateContentIdentifierRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateContentIdentifier")
+    
+    
+    return
+}
+
+func NewCreateContentIdentifierResponse() (response *CreateContentIdentifierResponse) {
+    response = &CreateContentIdentifierResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateContentIdentifier
+// 创建内容标识符，可以设置描述、标签等信息，同时需要绑定企业版套餐用于统计计费数据；一个内容标识符只能绑定一个计费套餐，一个计费套餐可以绑定多个内容标识符。该功能仅限白名单开放。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFIGCONDITIONSYNTAXERROR = "FailedOperation.ConfigConditionSyntaxError"
+//  FAILEDOPERATION_CONFIGCONDITIONUNKNOWNTARGET = "FailedOperation.ConfigConditionUnknownTarget"
+//  FAILEDOPERATION_CONFIGCONDITIONVALUEEMPTYERROR = "FailedOperation.ConfigConditionValueEmptyError"
+//  FAILEDOPERATION_CONFIGFIELDTYPEERROR = "FailedOperation.ConfigFieldTypeError"
+//  FAILEDOPERATION_CONFIGFORMATERROR = "FailedOperation.ConfigFormatError"
+//  FAILEDOPERATION_CONFIGMALFORMEDCONTENT = "FailedOperation.ConfigMalformedContent"
+//  FAILEDOPERATION_CONFIGPARAMVALIDATEERRORS = "FailedOperation.ConfigParamValidateErrors"
+//  FAILEDOPERATION_CONFIGUNKNOWNFIELD = "FailedOperation.ConfigUnknownField"
+//  FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = "FailedOperation.ConfigUnsupportedFormatVersion"
+//  FAILEDOPERATION_MISSINGCONFIGCHUNK = "FailedOperation.MissingConfigChunk"
+//  FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = "FailedOperation.UnknownConfigGroupType"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATERULE = "InvalidParameter.DuplicateRule"
+//  INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
+//  INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGACTION = "InvalidParameter.InvalidCacheKeyQueryStringAction"
+//  INVALIDPARAMETER_INVALIDCONDITIONS = "InvalidParameter.InvalidConditions"
+//  INVALIDPARAMETER_INVALIDDYNAMICROUTINE = "InvalidParameter.InvalidDynamicRoutine"
+//  INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
+//  INVALIDPARAMETER_INVALIDMAXAGEFOLLOWORIGIN = "InvalidParameter.InvalidMaxAgeFollowOrigin"
+//  INVALIDPARAMETER_INVALIDSTANDARDDEBUG = "InvalidParameter.InvalidStandardDebug"
+//  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
+//  INVALIDPARAMETER_STATUSCODECACHEINVALIDSTATUSCODE = "InvalidParameter.StatusCodeCacheInvalidStatusCode"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RULELIMITEXCEEDED = "LimitExceeded.RuleLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
+//  OPERATIONDENIED_CONFIGLOCKED = "OperationDenied.ConfigLocked"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = "OperationDenied.NotInVersionControlWhiteList"
+//  OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = "OperationDenied.OwnershipVerificationNotPassed"
+//  OPERATIONDENIED_VERSIONCONTROLLOCKED = "OperationDenied.VersionControlLocked"
+//  OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = "OperationDenied.WorkModeNotInVersionControl"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = "ResourceUnavailable.FunctionNotFound"
+func (c *Client) CreateContentIdentifier(request *CreateContentIdentifierRequest) (response *CreateContentIdentifierResponse, err error) {
+    return c.CreateContentIdentifierWithContext(context.Background(), request)
+}
+
+// CreateContentIdentifier
+// 创建内容标识符，可以设置描述、标签等信息，同时需要绑定企业版套餐用于统计计费数据；一个内容标识符只能绑定一个计费套餐，一个计费套餐可以绑定多个内容标识符。该功能仅限白名单开放。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFIGCONDITIONSYNTAXERROR = "FailedOperation.ConfigConditionSyntaxError"
+//  FAILEDOPERATION_CONFIGCONDITIONUNKNOWNTARGET = "FailedOperation.ConfigConditionUnknownTarget"
+//  FAILEDOPERATION_CONFIGCONDITIONVALUEEMPTYERROR = "FailedOperation.ConfigConditionValueEmptyError"
+//  FAILEDOPERATION_CONFIGFIELDTYPEERROR = "FailedOperation.ConfigFieldTypeError"
+//  FAILEDOPERATION_CONFIGFORMATERROR = "FailedOperation.ConfigFormatError"
+//  FAILEDOPERATION_CONFIGMALFORMEDCONTENT = "FailedOperation.ConfigMalformedContent"
+//  FAILEDOPERATION_CONFIGPARAMVALIDATEERRORS = "FailedOperation.ConfigParamValidateErrors"
+//  FAILEDOPERATION_CONFIGUNKNOWNFIELD = "FailedOperation.ConfigUnknownField"
+//  FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = "FailedOperation.ConfigUnsupportedFormatVersion"
+//  FAILEDOPERATION_MISSINGCONFIGCHUNK = "FailedOperation.MissingConfigChunk"
+//  FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = "FailedOperation.UnknownConfigGroupType"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATERULE = "InvalidParameter.DuplicateRule"
+//  INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
+//  INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGACTION = "InvalidParameter.InvalidCacheKeyQueryStringAction"
+//  INVALIDPARAMETER_INVALIDCONDITIONS = "InvalidParameter.InvalidConditions"
+//  INVALIDPARAMETER_INVALIDDYNAMICROUTINE = "InvalidParameter.InvalidDynamicRoutine"
+//  INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
+//  INVALIDPARAMETER_INVALIDMAXAGEFOLLOWORIGIN = "InvalidParameter.InvalidMaxAgeFollowOrigin"
+//  INVALIDPARAMETER_INVALIDSTANDARDDEBUG = "InvalidParameter.InvalidStandardDebug"
+//  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
+//  INVALIDPARAMETER_STATUSCODECACHEINVALIDSTATUSCODE = "InvalidParameter.StatusCodeCacheInvalidStatusCode"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RULELIMITEXCEEDED = "LimitExceeded.RuleLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
+//  OPERATIONDENIED_CONFIGLOCKED = "OperationDenied.ConfigLocked"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = "OperationDenied.NotInVersionControlWhiteList"
+//  OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = "OperationDenied.OwnershipVerificationNotPassed"
+//  OPERATIONDENIED_VERSIONCONTROLLOCKED = "OperationDenied.VersionControlLocked"
+//  OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = "OperationDenied.WorkModeNotInVersionControl"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = "ResourceUnavailable.FunctionNotFound"
+func (c *Client) CreateContentIdentifierWithContext(ctx context.Context, request *CreateContentIdentifierRequest) (response *CreateContentIdentifierResponse, err error) {
+    if request == nil {
+        request = NewCreateContentIdentifierRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateContentIdentifier require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateContentIdentifierResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomizeErrorPageRequest() (request *CreateCustomizeErrorPageRequest) {
     request = &CreateCustomizeErrorPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -900,6 +1019,57 @@ func (c *Client) CreateCustomizeErrorPageWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewCreateCustomizeErrorPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDnsRecordRequest() (request *CreateDnsRecordRequest) {
+    request = &CreateDnsRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateDnsRecord")
+    
+    
+    return
+}
+
+func NewCreateDnsRecordResponse() (response *CreateDnsRecordResponse) {
+    response = &CreateDnsRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDnsRecord
+// 在创建完站点后，并且站点为 NS 模式接入时，您可以通过本接口创建 DNS 记录。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
+//  INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = "InvalidParameterValue.PageNameAlreadyExist"
+func (c *Client) CreateDnsRecord(request *CreateDnsRecordRequest) (response *CreateDnsRecordResponse, err error) {
+    return c.CreateDnsRecordWithContext(context.Background(), request)
+}
+
+// CreateDnsRecord
+// 在创建完站点后，并且站点为 NS 模式接入时，您可以通过本接口创建 DNS 记录。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
+//  INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = "InvalidParameterValue.PageNameAlreadyExist"
+func (c *Client) CreateDnsRecordWithContext(ctx context.Context, request *CreateDnsRecordRequest) (response *CreateDnsRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateDnsRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDnsRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDnsRecordResponse()
     err = c.Send(request, response)
     return
 }
@@ -2385,6 +2555,59 @@ func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteContentIdentifierRequest() (request *DeleteContentIdentifierRequest) {
+    request = &DeleteContentIdentifierRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteContentIdentifier")
+    
+    
+    return
+}
+
+func NewDeleteContentIdentifierResponse() (response *DeleteContentIdentifierResponse) {
+    response = &DeleteContentIdentifierResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteContentIdentifier
+// 删除指定的内容标识符。该功能仅白名单开放。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteContentIdentifier(request *DeleteContentIdentifierRequest) (response *DeleteContentIdentifierResponse, err error) {
+    return c.DeleteContentIdentifierWithContext(context.Background(), request)
+}
+
+// DeleteContentIdentifier
+// 删除指定的内容标识符。该功能仅白名单开放。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteContentIdentifierWithContext(ctx context.Context, request *DeleteContentIdentifierRequest) (response *DeleteContentIdentifierResponse, err error) {
+    if request == nil {
+        request = NewDeleteContentIdentifierRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteContentIdentifier require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteContentIdentifierResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomErrorPageRequest() (request *DeleteCustomErrorPageRequest) {
     request = &DeleteCustomErrorPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2432,6 +2655,57 @@ func (c *Client) DeleteCustomErrorPageWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteCustomErrorPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDnsRecordsRequest() (request *DeleteDnsRecordsRequest) {
+    request = &DeleteDnsRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteDnsRecords")
+    
+    
+    return
+}
+
+func NewDeleteDnsRecordsResponse() (response *DeleteDnsRecordsResponse) {
+    response = &DeleteDnsRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDnsRecords
+// 您可以用本接口批量删除 DNS 记录。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDnsRecords(request *DeleteDnsRecordsRequest) (response *DeleteDnsRecordsResponse, err error) {
+    return c.DeleteDnsRecordsWithContext(context.Background(), request)
+}
+
+// DeleteDnsRecords
+// 您可以用本接口批量删除 DNS 记录。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDnsRecordsWithContext(ctx context.Context, request *DeleteDnsRecordsRequest) (response *DeleteDnsRecordsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDnsRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDnsRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDnsRecordsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3539,6 +3813,55 @@ func (c *Client) DescribeConfigGroupVersionsWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeContentIdentifiersRequest() (request *DescribeContentIdentifiersRequest) {
+    request = &DescribeContentIdentifiersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeContentIdentifiers")
+    
+    
+    return
+}
+
+func NewDescribeContentIdentifiersResponse() (response *DescribeContentIdentifiersResponse) {
+    response = &DescribeContentIdentifiersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContentIdentifiers
+// 批量查询内容标识符，可以根据 ID、描述、状态或者标签过滤。按照状态查询被删除的内容标识符仅保留三个月。该功能仅白名单开放。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContentIdentifiers(request *DescribeContentIdentifiersRequest) (response *DescribeContentIdentifiersResponse, err error) {
+    return c.DescribeContentIdentifiersWithContext(context.Background(), request)
+}
+
+// DescribeContentIdentifiers
+// 批量查询内容标识符，可以根据 ID、描述、状态或者标签过滤。按照状态查询被删除的内容标识符仅保留三个月。该功能仅白名单开放。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContentIdentifiersWithContext(ctx context.Context, request *DescribeContentIdentifiersRequest) (response *DescribeContentIdentifiersResponse, err error) {
+    if request == nil {
+        request = NewDescribeContentIdentifiersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContentIdentifiers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContentIdentifiersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentQuotaRequest() (request *DescribeContentQuotaRequest) {
     request = &DescribeContentQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3930,6 +4253,55 @@ func (c *Client) DescribeDeployHistoryWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeDeployHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDnsRecordsRequest() (request *DescribeDnsRecordsRequest) {
+    request = &DescribeDnsRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDnsRecords")
+    
+    
+    return
+}
+
+func NewDescribeDnsRecordsResponse() (response *DescribeDnsRecordsResponse) {
+    response = &DescribeDnsRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDnsRecords
+// 您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息。您可以查看站点下全部 DNS 记录的信息，也可以指定过滤条件查询对应的 DNS 记录信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDnsRecords(request *DescribeDnsRecordsRequest) (response *DescribeDnsRecordsResponse, err error) {
+    return c.DescribeDnsRecordsWithContext(context.Background(), request)
+}
+
+// DescribeDnsRecords
+// 您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息。您可以查看站点下全部 DNS 记录的信息，也可以指定过滤条件查询对应的 DNS 记录信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDnsRecordsWithContext(ctx context.Context, request *DescribeDnsRecordsRequest) (response *DescribeDnsRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDnsRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDnsRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDnsRecordsResponse()
     err = c.Send(request, response)
     return
 }
@@ -6638,6 +7010,67 @@ func (c *Client) ModifyApplicationProxyStatusWithContext(ctx context.Context, re
     return
 }
 
+func NewModifyContentIdentifierRequest() (request *ModifyContentIdentifierRequest) {
+    request = &ModifyContentIdentifierRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyContentIdentifier")
+    
+    
+    return
+}
+
+func NewModifyContentIdentifierResponse() (response *ModifyContentIdentifierResponse) {
+    response = &ModifyContentIdentifierResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyContentIdentifier
+// 修改内容标识符，仅支持修改描述。该功能仅白名单开放。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyContentIdentifier(request *ModifyContentIdentifierRequest) (response *ModifyContentIdentifierResponse, err error) {
+    return c.ModifyContentIdentifierWithContext(context.Background(), request)
+}
+
+// ModifyContentIdentifier
+// 修改内容标识符，仅支持修改描述。该功能仅白名单开放。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
+//  OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+//  OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyContentIdentifierWithContext(ctx context.Context, request *ModifyContentIdentifierRequest) (response *ModifyContentIdentifierResponse, err error) {
+    if request == nil {
+        request = NewModifyContentIdentifierRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyContentIdentifier require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyContentIdentifierResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomErrorPageRequest() (request *ModifyCustomErrorPageRequest) {
     request = &ModifyCustomErrorPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6683,6 +7116,104 @@ func (c *Client) ModifyCustomErrorPageWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyCustomErrorPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDnsRecordsRequest() (request *ModifyDnsRecordsRequest) {
+    request = &ModifyDnsRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyDnsRecords")
+    
+    
+    return
+}
+
+func NewModifyDnsRecordsResponse() (response *ModifyDnsRecordsResponse) {
+    response = &ModifyDnsRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDnsRecords
+// 您可以通过本接口批量修改 DNS 记录。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDnsRecords(request *ModifyDnsRecordsRequest) (response *ModifyDnsRecordsResponse, err error) {
+    return c.ModifyDnsRecordsWithContext(context.Background(), request)
+}
+
+// ModifyDnsRecords
+// 您可以通过本接口批量修改 DNS 记录。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDnsRecordsWithContext(ctx context.Context, request *ModifyDnsRecordsRequest) (response *ModifyDnsRecordsResponse, err error) {
+    if request == nil {
+        request = NewModifyDnsRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDnsRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDnsRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDnsRecordsStatusRequest() (request *ModifyDnsRecordsStatusRequest) {
+    request = &ModifyDnsRecordsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyDnsRecordsStatus")
+    
+    
+    return
+}
+
+func NewModifyDnsRecordsStatusResponse() (response *ModifyDnsRecordsStatusResponse) {
+    response = &ModifyDnsRecordsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDnsRecordsStatus
+// 您可以通过本接口批量修改 DNS 记录的状态，批量对记录进行开启和停用。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDnsRecordsStatus(request *ModifyDnsRecordsStatusRequest) (response *ModifyDnsRecordsStatusResponse, err error) {
+    return c.ModifyDnsRecordsStatusWithContext(context.Background(), request)
+}
+
+// ModifyDnsRecordsStatus
+// 您可以通过本接口批量修改 DNS 记录的状态，批量对记录进行开启和停用。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDnsRecordsStatusWithContext(ctx context.Context, request *ModifyDnsRecordsStatusRequest) (response *ModifyDnsRecordsStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDnsRecordsStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDnsRecordsStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDnsRecordsStatusResponse()
     err = c.Send(request, response)
     return
 }

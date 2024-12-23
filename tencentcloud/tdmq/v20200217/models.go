@@ -564,7 +564,7 @@ type CmqQueue struct {
 }
 
 type CmqSubscription struct {
-	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionName *string `json:"SubscriptionName,omitnil,omitempty" name:"SubscriptionName"`
 
@@ -11438,12 +11438,21 @@ func (r *ModifyPublicNetworkAccessPointResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyPublicNetworkSecurityPolicyRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 策略列表
+	PolicyList []*SecurityPolicy `json:"PolicyList,omitnil,omitempty" name:"PolicyList"`
 }
 
 type ModifyPublicNetworkSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略列表
+	PolicyList []*SecurityPolicy `json:"PolicyList,omitnil,omitempty" name:"PolicyList"`
 }
 
 func (r *ModifyPublicNetworkSecurityPolicyRequest) ToJsonString() string {
@@ -11458,7 +11467,8 @@ func (r *ModifyPublicNetworkSecurityPolicyRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "PolicyList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPublicNetworkSecurityPolicyRequest has unknown keys!", "")
 	}

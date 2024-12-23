@@ -132,7 +132,6 @@ type AttributesForBody struct {
 	Rect *ImageRect `json:"Rect,omitnil,omitempty" name:"Rect"`
 
 	// 人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectConfidence *float64 `json:"DetectConfidence,omitnil,omitempty" name:"DetectConfidence"`
 
 	// 属性信息。
@@ -142,15 +141,12 @@ type AttributesForBody struct {
 
 type BodyAttributes struct {
 	// 属性值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 置信度，取值0-1之间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
 	// 属性名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -167,18 +163,15 @@ type Box struct {
 
 type CarPlateContent struct {
 	// 车牌信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plate *string `json:"Plate,omitnil,omitempty" name:"Plate"`
 
 	// 车牌颜色。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
 	// 车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
 	// 注意：
 	// 此字段可能返回 null，表示取不到有效值。
 	// 此字段结果遮挡污损模糊车牌/异常：包含PlateStatus参数的“遮挡污损模糊车牌”，针对车牌异常，建议参考此字段，更全面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 车牌在图片中的坐标信息。
@@ -186,15 +179,12 @@ type CarPlateContent struct {
 	PlateLocation []*Coord `json:"PlateLocation,omitnil,omitempty" name:"PlateLocation"`
 
 	// 判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateStatus *string `json:"PlateStatus,omitnil,omitempty" name:"PlateStatus"`
 
 	// 车牌遮挡的置信度，0-100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateStatusConfidence *int64 `json:"PlateStatusConfidence,omitnil,omitempty" name:"PlateStatusConfidence"`
 
 	// 车牌角度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateAngle *float64 `json:"PlateAngle,omitnil,omitempty" name:"PlateAngle"`
 }
 
@@ -225,23 +215,18 @@ type CarTagItem struct {
 	PlateContent *CarPlateContent `json:"PlateContent,omitnil,omitempty" name:"PlateContent"`
 
 	// 车牌信息置信度，0-100，仅车辆识别（增强版）支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateConfidence *int64 `json:"PlateConfidence,omitnil,omitempty" name:"PlateConfidence"`
 
 	// 车辆类型置信度，0-100，仅车辆识别（增强版）支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeConfidence *int64 `json:"TypeConfidence,omitnil,omitempty" name:"TypeConfidence"`
 
 	// 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorConfidence *int64 `json:"ColorConfidence,omitnil,omitempty" name:"ColorConfidence"`
 
 	// 车辆朝向，仅车辆识别（增强版）支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Orientation *string `json:"Orientation,omitnil,omitempty" name:"Orientation"`
 
 	// 车辆朝向置信度，0-100，仅车辆识别（增强版）支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrientationConfidence *int64 `json:"OrientationConfidence,omitnil,omitempty" name:"OrientationConfidence"`
 }
 
@@ -793,7 +778,6 @@ func (r *DescribeGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupsResponseParams struct {
 	// 图库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -975,7 +959,6 @@ func (r *DetectChefDressRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectChefDressResponseParams struct {
 	// 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bodies []*AttributesForBody `json:"Bodies,omitnil,omitempty" name:"Bodies"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1131,11 +1114,9 @@ func (r *DetectEnvelopeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectEnvelopeResponseParams struct {
 	// 一级标签结果数组。识别是否文件封。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstTags []*ImageTag `json:"FirstTags,omitnil,omitempty" name:"FirstTags"`
 
 	// 二级标签结果数组。识别文件封正反面。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondTags []*ImageTag `json:"SecondTags,omitnil,omitempty" name:"SecondTags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1365,7 +1346,6 @@ func (r *DetectLabelProRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectLabelProResponseParams struct {
 	// 返回标签数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*DetectLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1830,7 +1810,6 @@ func (r *DetectSecurityRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetectSecurityResponseParams struct {
 	// 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bodies []*AttributesForBody `json:"Bodies,omitnil,omitempty" name:"Bodies"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2286,6 +2265,7 @@ type SearchImageRequestParams struct {
 
 	// 标签过滤条件。
 	// 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	// 最大支持64字符。
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 图像主体区域。
@@ -2356,6 +2336,7 @@ type SearchImageRequest struct {
 
 	// 标签过滤条件。
 	// 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	// 最大支持64字符。
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 图像主体区域。

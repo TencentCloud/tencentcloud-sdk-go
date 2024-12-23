@@ -3086,7 +3086,7 @@ func NewDescribeDSPAAssessmentRiskProcessHistoryResponse() (response *DescribeDS
 }
 
 // DescribeDSPAAssessmentRiskProcessHistory
-// 修改最新评估风险项状态
+// 查询风险的处理历史
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3095,7 +3095,7 @@ func (c *Client) DescribeDSPAAssessmentRiskProcessHistory(request *DescribeDSPAA
 }
 
 // DescribeDSPAAssessmentRiskProcessHistory
-// 修改最新评估风险项状态
+// 查询风险的处理历史
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -6226,8 +6226,6 @@ func NewEnableDSPADiscoveryRuleResponse() (response *EnableDSPADiscoveryRuleResp
 //
 // 注：此API同时对该规则下的RDB跟COS规则操作。
 //
-// 
-//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6246,8 +6244,6 @@ func (c *Client) EnableDSPADiscoveryRule(request *EnableDSPADiscoveryRuleRequest
 // 打开或者关闭分类分级规则
 //
 // 注：此API同时对该规则下的RDB跟COS规则操作。
-//
-// 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

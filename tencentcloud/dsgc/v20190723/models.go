@@ -22,25 +22,20 @@ import (
 
 type AKSKLeak struct {
 	// AK编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AK *string `json:"AK,omitnil,omitempty" name:"AK"`
 
 	// SK编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SK *string `json:"SK,omitnil,omitempty" name:"SK"`
 
 	// URL编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 }
 
 type AccountRisk struct {
 	// id（可不参考）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 风险账户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskAccount *string `json:"RiskAccount,omitnil,omitempty" name:"RiskAccount"`
 }
 
@@ -52,7 +47,6 @@ type AssessmentControlItem struct {
 	ItemName *string `json:"ItemName,omitnil,omitempty" name:"ItemName"`
 
 	// 评估项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 评估项来源，内置/用户自定，取值（system，user）
@@ -71,7 +65,6 @@ type AssessmentControlItem struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 评估项关联的模板数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateCount *int64 `json:"TemplateCount,omitnil,omitempty" name:"TemplateCount"`
 }
 
@@ -80,7 +73,6 @@ type AssessmentRisk struct {
 	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 
 	// 风险项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
 
 	// 评估模板Id
@@ -117,69 +109,53 @@ type AssessmentRisk struct {
 	RelatedAsset *string `json:"RelatedAsset,omitnil,omitempty" name:"RelatedAsset"`
 
 	// 风险涉及资产id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 风险涉及资产名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 资产名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
 	// 建议使用安全产品
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitnil,omitempty" name:"SecurityProduct"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 风险面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil,omitempty" name:"RiskSide"`
 
 	// 数据源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
 type AssessmentRiskItem struct {
 	// 脆弱项id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
 
 	// 脆弱性级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 关联模板个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferTemplateCount *int64 `json:"ReferTemplateCount,omitnil,omitempty" name:"ReferTemplateCount"`
 
 	// 支持的数据源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataSource []*string `json:"SupportDataSource,omitnil,omitempty" name:"SupportDataSource"`
 
 	// 风险面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil,omitempty" name:"RiskSide"`
 
 	// 关联模板列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferTemplateList []*TemplateInfo `json:"ReferTemplateList,omitnil,omitempty" name:"ReferTemplateList"`
 }
 
@@ -188,8 +164,6 @@ type AssessmentTask struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 评估任务的自增ID
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskUid *int64 `json:"TaskUid,omitnil,omitempty" name:"TaskUid"`
 
 	// 评估任务名称
@@ -223,7 +197,6 @@ type AssessmentTask struct {
 	RiskCount *int64 `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
 	// 评估任务完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedTime *string `json:"FinishedTime,omitnil,omitempty" name:"FinishedTime"`
 
 	// 评估任务发起时间
@@ -236,24 +209,20 @@ type AssessmentTask struct {
 	RiskCountInfoList []*RiskCountInfo `json:"RiskCountInfoList,omitnil,omitempty" name:"RiskCountInfoList"`
 
 	// 数据源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitnil,omitempty" name:"DiscoveryCondition"`
 
 	// 评估任务失败信息
 	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
 	// 模板主键id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateUid *int64 `json:"TemplateUid,omitnil,omitempty" name:"TemplateUid"`
 
 	// 进度百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressPercent *int64 `json:"ProgressPercent,omitnil,omitempty" name:"ProgressPercent"`
 }
 
 type AssessmentTemplate struct {
 	// id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 评估模板Id
@@ -263,7 +232,6 @@ type AssessmentTemplate struct {
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 模板来源，内置/用户自定，取值（system，user）
@@ -285,75 +253,58 @@ type AssessmentTemplate struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 支持的数据源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataSource []*string `json:"SupportDataSource,omitnil,omitempty" name:"SupportDataSource"`
 
 	// 是否包含攻击面风险
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsASMTemplate *bool `json:"IsASMTemplate,omitnil,omitempty" name:"IsASMTemplate"`
 
 	// 合规组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil,omitempty" name:"IdentifyComplianceId"`
 }
 
 type AssetCosDetail struct {
 	// 桶的名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 数据源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 文件的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileNums *int64 `json:"FileNums,omitnil,omitempty" name:"FileNums"`
 
 	// 敏感的文件个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitnil,omitempty" name:"SensitiveFileNums"`
 
 	// 敏感分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DistributionData []*Note `json:"DistributionData,omitnil,omitempty" name:"DistributionData"`
 
 	// cos文件的敏感数据个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchedNum *int64 `json:"MatchedNum,omitnil,omitempty" name:"MatchedNum"`
 }
 
 type AssetDBDetail struct {
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 数据库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdName *string `json:"DdName,omitnil,omitempty" name:"DdName"`
 
 	// 数据库类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 表的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableNums *int64 `json:"TableNums,omitnil,omitempty" name:"TableNums"`
 
 	// 敏感表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveTableNums *int64 `json:"SensitiveTableNums,omitnil,omitempty" name:"SensitiveTableNums"`
 
 	// 字段的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 敏感字段的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil,omitempty" name:"SensitiveFieldNums"`
 
 	// 敏感数据分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DistributionData []*Note `json:"DistributionData,omitnil,omitempty" name:"DistributionData"`
 }
 
@@ -445,7 +396,6 @@ type AuthorizeDSPAMetaResourcesResponseParams struct {
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
 	// 授权结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*DspaTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -664,19 +614,15 @@ type CategoryRule struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 别名ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasRuleId *int64 `json:"AliasRuleId,omitnil,omitempty" name:"AliasRuleId"`
 
 	// 别名规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasRuleName *string `json:"AliasRuleName,omitnil,omitempty" name:"AliasRuleName"`
 
 	// 各类分类分级规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleEffectItems []*RuleEffectItem `json:"RuleEffectItems,omitnil,omitempty" name:"RuleEffectItems"`
 
 	// 规则状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleStatus *int64 `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
 }
 
@@ -707,11 +653,9 @@ type ComplianceGroupDetail struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 模板类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitnil,omitempty" name:"ComplianceGroupType"`
 
 	// 模板分级方案id
@@ -721,15 +665,12 @@ type ComplianceGroupDetail struct {
 	LevelGroupName *string `json:"LevelGroupName,omitnil,omitempty" name:"LevelGroupName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 是否开启别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAlias *bool `json:"IsAlias,omitnil,omitempty" name:"IsAlias"`
 }
 
@@ -810,19 +751,15 @@ func (r *CopyDSPATemplateResponse) FromJsonString(s string) error {
 
 type CosAsset struct {
 	// 桶的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketNums *int64 `json:"BucketNums,omitnil,omitempty" name:"BucketNums"`
 
 	// 敏感桶的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveBucketNums *int64 `json:"SensitiveBucketNums,omitnil,omitempty" name:"SensitiveBucketNums"`
 
 	// 文件个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileNums *int64 `json:"FileNums,omitnil,omitempty" name:"FileNums"`
 
 	// 敏感文件的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitnil,omitempty" name:"SensitiveFileNums"`
 }
 
@@ -853,7 +790,6 @@ type CosTaskResult struct {
 	ResultDescription *string `json:"ResultDescription,omitnil,omitempty" name:"ResultDescription"`
 
 	// 错误信息描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrDescription *ErrDescription `json:"ErrDescription,omitnil,omitempty" name:"ErrDescription"`
 
 	// 资源ID。
@@ -902,11 +838,9 @@ func (r *CreateAssetSortingReportRetryTaskRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateAssetSortingReportRetryTaskResponseParams struct {
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTaskId *uint64 `json:"ReportTaskId,omitnil,omitempty" name:"ReportTaskId"`
 
 	// 提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -978,11 +912,9 @@ func (r *CreateAssetSortingReportTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetSortingReportTaskResponseParams struct {
 	// 报表任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTaskId *uint64 `json:"ReportTaskId,omitnil,omitempty" name:"ReportTaskId"`
 
 	// 提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1364,9 +1296,6 @@ type CreateDSPACOSDiscoveryTaskRequestParams struct {
 	// 桶名
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
-
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
 	Plan *int64 `json:"Plan,omitnil,omitempty" name:"Plan"`
 
@@ -1384,6 +1313,9 @@ type CreateDSPACOSDiscoveryTaskRequestParams struct {
 
 	// 任务描述，最大长度为1024个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 通用规则集开关，0 关闭，1 启用
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 合规组ID列表，最多支持添加5个
 	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil,omitempty" name:"ComplianceGroupIds"`
@@ -1411,9 +1343,6 @@ type CreateDSPACOSDiscoveryTaskRequest struct {
 	// 桶名
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
-
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
 	Plan *int64 `json:"Plan,omitnil,omitempty" name:"Plan"`
 
@@ -1431,6 +1360,9 @@ type CreateDSPACOSDiscoveryTaskRequest struct {
 
 	// 任务描述，最大长度为1024个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 通用规则集开关，0 关闭，1 启用
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 合规组ID列表，最多支持添加5个
 	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil,omitempty" name:"ComplianceGroupIds"`
@@ -1457,13 +1389,13 @@ func (r *CreateDSPACOSDiscoveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "DataSourceId")
 	delete(f, "Enable")
 	delete(f, "Bucket")
-	delete(f, "GeneralRuleSetEnable")
 	delete(f, "Plan")
 	delete(f, "Period")
 	delete(f, "FileTypes")
 	delete(f, "FileSizeLimit")
 	delete(f, "ResourceRegion")
 	delete(f, "Description")
+	delete(f, "GeneralRuleSetEnable")
 	delete(f, "ComplianceGroupIds")
 	delete(f, "TimingStartTime")
 	if len(f) > 0 {
@@ -1478,7 +1410,6 @@ type CreateDSPACOSDiscoveryTaskResponseParams struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 扫描结果ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1656,6 +1587,12 @@ type CreateDSPAComplianceGroupRequestParams struct {
 
 	// 分级组ID，默认值为1，新增参数，可选
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
+
+	// 1代表模版开启，0代表模版关闭
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 该complianceId的开启状态将被关闭
+	CloseComplianceId *int64 `json:"CloseComplianceId,omitnil,omitempty" name:"CloseComplianceId"`
 }
 
 type CreateDSPAComplianceGroupRequest struct {
@@ -1675,6 +1612,12 @@ type CreateDSPAComplianceGroupRequest struct {
 
 	// 分级组ID，默认值为1，新增参数，可选
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
+
+	// 1代表模版开启，0代表模版关闭
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 该complianceId的开启状态将被关闭
+	CloseComplianceId *int64 `json:"CloseComplianceId,omitnil,omitempty" name:"CloseComplianceId"`
 }
 
 func (r *CreateDSPAComplianceGroupRequest) ToJsonString() string {
@@ -1694,6 +1637,8 @@ func (r *CreateDSPAComplianceGroupRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "ComplianceGroupRules")
 	delete(f, "LevelGroupId")
+	delete(f, "Status")
+	delete(f, "CloseComplianceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPAComplianceGroupRequest has unknown keys!", "")
 	}
@@ -2105,9 +2050,6 @@ type CreateDSPADiscoveryTaskRequestParams struct {
 	// 任务开关，0 关闭，1 启用
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
-
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
 	Plan *int64 `json:"Plan,omitnil,omitempty" name:"Plan"`
 
@@ -2126,6 +2068,11 @@ type CreateDSPADiscoveryTaskRequestParams struct {
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 通用规则集开关，0 关闭，1 启用
+	//
+	// Deprecated: GeneralRuleSetEnable is deprecated.
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 任务描述，最大长度为1024个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -2165,9 +2112,6 @@ type CreateDSPADiscoveryTaskRequest struct {
 	// 任务开关，0 关闭，1 启用
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
-
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
 	Plan *int64 `json:"Plan,omitnil,omitempty" name:"Plan"`
 
@@ -2186,6 +2130,9 @@ type CreateDSPADiscoveryTaskRequest struct {
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 通用规则集开关，0 关闭，1 启用
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 任务描述，最大长度为1024个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -2226,11 +2173,11 @@ func (r *CreateDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "DataSourceId")
 	delete(f, "Enable")
-	delete(f, "GeneralRuleSetEnable")
 	delete(f, "Plan")
 	delete(f, "Period")
 	delete(f, "ResourceRegion")
 	delete(f, "DataSourceType")
+	delete(f, "GeneralRuleSetEnable")
 	delete(f, "Description")
 	delete(f, "Condition")
 	delete(f, "ComplianceGroupIds")
@@ -2250,7 +2197,6 @@ type CreateDSPADiscoveryTaskResponseParams struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 扫描结果ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2714,11 +2660,9 @@ func (r *CreateIdentifyRuleAnotherNameRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIdentifyRuleAnotherNameResponseParams struct {
 	// 创建的别名规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasRuleId *int64 `json:"AliasRuleId,omitnil,omitempty" name:"AliasRuleId"`
 
 	// 别名规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasRuleName *string `json:"AliasRuleName,omitnil,omitempty" name:"AliasRuleName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2845,11 +2789,9 @@ func (r *CreateOrCopyStandardResponse) FromJsonString(s string) error {
 
 type DBInstanceInfo struct {
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 数据源绑定的db信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbInfos []*DbInfo `json:"DbInfos,omitnil,omitempty" name:"DbInfos"`
 }
 
@@ -2889,30 +2831,25 @@ type DSPACosMetaDataInfo struct {
 
 type DSPADataSourceDbInfo struct {
 	// 数据库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 }
 
 type DSPAMetaType struct {
 	// 元数据类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 
 	// 支持的此元数据类型的地域列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 此元数据类型支持的授权类型：
 	// account    -- 账户名密码授权，账户的最高只读权限需要由用户自行赋予；
 	// automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例中给账户名赋予最高只读权限；
 	// 如果此列表为空，表明此类资源不支持以上的授权机制，无法通过后台进行授权。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportedAuthTypes []*string `json:"SupportedAuthTypes,omitnil,omitempty" name:"SupportedAuthTypes"`
 }
 
 type DSPATableInfo struct {
 	// 表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
@@ -2959,7 +2896,6 @@ type DataRules struct {
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contents []*DataRule `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
@@ -2975,25 +2911,20 @@ type DatagovRuleExtendParameter struct {
 	// 扩展参数名称，目前支持如下两个扩展属性名称：
 	// IsFullWordMatch，表示是否全文匹配，该Name对应的Value可取值为"true"或"false":，默认值为"false"，
 	// IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"true"或"false"，默认值为"true"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 扩展参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type DbInfo struct {
 	// 数据库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 绑定的状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidStatus *string `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
 	// 绑定的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
 }
 
@@ -3021,7 +2952,6 @@ type DbTaskResult struct {
 	ResultDescription *string `json:"ResultDescription,omitnil,omitempty" name:"ResultDescription"`
 
 	// 错误信息描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrDescription *ErrDescription `json:"ErrDescription,omitnil,omitempty" name:"ErrDescription"`
 
 	// 资源ID。
@@ -3151,7 +3081,6 @@ func (r *DeleteCosMetaResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCosMetaResourceResponseParams struct {
 	// 结果集合。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*DspaTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// DSPA实例ID。
@@ -3672,67 +3601,51 @@ func (r *DescribeAssetOverviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetOverviewResponseParams struct {
 	// 数据库实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBInstanceNums *int64 `json:"DBInstanceNums,omitnil,omitempty" name:"DBInstanceNums"`
 
 	// 数据库个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBNums *int64 `json:"DBNums,omitnil,omitempty" name:"DBNums"`
 
 	// 表的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableNums *int64 `json:"TableNums,omitnil,omitempty" name:"TableNums"`
 
 	// 字段个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 数据库实例的分布情况
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBInstanceDistribution []*Note `json:"DBInstanceDistribution,omitnil,omitempty" name:"DBInstanceDistribution"`
 
 	// db分布情况
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBDistribution []*Note `json:"DBDistribution,omitnil,omitempty" name:"DBDistribution"`
 
 	// cos桶的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketNums *int64 `json:"BucketNums,omitnil,omitempty" name:"BucketNums"`
 
 	// 文件个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileNums *int64 `json:"FileNums,omitnil,omitempty" name:"FileNums"`
 
 	// 用于对用户进行提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// es实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsInstanceNums *uint64 `json:"EsInstanceNums,omitnil,omitempty" name:"EsInstanceNums"`
 
 	// es索引数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsIndexNums *uint64 `json:"EsIndexNums,omitnil,omitempty" name:"EsIndexNums"`
 
 	// es字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsFieldNums *uint64 `json:"EsFieldNums,omitnil,omitempty" name:"EsFieldNums"`
 
 	// mongo实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoInstanceNums *uint64 `json:"MongoInstanceNums,omitnil,omitempty" name:"MongoInstanceNums"`
 
 	// mongo数据库数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoDbNums *uint64 `json:"MongoDbNums,omitnil,omitempty" name:"MongoDbNums"`
 
 	// mongo集合数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoColNums *uint64 `json:"MongoColNums,omitnil,omitempty" name:"MongoColNums"`
 
 	// mongo字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoFieldNums *uint64 `json:"MongoFieldNums,omitnil,omitempty" name:"MongoFieldNums"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3804,11 +3717,9 @@ func (r *DescribeBindDBListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBindDBListResponseParams struct {
 	// 绑定的DB列表（已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindDBList []*string `json:"BindDBList,omitnil,omitempty" name:"BindDBList"`
 
 	// 绑定信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindList []*DBInstanceInfo `json:"BindList,omitnil,omitempty" name:"BindList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3880,15 +3791,12 @@ func (r *DescribeCOSAssetSensitiveDistributionRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeCOSAssetSensitiveDistributionResponseParams struct {
 	// cos的涉敏资产
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosAsset *CosAsset `json:"CosAsset,omitnil,omitempty" name:"CosAsset"`
 
 	// 涉敏top
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopAsset []*TopAsset `json:"TopAsset,omitnil,omitempty" name:"TopAsset"`
 
 	// cos资产详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosDetail []*AssetCosDetail `json:"CosDetail,omitnil,omitempty" name:"CosDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4064,7 +3972,6 @@ func (r *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) FromJsonString(s st
 // Predefined struct for user
 type DescribeDSPAAssessmentHighRiskTop10OverviewResponseParams struct {
 	// 含高风险资产TOP10的列表数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsList []*HighRiskAssetsDetail `json:"AssetsList,omitnil,omitempty" name:"AssetsList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4136,79 +4043,60 @@ func (r *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) FromJsonString(s str
 // Predefined struct for user
 type DescribeDSPAAssessmentLatestRiskDetailInfoResponseParams struct {
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 数据源name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 资产对象名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
 	// 风险评估模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssessmentTemplateId *int64 `json:"AssessmentTemplateId,omitnil,omitempty" name:"AssessmentTemplateId"`
 
 	// 分类分级的模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyTemplateId *int64 `json:"IdentifyTemplateId,omitnil,omitempty" name:"IdentifyTemplateId"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 风险项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
 
 	// 风险的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
 
 	// 风险的级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 处置的建议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuggestAction *string `json:"SuggestAction,omitnil,omitempty" name:"SuggestAction"`
 
 	// 处置状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 安全产品
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitnil,omitempty" name:"SecurityProduct"`
 
 	// 风险归属
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDimension *string `json:"RiskDimension,omitnil,omitempty" name:"RiskDimension"`
 
 	// 关联数据库（如果风险归属是instance）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelationAsset []*string `json:"RelationAsset,omitnil,omitempty" name:"RelationAsset"`
 
 	// 风险账号详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountRiskDetail []*AccountRisk `json:"AccountRiskDetail,omitnil,omitempty" name:"AccountRiskDetail"`
 
 	// 权限风险详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivilegeRiskDetail []*PrivilegeRisk `json:"PrivilegeRiskDetail,omitnil,omitempty" name:"PrivilegeRiskDetail"`
 
 	// 策略风险的cos风险文件列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyRiskCosFileList []*string `json:"PolicyRiskCosFileList,omitnil,omitempty" name:"PolicyRiskCosFileList"`
 
 	// AKSK泄漏列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AKSKLeak []*AKSKLeak `json:"AKSKLeak,omitnil,omitempty" name:"AKSKLeak"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4350,7 +4238,6 @@ func (r *DescribeDSPAAssessmentLatestRiskListRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeDSPAAssessmentLatestRiskListResponseParams struct {
 	// 最新风险详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestRiskList []*RiskItemInfo `json:"LatestRiskList,omitnil,omitempty" name:"LatestRiskList"`
 
 	// 总条数
@@ -4687,8 +4574,7 @@ func (r *DescribeDSPAAssessmentRiskDatasourceTop5Request) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDatasourceTop5ResponseParams struct {
-	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 风险值
 	Items []*RiskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4833,7 +4719,6 @@ func (r *DescribeDSPAAssessmentRiskDealedTrendRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDealedTrendResponseParams struct {
 	// 趋势统计结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RiskDealedTrendItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4907,15 +4792,12 @@ func (r *DescribeDSPAAssessmentRiskDistributionOverviewRequest) FromJsonString(s
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDistributionOverviewResponseParams struct {
 	// 风险类型分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskTypeDistribution []*Note `json:"RiskTypeDistribution,omitnil,omitempty" name:"RiskTypeDistribution"`
 
 	// 风险详情分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDetailDistribution []*Note `json:"RiskDetailDistribution,omitnil,omitempty" name:"RiskDetailDistribution"`
 
 	// 风险资产详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskAssetsDistribution []*Note `json:"RiskAssetsDistribution,omitnil,omitempty" name:"RiskAssetsDistribution"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4972,8 +4854,7 @@ func (r *DescribeDSPAAssessmentRiskItemTop5Request) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskItemTop5ResponseParams struct {
-	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 风险结果
 	Items []*RiskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5041,18 +4922,15 @@ type DescribeDSPAAssessmentRiskLevelDetailResponseParams struct {
 	RiskLevelName *string `json:"RiskLevelName,omitnil,omitempty" name:"RiskLevelName"`
 
 	// 风险级别描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil,omitempty" name:"RiskLevelDescription"`
 
 	// 分类分级id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil,omitempty" name:"IdentifyComplianceId"`
 
 	// 分类分级模板名称
 	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitnil,omitempty" name:"IdentifyComplianceName"`
 
 	// 风险数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelMatrix []*RiskLevelMatrix `json:"RiskLevelMatrix,omitnil,omitempty" name:"RiskLevelMatrix"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5127,7 +5005,6 @@ type DescribeDSPAAssessmentRiskLevelListResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 风险等级列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelList []*RiskLevelRisk `json:"RiskLevelList,omitnil,omitempty" name:"RiskLevelList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5206,7 +5083,6 @@ func (r *DescribeDSPAAssessmentRiskLevelTrendRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskLevelTrendResponseParams struct {
 	// 结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RiskLevelTrendItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5300,7 +5176,7 @@ type DescribeDSPAAssessmentRiskProcessHistoryRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// xxx
+	// 风险id
 	RiskId *int64 `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 }
 
@@ -5310,7 +5186,7 @@ type DescribeDSPAAssessmentRiskProcessHistoryRequest struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// xxx
+	// 风险id
 	RiskId *int64 `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 }
 
@@ -5337,7 +5213,6 @@ func (r *DescribeDSPAAssessmentRiskProcessHistoryRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskProcessHistoryResponseParams struct {
 	// 处理的历史
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessHistory []*ProcessHistory `json:"ProcessHistory,omitnil,omitempty" name:"ProcessHistory"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5402,7 +5277,6 @@ func (r *DescribeDSPAAssessmentRiskSideDistributedRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideDistributedResponseParams struct {
 	// 风险面的分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSideDistributed []*RiskSideDistributed `json:"RiskSideDistributed,omitnil,omitempty" name:"RiskSideDistributed"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5467,7 +5341,6 @@ func (r *DescribeDSPAAssessmentRiskSideListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideListResponseParams struct {
 	// 风险面列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitnil,omitempty" name:"RiskSideItmeList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5552,7 +5425,6 @@ type DescribeDSPAAssessmentRiskTemplateDetailResponseParams struct {
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 模板的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 
 	// 风险等级
@@ -5562,15 +5434,12 @@ type DescribeDSPAAssessmentRiskTemplateDetailResponseParams struct {
 	RiskLevelName *string `json:"RiskLevelName,omitnil,omitempty" name:"RiskLevelName"`
 
 	// 脆弱项配置列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskItemList []*AssessmentRiskItem `json:"RiskItemList,omitnil,omitempty" name:"RiskItemList"`
 
 	// 脆弱项配置条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 被任务引用次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCitations *int64 `json:"TaskCitations,omitnil,omitempty" name:"TaskCitations"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5663,7 +5532,6 @@ func (r *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) FromJsonString
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskTemplateVulnerableListResponseParams struct {
 	// 脆弱项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskItemList []*AssessmentRiskItem `json:"RiskItemList,omitnil,omitempty" name:"RiskItemList"`
 
 	// 总条数
@@ -5796,13 +5664,7 @@ type DescribeDSPAAssessmentTasksRequestParams struct {
 	// 结果集个数限制。默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤项。
-	// 支持模糊搜索：TaskId，TaskName
-	// 支持过滤：
-	// BusinessName：业务名称
-	// BusinessDept：业务部门名称
-	// TemplateName：评估模版名称
-	// Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
+	// 过滤项。支持模糊搜索：TaskId，TaskName支持过滤：BusinessName：业务名称BusinessDept：业务部门名称TemplateName：评估模板名称Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
 	Filters []*DspaAssessmentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5818,13 +5680,7 @@ type DescribeDSPAAssessmentTasksRequest struct {
 	// 结果集个数限制。默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤项。
-	// 支持模糊搜索：TaskId，TaskName
-	// 支持过滤：
-	// BusinessName：业务名称
-	// BusinessDept：业务部门名称
-	// TemplateName：评估模版名称
-	// Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
+	// 过滤项。支持模糊搜索：TaskId，TaskName支持过滤：BusinessName：业务名称BusinessDept：业务部门名称TemplateName：评估模板名称Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
 	Filters []*DspaAssessmentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -6101,7 +5957,6 @@ func (r *DescribeDSPACOSDataAssetBucketsRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPACOSDataAssetBucketsResponseParams struct {
 	// COS对象存储敏感数据资产已扫描的桶集合。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6167,7 +6022,6 @@ func (r *DescribeDSPACOSDataAssetByComplianceIdRequest) FromJsonString(s string)
 type DescribeDSPACOSDataAssetByComplianceIdResponseParams struct {
 	// 符合条件的COS存储对象的敏感数据资产统计记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stats *DspaCOSDataAssetCount `json:"Stats,omitnil,omitempty" name:"Stats"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6232,7 +6086,6 @@ func (r *DescribeDSPACOSDataAssetDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACOSDataAssetDetailResponseParams struct {
 	// COS对象存储敏感数据资产详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*DspaCOSDataAssetDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 符合条件的COS对象存储敏感数据资产数量
@@ -6300,7 +6153,6 @@ func (r *DescribeDSPACOSDiscoveryTaskDetailRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTaskDetailResponseParams struct {
 	// 任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Task *DspaCOSDiscoveryTaskDetail `json:"Task,omitnil,omitempty" name:"Task"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6372,7 +6224,6 @@ func (r *DescribeDSPACOSDiscoveryTaskFilesRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTaskFilesResponseParams struct {
 	// 文件列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6463,11 +6314,9 @@ func (r *DescribeDSPACOSDiscoveryTaskResultRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTaskResultResponseParams struct {
 	// 扫描任务结果项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaCOSDiscoveryTaskResult `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的数据结果数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6560,7 +6409,6 @@ func (r *DescribeDSPACOSDiscoveryTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTasksResponseParams struct {
 	// 任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaCOSDiscoveryTask `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的任务列表数
@@ -6691,7 +6539,6 @@ func (r *DescribeDSPACOSTaskResultDetailRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPACOSTaskResultDetailResponseParams struct {
 	// 扫描结果详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryCOSTaskResultDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的详情数量
@@ -6780,11 +6627,9 @@ func (r *DescribeDSPACategoriesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACategoriesResponseParams struct {
 	// 敏感数据分类列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DataCategory `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的敏感数据分类数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6849,7 +6694,6 @@ func (r *DescribeDSPACategoryRuleStatisticRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeDSPACategoryRuleStatisticResponseParams struct {
 	// 分类规则统计信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticSet []*CategoryRuleStatistic `json:"StatisticSet,omitnil,omitempty" name:"StatisticSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6921,7 +6765,6 @@ func (r *DescribeDSPACategoryRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACategoryRulesResponseParams struct {
 	// 分类规则信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryRules []*CategoryRule `json:"CategoryRules,omitnil,omitempty" name:"CategoryRules"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6986,7 +6829,6 @@ func (r *DescribeDSPACategoryTreeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACategoryTreeResponseParams struct {
 	// 分类树json
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultJson *string `json:"ResultJson,omitnil,omitempty" name:"ResultJson"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7058,7 +6900,6 @@ func (r *DescribeDSPACategoryTreeWithRulesRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeDSPACategoryTreeWithRulesResponseParams struct {
 	// 分类树json
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultJson *string `json:"ResultJson,omitnil,omitempty" name:"ResultJson"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7123,7 +6964,6 @@ func (r *DescribeDSPAComplianceGroupDetailRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeDSPAComplianceGroupDetailResponseParams struct {
 	// 模板详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *ComplianceGroupDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7165,6 +7005,9 @@ type DescribeDSPAComplianceGroupsRequestParams struct {
 
 	// 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
 	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitnil,omitempty" name:"ComplianceGroupTypeList"`
+
+	// 是否仅显示已开启模版
+	IsFilterCloseComplianceGroup *bool `json:"IsFilterCloseComplianceGroup,omitnil,omitempty" name:"IsFilterCloseComplianceGroup"`
 }
 
 type DescribeDSPAComplianceGroupsRequest struct {
@@ -7187,6 +7030,9 @@ type DescribeDSPAComplianceGroupsRequest struct {
 
 	// 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
 	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitnil,omitempty" name:"ComplianceGroupTypeList"`
+
+	// 是否仅显示已开启模版
+	IsFilterCloseComplianceGroup *bool `json:"IsFilterCloseComplianceGroup,omitnil,omitempty" name:"IsFilterCloseComplianceGroup"`
 }
 
 func (r *DescribeDSPAComplianceGroupsRequest) ToJsonString() string {
@@ -7207,6 +7053,7 @@ func (r *DescribeDSPAComplianceGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ComplianceGroupTypeList")
+	delete(f, "IsFilterCloseComplianceGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAComplianceGroupsRequest has unknown keys!", "")
 	}
@@ -7216,11 +7063,9 @@ func (r *DescribeDSPAComplianceGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAComplianceGroupsResponseParams struct {
 	// 合规组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryComplianceGroupInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的合规组列表数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7285,11 +7130,9 @@ func (r *DescribeDSPAComplianceUpdateNotificationRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeDSPAComplianceUpdateNotificationResponseParams struct {
 	// 模板是否更新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdated *bool `json:"IsUpdated,omitnil,omitempty" name:"IsUpdated"`
 
 	// 任务名称集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNameSet []*string `json:"TaskNameSet,omitnil,omitempty" name:"TaskNameSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7361,8 +7204,10 @@ func (r *DescribeDSPADataSourceDbInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPADataSourceDbInfoResponseParams struct {
 	// 数据库信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DSPADataSourceDbInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 数据源id
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7457,7 +7302,6 @@ type DescribeDSPADiscoveryRulesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 规则集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryRuleDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7579,7 +7423,6 @@ func (r *DescribeDSPADiscoveryTaskDetailRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskDetailResponseParams struct {
 	// 任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Task *DspaDiscoveryTaskDetail `json:"Task,omitnil,omitempty" name:"Task"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7707,11 +7550,9 @@ func (r *DescribeDSPADiscoveryTaskResultDetailRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskResultDetailResponseParams struct {
 	// 扫描结果详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryTaskResultDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的扫描结果详情记录数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7839,11 +7680,9 @@ func (r *DescribeDSPADiscoveryTaskResultRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskResultResponseParams struct {
 	// 扫描任务结果项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryTaskDbResult `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的扫描任务结果记录数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7922,7 +7761,6 @@ func (r *DescribeDSPADiscoveryTaskTablesRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskTablesResponseParams struct {
 	// 分类分级扫描表集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DSPATableInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8001,7 +7839,6 @@ func (r *DescribeDSPAESDataAssetByComplianceIdRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDSPAESDataAssetByComplianceIdResponseParams struct {
 	// 概览统计结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stats *ESDataAssetCountDto `json:"Stats,omitnil,omitempty" name:"Stats"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8096,11 +7933,9 @@ func (r *DescribeDSPAESDataAssetDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAESDataAssetDetailResponseParams struct {
 	// 总的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 概览详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*ESDataAssetDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8179,7 +8014,6 @@ func (r *DescribeDSPAESDataSampleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAESDataSampleResponseParams struct {
 	// 数据样本列表，最多10条数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8225,7 +8059,7 @@ type DescribeDSPAESDiscoveryTaskResultDetailRequestParams struct {
 	// 敏感数据分级ID
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
-	// 索引名称
+	// 数据库名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 }
 
@@ -8253,7 +8087,7 @@ type DescribeDSPAESDiscoveryTaskResultDetailRequest struct {
 	// 敏感数据分级ID
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
-	// 索引名称
+	// 数据库名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 }
 
@@ -8286,11 +8120,9 @@ func (r *DescribeDSPAESDiscoveryTaskResultDetailRequest) FromJsonString(s string
 // Predefined struct for user
 type DescribeDSPAESDiscoveryTaskResultDetailResponseParams struct {
 	// ES扫描结果详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ESTaskResultDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的扫描结果详情记录数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8429,11 +8261,9 @@ func (r *DescribeDSPALevelGroupsRequest) FromJsonString(s string) error {
 type DescribeDSPALevelGroupsResponseParams struct {
 	// 符合条件的敏感数据分级标识记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaDiscoveryLevelDetail `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 符合条件的敏感数据分级标识记录数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
@@ -8626,7 +8456,6 @@ func (r *DescribeDSPARDBDataAssetDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPARDBDataAssetDetailResponseParams struct {
 	// RDB关系数据库敏感数据资产详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*DspaRDBDataAssetDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 符合条件的RDB关系数据库敏感数据资产数量
@@ -8687,7 +8516,6 @@ func (r *DescribeDSPASupportedMetasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPASupportedMetasResponseParams struct {
 	// 支持的元数据类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metas []*DSPAMetaType `json:"Metas,omitnil,omitempty" name:"Metas"`
 
 	// 最大支持每批次同步数量
@@ -8769,7 +8597,6 @@ func (r *DescribeDSPATaskResultDataSampleRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPATaskResultDataSampleResponseParams struct {
 	// 数据样本列表，最多10条数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DspaFieldResultDataSample `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8841,15 +8668,12 @@ func (r *DescribeESAssetSensitiveDistributionRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeESAssetSensitiveDistributionResponseParams struct {
 	// ES的资产统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ESAsset *ESAsset `json:"ESAsset,omitnil,omitempty" name:"ESAsset"`
 
 	// 涉敏top数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopAsset []*TopAsset `json:"TopAsset,omitnil,omitempty" name:"TopAsset"`
 
 	// ES的详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ESDetail []*ESAssetDBDetail `json:"ESDetail,omitnil,omitempty" name:"ESDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9039,15 +8863,12 @@ func (r *DescribeMongoAssetSensitiveDistributionRequest) FromJsonString(s string
 // Predefined struct for user
 type DescribeMongoAssetSensitiveDistributionResponseParams struct {
 	// mongo的资产统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoAsset *MongoAsset `json:"MongoAsset,omitnil,omitempty" name:"MongoAsset"`
 
 	// 涉敏top数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopAsset []*TopAsset `json:"TopAsset,omitnil,omitempty" name:"TopAsset"`
 
 	// mongo的详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoDetail []*MongoAssetDBDetail `json:"MongoDetail,omitnil,omitempty" name:"MongoDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9119,15 +8940,12 @@ func (r *DescribeRDBAssetSensitiveDistributionRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeRDBAssetSensitiveDistributionResponseParams struct {
 	// rdb的资产统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RDBAsset *RDBAsset `json:"RDBAsset,omitnil,omitempty" name:"RDBAsset"`
 
 	// 涉敏top数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopAsset []*TopAsset `json:"TopAsset,omitnil,omitempty" name:"TopAsset"`
 
 	// rdb的详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RDBDetail []*AssetDBDetail `json:"RDBDetail,omitnil,omitempty" name:"RDBDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9199,7 +9017,6 @@ func (r *DescribeReportTaskDownloadUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReportTaskDownloadUrlResponseParams struct {
 	// 下载链接集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrlSet []*string `json:"DownloadUrlSet,omitnil,omitempty" name:"DownloadUrlSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9278,11 +9095,9 @@ func (r *DescribeReportTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReportTasksResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 报表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemSet []*ReportInfo `json:"ItemSet,omitnil,omitempty" name:"ItemSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9456,19 +9271,15 @@ func (r *DescribeSensitiveCOSDataDistributionRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeSensitiveCOSDataDistributionResponseParams struct {
 	// 分级分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelDistribution []*Note `json:"LevelDistribution,omitnil,omitempty" name:"LevelDistribution"`
 
 	// 分类分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryDistribution []*Note `json:"CategoryDistribution,omitnil,omitempty" name:"CategoryDistribution"`
 
 	// 规则分布详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleDistribution []*RuleDistribution `json:"RuleDistribution,omitnil,omitempty" name:"RuleDistribution"`
 
 	// 计算占比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitnil,omitempty" name:"SensitiveDataNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9540,19 +9351,15 @@ func (r *DescribeSensitiveRDBDataDistributionRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeSensitiveRDBDataDistributionResponseParams struct {
 	// 分级分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelDistribution []*Note `json:"LevelDistribution,omitnil,omitempty" name:"LevelDistribution"`
 
 	// 分类分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryDistribution []*Note `json:"CategoryDistribution,omitnil,omitempty" name:"CategoryDistribution"`
 
 	// 敏感规则分布详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleDistribution []*RuleDistribution `json:"RuleDistribution,omitnil,omitempty" name:"RuleDistribution"`
 
 	// 计算占比字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitnil,omitempty" name:"SensitiveDataNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9634,7 +9441,6 @@ type DisableDSPAMetaResourceAuthResponseParams struct {
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
 	// 授权结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*DspaTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9659,19 +9465,15 @@ func (r *DisableDSPAMetaResourceAuthResponse) FromJsonString(s string) error {
 
 type DiscoveryCondition struct {
 	// RDB实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RDBInstances []*RDBInstance `json:"RDBInstances,omitnil,omitempty" name:"RDBInstances"`
 
 	// COS实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	COSInstances []*COSInstance `json:"COSInstances,omitnil,omitempty" name:"COSInstances"`
 
 	// Mongo实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NOSQLInstances []*NOSQLInstance `json:"NOSQLInstances,omitnil,omitempty" name:"NOSQLInstances"`
 
 	// ES实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ESInstances []*ESInstance `json:"ESInstances,omitnil,omitempty" name:"ESInstances"`
 }
 
@@ -9685,39 +9487,30 @@ type DspaAssessmentFilter struct {
 
 type DspaCOSDataAssetCount struct {
 	// 数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataAssetType *int64 `json:"DataAssetType,omitnil,omitempty" name:"DataAssetType"`
 
 	// 已扫描的存储桶的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalBucketCnt *int64 `json:"TotalBucketCnt,omitnil,omitempty" name:"TotalBucketCnt"`
 
 	// 对象总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalObjectCnt *int64 `json:"TotalObjectCnt,omitnil,omitempty" name:"TotalObjectCnt"`
 
 	// 敏感数据类型个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitnil,omitempty" name:"SensitiveCategoryCnt"`
 
 	// 敏感数据条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitnil,omitempty" name:"SensitiveDataCnt"`
 
 	// 敏感等级分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitnil,omitempty" name:"SensitiveLevel"`
 
 	// 敏感存储桶个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveBucketCnt *int64 `json:"SensitiveBucketCnt,omitnil,omitempty" name:"SensitiveBucketCnt"`
 
 	// 敏感对象个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveObjectCnt *int64 `json:"SensitiveObjectCnt,omitnil,omitempty" name:"SensitiveObjectCnt"`
 
 	// 数据分类分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitnil,omitempty" name:"CategoryDistributed"`
 }
 
@@ -9759,37 +9552,29 @@ type DspaCOSDataAssetDetail struct {
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 分级ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 文件扫描结果ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileResultId *int64 `json:"FileResultId,omitnil,omitempty" name:"FileResultId"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 分类路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath *string `json:"CategoryFullPath,omitnil,omitempty" name:"CategoryFullPath"`
 
 	// 0-系统识别
 	// 1-人工识别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyType *int64 `json:"IdentifyType,omitnil,omitempty" name:"IdentifyType"`
 
 	// 0-系统识别
 	// 1-人工识别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 }
 
@@ -9816,15 +9601,12 @@ type DspaCOSDiscoveryTask struct {
 	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 任务最新的一次执行结果信息，该字段用于查询任务列表接口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ScanTaskResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 定时开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
 
 	// 关联分类模板是否更新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceUpdate *bool `json:"ComplianceUpdate,omitnil,omitempty" name:"ComplianceUpdate"`
 }
 
@@ -9833,19 +9615,15 @@ type DspaCOSDiscoveryTaskDataSourceInfo struct {
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 代理地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyAddress []*string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 扫描任务条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Condition *DspaDiscoveryTaskCOSCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 }
 
@@ -9872,15 +9650,12 @@ type DspaCOSDiscoveryTaskDetail struct {
 	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultComplianceInfo []*ScanTaskComplianceInfo `json:"DefaultComplianceInfo,omitnil,omitempty" name:"DefaultComplianceInfo"`
 
 	// 该任务中用户选择的合规组信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomComplianceInfo []*ScanTaskComplianceInfo `json:"CustomComplianceInfo,omitnil,omitempty" name:"CustomComplianceInfo"`
 
 	// 定时开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
 }
 
@@ -9913,22 +9688,18 @@ type DspaCOSDiscoveryTaskResult struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// Bucket扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// Bucket扫描结果错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 是否超额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverSize *string `json:"OverSize,omitnil,omitempty" name:"OverSize"`
 }
 
@@ -9957,19 +9728,15 @@ type DspaCloudResourceMeta struct {
 
 type DspaDataCategoryDistributed struct {
 	// 数据分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 数据分类名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
 
 	// 数据分类统计个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 分类路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath *string `json:"CategoryFullPath,omitnil,omitempty" name:"CategoryFullPath"`
 }
 
@@ -9984,33 +9751,26 @@ type DspaDataSourceMngFilter struct {
 type DspaDiscoveryCOSDataRule struct {
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 	// 默认值为or
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 规则内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contents []*DspaDiscoveryDataContent `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
 type DspaDiscoveryCOSRules struct {
 	// 规则状态；0 不启用, 1 启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// regex规则内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegexRule *DspaDiscoveryCOSDataRule `json:"RegexRule,omitnil,omitempty" name:"RegexRule"`
 
 	// 关键词规则内容组，最大支持5个关键词。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeywordRule *DspaDiscoveryCOSDataRule `json:"KeywordRule,omitnil,omitempty" name:"KeywordRule"`
 
 	// 忽略词规则内容组，最大支持5个忽略词。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreStringRule *DspaDiscoveryCOSDataRule `json:"IgnoreStringRule,omitnil,omitempty" name:"IgnoreStringRule"`
 
 	// 最大匹配距离，默认值为100。上限为500.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMatch *int64 `json:"MaxMatch,omitnil,omitempty" name:"MaxMatch"`
 }
 
@@ -10019,188 +9779,154 @@ type DspaDiscoveryCOSTaskResultDetail struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 扫描File结果详情ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileResultId *int64 `json:"FileResultId,omitnil,omitempty" name:"FileResultId"`
 
 	// 所属桶名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 所属文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 敏感数据分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 敏感数据分类名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
 
 	// 敏感数据分级ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 敏感数据分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
 
 	// KMS加密，true or false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KMSEncrypted *bool `json:"KMSEncrypted,omitnil,omitempty" name:"KMSEncrypted"`
 
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 敏感数据分级分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil,omitempty" name:"LevelRiskScore"`
 
 	// 文件大小，单位为KB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 文件类型，如csv，txt
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 敏感数据出现次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataCount *int64 `json:"SensitiveDataCount,omitnil,omitempty" name:"SensitiveDataCount"`
 
 	// 分类树路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath []*string `json:"CategoryFullPath,omitnil,omitempty" name:"CategoryFullPath"`
 
+	// 分类树路径
+	CategoryArr []*string `json:"CategoryArr,omitnil,omitempty" name:"CategoryArr"`
+
 	// 合规组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
 
 	// 结果id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 }
 
 type DspaDiscoveryComplianceGroup struct {
 	// 合规组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil,omitempty" name:"ComplianceGroupId"`
 
 	// 合规组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合规组描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitnil,omitempty" name:"ComplianceGroupType"`
 
 	// 合规组对应的规则项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupRules []*DspaDiscoveryComplianceGroupRuleInfo `json:"ComplianceGroupRules,omitnil,omitempty" name:"ComplianceGroupRules"`
 
 	// 合规组对应的分级组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
 }
 
 type DspaDiscoveryComplianceGroupInfo struct {
 	// 合规组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil,omitempty" name:"ComplianceGroupId"`
 
 	// 合规组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合规组描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitnil,omitempty" name:"ComplianceGroupType"`
 
 	// 合规组对应的规则项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceGroupRules []*DspaDiscoveryComplianceGroupRule `json:"ComplianceGroupRules,omitnil,omitempty" name:"ComplianceGroupRules"`
 
 	// 合规组对应的分级组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
 
 	// 是否禁止使用（true，禁止使用，false，可以使用）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Disabled *bool `json:"Disabled,omitnil,omitempty" name:"Disabled"`
 
 	// 是否别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAlias *bool `json:"IsAlias,omitnil,omitempty" name:"IsAlias"`
+
+	// 1代表模版开启，0代表模版关闭
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 模版最后修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type DspaDiscoveryComplianceGroupRule struct {
 	// 敏感数据识别规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 敏感数据识别规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 敏感数据分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 敏感数据分级ID, 目前只支持高、中、低三级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 合规组对应的分类信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
 
 	// 分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelRiskName *string `json:"LevelRiskName,omitnil,omitempty" name:"LevelRiskName"`
 }
 
 type DspaDiscoveryComplianceGroupRuleInfo struct {
 	// 敏感数据识别规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 敏感数据识别规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 敏感数据分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 敏感数据分级ID, 目前只支持高、中、低三级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 }
 
 type DspaDiscoveryDataContent struct {
 	// 规则内容，可以是正则规则，关键词，
 	// 忽略词扥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
 
 	// 是否区分大小写
 	// false: 不区分大小写
 	// true:区分大小写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIgnoreCase *bool `json:"IsIgnoreCase,omitnil,omitempty" name:"IsIgnoreCase"`
 }
 
@@ -10208,117 +9934,91 @@ type DspaDiscoveryDataRule struct {
 	// 规则类型；取值：
 	// keyword 关键字, 
 	// regex 正则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
 
 	// 该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendParameters []*DatagovRuleExtendParameter `json:"ExtendParameters,omitnil,omitempty" name:"ExtendParameters"`
 }
 
 type DspaDiscoveryDataRules struct {
 	// 操作符；只能取and, or的其中一种
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contents []*DspaDiscoveryDataRule `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
 type DspaDiscoveryLevelDetail struct {
 	// 分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelGroupName *string `json:"LevelGroupName,omitnil,omitempty" name:"LevelGroupName"`
 
 	// 分级组来源，0为内置，1为自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 分级组描述，最多1024字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelGroupDesc *string `json:"LevelGroupDesc,omitnil,omitempty" name:"LevelGroupDesc"`
 
 	// 具体分级标识详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelDetail []*LevelItem `json:"LevelDetail,omitnil,omitempty" name:"LevelDetail"`
 
 	// 引用合规组次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefComplianceCnt *uint64 `json:"RefComplianceCnt,omitnil,omitempty" name:"RefComplianceCnt"`
 
 	// 引用合规组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefCompliance []*DspaDiscoveryComplianceGroup `json:"RefCompliance,omitnil,omitempty" name:"RefCompliance"`
 
 	// 分级组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
 }
 
 type DspaDiscoveryRDBRules struct {
 	// 规则状态；0 不启用, 1 启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchOperator *string `json:"MatchOperator,omitnil,omitempty" name:"MatchOperator"`
 
 	// 字段名包含规则，最大支持选择9项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaRule *DspaDiscoveryDataRules `json:"MetaRule,omitnil,omitempty" name:"MetaRule"`
 
 	// 内容包含规则，最大支持选择9项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentRule *DspaDiscoveryDataRules `json:"ContentRule,omitnil,omitempty" name:"ContentRule"`
 }
 
 type DspaDiscoveryRuleDetail struct {
 	// 规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 规则来源，取值：0 内置, 1 自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// RDB规则详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitnil,omitempty" name:"RDBRules"`
 
 	// COS规则详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil,omitempty" name:"COSRules"`
 
 	// 0关闭，1开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DspaDiscoveryTaskCOSCondition struct {
 	// 数据桶名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 文件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
 
 	// 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSizeLimit *int64 `json:"FileSizeLimit,omitnil,omitempty" name:"FileSizeLimit"`
 }
 
@@ -10330,19 +10030,15 @@ type DspaDiscoveryTaskDataSource struct {
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 代理地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyAddress []*string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 }
 
@@ -10375,26 +10071,21 @@ type DspaDiscoveryTaskDbResult struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// DB扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// DB扫描结果错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 敏感字段数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveField *int64 `json:"SensitiveField,omitnil,omitempty" name:"SensitiveField"`
 
 	// 总的字段数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalField *int64 `json:"TotalField,omitnil,omitempty" name:"TotalField"`
 }
 
@@ -10403,7 +10094,6 @@ type DspaDiscoveryTaskDetail struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 任务描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 执行周期，0单次 1每天 2每周 3每月
@@ -10416,23 +10106,18 @@ type DspaDiscoveryTaskDetail struct {
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 元数据对象信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceInfo *DspaDiscoveryTaskDataSource `json:"DataSourceInfo,omitnil,omitempty" name:"DataSourceInfo"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultComplianceInfo []*ScanTaskComplianceInfo `json:"DefaultComplianceInfo,omitnil,omitempty" name:"DefaultComplianceInfo"`
 
 	// 该任务中用户选择的合规组信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomComplianceInfo []*ScanTaskComplianceInfo `json:"CustomComplianceInfo,omitnil,omitempty" name:"CustomComplianceInfo"`
 
 	// 定时开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
 }
 
@@ -10471,17 +10156,17 @@ type DspaDiscoveryTaskResultDetail struct {
 	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil,omitempty" name:"LevelRiskScore"`
 
 	// 保护措施
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SafeGuard *DspaSafeGuard `json:"SafeGuard,omitnil,omitempty" name:"SafeGuard"`
 
 	// 分类路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath *string `json:"CategoryFullPath,omitnil,omitempty" name:"CategoryFullPath"`
+
+	// 模式名
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 }
 
 type DspaFieldResultDataSample struct {
 	// 数据样本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSample *string `json:"DataSample,omitnil,omitempty" name:"DataSample"`
 }
 
@@ -10534,57 +10219,44 @@ type DspaInstance struct {
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 实例渠道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// 已授权的实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsAuthCount *int64 `json:"InsAuthCount,omitnil,omitempty" name:"InsAuthCount"`
 
 	// 已购买的实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsTotalQuota *int64 `json:"InsTotalQuota,omitnil,omitempty" name:"InsTotalQuota"`
 }
 
 type DspaRDBDataAssetCount struct {
 	// 数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataAssetType *int64 `json:"DataAssetType,omitnil,omitempty" name:"DataAssetType"`
 
 	// 已扫描的数据库的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalDbCnt *int64 `json:"TotalDbCnt,omitnil,omitempty" name:"TotalDbCnt"`
 
 	// 数据库表的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTableCnt *int64 `json:"TotalTableCnt,omitnil,omitempty" name:"TotalTableCnt"`
 
 	// 敏感数据类型个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitnil,omitempty" name:"SensitiveCategoryCnt"`
 
 	// 敏感字段的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldCnt *int64 `json:"SensitiveFieldCnt,omitnil,omitempty" name:"SensitiveFieldCnt"`
 
 	// 敏感等级分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitnil,omitempty" name:"SensitiveLevel"`
 
 	// 敏感数据库的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDbCnt *int64 `json:"SensitiveDbCnt,omitnil,omitempty" name:"SensitiveDbCnt"`
 
 	// 敏感数据库表的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveTableCnt *int64 `json:"SensitiveTableCnt,omitnil,omitempty" name:"SensitiveTableCnt"`
 
 	// 扫描字段的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalFieldCnt *int64 `json:"TotalFieldCnt,omitnil,omitempty" name:"TotalFieldCnt"`
 
 	// 数据分类分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitnil,omitempty" name:"CategoryDistributed"`
 }
 
@@ -10614,56 +10286,46 @@ type DspaRDBDataAssetDetail struct {
 	LevelRiskName *string `json:"LevelRiskName,omitnil,omitempty" name:"LevelRiskName"`
 
 	// 分级风险分数，1-10，最小值为1，最大值为10
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil,omitempty" name:"LevelRiskScore"`
 
 	// 可信分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrustedScore *string `json:"TrustedScore,omitnil,omitempty" name:"TrustedScore"`
 
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 字段扫描结果ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldResultId *string `json:"FieldResultId,omitnil,omitempty" name:"FieldResultId"`
 
 	// 规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 分级ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 保护措施
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SafeGuard *DspaSafeGuard `json:"SafeGuard,omitnil,omitempty" name:"SafeGuard"`
 
 	// 分类路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryFullPath *string `json:"CategoryFullPath,omitnil,omitempty" name:"CategoryFullPath"`
 
 	// 0.系统识别，1人工打标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyType *int64 `json:"IdentifyType,omitnil,omitempty" name:"IdentifyType"`
 
 	// 0未核查 1已核查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
 	// 0非敏感，1敏感
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSensitiveData *int64 `json:"IsSensitiveData,omitnil,omitempty" name:"IsSensitiveData"`
+
+	// 模式名
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 }
 
 type DspaResourceAccount struct {
@@ -10682,14 +10344,12 @@ type DspaSafeGuard struct {
 	// UNSET 未设置
 	// DISABLE 规则设置未启用
 	// ENABLE 规则设置并启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *string `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 脱敏状态，可取值如下：
 	// UNSET 未设置
 	// DISABLE 规则设置未启用
 	// ENABLE 规则设置并启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desensitization *string `json:"Desensitization,omitnil,omitempty" name:"Desensitization"`
 }
 
@@ -10766,162 +10426,125 @@ type DspaUserResourceMeta struct {
 	ResourceAuthAccount *string `json:"ResourceAuthAccount,omitnil,omitempty" name:"ResourceAuthAccount"`
 
 	// 实例类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceValue *string `json:"InstanceValue,omitnil,omitempty" name:"InstanceValue"`
 
 	// //治理授权状态（0：关闭 1：开启）
 	GovernAuthStatus *int64 `json:"GovernAuthStatus,omitnil,omitempty" name:"GovernAuthStatus"`
 
 	// 授权范围：all - 授权整个数据源 manual:手动指定数据源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
 }
 
 type ESAsset struct {
 	// 索引总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexNums *int64 `json:"IndexNums,omitnil,omitempty" name:"IndexNums"`
 
 	// 敏感索引的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveIndexNums *int64 `json:"SensitiveIndexNums,omitnil,omitempty" name:"SensitiveIndexNums"`
 
 	// 字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 敏感的字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil,omitempty" name:"SensitiveFieldNums"`
 }
 
 type ESAssetDBDetail struct {
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 索引名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
 	// 数据库类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 字段的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 敏感字段的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil,omitempty" name:"SensitiveFieldNums"`
 
 	// 敏感数据分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DistributionData []*Note `json:"DistributionData,omitnil,omitempty" name:"DistributionData"`
 }
 
 type ESDataAssetCountDto struct {
 	// es
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataAssetType *int64 `json:"DataAssetType,omitnil,omitempty" name:"DataAssetType"`
 
 	// 敏感索引个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveIndexCnt *int64 `json:"SensitiveIndexCnt,omitnil,omitempty" name:"SensitiveIndexCnt"`
 
 	// 总的索引个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalIndexCnt *int64 `json:"TotalIndexCnt,omitnil,omitempty" name:"TotalIndexCnt"`
 
 	// 敏感字段个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldCnt *int64 `json:"SensitiveFieldCnt,omitnil,omitempty" name:"SensitiveFieldCnt"`
 
 	// 总的字段个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalFieldCnt *int64 `json:"TotalFieldCnt,omitnil,omitempty" name:"TotalFieldCnt"`
 
 	// 敏感分类的个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitnil,omitempty" name:"SensitiveCategoryCnt"`
 
 	// 敏感分级的分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitnil,omitempty" name:"SensitiveLevel"`
 
 	// 敏感分类的分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitnil,omitempty" name:"CategoryDistributed"`
 }
 
 type ESDataAssetDetail struct {
 	// id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldResultId *int64 `json:"FieldResultId,omitnil,omitempty" name:"FieldResultId"`
 
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
 	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 索引名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
 	// 字段名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
 	// 分类id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 分类名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
 
 	// 分类路径数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryArr []*string `json:"CategoryArr,omitnil,omitempty" name:"CategoryArr"`
 
 	// 等级id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelRiskName *string `json:"LevelRiskName,omitnil,omitempty" name:"LevelRiskName"`
 
 	// 分级分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil,omitempty" name:"LevelRiskScore"`
 
 	// 可信分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrustedScore *float64 `json:"TrustedScore,omitnil,omitempty" name:"TrustedScore"`
 
 	// 规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 0系统识别，1人工打标
@@ -10950,47 +10573,36 @@ type ESInstance struct {
 
 type ESTaskResultDetail struct {
 	// id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 字段名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
 	// 规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 分类id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 分类名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
 
 	// 多级分类的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryArr []*string `json:"CategoryArr,omitnil,omitempty" name:"CategoryArr"`
 
 	// 分级id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
 
 	// 分级分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil,omitempty" name:"LevelRiskScore"`
 }
 
@@ -11299,7 +10911,6 @@ type GetResourceConnectionStatusResponseParams struct {
 	ConnectionStatus *string `json:"ConnectionStatus,omitnil,omitempty" name:"ConnectionStatus"`
 
 	// 连接状态的描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectionDesc *string `json:"ConnectionDesc,omitnil,omitempty" name:"ConnectionDesc"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11471,39 +11082,30 @@ func (r *GetUserQuotaInfoResponse) FromJsonString(s string) error {
 
 type HighRiskAssetsDetail struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 数据源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 资产对象名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsName *string `json:"AssetsName,omitnil,omitempty" name:"AssetsName"`
 
 	// 高风险个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighRiskCount *int64 `json:"HighRiskCount,omitnil,omitempty" name:"HighRiskCount"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 总的风险个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalRiskCount *int64 `json:"TotalRiskCount,omitnil,omitempty" name:"TotalRiskCount"`
 
 	// 风险面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil,omitempty" name:"RiskSide"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 }
 
@@ -11538,13 +11140,20 @@ type ListDSPAClustersRequestParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤项。
-	// 支持的过滤项包括：DspaId、Status、Version、DspaName。
+	// 支持的过滤项包括：DspaId、Status、Version、DspaName、Channel。
 	// DspaId和DspaName支持模糊搜索。
 	// Status支持的可选值：enabled、disabled。
 	// Version支持的可选值：trial、official。
+	// Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
 	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 展示模式。
+	// 
+	// 目前只有两个值的处理逻辑：
+	// 
+	// 空值：需要查询每个实例的配额信息，因为是串行查询，所以速度很慢，limit最大为100
+	// 
+	// "simple"：不需要查询每个实例的配额信息，速度快，limit最大为1000
 	ListMode *string `json:"ListMode,omitnil,omitempty" name:"ListMode"`
 }
 
@@ -11558,13 +11167,20 @@ type ListDSPAClustersRequest struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤项。
-	// 支持的过滤项包括：DspaId、Status、Version、DspaName。
+	// 支持的过滤项包括：DspaId、Status、Version、DspaName、Channel。
 	// DspaId和DspaName支持模糊搜索。
 	// Status支持的可选值：enabled、disabled。
 	// Version支持的可选值：trial、official。
+	// Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
 	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 展示模式。
+	// 
+	// 目前只有两个值的处理逻辑：
+	// 
+	// 空值：需要查询每个实例的配额信息，因为是串行查询，所以速度很慢，limit最大为100
+	// 
+	// "simple"：不需要查询每个实例的配额信息，速度快，limit最大为1000
 	ListMode *string `json:"ListMode,omitnil,omitempty" name:"ListMode"`
 }
 
@@ -11697,11 +11313,9 @@ type ListDSPACosMetaResourcesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// COS元数据信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DSPACosMetaDataInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// DSPA实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12197,14 +11811,14 @@ type ModifyDSPAAssessmentRiskTemplateRequestParams struct {
 	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 模板的描述
-	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
-
 	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 修改的风险等级id
 	RiskLevelId *int64 `json:"RiskLevelId,omitnil,omitempty" name:"RiskLevelId"`
+
+	// 模板的描述
+	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 
 	// 脆弱项列表
 	RiskIdList []*int64 `json:"RiskIdList,omitnil,omitempty" name:"RiskIdList"`
@@ -12219,14 +11833,14 @@ type ModifyDSPAAssessmentRiskTemplateRequest struct {
 	// 模板名称
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 模板的描述
-	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
-
 	// 模板id
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 修改的风险等级id
 	RiskLevelId *int64 `json:"RiskLevelId,omitnil,omitempty" name:"RiskLevelId"`
+
+	// 模板的描述
+	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 
 	// 脆弱项列表
 	RiskIdList []*int64 `json:"RiskIdList,omitnil,omitempty" name:"RiskIdList"`
@@ -12246,9 +11860,9 @@ func (r *ModifyDSPAAssessmentRiskTemplateRequest) FromJsonString(s string) error
 	}
 	delete(f, "DspaId")
 	delete(f, "TemplateName")
-	delete(f, "TemplateDescription")
 	delete(f, "TemplateId")
 	delete(f, "RiskLevelId")
+	delete(f, "TemplateDescription")
 	delete(f, "RiskIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPAAssessmentRiskTemplateRequest has unknown keys!", "")
@@ -13636,61 +13250,47 @@ func (r *ModifyStandardInfoResponse) FromJsonString(s string) error {
 
 type MongoAsset struct {
 	// DB总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbNums *int64 `json:"DbNums,omitnil,omitempty" name:"DbNums"`
 
 	// 敏感DB数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDbNums *int64 `json:"SensitiveDbNums,omitnil,omitempty" name:"SensitiveDbNums"`
 
 	// 集合数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColNums *int64 `json:"ColNums,omitnil,omitempty" name:"ColNums"`
 
 	// 敏感集合的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveColNums *int64 `json:"SensitiveColNums,omitnil,omitempty" name:"SensitiveColNums"`
 
 	// 字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 敏感的字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil,omitempty" name:"SensitiveFieldNums"`
 }
 
 type MongoAssetDBDetail struct {
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 数据库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdName *string `json:"DdName,omitnil,omitempty" name:"DdName"`
 
 	// 数据库类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 集合的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColNums *int64 `json:"ColNums,omitnil,omitempty" name:"ColNums"`
 
 	// 敏感集合数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveColNums *int64 `json:"SensitiveColNums,omitnil,omitempty" name:"SensitiveColNums"`
 
 	// 字段的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 敏感字段的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil,omitempty" name:"SensitiveFieldNums"`
 
 	// 敏感数据分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DistributionData []*Note `json:"DistributionData,omitnil,omitempty" name:"DistributionData"`
 }
 
@@ -13713,43 +13313,34 @@ type NOSQLInstance struct {
 
 type Note struct {
 	// 通用key，例如分类名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 通用value，例如分类个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type PrivilegeRisk struct {
 	// 账户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName []*string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
 	// 表名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ProcessHistory struct {
 	// 处理时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 处理人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Handler *string `json:"Handler,omitnil,omitempty" name:"Handler"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 }
 
@@ -13914,27 +13505,21 @@ func (r *QueryResourceDbBindStatusResponse) FromJsonString(s string) error {
 
 type RDBAsset struct {
 	// DB总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbNums *int64 `json:"DbNums,omitnil,omitempty" name:"DbNums"`
 
 	// 敏感DB数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDbNums *int64 `json:"SensitiveDbNums,omitnil,omitempty" name:"SensitiveDbNums"`
 
 	// 表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableNums *int64 `json:"TableNums,omitnil,omitempty" name:"TableNums"`
 
 	// 敏感表的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveTableNums *int64 `json:"SensitiveTableNums,omitnil,omitempty" name:"SensitiveTableNums"`
 
 	// 字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldNums *int64 `json:"FieldNums,omitnil,omitempty" name:"FieldNums"`
 
 	// 敏感的字段数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil,omitempty" name:"SensitiveFieldNums"`
 }
 
@@ -13949,7 +13534,6 @@ type RDBInstance struct {
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 若未来扩展到DBName粒度，可采用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBs []*DBStatements `json:"DBs,omitnil,omitempty" name:"DBs"`
 }
 
@@ -13961,55 +13545,42 @@ type ReportInfo struct {
 	ReportName *string `json:"ReportName,omitnil,omitempty" name:"ReportName"`
 
 	// 报告类型（AssetSorting:资产梳理）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportType *string `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
 	// 报告周期（0单次 1每天 2每周 3每月）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportPeriod *uint64 `json:"ReportPeriod,omitnil,omitempty" name:"ReportPeriod"`
 
 	// 执行计划 （0:单次报告 1:定时报告）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportPlan *uint64 `json:"ReportPlan,omitnil,omitempty" name:"ReportPlan"`
 
 	// 报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportStatus *string `json:"ReportStatus,omitnil,omitempty" name:"ReportStatus"`
 
 	// 任务下次启动时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedTime *string `json:"FinishedTime,omitnil,omitempty" name:"FinishedTime"`
 
 	// 子账号uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
 	// 失败信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedMessage *string `json:"FailedMessage,omitnil,omitempty" name:"FailedMessage"`
 
 	// 是否启用（0：否 1：是）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 识别模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceName *string `json:"ComplianceName,omitnil,omitempty" name:"ComplianceName"`
 
 	// 进度百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressPercent *uint64 `json:"ProgressPercent,omitnil,omitempty" name:"ProgressPercent"`
 
 	// 报告模版名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTemplateName *string `json:"ReportTemplateName,omitnil,omitempty" name:"ReportTemplateName"`
 }
 
@@ -14082,7 +13653,6 @@ type RiskCountInfo struct {
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 风险等级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelName *string `json:"RiskLevelName,omitnil,omitempty" name:"RiskLevelName"`
 }
 
@@ -14097,7 +13667,6 @@ type RiskDealedTrendItem struct {
 	Handled *uint64 `json:"Handled,omitnil,omitempty" name:"Handled"`
 
 	// 新发现
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewDiscoveryHandled *uint64 `json:"NewDiscoveryHandled,omitnil,omitempty" name:"NewDiscoveryHandled"`
 }
 
@@ -14114,123 +13683,94 @@ type RiskItemInfo struct {
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
 
 	// 数据源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
 	// 资源地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资产名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 风险项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
 
 	// 风险级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 风险描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
 
 	// 建议措施
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuggestAction *string `json:"SuggestAction,omitnil,omitempty" name:"SuggestAction"`
 
 	// 安全产品（可能有多个）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitnil,omitempty" name:"SecurityProduct"`
 
 	// 状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
 	// 最后处置时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastProcessTime *string `json:"LastProcessTime,omitnil,omitempty" name:"LastProcessTime"`
 
 	// 分类分级合规组Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil,omitempty" name:"IdentifyComplianceId"`
 
 	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemSubType *string `json:"ItemSubType,omitnil,omitempty" name:"ItemSubType"`
 
 	// 风险面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil,omitempty" name:"RiskSide"`
 
 	// API安全风险链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	APIRiskLinkURL *string `json:"APIRiskLinkURL,omitnil,omitempty" name:"APIRiskLinkURL"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type RiskLevelMatrix struct {
 	// 存储id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 分类分级levelID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveLevelId *int64 `json:"SensitiveLevelId,omitnil,omitempty" name:"SensitiveLevelId"`
 
 	// 分类分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveLevelName *string `json:"SensitiveLevelName,omitnil,omitempty" name:"SensitiveLevelName"`
 
 	// 漏洞级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityLevel *string `json:"VulnerabilityLevel,omitnil,omitempty" name:"VulnerabilityLevel"`
 
 	// 风险级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 }
 
 type RiskLevelRisk struct {
 	// 风险id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 风险等级列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelName *string `json:"RiskLevelName,omitnil,omitempty" name:"RiskLevelName"`
 
 	// 风险级别描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil,omitempty" name:"RiskLevelDescription"`
 
 	// 引用的分类分级模板
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitnil,omitempty" name:"IdentifyComplianceName"`
 
 	// 类型，区分自定义还是系统内置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -14253,74 +13793,59 @@ type RiskLevelTrendItem struct {
 
 type RiskMatrixLevel struct {
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 就是id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 type RiskSideDistributed struct {
 	// 风险面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssessmentRiskSide *Note `json:"AssessmentRiskSide,omitnil,omitempty" name:"AssessmentRiskSide"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssessmentRisk []*Note `json:"AssessmentRisk,omitnil,omitempty" name:"AssessmentRisk"`
 }
 
 type RuleDistribution struct {
 	// 规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 分级id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelId *int64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
 	// 分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
 
 	// 规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleCnt *int64 `json:"RuleCnt,omitnil,omitempty" name:"RuleCnt"`
 }
 
 type RuleEffectItem struct {
 	// 规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 规则值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ScanTaskCOSRules struct {
 	// regex规则内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegexRule *COSDataRule `json:"RegexRule,omitnil,omitempty" name:"RegexRule"`
 
 	// 规则状态；0 不启用, 1 启用
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 关键词规则内容组，最大支持5个关键词。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeywordRule *COSDataRule `json:"KeywordRule,omitnil,omitempty" name:"KeywordRule"`
 
 	// 忽略词规则内容组，最大支持5个忽略词。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreStringRule *COSDataRule `json:"IgnoreStringRule,omitnil,omitempty" name:"IgnoreStringRule"`
 
 	// 最大匹配距离，默认值为100。上限为500.
@@ -14361,15 +13886,19 @@ type ScanTaskResult struct {
 
 	// 扫描任务结果展示，如果扫描失败，则显示失败原因
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 结果描述
+	ResultDescription *string `json:"ResultDescription,omitnil,omitempty" name:"ResultDescription"`
+
+	// 结果建议
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 }
 
 type SecurityProduct struct {
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 产品链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferUrl *string `json:"ReferUrl,omitnil,omitempty" name:"ReferUrl"`
 }
 
@@ -14429,7 +13958,6 @@ func (r *StartDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartDSPADiscoveryTaskResponseParams struct {
 	// 任务扫描结果ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14494,7 +14022,6 @@ func (r *StopDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopDSPADiscoveryTaskResponseParams struct {
 	// 任务扫描结果ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *int64 `json:"ResultId,omitnil,omitempty" name:"ResultId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14519,59 +14046,47 @@ func (r *StopDSPADiscoveryTaskResponse) FromJsonString(s string) error {
 
 type SuggestRiskLevelMatrix struct {
 	// 矩阵
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevelMatrix []*SuggestRiskLevelMatrixItem `json:"RiskLevelMatrix,omitnil,omitempty" name:"RiskLevelMatrix"`
 }
 
 type SuggestRiskLevelMatrixItem struct {
 	// 分类分级等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveLevel *RiskMatrixLevel `json:"SensitiveLevel,omitnil,omitempty" name:"SensitiveLevel"`
 
 	// 脆弱项等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityLevel *RiskMatrixLevel `json:"VulnerabilityLevel,omitnil,omitempty" name:"VulnerabilityLevel"`
 
 	// 风险名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
 
 	// 分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskScore *float64 `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
 }
 
 type TemplateInfo struct {
 	// 模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
 type TopAsset struct {
 	// 分级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
 
 	// top数据信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopStat []*TopAssetStat `json:"TopStat,omitnil,omitempty" name:"TopStat"`
 }
 
 type TopAssetStat struct {
 	// 数据源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
 	// db_name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubData *string `json:"SubData,omitnil,omitempty" name:"SubData"`
 
 	// 敏感个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveCnt *int64 `json:"SensitiveCnt,omitnil,omitempty" name:"SensitiveCnt"`
 }
 

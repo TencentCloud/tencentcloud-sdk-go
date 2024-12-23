@@ -353,6 +353,8 @@ type CreatePrivateZoneRequestParams struct {
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitnil,omitempty" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
+	//
+	// Deprecated: Vpcs is deprecated.
 	Vpcs []*VpcInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
 	// 创建私有域同时绑定关联账号的VPC

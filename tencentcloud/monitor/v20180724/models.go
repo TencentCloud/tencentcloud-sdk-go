@@ -563,6 +563,16 @@ type AlarmPolicyTriggerTask struct {
 	TaskConfig *string `json:"TaskConfig,omitnil,omitempty" name:"TaskConfig"`
 }
 
+type BasicAuth struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
 // Predefined struct for user
 type BindPrometheusManagedGrafanaRequestParams struct {
 	// Prometheus 实例 ID
@@ -10359,6 +10369,70 @@ func (r *DescribeRecordingRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRemoteURLsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// url数组
+	RemoteURLs []*string `json:"RemoteURLs,omitnil,omitempty" name:"RemoteURLs"`
+}
+
+type DescribeRemoteURLsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// url数组
+	RemoteURLs []*string `json:"RemoteURLs,omitnil,omitempty" name:"RemoteURLs"`
+}
+
+func (r *DescribeRemoteURLsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteURLsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RemoteURLs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteURLsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteURLsResponseParams struct {
+	// 多写配置
+	RemoteWrites []*RemoteWrite `json:"RemoteWrites,omitnil,omitempty" name:"RemoteWrites"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRemoteURLsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRemoteURLsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRemoteURLsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSSOAccountRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12891,6 +12965,67 @@ func (r *ModifyPrometheusTempResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRemoteURLsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 多写配置
+	RemoteWrites []*RemoteWrite `json:"RemoteWrites,omitnil,omitempty" name:"RemoteWrites"`
+}
+
+type ModifyRemoteURLsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 多写配置
+	RemoteWrites []*RemoteWrite `json:"RemoteWrites,omitnil,omitempty" name:"RemoteWrites"`
+}
+
+func (r *ModifyRemoteURLsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRemoteURLsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RemoteWrites")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRemoteURLsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRemoteURLsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRemoteURLsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRemoteURLsResponseParams `json:"Response"`
+}
+
+func (r *ModifyRemoteURLsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRemoteURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MonitorTypeInfo struct {
 	// 监控类型ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -14074,6 +14209,41 @@ type RecordingRuleSet struct {
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+}
+
+type RemoteWrite struct {
+	// 多写url
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+
+	// RelabelConfig
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	URLRelabelConfig *string `json:"URLRelabelConfig,omitnil,omitempty" name:"URLRelabelConfig"`
+
+	// 鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicAuth *BasicAuth `json:"BasicAuth,omitnil,omitempty" name:"BasicAuth"`
+
+	// 最大block
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxBlockSize *string `json:"MaxBlockSize,omitnil,omitempty" name:"MaxBlockSize"`
+
+	// Label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// HTTP 额外添加的头
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Headers []*RemoteWriteHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
+}
+
+type RemoteWriteHeader struct {
+	// HTTP 头的键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// HTTP 头的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user

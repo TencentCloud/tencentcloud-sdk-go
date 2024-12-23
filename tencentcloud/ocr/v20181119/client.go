@@ -5138,7 +5138,7 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> ElectronicFlightTicketFull</td>
 //
-//           <td> 电子发票(机票行程单)，该子类目前仅支持ofd发票</td>
+//           <td> 电子发票(机票行程单)</td>
 //
 //           <td> 16 </td>
 //
@@ -5148,7 +5148,7 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> ElectronicTrainTicketFull</td>
 //
-//           <td> 电子发票(铁路电子客票)，该子类目前仅支持ofd发票</td>
+//           <td> 电子发票(铁路电子客票)</td>
 //
 //           <td> 16 </td>
 //
@@ -5459,7 +5459,7 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> ElectronicFlightTicketFull</td>
 //
-//           <td> 电子发票(机票行程单)，该子类目前仅支持ofd发票</td>
+//           <td> 电子发票(机票行程单)</td>
 //
 //           <td> 16 </td>
 //
@@ -5469,7 +5469,7 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> ElectronicTrainTicketFull</td>
 //
-//           <td> 电子发票(铁路电子客票)，该子类目前仅支持ofd发票</td>
+//           <td> 电子发票(铁路电子客票)</td>
 //
 //           <td> 16 </td>
 //

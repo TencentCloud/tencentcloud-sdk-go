@@ -1409,7 +1409,7 @@ type DescribeInstancesRequestParams struct {
 	// 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</ul>
+	// 续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
 	AutoRenew []*int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
@@ -1477,7 +1477,7 @@ type DescribeInstancesRequest struct {
 	// 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</ul>
+	// 续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
 	AutoRenew []*int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
@@ -2552,6 +2552,10 @@ type InstanceInfo struct {
 
 	// 1
 	DiskReplicasNum *int64 `json:"DiskReplicasNum,omitnil,omitempty" name:"DiskReplicasNum"`
+
+	// 数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
 type InstanceIntegerParam struct {

@@ -2232,6 +2232,9 @@ type ElectronicFlightTicketFull struct {
 
 	// 机票详细信息元组
 	FlightItems []*FlightItemInfo `json:"FlightItems,omitnil,omitempty" name:"FlightItems"`
+
+	// 机票开具状态
+	InvoiceStatus *string `json:"InvoiceStatus,omitnil,omitempty" name:"InvoiceStatus"`
 }
 
 type ElectronicTrainTicket struct {

@@ -1274,6 +1274,38 @@ type ConfigGroupVersionInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type ContentIdentifier struct {
+	// 内容标识符 ID。
+	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
+
+	// 内容标识符描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 被规则引擎引用的次数。
+	ReferenceCount *int64 `json:"ReferenceCount,omitnil,omitempty" name:"ReferenceCount"`
+
+	// 绑定的套餐 ID。
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 绑定的标签。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 内容标识符状态，取值有：
+	// <li> active：已生效； </li>
+	// <li> deleted：已删除。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间，时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 最新一次更新时间，时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
+
+	// 删除时间，状态非 deleted 时候为空；时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletedOn *string `json:"DeletedOn,omitnil,omitempty" name:"DeletedOn"`
+}
+
 // Predefined struct for user
 type CreateAccelerationDomainRequestParams struct {
 	// 加速域名所属站点 ID。
@@ -1919,6 +1951,77 @@ func (r *CreateConfigGroupVersionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateContentIdentifierRequestParams struct {
+	// 内容标识符的描述，长度限制不超过 20 个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 待绑定的目标套餐 ID，仅限企业版可用。<li>当您账号下已存在套餐时，需要先前往 [套餐管理](https://console.cloud.tencent.com/edgeone/package) 获取套餐 ID，直接将内容标识符绑定至该套餐；</li><li>若您当前没有可绑定的套餐时，请先购买企业版套餐。</li>
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 标签。该参数用于对内容标识符进行分权限管控。您需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建标签才可以在此处传入对应的标签键和标签值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateContentIdentifierRequest struct {
+	*tchttp.BaseRequest
+	
+	// 内容标识符的描述，长度限制不超过 20 个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 待绑定的目标套餐 ID，仅限企业版可用。<li>当您账号下已存在套餐时，需要先前往 [套餐管理](https://console.cloud.tencent.com/edgeone/package) 获取套餐 ID，直接将内容标识符绑定至该套餐；</li><li>若您当前没有可绑定的套餐时，请先购买企业版套餐。</li>
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 标签。该参数用于对内容标识符进行分权限管控。您需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建标签才可以在此处传入对应的标签键和标签值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateContentIdentifierRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContentIdentifierRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Description")
+	delete(f, "PlanId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContentIdentifierRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateContentIdentifierResponseParams struct {
+	// 生成的内容标识符 ID。创建完成之后您可以前往规则引擎在一定匹配条件下「设置内容标识符」。
+	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateContentIdentifierResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateContentIdentifierResponseParams `json:"Response"`
+}
+
+func (r *CreateContentIdentifierResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContentIdentifierResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCustomizeErrorPageRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -2000,6 +2103,120 @@ func (r *CreateCustomizeErrorPageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCustomizeErrorPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDnsRecordRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// DNS 记录名，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// DNS 记录类型，取值有：<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li><li>AAAA：将域名指向一个外网 IPv6 地址；</li><li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li><li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li><li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li><li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li><li>CAA：指定可为本站点颁发证书的 CA；</li><li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+	// 不同的记录类型呢例如 SRV、CAA 记录对主机记录名称、记录值格式有不同的要求，各记录类型的详细说明介绍和格式示例请参考：[解析记录类型介绍](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e)。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// DNS 记录内容，根据 Type 值填入与之相对应的内容，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。
+	// 
+	// - 解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+	// - 解析线路配置仅适用于标准版、企业版套餐使用，取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 缓存时间，用户可指定值范围 60~86400，数值越小，修改记录各地生效时间越快，默认为 300，单位：秒。
+	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// DNS 记录权重，用户可指定值范围 -1~100，设置为 0 时表示不解析，不指定默认为 -1，表示不设置权重。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>注意：同一个子域名下，相同解析线路的不同 DNS 记录，应保持同时设置权重或者同时都不设置权重。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// MX 记录优先级，该参数仅在当 Type（DNS 记录类型）为 MX 时生效，值越小优先级越高，用户可指定值范围0~50，不指定默认为0。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type CreateDnsRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// DNS 记录名，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// DNS 记录类型，取值有：<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li><li>AAAA：将域名指向一个外网 IPv6 地址；</li><li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li><li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li><li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li><li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li><li>CAA：指定可为本站点颁发证书的 CA；</li><li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+	// 不同的记录类型呢例如 SRV、CAA 记录对主机记录名称、记录值格式有不同的要求，各记录类型的详细说明介绍和格式示例请参考：[解析记录类型介绍](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e)。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// DNS 记录内容，根据 Type 值填入与之相对应的内容，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。
+	// 
+	// - 解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+	// - 解析线路配置仅适用于标准版、企业版套餐使用，取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 缓存时间，用户可指定值范围 60~86400，数值越小，修改记录各地生效时间越快，默认为 300，单位：秒。
+	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// DNS 记录权重，用户可指定值范围 -1~100，设置为 0 时表示不解析，不指定默认为 -1，表示不设置权重。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>注意：同一个子域名下，相同解析线路的不同 DNS 记录，应保持同时设置权重或者同时都不设置权重。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// MX 记录优先级，该参数仅在当 Type（DNS 记录类型）为 MX 时生效，值越小优先级越高，用户可指定值范围0~50，不指定默认为0。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+func (r *CreateDnsRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDnsRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Content")
+	delete(f, "Location")
+	delete(f, "TTL")
+	delete(f, "Weight")
+	delete(f, "Priority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDnsRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDnsRecordResponseParams struct {
+	// DNS 记录 ID。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDnsRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDnsRecordResponseParams `json:"Response"`
+}
+
+func (r *CreateDnsRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDnsRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3932,6 +4149,60 @@ func (r *DeleteApplicationProxyRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteContentIdentifierRequestParams struct {
+	// 内容标识符 ID。
+	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
+}
+
+type DeleteContentIdentifierRequest struct {
+	*tchttp.BaseRequest
+	
+	// 内容标识符 ID。
+	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
+}
+
+func (r *DeleteContentIdentifierRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteContentIdentifierRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ContentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteContentIdentifierRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteContentIdentifierResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteContentIdentifierResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteContentIdentifierResponseParams `json:"Response"`
+}
+
+func (r *DeleteContentIdentifierResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteContentIdentifierResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCustomErrorPageRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -3989,6 +4260,67 @@ func (r *DeleteCustomErrorPageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCustomErrorPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDnsRecordsRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 待删除的 DNS 记录 ID 列表，上限：1000。
+	RecordIds []*string `json:"RecordIds,omitnil,omitempty" name:"RecordIds"`
+}
+
+type DeleteDnsRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 待删除的 DNS 记录 ID 列表，上限：1000。
+	RecordIds []*string `json:"RecordIds,omitnil,omitempty" name:"RecordIds"`
+}
+
+func (r *DeleteDnsRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDnsRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RecordIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDnsRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDnsRecordsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDnsRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDnsRecordsResponseParams `json:"Response"`
+}
+
+func (r *DeleteDnsRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDnsRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5416,6 +5748,80 @@ func (r *DescribeConfigGroupVersionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeContentIdentifiersRequestParams struct {
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 AppId 下有权限的内容标识符。详细的过滤条件如下：<li>description：按照内容标识符描述批量进行过滤；例如：test；</li><li>content-id：按照内容标识符 ID 批量进行过滤；例如：eocontent-2noz78a8ev6k；</li><li>tag-key：按照标签键进行过滤；</li> <li>tag-value： 按照标签值进行过滤；</li><li>status：按照内容标识符状态进行过滤，取值有：active：生效中；deleted：已删除。</li>仅支持按照 description 模糊查询，其余字段需要精准查询。
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeContentIdentifiersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 AppId 下有权限的内容标识符。详细的过滤条件如下：<li>description：按照内容标识符描述批量进行过滤；例如：test；</li><li>content-id：按照内容标识符 ID 批量进行过滤；例如：eocontent-2noz78a8ev6k；</li><li>tag-key：按照标签键进行过滤；</li> <li>tag-value： 按照标签值进行过滤；</li><li>status：按照内容标识符状态进行过滤，取值有：active：生效中；deleted：已删除。</li>仅支持按照 description 模糊查询，其余字段需要精准查询。
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeContentIdentifiersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContentIdentifiersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContentIdentifiersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContentIdentifiersResponseParams struct {
+	// 符合过滤条件的内容标识符总数。	
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 内容标识符详细内容列表。
+	ContentIdentifiers []*ContentIdentifier `json:"ContentIdentifiers,omitnil,omitempty" name:"ContentIdentifiers"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContentIdentifiersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContentIdentifiersResponseParams `json:"Response"`
+}
+
+func (r *DescribeContentIdentifiersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContentIdentifiersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContentQuotaRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -6137,6 +6543,108 @@ func (r *DescribeDeployHistoryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDeployHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDnsRecordsRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，上限：1000。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为20。详细的过滤条件如下：<li>id： 按照 DNS 记录 ID 进行过滤，支持模糊查询；</li><li>name：按照 DNS 记录名称进行过滤，支持模糊查询；</li><li>content：按照 DNS 记录内容进行过滤，支持模糊查询；</li><li>type：按照 DNS 记录类型进行过滤，不支持模糊查询。可选项：<br>   A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；<br>   AAAA：将域名指向一个外网 IPv6 地址；<br>   CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；<br>   TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；<br>   NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；<br>   CAA：指定可为本站点颁发证书的 CA；<br>   SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理；<br>   MX：指定收件人邮件服务器。</li><li>ttl：按照解析生效时间进行过滤，不支持模糊查询。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序依据，取值有：<li>content：DNS 记录内容；</li><li>created-on：DNS 记录创建时间；</li><li>name：DNS 记录名称；</li><li>ttl：缓存时间；</li><li>type：DNS 记录类型。</li>默认根据 type, name 属性组合排序。
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 列表排序方式，取值有：<li>asc：升序排列；</li><li>desc：降序排列。</li>默认值为 asc。
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// 匹配方式，取值有：<li>all：返回匹配所有查询条件的记录；</li><li>any：返回匹配任意一个查询条件的记录。</li>默认值为 all。
+	Match *string `json:"Match,omitnil,omitempty" name:"Match"`
+}
+
+type DescribeDnsRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，上限：1000。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为20。详细的过滤条件如下：<li>id： 按照 DNS 记录 ID 进行过滤，支持模糊查询；</li><li>name：按照 DNS 记录名称进行过滤，支持模糊查询；</li><li>content：按照 DNS 记录内容进行过滤，支持模糊查询；</li><li>type：按照 DNS 记录类型进行过滤，不支持模糊查询。可选项：<br>   A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；<br>   AAAA：将域名指向一个外网 IPv6 地址；<br>   CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；<br>   TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；<br>   NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；<br>   CAA：指定可为本站点颁发证书的 CA；<br>   SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理；<br>   MX：指定收件人邮件服务器。</li><li>ttl：按照解析生效时间进行过滤，不支持模糊查询。</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序依据，取值有：<li>content：DNS 记录内容；</li><li>created-on：DNS 记录创建时间；</li><li>name：DNS 记录名称；</li><li>ttl：缓存时间；</li><li>type：DNS 记录类型。</li>默认根据 type, name 属性组合排序。
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 列表排序方式，取值有：<li>asc：升序排列；</li><li>desc：降序排列。</li>默认值为 asc。
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// 匹配方式，取值有：<li>all：返回匹配所有查询条件的记录；</li><li>any：返回匹配任意一个查询条件的记录。</li>默认值为 all。
+	Match *string `json:"Match,omitnil,omitempty" name:"Match"`
+}
+
+func (r *DescribeDnsRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDnsRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	delete(f, "SortOrder")
+	delete(f, "Match")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDnsRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDnsRecordsResponseParams struct {
+	// DNS 记录总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// DNS 记录列表。
+	DnsRecords []*DnsRecord `json:"DnsRecords,omitnil,omitempty" name:"DnsRecords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDnsRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDnsRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDnsRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDnsRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9112,6 +9620,52 @@ type DiffIPWhitelist struct {
 	NoChangeIPWhitelist *IPWhitelist `json:"NoChangeIPWhitelist,omitnil,omitempty" name:"NoChangeIPWhitelist"`
 }
 
+type DnsRecord struct {
+	// 站点 ID。<br>注意：ZoneId 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// DNS 记录 ID。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// DNS 记录名。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// DNS 记录类型，取值有：
+	// <li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li>
+	// <li>AAAA：将域名指向一个外网 IPv6 地址；</li>
+	// <li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li>
+	// <li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li>
+	// <li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li>
+	// <li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li>
+	// <li>CAA：指定可为本站点颁发证书的 CA；</li>
+	// <li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。<br>解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// DNS 记录内容。根据 Type 值填入与之相对应的内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 缓存时间，取值范围 60~86400，数值越小，修改记录各地生效时间越快，单位：秒。
+	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// DNS 记录权重，取值范围 -1~100，为 -1 时表示不分配权重，为 0 时表示不解析。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// MX 记录优先级，取值范围 0~50，数值越小越优先。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// DNS 记录解析状态，取值有：<li>enable：已生效；</li><li>disable：已停用。</li>注意：Status 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间。<br>注意：CreatedOn 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 修改时间。<br>注意：ModifiedOn 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
+}
+
 type DnsVerification struct {
 	// 主机记录。
 	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
@@ -11365,6 +11919,67 @@ func (r *ModifyApplicationProxyStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyContentIdentifierRequestParams struct {
+	// 内容标识符 ID。
+	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
+
+	// 内容标识符描述，长度限制不超过 20 个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyContentIdentifierRequest struct {
+	*tchttp.BaseRequest
+	
+	// 内容标识符 ID。
+	ContentId *string `json:"ContentId,omitnil,omitempty" name:"ContentId"`
+
+	// 内容标识符描述，长度限制不超过 20 个字符。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyContentIdentifierRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyContentIdentifierRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ContentId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyContentIdentifierRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyContentIdentifierResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyContentIdentifierResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyContentIdentifierResponseParams `json:"Response"`
+}
+
+func (r *ModifyContentIdentifierResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyContentIdentifierResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCustomErrorPageRequestParams struct {
 	// 自定义错误页面 ID。
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
@@ -11450,6 +12065,135 @@ func (r *ModifyCustomErrorPageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCustomErrorPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDnsRecordsRequestParams struct {
+	// 站点 ID 。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// DNS 记录修改数据列表，一次最多修改100条。
+	DnsRecords []*DnsRecord `json:"DnsRecords,omitnil,omitempty" name:"DnsRecords"`
+}
+
+type ModifyDnsRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID 。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// DNS 记录修改数据列表，一次最多修改100条。
+	DnsRecords []*DnsRecord `json:"DnsRecords,omitnil,omitempty" name:"DnsRecords"`
+}
+
+func (r *ModifyDnsRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDnsRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DnsRecords")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDnsRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDnsRecordsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDnsRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDnsRecordsResponseParams `json:"Response"`
+}
+
+func (r *ModifyDnsRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDnsRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDnsRecordsStatusRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 待启用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+	RecordsToEnable []*string `json:"RecordsToEnable,omitnil,omitempty" name:"RecordsToEnable"`
+
+	// 待停用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+	RecordsToDisable []*string `json:"RecordsToDisable,omitnil,omitempty" name:"RecordsToDisable"`
+}
+
+type ModifyDnsRecordsStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 待启用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+	RecordsToEnable []*string `json:"RecordsToEnable,omitnil,omitempty" name:"RecordsToEnable"`
+
+	// 待停用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+	RecordsToDisable []*string `json:"RecordsToDisable,omitnil,omitempty" name:"RecordsToDisable"`
+}
+
+func (r *ModifyDnsRecordsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDnsRecordsStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RecordsToEnable")
+	delete(f, "RecordsToDisable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDnsRecordsStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDnsRecordsStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDnsRecordsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDnsRecordsStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDnsRecordsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDnsRecordsStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

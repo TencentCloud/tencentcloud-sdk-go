@@ -56,12 +56,15 @@ type Activity struct {
 
 type AgentRunningMode struct {
 	// 场景类型，支持WINDOWS
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 运行Agent的User
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 运行Agent的Session
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Session *string `json:"Session,omitnil,omitempty" name:"Session"`
 }
 
@@ -780,9 +783,11 @@ func (r *DeleteTaskTemplatesResponse) FromJsonString(s string) error {
 
 type Dependence struct {
 	// 依赖关系的起点任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTask *string `json:"StartTask,omitnil,omitempty" name:"StartTask"`
 
 	// 依赖关系的终点任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTask *string `json:"EndTask,omitnil,omitempty" name:"EndTask"`
 }
 

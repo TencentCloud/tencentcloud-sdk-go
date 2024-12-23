@@ -615,7 +615,7 @@ type CreateClusterRequestParams struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
@@ -640,8 +640,7 @@ type CreateClusterRequestParams struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。默认取值：NIS。
-	// <li>NIS：NIS域名字服务。
+	// 域名字服务类型。默认取值：NIS。<li>NIS：NIS域名字服务。</li>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -659,7 +658,7 @@ type CreateClusterRequestParams struct {
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+	// 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li><br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li>
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 }
 
@@ -681,7 +680,7 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
@@ -706,8 +705,7 @@ type CreateClusterRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。默认取值：NIS。
-	// <li>NIS：NIS域名字服务。
+	// 域名字服务类型。默认取值：NIS。<li>NIS：NIS域名字服务。</li>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -725,7 +723,7 @@ type CreateClusterRequest struct {
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+	// 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li><br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li>
 	AutoScalingType *string `json:"AutoScalingType,omitnil,omitempty" name:"AutoScalingType"`
 }
 
@@ -1607,7 +1605,7 @@ type LoginNodeOverview struct {
 }
 
 type LoginSettings struct {
-	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li><br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 

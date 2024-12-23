@@ -6811,6 +6811,67 @@ func (c *Client) DescribeRecordingRulesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeRemoteURLsRequest() (request *DescribeRemoteURLsRequest) {
+    request = &DescribeRemoteURLsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeRemoteURLs")
+    
+    
+    return
+}
+
+func NewDescribeRemoteURLsResponse() (response *DescribeRemoteURLsResponse) {
+    response = &DescribeRemoteURLsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRemoteURLs
+// 获取多写配置详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribeRemoteURLs(request *DescribeRemoteURLsRequest) (response *DescribeRemoteURLsResponse, err error) {
+    return c.DescribeRemoteURLsWithContext(context.Background(), request)
+}
+
+// DescribeRemoteURLs
+// 获取多写配置详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribeRemoteURLsWithContext(ctx context.Context, request *DescribeRemoteURLsRequest) (response *DescribeRemoteURLsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRemoteURLsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRemoteURLs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRemoteURLsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSSOAccountRequest() (request *DescribeSSOAccountRequest) {
     request = &DescribeSSOAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8497,6 +8558,61 @@ func (c *Client) ModifyPrometheusTempWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyRemoteURLsRequest() (request *ModifyRemoteURLsRequest) {
+    request = &ModifyRemoteURLsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyRemoteURLs")
+    
+    
+    return
+}
+
+func NewModifyRemoteURLsResponse() (response *ModifyRemoteURLsResponse) {
+    response = &ModifyRemoteURLsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRemoteURLs
+// 修改多写配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyRemoteURLs(request *ModifyRemoteURLsRequest) (response *ModifyRemoteURLsResponse, err error) {
+    return c.ModifyRemoteURLsWithContext(context.Background(), request)
+}
+
+// ModifyRemoteURLs
+// 修改多写配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyRemoteURLsWithContext(ctx context.Context, request *ModifyRemoteURLsRequest) (response *ModifyRemoteURLsResponse, err error) {
+    if request == nil {
+        request = NewModifyRemoteURLsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRemoteURLs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRemoteURLsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeGrafanaInstanceRequest() (request *ResumeGrafanaInstanceRequest) {
     request = &ResumeGrafanaInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8520,12 +8636,10 @@ func NewResumeGrafanaInstanceResponse() (response *ResumeGrafanaInstanceResponse
 // 本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_PARAM = "InternalError.Param"
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ResumeGrafanaInstance(request *ResumeGrafanaInstanceRequest) (response *ResumeGrafanaInstanceResponse, err error) {
     return c.ResumeGrafanaInstanceWithContext(context.Background(), request)
 }
@@ -8534,12 +8648,10 @@ func (c *Client) ResumeGrafanaInstance(request *ResumeGrafanaInstanceRequest) (r
 // 本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_PARAM = "InternalError.Param"
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ResumeGrafanaInstanceWithContext(ctx context.Context, request *ResumeGrafanaInstanceRequest) (response *ResumeGrafanaInstanceResponse, err error) {
     if request == nil {
         request = NewResumeGrafanaInstanceRequest()

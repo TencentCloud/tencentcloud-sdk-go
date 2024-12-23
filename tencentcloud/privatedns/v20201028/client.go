@@ -174,7 +174,7 @@ func NewCreatePrivateDNSAccountResponse() (response *CreatePrivateDNSAccountResp
 }
 
 // CreatePrivateDNSAccount
-// 创建私有域解析账号
+// 跨账号关联VPC时绑定其他账号
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -205,7 +205,7 @@ func (c *Client) CreatePrivateDNSAccount(request *CreatePrivateDNSAccountRequest
 }
 
 // CreatePrivateDNSAccount
-// 创建私有域解析账号
+// 跨账号关联VPC时绑定其他账号
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
