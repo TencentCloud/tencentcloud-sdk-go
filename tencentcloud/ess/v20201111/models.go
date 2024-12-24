@@ -113,9 +113,9 @@ type ApproverInfo struct {
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 签署方经办人的证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
 	// 通知签署方经办人的方式,  有以下途径:
@@ -1579,9 +1579,9 @@ type CreateBatchOrganizationAuthorizationUrlRequestParams struct {
 	SubTaskIds []*string `json:"SubTaskIds,omitnil,omitempty" name:"SubTaskIds"`
 
 	// 组织机构超管证件类型支持以下类型
-	// - ID_CARD : 居民身份证 (默认值)
-	// -  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
-	// - HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+	// - ID_CARD : 中国大陆居民身份证 (默认值)
+	// -  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
 	// 此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
 	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
@@ -1613,9 +1613,9 @@ type CreateBatchOrganizationAuthorizationUrlRequest struct {
 	SubTaskIds []*string `json:"SubTaskIds,omitnil,omitempty" name:"SubTaskIds"`
 
 	// 组织机构超管证件类型支持以下类型
-	// - ID_CARD : 居民身份证 (默认值)
-	// -  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
-	// - HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+	// - ID_CARD : 中国大陆居民身份证 (默认值)
+	// -  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
 	// 此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
 	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
@@ -2038,15 +2038,15 @@ type CreateBatchSignUrlRequestParams struct {
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
@@ -2118,15 +2118,15 @@ type CreateBatchSignUrlRequest struct {
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
 	// 注：`请确保和合同中填入的一致`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
@@ -5548,8 +5548,8 @@ type CreateOrganizationAuthUrlRequestParams struct {
 
 	// 认证人证件类型， 支持以下类型
 	// <ul><li><b>ID_CARD</b> : 中国大陆居民身份证  (默认值)</li>
-	// <li><b>HONGKONG_AND_MACAO</b>  : 港澳居民来往内地通行证</li>
-	// <li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li><b>HONGKONG_AND_MACAO</b>  : 中国港澳居民来往内地通行证</li>
+	// <li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
 	// 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
@@ -5641,8 +5641,8 @@ type CreateOrganizationAuthUrlRequest struct {
 
 	// 认证人证件类型， 支持以下类型
 	// <ul><li><b>ID_CARD</b> : 中国大陆居民身份证  (默认值)</li>
-	// <li><b>HONGKONG_AND_MACAO</b>  : 港澳居民来往内地通行证</li>
-	// <li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li><b>HONGKONG_AND_MACAO</b>  : 中国港澳居民来往内地通行证</li>
+	// <li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
 	// 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
@@ -6187,15 +6187,15 @@ type CreatePersonAuthCertificateImageRequestParams struct {
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 证件类型，支持以下类型
-	// <ul><li> ID_CARD  : 居民身份证 (默认值)</li>
-	// <li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
-	// <li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li> ID_CARD  : 中国大陆居民身份证 (默认值)</li>
+	// <li> HONGKONG_AND_MACAO  : 中国港澳居民来往内地通行证</li>
+	// <li> HONGKONG_MACAO_AND_TAIWAN  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 代理企业和员工的信息。
@@ -6220,15 +6220,15 @@ type CreatePersonAuthCertificateImageRequest struct {
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 证件类型，支持以下类型
-	// <ul><li> ID_CARD  : 居民身份证 (默认值)</li>
-	// <li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
-	// <li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li> ID_CARD  : 中国大陆居民身份证 (默认值)</li>
+	// <li> HONGKONG_AND_MACAO  : 中国港澳居民来往内地通行证</li>
+	// <li> HONGKONG_MACAO_AND_TAIWAN  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 代理企业和员工的信息。
@@ -6583,9 +6583,9 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 印章名称，长度1-50个字。
@@ -6597,8 +6597,8 @@ type CreatePreparedPersonalEsignRequestParams struct {
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 印章图片的base64
@@ -6659,9 +6659,9 @@ type CreatePreparedPersonalEsignRequest struct {
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 印章名称，长度1-50个字。
@@ -6673,8 +6673,8 @@ type CreatePreparedPersonalEsignRequest struct {
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 印章图片的base64
@@ -6940,15 +6940,15 @@ type CreateSchemeUrlRequestParams struct {
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证</li>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 要跳转的链接类型
@@ -7017,15 +7017,15 @@ type CreateSchemeUrlRequest struct {
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证</li>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 要跳转的链接类型
@@ -7771,11 +7771,11 @@ type CreateUserMobileChangeUrlRequestParams struct {
 	// 
 	// <ul><li><b>ID_CARD </b>: （默认）中国大陆居民身份证 </li>
 	// <li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
-	// <li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 要修改手机号用户的身份证号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 如果没有传递 userId且 userAccountType 是 0 或者没有传递， 此参数为<b>必填项。</b>
@@ -7829,11 +7829,11 @@ type CreateUserMobileChangeUrlRequest struct {
 	// 
 	// <ul><li><b>ID_CARD </b>: （默认）中国大陆居民身份证 </li>
 	// <li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
-	// <li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 要修改手机号用户的身份证号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 如果没有传递 userId且 userAccountType 是 0 或者没有传递， 此参数为<b>必填项。</b>
@@ -11172,15 +11172,15 @@ type DescribeUserVerifyStatusRequestParams struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 }
 
@@ -11194,15 +11194,15 @@ type DescribeUserVerifyStatusRequest struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 }
 
@@ -11563,9 +11563,9 @@ type FillApproverInfo struct {
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 签署方经办人的证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
 	// 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
@@ -11814,9 +11814,9 @@ type FlowCreateApprover struct {
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
@@ -13036,9 +13036,9 @@ type NeedReviewApproverInfo struct {
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// 签署方经办人的证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
 	// 组织机构名称。
@@ -13496,9 +13496,9 @@ type RegistrationOrganizationInfo struct {
 
 	// 认证人证件类型 
 	// 支持以下类型
-	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
@@ -14503,14 +14503,14 @@ type UserThreeFactor struct {
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
-	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 }
 

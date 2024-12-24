@@ -2576,15 +2576,12 @@ type FileSystemInfo struct {
 	TieringState *string `json:"TieringState,omitnil,omitempty" name:"TieringState"`
 
 	// 分层存储详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TieringDetail *TieringDetailInfo `json:"TieringDetail,omitnil,omitempty" name:"TieringDetail"`
 
 	// 文件系统自动扩容策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScaleUpRule *AutoScaleUpRule `json:"AutoScaleUpRule,omitnil,omitempty" name:"AutoScaleUpRule"`
 
 	// 文件系统版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -2610,23 +2607,18 @@ type MigrationTaskInfo struct {
 	MigrationMode *uint64 `json:"MigrationMode,omitnil,omitempty" name:"MigrationMode"`
 
 	// 数据源桶名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 数据源桶地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// 数据源桶地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
 
 	// 清单地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListAddress *string `json:"ListAddress,omitnil,omitempty" name:"ListAddress"`
 
 	// 文件系统实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
 	// 文件系统实例Id
@@ -2642,50 +2634,39 @@ type MigrationTaskInfo struct {
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 完成/终止时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 迁移状态。0: 已完成；1: 进行中；2: 已终止
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 文件数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTotalCount *uint64 `json:"FileTotalCount,omitnil,omitempty" name:"FileTotalCount"`
 
 	// 已迁移文件数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMigratedCount *uint64 `json:"FileMigratedCount,omitnil,omitempty" name:"FileMigratedCount"`
 
 	// 迁移失败文件数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileFailedCount *uint64 `json:"FileFailedCount,omitnil,omitempty" name:"FileFailedCount"`
 
 	// 文件容量，单位Byte
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTotalSize *int64 `json:"FileTotalSize,omitnil,omitempty" name:"FileTotalSize"`
 
 	// 已迁移文件容量，单位Byte
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMigratedSize *int64 `json:"FileMigratedSize,omitnil,omitempty" name:"FileMigratedSize"`
 
 	// 迁移失败文件容量，单位Byte
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileFailedSize *int64 `json:"FileFailedSize,omitnil,omitempty" name:"FileFailedSize"`
 
 	// 全部清单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTotalList *string `json:"FileTotalList,omitnil,omitempty" name:"FileTotalList"`
 
 	// 已完成文件清单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileCompletedList *string `json:"FileCompletedList,omitnil,omitempty" name:"FileCompletedList"`
 
 	// 失败文件清单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileFailedList *string `json:"FileFailedList,omitnil,omitempty" name:"FileFailedList"`
 
 	// 源桶路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
 
 	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
@@ -3227,7 +3208,6 @@ type TagInfo struct {
 
 type TieringDetailInfo struct {
 	// 低频存储容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TieringSizeInBytes *int64 `json:"TieringSizeInBytes,omitnil,omitempty" name:"TieringSizeInBytes"`
 
 	// 冷存储容量
@@ -3943,11 +3923,9 @@ type UserQuota struct {
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 容量使用，单位GiB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CapacityUsed *uint64 `json:"CapacityUsed,omitnil,omitempty" name:"CapacityUsed"`
 
 	// 文件使用个数，单位个
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUsed *uint64 `json:"FileUsed,omitnil,omitempty" name:"FileUsed"`
 
 	// 目录配额的目录绝对路径
@@ -3955,6 +3933,5 @@ type UserQuota struct {
 	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
 
 	// 配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }

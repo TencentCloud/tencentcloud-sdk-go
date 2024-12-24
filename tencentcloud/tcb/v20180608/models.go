@@ -7579,6 +7579,12 @@ type EnvBillingInfoItem struct {
 	// 环境套餐类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtPackageType *string `json:"ExtPackageType,omitnil,omitempty" name:"ExtPackageType"`
+
+	// 是否付费期环境，可取值：yes/no。
+	EnvCharged *string `json:"EnvCharged,omitnil,omitempty" name:"EnvCharged"`
+
+	// 是否已激活，可取值：yes/no。
+	EnvActivated *string `json:"EnvActivated,omitnil,omitempty" name:"EnvActivated"`
 }
 
 type EnvInfo struct {

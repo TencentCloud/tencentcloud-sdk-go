@@ -6089,11 +6089,11 @@ type InquiryPriceRenewInstanceRequestParams struct {
 	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
-	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
-
 	// 实例计费模式。此处只支持取值为1，表示包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 实例续费的时间单位。取值范围：
 	// <li>m：表示月份。</li>
@@ -6108,6 +6108,12 @@ type InquiryPriceRenewInstanceRequestParams struct {
 
 	// 是否按量转包年包月。0：否，1：是。
 	ModifyPayMode *int64 `json:"ModifyPayMode,omitnil,omitempty" name:"ModifyPayMode"`
+
+	// 是否需要每个节点续费价格
+	NeedDetail *bool `json:"NeedDetail,omitnil,omitempty" name:"NeedDetail"`
+
+	// 集群id，如果需要集群所有包年包月节点续费信息，可以填写该参数
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type InquiryPriceRenewInstanceRequest struct {
@@ -6116,11 +6122,11 @@ type InquiryPriceRenewInstanceRequest struct {
 	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
-	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
-
 	// 实例计费模式。此处只支持取值为1，表示包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 实例续费的时间单位。取值范围：
 	// <li>m：表示月份。</li>
@@ -6135,6 +6141,12 @@ type InquiryPriceRenewInstanceRequest struct {
 
 	// 是否按量转包年包月。0：否，1：是。
 	ModifyPayMode *int64 `json:"ModifyPayMode,omitnil,omitempty" name:"ModifyPayMode"`
+
+	// 是否需要每个节点续费价格
+	NeedDetail *bool `json:"NeedDetail,omitnil,omitempty" name:"NeedDetail"`
+
+	// 集群id，如果需要集群所有包年包月节点续费信息，可以填写该参数
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *InquiryPriceRenewInstanceRequest) ToJsonString() string {
@@ -6150,12 +6162,14 @@ func (r *InquiryPriceRenewInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TimeSpan")
-	delete(f, "ResourceIds")
 	delete(f, "PayMode")
+	delete(f, "ResourceIds")
 	delete(f, "TimeUnit")
 	delete(f, "Currency")
 	delete(f, "Placement")
 	delete(f, "ModifyPayMode")
+	delete(f, "NeedDetail")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRenewInstanceRequest has unknown keys!", "")
 	}
@@ -6180,6 +6194,10 @@ type InquiryPriceRenewInstanceResponseParams struct {
 	// 实例续费的时长。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 价格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceDetail []*PriceDetail `json:"PriceDetail,omitnil,omitempty" name:"PriceDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9518,6 +9536,14 @@ type ScaleOutClusterResponseParams struct {
 	// 查询流程状态，流程额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// 订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// 大订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

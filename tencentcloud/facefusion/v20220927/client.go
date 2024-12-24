@@ -261,8 +261,6 @@ func NewFuseFaceUltraResponse() (response *FuseFaceUltraResponse) {
 // FuseFaceUltra
 // 图片人脸融合（专业版）为同步接口，支持自定义美颜、人脸增强、牙齿增强、拉脸等参数，最高支持8K分辨率，有多个模型类型供选择。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">融合接入指引</a>。
 //
-// 请求频率限制为2次/秒。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -301,8 +299,6 @@ func (c *Client) FuseFaceUltra(request *FuseFaceUltraRequest) (response *FuseFac
 
 // FuseFaceUltra
 // 图片人脸融合（专业版）为同步接口，支持自定义美颜、人脸增强、牙齿增强、拉脸等参数，最高支持8K分辨率，有多个模型类型供选择。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">融合接入指引</a>。
-//
-// 请求频率限制为2次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"

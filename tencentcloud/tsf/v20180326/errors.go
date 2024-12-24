@@ -101,6 +101,12 @@ const (
 	// 调用 kube-api-server 失败。
 	FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 
+	// k8s集群可能处于异常状态，请删除或恢复k8s集群后，再进行操作
+	FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
+
+	// 容器平台集群不可用，当前状态 %s
+	FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
+
 	// 健康检查配置失败。
 	FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
 
@@ -914,6 +920,9 @@ const (
 	// 泳道备注不能超过200个字符。
 	INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
 
+	// 全链路灰度规则ID错误
+	INVALIDPARAMETERVALUE_LANERULEIDINVALID = "InvalidParameterValue.LaneRuleIdInvalid"
+
 	// 全链路灰度规则中的泳道不存在。
 	INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
 
@@ -943,6 +952,15 @@ const (
 
 	// 全链路灰度规则必须设置至少一个标签。
 	INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+
+	// 全链路灰度规则逻辑关系错误
+	INVALIDPARAMETERVALUE_LANERULETAGOPERATORINVALID = "InvalidParameterValue.LaneRuleTagOperatorInvalid"
+
+	// 全链路灰度规则逻辑关系不能为空
+	INVALIDPARAMETERVALUE_LANERULETAGOPERATORNOTEMPTY = "InvalidParameterValue.LaneRuleTagOperatorNotEmpty"
+
+	// 全链路灰度规则标签值不能为空
+	INVALIDPARAMETERVALUE_LANERULETAGVALUENOTEMPTY = "InvalidParameterValue.LaneRuleTagValueNotEmpty"
 
 	// 全链路灰度规则标签值不能超过128个字符。
 	INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"

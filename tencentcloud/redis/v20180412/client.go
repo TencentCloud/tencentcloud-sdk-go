@@ -3790,6 +3790,63 @@ func (c *Client) DescribeSSLStatusWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeSecondLevelBackupInfoRequest() (request *DescribeSecondLevelBackupInfoRequest) {
+    request = &DescribeSecondLevelBackupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeSecondLevelBackupInfo")
+    
+    
+    return
+}
+
+func NewDescribeSecondLevelBackupInfoResponse() (response *DescribeSecondLevelBackupInfoResponse) {
+    response = &DescribeSecondLevelBackupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecondLevelBackupInfo
+// 查询实例秒级备份信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INVALIDPARAMETER_NOTSUPPORTED = "InvalidParameter.NotSupported"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeSecondLevelBackupInfo(request *DescribeSecondLevelBackupInfoRequest) (response *DescribeSecondLevelBackupInfoResponse, err error) {
+    return c.DescribeSecondLevelBackupInfoWithContext(context.Background(), request)
+}
+
+// DescribeSecondLevelBackupInfo
+// 查询实例秒级备份信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INVALIDPARAMETER_NOTSUPPORTED = "InvalidParameter.NotSupported"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeSecondLevelBackupInfoWithContext(ctx context.Context, request *DescribeSecondLevelBackupInfoRequest) (response *DescribeSecondLevelBackupInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecondLevelBackupInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecondLevelBackupInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecondLevelBackupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
     request = &DescribeSlowLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5186,6 +5243,63 @@ func (c *Client) ModifyInstanceAvailabilityZonesWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewModifyInstanceAvailabilityZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceBackupModeRequest() (request *ModifyInstanceBackupModeRequest) {
+    request = &ModifyInstanceBackupModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceBackupMode")
+    
+    
+    return
+}
+
+func NewModifyInstanceBackupModeResponse() (response *ModifyInstanceBackupModeResponse) {
+    response = &ModifyInstanceBackupModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceBackupMode
+// 修改实例的备份模式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INVALIDPARAMETER_NOTSUPPORTED = "InvalidParameter.NotSupported"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) ModifyInstanceBackupMode(request *ModifyInstanceBackupModeRequest) (response *ModifyInstanceBackupModeResponse, err error) {
+    return c.ModifyInstanceBackupModeWithContext(context.Background(), request)
+}
+
+// ModifyInstanceBackupMode
+// 修改实例的备份模式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INVALIDPARAMETER_NOTSUPPORTED = "InvalidParameter.NotSupported"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) ModifyInstanceBackupModeWithContext(ctx context.Context, request *ModifyInstanceBackupModeRequest) (response *ModifyInstanceBackupModeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceBackupModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceBackupMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceBackupModeResponse()
     err = c.Send(request, response)
     return
 }

@@ -533,7 +533,7 @@ func NewCloseCDBProxyResponse() (response *CloseCDBProxyResponse) {
 }
 
 // CloseCDBProxy
-// 关闭数据库代理
+// 本接口（CloseCDBProxy）用于关闭数据库代理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -545,7 +545,7 @@ func (c *Client) CloseCDBProxy(request *CloseCDBProxyRequest) (response *CloseCD
 }
 
 // CloseCDBProxy
-// 关闭数据库代理
+// 本接口（CloseCDBProxy）用于关闭数据库代理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -1856,7 +1856,7 @@ func NewCreateDeployGroupResponse() (response *CreateDeployGroupResponse) {
 }
 
 // CreateDeployGroup
-// 本接口(CreateDeployGroup)用于创建放置实例的置放群组
+// 本接口（CreateDeployGroup）用于创建放置实例的置放群组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
@@ -1871,7 +1871,7 @@ func (c *Client) CreateDeployGroup(request *CreateDeployGroupRequest) (response 
 }
 
 // CreateDeployGroup
-// 本接口(CreateDeployGroup)用于创建放置实例的置放群组
+// 本接口（CreateDeployGroup）用于创建放置实例的置放群组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
@@ -3355,7 +3355,7 @@ func NewDescribeAuditLogsResponse() (response *DescribeAuditLogsResponse) {
 }
 
 // DescribeAuditLogs
-// 本接口(DescribeAuditLogs)用于查询数据库审计日志。
+// 本接口（DescribeAuditLogs）用于查询数据库审计日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"
@@ -3380,7 +3380,7 @@ func (c *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (response 
 }
 
 // DescribeAuditLogs
-// 本接口(DescribeAuditLogs)用于查询数据库审计日志。
+// 本接口（DescribeAuditLogs）用于查询数据库审计日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"

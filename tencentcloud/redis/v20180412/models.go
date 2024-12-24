@@ -5476,6 +5476,80 @@ func (r *DescribeSSLStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSecondLevelBackupInfoRequestParams struct {
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 秒级备份时间戳，7天内
+	BackupTimestamp *int64 `json:"BackupTimestamp,omitnil,omitempty" name:"BackupTimestamp"`
+}
+
+type DescribeSecondLevelBackupInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 秒级备份时间戳，7天内
+	BackupTimestamp *int64 `json:"BackupTimestamp,omitnil,omitempty" name:"BackupTimestamp"`
+}
+
+func (r *DescribeSecondLevelBackupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecondLevelBackupInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupTimestamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecondLevelBackupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSecondLevelBackupInfoResponseParams struct {
+	// 备份记录ID 
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 备份时间戳
+	BackupTimestamp *int64 `json:"BackupTimestamp,omitnil,omitempty" name:"BackupTimestamp"`
+
+	// 备份不存在的时间戳范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MissingTimestamps []*SecondLevelBackupMissingTimestamps `json:"MissingTimestamps,omitnil,omitempty" name:"MissingTimestamps"`
+
+	// 实例开启秒级备份的时间戳
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSecondLevelBackupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSecondLevelBackupInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSecondLevelBackupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecondLevelBackupInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSlowLogRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8083,6 +8157,74 @@ func (r *ModifyInstanceAvailabilityZonesResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ModifyInstanceBackupModeRequestParams struct {
+	// 实例的ID，长度在12-36之间。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份模式：
+	// - SecondLevelBackup   秒级备份
+	// - NormalLevelBackup    普通备份
+	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
+}
+
+type ModifyInstanceBackupModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例的ID，长度在12-36之间。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份模式：
+	// - SecondLevelBackup   秒级备份
+	// - NormalLevelBackup    普通备份
+	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
+}
+
+func (r *ModifyInstanceBackupModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceBackupModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceBackupModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceBackupModeResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceBackupModeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceBackupModeResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceBackupModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceBackupModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstanceEventRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9809,6 +9951,16 @@ func (r *RestoreInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RestoreInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecondLevelBackupMissingTimestamps struct {
+	// 开始时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
+
+	// 结束时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 }
 
 type SecurityGroup struct {

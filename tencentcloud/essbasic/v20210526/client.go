@@ -649,6 +649,8 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //
 // - 个人批量签署进行的合同的签名区， 全部变成<font color="red">手写签名</font>（不管合同里边设置的签名限制）来进行。
 //
+// - 不支持签署方含有签批控件，或设置了签署方在签署时自行添加签署控件功能的合同进行批量签署。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -684,6 +686,8 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
 //
 // - 个人批量签署进行的合同的签名区， 全部变成<font color="red">手写签名</font>（不管合同里边设置的签名限制）来进行。
+//
+// - 不支持签署方含有签批控件，或设置了签署方在签署时自行添加签署控件功能的合同进行批量签署。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

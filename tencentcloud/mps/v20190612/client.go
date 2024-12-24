@@ -650,6 +650,61 @@ func (c *Client) CreateImageSpriteTemplateWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateLiveRecordTemplateRequest() (request *CreateLiveRecordTemplateRequest) {
+    request = &CreateLiveRecordTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateLiveRecordTemplate")
+    
+    
+    return
+}
+
+func NewCreateLiveRecordTemplateResponse() (response *CreateLiveRecordTemplateResponse) {
+    response = &CreateLiveRecordTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveRecordTemplate
+// 创建直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
+    return c.CreateLiveRecordTemplateWithContext(context.Background(), request)
+}
+
+// CreateLiveRecordTemplate
+// 创建直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveRecordTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveRecordTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
     request = &CreatePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2031,6 +2086,61 @@ func (c *Client) DeleteImageSpriteTemplateWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteLiveRecordTemplateRequest() (request *DeleteLiveRecordTemplateRequest) {
+    request = &DeleteLiveRecordTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteLiveRecordTemplate")
+    
+    
+    return
+}
+
+func NewDeleteLiveRecordTemplateResponse() (response *DeleteLiveRecordTemplateResponse) {
+    response = &DeleteLiveRecordTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLiveRecordTemplate
+// 删除直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
+    return c.DeleteLiveRecordTemplateWithContext(context.Background(), request)
+}
+
+// DeleteLiveRecordTemplate
+// 删除直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveRecordTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveRecordTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePersonSampleRequest() (request *DeletePersonSampleRequest) {
     request = &DeletePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3019,6 +3129,61 @@ func (c *Client) DescribeImageSpriteTemplatesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeImageSpriteTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveRecordTemplatesRequest() (request *DescribeLiveRecordTemplatesRequest) {
+    request = &DescribeLiveRecordTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeLiveRecordTemplates")
+    
+    
+    return
+}
+
+func NewDescribeLiveRecordTemplatesResponse() (response *DescribeLiveRecordTemplatesResponse) {
+    response = &DescribeLiveRecordTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveRecordTemplates
+// 获取直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+func (c *Client) DescribeLiveRecordTemplates(request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
+    return c.DescribeLiveRecordTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeLiveRecordTemplates
+// 获取直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveRecordTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRecordTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveRecordTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5440,6 +5605,61 @@ func (c *Client) ModifyImageSpriteTemplateWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveRecordTemplateRequest() (request *ModifyLiveRecordTemplateRequest) {
+    request = &ModifyLiveRecordTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyLiveRecordTemplate")
+    
+    
+    return
+}
+
+func NewModifyLiveRecordTemplateResponse() (response *ModifyLiveRecordTemplateResponse) {
+    response = &ModifyLiveRecordTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLiveRecordTemplate
+// 修改直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyLiveRecordTemplate(request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
+    return c.ModifyLiveRecordTemplateWithContext(context.Background(), request)
+}
+
+// ModifyLiveRecordTemplate
+// 修改直播录制模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyLiveRecordTemplateWithContext(ctx context.Context, request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveRecordTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveRecordTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveRecordTemplateResponse()
     err = c.Send(request, response)
     return
 }

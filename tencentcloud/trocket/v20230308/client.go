@@ -1889,6 +1889,57 @@ func (c *Client) DescribeMQTTUserListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMessageTraceRequest() (request *DescribeMessageTraceRequest) {
+    request = &DescribeMessageTraceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMessageTrace")
+    
+    
+    return
+}
+
+func NewDescribeMessageTraceResponse() (response *DescribeMessageTraceResponse) {
+    response = &DescribeMessageTraceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessageTrace
+// 根据消息 ID 查询消息轨迹。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMessageTrace(request *DescribeMessageTraceRequest) (response *DescribeMessageTraceResponse, err error) {
+    return c.DescribeMessageTraceWithContext(context.Background(), request)
+}
+
+// DescribeMessageTrace
+// 根据消息 ID 查询消息轨迹。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMessageTraceWithContext(ctx context.Context, request *DescribeMessageTraceRequest) (response *DescribeMessageTraceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageTraceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageTrace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageTraceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductSKUsRequest() (request *DescribeProductSKUsRequest) {
     request = &DescribeProductSKUsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1913,6 +1964,7 @@ func NewDescribeProductSKUsResponse() (response *DescribeProductSKUsResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
 func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
     return c.DescribeProductSKUsWithContext(context.Background(), request)
 }
@@ -1922,6 +1974,7 @@ func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
 func (c *Client) DescribeProductSKUsWithContext(ctx context.Context, request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
     if request == nil {
         request = NewDescribeProductSKUsRequest()
@@ -1966,6 +2019,7 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
 func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     return c.DescribeRoleListWithContext(context.Background(), request)
 }
@@ -1979,6 +2033,7 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
 func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     if request == nil {
         request = NewDescribeRoleListRequest()

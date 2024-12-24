@@ -1827,6 +1827,9 @@ func NewCreateLaneRuleResponse() (response *CreateLaneRuleResponse) {
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORINVALID = "InvalidParameterValue.LaneRuleTagOperatorInvalid"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORNOTEMPTY = "InvalidParameterValue.LaneRuleTagOperatorNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUENOTEMPTY = "InvalidParameterValue.LaneRuleTagValueNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -1882,6 +1885,9 @@ func (c *Client) CreateLaneRule(request *CreateLaneRuleRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORINVALID = "InvalidParameterValue.LaneRuleTagOperatorInvalid"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORNOTEMPTY = "InvalidParameterValue.LaneRuleTagOperatorNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUENOTEMPTY = "InvalidParameterValue.LaneRuleTagValueNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -2907,6 +2913,8 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
+//  FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
 //  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
@@ -2930,6 +2938,8 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
+//  FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
 //  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
@@ -3113,6 +3123,7 @@ func NewDeleteContainerGroupResponse() (response *DeleteContainerGroupResponse) 
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESAPIINVOKEERROR = "FailedOperation.ContainergroupKubernetesApiInvokeError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
@@ -3135,6 +3146,7 @@ func (c *Client) DeleteContainerGroup(request *DeleteContainerGroupRequest) (res
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESAPIINVOKEERROR = "FailedOperation.ContainergroupKubernetesApiInvokeError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
@@ -4093,6 +4105,10 @@ func NewDeleteServerlessGroupResponse() (response *DeleteServerlessGroupResponse
 }
 
 // DeleteServerlessGroup
+// serverless 能力已下线。下线对应接口。
+//
+// 
+//
 // 删除Serverless部署组
 //
 // 可能返回的错误码:
@@ -4106,6 +4122,10 @@ func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (r
 }
 
 // DeleteServerlessGroup
+// serverless 能力已下线。下线对应接口。
+//
+// 
+//
 // 删除Serverless部署组
 //
 // 可能返回的错误码:
@@ -5880,6 +5900,8 @@ func NewDescribeContainerGroupAttributeResponse() (response *DescribeContainerGr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
+//  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
@@ -5902,6 +5924,8 @@ func (c *Client) DescribeContainerGroupAttribute(request *DescribeContainerGroup
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
+//  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
@@ -10311,6 +10335,7 @@ func NewDisableLaneRuleResponse() (response *DisableLaneRuleResponse) {
 //  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
 //  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
 //  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEIDINVALID = "InvalidParameterValue.LaneRuleIdInvalid"
 //  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
 //  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
 //  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
@@ -10364,6 +10389,7 @@ func (c *Client) DisableLaneRule(request *DisableLaneRuleRequest) (response *Dis
 //  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
 //  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
 //  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEIDINVALID = "InvalidParameterValue.LaneRuleIdInvalid"
 //  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
 //  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
 //  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
@@ -11835,6 +11861,9 @@ func NewModifyLaneRuleResponse() (response *ModifyLaneRuleResponse) {
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORINVALID = "InvalidParameterValue.LaneRuleTagOperatorInvalid"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORNOTEMPTY = "InvalidParameterValue.LaneRuleTagOperatorNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUENOTEMPTY = "InvalidParameterValue.LaneRuleTagValueNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 func (c *Client) ModifyLaneRule(request *ModifyLaneRuleRequest) (response *ModifyLaneRuleResponse, err error) {
@@ -11888,6 +11917,9 @@ func (c *Client) ModifyLaneRule(request *ModifyLaneRuleRequest) (response *Modif
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORINVALID = "InvalidParameterValue.LaneRuleTagOperatorInvalid"
+//  INVALIDPARAMETERVALUE_LANERULETAGOPERATORNOTEMPTY = "InvalidParameterValue.LaneRuleTagOperatorNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUENOTEMPTY = "InvalidParameterValue.LaneRuleTagValueNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 func (c *Client) ModifyLaneRuleWithContext(ctx context.Context, request *ModifyLaneRuleRequest) (response *ModifyLaneRuleResponse, err error) {

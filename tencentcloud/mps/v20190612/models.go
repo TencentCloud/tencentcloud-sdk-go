@@ -3905,6 +3905,77 @@ type CreateInputSRTSettings struct {
 	SourceAddresses []*SRTSourceAddressReq `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
 }
 
+// Predefined struct for user
+type CreateLiveRecordTemplateRequestParams struct {
+	// HLS 配置参数
+	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// 录制模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type CreateLiveRecordTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// HLS 配置参数
+	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// 录制模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HLSConfigure")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveRecordTemplateResponseParams struct {
+	// 录制模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveRecordTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveRecordTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveRecordTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveRecordTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateOutputInfo struct {
 	// 输出的名称。
 	OutputName *string `json:"OutputName,omitnil,omitempty" name:"OutputName"`
@@ -5794,6 +5865,60 @@ func (r *DeleteImageSpriteTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLiveRecordTemplateRequestParams struct {
+	// 录制模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteLiveRecordTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 录制模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteLiveRecordTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveRecordTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveRecordTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveRecordTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveRecordTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveRecordTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveRecordTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveRecordTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeletePersonSampleRequestParams struct {
 	// 素材 ID。
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
@@ -7210,6 +7335,98 @@ type DescribeInputSRTSettings struct {
 	// SRT对端地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceAddresses []*SRTSourceAddressResp `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
+}
+
+// Predefined struct for user
+type DescribeLiveRecordTemplatesRequestParams struct {
+	// 录制模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 录制模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeLiveRecordTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 录制模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 录制模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeLiveRecordTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveRecordTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveRecordTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveRecordTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 录制模板详情列表。
+	LiveRecordTemplateSet []*LiveRecordTemplate `json:"LiveRecordTemplateSet,omitnil,omitempty" name:"LiveRecordTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveRecordTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveRecordTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveRecordTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveRecordTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -10611,6 +10828,25 @@ type FrameTagConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+type HLSConfigureInfo struct {
+	// 单个 TS 文件时长，单位：秒，取值范围 5-30 秒。
+	// 
+	// 不填默认为 30 秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemDuration *int64 `json:"ItemDuration,omitnil,omitempty" name:"ItemDuration"`
+
+	// 录制周期，单位：秒，取值范围 10 分钟到  12 小时。
+	// 
+	// 不填默认为 10分钟（3600 秒）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 续录等待时间，单位：秒。取值范围为60秒-1800秒。
+	// 不填默认为0（不启用续录）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContinueTimeout *int64 `json:"ContinueTimeout,omitnil,omitempty" name:"ContinueTimeout"`
+}
+
 type HLSPullSourceAddress struct {
 	// HLS源站的Url地址。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
@@ -10942,6 +11178,31 @@ type LiveRecordTaskInput struct {
 	// 直播录制后文件的输出路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
+}
+
+type LiveRecordTemplate struct {
+	// 录制模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// HLS 配置参数
+	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// 录制模板名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 模板类型，取值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type LiveScheduleLiveRecordTaskResult struct {
@@ -13076,6 +13337,81 @@ type ModifyInput struct {
 
 	// 输入节点的地区
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+}
+
+// Predefined struct for user
+type ModifyLiveRecordTemplateRequestParams struct {
+	// 录制模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// HLS 配置参数
+	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// 录制模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type ModifyLiveRecordTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 录制模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// HLS 配置参数
+	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// 录制模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "HLSConfigure")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveRecordTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveRecordTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveRecordTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveRecordTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveRecordTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveRecordTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyOutputInfo struct {

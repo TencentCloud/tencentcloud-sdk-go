@@ -529,6 +529,10 @@ type ApiGroupInfo struct {
 	// 微服务名参数位置，path，header或query，默认是path
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceNameKeyPosition *string `json:"ServiceNameKeyPosition,omitnil,omitempty" name:"ServiceNameKeyPosition"`
+
+	// 网关实例ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayInstanceIdList []*string `json:"GatewayInstanceIdList,omitnil,omitempty" name:"GatewayInstanceIdList"`
 }
 
 type ApiInfo struct {
@@ -4468,7 +4472,7 @@ func (r *CreateMicroserviceWithDetailRespRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateMicroserviceWithDetailRespResponseParams struct {
-	// id
+	// 微服务ID
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10292,7 +10296,7 @@ type DescribeGatewayAllGroupApisRequestParams struct {
 	// 网关部署组ID
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
 
-	// 搜索关键字，支持分组名称或API Path
+	// 搜索关键字，支持命名空间名称或服务名称
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 }
 
@@ -10302,7 +10306,7 @@ type DescribeGatewayAllGroupApisRequest struct {
 	// 网关部署组ID
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
 
-	// 搜索关键字，支持分组名称或API Path
+	// 搜索关键字，支持命名空间名称或服务名称
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 }
 

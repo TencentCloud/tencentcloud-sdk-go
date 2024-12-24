@@ -2812,6 +2812,17 @@ type CreateLivePullStreamTaskRequestParams struct {
 	// 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
 	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
 
+	// 指定播放文件索引。
+	// 注意： 1. 从1开始，不大于SourceUrls中文件个数。
+	// 2. 该偏移仅在首次轮播时有效。
+	// 3. 提前创建的任务指定的偏移最长有效期为24小时，24小时后未开始的任务偏移失效。
+	FileIndex *int64 `json:"FileIndex,omitnil,omitempty" name:"FileIndex"`
+
+	// 指定播放文件偏移。
+	// 注意：
+	// 1. 单位：秒，配合FileIndex使用。
+	OffsetTime *int64 `json:"OffsetTime,omitnil,omitempty" name:"OffsetTime"`
+
 	// 备源的类型：
 	// PullLivePushLive -直播，
 	// PullVodPushLive -点播。
@@ -2967,6 +2978,17 @@ type CreateLivePullStreamTaskRequest struct {
 	// 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
 	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
 
+	// 指定播放文件索引。
+	// 注意： 1. 从1开始，不大于SourceUrls中文件个数。
+	// 2. 该偏移仅在首次轮播时有效。
+	// 3. 提前创建的任务指定的偏移最长有效期为24小时，24小时后未开始的任务偏移失效。
+	FileIndex *int64 `json:"FileIndex,omitnil,omitempty" name:"FileIndex"`
+
+	// 指定播放文件偏移。
+	// 注意：
+	// 1. 单位：秒，配合FileIndex使用。
+	OffsetTime *int64 `json:"OffsetTime,omitnil,omitempty" name:"OffsetTime"`
+
 	// 备源的类型：
 	// PullLivePushLive -直播，
 	// PullVodPushLive -点播。
@@ -3032,6 +3054,8 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "SpecifyTaskId")
 	delete(f, "Comment")
 	delete(f, "ToUrl")
+	delete(f, "FileIndex")
+	delete(f, "OffsetTime")
 	delete(f, "BackupSourceType")
 	delete(f, "BackupSourceUrl")
 	delete(f, "WatermarkList")

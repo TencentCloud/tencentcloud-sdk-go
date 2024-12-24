@@ -344,7 +344,7 @@ type CreateInstanceNewRequestParams struct {
 	// 子网
 	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
 
-	// 版本
+	// 系统版本
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// 计费方式
@@ -368,7 +368,7 @@ type CreateInstanceNewRequestParams struct {
 	// COS桶名称
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// 是否是裸盘挂载
+	// 是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
 	MountDiskType *int64 `json:"MountDiskType,omitnil,omitempty" name:"MountDiskType"`
 
 	// 是否是ZK高可用
@@ -397,7 +397,7 @@ type CreateInstanceNewRequest struct {
 	// 子网
 	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
 
-	// 版本
+	// 系统版本
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// 计费方式
@@ -419,7 +419,7 @@ type CreateInstanceNewRequest struct {
 	// COS桶名称
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// 是否是裸盘挂载
+	// 是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
 	MountDiskType *int64 `json:"MountDiskType,omitnil,omitempty" name:"MountDiskType"`
 
 	// 是否是ZK高可用
@@ -2933,7 +2933,7 @@ func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
 }
 
 type ScheduleStrategy struct {
-	// 备份桶列表
+	// 备份桶名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 

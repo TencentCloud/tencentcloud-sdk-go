@@ -2901,6 +2901,95 @@ func (r *DescribeMQTTUserListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMessageTraceRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 是否是死信消息
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 是否是延时消息
+	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
+}
+
+type DescribeMessageTraceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 是否是死信消息
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 是否是延时消息
+	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
+}
+
+func (r *DescribeMessageTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageTraceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "MsgId")
+	delete(f, "QueryDeadLetterMessage")
+	delete(f, "QueryDelayMessage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageTraceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageTraceResponseParams struct {
+	// 展示Topic名
+	ShowTopicName *string `json:"ShowTopicName,omitnil,omitempty" name:"ShowTopicName"`
+
+	// 轨迹详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*MessageTraceItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMessageTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMessageTraceResponseParams `json:"Response"`
+}
+
+func (r *DescribeMessageTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageTraceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductSKUsRequestParams struct {
 
 }
@@ -3840,6 +3929,16 @@ type MQTTUserItem struct {
 
 	// 修改时间，秒为单位
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+}
+
+type MessageTraceItem struct {
+	// 步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
+
+	// 轨迹详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 // Predefined struct for user

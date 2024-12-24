@@ -25,15 +25,12 @@ type AccountVpcInfo struct {
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// Vpc所属账号: 123456789
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// vpc资源名称：testname
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 }
 
@@ -127,7 +124,6 @@ type AddSpecifyPrivateZoneVpcResponseParams struct {
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil,omitempty" name:"AccountVpcSet"`
 
 	// 唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqId *string `json:"UniqId,omitnil,omitempty" name:"UniqId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -702,7 +698,6 @@ type DeleteSpecifyPrivateZoneVpcResponseParams struct {
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil,omitempty" name:"AccountVpcSet"`
 
 	// 唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqId *string `json:"UniqId,omitnil,omitempty" name:"UniqId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

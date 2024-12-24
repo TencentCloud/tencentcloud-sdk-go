@@ -22,11 +22,9 @@ import (
 
 type Account struct {
 	// 新账户的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 新账户的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
@@ -724,8 +722,10 @@ type AuditLog struct {
 	TrxLivingTime *uint64 `json:"TrxLivingTime,omitnil,omitempty" name:"TrxLivingTime"`
 
 	// 日志命中规则模板的基本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateInfo []*LogRuleTemplateInfo `json:"TemplateInfo,omitnil,omitempty" name:"TemplateInfo"`
+
+	//  事务ID
+	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
 }
 
 type AuditLogAggregationResult struct {
@@ -1823,15 +1823,19 @@ type ClusterTopology struct {
 
 type ColumnPrivilege struct {
 	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 数据库表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 数据库列名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Column *string `json:"Column,omitnil,omitempty" name:"Column"`
 
 	// 权限信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 }
 
@@ -4178,9 +4182,11 @@ type DBSwitchInfo struct {
 
 type DatabasePrivilege struct {
 	// 权限信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 
 	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 }
 
@@ -5360,7 +5366,7 @@ type DescribeAuditLogsRequestParams struct {
 	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量。
+	// 日志偏移量，最多支持偏移查询65535条日志。可填写范围：0 - 65535。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
@@ -5391,7 +5397,7 @@ type DescribeAuditLogsRequest struct {
 	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量。
+	// 日志偏移量，最多支持偏移查询65535条日志。可填写范围：0 - 65535。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
@@ -16520,12 +16526,15 @@ func (r *SwitchForUpgradeResponse) FromJsonString(s string) error {
 
 type TablePrivilege struct {
 	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 数据库表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 权限信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 }
 
@@ -16574,12 +16583,10 @@ type TagsInfoOfInstance struct {
 type TaskAttachInfo struct {
 	// 升级任务：
 	// ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachKey *string `json:"AttachKey,omitnil,omitempty" name:"AttachKey"`
 
 	// 升级任务：
 	// ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachValue *string `json:"AttachValue,omitnil,omitempty" name:"AttachValue"`
 }
 
@@ -16637,7 +16644,6 @@ type TaskDetail struct {
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 任务的附加信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAttachInfo []*TaskAttachInfo `json:"TaskAttachInfo,omitnil,omitempty" name:"TaskAttachInfo"`
 }
 
