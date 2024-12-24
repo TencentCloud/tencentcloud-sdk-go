@@ -65,7 +65,7 @@ func NewVerifyLicenseResponse() (response *VerifyLicenseResponse) {
 }
 
 // VerifyLicense
-// 通过运行时roleId查询对应的软件 LICENSE
+// 从软件进程读取 LICENSE。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -75,7 +75,7 @@ func (c *Client) VerifyLicense(request *VerifyLicenseRequest) (response *VerifyL
 }
 
 // VerifyLicense
-// 通过运行时roleId查询对应的软件 LICENSE
+// 从软件进程读取 LICENSE。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

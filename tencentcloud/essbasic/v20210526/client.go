@@ -45,6 +45,123 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewArchiveDynamicFlowRequest() (request *ArchiveDynamicFlowRequest) {
+    request = &ArchiveDynamicFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ArchiveDynamicFlow")
+    
+    
+    return
+}
+
+func NewArchiveDynamicFlowResponse() (response *ArchiveDynamicFlowResponse) {
+    response = &ArchiveDynamicFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ArchiveDynamicFlow
+// 该接口用于结束动态签署方2.0的合同流程。
+//
+// 
+//
+// 
+//
+// **功能开通**
+//
+// - 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+//
+// 
+//
+// **使用条件**
+//
+// - 此接口只能在<font color="red">合同处于非终态且<b>所有的签署方都已经完成签署</b></font>。一旦合同进入终态（例如：过期、拒签、撤销或者调用过此接口成功过），将无法通过此接口结束合同流程。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWIDS = "InvalidParameter.FlowIds"
+//  INVALIDPARAMETER_GENERATETYPE = "InvalidParameter.GenerateType"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ArchiveDynamicFlow(request *ArchiveDynamicFlowRequest) (response *ArchiveDynamicFlowResponse, err error) {
+    return c.ArchiveDynamicFlowWithContext(context.Background(), request)
+}
+
+// ArchiveDynamicFlow
+// 该接口用于结束动态签署方2.0的合同流程。
+//
+// 
+//
+// 
+//
+// **功能开通**
+//
+// - 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+//
+// 
+//
+// **使用条件**
+//
+// - 此接口只能在<font color="red">合同处于非终态且<b>所有的签署方都已经完成签署</b></font>。一旦合同进入终态（例如：过期、拒签、撤销或者调用过此接口成功过），将无法通过此接口结束合同流程。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWIDS = "InvalidParameter.FlowIds"
+//  INVALIDPARAMETER_GENERATETYPE = "InvalidParameter.GenerateType"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ArchiveDynamicFlowWithContext(ctx context.Context, request *ArchiveDynamicFlowRequest) (response *ArchiveDynamicFlowResponse, err error) {
+    if request == nil {
+        request = NewArchiveDynamicFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ArchiveDynamicFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewArchiveDynamicFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelBatchCancelFlowsRequest() (request *ChannelBatchCancelFlowsRequest) {
     request = &ChannelBatchCancelFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -990,6 +1107,105 @@ func (c *Client) ChannelCreateConvertTaskApiWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewChannelCreateConvertTaskApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelCreateDynamicFlowApproverRequest() (request *ChannelCreateDynamicFlowApproverRequest) {
+    request = &ChannelCreateDynamicFlowApproverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateDynamicFlowApprover")
+    
+    
+    return
+}
+
+func NewChannelCreateDynamicFlowApproverResponse() (response *ChannelCreateDynamicFlowApproverResponse) {
+    response = &ChannelCreateDynamicFlowApproverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChannelCreateDynamicFlowApprover
+// 接口（ChannelCreateDynamicFlowApprover）用来补充<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>发起的动态合同的签署人信息
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
+//
+// <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
+//
+// <li>此接口需要保证：合同发起时指定开启了动态合同</li>
+//
+// <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
+//  OPERATIONDENIED_NOAPPROVERMOBILECHECKPERMISSION = "OperationDenied.NoApproverMobileCheckPermission"
+//  OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+func (c *Client) ChannelCreateDynamicFlowApprover(request *ChannelCreateDynamicFlowApproverRequest) (response *ChannelCreateDynamicFlowApproverResponse, err error) {
+    return c.ChannelCreateDynamicFlowApproverWithContext(context.Background(), request)
+}
+
+// ChannelCreateDynamicFlowApprover
+// 接口（ChannelCreateDynamicFlowApprover）用来补充<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>发起的动态合同的签署人信息
+//
+// **注**: 
+//
+// <ul>
+//
+// <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
+//
+// <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
+//
+// <li>此接口需要保证：合同发起时指定开启了动态合同</li>
+//
+// <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
+//  OPERATIONDENIED_NOAPPROVERMOBILECHECKPERMISSION = "OperationDenied.NoApproverMobileCheckPermission"
+//  OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+func (c *Client) ChannelCreateDynamicFlowApproverWithContext(ctx context.Context, request *ChannelCreateDynamicFlowApproverRequest) (response *ChannelCreateDynamicFlowApproverResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateDynamicFlowApproverRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateDynamicFlowApprover require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateDynamicFlowApproverResponse()
     err = c.Send(request, response)
     return
 }

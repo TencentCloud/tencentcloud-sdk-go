@@ -2215,6 +2215,7 @@ func NewDescribeTrtcRoomUsageResponse() (response *DescribeTrtcRoomUsageResponse
 //  FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_FREQOVERLIMIT = "OperationDenied.FreqOverLimit"
 func (c *Client) DescribeTrtcRoomUsage(request *DescribeTrtcRoomUsageRequest) (response *DescribeTrtcRoomUsageResponse, err error) {
     return c.DescribeTrtcRoomUsageWithContext(context.Background(), request)
 }
@@ -2234,6 +2235,7 @@ func (c *Client) DescribeTrtcRoomUsage(request *DescribeTrtcRoomUsageRequest) (r
 //  FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_FREQOVERLIMIT = "OperationDenied.FreqOverLimit"
 func (c *Client) DescribeTrtcRoomUsageWithContext(ctx context.Context, request *DescribeTrtcRoomUsageRequest) (response *DescribeTrtcRoomUsageResponse, err error) {
     if request == nil {
         request = NewDescribeTrtcRoomUsageRequest()

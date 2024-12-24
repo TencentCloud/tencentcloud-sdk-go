@@ -1818,6 +1818,12 @@ type CreateCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// 路由的Headers
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否缓存请求body，默认true
+	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
+
+	// 是否缓存响应body，默认true
+	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 }
 
 type CreateCloudNativeAPIGatewayRouteRequest struct {
@@ -1879,6 +1885,12 @@ type CreateCloudNativeAPIGatewayRouteRequest struct {
 
 	// 路由的Headers
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否缓存请求body，默认true
+	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
+
+	// 是否缓存响应body，默认true
+	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 }
 
 func (r *CreateCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -1906,6 +1918,8 @@ func (r *CreateCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "ForceHttps")
 	delete(f, "DestinationPorts")
 	delete(f, "Headers")
+	delete(f, "RequestBuffering")
+	delete(f, "ResponseBuffering")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}
@@ -9405,6 +9419,12 @@ type KongRoutePreview struct {
 	// 路由的Headers
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否缓存请求body，默认true
+	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
+
+	// 是否缓存响应body，默认true
+	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 }
 
 type KongServiceDetail struct {
@@ -10244,6 +10264,12 @@ type ModifyCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// 路由的Headers
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否缓存请求body，默认true
+	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
+
+	// 是否缓存响应body，默认true
+	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 }
 
 type ModifyCloudNativeAPIGatewayRouteRequest struct {
@@ -10308,6 +10334,12 @@ type ModifyCloudNativeAPIGatewayRouteRequest struct {
 
 	// 路由的Headers
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否缓存请求body，默认true
+	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
+
+	// 是否缓存响应body，默认true
+	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -10336,6 +10368,8 @@ func (r *ModifyCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "ForceHttps")
 	delete(f, "DestinationPorts")
 	delete(f, "Headers")
+	delete(f, "RequestBuffering")
+	delete(f, "ResponseBuffering")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}

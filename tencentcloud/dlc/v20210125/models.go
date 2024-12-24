@@ -4495,6 +4495,26 @@ type DataEngineInfo struct {
 	// 是否使用预留池
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPoolMode *string `json:"IsPoolMode,omitnil,omitempty" name:"IsPoolMode"`
+
+	// 是否支持AI，false: 不支持；true：支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportAI *bool `json:"IsSupportAI,omitnil,omitempty" name:"IsSupportAI"`
+
+	// 网关id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 网关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayState *int64 `json:"GatewayState,omitnil,omitempty" name:"GatewayState"`
+
+	// 是否能执行AI任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAIGateway *bool `json:"IsAIGateway,omitnil,omitempty" name:"IsAIGateway"`
+
+	// 1:AI引擎，0:非AI引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAIEngine *int64 `json:"IsAIEngine,omitnil,omitempty" name:"IsAIEngine"`
 }
 
 type DataEngineScaleInfo struct {
@@ -12273,6 +12293,30 @@ type NotebookSessionInfo struct {
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil,omitempty" name:"ExecutorMaxNumbers"`
+
+	// session类型，group：资源组下session independent：独立资源session， 不依赖资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
+
+	// 引擎id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// session，pod大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodSize *int64 `json:"PodSize,omitnil,omitempty" name:"PodSize"`
+
+	// pod数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodNumbers *int64 `json:"PodNumbers,omitnil,omitempty" name:"PodNumbers"`
 }
 
 type NotebookSessionStatementBatchInformation struct {
@@ -12366,6 +12410,22 @@ type NotebookSessions struct {
 	// spark ui地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkUiUrl *string `json:"SparkUiUrl,omitnil,omitempty" name:"SparkUiUrl"`
+
+	// session类型，group：资源组session independent：独立资源session，不依赖资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
+
+	// 引擎id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type OpendThirdAccessUserInfo struct {

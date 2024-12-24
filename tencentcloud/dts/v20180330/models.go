@@ -2015,31 +2015,31 @@ type SubscribeInfo struct {
 	// 数据订阅实例的名称
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
-	// 数据订阅实例绑定的通道ID
+	// 数据订阅实例绑定的通道ID。kafka版订阅就是kafka topic
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 数据订阅绑定实例对应的产品名称
+	// 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 数据订阅实例绑定的数据库实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据订阅实例绑定的数据库实例状态
+	// 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
 	SubsStatus *string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
-	// 上次修改时间
+	// 上次修改时间，时间格式如：Y-m-d h:m:s
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 隔离时间
+	// 隔离时间，时间格式如：Y-m-d h:m:s
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 到期时间
+	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 下线时间
@@ -2048,7 +2048,7 @@ type SubscribeInfo struct {
 	// 最近一次修改的消费时间起点，如果从未修改则为零值
 	ConsumeStartTime *string `json:"ConsumeStartTime,omitnil,omitempty" name:"ConsumeStartTime"`
 
-	// 自动续费标识。0-不自动续费，1-自动续费
+	// 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
@@ -2058,7 +2058,7 @@ type SubscribeInfo struct {
 	// 计费方式，0 - 包年包月，1 - 按量计费
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 数据订阅实例的Vip
+	// 旧版订阅通道的vip
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 数据订阅实例的Vport
@@ -2070,7 +2070,7 @@ type SubscribeInfo struct {
 	// 数据订阅实例Vip所在子网的唯一ID
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点

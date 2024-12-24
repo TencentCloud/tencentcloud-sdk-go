@@ -32,6 +32,9 @@ const (
 	// 账户余额不足。
 	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 
+	// 创建云联网失败. 请重试你的请求，如果问题仍然存在，请联系腾讯云客服。
+	FAILEDOPERATION_CREATECCNFAILED = "FailedOperation.CreateCcnFailed"
+
 	// 不支持的地域。
 	FAILEDOPERATION_INVALIDREGION = "FailedOperation.InvalidRegion"
 
@@ -815,6 +818,12 @@ const (
 	// 与该VPC下的TKE容器的网段重叠。
 	UNSUPPORTEDOPERATION_CONFLICTWITHDOCKERROUTE = "UnsupportedOperation.ConflictWithDockerRoute"
 
+	// 当前账号不允许创建服务质量：铜云联网。
+	UNSUPPORTEDOPERATION_COPPERCCNNOTSUPPORTEDCREATE = "UnsupportedOperation.CopperCcnNotSupportedCreate"
+
+	// 服务质量：铜云联网仅支持创建预付费模式。
+	UNSUPPORTEDOPERATION_COPPERCCNSUPPORTEDPREPAID = "UnsupportedOperation.CopperCcnSupportedPrepaid"
+
 	// 当前账号非联通账号。
 	UNSUPPORTEDOPERATION_CURRENTACCOUNTISNOTUNICOMACCOUNT = "UnsupportedOperation.CurrentAccountIsNotUnicomAccount"
 
@@ -1028,6 +1037,9 @@ const (
 	// 该地址类型不支持释放操作。
 	UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
 
+	// 不支持创建后付费流量计费类型云联网
+	UNSUPPORTEDOPERATION_NOTSUPPORTEDCREATETRAFFICMETERINGTYPECCN = "UnsupportedOperation.NotSupportedCreateTrafficMeteringTypeCcn"
+
 	// 此地域没有上线出口二资源，请到北京/广州/南京购买。
 	UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = "UnsupportedOperation.NotSupportedPurchaseCenterEgressResource"
 
@@ -1042,6 +1054,9 @@ const (
 
 	// 仅支持专业版Ckafka。
 	UNSUPPORTEDOPERATION_ONLYSUPPORTPROFESSIONKAFKA = "UnsupportedOperation.OnlySupportProfessionKafka"
+
+	// 预付费云联网只支持带宽计量类型
+	UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTBANDWIDTHMETERING = "UnsupportedOperation.PrepaidCcnOnlySupportBandwidthMetering"
 
 	// 预付费云联网只支持地域间限速。
 	UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = "UnsupportedOperation.PrepaidCcnOnlySupportInterRegionLimit"

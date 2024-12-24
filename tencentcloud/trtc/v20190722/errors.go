@@ -350,6 +350,9 @@ const (
 	// EncodeParams中缺少视频输出参数。
 	MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
 
+	// 请求频率超限，请稍后再试
+	OPERATIONDENIED_FREQOVERLIMIT = "OperationDenied.FreqOverLimit"
+
 	// 资源不足。
 	RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 

@@ -33,7 +33,7 @@ type AccessGroup struct {
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// VPC网络类型（1：CVM；2：黑石1.0）
+	// VPC网络类型（1：CVM）
 	VpcType *uint64 `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 
 	// VPC网络ID
@@ -123,7 +123,7 @@ type CreateAccessGroupRequestParams struct {
 	// 权限组名称
 	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
-	// VPC网络类型（1：CVM；2：黑石1.0）
+	// VPC网络类型（1：CVM）
 	VpcType *uint64 `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 
 	// VPC网络ID
@@ -139,7 +139,7 @@ type CreateAccessGroupRequest struct {
 	// 权限组名称
 	AccessGroupName *string `json:"AccessGroupName,omitnil,omitempty" name:"AccessGroupName"`
 
-	// VPC网络类型（1：CVM；2：黑石1.0）
+	// VPC网络类型（1：CVM）
 	VpcType *uint64 `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 
 	// VPC网络ID

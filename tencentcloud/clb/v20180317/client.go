@@ -537,8 +537,6 @@ func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
 //
 // 独占集群克隆必须传对应的参数，否则按共享型创建
 //
-// 功能内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/1akuvsmyn0g)。
-//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -607,8 +605,6 @@ func (c *Client) CloneLoadBalancer(request *CloneLoadBalancerRequest) (response 
 // BGP带宽包必须传带宽包id
 //
 // 独占集群克隆必须传对应的参数，否则按共享型创建
-//
-// 功能内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/1akuvsmyn0g)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -2922,6 +2922,7 @@ func NewCreateCcnResponse() (response *CreateCcnResponse) {
 // * 每个账号能创建的云联网实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATECCNFAILED = "FailedOperation.CreateCcnFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -2950,7 +2951,11 @@ func NewCreateCcnResponse() (response *CreateCcnResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_COPPERCCNNOTSUPPORTEDCREATE = "UnsupportedOperation.CopperCcnNotSupportedCreate"
+//  UNSUPPORTEDOPERATION_COPPERCCNSUPPORTEDPREPAID = "UnsupportedOperation.CopperCcnSupportedPrepaid"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTEDCREATETRAFFICMETERINGTYPECCN = "UnsupportedOperation.NotSupportedCreateTrafficMeteringTypeCcn"
+//  UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTBANDWIDTHMETERING = "UnsupportedOperation.PrepaidCcnOnlySupportBandwidthMetering"
 //  UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = "UnsupportedOperation.PrepaidCcnOnlySupportInterRegionLimit"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
@@ -2969,6 +2974,7 @@ func (c *Client) CreateCcn(request *CreateCcnRequest) (response *CreateCcnRespon
 // * 每个账号能创建的云联网实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATECCNFAILED = "FailedOperation.CreateCcnFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -2997,7 +3003,11 @@ func (c *Client) CreateCcn(request *CreateCcnRequest) (response *CreateCcnRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_COPPERCCNNOTSUPPORTEDCREATE = "UnsupportedOperation.CopperCcnNotSupportedCreate"
+//  UNSUPPORTEDOPERATION_COPPERCCNSUPPORTEDPREPAID = "UnsupportedOperation.CopperCcnSupportedPrepaid"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTEDCREATETRAFFICMETERINGTYPECCN = "UnsupportedOperation.NotSupportedCreateTrafficMeteringTypeCcn"
+//  UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTBANDWIDTHMETERING = "UnsupportedOperation.PrepaidCcnOnlySupportBandwidthMetering"
 //  UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = "UnsupportedOperation.PrepaidCcnOnlySupportInterRegionLimit"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"

@@ -2453,11 +2453,9 @@ type CCN struct {
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
 	// 付费类型，PREPAID为预付费，POSTPAID为后付费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitnil,omitempty" name:"BandwidthLimitType"`
 
 	// 标签键值对。
@@ -2467,51 +2465,39 @@ type CCN struct {
 	RoutePriorityFlag *bool `json:"RoutePriorityFlag,omitnil,omitempty" name:"RoutePriorityFlag"`
 
 	// 实例关联的路由表个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableCount *uint64 `json:"RouteTableCount,omitnil,omitempty" name:"RouteTableCount"`
 
 	// 是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableFlag *bool `json:"RouteTableFlag,omitnil,omitempty" name:"RouteTableFlag"`
 
 	// `true`：实例已被封禁，流量不通，`false`:解封禁。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSecurityLock *bool `json:"IsSecurityLock,omitnil,omitempty" name:"IsSecurityLock"`
 
 	// 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteBroadcastPolicyFlag *bool `json:"RouteBroadcastPolicyFlag,omitnil,omitempty" name:"RouteBroadcastPolicyFlag"`
 
 	// 是否开启等价路由功能。`False` 未开启，`True` 开启。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteECMPFlag *bool `json:"RouteECMPFlag,omitnil,omitempty" name:"RouteECMPFlag"`
 
 	// 是否开启路由重叠功能。`False` 未开启，`True` 开启。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteOverlapFlag *bool `json:"RouteOverlapFlag,omitnil,omitempty" name:"RouteOverlapFlag"`
 
 	// 是否开启QOS。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficMarkingPolicyFlag *bool `json:"TrafficMarkingPolicyFlag,omitnil,omitempty" name:"TrafficMarkingPolicyFlag"`
 
 	// 是否开启路由表选择策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteSelectPolicyFlag *bool `json:"RouteSelectPolicyFlag,omitnil,omitempty" name:"RouteSelectPolicyFlag"`
 
 	// 是否开启二层云联网通道。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectConnectAccelerateChannelFlag *bool `json:"DirectConnectAccelerateChannelFlag,omitnil,omitempty" name:"DirectConnectAccelerateChannelFlag"`
 
 	// 是否支持ipv6路由表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Flag *bool `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 
 	// 是否支持路由表聚合策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MrtbAggregatePolicyFlag *bool `json:"MrtbAggregatePolicyFlag,omitnil,omitempty" name:"MrtbAggregatePolicyFlag"`
 
 	// 是否支持策略值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MrtbPolicyValueFlag *bool `json:"MrtbPolicyValueFlag,omitnil,omitempty" name:"MrtbPolicyValueFlag"`
 }
 

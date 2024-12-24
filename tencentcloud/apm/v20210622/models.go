@@ -1257,12 +1257,15 @@ func (r *DescribeTagValuesResponse) FromJsonString(s string) error {
 
 type Filter struct {
 	// 过滤方式（=, !=, in）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 过滤维度名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 过滤值，in过滤方式用逗号分割多个值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

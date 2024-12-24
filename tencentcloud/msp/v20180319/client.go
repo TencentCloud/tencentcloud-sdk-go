@@ -65,6 +65,10 @@ func NewDeregisterMigrationTaskResponse() (response *DeregisterMigrationTaskResp
 }
 
 // DeregisterMigrationTask
+// 接口已经废弃不再使用
+//
+// 
+//
 // 取消注册迁移任务
 //
 // 可能返回的错误码:
@@ -75,6 +79,10 @@ func (c *Client) DeregisterMigrationTask(request *DeregisterMigrationTaskRequest
 }
 
 // DeregisterMigrationTask
+// 接口已经废弃不再使用
+//
+// 
+//
 // 取消注册迁移任务
 //
 // 可能返回的错误码:

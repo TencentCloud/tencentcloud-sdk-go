@@ -2131,6 +2131,9 @@ type RunWorkflowRequestParams struct {
 
 	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
 	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
+
+	// 工作流入口文件，不填使用默认入口文件。
+	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 }
 
 type RunWorkflowRequest struct {
@@ -2177,6 +2180,9 @@ type RunWorkflowRequest struct {
 
 	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
 	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
+
+	// 工作流入口文件，不填使用默认入口文件。
+	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 }
 
 func (r *RunWorkflowRequest) ToJsonString() string {
@@ -2203,6 +2209,7 @@ func (r *RunWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "CacheClearDelay")
 	delete(f, "WorkDir")
 	delete(f, "VolumeIds")
+	delete(f, "Entrypoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunWorkflowRequest has unknown keys!", "")
 	}

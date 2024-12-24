@@ -44,15 +44,19 @@ type AttributeKeyDetail struct {
 
 type AuditSummary struct {
 	// 跟踪集状态，1：开启，0：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditStatus *int64 `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
 	// COS存储桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
 	// 跟踪集名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditName *string `json:"AuditName,omitnil,omitempty" name:"AuditName"`
 
 	// 日志前缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogFilePrefix *string `json:"LogFilePrefix,omitnil,omitempty" name:"LogFilePrefix"`
 }
 

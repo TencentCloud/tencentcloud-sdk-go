@@ -121,6 +121,89 @@ type ApproverRestriction struct {
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 }
 
+// Predefined struct for user
+type ArchiveDynamicFlowRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同流程ID
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+type ArchiveDynamicFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同流程ID
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+func (r *ArchiveDynamicFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ArchiveDynamicFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ArchiveDynamicFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ArchiveDynamicFlowResponseParams struct {
+	// 合同流程ID
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 动态签署人的参与人信息
+	Approvers []*ChannelArchiveDynamicApproverData `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ArchiveDynamicFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *ArchiveDynamicFlowResponseParams `json:"Response"`
+}
+
+func (r *ArchiveDynamicFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ArchiveDynamicFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AuthFailMessage struct {
 	// 第三方平台子客企业的唯一标识，长度不能超过64，只能由字母和数字组成。开发者可自定义此字段的值，并需要保存此 ID 以便进行后续操作。
 	// 
@@ -297,6 +380,14 @@ type CcInfo struct {
 	// <ul><li> **0** :可查看合同内容</li>
 	// <li> **1** :可查看合同内容也可下载原文</li></ul>
 	CcPermission *int64 `json:"CcPermission,omitnil,omitempty" name:"CcPermission"`
+}
+
+type ChannelArchiveDynamicApproverData struct {
+	// 签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。	
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// 签署方角色编号，签署方角色编号是用于区分同一个流程中不同签署方的唯一标识。不同的流程会出现同样的签署方角色编号。 填写控件和签署控件都与特定的角色编号关联。	
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 }
 
 // Predefined struct for user
@@ -1576,6 +1667,70 @@ func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateDynamicFlowApproverRequestParams struct {
+	// 动态合同信息
+	FillDynamicFlowList []*DynamicFlowInfo `json:"FillDynamicFlowList,omitnil,omitempty" name:"FillDynamicFlowList"`
+
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type ChannelCreateDynamicFlowApproverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 动态合同信息
+	FillDynamicFlowList []*DynamicFlowInfo `json:"FillDynamicFlowList,omitnil,omitempty" name:"FillDynamicFlowList"`
+
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *ChannelCreateDynamicFlowApproverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateDynamicFlowApproverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FillDynamicFlowList")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateDynamicFlowApproverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateDynamicFlowApproverResponseParams struct {
+	// 动态合同补充结果列表
+	DynamicFlowResultList []*DynamicFlowResult `json:"DynamicFlowResultList,omitnil,omitempty" name:"DynamicFlowResultList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateDynamicFlowApproverResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateDynamicFlowApproverResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateDynamicFlowApproverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateDynamicFlowApproverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateEmbedWebUrlRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -2018,6 +2173,11 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 	// 注: `此参数在NeedPreview 为true时有效`
 	PreviewType *int64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
+
+	// 是否开启动态合同（动态签署人2.0）
+	// <ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
+	// <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+	OpenDynamicFlow *bool `json:"OpenDynamicFlow,omitnil,omitempty" name:"OpenDynamicFlow"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -2147,6 +2307,11 @@ type ChannelCreateFlowByFilesRequest struct {
 	// <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 	// 注: `此参数在NeedPreview 为true时有效`
 	PreviewType *int64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
+
+	// 是否开启动态合同（动态签署人2.0）
+	// <ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
+	// <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+	OpenDynamicFlow *bool `json:"OpenDynamicFlow,omitnil,omitempty" name:"OpenDynamicFlow"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -2183,6 +2348,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowDisplayType")
 	delete(f, "NeedPreview")
 	delete(f, "PreviewType")
+	delete(f, "OpenDynamicFlow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -10236,6 +10402,39 @@ type DownloadFlowInfo struct {
 
 	// 签署流程的标识数组
 	FlowIdList []*string `json:"FlowIdList,omitnil,omitempty" name:"FlowIdList"`
+}
+
+type DynamicFlowApproverResult struct {
+	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；	
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
+
+	// 签署ID - 发起流程时系统自动补充 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息	
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// 签署人状态信息
+	ApproverStatus *int64 `json:"ApproverStatus,omitnil,omitempty" name:"ApproverStatus"`
+}
+
+type DynamicFlowInfo struct {
+	// 合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil,omitempty" name:"FlowApprovers"`
+
+	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传： <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签） </li><li> **OTHER** : 通用场景</li></ul> 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`	
+	AutoSignScene *string `json:"AutoSignScene,omitnil,omitempty" name:"AutoSignScene"`
+
+	// 签署人校验方式 VerifyCheck: 人脸识别（默认） MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证） 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。	
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil,omitempty" name:"ApproverVerifyType"`
+}
+
+type DynamicFlowResult struct {
+	// 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)	
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 动态合同签署人补充结果信息列表
+	DynamicFlowApproverList []*DynamicFlowApproverResult `json:"DynamicFlowApproverList,omitnil,omitempty" name:"DynamicFlowApproverList"`
 }
 
 type EmbedUrlOption struct {
