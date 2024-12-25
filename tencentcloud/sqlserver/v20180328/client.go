@@ -1505,7 +1505,7 @@ func NewCutXEventsResponse() (response *CutXEventsResponse) {
 }
 
 // CutXEvents
-// 本接口(CutXEvents)用于手动切割阻塞日志和死锁日志。
+// 本接口（CutXEvents）用于手动切割阻塞日志和死锁日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -1519,7 +1519,7 @@ func (c *Client) CutXEvents(request *CutXEventsRequest) (response *CutXEventsRes
 }
 
 // CutXEvents
-// 本接口(CutXEvents)用于手动切割阻塞日志和死锁日志。
+// 本接口（CutXEvents）用于手动切割阻塞日志和死锁日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -2347,7 +2347,7 @@ func NewDescribeBackupFilesResponse() (response *DescribeBackupFilesResponse) {
 }
 
 // DescribeBackupFiles
-// 本接口(DescribeBackupFiles)用于查询单库备份明细
+// 本接口（DescribeBackupFiles）用于查询单库备份明细。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2366,7 +2366,7 @@ func (c *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (respo
 }
 
 // DescribeBackupFiles
-// 本接口(DescribeBackupFiles)用于查询单库备份明细
+// 本接口（DescribeBackupFiles）用于查询单库备份明细。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

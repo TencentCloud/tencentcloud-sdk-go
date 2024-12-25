@@ -4778,7 +4778,7 @@ func (r *DescribeProductInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProductInfoResponseParams struct {
-	// 地域售卖信息。
+	// 地域售卖信息。即使指定具体地域，也返回所有地域的售卖信息。
 	RegionSet []*RegionConf `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

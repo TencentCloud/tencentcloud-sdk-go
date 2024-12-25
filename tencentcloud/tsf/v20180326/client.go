@@ -12355,6 +12355,10 @@ func NewReassociateBusinessLogConfigResponse() (response *ReassociateBusinessLog
 }
 
 // ReassociateBusinessLogConfig
+// 后端服务已经删除这个接口,  API 接口下线处理
+//
+// 
+//
 // 重关联业务日志配置
 //
 // 可能返回的错误码:
@@ -12364,6 +12368,10 @@ func (c *Client) ReassociateBusinessLogConfig(request *ReassociateBusinessLogCon
 }
 
 // ReassociateBusinessLogConfig
+// 后端服务已经删除这个接口,  API 接口下线处理
+//
+// 
+//
 // 重关联业务日志配置
 //
 // 可能返回的错误码:

@@ -8097,6 +8097,57 @@ func (c *Client) ResetRocketMQConsumerOffSetWithContext(ctx context.Context, req
     return
 }
 
+func NewRetryRocketMQDlqMessageRequest() (request *RetryRocketMQDlqMessageRequest) {
+    request = &RetryRocketMQDlqMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "RetryRocketMQDlqMessage")
+    
+    
+    return
+}
+
+func NewRetryRocketMQDlqMessageResponse() (response *RetryRocketMQDlqMessageResponse) {
+    response = &RetryRocketMQDlqMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RetryRocketMQDlqMessage
+// 重发RocketMQ死信消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) RetryRocketMQDlqMessage(request *RetryRocketMQDlqMessageRequest) (response *RetryRocketMQDlqMessageResponse, err error) {
+    return c.RetryRocketMQDlqMessageWithContext(context.Background(), request)
+}
+
+// RetryRocketMQDlqMessage
+// 重发RocketMQ死信消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) RetryRocketMQDlqMessageWithContext(ctx context.Context, request *RetryRocketMQDlqMessageRequest) (response *RetryRocketMQDlqMessageResponse, err error) {
+    if request == nil {
+        request = NewRetryRocketMQDlqMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryRocketMQDlqMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRetryRocketMQDlqMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRewindCmqQueueRequest() (request *RewindCmqQueueRequest) {
     request = &RewindCmqQueueRequest{
         BaseRequest: &tchttp.BaseRequest{},

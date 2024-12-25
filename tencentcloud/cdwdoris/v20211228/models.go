@@ -5338,21 +5338,33 @@ type RecoverBackUpJobRequestParams struct {
 	ReserveSourceConfig *int64 `json:"ReserveSourceConfig,omitnil,omitempty" name:"ReserveSourceConfig"`
 
 	// 0默认 1cos恢复
+	//
+	// Deprecated: RecoverType is deprecated.
 	RecoverType *int64 `json:"RecoverType,omitnil,omitempty" name:"RecoverType"`
 
 	// CosSourceInfo对象
+	//
+	// Deprecated: CosSourceInfo is deprecated.
 	CosSourceInfo *CosSourceInfo `json:"CosSourceInfo,omitnil,omitempty" name:"CosSourceInfo"`
 
 	// 0默认 1定期执行
+	//
+	// Deprecated: ScheduleType is deprecated.
 	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 
 	// 年-月-日 时:分:秒
+	//
+	// Deprecated: NextTime is deprecated.
 	NextTime *string `json:"NextTime,omitnil,omitempty" name:"NextTime"`
 
 	// 调度名称
+	//
+	// Deprecated: ScheduleName is deprecated.
 	ScheduleName *string `json:"ScheduleName,omitnil,omitempty" name:"ScheduleName"`
 
 	// create update
+	//
+	// Deprecated: OperationType is deprecated.
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
 	// 恢复粒度：All全量、Database按库、Table按表
@@ -5360,6 +5372,11 @@ type RecoverBackUpJobRequestParams struct {
 
 	// 恢复库：如果是按库备份，则需要该字段，库之间用","分割
 	RecoverDatabase *string `json:"RecoverDatabase,omitnil,omitempty" name:"RecoverDatabase"`
+
+	// 1:恢复后，不保留降冷策略，数据变为热数据；
+	// 2:恢复后，沿用备份表的降冷策略；
+	// 0:默认值，该版本没有这个配置（2.1版本2.1.8之前；2.0版本2.0.16之前）
+	ReserveStoragePolicy *int64 `json:"ReserveStoragePolicy,omitnil,omitempty" name:"ReserveStoragePolicy"`
 }
 
 type RecoverBackUpJobRequest struct {
@@ -5400,6 +5417,11 @@ type RecoverBackUpJobRequest struct {
 
 	// 恢复库：如果是按库备份，则需要该字段，库之间用","分割
 	RecoverDatabase *string `json:"RecoverDatabase,omitnil,omitempty" name:"RecoverDatabase"`
+
+	// 1:恢复后，不保留降冷策略，数据变为热数据；
+	// 2:恢复后，沿用备份表的降冷策略；
+	// 0:默认值，该版本没有这个配置（2.1版本2.1.8之前；2.0版本2.0.16之前）
+	ReserveStoragePolicy *int64 `json:"ReserveStoragePolicy,omitnil,omitempty" name:"ReserveStoragePolicy"`
 }
 
 func (r *RecoverBackUpJobRequest) ToJsonString() string {
@@ -5426,6 +5448,7 @@ func (r *RecoverBackUpJobRequest) FromJsonString(s string) error {
 	delete(f, "OperationType")
 	delete(f, "RecoverScope")
 	delete(f, "RecoverDatabase")
+	delete(f, "ReserveStoragePolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecoverBackUpJobRequest has unknown keys!", "")
 	}

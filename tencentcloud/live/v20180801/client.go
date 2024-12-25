@@ -13783,7 +13783,7 @@ func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigRespon
 }
 
 // ModifyPullStreamConfig
-// 更新拉流配置。该接口为已下线接口，请使用新接口 ModifyLivePullStreamTask。 
+// 更新拉流配置。该接口为已下线接口，请使用新接口 ModifyLivePullStreamTask。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
@@ -13804,7 +13804,7 @@ func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) 
 }
 
 // ModifyPullStreamConfig
-// 更新拉流配置。该接口为已下线接口，请使用新接口 ModifyLivePullStreamTask。 
+// 更新拉流配置。该接口为已下线接口，请使用新接口 ModifyLivePullStreamTask。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"

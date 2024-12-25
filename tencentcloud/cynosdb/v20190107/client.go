@@ -65,7 +65,7 @@ func NewActivateInstanceResponse() (response *ActivateInstanceResponse) {
 }
 
 // ActivateInstance
-// 本接口(ActivateInstance)用于恢复已隔离的实例访问。
+// 本接口（ActivateInstance）用于恢复已隔离的实例访问。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -85,7 +85,7 @@ func (c *Client) ActivateInstance(request *ActivateInstanceRequest) (response *A
 }
 
 // ActivateInstance
-// 本接口(ActivateInstance)用于恢复已隔离的实例访问。
+// 本接口（ActivateInstance）用于恢复已隔离的实例访问。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -587,7 +587,7 @@ func NewCloseProxyEndPointResponse() (response *CloseProxyEndPointResponse) {
 }
 
 // CloseProxyEndPoint
-// 关闭数据库代理连接地址
+// 本接口（CloseProxyEndPoint）用于关闭数据库代理连接地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -604,7 +604,7 @@ func (c *Client) CloseProxyEndPoint(request *CloseProxyEndPointRequest) (respons
 }
 
 // CloseProxyEndPoint
-// 关闭数据库代理连接地址
+// 本接口（CloseProxyEndPoint）用于关闭数据库代理连接地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2451,7 +2451,7 @@ func NewDescribeAuditRuleWithInstanceIdsResponse() (response *DescribeAuditRuleW
 }
 
 // DescribeAuditRuleWithInstanceIds
-// 获取实例的审计规则
+// 本接口（DescribeAuditRuleWithInstanceIds）用于获取实例的审计规则。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -2460,7 +2460,7 @@ func (c *Client) DescribeAuditRuleWithInstanceIds(request *DescribeAuditRuleWith
 }
 
 // DescribeAuditRuleWithInstanceIds
-// 获取实例的审计规则
+// 本接口（DescribeAuditRuleWithInstanceIds）用于获取实例的审计规则。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -4346,7 +4346,7 @@ func NewDescribeInstancesWithinSameClusterResponse() (response *DescribeInstance
 }
 
 // DescribeInstancesWithinSameCluster
-// 本接口(DescribeInstancesWithinSameCluster)用于查询同一集群下实例列表
+// 本接口（DescribeInstancesWithinSameCluster）用于查询同一集群下实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -4361,7 +4361,7 @@ func (c *Client) DescribeInstancesWithinSameCluster(request *DescribeInstancesWi
 }
 
 // DescribeInstancesWithinSameCluster
-// 本接口(DescribeInstancesWithinSameCluster)用于查询同一集群下实例列表
+// 本接口（DescribeInstancesWithinSameCluster）用于查询同一集群下实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -7131,6 +7131,7 @@ func NewModifyClusterSlaveZoneResponse() (response *ModifyClusterSlaveZoneRespon
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_PAUSEDSLSNOTALLOWMODIFYSLAVE = "OperationDenied.PausedSlsNotAllowModifySlave"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyClusterSlaveZone(request *ModifyClusterSlaveZoneRequest) (response *ModifyClusterSlaveZoneResponse, err error) {
@@ -7144,6 +7145,7 @@ func (c *Client) ModifyClusterSlaveZone(request *ModifyClusterSlaveZoneRequest) 
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_PAUSEDSLSNOTALLOWMODIFYSLAVE = "OperationDenied.PausedSlsNotAllowModifySlave"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyClusterSlaveZoneWithContext(ctx context.Context, request *ModifyClusterSlaveZoneRequest) (response *ModifyClusterSlaveZoneResponse, err error) {
@@ -7383,6 +7385,7 @@ func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -7398,6 +7401,7 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"

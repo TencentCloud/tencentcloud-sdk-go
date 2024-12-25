@@ -2901,6 +2901,279 @@ func (r *DescribeMQTTUserListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMessageListRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 一次查询标识
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消息 ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 消息 Key
+	MsgKey *string `json:"MsgKey,omitnil,omitempty" name:"MsgKey"`
+
+	// 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+	RecentMessageNum *int64 `json:"RecentMessageNum,omitnil,omitempty" name:"RecentMessageNum"`
+
+	// 是否查询死信消息
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 消息 Tag
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+}
+
+type DescribeMessageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 一次查询标识
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消息 ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 消息 Key
+	MsgKey *string `json:"MsgKey,omitnil,omitempty" name:"MsgKey"`
+
+	// 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+	RecentMessageNum *int64 `json:"RecentMessageNum,omitnil,omitempty" name:"RecentMessageNum"`
+
+	// 是否查询死信消息
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 消息 Tag
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+}
+
+func (r *DescribeMessageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskRequestId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ConsumerGroup")
+	delete(f, "MsgId")
+	delete(f, "MsgKey")
+	delete(f, "RecentMessageNum")
+	delete(f, "QueryDeadLetterMessage")
+	delete(f, "Tag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 消息记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*MessageItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 一次查询ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMessageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMessageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMessageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否是死信消息
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 是否是延时消息
+	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
+}
+
+type DescribeMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否是死信消息
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
+
+	// 是否是延时消息
+	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
+}
+
+func (r *DescribeMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "MsgId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "QueryDeadLetterMessage")
+	delete(f, "QueryDelayMessage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageResponseParams struct {
+	// 消息体
+	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 详情参数
+	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 生产时间
+	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
+
+	// 消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 生产者地址
+	ProducerAddr *string `json:"ProducerAddr,omitnil,omitempty" name:"ProducerAddr"`
+
+	// 消息消费情况列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageTracks []*MessageTrackItem `json:"MessageTracks,omitnil,omitempty" name:"MessageTracks"`
+
+	// Topic
+	ShowTopicName *string `json:"ShowTopicName,omitnil,omitempty" name:"ShowTopicName"`
+
+	// 消息消费情况列表总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageTracksCount *int64 `json:"MessageTracksCount,omitnil,omitempty" name:"MessageTracksCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMessageResponseParams `json:"Response"`
+}
+
+func (r *DescribeMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMessageTraceRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3931,6 +4204,36 @@ type MQTTUserItem struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 }
 
+type MessageItem struct {
+	// 消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 消息tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 消息key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys *string `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// 客户端地址	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerAddr *string `json:"ProducerAddr,omitnil,omitempty" name:"ProducerAddr"`
+
+	// 消息发送时间	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
+
+	// 死信重发次数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterResendTimes *int64 `json:"DeadLetterResendTimes,omitnil,omitempty" name:"DeadLetterResendTimes"`
+
+	// 死信重发成功次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterResendSuccessTimes *int64 `json:"DeadLetterResendSuccessTimes,omitnil,omitempty" name:"DeadLetterResendSuccessTimes"`
+}
+
 type MessageTraceItem struct {
 	// 步骤
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3939,6 +4242,21 @@ type MessageTraceItem struct {
 	// 轨迹详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type MessageTrackItem struct {
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费状态, CONSUMED: 已消费 CONSUMED_BUT_FILTERED: 已过滤 NOT_CONSUME: 未消费 ENTER_RETRY: 进入重试队列 ENTER_DLQ: 进入死信队列 UNKNOWN: 查询不到消费状态
+	ConsumeStatus *string `json:"ConsumeStatus,omitnil,omitempty" name:"ConsumeStatus"`
+
+	// track类型
+	TrackType *string `json:"TrackType,omitnil,omitempty" name:"TrackType"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExceptionDesc *string `json:"ExceptionDesc,omitnil,omitempty" name:"ExceptionDesc"`
 }
 
 // Predefined struct for user
@@ -4756,6 +5074,78 @@ type PublicAccessRule struct {
 	// 备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+// Predefined struct for user
+type ResendDeadLetterMessageRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 死信消息ID列表
+	MessageIds []*string `json:"MessageIds,omitnil,omitempty" name:"MessageIds"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+}
+
+type ResendDeadLetterMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 死信消息ID列表
+	MessageIds []*string `json:"MessageIds,omitnil,omitempty" name:"MessageIds"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+}
+
+func (r *ResendDeadLetterMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResendDeadLetterMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MessageIds")
+	delete(f, "ConsumerGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResendDeadLetterMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResendDeadLetterMessageResponseParams struct {
+	// 重发消息结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResendResult *bool `json:"ResendResult,omitnil,omitempty" name:"ResendResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResendDeadLetterMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *ResendDeadLetterMessageResponseParams `json:"Response"`
+}
+
+func (r *ResendDeadLetterMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResendDeadLetterMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RoleItem struct {

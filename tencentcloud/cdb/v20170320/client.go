@@ -238,7 +238,7 @@ func NewAnalyzeAuditLogsResponse() (response *AnalyzeAuditLogsResponse) {
 }
 
 // AnalyzeAuditLogs
-// 在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
+// 本接口（AnalyzeAuditLogs）用于在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -250,7 +250,7 @@ func (c *Client) AnalyzeAuditLogs(request *AnalyzeAuditLogsRequest) (response *A
 }
 
 // AnalyzeAuditLogs
-// 在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
+// 本接口（AnalyzeAuditLogs）用于在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -1153,7 +1153,7 @@ func NewCreateAuditRuleTemplateResponse() (response *CreateAuditRuleTemplateResp
 }
 
 // CreateAuditRuleTemplate
-// 创建审计规则模板
+// 本接口（CreateAuditRuleTemplate）用于创建审计规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -1163,7 +1163,7 @@ func (c *Client) CreateAuditRuleTemplate(request *CreateAuditRuleTemplateRequest
 }
 
 // CreateAuditRuleTemplate
-// 创建审计规则模板
+// 本接口（CreateAuditRuleTemplate）用于创建审计规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -1204,12 +1204,14 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 }
 
 // CreateBackup
-// 本接口(CreateBackup)用于创建数据库备份。
+// 本接口（CreateBackup）用于创建数据库备份。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  FAILEDOPERATION_TASKCONFLICTERROR = "FailedOperation.TaskConflictError"
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
@@ -1230,12 +1232,14 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 }
 
 // CreateBackup
-// 本接口(CreateBackup)用于创建数据库备份。
+// 本接口（CreateBackup）用于创建数据库备份。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  FAILEDOPERATION_TASKCONFLICTERROR = "FailedOperation.TaskConflictError"
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
@@ -1342,7 +1346,7 @@ func NewCreateCdbProxyAddressResponse() (response *CreateCdbProxyAddressResponse
 }
 
 // CreateCdbProxyAddress
-// 数据库代理增加代理地址
+// 本接口（CreateCdbProxyAddress）用于数据库代理增加代理地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -1357,7 +1361,7 @@ func (c *Client) CreateCdbProxyAddress(request *CreateCdbProxyAddressRequest) (r
 }
 
 // CreateCdbProxyAddress
-// 数据库代理增加代理地址
+// 本接口（CreateCdbProxyAddress）用于数据库代理增加代理地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -1403,7 +1407,7 @@ func NewCreateCloneInstanceResponse() (response *CreateCloneInstanceResponse) {
 }
 
 // CreateCloneInstance
-// 本接口(CreateCloneInstance) 用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
+// 本接口（CreateCloneInstance）用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -1424,7 +1428,7 @@ func (c *Client) CreateCloneInstance(request *CreateCloneInstanceRequest) (respo
 }
 
 // CreateCloneInstance
-// 本接口(CreateCloneInstance) 用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
+// 本接口（CreateCloneInstance）用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -1476,9 +1480,7 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 }
 
 // CreateDBImportJob
-// 本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
-//
-// 
+// 本接口（CreateDBImportJob）用于创建云数据库数据导入任务。
 //
 // 注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户须在控制台进行文件导入。
 //
@@ -1503,9 +1505,7 @@ func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response 
 }
 
 // CreateDBImportJob
-// 本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
-//
-// 
+// 本接口（CreateDBImportJob）用于创建云数据库数据导入任务。
 //
 // 注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户须在控制台进行文件导入。
 //
@@ -1917,7 +1917,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数Region均为ap-guangzhou。
+// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数 Region 均为 ap-guangzhou。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1934,7 +1934,7 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
 }
 
 // CreateParamTemplate
-// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数Region均为ap-guangzhou。
+// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数 Region 均为 ap-guangzhou。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2063,7 +2063,7 @@ func NewCreateRotationPasswordResponse() (response *CreateRotationPasswordRespon
 }
 
 // CreateRotationPassword
-// 开启密码轮转
+// 本接口（CreateRotationPassword）用于开启密码轮转。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -2088,7 +2088,7 @@ func (c *Client) CreateRotationPassword(request *CreateRotationPasswordRequest) 
 }
 
 // CreateRotationPassword
-// 开启密码轮转
+// 本接口（CreateRotationPassword）用于开启密码轮转。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -2144,7 +2144,7 @@ func NewDeleteAccountsResponse() (response *DeleteAccountsResponse) {
 }
 
 // DeleteAccounts
-// 本接口(DeleteAccounts)用于删除云数据库的账户。
+// 本接口（DeleteAccounts）用于删除云数据库的账户。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
@@ -2182,7 +2182,7 @@ func (c *Client) DeleteAccounts(request *DeleteAccountsRequest) (response *Delet
 }
 
 // DeleteAccounts
-// 本接口(DeleteAccounts)用于删除云数据库的账户。
+// 本接口（DeleteAccounts）用于删除云数据库的账户。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
@@ -2710,7 +2710,7 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
 }
 
 // DeleteParamTemplate
-// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数Region均为ap-guangzhou。
+// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数 Region 均为 ap-guangzhou。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2722,7 +2722,7 @@ func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (respo
 }
 
 // DeleteParamTemplate
-// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数Region均为ap-guangzhou。
+// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数 Region 均为 ap-guangzhou。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2765,7 +2765,7 @@ func NewDeleteRotationPasswordResponse() (response *DeleteRotationPasswordRespon
 }
 
 // DeleteRotationPassword
-// 关闭实例账户密码轮转
+// 本接口（DeleteRotationPassword）用于关闭实例账户密码轮转。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2777,7 +2777,7 @@ func (c *Client) DeleteRotationPassword(request *DeleteRotationPasswordRequest) 
 }
 
 // DeleteRotationPassword
-// 关闭实例账户密码轮转
+// 本接口（DeleteRotationPassword）用于关闭实例账户密码轮转。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2988,7 +2988,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 }
 
 // DescribeAccounts
-// 本接口(DescribeAccounts)用于查询云数据库的所有账户信息。
+// 本接口（DescribeAccounts）用于查询云数据库的所有账户信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
@@ -3028,7 +3028,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
@@ -3036,7 +3036,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 }
 
 // DescribeAccounts
-// 本接口(DescribeAccounts)用于查询云数据库的所有账户信息。
+// 本接口（DescribeAccounts）用于查询云数据库的所有账户信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
@@ -3076,7 +3076,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 //  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
@@ -3237,7 +3237,7 @@ func NewDescribeAuditInstanceListResponse() (response *DescribeAuditInstanceList
 }
 
 // DescribeAuditInstanceList
-// 获取审计实例列表
+// 本接口（DescribeAuditInstanceList）用于获取审计实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
@@ -3252,7 +3252,7 @@ func (c *Client) DescribeAuditInstanceList(request *DescribeAuditInstanceListReq
 }
 
 // DescribeAuditInstanceList
-// 获取审计实例列表
+// 本接口（DescribeAuditInstanceList）用于获取审计实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
@@ -3298,7 +3298,7 @@ func NewDescribeAuditLogFilesResponse() (response *DescribeAuditLogFilesResponse
 }
 
 // DescribeAuditLogFiles
-// 本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+// 本接口（DescribeAuditLogFiles）用于查询云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -3311,7 +3311,7 @@ func (c *Client) DescribeAuditLogFiles(request *DescribeAuditLogFilesRequest) (r
 }
 
 // DescribeAuditLogFiles
-// 本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+// 本接口（DescribeAuditLogFiles）用于查询云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -3436,7 +3436,7 @@ func NewDescribeAuditPoliciesResponse() (response *DescribeAuditPoliciesResponse
 }
 
 // DescribeAuditPolicies
-// 本接口(DescribeAuditPolicies)用于查询云数据库实例的审计策略。
+// 本接口（DescribeAuditPolicies）用于查询云数据库实例的审计策略。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -3453,7 +3453,7 @@ func (c *Client) DescribeAuditPolicies(request *DescribeAuditPoliciesRequest) (r
 }
 
 // DescribeAuditPolicies
-// 本接口(DescribeAuditPolicies)用于查询云数据库实例的审计策略。
+// 本接口（DescribeAuditPolicies）用于查询云数据库实例的审计策略。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -3501,7 +3501,7 @@ func NewDescribeAuditRuleTemplateModifyHistoryResponse() (response *DescribeAudi
 }
 
 // DescribeAuditRuleTemplateModifyHistory
-// 查询规则模板变更记录
+// 本接口（DescribeAuditRuleTemplateModifyHistory）用于查询规则模板变更记录。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -3510,7 +3510,7 @@ func (c *Client) DescribeAuditRuleTemplateModifyHistory(request *DescribeAuditRu
 }
 
 // DescribeAuditRuleTemplateModifyHistory
-// 查询规则模板变更记录
+// 本接口（DescribeAuditRuleTemplateModifyHistory）用于查询规则模板变更记录。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -3550,7 +3550,7 @@ func NewDescribeAuditRuleTemplatesResponse() (response *DescribeAuditRuleTemplat
 }
 
 // DescribeAuditRuleTemplates
-// 查询审计规则模板信息
+// 本接口（DescribeAuditRuleTemplates）用于查询审计规则模板信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
@@ -3560,7 +3560,7 @@ func (c *Client) DescribeAuditRuleTemplates(request *DescribeAuditRuleTemplatesR
 }
 
 // DescribeAuditRuleTemplates
-// 查询审计规则模板信息
+// 本接口（DescribeAuditRuleTemplates）用于查询审计规则模板信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
@@ -3733,7 +3733,7 @@ func NewDescribeBackupDecryptionKeyResponse() (response *DescribeBackupDecryptio
 }
 
 // DescribeBackupDecryptionKey
-// 本接口(DescribeBackupDecryptionKey)用于查询备份文件解密密钥。
+// 本接口（DescribeBackupDecryptionKey）用于查询备份文件解密密钥。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -3744,7 +3744,7 @@ func (c *Client) DescribeBackupDecryptionKey(request *DescribeBackupDecryptionKe
 }
 
 // DescribeBackupDecryptionKey
-// 本接口(DescribeBackupDecryptionKey)用于查询备份文件解密密钥。
+// 本接口（DescribeBackupDecryptionKey）用于查询备份文件解密密钥。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -4221,7 +4221,7 @@ func NewDescribeCdbProxyInfoResponse() (response *DescribeCdbProxyInfoResponse) 
 }
 
 // DescribeCdbProxyInfo
-// 查询数据库代理详情信息
+// 本接口（DescribeCdbProxyInfo）用于查询数据库代理详情信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -4234,7 +4234,7 @@ func (c *Client) DescribeCdbProxyInfo(request *DescribeCdbProxyInfoRequest) (res
 }
 
 // DescribeCdbProxyInfo
-// 查询数据库代理详情信息
+// 本接口（DescribeCdbProxyInfo）用于查询数据库代理详情信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -4335,7 +4335,7 @@ func NewDescribeCloneListResponse() (response *DescribeCloneListResponse) {
 }
 
 // DescribeCloneList
-// 本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
+// 本接口（DescribeCloneList）用于查询用户实例的克隆任务列表。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -4346,7 +4346,7 @@ func (c *Client) DescribeCloneList(request *DescribeCloneListRequest) (response 
 }
 
 // DescribeCloneList
-// 本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
+// 本接口（DescribeCloneList）用于查询用户实例的克隆任务列表。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -6701,7 +6701,7 @@ func NewDescribeSlowLogDataResponse() (response *DescribeSlowLogDataResponse) {
 }
 
 // DescribeSlowLogData
-// 条件检索实例的慢日志。只允许查看一个月之内的慢日志。
+// 本接口（DescribeSlowLogData）用于使用条件检索实例的慢日志。只允许查看一个月之内的慢日志。
 //
 // 使用时需要注意：可能存在单条慢日志太大，导致整个http请求的回包太大，进而引发接口超时。一旦发生超时，建议您缩小查询时的Limit参数值，从而降低包的大小，让接口能够及时返回内容。
 //
@@ -6727,7 +6727,7 @@ func (c *Client) DescribeSlowLogData(request *DescribeSlowLogDataRequest) (respo
 }
 
 // DescribeSlowLogData
-// 条件检索实例的慢日志。只允许查看一个月之内的慢日志。
+// 本接口（DescribeSlowLogData）用于使用条件检索实例的慢日志。只允许查看一个月之内的慢日志。
 //
 // 使用时需要注意：可能存在单条慢日志太大，导致整个http请求的回包太大，进而引发接口超时。一旦发生超时，建议您缩小查询时的Limit参数值，从而降低包的大小，让接口能够及时返回内容。
 //
@@ -9101,7 +9101,7 @@ func NewModifyInstancePasswordComplexityResponse() (response *ModifyInstancePass
 }
 
 // ModifyInstancePasswordComplexity
-// 本接口(ModifyInstancePasswordComplexity)用于修改云数据库实例的密码复杂度。
+// 本接口（ModifyInstancePasswordComplexity）用于修改云数据库实例的密码复杂度。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -9126,7 +9126,7 @@ func (c *Client) ModifyInstancePasswordComplexity(request *ModifyInstancePasswor
 }
 
 // ModifyInstancePasswordComplexity
-// 本接口(ModifyInstancePasswordComplexity)用于修改云数据库实例的密码复杂度。
+// 本接口（ModifyInstancePasswordComplexity）用于修改云数据库实例的密码复杂度。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

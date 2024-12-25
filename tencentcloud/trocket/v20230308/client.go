@@ -1889,6 +1889,106 @@ func (c *Client) DescribeMQTTUserListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMessageRequest() (request *DescribeMessageRequest) {
+    request = &DescribeMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMessage")
+    
+    
+    return
+}
+
+func NewDescribeMessageResponse() (response *DescribeMessageResponse) {
+    response = &DescribeMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessage
+// 查询消息详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMessage(request *DescribeMessageRequest) (response *DescribeMessageResponse, err error) {
+    return c.DescribeMessageWithContext(context.Background(), request)
+}
+
+// DescribeMessage
+// 查询消息详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMessageWithContext(ctx context.Context, request *DescribeMessageRequest) (response *DescribeMessageResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMessageListRequest() (request *DescribeMessageListRequest) {
+    request = &DescribeMessageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMessageList")
+    
+    
+    return
+}
+
+func NewDescribeMessageListResponse() (response *DescribeMessageListResponse) {
+    response = &DescribeMessageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessageList
+// 查询消息列表。如果查询死信消息，请设置ConsumerGroup参数。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageList(request *DescribeMessageListRequest) (response *DescribeMessageListResponse, err error) {
+    return c.DescribeMessageListWithContext(context.Background(), request)
+}
+
+// DescribeMessageList
+// 查询消息列表。如果查询死信消息，请设置ConsumerGroup参数。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageListWithContext(ctx context.Context, request *DescribeMessageListRequest) (response *DescribeMessageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMessageTraceRequest() (request *DescribeMessageTraceRequest) {
     request = &DescribeMessageTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2729,6 +2829,55 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     request.SetContext(ctx)
     
     response = NewModifyTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResendDeadLetterMessageRequest() (request *ResendDeadLetterMessageRequest) {
+    request = &ResendDeadLetterMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ResendDeadLetterMessage")
+    
+    
+    return
+}
+
+func NewResendDeadLetterMessageResponse() (response *ResendDeadLetterMessageResponse) {
+    response = &ResendDeadLetterMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResendDeadLetterMessage
+// 重新发送死信消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ResendDeadLetterMessage(request *ResendDeadLetterMessageRequest) (response *ResendDeadLetterMessageResponse, err error) {
+    return c.ResendDeadLetterMessageWithContext(context.Background(), request)
+}
+
+// ResendDeadLetterMessage
+// 重新发送死信消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ResendDeadLetterMessageWithContext(ctx context.Context, request *ResendDeadLetterMessageRequest) (response *ResendDeadLetterMessageResponse, err error) {
+    if request == nil {
+        request = NewResendDeadLetterMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResendDeadLetterMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResendDeadLetterMessageResponse()
     err = c.Send(request, response)
     return
 }

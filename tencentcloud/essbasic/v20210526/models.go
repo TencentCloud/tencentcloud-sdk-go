@@ -1265,6 +1265,13 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
 	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
+
+	// 签署完成后，如需“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。
+	// 
+	// 在用户点击“返回应用”按钮之后，会返回到公众号 H5。 此时，公众号 H5 可以处理页面的 [visibilitychange](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) 事件 与 [visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) 属性 来判断已经返回到当前页面。再通过电子签后台接口查询合同的签署状态，继续自己的业务流程。
+	// 
+	// 参考 [微信网页开发-开放标签跳转小程序](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html#%E5%BC%80%E6%94%BE%E6%A0%87%E7%AD%BE) 或 [自有 H5 跳转电子签小程序](https://test.qian.tencent.cn/developers/company/openwxminiprogram/#4%E8%87%AA%E6%9C%89-h5-%E8%B7%B3%E8%BD%AC%E7%94%B5%E5%AD%90%E7%AD%BE%E5%B0%8F%E7%A8%8B%E5%BA%8F)。
+	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 }
 
 type ChannelCreateBatchSignUrlRequest struct {
@@ -1365,6 +1372,13 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
 	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
+
+	// 签署完成后，如需“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。
+	// 
+	// 在用户点击“返回应用”按钮之后，会返回到公众号 H5。 此时，公众号 H5 可以处理页面的 [visibilitychange](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) 事件 与 [visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) 属性 来判断已经返回到当前页面。再通过电子签后台接口查询合同的签署状态，继续自己的业务流程。
+	// 
+	// 参考 [微信网页开发-开放标签跳转小程序](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html#%E5%BC%80%E6%94%BE%E6%A0%87%E7%AD%BE) 或 [自有 H5 跳转电子签小程序](https://test.qian.tencent.cn/developers/company/openwxminiprogram/#4%E8%87%AA%E6%9C%89-h5-%E8%B7%B3%E8%BD%AC%E7%94%B5%E5%AD%90%E7%AD%BE%E5%B0%8F%E7%A8%8B%E5%BA%8F)。
+	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 }
 
 func (r *ChannelCreateBatchSignUrlRequest) ToJsonString() string {
@@ -1393,6 +1407,7 @@ func (r *ChannelCreateBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "OrganizationOpenId")
 	delete(f, "AutoJumpBack")
+	delete(f, "UrlUseEnv")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -8858,6 +8873,14 @@ type CreateSignUrlsRequestParams struct {
 
 	// 合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
 	FlowGroupUrlInfo *FlowGroupUrlInfo `json:"FlowGroupUrlInfo,omitnil,omitempty" name:"FlowGroupUrlInfo"`
+
+	// 签署完成后，如需“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。
+	// 
+	// 在用户点击“返回应用”按钮之后，会返回到公众号 H5。 此时，公众号 H5 可以处理页面的 [visibilitychange](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) 事件 与 [visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) 属性 来判断已经返回到当前页面。再通过电子签后台接口查询合同的签署状态，继续自己的业务流程。
+	// 
+	// 参考 [微信网页开发-开放标签跳转小程序](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html#%E5%BC%80%E6%94%BE%E6%A0%87%E7%AD%BE) 或 [自有 H5 跳转电子签小程序](https://test.qian.tencent.cn/developers/company/openwxminiprogram/#4%E8%87%AA%E6%9C%89-h5-%E8%B7%B3%E8%BD%AC%E7%94%B5%E5%AD%90%E7%AD%BE%E5%B0%8F%E7%A8%8B%E5%BA%8F)。
+	// 
+	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -8970,6 +8993,14 @@ type CreateSignUrlsRequest struct {
 
 	// 合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
 	FlowGroupUrlInfo *FlowGroupUrlInfo `json:"FlowGroupUrlInfo,omitnil,omitempty" name:"FlowGroupUrlInfo"`
+
+	// 签署完成后，如需“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。
+	// 
+	// 在用户点击“返回应用”按钮之后，会返回到公众号 H5。 此时，公众号 H5 可以处理页面的 [visibilitychange](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) 事件 与 [visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) 属性 来判断已经返回到当前页面。再通过电子签后台接口查询合同的签署状态，继续自己的业务流程。
+	// 
+	// 参考 [微信网页开发-开放标签跳转小程序](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html#%E5%BC%80%E6%94%BE%E6%A0%87%E7%AD%BE) 或 [自有 H5 跳转电子签小程序](https://test.qian.tencent.cn/developers/company/openwxminiprogram/#4%E8%87%AA%E6%9C%89-h5-%E8%B7%B3%E8%BD%AC%E7%94%B5%E5%AD%90%E7%AD%BE%E5%B0%8F%E7%A8%8B%E5%BA%8F)。
+	// 
+	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -9002,6 +9033,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "Hides")
 	delete(f, "RecipientIds")
 	delete(f, "FlowGroupUrlInfo")
+	delete(f, "UrlUseEnv")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}

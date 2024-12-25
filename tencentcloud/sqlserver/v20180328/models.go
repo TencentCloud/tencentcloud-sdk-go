@@ -1390,6 +1390,12 @@ type CreateCloudDBInstancesRequestParams struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
+
+	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type CreateCloudDBInstancesRequest struct {
@@ -1463,6 +1469,12 @@ type CreateCloudDBInstancesRequest struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
+
+	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *CreateCloudDBInstancesRequest) ToJsonString() string {
@@ -1500,6 +1512,8 @@ func (r *CreateCloudDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "Collation")
 	delete(f, "TimeZone")
+	delete(f, "MultiNodes")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudDBInstancesRequest has unknown keys!", "")
 	}
@@ -1816,6 +1830,12 @@ type CreateDBInstancesRequestParams struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
+
+	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type CreateDBInstancesRequest struct {
@@ -1886,6 +1906,12 @@ type CreateDBInstancesRequest struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
+
+	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -1922,6 +1948,8 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "Collation")
 	delete(f, "TimeZone")
+	delete(f, "MultiNodes")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -6379,7 +6407,7 @@ type DescribeInquiryPriceParameterRequestParams struct {
 	// 实例容量大小，单位：GB。
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读
+	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 计费类型，取值支持 PREPAID，POSTPAID。
@@ -6400,6 +6428,9 @@ type DescribeInquiryPriceParameterRequestParams struct {
 	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-云服务器高性能云盘，CLOUD_SSD-云服务器SSD云盘,
 	// CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type DescribeInquiryPriceParameterRequest struct {
@@ -6414,7 +6445,7 @@ type DescribeInquiryPriceParameterRequest struct {
 	// 实例容量大小，单位：GB。
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读
+	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 计费类型，取值支持 PREPAID，POSTPAID。
@@ -6435,6 +6466,9 @@ type DescribeInquiryPriceParameterRequest struct {
 	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-云服务器高性能云盘，CLOUD_SSD-云服务器SSD云盘,
 	// CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *DescribeInquiryPriceParameterRequest) ToJsonString() string {
@@ -6459,6 +6493,7 @@ func (r *DescribeInquiryPriceParameterRequest) FromJsonString(s string) error {
 	delete(f, "GoodsNum")
 	delete(f, "DBVersion")
 	delete(f, "MachineType")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInquiryPriceParameterRequest has unknown keys!", "")
 	}
@@ -10760,6 +10795,15 @@ type ModifyDBInstanceSSLRequestParams struct {
 
 	// 操作设置。0-立即执行，1- 维护时间内执行，默认取值0。
 	WaitSwitch *uint64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
+
+	// 是否被KMS加密保护，0-表示否，1表示被KMS保护，默认取值0
+	IsKMS *int64 `json:"IsKMS,omitnil,omitempty" name:"IsKMS"`
+
+	// IsKMS为1时必填
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// IsKMS为1时必填
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 }
 
 type ModifyDBInstanceSSLRequest struct {
@@ -10773,6 +10817,15 @@ type ModifyDBInstanceSSLRequest struct {
 
 	// 操作设置。0-立即执行，1- 维护时间内执行，默认取值0。
 	WaitSwitch *uint64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
+
+	// 是否被KMS加密保护，0-表示否，1表示被KMS保护，默认取值0
+	IsKMS *int64 `json:"IsKMS,omitnil,omitempty" name:"IsKMS"`
+
+	// IsKMS为1时必填
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// IsKMS为1时必填
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 }
 
 func (r *ModifyDBInstanceSSLRequest) ToJsonString() string {
@@ -10790,6 +10843,9 @@ func (r *ModifyDBInstanceSSLRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Type")
 	delete(f, "WaitSwitch")
+	delete(f, "IsKMS")
+	delete(f, "KeyId")
+	delete(f, "KeyRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSSLRequest has unknown keys!", "")
 	}
@@ -11028,8 +11084,11 @@ type ModifyDReadableRequestParams struct {
 	// 备机网络子网ID，不填默认和主实例保持一致
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 指定的备机只读vip，不填自动分配
+	// 指定的备机只读vip，不填自动分配。多节点SingleReadOnly模式不支持指定vip。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 备机只读模式，多节点架构默认取值BalancedReadOnly。SingleReadOnly-每个备机各对应一个只读地址（多节点架构），BalancedReadOnly-所有备机共用一个只读地址。当实例是双节点架构时，固定取值SingleReadOnly。
+	ReadMode *string `json:"ReadMode,omitnil,omitempty" name:"ReadMode"`
 }
 
 type ModifyDReadableRequest struct {
@@ -11047,8 +11106,11 @@ type ModifyDReadableRequest struct {
 	// 备机网络子网ID，不填默认和主实例保持一致
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 指定的备机只读vip，不填自动分配
+	// 指定的备机只读vip，不填自动分配。多节点SingleReadOnly模式不支持指定vip。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// 备机只读模式，多节点架构默认取值BalancedReadOnly。SingleReadOnly-每个备机各对应一个只读地址（多节点架构），BalancedReadOnly-所有备机共用一个只读地址。当实例是双节点架构时，固定取值SingleReadOnly。
+	ReadMode *string `json:"ReadMode,omitnil,omitempty" name:"ReadMode"`
 }
 
 func (r *ModifyDReadableRequest) ToJsonString() string {
@@ -11068,6 +11130,7 @@ func (r *ModifyDReadableRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "Vip")
+	delete(f, "ReadMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDReadableRequest has unknown keys!", "")
 	}
@@ -11541,11 +11604,17 @@ type ModifyInstanceEncryptAttributesRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认取值self。
+	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，kms-表示使用kms的CMK证书，默认取值self。
 	CertificateAttribution *string `json:"CertificateAttribution,omitnil,omitempty" name:"CertificateAttribution"`
 
 	// 引用的其他主账号ID，当CertificateAttribution 为others时必填。
 	QuoteUin *string `json:"QuoteUin,omitnil,omitempty" name:"QuoteUin"`
+
+	// CertificateAttribution为kms时必填
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// CertificateAttribution为kms时必填
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 }
 
 type ModifyInstanceEncryptAttributesRequest struct {
@@ -11554,11 +11623,17 @@ type ModifyInstanceEncryptAttributesRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认取值self。
+	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，kms-表示使用kms的CMK证书，默认取值self。
 	CertificateAttribution *string `json:"CertificateAttribution,omitnil,omitempty" name:"CertificateAttribution"`
 
 	// 引用的其他主账号ID，当CertificateAttribution 为others时必填。
 	QuoteUin *string `json:"QuoteUin,omitnil,omitempty" name:"QuoteUin"`
+
+	// CertificateAttribution为kms时必填
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// CertificateAttribution为kms时必填
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 }
 
 func (r *ModifyInstanceEncryptAttributesRequest) ToJsonString() string {
@@ -11576,6 +11651,8 @@ func (r *ModifyInstanceEncryptAttributesRequest) FromJsonString(s string) error 
 	delete(f, "InstanceId")
 	delete(f, "CertificateAttribution")
 	delete(f, "QuoteUin")
+	delete(f, "KeyId")
+	delete(f, "KeyRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceEncryptAttributesRequest has unknown keys!", "")
 	}
@@ -13354,6 +13431,15 @@ type SSLConfig struct {
 	// SSL证书有效性，0-无效，1-有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSLValidity *uint64 `json:"SSLValidity,omitnil,omitempty" name:"SSLValidity"`
+
+	// 是否是KMS的CMK证书
+	IsKMS *int64 `json:"IsKMS,omitnil,omitempty" name:"IsKMS"`
+
+	// KMS中购买的用户主密钥ID（CMK）
+	CMKId *string `json:"CMKId,omitnil,omitempty" name:"CMKId"`
+
+	// CMK所属的地域，不同地域的CMK数据不互通
+	CMKRegion *string `json:"CMKRegion,omitnil,omitempty" name:"CMKRegion"`
 }
 
 type SecurityGroup struct {
@@ -13507,7 +13593,8 @@ type SpecInfo struct {
 	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
 	PayModeStatus *string `json:"PayModeStatus,omitnil,omitempty" name:"PayModeStatus"`
 
-	// 产品类型，HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-基础版本型
+	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
+	// 示例值：HA
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 跨可用区类型，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
@@ -13524,13 +13611,14 @@ type SpecSellStatus struct {
 	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
 	PayModeStatus *string `json:"PayModeStatus,omitnil,omitempty" name:"PayModeStatus"`
 
-	// 产品类型
+	// 产品类型，购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 该规格支持的是否跨可用去，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
 	MultiZonesStatus *string `json:"MultiZonesStatus,omitnil,omitempty" name:"MultiZonesStatus"`
 
-	// 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点
+	// 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点 MULTI-多节点
+	// 示例值：SINGLE
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
 	// 类型标识，EXCLUSIVE-独享型，SHARED-共享型
@@ -14010,6 +14098,12 @@ type TDEConfigAttribute struct {
 	// 开通TDE加密时引用的其他主账号ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuoteUin *string `json:"QuoteUin,omitnil,omitempty" name:"QuoteUin"`
+
+	// KMS中购买的用户主密钥ID（CMK）
+	CMKId *string `json:"CMKId,omitnil,omitempty" name:"CMKId"`
+
+	// CMK所属的地域，不同地域的CMK不互通
+	CMKRegion *string `json:"CMKRegion,omitnil,omitempty" name:"CMKRegion"`
 }
 
 // Predefined struct for user

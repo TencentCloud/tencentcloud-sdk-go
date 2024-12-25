@@ -93,25 +93,23 @@ type AccessPoint struct {
 	// 接入点管理的大区ID。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km。
 	AvailablePortType []*string `json:"AvailablePortType,omitnil,omitempty" name:"AvailablePortType"`
 
-	// 接入点经纬度
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 接入点经纬度。
 	Coordinate *Coordinate `json:"Coordinate,omitnil,omitempty" name:"Coordinate"`
 
-	// 接入点所在城市
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 接入点所在城市。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 接入点地域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 接入点地域名称。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 接入点类型。VXLAN/QCPL/QCAR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointType *string `json:"AccessPointType,omitnil,omitempty" name:"AccessPointType"`
+
+	// 端口规格信息。
+	AvailablePortInfo []*PortSpecification `json:"AvailablePortInfo,omitnil,omitempty" name:"AvailablePortInfo"`
 }
 
 // Predefined struct for user
@@ -894,6 +892,9 @@ type DescribeAccessPointsRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数，支持：access-point-id、isp
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAccessPointsRequest struct {
@@ -908,6 +909,9 @@ type DescribeAccessPointsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数，支持：access-point-id、isp
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAccessPointsRequest) ToJsonString() string {
@@ -925,6 +929,7 @@ func (r *DescribeAccessPointsRequest) FromJsonString(s string) error {
 	delete(f, "RegionId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessPointsRequest has unknown keys!", "")
 	}
@@ -2509,6 +2514,17 @@ type NQAInfo struct {
 
 	// 健康检查地址
 	DestinationIp *string `json:"DestinationIp,omitnil,omitempty" name:"DestinationIp"`
+}
+
+type PortSpecification struct {
+	// 端口名称
+	InternationalName *string `json:"InternationalName,omitnil,omitempty" name:"InternationalName"`
+
+	// 端口规格（M）
+	Specification *uint64 `json:"Specification,omitnil,omitempty" name:"Specification"`
+
+	// 端口类型：T-电口，X-光口
+	PortType *string `json:"PortType,omitnil,omitempty" name:"PortType"`
 }
 
 // Predefined struct for user

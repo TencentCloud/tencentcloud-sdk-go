@@ -287,6 +287,9 @@ const (
 	// 账号余额不足。
 	OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
 
+	// 暂停状态的serverless不允许修改多可用区。
+	OPERATIONDENIED_PAUSEDSLSNOTALLOWMODIFYSLAVE = "OperationDenied.PausedSlsNotAllowModifySlave"
+
 	// proxy节点支持的可创建的连接数量不匹配,可支持的创建连接数{{1}},当前连接数{{2}}
 	OPERATIONDENIED_PROXYCONNECTCOUNTCHECKERROR = "OperationDenied.ProxyConnectCountCheckError"
 

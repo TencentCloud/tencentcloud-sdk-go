@@ -9059,7 +9059,7 @@ type ExportInstanceErrorLogsRequestParams struct {
 	// 可选值Timestamp
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// ASC或DESC
+	// 排序类型，ASC 或 DESC。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -9093,7 +9093,7 @@ type ExportInstanceErrorLogsRequest struct {
 	// 可选值Timestamp
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// ASC或DESC
+	// 排序类型，ASC 或 DESC。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -9810,7 +9810,7 @@ type InstanceAuditLogFilter struct {
 	// 
 	// 等于、不等于： sqlType - SQL类型； errCode - 错误码； threadId - 线程ID；
 	// 
-	// 范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事物持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
+	// 范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事务持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 过滤条件。支持以下条件：

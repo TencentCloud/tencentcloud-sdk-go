@@ -20952,7 +20952,7 @@ func (r *SearchBusinessLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchStdoutLogRequestParams struct {
-	// 机器实例ID
+	// 机器实例ID， 和  实例 ID 二者必选其一，不能同时为空
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 单页请求配置数量，取值范围[1, 500]，默认值为100
@@ -20964,7 +20964,7 @@ type SearchStdoutLogRequestParams struct {
 	// 查询起始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 部署组ID
+	// 部署组ID，和 InstanceId 二者必选其一，不能同时为空
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 查询结束时间
@@ -20996,7 +20996,7 @@ type SearchStdoutLogRequestParams struct {
 type SearchStdoutLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器实例ID
+	// 机器实例ID， 和  实例 ID 二者必选其一，不能同时为空
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 单页请求配置数量，取值范围[1, 500]，默认值为100
@@ -21008,7 +21008,7 @@ type SearchStdoutLogRequest struct {
 	// 查询起始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 部署组ID
+	// 部署组ID，和 InstanceId 二者必选其一，不能同时为空
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 查询结束时间

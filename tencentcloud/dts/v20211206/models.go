@@ -4752,11 +4752,11 @@ type ModifyConsumerGroupPasswordRequestParams struct {
 	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 旧密码
-	OldPassword *string `json:"OldPassword,omitnil,omitempty" name:"OldPassword"`
-
 	// 新密码。字符长度不小于3，不大于32
 	NewPassword *string `json:"NewPassword,omitnil,omitempty" name:"NewPassword"`
+
+	// 旧密码，非必选
+	OldPassword *string `json:"OldPassword,omitnil,omitempty" name:"OldPassword"`
 }
 
 type ModifyConsumerGroupPasswordRequest struct {
@@ -4771,11 +4771,11 @@ type ModifyConsumerGroupPasswordRequest struct {
 	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 旧密码
-	OldPassword *string `json:"OldPassword,omitnil,omitempty" name:"OldPassword"`
-
 	// 新密码。字符长度不小于3，不大于32
 	NewPassword *string `json:"NewPassword,omitnil,omitempty" name:"NewPassword"`
+
+	// 旧密码，非必选
+	OldPassword *string `json:"OldPassword,omitnil,omitempty" name:"OldPassword"`
 }
 
 func (r *ModifyConsumerGroupPasswordRequest) ToJsonString() string {
@@ -4793,8 +4793,8 @@ func (r *ModifyConsumerGroupPasswordRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeId")
 	delete(f, "AccountName")
 	delete(f, "ConsumerGroupName")
-	delete(f, "OldPassword")
 	delete(f, "NewPassword")
+	delete(f, "OldPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupPasswordRequest has unknown keys!", "")
 	}
@@ -5666,7 +5666,7 @@ type Options struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
-	// 同步到kafka链路指定位点。目前只支持时间格式：yyyy-mm-dd hh:mm:ss。如果没有指定位点，为空。
+	// 同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartPosition *string `json:"StartPosition,omitnil,omitempty" name:"StartPosition"`
 

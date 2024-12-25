@@ -183,6 +183,12 @@ type ChatCompletionsRequestParams struct {
 
 	// 自定义结束生成字符串
 	Stop []*string `json:"Stop,omitnil,omitempty" name:"Stop"`
+
+	// 推荐问答开关。
+	// 说明：
+	// 1. 未传值时默认关闭。
+	// 2. 开启后，返回值里将增加 RecommendedQuestions 字段返回推荐问答， 最多只返回3条。
+	EnableRecommendedQuestions *bool `json:"EnableRecommendedQuestions,omitnil,omitempty" name:"EnableRecommendedQuestions"`
 }
 
 type ChatCompletionsRequest struct {
@@ -295,6 +301,12 @@ type ChatCompletionsRequest struct {
 
 	// 自定义结束生成字符串
 	Stop []*string `json:"Stop,omitnil,omitempty" name:"Stop"`
+
+	// 推荐问答开关。
+	// 说明：
+	// 1. 未传值时默认关闭。
+	// 2. 开启后，返回值里将增加 RecommendedQuestions 字段返回推荐问答， 最多只返回3条。
+	EnableRecommendedQuestions *bool `json:"EnableRecommendedQuestions,omitnil,omitempty" name:"EnableRecommendedQuestions"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -327,6 +339,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Seed")
 	delete(f, "ForceSearchEnhancement")
 	delete(f, "Stop")
+	delete(f, "EnableRecommendedQuestions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -367,6 +380,9 @@ type ChatCompletionsResponseParams struct {
 	// 1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
 	// 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
 	Replaces []*Replace `json:"Replaces,omitnil,omitempty" name:"Replaces"`
+
+	// 推荐问答。
+	RecommendedQuestions []*string `json:"RecommendedQuestions,omitnil,omitempty" name:"RecommendedQuestions"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -559,6 +575,7 @@ type Content struct {
 	// 内容类型
 	// 注意：
 	// 当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+	// 参数值可选范围：[text", "image_url"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 

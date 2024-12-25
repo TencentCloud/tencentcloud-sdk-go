@@ -266,14 +266,14 @@ type CreateFileSystemRequestParams struct {
 	// 文件系统名称
 	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
-	// 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
-
 	// 是否校验POSIX ACL
 	PosixAcl *bool `json:"PosixAcl,omitnil,omitempty" name:"PosixAcl"`
 
 	// 文件系统描述，默认为空字符串
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 
 	// 超级用户名列表，默认为空数组
 	SuperUsers []*string `json:"SuperUsers,omitnil,omitempty" name:"SuperUsers"`
@@ -300,14 +300,14 @@ type CreateFileSystemRequest struct {
 	// 文件系统名称
 	FileSystemName *string `json:"FileSystemName,omitnil,omitempty" name:"FileSystemName"`
 
-	// 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
-	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
-
 	// 是否校验POSIX ACL
 	PosixAcl *bool `json:"PosixAcl,omitnil,omitempty" name:"PosixAcl"`
 
 	// 文件系统描述，默认为空字符串
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
+	CapacityQuota *uint64 `json:"CapacityQuota,omitnil,omitempty" name:"CapacityQuota"`
 
 	// 超级用户名列表，默认为空数组
 	SuperUsers []*string `json:"SuperUsers,omitnil,omitempty" name:"SuperUsers"`
@@ -341,9 +341,9 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileSystemName")
-	delete(f, "CapacityQuota")
 	delete(f, "PosixAcl")
 	delete(f, "Description")
+	delete(f, "CapacityQuota")
 	delete(f, "SuperUsers")
 	delete(f, "RootInodeUser")
 	delete(f, "RootInodeGroup")
@@ -2042,27 +2042,21 @@ type RestoreTask struct {
 
 type Summary struct {
 	// 已使用容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CapacityUsed *uint64 `json:"CapacityUsed,omitnil,omitempty" name:"CapacityUsed"`
 
 	// 已使用COS标准存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StandardCapacityUsed *uint64 `json:"StandardCapacityUsed,omitnil,omitempty" name:"StandardCapacityUsed"`
 
 	// 已使用COS低频存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DegradeCapacityUsed *uint64 `json:"DegradeCapacityUsed,omitnil,omitempty" name:"DegradeCapacityUsed"`
 
 	// 已使用COS归档存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitnil,omitempty" name:"ArchiveCapacityUsed"`
 
 	// 已使用COS深度归档存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeepArchiveCapacityUsed *uint64 `json:"DeepArchiveCapacityUsed,omitnil,omitempty" name:"DeepArchiveCapacityUsed"`
 
 	// 已使用COS智能分层存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligentCapacityUsed *uint64 `json:"IntelligentCapacityUsed,omitnil,omitempty" name:"IntelligentCapacityUsed"`
 }
 

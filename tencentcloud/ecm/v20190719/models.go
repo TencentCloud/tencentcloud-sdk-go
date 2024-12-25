@@ -685,7 +685,6 @@ func (r *AssignPrivateIpAddressesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AssignPrivateIpAddressesResponseParams struct {
 	// 内网IP详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitnil,omitempty" name:"PrivateIpAddressSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2251,7 +2250,6 @@ type CreateRoutesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 路由表对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableSet []*RouteTable `json:"RouteTableSet,omitnil,omitempty" name:"RouteTableSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4063,7 +4061,6 @@ type DescribeHaVipsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// HAVIP对象数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HaVipSet []*HaVip `json:"HaVipSet,omitnil,omitempty" name:"HaVipSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5666,7 +5663,6 @@ func (r *DescribeRouteConflictsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRouteConflictsResponseParams struct {
 	// 路由策略冲突列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteConflictSet []*RouteConflict `json:"RouteConflictSet,omitnil,omitempty" name:"RouteConflictSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -2021,10 +2021,10 @@ func (r *DescribeAuditInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditLogFilesRequestParams struct {
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB， "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "postgres" - 云数据库 PostgreSQL
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 与Product保持一致。如："dcdb" ,"mariadb"
+	// 该字段规则如下： 当product为"dcdb"则输入"dcdb"， 当product为"mariadb"则输入"mariadb"， 当product为"mysql"则输入"mysql"， 当product为"cynosdb"则输入"mysql"， 当product为"postgres"则输入"postgres"。
 	NodeRequestType *string `json:"NodeRequestType,omitnil,omitempty" name:"NodeRequestType"`
 
 	// 实例 ID 。
@@ -2040,10 +2040,10 @@ type DescribeAuditLogFilesRequestParams struct {
 type DescribeAuditLogFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB， "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "postgres" - 云数据库 PostgreSQL
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 与Product保持一致。如："dcdb" ,"mariadb"
+	// 该字段规则如下： 当product为"dcdb"则输入"dcdb"， 当product为"mariadb"则输入"mariadb"， 当product为"mysql"则输入"mysql"， 当product为"cynosdb"则输入"mysql"， 当product为"postgres"则输入"postgres"。
 	NodeRequestType *string `json:"NodeRequestType,omitnil,omitempty" name:"NodeRequestType"`
 
 	// 实例 ID 。

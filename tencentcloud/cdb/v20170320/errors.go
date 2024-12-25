@@ -140,6 +140,9 @@ const (
 	// 提交任务失败，请稍后重试。如果持续提交失败，请您联系客服进行处理。
 	FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
 
+	// 任务冲突
+	FAILEDOPERATION_TASKCONFLICTERROR = "FailedOperation.TaskConflictError"
+
 	// 查询超时。
 	FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
 

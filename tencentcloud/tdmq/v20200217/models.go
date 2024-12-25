@@ -13874,6 +13874,81 @@ type RetentionPolicy struct {
 }
 
 // Predefined struct for user
+type RetryRocketMQDlqMessageRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// group名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 死信消息ID
+	MessageIds []*string `json:"MessageIds,omitnil,omitempty" name:"MessageIds"`
+}
+
+type RetryRocketMQDlqMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// group名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 死信消息ID
+	MessageIds []*string `json:"MessageIds,omitnil,omitempty" name:"MessageIds"`
+}
+
+func (r *RetryRocketMQDlqMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetryRocketMQDlqMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "GroupName")
+	delete(f, "MessageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetryRocketMQDlqMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RetryRocketMQDlqMessageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RetryRocketMQDlqMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *RetryRocketMQDlqMessageResponseParams `json:"Response"`
+}
+
+func (r *RetryRocketMQDlqMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetryRocketMQDlqMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RewindCmqQueueRequestParams struct {
 	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`

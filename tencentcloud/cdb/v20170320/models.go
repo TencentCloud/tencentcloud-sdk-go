@@ -49,6 +49,9 @@ type AccountInfo struct {
 
 	// 用户最大可用实例连接数
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// 用户账号是否开启了密码轮转
+	OpenCam *bool `json:"OpenCam,omitnil,omitempty" name:"OpenCam"`
 }
 
 // Predefined struct for user
@@ -911,23 +914,18 @@ type AuditRuleTemplateInfo struct {
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 告警等级。1-低风险，2-中风险，3-高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 告警策略。0-不告警，1-告警。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil,omitempty" name:"AlarmPolicy"`
 
 	// 规则模板应用在哪些在实例。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedInstances []*string `json:"AffectedInstances,omitnil,omitempty" name:"AffectedInstances"`
 
 	// 模板状态。0-无任务 ，1-修改中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 模板更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 }
 
@@ -1022,7 +1020,6 @@ type BackupInfo struct {
 	EncryptionFlag *string `json:"EncryptionFlag,omitnil,omitempty" name:"EncryptionFlag"`
 
 	// 备份GTID点位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutedGTIDSet *string `json:"ExecutedGTIDSet,omitnil,omitempty" name:"ExecutedGTIDSet"`
 }
 
@@ -1783,15 +1780,12 @@ func (r *CloseWanServiceResponse) FromJsonString(s string) error {
 
 type ClusterInfo struct {
 	// 节点id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 节点类型：主节点，从节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
@@ -2326,11 +2320,14 @@ type CreateBackupRequestParams struct {
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。
-	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ]。
+	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}]。
 	BackupDBTableList []*BackupItem `json:"BackupDBTableList,omitnil,omitempty" name:"BackupDBTableList"`
 
 	// 手动备份别名
 	ManualBackupName *string `json:"ManualBackupName,omitnil,omitempty" name:"ManualBackupName"`
+
+	// 是否需要加密物理备份， 当BackupMethod为physical 时，该值才有意义。 不指定则使用实例备份默认加密策略。
+	EncryptionFlag *string `json:"EncryptionFlag,omitnil,omitempty" name:"EncryptionFlag"`
 }
 
 type CreateBackupRequest struct {
@@ -2343,11 +2340,14 @@ type CreateBackupRequest struct {
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。
-	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ]。
+	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}]。
 	BackupDBTableList []*BackupItem `json:"BackupDBTableList,omitnil,omitempty" name:"BackupDBTableList"`
 
 	// 手动备份别名
 	ManualBackupName *string `json:"ManualBackupName,omitnil,omitempty" name:"ManualBackupName"`
+
+	// 是否需要加密物理备份， 当BackupMethod为physical 时，该值才有意义。 不指定则使用实例备份默认加密策略。
+	EncryptionFlag *string `json:"EncryptionFlag,omitnil,omitempty" name:"EncryptionFlag"`
 }
 
 func (r *CreateBackupRequest) ToJsonString() string {
@@ -2366,6 +2366,7 @@ func (r *CreateBackupRequest) FromJsonString(s string) error {
 	delete(f, "BackupMethod")
 	delete(f, "BackupDBTableList")
 	delete(f, "ManualBackupName")
+	delete(f, "EncryptionFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
 	}
@@ -5643,11 +5644,9 @@ func (r *DescribeAuditRuleTemplateModifyHistoryRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeAuditRuleTemplateModifyHistoryResponseParams struct {
 	// 总的条数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 变更详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RuleTemplateRecordInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7376,11 +7375,9 @@ func (r *DescribeDBInstanceLogToCLSRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBInstanceLogToCLSResponseParams struct {
 	// 错误日志投递CLS配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorLog *LogToCLSConfig `json:"ErrorLog,omitnil,omitempty" name:"ErrorLog"`
 
 	// 慢日志投递CLS配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowLog *LogToCLSConfig `json:"SlowLog,omitnil,omitempty" name:"SlowLog"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9924,10 +9921,12 @@ type DescribeSlowLogDataRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。例如 1585142640 。
+	// 开始时间戳。例如 1585142640。
+	// 说明：此参数单位为秒的时间戳。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳。例如 1585142640 。
+	// 结束时间戳。例如 1585142640。
+	// 说明：此参数单位为秒的时间戳。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 客户端 Host 列表。
@@ -9964,10 +9963,12 @@ type DescribeSlowLogDataRequest struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。例如 1585142640 。
+	// 开始时间戳。例如 1585142640。
+	// 说明：此参数单位为秒的时间戳。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳。例如 1585142640 。
+	// 结束时间戳。例如 1585142640。
+	// 说明：此参数单位为秒的时间戳。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 客户端 Host 列表。
@@ -10829,42 +10830,55 @@ type ErrlogItem struct {
 
 type ImportRecord struct {
 	// 状态值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *int64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
 	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 后端任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkId *string `json:"WorkId,omitnil,omitempty" name:"WorkId"`
 
 	// 导入文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 执行进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Process *int64 `json:"Process,omitnil,omitempty" name:"Process"`
 
 	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 任务执行信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *int64 `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 导入库表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 异步任务的请求ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 }
 
@@ -11108,7 +11122,6 @@ type InstanceDbAuditStatus struct {
 	OldRule *bool `json:"OldRule,omitnil,omitempty" name:"OldRule"`
 
 	// 实例所应用的规则模板。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 }
 
@@ -11283,15 +11296,19 @@ type InstanceRebootTime struct {
 
 type InstanceRollbackRangeTime struct {
 	// 查询数据库错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 查询数据库错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 实例ID列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 可回档时间范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Times []*RollbackTimeRange `json:"Times,omitnil,omitempty" name:"Times"`
 }
 
@@ -11389,19 +11406,15 @@ type LogRuleTemplateInfo struct {
 
 type LogToCLSConfig struct {
 	// 投递状态打开或者关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// CLS日志集ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
 
 	// 日志主题ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
 	// CLS服务所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
 }
 
@@ -13808,7 +13821,7 @@ func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProtectModeRequestParams struct {
-	// 无
+	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
 	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// 实例ID。
@@ -13818,7 +13831,7 @@ type ModifyProtectModeRequestParams struct {
 type ModifyProtectModeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
 	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// 实例ID。
@@ -14741,11 +14754,9 @@ type ProxyAddress struct {
 	ProxyAllocation []*ProxyAllocation `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
 
 	// 接入模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
 	// 是否开启自动负载均衡
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
 }
 
@@ -15467,18 +15478,23 @@ type RoInstanceInfo struct {
 
 type RoVipInfo struct {
 	// 只读vip状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoVipStatus *int64 `json:"RoVipStatus,omitnil,omitempty" name:"RoVipStatus"`
 
 	// 只读vip的子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoSubnetId *int64 `json:"RoSubnetId,omitnil,omitempty" name:"RoSubnetId"`
 
 	// 只读vip的私有网络
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoVpcId *int64 `json:"RoVpcId,omitnil,omitempty" name:"RoVpcId"`
 
 	// 只读vip的端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoVport *int64 `json:"RoVport,omitnil,omitempty" name:"RoVport"`
 
 	// 只读vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoVip *string `json:"RoVip,omitnil,omitempty" name:"RoVip"`
 }
 
@@ -15563,9 +15579,11 @@ type RollbackTask struct {
 
 type RollbackTimeRange struct {
 	// 实例可回档开始时间，时间格式：2016-10-29 01:06:04
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Begin *string `json:"Begin,omitnil,omitempty" name:"Begin"`
 
 	// 实例可回档结束时间，时间格式：2016-11-02 11:44:47
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	End *string `json:"End,omitnil,omitempty" name:"End"`
 }
 
@@ -15592,84 +15610,81 @@ type RuleFilters struct {
 
 type RuleTemplateInfo struct {
 	// 规则模板ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateId *string `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
 
 	// 规则模板名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateName *string `json:"RuleTemplateName,omitnil,omitempty" name:"RuleTemplateName"`
 
 	// 规则内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
 
 	// 告警等级。1-低风险，2-中风险，3-高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *int64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 告警策略。0-不告警，1-告警。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy *int64 `json:"AlarmPolicy,omitnil,omitempty" name:"AlarmPolicy"`
 
 	// 规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type RuleTemplateRecordInfo struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 修改前规则模板的详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyBeforeInfo *RuleTemplateInfo `json:"ModifyBeforeInfo,omitnil,omitempty" name:"ModifyBeforeInfo"`
 
 	// 修改后规则模板的详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyAfterInfo *RuleTemplateInfo `json:"ModifyAfterInfo,omitnil,omitempty" name:"ModifyAfterInfo"`
 
 	// 影响的实例。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedInstances []*string `json:"AffectedInstances,omitnil,omitempty" name:"AffectedInstances"`
 
 	// 操作人，账号uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 变更的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type SecurityGroup struct {
 	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 入站规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Inbound []*Inbound `json:"Inbound,omitnil,omitempty" name:"Inbound"`
 
 	// 出站规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Outbound []*Outbound `json:"Outbound,omitnil,omitempty" name:"Outbound"`
 
 	// 安全组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 安全组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupName *string `json:"SecurityGroupName,omitnil,omitempty" name:"SecurityGroupName"`
 
 	// 安全组备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitnil,omitempty" name:"SecurityGroupRemark"`
 }
 
 type SlaveConfig struct {
 	// 从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicationMode *string `json:"ReplicationMode,omitnil,omitempty" name:"ReplicationMode"`
 
 	// 从库可用区的正式名称，如ap-shanghai-1
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
@@ -17026,19 +17041,19 @@ func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
 
 type UpgradeEngineVersionParams struct {
 	// 参数名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type UploadInfo struct {
 	// 文件所有分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllSliceNum *int64 `json:"AllSliceNum,omitnil,omitempty" name:"AllSliceNum"`
 
 	// 已完成分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompleteNum *int64 `json:"CompleteNum,omitnil,omitempty" name:"CompleteNum"`
 }
 
@@ -17108,14 +17123,18 @@ func (r *VerifyRootAccountResponse) FromJsonString(s string) error {
 
 type ZoneConf struct {
 	// 可用区部署方式，可能的值为：0-单可用区；1-多可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployMode []*int64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
 	// 主实例所在的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterZone []*string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// 实例为多可用区部署时，备库1所在的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZone []*string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 
 	// 实例为多可用区部署时，备库2所在的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupZone []*string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 }

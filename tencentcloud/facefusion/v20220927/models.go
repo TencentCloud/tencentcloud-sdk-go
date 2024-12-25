@@ -277,8 +277,7 @@ type FuseFaceUltraRequestParams struct {
 	// ●支持图片格式：支持jpg或png
 	ModelImage *string `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
 
-	// 图片人脸融合（专业版）效果参数。
-	// 可用于设置拉脸、人脸增强、磨皮、牙齿增强等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
+	// 图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
 	FusionUltraParam *FusionUltraParam `json:"FusionUltraParam,omitnil,omitempty" name:"FusionUltraParam"`
 
 	// 为融合结果图添加合成标识的开关，默认为1。
@@ -324,8 +323,7 @@ type FuseFaceUltraRequest struct {
 	// ●支持图片格式：支持jpg或png
 	ModelImage *string `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
 
-	// 图片人脸融合（专业版）效果参数。
-	// 可用于设置拉脸、人脸增强、磨皮、牙齿增强等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
+	// 图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
 	FusionUltraParam *FusionUltraParam `json:"FusionUltraParam,omitnil,omitempty" name:"FusionUltraParam"`
 
 	// 为融合结果图添加合成标识的开关，默认为1。
