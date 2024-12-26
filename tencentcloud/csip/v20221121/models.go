@@ -534,6 +534,98 @@ type AssetBaseInfoResponse struct {
 	ProtectedDay *uint64 `json:"ProtectedDay,omitnil,omitempty" name:"ProtectedDay"`
 }
 
+type AssetCluster struct {
+	// 租户id
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 租户uin
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 租户昵称
+	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 集群id
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 集群名称
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// 集群类型
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// 集群创建时间
+	InstanceCreateTime *string `json:"InstanceCreateTime,omitnil,omitempty" name:"InstanceCreateTime"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集群防护状态，左边枚举,右边为显示
+	// 集群防护状态 
+	// 0:未接入
+	// 1:未防护 
+	// 2:部分防护 
+	// 3:防护中 
+	// 4:接入异常 
+	// 5:接入中 
+	// 6:卸载中 
+	// 7:卸载异常
+	ProtectStatus *int64 `json:"ProtectStatus,omitnil,omitempty" name:"ProtectStatus"`
+
+	// 接入信息，不为空表示有接入异常信息
+	ProtectInfo *string `json:"ProtectInfo,omitnil,omitempty" name:"ProtectInfo"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 私有网络名称
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// kubernetes版本
+	KubernetesVersion *string `json:"KubernetesVersion,omitnil,omitempty" name:"KubernetesVersion"`
+
+	// 运行时组件
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// 运行时组件版本
+	ComponentVersion *string `json:"ComponentVersion,omitnil,omitempty" name:"ComponentVersion"`
+
+	// 组件状态
+	ComponentStatus *string `json:"ComponentStatus,omitnil,omitempty" name:"ComponentStatus"`
+
+	// 体检时间
+	CheckTime *string `json:"CheckTime,omitnil,omitempty" name:"CheckTime"`
+
+	// 关联主机数
+	MachineCount *int64 `json:"MachineCount,omitnil,omitempty" name:"MachineCount"`
+
+	// 关联pod数
+	PodCount *int64 `json:"PodCount,omitnil,omitempty" name:"PodCount"`
+
+	// 关联service数
+	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
+
+	// 漏洞风险
+	VulRisk *int64 `json:"VulRisk,omitnil,omitempty" name:"VulRisk"`
+
+	// 配置风险
+	CFGRisk *int64 `json:"CFGRisk,omitnil,omitempty" name:"CFGRisk"`
+
+	// 体检数
+	CheckCount *int64 `json:"CheckCount,omitnil,omitempty" name:"CheckCount"`
+
+	// 是否核心：1:核心，2:非核心
+	IsCore *int64 `json:"IsCore,omitnil,omitempty" name:"IsCore"`
+
+	// 是否新资产 1新
+	IsNewAsset *uint64 `json:"IsNewAsset,omitnil,omitempty" name:"IsNewAsset"`
+
+	// 云资产类型：0：腾讯云，1：aws，2：azure
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+}
+
 type AssetClusterPod struct {
 	// 租户id
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -1370,6 +1462,18 @@ type ClbListenerListInfo struct {
 
 	// 负载均衡域名
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
+}
+
+type CloudCountDesc struct {
+	// 0表示腾讯云
+	// 1表示AWS
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+
+	// 账户数量
+	CloudCount *int64 `json:"CloudCount,omitnil,omitempty" name:"CloudCount"`
+
+	// 该云账号类型描述
+	CloudDesc *string `json:"CloudDesc,omitnil,omitempty" name:"CloudDesc"`
 }
 
 // Predefined struct for user
@@ -2308,6 +2412,94 @@ func (r *DescribeCVMAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeClusterAssetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeClusterAssetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterAssetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterAssetsResponseParams struct {
+	// 列表
+	Data []*AssetCluster `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 集群类型枚举
+	ClusterTypeList []*FilterDataObject `json:"ClusterTypeList,omitnil,omitempty" name:"ClusterTypeList"`
+
+	// 集群状态枚举
+	ClusterStatusList []*FilterDataObject `json:"ClusterStatusList,omitnil,omitempty" name:"ClusterStatusList"`
+
+	// 组件状态枚举
+	ComponentStatusList []*FilterDataObject `json:"ComponentStatusList,omitnil,omitempty" name:"ComponentStatusList"`
+
+	// 私有网络枚举
+	VpcList []*FilterDataObject `json:"VpcList,omitnil,omitempty" name:"VpcList"`
+
+	// 地域枚举
+	RegionList []*FilterDataObject `json:"RegionList,omitnil,omitempty" name:"RegionList"`
+
+	// 租户枚举
+	AppIdList []*FilterDataObject `json:"AppIdList,omitnil,omitempty" name:"AppIdList"`
+
+	// 集群防护状态枚举
+	ProtectStatusList []*FilterDataObject `json:"ProtectStatusList,omitnil,omitempty" name:"ProtectStatusList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterAssetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterAssetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterAssetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterPodAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -2840,6 +3032,66 @@ func (r *DescribeNICAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNICAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationInfoRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeOrganizationInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeOrganizationInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationInfoResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 集团用户列表
+	Data []*OrganizationInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3924,6 +4176,79 @@ func (r *DescribeSearchBugInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSubUserInfoRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeSubUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeSubUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubUserInfoResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 子用户列表
+	Data []*SubUserInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 厂商枚举列表
+	CloudTypeLst []*FilterDataObject `json:"CloudTypeLst,omitnil,omitempty" name:"CloudTypeLst"`
+
+	// 所属主账号appid枚举
+	OwnerAppIDLst []*FilterDataObject `json:"OwnerAppIDLst,omitnil,omitempty" name:"OwnerAppIDLst"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSubUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubUserInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSubnetAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -4214,6 +4539,76 @@ func (r *DescribeTopAttackInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTopAttackInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUebaRuleRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤条件
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeUebaRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤条件
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeUebaRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUebaRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUebaRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUebaRuleResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 策略列表
+	Data []*UebaRule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 自定义策略对应的告警类别枚举
+	AlterType []*FilterDataObject `json:"AlterType,omitnil,omitempty" name:"AlterType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUebaRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUebaRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeUebaRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUebaRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5189,6 +5584,80 @@ func (r *ModifyRiskCenterScanTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUebaRuleSwitchRequestParams struct {
+	// 策略ID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 开关状态
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyUebaRuleSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略ID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 开关状态
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyUebaRuleSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUebaRuleSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleID")
+	delete(f, "Status")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUebaRuleSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUebaRuleSwitchResponseParams struct {
+	// 0成功，1失败
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 返回信息
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUebaRuleSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUebaRuleSwitchResponseParams `json:"Response"`
+}
+
+func (r *ModifyUebaRuleSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUebaRuleSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NICAsset struct {
 	// appid
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -5290,6 +5759,89 @@ type NewAlertKey struct {
 
 	// 状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type OrganizationInfo struct {
+	// 成员账号名称
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 部门节点名称，账号所属部门
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// Member/Admin/DelegatedAdmin/EntityAdmin; 成员/管理员/委派管理员/主体管理员
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 成员账号id
+	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 账号加入方式,create/invite
+	JoinType *string `json:"JoinType,omitnil,omitempty" name:"JoinType"`
+
+	// 集团名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 管理员账号名称
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 管理员Uin
+	AdminUin *string `json:"AdminUin,omitnil,omitempty" name:"AdminUin"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 部门数
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// 成员数
+	MemberCount *int64 `json:"MemberCount,omitnil,omitempty" name:"MemberCount"`
+
+	// 子账号数
+	SubAccountCount *int64 `json:"SubAccountCount,omitnil,omitempty" name:"SubAccountCount"`
+
+	// 异常子账号数量
+	AbnormalSubUserCount *int64 `json:"AbnormalSubUserCount,omitnil,omitempty" name:"AbnormalSubUserCount"`
+
+	// 集团关系策略权限
+	GroupPermission []*string `json:"GroupPermission,omitnil,omitempty" name:"GroupPermission"`
+
+	// 成员关系策略权限
+	MemberPermission []*string `json:"MemberPermission,omitnil,omitempty" name:"MemberPermission"`
+
+	// 集团付费模式；0/自付费，1/代付费
+	GroupPayMode *int64 `json:"GroupPayMode,omitnil,omitempty" name:"GroupPayMode"`
+
+	// 个人付费模式；0/自付费，1/代付费
+	MemberPayMode *int64 `json:"MemberPayMode,omitnil,omitempty" name:"MemberPayMode"`
+
+	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	CFWProtect *string `json:"CFWProtect,omitnil,omitempty" name:"CFWProtect"`
+
+	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	WAFProtect *string `json:"WAFProtect,omitnil,omitempty" name:"WAFProtect"`
+
+	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	CWPProtect *string `json:"CWPProtect,omitnil,omitempty" name:"CWPProtect"`
+
+	// 所有部门的集合数组
+	Departments []*string `json:"Departments,omitnil,omitempty" name:"Departments"`
+
+	// 成员创建时间
+	MemberCreateTime *string `json:"MemberCreateTime,omitnil,omitempty" name:"MemberCreateTime"`
+
+	// Advanced/Enterprise/Ultimate 
+	CSIPProtect *string `json:"CSIPProtect,omitnil,omitempty" name:"CSIPProtect"`
+
+	// 1表示配额消耗方
+	QuotaConsumer *int64 `json:"QuotaConsumer,omitnil,omitempty" name:"QuotaConsumer"`
+
+	// 管理员/委派管理员 已开启数量
+	EnableAdminCount *int64 `json:"EnableAdminCount,omitnil,omitempty" name:"EnableAdminCount"`
+
+	// 账户多云信息统计，数组形式，具体参考CloudCountDesc描述
+	CloudCountDesc []*CloudCountDesc `json:"CloudCountDesc,omitnil,omitempty" name:"CloudCountDesc"`
+
+	// 管理员/委派管理员 总数量
+	AdminCount *int64 `json:"AdminCount,omitnil,omitempty" name:"AdminCount"`
 }
 
 type OrganizationUserInfo struct {
@@ -5826,6 +6378,19 @@ type ServiceSupport struct {
 	IsSupport *bool `json:"IsSupport,omitnil,omitempty" name:"IsSupport"`
 }
 
+type StatisticalFilter struct {
+	// 0:不基于统计检测
+	// 1:发生次数高于固定值
+	// 2:发生次数高于周期平均值的百分之
+	// 3:发生次数高于用户平均值的百分之
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
+
+	// 统计值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 // Predefined struct for user
 type StopRiskCenterTaskRequestParams struct {
 	// 任务id 列表
@@ -5888,6 +6453,63 @@ func (r *StopRiskCenterTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopRiskCenterTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubUserInfo struct {
+	// 主键ID，无业务意义
+	// 仅作为唯一键
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 子账号Appid
+	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 子账号UIn
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 子账号名称
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 主账号Appid
+	OwnerAppID *string `json:"OwnerAppID,omitnil,omitempty" name:"OwnerAppID"`
+
+	// 主账号Uin
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 主账号名称
+	OwnerNickName *string `json:"OwnerNickName,omitnil,omitempty" name:"OwnerNickName"`
+
+	// 所属主账号memberid
+	OwnerMemberID *string `json:"OwnerMemberID,omitnil,omitempty" name:"OwnerMemberID"`
+
+	// 账户类型，0为腾讯云账户，1为AWS账户
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+
+	// 可访问服务数量
+	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
+
+	// 可访问接口数量
+	InterfaceCount *int64 `json:"InterfaceCount,omitnil,omitempty" name:"InterfaceCount"`
+
+	// 可访问资源数量
+	AssetCount *int64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
+
+	// 访问/行为日志数量
+	LogCount *int64 `json:"LogCount,omitnil,omitempty" name:"LogCount"`
+
+	// 权限配置风险
+	ConfigRiskCount *int64 `json:"ConfigRiskCount,omitnil,omitempty" name:"ConfigRiskCount"`
+
+	// 危险行为告警
+	ActionRiskCount *int64 `json:"ActionRiskCount,omitnil,omitempty" name:"ActionRiskCount"`
+
+	// 是否接入云审计日志
+	IsAccessCloudAudit *bool `json:"IsAccessCloudAudit,omitnil,omitempty" name:"IsAccessCloudAudit"`
+
+	// 是否配置风险的安全体检
+	IsAccessCheck *bool `json:"IsAccessCheck,omitnil,omitempty" name:"IsAccessCheck"`
+
+	// 是否配置用户行为管理策略
+	IsAccessUeba *bool `json:"IsAccessUeba,omitnil,omitempty" name:"IsAccessUeba"`
 }
 
 type SubnetAsset struct {
@@ -6095,6 +6717,131 @@ type TaskLogURL struct {
 
 	// APP ID
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type UebaCustomRule struct {
+	// 策略名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 1: 云账号
+	// 2: 自定义用户
+	UserType *int64 `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 发生时间
+	// 1：10分钟
+	// 2：1小时
+	// 3：一天
+	// 4：一周
+	// 5：一个月
+	TimeInterval *int64 `json:"TimeInterval,omitnil,omitempty" name:"TimeInterval"`
+
+	// 发生事件
+	EventContent *UebaEventContent `json:"EventContent,omitnil,omitempty" name:"EventContent"`
+
+	// 告警名称
+	AlertName *string `json:"AlertName,omitnil,omitempty" name:"AlertName"`
+
+	// 告警类型
+	// 0:  提示
+	// 1:  低危
+	// 2:  中危
+	// 3:  高危
+	// 4:  严重
+	AlterLevel *int64 `json:"AlterLevel,omitnil,omitempty" name:"AlterLevel"`
+
+	// 操作者
+	Operator []*string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 操作对象
+	OperateObject []*string `json:"OperateObject,omitnil,omitempty" name:"OperateObject"`
+
+	// 操作方式
+	OperateMethod []*string `json:"OperateMethod,omitnil,omitempty" name:"OperateMethod"`
+
+	// 日志类型
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 日志中文名
+	LogTypeStr *string `json:"LogTypeStr,omitnil,omitempty" name:"LogTypeStr"`
+}
+
+type UebaEventContent struct {
+	// 发生事件类型
+	// 1:语句检索
+	// 2:过滤检索
+	EventType *int64 `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 语句检索内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 检索条件
+	Filters []*WhereFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 统计条件
+	StatisticalFilter *StatisticalFilter `json:"StatisticalFilter,omitnil,omitempty" name:"StatisticalFilter"`
+}
+
+type UebaRule struct {
+	// 策略id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 策略类型
+	// 0:系统策略
+	// 1:自定义策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 策略等级
+	// 0:提示
+	// 1:低危
+	// 2:中危
+	// 3:高危
+	// 4:严重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleLevel *int64 `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
+
+	// 策略内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
+
+	// 策略开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleStatus *bool `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
+
+	// 命中次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitCount *uint64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
+
+	// 所属账号Appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 多账号，成员ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberID *string `json:"MemberID,omitnil,omitempty" name:"MemberID"`
+
+	// Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 自定义规则具体内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRuleDetail *UebaCustomRule `json:"CustomRuleDetail,omitnil,omitempty" name:"CustomRuleDetail"`
+
+	// 云类型
+	// 腾讯云：0
+	// aws：1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
 // Predefined struct for user

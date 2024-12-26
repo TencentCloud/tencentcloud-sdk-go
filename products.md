@@ -72,7 +72,7 @@
 | config | [配置审计](https://cloud.tencent.com/document/product/1579) | 2024-12-25 01:22:32 |
 | controlcenter | [控制中心](https://cloud.tencent.com/document/product/1708) | 2024-10-24 01:13:25 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2023-09-21 02:09:54 |
-| csip | [云安全一体化平台](https://cloud.tencent.com/document/product/664) | 2024-11-04 21:21:11 |
+| csip | [云安全一体化平台](https://cloud.tencent.com/document/product/664) | 2024-12-26 18:44:26 |
 | csxg | [5G入云服务](https://cloud.tencent.com/document/product/1687) | 2024-03-20 01:12:25 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2024-12-19 01:22:59 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2024-12-17 01:18:39 |
@@ -101,7 +101,7 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2024-12-24 01:32:22 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2024-12-11 01:33:45 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-12-26 01:34:27 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2024-12-26 17:01:50 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2024-12-26 01:35:17 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2024-12-26 01:36:01 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2024-12-17 01:30:37 |
@@ -183,7 +183,7 @@
 | smh | [智能媒资托管](https://cloud.tencent.com/document/product/1339) | 2024-12-17 01:50:10 |
 | smop | [腾讯安心用户运营平台](https://cloud.tencent.com/document/product/1310) | 2024-10-31 02:02:47 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2024-07-09 01:21:06 |
-| sms | [短信](https://cloud.tencent.com/document/product/382) | 2024-12-17 10:58:36 |
+| sms | [短信](https://cloud.tencent.com/document/product/382) | 2024-12-26 16:48:49 |
 | soe | [智聆口语评测](https://cloud.tencent.com/document/product/884) | 2024-11-13 02:01:41 |
 | solar | [智汇零售](https://cloud.tencent.com/document/product) | 2020-03-19 08:01:59 |
 | sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2024-12-26 01:56:11 |
