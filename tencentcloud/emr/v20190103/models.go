@@ -96,6 +96,123 @@ func (r *AddMetricScaleStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddNodeResourceConfigRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点类型 CORE TASK ROUTER
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源详情
+	ResourceConfig *Resource `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 是否默认配置,DEFAULT,BACKUP,不填默认不是默认配置
+	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 地域ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 添加多个规格时，第1个规格详情在ResourceConfig参数，第2-n个在MultipleResourceConfig参数
+	MultipleResourceConfig []*Resource `json:"MultipleResourceConfig,omitnil,omitempty" name:"MultipleResourceConfig"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 硬件类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
+}
+
+type AddNodeResourceConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点类型 CORE TASK ROUTER
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源详情
+	ResourceConfig *Resource `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 是否默认配置,DEFAULT,BACKUP,不填默认不是默认配置
+	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 地域ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 添加多个规格时，第1个规格详情在ResourceConfig参数，第2-n个在MultipleResourceConfig参数
+	MultipleResourceConfig []*Resource `json:"MultipleResourceConfig,omitnil,omitempty" name:"MultipleResourceConfig"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 硬件类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
+}
+
+func (r *AddNodeResourceConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddNodeResourceConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceConfig")
+	delete(f, "PayMode")
+	delete(f, "IsDefault")
+	delete(f, "ZoneId")
+	delete(f, "MultipleResourceConfig")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
+	delete(f, "HardwareResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddNodeResourceConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddNodeResourceConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddNodeResourceConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *AddNodeResourceConfigResponseParams `json:"Response"`
+}
+
+func (r *AddNodeResourceConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddNodeResourceConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddUsersForUserManagerRequestParams struct {
 	// 集群字符串ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -234,6 +351,110 @@ type Arg struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type AttachDisksRequestParams struct {
+	// EMR集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要挂载的云盘ID
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 挂载模式，取值范围：
+	// AUTO_RENEW：自动续费
+	// ALIGN_DEADLINE：自动对其到期时间
+	AlignType *string `json:"AlignType,omitnil,omitempty" name:"AlignType"`
+
+	// 需要挂载的cvm节点id列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+
+	// 是否是新购云盘进行挂载
+	CreateDisk *bool `json:"CreateDisk,omitnil,omitempty" name:"CreateDisk"`
+
+	// 新购云盘规格
+	DiskSpec *NodeSpecDiskV2 `json:"DiskSpec,omitnil,omitempty" name:"DiskSpec"`
+
+	// 可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+}
+
+type AttachDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要挂载的云盘ID
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 挂载模式，取值范围：
+	// AUTO_RENEW：自动续费
+	// ALIGN_DEADLINE：自动对其到期时间
+	AlignType *string `json:"AlignType,omitnil,omitempty" name:"AlignType"`
+
+	// 需要挂载的cvm节点id列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+
+	// 是否是新购云盘进行挂载
+	CreateDisk *bool `json:"CreateDisk,omitnil,omitempty" name:"CreateDisk"`
+
+	// 新购云盘规格
+	DiskSpec *NodeSpecDiskV2 `json:"DiskSpec,omitnil,omitempty" name:"DiskSpec"`
+
+	// 可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+}
+
+func (r *AttachDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DiskIds")
+	delete(f, "AlignType")
+	delete(f, "CvmInstanceIds")
+	delete(f, "CreateDisk")
+	delete(f, "DiskSpec")
+	delete(f, "DeleteWithInstance")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AttachDisksResponseParams struct {
+	// 流程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AttachDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *AttachDisksResponseParams `json:"Response"`
+}
+
+func (r *AttachDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AutoScaleRecord struct {
 	// 扩缩容规则名。
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
@@ -361,6 +582,68 @@ type BootstrapAction struct {
 
 	// 脚本参数
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
+}
+
+type CBSInstance struct {
+	// 云硬盘ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// 云硬盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
+
+	// 云硬盘名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+
+	// 云硬盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 云盘介质类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 是否跟随实例删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+
+	// 云硬盘收费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// 云硬盘运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskState *string `json:"DiskState,omitnil,omitempty" name:"DiskState"`
+
+	// 是否自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
+
+	// 云盘是否挂载到云主机上
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attached *bool `json:"Attached,omitnil,omitempty" name:"Attached"`
+
+	// 当前时间距离盘到期的天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DifferDaysOfDeadline *int64 `json:"DifferDaysOfDeadline,omitnil,omitempty" name:"DifferDaysOfDeadline"`
+
+	// 该云盘当前被挂载到的CVM实例InstanceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// 云硬盘挂载的云主机ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 云盘是否为共享型云盘。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Shareable *bool `json:"Shareable,omitnil,omitempty" name:"Shareable"`
 }
 
 type CLBSetting struct {
@@ -1939,6 +2222,88 @@ func (r *DeleteAutoScaleStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAutoScaleStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNodeResourceConfigRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点配置Id
+	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// 节点类型 CORE TASK ROUTER
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+}
+
+type DeleteNodeResourceConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点配置Id
+	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// 节点类型 CORE TASK ROUTER
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+}
+
+func (r *DeleteNodeResourceConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNodeResourceConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ResourceConfigId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNodeResourceConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNodeResourceConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNodeResourceConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNodeResourceConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteNodeResourceConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNodeResourceConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3877,6 +4242,181 @@ func (r *DescribeKyuubiQueryInfoResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeKyuubiQueryInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeDataDisksRequestParams struct {
+	// EMR集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点CVM实例Id列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+}
+
+type DescribeNodeDataDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点CVM实例Id列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+}
+
+func (r *DescribeNodeDataDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeDataDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CvmInstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeDataDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeDataDisksResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 云盘列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CBSList []*CBSInstance `json:"CBSList,omitnil,omitempty" name:"CBSList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNodeDataDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodeDataDisksResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodeDataDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeDataDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeResourceConfigFastRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点类型 CORE TASK ROUTER ALL
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 计费类型
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 可用区ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 硬件类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
+}
+
+type DescribeNodeResourceConfigFastRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点类型 CORE TASK ROUTER ALL
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 计费类型
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 可用区ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 硬件类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
+}
+
+func (r *DescribeNodeResourceConfigFastRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeResourceConfigFastRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ResourceType")
+	delete(f, "PayMode")
+	delete(f, "ZoneId")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
+	delete(f, "HardwareResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeResourceConfigFastRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeResourceConfigFastResponseParams struct {
+	// DescribeResourceConfig接口返回值
+	Data []*DescribeResourceConfig `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNodeResourceConfigFastResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodeResourceConfigFastResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodeResourceConfigFastResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeResourceConfigFastResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceConfig struct {
+	// 规格管理类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 规格管理数据
+	ResourceData []*NodeResource `json:"ResourceData,omitnil,omitempty" name:"ResourceData"`
 }
 
 // Predefined struct for user
@@ -7118,6 +7658,81 @@ func (r *ModifyGlobalConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceBasicRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 用来标注修改计算资源
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 需要修改的计算资源id，与ResourceBaseType 配合使用
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+}
+
+type ModifyInstanceBasicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 用来标注修改计算资源
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 需要修改的计算资源id，与ResourceBaseType 配合使用
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+}
+
+func (r *ModifyInstanceBasicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceBasicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClusterName")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceBasicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceBasicResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceBasicResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceBasicResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceBasicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceBasicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPodNumRequestParams struct {
 	// 集群Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7269,6 +7884,106 @@ func (r *ModifyResourcePoolsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyResourcePoolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 计费类型
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 变配CPU
+	NewCpu *int64 `json:"NewCpu,omitnil,omitempty" name:"NewCpu"`
+
+	// 变配内存
+	NewMem *int64 `json:"NewMem,omitnil,omitempty" name:"NewMem"`
+
+	// Token
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 变配机器规格
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 节点ID列表
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+}
+
+type ModifyResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 计费类型
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 变配CPU
+	NewCpu *int64 `json:"NewCpu,omitnil,omitempty" name:"NewCpu"`
+
+	// 变配内存
+	NewMem *int64 `json:"NewMem,omitnil,omitempty" name:"NewMem"`
+
+	// Token
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 变配机器规格
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 节点ID列表
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+}
+
+func (r *ModifyResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PayMode")
+	delete(f, "NewCpu")
+	delete(f, "NewMem")
+	delete(f, "ClientToken")
+	delete(f, "InstanceType")
+	delete(f, "ResourceIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourceResponseParams struct {
+	// 流程traceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7841,6 +8556,18 @@ type MultiDiskMC struct {
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 磁盘类型
+	// 1  :本地盘
+	// 2  :云硬盘
+	// 3  : 本地SSD
+	// 4  : 云SSD
+	// 5  : 高效云盘
+	// 6  : 增强型SSD云硬盘
+	// 11 : 吞吐型云硬盘
+	// 12 : 极速型SSD云硬盘
+	// 13 : 通用型SSD云硬盘
+	// 14 : 大数据型云硬盘
+	// 15 : 高IO型云硬盘
+	// 16 : 远端SSD盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -7848,7 +8575,7 @@ type MultiDiskMC struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 云盘大小
+	// 云盘大小,单位b
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
@@ -8132,6 +8859,35 @@ type NodeHardwareInfo struct {
 	SharedClusterIdDesc *string `json:"SharedClusterIdDesc,omitnil,omitempty" name:"SharedClusterIdDesc"`
 }
 
+type NodeResource struct {
+	// 配置Id
+	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// Resource
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否默认配置,DEFAULT,BACKUP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 该类型剩余
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxResourceNum *uint64 `json:"MaxResourceNum,omitnil,omitempty" name:"MaxResourceNum"`
+
+	// 支持的包销时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrepaidUnderwritePeriods []*int64 `json:"PrepaidUnderwritePeriods,omitnil,omitempty" name:"PrepaidUnderwritePeriods"`
+}
+
 type NodeResourceSpec struct {
 	// 规格类型，如S2.MEDIUM8
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8178,6 +8934,24 @@ type NodeSelectorTerm struct {
 	// 节点选择项表达式集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchExpressions []*NodeSelectorRequirement `json:"MatchExpressions,omitnil,omitempty" name:"MatchExpressions"`
+}
+
+type NodeSpecDiskV2 struct {
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 指定磁盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDiskSize *int64 `json:"DefaultDiskSize,omitnil,omitempty" name:"DefaultDiskSize"`
 }
 
 type NotRepeatStrategy struct {
@@ -9010,6 +9784,85 @@ func (r *ResetYarnConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResizeDataDisksRequestParams struct {
+	// EMR集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要扩容的云盘ID
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 需要扩容的节点ID列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+}
+
+type ResizeDataDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 需要扩容的云盘ID
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 需要扩容的节点ID列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+}
+
+func (r *ResizeDataDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDataDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DiskIds")
+	delete(f, "DiskSize")
+	delete(f, "CvmInstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDataDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDataDisksResponseParams struct {
+	// 流程Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResizeDataDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *ResizeDataDisksResponseParams `json:"Response"`
+}
+
+func (r *ResizeDataDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDataDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Resource struct {
 	// 节点规格描述，如CVM.SA2。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9021,7 +9874,7 @@ type Resource struct {
 	// <li>5：表示高效云盘。</li>
 	// <li>6：表示增强型SSD云硬盘。</li>
 	// <li>11：表示吞吐型云硬盘。</li>
-	// <li>12：表示极速型SSD云硬盘。</li>
+	// <li>12：表示极速型SSD云硬盘。</li>：创建时该类型无效，会根据数据盘类型和节点类型自动判断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageType *int64 `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
@@ -10078,6 +10931,95 @@ type ServiceProcessFunctionInfo struct {
 	DetectTime *string `json:"DetectTime,omitnil,omitempty" name:"DetectTime"`
 }
 
+// Predefined struct for user
+type SetNodeResourceConfigDefaultRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置Id
+	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// 规格节点类型 CORE TASK ROUTER
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 硬件类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
+}
+
+type SetNodeResourceConfigDefaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置Id
+	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// 规格节点类型 CORE TASK ROUTER
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 硬件类型
+	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
+}
+
+func (r *SetNodeResourceConfigDefaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetNodeResourceConfigDefaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ResourceConfigId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
+	delete(f, "HardwareResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetNodeResourceConfigDefaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetNodeResourceConfigDefaultResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetNodeResourceConfigDefaultResponse struct {
+	*tchttp.BaseResponse
+	Response *SetNodeResourceConfigDefaultResponseParams `json:"Response"`
+}
+
+func (r *SetNodeResourceConfigDefaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetNodeResourceConfigDefaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ShortNodeInfo struct {
 	// 节点类型，Master/Core/Task/Router/Common
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10155,7 +11097,7 @@ type SparkQuery struct {
 }
 
 type StageInfoDetail struct {
-	// 步骤id
+	// 步骤
 	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
 
 	// 步骤名

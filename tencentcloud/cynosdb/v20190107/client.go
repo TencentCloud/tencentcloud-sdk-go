@@ -1602,7 +1602,7 @@ func NewDeleteAuditLogFileResponse() (response *DeleteAuditLogFileResponse) {
 }
 
 // DeleteAuditLogFile
-// 本接口(DeleteAuditLogFile)用于删除云数据库实例的审计日志文件。
+// 本接口（DeleteAuditLogFile）用于删除云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1623,7 +1623,7 @@ func (c *Client) DeleteAuditLogFile(request *DeleteAuditLogFileRequest) (respons
 }
 
 // DeleteAuditLogFile
-// 本接口(DeleteAuditLogFile)用于删除云数据库实例的审计日志文件。
+// 本接口（DeleteAuditLogFile）用于删除云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2345,7 +2345,7 @@ func NewDescribeAuditLogsResponse() (response *DescribeAuditLogsResponse) {
 }
 
 // DescribeAuditLogs
-// 本接口(DescribeAuditLogs)用于查询数据库审计日志。
+// 本接口（DescribeAuditLogs）用于查询数据库审计日志。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -2356,7 +2356,7 @@ func (c *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (response 
 }
 
 // DescribeAuditLogs
-// 本接口(DescribeAuditLogs)用于查询数据库审计日志。
+// 本接口（DescribeAuditLogs）用于查询数据库审计日志。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -4407,7 +4407,7 @@ func NewDescribeIsolatedInstancesResponse() (response *DescribeIsolatedInstances
 }
 
 // DescribeIsolatedInstances
-// 本接口(DescribeIsolatedInstances)用于查询回收站实例列表。
+// 本接口（DescribeIsolatedInstances）用于查询回收站实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -4424,7 +4424,7 @@ func (c *Client) DescribeIsolatedInstances(request *DescribeIsolatedInstancesReq
 }
 
 // DescribeIsolatedInstances
-// 本接口(DescribeIsolatedInstances)用于查询回收站实例列表。
+// 本接口（DescribeIsolatedInstances）用于查询回收站实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
@@ -6606,6 +6606,7 @@ func NewModifyAuditServiceResponse() (response *ModifyAuditServiceResponse) {
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 func (c *Client) ModifyAuditService(request *ModifyAuditServiceRequest) (response *ModifyAuditServiceResponse, err error) {
     return c.ModifyAuditServiceWithContext(context.Background(), request)
 }
@@ -6617,6 +6618,7 @@ func (c *Client) ModifyAuditService(request *ModifyAuditServiceRequest) (respons
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 func (c *Client) ModifyAuditServiceWithContext(ctx context.Context, request *ModifyAuditServiceRequest) (response *ModifyAuditServiceResponse, err error) {
     if request == nil {
         request = NewModifyAuditServiceRequest()

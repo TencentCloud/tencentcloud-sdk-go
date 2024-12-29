@@ -25,30 +25,24 @@ type Ability struct {
 	IsSupportSlaveZone *string `json:"IsSupportSlaveZone,omitnil,omitempty" name:"IsSupportSlaveZone"`
 
 	// 不支持从可用区的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NonsupportSlaveZoneReason *string `json:"NonsupportSlaveZoneReason,omitnil,omitempty" name:"NonsupportSlaveZoneReason"`
 
 	// 是否支持RO实例
 	IsSupportRo *string `json:"IsSupportRo,omitnil,omitempty" name:"IsSupportRo"`
 
 	// 不支持RO实例的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NonsupportRoReason *string `json:"NonsupportRoReason,omitnil,omitempty" name:"NonsupportRoReason"`
 
 	// 是否支持手动发起快照备份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportManualSnapshot *string `json:"IsSupportManualSnapshot,omitnil,omitempty" name:"IsSupportManualSnapshot"`
 
 	// 是否支持透明数据加密
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportTransparentDataEncryption *string `json:"IsSupportTransparentDataEncryption,omitnil,omitempty" name:"IsSupportTransparentDataEncryption"`
 
 	// 不支持透明数据加密原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoSupportTransparentDataEncryptionReason *string `json:"NoSupportTransparentDataEncryptionReason,omitnil,omitempty" name:"NoSupportTransparentDataEncryptionReason"`
 
 	// 是否支持手动发起逻辑备份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportManualLogic *string `json:"IsSupportManualLogic,omitnil,omitempty" name:"IsSupportManualLogic"`
 }
 
@@ -566,7 +560,7 @@ type AuditLog struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockWaitTime *int64 `json:"LockWaitTime,omitnil,omitempty" name:"LockWaitTime"`
 
-	// 事物持续等待时间，微秒。
+	// 事务持续等待时间，微秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrxLivingTime *int64 `json:"TrxLivingTime,omitnil,omitempty" name:"TrxLivingTime"`
 
@@ -597,15 +591,12 @@ type AuditLogFile struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 文件大小，单位为 KB。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 审计日志下载地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
@@ -3364,15 +3355,12 @@ type CynosdbClusterDetail struct {
 
 type CynosdbErrorLogItem struct {
 	// 日志时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 日志等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 日志内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -3667,7 +3655,6 @@ type CynosdbInstanceDetail struct {
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
 	// Db类型:<li>NORMAL</li><li>SERVERLESS</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 }
 
@@ -3690,7 +3677,7 @@ type CynosdbInstanceGroup struct {
 	// 状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例组类型。ha-ha组；ro-只读组
+	// 实例组（网络）类型。ha-ha组；ro-只读组；proxy-代理；singleRo-只读实例独占
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 更新时间
@@ -4776,7 +4763,7 @@ func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditLogsRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间，格式为："2017-07-12 10:29:20"。
@@ -4801,6 +4788,7 @@ type DescribeAuditLogsRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量。
+	// 说明：Limit 和 Offset 的取值之和需小于等于65536。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。多个值之前是且的关系。
@@ -4810,7 +4798,7 @@ type DescribeAuditLogsRequestParams struct {
 type DescribeAuditLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间，格式为："2017-07-12 10:29:20"。
@@ -4835,6 +4823,7 @@ type DescribeAuditLogsRequest struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量。
+	// 说明：Limit 和 Offset 的取值之和需小于等于65536。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。多个值之前是且的关系。

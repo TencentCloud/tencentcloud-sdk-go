@@ -1601,6 +1601,9 @@ type ObjectTypeConfigFields struct {
 	// tke的pod字段信息解析
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonParse *string `json:"JsonParse,omitnil,omitempty" name:"JsonParse"`
+
+	// 字段类型 0:str 1:list
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ObjectTypeJsonParse struct {

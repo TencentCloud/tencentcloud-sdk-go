@@ -2880,6 +2880,9 @@ type CreateTopicRequestParams struct {
 
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
 }
 
 type CreateTopicRequest struct {
@@ -2917,6 +2920,9 @@ type CreateTopicRequest struct {
 
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -2939,6 +2945,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "TopicType")
 	delete(f, "PulsarTopicType")
 	delete(f, "MsgTTL")
+	delete(f, "UnackPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -12506,6 +12513,9 @@ type ModifyTopicRequestParams struct {
 
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
 }
 
 type ModifyTopicRequest struct {
@@ -12528,6 +12538,9 @@ type ModifyTopicRequest struct {
 
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -12548,6 +12561,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Remark")
 	delete(f, "MsgTTL")
+	delete(f, "UnackPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}

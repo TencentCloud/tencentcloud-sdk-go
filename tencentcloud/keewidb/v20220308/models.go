@@ -95,7 +95,7 @@ type BackupInfo struct {
 	// 备份 ID。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份类型。<ul><li>1：手动备份，指根据业务运维排障需求，立即执行备份任务的操作。</li> <li>0：自动备份，指根据自动备份策略定时自动发起的备份任务。</li></ul>
+	// 备份类型。<ul><li>1：手动备份，指根据业务运维排障需求，立即执行备份任务的操作。</li> <li>0：自动备份，指根据自动备份策略定时自动发起的备份任务。</li><li>2：生成RDB，指根据业务需求，发起的生成文件为rdb类型的备份任务。</li></ul>
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
 	// 备份的备注信息.

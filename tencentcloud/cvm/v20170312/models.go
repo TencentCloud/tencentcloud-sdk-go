@@ -309,7 +309,21 @@ type ChargePrepaid struct {
 }
 
 type ChcDeployExtraConfig struct {
+	// minos类型。是使用腾讯云的minios，还是客户自己的minios。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniOsType *string `json:"MiniOsType,omitnil,omitempty" name:"MiniOsType"`
 
+	// 服务器的架构和启动方式。取值为x86_legacy, arm_uefi。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BootType *string `json:"BootType,omitnil,omitempty" name:"BootType"`
+
+	// PXE使用的引导文件。默认为pxelinux.0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BootFile *string `json:"BootFile,omitnil,omitempty" name:"BootFile"`
+
+	// tftp服务器的ip地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextServerAddress *string `json:"NextServerAddress,omitnil,omitempty" name:"NextServerAddress"`
 }
 
 type ChcHost struct {
@@ -401,9 +415,70 @@ type ChcHost struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantType *string `json:"TenantType,omitnil,omitempty" name:"TenantType"`
 
-	// chc dhcp选项，用于minios调试
+	// chc dhcp选项，用于minios调试。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployExtraConfig *ChcDeployExtraConfig `json:"DeployExtraConfig,omitnil,omitempty" name:"DeployExtraConfig"`
+
+	// GPU型号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gpu *string `json:"Gpu,omitnil,omitempty" name:"Gpu"`
+
+	// 网卡型号。主要指RDMA网卡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkCard *string `json:"NetworkCard,omitnil,omitempty" name:"NetworkCard"`
+
+	// 是否是预定义机型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPredefinedType *bool `json:"IsPredefinedType,omitnil,omitempty" name:"IsPredefinedType"`
+
+	// CHC云主机机型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChcInstanceType *string `json:"ChcInstanceType,omitnil,omitempty" name:"ChcInstanceType"`
+
+	// CHC云主机机型簇。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChcInstanceFamily *string `json:"ChcInstanceFamily,omitnil,omitempty" name:"ChcInstanceFamily"`
+
+	// CHC云主机机型簇名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChcInstanceFamilyName *string `json:"ChcInstanceFamilyName,omitnil,omitempty" name:"ChcInstanceFamilyName"`
+
+	// 转售客户的AppId。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResaleAppId *string `json:"ResaleAppId,omitnil,omitempty" name:"ResaleAppId"`
+
+	// 转售客户的账号ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResaleAccountId *string `json:"ResaleAccountId,omitnil,omitempty" name:"ResaleAccountId"`
+
+	// 售卖状态。<br/>
+	// <ul>
+	// <li>NOT_FOR_SALE:不可售卖</li>
+	// <li>AVAILABLE: 可售卖</li>
+	// <li>SOLD: 已售卖</li>
+	// </ul>
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SaleStatus *string `json:"SaleStatus,omitnil,omitempty" name:"SaleStatus"`
+
+	// CHC物理服务器关联的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 最近操作
+	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
+
+	// 最近操作错误码
+	LatestOperationErrorCode *string `json:"LatestOperationErrorCode,omitnil,omitempty" name:"LatestOperationErrorCode"`
+
+	// 最近操作错误详情和建议项
+	LatestOperationErrorMsg *string `json:"LatestOperationErrorMsg,omitnil,omitempty" name:"LatestOperationErrorMsg"`
+
+	// 最近操作名称
+	LatestOperationName *string `json:"LatestOperationName,omitnil,omitempty" name:"LatestOperationName"`
+
+	// 最近操作状态
+	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 }
 
 type ChcHostDeniedActions struct {
@@ -433,6 +508,9 @@ type ConfigureChcAssistVpcRequestParams struct {
 
 	// 部署网络的安全组列表
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
+
+	// 部署网络的附加参数，用于指定minios类型、bios引导模式等
+	ChcDeployExtraConfig *ChcDeployExtraConfig `json:"ChcDeployExtraConfig,omitnil,omitempty" name:"ChcDeployExtraConfig"`
 }
 
 type ConfigureChcAssistVpcRequest struct {
@@ -452,6 +530,9 @@ type ConfigureChcAssistVpcRequest struct {
 
 	// 部署网络的安全组列表
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
+
+	// 部署网络的附加参数，用于指定minios类型、bios引导模式等
+	ChcDeployExtraConfig *ChcDeployExtraConfig `json:"ChcDeployExtraConfig,omitnil,omitempty" name:"ChcDeployExtraConfig"`
 }
 
 func (r *ConfigureChcAssistVpcRequest) ToJsonString() string {
@@ -471,6 +552,7 @@ func (r *ConfigureChcAssistVpcRequest) FromJsonString(s string) error {
 	delete(f, "BmcSecurityGroupIds")
 	delete(f, "DeployVirtualPrivateCloud")
 	delete(f, "DeploySecurityGroupIds")
+	delete(f, "ChcDeployExtraConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureChcAssistVpcRequest has unknown keys!", "")
 	}
@@ -509,6 +591,9 @@ type ConfigureChcDeployVpcRequestParams struct {
 
 	// 部署网络的安全组列表。
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
+
+	// 部署所需要的dhcp选项参数
+	ChcDeployExtraConfig *ChcDeployExtraConfig `json:"ChcDeployExtraConfig,omitnil,omitempty" name:"ChcDeployExtraConfig"`
 }
 
 type ConfigureChcDeployVpcRequest struct {
@@ -522,6 +607,9 @@ type ConfigureChcDeployVpcRequest struct {
 
 	// 部署网络的安全组列表。
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
+
+	// 部署所需要的dhcp选项参数
+	ChcDeployExtraConfig *ChcDeployExtraConfig `json:"ChcDeployExtraConfig,omitnil,omitempty" name:"ChcDeployExtraConfig"`
 }
 
 func (r *ConfigureChcDeployVpcRequest) ToJsonString() string {
@@ -539,6 +627,7 @@ func (r *ConfigureChcDeployVpcRequest) FromJsonString(s string) error {
 	delete(f, "ChcIds")
 	delete(f, "DeployVirtualPrivateCloud")
 	delete(f, "DeploySecurityGroupIds")
+	delete(f, "ChcDeployExtraConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureChcDeployVpcRequest has unknown keys!", "")
 	}
@@ -2142,6 +2231,8 @@ type DescribeChcHostsRequestParams struct {
 	// <p style="padding-left: 30px;">按照【<strong>私有网络唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// <li><strong>subnet-id</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>私有子网唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>sn</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>设备SN</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -2169,6 +2260,8 @@ type DescribeChcHostsRequest struct {
 	// <p style="padding-left: 30px;">按照【<strong>私有网络唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// <li><strong>subnet-id</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>私有子网唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>sn</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>设备SN</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -3940,339 +4033,6 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeReservedInstancesConfigInfosRequestParams struct {
-	// zone
-	// 按照预留实例计费可购买的可用区进行过滤。形如：ap-guangzhou-1。
-	// 类型：String
-	// 必选：否
-	// 可选项：各地域可用区列表
-	// 
-	// product-description
-	// 按照预留实例计费的平台描述（即操作系统）进行过滤。形如：linux。
-	// 类型：String
-	// 必选：否
-	// 可选项：linux
-	// 
-	// duration
-	// 按照预留实例计费有效期，即预留实例计费购买时长进行过滤。形如：31536000。
-	// 类型：Integer
-	// 计量单位：秒
-	// 必选：否
-	// 可选项：31536000 (1年)
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeReservedInstancesConfigInfosRequest struct {
-	*tchttp.BaseRequest
-	
-	// zone
-	// 按照预留实例计费可购买的可用区进行过滤。形如：ap-guangzhou-1。
-	// 类型：String
-	// 必选：否
-	// 可选项：各地域可用区列表
-	// 
-	// product-description
-	// 按照预留实例计费的平台描述（即操作系统）进行过滤。形如：linux。
-	// 类型：String
-	// 必选：否
-	// 可选项：linux
-	// 
-	// duration
-	// 按照预留实例计费有效期，即预留实例计费购买时长进行过滤。形如：31536000。
-	// 类型：Integer
-	// 计量单位：秒
-	// 必选：否
-	// 可选项：31536000 (1年)
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeReservedInstancesConfigInfosRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeReservedInstancesConfigInfosRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedInstancesConfigInfosRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeReservedInstancesConfigInfosResponseParams struct {
-	// 预留实例静态配置信息列表。
-	ReservedInstanceConfigInfos []*ReservedInstanceConfigInfoItem `json:"ReservedInstanceConfigInfos,omitnil,omitempty" name:"ReservedInstanceConfigInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeReservedInstancesConfigInfosResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeReservedInstancesConfigInfosResponseParams `json:"Response"`
-}
-
-func (r *DescribeReservedInstancesConfigInfosResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeReservedInstancesConfigInfosResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeReservedInstancesOfferingsRequestParams struct {
-	// 试运行, 默认为 false。
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 以最大有效期作为过滤参数。
-	// 计量单位: 秒
-	// 默认为 94608000。
-	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
-
-	// 以最小有效期作为过滤参数。
-	// 计量单位: 秒
-	// 默认为 2592000。
-	MinDuration *int64 `json:"MinDuration,omitnil,omitempty" name:"MinDuration"`
-
-	// <li><strong>zone</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费可购买的【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
-	// <li><strong>duration</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
-	// <li><strong>instance-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例计费类型</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a></p>
-	// <li><strong>offering-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (预付全部费用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (预付全部费用)</p>
-	// <li><strong>product-description</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费的【<strong>平台描述</strong>】（即操作系统）进行过滤。形如：linux。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：linux</p>
-	// <li><strong>reserved-instances-offering-id</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例计费配置ID</strong>】进行过滤。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeReservedInstancesOfferingsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 试运行, 默认为 false。
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 以最大有效期作为过滤参数。
-	// 计量单位: 秒
-	// 默认为 94608000。
-	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
-
-	// 以最小有效期作为过滤参数。
-	// 计量单位: 秒
-	// 默认为 2592000。
-	MinDuration *int64 `json:"MinDuration,omitnil,omitempty" name:"MinDuration"`
-
-	// <li><strong>zone</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费可购买的【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
-	// <li><strong>duration</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
-	// <li><strong>instance-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例计费类型</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a></p>
-	// <li><strong>offering-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (预付全部费用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (预付全部费用)</p>
-	// <li><strong>product-description</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费的【<strong>平台描述</strong>】（即操作系统）进行过滤。形如：linux。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：linux</p>
-	// <li><strong>reserved-instances-offering-id</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例计费配置ID</strong>】进行过滤。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeReservedInstancesOfferingsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeReservedInstancesOfferingsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DryRun")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "MaxDuration")
-	delete(f, "MinDuration")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedInstancesOfferingsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeReservedInstancesOfferingsResponseParams struct {
-	// 符合条件的预留实例计费数量。
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 符合条件的预留实例计费列表。
-	ReservedInstancesOfferingsSet []*ReservedInstancesOffering `json:"ReservedInstancesOfferingsSet,omitnil,omitempty" name:"ReservedInstancesOfferingsSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeReservedInstancesOfferingsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeReservedInstancesOfferingsResponseParams `json:"Response"`
-}
-
-func (r *DescribeReservedInstancesOfferingsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeReservedInstancesOfferingsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeReservedInstancesRequestParams struct {
-	// 试运行。默认为 false。
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// <li><strong>zone</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费可购买的【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
-	// <li><strong>duration</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
-	// <li><strong>instance-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例规格</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例规格列表</a></p>
-	// <li><strong>instance-family</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例类型</strong>】进行过滤。形如：S3。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例类型列表</a></p>
-	// <li><strong>offering-type</strong></li>
-	// <li><strong>offering-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (全预付)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (全预付) | Partial Upfront (部分预付) | No Upfront (零预付)</p>
-	// <li><strong>product-description</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费的【<strong>平台描述</strong>】（即操作系统）进行过滤。形如：linux。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：linux</p>
-	// <li><strong>reserved-instances-id</strong></li>
-	// <p style="padding-left: 30px;">按照已购买【<strong>预留实例计费ID</strong>】进行过滤。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
-	// <li><strong>state</strong></li>
-	// <p style="padding-left: 30px;">按照已购买【<strong>预留实例计费状态</strong>】进行过滤。形如：active。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：active (已创建) | pending (等待被创建) | retired (过期)</p>
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeReservedInstancesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 试运行。默认为 false。
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// <li><strong>zone</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费可购买的【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
-	// <li><strong>duration</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
-	// <li><strong>instance-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例规格</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例规格列表</a></p>
-	// <li><strong>instance-family</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>预留实例类型</strong>】进行过滤。形如：S3。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例类型列表</a></p>
-	// <li><strong>offering-type</strong></li>
-	// <li><strong>offering-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (全预付)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (全预付) | Partial Upfront (部分预付) | No Upfront (零预付)</p>
-	// <li><strong>product-description</strong></li>
-	// <p style="padding-left: 30px;">按照预留实例计费的【<strong>平台描述</strong>】（即操作系统）进行过滤。形如：linux。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：linux</p>
-	// <li><strong>reserved-instances-id</strong></li>
-	// <p style="padding-left: 30px;">按照已购买【<strong>预留实例计费ID</strong>】进行过滤。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
-	// <li><strong>state</strong></li>
-	// <p style="padding-left: 30px;">按照已购买【<strong>预留实例计费状态</strong>】进行过滤。形如：active。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：active (已创建) | pending (等待被创建) | retired (过期)</p>
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeReservedInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeReservedInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DryRun")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeReservedInstancesResponseParams struct {
-	// 符合条件的预留实例计费数量。
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 符合条件的预留实例计费列表。
-	ReservedInstancesSet []*ReservedInstances `json:"ReservedInstancesSet,omitnil,omitempty" name:"ReservedInstancesSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeReservedInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeReservedInstancesResponseParams `json:"Response"`
-}
-
-func (r *DescribeReservedInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeReservedInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeTaskInfoRequestParams struct {
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -5581,91 +5341,6 @@ func (r *ImportKeyPairResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type InquirePricePurchaseReservedInstancesOfferingRequestParams struct {
-	// 购买预留实例计费数量
-	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
-
-	// 预留实例计费配置ID
-	ReservedInstancesOfferingId *string `json:"ReservedInstancesOfferingId,omitnil,omitempty" name:"ReservedInstancesOfferingId"`
-
-	// 试运行
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 预留实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>最多支持60个字符（包含模式串）。</li>
-	ReservedInstanceName *string `json:"ReservedInstanceName,omitnil,omitempty" name:"ReservedInstanceName"`
-}
-
-type InquirePricePurchaseReservedInstancesOfferingRequest struct {
-	*tchttp.BaseRequest
-	
-	// 购买预留实例计费数量
-	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
-
-	// 预留实例计费配置ID
-	ReservedInstancesOfferingId *string `json:"ReservedInstancesOfferingId,omitnil,omitempty" name:"ReservedInstancesOfferingId"`
-
-	// 试运行
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 预留实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>最多支持60个字符（包含模式串）。</li>
-	ReservedInstanceName *string `json:"ReservedInstanceName,omitnil,omitempty" name:"ReservedInstanceName"`
-}
-
-func (r *InquirePricePurchaseReservedInstancesOfferingRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InquirePricePurchaseReservedInstancesOfferingRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceCount")
-	delete(f, "ReservedInstancesOfferingId")
-	delete(f, "DryRun")
-	delete(f, "ClientToken")
-	delete(f, "ReservedInstanceName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePricePurchaseReservedInstancesOfferingRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type InquirePricePurchaseReservedInstancesOfferingResponseParams struct {
-	// 该参数表示对应配置预留实例的价格。
-	Price *ReservedInstancePrice `json:"Price,omitnil,omitempty" name:"Price"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type InquirePricePurchaseReservedInstancesOfferingResponse struct {
-	*tchttp.BaseResponse
-	Response *InquirePricePurchaseReservedInstancesOfferingResponseParams `json:"Response"`
-}
-
-func (r *InquirePricePurchaseReservedInstancesOfferingResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InquirePricePurchaseReservedInstancesOfferingResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type InquiryPriceModifyInstancesChargeTypeRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -6783,9 +6458,11 @@ type InternetBandwidthConfig struct {
 
 type InternetChargeTypeConfig struct {
 	// 网络计费模式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 网络计费模式描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -7085,7 +6762,7 @@ type LocalDiskType struct {
 	// 本地磁盘最大值。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+	// 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选</li><li>OPTIONAL：表示可选。</li>
 	Required *string `json:"Required,omitnil,omitempty" name:"Required"`
 }
 
@@ -8137,7 +7814,7 @@ func (r *ModifyLaunchTemplateDefaultVersionResponse) FromJsonString(s string) er
 }
 
 type OperationCountLimit struct {
-	// 实例操作。取值范围：<br><li>`INSTANCE_DEGRADE`：降配操作<br><li>`INTERNET_CHARGE_TYPE_CHANGE`：修改网络带宽计费模式
+	// 实例操作。取值范围：<br><li>`INSTANCE_DEGRADE`：降配操作</li><li>`INTERNET_CHARGE_TYPE_CHANGE`：修改网络带宽计费模式</li>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 实例ID。
@@ -8290,91 +7967,6 @@ func (r *ProgramFpgaImageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type PurchaseReservedInstancesOfferingRequestParams struct {
-	// 购买预留实例计费数量
-	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
-
-	// 预留实例计费配置ID
-	ReservedInstancesOfferingId *string `json:"ReservedInstancesOfferingId,omitnil,omitempty" name:"ReservedInstancesOfferingId"`
-
-	// 试运行
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 预留实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>最多支持60个字符（包含模式串）。</li>
-	ReservedInstanceName *string `json:"ReservedInstanceName,omitnil,omitempty" name:"ReservedInstanceName"`
-}
-
-type PurchaseReservedInstancesOfferingRequest struct {
-	*tchttp.BaseRequest
-	
-	// 购买预留实例计费数量
-	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
-
-	// 预留实例计费配置ID
-	ReservedInstancesOfferingId *string `json:"ReservedInstancesOfferingId,omitnil,omitempty" name:"ReservedInstancesOfferingId"`
-
-	// 试运行
-	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 预留实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>最多支持60个字符（包含模式串）。</li>
-	ReservedInstanceName *string `json:"ReservedInstanceName,omitnil,omitempty" name:"ReservedInstanceName"`
-}
-
-func (r *PurchaseReservedInstancesOfferingRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *PurchaseReservedInstancesOfferingRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceCount")
-	delete(f, "ReservedInstancesOfferingId")
-	delete(f, "DryRun")
-	delete(f, "ClientToken")
-	delete(f, "ReservedInstanceName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurchaseReservedInstancesOfferingRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type PurchaseReservedInstancesOfferingResponseParams struct {
-	// 已购买预留实例计费ID
-	ReservedInstanceId *string `json:"ReservedInstanceId,omitnil,omitempty" name:"ReservedInstanceId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type PurchaseReservedInstancesOfferingResponse struct {
-	*tchttp.BaseResponse
-	Response *PurchaseReservedInstancesOfferingResponseParams `json:"Response"`
-}
-
-func (r *PurchaseReservedInstancesOfferingResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *PurchaseReservedInstancesOfferingResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type RebootInstancesRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -8444,12 +8036,15 @@ func (r *RebootInstancesResponse) FromJsonString(s string) error {
 
 type RegionInfo struct {
 	// 地域名称，例如，ap-guangzhou
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 地域描述，例如，华南地区(广州)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 地域是否可用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionState *string `json:"RegionState,omitnil,omitempty" name:"RegionState"`
 }
 
@@ -8631,7 +8226,7 @@ type RenewInstancesRequestParams struct {
 	// 包年包月实例该参数为必传参数。</dx-alert>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 是否续费弹性数据盘。取值范围：<br><li>true：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>false：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：true。
+	// 是否续费弹性数据盘。取值范围：<br><li>true：表示续费包年包月实例同时续费其挂载的弹性数据盘</li><li>false：表示续费包年包月实例同时不再续费其挂载的弹性数据盘</li><br>默认取值：true。
 	RenewPortableDataDisk *bool `json:"RenewPortableDataDisk,omitnil,omitempty" name:"RenewPortableDataDisk"`
 }
 
@@ -8645,7 +8240,7 @@ type RenewInstancesRequest struct {
 	// 包年包月实例该参数为必传参数。</dx-alert>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 是否续费弹性数据盘。取值范围：<br><li>true：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>false：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：true。
+	// 是否续费弹性数据盘。取值范围：<br><li>true：表示续费包年包月实例同时续费其挂载的弹性数据盘</li><li>false：表示续费包年包月实例同时不再续费其挂载的弹性数据盘</li><br>默认取值：true。
 	RenewPortableDataDisk *bool `json:"RenewPortableDataDisk,omitnil,omitempty" name:"RenewPortableDataDisk"`
 }
 
@@ -8922,218 +8517,6 @@ type RepairTaskInfo struct {
 	AuthSource *string `json:"AuthSource,omitnil,omitempty" name:"AuthSource"`
 }
 
-type ReservedInstanceConfigInfoItem struct {
-	// 实例规格。
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 实例规格名称。
-	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
-
-	// 优先级。
-	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 实例族信息列表。
-	InstanceFamilies []*ReservedInstanceFamilyItem `json:"InstanceFamilies,omitnil,omitempty" name:"InstanceFamilies"`
-}
-
-type ReservedInstanceFamilyItem struct {
-	// 实例族。
-	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
-
-	// 优先级。
-	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 实例类型信息列表。
-	InstanceTypes []*ReservedInstanceTypeItem `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
-}
-
-type ReservedInstancePrice struct {
-	// 预支合计费用的原价，单位：元。
-	OriginalFixedPrice *float64 `json:"OriginalFixedPrice,omitnil,omitempty" name:"OriginalFixedPrice"`
-
-	// 预支合计费用的折扣价，单位：元。
-	DiscountFixedPrice *float64 `json:"DiscountFixedPrice,omitnil,omitempty" name:"DiscountFixedPrice"`
-
-	// 后续合计费用的原价，单位：元/小时
-	OriginalUsagePrice *float64 `json:"OriginalUsagePrice,omitnil,omitempty" name:"OriginalUsagePrice"`
-
-	// 后续合计费用的折扣价，单位：元/小时
-	DiscountUsagePrice *float64 `json:"DiscountUsagePrice,omitnil,omitempty" name:"DiscountUsagePrice"`
-
-	// 预支费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FixedPriceDiscount *float64 `json:"FixedPriceDiscount,omitnil,omitempty" name:"FixedPriceDiscount"`
-
-	// 后续费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePriceDiscount *float64 `json:"UsagePriceDiscount,omitnil,omitempty" name:"UsagePriceDiscount"`
-}
-
-type ReservedInstancePriceItem struct {
-	// 付费类型，如："All Upfront","Partial Upfront","No Upfront"
-	OfferingType *string `json:"OfferingType,omitnil,omitempty" name:"OfferingType"`
-
-	// 预支合计费用，单位：元。
-	FixedPrice *float64 `json:"FixedPrice,omitnil,omitempty" name:"FixedPrice"`
-
-	// 后续合计费用，单位：元/小时
-	UsagePrice *float64 `json:"UsagePrice,omitnil,omitempty" name:"UsagePrice"`
-
-	// 预留实例配置ID
-	ReservedInstancesOfferingId *string `json:"ReservedInstancesOfferingId,omitnil,omitempty" name:"ReservedInstancesOfferingId"`
-
-	// 预留实例计费可购买的可用区。
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// 预留实例计费【有效期】即预留实例计费购买时长。形如：31536000。
-	// 计量单位：秒
-	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 预留实例计费的平台描述（即操作系统）。形如：Linux。
-	// 返回项： Linux 。
-	ProductDescription *string `json:"ProductDescription,omitnil,omitempty" name:"ProductDescription"`
-
-	// 预支合计费用，单位：元。
-	DiscountUsagePrice *float64 `json:"DiscountUsagePrice,omitnil,omitempty" name:"DiscountUsagePrice"`
-
-	// 后续合计费用的折扣价，单位：元/小时
-	DiscountFixedPrice *float64 `json:"DiscountFixedPrice,omitnil,omitempty" name:"DiscountFixedPrice"`
-}
-
-type ReservedInstanceTypeItem struct {
-	// 实例类型。
-	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
-
-	// CPU核数。
-	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
-
-	// 内存大小。
-	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
-
-	// GPU数量。
-	Gpu *uint64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
-
-	// FPGA数量。
-	Fpga *uint64 `json:"Fpga,omitnil,omitempty" name:"Fpga"`
-
-	// 本地存储块数量。
-	StorageBlock *uint64 `json:"StorageBlock,omitnil,omitempty" name:"StorageBlock"`
-
-	// 网卡数。
-	NetworkCard *uint64 `json:"NetworkCard,omitnil,omitempty" name:"NetworkCard"`
-
-	// 最大带宽。
-	MaxBandwidth *float64 `json:"MaxBandwidth,omitnil,omitempty" name:"MaxBandwidth"`
-
-	// 主频。
-	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
-
-	// CPU型号名称。
-	CpuModelName *string `json:"CpuModelName,omitnil,omitempty" name:"CpuModelName"`
-
-	// 包转发率。
-	Pps *uint64 `json:"Pps,omitnil,omitempty" name:"Pps"`
-
-	// 外部信息。
-	Externals *Externals `json:"Externals,omitnil,omitempty" name:"Externals"`
-
-	// 备注信息。
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
-
-	// 预留实例配置价格信息。
-	Prices []*ReservedInstancePriceItem `json:"Prices,omitnil,omitempty" name:"Prices"`
-}
-
-type ReservedInstances struct {
-	// （此字段已废弃，建议使用字段：ReservedInstanceId）已购买的预留实例计费ID。形如：ri-rtbh4han。
-	ReservedInstancesId *string `json:"ReservedInstancesId,omitnil,omitempty" name:"ReservedInstancesId"`
-
-	// 预留实例计费的规格。形如：S3.MEDIUM4。
-	// 返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费规格列表</a>
-	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
-
-	// 预留实例计费可购买的可用区。形如：ap-guangzhou-1。
-	// 返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// 预留实例计费开始时间。形如：1949-10-01 00:00:00
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 预留实例计费到期时间。形如：1949-10-01 00:00:00
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 预留实例计费【有效期】即预留实例计费购买时长。形如：31536000。
-	// 计量单位：秒。
-	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 已购买的预留实例计费个数。形如：10。
-	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
-
-	// 描述预留实例计费的平台描述（即操作系统）。形如：linux。
-	// 返回项： linux 。
-	ProductDescription *string `json:"ProductDescription,omitnil,omitempty" name:"ProductDescription"`
-
-	// 预留实例计费购买的状态。形如：active
-	// 返回项： active (以创建) | pending (等待被创建) | retired (过期)。
-	State *string `json:"State,omitnil,omitempty" name:"State"`
-
-	// 可购买的预留实例计费类型的结算货币，使用ISO 4217标准货币代码。形如：USD。
-	// 返回项：USD（美元）。
-	CurrencyCode *string `json:"CurrencyCode,omitnil,omitempty" name:"CurrencyCode"`
-
-	// 预留实例计费的付款类型。形如：All Upfront。
-	// 返回项： All Upfront (预付全部费用)。
-	OfferingType *string `json:"OfferingType,omitnil,omitempty" name:"OfferingType"`
-
-	// 预留实例计费的类型。形如：S3。
-	// 返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a>
-	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
-
-	// 已购买的预留实例计费ID。形如：ri-rtbh4han。
-	ReservedInstanceId *string `json:"ReservedInstanceId,omitnil,omitempty" name:"ReservedInstanceId"`
-
-	// 预留实例显示名称。形如：riname-01
-	ReservedInstanceName *string `json:"ReservedInstanceName,omitnil,omitempty" name:"ReservedInstanceName"`
-}
-
-type ReservedInstancesOffering struct {
-	// 预留实例计费可购买的可用区。形如：ap-guangzhou-1。
-	// 返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// 可购买的预留实例计费类型的结算货币，使用ISO 4217标准货币代码。
-	// 返回项：USD（美元）。
-	CurrencyCode *string `json:"CurrencyCode,omitnil,omitempty" name:"CurrencyCode"`
-
-	// 预留实例计费【有效期】即预留实例计费购买时长。形如：31536000。
-	// 计量单位：秒
-	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 预留实例计费的购买价格。形如：4000.0。
-	// 计量单位：与 currencyCode 一致，目前支持 USD（美元）
-	FixedPrice *float64 `json:"FixedPrice,omitnil,omitempty" name:"FixedPrice"`
-
-	// 预留实例计费的实例类型。形如：S3.MEDIUM4。
-	// 返回项：<a href="https://cloud.tencent.com/product/cvm/instances">预留实例计费类型列表</a>
-	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
-
-	// 预留实例计费的付款类型。形如：All Upfront。
-	// 返回项： All Upfront (预付全部费用)。
-	OfferingType *string `json:"OfferingType,omitnil,omitempty" name:"OfferingType"`
-
-	// 可购买的预留实例计费配置ID。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。
-	ReservedInstancesOfferingId *string `json:"ReservedInstancesOfferingId,omitnil,omitempty" name:"ReservedInstancesOfferingId"`
-
-	// 预留实例计费的平台描述（即操作系统）。形如：linux。
-	// 返回项： linux 。
-	ProductDescription *string `json:"ProductDescription,omitnil,omitempty" name:"ProductDescription"`
-
-	// 扣除预付费之后的使用价格 (按小时计费)。形如：0.0。
-	// 目前，因为只支持 All Upfront 付款类型，所以默认为 0元/小时。
-	// 计量单位：元/小时，货币单位与 currencyCode 一致，目前支持 USD（美元）
-	UsagePrice *float64 `json:"UsagePrice,omitnil,omitempty" name:"UsagePrice"`
-}
-
 // Predefined struct for user
 type ResetInstanceRequestParams struct {
 	// 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。
@@ -9394,7 +8777,7 @@ type ResetInstancesTypeRequestParams struct {
 	// 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[`DescribeInstanceTypeConfigs`](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机<br><li>false：表示在正常关机失败后不进行强制关机<br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
 }
 
@@ -9407,7 +8790,7 @@ type ResetInstancesTypeRequest struct {
 	// 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[`DescribeInstanceTypeConfigs`](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机<br><li>false：表示在正常关机失败后不进行强制关机<br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
 }
 

@@ -2769,6 +2769,10 @@ func NewModifyIngressResponse() (response *ModifyIngressResponse) {
 }
 
 // ModifyIngress
+// 此接口没有被使用了
+//
+// 
+//
 // 创建或者更新 Ingress 规则
 //
 // 可能返回的错误码:
@@ -2783,6 +2787,10 @@ func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyI
 }
 
 // ModifyIngress
+// 此接口没有被使用了
+//
+// 
+//
 // 创建或者更新 Ingress 规则
 //
 // 可能返回的错误码:

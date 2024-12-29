@@ -18551,60 +18551,6 @@ func (r *DescribeImportMachineInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeIndexListRequestParams struct {
-
-}
-
-type DescribeIndexListRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeIndexListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIndexListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIndexListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeIndexListResponseParams struct {
-	// ES 索引信息
-	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeIndexListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeIndexListResponseParams `json:"Response"`
-}
-
-func (r *DescribeIndexListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIndexListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeJavaMemShellInfoRequestParams struct {
 	// 事件Id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`

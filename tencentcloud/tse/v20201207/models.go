@@ -6961,6 +6961,9 @@ type DescribeGovernanceNamespacesRequestParams struct {
 	// 根据命名空间名称过滤。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 是否开启同步到全局注册中心	
+	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
+
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -6976,6 +6979,9 @@ type DescribeGovernanceNamespacesRequest struct {
 
 	// 根据命名空间名称过滤。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否开启同步到全局注册中心	
+	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -6998,6 +7004,7 @@ func (r *DescribeGovernanceNamespacesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Name")
+	delete(f, "SyncToGlobalRegistry")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -7256,6 +7263,9 @@ type DescribeGovernanceServicesRequestParams struct {
 
 	// 是否只查询存在健康实例的服务
 	OnlyExistHealthyInstance *bool `json:"OnlyExistHealthyInstance,omitnil,omitempty" name:"OnlyExistHealthyInstance"`
+
+	// 是否开启同步到全局注册中心	
+	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 }
 
 type DescribeGovernanceServicesRequest struct {
@@ -7290,6 +7300,9 @@ type DescribeGovernanceServicesRequest struct {
 
 	// 是否只查询存在健康实例的服务
 	OnlyExistHealthyInstance *bool `json:"OnlyExistHealthyInstance,omitnil,omitempty" name:"OnlyExistHealthyInstance"`
+
+	// 是否开启同步到全局注册中心	
+	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 }
 
 func (r *DescribeGovernanceServicesRequest) ToJsonString() string {
@@ -7314,6 +7327,7 @@ func (r *DescribeGovernanceServicesRequest) FromJsonString(s string) error {
 	delete(f, "Business")
 	delete(f, "Host")
 	delete(f, "OnlyExistHealthyInstance")
+	delete(f, "SyncToGlobalRegistry")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGovernanceServicesRequest has unknown keys!", "")
 	}
@@ -8994,6 +9008,10 @@ type GovernanceNamespace struct {
 	// 移除可以操作此命名空间的用户组ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoveGroupIds []*string `json:"RemoveGroupIds,omitnil,omitempty" name:"RemoveGroupIds"`
+
+	// 该命名空间下的服务对哪些命名空间可见
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceExportTo []*string `json:"ServiceExportTo,omitnil,omitempty" name:"ServiceExportTo"`
 }
 
 type GovernanceNamespaceInput struct {
@@ -9014,6 +9032,12 @@ type GovernanceNamespaceInput struct {
 
 	// 移除可以操作此命名空间的用户组ID列表
 	RemoveGroupIds []*string `json:"RemoveGroupIds,omitnil,omitempty" name:"RemoveGroupIds"`
+
+	// 该命名空间下的服务对哪些命名空间下可见，
+	// 1、为空或者不填写，表示仅当前命名空间可见
+	// 2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）
+	// 3、列表内容为部份命名空间名称，则只对这些命名空间下可见
+	ServiceExportTo []*string `json:"ServiceExportTo,omitnil,omitempty" name:"ServiceExportTo"`
 }
 
 type GovernanceService struct {

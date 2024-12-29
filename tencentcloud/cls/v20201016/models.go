@@ -12561,7 +12561,7 @@ type SearchLogRequestParams struct {
 	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - 要检索分析的日志主题列表，最大支持20个日志主题。
+	// - 要检索分析的日志主题列表，最大支持50个日志主题。
 	// - 检索单个日志主题时请使用TopicId。
 	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
@@ -12636,7 +12636,7 @@ type SearchLogRequest struct {
 	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - 要检索分析的日志主题列表，最大支持20个日志主题。
+	// - 要检索分析的日志主题列表，最大支持50个日志主题。
 	// - 检索单个日志主题时请使用TopicId。
 	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`

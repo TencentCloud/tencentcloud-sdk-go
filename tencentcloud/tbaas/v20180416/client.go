@@ -489,7 +489,7 @@ func NewGetBlockTransactionListForUserResponse() (response *GetBlockTransactionL
 }
 
 // GetBlockTransactionListForUser
-// 获取区块内的交易列表
+// 获取区块内交易列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -515,7 +515,7 @@ func (c *Client) GetBlockTransactionListForUser(request *GetBlockTransactionList
 }
 
 // GetBlockTransactionListForUser
-// 获取区块内的交易列表
+// 获取区块内交易列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -864,7 +864,7 @@ func NewGetTransactionDetailForUserResponse() (response *GetTransactionDetailFor
 }
 
 // GetTransactionDetailForUser
-// 获取交易详情
+// 获取交易的详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -887,7 +887,7 @@ func (c *Client) GetTransactionDetailForUser(request *GetTransactionDetailForUse
 }
 
 // GetTransactionDetailForUser
-// 获取交易详情
+// 获取交易的详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

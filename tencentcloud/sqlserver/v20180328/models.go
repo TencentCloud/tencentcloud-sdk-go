@@ -44,6 +44,9 @@ type AccountCreateInfo struct {
 
 	// 是否开启CAM验证
 	IsCam *bool `json:"IsCam,omitnil,omitempty" name:"IsCam"`
+
+	// 加密密钥版本号，0表示不使用加密
+	EncryptedVersion *int64 `json:"EncryptedVersion,omitnil,omitempty" name:"EncryptedVersion"`
 }
 
 type AccountDetail struct {
@@ -93,6 +96,9 @@ type AccountPassword struct {
 
 	// 密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 加密密钥版本号，0表示不使用加密
+	EncryptedVersion *int64 `json:"EncryptedVersion,omitnil,omitempty" name:"EncryptedVersion"`
 }
 
 type AccountPrivilege struct {
@@ -378,7 +384,6 @@ type BusinessIntelligenceFile struct {
 
 type CheckItem struct {
 	// 检查项目名称，CK_CPU-变配后CPU风险检查；CK_MASTER_STORAGE-只读副本变配下，只读副本磁盘空间不小于主实例空间检查；CK_MEMORY-变配后内存风险检查；CK_STORAGE-变配后磁盘空间风险检查；CK_UPGRATE-变配是否需要迁移检查；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckName *string `json:"CheckName,omitnil,omitempty" name:"CheckName"`
 
 	// 检查项目返回值，CK_CPU-当前CPU近7天最大的使用率(%) ；CK_MASTER_STORAGE-主实例的磁盘空间(GB)；CK_MEMORY-当前内存近7天最大的使用值（GB)；
@@ -1215,11 +1220,9 @@ type CreateBusinessDBInstancesResponseParams struct {
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 实例ID集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitnil,omitempty" name:"InstanceIdSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2725,7 +2728,7 @@ type DBInstance struct {
 	// 实例续费标记，0-正常续费，1-自动续费，2-到期不续费
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，9-自研机房
+	// 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，6-多节点集群，7-多节点集群跨可用区，9-自研机房
 	Model *int64 `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 实例所在地域名称，如 ap-guangzhou
@@ -2762,19 +2765,15 @@ type DBInstance struct {
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 实例隔离操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateOperator *string `json:"IsolateOperator,omitnil,omitempty" name:"IsolateOperator"`
 
 	// 发布订阅标识，SUB-订阅实例，PUB-发布实例，空值-没有发布订阅的普通实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubFlag *string `json:"SubFlag,omitnil,omitempty" name:"SubFlag"`
 
 	// 只读标识，RO-只读实例，MASTER-有RO实例的主实例，空值-没有只读组的非RO实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ROFlag *string `json:"ROFlag,omitnil,omitempty" name:"ROFlag"`
 
 	// 容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HAFlag *string `json:"HAFlag,omitnil,omitempty" name:"HAFlag"`
 
 	// 实例绑定的标签列表
@@ -2782,11 +2781,9 @@ type DBInstance struct {
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupModel *string `json:"BackupModel,omitnil,omitempty" name:"BackupModel"`
 
 	// 实例备份信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNote *string `json:"InstanceNote,omitnil,omitempty" name:"InstanceNote"`
 
 	// 备份周期
@@ -2798,7 +2795,7 @@ type DBInstance struct {
 	// 数据(日志)备份保留时间
 	BackupSaveDays *int64 `json:"BackupSaveDays,omitnil,omitempty" name:"BackupSaveDays"`
 
-	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+	// 实例类型 HA-高可用，RO-只读实例，SI-基础版，BI-商业智能服务，cvmHA-云盘高可用，cvmRO-云盘只读实例，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 跨地域备份目的地域，如果为空，则表示未开启跨地域备份
@@ -2825,17 +2822,17 @@ type DBInstance struct {
 	// 是否跨AZ
 	IsDrZone *bool `json:"IsDrZone,omitnil,omitempty" name:"IsDrZone"`
 
-	// 备可用区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 双节点实例备可用区信息
 	SlaveZones *SlaveZones `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
 	// 架构标识，SINGLE-单节点 DOUBLE-双节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
 	// 类型标识，EXCLUSIVE-独享型，SHARED-共享型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 多节点实例备可用区信息
+	MultiSlaveZones []*SlaveZones `json:"MultiSlaveZones,omitnil,omitempty" name:"MultiSlaveZones"`
 }
 
 type DBPrivilege struct {
@@ -2969,7 +2966,6 @@ type DbNormalDetail struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 是否全文启用 0：否 1：是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFullTextEnabled *string `json:"IsFullTextEnabled,omitnil,omitempty" name:"IsFullTextEnabled"`
 }
 
@@ -6503,7 +6499,6 @@ func (r *DescribeInquiryPriceParameterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInquiryPriceParameterResponseParams struct {
 	// 计费参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6812,7 +6807,7 @@ type DescribeInstanceTradeParameterRequestParams struct {
 	// 实例磁盘大小，单位GB
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读
+	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 购买实例的宿主机磁盘类型,CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘
@@ -6865,6 +6860,12 @@ type DescribeInstanceTradeParameterRequestParams struct {
 
 	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
+
+	// 是否多节点架构，默认值为false
+	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
+
+	// 备节点可用区，默认为空。如果是多节点架构时必传，并且当MultiZones=true时备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type DescribeInstanceTradeParameterRequest struct {
@@ -6882,7 +6883,7 @@ type DescribeInstanceTradeParameterRequest struct {
 	// 实例磁盘大小，单位GB
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读
+	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 购买实例的宿主机磁盘类型,CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘
@@ -6935,6 +6936,12 @@ type DescribeInstanceTradeParameterRequest struct {
 
 	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
+
+	// 是否多节点架构，默认值为false
+	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
+
+	// 备节点可用区，默认为空。如果是多节点架构时必传，并且当MultiZones=true时备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *DescribeInstanceTradeParameterRequest) ToJsonString() string {
@@ -6971,6 +6978,8 @@ func (r *DescribeInstanceTradeParameterRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "TimeZone")
 	delete(f, "Collation")
+	delete(f, "MultiNodes")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceTradeParameterRequest has unknown keys!", "")
 	}
@@ -6980,7 +6989,6 @@ func (r *DescribeInstanceTradeParameterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceTradeParameterResponseParams struct {
 	// 计费参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9159,29 +9167,44 @@ func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 type DrReadableInfo struct {
-	// 备机状态，enable-运行中，disable-不可用
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 备机资源ID
+	DrInstanceId *string `json:"DrInstanceId,omitnil,omitempty" name:"DrInstanceId"`
+
+	// 备机可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 备机状态
+	// DR_CREATING-备机创建中
+	// DR_RUNNING-备机运行中
+	// DR_UNAVAILABLE-备机不可用
+	// DR_ISOLATED-备机已隔离
+	// DR_RECYCLING-备机回收中
+	// DR_RECYCLED-备机已回收
+	// DR_JOB_RUNNING-备机执行任务中
+	// DR_OFFLINE-备机已下线
+	// DR_FAIL_OVER-备机只读故障转移中
 	SlaveStatus *string `json:"SlaveStatus,omitnil,omitempty" name:"SlaveStatus"`
 
 	// 备机可读状态，enable-已开启，disable-已关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadableStatus *string `json:"ReadableStatus,omitnil,omitempty" name:"ReadableStatus"`
 
 	// 备机只读vip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 备机只读端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VPort *int64 `json:"VPort,omitnil,omitempty" name:"VPort"`
 
 	// 备机所在私有网络ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 备机所在私有网络子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+
+	// 备机只读权重
+	RoWeight *uint64 `json:"RoWeight,omitnil,omitempty" name:"RoWeight"`
+
+	// 备机只读模式，BalancedReadOnly-多备一读模式，SingleReadOnly-一备一读模式
+	ReadMode *string `json:"ReadMode,omitnil,omitempty" name:"ReadMode"`
 }
 
 type EventConfig struct {
@@ -9702,7 +9725,6 @@ type Migration struct {
 	MigrationId *string `json:"MigrationId,omitnil,omitempty" name:"MigrationId"`
 
 	// 备份导入名称，增量导入任务该字段为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrationName *string `json:"MigrationName,omitnil,omitempty" name:"MigrationName"`
 
 	// 应用ID
@@ -9745,7 +9767,6 @@ type Migration struct {
 	Action *MigrationAction `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 是否是最终恢复，全量导入任务该字段为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecovery *string `json:"IsRecovery,omitnil,omitempty" name:"IsRecovery"`
 
 	// 重命名的数据库名称集合
@@ -9772,7 +9793,6 @@ type MigrationDetail struct {
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 步骤信息，null表示还未开始迁移
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfo []*MigrationStep `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 }
 
@@ -12240,7 +12260,6 @@ type OldVip struct {
 	RecycleTime *string `json:"RecycleTime,omitnil,omitempty" name:"RecycleTime"`
 
 	// 旧IP保留时间小时数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldIpRetainTime *int64 `json:"OldIpRetainTime,omitnil,omitempty" name:"OldIpRetainTime"`
 }
 
@@ -12363,19 +12382,15 @@ type ParameterDetail struct {
 
 type Price struct {
 	// 包年包月参考价格，单位-分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrepaidPrice *uint64 `json:"PrepaidPrice,omitnil,omitempty" name:"PrepaidPrice"`
 
 	// 包年包月价格单位，M-月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrepaidPriceUnit *string `json:"PrepaidPriceUnit,omitnil,omitempty" name:"PrepaidPriceUnit"`
 
 	// 按量付费价格，单位-分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostpaidPrice *uint64 `json:"PostpaidPrice,omitnil,omitempty" name:"PostpaidPrice"`
 
 	// 按量付费价格单位，H-小时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostpaidPriceUnit *string `json:"PostpaidPriceUnit,omitnil,omitempty" name:"PostpaidPriceUnit"`
 }
 
@@ -13421,15 +13436,12 @@ type SSLConfig struct {
 	// disable_doing-关闭中
 	// renew_doing-更新中
 	// wait_doing-等待维护时间内执行
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
 	// SSL证书有效期，时间格式 YYYY-MM-DD HH:MM:SS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSLValidityPeriod *string `json:"SSLValidityPeriod,omitnil,omitempty" name:"SSLValidityPeriod"`
 
 	// SSL证书有效性，0-无效，1-有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSLValidity *uint64 `json:"SSLValidity,omitnil,omitempty" name:"SSLValidity"`
 
 	// 是否是KMS的CMK证书
@@ -13493,6 +13505,9 @@ type SlaveZones struct {
 
 	// 备可用区
 	SlaveZoneName *string `json:"SlaveZoneName,omitnil,omitempty" name:"SlaveZoneName"`
+
+	// 备机资源ID
+	DrInstanceId *string `json:"DrInstanceId,omitnil,omitempty" name:"DrInstanceId"`
 }
 
 type SlowLog struct {
@@ -13518,7 +13533,6 @@ type SlowLog struct {
 	ExternalAddr *string `json:"ExternalAddr,omitnil,omitempty" name:"ExternalAddr"`
 
 	// 状态（1成功 2失败）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -13587,7 +13601,6 @@ type SpecInfo struct {
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
 	// 此规格对应的按量计费Pid列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostPid []*int64 `json:"PostPid,omitnil,omitempty" name:"PostPid"`
 
 	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
@@ -14068,23 +14081,18 @@ func (r *SwitchCloudInstanceHAResponse) FromJsonString(s string) error {
 
 type SwitchLog struct {
 	// 切换事件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 切换模式 0-系统自动切换，1-手动切换
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchType *uint64 `json:"SwitchType,omitnil,omitempty" name:"SwitchType"`
 
 	// 切换开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 切换结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 机器故障导致自动切换
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
@@ -14096,7 +14104,6 @@ type TDEConfigAttribute struct {
 	CertificateAttribution *string `json:"CertificateAttribution,omitnil,omitempty" name:"CertificateAttribution"`
 
 	// 开通TDE加密时引用的其他主账号ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuoteUin *string `json:"QuoteUin,omitnil,omitempty" name:"QuoteUin"`
 
 	// KMS中购买的用户主密钥ID（CMK）

@@ -29,6 +29,9 @@ const (
 	// 数据库连接失败，请检查参数是否填写正确。
 	FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
 
+	// 不能删除wedata项目关联的空间
+	FAILEDOPERATION_DELETEWEDATAITEMSPACE = "FailedOperation.DeleteWedataItemspace"
+
 	// 作业的草稿不允许删除。
 	FAILEDOPERATION_DRAFTCONFIGCANNOTDELETE = "FailedOperation.DraftConfigCanNotDelete"
 

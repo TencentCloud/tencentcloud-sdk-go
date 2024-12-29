@@ -303,6 +303,18 @@ type Cluster struct {
 
 	// 是否开启跨租户弹性网卡
 	CrossTenantEniMode *int64 `json:"CrossTenantEniMode,omitnil,omitempty" name:"CrossTenantEniMode"`
+
+	// 总的CPU
+	TotalCpu *float64 `json:"TotalCpu,omitnil,omitempty" name:"TotalCpu"`
+
+	// 总的内存
+	TotalMem *float64 `json:"TotalMem,omitnil,omitempty" name:"TotalMem"`
+
+	// 运行的CPU
+	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
+
+	// 运行的内存
+	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
 }
 
 type ClusterGroupSetItem struct {
@@ -370,6 +382,18 @@ type ClusterGroupSetItem struct {
 	// 默认 "" 包销模式 "exclusiveSale"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingResourceMode *string `json:"BillingResourceMode,omitnil,omitempty" name:"BillingResourceMode"`
+
+	// TotalCpu
+	TotalCpu *float64 `json:"TotalCpu,omitnil,omitempty" name:"TotalCpu"`
+
+	// TotalMem
+	TotalMem *float64 `json:"TotalMem,omitnil,omitempty" name:"TotalMem"`
+
+	// RunningCpu
+	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
+
+	// RunningMem
+	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
 }
 
 type ClusterSession struct {
@@ -753,6 +777,18 @@ type CreateJobConfigRequestParams struct {
 
 	// flink版本
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// JobManager cpu
+	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
+
+	// JobManager 内存
+	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
+
+	// TaskManager cpu
+	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
+
+	// TaskManager 内存
+	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 }
 
 type CreateJobConfigRequest struct {
@@ -844,6 +880,18 @@ type CreateJobConfigRequest struct {
 
 	// flink版本
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// JobManager cpu
+	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
+
+	// JobManager 内存
+	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
+
+	// TaskManager cpu
+	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
+
+	// TaskManager 内存
+	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -887,6 +935,10 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "EsServerlessIndex")
 	delete(f, "EsServerlessSpace")
 	delete(f, "FlinkVersion")
+	delete(f, "JobManagerCpu")
+	delete(f, "JobManagerMem")
+	delete(f, "TaskManagerCpu")
+	delete(f, "TaskManagerMem")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -2755,6 +2807,9 @@ type DescribeResourcesRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 资源类型，0=用户，1系统connector，2=用户自定义connector
+	SystemResource *uint64 `json:"SystemResource,omitnil,omitempty" name:"SystemResource"`
 }
 
 type DescribeResourcesRequest struct {
@@ -2775,6 +2830,9 @@ type DescribeResourcesRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 资源类型，0=用户，1系统connector，2=用户自定义connector
+	SystemResource *uint64 `json:"SystemResource,omitnil,omitempty" name:"SystemResource"`
 }
 
 func (r *DescribeResourcesRequest) ToJsonString() string {
@@ -2794,6 +2852,7 @@ func (r *DescribeResourcesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "WorkSpaceId")
+	delete(f, "SystemResource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesRequest has unknown keys!", "")
 	}
@@ -2847,6 +2906,9 @@ type DescribeSystemResourcesRequestParams struct {
 
 	// 查询对应Flink版本的内置connector
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 type DescribeSystemResourcesRequest struct {
@@ -2869,6 +2931,9 @@ type DescribeSystemResourcesRequest struct {
 
 	// 查询对应Flink版本的内置connector
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DescribeSystemResourcesRequest) ToJsonString() string {
@@ -2889,6 +2954,7 @@ func (r *DescribeSystemResourcesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "ClusterId")
 	delete(f, "FlinkVersion")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSystemResourcesRequest has unknown keys!", "")
 	}
@@ -3597,6 +3663,26 @@ type JobConfig struct {
 	// flink 版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// jm使用cpu数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
+
+	// jm使用内存数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
+
+	// tm使用cpu数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
+
+	// tm使用mem数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
+
+	// 运行中配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobConfigItem *JobConfig `json:"JobConfigItem,omitnil,omitempty" name:"JobConfigItem"`
 }
 
 type JobEvent struct {
@@ -4272,7 +4358,6 @@ type ResourceItem struct {
 	RefJobCount *int64 `json:"RefJobCount,omitnil,omitempty" name:"RefJobCount"`
 
 	// 作业运行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsJobRun *int64 `json:"IsJobRun,omitnil,omitempty" name:"IsJobRun"`
 
 	// 文件名
@@ -4286,6 +4371,27 @@ type ResourceItem struct {
 	// 分状态统计关联作业数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefJobStatusCountSet []*RefJobStatusCountItem `json:"RefJobStatusCountSet,omitnil,omitempty" name:"RefJobStatusCountSet"`
+
+	// 连接器名称
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// 连接器版本
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
+
+	// 连接方式
+	ConnectionMethod *string `json:"ConnectionMethod,omitnil,omitempty" name:"ConnectionMethod"`
+
+	// connector关联的资源id
+	RelatedResourceId *string `json:"RelatedResourceId,omitnil,omitempty" name:"RelatedResourceId"`
+
+	// 图标
+	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
+
+	// 连接器中文名
+	ConnectorName *string `json:"ConnectorName,omitnil,omitempty" name:"ConnectorName"`
+
+	// 连接器官网链接
+	ConnectorUrl *string `json:"ConnectorUrl,omitnil,omitempty" name:"ConnectorUrl"`
 }
 
 type ResourceLoc struct {
@@ -4334,6 +4440,9 @@ type ResourceRefDetail struct {
 
 	// 1: 系统内置资源
 	SystemProvide *int64 `json:"SystemProvide,omitnil,omitempty" name:"SystemProvide"`
+
+	// Connector
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
 }
 
 type ResourceRefJobInfo struct {
@@ -4730,6 +4839,12 @@ type SqlGatewayItem struct {
 	// 配置参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// Cpu
+	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// Mem
+	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 }
 
 type StatementResult struct {
@@ -4835,6 +4950,18 @@ type SubEks struct {
 	// 运行cu
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCu *float64 `json:"RunningCu,omitnil,omitempty" name:"RunningCu"`
+
+	// 总的CPU
+	TotalCpu *float64 `json:"TotalCpu,omitnil,omitempty" name:"TotalCpu"`
+
+	// 总的内存
+	TotalMem *float64 `json:"TotalMem,omitnil,omitempty" name:"TotalMem"`
+
+	// 运行的CPU
+	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
+
+	// 运行的内存
+	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
 }
 
 type SubFolderInfo struct {
@@ -4863,6 +4990,9 @@ type SystemResourceItem struct {
 
 	// 资源的最新版本
 	LatestResourceConfigVersion *int64 `json:"LatestResourceConfigVersion,omitnil,omitempty" name:"LatestResourceConfigVersion"`
+
+	// 1 是系统提供资源 2 用户提供CONNECTOR
+	SystemProvide *int64 `json:"SystemProvide,omitnil,omitempty" name:"SystemProvide"`
 }
 
 type Tag struct {
@@ -4905,6 +5035,17 @@ type TreeJobSets struct {
 	// 作业状态 启动或者停止或者暂停
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingType *int64 `json:"ScalingType,omitnil,omitempty" name:"ScalingType"`
+
+	// RunningCpu
+	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
+
+	// RunningMem
+	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
 }
 
 type TreeResourceItem struct {

@@ -779,6 +779,83 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateAreaBanRuleRequest() (request *CreateAreaBanRuleRequest) {
+    request = &CreateAreaBanRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateAreaBanRule")
+    
+    
+    return
+}
+
+func NewCreateAreaBanRuleResponse() (response *CreateAreaBanRuleResponse) {
+    response = &CreateAreaBanRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAreaBanRule
+// 添加（编辑）地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAreaBanRule(request *CreateAreaBanRuleRequest) (response *CreateAreaBanRuleResponse, err error) {
+    return c.CreateAreaBanRuleWithContext(context.Background(), request)
+}
+
+// CreateAreaBanRule
+// 添加（编辑）地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAreaBanRuleWithContext(ctx context.Context, request *CreateAreaBanRuleRequest) (response *CreateAreaBanRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAreaBanRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAreaBanRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAreaBanRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDealsRequest() (request *CreateDealsRequest) {
     request = &CreateDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2453,6 +2530,57 @@ func (c *Client) DescribeAreaBanAreasWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeAreaBanAreasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAreaBanRuleRequest() (request *DescribeAreaBanRuleRequest) {
+    request = &DescribeAreaBanRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeAreaBanRule")
+    
+    
+    return
+}
+
+func NewDescribeAreaBanRuleResponse() (response *DescribeAreaBanRuleResponse) {
+    response = &DescribeAreaBanRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAreaBanRule
+// 获取地域封禁规则配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAreaBanRule(request *DescribeAreaBanRuleRequest) (response *DescribeAreaBanRuleResponse, err error) {
+    return c.DescribeAreaBanRuleWithContext(context.Background(), request)
+}
+
+// DescribeAreaBanRule
+// 获取地域封禁规则配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAreaBanRuleWithContext(ctx context.Context, request *DescribeAreaBanRuleRequest) (response *DescribeAreaBanRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeAreaBanRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAreaBanRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAreaBanRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -6813,6 +6941,83 @@ func (c *Client) ModifyAreaBanAreasWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyAreaBanRuleRequest() (request *ModifyAreaBanRuleRequest) {
+    request = &ModifyAreaBanRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyAreaBanRule")
+    
+    
+    return
+}
+
+func NewModifyAreaBanRuleResponse() (response *ModifyAreaBanRuleResponse) {
+    response = &ModifyAreaBanRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAreaBanRule
+// 添加（编辑）地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAreaBanRule(request *ModifyAreaBanRuleRequest) (response *ModifyAreaBanRuleResponse, err error) {
+    return c.ModifyAreaBanRuleWithContext(context.Background(), request)
+}
+
+// ModifyAreaBanRule
+// 添加（编辑）地域封禁中的地域信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAreaBanRuleWithContext(ctx context.Context, request *ModifyAreaBanRuleRequest) (response *ModifyAreaBanRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyAreaBanRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAreaBanRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAreaBanRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAreaBanStatusRequest() (request *ModifyAreaBanStatusRequest) {
     request = &ModifyAreaBanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8428,7 +8633,7 @@ func NewModifyProtectionStatusResponse() (response *ModifyProtectionStatusRespon
 }
 
 // ModifyProtectionStatus
-// 获取基础安全防护（WAF开关）状态
+// 开启、关闭WAF开关
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8440,7 +8645,7 @@ func (c *Client) ModifyProtectionStatus(request *ModifyProtectionStatusRequest) 
 }
 
 // ModifyProtectionStatus
-// 获取基础安全防护（WAF开关）状态
+// 开启、关闭WAF开关
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

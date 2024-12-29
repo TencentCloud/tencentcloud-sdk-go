@@ -16583,6 +16583,18 @@ type SegmentRecognitionItem struct {
 	// 直播切片对应直播结束时间点，采用 ISO 日期格式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 直播拆条用，音频url。
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 直播拆条用，音频对应起始时间戳；
+	AudioBeginTime *float64 `json:"AudioBeginTime,omitnil,omitempty" name:"AudioBeginTime"`
+
+	// 直播拆条用，音频对应结束时间戳。
+	AudioEndTime *float64 `json:"AudioEndTime,omitnil,omitempty" name:"AudioEndTime"`
+
+	// 直播拆条用，人物位置参考信息用于横转竖。
+	PersonPositionUrl *string `json:"PersonPositionUrl,omitnil,omitempty" name:"PersonPositionUrl"`
 }
 
 type SegmentSpecificInfo struct {

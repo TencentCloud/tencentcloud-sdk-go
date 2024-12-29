@@ -7457,6 +7457,10 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
+	// 动态修改对象，修改任务的状态等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptObjStatus *string `json:"OptObjStatus,omitnil,omitempty" name:"OptObjStatus"`
+
 	// 自动重试时间段设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`

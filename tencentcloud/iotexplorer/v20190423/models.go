@@ -12339,6 +12339,9 @@ type TWeCallActiveInfo struct {
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 类型
+	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 }
 
 type TWeCallCategoryPkgInfo struct {

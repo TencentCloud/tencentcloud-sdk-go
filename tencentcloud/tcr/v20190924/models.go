@@ -8484,6 +8484,9 @@ type ReplicationRule struct {
 
 	// 同步过滤条件
 	Filters []*ReplicationFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否同步删除事件
+	Deletion *bool `json:"Deletion,omitnil,omitempty" name:"Deletion"`
 }
 
 type RepoInfo struct {

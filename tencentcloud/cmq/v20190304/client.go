@@ -65,6 +65,10 @@ func NewClearQueueResponse() (response *ClearQueueResponse) {
 }
 
 // ClearQueue
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 清除queue中的所有消息
 //
 // 可能返回的错误码:
@@ -83,6 +87,10 @@ func (c *Client) ClearQueue(request *ClearQueueRequest) (response *ClearQueueRes
 }
 
 // ClearQueue
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 清除queue中的所有消息
 //
 // 可能返回的错误码:
@@ -132,6 +140,10 @@ func NewClearSubscriptionFilterTagsResponse() (response *ClearSubscriptionFilter
 }
 
 // ClearSubscriptionFilterTags
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 清空订阅者消息标签
 //
 // 可能返回的错误码:
@@ -150,6 +162,10 @@ func (c *Client) ClearSubscriptionFilterTags(request *ClearSubscriptionFilterTag
 }
 
 // ClearSubscriptionFilterTags
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 清空订阅者消息标签
 //
 // 可能返回的错误码:
@@ -258,6 +274,10 @@ func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
 }
 
 // CreateSubscribe
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 创建订阅接口
 //
 // 可能返回的错误码:
@@ -276,6 +296,10 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
 }
 
 // CreateSubscribe
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 创建订阅接口
 //
 // 可能返回的错误码:
@@ -449,6 +473,10 @@ func NewDeleteSubscribeResponse() (response *DeleteSubscribeResponse) {
 }
 
 // DeleteSubscribe
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 删除订阅
 //
 // 可能返回的错误码:
@@ -466,6 +494,10 @@ func (c *Client) DeleteSubscribe(request *DeleteSubscribeRequest) (response *Del
 }
 
 // DeleteSubscribe
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 删除订阅
 //
 // 可能返回的错误码:
@@ -514,6 +546,10 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 }
 
 // DeleteTopic
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 删除主题
 //
 // 可能返回的错误码:
@@ -531,6 +567,10 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 }
 
 // DeleteTopic
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 删除主题
 //
 // 可能返回的错误码:
@@ -579,6 +619,10 @@ func NewDescribeDeadLetterSourceQueuesResponse() (response *DescribeDeadLetterSo
 }
 
 // DescribeDeadLetterSourceQueues
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 枚举死信队列源队列
 //
 // 可能返回的错误码:
@@ -596,6 +640,10 @@ func (c *Client) DescribeDeadLetterSourceQueues(request *DescribeDeadLetterSourc
 }
 
 // DescribeDeadLetterSourceQueues
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 枚举死信队列源队列
 //
 // 可能返回的错误码:
@@ -910,6 +958,10 @@ func NewModifySubscriptionAttributeResponse() (response *ModifySubscriptionAttri
 }
 
 // ModifySubscriptionAttribute
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 修改订阅属性
 //
 // 可能返回的错误码:
@@ -928,6 +980,10 @@ func (c *Client) ModifySubscriptionAttribute(request *ModifySubscriptionAttribut
 }
 
 // ModifySubscriptionAttribute
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 修改订阅属性
 //
 // 可能返回的错误码:
@@ -977,6 +1033,10 @@ func NewModifyTopicAttributeResponse() (response *ModifyTopicAttributeResponse) 
 }
 
 // ModifyTopicAttribute
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 修改主题属性
 //
 // 可能返回的错误码:
@@ -994,6 +1054,10 @@ func (c *Client) ModifyTopicAttribute(request *ModifyTopicAttributeRequest) (res
 }
 
 // ModifyTopicAttribute
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 修改主题属性
 //
 // 可能返回的错误码:
@@ -1042,6 +1106,10 @@ func NewRewindQueueResponse() (response *RewindQueueResponse) {
 }
 
 // RewindQueue
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 回溯队列
 //
 // 可能返回的错误码:
@@ -1059,6 +1127,10 @@ func (c *Client) RewindQueue(request *RewindQueueRequest) (response *RewindQueue
 }
 
 // RewindQueue
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 回溯队列
 //
 // 可能返回的错误码:
@@ -1107,6 +1179,10 @@ func NewUnbindDeadLetterResponse() (response *UnbindDeadLetterResponse) {
 }
 
 // UnbindDeadLetter
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 解绑死信队列
 //
 // 可能返回的错误码:
@@ -1125,6 +1201,10 @@ func (c *Client) UnbindDeadLetter(request *UnbindDeadLetterRequest) (response *U
 }
 
 // UnbindDeadLetter
+// 下线老cmq云API 3.0 无调用量接口
+//
+// 
+//
 // 解绑死信队列
 //
 // 可能返回的错误码:

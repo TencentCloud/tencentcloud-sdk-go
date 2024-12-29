@@ -401,6 +401,10 @@ func NewCreateQosResponse() (response *CreateQosResponse) {
 }
 
 // CreateQos
+// 产品下线
+//
+// 
+//
 // 移动网络发起Qos加速过程
 //
 // 可能返回的错误码:
@@ -424,6 +428,10 @@ func (c *Client) CreateQos(request *CreateQosRequest) (response *CreateQosRespon
 }
 
 // CreateQos
+// 产品下线
+//
+// 
+//
 // 移动网络发起Qos加速过程
 //
 // 可能返回的错误码:
@@ -637,6 +645,10 @@ func NewDeleteQosResponse() (response *DeleteQosResponse) {
 }
 
 // DeleteQos
+// 产品下线
+//
+// 
+//
 // 移动网络停止Qos加速过程
 //
 // 可能返回的错误码:
@@ -656,6 +668,10 @@ func (c *Client) DeleteQos(request *DeleteQosRequest) (response *DeleteQosRespon
 }
 
 // DeleteQos
+// 产品下线
+//
+// 
+//
 // 移动网络停止Qos加速过程
 //
 // 可能返回的错误码:
@@ -706,6 +722,10 @@ func NewDescribeQosResponse() (response *DescribeQosResponse) {
 }
 
 // DescribeQos
+// 产品下线
+//
+// 
+//
 // 获取Qos加速状态
 //
 // 可能返回的错误码:
@@ -716,6 +736,10 @@ func (c *Client) DescribeQos(request *DescribeQosRequest) (response *DescribeQos
 }
 
 // DescribeQos
+// 产品下线
+//
+// 
+//
 // 获取Qos加速状态
 //
 // 可能返回的错误码:

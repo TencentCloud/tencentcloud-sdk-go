@@ -443,6 +443,9 @@ type Addon struct {
 	// addon失败的原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// addon的创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type AnnotationValue struct {
@@ -6379,10 +6382,10 @@ func (r *DescribeAddonValuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddonValuesResponseParams struct {
-	// 参数列表，如果addon已安装，会使用已设置的参数做渲染，是一个json格式的字符串
+	// 参数列表，如果addon已安装，会使用已设置的参数和chart里的默认参数做渲染，是一个json格式的字符串，未安装addon时返回为空值。
 	Values *string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// addon支持的参数列表，使用默认值，是一个json格式的字符串
+	// addon支持的参数列表，值为chart的默认值，是一个json格式的字符串。
 	DefaultValues *string `json:"DefaultValues,omitnil,omitempty" name:"DefaultValues"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15267,7 +15270,7 @@ type ImageRegistryCredential struct {
 
 // Predefined struct for user
 type InstallAddonRequestParams struct {
-	// 集群ID
+	// 集群ID（仅支持标准tke集群）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// addon名称
@@ -15283,7 +15286,7 @@ type InstallAddonRequestParams struct {
 type InstallAddonRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID（仅支持标准tke集群）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// addon名称

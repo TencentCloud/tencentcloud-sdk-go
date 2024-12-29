@@ -26,6 +26,9 @@ const (
 	// 该操作不支持跨算法模型版本。
 	FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 
+	// 比对失败。
+	FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
+
 	// 操作冲突，请勿同时操作相同的Person。
 	FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 
@@ -76,6 +79,18 @@ const (
 
 	// 任务无法回滚。
 	FAILEDOPERATION_JOBCANNNOTROLLBACK = "FailedOperation.JobCannnotRollback"
+
+	// 检测到多张人脸。
+	FAILEDOPERATION_LIFEPHOTODETECTFACES = "FailedOperation.LifePhotoDetectFaces"
+
+	// 实人比对没通过。
+	FAILEDOPERATION_LIFEPHOTODETECTFAKE = "FailedOperation.LifePhotoDetectFake"
+
+	// 未能检测到完整人脸。
+	FAILEDOPERATION_LIFEPHOTODETECTNOFACES = "FailedOperation.LifePhotoDetectNoFaces"
+
+	// 传入图片过大或过小。
+	FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
 
 	// 请求频率超过限制。
 	FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"

@@ -4368,7 +4368,7 @@ type ParseNfcDataResponseParams struct {
 	// 07 ：台胞证 。
 	// 08：外国护照 。
 	// 09 ：士兵证。
-	// 09 ：临时身份证。
+	// 10 ：临时身份证。
 	// 11：户口本  。
 	// 12 ：警官证 。
 	// 13：外国人永久居留证。
@@ -4401,7 +4401,7 @@ type ParseNfcDataResponseParams struct {
 
 	// 旅行证件类的核验结果。
 	// - JSON格式如下：
-	// {"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
+	// {"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
 	// - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckMRTD *string `json:"CheckMRTD,omitnil,omitempty" name:"CheckMRTD"`

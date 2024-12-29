@@ -1873,6 +1873,9 @@ type DescribeClusterConfigsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
+	// 是否包含CN节点
+	HasCN *bool `json:"HasCN,omitnil,omitempty" name:"HasCN"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4181,6 +4184,13 @@ type InstanceInfo struct {
 	// 账户类型 0:普通用户 1:CAM用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// 监控模式 0: 老监控 1：新监控
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorMode *int64 `json:"MonitorMode,omitnil,omitempty" name:"MonitorMode"`
+
+	// cn节点信息
+	CNSummary *NodesSummary `json:"CNSummary,omitnil,omitempty" name:"CNSummary"`
 }
 
 type InstanceNode struct {
@@ -4224,6 +4234,9 @@ type InstanceNode struct {
 	// 可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type InstanceOperation struct {

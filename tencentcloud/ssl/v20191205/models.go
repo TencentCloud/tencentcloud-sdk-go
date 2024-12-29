@@ -1994,7 +1994,7 @@ type DeployedResources struct {
 
 // Predefined struct for user
 type DescribeCertificateBindResourceTaskDetailRequestParams struct {
-	// 任务ID，根据任务ID查询绑定云资源结果
+	// 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
@@ -2013,7 +2013,7 @@ type DescribeCertificateBindResourceTaskDetailRequestParams struct {
 type DescribeCertificateBindResourceTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID，根据任务ID查询绑定云资源结果
+	// 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
@@ -4055,7 +4055,7 @@ type DescribeHostTeoInstanceListRequestParams struct {
 	// 每页数量，默认10。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否异步
+	// 是否异步，1表示是，0表示否，默认为0
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
@@ -4083,7 +4083,7 @@ type DescribeHostTeoInstanceListRequest struct {
 	// 每页数量，默认10。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否异步
+	// 是否异步，1表示是，0表示否，默认为0
 	AsyncCache *int64 `json:"AsyncCache,omitnil,omitempty" name:"AsyncCache"`
 }
 
@@ -4115,7 +4115,7 @@ func (r *DescribeHostTeoInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostTeoInstanceListResponseParams struct {
-	// teo实例列表
+	// teo实例列表，如取不到值返回空数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 

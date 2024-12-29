@@ -9240,4 +9240,10 @@ type VoucherInfos struct {
 
 	// 不适用商品信息
 	ExcludedProducts []*ExcludedProducts `json:"ExcludedProducts,omitnil,omitempty" name:"ExcludedProducts"`
+
+	// 使用说明/批次备注
+	PolicyRemark *string `json:"PolicyRemark,omitnil,omitempty" name:"PolicyRemark"`
+
+	// 发券时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }

@@ -1448,6 +1448,40 @@ type ApiSecKey struct {
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 }
 
+type Area struct {
+	// 国家，除了标准的国家外还支持国内、国外这两个特殊的标识
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 省份
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 城市
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+}
+
+type AreaBanRule struct {
+	// 状态 0：未开启地域封禁、1：开启地域封禁
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据来源 custom：自定义(默认)、batch：批量防护
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 配置的地域列表
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 如果是周期任务类型，那么表示周期的类型，支持 Week：按周、Month：按月
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 地域信息的语言，支持cn、en，默认为中文cn
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
 type AttackLogInfo struct {
 	// 攻击日志的详情内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
@@ -2098,6 +2132,88 @@ func (r *CreateAccessExportResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAccessExportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAreaBanRuleRequestParams struct {
+	// 需要修改的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要新增的封禁地域
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 地域信息的语言，支持cn、en，默认为中文cn
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+type CreateAreaBanRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要新增的封禁地域
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 地域信息的语言，支持cn、en，默认为中文cn
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+func (r *CreateAreaBanRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAreaBanRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Areas")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "Lang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAreaBanRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAreaBanRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAreaBanRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAreaBanRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAreaBanRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAreaBanRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3789,7 +3905,7 @@ type DescribeAntiFakeRulesRequestParams struct {
 	// asc或者desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 目前支持根据ts排序
+	// 目前支持根据create_time、modify_time、id排序
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -3811,7 +3927,7 @@ type DescribeAntiFakeRulesRequest struct {
 	// asc或者desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 目前支持根据ts排序
+	// 目前支持根据create_time、modify_time、id排序
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -4299,6 +4415,63 @@ type DescribeAreaBanAreasRsp struct {
 
 	// 周期任务配置
 	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+}
+
+// Predefined struct for user
+type DescribeAreaBanRuleRequestParams struct {
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DescribeAreaBanRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DescribeAreaBanRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAreaBanRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAreaBanRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAreaBanRuleResponseParams struct {
+	// 规则内容
+	Data *AreaBanRule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAreaBanRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAreaBanRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeAreaBanRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAreaBanRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -11192,6 +11365,88 @@ func (r *ModifyAreaBanAreasResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAreaBanRuleRequestParams struct {
+	// 需要修改的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要新增的封禁地域
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 地域信息的语言，支持cn、en，默认为中文cn
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+type ModifyAreaBanRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要新增的封禁地域
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 地域信息的语言，支持cn、en，默认为中文cn
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+func (r *ModifyAreaBanRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAreaBanRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Areas")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "Lang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAreaBanRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAreaBanRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAreaBanRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAreaBanRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyAreaBanRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAreaBanRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAreaBanStatusRequestParams struct {
 	// 需要修改的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -13140,7 +13395,7 @@ type ModifyProtectionStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 状态
+	// 1：开启WAF开关，0：关闭WAF开关
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
@@ -13153,7 +13408,7 @@ type ModifyProtectionStatusRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 状态
+	// 1：开启WAF开关，0：关闭WAF开关
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。

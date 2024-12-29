@@ -3737,6 +3737,12 @@ type CreateLiveStreamMonitorRequestParams struct {
 
 	// 是否开启内容质检。
 	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
+
+	// 导播台监播对应的导播台场次id。
+	CasterId *string `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 拉流转推监播任务对应的拉流转推场次id
+	PullPushTaskId *string `json:"PullPushTaskId,omitnil,omitempty" name:"PullPushTaskId"`
 }
 
 type CreateLiveStreamMonitorRequest struct {
@@ -3785,6 +3791,12 @@ type CreateLiveStreamMonitorRequest struct {
 
 	// 是否开启内容质检。
 	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
+
+	// 导播台监播对应的导播台场次id。
+	CasterId *string `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 拉流转推监播任务对应的拉流转推场次id
+	PullPushTaskId *string `json:"PullPushTaskId,omitnil,omitempty" name:"PullPushTaskId"`
 }
 
 func (r *CreateLiveStreamMonitorRequest) ToJsonString() string {
@@ -3812,6 +3824,8 @@ func (r *CreateLiveStreamMonitorRequest) FromJsonString(s string) error {
 	delete(f, "AllowMonitorReport")
 	delete(f, "AiFormatDiagnose")
 	delete(f, "AiQualityControl")
+	delete(f, "CasterId")
+	delete(f, "PullPushTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveStreamMonitorRequest has unknown keys!", "")
 	}
@@ -3821,7 +3835,6 @@ func (r *CreateLiveStreamMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLiveStreamMonitorResponseParams struct {
 	// 监播任务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorId *string `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7077,19 +7090,15 @@ type DescribeCasterDisplayInfoResponseParams struct {
 	// 1：无预监，有主监 
 	// 2：有预监，无主监 
 	// 3：有预监，有主监
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 预监使用的展示参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PvwDisplayInfo *CasterDisplayInfo `json:"PvwDisplayInfo,omitnil,omitempty" name:"PvwDisplayInfo"`
 
 	// 主监使用的展示参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PgmDisplayInfo *CasterDisplayInfo `json:"PgmDisplayInfo,omitnil,omitempty" name:"PgmDisplayInfo"`
 
 	// 启动直播的时间，值为unix时间戳。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartLiveTime *uint64 `json:"StartLiveTime,omitnil,omitempty" name:"StartLiveTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7258,7 +7267,6 @@ func (r *DescribeCasterListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCasterListResponseParams struct {
 	// 用户对应的导播台简要信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CasterList []*CasterBriefInfo `json:"CasterList,omitnil,omitempty" name:"CasterList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7316,7 +7324,6 @@ func (r *DescribeCasterMarkPicInfosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCasterMarkPicInfosResponseParams struct {
 	// 导播台的水印信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkPicInfos []*CasterMarkPicInfo `json:"MarkPicInfos,omitnil,omitempty" name:"MarkPicInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7374,7 +7381,6 @@ func (r *DescribeCasterMarkWordInfosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCasterMarkWordInfosResponseParams struct {
 	// 导播台的文本信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordInfos []*CasterMarkWordInfo `json:"MarkWordInfos,omitnil,omitempty" name:"MarkWordInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7432,7 +7438,6 @@ func (r *DescribeCasterOutputInfosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCasterOutputInfosResponseParams struct {
 	// 导播台的推流信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputInfos []*CasterOutputInfo `json:"OutputInfos,omitnil,omitempty" name:"OutputInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7515,13 +7520,11 @@ func (r *DescribeCasterPlayUrlRequest) FromJsonString(s string) error {
 type DescribeCasterPlayUrlResponseParams struct {
 	// 播放url。
 	// 当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayUrl *string `json:"PlayUrl,omitnil,omitempty" name:"PlayUrl"`
 
 	// webrtc协议播放地址。
 	// 当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
 	// 注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebRTCPlayUrl *string `json:"WebRTCPlayUrl,omitnil,omitempty" name:"WebRTCPlayUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7636,7 +7639,6 @@ func (r *DescribeCasterTransitionTypesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCasterTransitionTypesResponseParams struct {
 	// 转场信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransitionTypes []*TransitionTypeInfo `json:"TransitionTypes,omitnil,omitempty" name:"TransitionTypes"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8784,7 +8786,6 @@ func (r *DescribeLiveDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveDomainResponseParams struct {
 	// 域名信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainInfo *DomainInfo `json:"DomainInfo,omitnil,omitempty" name:"DomainInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8896,11 +8897,9 @@ type DescribeLiveDomainsResponseParams struct {
 	DomainList []*DomainInfo `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
 	// 可继续添加域名数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateLimitCount *int64 `json:"CreateLimitCount,omitnil,omitempty" name:"CreateLimitCount"`
 
 	// 启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayTypeCount []*int64 `json:"PlayTypeCount,omitnil,omitempty" name:"PlayTypeCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9199,7 +9198,6 @@ func (r *DescribeLivePackageInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLivePackageInfoResponseParams struct {
 	// 套餐包信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivePackageInfoList []*LivePackageInfo `json:"LivePackageInfoList,omitnil,omitempty" name:"LivePackageInfoList"`
 
 	// 套餐包当前计费方式:
@@ -9212,7 +9210,6 @@ type DescribeLivePackageInfoResponseParams struct {
 	// 205: 日结时长
 	// 206: 月结时长
 	// 304: 日结流量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageBillMode *int64 `json:"PackageBillMode,omitnil,omitempty" name:"PackageBillMode"`
 
 	// 总页数。
@@ -9236,7 +9233,6 @@ type DescribeLivePackageInfoResponseParams struct {
 	// 标准直播，国际/港澳台（境外多地区）计费方式。
 	// 快直播，中国大陆（境内全地区）计费方式。
 	// 快直播，国际/港澳台（境外多地区）计费方式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FluxPackageBillMode *string `json:"FluxPackageBillMode,omitnil,omitempty" name:"FluxPackageBillMode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10309,11 +10305,9 @@ func (r *DescribeLiveStreamMonitorListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveStreamMonitorListResponseParams struct {
 	// 账号下的直播流监播任务个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 直播流监播任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStreamMonitors []*LiveStreamMonitorInfo `json:"LiveStreamMonitors,omitnil,omitempty" name:"LiveStreamMonitors"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10371,7 +10365,6 @@ func (r *DescribeLiveStreamMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveStreamMonitorResponseParams struct {
 	// 直播监播任务相关信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStreamMonitor *LiveStreamMonitorInfo `json:"LiveStreamMonitor,omitnil,omitempty" name:"LiveStreamMonitor"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11892,11 +11885,9 @@ func (r *DescribeMonitorReportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMonitorReportResponseParams struct {
 	// 媒体处理结果信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MPSResult *MPSResult `json:"MPSResult,omitnil,omitempty" name:"MPSResult"`
 
 	// 媒体诊断结果信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiagnoseResult *DiagnoseResult `json:"DiagnoseResult,omitnil,omitempty" name:"DiagnoseResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13460,7 +13451,6 @@ func (r *DescribeTimeShiftRecordDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTimeShiftRecordDetailResponseParams struct {
 	// 时移录制会话数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*TimeShiftRecord `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13565,7 +13555,6 @@ type DescribeTimeShiftStreamListResponseParams struct {
 	TotalSize *int64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
 	// 流列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamList []*TimeShiftStreamInfo `json:"StreamList,omitnil,omitempty" name:"StreamList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14783,6 +14772,12 @@ type LiveStreamMonitorInfo struct {
 	// 是否开启内容质检。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
+
+	// 导播台监播对应的导播台场次id
+	CasterId *string `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// 拉流转推监播对应的拉流转推任务id
+	PullPushTaskId *string `json:"PullPushTaskId,omitnil,omitempty" name:"PullPushTaskId"`
 }
 
 type LiveStreamMonitorInputInfo struct {
@@ -14805,6 +14800,12 @@ type LiveStreamMonitorInputInfo struct {
 	// 描述。256字节以内。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
+	CasterInputIndex *uint64 `json:"CasterInputIndex,omitnil,omitempty" name:"CasterInputIndex"`
+
+	// 该输入源是否正在监播
+	NeedMonitor *bool `json:"NeedMonitor,omitnil,omitempty" name:"NeedMonitor"`
 }
 
 type LiveStreamMonitorNotifyPolicy struct {
@@ -14860,13 +14861,17 @@ type LogInfo struct {
 }
 
 type MPSResult struct {
-	// 智能语音识别结果
+	// 智能语音识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAsrResults []*string `json:"AiAsrResults,omitnil,omitempty" name:"AiAsrResults"`
 
-	// 智能文字识别结果
+	// 智能文字识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiOcrResults []*string `json:"AiOcrResults,omitnil,omitempty" name:"AiOcrResults"`
+
+	// 内容质检结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamQuaCtrlResults []*string `json:"StreamQuaCtrlResults,omitnil,omitempty" name:"StreamQuaCtrlResults"`
 }
 
 type MixPortraitSegmentParams struct {
@@ -15607,7 +15612,6 @@ type ModifyLiveDomainCertBindingsResponseParams struct {
 	MismatchedDomainNames []*string `json:"MismatchedDomainNames,omitnil,omitempty" name:"MismatchedDomainNames"`
 
 	// 操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*BatchDomainOperateErrors `json:"Errors,omitnil,omitempty" name:"Errors"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

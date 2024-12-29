@@ -4269,7 +4269,7 @@ func NewDescribeInstanceTradeParameterResponse() (response *DescribeInstanceTrad
 }
 
 // DescribeInstanceTradeParameter
-// 本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数，当前接口默认返回创建实例时需要的计费参数。内部接口用于活动页售卖场景。
+// 本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -4292,7 +4292,7 @@ func (c *Client) DescribeInstanceTradeParameter(request *DescribeInstanceTradePa
 }
 
 // DescribeInstanceTradeParameter
-// 本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数，当前接口默认返回创建实例时需要的计费参数。内部接口用于活动页售卖场景。
+// 本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"

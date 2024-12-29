@@ -11688,6 +11688,21 @@ type VatElectronicInfo struct {
 
 	// 业务类型标志
 	ServiceTypeLabel *string `json:"ServiceTypeLabel,omitnil,omitempty" name:"ServiceTypeLabel"`
+
+	// 价税合计(大写)前符号
+	TotalCnMark *string `json:"TotalCnMark,omitnil,omitempty" name:"TotalCnMark"`
+
+	// 价税合计(小写)前字样
+	TotalMark *string `json:"TotalMark,omitnil,omitempty" name:"TotalMark"`
+
+	// 合计金额前字样
+	PretaxAmountMark *string `json:"PretaxAmountMark,omitnil,omitempty" name:"PretaxAmountMark"`
+
+	// 合计税额前字样
+	TaxMark *string `json:"TaxMark,omitnil,omitempty" name:"TaxMark"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitnil,omitempty" name:"CompanySealMark"`
 }
 
 type VatElectronicItemInfo struct {

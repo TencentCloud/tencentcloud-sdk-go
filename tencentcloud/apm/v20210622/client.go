@@ -65,7 +65,7 @@ func NewCreateApmInstanceResponse() (response *CreateApmInstanceResponse) {
 }
 
 // CreateApmInstance
-// 业务购买APM实例，调用该接口创建
+// 业务购买 APM 业务系统，调用该接口创建
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -78,7 +78,7 @@ func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response 
 }
 
 // CreateApmInstance
-// 业务购买APM实例，调用该接口创建
+// 业务购买 APM 业务系统，调用该接口创建
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -122,7 +122,7 @@ func NewDescribeApmAgentResponse() (response *DescribeApmAgentResponse) {
 }
 
 // DescribeApmAgent
-// 获取APM Agent信息
+// 获取 APM Agent信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -140,7 +140,7 @@ func (c *Client) DescribeApmAgent(request *DescribeApmAgentRequest) (response *D
 }
 
 // DescribeApmAgent
-// 获取APM Agent信息
+// 获取 APM Agent信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -508,7 +508,7 @@ func NewDescribeServiceOverviewResponse() (response *DescribeServiceOverviewResp
 }
 
 // DescribeServiceOverview
-// 服务概览数据拉取
+// 应用概览数据拉取
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -525,7 +525,7 @@ func (c *Client) DescribeServiceOverview(request *DescribeServiceOverviewRequest
 }
 
 // DescribeServiceOverview
-// 服务概览数据拉取
+// 应用概览数据拉取
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -628,7 +628,7 @@ func NewModifyApmInstanceResponse() (response *ModifyApmInstanceResponse) {
 }
 
 // ModifyApmInstance
-// 修改APM实例接口
+// 修改APM业务系统接口
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -650,7 +650,7 @@ func (c *Client) ModifyApmInstance(request *ModifyApmInstanceRequest) (response 
 }
 
 // ModifyApmInstance
-// 修改APM实例接口
+// 修改APM业务系统接口
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -768,13 +768,14 @@ func NewTerminateApmInstanceResponse() (response *TerminateApmInstanceResponse) 
 }
 
 // TerminateApmInstance
-// apm销毁实例
+// 销毁 APM 业务系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCECANNOTTERMINATE = "FailedOperation.InstanceCannotTerminate"
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  INTERNALERROR = "InternalError"
@@ -784,13 +785,14 @@ func (c *Client) TerminateApmInstance(request *TerminateApmInstanceRequest) (res
 }
 
 // TerminateApmInstance
-// apm销毁实例
+// 销毁 APM 业务系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCECANNOTTERMINATE = "FailedOperation.InstanceCannotTerminate"
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  INTERNALERROR = "InternalError"

@@ -317,10 +317,10 @@ type ApmTag struct {
 
 // Predefined struct for user
 type CreateApmInstanceRequestParams struct {
-	// 实例名
+	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例描述信息
+	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// Trace数据保存时长，单位为天默认存储为3天
@@ -329,10 +329,10 @@ type CreateApmInstanceRequestParams struct {
 	// 标签列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例上报额度值，默认赋值为0表示不限制上报额度
+	// 业务系统上报额度值，默认赋值为0表示不限制上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 实例的计费模式
+	// 业务系统的计费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// （0=付费版；1=tsf受限免费版；2=免费版）
@@ -342,10 +342,10 @@ type CreateApmInstanceRequestParams struct {
 type CreateApmInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例描述信息
+	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// Trace数据保存时长，单位为天默认存储为3天
@@ -354,10 +354,10 @@ type CreateApmInstanceRequest struct {
 	// 标签列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例上报额度值，默认赋值为0表示不限制上报额度
+	// 业务系统上报额度值，默认赋值为0表示不限制上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 实例的计费模式
+	// 业务系统的计费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// （0=付费版；1=tsf受限免费版；2=免费版）
@@ -391,7 +391,7 @@ func (r *CreateApmInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApmInstanceResponseParams struct {
-	// 实例ID
+	// 业务系统ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -417,7 +417,7 @@ func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApmAgentRequestParams struct {
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 接入方式
@@ -436,7 +436,7 @@ type DescribeApmAgentRequestParams struct {
 type DescribeApmAgentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 接入方式
@@ -794,7 +794,7 @@ type DescribeGeneralSpanListRequestParams struct {
 	// span查询开始时间戳（单位:秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 实例名
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 通用过滤参数
@@ -822,7 +822,7 @@ type DescribeGeneralSpanListRequest struct {
 	// span查询开始时间戳（单位:秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 实例名
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 通用过滤参数
@@ -903,7 +903,7 @@ type DescribeMetricRecordsRequestParams struct {
 	// 排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 每页大小
@@ -949,7 +949,7 @@ type DescribeMetricRecordsRequest struct {
 	// 排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 每页大小
@@ -1056,7 +1056,7 @@ type DescribeServiceOverviewRequestParams struct {
 	// 排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 每页大小
@@ -1087,7 +1087,7 @@ type DescribeServiceOverviewRequest struct {
 	// 排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 每页大小
@@ -1161,7 +1161,7 @@ type DescribeTagValuesRequestParams struct {
 	// 维度名
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 结束时间
@@ -1186,7 +1186,7 @@ type DescribeTagValuesRequest struct {
 	// 维度名
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 结束时间
@@ -1308,16 +1308,16 @@ type Line struct {
 
 // Predefined struct for user
 type ModifyApmInstanceRequestParams struct {
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名
+	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例详情
+	// 业务系统详情
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// Trace数据保存时长
@@ -1326,7 +1326,7 @@ type ModifyApmInstanceRequestParams struct {
 	// 是否开启计费
 	OpenBilling *bool `json:"OpenBilling,omitnil,omitempty" name:"OpenBilling"`
 
-	// 实例上报额度
+	// 业务系统上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
 	// 错误率阈值
@@ -1386,16 +1386,16 @@ type ModifyApmInstanceRequestParams struct {
 type ModifyApmInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名
+	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例详情
+	// 业务系统详情
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// Trace数据保存时长
@@ -1404,7 +1404,7 @@ type ModifyApmInstanceRequest struct {
 	// 是否开启计费
 	OpenBilling *bool `json:"OpenBilling,omitnil,omitempty" name:"OpenBilling"`
 
-	// 实例上报额度
+	// 业务系统上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
 	// 错误率阈值
@@ -1709,14 +1709,14 @@ type SpanTag struct {
 
 // Predefined struct for user
 type TerminateApmInstanceRequestParams struct {
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type TerminateApmInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 

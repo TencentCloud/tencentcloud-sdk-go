@@ -11805,65 +11805,6 @@ func (c *Client) DescribeImportMachineInfoWithContext(ctx context.Context, reque
     return
 }
 
-func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
-    request = &DescribeIndexListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeIndexList")
-    
-    
-    return
-}
-
-func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
-    response = &DescribeIndexListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeIndexList
-// 接口已废弃
-//
-// 
-//
-// 获取索引列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
-    return c.DescribeIndexListWithContext(context.Background(), request)
-}
-
-// DescribeIndexList
-// 接口已废弃
-//
-// 
-//
-// 获取索引列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
-    if request == nil {
-        request = NewDescribeIndexListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeIndexList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeIndexListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeJavaMemShellInfoRequest() (request *DescribeJavaMemShellInfoRequest) {
     request = &DescribeJavaMemShellInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
