@@ -41,7 +41,7 @@ const (
 	// token信息不存在。
 	FAILEDOPERATION_APMCREDENTIALNOTEXIST = "FailedOperation.ApmCredentialNotExist"
 
-	// appid和业务系统信息不匹配。
+	// AppID 和业务系统信息不匹配。
 	FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 
 	// 未命中白名单且业务系统id为官方demo业务系统id时，不允许修改接口。
@@ -59,10 +59,10 @@ const (
 	// 该业务系统不允许销毁
 	FAILEDOPERATION_INSTANCECANNOTTERMINATE = "FailedOperation.InstanceCannotTerminate"
 
-	// 业务系统ID为空。
+	// 业务系统 ID 为空。
 	FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 
-	// apm业务系统不存在。
+	// APM 业务系统不存在。
 	FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 
 	// 非法业务系统id。

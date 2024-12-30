@@ -2222,7 +2222,8 @@ func NewSetUserQuotaResponse() (response *SetUserQuotaResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_INVALIDQUOTAUSERIDORCFSDIRPATH = "InvalidParameterValue.InvalidQuotaUserIdOrCfsDirPath"
+//  INVALIDPARAMETERVALUE_CFSPATH = "InvalidParameterValue.CfsPath"
+//  INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
 //  INVALIDPARAMETERVALUE_PROJECTQUOTASDIRNESTED = "InvalidParameterValue.ProjectQuotasDirNested"
 //  INVALIDPARAMETERVALUE_PROJECTQUOTASEXCEEDED = "InvalidParameterValue.ProjectQuotasExceeded"
 //  INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"
@@ -2241,7 +2242,8 @@ func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQu
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_INVALIDQUOTAUSERIDORCFSDIRPATH = "InvalidParameterValue.InvalidQuotaUserIdOrCfsDirPath"
+//  INVALIDPARAMETERVALUE_CFSPATH = "InvalidParameterValue.CfsPath"
+//  INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
 //  INVALIDPARAMETERVALUE_PROJECTQUOTASDIRNESTED = "InvalidParameterValue.ProjectQuotasDirNested"
 //  INVALIDPARAMETERVALUE_PROJECTQUOTASEXCEEDED = "InvalidParameterValue.ProjectQuotasExceeded"
 //  INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"

@@ -3905,6 +3905,130 @@ type GeneralWarnInfo struct {
 }
 
 // Predefined struct for user
+type GetOCRResultRequestParams struct {
+	// token值
+	OCRToken *string `json:"OCRToken,omitnil,omitempty" name:"OCRToken"`
+}
+
+type GetOCRResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// token值
+	OCRToken *string `json:"OCRToken,omitnil,omitempty" name:"OCRToken"`
+}
+
+func (r *GetOCRResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOCRResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OCRToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOCRResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOCRResultResponseParams struct {
+	// ocr业务类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// ocr结果
+	OCRResult *OCRResult `json:"OCRResult,omitnil,omitempty" name:"OCRResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetOCRResultResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOCRResultResponseParams `json:"Response"`
+}
+
+func (r *GetOCRResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOCRResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOCRTokenRequestParams struct {
+	// 业务类型，如身份证识别为IDCardOCR
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 身份证配置信息
+	IDCardConfig *IDCardConfig `json:"IDCardConfig,omitnil,omitempty" name:"IDCardConfig"`
+}
+
+type GetOCRTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务类型，如身份证识别为IDCardOCR
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 身份证配置信息
+	IDCardConfig *IDCardConfig `json:"IDCardConfig,omitnil,omitempty" name:"IDCardConfig"`
+}
+
+func (r *GetOCRTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOCRTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "IDCardConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOCRTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOCRTokenResponseParams struct {
+	// token值
+	OCRToken *string `json:"OCRToken,omitnil,omitempty" name:"OCRToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetOCRTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOCRTokenResponseParams `json:"Response"`
+}
+
+func (r *GetOCRTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOCRTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetTaskStateRequestParams struct {
 	// 智慧表单任务唯一身份ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -4250,6 +4374,29 @@ func (r *HmtResidentPermitOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IDCardConfig struct {
+	// 默认为false
+	CopyWarn *bool `json:"CopyWarn,omitnil,omitempty" name:"CopyWarn"`
+
+	// 默认为false
+	BorderCheckWarn *bool `json:"BorderCheckWarn,omitnil,omitempty" name:"BorderCheckWarn"`
+
+	// 默认为false
+	ReshootWarn *bool `json:"ReshootWarn,omitnil,omitempty" name:"ReshootWarn"`
+
+	// 默认为false
+	DetectPsWarn *bool `json:"DetectPsWarn,omitnil,omitempty" name:"DetectPsWarn"`
+
+	// 默认为false
+	TempIdWarn *bool `json:"TempIdWarn,omitnil,omitempty" name:"TempIdWarn"`
+
+	// 默认为false
+	InvalidDateWarn *bool `json:"InvalidDateWarn,omitnil,omitempty" name:"InvalidDateWarn"`
+
+	// 默认为false
+	ReflectWarn *bool `json:"ReflectWarn,omitnil,omitempty" name:"ReflectWarn"`
+}
+
 type IDCardInfo struct {
 	// 姓名（人像面）
 	Name *ContentInfo `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4283,6 +4430,59 @@ type IDCardInfo struct {
 
 	// Portrait，身份证头像照片的base64编码，请求 EnablePortrait 时返回；
 	PortraitImage *ContentInfo `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
+}
+
+type IDCardInfoResult struct {
+	// 警告代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnCodes []*int64 `json:"WarnCodes,omitnil,omitempty" name:"WarnCodes"`
+
+	// 地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 签发机关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Authority *string `json:"Authority,omitnil,omitempty" name:"Authority"`
+
+	// 出生日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Birth *string `json:"Birth,omitnil,omitempty" name:"Birth"`
+
+	// 身份证号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdNum *string `json:"IdNum,omitnil,omitempty" name:"IdNum"`
+
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nation *string `json:"Nation,omitnil,omitempty" name:"Nation"`
+
+	// 性别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
+
+	// 到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
+
+	// 请求的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 原图地址
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 // Predefined struct for user
@@ -4471,6 +4671,16 @@ func (r *IDCardOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IDCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IDCardResult struct {
+	// 正面结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Front *IDCardInfoResult `json:"Front,omitnil,omitempty" name:"Front"`
+
+	// 反面结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Back *IDCardInfoResult `json:"Back,omitnil,omitempty" name:"Back"`
 }
 
 type ImageCoordinates struct {
@@ -6271,6 +6481,12 @@ type NonTaxItem struct {
 
 	// 金额
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type OCRResult struct {
+	// 身份证结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IDCardResult *IDCardResult `json:"IDCardResult,omitnil,omitempty" name:"IDCardResult"`
 }
 
 type OnlineTaxiItineraryInfo struct {
@@ -12329,7 +12545,7 @@ type VatInvoiceVerifyNewRequestParams struct {
 	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
 	InvoiceDate *string `json:"InvoiceDate,omitnil,omitempty" name:"InvoiceDate"`
 
-	// 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
+	// 发票代码（10或12 位），全电发票为空。查验超过5次后当日无法再查。
 	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
 
 	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
@@ -12352,9 +12568,7 @@ type VatInvoiceVerifyNewRequestParams struct {
 	// 是否开启通用机打电子发票，默认为关闭。
 	EnableCommonElectronic *bool `json:"EnableCommonElectronic,omitnil,omitempty" name:"EnableCommonElectronic"`
 
-	// 是否允许查验当日发票，默认值为false。
-	// 
-	// 请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的发票。
+	// 是否允许查验当日发票，默认值为false。请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的当日发票。
 	EnableTodayInvoice *bool `json:"EnableTodayInvoice,omitnil,omitempty" name:"EnableTodayInvoice"`
 }
 
@@ -12367,7 +12581,7 @@ type VatInvoiceVerifyNewRequest struct {
 	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
 	InvoiceDate *string `json:"InvoiceDate,omitnil,omitempty" name:"InvoiceDate"`
 
-	// 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
+	// 发票代码（10或12 位），全电发票为空。查验超过5次后当日无法再查。
 	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
 
 	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
@@ -12390,9 +12604,7 @@ type VatInvoiceVerifyNewRequest struct {
 	// 是否开启通用机打电子发票，默认为关闭。
 	EnableCommonElectronic *bool `json:"EnableCommonElectronic,omitnil,omitempty" name:"EnableCommonElectronic"`
 
-	// 是否允许查验当日发票，默认值为false。
-	// 
-	// 请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的发票。
+	// 是否允许查验当日发票，默认值为false。请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的当日发票。
 	EnableTodayInvoice *bool `json:"EnableTodayInvoice,omitnil,omitempty" name:"EnableTodayInvoice"`
 }
 

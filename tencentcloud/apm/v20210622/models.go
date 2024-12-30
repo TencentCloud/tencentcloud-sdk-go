@@ -21,53 +21,43 @@ import (
 )
 
 type APMKV struct {
-	// Key值定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Key 值定义
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// Value值定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Value 值定义
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type APMKVItem struct {
-	// Key值定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Key 值定义
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// Value值定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Value 值定义
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ApmAgentInfo struct {
-	// Agent下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Agent 下载地址
 	AgentDownloadURL *string `json:"AgentDownloadURL,omitnil,omitempty" name:"AgentDownloadURL"`
 
-	// Collector上报地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Collector 上报地址
 	CollectorURL *string `json:"CollectorURL,omitnil,omitempty" name:"CollectorURL"`
 
-	// Token信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Token 信息
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
 	// 外网上报地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicCollectorURL *string `json:"PublicCollectorURL,omitnil,omitempty" name:"PublicCollectorURL"`
 
-	// 自研VPC上报地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 自研 VPC 上报地址
 	InnerCollectorURL *string `json:"InnerCollectorURL,omitnil,omitempty" name:"InnerCollectorURL"`
 
-	// 内网上报地址(Private Link上报地址)
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 内网上报地址( Private Link 上报地址)
 	PrivateLinkCollectorURL *string `json:"PrivateLinkCollectorURL,omitnil,omitempty" name:"PrivateLinkCollectorURL"`
 }
 
 type ApmApplicationConfigView struct {
-	// 业务系统ID	
+	// 业务系统 ID
 	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
 
 	// 应用名	
@@ -79,30 +69,28 @@ type ApmApplicationConfigView struct {
 	// 错误类型过滤
 	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
 
-	// HTTP状态码过滤
+	// HTTP 状态码过滤
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
 	// 应用诊断开关（已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
-	// URL收敛开关 0 关 1 开
+	// URL 收敛开关 0 关 1 开
 	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
 
-	// URL收敛阈值	
+	// URL 收敛阈值	
 	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
 
-	// URL收敛规则正则	
+	// URL 收敛规则正则	
 	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
 
-	// URL排除规则正则
+	// URL 排除规则正则
 	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
 
 	// 是否开启日志 0 关 1 开
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
 	// 日志源	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
 	// 日志集 
@@ -121,7 +109,6 @@ type ApmApplicationConfigView struct {
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
 	// 组件列表开关（已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
 	// 链路压缩开关（已废弃）
@@ -130,7 +117,6 @@ type ApmApplicationConfigView struct {
 
 type ApmField struct {
 	// 昨日同比指标值，已弃用，不建议使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareVal *string `json:"CompareVal,omitnil,omitempty" name:"CompareVal"`
 
 	// Compare值结果数组，推荐使用
@@ -138,11 +124,9 @@ type ApmField struct {
 	CompareVals []*APMKVItem `json:"CompareVals,omitnil,omitempty" name:"CompareVals"`
 
 	// 指标值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 指标所对应的单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 请求数
@@ -154,148 +138,114 @@ type ApmField struct {
 }
 
 type ApmInstanceDetail struct {
-	// 存储使用量(MB)
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 存储使用量( MB )
 	AmountOfUsedStorage *float64 `json:"AmountOfUsedStorage,omitnil,omitempty" name:"AmountOfUsedStorage"`
 
-	// 实例名
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例所属tag列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统所属 Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 创建人Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 创建人 Uin
 	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 该实例已上报的服务端应用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 该业务系统已上报的服务端应用数量
 	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
 
-	// 日均上报Span数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 日均上报 Span 数
 	CountOfReportSpanPerDay *int64 `json:"CountOfReportSpanPerDay,omitnil,omitempty" name:"CountOfReportSpanPerDay"`
 
-	// AppId信息
+	// AppID 信息
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// Trace数据保存时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Trace 数据保存时长
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
-	// 实例描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 实例状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统所属地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例上报额度
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统上报额度
 	SpanDailyCounters *int64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 实例是否开通计费
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统是否开通计费
 	BillingInstance *int64 `json:"BillingInstance,omitnil,omitempty" name:"BillingInstance"`
 
 	// 错误率阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
 
 	// 采样率阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// 是否开启错误采样 0  关 1 开
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorSample *int64 `json:"ErrorSample,omitnil,omitempty" name:"ErrorSample"`
 
 	// 慢调用保存阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitnil,omitempty" name:"SlowRequestSavedThreshold"`
 
-	// cls日志所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// CLS 日志所在地域
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
 	// 日志来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
 	// 日志功能开关 0 关 | 1 开
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
 	// 日志主题ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
 	// 该实例已上报的客户端应用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientCount *int64 `json:"ClientCount,omitnil,omitempty" name:"ClientCount"`
 
 	// 该实例已上报的总应用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// CLS日志集 | ES集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// CLS 日志集 | ES 集群ID
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// Metric数据保存时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Metric 数据保存时长
 	MetricDuration *int64 `json:"MetricDuration,omitnil,omitempty" name:"MetricDuration"`
 
 	// 用户自定义展示标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomShowTags []*string `json:"CustomShowTags,omitnil,omitempty" name:"CustomShowTags"`
 
-	// 实例计费模式
+	// 业务系统计费模式
 	// 1为预付费
 	// 0为按量付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例计费模式是否生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统计费模式是否生效
 	PayModeEffective *bool `json:"PayModeEffective,omitnil,omitempty" name:"PayModeEffective"`
 
 	// 响应时间满意阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
 	// 是否免费（0=否，1=限额免费，2=完全免费），默认0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 
-	// 是否tsf默认业务系统（0=否，1-是）
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否 tsf 默认业务系统（0=否，1-是）
 	DefaultTSF *int64 `json:"DefaultTSF,omitnil,omitempty" name:"DefaultTSF"`
 
-	// 是否关联dashboard： 0 关 1 开
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否关联 Dashboard： 0 关 1 开
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// dashboard ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Dashboard ID
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
 	// 是否开启组件漏洞检测
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启SQL注入分析
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否开启 SQL 注入分析
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 }
 
@@ -323,7 +273,7 @@ type CreateApmInstanceRequestParams struct {
 	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace数据保存时长，单位为天默认存储为3天
+	// Trace 数据保存时长，单位为天默认存储为3天
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
 	// 标签列表
@@ -335,7 +285,7 @@ type CreateApmInstanceRequestParams struct {
 	// 业务系统的计费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// （0=付费版；1=tsf受限免费版；2=免费版）
+	// （0=付费版；1=tsf 受限免费版；2=免费版）
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 }
 
@@ -348,7 +298,7 @@ type CreateApmInstanceRequest struct {
 	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace数据保存时长，单位为天默认存储为3天
+	// Trace 数据保存时长，单位为天默认存储为3天
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
 	// 标签列表
@@ -360,7 +310,7 @@ type CreateApmInstanceRequest struct {
 	// 业务系统的计费模式
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// （0=付费版；1=tsf受限免费版；2=免费版）
+	// （0=付费版；1=tsf 受限免费版；2=免费版）
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 }
 
@@ -391,8 +341,7 @@ func (r *CreateApmInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApmInstanceResponseParams struct {
-	// 业务系统ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -417,7 +366,7 @@ func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApmAgentRequestParams struct {
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 接入方式
@@ -436,7 +385,7 @@ type DescribeApmAgentRequestParams struct {
 type DescribeApmAgentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 接入方式
@@ -477,8 +426,7 @@ func (r *DescribeApmAgentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApmAgentResponseParams struct {
-	// Agent信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Agent 信息
 	ApmAgent *ApmAgentInfo `json:"ApmAgent,omitnil,omitempty" name:"ApmAgent"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -503,38 +451,38 @@ func (r *DescribeApmAgentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApmInstancesRequestParams struct {
-	// Tag列表
+	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 搜索实例名
+	// 搜索业务系统名
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 过滤实例ID
+	// 过滤业务系统 ID
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 是否查询官方demo实例
+	// 是否查询官方 Demo 业务系统
 	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitnil,omitempty" name:"DemoInstanceFlag"`
 
-	// 是否查询全地域实例
+	// 是否查询全地域业务系统
 	AllRegionsFlag *int64 `json:"AllRegionsFlag,omitnil,omitempty" name:"AllRegionsFlag"`
 }
 
 type DescribeApmInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// Tag列表
+	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 搜索实例名
+	// 搜索业务系统名
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 过滤实例ID
+	// 过滤业务系统 ID
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 是否查询官方demo实例
+	// 是否查询官方 Demo 业务系统
 	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitnil,omitempty" name:"DemoInstanceFlag"`
 
-	// 是否查询全地域实例
+	// 是否查询全地域业务系统
 	AllRegionsFlag *int64 `json:"AllRegionsFlag,omitnil,omitempty" name:"AllRegionsFlag"`
 }
 
@@ -563,8 +511,7 @@ func (r *DescribeApmInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApmInstancesResponseParams struct {
-	// apm实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// APM 业务系统列表
 	Instances []*ApmInstanceDetail `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -757,7 +704,6 @@ func (r *DescribeGeneralMetricDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGeneralMetricDataResponseParams struct {
 	// 指标结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Records []*Line `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -791,10 +737,10 @@ type DescribeGeneralSpanListRequestParams struct {
 	// 排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// span查询开始时间戳（单位:秒）
+	// Span查询开始时间戳（单位:秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 通用过滤参数
@@ -803,7 +749,7 @@ type DescribeGeneralSpanListRequestParams struct {
 	// 业务自身服务名
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// span查询结束时间戳（单位:秒）
+	// Span查询结束时间戳（单位:秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -819,10 +765,10 @@ type DescribeGeneralSpanListRequest struct {
 	// 排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// span查询开始时间戳（单位:秒）
+	// Span查询开始时间戳（单位:秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 通用过滤参数
@@ -831,7 +777,7 @@ type DescribeGeneralSpanListRequest struct {
 	// 业务自身服务名
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// span查询结束时间戳（单位:秒）
+	// Span查询结束时间戳（单位:秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -866,7 +812,7 @@ type DescribeGeneralSpanListResponseParams struct {
 	// 总数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// Span分页列表
+	// Span 分页列表
 	Spans []*Span `json:"Spans,omitnil,omitempty" name:"Spans"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1015,11 +961,9 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMetricRecordsResponseParams struct {
 	// 指标结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Records []*ApmMetricRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 查询指标结果集条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1133,7 +1077,6 @@ func (r *DescribeServiceOverviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceOverviewResponseParams struct {
 	// 指标结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Records []*ApmMetricRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1257,15 +1200,12 @@ func (r *DescribeTagValuesResponse) FromJsonString(s string) error {
 
 type Filter struct {
 	// 过滤方式（=, !=, in）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 过滤维度名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 过滤值，in过滤方式用逗号分割多个值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -1279,11 +1219,9 @@ type GeneralFilter struct {
 
 type Instrument struct {
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组件开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
@@ -1298,11 +1236,9 @@ type Line struct {
 	TimeSerial []*int64 `json:"TimeSerial,omitnil,omitempty" name:"TimeSerial"`
 
 	// 数据序列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSerial []*float64 `json:"DataSerial,omitnil,omitempty" name:"DataSerial"`
 
 	// 维度列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -1618,52 +1554,40 @@ type QueryMetricItem struct {
 }
 
 type Span struct {
-	// Trace Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Trace ID
 	TraceID *string `json:"TraceID,omitnil,omitempty" name:"TraceID"`
 
 	// 日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Logs []*SpanLog `json:"Logs,omitnil,omitempty" name:"Logs"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*SpanTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 上报应用服务信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Process *SpanProcess `json:"Process,omitnil,omitempty" name:"Process"`
 
 	// 产生时间戳(毫秒)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// Span名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Span 名称
 	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
 
 	// 关联关系
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	References []*SpanReference `json:"References,omitnil,omitempty" name:"References"`
 
 	// 产生时间戳(微秒)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 持续耗时(微妙)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// Span Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Span ID
 	SpanID *string `json:"SpanID,omitnil,omitempty" name:"SpanID"`
 
 	// 产生时间戳(毫秒)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeMillis *int64 `json:"StartTimeMillis,omitnil,omitempty" name:"StartTimeMillis"`
 
-	// Parent Span Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// Parent Span ID
 	ParentSpanID *string `json:"ParentSpanID,omitnil,omitempty" name:"ParentSpanID"`
 }
 

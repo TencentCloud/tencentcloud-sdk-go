@@ -72,6 +72,9 @@ type AgentConfig struct {
 	// - 0表示当服务端语音识别检测出的完整一句话后，自动触发一轮新的对话。
 	// - 1表示客户端在收到字幕消息后，自行决定是否手动发送聊天信令触发一轮新的对话。
 	TurnDetectionMode *uint64 `json:"TurnDetectionMode,omitnil,omitempty" name:"TurnDetectionMode"`
+
+	// 是否过滤掉用户只说了一个字的句子，true表示过滤，false表示不过滤，默认值为true
+	FilterOneWord *bool `json:"FilterOneWord,omitnil,omitempty" name:"FilterOneWord"`
 }
 
 type AgentParams struct {
@@ -5849,6 +5852,7 @@ type TranscriptionParams struct {
 	TargetUserId *string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
 
 	// 机器人订阅的用户列表
+	// 仅 TranscriptionMode 为 1或者 TranscriptionMode 为无限上麦模式支持传入多个用户列表
 	TargetUserIdList []*string `json:"TargetUserIdList,omitnil,omitempty" name:"TargetUserIdList"`
 }
 

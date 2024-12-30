@@ -485,10 +485,10 @@ type ClusterActivity struct {
 	// 集群活动ID。
 	ActivityId *string `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
-	// 集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群<br><li>RemoveNodesFromCluster：从集群移除实例<br><li>TerminateNodes：销毁实例<br><li>MountStorageOption：增加挂载选项并进行挂载<br><li>UmountStorageOption：删除集群挂载存储选项并解挂载
+	// 集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群</li><br><li>RemoveNodesFromCluster：从集群移除实例</li><br><li>TerminateNodes：销毁实例</li><br><li>MountStorageOption：增加挂载选项并进行挂载</li><br><li>UmountStorageOption：删除集群挂载存储选项并解挂载</li>
 	ActivityType *string `json:"ActivityType,omitnil,omitempty" name:"ActivityType"`
 
-	// 集群活动状态。取值范围：<br><li>PENDING：等待运行<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>PARTIALLY_SUCCESSFUL：活动部分成功<br><li>FAILED：活动失败
+	// 集群活动状态。取值范围：<br><li>PENDING：等待运行</li><br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>PARTIALLY_SUCCESSFUL：活动部分成功</li><br><li>FAILED：活动失败</li>
 	ActivityStatus *string `json:"ActivityStatus,omitnil,omitempty" name:"ActivityStatus"`
 
 	// 集群活动状态码。
@@ -833,7 +833,7 @@ type CreateWorkspacesRequestParams struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
 
-	// 工作空间计费类型
+	// 工作空间计费类型，包括：PREPAID，UNDERWRITE。工作空间计费类型，包括：PREPAID，UNDERWRITE。
 	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
 
 	// 工作空间规格
@@ -903,7 +903,7 @@ type CreateWorkspacesRequest struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
 
-	// 工作空间计费类型
+	// 工作空间计费类型，包括：PREPAID，UNDERWRITE。工作空间计费类型，包括：PREPAID，UNDERWRITE。
 	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
 
 	// 工作空间规格
@@ -1951,14 +1951,14 @@ type ExpansionNodeConfig struct {
 	// 扩容实例所在的位置。
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
-	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
 	// 节点机型。不同实例机型指定了不同的资源规格。
-	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 私有网络相关信息配置。
@@ -2293,7 +2293,7 @@ type NodeActivity struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeInstanceId *string `json:"NodeInstanceId,omitnil,omitempty" name:"NodeInstanceId"`
 
-	// 节点活动状态。取值范围：<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>FAILED：活动失败
+	// 节点活动状态。取值范围：<br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>FAILED：活动失败</li>
 	NodeActivityStatus *string `json:"NodeActivityStatus,omitnil,omitempty" name:"NodeActivityStatus"`
 
 	// 节点活动状态码。

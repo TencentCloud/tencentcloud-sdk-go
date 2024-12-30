@@ -9012,6 +9012,10 @@ type GovernanceNamespace struct {
 	// 该命名空间下的服务对哪些命名空间可见
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceExportTo []*string `json:"ServiceExportTo,omitnil,omitempty" name:"ServiceExportTo"`
+
+	// 是否开启同步到全局注册中心	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 }
 
 type GovernanceNamespaceInput struct {
@@ -9110,6 +9114,9 @@ type GovernanceService struct {
 	// 该服务信息摘要签名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Revision *string `json:"Revision,omitnil,omitempty" name:"Revision"`
+
+	// 是否开启同步到全局注册中心
+	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 }
 
 type GovernanceServiceContract struct {

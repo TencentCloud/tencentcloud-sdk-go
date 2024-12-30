@@ -194,14 +194,14 @@ type ClusterOverview struct {
 }
 
 type ComputeNode struct {
-	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
 	// 节点机型。不同实例机型指定了不同的资源规格。
-	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
@@ -215,7 +215,7 @@ type ComputeNode struct {
 
 	// 节点显示名称。<br><li>
 	// 不指定节点显示名称则默认显示‘未命名’。
-	// 最多支持60个字符。
+	// 最多支持60个字符。</li>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -242,7 +242,7 @@ type CreateClusterRequestParams struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
@@ -267,8 +267,7 @@ type CreateClusterRequestParams struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。默认值：NIS
-	// <li>NIS：NIS域名字服务。
+	// 域名字服务类型。默认值：NIS<li>NIS：NIS域名字服务。</li>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -307,7 +306,7 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
@@ -332,8 +331,7 @@ type CreateClusterRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。默认值：NIS
-	// <li>NIS：NIS域名字服务。
+	// 域名字服务类型。默认值：NIS<li>NIS：NIS域名字服务。</li>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
 	// 集群显示名称。

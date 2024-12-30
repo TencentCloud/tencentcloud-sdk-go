@@ -2282,6 +2282,9 @@ type DescribeAclsRequestParams struct {
 	// 部门ID，用于过滤属于某个部门的访问权限
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
+	// 是否根据AuthorizedDeviceIdSet,对资产账号进行精确匹配，默认false, 设置true时，确保AuthorizedDeviceIdSet只有一个元素
+	ExactAccount *bool `json:"ExactAccount,omitnil,omitempty" name:"ExactAccount"`
+
 	// 过滤数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -2316,6 +2319,9 @@ type DescribeAclsRequest struct {
 	// 部门ID，用于过滤属于某个部门的访问权限
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
+	// 是否根据AuthorizedDeviceIdSet,对资产账号进行精确匹配，默认false, 设置true时，确保AuthorizedDeviceIdSet只有一个元素
+	ExactAccount *bool `json:"ExactAccount,omitnil,omitempty" name:"ExactAccount"`
+
 	// 过滤数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -2341,6 +2347,7 @@ func (r *DescribeAclsRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "Status")
 	delete(f, "DepartmentId")
+	delete(f, "ExactAccount")
 	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAclsRequest has unknown keys!", "")

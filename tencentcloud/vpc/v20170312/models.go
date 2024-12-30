@@ -152,7 +152,6 @@ type AccessPolicy struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// Remark
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -2410,23 +2409,18 @@ type BgpConfig struct {
 
 type BgpConfigAndAsn struct {
 	// BGP通道CIDR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TunnelCidr *string `json:"TunnelCidr,omitnil,omitempty" name:"TunnelCidr"`
 
 	// 本端BGP IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalBgpIp *string `json:"LocalBgpIp,omitnil,omitempty" name:"LocalBgpIp"`
 
 	// 对端BGP IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteBgpIp *string `json:"RemoteBgpIp,omitnil,omitempty" name:"RemoteBgpIp"`
 
 	// 本端BGP ASN号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalBgpAsn *string `json:"LocalBgpAsn,omitnil,omitempty" name:"LocalBgpAsn"`
 
 	// 对端BGP ASN号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteBgpAsn *string `json:"RemoteBgpAsn,omitnil,omitempty" name:"RemoteBgpAsn"`
 }
 
@@ -2608,36 +2602,34 @@ type CcnBandwidth struct {
 
 type CcnBandwidthInfo struct {
 	// 带宽所属的云联网ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 实例的创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 实例的过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 带宽实例的唯一ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionFlowControlId *string `json:"RegionFlowControlId,omitnil,omitempty" name:"RegionFlowControlId"`
 
 	// 带宽是否自动续费的标记。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnRegionBandwidthLimit *CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimit,omitnil,omitempty" name:"CcnRegionBandwidthLimit"`
 
 	// 云市场实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarketId *string `json:"MarketId,omitnil,omitempty" name:"MarketId"`
 
 	// 资源绑定的标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+
+	// `true表示`Qos默认带宽；`false`表示非Qos默认带宽；
+	DefaultQosBandwidthFlag *bool `json:"DefaultQosBandwidthFlag,omitnil,omitempty" name:"DefaultQosBandwidthFlag"`
+
+	// 服务等级信息。
+	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 }
 
 type CcnBatchRouteTable struct {
@@ -2680,16 +2672,15 @@ type CcnInstance struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 实例关联的路由表ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
 	// 实例付费方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type CcnInstanceInfo struct {
-
+	// 云联网唯一ID。
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type CcnInstanceWithoutRegion struct {
@@ -2718,7 +2709,6 @@ type CcnRegionBandwidthLimit struct {
 	IsBm *bool `json:"IsBm,omitnil,omitempty" name:"IsBm"`
 
 	// 目的地域，例如：ap-shanghai
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
 	// 目的地域是否为黑石地域，默认`false`。
@@ -2727,15 +2717,12 @@ type CcnRegionBandwidthLimit struct {
 
 type CcnRegionBandwidthLimitInfo struct {
 	// 源地域，例如：ap-shanghai
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceRegion *string `json:"SourceRegion,omitnil,omitempty" name:"SourceRegion"`
 
 	// 目的地域， 例如：ap-shanghai
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationRegion *string `json:"DestinationRegion,omitnil,omitempty" name:"DestinationRegion"`
 
 	// 出带宽上限，单位：Mbps。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthLimit *uint64 `json:"BandwidthLimit,omitnil,omitempty" name:"BandwidthLimit"`
 }
 
@@ -2780,11 +2767,9 @@ type CcnRoute struct {
 	InstanceExtraName *string `json:"InstanceExtraName,omitnil,omitempty" name:"InstanceExtraName"`
 
 	// 实例类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasType *string `json:"AliasType,omitnil,omitempty" name:"AliasType"`
 
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasInstanceId *string `json:"AliasInstanceId,omitnil,omitempty" name:"AliasInstanceId"`
 }
 
@@ -2833,19 +2818,15 @@ type CcnRouteTableBroadcastPolicy struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// as-path操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateAsPath *string `json:"OperateAsPath,omitnil,omitempty" name:"OperateAsPath"`
 
 	// as-path操作模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsPathOperateMode *string `json:"AsPathOperateMode,omitnil,omitempty" name:"AsPathOperateMode"`
 
 	// community操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateCommunitySet []*string `json:"OperateCommunitySet,omitnil,omitempty" name:"OperateCommunitySet"`
 
 	// community操作模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommunityOperateMode *string `json:"CommunityOperateMode,omitnil,omitempty" name:"CommunityOperateMode"`
 }
 
@@ -2879,15 +2860,12 @@ type CcnRouteTableInputPolicy struct {
 
 type CcnRouteTableInputPolicys struct {
 	// 策略列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policys []*CcnRouteTableInputPolicy `json:"Policys,omitnil,omitempty" name:"Policys"`
 
 	// 版本号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyVersion *uint64 `json:"PolicyVersion,omitnil,omitempty" name:"PolicyVersion"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -8227,11 +8205,9 @@ type CrossBorderCompliance struct {
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 法定代表人身份证号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalPersonId *string `json:"LegalPersonId,omitnil,omitempty" name:"LegalPersonId"`
 
 	// 法定代表人身份证。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalPersonIdCard *string `json:"LegalPersonIdCard,omitnil,omitempty" name:"LegalPersonIdCard"`
 }
 
@@ -8268,12 +8244,15 @@ type CustomerGateway struct {
 
 type CustomerGatewayVendor struct {
 	// 平台。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 软件版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftwareVersion *string `json:"SoftwareVersion,omitnil,omitempty" name:"SoftwareVersion"`
 
 	// 供应商名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VendorName *string `json:"VendorName,omitnil,omitempty" name:"VendorName"`
 }
 
@@ -13220,7 +13199,6 @@ func (r *DescribeCrossBorderFlowMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCrossBorderFlowMonitorResponseParams struct {
 	// 云联网跨境带宽监控数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossBorderFlowMonitorData []*CrossBorderFlowMonitorData `json:"CrossBorderFlowMonitorData,omitnil,omitempty" name:"CrossBorderFlowMonitorData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18370,7 +18348,6 @@ func (r *DescribeTenantCcnsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTenantCcnsResponseParams struct {
 	// 云联网（CCN）对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnSet []*CcnInstanceInfo `json:"CcnSet,omitnil,omitempty" name:"CcnSet"`
 
 	// 符合条件的对象总数。
@@ -19742,7 +19719,6 @@ type DescribeVpnGatewayRoutesResponseParams struct {
 	Routes []*VpnGatewayRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
 
 	// 路由条数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22315,11 +22291,9 @@ func (r *GetCcnRegionBandwidthLimitsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCcnRegionBandwidthLimitsResponseParams struct {
 	// 云联网（CCN）各地域出带宽详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnBandwidthSet []*CcnBandwidthInfo `json:"CcnBandwidthSet,omitnil,omitempty" name:"CcnBandwidthSet"`
 
 	// 符合条件的对象数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -28248,7 +28222,6 @@ func (r *ModifyVpnGatewayRoutesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVpnGatewayRoutesResponseParams struct {
 	// VPN路由信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Routes []*VpnGatewayRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -31237,7 +31210,6 @@ type RouteSelectionPolicy struct {
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
 
 	// 路由表描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 实例ID。
@@ -32752,30 +32724,24 @@ type VpnConnection struct {
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitnil,omitempty" name:"HealthCheckStatus"`
 
 	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DpdEnable *int64 `json:"DpdEnable,omitnil,omitempty" name:"DpdEnable"`
 
 	// DPD超时时间。即探测确认对端不存在需要的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DpdTimeout *string `json:"DpdTimeout,omitnil,omitempty" name:"DpdTimeout"`
 
 	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DpdAction *string `json:"DpdAction,omitnil,omitempty" name:"DpdAction"`
 
 	// 标签键值对数组
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 协商类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NegotiationType *string `json:"NegotiationType,omitnil,omitempty" name:"NegotiationType"`
 
 	// Bgp配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BgpConfig *BgpConfigAndAsn `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
 
 	// Nqa配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 

@@ -189,7 +189,7 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 }
 
 // DescribeApmInstances
-// APM实例列表拉取
+// 拉取 APM 业务系统列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
@@ -202,7 +202,7 @@ func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (res
 }
 
 // DescribeApmInstances
-// APM实例列表拉取
+// 拉取 APM 业务系统列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"

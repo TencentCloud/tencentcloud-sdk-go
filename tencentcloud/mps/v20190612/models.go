@@ -13451,6 +13451,9 @@ type ModifyOutputInfo struct {
 
 	// 转推RIST的配置。
 	RISTSettings *CreateOutputRistSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
+
+	// 输出类型：Internet/TencentCSS/StreamLive
+	OutputType *string `json:"OutputType,omitnil,omitempty" name:"OutputType"`
 }
 
 // Predefined struct for user

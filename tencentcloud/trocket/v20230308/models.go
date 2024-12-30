@@ -57,6 +57,24 @@ type ConsumeGroupItem struct {
 	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 }
 
+type ConsumerClient struct {
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端地址
+	ClientAddr *string `json:"ClientAddr,omitnil,omitempty" name:"ClientAddr"`
+
+	// 客户端SDK语言
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 客户端SDK版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 客户端消费堆积
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerLag *int64 `json:"ConsumerLag,omitnil,omitempty" name:"ConsumerLag"`
+}
+
 // Predefined struct for user
 type CreateConsumerGroupRequestParams struct {
 	// 集群ID
@@ -1356,6 +1374,103 @@ func (r *DeleteTopicResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerClientRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+}
+
+type DescribeConsumerClientRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+}
+
+func (r *DescribeConsumerClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerClientRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ConsumerGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerClientResponseParams struct {
+	// 客户端详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Client *ConsumerClient `json:"Client,omitnil,omitempty" name:"Client"`
+
+	// 主题消费信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicList []*TopicConsumeStats `json:"TopicList,omitnil,omitempty" name:"TopicList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerClientResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerClientResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerClientResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5365,6 +5480,27 @@ type TagFilter struct {
 
 	// 标签值列表
 	TagValues []*string `json:"TagValues,omitnil,omitempty" name:"TagValues"`
+}
+
+type TopicConsumeStats struct {
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 主题类型
+	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
+
+	// 单节点主题队列数量
+	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
+
+	// 消费堆积
+	ConsumerLag *int64 `json:"ConsumerLag,omitnil,omitempty" name:"ConsumerLag"`
+
+	// 订阅规则
+	SubString *string `json:"SubString,omitnil,omitempty" name:"SubString"`
+
+	// 最后消费进度更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 }
 
 type TopicItem struct {

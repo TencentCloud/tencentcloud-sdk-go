@@ -101,6 +101,9 @@ const (
 	// 自动扩容策略不存在
 	INVALIDPARAMETERVALUE_AUTOPOLICYNOTFOUND = "InvalidParameterValue.AutoPolicyNotFound"
 
+	// 无效的文件系统路径
+	INVALIDPARAMETERVALUE_CFSPATH = "InvalidParameterValue.CfsPath"
+
 	// 用于保证请求幂等性的字符串长度超过限制（不能超过64字节）。
 	INVALIDPARAMETERVALUE_CLIENTTOKENLIMITEXCEEDED = "InvalidParameterValue.ClientTokenLimitExceeded"
 
@@ -173,14 +176,14 @@ const (
 	// 无效的权限组名称。
 	INVALIDPARAMETERVALUE_INVALIDPGROUPNAME = "InvalidParameterValue.InvalidPgroupName"
 
+	// 目录路径中包含无效字符。
+	INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
+
 	// 优先级设置错误。
 	INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
 
 	// 协议参数错误。
 	INVALIDPARAMETERVALUE_INVALIDPROTOCOL = "InvalidParameterValue.InvalidProtocol"
-
-	// 设置配额的参数错误，UserId 跟DirectoryPath不可同时填写，两个参数必填一个
-	INVALIDPARAMETERVALUE_INVALIDQUOTAUSERIDORCFSDIRPATH = "InvalidParameterValue.InvalidQuotaUserIdOrCfsDirPath"
 
 	// 用户区域选择错误 (ZoneName) 或 (ZoneId, Region)二者必选一。
 	INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"

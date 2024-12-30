@@ -104,6 +104,10 @@ type AssociationItem struct {
 
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
+
+	// 关联目标组的权重， 该参数只有v2新版目标组生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 // Predefined struct for user
@@ -232,6 +236,9 @@ type BasicTargetGroupInfo struct {
 
 	// 目标组名称
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
+
+	// 权重
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 // Predefined struct for user

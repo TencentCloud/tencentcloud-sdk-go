@@ -7472,6 +7472,24 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// <b>注</b>：如果<b>应用扩展服务</b>中的<b>自动激活子客企业</b>为打开态， 则忽略本接口的AutoActive这个参数（若持有的许可证充足，子客户企业注册完成后将自动激活），具体位置参考下图：
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/c3639b05503d3735bac483d17aa6b0a3.png)
 	AutoActive *bool `json:"AutoActive,omitnil,omitempty" name:"AutoActive"`
+
+	// 营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
+
+	// 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。	
+	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
+
+	// 组织机构法人的姓名。 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。	
+	ProxyLegalName *string `json:"ProxyLegalName,omitnil,omitempty" name:"ProxyLegalName"`
+
+	// 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+	//  p.s. 如果上传授权书 ，需遵循以下条件 
+	// 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。 
+	// 2. 认证方式AuthorizationTypes必须只能是上传授权书方式	
+	PowerOfAttorneys []*string `json:"PowerOfAttorneys,omitnil,omitempty" name:"PowerOfAttorneys"`
+
+	// 企业认证时个性化能力信息
+	OrganizationAuthorizationOptions *OrganizationAuthorizationOptions `json:"OrganizationAuthorizationOptions,omitnil,omitempty" name:"OrganizationAuthorizationOptions"`
 }
 
 type CreateConsoleLoginUrlRequest struct {
@@ -7587,6 +7605,24 @@ type CreateConsoleLoginUrlRequest struct {
 	// <b>注</b>：如果<b>应用扩展服务</b>中的<b>自动激活子客企业</b>为打开态， 则忽略本接口的AutoActive这个参数（若持有的许可证充足，子客户企业注册完成后将自动激活），具体位置参考下图：
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/c3639b05503d3735bac483d17aa6b0a3.png)
 	AutoActive *bool `json:"AutoActive,omitnil,omitempty" name:"AutoActive"`
+
+	// 营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
+	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
+
+	// 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。	
+	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
+
+	// 组织机构法人的姓名。 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。	
+	ProxyLegalName *string `json:"ProxyLegalName,omitnil,omitempty" name:"ProxyLegalName"`
+
+	// 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+	//  p.s. 如果上传授权书 ，需遵循以下条件 
+	// 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。 
+	// 2. 认证方式AuthorizationTypes必须只能是上传授权书方式	
+	PowerOfAttorneys []*string `json:"PowerOfAttorneys,omitnil,omitempty" name:"PowerOfAttorneys"`
+
+	// 企业认证时个性化能力信息
+	OrganizationAuthorizationOptions *OrganizationAuthorizationOptions `json:"OrganizationAuthorizationOptions,omitnil,omitempty" name:"OrganizationAuthorizationOptions"`
 }
 
 func (r *CreateConsoleLoginUrlRequest) ToJsonString() string {
@@ -7617,6 +7653,11 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "AutoJumpUrl")
 	delete(f, "TopNavigationStatus")
 	delete(f, "AutoActive")
+	delete(f, "BusinessLicense")
+	delete(f, "ProxyAddress")
+	delete(f, "ProxyLegalName")
+	delete(f, "PowerOfAttorneys")
+	delete(f, "OrganizationAuthorizationOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")
 	}
@@ -11875,6 +11916,17 @@ type OrganizationAuthUrl struct {
 
 	// 企业批量注册的错误信息，例如：企业三要素不通过
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
+type OrganizationAuthorizationOptions struct {
+	// 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+	UniformSocialCreditCodeSame *bool `json:"UniformSocialCreditCodeSame,omitnil,omitempty" name:"UniformSocialCreditCodeSame"`
+
+	// 对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+	OrganizationNameSame *bool `json:"OrganizationNameSame,omitnil,omitempty" name:"OrganizationNameSame"`
+
+	// 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+	LegalNameSame *bool `json:"LegalNameSame,omitnil,omitempty" name:"LegalNameSame"`
 }
 
 type OrganizationCommonInfo struct {

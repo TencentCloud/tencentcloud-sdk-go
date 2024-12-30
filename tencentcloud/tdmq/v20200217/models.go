@@ -3491,6 +3491,74 @@ func (r *DeleteRabbitMQBindingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteRabbitMQPermissionRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，登录时使用
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+}
+
+type DeleteRabbitMQPermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，登录时使用
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+}
+
+func (r *DeleteRabbitMQPermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRabbitMQPermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "User")
+	delete(f, "VirtualHost")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRabbitMQPermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRabbitMQPermissionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRabbitMQPermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRabbitMQPermissionResponseParams `json:"Response"`
+}
+
+func (r *DeleteRabbitMQPermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRabbitMQPermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6664,6 +6732,94 @@ func (r *DescribeRabbitMQNodeListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRabbitMQNodeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQPermissionRequestParams struct {
+	// 集群实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，用于查询过滤，不传则查询全部
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名，用于查询过滤，不传则查询全部
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRabbitMQPermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，用于查询过滤，不传则查询全部
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名，用于查询过滤，不传则查询全部
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRabbitMQPermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQPermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "User")
+	delete(f, "VirtualHost")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQPermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQPermissionResponseParams struct {
+	// 返回权限数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 权限详情列表
+	RabbitMQPermissionList []*RabbitMQPermission `json:"RabbitMQPermissionList,omitnil,omitempty" name:"RabbitMQPermissionList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRabbitMQPermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQPermissionResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQPermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQPermissionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11511,6 +11667,95 @@ func (r *ModifyPublicNetworkSecurityPolicyResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type ModifyRabbitMQPermissionRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，权限关联的用户
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名称
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+	ConfigRegexp *string `json:"ConfigRegexp,omitnil,omitempty" name:"ConfigRegexp"`
+
+	// 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+	WriteRegexp *string `json:"WriteRegexp,omitnil,omitempty" name:"WriteRegexp"`
+
+	// 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+	ReadRegexp *string `json:"ReadRegexp,omitnil,omitempty" name:"ReadRegexp"`
+}
+
+type ModifyRabbitMQPermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，权限关联的用户
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名称
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+	ConfigRegexp *string `json:"ConfigRegexp,omitnil,omitempty" name:"ConfigRegexp"`
+
+	// 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+	WriteRegexp *string `json:"WriteRegexp,omitnil,omitempty" name:"WriteRegexp"`
+
+	// 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+	ReadRegexp *string `json:"ReadRegexp,omitnil,omitempty" name:"ReadRegexp"`
+}
+
+func (r *ModifyRabbitMQPermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRabbitMQPermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "User")
+	delete(f, "VirtualHost")
+	delete(f, "ConfigRegexp")
+	delete(f, "WriteRegexp")
+	delete(f, "ReadRegexp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQPermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRabbitMQPermissionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRabbitMQPermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRabbitMQPermissionResponseParams `json:"Response"`
+}
+
+func (r *ModifyRabbitMQPermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRabbitMQPermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13296,6 +13541,37 @@ type RabbitMQExchangeListInfo struct {
 	// 未调度的延时消息数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessagesDelayed *uint64 `json:"MessagesDelayed,omitnil,omitempty" name:"MessagesDelayed"`
+}
+
+type RabbitMQPermission struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名，权限关联的用户
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// vhost名
+	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigRegexp *string `json:"ConfigRegexp,omitnil,omitempty" name:"ConfigRegexp"`
+
+	// 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteRegexp *string `json:"WriteRegexp,omitnil,omitempty" name:"WriteRegexp"`
+
+	// 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadRegexp *string `json:"ReadRegexp,omitnil,omitempty" name:"ReadRegexp"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type RabbitMQPrivateNode struct {

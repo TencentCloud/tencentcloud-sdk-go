@@ -150,7 +150,7 @@ type AddDeviceRequestParams struct {
 	// license付费方式： 
 	// 0，月度授权 
 	// 1，永久授权 
-	// 若不传则默认为月度授权
+	// 若不传则默认为月度授权，永久授权设备需要调用OrderPerLicense接口支付授权费，否则设备无法使用
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
 	// 设备分组名称，非必选，预留参数，需要分组时传入GroupId
@@ -188,7 +188,7 @@ type AddDeviceRequest struct {
 	// license付费方式： 
 	// 0，月度授权 
 	// 1，永久授权 
-	// 若不传则默认为月度授权
+	// 若不传则默认为月度授权，永久授权设备需要调用OrderPerLicense接口支付授权费，否则设备无法使用
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
 	// 设备分组名称，非必选，预留参数，需要分组时传入GroupId

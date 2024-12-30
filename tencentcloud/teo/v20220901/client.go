@@ -4277,7 +4277,7 @@ func NewDescribeDnsRecordsResponse() (response *DescribeDnsRecordsResponse) {
 }
 
 // DescribeDnsRecords
-// 您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息。您可以查看站点下全部 DNS 记录的信息，也可以指定过滤条件查询对应的 DNS 记录信息。
+// 您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息，支持指定过滤条件查询对应的 DNS 记录信息。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -4286,7 +4286,7 @@ func (c *Client) DescribeDnsRecords(request *DescribeDnsRecordsRequest) (respons
 }
 
 // DescribeDnsRecords
-// 您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息。您可以查看站点下全部 DNS 记录的信息，也可以指定过滤条件查询对应的 DNS 记录信息。
+// 您可以用过本接口查看站点下的 DNS 记录信息，包括 DNS 记录名、记录类型以及记录内容等信息，支持指定过滤条件查询对应的 DNS 记录信息。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"

@@ -7405,7 +7405,7 @@ type DescribeProductConfigRequestParams struct {
 	// 可用区英文ID，形如ap-guangzhou-1
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本
+	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
@@ -7415,7 +7415,7 @@ type DescribeProductConfigRequest struct {
 	// 可用区英文ID，形如ap-guangzhou-1
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本
+	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
@@ -8680,6 +8680,9 @@ type DescribeUpgradeInstanceCheckRequestParams struct {
 
 	// 实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改
 	MultiZones *string `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
+
+	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type DescribeUpgradeInstanceCheckRequest struct {
@@ -8705,6 +8708,9 @@ type DescribeUpgradeInstanceCheckRequest struct {
 
 	// 实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改
 	MultiZones *string `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
+
+	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *DescribeUpgradeInstanceCheckRequest) ToJsonString() string {
@@ -8726,6 +8732,7 @@ func (r *DescribeUpgradeInstanceCheckRequest) FromJsonString(s string) error {
 	delete(f, "DBVersion")
 	delete(f, "HAType")
 	delete(f, "MultiZones")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpgradeInstanceCheckRequest has unknown keys!", "")
 	}
@@ -9205,6 +9212,14 @@ type DrReadableInfo struct {
 
 	// 备机只读模式，BalancedReadOnly-多备一读模式，SingleReadOnly-一备一读模式
 	ReadMode *string `json:"ReadMode,omitnil,omitempty" name:"ReadMode"`
+}
+
+type DrZoneInfo struct {
+	// 备机资源ID
+	DrInstanceId *string `json:"DrInstanceId,omitnil,omitempty" name:"DrInstanceId"`
+
+	// 备机可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type EventConfig struct {

@@ -5956,6 +5956,10 @@ func NewDescribeWafAutoDenyStatusResponse() (response *DescribeWafAutoDenyStatus
 }
 
 // DescribeWafAutoDenyStatus
+// 废弃接口
+//
+// 
+//
 // 描述WAF自动封禁模块详情
 //
 // 可能返回的错误码:
@@ -5966,6 +5970,10 @@ func (c *Client) DescribeWafAutoDenyStatus(request *DescribeWafAutoDenyStatusReq
 }
 
 // DescribeWafAutoDenyStatus
+// 废弃接口
+//
+// 
+//
 // 描述WAF自动封禁模块详情
 //
 // 可能返回的错误码:

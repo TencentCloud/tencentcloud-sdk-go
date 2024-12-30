@@ -6085,9 +6085,6 @@ type ModifyDynamicDNSRequestParams struct {
 	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
-	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
@@ -6096,6 +6093,9 @@ type ModifyDynamicDNSRequestParams struct {
 
 	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
+
+	// IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// TTL值，如果不传，默认为域名的TTL值。
 	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
@@ -6113,9 +6113,6 @@ type ModifyDynamicDNSRequest struct {
 	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
-	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
@@ -6124,6 +6121,9 @@ type ModifyDynamicDNSRequest struct {
 
 	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
+
+	// IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// TTL值，如果不传，默认为域名的TTL值。
 	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
@@ -6144,10 +6144,10 @@ func (r *ModifyDynamicDNSRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "RecordId")
 	delete(f, "RecordLine")
-	delete(f, "Value")
 	delete(f, "DomainId")
 	delete(f, "SubDomain")
 	delete(f, "RecordLineId")
+	delete(f, "Value")
 	delete(f, "Ttl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDynamicDNSRequest has unknown keys!", "")
@@ -7932,23 +7932,23 @@ type WhoisContact struct {
 }
 
 type WhoisContactAddress struct {
-	// 无
+	// 城市
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 无
+	// 国家
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 无
+	// 电子邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 无
+	// 传真
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fax *string `json:"Fax,omitnil,omitempty" name:"Fax"`
 
-	// 无
+	// 传真分机号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaxExt *string `json:"FaxExt,omitnil,omitempty" name:"FaxExt"`
 
@@ -7956,27 +7956,27 @@ type WhoisContactAddress struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Handle *string `json:"Handle,omitnil,omitempty" name:"Handle"`
 
-	// 无
+	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 无
+	// 组织机构
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
 
-	// 无
+	// 电话
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 无
+	// 邮编
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
-	// 无
+	// 省份/州
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 无
+	// 街道地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Street *string `json:"Street,omitnil,omitempty" name:"Street"`
 }

@@ -1849,6 +1849,71 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     return
 }
 
+func NewCreateWebCallbackRequest() (request *CreateWebCallbackRequest) {
+    request = &CreateWebCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateWebCallback")
+    
+    
+    return
+}
+
+func NewCreateWebCallbackResponse() (response *CreateWebCallbackResponse) {
+    response = &CreateWebCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateWebCallback
+// 该接口用于创建告警渠道回调配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateWebCallback(request *CreateWebCallbackRequest) (response *CreateWebCallbackResponse, err error) {
+    return c.CreateWebCallbackWithContext(context.Background(), request)
+}
+
+// CreateWebCallback
+// 该接口用于创建告警渠道回调配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateWebCallbackWithContext(ctx context.Context, request *CreateWebCallbackRequest) (response *CreateWebCallbackResponse, err error) {
+    if request == nil {
+        request = NewCreateWebCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWebCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWebCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAlarmRequest() (request *DeleteAlarmRequest) {
     request = &DeleteAlarmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3244,6 +3309,73 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     request.SetContext(ctx)
     
     response = NewDeleteTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteWebCallbackRequest() (request *DeleteWebCallbackRequest) {
+    request = &DeleteWebCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteWebCallback")
+    
+    
+    return
+}
+
+func NewDeleteWebCallbackResponse() (response *DeleteWebCallbackResponse) {
+    response = &DeleteWebCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteWebCallback
+// 该接口用于删除告警渠道回调配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) DeleteWebCallback(request *DeleteWebCallbackRequest) (response *DeleteWebCallbackResponse, err error) {
+    return c.DeleteWebCallbackWithContext(context.Background(), request)
+}
+
+// DeleteWebCallback
+// 该接口用于删除告警渠道回调配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) DeleteWebCallbackWithContext(ctx context.Context, request *DeleteWebCallbackRequest) (response *DeleteWebCallbackResponse, err error) {
+    if request == nil {
+        request = NewDeleteWebCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWebCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteWebCallbackResponse()
     err = c.Send(request, response)
     return
 }
@@ -5336,6 +5468,71 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeWebCallbacksRequest() (request *DescribeWebCallbacksRequest) {
+    request = &DescribeWebCallbacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeWebCallbacks")
+    
+    
+    return
+}
+
+func NewDescribeWebCallbacksResponse() (response *DescribeWebCallbacksResponse) {
+    response = &DescribeWebCallbacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWebCallbacks
+// 获取告警渠道回调配置列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeWebCallbacks(request *DescribeWebCallbacksRequest) (response *DescribeWebCallbacksResponse, err error) {
+    return c.DescribeWebCallbacksWithContext(context.Background(), request)
+}
+
+// DescribeWebCallbacks
+// 获取告警渠道回调配置列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeWebCallbacksWithContext(ctx context.Context, request *DescribeWebCallbacksRequest) (response *DescribeWebCallbacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebCallbacksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebCallbacks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebCallbacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAlarmLogRequest() (request *GetAlarmLogRequest) {
     request = &GetAlarmLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6914,6 +7111,79 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     request.SetContext(ctx)
     
     response = NewModifyTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWebCallbackRequest() (request *ModifyWebCallbackRequest) {
+    request = &ModifyWebCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyWebCallback")
+    
+    
+    return
+}
+
+func NewModifyWebCallbackResponse() (response *ModifyWebCallbackResponse) {
+    response = &ModifyWebCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyWebCallback
+// 该接口用于修改告警渠道回调配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMCONFLICT = "InvalidParameter.AlarmConflict"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) ModifyWebCallback(request *ModifyWebCallbackRequest) (response *ModifyWebCallbackResponse, err error) {
+    return c.ModifyWebCallbackWithContext(context.Background(), request)
+}
+
+// ModifyWebCallback
+// 该接口用于修改告警渠道回调配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMCONFLICT = "InvalidParameter.AlarmConflict"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+func (c *Client) ModifyWebCallbackWithContext(ctx context.Context, request *ModifyWebCallbackRequest) (response *ModifyWebCallbackResponse, err error) {
+    if request == nil {
+        request = NewModifyWebCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWebCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWebCallbackResponse()
     err = c.Send(request, response)
     return
 }

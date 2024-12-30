@@ -2845,6 +2845,142 @@ func (c *Client) GeneralHandwritingOCRWithContext(ctx context.Context, request *
     return
 }
 
+func NewGetOCRResultRequest() (request *GetOCRResultRequest) {
+    request = &GetOCRResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "GetOCRResult")
+    
+    
+    return
+}
+
+func NewGetOCRResultResponse() (response *GetOCRResultResponse) {
+    response = &GetOCRResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetOCRResult
+// 获取ocr结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) GetOCRResult(request *GetOCRResultRequest) (response *GetOCRResultResponse, err error) {
+    return c.GetOCRResultWithContext(context.Background(), request)
+}
+
+// GetOCRResult
+// 获取ocr结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) GetOCRResultWithContext(ctx context.Context, request *GetOCRResultRequest) (response *GetOCRResultResponse, err error) {
+    if request == nil {
+        request = NewGetOCRResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOCRResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetOCRResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetOCRTokenRequest() (request *GetOCRTokenRequest) {
+    request = &GetOCRTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "GetOCRToken")
+    
+    
+    return
+}
+
+func NewGetOCRTokenResponse() (response *GetOCRTokenResponse) {
+    response = &GetOCRTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetOCRToken
+// 获取ocr的token值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) GetOCRToken(request *GetOCRTokenRequest) (response *GetOCRTokenResponse, err error) {
+    return c.GetOCRTokenWithContext(context.Background(), request)
+}
+
+// GetOCRToken
+// 获取ocr的token值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) GetOCRTokenWithContext(ctx context.Context, request *GetOCRTokenRequest) (response *GetOCRTokenResponse, err error) {
+    if request == nil {
+        request = NewGetOCRTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOCRToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetOCRTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTaskStateRequest() (request *GetTaskStateRequest) {
     request = &GetTaskStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3084,7 +3220,7 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //
 // 
 //
-// 另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备8种告警功能，如下表所示。
+// 另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备8种告警功能，如下表所示。
 //
 // 
 //
@@ -3209,7 +3345,7 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 //
 // 
 //
-// 另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备8种告警功能，如下表所示。
+// 另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备8种告警功能，如下表所示。
 //
 // 
 //
@@ -4666,7 +4802,7 @@ func NewRecognizeEncryptedIDCardOCRResponse() (response *RecognizeEncryptedIDCar
 //
 // 
 //
-// 另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
+// 另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
 //
 // 
 //
@@ -4795,7 +4931,7 @@ func (c *Client) RecognizeEncryptedIDCardOCR(request *RecognizeEncryptedIDCardOC
 //
 // 
 //
-// 另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
+// 另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
 //
 // 
 //
@@ -6060,7 +6196,7 @@ func NewRecognizeTableAccurateOCRResponse() (response *RecognizeTableAccurateOCR
 }
 
 // RecognizeTableAccurateOCR
-// 本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。点击[立即体验](https://ocrdemo.cloud.tencent.com?action=RecognizeTableAccurateOCR)。
+// 本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。
 //
 // 
 //
@@ -6086,7 +6222,7 @@ func (c *Client) RecognizeTableAccurateOCR(request *RecognizeTableAccurateOCRReq
 }
 
 // RecognizeTableAccurateOCR
-// 本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。点击[立即体验](https://ocrdemo.cloud.tencent.com?action=RecognizeTableAccurateOCR)。
+// 本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。
 //
 // 
 //

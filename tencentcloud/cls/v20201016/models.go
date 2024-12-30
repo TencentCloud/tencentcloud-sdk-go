@@ -483,7 +483,6 @@ type AnalysisDimensional struct {
 	//     "Key": "SyntaxRule", // 查不到这个字段也是老语法
 	//     "Value": "0"//0:Lucene, 1:CQL
 	// }
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigInfo []*AlarmAnalysisConfig `json:"ConfigInfo,omitnil,omitempty" name:"ConfigInfo"`
 }
 
@@ -1958,7 +1957,7 @@ type CreateConfigExtraRequestParams struct {
 	// 容器标准输出类型配置。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
-	// 日志格式化方式，用于容器采集场景。
+	// 日志格式化方式，用于容器采集场景。 - 已废弃
 	// - stdout-docker-json：用于docker容器采集场景
 	// - stdout-containerd：用于containerd容器采集场景
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
@@ -2035,7 +2034,7 @@ type CreateConfigExtraRequest struct {
 	// 容器标准输出类型配置。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
-	// 日志格式化方式，用于容器采集场景。
+	// 日志格式化方式，用于容器采集场景。 - 已废弃
 	// - stdout-docker-json：用于docker容器采集场景
 	// - stdout-containerd：用于containerd容器采集场景
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
@@ -3887,6 +3886,99 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWebCallbackRequestParams struct {
+	// 通知内容名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 渠道类型。
+	// 
+	// WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// Webhook地址。
+	Webhook *string `json:"Webhook,omitnil,omitempty" name:"Webhook"`
+
+	// 请求方式。 支持POST、PUT。
+	// 
+	// 当Type为Http时，必填。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 秘钥。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+type CreateWebCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通知内容名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 渠道类型。
+	// 
+	// WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// Webhook地址。
+	Webhook *string `json:"Webhook,omitnil,omitempty" name:"Webhook"`
+
+	// 请求方式。 支持POST、PUT。
+	// 
+	// 当Type为Http时，必填。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 秘钥。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+func (r *CreateWebCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWebCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Webhook")
+	delete(f, "Method")
+	delete(f, "Key")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWebCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWebCallbackResponseParams struct {
+	// 回调配置ID。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWebCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWebCallbackResponseParams `json:"Response"`
+}
+
+func (r *CreateWebCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWebCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CsvInfo struct {
 	// csv首行是否打印key
 	PrintKey *bool `json:"PrintKey,omitnil,omitempty" name:"PrintKey"`
@@ -5292,6 +5384,60 @@ func (r *DeleteTopicResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWebCallbackRequestParams struct {
+	// 告警渠道回调配置ID。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
+}
+
+type DeleteWebCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警渠道回调配置ID。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
+}
+
+func (r *DeleteWebCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWebCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WebCallbackId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWebCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWebCallbackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWebCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWebCallbackResponseParams `json:"Response"`
+}
+
+func (r *DeleteWebCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWebCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8057,8 +8203,8 @@ type DescribeTopicsRequestParams struct {
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
 	// 主题类型
-	// <ul><li>0:日志主题，默认值</li>
-	// <li>1:指标主题</li></ul>
+	// - 0:日志主题，默认值
+	// - 1:指标主题
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
@@ -8089,8 +8235,8 @@ type DescribeTopicsRequest struct {
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
 	// 主题类型
-	// <ul><li>0:日志主题，默认值</li>
-	// <li>1:指标主题</li></ul>
+	// - 0:日志主题，默认值
+	// - 1:指标主题
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
@@ -8142,6 +8288,107 @@ func (r *DescribeTopicsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTopicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebCallbacksRequestParams struct {
+	// <li> name
+	// 按照【告警渠道回调配置名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li> webCallbackId
+	// 按照【告警渠道回调配置ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li> type
+	// 按照【告警渠道回调配置渠道类型】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeWebCallbacksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <li> name
+	// 按照【告警渠道回调配置名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li> webCallbackId
+	// 按照【告警渠道回调配置ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li> type
+	// 按照【告警渠道回调配置渠道类型】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeWebCallbacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebCallbacksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebCallbacksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebCallbacksResponseParams struct {
+	// 告警渠道回调配置列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebCallbacks []*WebCallbackInfo `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
+
+	// 符合条件的通知内容配置总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWebCallbacksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWebCallbacksResponseParams `json:"Response"`
+}
+
+func (r *DescribeWebCallbacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebCallbacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11466,6 +11713,107 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyWebCallbackRequestParams struct {
+	// 告警渠道回调配置ID。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
+
+	// 告警渠道回调配置名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 渠道类型
+	// 
+	// WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 回调地址。
+	Webhook *string `json:"Webhook,omitnil,omitempty" name:"Webhook"`
+
+	// 请求方式。
+	// 
+	// 支持POST、PUT。
+	// 
+	// 注意：当Type为Http时，必填。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 秘钥信息。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+type ModifyWebCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警渠道回调配置ID。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
+
+	// 告警渠道回调配置名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 渠道类型
+	// 
+	// WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 回调地址。
+	Webhook *string `json:"Webhook,omitnil,omitempty" name:"Webhook"`
+
+	// 请求方式。
+	// 
+	// 支持POST、PUT。
+	// 
+	// 注意：当Type为Http时，必填。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 秘钥信息。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+func (r *ModifyWebCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWebCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WebCallbackId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Webhook")
+	delete(f, "Method")
+	delete(f, "Key")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWebCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWebCallbackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyWebCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyWebCallbackResponseParams `json:"Response"`
+}
+
+func (r *ModifyWebCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWebCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MonitorTime struct {
 	// 执行周期， 可选值：`Period`、`Fixed`、`Cron`。
 	// 
@@ -13256,4 +13604,48 @@ type WebCallback struct {
 	// - 入参无效。
 	// - 出参有效。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type WebCallbackInfo struct {
+	// 告警渠道回调配置id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
+
+	// 告警渠道回调配置名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 渠道类型
+	// 
+	// WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 回调地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Webhook *string `json:"Webhook,omitnil,omitempty" name:"Webhook"`
+
+	// 请求方式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 秘钥信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 主账号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 子账号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 创建时间。秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间。秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }

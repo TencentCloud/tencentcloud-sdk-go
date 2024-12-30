@@ -5348,6 +5348,15 @@ type DescribeDatahubTopicsRequestParams struct {
 
 	// 本次返回结果的最大个数，默认为50，最大值为50
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否从连接查询topic列表
+	QueryFromConnectResource *bool `json:"QueryFromConnectResource,omitnil,omitempty" name:"QueryFromConnectResource"`
+
+	// 连接的ID
+	ConnectResourceId *string `json:"ConnectResourceId,omitnil,omitempty" name:"ConnectResourceId"`
+
+	// topic资源表达式
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
 }
 
 type DescribeDatahubTopicsRequest struct {
@@ -5361,6 +5370,15 @@ type DescribeDatahubTopicsRequest struct {
 
 	// 本次返回结果的最大个数，默认为50，最大值为50
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否从连接查询topic列表
+	QueryFromConnectResource *bool `json:"QueryFromConnectResource,omitnil,omitempty" name:"QueryFromConnectResource"`
+
+	// 连接的ID
+	ConnectResourceId *string `json:"ConnectResourceId,omitnil,omitempty" name:"ConnectResourceId"`
+
+	// topic资源表达式
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
 }
 
 func (r *DescribeDatahubTopicsRequest) ToJsonString() string {
@@ -5378,6 +5396,9 @@ func (r *DescribeDatahubTopicsRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "QueryFromConnectResource")
+	delete(f, "ConnectResourceId")
+	delete(f, "TopicRegularExpression")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatahubTopicsRequest has unknown keys!", "")
 	}

@@ -98,13 +98,13 @@ type AddNodesRequestParams struct {
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	// 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
@@ -130,10 +130,10 @@ type AddNodesRequestParams struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。<li>SGE默认队列为：all.q。
+	// 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。</li><li>SGE默认队列为：all.q。</li>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// 添加节点角色。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+	// 添加节点角色。默认值：Compute<br><li>Compute：计算节点。</li><br><li>Login：登录节点。</li>
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
 
 	// 是否只预检此次请求。
@@ -143,7 +143,7 @@ type AddNodesRequestParams struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
+	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。</li><li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。</li>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 }
 
@@ -165,13 +165,13 @@ type AddNodesRequest struct {
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	// 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
@@ -197,10 +197,10 @@ type AddNodesRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。<li>SGE默认队列为：all.q。
+	// 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。</li><li>SGE默认队列为：all.q。</li>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// 添加节点角色。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+	// 添加节点角色。默认值：Compute<br><li>Compute：计算节点。</li><br><li>Login：登录节点。</li>
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
 
 	// 是否只预检此次请求。
@@ -210,7 +210,7 @@ type AddNodesRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
+	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。</li><li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。</li>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 }
 
@@ -493,10 +493,10 @@ type ClusterActivity struct {
 	// 集群活动ID。
 	ActivityId *string `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
-	// 集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群<br><li>RemoveNodesFromCluster：从集群移除实例<br><li>TerminateNodes：销毁实例<br><li>MountStorageOption：增加挂载选项并进行挂载<br><li>UmountStorageOption：删除集群挂载存储选项并解挂载
+	// 集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群</li><br><li>RemoveNodesFromCluster：从集群移除实例</li><br><li>TerminateNodes：销毁实例</li><br><li>MountStorageOption：增加挂载选项并进行挂载</li><br><li>UmountStorageOption：删除集群挂载存储选项并解挂载</li>	
 	ActivityType *string `json:"ActivityType,omitnil,omitempty" name:"ActivityType"`
 
-	// 集群活动状态。取值范围：<br><li>PENDING：等待运行<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>PARTIALLY_SUCCESSFUL：活动部分成功<br><li>FAILED：活动失败
+	// 集群活动状态。取值范围：<br><li>PENDING：等待运行</li><br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>PARTIALLY_SUCCESSFUL：活动部分成功</li><br><li>FAILED：活动失败</li>	
 	ActivityStatus *string `json:"ActivityStatus,omitnil,omitempty" name:"ActivityStatus"`
 
 	// 集群活动状态码。
@@ -529,7 +529,7 @@ type ClusterOverview struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群状态。取值范围：<br><li>PENDING：创建中<br><li>INITING：初始化中<br><li>INIT_FAILED：初始化失败<br><li>RUNNING：运行中<br><li>TERMINATING：销毁中
+	// 集群状态。取值范围：<br><li>PENDING：创建中</li><br><li>INITING：初始化中</li><br><li>INIT_FAILED：初始化失败</li><br><li>RUNNING：运行中</li><br><li>TERMINATING：销毁中</li>	
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
 	// 集群名称。
@@ -567,14 +567,14 @@ type ClusterOverview struct {
 }
 
 type ComputeNode struct {
-	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
 	// 节点机型。不同实例机型指定了不同的资源规格。
-	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
@@ -588,7 +588,7 @@ type ComputeNode struct {
 
 	// 节点显示名称。<br><li>
 	// 不指定节点显示名称则默认显示‘未命名’。
-	// 最多支持60个字符。
+	// 最多支持60个字符。</li>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -794,7 +794,7 @@ type DataDisk struct {
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+	// 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘</li><br><li>LOCAL_SSD：本地SSD硬盘</li><br><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定</li><br><li>CLOUD_BASIC：普通云硬盘</li><br><li>CLOUD_PREMIUM：高性能云硬盘</li><br><li>CLOUD_SSD：SSD云硬盘</li><br><li>CLOUD_HSSD：增强型SSD云硬盘</li><br><li>CLOUD_TSSD：极速型SSD云硬盘</li><br><br>默认取值：LOCAL_BASIC。</li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 }
 
@@ -1465,14 +1465,13 @@ type ExpansionNodeConfig struct {
 	// 扩容实例所在的位置。
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
-	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 节点机型。不同实例机型指定了不同的资源规格。
-	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	// 节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 私有网络相关信息配置。
@@ -1648,7 +1647,7 @@ type NodeActivity struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeInstanceId *string `json:"NodeInstanceId,omitnil,omitempty" name:"NodeInstanceId"`
 
-	// 节点活动状态。取值范围：<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>FAILED：活动失败
+	// 节点活动状态。取值范围：<br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>FAILED：活动失败</li>	
 	NodeActivityStatus *string `json:"NodeActivityStatus,omitnil,omitempty" name:"NodeActivityStatus"`
 
 	// 节点活动状态码。

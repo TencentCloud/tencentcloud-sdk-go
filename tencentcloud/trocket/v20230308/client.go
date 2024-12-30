@@ -901,6 +901,55 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     return
 }
 
+func NewDescribeConsumerClientRequest() (request *DescribeConsumerClientRequest) {
+    request = &DescribeConsumerClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerClient")
+    
+    
+    return
+}
+
+func NewDescribeConsumerClientResponse() (response *DescribeConsumerClientResponse) {
+    response = &DescribeConsumerClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerClient
+// 查询消费者客户端详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerClient(request *DescribeConsumerClientRequest) (response *DescribeConsumerClientResponse, err error) {
+    return c.DescribeConsumerClientWithContext(context.Background(), request)
+}
+
+// DescribeConsumerClient
+// 查询消费者客户端详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerClientWithContext(ctx context.Context, request *DescribeConsumerClientRequest) (response *DescribeConsumerClientResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerClientRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerClient require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConsumerGroupRequest() (request *DescribeConsumerGroupRequest) {
     request = &DescribeConsumerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

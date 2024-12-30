@@ -2091,6 +2091,57 @@ func (c *Client) DeleteRabbitMQBindingWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteRabbitMQPermissionRequest() (request *DeleteRabbitMQPermissionRequest) {
+    request = &DeleteRabbitMQPermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRabbitMQPermission")
+    
+    
+    return
+}
+
+func NewDeleteRabbitMQPermissionResponse() (response *DeleteRabbitMQPermissionResponse) {
+    response = &DeleteRabbitMQPermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRabbitMQPermission
+// 删除RabbitMQ的权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRabbitMQPermission(request *DeleteRabbitMQPermissionRequest) (response *DeleteRabbitMQPermissionResponse, err error) {
+    return c.DeleteRabbitMQPermissionWithContext(context.Background(), request)
+}
+
+// DeleteRabbitMQPermission
+// 删除RabbitMQ的权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRabbitMQPermissionWithContext(ctx context.Context, request *DeleteRabbitMQPermissionRequest) (response *DeleteRabbitMQPermissionResponse, err error) {
+    if request == nil {
+        request = NewDeleteRabbitMQPermissionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRabbitMQPermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRabbitMQPermissionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRabbitMQUserRequest() (request *DeleteRabbitMQUserRequest) {
     request = &DeleteRabbitMQUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4278,6 +4329,59 @@ func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeRabbitMQNodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQPermissionRequest() (request *DescribeRabbitMQPermissionRequest) {
+    request = &DescribeRabbitMQPermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQPermission")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQPermissionResponse() (response *DescribeRabbitMQPermissionResponse) {
+    response = &DescribeRabbitMQPermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRabbitMQPermission
+// 查询RabbitMQ权限列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQPermission(request *DescribeRabbitMQPermissionRequest) (response *DescribeRabbitMQPermissionResponse, err error) {
+    return c.DescribeRabbitMQPermissionWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQPermission
+// 查询RabbitMQ权限列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRabbitMQPermissionWithContext(ctx context.Context, request *DescribeRabbitMQPermissionRequest) (response *DescribeRabbitMQPermissionResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQPermissionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQPermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQPermissionResponse()
     err = c.Send(request, response)
     return
 }
@@ -7006,6 +7110,59 @@ func (c *Client) ModifyPublicNetworkSecurityPolicyWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyPublicNetworkSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRabbitMQPermissionRequest() (request *ModifyRabbitMQPermissionRequest) {
+    request = &ModifyRabbitMQPermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRabbitMQPermission")
+    
+    
+    return
+}
+
+func NewModifyRabbitMQPermissionResponse() (response *ModifyRabbitMQPermissionResponse) {
+    response = &ModifyRabbitMQPermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRabbitMQPermission
+// 修改RabbitMQ的权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRabbitMQPermission(request *ModifyRabbitMQPermissionRequest) (response *ModifyRabbitMQPermissionResponse, err error) {
+    return c.ModifyRabbitMQPermissionWithContext(context.Background(), request)
+}
+
+// ModifyRabbitMQPermission
+// 修改RabbitMQ的权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRabbitMQPermissionWithContext(ctx context.Context, request *ModifyRabbitMQPermissionRequest) (response *ModifyRabbitMQPermissionResponse, err error) {
+    if request == nil {
+        request = NewModifyRabbitMQPermissionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRabbitMQPermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRabbitMQPermissionResponse()
     err = c.Send(request, response)
     return
 }

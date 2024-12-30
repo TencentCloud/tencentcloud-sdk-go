@@ -497,6 +497,9 @@ const (
 	// VPN通道探测ip冲突。
 	INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"
 
+	// SPD规则源目IP有重叠。
+	INVALIDPARAMETERVALUE_VPNCONNSPDCIDRCONFLICT = "InvalidParameterValue.VpnConnSpdCidrConflict"
+
 	// 参数Zone的值与CDC所在Zone冲突。
 	INVALIDPARAMETERVALUE_ZONECONFLICT = "InvalidParameterValue.ZoneConflict"
 
@@ -802,6 +805,9 @@ const (
 
 	// 指定的路由表不存在。
 	UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+
+	// 流量计量类型云联网暂不支持跨境
+	UNSUPPORTEDOPERATION_CCNTRAFFICMETERINGUNABLECROSSBORDER = "UnsupportedOperation.CcnTrafficMeteringUnableCrossBorder"
 
 	// CDC子网不支持创建非本地网关类型的路由。
 	UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = "UnsupportedOperation.CdcSubnetNotSupportUnLocalGateway"
