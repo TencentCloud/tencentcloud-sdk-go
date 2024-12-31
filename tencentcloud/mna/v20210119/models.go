@@ -3803,19 +3803,15 @@ type UpdateNetInfo struct {
 
 type VendorHardware struct {
 	// 硬件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HardwareId *string `json:"HardwareId,omitnil,omitempty" name:"HardwareId"`
 
 	// 硬件序列号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 激活状态， 空：全部； 1:待激活； 2:已激活
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 激活时间
@@ -3823,16 +3819,13 @@ type VendorHardware struct {
 	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
 	// 厂商备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 	// 注：设备为租户付费且未激活（未选择月付还是永久付费）时，此参数返回1，仅代表租户付费。后续将废弃此参数，新接入请使用LicensePayMode和Payer
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil,omitempty" name:"LicenseChargingMode"`
 
 	// 最后在线时间
@@ -3843,12 +3836,10 @@ type VendorHardware struct {
 	// 0：月度授权
 	// 1：永久授权
 	// -1：未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
 	// 付费方
 	// 0：客户付费
 	// 1：厂商付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Payer *int64 `json:"Payer,omitnil,omitempty" name:"Payer"`
 }

@@ -3331,7 +3331,7 @@ type DescribeSampleMatrixQueryRequestParams struct {
 	// 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分组
+	// 分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 }
 
@@ -3356,7 +3356,7 @@ type DescribeSampleMatrixQueryRequest struct {
 	// 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分组
+	// 分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 }
 

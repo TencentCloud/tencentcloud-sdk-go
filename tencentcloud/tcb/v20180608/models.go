@@ -5253,7 +5253,6 @@ func (r *DescribeEndUserLoginStatisticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEndUserLoginStatisticResponseParams struct {
 	// 环境终端用户新增与登录统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginStatistics []*LoginStatistic `json:"LoginStatistics,omitnil,omitempty" name:"LoginStatistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5311,7 +5310,6 @@ func (r *DescribeEndUserStatisticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEndUserStatisticResponseParams struct {
 	// 终端用户各平台统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlatformStatistics []*PlatformStatistic `json:"PlatformStatistics,omitnil,omitempty" name:"PlatformStatistics"`
 
 	// 终端用户总数
@@ -8274,19 +8272,15 @@ type LogServiceInfo struct {
 
 type LoginStatistic struct {
 	// 统计类型 新增NEWUSER 和登录 LOGIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticalType *string `json:"StatisticalType,omitnil,omitempty" name:"StatisticalType"`
 
 	// 统计周期：日DAY，周WEEK，月MONTH
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticalCycle *string `json:"StatisticalCycle,omitnil,omitempty" name:"StatisticalCycle"`
 
 	// 统计总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 

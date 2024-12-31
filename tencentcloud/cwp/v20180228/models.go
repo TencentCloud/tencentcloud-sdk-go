@@ -45367,7 +45367,7 @@ type SearchLogRequestParams struct {
 	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 检索分析语句，最大长度为12KB，查询语法可参考文档https://cloud.tencent.com/document/product/296/50508
+	// 检索分析语句，最大长度为12KB，查询语法可参考文档 https://cloud.tencent.com/document/product/296/50508
 	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
@@ -45389,7 +45389,7 @@ type SearchLogRequest struct {
 	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 检索分析语句，最大长度为12KB，查询语法可参考文档https://cloud.tencent.com/document/product/296/50508
+	// 检索分析语句，最大长度为12KB，查询语法可参考文档 https://cloud.tencent.com/document/product/296/50508
 	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数

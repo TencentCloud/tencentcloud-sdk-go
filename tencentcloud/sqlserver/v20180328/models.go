@@ -9293,12 +9293,15 @@ type InquiryPriceCreateDBInstancesRequestParams struct {
 	// 预购买实例的CPU核心数
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读
+	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,
 	// CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type InquiryPriceCreateDBInstancesRequest struct {
@@ -9328,12 +9331,15 @@ type InquiryPriceCreateDBInstancesRequest struct {
 	// 预购买实例的CPU核心数
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读
+	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,
 	// CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *InquiryPriceCreateDBInstancesRequest) ToJsonString() string {
@@ -9358,6 +9364,7 @@ func (r *InquiryPriceCreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "InstanceType")
 	delete(f, "MachineType")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -12560,6 +12567,12 @@ type ReadOnlyGroup struct {
 
 	// RO组外网地址端口
 	TgwWanVPort *uint64 `json:"TgwWanVPort,omitnil,omitempty" name:"TgwWanVPort"`
+
+	// RO只读组类型，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货的所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面
+	ReadOnlyGroupType *int64 `json:"ReadOnlyGroupType,omitnil,omitempty" name:"ReadOnlyGroupType"`
+
+	// 部署RO副本模式，0-默认不升级主实例，1-强制升级主实例完成RO部署
+	ReadOnlyGroupForcedUpgrade *int64 `json:"ReadOnlyGroupForcedUpgrade,omitnil,omitempty" name:"ReadOnlyGroupForcedUpgrade"`
 }
 
 type ReadOnlyInstance struct {

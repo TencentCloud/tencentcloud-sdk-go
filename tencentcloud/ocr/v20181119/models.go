@@ -10350,6 +10350,9 @@ type SmartStructuralProRequestParams struct {
 
 	// 配置id支持：General -- 通用场景 InvoiceEng -- 海运提单、国际invoice模版 WayBillEng --海运订单模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 是否开启全文字段坐标值的识别
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
 }
 
 type SmartStructuralProRequest struct {
@@ -10372,6 +10375,9 @@ type SmartStructuralProRequest struct {
 
 	// 配置id支持：General -- 通用场景 InvoiceEng -- 海运提单、国际invoice模版 WayBillEng --海运订单模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 是否开启全文字段坐标值的识别
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
 }
 
 func (r *SmartStructuralProRequest) ToJsonString() string {
@@ -10392,6 +10398,7 @@ func (r *SmartStructuralProRequest) FromJsonString(s string) error {
 	delete(f, "ItemNames")
 	delete(f, "ReturnFullText")
 	delete(f, "ConfigId")
+	delete(f, "EnableCoord")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralProRequest has unknown keys!", "")
 	}

@@ -8665,6 +8665,10 @@ type KafkaParam struct {
 	// 数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepPartition *bool `json:"KeepPartition,omitnil,omitempty" name:"KeepPartition"`
+
+	// 正则匹配Topic列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
 }
 
 type LowercaseParam struct {
