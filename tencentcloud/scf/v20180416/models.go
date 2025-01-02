@@ -36,19 +36,15 @@ type Alias struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 别名的路由信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitnil,omitempty" name:"RoutingConfig"`
 
 	// 描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 }
 
@@ -93,7 +89,6 @@ type AsyncTriggerConfig struct {
 
 type CertConf struct {
 	// ssl证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
@@ -397,7 +392,7 @@ type CreateCustomDomainRequestParams struct {
 	// 路由配置
 	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
 
-	// 证书配置信息，HTTPS协议必穿
+	// 证书配置信息，有使用HTTPS协议时候必须传
 	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
 
 	// web 应用防火墙配置
@@ -416,7 +411,7 @@ type CreateCustomDomainRequest struct {
 	// 路由配置
 	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
 
-	// 证书配置信息，HTTPS协议必穿
+	// 证书配置信息，有使用HTTPS协议时候必须传
 	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
 
 	// web 应用防火墙配置
@@ -1115,6 +1110,81 @@ func (r *DeleteFunctionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteFunctionVersionRequestParams struct {
+	// 要删除的函数名称
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 填写需要删除的版本号
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 强制删除标记，传true会直接删除容器，并强制关闭还在执行中的函数
+	ForceDelete *string `json:"ForceDelete,omitnil,omitempty" name:"ForceDelete"`
+}
+
+type DeleteFunctionVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的函数名称
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 填写需要删除的版本号
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 强制删除标记，传true会直接删除容器，并强制关闭还在执行中的函数
+	ForceDelete *string `json:"ForceDelete,omitnil,omitempty" name:"ForceDelete"`
+}
+
+func (r *DeleteFunctionVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFunctionVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "Qualifier")
+	delete(f, "Namespace")
+	delete(f, "ForceDelete")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFunctionVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFunctionVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteFunctionVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFunctionVersionResponseParams `json:"Response"`
+}
+
+func (r *DeleteFunctionVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFunctionVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLayerVersionRequestParams struct {
 	// 层名称
 	LayerName *string `json:"LayerName,omitnil,omitempty" name:"LayerName"`
@@ -1455,15 +1525,12 @@ type DomainInfo struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 路由配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndpointsConfig []*EndpointsConf `json:"EndpointsConfig,omitnil,omitempty" name:"EndpointsConfig"`
 
 	// 证书配置信息，HTTPS协议必传路由配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertConfig *CertConf `json:"CertConfig,omitnil,omitempty" name:"CertConfig"`
 
 	// web 应用防火墙配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
 }
 
@@ -1477,7 +1544,6 @@ type EipConfigOut struct {
 	EipStatus *string `json:"EipStatus,omitnil,omitempty" name:"EipStatus"`
 
 	// IP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddress []*string `json:"EipAddress,omitnil,omitempty" name:"EipAddress"`
 }
 
@@ -1491,19 +1557,15 @@ type EipOutConfig struct {
 
 type EndpointsConf struct {
 	// 函数命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 函数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
 
 	// 函数别名或版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
 
 	// 路径,取值规范：/，/*，/xxx，/xxx/a，/xxx/*"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathMatch *string `json:"PathMatch,omitnil,omitempty" name:"PathMatch"`
 
 	// 路径重写策略
@@ -1612,9 +1674,13 @@ type FunctionLog struct {
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
 	// 日志等级
+	//
+	// Deprecated: Level is deprecated.
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 日志来源
+	//
+	// Deprecated: Source is deprecated.
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 重试次数
@@ -1757,15 +1823,12 @@ type GetAliasResponseParams struct {
 	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitnil,omitempty" name:"RoutingConfig"`
 
 	// 别名的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2371,30 +2434,24 @@ type GetFunctionResponseParams struct {
 	OnsEnable *string `json:"OnsEnable,omitnil,omitempty" name:"OnsEnable"`
 
 	// 文件系统配置参数，用于云函数挂载文件系统
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfsConfig *CfsConfig `json:"CfsConfig,omitnil,omitempty" name:"CfsConfig"`
 
 	// 函数的计费状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailableStatus *string `json:"AvailableStatus,omitnil,omitempty" name:"AvailableStatus"`
 
 	// 函数版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
 
 	// 函数初始化超时时间
 	InitTimeout *int64 `json:"InitTimeout,omitnil,omitempty" name:"InitTimeout"`
 
 	// 函数状态失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusReasons []*StatusReason `json:"StatusReasons,omitnil,omitempty" name:"StatusReasons"`
 
 	// 是否开启异步属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncRunEnable *string `json:"AsyncRunEnable,omitnil,omitempty" name:"AsyncRunEnable"`
 
 	// 是否开启事件追踪
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceEnable *string `json:"TraceEnable,omitnil,omitempty" name:"TraceEnable"`
 
 	// 镜像配置
@@ -2410,7 +2467,6 @@ type GetFunctionResponseParams struct {
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitnil,omitempty" name:"ProtocolParams"`
 
 	// 是否开启DNS缓存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DnsCache *string `json:"DnsCache,omitnil,omitempty" name:"DnsCache"`
 
 	// 内网访问配置
@@ -3041,14 +3097,12 @@ type K8SToleration struct {
 
 type LayerVersionInfo struct {
 	// 版本适用的运行时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitnil,omitempty" name:"CompatibleRuntimes"`
 
 	// 创建时间
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 版本描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 许可证信息
@@ -3065,7 +3119,6 @@ type LayerVersionInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// Stamp
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stamp *string `json:"Stamp,omitnil,omitempty" name:"Stamp"`
 
 	// 返回层绑定的标签信息
@@ -3155,7 +3208,6 @@ type ListAliasesResponseParams struct {
 	Aliases []*Alias `json:"Aliases,omitnil,omitempty" name:"Aliases"`
 
 	// 别名总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3427,10 +3479,7 @@ type ListFunctionsRequestParams struct {
 	// 函数描述，支持模糊搜索
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 过滤条件。
-	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-	// 
-	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
+	// `过滤特定属性或者有特定标签的函数。`- 传值方式key-value 进行传值  例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数`如果通过标签进行过滤：`- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]`入参限制：`1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 过滤的Name 为这些属性时， values 只能传一个值3.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，values 可以传多个值
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3458,10 +3507,7 @@ type ListFunctionsRequest struct {
 	// 函数描述，支持模糊搜索
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 过滤条件。
-	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-	// 
-	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
+	// `过滤特定属性或者有特定标签的函数。`- 传值方式key-value 进行传值  例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数`如果通过标签进行过滤：`- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]`入参限制：`1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 过滤的Name 为这些属性时， values 只能传一个值3.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，values 可以传多个值
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3931,11 +3977,9 @@ type ListVersionByFunctionResponseParams struct {
 	FunctionVersion []*string `json:"FunctionVersion,omitnil,omitempty" name:"FunctionVersion"`
 
 	// 函数版本列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Versions []*FunctionVersion `json:"Versions,omitnil,omitempty" name:"Versions"`
 
 	// 函数版本总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4087,29 +4131,23 @@ type NamespaceUsage struct {
 	FunctionsCount *int64 `json:"FunctionsCount,omitnil,omitempty" name:"FunctionsCount"`
 
 	// 命名空间配额总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalConcurrencyMem *int64 `json:"TotalConcurrencyMem,omitnil,omitempty" name:"TotalConcurrencyMem"`
 
 	// 命名空间并发使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalAllocatedConcurrencyMem *int64 `json:"TotalAllocatedConcurrencyMem,omitnil,omitempty" name:"TotalAllocatedConcurrencyMem"`
 
 	// 命名空间预置使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalAllocatedProvisionedMem *int64 `json:"TotalAllocatedProvisionedMem,omitnil,omitempty" name:"TotalAllocatedProvisionedMem"`
 }
 
 type PathRewriteRule struct {
 	// 需要重路由的路径，取值规范：/，/*，/xxx，/xxx/a，/xxx/*
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 匹配规，取值范围： WildcardRules 通配符匹配， ExactRules 精确匹配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 替换值：比如/, /$
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rewrite *string `json:"Rewrite,omitnil,omitempty" name:"Rewrite"`
 }
 
@@ -4790,15 +4828,12 @@ type Trigger struct {
 
 type TriggerAction struct {
 	// 定时预置名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
 
 	// 定时预置并发数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerProvisionedConcurrencyNum *uint64 `json:"TriggerProvisionedConcurrencyNum,omitnil,omitempty" name:"TriggerProvisionedConcurrencyNum"`
 
 	// 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerCronConfig *string `json:"TriggerCronConfig,omitnil,omitempty" name:"TriggerCronConfig"`
 
 	// 预置类型 Default
@@ -4841,7 +4876,6 @@ type TriggerCount struct {
 	Vod *int64 `json:"Vod,omitnil,omitempty" name:"Vod"`
 
 	// Eb触发器数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Eb *int64 `json:"Eb,omitnil,omitempty" name:"Eb"`
 }
 
@@ -5839,10 +5873,8 @@ type WSParams struct {
 
 type WafConf struct {
 	// web应用防火墙是否打开， 取值范围:OPEN, CLOSE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafOpen *string `json:"WafOpen,omitnil,omitempty" name:"WafOpen"`
 
 	// web应用防火墙实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafInstanceId *string `json:"WafInstanceId,omitnil,omitempty" name:"WafInstanceId"`
 }

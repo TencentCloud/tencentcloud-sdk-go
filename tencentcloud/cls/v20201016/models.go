@@ -8293,15 +8293,17 @@ func (r *DescribeTopicsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWebCallbacksRequestParams struct {
-	// <li> name
+	// - name
 	// 按照【告警渠道回调配置名称】进行过滤。
 	// 类型：String
 	// 必选：否
-	// <li> webCallbackId
+	// 
+	// - webCallbackId
 	// 按照【告警渠道回调配置ID】进行过滤。
 	// 类型：String
 	// 必选：否
-	// <li> type
+	// 
+	// - type
 	// 按照【告警渠道回调配置渠道类型】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -8319,15 +8321,17 @@ type DescribeWebCallbacksRequestParams struct {
 type DescribeWebCallbacksRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li> name
+	// - name
 	// 按照【告警渠道回调配置名称】进行过滤。
 	// 类型：String
 	// 必选：否
-	// <li> webCallbackId
+	// 
+	// - webCallbackId
 	// 按照【告警渠道回调配置ID】进行过滤。
 	// 类型：String
 	// 必选：否
-	// <li> type
+	// 
+	// - type
 	// 按照【告警渠道回调配置渠道类型】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -8436,6 +8440,10 @@ type EventLog struct {
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 事件ID过滤列表
+	// 	
+	// 选填，为空表示不做过滤
+	// 支持正向过滤单个值（例：20）或范围（例：0-20），也支持反向过滤单个值(例：-20)
+	// 多个过滤项之间可由逗号隔开，例：1-200,-100表示采集1-200范围内除了100以外的事件日志
 	EventIDs []*string `json:"EventIDs,omitnil,omitempty" name:"EventIDs"`
 }
 
@@ -8583,6 +8591,12 @@ type ExtractRuleInfo struct {
 	MetadataType *int64 `json:"MetadataType,omitnil,omitempty" name:"MetadataType"`
 
 	// 采集配置路径正则表达式。
+	// 
+	// ```
+	// 请用"()"标识路径中目标字段对应的正则表达式，解析时将"()"视为捕获组，并以__TAG__.{i}:{目标字段}的形式与日志一起上报，其中i为捕获组的序号。
+	// 若不希望以序号为键名，可以通过命名捕获组"(?<{键名}>{正则})"自定义键名，并以__TAG__.{键名}:{目标字段}的形式与日志一起上报。最多支持5个捕获组
+	// ```
+	// 
 	// 注意：
 	// - MetadataType为3时必填。
 	// - COS导入不支持此字段。
@@ -11838,7 +11852,8 @@ type MultiCondition struct {
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-	// <li> 不填则默认为0。
+	// 
+	// - 不填则默认为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 }

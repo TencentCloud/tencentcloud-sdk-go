@@ -2538,6 +2538,9 @@ type DescribeInstanceNodesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNodesList []*InstanceNode `json:"InstanceNodesList,omitnil,omitempty" name:"InstanceNodesList"`
 
+	// 节点类型
+	NodeRoles []*string `json:"NodeRoles,omitnil,omitempty" name:"NodeRoles"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3485,15 +3488,18 @@ func (r *DescribeSpecRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSpecResponseParams struct {
-	// zookeeper节点规格描述
+	// fe节点规格描述
 	MasterSpec []*ResourceSpec `json:"MasterSpec,omitnil,omitempty" name:"MasterSpec"`
 
-	// 数据节点规格描述
+	// be节点规格描述
 	CoreSpec []*ResourceSpec `json:"CoreSpec,omitnil,omitempty" name:"CoreSpec"`
 
 	// 云盘列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachCBSSpec []*DiskSpec `json:"AttachCBSSpec,omitnil,omitempty" name:"AttachCBSSpec"`
+
+	// cn节点列表
+	CNSpec []*ResourceSpec `json:"CNSpec,omitnil,omitempty" name:"CNSpec"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

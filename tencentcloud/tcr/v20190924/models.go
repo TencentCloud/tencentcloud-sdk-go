@@ -5801,7 +5801,7 @@ type DescribeServiceAccountsRequestParams struct {
 	// 是否填充权限信息
 	EmbedPermission *bool `json:"EmbedPermission,omitnil,omitempty" name:"EmbedPermission"`
 
-	// 过滤条件
+	// 过滤条件，key 目前只支持ServiceAccountName
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量,默认0
@@ -5823,7 +5823,7 @@ type DescribeServiceAccountsRequest struct {
 	// 是否填充权限信息
 	EmbedPermission *bool `json:"EmbedPermission,omitnil,omitempty" name:"EmbedPermission"`
 
-	// 过滤条件
+	// 过滤条件，key 目前只支持ServiceAccountName
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量,默认0
@@ -9216,6 +9216,10 @@ type WebhookTrigger struct {
 
 	// 触发器所属命名空间 Id
 	NamespaceId *int64 `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 触发器所属命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 }
 
 type WebhookTriggerLog struct {

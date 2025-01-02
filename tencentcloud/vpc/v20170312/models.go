@@ -2556,47 +2556,36 @@ type CcnBandwidth struct {
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 实例的创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 实例的过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 带宽实例的唯一ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionFlowControlId *string `json:"RegionFlowControlId,omitnil,omitempty" name:"RegionFlowControlId"`
 
 	// 带宽是否自动续费的标记。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnRegionBandwidthLimit *CcnRegionBandwidthLimitInfo `json:"CcnRegionBandwidthLimit,omitnil,omitempty" name:"CcnRegionBandwidthLimit"`
 
 	// 云市场实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarketId *string `json:"MarketId,omitnil,omitempty" name:"MarketId"`
 
 	// 实例所属用户主账号ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserAccountID *string `json:"UserAccountID,omitnil,omitempty" name:"UserAccountID"`
 
 	// 是否跨境，`true`表示跨境，反之不跨境。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCrossBorder *bool `json:"IsCrossBorder,omitnil,omitempty" name:"IsCrossBorder"`
 
 	// `true`表示封禁，地域间流量不通，`false`解禁，地域间流量正常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSecurityLock *bool `json:"IsSecurityLock,omitnil,omitempty" name:"IsSecurityLock"`
 
 	// `POSTPAID`表示后付费，`PREPAID`表示预付费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 实例更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -4441,11 +4430,17 @@ type CreateDirectConnectGatewayRequestParams struct {
 	// 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
 	ModeType *string `json:"ModeType,omitnil,omitempty" name:"ModeType"`
 
+	// 专线网关自定义ASN，范围：45090，64512-65534 和4200000000-4294967294
+	GatewayAsn *uint64 `json:"GatewayAsn,omitnil,omitempty" name:"GatewayAsn"`
+
 	// 专线网关可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 专线网关高可用区容灾组ID
 	HaZoneGroupId *string `json:"HaZoneGroupId,omitnil,omitempty" name:"HaZoneGroupId"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateDirectConnectGatewayRequest struct {
@@ -4471,11 +4466,17 @@ type CreateDirectConnectGatewayRequest struct {
 	// 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
 	ModeType *string `json:"ModeType,omitnil,omitempty" name:"ModeType"`
 
+	// 专线网关自定义ASN，范围：45090，64512-65534 和4200000000-4294967294
+	GatewayAsn *uint64 `json:"GatewayAsn,omitnil,omitempty" name:"GatewayAsn"`
+
 	// 专线网关可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 专线网关高可用区容灾组ID
 	HaZoneGroupId *string `json:"HaZoneGroupId,omitnil,omitempty" name:"HaZoneGroupId"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
@@ -4495,8 +4496,10 @@ func (r *CreateDirectConnectGatewayRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInstanceId")
 	delete(f, "GatewayType")
 	delete(f, "ModeType")
+	delete(f, "GatewayAsn")
 	delete(f, "Zone")
 	delete(f, "HaZoneGroupId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDirectConnectGatewayRequest has unknown keys!", "")
 	}
@@ -8244,15 +8247,12 @@ type CustomerGateway struct {
 
 type CustomerGatewayVendor struct {
 	// 平台。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 软件版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftwareVersion *string `json:"SoftwareVersion,omitnil,omitempty" name:"SoftwareVersion"`
 
 	// 供应商名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VendorName *string `json:"VendorName,omitnil,omitempty" name:"VendorName"`
 }
 
@@ -20425,51 +20425,44 @@ type DirectConnectGateway struct {
 	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitnil,omitempty" name:"EnableBGPCommunity"`
 
 	// 绑定的NAT网关ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
 	// 专线网关是否支持VXLAN架构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VXLANSupport []*bool `json:"VXLANSupport,omitnil,omitempty" name:"VXLANSupport"`
 
 	// 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModeType *string `json:"ModeType,omitnil,omitempty" name:"ModeType"`
 
 	// 是否为localZone专线网关。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalZone *bool `json:"LocalZone,omitnil,omitempty" name:"LocalZone"`
 
 	// 专线网关所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 网关流控明细启用状态：
 	// 0：关闭
 	// 1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableFlowDetails *uint64 `json:"EnableFlowDetails,omitnil,omitempty" name:"EnableFlowDetails"`
 
 	// 开启、关闭网关流控明细时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowDetailsUpdateTime *string `json:"FlowDetailsUpdateTime,omitnil,omitempty" name:"FlowDetailsUpdateTime"`
 
 	// 是否支持开启网关流控明细
 	// 0：不支持
 	// 1：支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewAfc *uint64 `json:"NewAfc,omitnil,omitempty" name:"NewAfc"`
 
 	// 专线网关接入网络类型：
 	// <li>`VXLAN` - VXLAN类型。</li>
 	// <li>`MPLS` - MPLS类型。</li>
 	// <li>`Hybrid` - Hybrid类型。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessNetworkType *string `json:"AccessNetworkType,omitnil,omitempty" name:"AccessNetworkType"`
 
 	// 跨可用区容灾专线网关的可用区列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HaZoneList []*string `json:"HaZoneList,omitnil,omitempty" name:"HaZoneList"`
+
+	// 专线网关自定义ASN
+	GatewayAsn *uint64 `json:"GatewayAsn,omitnil,omitempty" name:"GatewayAsn"`
 }
 
 type DirectConnectGatewayCcnRoute struct {
@@ -22504,19 +22497,15 @@ func (r *HaVipDisassociateAddressIpResponse) FromJsonString(s string) error {
 
 type HealthCheckConfig struct {
 	// 探测模式，默认值NQA，不可修改。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProbeType *string `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
 
 	// 探测间隔，腾讯云两次健康检查间隔时间，范围【1000-5000】，单位ms。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProbeInterval *int64 `json:"ProbeInterval,omitnil,omitempty" name:"ProbeInterval"`
 
 	// 探测次数，连续N次健康检查失败后执行路由切换，范围【3-8】，单位次。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProbeThreshold *int64 `json:"ProbeThreshold,omitnil,omitempty" name:"ProbeThreshold"`
 
 	// 探测超时时间，范围【10-5000】，单位ms。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProbeTimeout *int64 `json:"ProbeTimeout,omitnil,omitempty" name:"ProbeTimeout"`
 }
 
@@ -31405,11 +31394,9 @@ type SecurityGroupPolicySet struct {
 
 type SecurityPolicyDatabase struct {
 	// 本端网段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalCidrBlock *string `json:"LocalCidrBlock,omitnil,omitempty" name:"LocalCidrBlock"`
 
 	// 对端网段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteCidrBlock []*string `json:"RemoteCidrBlock,omitnil,omitempty" name:"RemoteCidrBlock"`
 }
 
@@ -31774,7 +31761,6 @@ type SslVpnClient struct {
 
 type SslVpnSever struct {
 	// VPC实例ID.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// SSL-VPN-SERVER 实例ID。
@@ -31840,7 +31826,6 @@ type SslVpnSever struct {
 	AccessPolicy []*AccessPolicy `json:"AccessPolicy,omitnil,omitempty" name:"AccessPolicy"`
 
 	// CAM服务提供商Name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpName *string `json:"SpName,omitnil,omitempty" name:"SpName"`
 }
 
@@ -31996,27 +31981,21 @@ type TrafficPackage struct {
 
 type TrafficQosPolicySet struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// qos id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosId *uint64 `json:"QosId,omitnil,omitempty" name:"QosId"`
 
 	// 描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosPolicyDescription *string `json:"QosPolicyDescription,omitnil,omitempty" name:"QosPolicyDescription"`
 
 	// 名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosPolicyName *string `json:"QosPolicyName,omitnil,omitempty" name:"QosPolicyName"`
 
 	// 带宽。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 流量调度策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosPolicyId *string `json:"QosPolicyId,omitnil,omitempty" name:"QosPolicyId"`
 }
 

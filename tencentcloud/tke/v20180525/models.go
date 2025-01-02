@@ -1074,7 +1074,7 @@ type ClusterBasicSettings struct {
 	// 集群描述
 	ClusterDescription *string `json:"ClusterDescription,omitnil,omitempty" name:"ClusterDescription"`
 
-	// 私有网络ID，形如vpc-xxx。创建托管空集群时必传。
+	// 私有网络ID，形如vpc-e55paxnt。创建托管空集群时必传。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 集群内新增资源所属项目ID。
@@ -7742,7 +7742,7 @@ type DescribeClusterNodePoolsRequestParams struct {
 	//     类型：String
 	//     必选：否
 	// 
-	// ·  "Name":"Tags","Values": ["abc:1"]
+	// ·  "Name":"Tags","Values": ["product:tke"]
 	//     按照【标签键值对】进行过滤。
 	//     类型：String
 	//     必选：否
@@ -7765,7 +7765,7 @@ type DescribeClusterNodePoolsRequest struct {
 	//     类型：String
 	//     必选：否
 	// 
-	// ·  "Name":"Tags","Values": ["abc:1"]
+	// ·  "Name":"Tags","Values": ["product:tke"]
 	//     按照【标签键值对】进行过滤。
 	//     类型：String
 	//     必选：否
@@ -8604,7 +8604,7 @@ type DescribeClustersRequestParams struct {
 	// 最大输出条数，默认20，最大为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-123qajzs"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["abc:1"] 按照【标签键值对】进行过滤。 类型：String 必选：否
+	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 集群类型，例如：MANAGED_CLUSTER
@@ -8624,7 +8624,7 @@ type DescribeClustersRequest struct {
 	// 最大输出条数，默认20，最大为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-123qajzs"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["abc:1"] 按照【标签键值对】进行过滤。 类型：String 必选：否
+	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 集群类型，例如：MANAGED_CLUSTER
@@ -14539,7 +14539,7 @@ type ExistedInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlreadyInCluster *string `json:"AlreadyInCluster,omitnil,omitempty" name:"AlreadyInCluster"`
 
-	// 实例ID形如：ins-xxxxxxxx。
+	// 实例ID形如：ins-e55paxnt。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称。
@@ -16405,7 +16405,7 @@ type ModifyClusterImageRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 指定有效的镜像ID，格式形如img-xxxx。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
+	// 指定有效的镜像ID，格式形如img-e55paxnt。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 }
 
@@ -16415,7 +16415,7 @@ type ModifyClusterImageRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 指定有效的镜像ID，格式形如img-xxxx。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
+	// 指定有效的镜像ID，格式形如img-e55paxnt。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 }
 

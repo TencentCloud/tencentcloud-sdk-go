@@ -726,6 +726,9 @@ type CreateDisksRequestParams struct {
 
 	// 创建云盘时是否开启性能突发
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
+
+	// 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
+	EncryptType *string `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 type CreateDisksRequest struct {
@@ -781,6 +784,9 @@ type CreateDisksRequest struct {
 
 	// 创建云盘时是否开启性能突发
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
+
+	// 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
+	EncryptType *string `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -812,6 +818,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "AutoMountConfiguration")
 	delete(f, "DiskBackupQuota")
 	delete(f, "BurstPerformance")
+	delete(f, "EncryptType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}

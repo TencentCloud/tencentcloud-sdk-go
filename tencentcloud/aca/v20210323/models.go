@@ -35,7 +35,7 @@ type CommonHeader struct {
 	// 机构ID
 	HospitalId *string `json:"HospitalId,omitnil,omitempty" name:"HospitalId"`
 
-	// 合作方ID
+	// token
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 }
 
@@ -60,23 +60,18 @@ type CurrentDiagnosis struct {
 
 type Department struct {
 	// 科室ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 科室名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 科室类型 0:门诊  1:住院  2:门诊+住院
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// 门诊区开关 true:此科室对应的门诊区开启智能审方功能, false:此科室对应的门诊区关闭智能审方功能; 仅对scope为0/2的科室生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutpatientOn *bool `json:"OutpatientOn,omitnil,omitempty" name:"OutpatientOn"`
 
 	// 住院区开关 true:此科室对应的住院区开启智能审方功能, false:此科室对应的住院区关闭智能审方功能; 仅对scope为1/2的科室生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InHospitalOn *bool `json:"InHospitalOn,omitnil,omitempty" name:"InHospitalOn"`
 }
 

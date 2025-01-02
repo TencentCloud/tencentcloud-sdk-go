@@ -1066,6 +1066,99 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteF
     return
 }
 
+func NewDeleteFunctionVersionRequest() (request *DeleteFunctionVersionRequest) {
+    request = &DeleteFunctionVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "DeleteFunctionVersion")
+    
+    
+    return
+}
+
+func NewDeleteFunctionVersionResponse() (response *DeleteFunctionVersionResponse) {
+    response = &DeleteFunctionVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteFunctionVersion
+// 该接口根据传入参数删除函数的指定版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
+//  FAILEDOPERATION_FUNCTIONNAMESTATUSERROR = "FailedOperation.FunctionNameStatusError"
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INTERNALERROR_GETSTSTOKENFAILED = "InternalError.GetStsTokenFailed"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_DELETEFUNCTION = "UnauthorizedOperation.DeleteFunction"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ALIASBIND = "UnsupportedOperation.AliasBind"
+func (c *Client) DeleteFunctionVersion(request *DeleteFunctionVersionRequest) (response *DeleteFunctionVersionResponse, err error) {
+    return c.DeleteFunctionVersionWithContext(context.Background(), request)
+}
+
+// DeleteFunctionVersion
+// 该接口根据传入参数删除函数的指定版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
+//  FAILEDOPERATION_FUNCTIONNAMESTATUSERROR = "FailedOperation.FunctionNameStatusError"
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INTERNALERROR_GETSTSTOKENFAILED = "InternalError.GetStsTokenFailed"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_DELETEFUNCTION = "UnauthorizedOperation.DeleteFunction"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ALIASBIND = "UnsupportedOperation.AliasBind"
+func (c *Client) DeleteFunctionVersionWithContext(ctx context.Context, request *DeleteFunctionVersionRequest) (response *DeleteFunctionVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteFunctionVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFunctionVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFunctionVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLayerVersionRequest() (request *DeleteLayerVersionRequest) {
     request = &DeleteLayerVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

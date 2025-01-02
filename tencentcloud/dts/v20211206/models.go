@@ -1410,6 +1410,9 @@ type CreateSyncJobRequestParams struct {
 	// 同步任务规格，Standard:标准版
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
+	// 购买时长（单位：月），当PayMode值为PrePay则此项配置有意义，默认为1月，取值范围为[1,100]
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
 	// 标签信息
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
@@ -1450,6 +1453,9 @@ type CreateSyncJobRequest struct {
 	// 同步任务规格，Standard:标准版
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
+	// 购买时长（单位：月），当PayMode值为PrePay则此项配置有意义，默认为1月，取值范围为[1,100]
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
 	// 标签信息
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
@@ -1487,6 +1493,7 @@ func (r *CreateSyncJobRequest) FromJsonString(s string) error {
 	delete(f, "DstDatabaseType")
 	delete(f, "DstRegion")
 	delete(f, "Specification")
+	delete(f, "TimeSpan")
 	delete(f, "Tags")
 	delete(f, "Count")
 	delete(f, "AutoRenew")
