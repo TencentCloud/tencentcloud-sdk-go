@@ -95,13 +95,22 @@ import (
 )
 
 func main() {
-    // 硬编码密钥到代码中有可能随代码泄露而暴露，有安全隐患，并不推荐。
-    // 为了保护密钥安全，建议将密钥设置在环境变量中或者配置文件中，请参考本文凭证管理章节。
-    // credential := common.NewCredential("SecretId", "SecretKey")
-    credential := common.NewCredential(
-        os.Getenv("TENCENTCLOUD_SECRET_ID"),
-        os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-    )
+	// 硬编码密钥到代码中有可能随代码泄露而暴露，有安全隐患，并不推荐。
+	// 为了保护密钥安全，建议将密钥设置在环境变量中或者配置文件中，请参考本文凭证管理章节。
+
+	// 1. 可以使用 NewCredential 来创建一个普通的密钥
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+	)
+
+	// 2. 也可以使用 NewTokenCredential 来创建一个带 Token 的临时密钥
+	// 请参阅 https://cloud.tencent.com/document/product/1312/48169 来了解如何获得临时密钥
+	//credential := common.NewTokenCredential(
+	//	os.Getenv("TENCENTCLOUD_SECRET_ID"),
+	//	os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+	//	os.Getenv("TENCENTCLOUD_TOKEN"),
+	//)
 	client, _ := cvm.NewClient(credential, regions.Guangzhou, profile.NewClientProfile())
 
 	request := cvm.NewDescribeInstancesRequest()
