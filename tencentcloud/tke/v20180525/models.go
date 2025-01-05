@@ -14098,7 +14098,7 @@ type EksCluster struct {
 	// k8s 版本号
 	K8SVersion *string `json:"K8SVersion,omitnil,omitempty" name:"K8SVersion"`
 
-	// 集群状态(running运行中，initializing 初始化中，failed异常)
+	// 集群状态(running 运行中，initializing 初始化中，Failed 异常，Idling 空闲中，Activating 激活中，Terminating 删除中)
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 集群描述信息
@@ -18293,7 +18293,7 @@ type PrometheusAlertRuleDetail struct {
 }
 
 type PrometheusClusterAgentBasic struct {
-	// 集群ID
+	// 地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 集群类型
@@ -19000,6 +19000,18 @@ type ReleaseDetails struct {
 	// 应用参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputedValues *string `json:"ComputedValues,omitnil,omitempty" name:"ComputedValues"`
+
+	// chart 的来源， tke-market, others
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChartFrom *string `json:"ChartFrom,omitnil,omitempty" name:"ChartFrom"`
+
+	// 第三方chart 的安装地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChartURL *string `json:"ChartURL,omitnil,omitempty" name:"ChartURL"`
+
+	// 通过chart 创建的资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources *string `json:"Resources,omitnil,omitempty" name:"Resources"`
 }
 
 type ReleaseHistory struct {

@@ -3029,6 +3029,7 @@ func (r *CreatePrefetchTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePurgeTaskRequestParams struct {
 	// 站点 ID。
+	// 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 节点缓存清除类型，取值有：
@@ -3059,6 +3060,7 @@ type CreatePurgeTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点 ID。
+	// 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 节点缓存清除类型，取值有：
@@ -8580,13 +8582,15 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 指标列表，取值有:
-	// <li>l7Flow_outFlux: L7 EdgeOne 响应流量；</li>
-	// <li>l7Flow_inFlux: L7 客户端请求流量；</li>
-	// <li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求）；</li>
-	// <li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽；</li>
-	// <li>l7Flow_inBandwidth：L7 客户端请求带宽；</li>
-	// <li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求）；</li>
-	// <li>l7Flow_request: L7 访问请求数。</li>
+	// <li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li>
+	// <li>l7Flow_inFlux: L7 客户端请求流量，单位：Byte；</li>
+	// <li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li>
+	// <li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽，单位：bps；</li>
+	// <li>l7Flow_inBandwidth：L7 客户端请求带宽，单位：bps；</li>
+	// <li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li>
+	// <li>l7Flow_request: L7 访问请求数，单位：次；</li>
+	// <li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li>
+	// <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 站点 ID 集合，此参数必填。
@@ -8637,13 +8641,15 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 指标列表，取值有:
-	// <li>l7Flow_outFlux: L7 EdgeOne 响应流量；</li>
-	// <li>l7Flow_inFlux: L7 客户端请求流量；</li>
-	// <li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求）；</li>
-	// <li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽；</li>
-	// <li>l7Flow_inBandwidth：L7 客户端请求带宽；</li>
-	// <li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求）；</li>
-	// <li>l7Flow_request: L7 访问请求数。</li>
+	// <li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li>
+	// <li>l7Flow_inFlux: L7 客户端请求流量，单位：Byte；</li>
+	// <li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li>
+	// <li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽，单位：bps；</li>
+	// <li>l7Flow_inBandwidth：L7 客户端请求带宽，单位：bps；</li>
+	// <li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li>
+	// <li>l7Flow_request: L7 访问请求数，单位：次；</li>
+	// <li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li>
+	// <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 站点 ID 集合，此参数必填。

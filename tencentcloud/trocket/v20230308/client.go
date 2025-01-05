@@ -2319,6 +2319,63 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeTopicListByGroupRequest() (request *DescribeTopicListByGroupRequest) {
+    request = &DescribeTopicListByGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeTopicListByGroup")
+    
+    
+    return
+}
+
+func NewDescribeTopicListByGroupResponse() (response *DescribeTopicListByGroupResponse) {
+    response = &DescribeTopicListByGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopicListByGroup
+// 根据消费组获取主题列表，Filter参数使用说明如下：
+//
+// 
+//
+// TopicName，主题名称过滤
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeTopicListByGroup(request *DescribeTopicListByGroupRequest) (response *DescribeTopicListByGroupResponse, err error) {
+    return c.DescribeTopicListByGroupWithContext(context.Background(), request)
+}
+
+// DescribeTopicListByGroup
+// 根据消费组获取主题列表，Filter参数使用说明如下：
+//
+// 
+//
+// TopicName，主题名称过滤
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeTopicListByGroupWithContext(ctx context.Context, request *DescribeTopicListByGroupRequest) (response *DescribeTopicListByGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicListByGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicListByGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicListByGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportSourceClusterConsumerGroupsRequest() (request *ImportSourceClusterConsumerGroupsRequest) {
     request = &ImportSourceClusterConsumerGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

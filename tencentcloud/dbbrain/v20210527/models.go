@@ -3692,6 +3692,98 @@ func (r *DescribeRedisTopBigKeysResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRedisTopHotKeysRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2024-09-22T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2024-09-22T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Redis 节点数组。
+	InstanceNodeIds []*string `json:"InstanceNodeIds,omitnil,omitempty" name:"InstanceNodeIds"`
+
+	// top 数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRedisTopHotKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2024-09-22T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2024-09-22T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Redis 节点数组。
+	InstanceNodeIds []*string `json:"InstanceNodeIds,omitnil,omitempty" name:"InstanceNodeIds"`
+
+	// top 数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRedisTopHotKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopHotKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Product")
+	delete(f, "InstanceNodeIds")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopHotKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisTopHotKeysResponseParams struct {
+	// 热Key分析结果
+	TopHotKeys []*TopHotKeys `json:"TopHotKeys,omitnil,omitempty" name:"TopHotKeys"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisTopHotKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisTopHotKeysResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisTopHotKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopHotKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRedisTopKeyPrefixListRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6587,6 +6679,23 @@ type TimeSlice struct {
 
 	// 统计开始时间
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+}
+
+type TopHotKeys struct {
+	// 访问频次。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 热Key所属数据库。
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// Redis节点。
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 热Key。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 数据类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 // Predefined struct for user

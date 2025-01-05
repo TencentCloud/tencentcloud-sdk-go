@@ -2697,6 +2697,9 @@ type DescribeKnowledgeUsageResponseParams struct {
 	// 超过可用字符数上限的字符数
 	ExceedCharSize *string `json:"ExceedCharSize,omitnil,omitempty" name:"ExceedCharSize"`
 
+	// 知识库使用字符总数
+	UsedCharSize *string `json:"UsedCharSize,omitnil,omitempty" name:"UsedCharSize"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3621,6 +3624,12 @@ type DescribeTokenUsageResponseParams struct {
 
 	// 文档解析消耗页数
 	PageUsage *uint64 `json:"PageUsage,omitnil,omitempty" name:"PageUsage"`
+
+	// 拆分token消耗量
+	SplitTokenUsage *float64 `json:"SplitTokenUsage,omitnil,omitempty" name:"SplitTokenUsage"`
+
+	// Rag检索次数
+	RagSearchUsage *float64 `json:"RagSearchUsage,omitnil,omitempty" name:"RagSearchUsage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

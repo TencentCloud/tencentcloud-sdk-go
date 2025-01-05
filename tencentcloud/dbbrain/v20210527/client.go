@@ -2949,6 +2949,79 @@ func (c *Client) DescribeRedisTopBigKeysWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeRedisTopHotKeysRequest() (request *DescribeRedisTopHotKeysRequest) {
+    request = &DescribeRedisTopHotKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisTopHotKeys")
+    
+    
+    return
+}
+
+func NewDescribeRedisTopHotKeysResponse() (response *DescribeRedisTopHotKeysResponse) {
+    response = &DescribeRedisTopHotKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisTopHotKeys
+// 热Key分析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopHotKeys(request *DescribeRedisTopHotKeysRequest) (response *DescribeRedisTopHotKeysResponse, err error) {
+    return c.DescribeRedisTopHotKeysWithContext(context.Background(), request)
+}
+
+// DescribeRedisTopHotKeys
+// 热Key分析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopHotKeysWithContext(ctx context.Context, request *DescribeRedisTopHotKeysRequest) (response *DescribeRedisTopHotKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisTopHotKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisTopHotKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisTopHotKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRedisTopKeyPrefixListRequest() (request *DescribeRedisTopKeyPrefixListRequest) {
     request = &DescribeRedisTopKeyPrefixListRequest{
         BaseRequest: &tchttp.BaseRequest{},

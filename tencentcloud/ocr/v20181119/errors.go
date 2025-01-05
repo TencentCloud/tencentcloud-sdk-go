@@ -53,6 +53,9 @@ const (
 	// 图片分辨率过小或身份证在原图中的占比过小
 	FAILEDOPERATION_IDCARDTOOSMALL = "FailedOperation.IdCardTooSmall"
 
+	// 银行卡信息非法。
+	FAILEDOPERATION_ILLEGALBANKCARDERROR = "FailedOperation.IllegalBankCardError"
+
 	// 图片模糊。
 	FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
 
@@ -88,6 +91,9 @@ const (
 
 	// 图片中存在两张及以上同面卡证，请上传卡证单面图片或一正一反双面图片。
 	FAILEDOPERATION_MULTICARDERROR = "FailedOperation.MultiCardError"
+
+	// 非银行卡。
+	FAILEDOPERATION_NOBANKCARDERROR = "FailedOperation.NoBankCardError"
 
 	// 非营业执照。
 	FAILEDOPERATION_NOBIZLICENSE = "FailedOperation.NoBizLicense"

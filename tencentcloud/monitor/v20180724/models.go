@@ -1202,6 +1202,12 @@ type CreateAlarmPolicyRequestParams struct {
 
 	// 事件配置的告警
 	EbSubject *string `json:"EbSubject,omitnil,omitempty" name:"EbSubject"`
+
+	// 附加告警内容
+	AdditionalAlarmContent *string `json:"AdditionalAlarmContent,omitnil,omitempty" name:"AdditionalAlarmContent"`
+
+	// 通知模板绑定信息
+	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
 }
 
 type CreateAlarmPolicyRequest struct {
@@ -1263,6 +1269,12 @@ type CreateAlarmPolicyRequest struct {
 
 	// 事件配置的告警
 	EbSubject *string `json:"EbSubject,omitnil,omitempty" name:"EbSubject"`
+
+	// 附加告警内容
+	AdditionalAlarmContent *string `json:"AdditionalAlarmContent,omitnil,omitempty" name:"AdditionalAlarmContent"`
+
+	// 通知模板绑定信息
+	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
 }
 
 func (r *CreateAlarmPolicyRequest) ToJsonString() string {
@@ -1296,6 +1308,8 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 	delete(f, "HierarchicalNotices")
 	delete(f, "MigrateFlag")
 	delete(f, "EbSubject")
+	delete(f, "AdditionalAlarmContent")
+	delete(f, "NoticeContentTmplBindInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmPolicyRequest has unknown keys!", "")
 	}
@@ -12003,6 +12017,9 @@ type ModifyAlarmPolicyNoticeRequestParams struct {
 
 	// 告警分级通知规则配置
 	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitnil,omitempty" name:"HierarchicalNotices"`
+
+	// 通知内容模板绑定信息
+	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
 }
 
 type ModifyAlarmPolicyNoticeRequest struct {
@@ -12022,6 +12039,9 @@ type ModifyAlarmPolicyNoticeRequest struct {
 
 	// 告警分级通知规则配置
 	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitnil,omitempty" name:"HierarchicalNotices"`
+
+	// 通知内容模板绑定信息
+	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
 }
 
 func (r *ModifyAlarmPolicyNoticeRequest) ToJsonString() string {
@@ -12041,6 +12061,7 @@ func (r *ModifyAlarmPolicyNoticeRequest) FromJsonString(s string) error {
 	delete(f, "NoticeIds")
 	delete(f, "PolicyIds")
 	delete(f, "HierarchicalNotices")
+	delete(f, "NoticeContentTmplBindInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmPolicyNoticeRequest has unknown keys!", "")
 	}
@@ -13051,6 +13072,14 @@ type NoticeBindPolicys struct {
 
 	// 告警通知模板绑定的告警策略ID列表
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+}
+
+type NoticeContentTmplBindInfo struct {
+	// 通知内容模板ID
+	ContentTmplID *string `json:"ContentTmplID,omitnil,omitempty" name:"ContentTmplID"`
+
+	// 通知模板ID
+	NoticeID *string `json:"NoticeID,omitnil,omitempty" name:"NoticeID"`
 }
 
 type Operator struct {

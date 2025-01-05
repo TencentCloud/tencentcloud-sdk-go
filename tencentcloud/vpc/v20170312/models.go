@@ -1035,16 +1035,16 @@ func (r *AllocateIPv6AddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AllocateIp6AddressesBandwidthRequestParams struct {
-	// 需要开通公网访问能力的IPV6地址
+	// 需要开通公网访问能力的IPv6地址
 	Ip6Addresses []*string `json:"Ip6Addresses,omitnil,omitempty" name:"Ip6Addresses"`
 
 	// 带宽，单位Mbps。默认是1Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 网络计费模式。IPV6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
+	// 网络计费模式。IPv6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
+	// 带宽包id，上移账号，申请带宽包计费模式的IPv6地址需要传入.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
 	// 需要关联的标签列表。	
@@ -1054,16 +1054,16 @@ type AllocateIp6AddressesBandwidthRequestParams struct {
 type AllocateIp6AddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要开通公网访问能力的IPV6地址
+	// 需要开通公网访问能力的IPv6地址
 	Ip6Addresses []*string `json:"Ip6Addresses,omitnil,omitempty" name:"Ip6Addresses"`
 
 	// 带宽，单位Mbps。默认是1Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 网络计费模式。IPV6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
+	// 网络计费模式。IPv6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
+	// 带宽包id，上移账号，申请带宽包计费模式的IPv6地址需要传入.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
 	// 需要关联的标签列表。	
@@ -1095,7 +1095,7 @@ func (r *AllocateIp6AddressesBandwidthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AllocateIp6AddressesBandwidthResponseParams struct {
-	// 弹性公网 IPV6 的唯一 ID 列表。
+	// 传统弹性公网 IPv6 的唯一 ID 列表。
 	AddressSet []*string `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 
 	// 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
@@ -1444,7 +1444,7 @@ type AssociateAddressRequestParams struct {
 	// 指定绑定时是否设置直通。弹性公网 IP 直通请参见 [EIP 直通](https://cloud.tencent.com/document/product/1199/41709)。取值：True、False，默认值为 False。当绑定 CVM 实例、EKS 弹性集群时，可设定此参数为 True。此参数目前处于内测中，如需使用，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2)。
 	EipDirectConnection *bool `json:"EipDirectConnection,omitnil,omitempty" name:"EipDirectConnection"`
 
-	// 要绑定的实例所在的地域
+	// 要绑定的实例所在地域。默认无需填写，仅限GAAP特殊场景需指定实例所在地域。
 	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 }
 
@@ -1466,7 +1466,7 @@ type AssociateAddressRequest struct {
 	// 指定绑定时是否设置直通。弹性公网 IP 直通请参见 [EIP 直通](https://cloud.tencent.com/document/product/1199/41709)。取值：True、False，默认值为 False。当绑定 CVM 实例、EKS 弹性集群时，可设定此参数为 True。此参数目前处于内测中，如需使用，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2)。
 	EipDirectConnection *bool `json:"EipDirectConnection,omitnil,omitempty" name:"EipDirectConnection"`
 
-	// 要绑定的实例所在的地域
+	// 要绑定的实例所在地域。默认无需填写，仅限GAAP特殊场景需指定实例所在地域。
 	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 }
 
@@ -14477,11 +14477,11 @@ func (r *DescribeIPv6AddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIp6AddressesRequestParams struct {
-	// 标识 IPV6 的唯一 ID 列表。IPV6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
+	// 标识 IPv6 的唯一 ID 列表。IPv6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
-	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 IPV6 的 IP 地址过滤。</li>
+	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 IPv6 的 IP 地址过滤。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -14495,11 +14495,11 @@ type DescribeIp6AddressesRequestParams struct {
 type DescribeIp6AddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标识 IPV6 的唯一 ID 列表。IPV6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
+	// 标识 IPv6 的唯一 ID 列表。IPv6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
-	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 IPV6 的 IP 地址过滤。</li>
+	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 IPv6 的 IP 地址过滤。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -14534,10 +14534,10 @@ func (r *DescribeIp6AddressesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIp6AddressesResponseParams struct {
-	// 符合条件的 IPV6 数量。
+	// 符合条件的 IPv6 数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// IPV6 详细信息列表。
+	// IPv6 详细信息列表。
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25455,10 +25455,10 @@ type ModifyIp6AddressesBandwidthRequestParams struct {
 	// 修改的目标带宽，单位Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// IPV6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
+	// IPv6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
 	Ip6Addresses []*string `json:"Ip6Addresses,omitnil,omitempty" name:"Ip6Addresses"`
 
-	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
+	// IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 }
 
@@ -25468,10 +25468,10 @@ type ModifyIp6AddressesBandwidthRequest struct {
 	// 修改的目标带宽，单位Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// IPV6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
+	// IPv6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
 	Ip6Addresses []*string `json:"Ip6Addresses,omitnil,omitempty" name:"Ip6Addresses"`
 
-	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
+	// IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 }
 
@@ -29478,20 +29478,20 @@ func (r *ReleaseIPv6AddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseIp6AddressesBandwidthRequestParams struct {
-	// IPV6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
+	// IPv6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
 	Ip6Addresses []*string `json:"Ip6Addresses,omitnil,omitempty" name:"Ip6Addresses"`
 
-	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
+	// IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 }
 
 type ReleaseIp6AddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
-	// IPV6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
+	// IPv6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
 	Ip6Addresses []*string `json:"Ip6Addresses,omitnil,omitempty" name:"Ip6Addresses"`
 
-	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
+	// IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
 	Ip6AddressIds []*string `json:"Ip6AddressIds,omitnil,omitempty" name:"Ip6AddressIds"`
 }
 

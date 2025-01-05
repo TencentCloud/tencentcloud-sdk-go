@@ -6247,7 +6247,7 @@ type Instance struct {
 
 	// 自动续费标识。取值范围： 
 	// NOTIFY_AND_MANUAL_RENEW：表示通知即将过期，但不自动续费  
-	// NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费 。
+	// NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 实例登录设置。
