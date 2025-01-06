@@ -8157,6 +8157,59 @@ func (c *Client) ModifyTopicRuleWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewPauseTWeCallDeviceRequest() (request *PauseTWeCallDeviceRequest) {
+    request = &PauseTWeCallDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PauseTWeCallDevice")
+    
+    
+    return
+}
+
+func NewPauseTWeCallDeviceResponse() (response *PauseTWeCallDeviceResponse) {
+    response = &PauseTWeCallDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PauseTWeCallDevice
+// 暂停设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PauseTWeCallDevice(request *PauseTWeCallDeviceRequest) (response *PauseTWeCallDeviceResponse, err error) {
+    return c.PauseTWeCallDeviceWithContext(context.Background(), request)
+}
+
+// PauseTWeCallDevice
+// 暂停设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PauseTWeCallDeviceWithContext(ctx context.Context, request *PauseTWeCallDeviceRequest) (response *PauseTWeCallDeviceResponse, err error) {
+    if request == nil {
+        request = NewPauseTWeCallDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseTWeCallDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPauseTWeCallDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageRequest) {
     request = &PublishBroadcastMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8724,6 +8777,112 @@ func (c *Client) ResetCloudStorageEventWithContext(ctx context.Context, request 
     return
 }
 
+func NewResetTWeCallDeviceRequest() (request *ResetTWeCallDeviceRequest) {
+    request = &ResetTWeCallDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ResetTWeCallDevice")
+    
+    
+    return
+}
+
+func NewResetTWeCallDeviceResponse() (response *ResetTWeCallDeviceResponse) {
+    response = &ResetTWeCallDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetTWeCallDevice
+// 重置设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetTWeCallDevice(request *ResetTWeCallDeviceRequest) (response *ResetTWeCallDeviceResponse, err error) {
+    return c.ResetTWeCallDeviceWithContext(context.Background(), request)
+}
+
+// ResetTWeCallDevice
+// 重置设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetTWeCallDeviceWithContext(ctx context.Context, request *ResetTWeCallDeviceRequest) (response *ResetTWeCallDeviceResponse, err error) {
+    if request == nil {
+        request = NewResetTWeCallDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetTWeCallDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetTWeCallDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeWeCallDeviceRequest() (request *ResumeWeCallDeviceRequest) {
+    request = &ResumeWeCallDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ResumeWeCallDevice")
+    
+    
+    return
+}
+
+func NewResumeWeCallDeviceResponse() (response *ResumeWeCallDeviceResponse) {
+    response = &ResumeWeCallDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeWeCallDevice
+// 恢复设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResumeWeCallDevice(request *ResumeWeCallDeviceRequest) (response *ResumeWeCallDeviceResponse, err error) {
+    return c.ResumeWeCallDeviceWithContext(context.Background(), request)
+}
+
+// ResumeWeCallDevice
+// 恢复设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResumeWeCallDeviceWithContext(ctx context.Context, request *ResumeWeCallDeviceRequest) (response *ResumeWeCallDeviceResponse, err error) {
+    if request == nil {
+        request = NewResumeWeCallDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeWeCallDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeWeCallDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchPositionSpaceRequest() (request *SearchPositionSpaceRequest) {
     request = &SearchPositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8944,6 +9103,59 @@ func (c *Client) TransferCloudStorageWithContext(ctx context.Context, request *T
     request.SetContext(ctx)
     
     response = NewTransferCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferTWeCallDeviceRequest() (request *TransferTWeCallDeviceRequest) {
+    request = &TransferTWeCallDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "TransferTWeCallDevice")
+    
+    
+    return
+}
+
+func NewTransferTWeCallDeviceResponse() (response *TransferTWeCallDeviceResponse) {
+    response = &TransferTWeCallDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TransferTWeCallDevice
+// 转移设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TransferTWeCallDevice(request *TransferTWeCallDeviceRequest) (response *TransferTWeCallDeviceResponse, err error) {
+    return c.TransferTWeCallDeviceWithContext(context.Background(), request)
+}
+
+// TransferTWeCallDevice
+// 转移设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TransferTWeCallDeviceWithContext(ctx context.Context, request *TransferTWeCallDeviceRequest) (response *TransferTWeCallDeviceResponse, err error) {
+    if request == nil {
+        request = NewTransferTWeCallDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferTWeCallDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTransferTWeCallDeviceResponse()
     err = c.Send(request, response)
     return
 }

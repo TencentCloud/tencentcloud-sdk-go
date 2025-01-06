@@ -180,6 +180,7 @@ import (
 	lighthousev20200324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse/v20200324"
 	livev20180801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live/v20180801"
 	lkev20231130 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke/v20231130"
+	lkeapv20240522 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap/v20240522"
 	lowcodev20210108 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode/v20210108"
 	lpv20200224 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp/v20200224"
 	mallv20230518 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall/v20230518"
@@ -2392,6 +2393,19 @@ func TestLkev20231130Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init lke_v20231130 client: %v", err)
+    }
+}
+
+func TestLkeapv20240522Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := lkeapv20240522.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init lkeap_v20240522 client: %v", err)
     }
 }
 

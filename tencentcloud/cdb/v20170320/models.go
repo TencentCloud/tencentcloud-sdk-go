@@ -10120,6 +10120,80 @@ func (r *DescribeSupportedPrivilegesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableColumnsRequestParams struct {
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/253/7167)接口获得。
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 数据库中的表的名称。
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+}
+
+type DescribeTableColumnsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/253/7167)接口获得。
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 数据库中的表的名称。
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+}
+
+func (r *DescribeTableColumnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableColumnsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Database")
+	delete(f, "Table")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableColumnsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableColumnsResponseParams struct {
+	// 符合查询条件的实例总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 返回的数据库列信息。
+	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableColumnsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableColumnsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableColumnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableColumnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTablesRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

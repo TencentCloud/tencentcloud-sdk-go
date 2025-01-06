@@ -429,6 +429,9 @@ type AlarmPolicy struct {
 	// 多标签交/并集关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagOperation *string `json:"TagOperation,omitnil,omitempty" name:"TagOperation"`
+
+	// 通知模板绑定内容模板信息
+	NoticeTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeTmplBindInfos,omitnil,omitempty" name:"NoticeTmplBindInfos"`
 }
 
 type AlarmPolicyCondition struct {
@@ -5327,6 +5330,9 @@ type DescribeAlarmPoliciesRequestParams struct {
 
 	// 根据排班表搜索
 	ReceiverOnCallFormIDs []*string `json:"ReceiverOnCallFormIDs,omitnil,omitempty" name:"ReceiverOnCallFormIDs"`
+
+	// 通知内容模板ID筛选
+	NoticeContentTmplIDs []*string `json:"NoticeContentTmplIDs,omitnil,omitempty" name:"NoticeContentTmplIDs"`
 }
 
 type DescribeAlarmPoliciesRequest struct {
@@ -5418,6 +5424,9 @@ type DescribeAlarmPoliciesRequest struct {
 
 	// 根据排班表搜索
 	ReceiverOnCallFormIDs []*string `json:"ReceiverOnCallFormIDs,omitnil,omitempty" name:"ReceiverOnCallFormIDs"`
+
+	// 通知内容模板ID筛选
+	NoticeContentTmplIDs []*string `json:"NoticeContentTmplIDs,omitnil,omitempty" name:"NoticeContentTmplIDs"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -5458,6 +5467,7 @@ func (r *DescribeAlarmPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "PromInsId")
 	delete(f, "ReceiverOnCallFormIDs")
+	delete(f, "NoticeContentTmplIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmPoliciesRequest has unknown keys!", "")
 	}

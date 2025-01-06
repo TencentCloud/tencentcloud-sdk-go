@@ -5292,11 +5292,17 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// SSL加密
 	SSLConfig *SSLConfig `json:"SSLConfig,omitnil,omitempty" name:"SSLConfig"`
 
-	// 备机只读信息
+	// 双节点备机只读信息
 	DrReadableInfo *DrReadableInfo `json:"DrReadableInfo,omitnil,omitempty" name:"DrReadableInfo"`
 
 	// 等待回收的IP列表
 	OldVipList []*OldVip `json:"OldVipList,omitnil,omitempty" name:"OldVipList"`
+
+	// 操作日志采集状态，enable-采集中，disable-不可用，renew_doing-配置开启或关闭中
+	XEventStatus *string `json:"XEventStatus,omitnil,omitempty" name:"XEventStatus"`
+
+	// 多节点备机只读信息
+	MultiDrReadableInfo []*DrReadableInfo `json:"MultiDrReadableInfo,omitnil,omitempty" name:"MultiDrReadableInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5377,7 +5383,7 @@ type DescribeDBInstancesRequestParams struct {
 	// 实例唯一Uid列表
 	UidSet []*string `json:"UidSet,omitnil,omitempty" name:"UidSet"`
 
-	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务,cvmHA-云盘双机高可用，cvmRO-云盘只读副本,MultiHA-多节点,cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 分页查询方式 offset-按照偏移量分页查询，pageNumber-按照页数分页查询，默认取值pageNumber
@@ -5444,7 +5450,7 @@ type DescribeDBInstancesRequest struct {
 	// 实例唯一Uid列表
 	UidSet []*string `json:"UidSet,omitnil,omitempty" name:"UidSet"`
 
-	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务,cvmHA-云盘双机高可用，cvmRO-云盘只读副本,MultiHA-多节点,cvmMultiHA-云盘多节点
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 分页查询方式 offset-按照偏移量分页查询，pageNumber-按照页数分页查询，默认取值pageNumber
@@ -10572,6 +10578,9 @@ type ModifyDBInstanceNetworkRequestParams struct {
 
 	// 目标节点，0-修改主节点网络，1-修改备节点网络，默认取值0
 	DRNetwork *uint64 `json:"DRNetwork,omitnil,omitempty" name:"DRNetwork"`
+
+	// 备机资源ID。当DRNetwork = 1时必填
+	DrInstanceId *string `json:"DrInstanceId,omitnil,omitempty" name:"DrInstanceId"`
 }
 
 type ModifyDBInstanceNetworkRequest struct {
@@ -10594,6 +10603,9 @@ type ModifyDBInstanceNetworkRequest struct {
 
 	// 目标节点，0-修改主节点网络，1-修改备节点网络，默认取值0
 	DRNetwork *uint64 `json:"DRNetwork,omitnil,omitempty" name:"DRNetwork"`
+
+	// 备机资源ID。当DRNetwork = 1时必填
+	DrInstanceId *string `json:"DrInstanceId,omitnil,omitempty" name:"DrInstanceId"`
 }
 
 func (r *ModifyDBInstanceNetworkRequest) ToJsonString() string {
@@ -10614,6 +10626,7 @@ func (r *ModifyDBInstanceNetworkRequest) FromJsonString(s string) error {
 	delete(f, "OldIpRetainTime")
 	delete(f, "Vip")
 	delete(f, "DRNetwork")
+	delete(f, "DrInstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceNetworkRequest has unknown keys!", "")
 	}
@@ -14226,6 +14239,9 @@ type UpgradeDBInstanceRequestParams struct {
 
 	// 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
+
+	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -14260,6 +14276,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
+
+	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -14284,6 +14303,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "HAType")
 	delete(f, "MultiZones")
 	delete(f, "WaitSwitch")
+	delete(f, "DrZones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

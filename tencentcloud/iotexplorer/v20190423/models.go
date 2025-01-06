@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type ActivateTWeCallLicenseRequestParams struct {
-	// TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+	// TWecall类型：0-体验套餐；1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
 	// 参数已弃用，不用传参
@@ -37,7 +37,7 @@ type ActivateTWeCallLicenseRequestParams struct {
 type ActivateTWeCallLicenseRequest struct {
 	*tchttp.BaseRequest
 	
-	// TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+	// TWecall类型：0-体验套餐；1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 
 	// 参数已弃用，不用传参
@@ -11144,6 +11144,60 @@ type PackageInfo struct {
 	CSUserId *string `json:"CSUserId,omitnil,omitempty" name:"CSUserId"`
 }
 
+// Predefined struct for user
+type PauseTWeCallDeviceRequestParams struct {
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type PauseTWeCallDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *PauseTWeCallDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseTWeCallDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseTWeCallDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseTWeCallDeviceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PauseTWeCallDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseTWeCallDeviceResponseParams `json:"Response"`
+}
+
+func (r *PauseTWeCallDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseTWeCallDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PositionFenceInfo struct {
 	// 围栏信息
 	GeoFence *PositionFenceItem `json:"GeoFence,omitnil,omitempty" name:"GeoFence"`
@@ -12055,6 +12109,114 @@ func (r *ResetCloudStorageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResetTWeCallDeviceRequestParams struct {
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type ResetTWeCallDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *ResetTWeCallDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTWeCallDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetTWeCallDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetTWeCallDeviceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetTWeCallDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetTWeCallDeviceResponseParams `json:"Response"`
+}
+
+func (r *ResetTWeCallDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTWeCallDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeWeCallDeviceRequestParams struct {
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type ResumeWeCallDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备列表
+	DeviceList []*TWeCallInfo `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *ResumeWeCallDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeWeCallDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeWeCallDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeWeCallDeviceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResumeWeCallDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeWeCallDeviceResponseParams `json:"Response"`
+}
+
+func (r *ResumeWeCallDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeWeCallDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SearchKeyword struct {
 	// 搜索条件的Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -12592,6 +12754,67 @@ func (r *TransferCloudStorageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TransferCloudStorageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TransferTWeCallDeviceRequestParams struct {
+	// sn信息，product_deviceName
+	TransferInDevice *string `json:"TransferInDevice,omitnil,omitempty" name:"TransferInDevice"`
+
+	// sn信息，product_deviceName
+	TransferOutDevice *string `json:"TransferOutDevice,omitnil,omitempty" name:"TransferOutDevice"`
+}
+
+type TransferTWeCallDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// sn信息，product_deviceName
+	TransferInDevice *string `json:"TransferInDevice,omitnil,omitempty" name:"TransferInDevice"`
+
+	// sn信息，product_deviceName
+	TransferOutDevice *string `json:"TransferOutDevice,omitnil,omitempty" name:"TransferOutDevice"`
+}
+
+func (r *TransferTWeCallDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferTWeCallDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferInDevice")
+	delete(f, "TransferOutDevice")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferTWeCallDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TransferTWeCallDeviceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TransferTWeCallDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *TransferTWeCallDeviceResponseParams `json:"Response"`
+}
+
+func (r *TransferTWeCallDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferTWeCallDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

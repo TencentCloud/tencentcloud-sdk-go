@@ -6934,6 +6934,57 @@ func (c *Client) DescribeSupportedPrivilegesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeTableColumnsRequest() (request *DescribeTableColumnsRequest) {
+    request = &DescribeTableColumnsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeTableColumns")
+    
+    
+    return
+}
+
+func NewDescribeTableColumnsResponse() (response *DescribeTableColumnsResponse) {
+    response = &DescribeTableColumnsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableColumns
+// 本接口(DescribeTableColumns)用于查询云数据库实例的指定数据库表的列信息，仅支持主实例和灾备实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeTableColumns(request *DescribeTableColumnsRequest) (response *DescribeTableColumnsResponse, err error) {
+    return c.DescribeTableColumnsWithContext(context.Background(), request)
+}
+
+// DescribeTableColumns
+// 本接口(DescribeTableColumns)用于查询云数据库实例的指定数据库表的列信息，仅支持主实例和灾备实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeTableColumnsWithContext(ctx context.Context, request *DescribeTableColumnsRequest) (response *DescribeTableColumnsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableColumnsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableColumns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableColumnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
     request = &DescribeTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
