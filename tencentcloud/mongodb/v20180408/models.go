@@ -109,7 +109,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例类型，GIO：高IO版；TGIO：高IO万兆
+	// 实例类型，HIO10G：高IO万兆。
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为10
@@ -118,7 +118,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 可用区信息，格式如：ap-guangzhou-2
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
+	// 实例角色，默认传MASTER即可
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
 	// 实例类型，REPLSET-副本集，SHARD-分片集群
@@ -138,6 +138,12 @@ type CreateDBInstanceHourRequestParams struct {
 
 	// 安全组参数
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
+
+	// 私有网络ID，如果不传则默认选择基础网络
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 }
 
 type CreateDBInstanceHourRequest struct {
@@ -158,7 +164,7 @@ type CreateDBInstanceHourRequest struct {
 	// MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例类型，GIO：高IO版；TGIO：高IO万兆
+	// 实例类型，HIO10G：高IO万兆。
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为10
@@ -167,7 +173,7 @@ type CreateDBInstanceHourRequest struct {
 	// 可用区信息，格式如：ap-guangzhou-2
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
+	// 实例角色，默认传MASTER即可
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
 	// 实例类型，REPLSET-副本集，SHARD-分片集群
@@ -187,6 +193,12 @@ type CreateDBInstanceHourRequest struct {
 
 	// 安全组参数
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
+
+	// 私有网络ID，如果不传则默认选择基础网络
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -216,6 +228,8 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "ProjectId")
 	delete(f, "SecurityGroup")
+	delete(f, "UniqVpcId")
+	delete(f, "UniqSubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
 	}
@@ -436,11 +450,9 @@ func (r *DescribeClientConnectionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClientConnectionsResponseParams struct {
 	// 客户端连接信息，包括客户端IP和对应IP的连接数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Clients []*ClientConnection `json:"Clients,omitnil,omitempty" name:"Clients"`
 
 	// 连接数总结
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -848,23 +860,18 @@ type MongoDBInstanceDetail struct {
 	ReplicaSets []*MongodbShardInfo `json:"ReplicaSets,omitnil,omitempty" name:"ReplicaSets"`
 
 	// 只读实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadonlyInstances []*MongoDBInstance `json:"ReadonlyInstances,omitnil,omitempty" name:"ReadonlyInstances"`
 
 	// 灾备实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StandbyInstances []*MongoDBInstance `json:"StandbyInstances,omitnil,omitempty" name:"StandbyInstances"`
 
 	// 临时实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloneInstances []*MongoDBInstance `json:"CloneInstances,omitnil,omitempty" name:"CloneInstances"`
 
 	// 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedInstance *MongoDBInstance `json:"RelatedInstance,omitnil,omitempty" name:"RelatedInstance"`
 
 	// 实例标签信息集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 实例标记
@@ -1113,66 +1120,87 @@ func (r *SetPasswordResponse) FromJsonString(s string) error {
 
 type SpecItem struct {
 	// 规格信息标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
 	// 规格有效标志，取值：0-停止售卖，1-开放售卖
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 机器类型，取值：0-HIO，4-HIO10G
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// cpu核心数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 内存规格，单位为MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 默认磁盘规格，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultStorage *uint64 `json:"DefaultStorage,omitnil,omitempty" name:"DefaultStorage"`
 
 	// 最大磁盘规格，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
 	// 最小磁盘规格，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinStorage *uint64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
 	// 可承载qps信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 连接数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conns *uint64 `json:"Conns,omitnil,omitempty" name:"Conns"`
 
 	// 实例mongodb版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoVersionCode *string `json:"MongoVersionCode,omitnil,omitempty" name:"MongoVersionCode"`
 
 	// 实例mongodb版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoVersionValue *uint64 `json:"MongoVersionValue,omitnil,omitempty" name:"MongoVersionValue"`
 
 	// 实例mongodb版本号（短）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 存储引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
 	// 集群类型，取值：1-分片集群，0-副本集集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *uint64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 最小副本集从节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinNodeNum *uint64 `json:"MinNodeNum,omitnil,omitempty" name:"MinNodeNum"`
 
 	// 最大副本集从节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNodeNum *uint64 `json:"MaxNodeNum,omitnil,omitempty" name:"MaxNodeNum"`
 
 	// 最小分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinReplicateSetNum *uint64 `json:"MinReplicateSetNum,omitnil,omitempty" name:"MinReplicateSetNum"`
 
 	// 最大分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicateSetNum *uint64 `json:"MaxReplicateSetNum,omitnil,omitempty" name:"MaxReplicateSetNum"`
 
 	// 最小分片从节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinReplicateSetNodeNum *uint64 `json:"MinReplicateSetNodeNum,omitnil,omitempty" name:"MinReplicateSetNodeNum"`
 
 	// 最大分片从节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicateSetNodeNum *uint64 `json:"MaxReplicateSetNodeNum,omitnil,omitempty" name:"MaxReplicateSetNodeNum"`
 }
 

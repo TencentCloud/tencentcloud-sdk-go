@@ -8262,6 +8262,24 @@ type DescribeVoucherInfoRequestParams struct {
 
 	// 代金券副类型 discount 为折扣券 deduct 为抵扣券
 	VoucherSubType *string `json:"VoucherSubType,omitnil,omitempty" name:"VoucherSubType"`
+
+	// 券有效时间开始时间
+	StartTimeFrom *string `json:"StartTimeFrom,omitnil,omitempty" name:"StartTimeFrom"`
+
+	// 券有效时间结束时间
+	StartTimeTo *string `json:"StartTimeTo,omitnil,omitempty" name:"StartTimeTo"`
+
+	// 券失效时间开始时间
+	EndTimeFrom *string `json:"EndTimeFrom,omitnil,omitempty" name:"EndTimeFrom"`
+
+	// 券失效时间结束时间
+	EndTimeTo *string `json:"EndTimeTo,omitnil,omitempty" name:"EndTimeTo"`
+
+	// 发券时间开始时间
+	CreateTimeFrom *string `json:"CreateTimeFrom,omitnil,omitempty" name:"CreateTimeFrom"`
+
+	// 发券时间结束时间
+	CreateTimeTo *string `json:"CreateTimeTo,omitnil,omitempty" name:"CreateTimeTo"`
 }
 
 type DescribeVoucherInfoRequest struct {
@@ -8317,6 +8335,24 @@ type DescribeVoucherInfoRequest struct {
 
 	// 代金券副类型 discount 为折扣券 deduct 为抵扣券
 	VoucherSubType *string `json:"VoucherSubType,omitnil,omitempty" name:"VoucherSubType"`
+
+	// 券有效时间开始时间
+	StartTimeFrom *string `json:"StartTimeFrom,omitnil,omitempty" name:"StartTimeFrom"`
+
+	// 券有效时间结束时间
+	StartTimeTo *string `json:"StartTimeTo,omitnil,omitempty" name:"StartTimeTo"`
+
+	// 券失效时间开始时间
+	EndTimeFrom *string `json:"EndTimeFrom,omitnil,omitempty" name:"EndTimeFrom"`
+
+	// 券失效时间结束时间
+	EndTimeTo *string `json:"EndTimeTo,omitnil,omitempty" name:"EndTimeTo"`
+
+	// 发券时间开始时间
+	CreateTimeFrom *string `json:"CreateTimeFrom,omitnil,omitempty" name:"CreateTimeFrom"`
+
+	// 发券时间结束时间
+	CreateTimeTo *string `json:"CreateTimeTo,omitnil,omitempty" name:"CreateTimeTo"`
 }
 
 func (r *DescribeVoucherInfoRequest) ToJsonString() string {
@@ -8348,6 +8384,12 @@ func (r *DescribeVoucherInfoRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "VoucherMainType")
 	delete(f, "VoucherSubType")
+	delete(f, "StartTimeFrom")
+	delete(f, "StartTimeTo")
+	delete(f, "EndTimeFrom")
+	delete(f, "EndTimeTo")
+	delete(f, "CreateTimeFrom")
+	delete(f, "CreateTimeTo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoucherInfoRequest has unknown keys!", "")
 	}

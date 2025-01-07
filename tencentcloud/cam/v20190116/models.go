@@ -2774,7 +2774,7 @@ type DescribeUserSAMLConfigResponseParams struct {
 	// SAML元数据文档
 	SAMLMetadata *string `json:"SAMLMetadata,omitnil,omitempty" name:"SAMLMetadata"`
 
-	// 状态：0:未设置，1:已开启，2:已禁用
+	// 状态：0:未设置，11:已开启，2:已禁用
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 辅助域名

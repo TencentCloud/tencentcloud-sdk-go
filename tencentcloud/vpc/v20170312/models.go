@@ -543,10 +543,10 @@ type AddressTemplateItem struct {
 	// IP地址模板ID
 	AddressTemplateId *string `json:"AddressTemplateId,omitnil,omitempty" name:"AddressTemplateId"`
 
-	// IP模板名称
+	// IP模板名称。
 	AddressTemplateName *string `json:"AddressTemplateName,omitnil,omitempty" name:"AddressTemplateName"`
 
-	// 废弃字段
+	// 废弃字段。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 废弃字段
@@ -22428,13 +22428,13 @@ func (r *HaVipAssociateAddressIpResponse) FromJsonString(s string) error {
 }
 
 type HaVipAssociation struct {
-	// HaVip实例唯一ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
-
 	// HaVip绑定的子机或网卡唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// HaVip实例唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
 
 	// HaVip绑定的类型。取值:CVM, ENI。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -28801,6 +28801,15 @@ type NetworkInterface struct {
 	// <li>`DELETING`：删除中</li>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
+	// 弹性网卡状态：
+	// <li>`PENDING`：创建中</li>
+	// <li>`AVAILABLE`：可用的</li>
+	// <li>`ATTACHING`：绑定中</li>
+	// <li>`DETACHING`：解绑中</li>
+	// <li>`DELETING`：删除中</li>
+	// <li>`INUSE`：已绑定</li>
+	NetworkInterfaceState *string `json:"NetworkInterfaceState,omitnil,omitempty" name:"NetworkInterfaceState"`
+
 	// 内网IP信息。
 	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitnil,omitempty" name:"PrivateIpAddressSet"`
 
@@ -31455,7 +31464,6 @@ type ServicesInfo struct {
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
 	// 备注。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

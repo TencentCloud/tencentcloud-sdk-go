@@ -1232,6 +1232,14 @@ func (r *ListQAsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Message struct {
+	// 角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 // Predefined struct for user
 type ModifyAttributeLabelRequestParams struct {
 	// 属性标签
@@ -1364,6 +1372,73 @@ type QaItem struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+// Predefined struct for user
+type QueryRewriteRequestParams struct {
+	// 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// 模型名称
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
+type QueryRewriteRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// 模型名称
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
+func (r *QueryRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryRewriteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Messages")
+	delete(f, "Model")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryRewriteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryRewriteResponseParams struct {
+	// 改写结果
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 消耗量，返回输入token数，输出token数以及总token数
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryRewriteResponseParams `json:"Response"`
+}
+
+func (r *QueryRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryRewriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReconstructDocumentFailedPage struct {

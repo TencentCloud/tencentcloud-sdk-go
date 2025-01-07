@@ -32,6 +32,9 @@ type BuildPacksInfo struct {
 
 	// 上传文件名
 	UploadFilename *string `json:"UploadFilename,omitnil,omitempty" name:"UploadFilename"`
+
+	// 语言版本
+	LanguageVersion *string `json:"LanguageVersion,omitnil,omitempty" name:"LanguageVersion"`
 }
 
 type ClsInfo struct {
@@ -73,13 +76,13 @@ type CreateCloudRunEnvRequestParams struct {
 	// 请求key 用于防重
 	ReqKey *string `json:"ReqKey,omitnil,omitempty" name:"ReqKey"`
 
-	// 来源：wechat | cloud
+	// 来源：wechat | cloud | weda
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 渠道：wechat | cloud
+	// 渠道：wechat | cloud | weda
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
-	// 环境ID
+	// 环境ID 云开发平台必填
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -109,13 +112,13 @@ type CreateCloudRunEnvRequest struct {
 	// 请求key 用于防重
 	ReqKey *string `json:"ReqKey,omitnil,omitempty" name:"ReqKey"`
 
-	// 来源：wechat | cloud
+	// 来源：wechat | cloud | weda
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 渠道：wechat | cloud
+	// 渠道：wechat | cloud | weda
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
-	// 环境ID
+	// 环境ID 云开发平台必填
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -552,6 +555,9 @@ func (r *DescribeEnvBaseInfoRequest) FromJsonString(s string) error {
 type DescribeEnvBaseInfoResponseParams struct {
 	// 环境基础信息
 	EnvBaseInfo *EnvBaseInfo `json:"EnvBaseInfo,omitnil,omitempty" name:"EnvBaseInfo"`
+
+	// 是否存在
+	IsExist *bool `json:"IsExist,omitnil,omitempty" name:"IsExist"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1082,6 +1088,9 @@ type ServerBaseInfo struct {
 
 	// 展示自定义域名
 	CustomDomainNames []*string `json:"CustomDomainNames,omitnil,omitempty" name:"CustomDomainNames"`
+
+	// 服务类型: function 云函数2.0；container 容器服务
+	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 }
 
 type ServerManageTaskInfo struct {

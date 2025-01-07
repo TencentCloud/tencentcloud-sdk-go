@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AITransferItem struct {
+	// 转人工的function calling 名称
+	TransferFunctionName *string `json:"TransferFunctionName,omitnil,omitempty" name:"TransferFunctionName"`
+
+	// TransferFunctionEnable为true时生效；transfer_to_human function calling的desc，默认为 "Transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so."
+	TransferFunctionDesc *string `json:"TransferFunctionDesc,omitnil,omitempty" name:"TransferFunctionDesc"`
+
+	// 转人工的技能组ID
+	TransferSkillGroupId *uint64 `json:"TransferSkillGroupId,omitnil,omitempty" name:"TransferSkillGroupId"`
+}
+
 // Predefined struct for user
 type AbortPredictiveDialingCampaignRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -650,6 +661,12 @@ type CreateAICallRequestParams struct {
 	// EndFunctionEnable为true时生效；call_end function calling的desc，默认为 "End the call when user has to leave (like says bye) or you are instructed to do so."
 	EndFunctionDesc *string `json:"EndFunctionDesc,omitnil,omitempty" name:"EndFunctionDesc"`
 
+	// 模型是否支持(或者开启)transfer_to_human function calling
+	TransferFunctionEnable *bool `json:"TransferFunctionEnable,omitnil,omitempty" name:"TransferFunctionEnable"`
+
+	// TransferFunctionEnable为true的时候生效: 转人工配置
+	TransferItems []*AITransferItem `json:"TransferItems,omitnil,omitempty" name:"TransferItems"`
+
 	// 用户多久没说话提示时长,最小10秒,默认10秒
 	NotifyDuration *int64 `json:"NotifyDuration,omitnil,omitempty" name:"NotifyDuration"`
 
@@ -739,6 +756,9 @@ type CreateAICallRequestParams struct {
 	// 
 	// </div></div>
 	CustomTTSConfig *string `json:"CustomTTSConfig,omitnil,omitempty" name:"CustomTTSConfig"`
+
+	// 提示词变量
+	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 }
 
 type CreateAICallRequest struct {
@@ -882,6 +902,12 @@ type CreateAICallRequest struct {
 	// EndFunctionEnable为true时生效；call_end function calling的desc，默认为 "End the call when user has to leave (like says bye) or you are instructed to do so."
 	EndFunctionDesc *string `json:"EndFunctionDesc,omitnil,omitempty" name:"EndFunctionDesc"`
 
+	// 模型是否支持(或者开启)transfer_to_human function calling
+	TransferFunctionEnable *bool `json:"TransferFunctionEnable,omitnil,omitempty" name:"TransferFunctionEnable"`
+
+	// TransferFunctionEnable为true的时候生效: 转人工配置
+	TransferItems []*AITransferItem `json:"TransferItems,omitnil,omitempty" name:"TransferItems"`
+
 	// 用户多久没说话提示时长,最小10秒,默认10秒
 	NotifyDuration *int64 `json:"NotifyDuration,omitnil,omitempty" name:"NotifyDuration"`
 
@@ -971,6 +997,9 @@ type CreateAICallRequest struct {
 	// 
 	// </div></div>
 	CustomTTSConfig *string `json:"CustomTTSConfig,omitnil,omitempty" name:"CustomTTSConfig"`
+
+	// 提示词变量
+	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1002,10 +1031,13 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "InterruptSpeechDuration")
 	delete(f, "EndFunctionEnable")
 	delete(f, "EndFunctionDesc")
+	delete(f, "TransferFunctionEnable")
+	delete(f, "TransferItems")
 	delete(f, "NotifyDuration")
 	delete(f, "NotifyMessage")
 	delete(f, "NotifyMaxCount")
 	delete(f, "CustomTTSConfig")
+	delete(f, "PromptVariables")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}

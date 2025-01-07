@@ -598,7 +598,7 @@ func (r *CreatePictureResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBasicModerationRequestParams struct {
-	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	// TRTC的SDKAppId，和TRTC的房间所使用的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 审核任务的唯一Id，在启动审核任务成功后会返回。
@@ -608,7 +608,7 @@ type DeleteBasicModerationRequestParams struct {
 type DeleteBasicModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	// TRTC的SDKAppId，和TRTC的房间所使用的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 审核任务的唯一Id，在启动审核任务成功后会返回。
@@ -637,7 +637,7 @@ func (r *DeleteBasicModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBasicModerationResponseParams struct {
-	// 审核任务的唯一Id，在启动审核任务成功后会返回。
+	// 审核任务的唯一Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3034,11 +3034,9 @@ type DescribeWebRecordResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 在使用RecordId查询时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 在使用TaskId查询时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

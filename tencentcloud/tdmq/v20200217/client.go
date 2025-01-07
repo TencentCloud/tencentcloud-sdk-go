@@ -6481,6 +6481,71 @@ func (c *Client) ExportRocketMQMessageDetailWithContext(ctx context.Context, req
     return
 }
 
+func NewGetTopicListRequest() (request *GetTopicListRequest) {
+    request = &GetTopicListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "GetTopicList")
+    
+    
+    return
+}
+
+func NewGetTopicListResponse() (response *GetTopicListResponse) {
+    response = &GetTopicListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTopicList
+// 获取环境下主题列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) GetTopicList(request *GetTopicListRequest) (response *GetTopicListResponse, err error) {
+    return c.GetTopicListWithContext(context.Background(), request)
+}
+
+// GetTopicList
+// 获取环境下主题列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+func (c *Client) GetTopicListWithContext(ctx context.Context, request *GetTopicListRequest) (response *GetTopicListResponse, err error) {
+    if request == nil {
+        request = NewGetTopicListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTopicList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTopicListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportRocketMQConsumerGroupsRequest() (request *ImportRocketMQConsumerGroupsRequest) {
     request = &ImportRocketMQConsumerGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6504,9 +6569,15 @@ func NewImportRocketMQConsumerGroupsResponse() (response *ImportRocketMQConsumer
 // 输入迁移任务id和要导入的Group，导入后台
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQConsumerGroups(request *ImportRocketMQConsumerGroupsRequest) (response *ImportRocketMQConsumerGroupsResponse, err error) {
     return c.ImportRocketMQConsumerGroupsWithContext(context.Background(), request)
 }
@@ -6515,9 +6586,15 @@ func (c *Client) ImportRocketMQConsumerGroups(request *ImportRocketMQConsumerGro
 // 输入迁移任务id和要导入的Group，导入后台
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQConsumerGroupsWithContext(ctx context.Context, request *ImportRocketMQConsumerGroupsRequest) (response *ImportRocketMQConsumerGroupsResponse, err error) {
     if request == nil {
         request = NewImportRocketMQConsumerGroupsRequest()
@@ -6557,9 +6634,15 @@ func NewImportRocketMQTopicsResponse() (response *ImportRocketMQTopicsResponse) 
 // 导入topic列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQTopics(request *ImportRocketMQTopicsRequest) (response *ImportRocketMQTopicsResponse, err error) {
     return c.ImportRocketMQTopicsWithContext(context.Background(), request)
 }
@@ -6568,9 +6651,15 @@ func (c *Client) ImportRocketMQTopics(request *ImportRocketMQTopicsRequest) (res
 // 导入topic列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ImportRocketMQTopicsWithContext(ctx context.Context, request *ImportRocketMQTopicsRequest) (response *ImportRocketMQTopicsResponse, err error) {
     if request == nil {
         request = NewImportRocketMQTopicsRequest()

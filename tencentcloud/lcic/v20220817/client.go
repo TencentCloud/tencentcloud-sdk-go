@@ -2513,6 +2513,11 @@ func NewDescribeRecordStreamResponse() (response *DescribeRecordStreamResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
     return c.DescribeRecordStreamWithContext(context.Background(), request)
 }
@@ -2523,6 +2528,11 @@ func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRecordStreamWithContext(ctx context.Context, request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
     if request == nil {
         request = NewDescribeRecordStreamRequest()
@@ -2671,6 +2681,7 @@ func NewDescribeRoomStatisticsResponse() (response *DescribeRoomStatisticsRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
@@ -2684,6 +2695,7 @@ func (c *Client) DescribeRoomStatistics(request *DescribeRoomStatisticsRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"

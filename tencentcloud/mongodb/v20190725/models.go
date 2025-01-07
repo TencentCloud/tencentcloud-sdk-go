@@ -135,8 +135,15 @@ type BackupDownloadTask struct {
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 发起备份时指定的备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupDesc *string `json:"BackupDesc,omitnil,omitempty" name:"BackupDesc"`
+
+	// 地区信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// Bucket信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 }
 
 type BackupDownloadTaskStatus struct {
@@ -158,19 +165,15 @@ type BackupInfo struct {
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
 	// 备份备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupDesc *string `json:"BackupDesc,omitnil,omitempty" name:"BackupDesc"`
 
 	// 备份文件大小，单位KB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSize *uint64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
 	// 备份开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 备份结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 备份状态，1-备份中，2-备份成功
@@ -186,7 +189,6 @@ type BackupInfo struct {
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
 	// 异地备份地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupRegion *string `json:"BackupRegion,omitnil,omitempty" name:"BackupRegion"`
 }
 
@@ -1198,7 +1200,6 @@ type DBInstanceInfo struct {
 
 type DBInstancePrice struct {
 	// 单价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 原价
@@ -2010,7 +2011,6 @@ func (r *DescribeDBInstanceNodePropertyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBInstanceNodePropertyResponseParams struct {
 	// Mongos节点属性。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mongos []*NodeProperty `json:"Mongos,omitnil,omitempty" name:"Mongos"`
 
 	// 副本集节点信息。
@@ -2078,35 +2078,27 @@ func (r *DescribeDBInstanceParamTplDetailRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDBInstanceParamTplDetailResponseParams struct {
 	// 枚举类参数详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceEnumParams []*InstanceEnumParam `json:"InstanceEnumParams,omitnil,omitempty" name:"InstanceEnumParams"`
 
 	// 整形参数详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIntegerParams []*InstanceIntegerParam `json:"InstanceIntegerParams,omitnil,omitempty" name:"InstanceIntegerParams"`
 
 	// 文本参数详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTextParams []*InstanceTextParam `json:"InstanceTextParams,omitnil,omitempty" name:"InstanceTextParams"`
 
 	// 多值参数详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceMultiParams []*InstanceMultiParam `json:"InstanceMultiParams,omitnil,omitempty" name:"InstanceMultiParams"`
 
 	// 参数总个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 模板适配实例版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
 	// 模板适配集群类型，副本集或分片。。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 参数模板名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2185,11 +2177,9 @@ func (r *DescribeDBInstanceParamTplRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBInstanceParamTplResponseParams struct {
 	// 参数模板列表信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTpls []*ParamTpl `json:"ParamTpls,omitnil,omitempty" name:"ParamTpls"`
 
 	// 参数模板总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2683,7 +2673,6 @@ type DescribeSlowLogsResponseParams struct {
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 慢日志详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowLogs []*string `json:"SlowLogs,omitnil,omitempty" name:"SlowLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3596,39 +3585,30 @@ type InstanceDetail struct {
 	RealInstanceId *string `json:"RealInstanceId,omitnil,omitempty" name:"RealInstanceId"`
 
 	// 实例当前可用区信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneList []*string `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
 
 	// mongos节点个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil,omitempty" name:"MongosNodeNum"`
 
 	// mongos节点内存。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// mongos节点CPU核数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongosCpuNum *uint64 `json:"MongosCpuNum,omitnil,omitempty" name:"MongosCpuNum"`
 
 	// Config Server节点个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigServerNodeNum *uint64 `json:"ConfigServerNodeNum,omitnil,omitempty" name:"ConfigServerNodeNum"`
 
 	// Config Server节点内存。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitnil,omitempty" name:"ConfigServerMemory"`
 
 	// Config Server节点磁盘大小。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitnil,omitempty" name:"ConfigServerVolume"`
 
 	// Config Server节点CPU核数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigServerCpuNum *uint64 `json:"ConfigServerCpuNum,omitnil,omitempty" name:"ConfigServerCpuNum"`
 
 	// readonly节点个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitnil,omitempty" name:"ReadonlyNodeNum"`
 }
 
@@ -3815,27 +3795,21 @@ func (r *IsolateDBInstanceResponse) FromJsonString(s string) error {
 
 type KMSInfoDetail struct {
 	// 主密钥 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
 	// 主密钥名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
 
 	// 实例与密钥绑定时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 密钥状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 密钥用途。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyUsage *string `json:"KeyUsage,omitnil,omitempty" name:"KeyUsage"`
 
 	// 密钥来源。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyOrigin *string `json:"KeyOrigin,omitnil,omitempty" name:"KeyOrigin"`
 
 	// kms所在地域。
@@ -4376,57 +4350,47 @@ type ModifyNetworkAddress struct {
 
 type NodeProperty struct {
 	// 节点所在的可用区。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 节点名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 节点访问地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
+	// 节点公网访问地址(IP或域名)。
+	WanServiceAddress *string `json:"WanServiceAddress,omitnil,omitempty" name:"WanServiceAddress"`
+
 	// 角色。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 是否为Hidden节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hidden *bool `json:"Hidden,omitnil,omitempty" name:"Hidden"`
 
 	// 节点状态，包括：ORMAL/STARTUP/RECOVERING/STARTUP2/UNKNOWN/DOWN/ROLLBACK/REMOVED等。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 主从延迟，单位秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveDelay *int64 `json:"SlaveDelay,omitnil,omitempty" name:"SlaveDelay"`
 
 	// 节点优先级。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 节点投票权。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
 	// 节点标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*NodeTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 副本集Id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicateSetId *string `json:"ReplicateSetId,omitnil,omitempty" name:"ReplicateSetId"`
 }
 
 type NodeTag struct {
 	// 节点Tag key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 节点Tag Value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -4674,7 +4638,6 @@ type ReplicaSetInfo struct {
 
 type ReplicateSetInfo struct {
 	// 节点属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nodes []*NodeProperty `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 }
 

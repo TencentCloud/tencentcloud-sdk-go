@@ -1927,7 +1927,6 @@ type CreatePostpayPackageResponseParams struct {
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 环境ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2084,7 +2083,6 @@ func (r *CreateStaticStoreRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStaticStoreResponseParams struct {
 	// 创建静态资源结果(succ/fail)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5176,15 +5174,12 @@ func (r *DescribeDownloadFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDownloadFileResponseParams struct {
 	// 文件路径，该字段已废弃
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomKey *string `json:"CustomKey,omitnil,omitempty" name:"CustomKey"`
 
 	// 下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5571,7 +5566,6 @@ func (r *DescribeEnvFreeQuotaRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEnvFreeQuotaResponseParams struct {
 	// 免费抵扣配额详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuotaItems []*PostpayEnvQuota `json:"QuotaItems,omitnil,omitempty" name:"QuotaItems"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5743,7 +5737,6 @@ func (r *DescribeEnvPostpaidDeductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEnvPostpaidDeductResponseParams struct {
 	// 指标抵扣详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostPaidEnvDeductInfoList []*PostPaidEnvDeductInfo `json:"PostPaidEnvDeductInfoList,omitnil,omitempty" name:"PostPaidEnvDeductInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6390,7 +6383,6 @@ func (r *DescribePostpayFreeQuotasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePostpayFreeQuotasResponseParams struct {
 	// 免费量资源信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreequotaInfoList []*FreequotaInfo `json:"FreequotaInfoList,omitnil,omitempty" name:"FreequotaInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6455,7 +6447,6 @@ func (r *DescribePostpayPackageFreeQuotasRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribePostpayPackageFreeQuotasResponseParams struct {
 	// 免费量资源信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageFreeQuotaInfos []*PackageFreeQuotaInfo `json:"PackageFreeQuotaInfos,omitnil,omitempty" name:"PackageFreeQuotaInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6511,6 +6502,10 @@ type DescribeQuotaDataRequestParams struct {
 	// <li> TkeMemUsedPkgDay: 当天容器托管内存使用量，单位MB*秒 </li>
 	// <li> CodingBuildTimePkgDay: 当天容器托管构建时间使用量，单位毫秒 </li>
 	// <li> TkeHttpServiceNatPkgDay: 当天容器托管流量使用量，单位B </li>
+	// <li> CynosdbCcupkg: 当月微信云托管MySQL CCU使用量，单位个  （需要除以1000）</li>
+	// <li> CynosdbStoragepkg: 当月微信云托管MySQL 存储使用量，单位MB  （需要除以1000）</li>
+	// <li> CynosdbCcupkgDay: 当天微信云托管MySQL 存储使用量，单位个 （需要除以1000） </li>
+	// <li> CynosdbStoragepkgDay: 当天微信云托管MySQL 存储使用量，单位MB （需要除以1000） </li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)、容器托管（服务名称）。如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传。
@@ -6551,6 +6546,10 @@ type DescribeQuotaDataRequest struct {
 	// <li> TkeMemUsedPkgDay: 当天容器托管内存使用量，单位MB*秒 </li>
 	// <li> CodingBuildTimePkgDay: 当天容器托管构建时间使用量，单位毫秒 </li>
 	// <li> TkeHttpServiceNatPkgDay: 当天容器托管流量使用量，单位B </li>
+	// <li> CynosdbCcupkg: 当月微信云托管MySQL CCU使用量，单位个  （需要除以1000）</li>
+	// <li> CynosdbStoragepkg: 当月微信云托管MySQL 存储使用量，单位MB  （需要除以1000）</li>
+	// <li> CynosdbCcupkgDay: 当天微信云托管MySQL 存储使用量，单位个 （需要除以1000） </li>
+	// <li> CynosdbStoragepkgDay: 当天微信云托管MySQL 存储使用量，单位MB （需要除以1000） </li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)、容器托管（服务名称）。如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传。
@@ -6587,7 +6586,6 @@ type DescribeQuotaDataResponseParams struct {
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 指标的附加值信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubValue *string `json:"SubValue,omitnil,omitempty" name:"SubValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6645,7 +6643,6 @@ func (r *DescribeSmsQuotasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmsQuotasResponseParams struct {
 	// 短信免费量信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmsFreeQuotaList []*SmsFreeQuota `json:"SmsFreeQuotaList,omitnil,omitempty" name:"SmsFreeQuotaList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6717,7 +6714,6 @@ func (r *DescribeSpecialCostItemsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSpecialCostItemsResponseParams struct {
 	// 1分钱抵扣详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecialCostItems []*SpecialCostItem `json:"SpecialCostItems,omitnil,omitempty" name:"SpecialCostItems"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6949,7 +6945,6 @@ type DescribeUserActivityInfoResponseParams struct {
 	GroupTimeLeft *int64 `json:"GroupTimeLeft,omitnil,omitempty" name:"GroupTimeLeft"`
 
 	// 昵称列表,通过","拼接， 1元钱裂变活动中与Notes中uin一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NickNameList *string `json:"NickNameList,omitnil,omitempty" name:"NickNameList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7933,7 +7928,9 @@ type ExtensionFileInfo struct {
 	// 上传文件的临时地址，含签名
 	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
 
-	// 自定义密钥。如果为空，则表示不需要加密
+	// 自定义密钥。如果为空，则表示不需要加密。
+	// 参考cos预签名url上传https://cloud.tencent.com/document/product/436/36121
+	// 上传的时候要按照 SSE-C 的方式设置header：https://cloud.tencent.com/document/product/436/7728
 	CustomKey *string `json:"CustomKey,omitnil,omitempty" name:"CustomKey"`
 
 	// 文件大小限制，单位M，客户端上传前需要主动检查文件大小，超过限制的文件会被删除。

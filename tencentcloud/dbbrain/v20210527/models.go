@@ -3794,8 +3794,11 @@ type DescribeRedisTopKeyPrefixListRequestParams struct {
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 查询数目，默认为20，最大值为100。
+	// 查询数目，默认为20，最大值为500。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分片ID数组。
+	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
 }
 
 type DescribeRedisTopKeyPrefixListRequest struct {
@@ -3810,8 +3813,11 @@ type DescribeRedisTopKeyPrefixListRequest struct {
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 查询数目，默认为20，最大值为100。
+	// 查询数目，默认为20，最大值为500。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分片ID数组。
+	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
 }
 
 func (r *DescribeRedisTopKeyPrefixListRequest) ToJsonString() string {
@@ -3830,6 +3836,7 @@ func (r *DescribeRedisTopKeyPrefixListRequest) FromJsonString(s string) error {
 	delete(f, "Date")
 	delete(f, "Product")
 	delete(f, "Limit")
+	delete(f, "ShardIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopKeyPrefixListRequest has unknown keys!", "")
 	}

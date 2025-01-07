@@ -6566,60 +6566,10 @@ type Component struct {
 	// <b>参数样例</b>：<br>`{"Children":["ComponentId_29","ComponentId_27","ComponentId_28","ComponentId_30"]}`
 	// <li><b>ChildrenComponents:</b> 关键字定位模式下，用来指定此签批控件的组合子控件 </li>
 	// ChildrenComponent结构体定义:
-	// <table border="1">
-	//     <thead>
-	//         <tr>
-	//             <th>字段名称</th>
-	//             <th>类型</th>
-	//             <th>描述</th>
-	//         </tr>
-	//     </thead>
-	//     <tbody>
-	//         <tr>
-	//             <td>ComponentType</td>
-	//             <td>string</td>
-	//             <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>
-	//         </tr>
-	//         <tr>
-	//             <td>ComponentName</td>
-	//             <td>string</td>
-	//             <td>子控件名称</td>
-	//         </tr>
-	//         <tr>
-	//             <td>Placeholder</td>
-	//             <td>string</td>
-	//             <td>子控件提示语</td>
-	//         </tr>
-	//         <tr>
-	//             <td>ComponentOffsetX</td>
-	//             <td>float</td>
-	//             <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>
-	//         </tr>
-	//         <tr>
-	//             <td>ComponentOffsetY</td>
-	//             <td>float</td>
-	//             <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>
-	//         </tr>
-	//         <tr>
-	//             <td>ComponentWidth</td>
-	//             <td>float</td>
-	//             <td>控件宽</td>
-	//         </tr>
-	//         <tr>
-	//             <td>ComponentHeight</td>
-	//             <td>float</td>
-	//             <td>控件高</td>
-	//         </tr>
-	//         <tr>
-	//             <td>ComponentExtra</td>
-	//             <td>string</td>
-	//             <td>控件的附属信息，根据ComponentType设置</td>
-	//         </tr>
-	//     </tbody>
-	// </table>
+	// <table border="1">     <thead>         <tr>             <th>字段名称</th>             <th>类型</th>             <th>描述</th>         </tr>     </thead>     <tbody>         <tr>             <td>ComponentType</td>             <td>string</td>             <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>         </tr>         <tr>             <td>ComponentName</td>             <td>string</td>             <td>子控件名称</td>         </tr>         <tr>             <td>Placeholder</td>             <td>string</td>             <td>子控件提示语</td>         </tr>         <tr>             <td>ComponentOffsetX</td>             <td>float</td>             <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>         </tr>         <tr>             <td>ComponentOffsetY</td>             <td>float</td>             <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>         </tr>         <tr>             <td>ComponentWidth</td>             <td>float</td>             <td>控件宽</td>         </tr>         <tr>             <td>ComponentHeight</td>             <td>float</td>             <td>控件高</td>         </tr>         <tr>             <td>ComponentExtra</td>             <td>string</td>             <td>控件的附属信息，根据ComponentType设置</td>         </tr>     </tbody> </table>
 	// <b>参数样例</b>：
 	// 
-	// ```json
+	// <pre>
 	// {
 	//     "ChildrenComponents": [
 	//         {
@@ -6653,8 +6603,7 @@ type Component struct {
 	//             "ComponentExtra": ""
 	//         }
 	//     ]
-	// }
-	// ```
+	// }</pre>
 	// </ul>
 	// 
 	// 
